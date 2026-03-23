@@ -194,11 +194,19 @@ const ContactForm = ({ title, context, onClose, lang }) => {
   const [sent, setSent] = useState(false);
   const set = (k) => (e) => setForm(p => ({...p, [k]: e.target.value}));
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!form.name || !form.email) return;
-    // In production: POST to API/Formspree/etc
-    console.log("ZRC Form Submission:", { ...form, context, timestamp: new Date().toISOString() });
-    setSent(true);
+    try {
+      const res = await fetch("https://zrc-api.onrender.com/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: formType || "contact", ...form, context }),
+      });
+      if (res.ok) setSent(true);
+    } catch (err) {
+      console.error("Submit error:", err);
+      setSent(true);
+    }
   };
 
   if (sent) return (
@@ -233,10 +241,16 @@ const AuthModal = () => {
   const [form, setForm] = useState({ name:"", email:"", password:"", company:"", role:"", interest:"" });
   const set = (k) => (e) => setForm(p => ({...p, [k]: e.target.value}));
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!form.email || !form.password) return;
-    // In production: POST to auth API
     login({ name: form.name || form.email.split("@")[0], email: form.email, tier: "member" });
+    try {
+      await fetch("https://zrc-api.onrender.com/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: form.name, email: form.email, company: form.company, role: form.role, interest: form.interest }),
+      });
+    } catch (err) { console.error("Reg error:", err); }
   };
 
   return (
