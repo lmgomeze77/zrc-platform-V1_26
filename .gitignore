@@ -1,4 +1,6 @@
 node_modules/
 dist/
+.vite/
+.wrangler/
 dev-server.log
 dev-server-error.log
