@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback, createContext, useContext } f
 // ZENITH RISE CAPITAL — PLATFORM v3.0
 // Full functional: forms, auth, gated content, registration flows
 // ═══════════════════════════════════════════════════════════════════════
-
+// noel test
 // ─── DESIGN TOKENS ───
 const C = {
   bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
