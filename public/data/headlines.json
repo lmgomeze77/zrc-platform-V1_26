@@ -1,0 +1,112 @@
+{
+  "generated_at": "2026-04-12T06:00:00.000Z",
+  "market_ticker": [
+    { "symbol": "EUR/USD", "value": "1.1345", "change": "+0.43%", "up": true },
+    { "symbol": "IBEX 35", "value": "12,830", "change": "-0.52%", "up": false },
+    { "symbol": "BRENT", "value": "$64.18", "change": "-2.15%", "up": false },
+    { "symbol": "GOLD", "value": "$3,238", "change": "+1.47%", "up": true },
+    { "symbol": "BTC", "value": "$81,620", "change": "-3.82%", "up": false },
+    { "symbol": "VIX", "value": "40.7", "change": "+21.3%", "up": true },
+    { "symbol": "US 10Y", "value": "4.38%", "change": "+0.12", "up": true },
+    { "symbol": "EUR/GBP", "value": "0.8612", "change": "+0.18%", "up": true },
+    { "symbol": "S&P 500", "value": "5,268", "change": "-1.73%", "up": false },
+    { "symbol": "DAX 40", "value": "20,374", "change": "-0.91%", "up": false }
+  ],
+  "headlines": [
+    {
+      "id": 1,
+      "tag": "CRITICAL",
+      "region": "GLOBAL",
+      "title": {
+        "es": "EE.UU. escala guerra arancelaria — aranceles del 145% a China, represalias inmediatas",
+        "en": "US escalates tariff war — 145% duties on China, immediate retaliation"
+      },
+      "summary": {
+        "es": "La administración Trump eleva aranceles a productos chinos al 145%. China responde con aranceles del 125% y restricciones a la exportación de tierras raras. Los mercados globales caen con el VIX superando 40 por primera vez desde 2020.",
+        "en": "The Trump administration raises tariffs on Chinese goods to 145%. China retaliates with 125% tariffs and rare earth export restrictions. Global markets sell off with VIX breaching 40 for the first time since 2020."
+      },
+      "source": "Reuters",
+      "url": "https://www.reuters.com/markets/",
+      "time": "2h",
+      "impact": "high",
+      "signals": ["EQUITIES -", "VIX +", "GOLD +", "USD -"],
+      "confidence": 96
+    },
+    {
+      "id": 2,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "BCE acelera calendario de recortes ante shock arancelario — mercados descuentan 3 recortes en 2026",
+        "en": "ECB accelerates rate cut timeline amid tariff shock — markets price in 3 cuts for 2026"
+      },
+      "summary": {
+        "es": "Fuentes del BCE indican que el Consejo de Gobierno considera acelerar los recortes de tipos para compensar el impacto de los aranceles estadounidenses en la economía europea. El euro se fortalece frente al dólar.",
+        "en": "ECB sources indicate the Governing Council is considering accelerating rate cuts to offset the impact of US tariffs on the European economy. The euro strengthens against the dollar."
+      },
+      "source": "Financial Times",
+      "url": "https://www.ft.com/european-economy",
+      "time": "4h",
+      "impact": "high",
+      "signals": ["EUR +", "BONDS +", "EU EQUITIES ?"],
+      "confidence": 88
+    },
+    {
+      "id": 3,
+      "tag": "STRATEGIC",
+      "region": "APAC",
+      "title": {
+        "es": "Japón y Corea del Sur buscan acuerdo comercial bilateral ante el vacío dejado por EE.UU.",
+        "en": "Japan and South Korea pursue bilateral trade deal amid US vacuum"
+      },
+      "summary": {
+        "es": "Los ministros de comercio de Japón y Corea del Sur anuncian negociaciones para un acuerdo comercial bilateral acelerado. La iniciativa busca reducir la dependencia de ambos países del mercado estadounidense ante la incertidumbre arancelaria.",
+        "en": "Trade ministers from Japan and South Korea announce negotiations for an accelerated bilateral trade agreement. The initiative seeks to reduce both countries' dependence on the US market amid tariff uncertainty."
+      },
+      "source": "Nikkei Asia",
+      "url": "https://asia.nikkei.com/Economy/Trade",
+      "time": "6h",
+      "impact": "medium",
+      "signals": ["JPY +", "KRW +", "SEMIS +"],
+      "confidence": 79
+    },
+    {
+      "id": 4,
+      "tag": "EMERGING",
+      "region": "LATAM",
+      "title": {
+        "es": "México se posiciona como beneficiario del nearshoring acelerado por guerra comercial",
+        "en": "Mexico positions as beneficiary of trade-war-accelerated nearshoring"
+      },
+      "summary": {
+        "es": "Las exportaciones mexicanas a EE.UU. crecen un 12% interanual mientras empresas redirigen cadenas de suministro fuera de China. El sector manufacturero de Nuevo León y Querétaro lidera la captación de inversión.",
+        "en": "Mexican exports to the US grow 12% year-over-year as companies redirect supply chains away from China. The manufacturing sector in Nuevo León and Querétaro leads investment capture."
+      },
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/emerging-markets",
+      "time": "8h",
+      "impact": "medium",
+      "signals": ["MXN +", "NEARSHORING +", "MANUFACTURING +"],
+      "confidence": 84
+    },
+    {
+      "id": 5,
+      "tag": "MONITOR",
+      "region": "MENA",
+      "title": {
+        "es": "Arabia Saudí recorta precio del crudo para Asia — señal de demanda débil",
+        "en": "Saudi Arabia cuts crude pricing for Asia — weak demand signal"
+      },
+      "summary": {
+        "es": "Saudi Aramco reduce el precio oficial de venta del Arab Light para compradores asiáticos en $1.40/barril. El movimiento refleja preocupaciones por la desaceleración de la demanda china en un contexto de guerra comercial.",
+        "en": "Saudi Aramco cuts the official selling price of Arab Light for Asian buyers by $1.40/barrel. The move reflects concerns about slowing Chinese demand amid the trade war context."
+      },
+      "source": "Al Jazeera",
+      "url": "https://www.aljazeera.com/economy",
+      "time": "10h",
+      "impact": "medium",
+      "signals": ["OIL -", "ENERGY -", "SHIPPING -"],
+      "confidence": 86
+    }
+  ]
+}
