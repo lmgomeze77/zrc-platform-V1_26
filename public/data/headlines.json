@@ -1,112 +1,211 @@
 {
-  "generated_at": "2026-04-12T06:00:00.000Z",
+  "generated_at": "2026-04-12T21:58:27.805Z",
   "market_ticker": [
-    { "symbol": "EUR/USD", "value": "1.1345", "change": "+0.43%", "up": true },
-    { "symbol": "IBEX 35", "value": "12,830", "change": "-0.52%", "up": false },
-    { "symbol": "BRENT", "value": "$64.18", "change": "-2.15%", "up": false },
-    { "symbol": "GOLD", "value": "$3,238", "change": "+1.47%", "up": true },
-    { "symbol": "BTC", "value": "$81,620", "change": "-3.82%", "up": false },
-    { "symbol": "VIX", "value": "40.7", "change": "+21.3%", "up": true },
-    { "symbol": "US 10Y", "value": "4.38%", "change": "+0.12", "up": true },
-    { "symbol": "EUR/GBP", "value": "0.8612", "change": "+0.18%", "up": true },
-    { "symbol": "S&P 500", "value": "5,268", "change": "-1.73%", "up": false },
-    { "symbol": "DAX 40", "value": "20,374", "change": "-0.91%", "up": false }
+    {
+      "symbol": "EUR/USD",
+      "value": "1.1720",
+      "change": "+0.20%",
+      "up": true
+    },
+    {
+      "symbol": "IBEX 35",
+      "value": "18,042.52",
+      "change": "+0.86%",
+      "up": true
+    },
+    {
+      "symbol": "BRENT",
+      "value": "95.20",
+      "change": "-0.75%",
+      "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4,748.43",
+      "change": "-0.32%",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "71,888.67",
+      "change": "+1.30%",
+      "up": true
+    },
+    {
+      "symbol": "VIX",
+      "value": "19.23",
+      "change": "-1.33%",
+      "up": false
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.317",
+      "change": "+0.56%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8719",
+      "change": "+0.41%",
+      "up": true
+    },
+    {
+      "symbol": "S&P 500",
+      "value": "6,816.89",
+      "change": "-0.11%",
+      "up": false
+    },
+    {
+      "symbol": "DAX 40",
+      "value": "23,803.95",
+      "change": "-0.01%",
+      "up": false
+    }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "GLOBAL",
+      "region": "US",
       "title": {
-        "es": "EE.UU. escala guerra arancelaria — aranceles del 145% a China, represalias inmediatas",
-        "en": "US escalates tariff war — 145% duties on China, immediate retaliation"
+        "en": "US-Iran Peace Talks Collapse as Trump Declares Naval Blockade of Strait of Hormuz",
+        "es": "Fracasan conversaciones de paz EE.UU.-Irán mientras Trump declara bloqueo naval del Estrecho de Ormuz"
       },
       "summary": {
-        "es": "La administración Trump eleva aranceles a productos chinos al 145%. China responde con aranceles del 125% y restricciones a la exportación de tierras raras. Los mercados globales caen con el VIX superando 40 por primera vez desde 2020.",
-        "en": "The Trump administration raises tariffs on Chinese goods to 145%. China retaliates with 125% tariffs and rare earth export restrictions. Global markets sell off with VIX breaching 40 for the first time since 2020."
+        "en": "VP JD Vance announced the failure of 21-hour peace negotiations in Islamabad after 44 days of conflict. Trump declared a naval blockade preventing ships from entering/exiting the strait, threatening global energy markets.",
+        "es": "El VP JD Vance anunció el fracaso de 21 horas de negociaciones de paz en Islamabad tras 44 días de conflicto. Trump declaró un bloqueo naval impidiendo que barcos entren/salgan del estrecho, amenazando los mercados energéticos globales."
       },
-      "source": "Reuters",
-      "url": "https://www.reuters.com/markets/",
-      "time": "2h",
+      "source": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/4/12/iran-war-what-is-happening-on-day-44-of-the-us-iran-conflict",
+      "time": "13h",
       "impact": "high",
-      "signals": ["EQUITIES -", "VIX +", "GOLD +", "USD -"],
-      "confidence": 96
+      "signals": [
+        "OIL +",
+        "USD +",
+        "GOLD +",
+        "DEFENSE +"
+      ],
+      "confidence": 95
     },
     {
       "id": 2,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "BCE acelera calendario de recortes ante shock arancelario — mercados descuentan 3 recortes en 2026",
-        "en": "ECB accelerates rate cut timeline amid tariff shock — markets price in 3 cuts for 2026"
+        "en": "Hungary's Viktor Orbán Concedes Election After 16 Years, Opposition Wins Supermajority",
+        "es": "Viktor Orbán de Hungría concede elecciones tras 16 años, oposición gana supermayoría"
       },
       "summary": {
-        "es": "Fuentes del BCE indican que el Consejo de Gobierno considera acelerar los recortes de tipos para compensar el impacto de los aranceles estadounidenses en la economía europea. El euro se fortalece frente al dólar.",
-        "en": "ECB sources indicate the Governing Council is considering accelerating rate cuts to offset the impact of US tariffs on the European economy. The euro strengthens against the dollar."
+        "en": "Peter Magyar's Tisza party secured 51.2% of votes and 132 of 199 parliamentary seats, ending Orbán's 16-year rule. The victory relieves EU tensions and may unblock €90bn Ukrainian loan, dealing a blow to Trump's nationalist allies.",
+        "es": "El partido Tisza de Peter Magyar obtuvo el 51.2% de los votos y 132 de 199 escaños parlamentarios, terminando con 16 años de gobierno de Orbán. La victoria alivia tensiones en la UE y puede desbloquear préstamo ucraniano de €90 mil millones, golpeando a aliados nacionalistas de Trump."
       },
-      "source": "Financial Times",
-      "url": "https://www.ft.com/european-economy",
-      "time": "4h",
+      "source": "CNN",
+      "url": "https://www.cnn.com/2026/04/12/world/live-news/hungary-election-orban-magyar",
+      "time": "1h",
       "impact": "high",
-      "signals": ["EUR +", "BONDS +", "EU EQUITIES ?"],
-      "confidence": 88
+      "signals": [
+        "EUR +",
+        "HUF +",
+        "BONDS +",
+        "DEFENSE -"
+      ],
+      "confidence": 98
     },
     {
       "id": 3,
-      "tag": "STRATEGIC",
-      "region": "APAC",
+      "tag": "ALERT",
+      "region": "GLOBAL",
       "title": {
-        "es": "Japón y Corea del Sur buscan acuerdo comercial bilateral ante el vacío dejado por EE.UU.",
-        "en": "Japan and South Korea pursue bilateral trade deal amid US vacuum"
+        "en": "IMF Chief Warns Iran War Impact Will Stretch Through 2026 Despite Ceasefire",
+        "es": "Jefa del FMI advierte que impacto de guerra iraní se extenderá hasta 2026 pese a alto al fuego"
       },
       "summary": {
-        "es": "Los ministros de comercio de Japón y Corea del Sur anuncian negociaciones para un acuerdo comercial bilateral acelerado. La iniciativa busca reducir la dependencia de ambos países del mercado estadounidense ante la incertidumbre arancelaria.",
-        "en": "Trade ministers from Japan and South Korea announce negotiations for an accelerated bilateral trade agreement. The initiative seeks to reduce both countries' dependence on the US market amid tariff uncertainty."
+        "en": "Kristalina Georgieva stated that 13% of global oil and 20% of gas supplies remain disrupted after 5 weeks. 72 energy facilities damaged, with Qatar's gas field requiring 3-5 years to reach full capacity.",
+        "es": "Kristalina Georgieva declaró que el 13% del petróleo mundial y 20% del gas permanecen interrumpidos tras 5 semanas. 72 instalaciones energéticas dañadas, con campo de gas de Qatar requiriendo 3-5 años para alcanzar capacidad completa."
       },
-      "source": "Nikkei Asia",
-      "url": "https://asia.nikkei.com/Economy/Trade",
+      "source": "CBS News",
+      "url": "https://www.cbsnews.com/news/kristalina-georgieva-face-the-nation-full-transcript-04-12-2026/",
       "time": "6h",
       "impact": "medium",
-      "signals": ["JPY +", "KRW +", "SEMIS +"],
-      "confidence": 79
+      "signals": [
+        "OIL +",
+        "GAS +",
+        "INFLATION +",
+        "GROWTH -"
+      ],
+      "confidence": 92
     },
     {
       "id": 4,
-      "tag": "EMERGING",
-      "region": "LATAM",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "México se posiciona como beneficiario del nearshoring acelerado por guerra comercial",
-        "en": "Mexico positions as beneficiary of trade-war-accelerated nearshoring"
+        "en": "Israeli Shekel Hits 30-Year High Against Dollar as Iran Ceasefire Holds",
+        "es": "Shekel israelí alcanza máximo de 30 años contra dólar mientras persiste alto al fuego con Irán"
       },
       "summary": {
-        "es": "Las exportaciones mexicanas a EE.UU. crecen un 12% interanual mientras empresas redirigen cadenas de suministro fuera de China. El sector manufacturero de Nuevo León y Querétaro lidera la captación de inversión.",
-        "en": "Mexican exports to the US grow 12% year-over-year as companies redirect supply chains away from China. The manufacturing sector in Nuevo León and Querétaro leads investment capture."
+        "en": "The Israeli currency strengthened significantly following ceasefire negotiations with Iran and ongoing talks with Lebanon. Market analysts predict potential move below NIS 3/$ threshold as geopolitical risks decline.",
+        "es": "La moneda israelí se fortaleció significativamente tras negociaciones de alto al fuego con Irán y conversaciones en curso con Líbano. Analistas predicen posible movimiento bajo el umbral de NIS 3/$ mientras disminuyen riesgos geopolíticos."
       },
-      "source": "Bloomberg",
-      "url": "https://www.bloomberg.com/emerging-markets",
-      "time": "8h",
+      "source": "Globes",
+      "url": "https://wp.madrestravels.com/2026/04/12/shekel-at-30-year-strongest-against-dollar/",
+      "time": "10h",
       "impact": "medium",
-      "signals": ["MXN +", "NEARSHORING +", "MANUFACTURING +"],
-      "confidence": 84
+      "signals": [
+        "ILS +",
+        "USD -",
+        "BONDS +",
+        "TECH +"
+      ],
+      "confidence": 88
     },
     {
       "id": 5,
       "tag": "MONITOR",
-      "region": "MENA",
+      "region": "GLOBAL",
       "title": {
-        "es": "Arabia Saudí recorta precio del crudo para Asia — señal de demanda débil",
-        "en": "Saudi Arabia cuts crude pricing for Asia — weak demand signal"
+        "en": "Oil Prices Stabilize Near $96/Barrel as Ceasefire Provides Modest Relief",
+        "es": "Precios del petróleo se estabilizan cerca de $96/barril mientras alto al fuego brinda alivio moderado"
       },
       "summary": {
-        "es": "Saudi Aramco reduce el precio oficial de venta del Arab Light para compradores asiáticos en $1.40/barril. El movimiento refleja preocupaciones por la desaceleración de la demanda china en un contexto de guerra comercial.",
-        "en": "Saudi Aramco cuts the official selling price of Arab Light for Asian buyers by $1.40/barrel. The move reflects concerns about slowing Chinese demand amid the trade war context."
+        "en": "Brent crude steadied around $96 after weeks of volatility from Middle East conflicts. Australia cuts fuel excise tax by 26.3 cents per liter for three months to cushion consumers from geopolitical price shocks.",
+        "es": "El crudo Brent se estabilizó alrededor de $96 tras semanas de volatilidad por conflictos de Medio Oriente. Australia reduce impuesto al combustible en 26.3 centavos por litro durante tres meses para proteger a consumidores de choques geopolíticos."
       },
-      "source": "Al Jazeera",
-      "url": "https://www.aljazeera.com/economy",
-      "time": "10h",
+      "source": "International Business Times",
+      "url": "https://www.ibtimes.com.au/australia-oil-price-today-april-2026-brent-crude-near-96-geopolitical-ceasefire-eases-pump-pain-1866227",
+      "time": "12h",
       "impact": "medium",
-      "signals": ["OIL -", "ENERGY -", "SHIPPING -"],
-      "confidence": 86
+      "signals": [
+        "OIL +",
+        "AUD -",
+        "ENERGY +",
+        "TRANSPORT -"
+      ],
+      "confidence": 85
+    },
+    {
+      "id": 6,
+      "tag": "STRATEGIC",
+      "region": "GLOBAL",
+      "title": {
+        "en": "Legendary Investor Jeremy Grantham Warns AI Bubble Could Trigger Historic Market Crash",
+        "es": "Inversor legendario Jeremy Grantham advierte que burbuja de IA podría provocar caída histórica del mercado"
+      },
+      "summary": {
+        "en": "GMO co-founder says there's 'slim to none' chance AI bubble won't burst, potentially dragging markets to levels not seen since worst bear markets in modern history. Argues ChatGPT arrival deferred but didn't fix underlying valuation problems.",
+        "es": "El cofundador de GMO dice que hay posibilidades 'mínimas o nulas' de que la burbuja de IA no estalle, potencialmente arrastrando mercados a niveles no vistos desde los peores mercados bajistas de la historia moderna. Argumenta que la llegada de ChatGPT difirió pero no solucionó problemas de valoración subyacentes."
+      },
+      "source": "Fortune",
+      "url": "https://fortune.com/2026/04/12/jeremy-grantham-making-of-a-permabear-interview/",
+      "time": "10h",
+      "impact": "high",
+      "signals": [
+        "TECH -",
+        "VIX +",
+        "BONDS +",
+        "AI -"
+      ],
+      "confidence": 78
     }
   ]
 }
