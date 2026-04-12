@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
-
+ 
 // ═══════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.0
 // Full functional: forms, auth, gated content, registration flows
@@ -18,24 +18,24 @@ const F = {
   body: "'Outfit', 'Helvetica Neue', sans-serif",
   mono: "'IBM Plex Mono', 'Fira Code', monospace",
 };
-
+ 
 // ─── AUTH CONTEXT ───
 const AuthContext = createContext(null);
-
+ 
 const useAuth = () => useContext(AuthContext);
-
+ 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [showAuth, setShowAuth] = useState(false);
   const [authMode, setAuthMode] = useState("login");
   const [authCallback, setAuthCallback] = useState(null);
-
+ 
   const login = (userData) => { setUser(userData); setShowAuth(false); if (authCallback) { authCallback(); setAuthCallback(null); } };
   const logout = () => setUser(null);
   const requireAuth = (callback) => { if (user) { callback(); } else { setAuthCallback(() => callback); setAuthMode("register"); setShowAuth(true); } };
   const openLogin = () => { setAuthMode("login"); setShowAuth(true); };
   const openRegister = () => { setAuthMode("register"); setShowAuth(true); };
-
+ 
   return (
     <AuthContext.Provider value={{ user, login, logout, requireAuth, openLogin, openRegister, showAuth, setShowAuth, authMode, setAuthMode }}>
       {children}
@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
+ 
 // ─── i18n (simplified inline) ───
 const T = {
   es: {
@@ -75,7 +75,7 @@ const T = {
     live: "LIVE",
   }
 };
-
+ 
 // ─── DATA ───
 const TICKER = [
   { s: "EUR/USD", v: "1.0847", c: "+0.12%", up: true }, { s: "IBEX 35", v: "13,245", c: "+0.67%", up: true },
@@ -83,7 +83,7 @@ const TICKER = [
   { s: "BTC", v: "$87,412", c: "+2.31%", up: true }, { s: "VIX", v: "18.7", c: "+4.2%", up: true },
   { s: "US 10Y", v: "4.28%", c: "+0.03", up: true }, { s: "EUR/GBP", v: "0.8634", c: "-0.08%", up: false },
 ];
-
+ 
 const FEED = [
   { id:1, tag:"CRITICAL", region:"MENA", title:{es:"Disrupción en corredor del Mar Rojo — fletes +340% YTD",en:"Red Sea corridor disruption — freight rates +340% YTD"}, time:"2h", impact:"high", confidence:92, summary:{es:"Escalada Houtí fuerza redireccionamiento vía Cabo de Buena Esperanza. Impacto directo en costes de importación europeos, logística energética y primas de seguro en rutas comerciales mediterráneas.",en:"Houthi escalation forces rerouting via Cape of Good Hope. Direct impact on European import costs, energy logistics, and insurance premiums across Mediterranean trade routes."}, signals:["OIL +","SHIPPING +","EUR -"] },
   { id:2, tag:"MONITOR", region:"EU", title:{es:"BCE señala divergencia de tipos frente a la Fed",en:"ECB signals rate path divergence from Fed"}, time:"4h", impact:"medium", confidence:78, summary:{es:"Última orientación de Lagarde sugiere 2-3 recortes en 2026 mientras la Fed mantiene. Ventanas de arbitraje cambiario para M&A cross-border.",en:"Lagarde's guidance suggests 2-3 cuts in 2026 while Fed holds. Currency arbitrage windows opening for cross-border M&A."}, signals:["EUR/USD -","BONDS +","EQUITIES ?"] },
@@ -91,55 +91,54 @@ const FEED = [
   { id:4, tag:"STRATEGIC", region:"APAC", title:{es:"Retrasos fab TSMC Arizona — tesis semiconductores",en:"TSMC Arizona fab delays reshape semiconductor thesis"}, time:"8h", impact:"medium", confidence:71, summary:{es:"Timeline producción desplazado a Q3 2027. Soberanía europea de chips se fortalece.",en:"Production timeline pushed to Q3 2027. European chip sovereignty narrative strengthens."}, signals:["SEMIS -","EU TECH +"] },
   { id:5, tag:"ALERT", region:"AFRICA", title:{es:"Gasoducto Morocco-Nigeria: €4.2B en financiación",en:"Morocco-Nigeria gas pipeline secures €4.2B financing"}, time:"12h", impact:"high", confidence:88, summary:{es:"Consorcio AfDB y fondos soberanos cierran financiación. Transforma infraestructura energética de África Occidental.",en:"AfDB and sovereign wealth consortium close financing. Transforms West African energy infrastructure."}, signals:["ENERGY +","INFRA +","NGN +"] },
 ];
-
+ 
 const OPS = [
   { id:1, type:"REAL ESTATE", name:"Automotive Platform Madrid", loc:"Chamberí, Madrid", size:"320m² · Active License", yield:"8.2%", status:"EXCLUSIVE", price:"€1.2M" },
-  { id:2, type:"HOSPITALITY", name:"Maiden S.A.", loc:"Luxembourg City", size:"Hospitality & Retail Portfolio", yield:"12-15% IRR", status:"MANDATE", price:"Confidential" },
-  { id:3, type:"AGRI-LAND", name:"Finca Cabrerizas", loc:"Vilches, Jaén", size:"337 hectares", yield:"Agri + Dev", status:"EXCLUSIVE", price:"€2.8M" },
-  { id:4, type:"RESIDENTIAL", name:"Edificio Salamanca", loc:"Barrio de Salamanca, Madrid", size:"2,042m² · 12 units", yield:"6.5% net", status:"ADVISORY", price:"€11.6M" },
+  { id:2, type:"AGRI-LAND", name:"Finca Cabrerizas", loc:"Vilches, Jaén", size:"337 hectares", yield:"Agri + Dev", status:"EXCLUSIVE", price:"€2.8M" },
+  { id:3, type:"RESIDENTIAL", name:"Edificio Salamanca", loc:"Barrio de Salamanca, Madrid", size:"2,042m² · 12 units", yield:"6.5% net", status:"ADVISORY", price:"€11.6M" },
 ];
-
+ 
 const TOOLS = [
   { name:"GeoRisk Dashboard", desc:{es:"Scoring de riesgo geopolítico en tiempo real con sliders de escenario.",en:"Real-time geopolitical risk scoring with scenario sliders."}, icon:"◈", status:"LIVE", ml:true },
   { name:"Valuation Engine", desc:{es:"DCF automatizado, múltiplos y valoración normalizada para PYMEs.",en:"Automated DCF, multiples, and normalized valuation for SMEs."}, icon:"◇", status:"BETA", ml:true },
   { name:"Deal Flow Radar", desc:{es:"Pipeline ML-enhanced identificando empresas sub-optimizadas en Europa del Sur.",en:"ML-enhanced pipeline identifying sub-optimized companies across Southern Europe."}, icon:"◆", status:"LIVE", ml:true },
   { name:"Macro Pulse", desc:{es:"Tracker de señales de bancos centrales con NLP.",en:"Central bank signal tracker with NLP analysis."}, icon:"○", status:"Q3 2026", ml:true },
 ];
-
+ 
 const SERVICES = [
   { title:"M&A Advisory", desc:{es:"Soporte transaccional end-to-end. Especializado en mid-market cross-border en Europa del Sur.",en:"End-to-end transaction support. Specialized in cross-border mid-market deals across Southern Europe."}, metric:"€50M+" },
   { title:"Growth Advisory", desc:{es:"Consultoría estratégica para empresas en puntos de inflexión. Framework cuantitativo.",en:"Strategic consulting for companies at inflection points. Quantitative framework."}, metric:"12 mandates" },
   { title:"Capital Raising", desc:{es:"Soluciones de capital estructurado conectando empresas con inversores institucionales.",en:"Structured capital solutions connecting companies with institutional investors."}, metric:"3 sectors" },
 ];
-
+ 
 const COURSES = [
   { id:1, title:{es:"Riesgo Geopolítico y Estrategia de Inversión",en:"Geopolitical Risk & Investment Strategy"}, mod:12, hrs:24, level:"Advanced", status:"ENROLLING" },
   { id:2, title:{es:"Masterclass de Valoración Corporativa",en:"Corporate Valuation Masterclass"}, mod:8, hrs:16, level:"Intermediate", status:"ENROLLING" },
   { id:3, title:{es:"M&A: De la LOI al Cierre",en:"M&A Execution: From LOI to Close"}, mod:10, hrs:20, level:"Advanced", status:"COMING" },
   { id:4, title:{es:"Macro y Estrategia de Bancos Centrales",en:"Macro & Central Bank Strategy"}, mod:6, hrs:12, level:"Intermediate", status:"COMING" },
 ];
-
+ 
 const THREADS = [
   { id:1, author:"L. Gómez Elvira", role:"Founder & CIO", title:{es:"Por qué el Mar Rojo es un evento de reasignación de €200B",en:"Why the Red Sea is a €200B reallocation event"}, replies:34, views:1247 },
   { id:2, author:"Guest Analyst", role:"Macro Strategist", title:{es:"Divergencia BCE: posicionamiento para carry trades EUR",en:"ECB divergence: positioning for EUR carry trades"}, replies:18, views:892 },
   { id:3, author:"ZRC Research", role:"Observatorio", title:{es:"Briefing Semanal #47: Desregulación LATAM",en:"Weekly Briefing #47: LATAM deregulation wave"}, replies:22, views:1560 },
 ];
-
+ 
 // ─── UI PRIMITIVES ───
 const useInView = (th = 0.12) => { const r = useRef(null); const [v, setV] = useState(false); useEffect(() => { const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: th }); if (r.current) o.observe(r.current); return () => o.disconnect(); }, []); return [r, v]; };
-
+ 
 const FadeIn = ({ children, delay = 0, style = {} }) => { const [r, v] = useInView(); return <div ref={r} style={{ opacity: v?1:0, transform: v?"none":"translateY(20px)", transition: `all 0.6s ease ${delay}s`, ...style }}>{children}</div>; };
-
+ 
 const Badge = ({ label, variant }) => {
   const m = { critical:{bg:"rgba(239,68,68,0.12)",c:C.red,b:"rgba(239,68,68,0.25)"}, monitor:{bg:"rgba(59,130,246,0.12)",c:C.blue,b:"rgba(59,130,246,0.25)"}, emerging:{bg:"rgba(34,197,94,0.12)",c:C.green,b:"rgba(34,197,94,0.25)"}, strategic:{bg:C.goldDim,c:C.gold,b:C.goldBorder}, alert:{bg:"rgba(239,68,68,0.18)",c:C.red,b:"rgba(239,68,68,0.35)"}, exclusive:{bg:C.goldDim,c:C.gold,b:C.goldBorder}, mandate:{bg:"rgba(59,130,246,0.12)",c:C.blue,b:"rgba(59,130,246,0.25)"}, advisory:{bg:"rgba(34,197,94,0.12)",c:C.green,b:"rgba(34,197,94,0.25)"}, live:{bg:"rgba(34,197,94,0.12)",c:C.green,b:"rgba(34,197,94,0.25)"}, beta:{bg:"rgba(245,158,11,0.12)",c:C.amber,b:"rgba(245,158,11,0.25)"}, ml:{bg:"rgba(139,92,246,0.12)",c:"#A78BFA",b:"rgba(139,92,246,0.25)"} };
   const s = m[(variant||label||"").toLowerCase()] || m.strategic;
   return <span style={{display:"inline-flex",alignItems:"center",padding:"2px 8px",fontSize:9,fontFamily:F.mono,fontWeight:600,letterSpacing:"0.12em",color:s.c,background:s.bg,border:`1px solid ${s.b}`,lineHeight:1.6}}>{label}</span>;
 };
-
+ 
 const GoldDivider = () => <div style={{height:1,background:`linear-gradient(90deg, transparent 0%, ${C.goldBorder} 30%, ${C.gold}44 50%, ${C.goldBorder} 70%, transparent 100%)`}} />;
-
+ 
 const Sec = ({ id, children }) => <section id={id} style={{padding:"clamp(60px,10vw,120px) clamp(16px,4vw,48px)",maxWidth:1100,margin:"0 auto"}}>{children}</section>;
-
+ 
 const SH = ({ label, title, sub, extra }) => (
   <FadeIn style={{marginBottom:44}}>
     <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:14}}>
@@ -150,7 +149,7 @@ const SH = ({ label, title, sub, extra }) => (
     {sub && <p style={{fontFamily:F.body,fontSize:15,color:C.textSec,marginTop:12,maxWidth:640,lineHeight:1.65,fontWeight:300}}>{sub}</p>}
   </FadeIn>
 );
-
+ 
 // ─── MODAL SYSTEM ───
 const Modal = ({ open, onClose, title, children }) => {
   if (!open) return null;
@@ -166,7 +165,7 @@ const Modal = ({ open, onClose, title, children }) => {
     </div>
   );
 };
-
+ 
 // ─── FORM COMPONENT ───
 const FormInput = ({ label, type = "text", value, onChange, required = true }) => (
   <div style={{marginBottom:16}}>
@@ -187,13 +186,13 @@ const FormInput = ({ label, type = "text", value, onChange, required = true }) =
     )}
   </div>
 );
-
+ 
 const ContactForm = ({ title, context, onClose, lang }) => {
   const t = T[lang].form;
   const [form, setForm] = useState({ name:"", email:"", phone:"", company:"", message:"" });
   const [sent, setSent] = useState(false);
   const set = (k) => (e) => setForm(p => ({...p, [k]: e.target.value}));
-
+ 
   const handleSubmit = async () => {
     if (!form.name || !form.email) return;
     try {
@@ -208,7 +207,7 @@ const ContactForm = ({ title, context, onClose, lang }) => {
       setSent(true);
     }
   };
-
+ 
   if (sent) return (
     <div style={{textAlign:"center",padding:"40px 0"}}>
       <div style={{fontSize:36,marginBottom:16}}>✓</div>
@@ -219,7 +218,7 @@ const ContactForm = ({ title, context, onClose, lang }) => {
       <button onClick={onClose} style={{marginTop:24,fontFamily:F.mono,fontSize:10,letterSpacing:"0.1em",padding:"10px 24px",background:C.gold,color:C.bg,border:"none",cursor:"pointer",fontWeight:600}}>OK</button>
     </div>
   );
-
+ 
   return (
     <div>
       {context && <div style={{fontFamily:F.mono,fontSize:10,color:C.gold,letterSpacing:"0.1em",marginBottom:16,padding:"8px 12px",background:C.goldDim,border:`1px solid ${C.goldBorder}`}}>{context}</div>}
@@ -232,7 +231,7 @@ const ContactForm = ({ title, context, onClose, lang }) => {
     </div>
   );
 };
-
+ 
 // ─── AUTH MODAL ───
 const AuthModal = () => {
   const { authMode, setAuthMode, login, setShowAuth } = useAuth();
@@ -240,7 +239,7 @@ const AuthModal = () => {
   const t = T[lang].auth;
   const [form, setForm] = useState({ name:"", email:"", password:"", company:"", role:"", interest:"" });
   const set = (k) => (e) => setForm(p => ({...p, [k]: e.target.value}));
-
+ 
   const handleSubmit = async () => {
     if (!form.email || !form.password) return;
     login({ name: form.name || form.email.split("@")[0], email: form.email, tier: "member" });
@@ -252,7 +251,7 @@ const AuthModal = () => {
       });
     } catch (err) { console.error("Reg error:", err); }
   };
-
+ 
   return (
     <Modal open={true} onClose={() => setShowAuth(false)} title={authMode === "login" ? t.login : t.register}>
       {authMode === "register" && <FormInput label={t.name} value={form.name} onChange={set("name")} />}
@@ -277,7 +276,7 @@ const AuthModal = () => {
     </Modal>
   );
 };
-
+ 
 // ─── LOCKED OVERLAY ───
 const LockedOverlay = ({ message, lang }) => {
   const { openRegister } = useAuth();
@@ -291,7 +290,7 @@ const LockedOverlay = ({ message, lang }) => {
     </div>
   );
 };
-
+ 
 // ─── MARKET TICKER ───
 const MarketTicker = ({ lang }) => {
   const doubled = [...TICKER, ...TICKER];
@@ -316,14 +315,14 @@ const MarketTicker = ({ lang }) => {
     </div>
   );
 };
-
+ 
 // ─── NAV ───
 const Nav = ({ lang, setLang, onNav }) => {
   const { user, openLogin, logout } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const ids = ["observatory","intelligence","brokerage","advisory","academia","community"];
   useEffect(() => { const h = () => setScrolled(window.scrollY > 50); window.addEventListener("scroll", h, {passive:true}); return () => window.removeEventListener("scroll", h); }, []);
-
+ 
   return (
     <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:100,background:scrolled?"rgba(9,9,11,0.92)":"transparent",backdropFilter:scrolled?"blur(24px)":"none",borderBottom:scrolled?`1px solid ${C.border}`:"1px solid transparent",transition:"all 0.5s"}}>
       <div style={{maxWidth:1200,margin:"0 auto",display:"flex",justifyContent:"space-between",alignItems:"center",height:56,padding:"0 clamp(16px,3vw,32px)"}}>
@@ -353,7 +352,7 @@ const Nav = ({ lang, setLang, onNav }) => {
     </nav>
   );
 };
-
+ 
 // ─── HERO ───
 const Hero = ({ lang, onNav }) => {
   const t = T[lang].hero;
@@ -385,7 +384,7 @@ const Hero = ({ lang, onNav }) => {
     </section>
   );
 };
-
+ 
 // ─── OBSERVATORY ───
 const Observatory = ({ lang }) => {
   const t = T[lang].obs;
@@ -394,7 +393,7 @@ const Observatory = ({ lang }) => {
   const [filter, setFilter] = useState("ALL");
   const regions = ["ALL","MENA","EU","LATAM","APAC","AFRICA"];
   const filtered = filter==="ALL"?FEED:FEED.filter(f=>f.region===filter);
-
+ 
   return (
     <Sec id="observatory">
       <SH label={t.label} title={t.title} sub={t.sub} extra={<span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>({FEED.length})</span>} />
@@ -443,7 +442,7 @@ const Observatory = ({ lang }) => {
     </Sec>
   );
 };
-
+ 
 // ─── INTELLIGENCE (GATED) ───
 const Intelligence = ({ lang }) => {
   const t = T[lang].intel;
@@ -490,7 +489,7 @@ const Intelligence = ({ lang }) => {
     </Sec>
   );
 };
-
+ 
 // ─── BROKERAGE ───
 const Brokerage = ({ lang }) => {
   const t = T[lang].brok;
@@ -528,7 +527,7 @@ const Brokerage = ({ lang }) => {
     </Sec>
   );
 };
-
+ 
 // ─── ADVISORY ───
 const Advisory = ({ lang }) => {
   const t = T[lang].adv;
@@ -561,7 +560,7 @@ const Advisory = ({ lang }) => {
     </Sec>
   );
 };
-
+ 
 // ─── ACADEMIA ───
 const Academia = ({ lang }) => {
   const t = T[lang].acad;
@@ -596,7 +595,7 @@ const Academia = ({ lang }) => {
     </Sec>
   );
 };
-
+ 
 // ─── COMMUNITY ───
 const Community = ({ lang }) => {
   const t = T[lang].comm;
@@ -643,7 +642,7 @@ const Community = ({ lang }) => {
     </Sec>
   );
 };
-
+ 
 // ─── FOOTER ───
 const Footer = ({ lang }) => {
   const t = T[lang].footer;
@@ -665,7 +664,7 @@ const Footer = ({ lang }) => {
     </footer>
   );
 };
-
+ 
 // ─── MAIN APP ───
 export default function ZRCPlatform() {
   const [lang, setLang] = useState("es");
@@ -674,7 +673,7 @@ export default function ZRCPlatform() {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({behavior:"smooth",block:"start"});
   }, []);
-
+ 
   return (
     <AuthProvider>
       <div style={{background:C.bg,color:C.text,minHeight:"100vh",fontFamily:F.body}}>
@@ -714,3 +713,4 @@ export default function ZRCPlatform() {
     </AuthProvider>
   );
 }
+ 
