@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-
+ 
 // ═══════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — STRATEGIC INTELLIGENCE PLATFORM v2.0
 // A data-centric, bilingual, institutional-grade intelligence hub
 // ═══════════════════════════════════════════════════════════════════════
-
+ 
 // ─── i18n SYSTEM ───
 const LANG = {
   es: {
@@ -120,9 +120,9 @@ const LANG = {
     ticker: { updated: "Updated", live: "LIVE" },
   },
 };
-
+ 
 // ─── DATA ───
-
+ 
 const MARKET_TICKER = [
   { symbol: "EUR/USD", value: "1.0847", change: "+0.12%", up: true },
   { symbol: "IBEX 35", value: "13,245", change: "+0.67%", up: true },
@@ -133,7 +133,7 @@ const MARKET_TICKER = [
   { symbol: "US 10Y", value: "4.28%", change: "+0.03", up: true },
   { symbol: "EUR/GBP", value: "0.8634", change: "-0.08%", up: false },
 ];
-
+ 
 const GEO_FEED = [
   { id: 1, tag: "CRITICAL", region: "MENA", title: { es: "Disrupción en corredor del Mar Rojo — fletes +340% YTD", en: "Red Sea corridor disruption — freight rates +340% YTD" }, time: "2h", impact: "high", summary: { es: "Escalada Houtí fuerza redireccionamiento vía Cabo de Buena Esperanza. Impacto directo en costes de importación europeos, logística energética y primas de seguro en rutas comerciales mediterráneas.", en: "Houthi escalation forces rerouting via Cape of Good Hope. Direct impact on European import costs, energy logistics, and insurance premiums across Mediterranean trade routes." }, signals: ["OIL +", "SHIPPING +", "EUR -"], confidence: 92 },
   { id: 2, tag: "MONITOR", region: "EU", title: { es: "BCE señala divergencia de tipos frente a la Fed — implicaciones EUR/USD", en: "ECB signals rate path divergence from Fed — EUR/USD implications" }, time: "4h", impact: "medium", summary: { es: "Última orientación de Lagarde sugiere 2-3 recortes en 2026 mientras la Fed mantiene. Ventanas de arbitraje cambiario abiertas para M&A cross-border.", en: "Lagarde's latest guidance suggests 2-3 cuts in 2026 while Fed holds. Currency arbitrage windows opening for cross-border M&A." }, signals: ["EUR/USD -", "BONDS +", "EQUITIES ?"], confidence: 78 },
@@ -141,40 +141,39 @@ const GEO_FEED = [
   { id: 4, tag: "STRATEGIC", region: "APAC", title: { es: "Retrasos en fab TSMC Arizona reconfiguran tesis de cadena de suministro de semiconductores", en: "TSMC Arizona fab delays reshape semiconductor supply chain thesis" }, time: "8h", impact: "medium", summary: { es: "Timeline de producción desplazado a Q3 2027. Narrativa de soberanía europea de chips se fortalece — implicaciones para inversiones en política industrial de la UE.", en: "Production timeline pushed to Q3 2027. European chip sovereignty narrative strengthens — implications for EU industrial policy investments." }, signals: ["SEMIS -", "EU TECH +"], confidence: 71 },
   { id: 5, tag: "ALERT", region: "AFRICA", title: { es: "Gasoducto Morocco-Nigeria asegura tramo de financiación de €4.2B", en: "Morocco-Nigeria gas pipeline secures €4.2B financing tranche" }, time: "12h", impact: "high", summary: { es: "Consorcio AfDB y fondos soberanos cierran financiación. Transforma infraestructura energética de África Occidental — zonas de acuicultura e industriales a lo largo del corredor se benefician.", en: "AfDB and sovereign wealth consortium close financing. Transforms West African energy infrastructure — aquaculture and industrial zones along corridor benefit." }, signals: ["ENERGY +", "INFRA +", "NGN +"], confidence: 88 },
 ];
-
+ 
 const OPPORTUNITIES = [
   { id: 1, type: "REAL ESTATE", name: "Automotive Platform Madrid", loc: "Chamberí, Madrid", size: "320m² · Active License", yield: "8.2%", status: "EXCLUSIVE", price: "€1.2M" },
-  { id: 2, type: "HOSPITALITY", name: "Maiden S.A.", loc: "Luxembourg City", size: "Hospitality & Retail Portfolio", yield: "12-15% IRR", status: "MANDATE", price: "Confidential" },
-  { id: 3, type: "AGRI-LAND", name: "Finca Cabrerizas", loc: "Vilches, Jaén", size: "337 hectares", yield: "Agri + Dev", status: "EXCLUSIVE", price: "€2.8M" },
-  { id: 4, type: "RESIDENTIAL", name: "Edificio Salamanca", loc: "Barrio de Salamanca, Madrid", size: "2,042m² · 12 units", yield: "6.5% net", status: "ADVISORY", price: "€11.6M" },
+  { id: 2, type: "AGRI-LAND", name: "Finca Cabrerizas", loc: "Vilches, Jaén", size: "337 hectares", yield: "Agri + Dev", status: "EXCLUSIVE", price: "€2.8M" },
+  { id: 3, type: "RESIDENTIAL", name: "Edificio Salamanca", loc: "Barrio de Salamanca, Madrid", size: "2,042m² · 12 units", yield: "6.5% net", status: "ADVISORY", price: "€11.6M" },
 ];
-
+ 
 const TOOLS = [
   { name: "GeoRisk Dashboard", desc: { es: "Scoring de riesgo geopolítico en tiempo real con sliders de escenario. Mapeo de eventos macro a exposición sectorial y de cartera.", en: "Real-time geopolitical risk scoring with scenario sliders. Map macro events to sector and portfolio exposure." }, icon: "◈", status: "LIVE", ml: true },
   { name: "Valuation Engine", desc: { es: "DCF automatizado, múltiplos y valoración normalizada para PYMEs — incluyendo ajustes por ingresos no declarados.", en: "Automated DCF, multiples, and normalized valuation for SMEs — including adjustments for undeclared revenue." }, icon: "◇", status: "BETA", ml: true },
   { name: "Deal Flow Radar", desc: { es: "Pipeline ML-enhanced que identifica empresas financieramente sub-optimizadas en Europa del Sur. Scoring listo para conversión.", en: "ML-enhanced pipeline identifying financially sub-optimized companies across Southern Europe. Conversion-ready scoring." }, icon: "◆", status: "LIVE", ml: true },
   { name: "Macro Pulse", desc: { es: "Tracker de señales de bancos centrales. Análisis NLP de comunicaciones del BCE, Fed, BoE mapeadas a implicaciones por clase de activo.", en: "Central bank signal tracker. NLP analysis of ECB, Fed, BoE communications mapped to asset class implications." }, icon: "○", status: "Q3 2026", ml: true },
 ];
-
+ 
 const ADVISORY_SERVICES = [
   { title: "M&A Advisory", desc: { es: "Soporte transaccional end-to-end desde identificación de target hasta integración post-fusión. Especializado en operaciones mid-market cross-border en Europa del Sur.", en: "End-to-end transaction support from target identification to post-merger integration. Specialized in cross-border mid-market deals across Southern Europe." }, metric: "€50M+" },
   { title: "Growth Advisory", desc: { es: "Consultoría estratégica para empresas en puntos de inflexión. Optimización de ingresos, expansión de mercado y reestructuración operativa con framework cuantitativo.", en: "Strategic consulting for companies at inflection points. Revenue optimization, market expansion, and operational restructuring with a quantitative framework." }, metric: "12 mandates" },
   { title: "Capital Raising", desc: { es: "Soluciones de capital estructurado conectando empresas en crecimiento con inversores institucionales, family offices y socios estratégicos.", en: "Structured capital solutions connecting growth companies with institutional investors, family offices, and strategic partners." }, metric: "3 sectors" },
 ];
-
+ 
 const COURSES = [
   { id: 1, title: { es: "Riesgo Geopolítico y Estrategia de Inversión", en: "Geopolitical Risk & Investment Strategy" }, modules: 12, hours: 24, level: "Advanced", status: "ENROLLING" },
   { id: 2, title: { es: "Masterclass de Valoración Corporativa", en: "Corporate Valuation Masterclass" }, modules: 8, hours: 16, level: "Intermediate", status: "ENROLLING" },
   { id: 3, title: { es: "M&A: De la LOI al Cierre", en: "M&A Execution: From LOI to Close" }, modules: 10, hours: 20, level: "Advanced", status: "COMING" },
   { id: 4, title: { es: "Macro y Estrategia de Bancos Centrales", en: "Macro & Central Bank Strategy" }, modules: 6, hours: 12, level: "Intermediate", status: "COMING" },
 ];
-
+ 
 const THREADS = [
   { id: 1, author: "L. Gómez Elvira", role: "Founder & CIO", title: { es: "Por qué la disrupción del Mar Rojo es un evento de reasignación de €200B", en: "Why the Red Sea disruption is a €200B reallocation event" }, replies: 34, views: 1247 },
   { id: 2, author: "Guest Analyst", role: "Macro Strategist", title: { es: "Divergencia de tipos del BCE: posicionamiento para carry trades en EUR", en: "ECB rate divergence: positioning for EUR carry trades" }, replies: 18, views: 892 },
   { id: 3, author: "ZRC Research", role: "Observatorio", title: { es: "Briefing Semanal #47: Ola de desregulación LATAM — mapa sectorial", en: "Weekly Briefing #47: LATAM deregulation wave — sector map" }, replies: 22, views: 1560 },
 ];
-
+ 
 // ─── DESIGN TOKENS ───
 const C = {
   bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
@@ -188,9 +187,9 @@ const F = {
   body: "'Outfit', 'Helvetica Neue', sans-serif",
   mono: "'IBM Plex Mono', 'Fira Code', monospace",
 };
-
+ 
 // ─── UTILITY COMPONENTS ───
-
+ 
 const useInView = (threshold = 0.15) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -201,7 +200,7 @@ const useInView = (threshold = 0.15) => {
   }, []);
   return [ref, visible];
 };
-
+ 
 const FadeIn = ({ children, delay = 0, style = {} }) => {
   const [ref, vis] = useInView();
   return (
@@ -210,7 +209,7 @@ const FadeIn = ({ children, delay = 0, style = {} }) => {
     </div>
   );
 };
-
+ 
 const Badge = ({ label, variant }) => {
   const map = {
     critical: { bg: "rgba(239,68,68,0.12)", c: C.red, b: "rgba(239,68,68,0.25)" },
@@ -228,22 +227,22 @@ const Badge = ({ label, variant }) => {
   const s = map[(variant || label || "").toLowerCase()] || map.strategic;
   return <span style={{ display: "inline-flex", alignItems: "center", padding: "2px 8px", fontSize: 9, fontFamily: F.mono, fontWeight: 600, letterSpacing: "0.12em", color: s.c, background: s.bg, border: `1px solid ${s.b}`, lineHeight: 1.6 }}>{label}</span>;
 };
-
+ 
 const Dot = ({ level }) => {
   const c = level === "high" ? C.red : level === "medium" ? C.amber : C.green;
   return <span style={{ width: 5, height: 5, borderRadius: "50%", background: c, boxShadow: `0 0 8px ${c}`, display: "inline-block" }} />;
 };
-
+ 
 const GoldDivider = () => (
   <div style={{ height: 1, background: `linear-gradient(90deg, transparent 0%, ${C.goldBorder} 30%, ${C.gold}44 50%, ${C.goldBorder} 70%, transparent 100%)`, margin: 0 }} />
 );
-
+ 
 const Section = ({ id, children }) => (
   <section id={id} style={{ padding: "clamp(60px,10vw,120px) clamp(16px,4vw,48px)", maxWidth: 1100, margin: "0 auto" }}>
     {children}
   </section>
 );
-
+ 
 const SectionHead = ({ label, title, sub, extra }) => (
   <FadeIn style={{ marginBottom: 48 }}>
     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
@@ -254,7 +253,7 @@ const SectionHead = ({ label, title, sub, extra }) => (
     {sub && <p style={{ fontFamily: F.body, fontSize: 15, color: C.textSec, marginTop: 12, maxWidth: 640, lineHeight: 1.65, fontWeight: 300 }}>{sub}</p>}
   </FadeIn>
 );
-
+ 
 // ─── MARKET TICKER ───
 const MarketTicker = ({ lang }) => {
   const t = LANG[lang].ticker;
@@ -280,7 +279,7 @@ const MarketTicker = ({ lang }) => {
     </div>
   );
 };
-
+ 
 // ─── NAV ───
 const Nav = ({ lang, setLang, onNav }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -326,13 +325,13 @@ const Nav = ({ lang, setLang, onNav }) => {
     </nav>
   );
 };
-
+ 
 // ─── HERO ───
 const Hero = ({ lang, onNav }) => {
   const t = LANG[lang].hero;
   const [loaded, setLoaded] = useState(false);
   useEffect(() => { setTimeout(() => setLoaded(true), 150); }, []);
-
+ 
   return (
     <section id="hero" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", position: "relative", overflow: "hidden", padding: "80px clamp(16px,4vw,48px) 60px" }}>
       {/* Atmospheric layers */}
@@ -347,22 +346,22 @@ const Hero = ({ lang, onNav }) => {
       {/* Diagonal accent line */}
       <div style={{ position: "absolute", top: "10%", right: "10%", width: 200, height: 1, background: `linear-gradient(90deg, transparent, ${C.gold}33, transparent)`, transform: "rotate(-35deg)" }} />
       <div style={{ position: "absolute", bottom: "15%", left: "5%", width: 300, height: 1, background: `linear-gradient(90deg, transparent, ${C.gold}22, transparent)`, transform: "rotate(25deg)" }} />
-
+ 
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 860, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(30px)", transition: "all 1.2s cubic-bezier(0.16,1,0.3,1)" }}>
         <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.35em", marginBottom: 40, fontWeight: 400, opacity: 0.9 }}>
           {t.tagline.toUpperCase()}
         </div>
-
+ 
         <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px, 5.5vw, 68px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.08, letterSpacing: "-0.02em" }}>
           {t.h1_1}<br />
           {t.h1_2}<br />
           <span style={{ color: C.gold, fontStyle: "italic", fontWeight: 400 }}>{t.h1_3}</span>
         </h1>
-
+ 
         <p style={{ fontFamily: F.body, fontSize: 16, color: C.textSec, maxWidth: 540, margin: "36px auto 0", lineHeight: 1.7, fontWeight: 300 }}>
           {t.sub}
         </p>
-
+ 
         <div style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 48, flexWrap: "wrap" }}>
           <button onClick={() => onNav("observatory")} style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.12em", padding: "13px 28px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600, transition: "all 0.3s" }}>
             {t.cta1} →
@@ -371,7 +370,7 @@ const Hero = ({ lang, onNav }) => {
             {t.cta2}
           </button>
         </div>
-
+ 
         {/* Flywheel */}
         <div style={{ marginTop: 72, display: "flex", justifyContent: "center", gap: 0, flexWrap: "wrap", alignItems: "center" }}>
           {t.flywheel.map((step, i) => (
@@ -387,7 +386,7 @@ const Hero = ({ lang, onNav }) => {
     </section>
   );
 };
-
+ 
 // ─── OBSERVATORY ───
 const Observatory = ({ lang }) => {
   const t = LANG[lang].observatory;
@@ -395,11 +394,11 @@ const Observatory = ({ lang }) => {
   const [filter, setFilter] = useState("ALL");
   const regions = ["ALL", "MENA", "EU", "LATAM", "APAC", "AFRICA"];
   const filtered = filter === "ALL" ? GEO_FEED : GEO_FEED.filter(f => f.region === filter);
-
+ 
   return (
     <Section id="observatory">
       <SectionHead label={t.label} title={t.title} sub={t.sub} extra={<span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>({GEO_FEED.length})</span>} />
-
+ 
       <FadeIn delay={0.1}>
         <div style={{ display: "flex", gap: 6, marginBottom: 28, flexWrap: "wrap" }}>
           {regions.map(r => (
@@ -409,7 +408,7 @@ const Observatory = ({ lang }) => {
           ))}
         </div>
       </FadeIn>
-
+ 
       <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
         {filtered.map((item, i) => (
           <FadeIn key={item.id} delay={i * 0.05}>
@@ -435,7 +434,7 @@ const Observatory = ({ lang }) => {
                   <Dot level={item.impact} />
                 </div>
               </div>
-
+ 
               {expanded === item.id && (
                 <div style={{ marginTop: 14, paddingTop: 14, borderTop: `1px solid ${C.border}` }}>
                   <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.65, margin: "0 0 14px", fontWeight: 300 }}>{item.summary[lang]}</p>
@@ -460,14 +459,14 @@ const Observatory = ({ lang }) => {
     </Section>
   );
 };
-
+ 
 // ─── INVESTOR INTELLIGENCE ───
 const Intelligence = ({ lang }) => {
   const t = LANG[lang].intelligence;
   return (
     <Section id="intelligence">
       <SectionHead label={t.label} title={t.title} sub={t.sub} />
-
+ 
       {/* ML Banner */}
       <FadeIn delay={0.1}>
         <div style={{ padding: "20px 24px", background: "rgba(139,92,246,0.06)", border: "1px solid rgba(139,92,246,0.18)", marginBottom: 32, display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
@@ -480,7 +479,7 @@ const Intelligence = ({ lang }) => {
           </div>
         </div>
       </FadeIn>
-
+ 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1 }}>
         {TOOLS.map((tool, i) => (
           <FadeIn key={i} delay={i * 0.08}>
@@ -509,7 +508,7 @@ const Intelligence = ({ lang }) => {
     </Section>
   );
 };
-
+ 
 // ─── BROKERAGE ───
 const Brokerage = ({ lang }) => {
   const t = LANG[lang].brokerage;
@@ -545,7 +544,7 @@ const Brokerage = ({ lang }) => {
     </Section>
   );
 };
-
+ 
 // ─── ADVISORY ───
 const Advisory = ({ lang }) => {
   const t = LANG[lang].advisory;
@@ -571,7 +570,7 @@ const Advisory = ({ lang }) => {
     </Section>
   );
 };
-
+ 
 // ─── ACADEMIA ───
 const Academia = ({ lang }) => {
   const t = LANG[lang].academia;
@@ -602,7 +601,7 @@ const Academia = ({ lang }) => {
     </Section>
   );
 };
-
+ 
 // ─── COMMUNITY ───
 const Community = ({ lang }) => {
   const t = LANG[lang].community;
@@ -632,7 +631,7 @@ const Community = ({ lang }) => {
           </FadeIn>
         ))}
       </div>
-
+ 
       {/* Membership CTA */}
       <FadeIn delay={0.2}>
         <div style={{ padding: "48px 36px", background: C.surface, border: `1px solid ${C.goldBorder}`, textAlign: "center", position: "relative", overflow: "hidden" }}>
@@ -647,7 +646,7 @@ const Community = ({ lang }) => {
     </Section>
   );
 };
-
+ 
 // ─── FOOTER ───
 const Footer = ({ lang }) => {
   const t = LANG[lang].footer;
@@ -671,17 +670,17 @@ const Footer = ({ lang }) => {
     </footer>
   );
 };
-
+ 
 // ─── MAIN APP ───
 export default function ZRCPlatform() {
   const [lang, setLang] = useState("es");
-
+ 
   const handleNav = useCallback((id) => {
     if (id === "hero") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
-
+ 
   return (
     <div style={{ background: C.bg, color: C.text, minHeight: "100vh", fontFamily: F.body }}>
       <style>{`
@@ -706,7 +705,7 @@ export default function ZRCPlatform() {
         button:hover { opacity: 0.88; transform: translateY(-1px); }
         button:active { transform: translateY(0); }
       `}</style>
-
+ 
       <Nav lang={lang} setLang={setLang} onNav={handleNav} />
       <MarketTicker lang={lang} />
       <Hero lang={lang} onNav={handleNav} />
@@ -726,3 +725,4 @@ export default function ZRCPlatform() {
     </div>
   );
 }
+ 
