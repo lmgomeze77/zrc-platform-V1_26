@@ -130,7 +130,8 @@ const LANG = {
  
 // ─── DATA ───
  
-const MARKET_TICKER = [
+// Fallback market data — used only if /data/headlines.json has no market_ticker
+const FALLBACK_MARKET_TICKER = [
   { symbol: "EUR/USD", value: "1.0847", change: "+0.12%", up: true },
   { symbol: "IBEX 35", value: "13,245", change: "+0.67%", up: true },
   { symbol: "BRENT", value: "$78.32", change: "-1.24%", up: false },
@@ -209,36 +210,43 @@ const useInView = (threshold = 0.15) => {
   return [ref, visible];
 };
 
-// ─── DYNAMIC HEADLINES HOOK ───
-const useHeadlines = () => {
+// ─── DYNAMIC INTELLIGENCE HOOK (headlines + market ticker) ───
+const useIntelligence = () => {
   const [headlines, setHeadlines] = useState(FALLBACK_GEO_FEED);
+  const [marketTicker, setMarketTicker] = useState(FALLBACK_MARKET_TICKER);
   const [generatedAt, setGeneratedAt] = useState(null);
   const [isLive, setIsLive] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
-    const fetchHeadlines = async () => {
+    const fetchData = async () => {
       try {
         const res = await fetch("/data/headlines.json", { cache: "no-cache" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        if (!cancelled && data.headlines && data.headlines.length > 0) {
-          setHeadlines(data.headlines);
-          setGeneratedAt(data.generated_at);
-          setIsLive(true);
+        if (!cancelled) {
+          if (data.headlines && data.headlines.length > 0) {
+            setHeadlines(data.headlines);
+            setIsLive(true);
+          }
+          if (data.market_ticker && data.market_ticker.length > 0) {
+            setMarketTicker(data.market_ticker);
+          }
+          if (data.generated_at) {
+            setGeneratedAt(data.generated_at);
+          }
         }
       } catch (err) {
-        // Silently fall back to static data
-        console.warn("Using fallback headlines:", err.message);
+        console.warn("Using fallback data:", err.message);
       }
     };
-    fetchHeadlines();
-    // Refresh every 30 minutes in case the JSON was updated
-    const interval = setInterval(fetchHeadlines, 30 * 60 * 1000);
+    fetchData();
+    // Refresh every 30 minutes
+    const interval = setInterval(fetchData, 30 * 60 * 1000);
     return () => { cancelled = true; clearInterval(interval); };
   }, []);
 
-  return { headlines, generatedAt, isLive };
+  return { headlines, marketTicker, generatedAt, isLive };
 };
  
 const FadeIn = ({ children, delay = 0, style = {} }) => {
@@ -294,13 +302,13 @@ const SectionHead = ({ label, title, sub, extra }) => (
   </FadeIn>
 );
  
-// ─── MARKET TICKER ───
-const MarketTicker = ({ lang }) => {
+// ─── MARKET TICKER (DYNAMIC) ───
+const MarketTicker = ({ lang, data }) => {
   const t = LANG[lang].ticker;
-  const doubled = [...MARKET_TICKER, ...MARKET_TICKER];
+  const doubled = [...data, ...data];
   return (
     <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflow: "hidden", position: "relative", height: 36 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 0, position: "absolute", whiteSpace: "nowrap", animation: "tickerScroll 40s linear infinite" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 0, position: "absolute", whiteSpace: "nowrap", animation: "tickerScroll 50s linear infinite" }}>
         {doubled.map((m, i) => (
           <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "0 24px", height: 36 }}>
             <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.05em" }}>{m.symbol}</span>
@@ -774,7 +782,7 @@ const Footer = ({ lang }) => {
 // ─── MAIN APP ───
 export default function ZRCPlatform() {
   const [lang, setLang] = useState("es");
-  const { headlines, generatedAt, isLive } = useHeadlines();
+  const { headlines, marketTicker, generatedAt, isLive } = useIntelligence();
  
   const handleNav = useCallback((id) => {
     if (id === "hero") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
@@ -808,7 +816,7 @@ export default function ZRCPlatform() {
       `}</style>
  
       <Nav lang={lang} setLang={setLang} onNav={handleNav} />
-      <MarketTicker lang={lang} />
+      <MarketTicker lang={lang} data={marketTicker} />
       <Hero lang={lang} onNav={handleNav} />
       <GoldDivider />
       <Observatory lang={lang} headlines={headlines} generatedAt={generatedAt} isLive={isLive} />
