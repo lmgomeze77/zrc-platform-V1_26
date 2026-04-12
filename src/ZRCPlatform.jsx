@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
  
 // ═══════════════════════════════════════════════════════════════════════
-// ZENITH RISE CAPITAL — STRATEGIC INTELLIGENCE PLATFORM v2.0
+// ZENITH RISE CAPITAL — STRATEGIC INTELLIGENCE PLATFORM v2.1
 // A data-centric, bilingual, institutional-grade intelligence hub
+// NOW WITH: Dynamic daily headlines + source links
 // ═══════════════════════════════════════════════════════════════════════
  
 // ─── i18n SYSTEM ───
@@ -25,6 +26,9 @@ const LANG = {
       sub: "Señales macro filtradas con lente de inversión. Cada señal mapeada a implicaciones de cartera.",
       fullAnalysis: "ANÁLISIS COMPLETO →",
       share: "COMPARTIR",
+      source: "FUENTE",
+      lastUpdate: "Última actualización",
+      loading: "Cargando inteligencia...",
     },
     intelligence: {
       label: "02 — INVESTOR INTELLIGENCE",
@@ -81,6 +85,9 @@ const LANG = {
       sub: "Macro signals filtered through an investment lens. Every signal mapped to portfolio implications.",
       fullAnalysis: "FULL ANALYSIS →",
       share: "SHARE",
+      source: "SOURCE",
+      lastUpdate: "Last updated",
+      loading: "Loading intelligence...",
     },
     intelligence: {
       label: "02 — INVESTOR INTELLIGENCE",
@@ -134,12 +141,13 @@ const MARKET_TICKER = [
   { symbol: "EUR/GBP", value: "0.8634", change: "-0.08%", up: false },
 ];
  
-const GEO_FEED = [
-  { id: 1, tag: "CRITICAL", region: "MENA", title: { es: "Disrupción en corredor del Mar Rojo — fletes +340% YTD", en: "Red Sea corridor disruption — freight rates +340% YTD" }, time: "2h", impact: "high", summary: { es: "Escalada Houtí fuerza redireccionamiento vía Cabo de Buena Esperanza. Impacto directo en costes de importación europeos, logística energética y primas de seguro en rutas comerciales mediterráneas.", en: "Houthi escalation forces rerouting via Cape of Good Hope. Direct impact on European import costs, energy logistics, and insurance premiums across Mediterranean trade routes." }, signals: ["OIL +", "SHIPPING +", "EUR -"], confidence: 92 },
-  { id: 2, tag: "MONITOR", region: "EU", title: { es: "BCE señala divergencia de tipos frente a la Fed — implicaciones EUR/USD", en: "ECB signals rate path divergence from Fed — EUR/USD implications" }, time: "4h", impact: "medium", summary: { es: "Última orientación de Lagarde sugiere 2-3 recortes en 2026 mientras la Fed mantiene. Ventanas de arbitraje cambiario abiertas para M&A cross-border.", en: "Lagarde's latest guidance suggests 2-3 cuts in 2026 while Fed holds. Currency arbitrage windows opening for cross-border M&A." }, signals: ["EUR/USD -", "BONDS +", "EQUITIES ?"], confidence: 78 },
-  { id: 3, tag: "EMERGING", region: "LATAM", title: { es: "Reformas de Milei desbloquean pipeline de IED congelada por $12B", en: "Milei reforms unlock $12B in frozen FDI pipeline" }, time: "6h", impact: "high", summary: { es: "Paquete de desregulación aprobado en Senado. Sectores de minería, agritech y energía posicionados para ventaja de first-mover. ZRC monitorizando 4 mandatos activos.", en: "Deregulation package clears Senate. Mining, agritech, and energy sectors positioned for first-mover advantage. ZRC tracking 4 live mandates." }, signals: ["ARS +", "MINING +", "AGRI +"], confidence: 85 },
-  { id: 4, tag: "STRATEGIC", region: "APAC", title: { es: "Retrasos en fab TSMC Arizona reconfiguran tesis de cadena de suministro de semiconductores", en: "TSMC Arizona fab delays reshape semiconductor supply chain thesis" }, time: "8h", impact: "medium", summary: { es: "Timeline de producción desplazado a Q3 2027. Narrativa de soberanía europea de chips se fortalece — implicaciones para inversiones en política industrial de la UE.", en: "Production timeline pushed to Q3 2027. European chip sovereignty narrative strengthens — implications for EU industrial policy investments." }, signals: ["SEMIS -", "EU TECH +"], confidence: 71 },
-  { id: 5, tag: "ALERT", region: "AFRICA", title: { es: "Gasoducto Morocco-Nigeria asegura tramo de financiación de €4.2B", en: "Morocco-Nigeria gas pipeline secures €4.2B financing tranche" }, time: "12h", impact: "high", summary: { es: "Consorcio AfDB y fondos soberanos cierran financiación. Transforma infraestructura energética de África Occidental — zonas de acuicultura e industriales a lo largo del corredor se benefician.", en: "AfDB and sovereign wealth consortium close financing. Transforms West African energy infrastructure — aquaculture and industrial zones along corridor benefit." }, signals: ["ENERGY +", "INFRA +", "NGN +"], confidence: 88 },
+// Fallback headlines — used only if /data/headlines.json is unavailable
+const FALLBACK_GEO_FEED = [
+  { id: 1, tag: "CRITICAL", region: "MENA", title: { es: "Disrupción en corredor del Mar Rojo — fletes +340% YTD", en: "Red Sea corridor disruption — freight rates +340% YTD" }, time: "2h", impact: "high", summary: { es: "Escalada Houtí fuerza redireccionamiento vía Cabo de Buena Esperanza. Impacto directo en costes de importación europeos, logística energética y primas de seguro en rutas comerciales mediterráneas.", en: "Houthi escalation forces rerouting via Cape of Good Hope. Direct impact on European import costs, energy logistics, and insurance premiums across Mediterranean trade routes." }, signals: ["OIL +", "SHIPPING +", "EUR -"], confidence: 92, source: "Reuters", url: "https://www.reuters.com" },
+  { id: 2, tag: "MONITOR", region: "EU", title: { es: "BCE señala divergencia de tipos frente a la Fed — implicaciones EUR/USD", en: "ECB signals rate path divergence from Fed — EUR/USD implications" }, time: "4h", impact: "medium", summary: { es: "Última orientación de Lagarde sugiere 2-3 recortes en 2026 mientras la Fed mantiene. Ventanas de arbitraje cambiario abiertas para M&A cross-border.", en: "Lagarde's latest guidance suggests 2-3 cuts in 2026 while Fed holds. Currency arbitrage windows opening for cross-border M&A." }, signals: ["EUR/USD -", "BONDS +", "EQUITIES ?"], confidence: 78, source: "Financial Times", url: "https://www.ft.com" },
+  { id: 3, tag: "EMERGING", region: "LATAM", title: { es: "Reformas de Milei desbloquean pipeline de IED congelada por $12B", en: "Milei reforms unlock $12B in frozen FDI pipeline" }, time: "6h", impact: "high", summary: { es: "Paquete de desregulación aprobado en Senado. Sectores de minería, agritech y energía posicionados para ventaja de first-mover. ZRC monitorizando 4 mandatos activos.", en: "Deregulation package clears Senate. Mining, agritech, and energy sectors positioned for first-mover advantage. ZRC tracking 4 live mandates." }, signals: ["ARS +", "MINING +", "AGRI +"], confidence: 85, source: "Bloomberg", url: "https://www.bloomberg.com" },
+  { id: 4, tag: "STRATEGIC", region: "APAC", title: { es: "Retrasos en fab TSMC Arizona reconfiguran tesis de cadena de suministro de semiconductores", en: "TSMC Arizona fab delays reshape semiconductor supply chain thesis" }, time: "8h", impact: "medium", summary: { es: "Timeline de producción desplazado a Q3 2027. Narrativa de soberanía europea de chips se fortalece — implicaciones para inversiones en política industrial de la UE.", en: "Production timeline pushed to Q3 2027. European chip sovereignty narrative strengthens — implications for EU industrial policy investments." }, signals: ["SEMIS -", "EU TECH +"], confidence: 71, source: "Nikkei Asia", url: "https://asia.nikkei.com" },
+  { id: 5, tag: "ALERT", region: "AFRICA", title: { es: "Gasoducto Morocco-Nigeria asegura tramo de financiación de €4.2B", en: "Morocco-Nigeria gas pipeline secures €4.2B financing tranche" }, time: "12h", impact: "high", summary: { es: "Consorcio AfDB y fondos soberanos cierran financiación. Transforma infraestructura energética de África Occidental — zonas de acuicultura e industriales a lo largo del corredor se benefician.", en: "AfDB and sovereign wealth consortium close financing. Transforms West African energy infrastructure — aquaculture and industrial zones along corridor benefit." }, signals: ["ENERGY +", "INFRA +", "NGN +"], confidence: 88, source: "African Business", url: "https://african.business" },
 ];
  
 const OPPORTUNITIES = [
@@ -199,6 +207,38 @@ const useInView = (threshold = 0.15) => {
     return () => obs.disconnect();
   }, []);
   return [ref, visible];
+};
+
+// ─── DYNAMIC HEADLINES HOOK ───
+const useHeadlines = () => {
+  const [headlines, setHeadlines] = useState(FALLBACK_GEO_FEED);
+  const [generatedAt, setGeneratedAt] = useState(null);
+  const [isLive, setIsLive] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const fetchHeadlines = async () => {
+      try {
+        const res = await fetch("/data/headlines.json", { cache: "no-cache" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (!cancelled && data.headlines && data.headlines.length > 0) {
+          setHeadlines(data.headlines);
+          setGeneratedAt(data.generated_at);
+          setIsLive(true);
+        }
+      } catch (err) {
+        // Silently fall back to static data
+        console.warn("Using fallback headlines:", err.message);
+      }
+    };
+    fetchHeadlines();
+    // Refresh every 30 minutes in case the JSON was updated
+    const interval = setInterval(fetchHeadlines, 30 * 60 * 1000);
+    return () => { cancelled = true; clearInterval(interval); };
+  }, []);
+
+  return { headlines, generatedAt, isLive };
 };
  
 const FadeIn = ({ children, delay = 0, style = {} }) => {
@@ -387,17 +427,52 @@ const Hero = ({ lang, onNav }) => {
   );
 };
  
-// ─── OBSERVATORY ───
-const Observatory = ({ lang }) => {
+// ─── OBSERVATORY (DYNAMIC HEADLINES + SOURCE LINKS) ───
+const Observatory = ({ lang, headlines, generatedAt, isLive }) => {
   const t = LANG[lang].observatory;
   const [expanded, setExpanded] = useState(null);
   const [filter, setFilter] = useState("ALL");
-  const regions = ["ALL", "MENA", "EU", "LATAM", "APAC", "AFRICA"];
-  const filtered = filter === "ALL" ? GEO_FEED : GEO_FEED.filter(f => f.region === filter);
+  const regions = ["ALL", ...new Set(headlines.map(h => h.region))];
+  const filtered = filter === "ALL" ? headlines : headlines.filter(f => f.region === filter);
+
+  const formatTimestamp = (iso) => {
+    if (!iso) return "";
+    const d = new Date(iso);
+    return d.toLocaleDateString(lang === "es" ? "es-ES" : "en-GB", {
+      day: "numeric", month: "short", year: "numeric",
+      hour: "2-digit", minute: "2-digit",
+    });
+  };
  
   return (
     <Section id="observatory">
-      <SectionHead label={t.label} title={t.title} sub={t.sub} extra={<span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>({GEO_FEED.length})</span>} />
+      <SectionHead
+        label={t.label}
+        title={t.title}
+        sub={t.sub}
+        extra={
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>({headlines.length})</span>
+            {isLive && (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+                <span style={{ width: 5, height: 5, borderRadius: "50%", background: C.green, animation: "pulse 2s infinite" }} />
+                <span style={{ fontFamily: F.mono, fontSize: 9, color: C.green, letterSpacing: "0.1em" }}>LIVE</span>
+              </span>
+            )}
+          </div>
+        }
+      />
+
+      {/* Last updated timestamp */}
+      {generatedAt && (
+        <FadeIn delay={0.05}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20, paddingBottom: 16, borderBottom: `1px solid ${C.border}` }}>
+            <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.08em" }}>
+              {t.lastUpdate}: {formatTimestamp(generatedAt)}
+            </span>
+          </div>
+        </FadeIn>
+      )}
  
       <FadeIn delay={0.1}>
         <div style={{ display: "flex", gap: 6, marginBottom: 28, flexWrap: "wrap" }}>
@@ -420,8 +495,14 @@ const Observatory = ({ lang }) => {
                     <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em" }}>{item.region}</span>
                     <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, opacity: 0.5 }}>·</span>
                     <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{item.time}</span>
+                    {item.source && (
+                      <>
+                        <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, opacity: 0.5 }}>·</span>
+                        <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, opacity: 0.7 }}>{item.source}</span>
+                      </>
+                    )}
                   </div>
-                  <h3 style={{ fontFamily: F.body, fontSize: 14, fontWeight: 500, color: C.text, margin: 0, lineHeight: 1.45 }}>{item.title[lang]}</h3>
+                  <h3 style={{ fontFamily: F.body, fontSize: 14, fontWeight: 500, color: C.text, margin: 0, lineHeight: 1.45 }}>{item.title[lang] || item.title.en || item.title.es}</h3>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
                   {/* Confidence meter */}
@@ -437,18 +518,37 @@ const Observatory = ({ lang }) => {
  
               {expanded === item.id && (
                 <div style={{ marginTop: 14, paddingTop: 14, borderTop: `1px solid ${C.border}` }}>
-                  <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.65, margin: "0 0 14px", fontWeight: 300 }}>{item.summary[lang]}</p>
+                  <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.65, margin: "0 0 14px", fontWeight: 300 }}>{item.summary[lang] || item.summary.en || item.summary.es}</p>
                   {/* Signal tags */}
                   <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }}>
-                    {item.signals.map((s, j) => (
+                    {(item.signals || []).map((s, j) => (
                       <span key={j} style={{ fontFamily: F.mono, fontSize: 9, padding: "2px 8px", background: s.includes("+") ? "rgba(34,197,94,0.08)" : s.includes("-") ? "rgba(239,68,68,0.08)" : "rgba(59,130,246,0.08)", color: s.includes("+") ? C.green : s.includes("-") ? C.red : C.blue, border: `1px solid ${s.includes("+") ? "rgba(34,197,94,0.2)" : s.includes("-") ? "rgba(239,68,68,0.2)" : "rgba(59,130,246,0.2)"}`, letterSpacing: "0.05em" }}>
                         {s}
                       </span>
                     ))}
                   </div>
-                  <div style={{ display: "flex", gap: 10 }}>
-                    <button style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "5px 14px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer" }}>{t.fullAnalysis}</button>
-                    <button style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "5px 14px", background: "transparent", color: C.textMuted, border: `1px solid ${C.border}`, cursor: "pointer" }}>{t.share}</button>
+                  <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                    {/* Source link — opens in new tab */}
+                    {item.url && (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "5px 14px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6, transition: "all 0.25s" }}
+                        onMouseEnter={e => { e.currentTarget.style.background = "rgba(212,168,83,0.22)"; }}
+                        onMouseLeave={e => { e.currentTarget.style.background = C.goldDim; }}
+                      >
+                        <span style={{ fontSize: 11 }}>↗</span>
+                        {t.source}: {item.source || "—"}
+                      </a>
+                    )}
+                    <button
+                      onClick={(e) => e.stopPropagation()}
+                      style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "5px 14px", background: "transparent", color: C.textMuted, border: `1px solid ${C.border}`, cursor: "pointer" }}
+                    >
+                      {t.share}
+                    </button>
                   </div>
                 </div>
               )}
@@ -674,6 +774,7 @@ const Footer = ({ lang }) => {
 // ─── MAIN APP ───
 export default function ZRCPlatform() {
   const [lang, setLang] = useState("es");
+  const { headlines, generatedAt, isLive } = useHeadlines();
  
   const handleNav = useCallback((id) => {
     if (id === "hero") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
@@ -710,7 +811,7 @@ export default function ZRCPlatform() {
       <MarketTicker lang={lang} />
       <Hero lang={lang} onNav={handleNav} />
       <GoldDivider />
-      <Observatory lang={lang} />
+      <Observatory lang={lang} headlines={headlines} generatedAt={generatedAt} isLive={isLive} />
       <GoldDivider />
       <Intelligence lang={lang} />
       <GoldDivider />
@@ -725,4 +826,3 @@ export default function ZRCPlatform() {
     </div>
   );
 }
- 
