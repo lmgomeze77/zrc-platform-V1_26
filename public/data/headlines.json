@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-12T21:58:27.805Z",
+  "generated_at": "2026-04-13T07:59:30.206Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -10,26 +10,26 @@
     {
       "symbol": "IBEX 35",
       "value": "18,042.52",
-      "change": "+0.86%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT",
-      "value": "95.20",
-      "change": "-0.75%",
+      "change": "-0.48%",
       "up": false
     },
     {
+      "symbol": "BRENT",
+      "value": "101.82",
+      "change": "+6.95%",
+      "up": true
+    },
+    {
       "symbol": "GOLD",
-      "value": "4,748.43",
-      "change": "-0.32%",
+      "value": "4751.68",
+      "change": "-0.24%",
       "up": false
     },
     {
       "symbol": "BTC",
-      "value": "71,888.67",
-      "change": "+1.30%",
-      "up": true
+      "value": "71000",
+      "change": "-2.60%",
+      "up": false
     },
     {
       "symbol": "VIX",
@@ -39,25 +39,25 @@
     },
     {
       "symbol": "US 10Y",
-      "value": "4.317",
-      "change": "+0.56%",
+      "value": "4.34",
+      "change": "+0.06%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8719",
-      "change": "+0.41%",
+      "value": "0.8718",
+      "change": "+0.10%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "6,816.89",
-      "change": "-0.11%",
+      "value": "6756",
+      "change": "-0.89%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "23,803.95",
+      "value": "23804",
       "change": "-0.01%",
       "up": false
     }
@@ -66,146 +66,139 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "US",
+      "region": "MENA",
       "title": {
-        "en": "US-Iran Peace Talks Collapse as Trump Declares Naval Blockade of Strait of Hormuz",
-        "es": "Fracasan conversaciones de paz EE.UU.-Irán mientras Trump declara bloqueo naval del Estrecho de Ormuz"
+        "es": "Trump anuncia bloqueo del Estrecho de Ormuz tras fracaso de negociaciones con Irán",
+        "en": "Trump announces Strait of Hormuz blockade after Iran peace talks fail"
       },
       "summary": {
-        "en": "VP JD Vance announced the failure of 21-hour peace negotiations in Islamabad after 44 days of conflict. Trump declared a naval blockade preventing ships from entering/exiting the strait, threatening global energy markets.",
-        "es": "El VP JD Vance anunció el fracaso de 21 horas de negociaciones de paz en Islamabad tras 44 días de conflicto. Trump declaró un bloqueo naval impidiendo que barcos entren/salgan del estrecho, amenazando los mercados energéticos globales."
+        "es": "El presidente Trump ha anunciado que Estados Unidos implementará un bloqueo naval del Estrecho de Ormuz después del fracaso de las negociaciones de paz con Irán. Los futuros del Dow cayeron 500 puntos tras el anuncio, señalando una escalada significativa en el conflicto que ha interrumpido el 20% del comercio mundial de petróleo.",
+        "en": "President Trump announced the US will implement a naval blockade of the Strait of Hormuz following failed peace talks with Iran. Dow futures dropped 500 points after the announcement, signaling significant escalation in the conflict that has disrupted 20% of global oil trade."
       },
-      "source": "Al Jazeera",
-      "url": "https://www.aljazeera.com/news/2026/4/12/iran-war-what-is-happening-on-day-44-of-the-us-iran-conflict",
-      "time": "13h",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/federal-reserve/",
+      "time": "2h",
       "impact": "high",
       "signals": [
         "OIL +",
         "USD +",
-        "GOLD +",
-        "DEFENSE +"
-      ],
-      "confidence": 95
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "en": "Hungary's Viktor Orbán Concedes Election After 16 Years, Opposition Wins Supermajority",
-        "es": "Viktor Orbán de Hungría concede elecciones tras 16 años, oposición gana supermayoría"
-      },
-      "summary": {
-        "en": "Peter Magyar's Tisza party secured 51.2% of votes and 132 of 199 parliamentary seats, ending Orbán's 16-year rule. The victory relieves EU tensions and may unblock €90bn Ukrainian loan, dealing a blow to Trump's nationalist allies.",
-        "es": "El partido Tisza de Peter Magyar obtuvo el 51.2% de los votos y 132 de 199 escaños parlamentarios, terminando con 16 años de gobierno de Orbán. La victoria alivia tensiones en la UE y puede desbloquear préstamo ucraniano de €90 mil millones, golpeando a aliados nacionalistas de Trump."
-      },
-      "source": "CNN",
-      "url": "https://www.cnn.com/2026/04/12/world/live-news/hungary-election-orban-magyar",
-      "time": "1h",
-      "impact": "high",
-      "signals": [
-        "EUR +",
-        "HUF +",
-        "BONDS +",
-        "DEFENSE -"
-      ],
-      "confidence": 98
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "GLOBAL",
-      "title": {
-        "en": "IMF Chief Warns Iran War Impact Will Stretch Through 2026 Despite Ceasefire",
-        "es": "Jefa del FMI advierte que impacto de guerra iraní se extenderá hasta 2026 pese a alto al fuego"
-      },
-      "summary": {
-        "en": "Kristalina Georgieva stated that 13% of global oil and 20% of gas supplies remain disrupted after 5 weeks. 72 energy facilities damaged, with Qatar's gas field requiring 3-5 years to reach full capacity.",
-        "es": "Kristalina Georgieva declaró que el 13% del petróleo mundial y 20% del gas permanecen interrumpidos tras 5 semanas. 72 instalaciones energéticas dañadas, con campo de gas de Qatar requiriendo 3-5 años para alcanzar capacidad completa."
-      },
-      "source": "CBS News",
-      "url": "https://www.cbsnews.com/news/kristalina-georgieva-face-the-nation-full-transcript-04-12-2026/",
-      "time": "6h",
-      "impact": "medium",
-      "signals": [
-        "OIL +",
-        "GAS +",
-        "INFLATION +",
-        "GROWTH -"
+        "VIX +",
+        "EUR -"
       ],
       "confidence": 92
     },
     {
-      "id": 4,
+      "id": 2,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "en": "Israeli Shekel Hits 30-Year High Against Dollar as Iran Ceasefire Holds",
-        "es": "Shekel israelí alcanza máximo de 30 años contra dólar mientras persiste alto al fuego con Irán"
+        "es": "El Papa León XIV pide cese del fuego inmediato mientras se intensifican los enfrentamientos Israel-Hezbollah",
+        "en": "Pope Leo XIV urges immediate ceasefire as Israel-Hezbollah clashes intensify"
       },
       "summary": {
-        "en": "The Israeli currency strengthened significantly following ceasefire negotiations with Iran and ongoing talks with Lebanon. Market analysts predict potential move below NIS 3/$ threshold as geopolitical risks decline.",
-        "es": "La moneda israelí se fortaleció significativamente tras negociaciones de alto al fuego con Irán y conversaciones en curso con Líbano. Analistas predicen posible movimiento bajo el umbral de NIS 3/$ mientras disminuyen riesgos geopolíticos."
+        "es": "El Papa León XIV ha hecho un llamado urgente para un alto el fuego inmediato mientras los enfrentamientos entre Israel y Hezbollah se intensifican. La escalada ha generado preocupaciones sobre una guerra regional más amplia que podría impactar significativamente los mercados energéticos globales.",
+        "en": "Pope Leo XIV has made an urgent call for immediate ceasefire as clashes between Israel and Hezbollah intensify. The escalation has raised concerns about a broader regional war that could significantly impact global energy markets."
       },
-      "source": "Globes",
-      "url": "https://wp.madrestravels.com/2026/04/12/shekel-at-30-year-strongest-against-dollar/",
-      "time": "10h",
+      "source": "Euronews",
+      "url": "https://www.euronews.com/",
+      "time": "4h",
+      "impact": "high",
+      "signals": [
+        "OIL +",
+        "GOLD +",
+        "EUR -"
+      ],
+      "confidence": 87
+    },
+    {
+      "id": 3,
+      "tag": "STRATEGIC",
+      "region": "US",
+      "title": {
+        "es": "La Fed mantiene tasas estables, proyecta un solo recorte en 2026 en medio de la guerra en Irán",
+        "en": "Fed holds rates steady, projects single rate cut in 2026 amid Iran war uncertainty"
+      },
+      "summary": {
+        "es": "La Reserva Federal mantuvo las tasas de interés sin cambios en el rango de 3.50%-3.75% con funcionarios proyectando solo un recorte de tasas en 2026. El presidente Powell destacó la incertidumbre en torno al shock petrolero, complicando las perspectivas de política monetaria.",
+        "en": "The Federal Reserve held interest rates unchanged at 3.50%-3.75% range with officials projecting only one rate cut in 2026. Chair Powell highlighted uncertainty around the oil shock, complicating monetary policy outlook."
+      },
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/live/fed-meeting-live-updates-federal-reserve-holds-rates-steady-forecasts-1-rate-cut-in-2026-180216872.html",
+      "time": "6h",
+      "impact": "high",
+      "signals": [
+        "USD +",
+        "YIELDS +",
+        "EQUITIES -"
+      ],
+      "confidence": 94
+    },
+    {
+      "id": 4,
+      "tag": "MONITOR",
+      "region": "APAC",
+      "title": {
+        "es": "India enfrenta depreciación de la rupia y caída de acciones por vulnerabilidad energética",
+        "en": "India faces rupee depreciation and equity decline due to energy vulnerability"
+      },
+      "summary": {
+        "es": "La dependencia de India de la energía importada ha resultado en una fuerte depreciación de la rupia y caída de los precios de las acciones. La economía india, que parecía preparada para un crecimiento excepcional, ahora enfrenta vulnerabilidades significativas debido al alza de precios de la energía.",
+        "en": "India's dependence on imported energy has resulted in sharp rupee depreciation and falling equity prices. The Indian economy, which appeared poised for banner growth, now faces significant vulnerabilities due to rising energy prices."
+      },
+      "source": "Brookings Institution",
+      "url": "https://www.brookings.edu/articles/april-2026-update-to-tiger-a-year-of-economic-healing-turns-into-a-year-of-peril/",
+      "time": "16h",
       "impact": "medium",
       "signals": [
-        "ILS +",
-        "USD -",
-        "BONDS +",
-        "TECH +"
+        "INR -",
+        "SENSEX -",
+        "OIL +"
       ],
-      "confidence": 88
+      "confidence": 81
     },
     {
       "id": 5,
-      "tag": "MONITOR",
-      "region": "GLOBAL",
+      "tag": "EMERGING",
+      "region": "EU",
       "title": {
-        "en": "Oil Prices Stabilize Near $96/Barrel as Ceasefire Provides Modest Relief",
-        "es": "Precios del petróleo se estabilizan cerca de $96/barril mientras alto al fuego brinda alivio moderado"
+        "es": "Elecciones húngaras registran mayor participación matutina mientras la UE observa atentamente",
+        "en": "Hungarian election shows record morning turnout as EU watches closely"
       },
       "summary": {
-        "en": "Brent crude steadied around $96 after weeks of volatility from Middle East conflicts. Australia cuts fuel excise tax by 26.3 cents per liter for three months to cushion consumers from geopolitical price shocks.",
-        "es": "El crudo Brent se estabilizó alrededor de $96 tras semanas de volatilidad por conflictos de Medio Oriente. Australia reduce impuesto al combustible en 26.3 centavos por litro durante tres meses para proteger a consumidores de choques geopolíticos."
+        "es": "Las elecciones húngaras han registrado una participación matutina récord con Orbán y Magyar votando en comicios de alto riesgo. La Unión Europea está observando atentamente estos resultados que podrían impactar la estabilidad política regional y las relaciones comerciales futuras.",
+        "en": "Hungarian elections have shown record morning turnout with Orbán and Magyar voting in high-stakes polls. The European Union is watching closely as results could impact regional political stability and future trade relations."
       },
-      "source": "International Business Times",
-      "url": "https://www.ibtimes.com.au/australia-oil-price-today-april-2026-brent-crude-near-96-geopolitical-ceasefire-eases-pump-pain-1866227",
+      "source": "Euronews",
+      "url": "https://www.euronews.com/",
       "time": "12h",
       "impact": "medium",
       "signals": [
-        "OIL +",
-        "AUD -",
-        "ENERGY +",
-        "TRANSPORT -"
+        "EUR ?",
+        "HUF ?"
       ],
-      "confidence": 85
+      "confidence": 76
     },
     {
       "id": 6,
       "tag": "STRATEGIC",
       "region": "GLOBAL",
       "title": {
-        "en": "Legendary Investor Jeremy Grantham Warns AI Bubble Could Trigger Historic Market Crash",
-        "es": "Inversor legendario Jeremy Grantham advierte que burbuja de IA podría provocar caída histórica del mercado"
+        "es": "FMI destaca el aumento del gasto en defensa en medio de tensiones geopolíticas crecientes",
+        "en": "IMF highlights rising defense spending amid intensifying geopolitical tensions"
       },
       "summary": {
-        "en": "GMO co-founder says there's 'slim to none' chance AI bubble won't burst, potentially dragging markets to levels not seen since worst bear markets in modern history. Argues ChatGPT arrival deferred but didn't fix underlying valuation problems.",
-        "es": "El cofundador de GMO dice que hay posibilidades 'mínimas o nulas' de que la burbuja de IA no estalle, potencialmente arrastrando mercados a niveles no vistos desde los peores mercados bajistas de la historia moderna. Argumenta que la llegada de ChatGPT difirió pero no solucionó problemas de valoración subyacentes."
+        "es": "El FMI señala que el gasto en defensa está aumentando en medio de tensiones geopolíticas intensificadas. Los grandes auges de gasto en defensa se han vuelto más frecuentes, especialmente en economías emergentes y en desarrollo, con implicaciones significativas para las finanzas públicas globales.",
+        "en": "The IMF notes that defense spending is rising amid intensifying geopolitical tensions. Large defense spending booms have become more frequent, especially in emerging market and developing economies, with significant implications for global public finances."
       },
-      "source": "Fortune",
-      "url": "https://fortune.com/2026/04/12/jeremy-grantham-making-of-a-permabear-interview/",
-      "time": "10h",
-      "impact": "high",
+      "source": "IMF",
+      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "time": "24h",
+      "impact": "medium",
       "signals": [
-        "TECH -",
-        "VIX +",
-        "BONDS +",
-        "AI -"
+        "DEFENSE +",
+        "FISCAL -"
       ],
-      "confidence": 78
+      "confidence": 85
     }
   ]
 }
