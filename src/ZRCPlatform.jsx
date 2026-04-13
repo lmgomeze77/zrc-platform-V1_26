@@ -421,13 +421,19 @@ const Hero = ({ lang, onNav }) => {
  
         {/* Flywheel */}
         <div style={{ marginTop: 72, display: "flex", justifyContent: "center", gap: 0, flexWrap: "wrap", alignItems: "center" }}>
-          {t.flywheel.map((step, i) => (
-            <div key={step} style={{ display: "flex", alignItems: "center" }}>
-              <div style={{ padding: "6px 16px", border: `1px solid ${i === 0 ? C.gold : C.border}`, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: i === 0 ? C.gold : C.textMuted, background: i === 0 ? C.goldDim : "transparent", transition: "all 0.3s" }}>
-                {step}
+{t.flywheel.map((step, i) => {
+            const targets = ["observatory", "intelligence", "brokerage", "academia", "community"];
+            return (
+              <div key={step} style={{ display: "flex", alignItems: "center" }}>
+                <div onClick={() => onNav(targets[i])} style={{ padding: "6px 16px", border: `1px solid ${i === 0 ? C.gold : C.border}`, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: i === 0 ? C.gold : C.textMuted, background: i === 0 ? C.goldDim : "transparent", transition: "all 0.3s", cursor: "pointer" }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = C.gold; e.currentTarget.style.color = C.gold; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = i === 0 ? C.gold : C.border; e.currentTarget.style.color = i === 0 ? C.gold : C.textMuted; }}>
+                  {step}
+                </div>
+                {i < 4 && <span style={{ fontFamily: F.mono, color: C.textMuted, margin: "0 2px", fontSize: 10, opacity: 0.5 }}>→</span>}
               </div>
-              {i < 4 && <span style={{ fontFamily: F.mono, color: C.textMuted, margin: "0 2px", fontSize: 10, opacity: 0.5 }}>→</span>}
-            </div>
+            );
+          })}
           ))}
         </div>
       </div>
