@@ -1,204 +1,206 @@
 {
-  "generated_at": "2026-04-13T07:59:30.206Z",
+  "generated_at": "2026-04-14T07:28:06.418Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1720",
-      "change": "+0.20%",
+      "value": "1.1760",
+      "change": "+0.01",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18,042.52",
-      "change": "-0.48%",
-      "up": false
+      "value": "17,982.77",
+      "change": "+0.7%",
+      "up": true
     },
     {
       "symbol": "BRENT",
-      "value": "101.82",
-      "change": "+6.95%",
+      "value": "103.29",
+      "change": "+7.5%",
       "up": true
     },
     {
       "symbol": "GOLD",
-      "value": "4751.68",
-      "change": "-0.24%",
-      "up": false
+      "value": "4,733.35",
+      "change": "+1.2%",
+      "up": true
     },
     {
       "symbol": "BTC",
-      "value": "71000",
-      "change": "-2.60%",
-      "up": false
+      "value": "74,418.19",
+      "change": "+1.6%",
+      "up": true
     },
     {
       "symbol": "VIX",
-      "value": "19.23",
-      "change": "-1.33%",
+      "value": "19.12",
+      "change": "-0.6%",
       "up": false
     },
     {
       "symbol": "US 10Y",
-      "value": "4.34",
-      "change": "+0.06%",
-      "up": true
+      "value": "4.29%",
+      "change": "-0.02%",
+      "up": false
     },
     {
       "symbol": "EUR/GBP",
       "value": "0.8718",
-      "change": "+0.10%",
+      "change": "+0.1%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "6756",
-      "change": "-0.89%",
-      "up": false
+      "value": "6,886.24",
+      "change": "+1.0%",
+      "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "23804",
-      "change": "-0.01%",
-      "up": false
+      "value": "23,742.44",
+      "change": "+1.1%",
+      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "GLOBAL",
       "title": {
-        "es": "Trump anuncia bloqueo del Estrecho de Ormuz tras fracaso de negociaciones con Irán",
-        "en": "Trump announces Strait of Hormuz blockade after Iran peace talks fail"
+        "en": "U.S.-Iran Peace Talks Collapse, Oil Blockade Begins as Hormuz Traffic Stalls",
+        "es": "Colapsan Negociaciones de Paz EE.UU.-Irán, Inicia Bloqueo Petrolero con Tráfico de Hormuz Paralizado"
       },
       "summary": {
-        "es": "El presidente Trump ha anunciado que Estados Unidos implementará un bloqueo naval del Estrecho de Ormuz después del fracaso de las negociaciones de paz con Irán. Los futuros del Dow cayeron 500 puntos tras el anuncio, señalando una escalada significativa en el conflicto que ha interrumpido el 20% del comercio mundial de petróleo.",
-        "en": "President Trump announced the US will implement a naval blockade of the Strait of Hormuz following failed peace talks with Iran. Dow futures dropped 500 points after the announcement, signaling significant escalation in the conflict that has disrupted 20% of global oil trade."
+        "en": "Weekend U.S.-Iran negotiations in Islamabad failed after Vice President JD Vance departed without agreement. Trump announced blockade of Strait of Hormuz, sending oil prices surging above $105/barrel. Markets rally on hopes for renewed talks.",
+        "es": "Las negociaciones del fin de semana entre EE.UU. e Irán en Islamabad fracasaron tras la partida del Vicepresidente JD Vance sin acuerdo. Trump anunció bloqueo del Estrecho de Hormuz, disparando precios del petróleo sobre $105/barril. Los mercados repuntan por esperanzas de nuevas conversaciones."
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/federal-reserve/",
-      "time": "2h",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-13/stock-market-today-dow-s-p-live-updates",
+      "time": "1h",
       "impact": "high",
       "signals": [
         "OIL +",
         "USD +",
-        "VIX +",
-        "EUR -"
+        "GOLD +",
+        "VIX +"
       ],
-      "confidence": 92
+      "confidence": 95
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "US",
       "title": {
-        "es": "El Papa León XIV pide cese del fuego inmediato mientras se intensifican los enfrentamientos Israel-Hezbollah",
-        "en": "Pope Leo XIV urges immediate ceasefire as Israel-Hezbollah clashes intensify"
+        "en": "Goldman Sachs Posts Record Q1 Trading Revenue, Warns on Iran War Market Impact",
+        "es": "Goldman Sachs Reporta Ingresos Record de Trading Q1, Advierte sobre Impacto de Guerra con Irán"
       },
       "summary": {
-        "es": "El Papa León XIV ha hecho un llamado urgente para un alto el fuego inmediato mientras los enfrentamientos entre Israel y Hezbollah se intensifican. La escalada ha generado preocupaciones sobre una guerra regional más amplia que podría impactar significativamente los mercados energéticos globales.",
-        "en": "Pope Leo XIV has made an urgent call for immediate ceasefire as clashes between Israel and Hezbollah intensify. The escalation has raised concerns about a broader regional war that could significantly impact global energy markets."
+        "en": "Goldman reported $17.23B revenue with 27% jump in equities trading to $5.33B. CEO Solomon warned prolonged Middle East conflict could create headwinds for deals and inflation. Loan loss provisions rose to highest since 2020.",
+        "es": "Goldman reportó ingresos de $17.23B con salto del 27% en trading de acciones a $5.33B. El CEO Solomon advirtió que un conflicto prolongado en Oriente Medio podría crear vientos en contra para operaciones e inflación. Las provisiones por pérdidas crediticias subieron a máximos desde 2020."
       },
-      "source": "Euronews",
-      "url": "https://www.euronews.com/",
-      "time": "4h",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/13/goldman-sachs-gs-earnings-1q-2026.html",
+      "time": "10h",
       "impact": "high",
       "signals": [
-        "OIL +",
-        "GOLD +",
-        "EUR -"
+        "GS -",
+        "BANKS +",
+        "VIX -"
       ],
-      "confidence": 87
+      "confidence": 92
     },
     {
       "id": 3,
-      "tag": "STRATEGIC",
-      "region": "US",
+      "tag": "ALERT",
+      "region": "GLOBAL",
       "title": {
-        "es": "La Fed mantiene tasas estables, proyecta un solo recorte en 2026 en medio de la guerra en Irán",
-        "en": "Fed holds rates steady, projects single rate cut in 2026 amid Iran war uncertainty"
+        "en": "IMF Releases April 2026 WEO Highlighting Defense Spending Surge Amid Geopolitical Tensions",
+        "es": "FMI Publica WEO Abril 2026 Destacando Auge del Gasto de Defensa por Tensiones Geopolíticas"
       },
       "summary": {
-        "es": "La Reserva Federal mantuvo las tasas de interés sin cambios en el rango de 3.50%-3.75% con funcionarios proyectando solo un recorte de tasas en 2026. El presidente Powell destacó la incertidumbre en torno al shock petrolero, complicando las perspectivas de política monetaria.",
-        "en": "The Federal Reserve held interest rates unchanged at 3.50%-3.75% range with officials projecting only one rate cut in 2026. Chair Powell highlighted uncertainty around the oil shock, complicating monetary policy outlook."
+        "en": "IMF's new World Economic Outlook shows defense spending booms becoming more frequent, especially in emerging markets. Large buildups increase GDP by 2.7 percentage points but worsen fiscal deficits and public debt substantially.",
+        "es": "La nueva Perspectiva Económica Mundial del FMI muestra que los auges del gasto de defensa son más frecuentes, especialmente en mercados emergentes. Las grandes expansiones aumentan el PIB en 2.7 puntos porcentuales pero empeoran significativamente los déficits fiscales y la deuda pública."
       },
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/news/live/fed-meeting-live-updates-federal-reserve-holds-rates-steady-forecasts-1-rate-cut-in-2026-180216872.html",
-      "time": "6h",
-      "impact": "high",
+      "source": "IMF",
+      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "time": "4h",
+      "impact": "medium",
       "signals": [
-        "USD +",
-        "YIELDS +",
-        "EQUITIES -"
+        "DEFENSE +",
+        "EM -",
+        "BONDS -"
       ],
-      "confidence": 94
+      "confidence": 88
     },
     {
       "id": 4,
       "tag": "MONITOR",
-      "region": "APAC",
+      "region": "GLOBAL",
       "title": {
-        "es": "India enfrenta depreciación de la rupia y caída de acciones por vulnerabilidad energética",
-        "en": "India faces rupee depreciation and equity decline due to energy vulnerability"
+        "en": "BlackRock Upgrades U.S. Stocks to Overweight After Middle East De-escalation Signs",
+        "es": "BlackRock Mejora Acciones Estadounidenses a Sobrepeso tras Señales de Desescalada en Oriente Medio"
       },
       "summary": {
-        "es": "La dependencia de India de la energía importada ha resultado en una fuerte depreciación de la rupia y caída de los precios de las acciones. La economía india, que parecía preparada para un crecimiento excepcional, ahora enfrenta vulnerabilidades significativas debido al alza de precios de la energía.",
-        "en": "India's dependence on imported energy has resulted in sharp rupee depreciation and falling equity prices. The Indian economy, which appeared poised for banner growth, now faces significant vulnerabilities due to rising energy prices."
+        "en": "BlackRock Investment Institute returned to modest risk-taking and upgraded U.S. equities from neutral after seeing two key signposts met. Firm expects corporate earnings to remain unscathed by geopolitical tensions.",
+        "es": "El Instituto de Inversión de BlackRock regresó a una toma de riesgo modesta y mejoró las acciones estadounidenses desde neutral tras ver cumplidos dos indicadores clave. La firma espera que las ganancias corporativas permanezcan ilesas por las tensiones geopolíticas."
       },
-      "source": "Brookings Institution",
-      "url": "https://www.brookings.edu/articles/april-2026-update-to-tiger-a-year-of-economic-healing-turns-into-a-year-of-peril/",
-      "time": "16h",
+      "source": "BlackRock",
+      "url": "https://www.blackrock.com/us/individual/insights/blackrock-investment-institute/weekly-commentary",
+      "time": "8h",
       "impact": "medium",
       "signals": [
-        "INR -",
-        "SENSEX -",
-        "OIL +"
+        "SPX +",
+        "TECH +",
+        "EM +"
       ],
-      "confidence": 81
+      "confidence": 85
     },
     {
       "id": 5,
       "tag": "EMERGING",
       "region": "EU",
       "title": {
-        "es": "Elecciones húngaras registran mayor participación matutina mientras la UE observa atentamente",
-        "en": "Hungarian election shows record morning turnout as EU watches closely"
+        "en": "European Inflation Surges to 2.5% in March on Energy Price Spike from Middle East Conflict",
+        "es": "Inflación Europea Salta a 2.5% en Marzo por Alza de Precios Energéticos del Conflicto de Oriente Medio"
       },
       "summary": {
-        "es": "Las elecciones húngaras han registrado una participación matutina récord con Orbán y Magyar votando en comicios de alto riesgo. La Unión Europea está observando atentamente estos resultados que podrían impactar la estabilidad política regional y las relaciones comerciales futuras.",
-        "en": "Hungarian elections have shown record morning turnout with Orbán and Magyar voting in high-stakes polls. The European Union is watching closely as results could impact regional political stability and future trade relations."
+        "en": "Eurozone consumer prices rose 2.5% year-over-year in March, the biggest increase since January 2025. Energy prices jumped 4.9% annually and 6.8% monthly due to Middle East war impact.",
+        "es": "Los precios al consumidor de la eurozona subieron 2.5% interanual en marzo, el mayor aumento desde enero 2025. Los precios de la energía saltaron 4.9% anual y 6.8% mensual debido al impacto de la guerra de Oriente Medio."
       },
-      "source": "Euronews",
-      "url": "https://www.euronews.com/",
-      "time": "12h",
+      "source": "Deloitte",
+      "url": "https://www.deloitte.com/us/en/insights/topics/economy/global-economic-outlook/weekly-update.html",
+      "time": "5d",
       "impact": "medium",
       "signals": [
-        "EUR ?",
-        "HUF ?"
+        "EUR -",
+        "ENERGY +",
+        "ECB HAWKISH"
       ],
-      "confidence": 76
+      "confidence": 89
     },
     {
       "id": 6,
       "tag": "STRATEGIC",
-      "region": "GLOBAL",
+      "region": "APAC",
       "title": {
-        "es": "FMI destaca el aumento del gasto en defensa en medio de tensiones geopolíticas crecientes",
-        "en": "IMF highlights rising defense spending amid intensifying geopolitical tensions"
+        "en": "China Factory Prices Rise for First Time in Three Years as Markets Rally on Iran Ceasefire Hopes",
+        "es": "Precios de Fábrica de China Suben por Primera Vez en Tres Años Mientras Mercados Repuntan por Esperanzas de Cese al Fuego con Irán"
       },
       "summary": {
-        "es": "El FMI señala que el gasto en defensa está aumentando en medio de tensiones geopolíticas intensificadas. Los grandes auges de gasto en defensa se han vuelto más frecuentes, especialmente en economías emergentes y en desarrollo, con implicaciones significativas para las finanzas públicas globales.",
-        "en": "The IMF notes that defense spending is rising amid intensifying geopolitical tensions. Large defense spending booms have become more frequent, especially in emerging market and developing economies, with significant implications for global public finances."
+        "en": "Chinese factory-gate prices posted their first increase in over three years while CSI 300 gained 4.41% amid easing geopolitical tensions. China benefits from lower oil dependence and high domestic saving rates.",
+        "es": "Los precios a la salida de fábrica chinos registraron su primer aumento en más de tres años mientras el CSI 300 ganó 4.41% por la reducción de tensiones geopolíticas. China se beneficia de menor dependencia petrolera y altas tasas de ahorro doméstico."
       },
-      "source": "IMF",
-      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
-      "time": "24h",
+      "source": "T. Rowe Price",
+      "url": "https://www.troweprice.com/personal-investing/resources/insights/global-markets-weekly-update.html",
+      "time": "4d",
       "impact": "medium",
       "signals": [
-        "DEFENSE +",
-        "FISCAL -"
+        "CSI300 +",
+        "CNY +",
+        "COMMODITIES +"
       ],
-      "confidence": 85
+      "confidence": 87
     }
   ]
 }
