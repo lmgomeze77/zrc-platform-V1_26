@@ -1,12 +1,7 @@
 /**
- * update-market.js
- * 
- * Lightweight market data updater for the ZRC platform ticker.
- * Uses Claude Haiku + web_search to fetch current prices.
- * Runs every 4 hours via GitHub Actions — cost: ~$1-2/month.
- * 
- * Updates ONLY the market_ticker in headlines.json,
- * preserving existing headlines data.
+ * update-market.js v2
+ * Fetches live market data via Claude Haiku + web_search.
+ * Robust JSON extraction + debug logging.
  */
 
 import Anthropic from "@anthropic-ai/sdk";
@@ -20,14 +15,13 @@ const OUTPUT_FILE = join(OUTPUT_DIR, "headlines.json");
 
 const client = new Anthropic();
 
-// Robust JSON extractor — handles preamble text from Claude
 function extractJSON(text) {
   text = text.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
   try { return JSON.parse(text); } catch (_) {}
 
   const arrStart = text.indexOf("[");
   const objStart = text.indexOf("{");
-  if (arrStart === -1 && objStart === -1) throw new Error("No JSON found");
+  if (arrStart === -1 && objStart === -1) return null;
 
   let start = arrStart === -1 ? objStart : objStart === -1 ? arrStart : Math.min(arrStart, objStart);
   const openChar = text[start];
@@ -40,8 +34,8 @@ function extractJSON(text) {
     if (depth === 0) { end = i + 1; break; }
   }
 
-  if (end === -1) throw new Error("Unbalanced JSON");
-  return JSON.parse(text.slice(start, end));
+  if (end === -1) return null;
+  try { return JSON.parse(text.slice(start, end)); } catch (_) { return null; }
 }
 
 async function fetchMarketData() {
@@ -52,86 +46,101 @@ async function fetchMarketData() {
 
   const response = await client.messages.create({
     model: "claude-haiku-4-5-20251001",
-    max_tokens: 2048,
+    max_tokens: 3000,
     tools: [{ type: "web_search_20250305", name: "web_search" }],
-    system: `You are a financial data terminal. Search for CURRENT market prices and return accurate data. Respond ONLY with a raw JSON array — no text before or after, no markdown. Just the [ ... ] array.
-
-Each object must have exactly these fields:
-- symbol (string): ticker label
-- value (string): current price with appropriate formatting
-- change (string): daily change with + or - prefix  
-- up (boolean): true if positive, false if negative
-
-Required instruments IN THIS EXACT ORDER:
-1. EUR/USD — current exchange rate (e.g. "1.1345")
-2. IBEX 35 — Spanish index level (e.g. "12,830")
-3. BRENT — Brent crude in USD (e.g. "$95.20")
-4. WTI — WTI crude in USD (e.g. "$91.50")
-5. GOLD — XAU/USD spot price (e.g. "$3,238")
-6. BTC — Bitcoin in USD (e.g. "$81,620")
-7. VIX — CBOE volatility index (e.g. "28.4")
-8. US 10Y — US Treasury yield (e.g. "4.38%")
-9. S&P 500 — index level (e.g. "5,268")
-10. DAX 40 — German index level (e.g. "20,374")
-11. EUR/GBP — exchange rate (e.g. "0.8612")
-12. DXY — US Dollar Index (e.g. "100.3")
-13. NAT GAS — Henry Hub or TTF in USD/EUR (e.g. "$3.42")
-14. COPPER — price per lb in USD (e.g. "$4.52")
-15. USD/CNY — exchange rate (e.g. "7.24")
-
-CRITICAL: Respond with ONLY the JSON array. No other text.`,
+    system: `You are a financial data terminal. Your ONLY job is to search for current market prices and return a JSON array. After searching, respond with ONLY the raw JSON array — no explanations, no preamble, no markdown fences. Just [ ... ].`,
     messages: [{
       role: "user",
-      content: `Today is ${today}, time is ${time} UTC. Search for the current live market prices for ALL 15 instruments listed. Return ONLY the JSON array.`
+      content: `Search for today's current market prices (${today}) for these 15 instruments and return ONLY a JSON array.
+
+Each object: { "symbol": "...", "value": "...", "change": "...%", "up": true/false }
+
+Instruments in order:
+1. EUR/USD  2. IBEX 35  3. BRENT crude  4. WTI crude  5. GOLD (XAU/USD)
+6. BTC/USD  7. VIX  8. US 10Y yield  9. S&P 500  10. DAX 40
+11. EUR/GBP  12. DXY dollar index  13. Natural Gas  14. Copper  15. USD/CNY
+
+IMPORTANT: After searching, your complete response must be ONLY the JSON array. Start your response with [ and end with ]. No other text.`
     }]
   });
 
-  let jsonText = "";
+  // Debug: log all content block types
+  console.log(`   Response blocks: ${response.content.map(b => b.type).join(", ")}`);
+
+  // Try extracting JSON from ALL text blocks
+  let result = null;
   for (const block of response.content) {
-    if (block.type === "text") jsonText = block.text;
+    if (block.type === "text" && block.text) {
+      console.log(`   Text block (${block.text.length} chars): ${block.text.substring(0, 80)}...`);
+      const parsed = extractJSON(block.text);
+      if (parsed && Array.isArray(parsed) && parsed.length > 0) {
+        result = parsed;
+      } else if (parsed && parsed.market_ticker) {
+        result = parsed.market_ticker;
+      }
+    }
   }
 
-  const ticker = extractJSON(jsonText);
-  const arr = Array.isArray(ticker) ? ticker : [];
+  if (result && result.length > 0) {
+    console.log(`   ✅ Got ${result.length} instruments`);
+    return result;
+  }
 
-  if (arr.length === 0) throw new Error("No market data returned");
+  // Fallback: concatenate ALL text and try once more
+  const allText = response.content
+    .filter(b => b.type === "text")
+    .map(b => b.text)
+    .join("\n");
 
-  console.log(`   ✅ Got ${arr.length} instruments`);
-  return arr;
+  console.log(`   Concatenated text (${allText.length} chars), trying extraction...`);
+  const fallback = extractJSON(allText);
+
+  if (fallback && Array.isArray(fallback) && fallback.length > 0) {
+    console.log(`   ✅ Fallback extraction got ${fallback.length} instruments`);
+    return fallback;
+  }
+
+  // Log what we got for debugging
+  console.error(`   Raw response text:\n${allText.substring(0, 500)}`);
+  throw new Error("Could not extract market data from response");
 }
 
 async function main() {
   let marketTicker;
+  const MAX_RETRIES = 2;
 
-  try {
-    marketTicker = await fetchMarketData();
-  } catch (err) {
-    console.error(`❌ Market data fetch failed: ${err.message}`);
-    process.exit(1);
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      console.log(`   Attempt ${attempt}/${MAX_RETRIES}...`);
+      marketTicker = await fetchMarketData();
+      break;
+    } catch (err) {
+      console.error(`   ❌ Attempt ${attempt} failed: ${err.message}`);
+      if (attempt < MAX_RETRIES) {
+        console.log("   Retrying in 3s...");
+        await new Promise(r => setTimeout(r, 3000));
+      } else {
+        console.error("❌ All attempts failed. Exiting.");
+        process.exit(1);
+      }
+    }
   }
 
   // Read existing headlines.json to preserve headline data
   let existing = {};
   if (existsSync(OUTPUT_FILE)) {
-    try {
-      existing = JSON.parse(readFileSync(OUTPUT_FILE, "utf-8"));
-    } catch (_) {}
+    try { existing = JSON.parse(readFileSync(OUTPUT_FILE, "utf-8")); } catch (_) {}
   }
 
-  // Update only market_ticker and timestamp
   const output = {
     ...existing,
     market_ticker: marketTicker,
     market_updated_at: new Date().toISOString(),
-    // Preserve generated_at and headlines from daily run
     generated_at: existing.generated_at || new Date().toISOString(),
     headlines: existing.headlines || [],
   };
 
-  if (!existsSync(OUTPUT_DIR)) {
-    mkdirSync(OUTPUT_DIR, { recursive: true });
-  }
-
+  if (!existsSync(OUTPUT_DIR)) mkdirSync(OUTPUT_DIR, { recursive: true });
   writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2), "utf-8");
   console.log(`\n✅ Market ticker updated → ${OUTPUT_FILE}`);
   console.log(`   Instruments: ${marketTicker.map(m => m.symbol).join(", ")}\n`);
