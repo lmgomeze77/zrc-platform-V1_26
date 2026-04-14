@@ -131,15 +131,23 @@ const LANG = {
 // ─── DATA ───
  
 // Fallback market data — used only if /data/headlines.json has no market_ticker
+// 15 instruments: core macro + geopolitically relevant indicators
 const FALLBACK_MARKET_TICKER = [
-  { symbol: "EUR/USD", value: "1.0847", change: "+0.12%", up: true },
-  { symbol: "IBEX 35", value: "13,245", change: "+0.67%", up: true },
-  { symbol: "BRENT", value: "$78.32", change: "-1.24%", up: false },
-  { symbol: "GOLD", value: "$3,042", change: "+0.89%", up: true },
-  { symbol: "BTC", value: "$87,412", change: "+2.31%", up: true },
-  { symbol: "VIX", value: "18.7", change: "+4.2%", up: true },
-  { symbol: "US 10Y", value: "4.28%", change: "+0.03", up: true },
-  { symbol: "EUR/GBP", value: "0.8634", change: "-0.08%", up: false },
+  { symbol: "EUR/USD", value: "1.1345", change: "+0.43%", up: true },
+  { symbol: "IBEX 35", value: "12,830", change: "-0.52%", up: false },
+  { symbol: "BRENT", value: "$95.20", change: "-0.75%", up: false },
+  { symbol: "WTI", value: "$91.50", change: "-0.82%", up: false },
+  { symbol: "GOLD", value: "$3,238", change: "+1.47%", up: true },
+  { symbol: "BTC", value: "$81,620", change: "-3.82%", up: false },
+  { symbol: "VIX", value: "28.4", change: "+5.3%", up: true },
+  { symbol: "US 10Y", value: "4.38%", change: "+0.12", up: true },
+  { symbol: "S&P 500", value: "5,268", change: "-1.73%", up: false },
+  { symbol: "DAX 40", value: "20,374", change: "-0.91%", up: false },
+  { symbol: "EUR/GBP", value: "0.8612", change: "+0.18%", up: true },
+  { symbol: "DXY", value: "100.3", change: "-0.65%", up: false },
+  { symbol: "NAT GAS", value: "$3.42", change: "+2.1%", up: true },
+  { symbol: "COPPER", value: "$4.52", change: "-1.34%", up: false },
+  { symbol: "USD/CNY", value: "7.24", change: "+0.08%", up: true },
 ];
  
 // Fallback headlines — used only if /data/headlines.json is unavailable
@@ -215,6 +223,7 @@ const useIntelligence = () => {
   const [headlines, setHeadlines] = useState(FALLBACK_GEO_FEED);
   const [marketTicker, setMarketTicker] = useState(FALLBACK_MARKET_TICKER);
   const [generatedAt, setGeneratedAt] = useState(null);
+  const [marketUpdatedAt, setMarketUpdatedAt] = useState(null);
   const [isLive, setIsLive] = useState(false);
 
   useEffect(() => {
@@ -235,18 +244,21 @@ const useIntelligence = () => {
           if (data.generated_at) {
             setGeneratedAt(data.generated_at);
           }
+          if (data.market_updated_at) {
+            setMarketUpdatedAt(data.market_updated_at);
+          }
         }
       } catch (err) {
         console.warn("Using fallback data:", err.message);
       }
     };
     fetchData();
-    // Refresh every 30 minutes
-    const interval = setInterval(fetchData, 30 * 60 * 1000);
+    // Refresh every 5 minutes to pick up market updates
+    const interval = setInterval(fetchData, 5 * 60 * 1000);
     return () => { cancelled = true; clearInterval(interval); };
   }, []);
 
-  return { headlines, marketTicker, generatedAt, isLive };
+  return { headlines, marketTicker, generatedAt, marketUpdatedAt, isLive };
 };
  
 const FadeIn = ({ children, delay = 0, style = {} }) => {
@@ -303,14 +315,24 @@ const SectionHead = ({ label, title, sub, extra }) => (
 );
  
 // ─── MARKET TICKER (DYNAMIC) ───
-const MarketTicker = ({ lang, data }) => {
+const MarketTicker = ({ lang, data, updatedAt }) => {
   const t = LANG[lang].ticker;
   const doubled = [...data, ...data];
+
+  const timeAgo = (iso) => {
+    if (!iso) return "";
+    const diff = Math.floor((Date.now() - new Date(iso).getTime()) / 60000);
+    if (diff < 1) return lang === "es" ? "ahora" : "now";
+    if (diff < 60) return `${diff}m`;
+    if (diff < 1440) return `${Math.floor(diff / 60)}h`;
+    return `${Math.floor(diff / 1440)}d`;
+  };
+
   return (
     <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflow: "hidden", position: "relative", height: 36 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 0, position: "absolute", whiteSpace: "nowrap", animation: "tickerScroll 50s linear infinite" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 0, position: "absolute", whiteSpace: "nowrap", animation: "tickerScroll 70s linear infinite" }}>
         {doubled.map((m, i) => (
-          <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "0 24px", height: 36 }}>
+          <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "0 20px", height: 36 }}>
             <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.05em" }}>{m.symbol}</span>
             <span style={{ fontFamily: F.mono, fontSize: 11, color: C.text, fontWeight: 500 }}>{m.value}</span>
             <span style={{ fontFamily: F.mono, fontSize: 10, color: m.up ? C.green : C.red, fontWeight: 500 }}>{m.change}</span>
@@ -318,7 +340,12 @@ const MarketTicker = ({ lang, data }) => {
           </div>
         ))}
       </div>
-      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 120, display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 12, background: `linear-gradient(90deg, transparent, ${C.surface} 40%)`, zIndex: 2 }}>
+      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 140, display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 12, gap: 8, background: `linear-gradient(90deg, transparent, ${C.surface} 30%)`, zIndex: 2 }}>
+        {updatedAt && (
+          <span style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.05em" }}>
+            {timeAgo(updatedAt)}
+          </span>
+        )}
         <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
           <span style={{ width: 5, height: 5, borderRadius: "50%", background: C.green, animation: "pulse 2s infinite" }} />
           <span style={{ fontFamily: F.mono, fontSize: 9, color: C.green, letterSpacing: "0.1em" }}>{t.live}</span>
@@ -421,19 +448,13 @@ const Hero = ({ lang, onNav }) => {
  
         {/* Flywheel */}
         <div style={{ marginTop: 72, display: "flex", justifyContent: "center", gap: 0, flexWrap: "wrap", alignItems: "center" }}>
-{t.flywheel.map((step, i) => {
-            const targets = ["observatory", "intelligence", "brokerage", "academia", "community"];
-            return (
-              <div key={step} style={{ display: "flex", alignItems: "center" }}>
-                <div onClick={() => onNav(targets[i])} style={{ padding: "6px 16px", border: `1px solid ${i === 0 ? C.gold : C.border}`, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: i === 0 ? C.gold : C.textMuted, background: i === 0 ? C.goldDim : "transparent", transition: "all 0.3s", cursor: "pointer" }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = C.gold; e.currentTarget.style.color = C.gold; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = i === 0 ? C.gold : C.border; e.currentTarget.style.color = i === 0 ? C.gold : C.textMuted; }}>
-                  {step}
-                </div>
-                {i < 4 && <span style={{ fontFamily: F.mono, color: C.textMuted, margin: "0 2px", fontSize: 10, opacity: 0.5 }}>→</span>}
+          {t.flywheel.map((step, i) => (
+            <div key={step} style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ padding: "6px 16px", border: `1px solid ${i === 0 ? C.gold : C.border}`, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: i === 0 ? C.gold : C.textMuted, background: i === 0 ? C.goldDim : "transparent", transition: "all 0.3s" }}>
+                {step}
               </div>
-            );
-          })}
+              {i < 4 && <span style={{ fontFamily: F.mono, color: C.textMuted, margin: "0 2px", fontSize: 10, opacity: 0.5 }}>→</span>}
+            </div>
           ))}
         </div>
       </div>
@@ -788,7 +809,7 @@ const Footer = ({ lang }) => {
 // ─── MAIN APP ───
 export default function ZRCPlatform() {
   const [lang, setLang] = useState("es");
-  const { headlines, marketTicker, generatedAt, isLive } = useIntelligence();
+  const { headlines, marketTicker, generatedAt, marketUpdatedAt, isLive } = useIntelligence();
  
   const handleNav = useCallback((id) => {
     if (id === "hero") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
@@ -822,7 +843,7 @@ export default function ZRCPlatform() {
       `}</style>
  
       <Nav lang={lang} setLang={setLang} onNav={handleNav} />
-      <MarketTicker lang={lang} data={marketTicker} />
+      <MarketTicker lang={lang} data={marketTicker} updatedAt={marketUpdatedAt} />
       <Hero lang={lang} onNav={handleNav} />
       <GoldDivider />
       <Observatory lang={lang} headlines={headlines} generatedAt={generatedAt} isLive={isLive} />
