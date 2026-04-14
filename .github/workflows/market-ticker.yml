@@ -1,0 +1,38 @@
+name: Market Ticker Update
+
+on:
+  schedule:
+    # Every 4 hours during market-relevant hours (06-22 UTC)
+    - cron: '0 6,10,14,18,22 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-market:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install @anthropic-ai/sdk
+
+      - name: Fetch live market data
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/update-market.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "ZRC Market Bot"
+          git config user.email "bot@zenithrisecapital.com"
+          git add public/data/headlines.json
+          git diff --cached --quiet || git commit -m "📈 Market update — $(date -u +'%H:%M UTC')"
+          git push
