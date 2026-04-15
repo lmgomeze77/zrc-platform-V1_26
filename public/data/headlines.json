@@ -4,7 +4,7 @@
     {
       "symbol": "EUR/USD",
       "value": "1.1802",
-      "change": "+0.05%",
+      "change": "+0.01%",
       "up": true
     },
     {
@@ -27,14 +27,14 @@
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4830.31",
-      "change": "-0.24%",
+      "value": "4791",
+      "change": "-1.05%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "74373.82",
-      "change": "+0.34%",
+      "value": "74467.39",
+      "change": "+0.20%",
       "up": true
     },
     {
@@ -45,32 +45,32 @@
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.31%",
-      "change": "0.00%",
+      "value": "4.25%",
+      "change": "-0.23%",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7003.71",
-      "change": "+0.49%",
+      "value": "7022.95",
+      "change": "+0.80%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24044",
+      "value": "23546",
       "change": "+0.12%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8688",
-      "change": "-0.11%",
-      "up": false
+      "value": "0.8709",
+      "change": "+0.48%",
+      "up": true
     },
     {
       "symbol": "DXY dollar index",
       "value": "98.05",
-      "change": "-0.07%",
+      "change": "-0.08%",
       "up": false
     },
     {
@@ -87,8 +87,8 @@
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.8188",
-      "change": "+0.00%",
+      "value": "6.8166",
+      "change": "+0.01%",
       "up": true
     }
   ],
@@ -235,5 +235,5 @@
       "confidence": 78
     }
   ],
-  "market_updated_at": "2026-04-15T18:56:50.815Z"
+  "market_updated_at": "2026-04-15T22:31:19.200Z"
 }
