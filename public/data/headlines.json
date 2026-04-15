@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-04-14T07:28:06.418Z",
+  "generated_at": "2026-04-15T07:28:22.317Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1794",
-      "change": "+0.28%",
+      "value": "1.1799",
+      "change": "+0.34%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "17940.98",
-      "change": "-0.95%",
+      "value": "17,940.98",
+      "change": "-0.99%",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
-      "value": "94.79",
-      "change": "-4.15%",
+      "symbol": "BRENT",
+      "value": "95.72",
+      "change": "-5.25%",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "91.28",
-      "change": "-7.87%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4830.31",
+      "symbol": "GOLD",
+      "value": "4,830.31",
       "change": "-0.24%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "74338.46",
-      "change": "+0.00%",
+      "symbol": "BTC",
+      "value": "74,314.61",
+      "change": "+1.30%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "18.59",
-      "change": "-2.77%",
+      "value": "18.36",
+      "change": "-3.97%",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.2970",
+      "symbol": "US 10Y",
+      "value": "4.297%",
       "change": "-0.46%",
       "up": false
     },
     {
+      "symbol": "EUR/GBP",
+      "value": "0.8717",
+      "change": "+0.10%",
+      "up": true
+    },
+    {
       "symbol": "S&P 500",
-      "value": "6967.38",
+      "value": "6,967.38",
       "change": "+1.18%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "23742.44",
-      "change": "-0.01%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8712",
-      "change": "+0.07%",
+      "value": "23,742.44",
+      "change": "+1.13%",
       "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.040",
-      "change": "-0.22%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.601",
-      "change": "+0.39%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.01",
-      "change": "+0.56%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.82",
-      "change": "-0.15%",
-      "up": false
     }
   ],
   "headlines": [
@@ -98,140 +68,141 @@
       "tag": "CRITICAL",
       "region": "GLOBAL",
       "title": {
-        "en": "U.S.-Iran Peace Talks Collapse, Oil Blockade Begins as Hormuz Traffic Stalls",
-        "es": "Colapsan Negociaciones de Paz EE.UU.-Irán, Inicia Bloqueo Petrolero con Tráfico de Hormuz Paralizado"
+        "en": "IMF Slashes 2026 Global Growth Forecast to 3.1% Amid Middle East Energy Crisis",
+        "es": "FMI Recorta Pronóstico de Crecimiento Global 2026 al 3.1% Por Crisis Energética en Medio Oriente"
       },
       "summary": {
-        "en": "Weekend U.S.-Iran negotiations in Islamabad failed after Vice President JD Vance departed without agreement. Trump announced blockade of Strait of Hormuz, sending oil prices surging above $105/barrel. Markets rally on hopes for renewed talks.",
-        "es": "Las negociaciones del fin de semana entre EE.UU. e Irán en Islamabad fracasaron tras la partida del Vicepresidente JD Vance sin acuerdo. Trump anunció bloqueo del Estrecho de Hormuz, disparando precios del petróleo sobre $105/barril. Los mercados repuntan por esperanzas de nuevas conversaciones."
+        "en": "The International Monetary Fund downgraded its 2026 global growth projection to 3.1% from 3.3%, citing escalating Middle East conflict and energy price surges. The revision ends 'soft landing' optimism as Strait of Hormuz closures threaten global supply chains.",
+        "es": "El Fondo Monetario Internacional redujo su proyección de crecimiento global 2026 al 3.1% desde 3.3%, citando el conflicto escalante en Medio Oriente y alzas en precios energéticos. La revisión termina con el optimismo de 'aterrizaje suave' mientras cierres del Estrecho de Hormuz amenazan cadenas de suministro globales."
       },
-      "source": "Bloomberg",
-      "url": "https://www.bloomberg.com/news/articles/2026-04-13/stock-market-today-dow-s-p-live-updates",
-      "time": "1h",
+      "source": "FinancialContent",
+      "url": "https://markets.financialcontent.com/stocks/article/marketminute-2026-4-14-imf-cuts-2026-global-growth-forecast-amid-middle-east-energy-shocks",
+      "time": "10h",
       "impact": "high",
       "signals": [
         "OIL +",
+        "GLOBAL GDP -",
         "USD +",
-        "GOLD +",
-        "VIX +"
+        "EUR -"
       ],
       "confidence": 95
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "US",
+      "region": "MENA",
       "title": {
-        "en": "Goldman Sachs Posts Record Q1 Trading Revenue, Warns on Iran War Market Impact",
-        "es": "Goldman Sachs Reporta Ingresos Record de Trading Q1, Advierte sobre Impacto de Guerra con Irán"
+        "en": "US Naval Blockade on Iran Takes Effect, Oil Nears $100 Despite Trump Peace Signals",
+        "es": "Bloqueo Naval de EE.UU. a Irán Toma Efecto, Petróleo Cerca de $100 Pese a Señales de Paz de Trump"
       },
       "summary": {
-        "en": "Goldman reported $17.23B revenue with 27% jump in equities trading to $5.33B. CEO Solomon warned prolonged Middle East conflict could create headwinds for deals and inflation. Loan loss provisions rose to highest since 2020.",
-        "es": "Goldman reportó ingresos de $17.23B con salto del 27% en trading de acciones a $5.33B. El CEO Solomon advirtió que un conflicto prolongado en Oriente Medio podría crear vientos en contra para operaciones e inflación. Las provisiones por pérdidas crediticias subieron a máximos desde 2020."
+        "en": "US Navy deploys 15 ships including aircraft carrier for Iran blockade as Brent crude rises 40% since war began. Energy Secretary Wright expects oil prices to peak 'in coming weeks' as diplomatic efforts emerge.",
+        "es": "Marina de EE.UU. despliega 15 buques incluyendo portaaviones para bloqueo a Irán mientras crudo Brent sube 40% desde inicio de guerra. Secretario de Energía Wright espera que precios del petróleo alcancen pico 'en próximas semanas' mientras surgen esfuerzos diplomáticos."
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/13/goldman-sachs-gs-earnings-1q-2026.html",
-      "time": "10h",
+      "source": "CNN",
+      "url": "https://www.cnn.com/2026/04/13/world/live-news/iran-us-war-trump-hormuz",
+      "time": "1d",
       "impact": "high",
       "signals": [
-        "GS -",
-        "BANKS +",
-        "VIX -"
+        "OIL +",
+        "GOLD +",
+        "USD +",
+        "GEOPOLITICAL RISK +"
       ],
       "confidence": 92
     },
     {
       "id": 3,
-      "tag": "ALERT",
-      "region": "GLOBAL",
+      "tag": "STRATEGIC",
+      "region": "APAC",
       "title": {
-        "en": "IMF Releases April 2026 WEO Highlighting Defense Spending Surge Amid Geopolitical Tensions",
-        "es": "FMI Publica WEO Abril 2026 Destacando Auge del Gasto de Defensa por Tensiones Geopolíticas"
+        "en": "China Manufacturing Remains Resilient With 13.1% High-Tech Growth Despite Global Turmoil",
+        "es": "Manufactura China Se Mantiene Resistente Con Crecimiento High-Tech de 13.1% Pese a Turbulencia Global"
       },
       "summary": {
-        "en": "IMF's new World Economic Outlook shows defense spending booms becoming more frequent, especially in emerging markets. Large buildups increase GDP by 2.7 percentage points but worsen fiscal deficits and public debt substantially.",
-        "es": "La nueva Perspectiva Económica Mundial del FMI muestra que los auges del gasto de defensa son más frecuentes, especialmente en mercados emergentes. Las grandes expansiones aumentan el PIB en 2.7 puntos porcentuales pero empeoran significativamente los déficits fiscales y la deuda pública."
+        "en": "China's high-tech manufacturing grew 13.1% year-on-year in first two months of 2026, with equipment manufacturing up 9.3%. AI adoption exceeds 30% among major firms as country maintains world's largest manufacturing hub status for 16th consecutive year.",
+        "es": "La manufactura high-tech de China creció 13.1% interanual en primeros dos meses de 2026, con manufactura de equipos subiendo 9.3%. Adopción de IA supera 30% entre firmas principales mientras país mantiene estatus de mayor hub manufacturero mundial por 16o año consecutivo."
       },
-      "source": "IMF",
-      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
-      "time": "4h",
+      "source": "Xinhua",
+      "url": "https://english.news.cn/20260414/6d21add6cae9492e94533e78eba37e05/c.html",
+      "time": "1d",
       "impact": "medium",
       "signals": [
-        "DEFENSE +",
-        "EM -",
-        "BONDS -"
+        "CNY +",
+        "TECH +",
+        "CHINA MANUFACTURING +"
       ],
       "confidence": 88
     },
     {
       "id": 4,
       "tag": "MONITOR",
-      "region": "GLOBAL",
-      "title": {
-        "en": "BlackRock Upgrades U.S. Stocks to Overweight After Middle East De-escalation Signs",
-        "es": "BlackRock Mejora Acciones Estadounidenses a Sobrepeso tras Señales de Desescalada en Oriente Medio"
-      },
-      "summary": {
-        "en": "BlackRock Investment Institute returned to modest risk-taking and upgraded U.S. equities from neutral after seeing two key signposts met. Firm expects corporate earnings to remain unscathed by geopolitical tensions.",
-        "es": "El Instituto de Inversión de BlackRock regresó a una toma de riesgo modesta y mejoró las acciones estadounidenses desde neutral tras ver cumplidos dos indicadores clave. La firma espera que las ganancias corporativas permanezcan ilesas por las tensiones geopolíticas."
-      },
-      "source": "BlackRock",
-      "url": "https://www.blackrock.com/us/individual/insights/blackrock-investment-institute/weekly-commentary",
-      "time": "8h",
-      "impact": "medium",
-      "signals": [
-        "SPX +",
-        "TECH +",
-        "EM +"
-      ],
-      "confidence": 85
-    },
-    {
-      "id": 5,
-      "tag": "EMERGING",
       "region": "EU",
       "title": {
-        "en": "European Inflation Surges to 2.5% in March on Energy Price Spike from Middle East Conflict",
-        "es": "Inflación Europea Salta a 2.5% en Marzo por Alza de Precios Energéticos del Conflicto de Oriente Medio"
+        "en": "ECB Expected to Hold Rates Unchanged for Sixth Meeting Amid Middle East Uncertainty",
+        "es": "BCE Esperado Mantener Tasas Sin Cambios Por Sexta Reunión Por Incertidumbre en Medio Oriente"
       },
       "summary": {
-        "en": "Eurozone consumer prices rose 2.5% year-over-year in March, the biggest increase since January 2025. Energy prices jumped 4.9% annually and 6.8% monthly due to Middle East war impact.",
-        "es": "Los precios al consumidor de la eurozona subieron 2.5% interanual en marzo, el mayor aumento desde enero 2025. Los precios de la energía saltaron 4.9% anual y 6.8% mensual debido al impacto de la guerra de Oriente Medio."
+        "en": "European Central Bank likely to keep rates at 2.15% main refinancing rate as policymakers navigate Middle East war impacts. Lagarde vows to 'do all necessary' to control inflation amid energy shock concerns.",
+        "es": "Banco Central Europeo probablemente mantenga tasas en 2.15% tasa de refinanciamiento principal mientras formuladores de políticas navegan impactos de guerra en Medio Oriente. Lagarde promete hacer 'todo lo necesario' para controlar inflación ante preocupaciones por shock energético."
       },
-      "source": "Deloitte",
-      "url": "https://www.deloitte.com/us/en/insights/topics/economy/global-economic-outlook/weekly-update.html",
-      "time": "5d",
+      "source": "TradingEconomics",
+      "url": "https://tradingeconomics.com/euro-area/interest-rate",
+      "time": "2d",
       "impact": "medium",
       "signals": [
         "EUR -",
-        "ENERGY +",
-        "ECB HAWKISH"
+        "RATES HOLD",
+        "INFLATION RISK +"
       ],
-      "confidence": 89
+      "confidence": 82
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "US",
+      "title": {
+        "en": "JPMorgan Reports Record $16.5B Q1 Profit Despite Warning of 'Permanent Fracturing' in Global Trade",
+        "es": "JPMorgan Reporta Ganancias Récord de $16.5B en Q1 Pese a Advertencia de 'Fractura Permanente' en Comercio Global"
+      },
+      "summary": {
+        "en": "JPMorgan Chase beats expectations with $16.5 billion Q1 net income driven by investment banking resurgence. CEO Dimon warns of structural inflation from 'friend-shoring' as US-China relationship permanently fractures amid Iran war.",
+        "es": "JPMorgan Chase supera expectativas con ingreso neto de $16.5 mil millones en Q1 impulsado por resurgimiento de banca de inversión. CEO Dimon advierte sobre inflación estructural por 'friend-shoring' mientras relación EE.UU.-China se fractura permanentemente en medio de guerra con Irán."
+      },
+      "source": "FinancialContent",
+      "url": "https://markets.financialcontent.com/stocks/article/marketminute-2026-4-14-jpmorgan-chase-defies-macroeconomic-headwinds-with-record-165-billion-q1-profit",
+      "time": "13h",
+      "impact": "high",
+      "signals": [
+        "BANKS +",
+        "USD +",
+        "TRADE TENSIONS +",
+        "JPM +"
+      ],
+      "confidence": 90
     },
     {
       "id": 6,
-      "tag": "STRATEGIC",
-      "region": "APAC",
+      "tag": "EMERGING",
+      "region": "GLOBAL",
       "title": {
-        "en": "China Factory Prices Rise for First Time in Three Years as Markets Rally on Iran Ceasefire Hopes",
-        "es": "Precios de Fábrica de China Suben por Primera Vez en Tres Años Mientras Mercados Repuntan por Esperanzas de Cese al Fuego con Irán"
+        "en": "Gold Recovers on Middle East Peace Signals as Trump Considers Iran Deal",
+        "es": "Oro Se Recupera Por Señales de Paz en Medio Oriente Mientras Trump Considera Acuerdo con Irán"
       },
       "summary": {
-        "en": "Chinese factory-gate prices posted their first increase in over three years while CSI 300 gained 4.41% amid easing geopolitical tensions. China benefits from lower oil dependence and high domestic saving rates.",
-        "es": "Los precios a la salida de fábrica chinos registraron su primer aumento en más de tres años mientras el CSI 300 ganó 4.41% por la reducción de tensiones geopolíticas. China se beneficia de menor dependencia petrolera y altas tasas de ahorro doméstico."
+        "en": "Gold prices recover supported by easing Middle East tensions as Trump reportedly willing to end Iran confrontation. Goldman Sachs and JPMorgan expect gold in $4,000-$6,300 range for April 2026 despite current 19% decline from all-time highs.",
+        "es": "Precios del oro se recuperan apoyados por tensiones decrecientes en Medio Oriente mientras Trump supuestamente dispuesto a terminar confrontación con Irán. Goldman Sachs y JPMorgan esperan oro en rango $4,000-$6,300 para abril 2026 pese a caída actual de 19% desde máximos históricos."
       },
-      "source": "T. Rowe Price",
-      "url": "https://www.troweprice.com/personal-investing/resources/insights/global-markets-weekly-update.html",
-      "time": "4d",
+      "source": "LiteFinance",
+      "url": "https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/daily-and-weekly/",
+      "time": "8h",
       "impact": "medium",
       "signals": [
-        "CSI300 +",
-        "CNY +",
-        "COMMODITIES +"
+        "GOLD +",
+        "PEACE TALKS +",
+        "SAFE HAVEN -"
       ],
-      "confidence": 87
+      "confidence": 78
     }
-  ],
-  "market_updated_at": "2026-04-15T07:15:13.128Z"
+  ]
 }
