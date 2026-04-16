@@ -468,11 +468,6 @@ const Hero = ({ lang, onNav }) => {
     </section>
   );
 };
-        </div>
-      </div>
-    </section>
-  );
-};
 
 // ─── OBSERVATORY ───
 const Observatory = ({ lang }) => {
