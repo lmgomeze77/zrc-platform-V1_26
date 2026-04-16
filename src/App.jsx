@@ -463,9 +463,11 @@ const Hero = ({ lang, onNav }) => {
     </div>
   );
 })}
-              {i<4 && <span style={{fontFamily:F.mono,color:C.textMuted,margin:"0 2px",fontSize:10,opacity:0.5}}>→</span>}
-            </div>
-          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
         </div>
       </div>
     </section>
