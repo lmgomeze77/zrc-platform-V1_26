@@ -458,7 +458,7 @@ const Hero = ({ lang, onNav }) => {
   var targets = ["observatory","intelligence","brokerage","academia","community"];
   return (
     <div key={step} style={{display:"flex",alignItems:"center"}}>
-      <div onClick={() => onNav(targets[i])} style={{padding:"6px 16px",border:`1px solid ${i===0?C.gold:C.border}`,fontFamily:F.mono,fontSize:9,letterSpacing:"0.15em",color:i===0?C.gold:C.textMuted,background:i===0?C.goldDim:"transparent",cursor:"pointer",transition:"all 0.25s"}}>{step}</div>
+      <button onClick={() => onNav(targets[i])} style={{padding:"6px 16px",border:`1px solid ${i===0?C.gold:C.border}`,fontFamily:F.mono,fontSize:9,letterSpacing:"0.15em",color:i===0?C.gold:C.textMuted,background:i===0?C.goldDim:"transparent",cursor:"pointer"}}>{step}</button>
       {i<4 && <span style={{fontFamily:F.mono,color:C.textMuted,margin:"0 2px",fontSize:10,opacity:0.5}}>→</span>}
     </div>
   );
