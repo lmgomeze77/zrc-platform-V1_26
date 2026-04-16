@@ -454,9 +454,15 @@ const Hero = ({ lang, onNav }) => {
           <button onClick={() => onNav("brokerage")} style={{fontFamily:F.mono,fontSize:10.5,letterSpacing:"0.12em",padding:"13px 28px",background:"transparent",color:C.gold,border:`1px solid ${C.goldBorder}`,cursor:"pointer",fontWeight:500}}>{t.cta2}</button>
         </div>
         <div style={{marginTop:72,display:"flex",justifyContent:"center",gap:0,flexWrap:"wrap",alignItems:"center"}}>
-          {t.fw.map((step,i) => (
-            <div key={step} style={{display:"flex",alignItems:"center"}}>
-              <div style={{padding:"6px 16px",border:`1px solid ${i===0?C.gold:C.border}`,fontFamily:F.mono,fontSize:9,letterSpacing:"0.15em",color:i===0?C.gold:C.textMuted,background:i===0?C.goldDim:"transparent"}}>{step}</div>
+{t.fw.map((step,i) => {
+  var targets = ["observatory","intelligence","brokerage","academia","community"];
+  return (
+    <div key={step} style={{display:"flex",alignItems:"center"}}>
+      <div onClick={() => onNav(targets[i])} style={{padding:"6px 16px",border:`1px solid ${i===0?C.gold:C.border}`,fontFamily:F.mono,fontSize:9,letterSpacing:"0.15em",color:i===0?C.gold:C.textMuted,background:i===0?C.goldDim:"transparent",cursor:"pointer",transition:"all 0.25s"}}>{step}</div>
+      {i<4 && <span style={{fontFamily:F.mono,color:C.textMuted,margin:"0 2px",fontSize:10,opacity:0.5}}>→</span>}
+    </div>
+  );
+})}
               {i<4 && <span style={{fontFamily:F.mono,color:C.textMuted,margin:"0 2px",fontSize:10,opacity:0.5}}>→</span>}
             </div>
           ))}
