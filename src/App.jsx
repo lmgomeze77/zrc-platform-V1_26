@@ -79,153 +79,79 @@ live: “LIVE”,
 
 // ─── DATA ───
 
-// Ticker defaults (shown while loading, and as fallback if APIs fail)
-const TICKER_DEFAULTS = [
-{ s: “EUR/USD”,  v: “—”, c: “—”, up: true,  src: “fx”,     live: false },
-{ s: “IBEX 35”,  v: “—”, c: “—”, up: true,  src: “yahoo”,  live: false },
-{ s: “BRENT”,    v: “—”, c: “—”, up: false, src: “yahoo”,  live: false },
-{ s: “GOLD”,     v: “—”, c: “—”, up: true,  src: “yahoo”,  live: false },
-{ s: “BTC”,      v: “—”, c: “—”, up: true,  src: “crypto”, live: false },
-{ s: “VIX”,      v: “—”, c: “—”, up: true,  src: “yahoo”,  live: false },
-{ s: “US 10Y”,   v: “—”, c: “—”, up: true,  src: “yahoo”,  live: false },
-{ s: “EUR/GBP”,  v: “—”, c: “—”, up: false, src: “fx”,     live: false },
+// ─── LIVE TICKER (reads from public/data/headlines.json, updated by GitHub Action) ───
+
+// Display name mapping — cleans up verbose JSON names for the ticker bar
+const TICKER_DISPLAY = {
+“EUR/USD”: “EUR/USD”, “IBEX 35”: “IBEX 35”, “BRENT crude”: “BRENT”,
+“WTI crude”: “WTI”, “GOLD (XAU/USD)”: “GOLD”, “BTC/USD”: “BTC”,
+“VIX”: “VIX”, “US 10Y yield”: “US 10Y”, “S&P 500”: “S&P 500”,
+“DAX 40”: “DAX”, “EUR/GBP”: “EUR/GBP”, “DXY dollar index”: “DXY”,
+“Natural Gas”: “NATGAS”, “Copper”: “COPPER”, “USD/CNY”: “USD/CNY”,
+};
+
+// Symbols to show in ticker (in display order). Remove any you don’t want.
+const TICKER_SHOW = [
+“EUR/USD”, “IBEX 35”, “S&P 500”, “BRENT crude”, “GOLD (XAU/USD)”, “BTC/USD”,
+“VIX”, “US 10Y yield”, “DAX 40”, “EUR/GBP”, “DXY dollar index”,
+“Natural Gas”, “Copper”, “USD/CNY”,
 ];
 
-// Yahoo Finance symbol mapping (used by ZRC API proxy)
-const YAHOO_SYMBOLS = {
-“IBEX 35”: “^IBEX”,
-“BRENT”:   “BZ=F”,
-“GOLD”:    “GC=F”,
-“VIX”:     “^VIX”,
-“US 10Y”:  “^TNX”,
-};
+// Symbols that should display with a $ prefix
+const DOLLAR_SYMBOLS = [“BRENT crude”, “WTI crude”, “GOLD (XAU/USD)”, “BTC/USD”, “Copper”, “Natural Gas”];
 
-// ─── TICKER HELPERS ───
-function getYesterdayDate() {
-const d = new Date();
-d.setDate(d.getDate() - 1);
-const day = d.getDay();
-if (day === 0) d.setDate(d.getDate() - 2); // Sunday → Friday
-if (day === 6) d.setDate(d.getDate() - 1); // Saturday → Friday
-return d.toISOString().split(“T”)[0];
-}
-
-function updateTickerItem(arr, symbol, value, changePercent) {
-const idx = arr.findIndex(function(t) { return t.s === symbol; });
-if (idx < 0) return;
-var sign = changePercent >= 0 ? “+” : “”;
-arr[idx] = {
-s: arr[idx].s,
-src: arr[idx].src,
-v: value,
-c: sign + changePercent.toFixed(2) + “%”,
-up: changePercent >= 0,
-live: true,
-};
-}
-
-// ─── LIVE TICKER HOOK ───
 const useTickerData = () => {
-const [data, setData] = useState(TICKER_DEFAULTS);
+const [data, setData] = useState([]);
 const [lastUpdate, setLastUpdate] = useState(null);
 
 useEffect(() => {
 var mounted = true;
 
 ```
-var fetchAll = async function() {
-  var next = TICKER_DEFAULTS.map(function(t) { return { ...t }; });
-
-  // ── 1. Forex via Frankfurter (free, no API key, CORS OK) ──
+var fetchData = async function() {
   try {
-    var fxResponses = await Promise.all([
-      fetch("https://api.frankfurter.app/latest?from=EUR&to=USD,GBP"),
-      fetch("https://api.frankfurter.app/" + getYesterdayDate() + "?from=EUR&to=USD,GBP"),
-    ]);
-    var today = await fxResponses[0].json();
-    var yesterday = await fxResponses[1].json();
+    // ── IMPORTANT: file is public/data/headlines.json ──
+    var res = await fetch("/data/headlines.json?v=" + Date.now());
+    if (!res.ok) throw new Error("Failed to fetch market data");
+    var json = await res.json();
 
-    if (today.rates && today.rates.USD && yesterday.rates && yesterday.rates.USD) {
-      var eurUsd = today.rates.USD;
-      var eurUsdPrev = yesterday.rates.USD;
-      var eurUsdChg = ((eurUsd - eurUsdPrev) / eurUsdPrev) * 100;
-      updateTickerItem(next, "EUR/USD", eurUsd.toFixed(4), eurUsdChg);
-    }
-    if (today.rates && today.rates.GBP && yesterday.rates && yesterday.rates.GBP) {
-      var eurGbp = today.rates.GBP;
-      var eurGbpPrev = yesterday.rates.GBP;
-      var eurGbpChg = ((eurGbp - eurGbpPrev) / eurGbpPrev) * 100;
-      updateTickerItem(next, "EUR/GBP", eurGbp.toFixed(4), eurGbpChg);
-    }
-  } catch (err) {
-    console.warn("Forex fetch failed:", err.message);
-  }
-
-  // ── 2. Bitcoin via CoinGecko (free, no API key, CORS OK) ──
-  try {
-    var btcRes = await fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"
-    );
-    var btcData = await btcRes.json();
-    if (btcData.bitcoin) {
-      var price = btcData.bitcoin.usd;
-      var chg = btcData.bitcoin.usd_24h_change || 0;
-      var formatted = "$" + price.toLocaleString("en-US", { maximumFractionDigits: 0 });
-      updateTickerItem(next, "BTC", formatted, chg);
-    }
-  } catch (err) {
-    console.warn("BTC fetch failed:", err.message);
-  }
-
-  // ── 3. Yahoo Finance via ZRC API proxy (indices, commodities, bonds) ──
-  // Calls /api/quotes on your Render backend. If the proxy endpoint
-  // isn't set up yet, this silently fails and those tickers show "—".
-  try {
-    var symbols = Object.values(YAHOO_SYMBOLS).join(",");
-    var yahooRes = await fetch(
-      "https://zrc-api.onrender.com/api/quotes?symbols=" + encodeURIComponent(symbols)
-    );
-    if (yahooRes.ok) {
-      var quotes = await yahooRes.json();
-      if (Array.isArray(quotes)) {
-        for (var qi = 0; qi < quotes.length; qi++) {
-          var q = quotes[qi];
-          var tickerName = null;
-          var entries = Object.entries(YAHOO_SYMBOLS);
-          for (var ei = 0; ei < entries.length; ei++) {
-            if (entries[ei][1] === q.symbol) { tickerName = entries[ei][0]; break; }
-          }
-          if (tickerName && q.price != null) {
-            var fmtPrice;
-            if (tickerName === "US 10Y") {
-              fmtPrice = q.price.toFixed(2) + "%";
-            } else if (tickerName === "VIX") {
-              fmtPrice = q.price.toFixed(1);
-            } else if (tickerName === "BRENT") {
-              fmtPrice = "$" + q.price.toFixed(2);
-            } else if (tickerName === "GOLD") {
-              fmtPrice = "$" + q.price.toLocaleString("en-US", { maximumFractionDigits: 0 });
-            } else {
-              fmtPrice = q.price.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    if (json.market_ticker && Array.isArray(json.market_ticker) && mounted) {
+      var mapped = [];
+      for (var i = 0; i < TICKER_SHOW.length; i++) {
+        var symbol = TICKER_SHOW[i];
+        var item = json.market_ticker.find(function(t) { return t.symbol === symbol; });
+        if (item) {
+          var displayVal = item.value;
+          if (DOLLAR_SYMBOLS.includes(symbol)) {
+            var num = parseFloat(String(item.value).replace(/[,$]/g, ""));
+            if (!isNaN(num)) {
+              displayVal = "$" + num.toLocaleString("en-US", {
+                minimumFractionDigits: num >= 1000 ? 0 : 2,
+                maximumFractionDigits: num >= 1000 ? 0 : 2,
+              });
             }
-            updateTickerItem(next, tickerName, fmtPrice, q.changePercent || 0);
+          } else if (symbol === "US 10Y yield") {
+            displayVal = String(item.value).includes("%") ? item.value : item.value + "%";
           }
+          mapped.push({
+            s: TICKER_DISPLAY[symbol] || symbol,
+            v: displayVal,
+            c: item.change || "—",
+            up: item.up !== false,
+            live: true,
+          });
         }
       }
+      setData(mapped);
+      setLastUpdate(json.market_updated_at ? new Date(json.market_updated_at) : new Date());
     }
   } catch (err) {
-    // Yahoo proxy not set up yet — silently skip, tickers show "—"
-  }
-
-  if (mounted) {
-    setData(next);
-    setLastUpdate(new Date());
+    console.warn("Ticker data fetch failed:", err.message);
   }
 };
 
-fetchAll();
-var interval = setInterval(fetchAll, 60000); // refresh every 60 seconds
-
+fetchData();
+var interval = setInterval(fetchData, 5 * 60 * 1000); // re-fetch every 5 min
 return function() { mounted = false; clearInterval(interval); };
 ```
 
@@ -445,15 +371,22 @@ return (
 // ─── MARKET TICKER (LIVE) ───
 const MarketTicker = ({ lang }) => {
 const { data, lastUpdate } = useTickerData();
+if (data.length === 0) {
+return (
+<div style={{background:C.surface,borderBottom:`1px solid ${C.border}`,height:36,display:“flex”,alignItems:“center”,justifyContent:“center”}}>
+<span style={{fontFamily:F.mono,fontSize:9,color:C.textMuted,letterSpacing:“0.1em”}}>LOADING MARKET DATA…</span>
+</div>
+);
+}
 const doubled = […data, …data];
 return (
 <div style={{background:C.surface,borderBottom:`1px solid ${C.border}`,overflow:“hidden”,position:“relative”,height:36}}>
-<div style={{display:“flex”,alignItems:“center”,position:“absolute”,whiteSpace:“nowrap”,animation:“tickerScroll 40s linear infinite”}}>
+<div style={{display:“flex”,alignItems:“center”,position:“absolute”,whiteSpace:“nowrap”,animation:“tickerScroll 60s linear infinite”}}>
 {doubled.map((m, i) => (
 <div key={i} style={{display:“inline-flex”,alignItems:“center”,gap:8,padding:“0 24px”,height:36}}>
-<span style={{fontFamily:F.mono,fontSize:10,color:m.live ? C.textMuted : C.border,letterSpacing:“0.05em”}}>{m.s}</span>
-<span style={{fontFamily:F.mono,fontSize:11,color:m.live ? C.text : C.textMuted,fontWeight:500}}>{m.v}</span>
-<span style={{fontFamily:F.mono,fontSize:10,color:m.v === “—” ? C.textMuted : m.up ? C.green : C.red,fontWeight:500}}>{m.c}</span>
+<span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted,letterSpacing:“0.05em”}}>{m.s}</span>
+<span style={{fontFamily:F.mono,fontSize:11,color:C.text,fontWeight:500}}>{m.v}</span>
+<span style={{fontFamily:F.mono,fontSize:10,color:m.up ? C.green : C.red,fontWeight:500}}>{m.c}</span>
 <span style={{width:1,height:12,background:C.border}} />
 </div>
 ))}
