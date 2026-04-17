@@ -1,13 +1,13 @@
-﻿import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
+import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-// ZENITH RISE CAPITAL â€” PLATFORM v3.1
+// ═══════════════════════════════════════════════════════════════════════
+// ZENITH RISE CAPITAL — PLATFORM v3.1
 // Full functional: forms, auth, gated content, registration flows
 // Live market ticker via frankfurter.app + CoinGecko + Yahoo proxy
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════
 
-// â”€â”€â”€ DESIGN TOKENS â”€â”€â”€
+// ─── DESIGN TOKENS ───
 const C = {
   bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
   border: "#27272A", borderHover: "#3F3F46",
@@ -21,7 +21,7 @@ const F = {
   mono: "'IBM Plex Mono', 'Fira Code', monospace",
 };
 
-// â”€â”€â”€ AUTH CONTEXT â”€â”€â”€
+// ─── AUTH CONTEXT ───
 const AuthContext = createContext(null);
 
 const useAuth = () => useContext(AuthContext);
@@ -46,43 +46,43 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-// â”€â”€â”€ i18n (simplified inline) â”€â”€â”€
+// ─── i18n (simplified inline) ───
 const T = {
   es: {
     nav: ["Observatorio", "Intelligence", "Brokerage", "Advisory", "Academia", "Comunidad"],
-    hero: { tag: "INTELIGENCIA ESTRATÃ‰GICA Â· INVERSIÃ“N Â· EJECUCIÃ“N", h1: "Donde la Inteligencia", h2: "GeopolÃ­tica genera", h3: "Alpha Institucional", sub: "ZRC opera en la intersecciÃ³n entre inteligencia macro, advisory estratÃ©gico y ejecuciÃ³n de operaciones â€” transformando seÃ±ales geopolÃ­ticas en decisiones de inversiÃ³n de grado institucional.", cta1: "ACCEDER AL OBSERVATORIO", cta2: "VER OPORTUNIDADES", fw: ["OBSERVAR", "ANALIZAR", "EJECUTAR", "EDUCAR", "CONECTAR"] },
-    obs: { label: "01 â€” OBSERVATORIO GEOPOLÃTICO", title: "Feed de Inteligencia en Tiempo Real", sub: "SeÃ±ales macro filtradas con lente de inversiÃ³n. Cada seÃ±al mapeada a implicaciones de cartera.", full: "ANÃLISIS COMPLETO â†’", share: "COMPARTIR", locked: "Registrate para acceder al anÃ¡lisis completo" },
-    intel: { label: "02 â€” INVESTOR INTELLIGENCE", title: "Aplicaciones AnalÃ­ticas Propietarias", sub: "Herramientas que transforman inteligencia bruta en seÃ±ales de inversiÃ³n accionables.", mlBadge: "MACHINE LEARNING Â· MODELOS PROPIETARIOS", mlText: "Nuestros protocolos de screening y forecasting estÃ¡n potenciados por modelos de machine learning propietarios en desarrollo continuo.", locked: "Acceso exclusivo para miembros registrados" },
-    brok: { label: "03 â€” BROKERAGE", title: "Singular Opportunities", sub: "Oportunidades off-market curadas. Due diligence de grado institucional.", req: "SOLICITAR TEASER â†’" },
-    adv: { label: "04 â€” ADVISORY", title: "M&A & Growth Strategy", sub: "Advisory institucional para empresas navegando complejidad." },
-    acad: { label: "05 â€” ZENITH ACADEMIA", title: "EducaciÃ³n Impulsada por Inteligencia", sub: "Programas de nivel postgraduado impartidos por practitioners." },
-    comm: { label: "06 â€” THE INNER CIRCLE", title: "Comunidad de Inteligencia", sub: "Red privada de inversores, operadores y estrategas.", applyTitle: "Solicitar MembresÃ­a", applyText: "The Inner Circle es solo por invitaciÃ³n. EnvÃ­a tu perfil profesional y tesis de inversiÃ³n.", applyCta: "SOLICITAR ACCESO â†’" },
-    auth: { login: "Iniciar SesiÃ³n", register: "Crear Cuenta", name: "Nombre completo", email: "Email", pass: "ContraseÃ±a", company: "Empresa / InstituciÃ³n", role: "Cargo", interest: "Ãrea de interÃ©s principal", submit: "Acceder", registerBtn: "Registrarse", noAccount: "Â¿No tienes cuenta?", hasAccount: "Â¿Ya tienes cuenta?", create: "Crear cuenta", loginLink: "Iniciar sesiÃ³n" },
-    form: { title: "Solicitar InformaciÃ³n", name: "Nombre", email: "Email", phone: "TelÃ©fono", company: "Empresa", message: "Mensaje", send: "ENVIAR SOLICITUD â†’", sent: "Solicitud enviada correctamente", teaserTitle: "Solicitar Investment Teaser", enrollTitle: "Solicitar InscripciÃ³n", contactTitle: "Contactar Advisory", applyTitle: "Solicitar MembresÃ­a â€” Inner Circle" },
-    footer: { legal: "Â© 2026 Calesius Global SL Â· CIF B56399207 Â· Todos los derechos reservados", loc: "MADRID Â· LUXEMBURGO Â· GLOBAL" },
+    hero: { tag: "INTELIGENCIA ESTRATÉGICA · INVERSIÓN · EJECUCIÓN", h1: "Donde la Inteligencia", h2: "Geopolítica genera", h3: "Alpha Institucional", sub: "ZRC opera en la intersección entre inteligencia macro, advisory estratégico y ejecución de operaciones — transformando señales geopolíticas en decisiones de inversión de grado institucional.", cta1: "ACCEDER AL OBSERVATORIO", cta2: "VER OPORTUNIDADES", fw: ["OBSERVAR", "ANALIZAR", "EJECUTAR", "EDUCAR", "CONECTAR"] },
+    obs: { label: "01 — OBSERVATORIO GEOPOLÍTICO", title: "Feed de Inteligencia en Tiempo Real", sub: "Señales macro filtradas con lente de inversión. Cada señal mapeada a implicaciones de cartera.", full: "ANÁLISIS COMPLETO →", share: "COMPARTIR", locked: "Registrate para acceder al análisis completo" },
+    intel: { label: "02 — INVESTOR INTELLIGENCE", title: "Aplicaciones Analíticas Propietarias", sub: "Herramientas que transforman inteligencia bruta en señales de inversión accionables.", mlBadge: "MACHINE LEARNING · MODELOS PROPIETARIOS", mlText: "Nuestros protocolos de screening y forecasting están potenciados por modelos de machine learning propietarios en desarrollo continuo.", locked: "Acceso exclusivo para miembros registrados" },
+    brok: { label: "03 — BROKERAGE", title: "Singular Opportunities", sub: "Oportunidades off-market curadas. Due diligence de grado institucional.", req: "SOLICITAR TEASER →" },
+    adv: { label: "04 — ADVISORY", title: "M&A & Growth Strategy", sub: "Advisory institucional para empresas navegando complejidad." },
+    acad: { label: "05 — ZENITH ACADEMIA", title: "Educación Impulsada por Inteligencia", sub: "Programas de nivel postgraduado impartidos por practitioners." },
+    comm: { label: "06 — THE INNER CIRCLE", title: "Comunidad de Inteligencia", sub: "Red privada de inversores, operadores y estrategas.", applyTitle: "Solicitar Membresía", applyText: "The Inner Circle es solo por invitación. Envía tu perfil profesional y tesis de inversión.", applyCta: "SOLICITAR ACCESO →" },
+    auth: { login: "Iniciar Sesión", register: "Crear Cuenta", name: "Nombre completo", email: "Email", pass: "Contraseña", company: "Empresa / Institución", role: "Cargo", interest: "Área de interés principal", submit: "Acceder", registerBtn: "Registrarse", noAccount: "¿No tienes cuenta?", hasAccount: "¿Ya tienes cuenta?", create: "Crear cuenta", loginLink: "Iniciar sesión" },
+    form: { title: "Solicitar Información", name: "Nombre", email: "Email", phone: "Teléfono", company: "Empresa", message: "Mensaje", send: "ENVIAR SOLICITUD →", sent: "Solicitud enviada correctamente", teaserTitle: "Solicitar Investment Teaser", enrollTitle: "Solicitar Inscripción", contactTitle: "Contactar Advisory", applyTitle: "Solicitar Membresía — Inner Circle" },
+    footer: { legal: "© 2026 Calesius Global SL · CIF B56399207 · Todos los derechos reservados", loc: "MADRID · LUXEMBURGO · GLOBAL" },
     live: "EN VIVO",
   },
   en: {
     nav: ["Observatory", "Intelligence", "Brokerage", "Advisory", "Academia", "Community"],
-    hero: { tag: "STRATEGIC INTELLIGENCE Â· INVESTMENT Â· EXECUTION", h1: "Where Geopolitical", h2: "Intelligence Generates", h3: "Institutional Alpha", sub: "ZRC operates at the intersection of macro intelligence, strategic advisory, and deal execution â€” transforming geopolitical signals into institutional-grade investment decisions.", cta1: "ENTER OBSERVATORY", cta2: "VIEW OPPORTUNITIES", fw: ["OBSERVE", "ANALYZE", "EXECUTE", "EDUCATE", "CONNECT"] },
-    obs: { label: "01 â€” GEOPOLITICAL OBSERVATORY", title: "Real-Time Intelligence Feed", sub: "Macro signals filtered through an investment lens. Every signal mapped to portfolio implications.", full: "FULL ANALYSIS â†’", share: "SHARE", locked: "Register to access full analysis" },
-    intel: { label: "02 â€” INVESTOR INTELLIGENCE", title: "Proprietary Analytical Applications", sub: "Tools that transform raw intelligence into actionable investment signals.", mlBadge: "MACHINE LEARNING Â· PROPRIETARY MODELS", mlText: "Our screening and forecasting protocols are powered by proprietary machine learning models under continuous development.", locked: "Exclusive access for registered members" },
-    brok: { label: "03 â€” BROKERAGE", title: "Singular Opportunities", sub: "Curated off-market opportunities. Institutional-grade due diligence.", req: "REQUEST TEASER â†’" },
-    adv: { label: "04 â€” ADVISORY", title: "M&A & Growth Strategy", sub: "Institutional advisory for companies navigating complexity." },
-    acad: { label: "05 â€” ZENITH ACADEMIA", title: "Intelligence-Driven Education", sub: "Postgraduate programs taught by practitioners." },
-    comm: { label: "06 â€” THE INNER CIRCLE", title: "Intelligence Community", sub: "Private network of investors, operators, and strategists.", applyTitle: "Apply for Membership", applyText: "The Inner Circle is invitation-only. Submit your professional background and investment thesis.", applyCta: "APPLY NOW â†’" },
+    hero: { tag: "STRATEGIC INTELLIGENCE · INVESTMENT · EXECUTION", h1: "Where Geopolitical", h2: "Intelligence Generates", h3: "Institutional Alpha", sub: "ZRC operates at the intersection of macro intelligence, strategic advisory, and deal execution — transforming geopolitical signals into institutional-grade investment decisions.", cta1: "ENTER OBSERVATORY", cta2: "VIEW OPPORTUNITIES", fw: ["OBSERVE", "ANALYZE", "EXECUTE", "EDUCATE", "CONNECT"] },
+    obs: { label: "01 — GEOPOLITICAL OBSERVATORY", title: "Real-Time Intelligence Feed", sub: "Macro signals filtered through an investment lens. Every signal mapped to portfolio implications.", full: "FULL ANALYSIS →", share: "SHARE", locked: "Register to access full analysis" },
+    intel: { label: "02 — INVESTOR INTELLIGENCE", title: "Proprietary Analytical Applications", sub: "Tools that transform raw intelligence into actionable investment signals.", mlBadge: "MACHINE LEARNING · PROPRIETARY MODELS", mlText: "Our screening and forecasting protocols are powered by proprietary machine learning models under continuous development.", locked: "Exclusive access for registered members" },
+    brok: { label: "03 — BROKERAGE", title: "Singular Opportunities", sub: "Curated off-market opportunities. Institutional-grade due diligence.", req: "REQUEST TEASER →" },
+    adv: { label: "04 — ADVISORY", title: "M&A & Growth Strategy", sub: "Institutional advisory for companies navigating complexity." },
+    acad: { label: "05 — ZENITH ACADEMIA", title: "Intelligence-Driven Education", sub: "Postgraduate programs taught by practitioners." },
+    comm: { label: "06 — THE INNER CIRCLE", title: "Intelligence Community", sub: "Private network of investors, operators, and strategists.", applyTitle: "Apply for Membership", applyText: "The Inner Circle is invitation-only. Submit your professional background and investment thesis.", applyCta: "APPLY NOW →" },
     auth: { login: "Sign In", register: "Create Account", name: "Full name", email: "Email", pass: "Password", company: "Company / Institution", role: "Position", interest: "Primary area of interest", submit: "Sign In", registerBtn: "Register", noAccount: "Don't have an account?", hasAccount: "Already have an account?", create: "Create account", loginLink: "Sign in" },
-    form: { title: "Request Information", name: "Name", email: "Email", phone: "Phone", company: "Company", message: "Message", send: "SEND REQUEST â†’", sent: "Request sent successfully", teaserTitle: "Request Investment Teaser", enrollTitle: "Request Enrollment", contactTitle: "Contact Advisory", applyTitle: "Apply for Membership â€” Inner Circle" },
-    footer: { legal: "Â© 2026 Calesius Global SL Â· CIF B56399207 Â· All rights reserved", loc: "MADRID Â· LUXEMBOURG Â· GLOBAL" },
+    form: { title: "Request Information", name: "Name", email: "Email", phone: "Phone", company: "Company", message: "Message", send: "SEND REQUEST →", sent: "Request sent successfully", teaserTitle: "Request Investment Teaser", enrollTitle: "Request Enrollment", contactTitle: "Contact Advisory", applyTitle: "Apply for Membership — Inner Circle" },
+    footer: { legal: "© 2026 Calesius Global SL · CIF B56399207 · All rights reserved", loc: "MADRID · LUXEMBOURG · GLOBAL" },
     live: "LIVE",
   }
 };
 
-// â”€â”€â”€ DATA â”€â”€â”€
+// ─── DATA ───
 
-// â”€â”€â”€ LIVE TICKER (reads from public/data/headlines.json, updated by GitHub Action) â”€â”€â”€
+// ─── LIVE TICKER (reads from public/data/headlines.json, updated by GitHub Action) ───
 
-// Display name mapping â€” cleans up verbose JSON names for the ticker bar
+// Display name mapping — cleans up verbose JSON names for the ticker bar
 const TICKER_DISPLAY = {
   "EUR/USD": "EUR/USD", "IBEX 35": "IBEX 35", "BRENT crude": "BRENT",
   "WTI crude": "WTI", "GOLD (XAU/USD)": "GOLD", "BTC/USD": "BTC",
@@ -110,7 +110,7 @@ const useTickerData = () => {
 
     var fetchData = async function() {
       try {
-        // â”€â”€ IMPORTANT: file is public/data/headlines.json â”€â”€
+        // ── IMPORTANT: file is public/data/headlines.json ──
         var res = await fetch("/data/headlines.json?v=" + Date.now());
         if (!res.ok) throw new Error("Failed to fetch market data");
         var json = await res.json();
@@ -136,7 +136,7 @@ const useTickerData = () => {
               mapped.push({
                 s: TICKER_DISPLAY[symbol] || symbol,
                 v: displayVal,
-                c: item.change || "â€”",
+                c: item.change || "—",
                 up: item.up !== false,
                 live: true,
               });
@@ -159,46 +159,46 @@ const useTickerData = () => {
 };
 
 const FEED = [
-  { id:1, tag:"CRITICAL", region:"MENA", title:{es:"DisrupciÃ³n en corredor del Mar Rojo â€” fletes +340% YTD",en:"Red Sea corridor disruption â€” freight rates +340% YTD"}, time:"2h", impact:"high", confidence:92, summary:{es:"Escalada HoutÃ­ fuerza redireccionamiento vÃ­a Cabo de Buena Esperanza. Impacto directo en costes de importaciÃ³n europeos, logÃ­stica energÃ©tica y primas de seguro en rutas comerciales mediterrÃ¡neas.",en:"Houthi escalation forces rerouting via Cape of Good Hope. Direct impact on European import costs, energy logistics, and insurance premiums across Mediterranean trade routes."}, signals:["OIL +","SHIPPING +","EUR -"] },
-  { id:2, tag:"MONITOR", region:"EU", title:{es:"BCE seÃ±ala divergencia de tipos frente a la Fed",en:"ECB signals rate path divergence from Fed"}, time:"4h", impact:"medium", confidence:78, summary:{es:"Ãšltima orientaciÃ³n de Lagarde sugiere 2-3 recortes en 2026 mientras la Fed mantiene. Ventanas de arbitraje cambiario para M&A cross-border.",en:"Lagarde's guidance suggests 2-3 cuts in 2026 while Fed holds. Currency arbitrage windows opening for cross-border M&A."}, signals:["EUR/USD -","BONDS +","EQUITIES ?"] },
-  { id:3, tag:"EMERGING", region:"LATAM", title:{es:"Reformas de Milei desbloquean pipeline de IED por $12B",en:"Milei reforms unlock $12B in frozen FDI pipeline"}, time:"6h", impact:"high", confidence:85, summary:{es:"Paquete de desregulaciÃ³n aprobado en Senado. MinerÃ­a, agritech y energÃ­a posicionados para first-mover. ZRC monitorizando 4 mandatos activos.",en:"Deregulation package clears Senate. Mining, agritech, and energy positioned for first-mover advantage. ZRC tracking 4 live mandates."}, signals:["ARS +","MINING +","AGRI +"] },
-  { id:4, tag:"STRATEGIC", region:"APAC", title:{es:"Retrasos fab TSMC Arizona â€” tesis semiconductores",en:"TSMC Arizona fab delays reshape semiconductor thesis"}, time:"8h", impact:"medium", confidence:71, summary:{es:"Timeline producciÃ³n desplazado a Q3 2027. SoberanÃ­a europea de chips se fortalece.",en:"Production timeline pushed to Q3 2027. European chip sovereignty narrative strengthens."}, signals:["SEMIS -","EU TECH +"] },
-  { id:5, tag:"ALERT", region:"AFRICA", title:{es:"Gasoducto Morocco-Nigeria: â‚¬4.2B en financiaciÃ³n",en:"Morocco-Nigeria gas pipeline secures â‚¬4.2B financing"}, time:"12h", impact:"high", confidence:88, summary:{es:"Consorcio AfDB y fondos soberanos cierran financiaciÃ³n. Transforma infraestructura energÃ©tica de Ãfrica Occidental.",en:"AfDB and sovereign wealth consortium close financing. Transforms West African energy infrastructure."}, signals:["ENERGY +","INFRA +","NGN +"] },
+  { id:1, tag:"CRITICAL", region:"MENA", title:{es:"Disrupción en corredor del Mar Rojo — fletes +340% YTD",en:"Red Sea corridor disruption — freight rates +340% YTD"}, time:"2h", impact:"high", confidence:92, summary:{es:"Escalada Houtí fuerza redireccionamiento vía Cabo de Buena Esperanza. Impacto directo en costes de importación europeos, logística energética y primas de seguro en rutas comerciales mediterráneas.",en:"Houthi escalation forces rerouting via Cape of Good Hope. Direct impact on European import costs, energy logistics, and insurance premiums across Mediterranean trade routes."}, signals:["OIL +","SHIPPING +","EUR -"] },
+  { id:2, tag:"MONITOR", region:"EU", title:{es:"BCE señala divergencia de tipos frente a la Fed",en:"ECB signals rate path divergence from Fed"}, time:"4h", impact:"medium", confidence:78, summary:{es:"Última orientación de Lagarde sugiere 2-3 recortes en 2026 mientras la Fed mantiene. Ventanas de arbitraje cambiario para M&A cross-border.",en:"Lagarde's guidance suggests 2-3 cuts in 2026 while Fed holds. Currency arbitrage windows opening for cross-border M&A."}, signals:["EUR/USD -","BONDS +","EQUITIES ?"] },
+  { id:3, tag:"EMERGING", region:"LATAM", title:{es:"Reformas de Milei desbloquean pipeline de IED por $12B",en:"Milei reforms unlock $12B in frozen FDI pipeline"}, time:"6h", impact:"high", confidence:85, summary:{es:"Paquete de desregulación aprobado en Senado. Minería, agritech y energía posicionados para first-mover. ZRC monitorizando 4 mandatos activos.",en:"Deregulation package clears Senate. Mining, agritech, and energy positioned for first-mover advantage. ZRC tracking 4 live mandates."}, signals:["ARS +","MINING +","AGRI +"] },
+  { id:4, tag:"STRATEGIC", region:"APAC", title:{es:"Retrasos fab TSMC Arizona — tesis semiconductores",en:"TSMC Arizona fab delays reshape semiconductor thesis"}, time:"8h", impact:"medium", confidence:71, summary:{es:"Timeline producción desplazado a Q3 2027. Soberanía europea de chips se fortalece.",en:"Production timeline pushed to Q3 2027. European chip sovereignty narrative strengthens."}, signals:["SEMIS -","EU TECH +"] },
+  { id:5, tag:"ALERT", region:"AFRICA", title:{es:"Gasoducto Morocco-Nigeria: €4.2B en financiación",en:"Morocco-Nigeria gas pipeline secures €4.2B financing"}, time:"12h", impact:"high", confidence:88, summary:{es:"Consorcio AfDB y fondos soberanos cierran financiación. Transforma infraestructura energética de África Occidental.",en:"AfDB and sovereign wealth consortium close financing. Transforms West African energy infrastructure."}, signals:["ENERGY +","INFRA +","NGN +"] },
 ];
 
 const OPS = [
-  { id:1, type:"REAL ESTATE", name:"Automotive Platform Madrid", loc:"ChamberÃ­, Madrid", size:"320mÂ² Â· Active License", yield:"8.2%", status:"EXCLUSIVE", price:"â‚¬1.2M" },
-  { id:2, type:"AGRI-LAND", name:"Finca Cabrerizas", loc:"Vilches, JaÃ©n", size:"337 hectares", yield:"Agri + Dev", status:"EXCLUSIVE", price:"â‚¬2.8M" },
-  { id:3, type:"RESIDENTIAL", name:"Edificio Salamanca", loc:"Barrio de Salamanca, Madrid", size:"2,042mÂ² Â· 12 units", yield:"6.5% net", status:"ADVISORY", price:"â‚¬11.6M" },
+  { id:1, type:"REAL ESTATE", name:"Automotive Platform Madrid", loc:"Chamberí, Madrid", size:"320m² · Active License", yield:"8.2%", status:"EXCLUSIVE", price:"€1.2M" },
+  { id:2, type:"AGRI-LAND", name:"Finca Cabrerizas", loc:"Vilches, Jaén", size:"337 hectares", yield:"Agri + Dev", status:"EXCLUSIVE", price:"€2.8M" },
+  { id:3, type:"RESIDENTIAL", name:"Edificio Salamanca", loc:"Barrio de Salamanca, Madrid", size:"2,042m² · 12 units", yield:"6.5% net", status:"ADVISORY", price:"€11.6M" },
 ];
 
 const TOOLS = [
-  { name:"GeoRisk Dashboard", desc:{es:"Scoring de riesgo geopolÃ­tico en tiempo real con sliders de escenario.",en:"Real-time geopolitical risk scoring with scenario sliders."}, icon:"â—ˆ", status:"LIVE", ml:true },
-  { name:"Valuation Engine", desc:{es:"DCF automatizado, mÃºltiplos y valoraciÃ³n normalizada para PYMEs.",en:"Automated DCF, multiples, and normalized valuation for SMEs."}, icon:"â—‡", status:"BETA", ml:true },
-  { name:"Deal Flow Radar", desc:{es:"Pipeline ML-enhanced identificando empresas sub-optimizadas en Europa del Sur.",en:"ML-enhanced pipeline identifying sub-optimized companies across Southern Europe."}, icon:"â—†", status:"LIVE", ml:true },
-  { name:"Macro Pulse", desc:{es:"Tracker de seÃ±ales de bancos centrales con NLP.",en:"Central bank signal tracker with NLP analysis."}, icon:"â—‹", status:"Q3 2026", ml:true },
+  { name:"GeoRisk Dashboard", desc:{es:"Scoring de riesgo geopolítico en tiempo real con sliders de escenario.",en:"Real-time geopolitical risk scoring with scenario sliders."}, icon:"◈", status:"LIVE", ml:true },
+  { name:"Valuation Engine", desc:{es:"DCF automatizado, múltiplos y valoración normalizada para PYMEs.",en:"Automated DCF, multiples, and normalized valuation for SMEs."}, icon:"◇", status:"BETA", ml:true },
+  { name:"Deal Flow Radar", desc:{es:"Pipeline ML-enhanced identificando empresas sub-optimizadas en Europa del Sur.",en:"ML-enhanced pipeline identifying sub-optimized companies across Southern Europe."}, icon:"◆", status:"LIVE", ml:true },
+  { name:"Macro Pulse", desc:{es:"Tracker de señales de bancos centrales con NLP.",en:"Central bank signal tracker with NLP analysis."}, icon:"○", status:"Q3 2026", ml:true },
 ];
 
 const SERVICES = [
-  { title:"M&A Advisory", desc:{es:"Soporte transaccional end-to-end. Especializado en mid-market cross-border en Europa del Sur.",en:"End-to-end transaction support. Specialized in cross-border mid-market deals across Southern Europe."}, metric:"â‚¬50M+" },
-  { title:"Growth Advisory", desc:{es:"ConsultorÃ­a estratÃ©gica para empresas en puntos de inflexiÃ³n. Framework cuantitativo.",en:"Strategic consulting for companies at inflection points. Quantitative framework."}, metric:"12 mandates" },
+  { title:"M&A Advisory", desc:{es:"Soporte transaccional end-to-end. Especializado en mid-market cross-border en Europa del Sur.",en:"End-to-end transaction support. Specialized in cross-border mid-market deals across Southern Europe."}, metric:"€50M+" },
+  { title:"Growth Advisory", desc:{es:"Consultoría estratégica para empresas en puntos de inflexión. Framework cuantitativo.",en:"Strategic consulting for companies at inflection points. Quantitative framework."}, metric:"12 mandates" },
   { title:"Capital Raising", desc:{es:"Soluciones de capital estructurado conectando empresas con inversores institucionales.",en:"Structured capital solutions connecting companies with institutional investors."}, metric:"3 sectors" },
 ];
 
 const COURSES = [
-  { id:1, title:{es:"Riesgo GeopolÃ­tico y Estrategia de InversiÃ³n",en:"Geopolitical Risk & Investment Strategy"}, mod:12, hrs:24, level:"Advanced", status:"ENROLLING" },
-  { id:2, title:{es:"Masterclass de ValoraciÃ³n Corporativa",en:"Corporate Valuation Masterclass"}, mod:8, hrs:16, level:"Intermediate", status:"ENROLLING" },
+  { id:1, title:{es:"Riesgo Geopolítico y Estrategia de Inversión",en:"Geopolitical Risk & Investment Strategy"}, mod:12, hrs:24, level:"Advanced", status:"ENROLLING" },
+  { id:2, title:{es:"Masterclass de Valoración Corporativa",en:"Corporate Valuation Masterclass"}, mod:8, hrs:16, level:"Intermediate", status:"ENROLLING" },
   { id:3, title:{es:"M&A: De la LOI al Cierre",en:"M&A Execution: From LOI to Close"}, mod:10, hrs:20, level:"Advanced", status:"COMING" },
   { id:4, title:{es:"Macro y Estrategia de Bancos Centrales",en:"Macro & Central Bank Strategy"}, mod:6, hrs:12, level:"Intermediate", status:"COMING" },
 ];
 
 const THREADS = [
-  { id:1, author:"L. GÃ³mez Elvira", role:"Founder & CIO", title:{es:"Por quÃ© el Mar Rojo es un evento de reasignaciÃ³n de â‚¬200B",en:"Why the Red Sea is a â‚¬200B reallocation event"}, replies:34, views:1247 },
+  { id:1, author:"L. Gómez Elvira", role:"Founder & CIO", title:{es:"Por qué el Mar Rojo es un evento de reasignación de €200B",en:"Why the Red Sea is a €200B reallocation event"}, replies:34, views:1247 },
   { id:2, author:"Guest Analyst", role:"Macro Strategist", title:{es:"Divergencia BCE: posicionamiento para carry trades EUR",en:"ECB divergence: positioning for EUR carry trades"}, replies:18, views:892 },
-  { id:3, author:"ZRC Research", role:"Observatorio", title:{es:"Briefing Semanal #47: DesregulaciÃ³n LATAM",en:"Weekly Briefing #47: LATAM deregulation wave"}, replies:22, views:1560 },
+  { id:3, author:"ZRC Research", role:"Observatorio", title:{es:"Briefing Semanal #47: Desregulación LATAM",en:"Weekly Briefing #47: LATAM deregulation wave"}, replies:22, views:1560 },
 ];
 
-// â”€â”€â”€ UI PRIMITIVES â”€â”€â”€
+// ─── UI PRIMITIVES ───
 const useInView = (th = 0.12) => { const r = useRef(null); const [v, setV] = useState(false); useEffect(() => { const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) setV(true); }, { threshold: th }); if (r.current) o.observe(r.current); return () => o.disconnect(); }, []); return [r, v]; };
 
 const FadeIn = ({ children, delay = 0, style = {} }) => { const [r, v] = useInView(); return <div ref={r} style={{ opacity: v?1:0, transform: v?"none":"translateY(20px)", transition: `all 0.6s ease ${delay}s`, ...style }}>{children}</div>; };
@@ -224,7 +224,7 @@ const SH = ({ label, title, sub, extra }) => (
   </FadeIn>
 );
 
-// â”€â”€â”€ MODAL SYSTEM â”€â”€â”€
+// ─── MODAL SYSTEM ───
 const Modal = ({ open, onClose, title, children }) => {
   if (!open) return null;
   return (
@@ -232,7 +232,7 @@ const Modal = ({ open, onClose, title, children }) => {
       <div onClick={e => e.stopPropagation()} style={{background:C.surface,border:`1px solid ${C.border}`,maxWidth:520,width:"100%",maxHeight:"90vh",overflow:"auto",position:"relative"}}>
         <div style={{padding:"24px 28px",borderBottom:`1px solid ${C.border}`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
           <h3 style={{fontFamily:F.display,fontSize:22,fontWeight:400,color:C.text,margin:0}}>{title}</h3>
-          <button onClick={onClose} style={{background:"none",border:"none",color:C.textMuted,fontSize:20,cursor:"pointer",padding:4}}>âœ•</button>
+          <button onClick={onClose} style={{background:"none",border:"none",color:C.textMuted,fontSize:20,cursor:"pointer",padding:4}}>✕</button>
         </div>
         <div style={{padding:"24px 28px"}}>{children}</div>
       </div>
@@ -240,7 +240,7 @@ const Modal = ({ open, onClose, title, children }) => {
   );
 };
 
-// â”€â”€â”€ FORM COMPONENT â”€â”€â”€
+// ─── FORM COMPONENT ───
 const FormInput = ({ label, type = "text", value, onChange, required = true }) => (
   <div style={{marginBottom:16}}>
     <label style={{fontFamily:F.mono,fontSize:10,color:C.textMuted,letterSpacing:"0.1em",display:"block",marginBottom:6}}>{label}{required && " *"}</label>
@@ -248,7 +248,7 @@ const FormInput = ({ label, type = "text", value, onChange, required = true }) =
       <textarea value={value} onChange={onChange} rows={4} style={{width:"100%",padding:"10px 14px",background:C.surface2,border:`1px solid ${C.border}`,color:C.text,fontFamily:F.body,fontSize:14,resize:"vertical",outline:"none"}} />
     ) : type === "select" ? (
       <select value={value} onChange={onChange} style={{width:"100%",padding:"10px 14px",background:C.surface2,border:`1px solid ${C.border}`,color:C.text,fontFamily:F.body,fontSize:14,outline:"none"}}>
-        <option value="">â€”</option>
+        <option value="">—</option>
         <option value="geopolitics">Geopolitical Intelligence</option>
         <option value="brokerage">Brokerage / Investment</option>
         <option value="advisory">M&A / Advisory</option>
@@ -284,10 +284,10 @@ const ContactForm = ({ title, context, onClose, lang }) => {
 
   if (sent) return (
     <div style={{textAlign:"center",padding:"40px 0"}}>
-      <div style={{fontSize:36,marginBottom:16}}>âœ“</div>
+      <div style={{fontSize:36,marginBottom:16}}>✓</div>
       <h3 style={{fontFamily:F.display,fontSize:22,color:C.gold,marginBottom:8}}>{t.sent}</h3>
       <p style={{fontFamily:F.body,fontSize:14,color:C.textSec}}>
-        {lang === "es" ? "Nuestro equipo se pondrÃ¡ en contacto en las prÃ³ximas 24h." : "Our team will reach out within 24h."}
+        {lang === "es" ? "Nuestro equipo se pondrá en contacto en las próximas 24h." : "Our team will reach out within 24h."}
       </p>
       <button onClick={onClose} style={{marginTop:24,fontFamily:F.mono,fontSize:10,letterSpacing:"0.1em",padding:"10px 24px",background:C.gold,color:C.bg,border:"none",cursor:"pointer",fontWeight:600}}>OK</button>
     </div>
@@ -306,7 +306,7 @@ const ContactForm = ({ title, context, onClose, lang }) => {
   );
 };
 
-// â”€â”€â”€ AUTH MODAL â”€â”€â”€
+// ─── AUTH MODAL ───
 const AuthModal = () => {
   const { authMode, setAuthMode, login, setShowAuth } = useAuth();
   const [lang] = useState("es");
@@ -351,21 +351,21 @@ const AuthModal = () => {
   );
 };
 
-// â”€â”€â”€ LOCKED OVERLAY â”€â”€â”€
+// ─── LOCKED OVERLAY ───
 const LockedOverlay = ({ message, lang }) => {
   const { openRegister } = useAuth();
   return (
     <div style={{padding:"32px 24px",background:`linear-gradient(180deg, transparent, ${C.bg})`,display:"flex",flexDirection:"column",alignItems:"center",gap:12}}>
-      <div style={{width:40,height:40,border:`1px solid ${C.goldBorder}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:18}}>ðŸ”’</div>
+      <div style={{width:40,height:40,border:`1px solid ${C.goldBorder}`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:18}}>🔒</div>
       <p style={{fontFamily:F.body,fontSize:13,color:C.textSec,textAlign:"center"}}>{message}</p>
       <button onClick={openRegister} style={{fontFamily:F.mono,fontSize:10,letterSpacing:"0.1em",padding:"8px 20px",background:C.gold,color:C.bg,border:"none",cursor:"pointer",fontWeight:600}}>
-        {lang === "es" ? "CREAR CUENTA GRATUITA â†’" : "CREATE FREE ACCOUNT â†’"}
+        {lang === "es" ? "CREAR CUENTA GRATUITA →" : "CREATE FREE ACCOUNT →"}
       </button>
     </div>
   );
 };
 
-// â”€â”€â”€ MARKET TICKER (LIVE) â”€â”€â”€
+// ─── MARKET TICKER (LIVE) ───
 const MarketTicker = ({ lang }) => {
   const { data, lastUpdate } = useTickerData();
   if (data.length === 0) {
@@ -398,7 +398,7 @@ const MarketTicker = ({ lang }) => {
   );
 };
 
-// â”€â”€â”€ NAV â”€â”€â”€
+// ─── NAV ───
 const Nav = ({ lang, setLang, onNav }) => {
   const { user, openLogin, logout } = useAuth();
   const [scrolled, setScrolled] = useState(false);
@@ -424,7 +424,7 @@ const Nav = ({ lang, setLang, onNav }) => {
           {user ? (
             <div style={{display:"flex",alignItems:"center",gap:8}}>
               <span style={{fontFamily:F.mono,fontSize:9,color:C.gold}}>{user.name}</span>
-              <button onClick={logout} style={{fontFamily:F.mono,fontSize:8,padding:"2px 8px",background:"transparent",color:C.textMuted,border:`1px solid ${C.border}`,cursor:"pointer"}}>âœ•</button>
+              <button onClick={logout} style={{fontFamily:F.mono,fontSize:8,padding:"2px 8px",background:"transparent",color:C.textMuted,border:`1px solid ${C.border}`,cursor:"pointer"}}>✕</button>
             </div>
           ) : (
             <button onClick={openLogin} style={{fontFamily:F.mono,fontSize:9,padding:"4px 12px",background:C.gold,color:C.bg,border:"none",cursor:"pointer",fontWeight:600}}>LOGIN</button>
@@ -435,7 +435,7 @@ const Nav = ({ lang, setLang, onNav }) => {
   );
 };
 
-// â”€â”€â”€ HERO â”€â”€â”€
+// ─── HERO ───
 const Hero = ({ lang, onNav }) => {
   const t = T[lang].hero;
   const [loaded, setLoaded] = useState(false);
@@ -451,7 +451,7 @@ const Hero = ({ lang, onNav }) => {
         </h1>
         <p style={{fontFamily:F.body,fontSize:16,color:C.textSec,maxWidth:540,margin:"36px auto 0",lineHeight:1.7,fontWeight:300}}>{t.sub}</p>
         <div style={{display:"flex",gap:12,justifyContent:"center",marginTop:48,flexWrap:"wrap"}}>
-          <button onClick={() => onNav("observatory")} style={{fontFamily:F.mono,fontSize:10.5,letterSpacing:"0.12em",padding:"13px 28px",background:C.gold,color:C.bg,border:"none",cursor:"pointer",fontWeight:600}}>{t.cta1} â†’</button>
+          <button onClick={() => onNav("observatory")} style={{fontFamily:F.mono,fontSize:10.5,letterSpacing:"0.12em",padding:"13px 28px",background:C.gold,color:C.bg,border:"none",cursor:"pointer",fontWeight:600}}>{t.cta1} →</button>
           <button onClick={() => onNav("brokerage")} style={{fontFamily:F.mono,fontSize:10.5,letterSpacing:"0.12em",padding:"13px 28px",background:"transparent",color:C.gold,border:`1px solid ${C.goldBorder}`,cursor:"pointer",fontWeight:500}}>{t.cta2}</button>
         </div>
         <div style={{marginTop:72,display:"flex",justifyContent:"center",gap:0,flexWrap:"wrap",alignItems:"center"}}>
@@ -460,7 +460,7 @@ const Hero = ({ lang, onNav }) => {
   return (
     <div key={step} style={{display:"flex",alignItems:"center"}}>
       <button onClick={() => onNav(targets[i])} style={{padding:"6px 16px",border:`1px solid ${i===0?C.gold:C.border}`,fontFamily:F.mono,fontSize:9,letterSpacing:"0.15em",color:i===0?C.gold:C.textMuted,background:i===0?C.goldDim:"transparent",cursor:"pointer"}}>{step}</button>
-      {i<4 && <span style={{fontFamily:F.mono,color:C.textMuted,margin:"0 2px",fontSize:10,opacity:0.5}}>â†’</span>}
+      {i<4 && <span style={{fontFamily:F.mono,color:C.textMuted,margin:"0 2px",fontSize:10,opacity:0.5}}>→</span>}
     </div>
   );
 })}
@@ -470,7 +470,7 @@ const Hero = ({ lang, onNav }) => {
   );
 };
 
-// â”€â”€â”€ OBSERVATORY â”€â”€â”€
+// ─── OBSERVATORY ───
 const Observatory = ({ lang }) => {
   const t = T[lang].obs;
   const { user, requireAuth } = useAuth();
@@ -495,7 +495,7 @@ const Observatory = ({ lang }) => {
                 <div style={{flex:1,minWidth:260}}>
                   <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8}}>
                     <Badge label={item.tag} variant={item.tag.toLowerCase()} />
-                    <span style={{fontFamily:F.mono,fontSize:9,color:C.textMuted}}>{item.region} Â· {item.time}</span>
+                    <span style={{fontFamily:F.mono,fontSize:9,color:C.textMuted}}>{item.region} · {item.time}</span>
                   </div>
                   <h3 style={{fontFamily:F.body,fontSize:14,fontWeight:500,color:C.text,margin:0,lineHeight:1.45}}>{item.title[lang]}</h3>
                 </div>
@@ -528,7 +528,7 @@ const Observatory = ({ lang }) => {
   );
 };
 
-// â”€â”€â”€ INTELLIGENCE (GATED) â”€â”€â”€
+// ─── INTELLIGENCE (GATED) ───
 const Intelligence = ({ lang, onLaunch }) => {
   const t = T[lang].intel;
   const { user, requireAuth } = useAuth();
@@ -537,7 +537,7 @@ const Intelligence = ({ lang, onLaunch }) => {
       <SH label={t.label} title={t.title} sub={t.sub} />
       <FadeIn delay={0.1}>
         <div style={{padding:"20px 24px",background:"rgba(139,92,246,0.06)",border:"1px solid rgba(139,92,246,0.18)",marginBottom:32,display:"flex",alignItems:"flex-start",gap:16,flexWrap:"wrap"}}>
-          <div style={{width:32,height:32,border:"1px solid rgba(139,92,246,0.4)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><span style={{fontSize:14}}>âš¡</span></div>
+          <div style={{width:32,height:32,border:"1px solid rgba(139,92,246,0.4)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><span style={{fontSize:14}}>⚡</span></div>
           <div style={{flex:1,minWidth:260}}>
             <div style={{fontFamily:F.mono,fontSize:9,letterSpacing:"0.15em",color:"#A78BFA",marginBottom:6}}>{t.mlBadge}</div>
             <p style={{fontFamily:F.body,fontSize:13,color:C.textSec,lineHeight:1.6,margin:0,fontWeight:300}}>{t.mlText}</p>
@@ -559,11 +559,11 @@ const Intelligence = ({ lang, onLaunch }) => {
               </div>
               {user ? (
                 <button onClick={() => onLaunch && onLaunch(tool)} style={{marginTop:20,fontFamily:F.mono,fontSize:9,letterSpacing:"0.1em",padding:"7px 16px",background:"transparent",color:C.gold,border:`1px solid ${C.goldBorder}`,cursor:"pointer",alignSelf:"flex-start"}}>
-                  {tool.status==="LIVE"?"LAUNCH â†’":tool.status==="BETA"?"REQUEST ACCESS":"NOTIFY ME"}
+                  {tool.status==="LIVE"?"LAUNCH →":tool.status==="BETA"?"REQUEST ACCESS":"NOTIFY ME"}
                 </button>
               ) : (
                 <div style={{marginTop:20,padding:"12px 16px",background:C.goldDim,border:`1px solid ${C.goldBorder}`,textAlign:"center"}}>
-                  <span style={{fontFamily:F.mono,fontSize:9,color:C.gold,letterSpacing:"0.1em"}}>ðŸ”’ {t.locked}</span>
+                  <span style={{fontFamily:F.mono,fontSize:9,color:C.gold,letterSpacing:"0.1em"}}>🔒 {t.locked}</span>
                 </div>
               )}
             </div>
@@ -575,7 +575,7 @@ const Intelligence = ({ lang, onLaunch }) => {
   );
 };
 
-// â”€â”€â”€ BROKERAGE â”€â”€â”€
+// ─── BROKERAGE ───
 const Brokerage = ({ lang }) => {
   const t = T[lang].brok;
   const [modal, setModal] = useState(null);
@@ -607,13 +607,13 @@ const Brokerage = ({ lang }) => {
         ))}
       </div>
       <Modal open={!!modal} onClose={()=>setModal(null)} title={T[lang].form.teaserTitle}>
-        <ContactForm title={T[lang].form.teaserTitle} context={modal ? `${modal.name} â€” ${modal.loc} â€” ${modal.price}` : ""} onClose={()=>setModal(null)} lang={lang} />
+        <ContactForm title={T[lang].form.teaserTitle} context={modal ? `${modal.name} — ${modal.loc} — ${modal.price}` : ""} onClose={()=>setModal(null)} lang={lang} />
       </Modal>
     </Sec>
   );
 };
 
-// â”€â”€â”€ ADVISORY â”€â”€â”€
+// ─── ADVISORY ───
 const Advisory = ({ lang }) => {
   const t = T[lang].adv;
   const [modal, setModal] = useState(false);
@@ -632,7 +632,7 @@ const Advisory = ({ lang }) => {
               <div style={{marginTop:20,paddingTop:14,borderTop:`1px solid ${C.border}`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                 <span style={{fontFamily:F.mono,fontSize:11,color:C.gold}}>{s.metric}</span>
                 <button onClick={()=>setModal(true)} style={{fontFamily:F.mono,fontSize:9,letterSpacing:"0.1em",padding:"5px 14px",background:"transparent",color:C.gold,border:`1px solid ${C.goldBorder}`,cursor:"pointer"}}>
-                  {lang==="es"?"CONTACTAR â†’":"CONTACT â†’"}
+                  {lang==="es"?"CONTACTAR →":"CONTACT →"}
                 </button>
               </div>
             </div>
@@ -646,7 +646,7 @@ const Advisory = ({ lang }) => {
   );
 };
 
-// â”€â”€â”€ ACADEMIA â”€â”€â”€
+// ─── ACADEMIA ───
 const Academia = ({ lang }) => {
   const t = T[lang].acad;
   const [modal, setModal] = useState(null);
@@ -665,9 +665,9 @@ const Academia = ({ lang }) => {
                 <h3 style={{fontFamily:F.display,fontSize:18,fontWeight:400,color:C.text,margin:0}}>{c.title[lang]}</h3>
               </div>
               <div style={{display:"flex",alignItems:"center",gap:16,flexShrink:0}}>
-                <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{c.mod} MOD Â· {c.hrs}H</span>
+                <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{c.mod} MOD · {c.hrs}H</span>
                 <button onClick={()=>setModal(c)} style={{fontFamily:F.mono,fontSize:9,letterSpacing:"0.1em",padding:"6px 16px",background:c.status==="ENROLLING"?C.goldDim:"transparent",color:C.gold,border:`1px solid ${C.goldBorder}`,cursor:"pointer"}}>
-                  {c.status==="ENROLLING"?(lang==="es"?"INSCRIBIRME â†’":"ENROLL â†’"):"WAITLIST"}
+                  {c.status==="ENROLLING"?(lang==="es"?"INSCRIBIRME →":"ENROLL →"):"WAITLIST"}
                 </button>
               </div>
             </div>
@@ -681,7 +681,7 @@ const Academia = ({ lang }) => {
   );
 };
 
-// â”€â”€â”€ COMMUNITY â”€â”€â”€
+// ─── COMMUNITY ───
 const Community = ({ lang }) => {
   const t = T[lang].comm;
   const { user, requireAuth } = useAuth();
@@ -704,7 +704,7 @@ const Community = ({ lang }) => {
                 <div style={{display:"flex",gap:16}}>
                   <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{thread.replies} replies</span>
                   <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{thread.views.toLocaleString()} views</span>
-                  {!user && <span style={{fontFamily:F.mono,fontSize:9,color:C.gold}}>ðŸ”’</span>}
+                  {!user && <span style={{fontFamily:F.mono,fontSize:9,color:C.gold}}>🔒</span>}
                 </div>
               </div>
             </div>
@@ -728,7 +728,7 @@ const Community = ({ lang }) => {
   );
 };
 
-// â”€â”€â”€ FOOTER â”€â”€â”€
+// ─── FOOTER ───
 const Footer = ({ lang }) => {
   const t = T[lang].footer;
   return (
@@ -750,7 +750,7 @@ const Footer = ({ lang }) => {
   );
 };
 
-// â”€â”€â”€ MAIN APP â”€â”€â”€
+// ─── MAIN APP ───
 export default function ZRCPlatform() {
   const [lang, setLang] = useState("es");
   const [activeTool, setActiveTool] = useState(null);
@@ -811,7 +811,7 @@ export default function ZRCPlatform() {
               border:`1px solid ${C.goldBorder}`, cursor:"pointer", fontWeight:600,
             }}
           >
-            â† VOLVER A ZRC
+            ← VOLVER A ZRC
           </button>
           <GeoRiskDashboard />
         </div>
