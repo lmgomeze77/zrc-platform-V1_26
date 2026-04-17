@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-04-16T07:30:29.443Z",
+  "generated_at": "2026-04-17T07:32:16.831Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.178",
-      "change": "-0.20%",
-      "up": false
+      "value": "1.1787",
+      "change": "+0.0003",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18089.50",
-      "change": "-0.53%",
+      "value": "18,185.80",
+      "change": "-100.30",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
-      "value": "98.25",
-      "change": "3.55%",
+      "symbol": "BRENT",
+      "value": "96.30",
+      "change": "+1.37",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "93.47",
-      "change": "2.38%",
+      "symbol": "GOLD",
+      "value": "4,817.64",
+      "change": "+6.99",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4798.44",
-      "change": "0.21%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "75054.88",
-      "change": "0.44%",
+      "symbol": "BTC",
+      "value": "74,290.72",
+      "change": "+147.83",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "18.84",
-      "change": "-0.94%",
+      "value": "17.94",
+      "change": "-0.23",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.31%",
-      "change": "0.51%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7036.62",
-      "change": "0.19%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24160",
-      "change": "0.40%",
+      "symbol": "US 10Y",
+      "value": "4.316",
+      "change": "+0.005",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8703",
-      "change": "0.08%",
+      "value": "0.8714",
+      "change": "+0.0096",
       "up": true
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "98.05",
-      "change": "-0.07%",
+      "symbol": "S&P 500",
+      "value": "7,077.00",
+      "change": "+5.50",
+      "up": true
+    },
+    {
+      "symbol": "DAX 40",
+      "value": "24,121.80",
+      "change": "-36.11",
       "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.59",
-      "change": "-0.34%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.07",
-      "change": "0.07%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8248",
-      "change": "0.06%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,117 +68,118 @@
       "tag": "CRITICAL",
       "region": "GLOBAL",
       "title": {
-        "es": "Bloqueo Naval de EE.UU. al Estrecho de Hormuz Tras Colapso de Conversaciones de Paz con Irán",
-        "en": "U.S. Naval Blockade of Strait of Hormuz Following Collapse of Iran Peace Talks"
+        "en": "IMF Slashes Global Growth to 3.1% as Iran War Creates Energy Crisis",
+        "es": "FMI recorta crecimiento global al 3.1% mientras guerra en Irán crea crisis energética"
       },
       "summary": {
-        "es": "El presidente Trump ordenó un bloqueo naval del Estrecho de Hormuz después de que fracasaran las negociaciones de paz con Irán en Pakistán. El alto al fuego de dos semanas expira el 21 de abril. Los mercados permanecen volátiles mientras se consideran nuevas conversaciones.",
-        "en": "President Trump ordered a naval blockade of the Strait of Hormuz after peace negotiations with Iran collapsed in Pakistan. The two-week ceasefire expires April 21. Markets remain volatile as new talks are being considered."
+        "en": "The IMF cut global growth forecast to 3.1% for 2026, down from 3.4%, citing the Iran war's energy price shock. Inflation expected to rise to 4.4% from previous targets as Strait of Hormuz blockade disrupts 20% of global oil flows.",
+        "es": "El FMI redujo la previsión de crecimiento global al 3.1% para 2026, desde 3.4%, citando el shock de precios energéticos por la guerra de Irán. La inflación se espera que suba al 4.4% desde objetivos previos mientras el bloqueo del Estrecho de Hormuz interrumpe 20% de flujos petrolíferos globales."
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/14/trump-iran-war-strait-of-hormuz-negotiations.html",
-      "time": "1d",
+      "source": "International Monetary Fund",
+      "url": "https://www.imf.org/en/blogs/articles/2026/04/14/war-darkens-global-economic-outlook-and-reshapes-policy-priorities",
+      "time": "2h",
       "impact": "high",
       "signals": [
         "OIL +",
+        "GOLD +",
         "USD +",
-        "VIX +",
-        "GOLD +"
+        "EMERGING MKTS -"
       ],
       "confidence": 95
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "APAC",
       "title": {
-        "es": "FMI Advierte de Recesión Global Ante Posible Escalada del Conflicto con Irán",
-        "en": "IMF Warns of Global Recession Risk Amid Potential Iran Conflict Escalation"
+        "en": "China's Foreign Reserves Plunge $85.7B in Largest Drop in Decade",
+        "es": "Reservas extranjeras de China caen $85.7B en mayor descenso en una década"
       },
       "summary": {
-        "es": "El FMI publicó su Perspectivas de la Economía Mundial advirtiendo que el conflicto en Medio Oriente podría desencadenar una recesión global bajo escenarios severos. El crecimiento global se proyecta en 3.1% para 2026, muy por debajo del promedio histórico.",
-        "en": "The IMF released its World Economic Outlook warning that Middle East conflict could trigger global recession under severe scenarios. Global growth projected at 3.1% for 2026, well below historical averages."
+        "en": "China's FX reserves fell to $3.342 trillion in March 2026, down $85.7B from February in the sharpest decline in ten years. Dollar strength during Iran war outbreak pressured non-dollar assets and Treasury valuations held by PBOC.",
+        "es": "Las reservas de divisas de China cayeron a $3.342 billones en marzo 2026, $85.7B menos que febrero en el descenso más pronunciado en diez años. La fortaleza del dólar durante el estallido de la guerra de Irán presionó activos no-dólar y valuaciones del Tesoro mantenidas por el PBOC."
       },
-      "source": "IMF",
-      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
-      "time": "2d",
+      "source": "Trading Economics",
+      "url": "https://tradingeconomics.com/china/foreign-exchange-reserves",
+      "time": "6h",
       "impact": "high",
       "signals": [
-        "GROWTH -",
-        "INFLATION +",
+        "CNY -",
+        "USD +",
         "EM -",
-        "BONDS +"
+        "BONDS -"
       ],
       "confidence": 92
     },
     {
       "id": 3,
       "tag": "CRITICAL",
-      "region": "LATAM",
+      "region": "MENA",
       "title": {
-        "es": "Trump Administra Venezuela Tras Captura Militar de Maduro en Operación 'Absolute Resolve'",
-        "en": "Trump Running Venezuela After Military Capture of Maduro in 'Operation Absolute Resolve'"
+        "en": "Oil Nears $100 as Iran Keeps Hormuz Blocked Despite Ceasefire Talks",
+        "es": "Petróleo cerca de $100 mientras Irán mantiene bloqueo de Hormuz pese a conversaciones de alto el fuego"
       },
       "summary": {
-        "es": "Estados Unidos capturó al presidente venezolano Nicolás Maduro el 3 de enero en una operación militar. Trump anunció que EE.UU. dirigirá Venezuela indefinidamente mientras las compañías petroleras estadounidenses evalúan oportunidades de infraestructura.",
-        "en": "The U.S. captured Venezuelan President Nicolás Maduro on January 3 in a military operation. Trump announced the U.S. will run Venezuela indefinitely while American oil companies assess infrastructure opportunities."
+        "en": "Brent crude trades near $99 with WTI above $93 as Iran continues controlling Strait of Hormuz traffic despite ceasefire negotiations. Over 230 oil tankers remain stranded in Persian Gulf, maintaining supply disruptions to global energy markets.",
+        "es": "El crudo Brent cotiza cerca de $99 con WTI sobre $93 mientras Irán continúa controlando el tráfico del Estrecho de Hormuz pese a negociaciones de alto el fuego. Más de 230 petroleros permanecen varados en el Golfo Pérsico, manteniendo disrupciones de suministro a mercados energéticos globales."
       },
-      "source": "NBC News",
-      "url": "https://www.nbcnews.com/politics/donald-trump/us-venezuela-strike-nicolas-maduro-captured-how-timeline-trump-rcna252041",
-      "time": "3mo",
+      "source": "OilPrice.com",
+      "url": "https://oilprice.com/Latest-Energy-News/World-News/A-Lebanon-Ceasefire-and-Potential-Iran-Peace-Talks-Push-Oil-Prices-Down.html",
+      "time": "4h",
       "impact": "high",
       "signals": [
         "OIL +",
-        "LATAM BONDS +",
-        "USD +",
-        "DEFENSE +"
+        "ENERGY +",
+        "INFLATION +",
+        "GROWTH -"
+      ],
+      "confidence": 96
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "en": "ECB Warns of Rate Hikes as Energy Prices Push Eurozone Inflation to 2.6%",
+        "es": "BCE advierte de subidas de tipos mientras precios energéticos empujan inflación eurozona al 2.6%"
+      },
+      "summary": {
+        "en": "ECB President Lagarde signals potential rate increases as Iran war pushes eurozone inflation forecast to 2.6% for 2026, well above 2% target. Central bank maintains data-dependent approach with markets pricing 50bp hikes by year-end amid energy shock concerns.",
+        "es": "La presidenta del BCE Lagarde señala posibles aumentos de tipos mientras la guerra de Irán empuja la previsión de inflación de la eurozona al 2.6% para 2026, muy por encima del objetivo del 2%. El banco central mantiene enfoque dependiente de datos con mercados valorando subidas de 50pb para fin de año ante preocupaciones por shock energético."
+      },
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/16/ecb-interest-rates-hike-inflation-iran-washington.html",
+      "time": "17h",
+      "impact": "medium",
+      "signals": [
+        "EUR +",
+        "RATES +",
+        "BONDS -",
+        "ENERGY +"
       ],
       "confidence": 89
     },
     {
-      "id": 4,
+      "id": 5,
       "tag": "MONITOR",
       "region": "US",
       "title": {
-        "es": "Mercados de EE.UU. Alcanzan Máximos Históricos Pese a Tensiones Geopolíticas",
-        "en": "U.S. Markets Hit Record Highs Despite Geopolitical Tensions"
+        "en": "S&P 500 Hits Record 7,041 as Tech Rally Continues Amid Iran Peace Hopes",
+        "es": "S&P 500 marca récord en 7,041 mientras rally tecnológico continúa con esperanzas de paz en Irán"
       },
       "summary": {
-        "es": "El S&P 500 alcanzó un nuevo récord intradiario de 7,003.82 puntos, recuperando todas las pérdidas desde que comenzó la guerra con Irán. Los mercados suben por optimismo sobre posibles conversaciones de paz renovadas.",
-        "en": "The S&P 500 hit a fresh intraday record of 7,003.82 points, recouping all losses since the Iran war began. Markets rally on optimism about potential renewed peace talks."
+        "en": "US markets reached new highs with S&P 500 closing at 7,041 and Nasdaq extending winning streak to 12 sessions. Tech sector earnings expectations revised up to 43% growth for 2026 amid AI optimism, offsetting energy sector concerns from Iran conflict.",
+        "es": "Los mercados estadounidenses alcanzaron nuevos máximos con S&P 500 cerrando en 7,041 y Nasdaq extendiendo racha ganadora a 12 sesiones. Expectativas de ganancias del sector tecnológico revisadas al alza a 43% de crecimiento para 2026 con optimismo de IA, compensando preocupaciones del sector energético por conflicto de Irán."
       },
-      "source": "CNN",
-      "url": "https://www.cnn.com/2026/04/15/world/live-news/iran-war-blockade-us-trump",
-      "time": "3h",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/15/stock-market-today-live-updates.html",
+      "time": "10h",
       "impact": "medium",
       "signals": [
-        "SPX +",
         "TECH +",
+        "AI +",
         "VIX -",
-        "SENTIMENT +"
-      ],
-      "confidence": 88
-    },
-    {
-      "id": 5,
-      "tag": "STRATEGIC",
-      "region": "AFRICA",
-      "title": {
-        "es": "Crisis Humanitaria en Sudán Alcanza Niveles Críticos con 80% de Familias Saltándose Comidas",
-        "en": "Sudan Humanitarian Crisis Reaches Critical Levels with 80% of Families Skipping Meals"
-      },
-      "summary": {
-        "es": "Más del 80% de las familias desplazadas en Sudán se saltan comidas para sobrevivir, mientras Chad acoge a más de 1.3 millones de refugiados sudaneses. La atención internacional permanece limitada con recursos humanitarios agotándose.",
-        "en": "Over 80% of displaced families in Sudan are skipping meals to survive, while Chad hosts over 1.3 million Sudanese refugees. International attention remains limited with humanitarian resources stretched."
-      },
-      "source": "Al Jazeera",
-      "url": "https://www.aljazeera.com/",
-      "time": "3h",
-      "impact": "medium",
-      "signals": [
-        "COMMODITIES +",
-        "HUMANITARIAN CRISIS",
-        "AID FLOWS"
+        "NASDAQ +"
       ],
       "confidence": 85
     },
@@ -217,24 +188,24 @@
       "tag": "EMERGING",
       "region": "GLOBAL",
       "title": {
-        "es": "Precios del Oro Se Recuperan Mientras Analistas Proyectan Rango de $4,000-$6,300 para Abril",
-        "en": "Gold Prices Recover as Analysts Project $4,000-$6,300 Range for April"
+        "en": "Emerging Markets Face 'Perfect Storm' as Energy Crisis Hits Food Security",
+        "es": "Mercados emergentes enfrentan 'tormenta perfecta' mientras crisis energética golpea seguridad alimentaria"
       },
       "summary": {
-        "es": "Los precios del oro se recuperan por expectativas de distensión en Medio Oriente, aunque permanecen 19% por debajo de máximos históricos. JPMorgan y Goldman Sachs mantienen perspectivas alcistas a largo plazo.",
-        "en": "Gold prices recover on Middle East easing expectations, though remain 19% below all-time highs. JPMorgan and Goldman Sachs maintain long-term bullish outlook."
+        "en": "Developing economies facing dual shock from energy price surge and fertilizer shortages as Hormuz blockade disrupts Persian Gulf supplies. IMF downgrades EM growth to 3.9% from 4.2% with particular stress on food-importing nations dependent on Middle East energy.",
+        "es": "Economías en desarrollo enfrentan doble shock por alza de precios energéticos y escasez de fertilizantes mientras bloqueo de Hormuz interrumpe suministros del Golfo Pérsico. FMI rebaja crecimiento de mercados emergentes al 3.9% desde 4.2% con estrés particular en naciones importadoras de alimentos dependientes de energía del Medio Oriente."
       },
-      "source": "LiteFinance",
-      "url": "https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/daily-and-weekly/",
-      "time": "12h",
-      "impact": "low",
+      "source": "Brookings Institution",
+      "url": "https://www.brookings.edu/articles/april-2026-update-to-tiger-a-year-of-economic-healing-turns-into-a-year-of-peril/",
+      "time": "4h",
+      "impact": "high",
       "signals": [
-        "GOLD +",
-        "SAFE HAVEN",
-        "CENTRAL BANK BUYING"
+        "EM -",
+        "FOOD +",
+        "FERTILIZER +",
+        "INR -"
       ],
-      "confidence": 82
+      "confidence": 91
     }
-  ],
-  "market_updated_at": "2026-04-17T07:16:04.867Z"
+  ]
 }
