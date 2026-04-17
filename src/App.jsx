@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
+import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 
 // ═══════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.1
@@ -528,7 +529,7 @@ const Observatory = ({ lang }) => {
 };
 
 // ─── INTELLIGENCE (GATED) ───
-const Intelligence = ({ lang }) => {
+const Intelligence = ({ lang, onLaunch }) => {
   const t = T[lang].intel;
   const { user, requireAuth } = useAuth();
   return (
@@ -557,7 +558,7 @@ const Intelligence = ({ lang }) => {
                 <p style={{fontFamily:F.body,fontSize:12.5,color:C.textSec,lineHeight:1.6,fontWeight:300}}>{tool.desc[lang]}</p>
               </div>
               {user ? (
-                <button onClick={() => {}} style={{marginTop:20,fontFamily:F.mono,fontSize:9,letterSpacing:"0.1em",padding:"7px 16px",background:"transparent",color:C.gold,border:`1px solid ${C.goldBorder}`,cursor:"pointer",alignSelf:"flex-start"}}>
+                <button onClick={() => onLaunch && onLaunch(tool)} style={{marginTop:20,fontFamily:F.mono,fontSize:9,letterSpacing:"0.1em",padding:"7px 16px",background:"transparent",color:C.gold,border:`1px solid ${C.goldBorder}`,cursor:"pointer",alignSelf:"flex-start"}}>
                   {tool.status==="LIVE"?"LAUNCH →":tool.status==="BETA"?"REQUEST ACCESS":"NOTIFY ME"}
                 </button>
               ) : (
@@ -752,6 +753,7 @@ const Footer = ({ lang }) => {
 // ─── MAIN APP ───
 export default function ZRCPlatform() {
   const [lang, setLang] = useState("es");
+  const [activeTool, setActiveTool] = useState(null);
   const onNav = useCallback((id) => {
     if (id==="hero") { window.scrollTo({top:0,behavior:"smooth"}); return; }
     const el = document.getElementById(id);
@@ -783,7 +785,11 @@ export default function ZRCPlatform() {
         <GoldDivider />
         <Observatory lang={lang} />
         <GoldDivider />
-        <Intelligence lang={lang} />
+        <Intelligence lang={lang} onLaunch={(tool) => {
+          if (tool.name === "GeoRisk Dashboard" && tool.status === "LIVE") {
+            setActiveTool("georisk");
+          }
+        }} />
         <GoldDivider />
         <Brokerage lang={lang} />
         <GoldDivider />
@@ -794,6 +800,22 @@ export default function ZRCPlatform() {
         <Community lang={lang} />
         <Footer lang={lang} />
       </div>
+      {activeTool === "georisk" && (
+        <div style={{position:"fixed",inset:0,zIndex:500,background:C.bg,overflow:"auto"}}>
+          <button
+            onClick={() => setActiveTool(null)}
+            style={{
+              position:"fixed", top:20, left:20, zIndex:501,
+              fontFamily:F.mono, fontSize:10, letterSpacing:"0.12em",
+              padding:"8px 16px", background:C.goldDim, color:C.gold,
+              border:`1px solid ${C.goldBorder}`, cursor:"pointer", fontWeight:600,
+            }}
+          >
+            ← VOLVER A ZRC
+          </button>
+          <GeoRiskDashboard />
+        </div>
+      )}
     </AuthProvider>
   );
 }
