@@ -4,7 +4,7 @@
     {
       "symbol": "EUR/USD",
       "value": "1.178",
-      "change": "0.0%",
+      "change": "0.00%",
       "up": true
     },
     {
@@ -15,80 +15,80 @@
     },
     {
       "symbol": "BRENT crude",
-      "value": "94.91",
-      "change": "-0.04%",
+      "value": "88.97",
+      "change": "-10.48%",
       "up": false
     },
     {
       "symbol": "WTI crude",
-      "value": "93.22",
-      "change": "0.0%",
-      "up": true
+      "value": "83.85",
+      "change": "-11.45%",
+      "up": false
     },
     {
-      "symbol": "GOLD",
-      "value": "4867.39",
-      "change": "1.65%",
+      "symbol": "GOLD (XAU/USD)",
+      "value": "4868.19",
+      "change": "+0.78%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
       "value": "77943.86",
-      "change": "5.06%",
+      "change": "+5.06%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "17.28",
-      "change": "-3.68%",
+      "value": "17.38",
+      "change": "-3.12%",
       "up": false
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.271",
-      "change": "-0.16%",
+      "value": "4.26%",
+      "change": "-0.54%",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7041.09",
-      "change": "0.26%",
+      "value": "7126.06",
+      "change": "+1.20%",
       "up": true
     },
     {
       "symbol": "DAX 40",
       "value": "24269.23",
-      "change": "1.39%",
+      "change": "+2.27%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8650",
-      "change": "-0.5%",
+      "value": "0.8722",
+      "change": "-0.14%",
       "up": false
     },
     {
       "symbol": "DXY dollar index",
-      "value": "98.110",
-      "change": "0.18%",
-      "up": true
+      "value": "97.70",
+      "change": "-0.52%",
+      "up": false
     },
     {
       "symbol": "Natural Gas",
       "value": "2.70",
-      "change": "2.05%",
+      "change": "+2.05%",
       "up": true
     },
     {
       "symbol": "Copper",
-      "value": "6.07",
-      "change": "0.07%",
+      "value": "6.1140",
+      "change": "+0.62%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.88",
-      "change": "0.0%",
+      "value": "6.82",
+      "change": "0.00%",
       "up": true
     }
   ],
@@ -238,5 +238,5 @@
       "confidence": 91
     }
   ],
-  "market_updated_at": "2026-04-17T18:39:28.730Z"
+  "market_updated_at": "2026-04-17T22:25:59.604Z"
 }
