@@ -4,3 +4,6 @@ dist/
 .wrangler/
 dev-server.log
 dev-server-error.log
+
+# local backups
+*.backup
