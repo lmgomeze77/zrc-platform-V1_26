@@ -1,242 +1,206 @@
 {
-  "generated_at": "2026-04-17T07:32:16.831Z",
+  "generated_at": "2026-04-18T07:07:35.024Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1779",
-      "change": "-0.20%",
-      "up": false
+      "value": "1.1800",
+      "change": "+0.0062",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18078.01",
-      "change": "-0.53%",
+      "value": "18,078.01",
+      "change": "-146.50",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
-      "value": "97.68",
-      "change": "-0.42%",
+      "symbol": "BRENT",
+      "value": "96.25",
+      "change": "-2.14",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "91.58",
-      "change": "+0.32%",
+      "symbol": "GOLD",
+      "value": "4,850.00",
+      "change": "+26.40",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4831.98",
-      "change": "+0.85%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "77148.00",
-      "change": "+4.00%",
+      "symbol": "BTC",
+      "value": "77,148.00",
+      "change": "+2,470.50",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "18.23",
-      "change": "-0.33%",
+      "value": "17.48",
+      "change": "-0.46",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.26%",
-      "change": "-1.58%",
+      "symbol": "US 10Y",
+      "value": "4.29%",
+      "change": "-0.02%",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8700",
+      "change": "-0.0022",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7126.06",
-      "change": "+1.20%",
+      "value": "7,126.06",
+      "change": "+84.78",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24269.23",
-      "change": "+1.39%",
+      "value": "24,269.23",
+      "change": "+132.73",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8712",
-      "change": "+0.07%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "97.96",
-      "change": "-0.26%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.70",
-      "change": "+2.05%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.07",
-      "change": "+0.07%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8248",
-      "change": "-0.07%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "GLOBAL",
+      "region": "MENA",
       "title": {
-        "en": "IMF Slashes Global Growth to 3.1% as Iran War Creates Energy Crisis",
-        "es": "FMI recorta crecimiento global al 3.1% mientras guerra en Irán crea crisis energética"
+        "es": "Apertura del Estrecho de Hormuz Hace Caer el Petróleo 11%",
+        "en": "Strait of Hormuz Reopening Sends Oil Prices Plunging 11%"
       },
       "summary": {
-        "en": "The IMF cut global growth forecast to 3.1% for 2026, down from 3.4%, citing the Iran war's energy price shock. Inflation expected to rise to 4.4% from previous targets as Strait of Hormuz blockade disrupts 20% of global oil flows.",
-        "es": "El FMI redujo la previsión de crecimiento global al 3.1% para 2026, desde 3.4%, citando el shock de precios energéticos por la guerra de Irán. La inflación se espera que suba al 4.4% desde objetivos previos mientras el bloqueo del Estrecho de Hormuz interrumpe 20% de flujos petrolíferos globales."
+        "es": "Irán anunció la reapertura del Estrecho de Hormuz para buques comerciales durante el alto el fuego de 10 días entre Israel y Líbano. Los precios del petróleo cayeron drásticamente con Brent a $90.38/barril y WTI a $83.85/barril. Los mercados accionarios registraron máximos históricos en respuesta a la noticia.",
+        "en": "Iran announced the reopening of the Strait of Hormuz for commercial vessels during the 10-day Israel-Lebanon ceasefire. Oil prices plunged dramatically with Brent falling to $90.38/barrel and WTI to $83.85/barrel. Stock markets hit record highs following the announcement."
       },
-      "source": "International Monetary Fund",
-      "url": "https://www.imf.org/en/blogs/articles/2026/04/14/war-darkens-global-economic-outlook-and-reshapes-policy-priorities",
-      "time": "2h",
+      "source": "NBC News",
+      "url": "https://www.nbcnews.com/business/markets/oil-prices-plunge-stocks-jump-hormuz-open-iran-war-rcna332321",
+      "time": "3h",
       "impact": "high",
       "signals": [
-        "OIL +",
-        "GOLD +",
+        "OIL -",
+        "SPX +",
         "USD +",
-        "EMERGING MKTS -"
+        "VIX -"
       ],
       "confidence": 95
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "MENA",
       "title": {
-        "en": "China's Foreign Reserves Plunge $85.7B in Largest Drop in Decade",
-        "es": "Reservas extranjeras de China caen $85.7B en mayor descenso en una década"
+        "es": "Alto el Fuego de 10 Días entre Israel y Líbano Entra en Vigor",
+        "en": "10-Day Israel-Lebanon Ceasefire Takes Effect"
       },
       "summary": {
-        "en": "China's FX reserves fell to $3.342 trillion in March 2026, down $85.7B from February in the sharpest decline in ten years. Dollar strength during Iran war outbreak pressured non-dollar assets and Treasury valuations held by PBOC.",
-        "es": "Las reservas de divisas de China cayeron a $3.342 billones en marzo 2026, $85.7B menos que febrero en el descenso más pronunciado en diez años. La fortaleza del dólar durante el estallido de la guerra de Irán presionó activos no-dólar y valuaciones del Tesoro mantenidas por el PBOC."
+        "es": "Estados Unidos medió un alto el fuego de 10 días entre Israel y Líbano que comenzó el 17 de abril. Trump invitó a los líderes de ambos países a la Casa Blanca para las primeras conversaciones significativas desde 1983. Sin embargo, las fuerzas israelíes permanecerán en territorio libanés.",
+        "en": "The US brokered a 10-day ceasefire between Israel and Lebanon that began April 17. Trump invited leaders of both countries to the White House for the first meaningful talks since 1983. However, Israeli forces will remain in Lebanese territory."
       },
-      "source": "Trading Economics",
-      "url": "https://tradingeconomics.com/china/foreign-exchange-reserves",
-      "time": "6h",
+      "source": "Al Jazeera",
+      "url": "https://www.aljazeera.com/news/2026/4/17/what-we-know-about-the-israel-lebanon-ceasefire",
+      "time": "19h",
       "impact": "high",
       "signals": [
-        "CNY -",
-        "USD +",
-        "EM -",
-        "BONDS -"
+        "GOLD -",
+        "ARMS -",
+        "PEACE +"
       ],
       "confidence": 92
     },
     {
       "id": 3,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "GLOBAL",
       "title": {
-        "en": "Oil Nears $100 as Iran Keeps Hormuz Blocked Despite Ceasefire Talks",
-        "es": "Petróleo cerca de $100 mientras Irán mantiene bloqueo de Hormuz pese a conversaciones de alto el fuego"
+        "es": "FMI Alerta sobre 'Economía Global a la Sombra de la Guerra'",
+        "en": "IMF Warns of 'Global Economy in Shadow of War'"
       },
       "summary": {
-        "en": "Brent crude trades near $99 with WTI above $93 as Iran continues controlling Strait of Hormuz traffic despite ceasefire negotiations. Over 230 oil tankers remain stranded in Persian Gulf, maintaining supply disruptions to global energy markets.",
-        "es": "El crudo Brent cotiza cerca de $99 con WTI sobre $93 mientras Irán continúa controlando el tráfico del Estrecho de Hormuz pese a negociaciones de alto el fuego. Más de 230 petroleros permanecen varados en el Golfo Pérsico, manteniendo disrupciones de suministro a mercados energéticos globales."
+        "es": "El FMI revisó a la baja el crecimiento global a 3.1% para 2026 debido al conflicto en Oriente Medio. La inflación aumentará a 4.4% en 2026 por precios energéticos elevados. Las economías emergentes enfrentan presiones particulares por la importación de commodities y vulnerabilidades preexistentes.",
+        "en": "The IMF downgraded global growth to 3.1% for 2026 due to the Middle East conflict. Inflation will rise to 4.4% in 2026 from higher energy prices. Emerging economies face particular pressures from commodity imports and pre-existing vulnerabilities."
       },
-      "source": "OilPrice.com",
-      "url": "https://oilprice.com/Latest-Energy-News/World-News/A-Lebanon-Ceasefire-and-Potential-Iran-Peace-Talks-Push-Oil-Prices-Down.html",
-      "time": "4h",
+      "source": "IMF",
+      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "time": "4d",
       "impact": "high",
       "signals": [
-        "OIL +",
-        "ENERGY +",
-        "INFLATION +",
+        "EMFX -",
+        "BONDS +",
         "GROWTH -"
       ],
-      "confidence": 96
+      "confidence": 88
     },
     {
       "id": 4,
-      "tag": "ALERT",
+      "tag": "MONITOR",
       "region": "EU",
       "title": {
-        "en": "ECB Warns of Rate Hikes as Energy Prices Push Eurozone Inflation to 2.6%",
-        "es": "BCE advierte de subidas de tipos mientras precios energéticos empujan inflación eurozona al 2.6%"
+        "es": "BCE Mantiene Tipos sin Cambios, Advierte sobre 'Capas de Shocks'",
+        "en": "ECB Holds Rates Unchanged, Warns of 'Layer Cake of Shocks'"
       },
       "summary": {
-        "en": "ECB President Lagarde signals potential rate increases as Iran war pushes eurozone inflation forecast to 2.6% for 2026, well above 2% target. Central bank maintains data-dependent approach with markets pricing 50bp hikes by year-end amid energy shock concerns.",
-        "es": "La presidenta del BCE Lagarde señala posibles aumentos de tipos mientras la guerra de Irán empuja la previsión de inflación de la eurozona al 2.6% para 2026, muy por encima del objetivo del 2%. El banco central mantiene enfoque dependiente de datos con mercados valorando subidas de 50pb para fin de año ante preocupaciones por shock energético."
+        "es": "El BCE mantuvo los tipos de interés en 2.0% (depósito) mientras evalúa el impacto de la guerra en Oriente Medio. Los mercados esperan una subida en junio hasta 2.5% para fin de año. El banco central adopta un enfoque reunión por reunión ante la incertidumbre geopolítica.",
+        "en": "The ECB held interest rates at 2.0% (deposit rate) while assessing the Middle East war's impact. Markets expect a June hike to 2.5% by year-end. The central bank adopts a meeting-by-meeting approach amid geopolitical uncertainty."
       },
       "source": "CNBC",
       "url": "https://www.cnbc.com/2026/04/16/ecb-interest-rates-hike-inflation-iran-washington.html",
-      "time": "17h",
+      "time": "1d",
       "impact": "medium",
       "signals": [
         "EUR +",
-        "RATES +",
-        "BONDS -",
-        "ENERGY +"
-      ],
-      "confidence": 89
-    },
-    {
-      "id": 5,
-      "tag": "MONITOR",
-      "region": "US",
-      "title": {
-        "en": "S&P 500 Hits Record 7,041 as Tech Rally Continues Amid Iran Peace Hopes",
-        "es": "S&P 500 marca récord en 7,041 mientras rally tecnológico continúa con esperanzas de paz en Irán"
-      },
-      "summary": {
-        "en": "US markets reached new highs with S&P 500 closing at 7,041 and Nasdaq extending winning streak to 12 sessions. Tech sector earnings expectations revised up to 43% growth for 2026 amid AI optimism, offsetting energy sector concerns from Iran conflict.",
-        "es": "Los mercados estadounidenses alcanzaron nuevos máximos con S&P 500 cerrando en 7,041 y Nasdaq extendiendo racha ganadora a 12 sesiones. Expectativas de ganancias del sector tecnológico revisadas al alza a 43% de crecimiento para 2026 con optimismo de IA, compensando preocupaciones del sector energético por conflicto de Irán."
-      },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/15/stock-market-today-live-updates.html",
-      "time": "10h",
-      "impact": "medium",
-      "signals": [
-        "TECH +",
-        "AI +",
-        "VIX -",
-        "NASDAQ +"
+        "BUNDS -",
+        "ECB +"
       ],
       "confidence": 85
     },
     {
-      "id": 6,
-      "tag": "EMERGING",
+      "id": 5,
+      "tag": "STRATEGIC",
       "region": "GLOBAL",
       "title": {
-        "en": "Emerging Markets Face 'Perfect Storm' as Energy Crisis Hits Food Security",
-        "es": "Mercados emergentes enfrentan 'tormenta perfecta' mientras crisis energética golpea seguridad alimentaria"
+        "es": "Perspectivas Económicas Globales 2026: 'Nuevas Reglas, Economía Diferente'",
+        "en": "Global Economic Outlook 2026: 'New Rules, Different Economy'"
       },
       "summary": {
-        "en": "Developing economies facing dual shock from energy price surge and fertilizer shortages as Hormuz blockade disrupts Persian Gulf supplies. IMF downgrades EM growth to 3.9% from 4.2% with particular stress on food-importing nations dependent on Middle East energy.",
-        "es": "Economías en desarrollo enfrentan doble shock por alza de precios energéticos y escasez de fertilizantes mientras bloqueo de Hormuz interrumpe suministros del Golfo Pérsico. FMI rebaja crecimiento de mercados emergentes al 3.9% desde 4.2% con estrés particular en naciones importadoras de alimentos dependientes de energía del Medio Oriente."
+        "es": "Los analistas advierten que 2026 estará definido por el surgimiento de nuevas reglas de juego geopolíticas. La lógica económica tradicional pierde relevancia mientras la geopolítica gana protagonismo en las decisiones de mercado. Estados Unidos aprovechará su poder para remodelar el orden global.",
+        "en": "Analysts warn 2026 will be defined by emerging new geopolitical rules of the game. Traditional economic logic loses relevance while geopolitics gains prominence in market decisions. The US will leverage its power to reshape the global order."
       },
-      "source": "Brookings Institution",
-      "url": "https://www.brookings.edu/articles/april-2026-update-to-tiger-a-year-of-economic-healing-turns-into-a-year-of-peril/",
-      "time": "4h",
-      "impact": "high",
+      "source": "Rabobank",
+      "url": "https://www.rabobank.com/knowledge/q011509552-global-outlook-2026-new-rules-different-economy",
+      "time": "4d",
+      "impact": "medium",
       "signals": [
-        "EM -",
-        "FOOD +",
-        "FERTILIZER +",
-        "INR -"
+        "GOLD +",
+        "TECH +",
+        "TRADE -"
       ],
-      "confidence": 91
+      "confidence": 78
+    },
+    {
+      "id": 6,
+      "tag": "EMERGING",
+      "region": "US",
+      "title": {
+        "es": "Preocupaciones por Estanflación Resurgen en Estados Unidos",
+        "en": "Stagflation Concerns Re-emerge in United States"
+      },
+      "summary": {
+        "es": "La combinación de inflación impulsada por la energía y datos de crecimiento débiles pone la 'palabra con S' de vuelta en el radar de los inversores. Las aperturas de empleo cayeron a 6.88 millones en febrero, el nivel más bajo desde la pandemia. Los precios de la gasolina subieron $0.60 por galón tras el inicio del conflicto.",
+        "en": "The combination of energy-driven inflation and softening growth data puts the S-word back on investors' radar. Job openings fell to 6.88 million in February, the lowest since the pandemic. Gas prices rose $0.60 per gallon following the conflict's start."
+      },
+      "source": "Crestwood Advisors",
+      "url": "https://www.crestwoodadvisors.com/april-2026-economic-and-market-update-geopolitics-at-the-forefront/",
+      "time": "1w",
+      "impact": "medium",
+      "signals": [
+        "USD -",
+        "TIPS +",
+        "ENERGY +"
+      ],
+      "confidence": 82
     }
-  ],
-  "market_updated_at": "2026-04-18T06:54:22.605Z"
+  ]
 }
