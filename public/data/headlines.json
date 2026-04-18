@@ -15,26 +15,26 @@
     },
     {
       "symbol": "BRENT crude",
-      "value": "97.68",
-      "change": "-0.42%",
+      "value": "89.90",
+      "change": "-9.55%",
       "up": false
     },
     {
       "symbol": "WTI crude",
-      "value": "90.79",
-      "change": "-12.48%",
+      "value": "83.36",
+      "change": "-11.97%",
       "up": false
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4831.98",
-      "change": "+0.85%",
+      "value": "4879.60",
+      "change": "+1.48%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "77054.46",
-      "change": "+3.46%",
+      "value": "76081.80",
+      "change": "+2.31%",
       "up": true
     },
     {
@@ -45,7 +45,7 @@
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.26%",
+      "value": "4.243",
       "change": "-1.58%",
       "up": false
     },
@@ -57,39 +57,39 @@
     },
     {
       "symbol": "DAX 40",
-      "value": "24269.23",
-      "change": "+0.36%",
+      "value": "24702.24",
+      "change": "+2.27%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8722",
+      "value": "0.8710",
       "change": "-0.14%",
       "up": false
     },
     {
       "symbol": "DXY dollar index",
-      "value": "97.70",
-      "change": "-0.52%",
+      "value": "97.775",
+      "change": "-0.26%",
       "up": false
     },
     {
       "symbol": "Natural Gas",
-      "value": "2.70",
-      "change": "+2.05%",
+      "value": "2.674",
+      "change": "+1.02%",
       "up": true
     },
     {
       "symbol": "Copper",
-      "value": "6.07",
-      "change": "+0.07%",
+      "value": "6.0370",
+      "change": "+0.44%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.8248",
-      "change": "-0.37%",
-      "up": false
+      "value": "6.8188",
+      "change": "+0.50%",
+      "up": true
     }
   ],
   "headlines": [
@@ -233,5 +233,5 @@
       "confidence": 82
     }
   ],
-  "market_updated_at": "2026-04-18T14:32:22.189Z"
+  "market_updated_at": "2026-04-18T18:29:31.708Z"
 }
