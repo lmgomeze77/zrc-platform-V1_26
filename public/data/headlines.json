@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-04-18T07:07:35.024Z",
+  "generated_at": "2026-04-19T07:20:04.604Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1779",
-      "change": "-0.20%",
+      "value": "1.1767",
+      "change": "-0.14",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18484.50",
-      "change": "+2.18%",
+      "value": "18089.50",
+      "change": "+449.80",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "90.38",
-      "change": "-9.08%",
+      "change": "-9.01",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "83.85",
-      "change": "-12.48%",
+      "symbol": "GOLD",
+      "value": "4867.39",
+      "change": "+79.70",
+      "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "75890.48",
+      "change": "-1664.52",
       "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4831.98",
-      "change": "+1.07%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "77054.46",
-      "change": "+3.46%",
-      "up": true
     },
     {
       "symbol": "VIX",
       "value": "17.48",
-      "change": "-2.56%",
+      "change": "-0.46",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.31",
-      "change": "+0.02%",
-      "up": true
+      "symbol": "US 10Y",
+      "value": "4.24",
+      "change": "-0.07",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8703",
+      "change": "-0.0006",
+      "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7126.06",
-      "change": "+1.20%",
+      "change": "+84.78",
       "up": true
     },
     {
       "symbol": "DAX 40",
       "value": "24702.24",
-      "change": "+2.27%",
+      "change": "+551.66",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8712",
-      "change": "+0.07%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "97.70",
-      "change": "-0.52%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.67",
-      "change": "+1.02%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.11",
-      "change": "+0.62%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8248",
-      "change": "-0.06%",
-      "up": false
     }
   ],
   "headlines": [
@@ -98,140 +68,141 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Apertura del Estrecho de Hormuz Hace Caer el Petróleo 11%",
-        "en": "Strait of Hormuz Reopening Sends Oil Prices Plunging 11%"
+        "en": "IMF Downgrades Global Growth to 3.1% as Middle East War Drives Energy Crisis",
+        "es": "FMI Reduce Crecimiento Global a 3.1% Mientras Guerra del Medio Oriente Impulsa Crisis Energética"
       },
       "summary": {
-        "es": "Irán anunció la reapertura del Estrecho de Hormuz para buques comerciales durante el alto el fuego de 10 días entre Israel y Líbano. Los precios del petróleo cayeron drásticamente con Brent a $90.38/barril y WTI a $83.85/barril. Los mercados accionarios registraron máximos históricos en respuesta a la noticia.",
-        "en": "Iran announced the reopening of the Strait of Hormuz for commercial vessels during the 10-day Israel-Lebanon ceasefire. Oil prices plunged dramatically with Brent falling to $90.38/barrel and WTI to $83.85/barrel. Stock markets hit record highs following the announcement."
+        "en": "The IMF cut global growth forecasts to 3.1% for 2026 from 3.4% previously, citing the war in the Middle East which began February 28. The closure of the Strait of Hormuz has driven energy prices 19% higher, pushing inflation to 4.4%. In a severe scenario, global growth could fall to 2% with inflation exceeding 6%.",
+        "es": "El FMI redujo las previsiones de crecimiento global a 3.1% para 2026 desde 3.4% previo, citando la guerra en Medio Oriente que comenzó el 28 de febrero. El cierre del Estrecho de Hormuz ha impulsado los precios energéticos 19% más alto, empujando la inflación a 4.4%. En un escenario severo, el crecimiento global podría caer a 2% con inflación superior al 6%."
       },
-      "source": "NBC News",
-      "url": "https://www.nbcnews.com/business/markets/oil-prices-plunge-stocks-jump-hormuz-open-iran-war-rcna332321",
-      "time": "3h",
+      "source": "IMF World Economic Outlook",
+      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "time": "5d",
       "impact": "high",
       "signals": [
-        "OIL -",
-        "SPX +",
+        "OIL +",
+        "GLOBAL GDP -",
         "USD +",
-        "VIX -"
+        "GOLD +"
       ],
       "confidence": 95
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Alto el Fuego de 10 Días entre Israel y Líbano Entra en Vigor",
-        "en": "10-Day Israel-Lebanon Ceasefire Takes Effect"
+        "en": "Eurozone Inflation Surges to 2.6% in March as Energy Shock Hits",
+        "es": "Inflación de Eurozona Aumenta a 2.6% en Marzo Mientras Shock Energético Impacta"
       },
       "summary": {
-        "es": "Estados Unidos medió un alto el fuego de 10 días entre Israel y Líbano que comenzó el 17 de abril. Trump invitó a los líderes de ambos países a la Casa Blanca para las primeras conversaciones significativas desde 1983. Sin embargo, las fuerzas israelíes permanecerán en territorio libanés.",
-        "en": "The US brokered a 10-day ceasefire between Israel and Lebanon that began April 17. Trump invited leaders of both countries to the White House for the first meaningful talks since 1983. However, Israeli forces will remain in Lebanese territory."
+        "en": "Euro area inflation climbed to 2.6% in March from 1.9% in February, exceeding the ECB's 2% target for the first time since January 2025. Energy costs soared 5.1% annually, the sharpest increase since February 2023, driven by the Middle East conflict. The ECB held rates unchanged at 2.15% but warned of elevated uncertainty.",
+        "es": "La inflación del área euro subió a 2.6% en marzo desde 1.9% en febrero, superando el objetivo del BCE del 2% por primera vez desde enero 2025. Los costos energéticos se dispararon 5.1% anualmente, el mayor aumento desde febrero 2023, impulsado por el conflicto de Medio Oriente. El BCE mantuvo las tasas sin cambios en 2.15% pero advirtió sobre incertidumbre elevada."
       },
-      "source": "Al Jazeera",
-      "url": "https://www.aljazeera.com/news/2026/4/17/what-we-know-about-the-israel-lebanon-ceasefire",
-      "time": "19h",
+      "source": "Eurostat",
+      "url": "https://tradingeconomics.com/euro-area/inflation-cpi",
+      "time": "3d",
       "impact": "high",
       "signals": [
-        "GOLD -",
-        "ARMS -",
-        "PEACE +"
+        "EUR -",
+        "ECB HAWKISH",
+        "ENERGY +"
       ],
       "confidence": 92
     },
     {
       "id": 3,
-      "tag": "CRITICAL",
-      "region": "GLOBAL",
+      "tag": "MONITOR",
+      "region": "US",
       "title": {
-        "es": "FMI Alerta sobre 'Economía Global a la Sombra de la Guerra'",
-        "en": "IMF Warns of 'Global Economy in Shadow of War'"
+        "en": "US-China Trade Tensions Escalate as Trump Threatens 50% Tariffs Over Iran Weapons",
+        "es": "Tensiones Comerciales EEUU-China Escalan Mientras Trump Amenaza Aranceles del 50% por Armas a Irán"
       },
       "summary": {
-        "es": "El FMI revisó a la baja el crecimiento global a 3.1% para 2026 debido al conflicto en Oriente Medio. La inflación aumentará a 4.4% en 2026 por precios energéticos elevados. Las economías emergentes enfrentan presiones particulares por la importación de commodities y vulnerabilidades preexistentes.",
-        "en": "The IMF downgraded global growth to 3.1% for 2026 due to the Middle East conflict. Inflation will rise to 4.4% in 2026 from higher energy prices. Emerging economies face particular pressures from commodity imports and pre-existing vulnerabilities."
+        "en": "President Trump threatened to impose 50% tariffs on China if Beijing supplies weapons to Iran amid the Hormuz crisis. Beijing rejected the allegations as 'groundless smears' and vowed to retaliate with countermeasures. China's exports to the US fell 26.5% in March, marking continued decline since trade tensions escalated in April 2025.",
+        "es": "El presidente Trump amenazó con imponer aranceles del 50% a China si Beijing suministra armas a Irán en medio de la crisis de Hormuz. Beijing rechazó las acusaciones como 'calumnias infundadas' y prometió represalias con contramedidas. Las exportaciones de China a EEUU cayeron 26.5% en marzo, marcando declive continuo desde que las tensiones comerciales escalaron en abril 2025."
       },
-      "source": "IMF",
-      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/15/strait-hormuz-us-iran-blockade-china-india-relations-energy-risk-tensions.html",
       "time": "4d",
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "EMFX -",
-        "BONDS +",
-        "GROWTH -"
+        "CNY -",
+        "TRADE WAR",
+        "USD +"
       ],
       "confidence": 88
     },
     {
       "id": 4,
-      "tag": "MONITOR",
-      "region": "EU",
+      "tag": "STRATEGIC",
+      "region": "APAC",
       "title": {
-        "es": "BCE Mantiene Tipos sin Cambios, Advierte sobre 'Capas de Shocks'",
-        "en": "ECB Holds Rates Unchanged, Warns of 'Layer Cake of Shocks'"
+        "en": "Bank of Japan Holds Rates at 0.75% as Middle East Tensions Cloud Outlook",
+        "es": "Banco de Japón Mantiene Tasas en 0.75% Mientras Tensiones de Medio Oriente Nublan Perspectivas"
       },
       "summary": {
-        "es": "El BCE mantuvo los tipos de interés en 2.0% (depósito) mientras evalúa el impacto de la guerra en Oriente Medio. Los mercados esperan una subida en junio hasta 2.5% para fin de año. El banco central adopta un enfoque reunión por reunión ante la incertidumbre geopolítica.",
-        "en": "The ECB held interest rates at 2.0% (deposit rate) while assessing the Middle East war's impact. Markets expect a June hike to 2.5% by year-end. The central bank adopts a meeting-by-meeting approach amid geopolitical uncertainty."
+        "en": "The BOJ kept its key rate unchanged at 0.75% in March, the highest since 1995, as Middle East tensions create uncertainty. The board voted 8-1 to hold, with one dissenter favoring a hike to 1%. BOJ Governor Ueda kept the possibility of an April rate hike on the table, noting economic pressure from the conflict would likely be temporary.",
+        "es": "El BOJ mantuvo su tasa clave sin cambios en 0.75% en marzo, la más alta desde 1995, mientras las tensiones de Medio Oriente crean incertidumbre. La junta votó 8-1 para mantener, con un disidente favoreciendo un alza a 1%. El gobernador del BOJ Ueda mantuvo la posibilidad de un alza de tasas en abril sobre la mesa, señalando que la presión económica del conflicto probablemente sería temporal."
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/16/ecb-interest-rates-hike-inflation-iran-washington.html",
-      "time": "1d",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-19/boj-holds-rates-steady-as-iran-conflict-clouds-inflation-outlook",
+      "time": "1m",
       "impact": "medium",
       "signals": [
-        "EUR +",
-        "BUNDS -",
-        "ECB +"
+        "JPY NEUTRAL",
+        "BOJ HAWKISH",
+        "YEN WATCH"
       ],
       "confidence": 85
     },
     {
       "id": 5,
-      "tag": "STRATEGIC",
-      "region": "GLOBAL",
+      "tag": "CRITICAL",
+      "region": "EU",
       "title": {
-        "es": "Perspectivas Económicas Globales 2026: 'Nuevas Reglas, Economía Diferente'",
-        "en": "Global Economic Outlook 2026: 'New Rules, Different Economy'"
+        "en": "Russia Launches Deadliest 2026 Attack on Ukraine, Killing 18 as Air Defenses Strained",
+        "es": "Rusia Lanza Ataque Más Mortal de 2026 en Ucrania, Matando 18 Mientras Defensas Aéreas se Tensan"
       },
       "summary": {
-        "es": "Los analistas advierten que 2026 estará definido por el surgimiento de nuevas reglas de juego geopolíticas. La lógica económica tradicional pierde relevancia mientras la geopolítica gana protagonismo en las decisiones de mercado. Estados Unidos aprovechará su poder para remodelar el orden global.",
-        "en": "Analysts warn 2026 will be defined by emerging new geopolitical rules of the game. Traditional economic logic loses relevance while geopolitics gains prominence in market decisions. The US will leverage its power to reshape the global order."
+        "en": "Russia unleashed its most intense attack of the year with hundreds of drones and missiles, killing at least 18 people across Kyiv, Odesa and Dnipro. Ukraine shot down 636 of 703 incoming targets but fears the Iran war is draining critical air defense munitions. The strikes came as peace talks remain stalled.",
+        "es": "Rusia desató su ataque más intenso del año con cientos de drones y misiles, matando al menos 18 personas en Kiev, Odesa y Dnipro. Ucrania derribó 636 de 703 objetivos entrantes pero teme que la guerra de Irán esté agotando municiones críticas de defensa aérea. Los ataques ocurrieron mientras las conversaciones de paz permanecen estancadas."
       },
-      "source": "Rabobank",
-      "url": "https://www.rabobank.com/knowledge/q011509552-global-outlook-2026-new-rules-different-economy",
-      "time": "4d",
-      "impact": "medium",
+      "source": "NBC News",
+      "url": "https://www.nbcnews.com/world/ukraine/russia-drone-missile-attack-ukraine-kyiv-iran-war-air-defenses-rcna332101",
+      "time": "2d",
+      "impact": "high",
       "signals": [
-        "GOLD +",
-        "TECH +",
-        "TRADE -"
+        "RUB -",
+        "EU DEFENSE +",
+        "ENERGY +",
+        "SAFE HAVENS +"
       ],
-      "confidence": 78
+      "confidence": 93
     },
     {
       "id": 6,
       "tag": "EMERGING",
-      "region": "US",
+      "region": "MENA",
       "title": {
-        "es": "Preocupaciones por Estanflación Resurgen en Estados Unidos",
-        "en": "Stagflation Concerns Re-emerge in United States"
+        "en": "Iran Fires on Ships After Closing Strait of Hormuz, Escalating Energy Crisis",
+        "es": "Irán Dispara a Barcos Después de Cerrar Estrecho de Hormuz, Escalando Crisis Energética"
       },
       "summary": {
-        "es": "La combinación de inflación impulsada por la energía y datos de crecimiento débiles pone la 'palabra con S' de vuelta en el radar de los inversores. Las aperturas de empleo cayeron a 6.88 millones en febrero, el nivel más bajo desde la pandemia. Los precios de la gasolina subieron $0.60 por galón tras el inicio del conflicto.",
-        "en": "The combination of energy-driven inflation and softening growth data puts the S-word back on investors' radar. Job openings fell to 6.88 million in February, the lowest since the pandemic. Gas prices rose $0.60 per gallon following the conflict's start."
+        "en": "Iran fired on two ships transiting the Strait of Hormuz on April 18 after announcing closure of the critical shipping route, through which 20% of global oil passes. Iran's armed forces condemned US 'banditry and piracy' under the guise of a naval blockade. Oil prices remain above $100/barrel for the first time since August 2022.",
+        "es": "Irán disparó a dos barcos transitando el Estrecho de Hormuz el 18 de abril después de anunciar el cierre de la ruta marítima crítica, por la cual pasa el 20% del petróleo global. Las fuerzas armadas de Irán condenaron el 'bandidaje y piratería' estadounidense bajo el pretexto de un bloqueo naval. Los precios del petróleo permanecen sobre $100/barril por primera vez desde agosto 2022."
       },
-      "source": "Crestwood Advisors",
-      "url": "https://www.crestwoodadvisors.com/april-2026-economic-and-market-update-geopolitics-at-the-forefront/",
-      "time": "1w",
-      "impact": "medium",
+      "source": "The Kyiv Independent",
+      "url": "https://kyivindependent.com/",
+      "time": "3h",
+      "impact": "high",
       "signals": [
-        "USD -",
-        "TIPS +",
-        "ENERGY +"
+        "OIL +",
+        "ENERGY +",
+        "USD +",
+        "SHIPPING -"
       ],
-      "confidence": 82
+      "confidence": 90
     }
-  ],
-  "market_updated_at": "2026-04-19T07:04:31.860Z"
+  ]
 }
