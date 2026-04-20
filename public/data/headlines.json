@@ -1,239 +1,206 @@
 {
-  "generated_at": "2026-04-19T07:20:04.604Z",
+  "generated_at": "2026-04-20T08:04:44.104Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.18",
-      "change": "-0.13%",
+      "value": "1.1767",
+      "change": "-0.0017",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18484.50",
-      "change": "+2.18%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "95.42",
-      "change": "+5.58%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "89.81",
-      "change": "-6.78%",
+      "value": "16,802.50",
+      "change": "-160.40",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4830.43",
-      "change": "+0.96%",
+      "symbol": "BRENT",
+      "value": "95.30",
+      "change": "+4.92",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "75573.96",
-      "change": "+1.00%",
+      "symbol": "GOLD",
+      "value": "4,879.60",
+      "change": "+71.30",
       "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "74,572.68",
+      "change": "-973.81",
+      "up": false
     },
     {
       "symbol": "VIX",
-      "value": "17.28",
-      "change": "-3.68%",
+      "value": "17.48",
+      "change": "-0.46",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.26",
-      "change": "-0.44%",
-      "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7126.06",
-      "change": "+1.20%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24702.24",
-      "change": "+2.27%",
+      "symbol": "US 10Y",
+      "value": "4.266",
+      "change": "+0.023",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8710",
-      "change": "-0.12%",
+      "value": "0.8703",
+      "change": "-0.0002",
       "up": false
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "98.31",
-      "change": "+0.21%",
+      "symbol": "S&P 500",
+      "value": "7,126.06",
+      "change": "+84.78",
       "up": true
     },
     {
-      "symbol": "Natural Gas",
-      "value": "2.71",
-      "change": "+1.48%",
+      "symbol": "DAX 40",
+      "value": "24,702",
+      "change": "+548",
       "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.08",
-      "change": "+0.08%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.82",
-      "change": "-0.11%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "GLOBAL",
       "title": {
-        "en": "IMF Downgrades Global Growth to 3.1% as Middle East War Drives Energy Crisis",
-        "es": "FMI Reduce Crecimiento Global a 3.1% Mientras Guerra del Medio Oriente Impulsa Crisis Energética"
+        "es": "Tensiones EE.UU.-Irán se intensifican antes de expiración del alto al fuego",
+        "en": "US-Iran tensions escalate ahead of ceasefire expiration"
       },
       "summary": {
-        "en": "The IMF cut global growth forecasts to 3.1% for 2026 from 3.4% previously, citing the war in the Middle East which began February 28. The closure of the Strait of Hormuz has driven energy prices 19% higher, pushing inflation to 4.4%. In a severe scenario, global growth could fall to 2% with inflation exceeding 6%.",
-        "es": "El FMI redujo las previsiones de crecimiento global a 3.1% para 2026 desde 3.4% previo, citando la guerra en Medio Oriente que comenzó el 28 de febrero. El cierre del Estrecho de Hormuz ha impulsado los precios energéticos 19% más alto, empujando la inflación a 4.4%. En un escenario severo, el crecimiento global podría caer a 2% con inflación superior al 6%."
+        "es": "Futuros bursátiles estadounidenses cayeron tras reportes de que EE.UU. disparó y confiscó un buque iraní en el Golfo de Omán. Irán indica que es improbable que se una a una segunda ronda de conversaciones en Pakistán mientras continúe el bloqueo naval estadounidense.",
+        "en": "US stock futures fell after reports that the US Navy fired on and seized an Iranian cargo vessel in the Gulf of Oman. Iran signals unlikely to join second round of talks in Pakistan while US naval blockade continues."
       },
-      "source": "IMF World Economic Outlook",
-      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
-      "time": "5d",
+      "source": "Trading Economics",
+      "url": "https://tradingeconomics.com/united-states/stock-market",
+      "time": "7h",
       "impact": "high",
       "signals": [
         "OIL +",
-        "GLOBAL GDP -",
         "USD +",
-        "GOLD +"
-      ],
-      "confidence": 95
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "en": "Eurozone Inflation Surges to 2.6% in March as Energy Shock Hits",
-        "es": "Inflación de Eurozona Aumenta a 2.6% en Marzo Mientras Shock Energético Impacta"
-      },
-      "summary": {
-        "en": "Euro area inflation climbed to 2.6% in March from 1.9% in February, exceeding the ECB's 2% target for the first time since January 2025. Energy costs soared 5.1% annually, the sharpest increase since February 2023, driven by the Middle East conflict. The ECB held rates unchanged at 2.15% but warned of elevated uncertainty.",
-        "es": "La inflación del área euro subió a 2.6% en marzo desde 1.9% en febrero, superando el objetivo del BCE del 2% por primera vez desde enero 2025. Los costos energéticos se dispararon 5.1% anualmente, el mayor aumento desde febrero 2023, impulsado por el conflicto de Medio Oriente. El BCE mantuvo las tasas sin cambios en 2.15% pero advirtió sobre incertidumbre elevada."
-      },
-      "source": "Eurostat",
-      "url": "https://tradingeconomics.com/euro-area/inflation-cpi",
-      "time": "3d",
-      "impact": "high",
-      "signals": [
-        "EUR -",
-        "ECB HAWKISH",
-        "ENERGY +"
-      ],
-      "confidence": 92
-    },
-    {
-      "id": 3,
-      "tag": "MONITOR",
-      "region": "US",
-      "title": {
-        "en": "US-China Trade Tensions Escalate as Trump Threatens 50% Tariffs Over Iran Weapons",
-        "es": "Tensiones Comerciales EEUU-China Escalan Mientras Trump Amenaza Aranceles del 50% por Armas a Irán"
-      },
-      "summary": {
-        "en": "President Trump threatened to impose 50% tariffs on China if Beijing supplies weapons to Iran amid the Hormuz crisis. Beijing rejected the allegations as 'groundless smears' and vowed to retaliate with countermeasures. China's exports to the US fell 26.5% in March, marking continued decline since trade tensions escalated in April 2025.",
-        "es": "El presidente Trump amenazó con imponer aranceles del 50% a China si Beijing suministra armas a Irán en medio de la crisis de Hormuz. Beijing rechazó las acusaciones como 'calumnias infundadas' y prometió represalias con contramedidas. Las exportaciones de China a EEUU cayeron 26.5% en marzo, marcando declive continuo desde que las tensiones comerciales escalaron en abril 2025."
-      },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/15/strait-hormuz-us-iran-blockade-china-india-relations-energy-risk-tensions.html",
-      "time": "4d",
-      "impact": "medium",
-      "signals": [
-        "CNY -",
-        "TRADE WAR",
-        "USD +"
-      ],
-      "confidence": 88
-    },
-    {
-      "id": 4,
-      "tag": "STRATEGIC",
-      "region": "APAC",
-      "title": {
-        "en": "Bank of Japan Holds Rates at 0.75% as Middle East Tensions Cloud Outlook",
-        "es": "Banco de Japón Mantiene Tasas en 0.75% Mientras Tensiones de Medio Oriente Nublan Perspectivas"
-      },
-      "summary": {
-        "en": "The BOJ kept its key rate unchanged at 0.75% in March, the highest since 1995, as Middle East tensions create uncertainty. The board voted 8-1 to hold, with one dissenter favoring a hike to 1%. BOJ Governor Ueda kept the possibility of an April rate hike on the table, noting economic pressure from the conflict would likely be temporary.",
-        "es": "El BOJ mantuvo su tasa clave sin cambios en 0.75% en marzo, la más alta desde 1995, mientras las tensiones de Medio Oriente crean incertidumbre. La junta votó 8-1 para mantener, con un disidente favoreciendo un alza a 1%. El gobernador del BOJ Ueda mantuvo la posibilidad de un alza de tasas en abril sobre la mesa, señalando que la presión económica del conflicto probablemente sería temporal."
-      },
-      "source": "Bloomberg",
-      "url": "https://www.bloomberg.com/news/articles/2026-03-19/boj-holds-rates-steady-as-iran-conflict-clouds-inflation-outlook",
-      "time": "1m",
-      "impact": "medium",
-      "signals": [
-        "JPY NEUTRAL",
-        "BOJ HAWKISH",
-        "YEN WATCH"
+        "GOLD +",
+        "NASDAQ -"
       ],
       "confidence": 85
     },
     {
-      "id": 5,
-      "tag": "CRITICAL",
-      "region": "EU",
+      "id": 2,
+      "tag": "ALERT",
+      "region": "APAC",
       "title": {
-        "en": "Russia Launches Deadliest 2026 Attack on Ukraine, Killing 18 as Air Defenses Strained",
-        "es": "Rusia Lanza Ataque Más Mortal de 2026 en Ucrania, Matando 18 Mientras Defensas Aéreas se Tensan"
+        "es": "Mercados asiáticos caen por incertidumbre geopolítica renovada",
+        "en": "Asian markets decline on renewed geopolitical uncertainty"
       },
       "summary": {
-        "en": "Russia unleashed its most intense attack of the year with hundreds of drones and missiles, killing at least 18 people across Kyiv, Odesa and Dnipro. Ukraine shot down 636 of 703 incoming targets but fears the Iran war is draining critical air defense munitions. The strikes came as peace talks remain stalled.",
-        "es": "Rusia desató su ataque más intenso del año con cientos de drones y misiles, matando al menos 18 personas en Kiev, Odesa y Dnipro. Ucrania derribó 636 de 703 objetivos entrantes pero teme que la guerra de Irán esté agotando municiones críticas de defensa aérea. Los ataques ocurrieron mientras las conversaciones de paz permanecen estancadas."
+        "es": "Los índices asiáticos se mantienen influenciados por tensiones geopolíticas. El IHSG de Indonesia fluctuará entre niveles de resistencia de 7,773 y soporte de 7,308 según analistas.",
+        "en": "Asian indices remain swayed by geopolitical tensions. Indonesia's IHSG expected to fluctuate between resistance level of 7,773 and support level of 7,308 according to analysts."
       },
-      "source": "NBC News",
-      "url": "https://www.nbcnews.com/world/ukraine/russia-drone-missile-attack-ukraine-kyiv-iran-war-air-defenses-rcna332101",
-      "time": "2d",
+      "source": "En.tempo.co",
+      "url": "https://en.tempo.co/read/2099231/ihsg-to-remain-swayed-by-geopolitical-tensions",
+      "time": "3h",
+      "impact": "medium",
+      "signals": [
+        "NIKKEI -",
+        "KOSPI -",
+        "IHSG -"
+      ],
+      "confidence": 78
+    },
+    {
+      "id": 3,
+      "tag": "STRATEGIC",
+      "region": "EU",
+      "title": {
+        "es": "UE duplica aranceles del acero al 50% para contrarrestar sobreproducción china",
+        "en": "EU doubles steel tariffs to 50% to counter Chinese overcapacity"
+      },
+      "summary": {
+        "es": "Los legisladores de la UE acordaron duplicar los aranceles sobre el acero extranjero al 50%, dirigidos principalmente a las importaciones chinas baratas. La medida busca proteger la industria siderúrgica europea de la sobreproducción global.",
+        "en": "EU lawmakers agreed to double tariffs on foreign steel to 50%, primarily targeting cheap Chinese imports. The measure aims to shield Europe's steel industry from global overcapacity."
+      },
+      "source": "France 24",
+      "url": "https://www.france24.com/en/europe/20260413-eu-doubles-steel-tariffs-50-percent-crackdown-cheap-chinese-imports",
+      "time": "1w",
       "impact": "high",
       "signals": [
-        "RUB -",
-        "EU DEFENSE +",
-        "ENERGY +",
-        "SAFE HAVENS +"
+        "STEEL +",
+        "EUR +",
+        "CNY -"
       ],
-      "confidence": 93
+      "confidence": 92
+    },
+    {
+      "id": 4,
+      "tag": "MONITOR",
+      "region": "GLOBAL",
+      "title": {
+        "es": "Acciones tecnológicas chinas surgen en debut de Hong Kong en medio de optimismo de IA",
+        "en": "Chinese tech stocks surge in Hong Kong debut amid AI optimism"
+      },
+      "summary": {
+        "es": "Manycore Tech subió 144% en su primer día de cotización en Hong Kong, superando la suscripción 1,591 veces. La empresa de inteligencia espacial se suma a una serie de listados de IA china que han energizado los mercados de capitales de Hong Kong en 2026.",
+        "en": "Manycore Tech surged 144% on its Hong Kong trading debut, with the offering oversubscribed 1,591 times. The spatial intelligence firm adds to a string of Chinese AI listings that have energized Hong Kong's capital markets in 2026."
+      },
+      "source": "IG International",
+      "url": "https://www.ig.com/en/news-and-trade-ideas/weekly-market-navigator--20-apr-2026-260420",
+      "time": "7h",
+      "impact": "medium",
+      "signals": [
+        "HANG SENG +",
+        "AI STOCKS +",
+        "CNY +"
+      ],
+      "confidence": 81
+    },
+    {
+      "id": 5,
+      "tag": "EMERGING",
+      "region": "GLOBAL",
+      "title": {
+        "es": "FMI advierte que guerra oscurece perspectivas económicas globales",
+        "en": "IMF warns war darkens global economic outlook"
+      },
+      "summary": {
+        "es": "El FMI revisó a la baja las previsiones de crecimiento global a 3.1% para 2026 debido al conflicto de Oriente Medio. Los precios de commodities energéticos se esperan que suban 19% este año según el pronóstico de referencia.",
+        "en": "IMF revised down global growth forecasts to 3.1% for 2026 due to Middle East conflict. Energy commodity prices expected to rise 19% this year under reference forecast."
+      },
+      "source": "IMF",
+      "url": "https://www.imf.org/en/blogs/articles/2026/04/14/war-darkens-global-economic-outlook-and-reshapes-policy-priorities",
+      "time": "1w",
+      "impact": "high",
+      "signals": [
+        "COMMODITIES +",
+        "INFLATION +",
+        "GROWTH -"
+      ],
+      "confidence": 95
     },
     {
       "id": 6,
-      "tag": "EMERGING",
-      "region": "MENA",
+      "tag": "MONITOR",
+      "region": "US",
       "title": {
-        "en": "Iran Fires on Ships After Closing Strait of Hormuz, Escalating Energy Crisis",
-        "es": "Irán Dispara a Barcos Después de Cerrar Estrecho de Hormuz, Escalando Crisis Energética"
+        "es": "Acciones estadounidenses alcanzan máximos históricos por esperanzas de paz",
+        "en": "US stocks hit record highs on peace deal hopes"
       },
       "summary": {
-        "en": "Iran fired on two ships transiting the Strait of Hormuz on April 18 after announcing closure of the critical shipping route, through which 20% of global oil passes. Iran's armed forces condemned US 'banditry and piracy' under the guise of a naval blockade. Oil prices remain above $100/barrel for the first time since August 2022.",
-        "es": "Irán disparó a dos barcos transitando el Estrecho de Hormuz el 18 de abril después de anunciar el cierre de la ruta marítima crítica, por la cual pasa el 20% del petróleo global. Las fuerzas armadas de Irán condenaron el 'bandidaje y piratería' estadounidense bajo el pretexto de un bloqueo naval. Los precios del petróleo permanecen sobre $100/barril por primera vez desde agosto 2022."
+        "es": "El S&P 500 y NASDAQ alcanzaron nuevos máximos históricos esta semana, con el NASDAQ registrando su 12ª sesión positiva consecutiva. Los mercados se han beneficiado de la esperanza de un acuerdo de paz entre EE.UU. e Irán.",
+        "en": "S&P 500 and NASDAQ reached new record highs this week, with NASDAQ logging its 12th consecutive positive session. Markets have benefited from hopes of a US-Iran peace deal."
       },
-      "source": "The Kyiv Independent",
-      "url": "https://kyivindependent.com/",
-      "time": "3h",
-      "impact": "high",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/16/stock-market-today-live-updates.html",
+      "time": "2d",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "ENERGY +",
-        "USD +",
-        "SHIPPING -"
+        "S&P 500 +",
+        "NASDAQ +",
+        "VIX -"
       ],
-      "confidence": 90
+      "confidence": 89
     }
-  ],
-  "market_updated_at": "2026-04-20T07:46:31.501Z"
+  ]
 }
