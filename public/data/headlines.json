@@ -3,14 +3,14 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1767",
-      "change": "-0.14%",
+      "value": "1.1765",
+      "change": "-0.15%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
       "value": "18260.90",
-      "change": "+2.18%",
+      "change": "+0.70%",
       "up": true
     },
     {
@@ -21,12 +21,12 @@
     },
     {
       "symbol": "WTI crude",
-      "value": "88.98",
-      "change": "+6.12%",
+      "value": "88.80",
+      "change": "+5.00%",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
+      "symbol": "GOLD",
       "value": "4809.05",
       "change": "-0.51%",
       "up": false
@@ -39,21 +39,21 @@
     },
     {
       "symbol": "VIX",
-      "value": "17.48",
-      "change": "-2.56%",
-      "up": false
+      "value": "19.08",
+      "change": "+9.15%",
+      "up": true
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.31%",
-      "change": "-0.01%",
+      "value": "4.25",
+      "change": "-0.06%",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7126.06",
-      "change": "+1.20%",
-      "up": true
+      "value": "7109.14",
+      "change": "-0.24%",
+      "up": false
     },
     {
       "symbol": "DAX 40",
@@ -64,8 +64,8 @@
     {
       "symbol": "EUR/GBP",
       "value": "0.8710",
-      "change": "+0.15%",
-      "up": true
+      "change": "-0.15%",
+      "up": false
     },
     {
       "symbol": "DXY dollar index",
@@ -89,7 +89,7 @@
       "symbol": "USD/CNY",
       "value": "6.8172",
       "change": "+0.00%",
-      "up": false
+      "up": true
     }
   ],
   "headlines": [
@@ -233,5 +233,5 @@
       "confidence": 89
     }
   ],
-  "market_updated_at": "2026-04-20T18:46:42.309Z"
+  "market_updated_at": "2026-04-20T22:31:41.987Z"
 }
