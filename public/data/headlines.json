@@ -3,8 +3,8 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1764",
-      "change": "-0.15%",
+      "value": "1.1765",
+      "change": "-0.13%",
       "up": false
     },
     {
@@ -21,39 +21,39 @@
     },
     {
       "symbol": "WTI crude",
-      "value": "89.20",
-      "change": "+6.38%",
+      "value": "89.81",
+      "change": "+7.00%",
       "up": true
     },
     {
-      "symbol": "GOLD",
-      "value": "4830.43",
-      "change": "+0.84%",
+      "symbol": "GOLD (XAU/USD)",
+      "value": "4794.66",
+      "change": "+0.87%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "74323",
-      "change": "+0.96%",
-      "up": true
+      "value": "75324.58",
+      "change": "-0.63%",
+      "up": false
     },
     {
       "symbol": "VIX",
-      "value": "17.48",
-      "change": "-2.56%",
-      "up": false
+      "value": "19.98",
+      "change": "+14.30%",
+      "up": true
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.24",
-      "change": "-1.60%",
-      "up": false
+      "value": "4.34",
+      "change": "+0.06%",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7126.06",
-      "change": "+1.20%",
-      "up": true
+      "value": "7096.85",
+      "change": "-0.41%",
+      "up": false
     },
     {
       "symbol": "DAX 40",
@@ -63,14 +63,14 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8703",
-      "change": "-0.02%",
-      "up": false
+      "value": "0.8726",
+      "change": "+0.08%",
+      "up": true
     },
     {
       "symbol": "DXY dollar index",
       "value": "98.31",
-      "change": "+0.05%",
+      "change": "+0.21%",
       "up": true
     },
     {
@@ -81,15 +81,15 @@
     },
     {
       "symbol": "Copper",
-      "value": "6.07",
-      "change": "+0.07%",
-      "up": true
+      "value": "6.03",
+      "change": "-0.12%",
+      "up": false
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.8177",
-      "change": "+0.04%",
-      "up": true
+      "value": "6.8172",
+      "change": "+0.00%",
+      "up": false
     }
   ],
   "headlines": [
@@ -233,5 +233,5 @@
       "confidence": 89
     }
   ],
-  "market_updated_at": "2026-04-20T11:09:01.533Z"
+  "market_updated_at": "2026-04-20T15:07:46.420Z"
 }
