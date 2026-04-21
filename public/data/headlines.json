@@ -1,40 +1,34 @@
 {
-  "generated_at": "2026-04-20T08:04:44.104Z",
+  "generated_at": "2026-04-21T07:45:11.031Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1764",
+      "value": "1.1775",
       "change": "-0.12%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18260.90",
-      "change": "+0.21%",
+      "value": "18,260.90",
+      "change": "+2.18%",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "95.42",
       "change": "+5.58%",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "86.27",
-      "change": "-0.09%",
+      "symbol": "GOLD",
+      "value": "4,782.14",
+      "change": "-0.81%",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4809.05",
-      "change": "-0.51%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "75844.06",
-      "change": "+1.16%",
+      "symbol": "BTC",
+      "value": "75,657.62",
+      "change": "+1.12%",
       "up": true
     },
     {
@@ -44,51 +38,27 @@
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
+      "symbol": "US 10Y",
       "value": "4.25%",
       "change": "0.00%",
-      "up": false
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.87104",
+      "change": "+0.15%",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7124.00",
+      "value": "7,124.00",
       "change": "+0.21%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24417.80",
+      "value": "24,417.80",
       "change": "-1.15%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8710",
-      "change": "+0.15%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.31",
-      "change": "+0.21%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.66",
-      "change": "-1.22%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.08",
-      "change": "+0.08%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8172",
-      "change": "+0.00%",
       "up": false
     }
   ],
@@ -96,142 +66,141 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "GLOBAL",
+      "region": "MENA",
       "title": {
-        "es": "Tensiones EE.UU.-Irán se intensifican antes de expiración del alto al fuego",
-        "en": "US-Iran tensions escalate ahead of ceasefire expiration"
+        "es": "Tensiones Renovadas EU-Irán Tras Ruptura de Conversaciones",
+        "en": "Renewed US-Iran Tensions After Peace Talks Breakdown"
       },
       "summary": {
-        "es": "Futuros bursátiles estadounidenses cayeron tras reportes de que EE.UU. disparó y confiscó un buque iraní en el Golfo de Omán. Irán indica que es improbable que se una a una segunda ronda de conversaciones en Pakistán mientras continúe el bloqueo naval estadounidense.",
-        "en": "US stock futures fell after reports that the US Navy fired on and seized an Iranian cargo vessel in the Gulf of Oman. Iran signals unlikely to join second round of talks in Pakistan while US naval blockade continues."
+        "es": "El alto el fuego de dos semanas entre EU e Irán se acerca a su fecha límite con informes de que Irán se retiró de las conversaciones mediadas por Pakistán. Las tensiones se intensificaron después de que Trump anunciara el domingo la incautación de un buque iraní en el Golfo de Omán.",
+        "en": "The two-week ceasefire between the US and Iran approaches its deadline with reports that Iran withdrew from Pakistan-mediated talks. Tensions escalated after Trump announced on Sunday the seizure of an Iranian vessel in the Gulf of Oman."
       },
-      "source": "Trading Economics",
-      "url": "https://tradingeconomics.com/united-states/stock-market",
-      "time": "7h",
+      "source": "CNN",
+      "url": "https://www.cnbc.com/2026/04/20/stock-market-today-live-updates.html",
+      "time": "3h",
       "impact": "high",
       "signals": [
         "OIL +",
         "USD +",
         "GOLD +",
-        "NASDAQ -"
-      ],
-      "confidence": 85
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
-      "region": "APAC",
-      "title": {
-        "es": "Mercados asiáticos caen por incertidumbre geopolítica renovada",
-        "en": "Asian markets decline on renewed geopolitical uncertainty"
-      },
-      "summary": {
-        "es": "Los índices asiáticos se mantienen influenciados por tensiones geopolíticas. El IHSG de Indonesia fluctuará entre niveles de resistencia de 7,773 y soporte de 7,308 según analistas.",
-        "en": "Asian indices remain swayed by geopolitical tensions. Indonesia's IHSG expected to fluctuate between resistance level of 7,773 and support level of 7,308 according to analysts."
-      },
-      "source": "En.tempo.co",
-      "url": "https://en.tempo.co/read/2099231/ihsg-to-remain-swayed-by-geopolitical-tensions",
-      "time": "3h",
-      "impact": "medium",
-      "signals": [
-        "NIKKEI -",
-        "KOSPI -",
-        "IHSG -"
-      ],
-      "confidence": 78
-    },
-    {
-      "id": 3,
-      "tag": "STRATEGIC",
-      "region": "EU",
-      "title": {
-        "es": "UE duplica aranceles del acero al 50% para contrarrestar sobreproducción china",
-        "en": "EU doubles steel tariffs to 50% to counter Chinese overcapacity"
-      },
-      "summary": {
-        "es": "Los legisladores de la UE acordaron duplicar los aranceles sobre el acero extranjero al 50%, dirigidos principalmente a las importaciones chinas baratas. La medida busca proteger la industria siderúrgica europea de la sobreproducción global.",
-        "en": "EU lawmakers agreed to double tariffs on foreign steel to 50%, primarily targeting cheap Chinese imports. The measure aims to shield Europe's steel industry from global overcapacity."
-      },
-      "source": "France 24",
-      "url": "https://www.france24.com/en/europe/20260413-eu-doubles-steel-tariffs-50-percent-crackdown-cheap-chinese-imports",
-      "time": "1w",
-      "impact": "high",
-      "signals": [
-        "STEEL +",
-        "EUR +",
-        "CNY -"
+        "VIX +"
       ],
       "confidence": 92
     },
     {
-      "id": 4,
+      "id": 2,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Diálogo Climático de Petersberg 2026 Comienza en Berlín",
+        "en": "Petersberg Climate Dialogue 2026 Begins in Berlin"
+      },
+      "summary": {
+        "es": "Ministros de más de 40 países se reúnen en Berlín para el 17º Diálogo Climático de Petersberg, la primera reunión ministerial climática importante de 2026. Las discusiones se centrarán en la transición energética en medio de las tensiones geopolíticas y la crisis energética global.",
+        "en": "Ministers from over 40 countries gather in Berlin for the 17th Petersberg Climate Dialogue, the first major climate ministerial meeting of 2026. Discussions focus on energy transition amid geopolitical tensions and global energy crisis."
+      },
+      "source": "E3G",
+      "url": "https://www.e3g.org/news/petersberg-climate-dialogue-2026/",
+      "time": "1h",
+      "impact": "medium",
+      "signals": [
+        "EUR +",
+        "GREEN BONDS +",
+        "RENEWABLE ETF +"
+      ],
+      "confidence": 85
+    },
+    {
+      "id": 3,
       "tag": "MONITOR",
       "region": "GLOBAL",
       "title": {
-        "es": "Acciones tecnológicas chinas surgen en debut de Hong Kong en medio de optimismo de IA",
-        "en": "Chinese tech stocks surge in Hong Kong debut amid AI optimism"
+        "es": "FMI Revisa Crecimiento Global a la Baja por Guerra en Irán",
+        "en": "IMF Downgrades Global Growth Over Iran War"
       },
       "summary": {
-        "es": "Manycore Tech subió 144% en su primer día de cotización en Hong Kong, superando la suscripción 1,591 veces. La empresa de inteligencia espacial se suma a una serie de listados de IA china que han energizado los mercados de capitales de Hong Kong en 2026.",
-        "en": "Manycore Tech surged 144% on its Hong Kong trading debut, with the offering oversubscribed 1,591 times. The spatial intelligence firm adds to a string of Chinese AI listings that have energized Hong Kong's capital markets in 2026."
+        "es": "El FMI proyecta un crecimiento global del 3.1% en 2026 y 3.2% en 2027, por debajo de los promedios prepandémicos. El informe cita el conflicto de Medio Oriente, precios elevados de commodities y condiciones financieras más estrictas como factores clave de riesgo.",
+        "en": "IMF projects global growth of 3.1% in 2026 and 3.2% in 2027, below pre-pandemic averages. The report cites Middle East conflict, elevated commodity prices, and tighter financial conditions as key risk factors."
       },
-      "source": "IG International",
-      "url": "https://www.ig.com/en/news-and-trade-ideas/weekly-market-navigator--20-apr-2026-260420",
-      "time": "7h",
+      "source": "IMF",
+      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "time": "6h",
+      "impact": "high",
+      "signals": [
+        "EMERGING MKTS -",
+        "DXY +",
+        "BONDS +"
+      ],
+      "confidence": 88
+    },
+    {
+      "id": 4,
+      "tag": "EMERGING",
+      "region": "APAC",
+      "title": {
+        "es": "China Mantiene Postura Cautelosa en Mediación EU-Irán",
+        "en": "China Maintains Cautious Stance on US-Iran Mediation"
+      },
+      "summary": {
+        "es": "Beijing continúa apoyando los esfuerzos de mediación de Pakistán pero evita el involucramiento militar directo. China bloqueó una resolución del Consejo de Seguridad de la ONU sobre el Estrecho de Hormuz, señalando su apoyo diplomático a Irán.",
+        "en": "Beijing continues supporting Pakistan's mediation efforts but avoids direct military involvement. China blocked a UN Security Council resolution on the Strait of Hormuz, signaling its diplomatic support for Iran."
+      },
+      "source": "Foreign Policy",
+      "url": "https://foreignpolicy.com/2026/04/14/china-iran-us-blockade-xi-jinping-diplomacy/",
+      "time": "6h",
       "impact": "medium",
       "signals": [
-        "HANG SENG +",
-        "AI STOCKS +",
-        "CNY +"
+        "CNY =",
+        "CHINA ETF -",
+        "OIL +"
       ],
-      "confidence": 81
+      "confidence": 80
     },
     {
       "id": 5,
-      "tag": "EMERGING",
+      "tag": "STRATEGIC",
       "region": "GLOBAL",
       "title": {
-        "es": "FMI advierte que guerra oscurece perspectivas económicas globales",
-        "en": "IMF warns war darkens global economic outlook"
+        "es": "Oro Alcanza Máximos de $4,815 por Tensiones Geopolíticas",
+        "en": "Gold Hits Highs at $4,815 on Geopolitical Tensions"
       },
       "summary": {
-        "es": "El FMI revisó a la baja las previsiones de crecimiento global a 3.1% para 2026 debido al conflicto de Oriente Medio. Los precios de commodities energéticos se esperan que suban 19% este año según el pronóstico de referencia.",
-        "en": "IMF revised down global growth forecasts to 3.1% for 2026 due to Middle East conflict. Energy commodity prices expected to rise 19% this year under reference forecast."
+        "es": "El oro se consolida cerca de máximos históricos mientras los bancos centrales continúan diversificando reservas. Los analistas señalan el rango de $4,760-$4,881 como clave para la dirección a corto plazo en medio de la incertidumbre global.",
+        "en": "Gold consolidates near historic highs as central banks continue reserve diversification. Analysts point to $4,760-$4,881 range as key for near-term direction amid global uncertainty."
       },
-      "source": "IMF",
-      "url": "https://www.imf.org/en/blogs/articles/2026/04/14/war-darkens-global-economic-outlook-and-reshapes-policy-priorities",
-      "time": "1w",
-      "impact": "high",
+      "source": "LiteFinance",
+      "url": "https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/daily-and-weekly/",
+      "time": "3h",
+      "impact": "medium",
       "signals": [
-        "COMMODITIES +",
-        "INFLATION +",
-        "GROWTH -"
+        "GOLD +",
+        "USD +",
+        "MINING STOCKS +"
       ],
-      "confidence": 95
+      "confidence": 78
     },
     {
       "id": 6,
       "tag": "MONITOR",
       "region": "US",
       "title": {
-        "es": "Acciones estadounidenses alcanzan máximos históricos por esperanzas de paz",
-        "en": "US stocks hit record highs on peace deal hopes"
+        "es": "Mercados Estadounidenses Caen por Renovadas Tensiones en Medio Oriente",
+        "en": "US Markets Drop on Renewed Middle East Tensions"
       },
       "summary": {
-        "es": "El S&P 500 y NASDAQ alcanzaron nuevos máximos históricos esta semana, con el NASDAQ registrando su 12ª sesión positiva consecutiva. Los mercados se han beneficiado de la esperanza de un acuerdo de paz entre EE.UU. e Irán.",
-        "en": "S&P 500 and NASDAQ reached new record highs this week, with NASDAQ logging its 12th consecutive positive session. Markets have benefited from hopes of a US-Iran peace deal."
+        "es": "El S&P 500 cayó 0.24% y el Nasdaq perdió 0.26%, rompiendo su racha positiva de 13 días. Los futuros muestran recuperación moderada en la madrugada mientras los inversores evalúan el riesgo geopolítico renovado.",
+        "en": "S&P 500 fell 0.24% and Nasdaq lost 0.26%, breaking its 13-day winning streak. Futures show modest recovery in early hours as investors assess renewed geopolitical risk."
       },
       "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/16/stock-market-today-live-updates.html",
-      "time": "2d",
+      "url": "https://www.cnbc.com/2026/04/20/stock-market-today-live-updates.html",
+      "time": "3h",
       "impact": "medium",
       "signals": [
-        "S&P 500 +",
-        "NASDAQ +",
-        "VIX -"
+        "SPY -",
+        "QQQ -",
+        "VIX +"
       ],
-      "confidence": 89
+      "confidence": 82
     }
-  ],
-  "market_updated_at": "2026-04-21T07:18:40.221Z"
+  ]
 }
