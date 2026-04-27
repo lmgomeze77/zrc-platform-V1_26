@@ -1,40 +1,34 @@
 {
-  "generated_at": "2026-04-21T07:45:11.031Z",
+  "generated_at": "2026-04-27T08:17:00.888Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1727",
-      "change": "-0.39%",
+      "value": "1.1711",
+      "change": "-0.26%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17885.90",
-      "change": "-0.89%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "105.33",
-      "change": "+0.26%",
+      "value": "17,885.90",
+      "change": "+0.22%",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "95.66",
-      "change": "+1.73%",
+      "symbol": "BRENT",
+      "value": "99.13",
+      "change": "+0.25%",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4721.13",
-      "change": "+0.28%",
+      "symbol": "GOLD",
+      "value": "4,740.90",
+      "change": "+0.36%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "78053.79",
-      "change": "+0.47%",
+      "symbol": "BTC",
+      "value": "79,085",
+      "change": "+0.54%",
       "up": true
     },
     {
@@ -44,194 +38,168 @@
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.306%",
-      "change": "-0.40%",
+      "symbol": "US 10Y",
+      "value": "4.31",
+      "change": "-0.30%",
       "up": false
     },
     {
+      "symbol": "EUR/GBP",
+      "value": "0.8567",
+      "change": "+0.12%",
+      "up": true
+    },
+    {
       "symbol": "S&P 500",
-      "value": "7165.08",
+      "value": "7,165.08",
       "change": "+0.80%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24564.00",
-      "change": "+0.19%",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8703",
-      "change": "-0.07%",
+      "value": "24,128.98",
+      "change": "-0.11%",
       "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.51",
-      "change": "-0.02%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.52",
-      "change": "-3.48%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.0755",
-      "change": "-0.22%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8349",
-      "change": "+0.11%",
-      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "GLOBAL",
       "title": {
-        "es": "Tensiones Renovadas EU-Irán Tras Ruptura de Conversaciones",
-        "en": "Renewed US-Iran Tensions After Peace Talks Breakdown"
+        "en": "Global Military Spending Surges to $2.89 Trillion in 2025",
+        "es": "Gasto Militar Mundial Se Dispara a $2.89 Billones en 2025"
       },
       "summary": {
-        "es": "El alto el fuego de dos semanas entre EU e Irán se acerca a su fecha límite con informes de que Irán se retiró de las conversaciones mediadas por Pakistán. Las tensiones se intensificaron después de que Trump anunciara el domingo la incautación de un buque iraní en el Golfo de Omán.",
-        "en": "The two-week ceasefire between the US and Iran approaches its deadline with reports that Iran withdrew from Pakistan-mediated talks. Tensions escalated after Trump announced on Sunday the seizure of an Iranian vessel in the Gulf of Oman."
+        "en": "World military expenditure reached record $2.89 trillion in 2025, with Europe rising 14% and Asia up 8.1% while US declined 7.5%. SIPRI data shows 11th consecutive year of increases as states respond to wars and geopolitical upheaval. US spending expected to exceed $1 trillion in 2026.",
+        "es": "El gasto militar mundial alcanzó un récord de $2.89 billones en 2025, con Europa subiendo 14% y Asia 8.1% mientras EE.UU. descendió 7.5%. Datos de SIPRI muestran el 11º año consecutivo de aumentos mientras los estados responden a guerras y agitación geopolítica. Se espera que el gasto estadounidense supere $1 billón en 2026."
       },
-      "source": "CNN",
-      "url": "https://www.cnbc.com/2026/04/20/stock-market-today-live-updates.html",
-      "time": "3h",
+      "source": "SIPRI",
+      "url": "https://www.sipri.org/media/press-release/2026/global-military-spending-rise-continues-european-and-asian-expenditures-surge",
+      "time": "4h",
+      "impact": "high",
+      "signals": [
+        "DEF +",
+        "EUR +",
+        "RUB -"
+      ],
+      "confidence": 95
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "en": "Iran Offers New Proposal to Reopen Strait of Hormuz",
+        "es": "Irán Ofrece Nueva Propuesta para Reabrir Estrecho de Hormuz"
+      },
+      "summary": {
+        "en": "Iran has offered a new proposal to the US for reopening the Strait of Hormuz and ending the war while deferring nuclear talks. Oil prices surge as geopolitical tensions remain high. Trump scrapped plans to send envoys to Pakistan for ceasefire talks.",
+        "es": "Irán ha ofrecido una nueva propuesta a EE.UU. para reabrir el Estrecho de Hormuz y terminar la guerra mientras difiere las conversaciones nucleares. Los precios del petróleo suben mientras las tensiones geopolíticas permanecen altas. Trump canceló planes de enviar enviados a Pakistán para conversaciones de cese al fuego."
+      },
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/26/stock-market-today-live-updates.html",
+      "time": "1h",
       "impact": "high",
       "signals": [
         "OIL +",
         "USD +",
-        "GOLD +",
-        "VIX +"
+        "EUR -"
       ],
-      "confidence": 92
+      "confidence": 90
     },
     {
-      "id": 2,
+      "id": 3,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "AFRICA",
       "title": {
-        "es": "Diálogo Climático de Petersberg 2026 Comienza en Berlín",
-        "en": "Petersberg Climate Dialogue 2026 Begins in Berlin"
+        "en": "Sudan Conflict Intensifies: AU Plans Return to Khartoum",
+        "es": "Conflicto de Sudán se Intensifica: UA Planea Regreso a Jartum"
       },
       "summary": {
-        "es": "Ministros de más de 40 países se reúnen en Berlín para el 17º Diálogo Climático de Petersberg, la primera reunión ministerial climática importante de 2026. Las discusiones se centrarán en la transición energética en medio de las tensiones geopolíticas y la crisis energética global.",
-        "en": "Ministers from over 40 countries gather in Berlin for the 17th Petersberg Climate Dialogue, the first major climate ministerial meeting of 2026. Discussions focus on energy transition amid geopolitical tensions and global energy crisis."
+        "en": "African Union delegation visits Sudan Foreign Ministry to assess reopening Khartoum office after 3 years of conflict. Chad closes border with Sudan indefinitely as RSF enters territory. Over 30 million people require humanitarian assistance representing 10% of global needs.",
+        "es": "Delegación de la Unión Africana visita Ministerio de Relaciones Exteriores de Sudán para evaluar reapertura de oficina en Jartum tras 3 años de conflicto. Chad cierra frontera con Sudán indefinidamente mientras RSF ingresa al territorio. Más de 30 millones de personas requieren asistencia humanitaria representando 10% de las necesidades globales."
       },
-      "source": "E3G",
-      "url": "https://www.e3g.org/news/petersberg-climate-dialogue-2026/",
-      "time": "1h",
+      "source": "Sudan Live Map",
+      "url": "https://sudan.liveuamap.com/",
+      "time": "20h",
       "impact": "medium",
       "signals": [
-        "EUR +",
-        "GREEN BONDS +",
-        "RENEWABLE ETF +"
+        "XAU +",
+        "USD +",
+        "OIL +"
       ],
       "confidence": 85
     },
     {
-      "id": 3,
-      "tag": "MONITOR",
-      "region": "GLOBAL",
+      "id": 4,
+      "tag": "STRATEGIC",
+      "region": "APAC",
       "title": {
-        "es": "FMI Revisa Crecimiento Global a la Baja por Guerra en Irán",
-        "en": "IMF Downgrades Global Growth Over Iran War"
+        "en": "India-New Zealand FTA Signing Creates New Trade Pathway",
+        "es": "Firma de TLC India-Nueva Zelanda Crea Nueva Vía Comercial"
       },
       "summary": {
-        "es": "El FMI proyecta un crecimiento global del 3.1% en 2026 y 3.2% en 2027, por debajo de los promedios prepandémicos. El informe cita el conflicto de Medio Oriente, precios elevados de commodities y condiciones financieras más estrictas como factores clave de riesgo.",
-        "en": "IMF projects global growth of 3.1% in 2026 and 3.2% in 2027, below pre-pandemic averages. The report cites Middle East conflict, elevated commodity prices, and tighter financial conditions as key risk factors."
+        "en": "India and New Zealand sign landmark FTA on April 27, providing 100% duty-free access for Indian exports and $20 billion investment commitment over 15 years. Agreement includes 5,000 annual work visas for skilled Indians and expands cooperation in technology and agriculture.",
+        "es": "India y Nueva Zelanda firman histórico TLC el 27 de abril, proporcionando acceso 100% libre de aranceles para exportaciones indias y compromiso de inversión de $20 mil millones durante 15 años. El acuerdo incluye 5,000 visas de trabajo anuales para indios calificados y expande cooperación en tecnología y agricultura."
       },
-      "source": "IMF",
-      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
-      "time": "6h",
-      "impact": "high",
+      "source": "Business Today",
+      "url": "https://www.businesstoday.in/india/story/india-new-zealand-fta-to-be-signed-tomorrow-what-the-deal-means-for-trade-jobs-and-students-527504-2026-04-26",
+      "time": "16h",
+      "impact": "medium",
       "signals": [
-        "EMERGING MKTS -",
-        "DXY +",
-        "BONDS +"
+        "INR +",
+        "NZD +",
+        "TRADE +"
+      ],
+      "confidence": 92
+    },
+    {
+      "id": 5,
+      "tag": "MONITOR",
+      "region": "APAC",
+      "title": {
+        "en": "China Industrial Profits Jump 15.8% Amid Geopolitical Risks",
+        "es": "Ganancias Industriales de China Saltan 15.8% En Medio de Riesgos Geopolíticos"
+      },
+      "summary": {
+        "en": "China's industrial profits accelerated to 15.8% year-on-year in March from 15.2% in first two months. CSI 300 gained 0.25% while geopolitical risks outside China persist, keeping aluminum and commodity markets volatile. Market sentiment remains sensitive to headlines.",
+        "es": "Las ganancias industriales de China se aceleraron a 15.8% interanual en marzo desde 15.2% en los primeros dos meses. CSI 300 ganó 0.25% mientras los riesgos geopolíticos fuera de China persisten, manteniendo volátiles los mercados de aluminio y materias primas. El sentimiento del mercado permanece sensible a los titulares."
+      },
+      "source": "Shanghai Metals Market",
+      "url": "https://news.metal.com/newscontent/103875169-Geopolitical-Factors-Supported-LME-Aluminum-Prices-on-the-Stronger-Side-High-Inventories-and-Weak-Demand-in-China-Constr",
+      "time": "14h",
+      "impact": "medium",
+      "signals": [
+        "CNY +",
+        "ALU +",
+        "SHFE -"
       ],
       "confidence": 88
     },
     {
-      "id": 4,
-      "tag": "EMERGING",
-      "region": "APAC",
-      "title": {
-        "es": "China Mantiene Postura Cautelosa en Mediación EU-Irán",
-        "en": "China Maintains Cautious Stance on US-Iran Mediation"
-      },
-      "summary": {
-        "es": "Beijing continúa apoyando los esfuerzos de mediación de Pakistán pero evita el involucramiento militar directo. China bloqueó una resolución del Consejo de Seguridad de la ONU sobre el Estrecho de Hormuz, señalando su apoyo diplomático a Irán.",
-        "en": "Beijing continues supporting Pakistan's mediation efforts but avoids direct military involvement. China blocked a UN Security Council resolution on the Strait of Hormuz, signaling its diplomatic support for Iran."
-      },
-      "source": "Foreign Policy",
-      "url": "https://foreignpolicy.com/2026/04/14/china-iran-us-blockade-xi-jinping-diplomacy/",
-      "time": "6h",
-      "impact": "medium",
-      "signals": [
-        "CNY =",
-        "CHINA ETF -",
-        "OIL +"
-      ],
-      "confidence": 80
-    },
-    {
-      "id": 5,
-      "tag": "STRATEGIC",
-      "region": "GLOBAL",
-      "title": {
-        "es": "Oro Alcanza Máximos de $4,815 por Tensiones Geopolíticas",
-        "en": "Gold Hits Highs at $4,815 on Geopolitical Tensions"
-      },
-      "summary": {
-        "es": "El oro se consolida cerca de máximos históricos mientras los bancos centrales continúan diversificando reservas. Los analistas señalan el rango de $4,760-$4,881 como clave para la dirección a corto plazo en medio de la incertidumbre global.",
-        "en": "Gold consolidates near historic highs as central banks continue reserve diversification. Analysts point to $4,760-$4,881 range as key for near-term direction amid global uncertainty."
-      },
-      "source": "LiteFinance",
-      "url": "https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/daily-and-weekly/",
-      "time": "3h",
-      "impact": "medium",
-      "signals": [
-        "GOLD +",
-        "USD +",
-        "MINING STOCKS +"
-      ],
-      "confidence": 78
-    },
-    {
       "id": 6,
-      "tag": "MONITOR",
-      "region": "US",
+      "tag": "EMERGING",
+      "region": "LATAM",
       "title": {
-        "es": "Mercados Estadounidenses Caen por Renovadas Tensiones en Medio Oriente",
-        "en": "US Markets Drop on Renewed Middle East Tensions"
+        "en": "Colombia Bus Bombing Kills 20 in Cauca Department",
+        "es": "Atentado con Bomba en Bus en Colombia Mata 20 en Departamento del Cauca"
       },
       "summary": {
-        "es": "El S&P 500 cayó 0.24% y el Nasdaq perdió 0.26%, rompiendo su racha positiva de 13 días. Los futuros muestran recuperación moderada en la madrugada mientras los inversores evalúan el riesgo geopolítico renovado.",
-        "en": "S&P 500 fell 0.24% and Nasdaq lost 0.26%, breaking its 13-day winning streak. Futures show modest recovery in early hours as investors assess renewed geopolitical risk."
+        "en": "Bus bombing in Colombia's Cauca department killed at least 20 people and wounded 36 others on Saturday. Authorities attribute attack to ex-FARC 'Central General Staff' faction. Violence highlights ongoing security challenges in the region.",
+        "es": "Atentado con bomba en bus en el departamento del Cauca de Colombia mató al menos 20 personas e hirió a otras 36 el sábado. Las autoridades atribuyen el ataque a la facción ex-FARC 'Estado Mayor Central'. La violencia resalta los desafíos de seguridad continuos en la región."
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/20/stock-market-today-live-updates.html",
-      "time": "3h",
-      "impact": "medium",
+      "source": "Foreign Exchanges",
+      "url": "https://www.foreignexchanges.news/p/world-roundup-april-25-26-2026",
+      "time": "5h",
+      "impact": "low",
       "signals": [
-        "SPY -",
-        "QQQ -",
-        "VIX +"
+        "COP -",
+        "LATAM -",
+        "SEC -"
       ],
       "confidence": 82
     }
-  ],
-  "market_updated_at": "2026-04-27T08:00:21.173Z"
+  ]
 }
