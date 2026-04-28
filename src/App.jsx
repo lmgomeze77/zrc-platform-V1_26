@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
+import RealEstateVisor from "./pages/labs/RealEstateVisor";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.2
@@ -409,6 +410,11 @@ const TOOLS = [
     name: "GeoRisk Dashboard",
     desc: { es: "Scoring de riesgo geopolítico en tiempo real con sliders de escenario.", en: "Real-time geopolitical risk scoring with scenario sliders." },
     icon: "◈", status: "LIVE", ml: true,
+  },
+  {
+    name: "Real Estate Visor",
+    desc: { es: "Visor inmobiliario con catastro, capas de riesgo, planeamiento y matching de mandatos ZRC.", en: "Real estate visor with cadastre, risk layers, planning and ZRC mandate matching." },
+    icon: "◇", status: "BETA", ml: false,
   },
   {
     name: "Valuation Engine",
@@ -1072,6 +1078,7 @@ const Intelligence = ({ lang }) => {
   const t = T[lang].intel;
   const { user } = useAuth();
   const [showGeoRisk, setShowGeoRisk] = useState(false);
+  const [showVisor, setShowVisor] = useState(false);
 
   return (
     <Sec id="intelligence">
@@ -1106,7 +1113,10 @@ const Intelligence = ({ lang }) => {
                 <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, fontWeight: 300 }}>{tool.desc[lang]}</p>
               </div>
               {user ? (
-                <button onClick={() => { if (tool.name === "GeoRisk Dashboard") setShowGeoRisk(true); }}
+                <button onClick={() => {
+                  if (tool.name === "GeoRisk Dashboard") setShowGeoRisk(true);
+                  if (tool.name === "Real Estate Visor") setShowVisor(true);
+                }}
                   style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}>
                   {tool.status === "LIVE" ? "LAUNCH →" : tool.status === "BETA" ? "REQUEST ACCESS" : "NOTIFY ME"}
                 </button>
@@ -1129,6 +1139,15 @@ const Intelligence = ({ lang }) => {
             ✕ CLOSE DASHBOARD
           </button>
           <GeoRiskDashboard />
+        </div>
+      )}
+      {showVisor && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+          <button onClick={() => setShowVisor(false)}
+            style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
+            ✕ CLOSE VISOR
+          </button>
+          <RealEstateVisor />
         </div>
       )}
     </Sec>
