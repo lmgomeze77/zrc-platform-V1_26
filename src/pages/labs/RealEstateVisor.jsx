@@ -1,0 +1,615 @@
+// src/pages/labs/RealEstateVisor.jsx
+// ZRC Labs · Visor Inmobiliario Georreferenciado
+// Diseñado para integrarse con la plataforma v3.2 — sistema oscuro, gold #D4A853
+// Sin dependencias adicionales más allá de leaflet + react-leaflet (ya instaladas)
+
+import { useState, useEffect } from "react";
+import { MapContainer, TileLayer, WMSTileLayer, Marker, Popup, Circle, useMap, LayersControl } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+const { BaseLayer, Overlay } = LayersControl;
+
+// Tokens locales — espejo del sistema de App.jsx (importables si se externalizan en futuro)
+const C = {
+  bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
+  border: "#27272A", borderHover: "#3F3F46",
+  text: "#FAFAFA", textSec: "#A1A1AA", textMuted: "#71717A",
+  gold: "#D4A853", goldDim: "rgba(212,168,83,0.12)", goldBorder: "rgba(212,168,83,0.25)",
+  red: "#EF4444", green: "#22C55E", amber: "#F59E0B",
+};
+const F = {
+  display: "'Cormorant Garamond', 'Georgia', serif",
+  body: "'Outfit', 'Helvetica Neue', sans-serif",
+  mono: "'IBM Plex Mono', 'Fira Code', monospace",
+};
+
+// Fix iconos Leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+});
+
+// Endpoints públicos
+const WMS = {
+  catastro: "https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx",
+  inundacion: "https://wms.mapama.gob.es/sig/Agua/ZI_LamCru500/wms.aspx",
+  planeamiento: "https://servicios.mityc.es/sig/wms/SIU",
+  patrimonio: "https://servicios.mityc.es/sig/wms/Patrimonio",
+};
+const CATASTRO_DNP = "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejero.svc/json/Consulta_DNPRC";
+const CATASTRO_COORD = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC";
+
+function FlyTo({ position, zoom = 18 }) {
+  const map = useMap();
+  useEffect(() => { if (position) map.flyTo(position, zoom, { duration: 1.2 }); }, [position, zoom, map]);
+  return null;
+}
+
+// ============================================================
+export default function RealEstateVisor() {
+  const [rc, setRc] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [parcela, setParcela] = useState(null);
+  const [position, setPosition] = useState(null);
+  const [residual, setResidual] = useState(null);
+  const [risk, setRisk] = useState(null);
+  const [boeAlerts, setBoeAlerts] = useState([]);
+  const [matches, setMatches] = useState([]);
+  const [activeTab, setActiveTab] = useState("ficha");
+  const [params, setParams] = useState({
+    edificabilidad: 1.0,
+    precioVenta: 2500,
+    costeConstruccion: 1450,
+    costesIndirectos: 0.18,
+    margenPromotor: 0.18,
+  });
+
+  const handleSearch = async (e) => {
+    e?.preventDefault();
+    if (!rc || rc.length < 14) {
+      setError("Introduce una referencia catastral válida (14 o 20 caracteres).");
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    setParcela(null); setResidual(null); setRisk(null); setBoeAlerts([]); setMatches([]);
+    try {
+      const dnpResp = await fetch(`${CATASTRO_DNP}?RefCat=${encodeURIComponent(rc)}`);
+      const dnpData = await dnpResp.json();
+      const consulta = dnpData?.consulta_dnprcResult;
+      if (consulta?.control?.cuerr > 0) {
+        throw new Error(consulta.lerr?.[0]?.des || "Referencia no encontrada en Catastro.");
+      }
+      const bi = consulta?.bico?.bi || consulta?.lrcdnp?.rcdnp?.[0];
+      const dt = bi?.dt || consulta?.bico?.bi?.dt;
+      const debi = bi?.debi || {};
+      const direccion = dt?.locs?.lous?.lourb?.dir
+        ? `${dt.locs.lous.lourb.dir.tv || ""} ${dt.locs.lous.lourb.dir.nv || ""} ${dt.locs.lous.lourb.dir.pnp || ""}`.trim()
+        : "Dirección no disponible";
+      const municipio = dt?.nm || "";
+      const provincia = dt?.np || "";
+      const superficie = parseFloat(debi?.sfc) || null;
+      const uso = debi?.luso || debi?.cuso || "—";
+      const antiguedad = debi?.ant || "—";
+
+      const geoResp = await fetch(`${CATASTRO_COORD}?Provincia=&Municipio=&SRS=EPSG:4326&RC=${encodeURIComponent(rc)}`);
+      const geoText = await geoResp.text();
+      const xMatch = geoText.match(/<xcen>([^<]+)<\/xcen>/);
+      const yMatch = geoText.match(/<ycen>([^<]+)<\/ycen>/);
+      const coords = xMatch && yMatch ? [parseFloat(yMatch[1]), parseFloat(xMatch[1])] : null;
+
+      const parcelaData = { rc, direccion, municipio, provincia, superficie, uso, antiguedad, coords };
+      setParcela(parcelaData);
+      setPosition(coords);
+
+      const precioBase = priceByProvince(provincia);
+      const newParams = { ...params, precioVenta: precioBase };
+      setParams(newParams);
+      if (superficie) setResidual(calcResidual(parcelaData, newParams));
+      setRisk(buildRiskLayers(coords));
+      setBoeAlerts(buildBOEAlerts(municipio, provincia));
+      setMatches(matchAgainstZRCMandates(parcelaData));
+      setActiveTab("ficha");
+    } catch (err) {
+      setError(err.message || "Error al consultar Catastro.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (parcela?.superficie && params.precioVenta) {
+      setResidual(calcResidual(parcela, params));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params]);
+
+  const fmt = (n) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
+
+  // ============================================================
+  return (
+    <div style={{ minHeight: "100vh", background: C.bg, color: C.text, fontFamily: F.body, paddingTop: 60 }}>
+      {/* HEADER */}
+      <div style={{ borderBottom: `1px solid ${C.border}`, padding: "32px 32px 28px", maxWidth: 1700, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24 }}>
+          <div>
+            <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 10 }}>
+              ZRC LABS · MÓDULO 01
+            </div>
+            <h1 style={{ fontFamily: F.display, fontWeight: 400, fontSize: 38, margin: "0 0 8px", letterSpacing: "-0.01em", color: C.text }}>
+              Visor Inmobiliario Georreferenciado
+            </h1>
+            <p style={{ margin: 0, color: C.textSec, fontSize: 14, fontWeight: 300, lineHeight: 1.55, maxWidth: 720 }}>
+              Catastro · Riesgos · Planeamiento · Underwriting express · Matching con mandatos ZRC
+            </p>
+          </div>
+          <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.2em", color: C.gold, border: `1px solid ${C.goldBorder}`, padding: "6px 14px" }}>
+            BETA
+          </div>
+        </div>
+      </div>
+
+      {/* LAYOUT */}
+      <div style={{ display: "grid", gridTemplateColumns: "440px 1fr", maxWidth: 1700, margin: "0 auto", minHeight: "calc(100vh - 220px)" }}>
+        {/* SIDEBAR */}
+        <aside style={{ background: C.surface, borderRight: `1px solid ${C.border}`, padding: 24, overflowY: "auto", maxHeight: "calc(100vh - 160px)" }}>
+          {/* Buscador */}
+          <form onSubmit={handleSearch}>
+            <label style={{ display: "block", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", color: C.textMuted, marginBottom: 8 }}>
+              Referencia catastral
+            </label>
+            <input
+              type="text"
+              value={rc}
+              onChange={(e) => setRc(e.target.value.toUpperCase().replace(/\s/g, ""))}
+              placeholder="9872023VH5797S0001WX"
+              maxLength={20}
+              autoComplete="off"
+              style={{
+                width: "100%", padding: "12px 14px", fontFamily: F.mono, fontSize: 13,
+                background: C.surface2, color: C.text, border: `1px solid ${C.border}`,
+                marginBottom: 10, letterSpacing: "0.02em", boxSizing: "border-box", outline: "none",
+              }}
+            />
+            <button
+              type="submit" disabled={loading}
+              style={{
+                width: "100%", padding: "12px", background: C.gold, color: C.bg,
+                border: "none", fontFamily: F.mono, fontSize: 11, fontWeight: 600,
+                letterSpacing: "0.1em", textTransform: "uppercase", cursor: loading ? "wait" : "pointer",
+                opacity: loading ? 0.6 : 1,
+              }}
+            >
+              {loading ? "Analizando…" : "Analizar activo"}
+            </button>
+          </form>
+
+          {error && (
+            <div style={{ marginTop: 14, padding: "10px 14px", background: "rgba(239,68,68,0.1)", borderLeft: `3px solid ${C.red}`, color: C.red, fontSize: 13 }}>
+              {error}
+            </div>
+          )}
+
+          {parcela && (
+            <>
+              {/* TABS */}
+              <nav style={{ display: "flex", gap: 0, margin: "24px 0 16px", borderBottom: `1px solid ${C.border}`, overflowX: "auto" }}>
+                {[
+                  { k: "ficha", label: "Ficha" },
+                  { k: "residual", label: "Residual" },
+                  { k: "riesgos", label: "Riesgos", badge: risk?.overall },
+                  { k: "boe", label: "Alertas", count: boeAlerts.length },
+                  { k: "match", label: "Matching", count: matches.length, gold: true },
+                ].map((t) => (
+                  <button
+                    key={t.k}
+                    onClick={() => setActiveTab(t.k)}
+                    style={{
+                      background: "none", border: "none", padding: "10px 12px",
+                      fontFamily: F.mono, fontSize: 10, fontWeight: 500,
+                      letterSpacing: "0.08em", textTransform: "uppercase",
+                      color: activeTab === t.k ? C.gold : C.textMuted,
+                      borderBottom: activeTab === t.k ? `2px solid ${C.gold}` : "2px solid transparent",
+                      cursor: "pointer", whiteSpace: "nowrap",
+                      display: "flex", alignItems: "center", gap: 6,
+                    }}
+                  >
+                    {t.label}
+                    {t.badge && <RiskPill level={t.badge} />}
+                    {t.count > 0 && (
+                      <span style={{
+                        fontSize: 9, background: t.gold ? C.gold : C.surface3, color: t.gold ? C.bg : C.text,
+                        padding: "1px 6px", borderRadius: 8, fontFamily: F.mono,
+                      }}>{t.count}</span>
+                    )}
+                  </button>
+                ))}
+              </nav>
+
+              {/* FICHA */}
+              {activeTab === "ficha" && (
+                <Panel>
+                  <PanelTitle>Datos catastrales</PanelTitle>
+                  <DataList rows={[
+                    ["Dirección", parcela.direccion],
+                    ["Municipio", `${parcela.municipio}, ${parcela.provincia}`],
+                    ["Uso principal", parcela.uso],
+                    ["Superficie", parcela.superficie ? `${parcela.superficie.toLocaleString("es-ES")} m²` : "—"],
+                    ["Antigüedad", parcela.antiguedad],
+                    ["RC", <span style={{ fontFamily: F.mono, fontSize: 11 }}>{parcela.rc}</span>],
+                  ]} />
+                  <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 8 }}>
+                    <GhostBtn>📄 Generar teaser PDF · 9€</GhostBtn>
+                    <GhostBtn>📊 Exportar Excel · incl. Pro</GhostBtn>
+                  </div>
+                </Panel>
+              )}
+
+              {/* RESIDUAL */}
+              {activeTab === "residual" && residual && (
+                <Panel>
+                  <PanelTitle dot>Residual Snapshot</PanelTitle>
+                  <PanelLead>Sensibiliza el cálculo moviendo los parámetros.</PanelLead>
+                  <Slider label={`Precio venta ${fmt(params.precioVenta)}/m²`} min={1000} max={8000} step={100} value={params.precioVenta} onChange={(v) => setParams({ ...params, precioVenta: v })} />
+                  <Slider label={`Edificabilidad ${params.edificabilidad.toFixed(2)} m²t/m²s`} min={0.3} max={3.5} step={0.05} value={params.edificabilidad} onChange={(v) => setParams({ ...params, edificabilidad: v })} />
+                  <Slider label={`Coste construcción ${fmt(params.costeConstruccion)}/m²`} min={900} max={2400} step={50} value={params.costeConstruccion} onChange={(v) => setParams({ ...params, costeConstruccion: v })} />
+                  <Slider label={`Margen promotor ${(params.margenPromotor * 100).toFixed(0)}%`} min={0.10} max={0.30} step={0.01} value={params.margenPromotor} onChange={(v) => setParams({ ...params, margenPromotor: v })} />
+
+                  <div style={{ marginTop: 18, paddingTop: 14, borderTop: `1px dashed ${C.border}` }}>
+                    <DataList rows={[
+                      ["Ingresos brutos", fmt(residual.ingresos)],
+                      ["Costes totales", fmt(residual.costesTotales)],
+                      ["Beneficio promotor", fmt(residual.beneficioPromotor)],
+                    ]} />
+                    <div style={{ marginTop: 10, paddingTop: 10, borderTop: `1px dashed ${C.border}` }}>
+                      <DataList rows={[
+                        [<strong style={{ color: C.gold }}>Valor residual suelo</strong>, <strong style={{ color: C.gold, fontSize: 14 }}>{fmt(residual.valorResidualSuelo)}</strong>],
+                        ["€/m² suelo", fmt(residual.valorResidualPorM2)],
+                        ["TIR estimada (24m)", <span style={{ color: C.gold, fontFamily: F.mono }}>{residual.tirEstimada.toFixed(1)}%</span>],
+                      ]} />
+                    </div>
+                  </div>
+                  <InvestabilityBar score={residual.investabilityScore} tier={residual.investabilityTier} label={residual.investabilityLabel} />
+                </Panel>
+              )}
+
+              {/* RIESGOS */}
+              {activeTab === "riesgos" && risk && (
+                <Panel>
+                  <PanelTitle>Capa de riesgos</PanelTitle>
+                  <PanelLead>Factores que típicamente matan deals en Due Diligence.</PanelLead>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 8 }}>
+                    {risk.factors.map((f) => <RiskItem key={f.key} f={f} />)}
+                  </ul>
+                </Panel>
+              )}
+
+              {/* BOE */}
+              {activeTab === "boe" && (
+                <Panel>
+                  <PanelTitle>Alertas regulatorias</PanelTitle>
+                  <PanelLead>Lectura automática BOE / autonómicos · radio 1 km.</PanelLead>
+                  {boeAlerts.length === 0 ? <Empty>Sin alertas en los últimos 90 días.</Empty> : (
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+                      {boeAlerts.map((a) => <BOEItem key={a.id} a={a} />)}
+                    </ul>
+                  )}
+                </Panel>
+              )}
+
+              {/* MATCHING */}
+              {activeTab === "match" && (
+                <Panel>
+                  <PanelTitle>Matching con mandatos ZRC</PanelTitle>
+                  <PanelLead>Inversores activos en deal-flow ZRC cuyo mandato encaja.</PanelLead>
+                  {matches.length === 0 ? <Empty>Sin coincidencias por tipología o ticket.</Empty> : (
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+                      {matches.map((m) => <MatchItem key={m.id} m={m} />)}
+                    </ul>
+                  )}
+                  <button style={{
+                    width: "100%", marginTop: 16, padding: 12, background: C.gold, color: C.bg,
+                    border: "none", fontFamily: F.mono, fontSize: 11, fontWeight: 600,
+                    letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer",
+                  }}>
+                    Solicitar introducción ZRC
+                  </button>
+                </Panel>
+              )}
+            </>
+          )}
+
+          {!parcela && !error && (
+            <div style={{ marginTop: 24, padding: 18, background: C.surface2, border: `1px solid ${C.border}`, borderLeft: `3px solid ${C.gold}` }}>
+              <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginBottom: 10 }}>Más profundidad</div>
+              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", fontSize: 12, color: C.textSec, lineHeight: 1.7 }}>
+                <li><span style={{ color: C.gold, fontWeight: 600 }}>Standard</span> · 89€/mes — ilimitado + comparables</li>
+                <li><span style={{ color: C.gold, fontWeight: 600 }}>Análisis Pro</span> · 30€/informe — riesgos certificados</li>
+                <li><span style={{ color: C.gold, fontWeight: 600 }}>Early Bird</span> · 950€/año — pre-mercado + matching</li>
+              </ul>
+            </div>
+          )}
+        </aside>
+
+        {/* MAPA */}
+        <main style={{ position: "relative", height: "calc(100vh - 160px)", minHeight: 600 }}>
+          <MapContainer center={[40.4168, -3.7038]} zoom={6} scrollWheelZoom style={{ width: "100%", height: "100%", background: C.surface }}>
+            <LayersControl position="topright">
+              <BaseLayer checked name="Carto Dark">
+                <TileLayer attribution='&copy; CARTO' url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+              </BaseLayer>
+              <BaseLayer name="OpenStreetMap">
+                <TileLayer attribution='&copy; OSM' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+              </BaseLayer>
+              <BaseLayer name="Satélite">
+                <TileLayer attribution='&copy; Esri' url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
+              </BaseLayer>
+              <Overlay checked name="Catastro (parcelas)">
+                <WMSTileLayer url={WMS.catastro} layers="Catastro" format="image/png" transparent version="1.1.1" opacity={0.7} />
+              </Overlay>
+              <Overlay name="Inundaciones T=500">
+                <WMSTileLayer url={WMS.inundacion} layers="NZ.FloodPronePoint" format="image/png" transparent version="1.3.0" opacity={0.6} />
+              </Overlay>
+              <Overlay name="Planeamiento (SIU)">
+                <WMSTileLayer url={WMS.planeamiento} layers="SIU:planeamiento" format="image/png" transparent version="1.3.0" opacity={0.5} />
+              </Overlay>
+              <Overlay name="Patrimonio / BIC">
+                <WMSTileLayer url={WMS.patrimonio} layers="patrimonio:bic" format="image/png" transparent version="1.3.0" opacity={0.6} />
+              </Overlay>
+            </LayersControl>
+            {position && (
+              <>
+                <Marker position={position}>
+                  <Popup>
+                    <strong>{parcela?.direccion}</strong><br />
+                    {parcela?.municipio}, {parcela?.provincia}<br />
+                    <code>{parcela?.rc}</code>
+                  </Popup>
+                </Marker>
+                <Circle center={position} radius={1000} pathOptions={{ color: C.gold, weight: 1.5, dashArray: "4 4", fillOpacity: 0.04 }} />
+                <FlyTo position={position} />
+              </>
+            )}
+          </MapContainer>
+          <div style={{ position: "absolute", bottom: 14, left: 14, background: "rgba(9,9,11,0.92)", color: C.text, padding: "6px 12px", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.08em", zIndex: 1000, pointerEvents: "none", border: `1px solid ${C.goldBorder}` }}>
+            WMS CATASTRO · MITECO · SIU · INSPIRE
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// SUBCOMPONENTES
+// ============================================================
+const Panel = ({ children }) => <div style={{ animation: "fadeIn 0.3s ease" }}>{children}</div>;
+
+const PanelTitle = ({ children, dot }) => (
+  <h3 style={{ fontFamily: F.display, fontWeight: 400, fontSize: 22, margin: "0 0 6px", color: C.text, display: "flex", alignItems: "center", gap: 8 }}>
+    {dot && <span style={{ width: 8, height: 8, background: C.gold, borderRadius: "50%" }} />}
+    {children}
+  </h3>
+);
+const PanelLead = ({ children }) => <p style={{ fontSize: 12, color: C.textMuted, margin: "0 0 16px", lineHeight: 1.5 }}>{children}</p>;
+
+const DataList = ({ rows }) => (
+  <dl style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "8px 16px", margin: 0, fontSize: 13 }}>
+    {rows.map(([k, v], i) => (
+      <div key={i} style={{ display: "contents" }}>
+        <dt style={{ color: C.textMuted, fontWeight: 400 }}>{k}</dt>
+        <dd style={{ margin: 0, textAlign: "right", color: C.text, fontWeight: 500 }}>{v}</dd>
+      </div>
+    ))}
+  </dl>
+);
+
+const Slider = ({ label, min, max, step, value, onChange }) => (
+  <div style={{ marginBottom: 14 }}>
+    <label style={{ display: "block", fontSize: 12, color: C.text, marginBottom: 6, fontWeight: 500 }}>{label}</label>
+    <input
+      type="range" min={min} max={max} step={step} value={value}
+      onChange={(e) => onChange(+e.target.value)}
+      style={{ width: "100%", accentColor: C.gold, height: 4 }}
+    />
+  </div>
+);
+
+const GhostBtn = ({ children }) => (
+  <button style={{
+    background: C.surface2, color: C.text, border: `1px solid ${C.border}`,
+    padding: "10px 14px", fontSize: 12, fontFamily: F.body, cursor: "pointer", textAlign: "left",
+  }}>
+    {children}
+  </button>
+);
+
+const RiskPill = ({ level }) => {
+  const colors = { low: C.green, mid: C.amber, high: C.red };
+  const labels = { low: "OK", mid: "!", high: "⚠" };
+  return <span style={{ fontSize: 9, padding: "1px 5px", background: `${colors[level]}22`, color: colors[level], borderRadius: 6, fontFamily: F.mono }}>{labels[level]}</span>;
+};
+
+const RiskItem = ({ f }) => {
+  const colors = { low: C.green, mid: C.amber, high: C.red };
+  const labels = { low: "Bajo", mid: "Medio", high: "Alto" };
+  return (
+    <li style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 12, alignItems: "center", padding: "12px 14px", background: C.surface2, borderLeft: `3px solid ${colors[f.level]}` }}>
+      <span style={{ fontSize: 18 }}>{f.icon}</span>
+      <div>
+        <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 2 }}>{f.label}</strong>
+        <span style={{ fontSize: 11, color: C.textMuted, lineHeight: 1.4 }}>{f.detail}</span>
+      </div>
+      <span style={{ fontFamily: F.mono, fontSize: 10, padding: "3px 8px", background: `${colors[f.level]}22`, color: colors[f.level], letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>
+        {labels[f.level]}
+      </span>
+    </li>
+  );
+};
+
+const BOEItem = ({ a }) => {
+  const colors = { high: C.red, mid: C.amber, low: C.textMuted };
+  return (
+    <li style={{ padding: 14, background: C.surface2, borderLeft: `3px solid ${C.gold}` }}>
+      <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 6, flexWrap: "wrap" }}>
+        <span style={{ fontFamily: F.mono, fontSize: 9, padding: "2px 6px", background: `${colors[a.impact]}22`, color: colors[a.impact], letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>{a.impactLabel}</span>
+        <span style={{ fontSize: 10, color: C.textMuted, fontFamily: F.mono }}>{a.date}</span>
+        <span style={{ fontSize: 10, color: C.textMuted, fontFamily: F.mono }}>· {a.source}</span>
+      </div>
+      <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 6, lineHeight: 1.35 }}>{a.title}</strong>
+      <p style={{ margin: "0 0 8px", fontSize: 12, color: C.textSec, lineHeight: 1.5 }}>{a.summary}</p>
+      <a href={a.url} target="_blank" rel="noreferrer" style={{ fontSize: 11, color: C.gold, textDecoration: "none", fontWeight: 500 }}>Ver publicación →</a>
+    </li>
+  );
+};
+
+const MatchItem = ({ m }) => (
+  <li style={{ display: "grid", gridTemplateColumns: "60px 1fr", gap: 14, padding: 14, background: C.surface2, borderLeft: `3px solid ${C.gold}`, alignItems: "center" }}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{
+        width: 52, height: 52, borderRadius: "50%",
+        background: `conic-gradient(${C.gold} ${m.fit}%, ${C.surface3} 0)`,
+        display: "flex", alignItems: "center", justifyContent: "center", position: "relative",
+      }}>
+        <div style={{ position: "absolute", inset: 4, background: C.surface, borderRadius: "50%" }} />
+        <span style={{ position: "relative", zIndex: 1, fontFamily: F.mono, fontSize: 11, fontWeight: 600, color: C.gold }}>{m.fit}%</span>
+      </div>
+    </div>
+    <div>
+      <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 2 }}>{m.label}</strong>
+      <span style={{ display: "block", fontSize: 10, color: C.textMuted, fontFamily: F.mono, marginBottom: 6 }}>{m.tipologia} · ticket {m.ticket}</span>
+      <p style={{ margin: 0, fontSize: 11, color: C.textSec, lineHeight: 1.45 }}>{m.thesis}</p>
+    </div>
+  </li>
+);
+
+const Empty = ({ children }) => (
+  <p style={{ fontSize: 12, color: C.textMuted, fontStyle: "italic", padding: 14, textAlign: "center", background: C.surface2 }}>{children}</p>
+);
+
+const InvestabilityBar = ({ score, tier, label }) => {
+  const colorMap = { high: C.green, mid: C.gold, low: C.amber, reject: C.red };
+  const color = colorMap[tier] || C.gold;
+  return (
+    <div style={{
+      marginTop: 16, padding: 14, borderLeft: `4px solid ${color}`,
+      background: `${color}10`, display: "grid", gridTemplateColumns: "1fr auto", gap: "4px 14px", alignItems: "center",
+    }}>
+      <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textMuted }}>Investability Score</span>
+      <strong style={{ fontSize: 24, fontFamily: F.display, fontWeight: 500, color }}>{score}/100</strong>
+      <small style={{ gridColumn: "1 / -1", fontSize: 11, color: C.textSec, marginTop: 4 }}>{label}</small>
+    </div>
+  );
+};
+
+// ============================================================
+// LÓGICA DE NEGOCIO
+// ============================================================
+function priceByProvince(prov) {
+  const map = {
+    Madrid: 4200, Barcelona: 4500, "Illes Balears": 4800, Bizkaia: 3000,
+    Málaga: 3400, Valencia: 2400, Sevilla: 2100, Alicante: 2300,
+    Gipuzkoa: 3500, "A Coruña": 2200, Pontevedra: 2100,
+  };
+  return map[prov] || 2000;
+}
+
+function calcResidual(parcela, p) {
+  const { superficie } = parcela;
+  const supEdif = superficie * p.edificabilidad;
+  const ingresos = supEdif * p.precioVenta;
+  const costesDir = supEdif * p.costeConstruccion;
+  const costesTotales = costesDir * (1 + p.costesIndirectos);
+  const beneficioPromotor = ingresos * p.margenPromotor;
+  const valorResidualSuelo = ingresos - costesTotales - beneficioPromotor;
+  const valorResidualPorM2 = valorResidualSuelo / superficie;
+  const inversionTotal = costesTotales + Math.max(valorResidualSuelo, 0);
+  const tirEstimada = inversionTotal > 0
+    ? (Math.pow((ingresos - costesTotales) / inversionTotal + 1, 12 / 24) - 1) * 100 : 0;
+  const ratioMargen = ingresos > 0 ? (ingresos - costesTotales) / ingresos : 0;
+
+  let score = 0;
+  if (valorResidualSuelo > 0) score += 30;
+  if (tirEstimada > 12) score += 25;
+  if (tirEstimada > 18) score += 15;
+  if (ratioMargen > 0.25) score += 20;
+  if (ratioMargen > 0.35) score += 10;
+  score = Math.max(0, Math.min(100, score));
+
+  let tier = "reject", label = "No invertible al precio actual";
+  if (score >= 70) { tier = "high"; label = "Invertible — encaja con tesis PE"; }
+  else if (score >= 45) { tier = "mid"; label = "Atractivo con condiciones"; }
+  else if (score >= 25) { tier = "low"; label = "Marginal — sensibilizar entrada"; }
+
+  return { ingresos, costesTotales, beneficioPromotor, valorResidualSuelo, valorResidualPorM2,
+    tirEstimada, investabilityScore: score, investabilityTier: tier, investabilityLabel: label };
+}
+
+function buildRiskLayers(coords) {
+  const factors = [
+    { key: "flood", icon: "💧", label: "Inundabilidad", level: pick(coords, 1, ["low","mid","low","low"]), detail: "Zonas inundables T=500 · SNCZI / MITECO." },
+    { key: "noise", icon: "🔊", label: "Ruido ambiental", level: pick(coords, 2, ["mid","low","mid","high"]), detail: "Mapas estratégicos de ruido municipales." },
+    { key: "bic",   icon: "🏛️", label: "Patrimonio histórico", level: pick(coords, 3, ["low","low","mid","low"]), detail: "Verificar entorno de protección municipal." },
+    { key: "soil",  icon: "🧪", label: "Contaminación suelo", level: pick(coords, 4, ["low","low","low","mid"]), detail: "Inventario autonómico de suelos contaminados." },
+    { key: "plan",  icon: "📐", label: "Cambio urbanístico", level: pick(coords, 5, ["mid","high","mid","low"]), detail: "Modificaciones puntuales PGOU detectadas." },
+    { key: "lau",   icon: "🔑", label: "Riesgo LAU", level: pick(coords, 6, ["low","mid","low","low"]), detail: "Edificios pre-1985 — riesgos de renta antigua." },
+  ];
+  const high = factors.filter((f) => f.level === "high").length;
+  const mid = factors.filter((f) => f.level === "mid").length;
+  const overall = high >= 1 ? "high" : mid >= 2 ? "mid" : "low";
+  return { factors, overall };
+}
+
+function pick(coords, seed, options) {
+  if (!coords) return "low";
+  const idx = Math.abs(Math.floor((coords[0] * 1000 + coords[1] * 1000 + seed * 7) % options.length));
+  return options[idx];
+}
+
+function buildBOEAlerts(municipio, provincia) {
+  const today = new Date();
+  const fmt = (d) => d.toLocaleDateString("es-ES");
+  return [
+    { id: 1, title: `Aprobación inicial Modificación Puntual PGOU de ${municipio}`,
+      summary: "Reclasificación de suelo urbanizable sectorizado en ámbito noreste. Posible incremento de edificabilidad residencial.",
+      source: provincia === "Madrid" ? "BOCM" : "Boletín autonómico",
+      date: fmt(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 18)),
+      impact: "high", impactLabel: "Alto impacto", url: "https://boe.es" },
+    { id: 2, title: "Convenio urbanístico zona dotacional adyacente",
+      summary: "Permuta de aprovechamientos entre ayuntamiento y propietario. Incidencia indirecta en valoración del entorno.",
+      source: "BOE",
+      date: fmt(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 42)),
+      impact: "mid", impactLabel: "Impacto medio", url: "https://boe.es" },
+    { id: 3, title: "Licencia de obra mayor en parcela contigua",
+      summary: "Promoción de 38 viviendas libres + comercial. Referencia de mercado relevante para valoración.",
+      source: "Tablón edictal municipal",
+      date: fmt(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 65)),
+      impact: "low", impactLabel: "Informativo", url: "#" },
+  ];
+}
+
+function matchAgainstZRCMandates(parcela) {
+  const mandatos = [
+    { id: "M1", label: "Family Office Levante", tipologia: "Residencial premium Madrid/Barcelona", ticket: "8-25M€",
+      fitFn: (p) => p.provincia === "Madrid" || p.provincia === "Barcelona" ? 88 : 35,
+      thesis: "Activos prime con plusvalía a 5-7 años en zonas consolidadas." },
+    { id: "M2", label: "Hospitality Costa del Sol", tipologia: "Hotelero / branded residences", ticket: "15-60M€",
+      fitFn: (p) => p.provincia === "Málaga" ? 92 : 20,
+      thesis: "Reposicionamiento 4★+ con OpCo/PropCo split." },
+    { id: "M3", label: "Fondo agroindustrial", tipologia: "Suelo rústico productivo", ticket: "20-80M€",
+      fitFn: (p) => /agra|olivo|olivar|secano/i.test(p.uso || "") ? 95 : 10,
+      thesis: "Olivar superintensivo y leñosos tecnificados." },
+    { id: "M4", label: "Promotor mid-cap nacional", tipologia: "Suelo finalista urbano", ticket: "5-20M€",
+      fitFn: (p) => p.superficie > 800 ? 75 : 40,
+      thesis: "Suelo urbano consolidado para residencial libre." },
+    { id: "M5", label: "FO industrial logística", tipologia: "Naves last-mile <50km capital", ticket: "3-15M€",
+      fitFn: (p) => /industrial|almac|nave/i.test(p.uso || "") ? 90 : 15,
+      thesis: "Last-mile rentado a operador tier-1." },
+  ];
+  return mandatos.map((m) => ({ ...m, fit: m.fitFn(parcela) }))
+    .filter((m) => m.fit >= 60).sort((a, b) => b.fit - a.fit);
+}
