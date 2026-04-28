@@ -1,236 +1,207 @@
 {
-  "generated_at": "2026-04-27T08:17:00.888Z",
+  "generated_at": "2026-04-28T08:24:52.798Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.170",
-      "change": "-0.09%",
+      "value": "1.1710",
+      "change": "-0.13%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17645.25",
+      "value": "17,692.90",
       "change": "+0.01%",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "102.56",
-      "change": "+0.86%",
+      "symbol": "BRENT",
+      "value": "102.57",
+      "change": "+0.87%",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "97.32",
-      "change": "+0.95%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4670.83",
-      "change": "-0.06%",
+      "symbol": "GOLD",
+      "value": "4,692.30",
+      "change": "-0.03%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "77647.30",
-      "change": "-0.39%",
+      "symbol": "BTC",
+      "value": "76,857.60",
+      "change": "-1.79%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "19.03",
-      "change": "+1.71%",
-      "up": true
-    },
-    {
-      "symbol": "US 10Y yield",
-      "value": "4.336",
-      "change": "+0.60%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7165.08",
-      "change": "+0.80%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24084",
-      "change": "-0.19%",
+      "value": "18.02",
+      "change": "-3.69%",
       "up": false
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.348",
+      "change": "+0.30%",
+      "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8660",
-      "change": "+0.00%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.60",
-      "change": "-0.27%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.729",
-      "change": "+0.03%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.03",
+      "value": "0.8673",
       "change": "+0.06%",
       "up": true
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.8295",
-      "change": "+0.04%",
+      "symbol": "S&P 500",
+      "value": "7,173.68",
+      "change": "+0.12%",
       "up": true
+    },
+    {
+      "symbol": "DAX 40",
+      "value": "24,083.53",
+      "change": "-0.19%",
+      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "GLOBAL",
-      "title": {
-        "en": "Global Military Spending Surges to $2.89 Trillion in 2025",
-        "es": "Gasto Militar Mundial Se Dispara a $2.89 Billones en 2025"
-      },
-      "summary": {
-        "en": "World military expenditure reached record $2.89 trillion in 2025, with Europe rising 14% and Asia up 8.1% while US declined 7.5%. SIPRI data shows 11th consecutive year of increases as states respond to wars and geopolitical upheaval. US spending expected to exceed $1 trillion in 2026.",
-        "es": "El gasto militar mundial alcanzó un récord de $2.89 billones en 2025, con Europa subiendo 14% y Asia 8.1% mientras EE.UU. descendió 7.5%. Datos de SIPRI muestran el 11º año consecutivo de aumentos mientras los estados responden a guerras y agitación geopolítica. Se espera que el gasto estadounidense supere $1 billón en 2026."
-      },
-      "source": "SIPRI",
-      "url": "https://www.sipri.org/media/press-release/2026/global-military-spending-rise-continues-european-and-asian-expenditures-surge",
-      "time": "4h",
-      "impact": "high",
-      "signals": [
-        "DEF +",
-        "EUR +",
-        "RUB -"
-      ],
-      "confidence": 95
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Iran Offers New Proposal to Reopen Strait of Hormuz",
-        "es": "Irán Ofrece Nueva Propuesta para Reabrir Estrecho de Hormuz"
+        "en": "US Blockade of Strait of Hormuz Continues as Iran Ceasefire Talks Resume",
+        "es": "Bloqueo estadounidense del Estrecho de Ormuz continúa mientras se reanudan las negociaciones de alto al fuego con Irán"
       },
       "summary": {
-        "en": "Iran has offered a new proposal to the US for reopening the Strait of Hormuz and ending the war while deferring nuclear talks. Oil prices surge as geopolitical tensions remain high. Trump scrapped plans to send envoys to Pakistan for ceasefire talks.",
-        "es": "Irán ha ofrecido una nueva propuesta a EE.UU. para reabrir el Estrecho de Hormuz y terminar la guerra mientras difiere las conversaciones nucleares. Los precios del petróleo suben mientras las tensiones geopolíticas permanecen altas. Trump canceló planes de enviar enviados a Pakistán para conversaciones de cese al fuego."
+        "en": "The US blockade of the Strait of Hormuz, initiated on April 13, remains in effect despite a two-week ceasefire. Pakistani-mediated indirect talks continue but oil prices remain elevated near $100/barrel. The disruption affects 27% of global maritime petroleum trade.",
+        "es": "El bloqueo estadounidense del Estrecho de Ormuz, iniciado el 13 de abril, permanece vigente pese a un alto al fuego de dos semanas. Las conversaciones indirectas mediadas por Pakistán continúan pero los precios del petróleo se mantienen elevados cerca de $100/barril. La interrupción afecta el 27% del comercio marítimo mundial de petróleo."
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/26/stock-market-today-live-updates.html",
-      "time": "1h",
+      "source": "S&P Global",
+      "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/04/geopolitical-risk-brief-april-2026",
+      "time": "2h",
       "impact": "high",
       "signals": [
         "OIL +",
         "USD +",
-        "EUR -"
+        "EUR -",
+        "ENERGY +"
       ],
-      "confidence": 90
+      "confidence": 94
+    },
+    {
+      "id": 2,
+      "tag": "ALERT",
+      "region": "GLOBAL",
+      "title": {
+        "en": "IMF Cuts Global Growth to 3.1% as War Impacts Dominate Economic Outlook",
+        "es": "FMI recorta crecimiento global al 3.1% mientras los impactos de la guerra dominan las perspectivas económicas"
+      },
+      "summary": {
+        "en": "The IMF revised global growth down from 3.4% to 3.1% for 2026 due to Middle East conflict impacts. Global inflation projected to rise to 4.4% before declining. Downside risks dominate with potential for severe scenarios if conflict expands.",
+        "es": "El FMI revisó a la baja el crecimiento global del 3.4% al 3.1% para 2026 debido a los impactos del conflicto en Oriente Medio. Se proyecta que la inflación global suba al 4.4% antes de declinar. Los riesgos a la baja dominan con potencial para escenarios severos si el conflicto se expande."
+      },
+      "source": "IMF",
+      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "time": "4h",
+      "impact": "high",
+      "signals": [
+        "EQUITIES -",
+        "BONDS +",
+        "GOLD +",
+        "VIX +"
+      ],
+      "confidence": 96
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "AFRICA",
+      "region": "EU",
       "title": {
-        "en": "Sudan Conflict Intensifies: AU Plans Return to Khartoum",
-        "es": "Conflicto de Sudán se Intensifica: UA Planea Regreso a Jartum"
+        "en": "ECB Expected to Hold Rates at April 30 Meeting, Summer Hike Possible",
+        "es": "Se espera que el BCE mantenga las tasas en la reunión del 30 de abril, posible alza en verano"
       },
       "summary": {
-        "en": "African Union delegation visits Sudan Foreign Ministry to assess reopening Khartoum office after 3 years of conflict. Chad closes border with Sudan indefinitely as RSF enters territory. Over 30 million people require humanitarian assistance representing 10% of global needs.",
-        "es": "Delegación de la Unión Africana visita Ministerio de Relaciones Exteriores de Sudán para evaluar reapertura de oficina en Jartum tras 3 años de conflicto. Chad cierra frontera con Sudán indefinidamente mientras RSF ingresa al territorio. Más de 30 millones de personas requieren asistencia humanitaria representando 10% de las necesidades globales."
+        "en": "The European Central Bank is expected to maintain rates at 2.15% on April 30 but markets price 50bp of tightening by year-end. ECB projects eurozone inflation at 2.6% in 2026, above target, with GDP growth cut to 0.9%.",
+        "es": "Se espera que el Banco Central Europeo mantenga las tasas en 2.15% el 30 de abril pero los mercados cotizan 50pb de endurecimiento para fin de año. El BCE proyecta inflación de la eurozona en 2.6% en 2026, por encima del objetivo, con crecimiento del PIB recortado al 0.9%."
       },
-      "source": "Sudan Live Map",
-      "url": "https://sudan.liveuamap.com/",
-      "time": "20h",
+      "source": "IndexBox",
+      "url": "https://www.indexbox.io/blog/ecb-expected-to-hold-rates-steady-at-april-30-meeting-ing-reports/",
+      "time": "8h",
       "impact": "medium",
       "signals": [
-        "XAU +",
-        "USD +",
-        "OIL +"
+        "EUR +",
+        "BONDS -",
+        "ECB HAWKISH"
       ],
-      "confidence": 85
+      "confidence": 87
     },
     {
       "id": 4,
-      "tag": "STRATEGIC",
-      "region": "APAC",
-      "title": {
-        "en": "India-New Zealand FTA Signing Creates New Trade Pathway",
-        "es": "Firma de TLC India-Nueva Zelanda Crea Nueva Vía Comercial"
-      },
-      "summary": {
-        "en": "India and New Zealand sign landmark FTA on April 27, providing 100% duty-free access for Indian exports and $20 billion investment commitment over 15 years. Agreement includes 5,000 annual work visas for skilled Indians and expands cooperation in technology and agriculture.",
-        "es": "India y Nueva Zelanda firman histórico TLC el 27 de abril, proporcionando acceso 100% libre de aranceles para exportaciones indias y compromiso de inversión de $20 mil millones durante 15 años. El acuerdo incluye 5,000 visas de trabajo anuales para indios calificados y expande cooperación en tecnología y agricultura."
-      },
-      "source": "Business Today",
-      "url": "https://www.businesstoday.in/india/story/india-new-zealand-fta-to-be-signed-tomorrow-what-the-deal-means-for-trade-jobs-and-students-527504-2026-04-26",
-      "time": "16h",
-      "impact": "medium",
-      "signals": [
-        "INR +",
-        "NZD +",
-        "TRADE +"
-      ],
-      "confidence": 92
-    },
-    {
-      "id": 5,
       "tag": "MONITOR",
       "region": "APAC",
       "title": {
-        "en": "China Industrial Profits Jump 15.8% Amid Geopolitical Risks",
-        "es": "Ganancias Industriales de China Saltan 15.8% En Medio de Riesgos Geopolíticos"
+        "en": "China GDP Growth Projected at 4.4% as Export Performance Offsets Weak Domestic Demand",
+        "es": "Crecimiento del PIB de China proyectado en 4.4% mientras el rendimiento exportador compensa la débil demanda doméstica"
       },
       "summary": {
-        "en": "China's industrial profits accelerated to 15.8% year-on-year in March from 15.2% in first two months. CSI 300 gained 0.25% while geopolitical risks outside China persist, keeping aluminum and commodity markets volatile. Market sentiment remains sensitive to headlines.",
-        "es": "Las ganancias industriales de China se aceleraron a 15.8% interanual en marzo desde 15.2% en los primeros dos meses. CSI 300 ganó 0.25% mientras los riesgos geopolíticos fuera de China persisten, manteniendo volátiles los mercados de aluminio y materias primas. El sentimiento del mercado permanece sensible a los titulares."
+        "en": "China's economy projected to grow 4.4% in 2026 and 4.0% in 2027, with external demand and fiscal support offsetting weak domestic consumption. Factory prices returned to growth after 3 years, driven by surging oil prices.",
+        "es": "Se proyecta que la economía china crezca 4.4% en 2026 y 4.0% en 2027, con demanda externa y apoyo fiscal compensando el débil consumo doméstico. Los precios de fábrica volvieron al crecimiento después de 3 años, impulsados por el alza de precios del petróleo."
       },
-      "source": "Shanghai Metals Market",
-      "url": "https://news.metal.com/newscontent/103875169-Geopolitical-Factors-Supported-LME-Aluminum-Prices-on-the-Stronger-Side-High-Inventories-and-Weak-Demand-in-China-Constr",
-      "time": "14h",
+      "source": "World Bank",
+      "url": "https://www.worldbank.org/ext/en/country/china",
+      "time": "19h",
       "impact": "medium",
       "signals": [
         "CNY +",
-        "ALU +",
-        "SHFE -"
+        "EXPORTS +",
+        "COMMODITIES +"
       ],
-      "confidence": 88
+      "confidence": 82
+    },
+    {
+      "id": 5,
+      "tag": "STRATEGIC",
+      "region": "US",
+      "title": {
+        "en": "Hedge Funds Buy Record $86B in Stocks as Geopolitical Tensions Ease",
+        "es": "Fondos de cobertura compran récord de $86 mil millones en acciones mientras las tensiones geopolíticas se alivian"
+      },
+      "summary": {
+        "en": "Hedge funds purchased a record $86 billion in stocks over five sessions, driven by systematic strategies as markets rally on easing geopolitical tensions. Goldman Sachs estimates funds could add another $70 billion if momentum continues.",
+        "es": "Los fondos de cobertura compraron un récord de $86 mil millones en acciones en cinco sesiones, impulsados por estrategias sistemáticas mientras los mercados se recuperan por el alivio de las tensiones geopolíticas. Goldman Sachs estima que los fondos podrían agregar otros $70 mil millones si el impulso continúa."
+      },
+      "source": "World Economic Forum",
+      "url": "https://www.weforum.org/stories/2026/04/imf-downgrades-global-growth-and-other-finance-news-to-know/",
+      "time": "6h",
+      "impact": "medium",
+      "signals": [
+        "EQUITIES +",
+        "MOMENTUM +",
+        "HEDGE FUNDS +"
+      ],
+      "confidence": 78
     },
     {
       "id": 6,
       "tag": "EMERGING",
-      "region": "LATAM",
+      "region": "GLOBAL",
       "title": {
-        "en": "Colombia Bus Bombing Kills 20 in Cauca Department",
-        "es": "Atentado con Bomba en Bus en Colombia Mata 20 en Departamento del Cauca"
+        "en": "BlackRock Bitcoin ETF Options Surpass Deribit in Open Interest",
+        "es": "Opciones del ETF de Bitcoin de BlackRock superan a Deribit en interés abierto"
       },
       "summary": {
-        "en": "Bus bombing in Colombia's Cauca department killed at least 20 people and wounded 36 others on Saturday. Authorities attribute attack to ex-FARC 'Central General Staff' faction. Violence highlights ongoing security challenges in the region.",
-        "es": "Atentado con bomba en bus en el departamento del Cauca de Colombia mató al menos 20 personas e hirió a otras 36 el sábado. Las autoridades atribuyen el ataque a la facción ex-FARC 'Estado Mayor Central'. La violencia resalta los desafíos de seguridad continuos en la región."
+        "en": "IBIT options open interest topped Deribit on Friday, signaling rapid institutional adoption of regulated crypto derivatives. The milestone reflects growing mainstream acceptance of Bitcoin as institutional investors seek hedging instruments amid macroeconomic uncertainty.",
+        "es": "El interés abierto de opciones de IBIT superó a Deribit el viernes, señalando una rápida adopción institucional de derivados crypto regulados. El hito refleja una creciente aceptación mainstream del Bitcoin mientras los inversores institucionales buscan instrumentos de cobertura en medio de incertidumbre macroeconómica."
       },
-      "source": "Foreign Exchanges",
-      "url": "https://www.foreignexchanges.news/p/world-roundup-april-25-26-2026",
-      "time": "5h",
+      "source": "CoinDesk",
+      "url": "https://www.coindesk.com/markets/2026/04/25/blackrock-s-bitcoin-etf-just-hit-a-massive-milestone-that-proves-crypto-is-now-a-mainstream-bet",
+      "time": "48h",
       "impact": "low",
       "signals": [
-        "COP -",
-        "LATAM -",
-        "SEC -"
+        "BTC +",
+        "CRYPTO +",
+        "INSTITUTIONAL +"
       ],
-      "confidence": 82
+      "confidence": 73
     }
-  ],
-  "market_updated_at": "2026-04-28T08:02:21.623Z"
+  ]
 }
