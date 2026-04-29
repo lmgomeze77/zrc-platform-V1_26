@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-28T08:24:52.798Z",
+  "generated_at": "2026-04-29T08:11:28.579Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1711",
-      "change": "-0.62%",
+      "value": "1.1698",
+      "change": "-0.20%",
       "up": false
     },
     {
@@ -14,39 +14,39 @@
       "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "111.16",
       "change": "+2.71%",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "99.32",
-      "change": "-0.61%",
+      "symbol": "GOLD",
+      "value": "4577",
+      "change": "-2.75%",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4596.49",
-      "change": "-1.85%",
+      "symbol": "BTC",
+      "value": "76342",
+      "change": "-1.8%",
       "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "76581.68",
-      "change": "+0.67%",
-      "up": true
     },
     {
       "symbol": "VIX",
-      "value": "18.60",
-      "change": "+3.22%",
+      "value": "19.02",
+      "change": "+5.56%",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.35%",
-      "change": "0.00%",
+      "symbol": "US 10Y",
+      "value": "4.25",
+      "change": "+0.05%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8650",
+      "change": "-0.12%",
       "up": false
     },
     {
@@ -57,39 +57,9 @@
     },
     {
       "symbol": "DAX 40",
-      "value": "24084",
-      "change": "-0.19%",
+      "value": "24013",
+      "change": "-0.29%",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.86686",
-      "change": "+0.15%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.66",
-      "change": "+0.16%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.68",
-      "change": "-1.76%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "5.92",
-      "change": "-1.65%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.84",
-      "change": "+0.19%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,141 +68,138 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "US Blockade of Strait of Hormuz Continues as Iran Ceasefire Talks Resume",
-        "es": "Bloqueo estadounidense del Estrecho de Ormuz continúa mientras se reanudan las negociaciones de alto al fuego con Irán"
+        "en": "Fed Holds Rates Steady at 4.25%-4.50% Amid Middle East Conflict",
+        "es": "Fed Mantiene Tasas Estables en 4.25%-4.50% En Medio del Conflicto en Medio Oriente"
       },
       "summary": {
-        "en": "The US blockade of the Strait of Hormuz, initiated on April 13, remains in effect despite a two-week ceasefire. Pakistani-mediated indirect talks continue but oil prices remain elevated near $100/barrel. The disruption affects 27% of global maritime petroleum trade.",
-        "es": "El bloqueo estadounidense del Estrecho de Ormuz, iniciado el 13 de abril, permanece vigente pese a un alto al fuego de dos semanas. Las conversaciones indirectas mediadas por Pakistán continúan pero los precios del petróleo se mantienen elevados cerca de $100/barril. La interrupción afecta el 27% del comercio marítimo mundial de petróleo."
+        "en": "Federal Reserve concludes April 29-30 meeting keeping rates unchanged for third consecutive meeting as Middle East conflict continues to impact global markets. The decision reflects ongoing uncertainty from Iran-U.S. tensions and energy price volatility.",
+        "es": "La Reserva Federal concluye reunión del 29-30 de abril manteniendo tasas sin cambios por tercer encuentro consecutivo mientras el conflicto de Medio Oriente sigue impactando los mercados globales. La decisión refleja incertidumbre continua por tensiones Irán-EE.UU. y volatilidad en precios energéticos."
       },
-      "source": "S&P Global",
-      "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/04/geopolitical-risk-brief-april-2026",
-      "time": "2h",
+      "source": "American Now",
+      "url": "https://americanow.com/federal-reserve-keeps-interest-rates-unchanged-in-april-2026-meeting/",
+      "time": "16h",
       "impact": "high",
       "signals": [
-        "OIL +",
         "USD +",
-        "EUR -",
-        "ENERGY +"
+        "BONDS -",
+        "GOLD -"
       ],
-      "confidence": 94
+      "confidence": 95
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "MENA",
       "title": {
-        "en": "IMF Cuts Global Growth to 3.1% as War Impacts Dominate Economic Outlook",
-        "es": "FMI recorta crecimiento global al 3.1% mientras los impactos de la guerra dominan las perspectivas económicas"
+        "en": "U.S.-Iran Peace Talks Stall as Trump Cancels Envoy Mission",
+        "es": "Conversaciones de Paz EE.UU.-Irán Se Estancan al Cancelar Trump Misión de Enviados"
       },
       "summary": {
-        "en": "The IMF revised global growth down from 3.4% to 3.1% for 2026 due to Middle East conflict impacts. Global inflation projected to rise to 4.4% before declining. Downside risks dominate with potential for severe scenarios if conflict expands.",
-        "es": "El FMI revisó a la baja el crecimiento global del 3.4% al 3.1% para 2026 debido a los impactos del conflicto en Oriente Medio. Se proyecta que la inflación global suba al 4.4% antes de declinar. Los riesgos a la baja dominan con potencial para escenarios severos si el conflicto se expande."
+        "en": "President Trump scrapped plans to send envoys to Pakistan for Iran talks, citing 'infighting within Tehran's leadership'. Goldman Sachs raises Brent forecast to $90 by late 2026 as supply disruptions persist longer than expected.",
+        "es": "El presidente Trump canceló planes de enviar enviados a Pakistán para conversaciones con Irán, citando 'disputas internas en el liderazgo de Teherán'. Goldman Sachs eleva previsión Brent a $90 para finales de 2026 debido a disrupciones de suministro más persistentes."
       },
-      "source": "IMF",
-      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
-      "time": "4h",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/27/us-iran-peace-talks-stall-global-markets-stocks-oil-treasurys.html",
+      "time": "2d",
       "impact": "high",
       "signals": [
-        "EQUITIES -",
-        "BONDS +",
-        "GOLD +",
-        "VIX +"
+        "OIL +",
+        "USD +",
+        "EUR -"
       ],
-      "confidence": 96
+      "confidence": 92
     },
     {
       "id": 3,
-      "tag": "ALERT",
-      "region": "EU",
+      "tag": "MONITOR",
+      "region": "US",
       "title": {
-        "en": "ECB Expected to Hold Rates at April 30 Meeting, Summer Hike Possible",
-        "es": "Se espera que el BCE mantenga las tasas en la reunión del 30 de abril, posible alza en verano"
+        "en": "Gold Trades Near $4,700 as Geopolitical Tensions Support Safe-Haven Demand",
+        "es": "Oro Cotiza Cerca de $4,700 Mientras Tensiones Geopolíticas Apoyan Demanda de Refugio Seguro"
       },
       "summary": {
-        "en": "The European Central Bank is expected to maintain rates at 2.15% on April 30 but markets price 50bp of tightening by year-end. ECB projects eurozone inflation at 2.6% in 2026, above target, with GDP growth cut to 0.9%.",
-        "es": "Se espera que el Banco Central Europeo mantenga las tasas en 2.15% el 30 de abril pero los mercados cotizan 50pb de endurecimiento para fin de año. El BCE proyecta inflación de la eurozona en 2.6% en 2026, por encima del objetivo, con crecimiento del PIB recortado al 0.9%."
+        "en": "Gold expected to trade in $4,645-$4,760 range today amid Fed rate decision and Q1 GDP data release. Despite recent 19% decline from highs, JPMorgan and Goldman Sachs maintain $4,000-$6,300 target range.",
+        "es": "Se espera que oro cotice en rango $4,645-$4,760 hoy ante decisión tasas Fed y publicación PIB Q1. A pesar de caída reciente 19% desde máximos, JPMorgan y Goldman Sachs mantienen rango objetivo $4,000-$6,300."
       },
-      "source": "IndexBox",
-      "url": "https://www.indexbox.io/blog/ecb-expected-to-hold-rates-steady-at-april-30-meeting-ing-reports/",
+      "source": "LiteFinance",
+      "url": "https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/daily-and-weekly/",
       "time": "8h",
       "impact": "medium",
       "signals": [
-        "EUR +",
-        "BONDS -",
-        "ECB HAWKISH"
+        "GOLD +",
+        "USD +",
+        "VIX +"
       ],
-      "confidence": 87
+      "confidence": 85
     },
     {
       "id": 4,
-      "tag": "MONITOR",
-      "region": "APAC",
+      "tag": "STRATEGIC",
+      "region": "GLOBAL",
       "title": {
-        "en": "China GDP Growth Projected at 4.4% as Export Performance Offsets Weak Domestic Demand",
-        "es": "Crecimiento del PIB de China proyectado en 4.4% mientras el rendimiento exportador compensa la débil demanda doméstica"
+        "en": "IMF Cuts Global Growth Forecast to 3.1% on Middle East War Impact",
+        "es": "FMI Reduce Previsión Crecimiento Global a 3.1% por Impacto Guerra Medio Oriente"
       },
       "summary": {
-        "en": "China's economy projected to grow 4.4% in 2026 and 4.0% in 2027, with external demand and fiscal support offsetting weak domestic consumption. Factory prices returned to growth after 3 years, driven by surging oil prices.",
-        "es": "Se proyecta que la economía china crezca 4.4% en 2026 y 4.0% en 2027, con demanda externa y apoyo fiscal compensando el débil consumo doméstico. Los precios de fábrica volvieron al crecimiento después de 3 años, impulsados por el alza de precios del petróleo."
+        "en": "IMF downgrades 2026 global growth from 3.4% to 3.1% citing Middle East conflict effects. Emerging markets particularly affected with forecast cut to 3.9%. Global inflation expected to rise modestly before resuming decline in 2027.",
+        "es": "FMI rebaja crecimiento global 2026 de 3.4% a 3.1% citando efectos conflicto Medio Oriente. Mercados emergentes particularmente afectados con previsión reducida a 3.9%. Se espera que inflación global suba modestamente antes de reanudar declive en 2027."
       },
-      "source": "World Bank",
-      "url": "https://www.worldbank.org/ext/en/country/china",
-      "time": "19h",
-      "impact": "medium",
+      "source": "IMF",
+      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
+      "time": "2w",
+      "impact": "high",
       "signals": [
-        "CNY +",
-        "EXPORTS +",
-        "COMMODITIES +"
+        "EM -",
+        "COMMODITIES +",
+        "BONDS +"
       ],
-      "confidence": 82
+      "confidence": 98
     },
     {
       "id": 5,
-      "tag": "STRATEGIC",
-      "region": "US",
-      "title": {
-        "en": "Hedge Funds Buy Record $86B in Stocks as Geopolitical Tensions Ease",
-        "es": "Fondos de cobertura compran récord de $86 mil millones en acciones mientras las tensiones geopolíticas se alivian"
-      },
-      "summary": {
-        "en": "Hedge funds purchased a record $86 billion in stocks over five sessions, driven by systematic strategies as markets rally on easing geopolitical tensions. Goldman Sachs estimates funds could add another $70 billion if momentum continues.",
-        "es": "Los fondos de cobertura compraron un récord de $86 mil millones en acciones en cinco sesiones, impulsados por estrategias sistemáticas mientras los mercados se recuperan por el alivio de las tensiones geopolíticas. Goldman Sachs estima que los fondos podrían agregar otros $70 mil millones si el impulso continúa."
-      },
-      "source": "World Economic Forum",
-      "url": "https://www.weforum.org/stories/2026/04/imf-downgrades-global-growth-and-other-finance-news-to-know/",
-      "time": "6h",
-      "impact": "medium",
-      "signals": [
-        "EQUITIES +",
-        "MOMENTUM +",
-        "HEDGE FUNDS +"
-      ],
-      "confidence": 78
-    },
-    {
-      "id": 6,
       "tag": "EMERGING",
       "region": "GLOBAL",
       "title": {
-        "en": "BlackRock Bitcoin ETF Options Surpass Deribit in Open Interest",
-        "es": "Opciones del ETF de Bitcoin de BlackRock superan a Deribit en interés abierto"
+        "en": "Hedge Funds Purchase Record $86 Billion in Stocks Amid Market Rally",
+        "es": "Fondos de Cobertura Compran Récord $86 Mil Millones en Acciones en Medio de Rally del Mercado"
       },
       "summary": {
-        "en": "IBIT options open interest topped Deribit on Friday, signaling rapid institutional adoption of regulated crypto derivatives. The milestone reflects growing mainstream acceptance of Bitcoin as institutional investors seek hedging instruments amid macroeconomic uncertainty.",
-        "es": "El interés abierto de opciones de IBIT superó a Deribit el viernes, señalando una rápida adopción institucional de derivados crypto regulados. El hito refleja una creciente aceptación mainstream del Bitcoin mientras los inversores institucionales buscan instrumentos de cobertura en medio de incertidumbre macroeconómica."
+        "en": "Systematic trend-following strategies drive record stock purchases over five sessions as markets rally on easing geopolitical tensions. Goldman Sachs estimates funds could add another $70 billion if momentum continues.",
+        "es": "Estrategias sistemáticas de seguimiento de tendencias impulsan compras récord de acciones en cinco sesiones mientras mercados suben por disminución tensiones geopolíticas. Goldman Sachs estima que fondos podrían agregar otros $70 mil millones si momentum continúa."
       },
-      "source": "CoinDesk",
-      "url": "https://www.coindesk.com/markets/2026/04/25/blackrock-s-bitcoin-etf-just-hit-a-massive-milestone-that-proves-crypto-is-now-a-mainstream-bet",
-      "time": "48h",
-      "impact": "low",
+      "source": "World Economic Forum",
+      "url": "https://www.weforum.org/stories/2026/04/imf-downgrades-global-growth-and-other-finance-news-to-know/",
+      "time": "2w",
+      "impact": "medium",
       "signals": [
-        "BTC +",
-        "CRYPTO +",
-        "INSTITUTIONAL +"
+        "EQUITIES +",
+        "VIX -",
+        "MOMENTUM +"
       ],
-      "confidence": 73
+      "confidence": 88
+    },
+    {
+      "id": 6,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "en": "UK PMI Beats Expectations Despite Record Input Cost Pressures",
+        "es": "PMI Reino Unido Supera Expectativas A Pesar de Presiones Récord en Costos de Insumos"
+      },
+      "summary": {
+        "en": "UK Composite PMI jumps to 52.0 from 50.3, clearing expectations of 49.8, showing resilience despite energy shock. However, service providers report record input costs signaling 'sticky' inflation pressures from Iran conflict.",
+        "es": "PMI Compuesto Reino Unido salta a 52.0 desde 50.3, superando expectativas de 49.8, mostrando resistencia pese a shock energético. Sin embargo, proveedores de servicios reportan costos de insumos récord señalando presiones inflacionarias 'persistentes' del conflicto Irán."
+      },
+      "source": "MarketPulse",
+      "url": "https://www.marketpulse.com/markets/markets-today-uk-pmi-beats-as-input-costs-soar-dxy-advances-gold-grinds-lower-us-pmi-middle-east-tensions-in-focus/",
+      "time": "6d",
+      "impact": "medium",
+      "signals": [
+        "GBP +",
+        "INFLATION +",
+        "ENERGY +"
+      ],
+      "confidence": 87
     }
-  ],
-  "market_updated_at": "2026-04-29T07:54:31.516Z"
+  ]
 }
