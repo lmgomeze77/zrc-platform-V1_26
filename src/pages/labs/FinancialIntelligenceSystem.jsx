@@ -182,7 +182,7 @@ function InputsPanel({ inputs, setInputs }) {
   return (
     <div>
       <SectionHeader title="Client Financial Inputs" subtitle="Editable assumptions. All formula outputs update in real time." />
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 32px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "0 32px" }}>
         <div>
           <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>1 — Company & Revenue</div>
           <InputField label="Company name" value={inputs.companyName} onChange={set("companyName")} type="text" />
@@ -241,7 +241,7 @@ function CashFlowPanel({ model, inputs }) {
   return (
     <div>
       <SectionHeader title="13-Week Rolling Cash Flow" subtitle="Weekly cash in/out projection with minimum buffer monitoring." />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 24 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, marginBottom: 24 }}>
         <KPICard label="Week 13 Cash" value={`€${fmt(model.week13Cash)}`} sub="Projected end position" color={model.week13Cash > inputs.minimumCashBuffer ? C.green : C.red} warn={model.week13Cash < inputs.minimumCashBuffer} />
         <KPICard label="Min Cash Buffer" value={`€${fmt(inputs.minimumCashBuffer)}`} sub="Safety threshold" />
         <KPICard label="Funding Gap" value={model.fundingGap < 0 ? `€${fmt(Math.abs(model.fundingGap))}` : "None"} sub={model.fundingGap < 0 ? "Below buffer at W13" : "Buffer maintained"} color={model.fundingGap < 0 ? C.red : C.green} warn={model.fundingGap < 0} />
@@ -335,7 +335,7 @@ function WorkingCapitalPanel({ model }) {
   return (
     <div>
       <SectionHeader title="Working Capital Optimizer" subtitle="Identify where liquidity is trapped and quantify release potential." />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 28 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, marginBottom: 28 }}>
         {metrics.map(m => {
           const gap = m.value - m.benchmark;
           return (
@@ -386,7 +386,7 @@ function WorkingCapitalPanel({ model }) {
         <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>
           Liquidity Release Simulation — DSO Reduction
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
           {simulations.map(s => (
             <div key={s.label} style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 4, padding: "14px 18px" }}>
               <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginBottom: 6 }}>{s.label}</div>
@@ -464,7 +464,7 @@ function RiskPanel({ model, inputs }) {
       {/* Scenario table */}
       <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, padding: "18px 20px" }}>
         <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 14, fontWeight: 600 }}>Scenario Stress Table</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
           {[
             { label: "Base", color: C.green, desc: "Management case", cash: model.week13Cash, gap: model.fundingGap },
             { label: "Growth", color: C.amber, desc: "+20% rev, +10d collection lag", cash: model.week13Cash * 0.88, gap: model.week13Cash * 0.88 < inputs.minimumCashBuffer ? model.week13Cash * 0.88 - inputs.minimumCashBuffer : 0 },
@@ -623,7 +623,7 @@ Return ONLY valid JSON. No markdown fences. No preamble.`;
       {/* Payload preview */}
       <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, padding: "16px 20px", marginBottom: 20 }}>
         <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12, fontWeight: 600 }}>KPI Payload — sent to model</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 10 }}>
           {[
             ["Client", inputs.companyName],
             ["Risk level", model.riskLevel],
@@ -675,7 +675,7 @@ Return ONLY valid JSON. No markdown fences. No preamble.`;
               <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted }}>{inputs.companyName} · {new Date().toLocaleDateString("en-GB")} · EUR</div>
             </div>
             <div style={{ padding: "28px 28px" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 28 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, marginBottom: 28 }}>
                 {[
                   ["Cash runway", `${fmt(model.runwayWeeks, 1)} weeks`],
                   ["Risk level", model.riskLevel],
@@ -776,38 +776,38 @@ export default function FinancialIntelligenceSystem({ onClose }) {
   return (
     <div style={{ width: "100%", minHeight: "100%", background: C.bg, color: C.text, fontFamily: F.body }}>
       {/* Header */}
-      <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, padding: "0 32px", position: "sticky", top: 0, zIndex: 10 }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 0 0" }}>
-          <div>
+      <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, padding: "0 clamp(16px,4vw,32px)", position: "sticky", top: 0, zIndex: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 0 0", gap: 12 }}>
+          <div style={{ minWidth: 0 }}>
             <div style={{ fontFamily: F.body, fontSize: 10, color: C.gold, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>Zenith Rise Capital</div>
-            <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginTop: 2 }}>Financial Intelligence System</div>
+            <div style={{ fontFamily: F.display, fontSize: "clamp(15px,3vw,20px)", color: C.text, marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>Financial Intelligence System</div>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
             {/* Live risk badge */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 14px", background: `${model.riskColor}15`, border: `1px solid ${model.riskColor}40`, borderRadius: 20 }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: model.riskColor }} />
-              <span style={{ fontFamily: F.mono, fontSize: 11, color: model.riskColor, fontWeight: 700 }}>{model.riskLevel} RISK</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: `${model.riskColor}15`, border: `1px solid ${model.riskColor}40`, borderRadius: 20 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: model.riskColor, flexShrink: 0 }} />
+              <span style={{ fontFamily: F.mono, fontSize: 10, color: model.riskColor, fontWeight: 700 }}>{model.riskLevel}</span>
             </div>
-            <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted }}>{inputs.companyName}</div>
             {onClose && (
               <button onClick={onClose} style={{ background: "none", border: "none", color: C.textMuted, cursor: "pointer", fontSize: 18, padding: "4px 8px" }}>✕</button>
             )}
           </div>
         </div>
 
-        {/* Tab bar */}
-        <div style={{ display: "flex", gap: 0, marginTop: 12 }}>
+        {/* Tab bar — horizontally scrollable on mobile */}
+        <div style={{ display: "flex", gap: 0, marginTop: 8, overflowX: "auto", WebkitOverflowScrolling: "touch", scrollbarWidth: "none", msOverflowStyle: "none" }}>
           {TABS.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               style={{
-                padding: "10px 20px", background: "none", border: "none",
+                padding: "10px clamp(10px,2.5vw,20px)", background: "none", border: "none",
                 borderBottom: activeTab === tab.id ? `2px solid ${C.gold}` : "2px solid transparent",
                 color: activeTab === tab.id ? C.gold : C.textMuted,
-                fontFamily: F.body, fontSize: 13, cursor: "pointer",
+                fontFamily: F.body, fontSize: "clamp(11px,2vw,13px)", cursor: "pointer",
                 fontWeight: activeTab === tab.id ? 700 : 400,
                 transition: "all 0.2s", letterSpacing: "0.02em",
+                whiteSpace: "nowrap", flexShrink: 0,
               }}
             >
               {tab.icon} {tab.label}
@@ -816,9 +816,9 @@ export default function FinancialIntelligenceSystem({ onClose }) {
         </div>
       </div>
 
-      {/* Dashboard KPI strip */}
-      <div style={{ background: "#0B1220", borderBottom: `1px solid ${C.border}`, padding: "14px 32px" }}>
-        <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
+      {/* Dashboard KPI strip — 2×3 grid, fits any screen */}
+      <div style={{ background: "#0B1220", borderBottom: `1px solid ${C.border}`, padding: "12px clamp(16px,4vw,32px)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px 8px" }}>
           {[
             ["Cash Runway", `${fmt(model.runwayWeeks, 1)} wks`, model.runwayWeeks < 6 ? C.red : C.green],
             ["Risk Level", model.riskLevel, model.riskColor],
@@ -827,16 +827,16 @@ export default function FinancialIntelligenceSystem({ onClose }) {
             ["CCC", `${fmt(model.ccc, 1)} d`, model.ccc > 90 ? C.red : model.ccc > 75 ? C.amber : C.green],
             ["DSO −10d Release", `€${fmt(model.liquidityDSO10)}`, C.gold],
           ].map(([label, value, color]) => (
-            <div key={label} style={{ textAlign: "center", minWidth: 80 }}>
-              <div style={{ fontFamily: F.body, fontSize: 10, color: C.textMuted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 3 }}>{label}</div>
-              <div style={{ fontFamily: F.display, fontSize: 16, color, fontWeight: 400 }}>{value}</div>
+            <div key={label} style={{ textAlign: "center" }}>
+              <div style={{ fontFamily: F.body, fontSize: 9, color: C.textMuted, letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: 3, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{label}</div>
+              <div style={{ fontFamily: F.display, fontSize: "clamp(13px,3vw,16px)", color, fontWeight: 400 }}>{value}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* Panel content */}
-      <div style={{ padding: "32px 32px", maxWidth: 1100, margin: "0 auto" }}>
+      <div style={{ padding: "clamp(16px,4vw,32px)", maxWidth: 1100, margin: "0 auto" }}>
         {activeTab === "inputs" && <InputsPanel inputs={inputs} setInputs={setInputs} />}
         {activeTab === "cashflow" && <CashFlowPanel model={model} inputs={inputs} />}
         {activeTab === "wc" && <WorkingCapitalPanel model={model} />}
