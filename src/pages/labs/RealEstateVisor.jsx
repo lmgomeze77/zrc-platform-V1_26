@@ -52,6 +52,8 @@ function FlyTo({ position, zoom = 18 }) {
 export default function RealEstateVisor() {
   const [rc, setRc] = useState("");
   const [loading, setLoading] = useState(false);
+  const [searchCount, setSearchCount] = useState(0);
+  const [showLeadModal, setShowLeadModal] = useState(false);
   const [error, setError] = useState(null);
   const [parcela, setParcela] = useState(null);
   const [position, setPosition] = useState(null);
@@ -72,6 +74,10 @@ export default function RealEstateVisor() {
     e?.preventDefault();
     if (!rc || rc.length < 14) {
       setError("Introduce una referencia catastral válida (14 o 20 caracteres).");
+      return;
+    }
+    if (searchCount >= 3) {
+      setShowLeadModal(true);
       return;
     }
     setLoading(true);
@@ -96,7 +102,7 @@ export default function RealEstateVisor() {
       const uso = debi?.luso || debi?.cuso || "—";
       const antiguedad = debi?.ant || "—";
 
-      const geoResp = await fetch(`${CATASTRO_COORD}?Provincia=&Municipio=&SRS=EPSG:4326&RC=${encodeURIComponent(rc)}`);
+      const geoResp = await fetch(`${CATASTRO_COORD}?Provincia=&Municipio=&SRS=EPSG:4326&RC=${encodeURIComponent(rc.substring(0, 14))}`);
       const geoText = await geoResp.text();
       const xMatch = geoText.match(/<xcen>([^<]+)<\/xcen>/);
       const yMatch = geoText.match(/<ycen>([^<]+)<\/ycen>/);
@@ -105,6 +111,7 @@ export default function RealEstateVisor() {
       const parcelaData = { rc, direccion, municipio, provincia, superficie, uso, antiguedad, coords };
       setParcela(parcelaData);
       setPosition(coords);
+      setSearchCount((c) => c + 1);
 
       const precioBase = priceByProvince(provincia);
       const newParams = { ...params, precioVenta: precioBase };
@@ -380,6 +387,13 @@ export default function RealEstateVisor() {
           </div>
         </main>
       </div>
+      {showLeadModal && (
+        <LeadModal
+          parcela={parcela}
+          onClose={() => setShowLeadModal(false)}
+          onSubmit={() => { setSearchCount(0); setShowLeadModal(false); }}
+        />
+      )}
     </div>
   );
 }
@@ -612,4 +626,113 @@ function matchAgainstZRCMandates(parcela) {
   ];
   return mandatos.map((m) => ({ ...m, fit: m.fitFn(parcela) }))
     .filter((m) => m.fit >= 60).sort((a, b) => b.fit - a.fit);
+}
+
+
+// ============================================================
+// LEAD MODAL
+// ============================================================
+function LeadModal({ parcela, onClose, onSubmit }) {
+  const [email, setEmail] = useState("");
+  const [sector, setSector] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMsg(null);
+    setSubmitting(true);
+    try {
+      const resp = await fetch("https://zrc-api.onrender.com/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          sector,
+          source: "visor-inmobiliario",
+          rc: parcela?.rc || null,
+          parcela: parcela ? {
+            municipio: parcela.municipio,
+            provincia: parcela.provincia,
+            uso: parcela.uso,
+            superficie: parcela.superficie,
+          } : null,
+        }),
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.error || "Error al enviar");
+      onSubmit();
+    } catch (err) {
+      setErrorMsg(err.message || "Error de red");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div onClick={onClose} style={{
+      position: "fixed", inset: 0, background: "rgba(9,9,11,0.85)",
+      display: "flex", alignItems: "center", justifyContent: "center",
+      zIndex: 9999, backdropFilter: "blur(4px)",
+    }}>
+      <div onClick={(e) => e.stopPropagation()} style={{
+        background: C.surface, padding: 36, maxWidth: 460, width: "90%",
+        borderTop: `3px solid ${C.gold}`, position: "relative",
+        border: `1px solid ${C.border}`,
+      }}>
+        <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 12 }}>
+          ZRC LABS - ACCESO COMPLETO
+        </div>
+        <h3 style={{ fontFamily: F.display, fontSize: 24, fontWeight: 400, margin: "0 0 12px", color: C.text }}>
+          Continua explorando
+        </h3>
+        <p style={{ color: C.textSec, fontSize: 13, lineHeight: 1.6, margin: "0 0 20px" }}>
+          Dejanos tu email y desbloquea busquedas ilimitadas + el informe mensual <em>Zenrise State</em>.
+        </p>
+        {errorMsg && (
+          <div style={{ marginBottom: 12, padding: "10px 12px", background: "rgba(239,68,68,0.1)", borderLeft: `3px solid ${C.red}`, color: C.red, fontSize: 12 }}>
+            {errorMsg}
+          </div>
+        )}
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email" required placeholder="email@empresa.com"
+            value={email} onChange={(e) => setEmail(e.target.value)}
+            style={{
+              width: "100%", padding: "12px 14px", background: C.surface2, color: C.text,
+              border: `1px solid ${C.border}`, marginBottom: 10, fontSize: 13, fontFamily: F.body,
+              boxSizing: "border-box", outline: "none",
+            }}
+          />
+          <select required value={sector} onChange={(e) => setSector(e.target.value)}
+            style={{
+              width: "100%", padding: "12px 14px", background: C.surface2, color: C.text,
+              border: `1px solid ${C.border}`, marginBottom: 14, fontSize: 13, fontFamily: F.body,
+              boxSizing: "border-box", outline: "none", appearance: "none",
+            }}>
+            <option value="">Sector / actividad</option>
+            <option>Promotor inmobiliario</option>
+            <option>Family office</option>
+            <option>Asesoria / despacho</option>
+            <option>Agencia / API</option>
+            <option>Inversor particular</option>
+            <option>Fondo / Private Equity</option>
+            <option>Otro</option>
+          </select>
+          <button type="submit" disabled={submitting} style={{
+            width: "100%", padding: 12, background: C.gold, color: C.bg, border: "none",
+            fontFamily: F.mono, fontSize: 11, fontWeight: 600, letterSpacing: "0.1em",
+            textTransform: "uppercase", cursor: submitting ? "wait" : "pointer",
+            opacity: submitting ? 0.6 : 1,
+          }}>
+            {submitting ? "Enviando..." : "Desbloquear acceso"}
+          </button>
+        </form>
+        <button onClick={onClose} style={{
+          position: "absolute", top: 12, right: 16, background: "none", border: "none",
+          fontSize: 22, color: C.textMuted, cursor: "pointer", lineHeight: 1, fontFamily: F.body,
+        }}>x</button>
+      </div>
+    </div>
+  );
 }

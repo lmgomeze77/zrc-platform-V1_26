@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
+import FinancialIntelligenceSystem from "./pages/labs/FinancialIntelligenceSystem";
 
 // ══════════════════════════════════════════════════════════════════════════
-// ZENITH RISE CAPITAL — PLATFORM v3.2
+// ZENITH RISE CAPITAL — PLATFORM v3.3
 // Live ticker · Clickable hero nav · GeoRisk Dashboard integration
 // Hero Background: Dark Overlay v1 — mapa, radar, montañas, nodos
+// + Financial Intelligence System (FIS)
 // ══════════════════════════════════════════════════════════════════════════
 
 const C = {
@@ -417,6 +419,14 @@ const TOOLS = [
     icon: "◇", status: "BETA", ml: false,
   },
   {
+    name: "Financial Intelligence System",
+    desc: {
+      es: "Motor de inteligencia financiera para PYMEs familiares: cash flow 13 semanas, capital circulante, motor de riesgos e informe semanal generado por IA.",
+      en: "Financial intelligence engine for family-owned SMEs: 13-week cash flow, working capital optimizer, risk engine and AI-generated board report.",
+    },
+    icon: "◆", status: "LIVE", ml: true,
+  },
+  {
     name: "Valuation Engine",
     desc: { es: "DCF automatizado, múltiplos y valoración normalizada para PYMEs.", en: "Automated DCF, multiples, and normalized valuation for SMEs." },
     icon: "◇", status: "BETA", ml: true,
@@ -749,10 +759,6 @@ const Nav = ({ lang, setLang, onNav }) => {
   );
 };
 
-// ══════════════════════════════════════════════════════════════════════════
-// HERO — Dark Overlay Background v1
-// Capas: montañas navy · mapa mundi punteado · radar + brújula · nodos dorados
-// ══════════════════════════════════════════════════════════════════════════
 const Hero = ({ lang, onNav }) => {
   const t = T[lang].hero;
   const [loaded, setLoaded] = useState(false);
@@ -777,7 +783,6 @@ const Hero = ({ lang, onNav }) => {
         background: "#09090B",
       }}
     >
-      {/* ── CAPA 1: Gradientes de base — montañas navy ── */}
       <div style={{
         position: "absolute", inset: 0,
         background: `
@@ -787,64 +792,44 @@ const Hero = ({ lang, onNav }) => {
           radial-gradient(ellipse 100% 45% at 50% 115%, rgba(6,9,18,1) 0%, transparent 55%)
         `,
       }} />
-
-      {/* ── CAPA 2: Mapa mundi punteado ── */}
-      <svg
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.07 }}
-        viewBox="0 0 1600 900"
-        preserveAspectRatio="xMidYMid slice"
-      >
+      <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.07 }} viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
         <g fill="#D4A853">
-          {/* Europa */}
           <circle cx="780" cy="260" r="2"/><circle cx="800" cy="255" r="2"/><circle cx="820" cy="260" r="2"/>
           <circle cx="840" cy="265" r="2"/><circle cx="830" cy="275" r="2"/><circle cx="810" cy="280" r="2"/>
           <circle cx="790" cy="278" r="2"/><circle cx="770" cy="270" r="2"/><circle cx="760" cy="260" r="2"/>
           <circle cx="850" cy="258" r="2"/><circle cx="860" cy="268" r="2"/><circle cx="855" cy="280" r="2"/>
           <circle cx="760" cy="288" r="2"/><circle cx="775" cy="295" r="2"/><circle cx="795" cy="290" r="2"/>
-          {/* Norte África */}
           <circle cx="760" cy="310" r="2"/><circle cx="780" cy="308" r="2"/><circle cx="800" cy="306" r="2"/>
           <circle cx="820" cy="308" r="2"/><circle cx="840" cy="310" r="2"/><circle cx="860" cy="312" r="2"/>
           <circle cx="880" cy="315" r="2"/><circle cx="770" cy="325" r="2"/><circle cx="790" cy="320" r="2"/>
           <circle cx="810" cy="318" r="2"/><circle cx="830" cy="322" r="2"/><circle cx="850" cy="326" r="2"/>
           <circle cx="900" cy="318" r="2"/><circle cx="920" cy="322" r="2"/><circle cx="940" cy="328" r="2"/>
-          {/* Asia */}
           <circle cx="900" cy="255" r="2"/><circle cx="920" cy="250" r="2"/><circle cx="940" cy="248" r="2"/>
           <circle cx="960" cy="252" r="2"/><circle cx="980" cy="258" r="2"/><circle cx="1000" cy="260" r="2"/>
           <circle cx="910" cy="268" r="2"/><circle cx="930" cy="265" r="2"/><circle cx="950" cy="262" r="2"/>
           <circle cx="970" cy="268" r="2"/><circle cx="990" cy="272" r="2"/><circle cx="1010" cy="270" r="2"/>
           <circle cx="1020" cy="258" r="2"/><circle cx="1030" cy="265" r="2"/><circle cx="1040" cy="272" r="2"/>
           <circle cx="1050" cy="260" r="2"/><circle cx="1060" cy="268" r="2"/>
-          {/* Américas Norte */}
           <circle cx="380" cy="240" r="2"/><circle cx="400" cy="245" r="2"/><circle cx="420" cy="248" r="2"/>
           <circle cx="440" cy="242" r="2"/><circle cx="460" cy="248" r="2"/><circle cx="390" cy="260" r="2"/>
           <circle cx="410" cy="258" r="2"/><circle cx="430" cy="262" r="2"/><circle cx="450" cy="265" r="2"/>
           <circle cx="420" cy="278" r="2"/><circle cx="440" cy="275" r="2"/><circle cx="460" cy="278" r="2"/>
           <circle cx="480" cy="270" r="2"/><circle cx="500" cy="262" r="2"/>
-          {/* Sudamérica */}
           <circle cx="440" cy="360" r="2"/><circle cx="460" cy="355" r="2"/><circle cx="480" cy="360" r="2"/>
           <circle cx="450" cy="375" r="2"/><circle cx="470" cy="370" r="2"/><circle cx="490" cy="365" r="2"/>
           <circle cx="455" cy="390" r="2"/><circle cx="475" cy="385" r="2"/><circle cx="460" cy="405" r="2"/>
           <circle cx="470" cy="420" r="2"/><circle cx="455" cy="435" r="2"/>
         </g>
       </svg>
-
-      {/* ── CAPA 3: Radar rings + brújula cartográfica ── */}
-      <svg
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.1 }}
-        viewBox="0 0 1600 900"
-        preserveAspectRatio="xMidYMid slice"
-      >
+      <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.1 }} viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
         <g fill="none" stroke="#D4A853" strokeWidth="0.8">
-          <circle cx="800" cy="430" r="180"/>
-          <circle cx="800" cy="430" r="290"/>
-          <circle cx="800" cy="430" r="410"/>
-          <circle cx="800" cy="430" r="550"/>
+          <circle cx="800" cy="430" r="180"/><circle cx="800" cy="430" r="290"/>
+          <circle cx="800" cy="430" r="410"/><circle cx="800" cy="430" r="550"/>
         </g>
         <g fill="none" stroke="#D4A853" strokeWidth="0.4" opacity="0.5">
           <line x1="800" y1="60" x2="800" y2="870"/>
           <line x1="180" y1="430" x2="1420" y2="430"/>
         </g>
-        {/* Brújula */}
         <g transform="translate(155,155)">
           <circle cx="0" cy="0" r="30" fill="none" stroke="#D4A853" strokeWidth="0.8"/>
           <polygon points="0,-24 4,-8 0,-4 -4,-8" fill="#D4A853" opacity="0.7"/>
@@ -856,13 +841,7 @@ const Hero = ({ lang, onNav }) => {
           <text x="38"  y="4"  textAnchor="middle" fontFamily="serif" fontSize="10" fill="#D4A853" opacity="0.4">E</text>
         </g>
       </svg>
-
-      {/* ── CAPA 4: Montañas watercolor reinterpretadas en navy ── */}
-      <svg
-        style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "65%", opacity: 0.5 }}
-        viewBox="0 0 1600 580"
-        preserveAspectRatio="xMidYMax slice"
-      >
+      <svg style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "65%", opacity: 0.5 }} viewBox="0 0 1600 580" preserveAspectRatio="xMidYMax slice">
         <defs>
           <linearGradient id="mtnA" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#1a2d52" stopOpacity="0.85"/>
@@ -873,32 +852,20 @@ const Hero = ({ lang, onNav }) => {
             <stop offset="100%" stopColor="#060912" stopOpacity="0.8"/>
           </linearGradient>
         </defs>
-        {/* Ola lejana izquierda */}
         <path d="M -50 580 Q 0 400 100 420 Q 200 440 280 380 Q 350 320 420 360 Q 490 400 550 580 Z" fill="url(#mtnA)"/>
-        {/* Ola lejana derecha */}
         <path d="M 1050 580 Q 1150 480 1250 510 Q 1350 540 1450 470 Q 1530 410 1650 580 Z" fill="url(#mtnA)"/>
-        {/* Masa central izquierda */}
         <path d="M -50 580 Q 50 500 150 520 Q 250 540 350 480 Q 430 420 480 440 Q 540 460 600 580 Z" fill="url(#mtnB)"/>
-        {/* Masa derecha */}
         <path d="M 1000 580 Q 1100 520 1200 540 Q 1300 560 1400 500 Q 1480 450 1650 580 Z" fill="url(#mtnB)"/>
-        {/* Picos delanteros */}
         <path d="M -20 580 Q 80 540 130 558 L 162 538 Q 202 518 242 533 Q 282 550 320 580 Z" fill="#0B1F3F" opacity="0.9"/>
         <path d="M 1280 580 Q 1360 552 1402 563 Q 1442 543 1484 554 L 1524 580 Z" fill="#0B1F3F" opacity="0.9"/>
       </svg>
-
-      {/* ── CAPA 5: Red de nodos geopolíticos (derecha) ── */}
-      <svg
-        style={{ position: "absolute", right: 0, top: 0, width: "44%", height: "100%", opacity: 0.5 }}
-        viewBox="0 0 700 900"
-        preserveAspectRatio="xMaxYMid meet"
-      >
+      <svg style={{ position: "absolute", right: 0, top: 0, width: "44%", height: "100%", opacity: 0.5 }} viewBox="0 0 700 900" preserveAspectRatio="xMaxYMid meet">
         <defs>
           <radialGradient id="nd">
             <stop offset="0%"   stopColor="#D4A853" stopOpacity="0.45"/>
             <stop offset="100%" stopColor="#D4A853" stopOpacity="0"/>
           </radialGradient>
         </defs>
-        {/* Conexiones */}
         <g stroke="#D4A853" strokeWidth="0.8" fill="none" opacity="0.45">
           <line x1="580" y1="275" x2="478" y2="418"/>
           <line x1="478" y1="418" x2="582" y2="558"/>
@@ -911,91 +878,33 @@ const Hero = ({ lang, onNav }) => {
           <line x1="382" y1="498" x2="478" y2="418"/>
           <line x1="382" y1="338" x2="382" y2="498"/>
         </g>
-        {/* Nodos con halo */}
-        <circle cx="580" cy="275" r="14" fill="url(#nd)"/>
-        <circle cx="580" cy="275" r="4.5" fill="#D4A853" opacity="0.9"/>
-        <circle cx="478" cy="418" r="14" fill="url(#nd)"/>
-        <circle cx="478" cy="418" r="4.5" fill="#D4A853" opacity="0.9"/>
-        <circle cx="622" cy="418" r="11" fill="url(#nd)"/>
-        <circle cx="622" cy="418" r="3.5" fill="#D4A853" opacity="0.8"/>
-        <circle cx="582" cy="558" r="16" fill="url(#nd)"/>
-        <circle cx="582" cy="558" r="5"   fill="#D4A853"/>
-        <circle cx="500" cy="678" r="11" fill="url(#nd)"/>
-        <circle cx="500" cy="678" r="3.5" fill="#D4A853" opacity="0.7"/>
-        <circle cx="502" cy="178" r="10" fill="url(#nd)"/>
-        <circle cx="502" cy="178" r="3"   fill="#D4A853" opacity="0.6"/>
-        <circle cx="382" cy="338" r="10" fill="url(#nd)"/>
-        <circle cx="382" cy="338" r="3"   fill="#D4A853" opacity="0.65"/>
-        <circle cx="382" cy="498" r="10" fill="url(#nd)"/>
-        <circle cx="382" cy="498" r="3"   fill="#D4A853" opacity="0.65"/>
+        <circle cx="580" cy="275" r="14" fill="url(#nd)"/><circle cx="580" cy="275" r="4.5" fill="#D4A853" opacity="0.9"/>
+        <circle cx="478" cy="418" r="14" fill="url(#nd)"/><circle cx="478" cy="418" r="4.5" fill="#D4A853" opacity="0.9"/>
+        <circle cx="622" cy="418" r="11" fill="url(#nd)"/><circle cx="622" cy="418" r="3.5" fill="#D4A853" opacity="0.8"/>
+        <circle cx="582" cy="558" r="16" fill="url(#nd)"/><circle cx="582" cy="558" r="5"   fill="#D4A853"/>
+        <circle cx="500" cy="678" r="11" fill="url(#nd)"/><circle cx="500" cy="678" r="3.5" fill="#D4A853" opacity="0.7"/>
+        <circle cx="502" cy="178" r="10" fill="url(#nd)"/><circle cx="502" cy="178" r="3"   fill="#D4A853" opacity="0.6"/>
+        <circle cx="382" cy="338" r="10" fill="url(#nd)"/><circle cx="382" cy="338" r="3"   fill="#D4A853" opacity="0.65"/>
+        <circle cx="382" cy="498" r="10" fill="url(#nd)"/><circle cx="382" cy="498" r="3"   fill="#D4A853" opacity="0.65"/>
       </svg>
-
-      {/* ── CAPA 6: Overlay oscuro para legibilidad ── */}
-      <div style={{
-        position: "absolute", inset: 0,
-        background: "linear-gradient(160deg, rgba(6,9,18,0.78) 0%, rgba(6,9,18,0.65) 45%, rgba(6,9,18,0.82) 100%)",
-      }} />
-
-      {/* ── CAPA 7: Grano de textura sutil ── */}
-      <div style={{
-        position: "absolute", inset: 0, opacity: 0.04, mixBlendMode: "overlay", pointerEvents: "none",
-        backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")`,
-      }} />
-
-      {/* ── CONTENIDO DEL HERO (sin cambios) ── */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 1,
-          textAlign: "center",
-          maxWidth: 860,
-          opacity: loaded ? 1 : 0,
-          transform: loaded ? "none" : "translateY(30px)",
-          transition: "all 1.2s cubic-bezier(0.16,1,0.3,1)",
-        }}
-      >
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.35em", marginBottom: 40, fontWeight: 400, opacity: 0.9 }}>
-          {t.tag}
-        </div>
-
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(6,9,18,0.78) 0%, rgba(6,9,18,0.65) 45%, rgba(6,9,18,0.82) 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, opacity: 0.04, mixBlendMode: "overlay", pointerEvents: "none", backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")` }} />
+      <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 860, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(30px)", transition: "all 1.2s cubic-bezier(0.16,1,0.3,1)" }}>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.35em", marginBottom: 40, fontWeight: 400, opacity: 0.9 }}>{t.tag}</div>
         <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px,5.5vw,68px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.08, letterSpacing: "-0.02em" }}>
-          {t.h1}
-          <br />
-          {t.h2}
-          <br />
-          <span style={{ color: C.gold, fontStyle: "italic", fontWeight: 400 }}>{t.h3}</span>
+          {t.h1}<br />{t.h2}<br /><span style={{ color: C.gold, fontStyle: "italic", fontWeight: 400 }}>{t.h3}</span>
         </h1>
-
-        <p style={{ fontFamily: F.body, fontSize: 16, color: C.textSec, maxWidth: 540, margin: "36px auto 0", lineHeight: 1.7, fontWeight: 300 }}>
-          {t.sub}
-        </p>
-
+        <p style={{ fontFamily: F.body, fontSize: 16, color: C.textSec, maxWidth: 540, margin: "36px auto 0", lineHeight: 1.7, fontWeight: 300 }}>{t.sub}</p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 48, flexWrap: "wrap" }}>
-          <button
-            onClick={() => onNav("observatory")}
-            style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.12em", padding: "13px 28px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}
-          >
-            {t.cta1} {"→"}
-          </button>
-          <button
-            onClick={() => onNav("brokerage")}
-            style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.12em", padding: "13px 28px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 500 }}
-          >
-            {t.cta2}
-          </button>
+          <button onClick={() => onNav("observatory")} style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.12em", padding: "13px 28px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>{t.cta1} {"→"}</button>
+          <button onClick={() => onNav("brokerage")} style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.12em", padding: "13px 28px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 500 }}>{t.cta2}</button>
         </div>
-
         <div style={{ marginTop: 72, display: "flex", justifyContent: "center", gap: 0, flexWrap: "wrap", alignItems: "center" }}>
           {t.fw.map((step, i) => {
             const targets = ["observatory", "intelligence", "brokerage", "academia", "community"];
             return (
               <div key={step} style={{ display: "flex", alignItems: "center" }}>
-                <button
-                  onClick={() => onNav(targets[i])}
-                  style={{ padding: "6px 16px", border: `1px solid ${i === 0 ? C.gold : C.border}`, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: i === 0 ? C.gold : C.textMuted, background: i === 0 ? C.goldDim : "transparent", cursor: "pointer" }}
-                >
-                  {step}
-                </button>
+                <button onClick={() => onNav(targets[i])} style={{ padding: "6px 16px", border: `1px solid ${i === 0 ? C.gold : C.border}`, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: i === 0 ? C.gold : C.textMuted, background: i === 0 ? C.goldDim : "transparent", cursor: "pointer" }}>{step}</button>
                 {i < 4 && <span style={{ fontFamily: F.mono, color: C.textMuted, margin: "0 2px", fontSize: 10, opacity: 0.5 }}>{"→"}</span>}
               </div>
             );
@@ -1017,23 +926,17 @@ const Observatory = ({ lang }) => {
   return (
     <Sec id="observatory">
       <SH label={t.label} title={t.title} sub={t.sub} extra={<span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>({FEED.length})</span>} />
-
       <FadeIn delay={0.1}>
         <div style={{ display: "flex", gap: 6, marginBottom: 28, flexWrap: "wrap" }}>
           {regions.map((r) => (
-            <button key={r} onClick={() => setFilter(r)}
-              style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "5px 14px", background: filter === r ? C.goldDim : "transparent", color: filter === r ? C.gold : C.textMuted, border: `1px solid ${filter === r ? C.goldBorder : C.border}`, cursor: "pointer" }}
-            >{r}</button>
+            <button key={r} onClick={() => setFilter(r)} style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "5px 14px", background: filter === r ? C.goldDim : "transparent", color: filter === r ? C.gold : C.textMuted, border: `1px solid ${filter === r ? C.goldBorder : C.border}`, cursor: "pointer" }}>{r}</button>
           ))}
         </div>
       </FadeIn>
-
       <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
         {filtered.map((item, i) => (
           <FadeIn key={item.id} delay={i * 0.04}>
-            <div onClick={() => setExpanded(expanded === item.id ? null : item.id)}
-              style={{ padding: "18px 22px", background: expanded === item.id ? C.surface2 : C.surface, border: `1px solid ${expanded === item.id ? C.goldBorder : C.border}`, cursor: "pointer", transition: "all 0.3s" }}
-            >
+            <div onClick={() => setExpanded(expanded === item.id ? null : item.id)} style={{ padding: "18px 22px", background: expanded === item.id ? C.surface2 : C.surface, border: `1px solid ${expanded === item.id ? C.goldBorder : C.border}`, cursor: "pointer", transition: "all 0.3s" }}>
               <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
                 <div style={{ flex: 1, minWidth: 260 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
@@ -1049,7 +952,6 @@ const Observatory = ({ lang }) => {
                   <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{item.confidence}%</span>
                 </div>
               </div>
-
               {expanded === item.id && (
                 <div style={{ marginTop: 14, paddingTop: 14, borderTop: `1px solid ${C.border}` }}>
                   {user ? (
@@ -1074,11 +976,15 @@ const Observatory = ({ lang }) => {
   );
 };
 
+// ══════════════════════════════════════════════════════════════════════════
+// INTELLIGENCE — includes Financial Intelligence System
+// ══════════════════════════════════════════════════════════════════════════
 const Intelligence = ({ lang }) => {
   const t = T[lang].intel;
   const { user } = useAuth();
   const [showGeoRisk, setShowGeoRisk] = useState(false);
   const [showVisor, setShowVisor] = useState(false);
+  const [showFIS, setShowFIS] = useState(false);
 
   return (
     <Sec id="intelligence">
@@ -1113,11 +1019,14 @@ const Intelligence = ({ lang }) => {
                 <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, fontWeight: 300 }}>{tool.desc[lang]}</p>
               </div>
               {user ? (
-                <button onClick={() => {
-                  if (tool.name === "GeoRisk Dashboard") setShowGeoRisk(true);
-                  if (tool.name === "Real Estate Visor") setShowVisor(true);
-                }}
-                  style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}>
+                <button
+                  onClick={() => {
+                    if (tool.name === "GeoRisk Dashboard") setShowGeoRisk(true);
+                    if (tool.name === "Real Estate Visor") setShowVisor(true);
+                    if (tool.name === "Financial Intelligence System") setShowFIS(true);
+                  }}
+                  style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}
+                >
                   {tool.status === "LIVE" ? "LAUNCH →" : tool.status === "BETA" ? "REQUEST ACCESS" : "NOTIFY ME"}
                 </button>
               ) : (
@@ -1132,22 +1041,30 @@ const Intelligence = ({ lang }) => {
 
       {!user && <FadeIn delay={0.3}><LockedOverlay message={t.locked} lang={lang} /></FadeIn>}
 
+      {/* GeoRisk Dashboard overlay */}
       {showGeoRisk && (
         <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
-          <button onClick={() => setShowGeoRisk(false)}
-            style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
+          <button onClick={() => setShowGeoRisk(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
             ✕ CLOSE DASHBOARD
           </button>
           <GeoRiskDashboard />
         </div>
       )}
+
+      {/* Real Estate Visor overlay */}
       {showVisor && (
         <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
-          <button onClick={() => setShowVisor(false)}
-            style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
+          <button onClick={() => setShowVisor(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
             ✕ CLOSE VISOR
           </button>
           <RealEstateVisor />
+        </div>
+      )}
+
+      {/* Financial Intelligence System overlay */}
+      {showFIS && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+          <FinancialIntelligenceSystem onClose={() => setShowFIS(false)} />
         </div>
       )}
     </Sec>
@@ -1192,10 +1109,7 @@ const Brokerage = ({ lang }) => {
                 <div style={{ fontFamily: F.display, fontSize: 22, color: C.gold, marginBottom: 16 }}>{op.price}</div>
               </div>
               <div style={{ padding: "14px 20px", borderTop: `1px solid ${C.border}` }}>
-                <button onClick={() => openTeaser(op)}
-                  style={{ width: "100%", fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "9px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer" }}>
-                  {t.req}
-                </button>
+                <button onClick={() => openTeaser(op)} style={{ width: "100%", fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "9px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer" }}>{t.req}</button>
               </div>
             </div>
           </FadeIn>
@@ -1314,14 +1228,11 @@ const Community = ({ lang }) => {
             ))}
           </div>
         </FadeIn>
-
         <FadeIn delay={0.15}>
           <div style={{ padding: "28px 24px", background: C.surface, border: `1px solid ${C.goldBorder}` }}>
             <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.15em", marginBottom: 16 }}>{t.applyTitle.toUpperCase()}</div>
             <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, marginBottom: 24, fontWeight: 300 }}>{t.applyText}</p>
-            <button onClick={() => setModal(true)} style={{ width: "100%", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", padding: "12px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
-              {t.applyCta}
-            </button>
+            <button onClick={() => setModal(true)} style={{ width: "100%", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", padding: "12px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>{t.applyCta}</button>
           </div>
         </FadeIn>
       </div>

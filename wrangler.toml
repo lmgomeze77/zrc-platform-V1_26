@@ -1,7 +1,19 @@
+﻿# wrangler.toml
+# ZRC Platform - SPA + API en un solo Worker
+
 name = "zenith-risecapital"
 compatibility_date = "2026-04-01"
+main = "./src/worker/index.js"
 
 [assets]
 directory = "./dist"
 html_handling = "auto-trailing-slash"
 not_found_handling = "single-page-application"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+# D1 - base de datos de leads
+[[d1_databases]]
+binding = "DB"
+database_name = "zrc-leads"
+database_id = "b5f9835f-93db-4cbc-94e3-1c615cf4c36d"
