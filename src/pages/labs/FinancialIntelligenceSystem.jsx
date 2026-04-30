@@ -23,91 +23,154 @@ const F = {
   mono: "'IBM Plex Mono', 'Fira Code', monospace",
 };
 
-// ── Default demo inputs (matches ZRC Excel v1) ──────────────────────────
+// ── Default demo inputs ──────────────────────────────────────────────────
+// Payment timing: which week of the month (1–4) each outflow hits the bank.
+// This is the key addition over a naive /52 model — it drives real cash peaks.
 const DEFAULT_INPUTS = {
   companyName: "Example Family-Owned GrowthCo",
   startingCash: 250000,
   monthlyRevenue: 650000,
-  monthlyGrowthRate: 0.025,
-  cashSalesPct: 0.25,
-  collectionDelayDays: 60,
-  supplierPaymentTerms: 45,
-  payroll: 95000,
-  fixedCosts: 85000,
-  variableCostPct: 0.52,
-  vatTaxPayments: 42000,
-  capex: 25000,
-  debtService: 18000,
+  monthlyGrowthRate: 0.025,   // decimal, e.g. 0.025 = 2.5% per month
+  cashSalesPct: 0.25,          // share of revenue collected same week as sale
+  collectionDelayDays: 60,     // avg days to collect credit sales (drives AR lag)
+  supplierPaymentTerms: 45,    // avg days to pay suppliers (drives AP release)
+  // Monthly outflows
+  payroll: 95000,              // EUR/month — hits bank week payrollWeek
+  fixedCosts: 85000,           // EUR/month — hits bank week fixedWeek
+  vatTaxPayments: 42000,       // EUR/month equivalent — hits bank week vatWeek
+  capex: 25000,                // EUR/month — hits bank week capexWeek
+  debtService: 18000,          // EUR/month — hits bank week debtWeek
+  // Payment timing (1=first week of month, 2=second, 3=third, 4=last)
+  payrollWeek: 4,
+  fixedWeek: 1,
+  vatWeek: 3,
+  capexWeek: 2,
+  debtWeek: 2,
+  // Risk threshold
   minimumCashBuffer: 150000,
+  // Working capital anchors (balance sheet)
   openingAR: 950000,
   openingAP: 520000,
-  openingInventory: 680000,
+  annualRevenue: 7800000,      // used for DSO/DPO; defaults to monthlyRevenue×12
   annualCOGS: 4050000,
 };
 
-// ── Financial Engine ────────────────────────────────────────────────────
+// ── Calendar Engine ─────────────────────────────────────────────────────
+// Logic:
+//   - 13 weeks = weeks 1..13, mapping to months M0 (wks 1-4), M1 (wks 5-8), M2 (wks 9-12), M3 (wk 13)
+//   - Each monthly outflow fires exactly once per month, in its designated week
+//   - Revenue accrues weekly (monthly / 4.33 per week), with growth applied per month
+//   - Cash IN = same-week cash sales + lagged credit collections (collectionDelayDays → lag in weeks)
+//   - Opening AR drains over the lag period before new collections take over
+//   - No inventory / COGS weekly split — model is AP/AR-driven, consistent with inputs
 function computeModel(inp) {
-  const weeklyRevBase = inp.monthlyRevenue * 12 / 52;
-  const weeklyPayroll = inp.payroll * 12 / 52;
-  const weeklyFixed = inp.fixedCosts * 12 / 52;
-  const weeklyVAT = inp.vatTaxPayments * 12 / 52;
-  const weeklyCapexDebt = (inp.capex + inp.debtService) * 12 / 52;
+  const annualRev = inp.monthlyRevenue * 12;
 
-  // Lagged cash in: % sold on credit collected after collectionDelayDays
+  // Weekly revenue by week (monthly growth applied at month boundary)
+  // Month index of week w (0-based): Math.floor((w-1)/4)
+  const weeklyRevenue = (w) => {
+    const monthIdx = Math.floor((w - 1) / 4);
+    return (inp.monthlyRevenue / 4.33) * Math.pow(1 + inp.monthlyGrowthRate, monthIdx);
+  };
+
+  // Credit collection lag in weeks (rounded)
+  const lagWeeks = Math.max(1, Math.round(inp.collectionDelayDays / 7));
   const creditPct = 1 - inp.cashSalesPct;
-  const lagWeeks = Math.round(inp.collectionDelayDays / 7);
+
+  // Opening AR spreads evenly across the lag period as pre-existing receivables clear
+  const arWeeklyRelease = inp.openingAR / lagWeeks;
+
+  // Which week-of-month (1–4) does week w fall in?
+  const weekOfMonth = (w) => ((w - 1) % 4) + 1;
+
+  // Does a monthly payment due in weekOfMonth X fire in week w?
+  const fires = (w, targetWeekOfMonth) => weekOfMonth(w) === targetWeekOfMonth;
 
   const cashFlow = [];
+
   for (let w = 1; w <= 13; w++) {
-    const revenue = weeklyRevBase * Math.pow(1 + inp.monthlyGrowthRate / 4.33, w - 1);
-    const cashSales = revenue * inp.cashSalesPct;
-    // Lagged receivables kick in after lag
-    const laggedRec = w > lagWeeks
-      ? weeklyRevBase * creditPct * Math.pow(1 + inp.monthlyGrowthRate / 4.33, Math.max(0, w - lagWeeks - 1))
-      : inp.openingAR / Math.max(lagWeeks, 1);
-    const totalCashIn = cashSales + laggedRec;
-    const variableCost = revenue * inp.variableCostPct;
-    const totalCashOut = weeklyPayroll + weeklyFixed + variableCost + weeklyVAT + weeklyCapexDebt;
+    const rev = weeklyRevenue(w);
+
+    // ── CASH IN ──────────────────────────────────────────────────────
+    const cashSales = rev * inp.cashSalesPct;
+
+    // Credit collections: opening AR clears first, then lagged new sales
+    let creditCollections = 0;
+    if (w <= lagWeeks) {
+      // Still collecting pre-existing AR
+      creditCollections = arWeeklyRelease;
+    } else {
+      // Collecting credit sales from w - lagWeeks ago
+      creditCollections = weeklyRevenue(w - lagWeeks) * creditPct;
+    }
+    const totalCashIn = cashSales + creditCollections;
+
+    // ── CASH OUT — calendar-based, not smoothed ───────────────────────
+    // Each monthly cost fires once in its designated week-of-month
+    const payrollOut   = fires(w, inp.payrollWeek) ? inp.payroll    : 0;
+    const fixedOut     = fires(w, inp.fixedWeek)   ? inp.fixedCosts : 0;
+    const vatOut       = fires(w, inp.vatWeek)      ? inp.vatTaxPayments : 0;
+    const capexOut     = fires(w, inp.capexWeek)    ? inp.capex     : 0;
+    const debtOut      = fires(w, inp.debtWeek)     ? inp.debtService : 0;
+    const totalCashOut = payrollOut + fixedOut + vatOut + capexOut + debtOut;
+
     const prev = w === 1 ? inp.startingCash : cashFlow[w - 2].closingCash;
     const closingCash = prev + totalCashIn - totalCashOut;
+
     cashFlow.push({
-      week: w, revenue, cashSales, laggedRec, totalCashIn,
-      payroll: weeklyPayroll, fixed: weeklyFixed, variableCost,
-      vat: weeklyVAT, capexDebt: weeklyCapexDebt, totalCashOut,
-      closingCash, belowBuffer: closingCash < inp.minimumCashBuffer,
+      week: w,
+      monthIdx: Math.floor((w - 1) / 4) + 1,
+      weekOfMonth: weekOfMonth(w),
+      revenue: rev,
+      cashSales,
+      creditCollections,
+      totalCashIn,
+      payroll: payrollOut,
+      fixed: fixedOut,
+      vat: vatOut,
+      capex: capexOut,
+      debt: debtOut,
+      totalCashOut,
+      closingCash,
+      belowBuffer: closingCash < inp.minimumCashBuffer,
     });
   }
 
-  // Working Capital
-  const annualRevenue = inp.monthlyRevenue * 12;
-  const dso = (inp.openingAR / annualRevenue) * 365;
+  // ── Working Capital ───────────────────────────────────────────────────
+  const dso = (inp.openingAR / annualRev) * 365;
   const dpo = (inp.openingAP / inp.annualCOGS) * 365;
-  const dio = (inp.openingInventory / inp.annualCOGS) * 365;
-  const ccc = dso + dio - dpo;
-  const liquidityDSO10 = (annualRevenue / 365) * 10;
-  const liquidityDSO20 = (annualRevenue / 365) * 20;
+  // No inventory input → DIO = 0, CCC = DSO - DPO
+  const ccc = dso - dpo;
+  const liquidityDSO10 = (annualRev / 365) * 10;
+  const liquidityDSO20 = (annualRev / 365) * 20;
 
-  // Runway
+  // ── Summary metrics ───────────────────────────────────────────────────
   const week13Cash = cashFlow[12].closingCash;
-  const avgWeeklyBurn = cashFlow.reduce((s, r) => s + r.totalCashOut, 0) / 13;
+  const minCashAny = Math.min(...cashFlow.map(r => r.closingCash));
+  const fundingGap = Math.min(0, minCashAny - inp.minimumCashBuffer); // worst week, not just W13
+  const avgWeeklyOut = cashFlow.reduce((s, r) => s + r.totalCashOut, 0) / 13;
   const cashAboveBuffer = Math.max(0, week13Cash - inp.minimumCashBuffer);
-  const runwayWeeks = cashAboveBuffer / avgWeeklyBurn;
-  const fundingGap = Math.min(0, week13Cash - inp.minimumCashBuffer);
-
-  // Risk Rules
+  const runwayWeeks = avgWeeklyOut > 0 ? cashAboveBuffer / avgWeeklyOut : 99;
   const belowBufferWeeks = cashFlow.filter(r => r.belowBuffer).length;
+
+  // ── Risk Rules ────────────────────────────────────────────────────────
   const rules = [
-    { name: "Cash runway", value: runwayWeeks, threshold: 6, pass: runwayWeeks >= 6, score: runwayWeeks < 6 ? 2 : 0 },
-    { name: "Min cash breach", value: week13Cash, threshold: inp.minimumCashBuffer, pass: week13Cash >= inp.minimumCashBuffer, score: week13Cash < inp.minimumCashBuffer ? 2 : 0 },
-    { name: "DSO efficiency", value: dso, threshold: 75, pass: dso <= 75, score: dso > 75 ? 2 : dso > 60 ? 1 : 0 },
-    { name: "CCC pressure", value: ccc, threshold: 90, pass: ccc <= 90, score: ccc > 90 ? 2 : ccc > 70 ? 1 : 0 },
-    { name: "Weeks below buffer", value: belowBufferWeeks, threshold: 3, pass: belowBufferWeeks <= 3, score: belowBufferWeeks > 3 ? 2 : 0 },
+    { name: "Cash runway",        value: runwayWeeks,       threshold: 6,                    pass: runwayWeeks >= 6,                    score: runwayWeeks < 6 ? 2 : 0 },
+    { name: "Min cash breach",    value: minCashAny,        threshold: inp.minimumCashBuffer, pass: minCashAny >= inp.minimumCashBuffer,  score: minCashAny < inp.minimumCashBuffer ? 2 : 0 },
+    { name: "DSO efficiency",     value: dso,               threshold: 75,                   pass: dso <= 75,                           score: dso > 75 ? 2 : dso > 60 ? 1 : 0 },
+    { name: "CCC pressure",       value: ccc,               threshold: 60,                   pass: ccc <= 60,                           score: ccc > 60 ? 2 : ccc > 45 ? 1 : 0 },
+    { name: "Weeks below buffer", value: belowBufferWeeks,  threshold: 3,                    pass: belowBufferWeeks <= 3,               score: belowBufferWeeks > 3 ? 2 : 0 },
   ];
   const totalScore = rules.reduce((s, r) => s + r.score, 0);
   const riskLevel = totalScore >= 4 ? "HIGH" : totalScore >= 2 ? "MEDIUM" : "LOW";
   const riskColor = riskLevel === "HIGH" ? C.red : riskLevel === "MEDIUM" ? C.amber : C.green;
 
-  return { cashFlow, dso, dpo, dio, ccc, liquidityDSO10, liquidityDSO20, runwayWeeks, fundingGap, week13Cash, rules, totalScore, riskLevel, riskColor, annualRevenue, avgWeeklyBurn };
+  return {
+    cashFlow, dso, dpo, ccc, liquidityDSO10, liquidityDSO20,
+    runwayWeeks, fundingGap, week13Cash, minCashAny,
+    rules, totalScore, riskLevel, riskColor,
+    annualRevenue: annualRev, avgWeeklyOut, belowBufferWeeks, lagWeeks,
+  };
 }
 
 // ── Helpers ─────────────────────────────────────────────────────────────
@@ -179,38 +242,85 @@ const TABS = [
 // ══════════════════════════════════════════════════════════════════════════
 function InputsPanel({ inputs, setInputs }) {
   const set = (k) => (v) => setInputs(prev => ({ ...prev, [k]: v }));
+
+  const WeekSelect = ({ label, value, onChange, hint }) => (
+    <div style={{ marginBottom: 14 }}>
+      <label style={{ display: "block", fontFamily: F.body, fontSize: 12, color: C.textSec, marginBottom: 5, letterSpacing: "0.04em" }}>{label}</label>
+      <div style={{ display: "flex", gap: 6 }}>
+        {[1, 2, 3, 4].map(w => (
+          <button key={w} onClick={() => onChange(w)}
+            style={{
+              flex: 1, padding: "8px 0", fontFamily: F.mono, fontSize: 12, fontWeight: 700,
+              background: value === w ? C.gold : C.surface3,
+              color: value === w ? C.bg : C.textMuted,
+              border: `1px solid ${value === w ? C.gold : C.border}`,
+              borderRadius: 4, cursor: "pointer",
+            }}>
+            W{w}
+          </button>
+        ))}
+      </div>
+      {hint && <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 3 }}>{hint}</div>}
+    </div>
+  );
+
   return (
     <div>
-      <SectionHeader title="Client Financial Inputs" subtitle="Editable assumptions. All formula outputs update in real time." />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "0 32px" }}>
+      <SectionHeader title="Client Financial Inputs" subtitle="Monthly costs fire on their designated week-of-month. AR/AP collection lags are calendar-accurate." />
+
+      {/* Model logic note */}
+      <div style={{ padding: "12px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 6, marginBottom: 24 }}>
+        <div style={{ fontFamily: F.mono, fontSize: 11, color: C.gold, fontWeight: 700, marginBottom: 4 }}>13W Calendar Model — How it works</div>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>
+          Each monthly outflow hits the bank exactly once per month in the week you designate (W1–W4). Revenue accrues weekly. Credit collections are lagged by your collection delay in days. Opening AR drains first before new collections begin.
+        </div>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "0 40px" }}>
+        {/* LEFT */}
         <div>
           <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>1 — Company & Revenue</div>
           <InputField label="Company name" value={inputs.companyName} onChange={set("companyName")} type="text" />
-          <InputField label="Starting cash" value={inputs.startingCash} onChange={set("startingCash")} unit="EUR" />
+          <InputField label="Starting cash" value={inputs.startingCash} onChange={set("startingCash")} unit="EUR" hint="Bank balance at start of Week 1" />
           <InputField label="Monthly revenue" value={inputs.monthlyRevenue} onChange={set("monthlyRevenue")} unit="EUR/month" />
-          <InputField label="Monthly growth rate" value={inputs.monthlyGrowthRate} onChange={set("monthlyGrowthRate")} unit="decimal" hint="e.g. 0.025 = 2.5% monthly" />
-          <InputField label="Cash sales %" value={inputs.cashSalesPct} onChange={set("cashSalesPct")} unit="decimal" hint="Share of revenue collected same week" />
-          <InputField label="Collection delay" value={inputs.collectionDelayDays} onChange={set("collectionDelayDays")} unit="days" hint="Average receivables collection delay" />
-          <InputField label="Supplier payment terms" value={inputs.supplierPaymentTerms} onChange={set("supplierPaymentTerms")} unit="days" />
+          <InputField label="Monthly growth rate" value={inputs.monthlyGrowthRate} onChange={set("monthlyGrowthRate")} unit="decimal" hint="e.g. 0.025 = 2.5% per month" />
+          <InputField label="Cash sales %" value={inputs.cashSalesPct} onChange={set("cashSalesPct")} unit="decimal" hint="Share of revenue collected same week as sale" />
+          <InputField label="Collection delay" value={inputs.collectionDelayDays} onChange={set("collectionDelayDays")} unit="days" hint="Avg days to collect credit sales → determines AR lag in weeks" />
+
           <Divider />
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>2 — Balance Sheet Anchors</div>
-          <InputField label="Opening accounts receivable" value={inputs.openingAR} onChange={set("openingAR")} unit="EUR" />
-          <InputField label="Opening accounts payable" value={inputs.openingAP} onChange={set("openingAP")} unit="EUR" />
-          <InputField label="Opening inventory" value={inputs.openingInventory} onChange={set("openingInventory")} unit="EUR" />
-          <InputField label="Annual COGS" value={inputs.annualCOGS} onChange={set("annualCOGS")} unit="EUR/year" />
+          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>2 — Monthly Outflows</div>
+          <InputField label="Payroll" value={inputs.payroll} onChange={set("payroll")} unit="EUR/month" hint="Incl. social charges" />
+          <InputField label="Fixed costs" value={inputs.fixedCosts} onChange={set("fixedCosts")} unit="EUR/month" hint="Rent, utilities, admin" />
+          <InputField label="VAT / tax payments" value={inputs.vatTaxPayments} onChange={set("vatTaxPayments")} unit="EUR/month equiv." hint="Monthly equivalent of quarterly/annual tax obligations" />
+          <InputField label="Capex" value={inputs.capex} onChange={set("capex")} unit="EUR/month" />
+          <InputField label="Debt service" value={inputs.debtService} onChange={set("debtService")} unit="EUR/month" hint="Principal + interest" />
+
+          <Divider />
+          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>3 — Risk Threshold</div>
+          <InputField label="Minimum cash buffer" value={inputs.minimumCashBuffer} onChange={set("minimumCashBuffer")} unit="EUR" hint="Management safety threshold — breach triggers risk flag" />
         </div>
+
+        {/* RIGHT */}
         <div>
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>3 — Cost Structure</div>
-          <InputField label="Monthly payroll" value={inputs.payroll} onChange={set("payroll")} unit="EUR/month" hint="Incl. social charges" />
-          <InputField label="Monthly fixed costs" value={inputs.fixedCosts} onChange={set("fixedCosts")} unit="EUR/month" hint="Rent, utilities, admin" />
-          <InputField label="Variable cost % of revenue" value={inputs.variableCostPct} onChange={set("variableCostPct")} unit="decimal" hint="COGS + variable OPEX ratio" />
-          <InputField label="VAT / tax payments" value={inputs.vatTaxPayments} onChange={set("vatTaxPayments")} unit="EUR/month" />
-          <InputField label="Monthly capex" value={inputs.capex} onChange={set("capex")} unit="EUR/month" />
-          <InputField label="Monthly debt service" value={inputs.debtService} onChange={set("debtService")} unit="EUR/month" hint="Principal + interest" />
+          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>4 — Payment Calendar</div>
+          <div style={{ padding: "14px 16px", background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, marginBottom: 20 }}>
+            <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginBottom: 14, lineHeight: 1.5 }}>
+              Select the week of the month each outflow hits your bank account. W1 = first week, W4 = last week.
+            </div>
+            <WeekSelect label="Payroll payment week" value={inputs.payrollWeek} onChange={set("payrollWeek")} hint="Most companies: W4 (end of month)" />
+            <WeekSelect label="Fixed costs / rent week" value={inputs.fixedWeek} onChange={set("fixedWeek")} hint="Most leases: W1 (start of month)" />
+            <WeekSelect label="VAT / tax payment week" value={inputs.vatWeek} onChange={set("vatWeek")} hint="Typically mid-month: W2 or W3" />
+            <WeekSelect label="Capex payment week" value={inputs.capexWeek} onChange={set("capexWeek")} />
+            <WeekSelect label="Debt service week" value={inputs.debtWeek} onChange={set("debtWeek")} hint="Per loan contract terms" />
+          </div>
+
           <Divider />
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>4 — Risk Thresholds</div>
-          <InputField label="Minimum cash buffer" value={inputs.minimumCashBuffer} onChange={set("minimumCashBuffer")} unit="EUR" hint="Management safety threshold" />
-          <div style={{ marginTop: 24, padding: "16px 20px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 6 }}>
+          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>5 — Working Capital Anchors</div>
+          <InputField label="Opening accounts receivable" value={inputs.openingAR} onChange={set("openingAR")} unit="EUR" hint="Current AR balance — drains over collection lag period" />
+          <InputField label="Opening accounts payable" value={inputs.openingAP} onChange={set("openingAP")} unit="EUR" hint="Used for DPO calculation" />
+          <InputField label="Annual COGS" value={inputs.annualCOGS} onChange={set("annualCOGS")} unit="EUR/year" hint="Used for DPO ratio only" />
+
+          <div style={{ marginTop: 20, padding: "14px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 6 }}>
             <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, fontWeight: 700, marginBottom: 6 }}>ZRC Guardrails Active</div>
             <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>
               Raw client files are never sent to the AI layer. Only structured KPI outputs reach the model. Every recommendation is tied to a named financial metric.
@@ -227,83 +337,94 @@ function InputsPanel({ inputs, setInputs }) {
 // ══════════════════════════════════════════════════════════════════════════
 function CashFlowPanel({ model, inputs }) {
   const { cashFlow } = model;
-  const cols = [
-    { key: "week", label: "Wk", mono: true },
-    { key: "revenue", label: "Revenue", fmt: fmt },
-    { key: "totalCashIn", label: "Cash In", fmt: fmt },
-    { key: "totalCashOut", label: "Cash Out", fmt: fmt },
-    { key: "closingCash", label: "Closing Cash", fmt: fmt, highlight: true },
-  ];
 
   const maxCash = Math.max(...cashFlow.map(r => r.closingCash));
   const minCash = Math.min(...cashFlow.map(r => r.closingCash));
 
   return (
     <div>
-      <SectionHeader title="13-Week Rolling Cash Flow" subtitle="Weekly cash in/out projection with minimum buffer monitoring." />
+      <SectionHeader title="13-Week Cash Flow — Calendar Model" subtitle={`Monthly outflows fire on their designated week-of-month. Collection lag: ${model.lagWeeks} weeks (${inputs.collectionDelayDays} days). Opening AR drains first.`} />
+
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12, marginBottom: 24 }}>
-        <KPICard label="Week 13 Cash" value={`€${fmt(model.week13Cash)}`} sub="Projected end position" color={model.week13Cash > inputs.minimumCashBuffer ? C.green : C.red} warn={model.week13Cash < inputs.minimumCashBuffer} />
-        <KPICard label="Min Cash Buffer" value={`€${fmt(inputs.minimumCashBuffer)}`} sub="Safety threshold" />
-        <KPICard label="Funding Gap" value={model.fundingGap < 0 ? `€${fmt(Math.abs(model.fundingGap))}` : "None"} sub={model.fundingGap < 0 ? "Below buffer at W13" : "Buffer maintained"} color={model.fundingGap < 0 ? C.red : C.green} warn={model.fundingGap < 0} />
+        <KPICard label="Week 13 Cash" value={`€${fmt(model.week13Cash)}`} sub="End of horizon position" color={model.week13Cash > inputs.minimumCashBuffer ? C.green : C.red} warn={model.week13Cash < inputs.minimumCashBuffer} />
+        <KPICard label="Worst Week Cash" value={`€${fmt(model.minCashAny)}`} sub="Tightest point in 13W" color={model.minCashAny > inputs.minimumCashBuffer ? C.green : C.red} warn={model.minCashAny < inputs.minimumCashBuffer} />
+        <KPICard label="Funding Gap" value={model.fundingGap < 0 ? `€${fmt(Math.abs(model.fundingGap))}` : "None"} sub={model.fundingGap < 0 ? "Worst week below buffer" : "Buffer maintained"} color={model.fundingGap < 0 ? C.red : C.green} warn={model.fundingGap < 0} />
       </div>
 
-      {/* Mini sparkline */}
+      {/* Payment calendar legend */}
+      <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, padding: "12px 16px", marginBottom: 20 }}>
+        <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginBottom: 8, letterSpacing: "0.06em", textTransform: "uppercase" }}>Payment calendar active</div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+          {[
+            ["Payroll", `W${inputs.payrollWeek}`],
+            ["Fixed costs", `W${inputs.fixedWeek}`],
+            ["VAT/Tax", `W${inputs.vatWeek}`],
+            ["Capex", `W${inputs.capexWeek}`],
+            ["Debt", `W${inputs.debtWeek}`],
+          ].map(([k, v]) => (
+            <div key={k} style={{ display: "flex", gap: 6, alignItems: "center" }}>
+              <span style={{ fontFamily: F.body, fontSize: 12, color: C.textSec }}>{k}</span>
+              <span style={{ fontFamily: F.mono, fontSize: 11, color: C.gold, background: C.goldDim, padding: "1px 7px", borderRadius: 3 }}>{v}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Sparkline */}
       <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, padding: "16px 20px", marginBottom: 20 }}>
         <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginBottom: 12, letterSpacing: "0.06em", textTransform: "uppercase" }}>Cash Position — Weeks 1–13</div>
-        <div style={{ display: "flex", alignItems: "flex-end", gap: 4, height: 60 }}>
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 3, height: 64 }}>
           {cashFlow.map((row) => {
-            const h = Math.max(4, ((row.closingCash - minCash) / (maxCash - minCash + 1)) * 60);
+            const range = maxCash - minCash || 1;
+            const h = Math.max(4, ((row.closingCash - minCash) / range) * 64);
+            // Highlight weeks with big outflows (payroll week etc.)
+            const hasPayroll = row.payroll > 0;
             return (
-              <div key={row.week} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-                <div
-                  style={{
-                    width: "100%", height: h,
-                    background: row.belowBuffer ? C.red : C.gold,
-                    opacity: row.belowBuffer ? 0.9 : 0.7,
-                    borderRadius: "2px 2px 0 0",
-                    transition: "height 0.4s",
-                  }}
-                  title={`W${row.week}: €${fmt(row.closingCash)}`}
-                />
+              <div key={row.week} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+                <div style={{ width: "100%", height: h, background: row.belowBuffer ? C.red : hasPayroll ? C.amber : C.gold, opacity: row.belowBuffer ? 0.95 : 0.7, borderRadius: "2px 2px 0 0", transition: "height 0.4s" }} title={`W${row.week}: €${fmt(row.closingCash)}\nIn: €${fmt(row.totalCashIn)} | Out: €${fmt(row.totalCashOut)}`} />
                 <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{row.week}</div>
               </div>
             );
           })}
         </div>
-        <div style={{ display: "flex", gap: 16, marginTop: 10 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            <div style={{ width: 10, height: 10, background: C.gold, borderRadius: 2 }} />
-            <span style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted }}>Above buffer</span>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            <div style={{ width: 10, height: 10, background: C.red, borderRadius: 2 }} />
-            <span style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted }}>Below buffer (stress)</span>
-          </div>
+        <div style={{ display: "flex", gap: 16, marginTop: 8, flexWrap: "wrap" }}>
+          {[
+            [C.gold, "Normal week"],
+            [C.amber, "Payroll week"],
+            [C.red, "Below buffer"],
+          ].map(([col, label]) => (
+            <div key={label} style={{ display: "flex", alignItems: "center", gap: 5 }}>
+              <div style={{ width: 10, height: 10, background: col, borderRadius: 2 }} />
+              <span style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted }}>{label}</span>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Table */}
       <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 12 }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 12, minWidth: 640 }}>
           <thead>
             <tr>
-              {["Wk", "Revenue", "Cash In", "Cash Out", "Closing Cash", "Status"].map(h => (
-                <th key={h} style={{ padding: "8px 12px", textAlign: h === "Wk" ? "center" : "right", background: C.surface2, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, letterSpacing: "0.04em", fontSize: 11, textTransform: "uppercase" }}>{h}</th>
+              {["Wk", "Mo·W", "Cash In", "Payroll", "Fixed", "VAT", "Cap+Debt", "Total Out", "Closing Cash", ""].map(h => (
+                <th key={h} style={{ padding: "8px 10px", textAlign: h === "Wk" || h === "Mo·W" ? "center" : "right", background: C.surface2, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {cashFlow.map((row) => (
               <tr key={row.week} style={{ background: row.belowBuffer ? C.redDim : "transparent", borderBottom: `1px solid ${C.border}` }}>
-                <td style={{ padding: "8px 12px", textAlign: "center", fontFamily: F.mono, color: C.textMuted }}>{row.week}</td>
-                <td style={{ padding: "8px 12px", textAlign: "right", fontFamily: F.mono, color: C.textSec }}>€{fmt(row.revenue)}</td>
-                <td style={{ padding: "8px 12px", textAlign: "right", fontFamily: F.mono, color: C.green }}>€{fmt(row.totalCashIn)}</td>
-                <td style={{ padding: "8px 12px", textAlign: "right", fontFamily: F.mono, color: C.red }}>€{fmt(row.totalCashOut)}</td>
-                <td style={{ padding: "8px 12px", textAlign: "right", fontFamily: F.mono, fontWeight: 700, color: row.belowBuffer ? C.red : C.gold }}>€{fmt(row.closingCash)}</td>
-                <td style={{ padding: "8px 12px", textAlign: "right" }}>
-                  {row.belowBuffer
-                    ? <Badge color={C.red}>⚠ Below buffer</Badge>
-                    : <Badge color={C.green}>✓ Clear</Badge>}
+                <td style={{ padding: "7px 10px", textAlign: "center", fontFamily: F.mono, color: C.textMuted, fontSize: 11 }}>{row.week}</td>
+                <td style={{ padding: "7px 10px", textAlign: "center", fontFamily: F.mono, color: C.textMuted, fontSize: 11 }}>M{row.monthIdx}·W{row.weekOfMonth}</td>
+                <td style={{ padding: "7px 10px", textAlign: "right", fontFamily: F.mono, color: C.green, fontSize: 11 }}>€{fmt(row.totalCashIn)}</td>
+                <td style={{ padding: "7px 10px", textAlign: "right", fontFamily: F.mono, color: row.payroll > 0 ? C.amber : C.textMuted, fontSize: 11 }}>{row.payroll > 0 ? `€${fmt(row.payroll)}` : "—"}</td>
+                <td style={{ padding: "7px 10px", textAlign: "right", fontFamily: F.mono, color: row.fixed > 0 ? C.red : C.textMuted, fontSize: 11 }}>{row.fixed > 0 ? `€${fmt(row.fixed)}` : "—"}</td>
+                <td style={{ padding: "7px 10px", textAlign: "right", fontFamily: F.mono, color: row.vat > 0 ? C.red : C.textMuted, fontSize: 11 }}>{row.vat > 0 ? `€${fmt(row.vat)}` : "—"}</td>
+                <td style={{ padding: "7px 10px", textAlign: "right", fontFamily: F.mono, color: (row.capex + row.debt) > 0 ? C.red : C.textMuted, fontSize: 11 }}>{(row.capex + row.debt) > 0 ? `€${fmt(row.capex + row.debt)}` : "—"}</td>
+                <td style={{ padding: "7px 10px", textAlign: "right", fontFamily: F.mono, color: C.red, fontSize: 11, fontWeight: 600 }}>€{fmt(row.totalCashOut)}</td>
+                <td style={{ padding: "7px 10px", textAlign: "right", fontFamily: F.mono, fontWeight: 700, color: row.belowBuffer ? C.red : C.gold, fontSize: 12 }}>€{fmt(row.closingCash)}</td>
+                <td style={{ padding: "7px 10px", textAlign: "right" }}>
+                  {row.belowBuffer ? <Badge color={C.red}>⚠ Below</Badge> : <Badge color={C.green}>✓</Badge>}
                 </td>
               </tr>
             ))}
@@ -318,23 +439,22 @@ function CashFlowPanel({ model, inputs }) {
 // PANEL: WORKING CAPITAL
 // ══════════════════════════════════════════════════════════════════════════
 function WorkingCapitalPanel({ model }) {
-  const { dso, dpo, dio, ccc, liquidityDSO10, liquidityDSO20, annualRevenue } = model;
+  const { dso, dpo, ccc, liquidityDSO10, liquidityDSO20, annualRevenue } = model;
   const metrics = [
     { label: "DSO", value: dso, unit: "days", benchmark: 60, formula: "A/R ÷ Revenue × 365", action: "Accelerate collections, A/R governance", priority: dso > 75 ? "High" : "Medium" },
     { label: "DPO", value: dpo, unit: "days", benchmark: 60, formula: "A/P ÷ COGS × 365", action: "Negotiate supplier terms and payment calendar", priority: "Medium" },
-    { label: "DIO", value: dio, unit: "days", benchmark: 75, formula: "Inventory ÷ COGS × 365", action: "Improve inventory rotation and purchasing discipline", priority: "Medium" },
-    { label: "CCC", value: ccc, unit: "days", benchmark: 75, formula: "DSO + DIO − DPO", action: "Reduce cash trapped in operating cycle", priority: ccc > 90 ? "High" : "Medium" },
+    { label: "CCC", value: ccc, unit: "days", benchmark: 45, formula: "DSO − DPO", action: "Reduce cash trapped in operating cycle", priority: ccc > 60 ? "High" : "Medium" },
   ];
 
   const simulations = [
-    { label: "DSO −5 days", days: 5, released: (annualRevenue / 365) * 5 },
-    { label: "DSO −10 days", days: 10, released: liquidityDSO10 },
-    { label: "DSO −20 days", days: 20, released: liquidityDSO20 },
+    { label: "DSO −5 days", released: (annualRevenue / 365) * 5 },
+    { label: "DSO −10 days", released: liquidityDSO10 },
+    { label: "DSO −20 days", released: liquidityDSO20 },
   ];
 
   return (
     <div>
-      <SectionHeader title="Working Capital Optimizer" subtitle="Identify where liquidity is trapped and quantify release potential." />
+      <SectionHeader title="Working Capital Optimizer" subtitle="DSO-DPO model. No inventory input: CCC = DSO minus DPO. Add inventory balance to unlock DIO." />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, marginBottom: 28 }}>
         {metrics.map(m => {
           const gap = m.value - m.benchmark;
