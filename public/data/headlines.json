@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-29T08:11:28.579Z",
+  "generated_at": "2026-04-30T08:15:58.959Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -9,86 +9,56 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "17666.90",
-      "change": "-0.61%",
+      "value": "17,774.90",
+      "change": "+0.01%",
+      "up": true
+    },
+    {
+      "symbol": "BRENT",
+      "value": "120.30",
+      "change": "+8.13%",
+      "up": true
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4,568.76",
+      "change": "+0.16%",
+      "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "76,283",
+      "change": "-1.19%",
       "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "113.26",
-      "change": "+1.39%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "106.88",
-      "change": "+6.95%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4556.19",
-      "change": "-1.49%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "75652.88",
-      "change": "+2.11%",
-      "up": true
     },
     {
       "symbol": "VIX",
-      "value": "18.81",
-      "change": "+5.50%",
+      "value": "18.64",
+      "change": "+4.55%",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.42%",
-      "change": "+0.07%",
+      "symbol": "US 10Y",
+      "value": "4.43%",
+      "change": "+0.01%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8664",
+      "change": "+0.03%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7135.95",
+      "value": "7,135.95",
       "change": "-0.04%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "24018.26",
-      "change": "-0.27%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8668",
-      "change": "+0.06%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.86",
-      "change": "+0.23%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.627",
-      "change": "-0.72%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "5.89",
-      "change": "-0.49%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.84",
-      "change": "+0.06%",
+      "value": "23,844.50",
+      "change": "+0.14%",
       "up": true
     }
   ],
@@ -98,139 +68,138 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Fed Holds Rates Steady at 4.25%-4.50% Amid Middle East Conflict",
-        "es": "Fed Mantiene Tasas Estables en 4.25%-4.50% En Medio del Conflicto en Medio Oriente"
+        "en": "UAE Exits OPEC After 60 Years Amid Iran War Tensions",
+        "es": "EAU Abandona OPEP Tras 60 Años en Medio de Tensiones por Guerra con Irán"
       },
       "summary": {
-        "en": "Federal Reserve concludes April 29-30 meeting keeping rates unchanged for third consecutive meeting as Middle East conflict continues to impact global markets. The decision reflects ongoing uncertainty from Iran-U.S. tensions and energy price volatility.",
-        "es": "La Reserva Federal concluye reunión del 29-30 de abril manteniendo tasas sin cambios por tercer encuentro consecutivo mientras el conflicto de Medio Oriente sigue impactando los mercados globales. La decisión refleja incertidumbre continua por tensiones Irán-EE.UU. y volatilidad en precios energéticos."
+        "en": "The United Arab Emirates announced withdrawal from OPEC effective May 1, ending nearly 60 years of membership. The decision follows sustained Iranian attacks and export constraints through the Strait of Hormuz, weakening OPEC's production control capacity by 15%.",
+        "es": "Los Emiratos Árabes Unidos anunciaron su retirada de la OPEP con efecto del 1 de mayo, terminando casi 60 años de membresía. La decisión sigue a ataques iraníes sostenidos y restricciones de exportación a través del Estrecho de Hormuz, debilitando la capacidad de control de producción de la OPEP en un 15%."
       },
-      "source": "American Now",
-      "url": "https://americanow.com/federal-reserve-keeps-interest-rates-unchanged-in-april-2026-meeting/",
-      "time": "16h",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/28/uae-opec-oil-iran.html",
+      "time": "2h",
       "impact": "high",
       "signals": [
+        "OIL +",
         "USD +",
-        "BONDS -",
-        "GOLD -"
+        "AED -"
       ],
       "confidence": 95
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "US",
       "title": {
-        "en": "U.S.-Iran Peace Talks Stall as Trump Cancels Envoy Mission",
-        "es": "Conversaciones de Paz EE.UU.-Irán Se Estancan al Cancelar Trump Misión de Enviados"
+        "en": "Powell Remains Fed Governor Despite Trump Attacks, Blocks Appointment",
+        "es": "Powell Permanece como Gobernador de la Fed a Pesar de Ataques de Trump, Bloquea Nombramiento"
       },
       "summary": {
-        "en": "President Trump scrapped plans to send envoys to Pakistan for Iran talks, citing 'infighting within Tehran's leadership'. Goldman Sachs raises Brent forecast to $90 by late 2026 as supply disruptions persist longer than expected.",
-        "es": "El presidente Trump canceló planes de enviar enviados a Pakistán para conversaciones con Irán, citando 'disputas internas en el liderazgo de Teherán'. Goldman Sachs eleva previsión Brent a $90 para finales de 2026 debido a disrupciones de suministro más persistentes."
+        "en": "Jerome Powell announced he will stay as Fed governor until January 2028 despite his chairmanship ending May 15, citing unprecedented legal attacks from the Trump administration. The decision prevents Trump from filling a key vacancy on the seven-member Fed board.",
+        "es": "Jerome Powell anunció que permanecerá como gobernador de la Fed hasta enero de 2028 a pesar de que su presidencia termine el 15 de mayo, citando ataques legales sin precedentes de la administración Trump. La decisión impide que Trump llene una vacante clave en la junta de siete miembros de la Fed."
       },
       "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/27/us-iran-peace-talks-stall-global-markets-stocks-oil-treasurys.html",
-      "time": "2d",
+      "url": "https://www.cnbc.com/2026/04/29/fed-meeting-today-live-updates-warsh-powell.html",
+      "time": "12h",
       "impact": "high",
       "signals": [
-        "OIL +",
         "USD +",
-        "EUR -"
+        "BONDS -",
+        "STOCKS -"
       ],
       "confidence": 92
     },
     {
       "id": 3,
-      "tag": "MONITOR",
-      "region": "US",
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "en": "Gold Trades Near $4,700 as Geopolitical Tensions Support Safe-Haven Demand",
-        "es": "Oro Cotiza Cerca de $4,700 Mientras Tensiones Geopolíticas Apoyan Demanda de Refugio Seguro"
+        "en": "Iran Proposes Hormuz Deal as US-Iran Talks Stall, Oil Hits $106",
+        "es": "Irán Propone Acuerdo de Hormuz Mientras se Estancan Conversaciones EE.UU.-Irán, Petróleo Alcanza $106"
       },
       "summary": {
-        "en": "Gold expected to trade in $4,645-$4,760 range today amid Fed rate decision and Q1 GDP data release. Despite recent 19% decline from highs, JPMorgan and Goldman Sachs maintain $4,000-$6,300 target range.",
-        "es": "Se espera que oro cotice en rango $4,645-$4,760 hoy ante decisión tasas Fed y publicación PIB Q1. A pesar de caída reciente 19% desde máximos, JPMorgan y Goldman Sachs mantienen rango objetivo $4,000-$6,300."
+        "en": "Iran offered new proposal to reopen Strait of Hormuz while Trump cancelled in-person negotiations in Pakistan. Oil prices rose with Brent crude at $106.55 as Goldman Sachs raised forecasts to $90 by late 2026.",
+        "es": "Irán ofreció nueva propuesta para reabrir el Estrecho de Hormuz mientras Trump canceló negociaciones presenciales en Pakistán. Los precios del petróleo subieron con Brent en $106.55 mientras Goldman Sachs elevó pronósticos a $90 para finales de 2026."
       },
-      "source": "LiteFinance",
-      "url": "https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/daily-and-weekly/",
-      "time": "8h",
-      "impact": "medium",
-      "signals": [
-        "GOLD +",
-        "USD +",
-        "VIX +"
-      ],
-      "confidence": 85
-    },
-    {
-      "id": 4,
-      "tag": "STRATEGIC",
-      "region": "GLOBAL",
-      "title": {
-        "en": "IMF Cuts Global Growth Forecast to 3.1% on Middle East War Impact",
-        "es": "FMI Reduce Previsión Crecimiento Global a 3.1% por Impacto Guerra Medio Oriente"
-      },
-      "summary": {
-        "en": "IMF downgrades 2026 global growth from 3.4% to 3.1% citing Middle East conflict effects. Emerging markets particularly affected with forecast cut to 3.9%. Global inflation expected to rise modestly before resuming decline in 2027.",
-        "es": "FMI rebaja crecimiento global 2026 de 3.4% a 3.1% citando efectos conflicto Medio Oriente. Mercados emergentes particularmente afectados con previsión reducida a 3.9%. Se espera que inflación global suba modestamente antes de reanudar declive en 2027."
-      },
-      "source": "IMF",
-      "url": "https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026",
-      "time": "2w",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/27/us-iran-peace-talks-stall-global-markets-stocks-oil-treasurys.html",
+      "time": "15h",
       "impact": "high",
       "signals": [
-        "EM -",
-        "COMMODITIES +",
-        "BONDS +"
-      ],
-      "confidence": 98
-    },
-    {
-      "id": 5,
-      "tag": "EMERGING",
-      "region": "GLOBAL",
-      "title": {
-        "en": "Hedge Funds Purchase Record $86 Billion in Stocks Amid Market Rally",
-        "es": "Fondos de Cobertura Compran Récord $86 Mil Millones en Acciones en Medio de Rally del Mercado"
-      },
-      "summary": {
-        "en": "Systematic trend-following strategies drive record stock purchases over five sessions as markets rally on easing geopolitical tensions. Goldman Sachs estimates funds could add another $70 billion if momentum continues.",
-        "es": "Estrategias sistemáticas de seguimiento de tendencias impulsan compras récord de acciones en cinco sesiones mientras mercados suben por disminución tensiones geopolíticas. Goldman Sachs estima que fondos podrían agregar otros $70 mil millones si momentum continúa."
-      },
-      "source": "World Economic Forum",
-      "url": "https://www.weforum.org/stories/2026/04/imf-downgrades-global-growth-and-other-finance-news-to-know/",
-      "time": "2w",
-      "impact": "medium",
-      "signals": [
-        "EQUITIES +",
-        "VIX -",
-        "MOMENTUM +"
+        "OIL +",
+        "EUR -",
+        "GBP -"
       ],
       "confidence": 88
     },
     {
-      "id": 6,
-      "tag": "ALERT",
+      "id": 4,
+      "tag": "MONITOR",
       "region": "EU",
       "title": {
-        "en": "UK PMI Beats Expectations Despite Record Input Cost Pressures",
-        "es": "PMI Reino Unido Supera Expectativas A Pesar de Presiones Récord en Costos de Insumos"
+        "en": "ECB Maintains Rates Amid Middle East War, Inflation Revised Up to 2.6%",
+        "es": "BCE Mantiene Tasas en Medio de Guerra en Oriente Medio, Inflación Revisada al Alza a 2.6%"
       },
       "summary": {
-        "en": "UK Composite PMI jumps to 52.0 from 50.3, clearing expectations of 49.8, showing resilience despite energy shock. However, service providers report record input costs signaling 'sticky' inflation pressures from Iran conflict.",
-        "es": "PMI Compuesto Reino Unido salta a 52.0 desde 50.3, superando expectativas de 49.8, mostrando resistencia pese a shock energético. Sin embargo, proveedores de servicios reportan costos de insumos récord señalando presiones inflacionarias 'persistentes' del conflicto Irán."
+        "en": "European Central Bank kept rates unchanged at March meeting, citing Middle East war creating upside inflation risks. ECB revised 2026 inflation forecast to 2.6% from higher energy prices, while cutting growth outlook to 0.9%.",
+        "es": "El Banco Central Europeo mantuvo las tasas sin cambios en la reunión de marzo, citando la guerra en Oriente Medio creando riesgos inflacionarios al alza. El BCE revisó el pronóstico de inflación 2026 a 2.6% por precios energéticos más altos, mientras redujo perspectivas de crecimiento a 0.9%."
       },
-      "source": "MarketPulse",
-      "url": "https://www.marketpulse.com/markets/markets-today-uk-pmi-beats-as-input-costs-soar-dxy-advances-gold-grinds-lower-us-pmi-middle-east-tensions-in-focus/",
-      "time": "6d",
+      "source": "European Central Bank",
+      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260319~3057739775.en.html",
+      "time": "6h",
       "impact": "medium",
       "signals": [
-        "GBP +",
-        "INFLATION +",
+        "EUR =",
+        "BONDS =",
         "ENERGY +"
       ],
-      "confidence": 87
+      "confidence": 85
+    },
+    {
+      "id": 5,
+      "tag": "STRATEGIC",
+      "region": "APAC",
+      "title": {
+        "en": "China-US Trade Tensions Persist as Bilateral Trade Falls 25% in 2025",
+        "es": "Tensiones Comerciales China-EE.UU. Persisten Mientras el Comercio Bilateral Cae 25% en 2025"
+      },
+      "summary": {
+        "en": "US-China trade relationship saw biggest drop since 1979 with bilateral trade falling roughly $170 billion in 2025. China's exports to US continued declining 11% in early 2026 amid ongoing tariff impacts and trade war dynamics.",
+        "es": "La relación comercial EE.UU.-China vio la mayor caída desde 1979 con el comercio bilateral cayendo aproximadamente $170 mil millones en 2025. Las exportaciones de China a EE.UU. continuaron declinando 11% a principios de 2026 en medio de impactos arancelarios continuos y dinámicas de guerra comercial."
+      },
+      "source": "UNCTAD",
+      "url": "https://unctad.org/publication/global-trade-update-april-2026-global-trade-growth-continues-fragility-rises",
+      "time": "4h",
+      "impact": "medium",
+      "signals": [
+        "CNY -",
+        "USD +",
+        "COMMODITIES -"
+      ],
+      "confidence": 82
+    },
+    {
+      "id": 6,
+      "tag": "EMERGING",
+      "region": "GLOBAL",
+      "title": {
+        "en": "Fed Holds Rates Despite 4-Member Dissent as Markets Hit Records",
+        "es": "Fed Mantiene Tasas a Pesar de Disenso de 4 Miembros Mientras Mercados Alcanzan Récords"
+      },
+      "summary": {
+        "en": "Federal Reserve kept rates at 3.5-3.75% range with unusual 8-4 split decision as four members dissented. S&P 500 and Nasdaq reached new records despite Iran war tensions, with AI momentum offsetting geopolitical risks.",
+        "es": "La Reserva Federal mantuvo tasas en el rango 3.5-3.75% con decisión dividida inusual 8-4 mientras cuatro miembros disentían. S&P 500 y Nasdaq alcanzaron nuevos récords a pesar de tensiones de guerra con Irán, con impulso de IA compensando riesgos geopolíticos."
+      },
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/04/26/stock-market-today-live-updates.html",
+      "time": "18h",
+      "impact": "medium",
+      "signals": [
+        "STOCKS +",
+        "TECH +",
+        "VIX -"
+      ],
+      "confidence": 78
     }
-  ],
-  "market_updated_at": "2026-04-30T07:57:18.314Z"
+  ]
 }
