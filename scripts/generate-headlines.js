@@ -1,10 +1,10 @@
 /**
- * ZRC Daily Intelligence Generator v2
- * 
+ * ZRC Daily Intelligence Generator v3
+ *
  * Calls the Anthropic API with web_search to fetch:
- * 1. Real-time geopolitical/macro headlines with source URLs
+ * 1. Tier-1 sourced geopolitical/macro headlines (FT, Reuters, Bloomberg, WSJ, Economist)
  * 2. Live market ticker data
- * 
+ *
  * Output: public/data/headlines.json
  */
 
@@ -20,20 +20,15 @@ const OUTPUT_FILE = join(OUTPUT_DIR, "headlines.json");
 const client = new Anthropic();
 
 // ─── ROBUST JSON EXTRACTOR ───
-// Claude sometimes adds preamble text before the JSON.
-// This function finds and extracts the JSON array or object.
 function extractJSON(text) {
-  // Remove markdown fences
   text = text.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
 
-  // Try direct parse first
   try {
     return JSON.parse(text);
   } catch (_) {
     // ignore
   }
 
-  // Find first [ or { and extract from there
   const arrStart = text.indexOf("[");
   const objStart = text.indexOf("{");
 
@@ -53,7 +48,6 @@ function extractJSON(text) {
     isArray = arrStart < objStart;
   }
 
-  // Find matching closing bracket
   const openChar = isArray ? "[" : "{";
   const closeChar = isArray ? "]" : "}";
   let depth = 0;
@@ -76,7 +70,7 @@ function extractJSON(text) {
   return JSON.parse(jsonStr);
 }
 
-// ─── API CALL WITH TIMEOUT ───
+// ─── API CALL ───
 async function callClaude(systemPrompt, userPrompt, timeoutMs = 120000) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -92,7 +86,6 @@ async function callClaude(systemPrompt, userPrompt, timeoutMs = 120000) {
 
     clearTimeout(timer);
 
-    // Extract the final text block
     let jsonText = "";
     for (const block of response.content) {
       if (block.type === "text") {
@@ -109,26 +102,41 @@ async function callClaude(systemPrompt, userPrompt, timeoutMs = 120000) {
 
 // ─── HEADLINES ───
 async function generateHeadlines(today) {
-  console.log("🔍 Fetching geopolitical intelligence...");
+  console.log("🔍 Fetching geopolitical intelligence (Tier-1 only)...");
 
   const raw = await callClaude(
-    `You are a financial intelligence analyst. Search for today's top geopolitical and macroeconomic news relevant to institutional investors. Return ONLY a raw JSON array — no text before or after it, no explanations, no markdown. Just the [ ... ] array.
+    `You are a financial intelligence analyst at an institutional investment firm. Your job: search the web for today's top geopolitical and macroeconomic news and return a JSON array of headlines, each backed by a Tier-1 source.
+
+TIER-1 SOURCES ONLY (this is non-negotiable):
+- Financial Times (ft.com)
+- Reuters (reuters.com)
+- Bloomberg (bloomberg.com)
+- Wall Street Journal (wsj.com)
+- The Economist (economist.com)
+
+If a story is only available on aggregators (Yahoo Finance, MSN, ZeroHedge, CNN, BBC, Politico, etc.), DISCARD it. Only include stories where you can cite a Tier-1 outlet directly. If you cannot find a Tier-1 source for a story, do not include that story.
 
 Each object in the array must have these exact fields:
-- id (number)
+- id (number, you can leave as 0; will be reassigned)
 - tag (string: "CRITICAL", "ALERT", "MONITOR", "EMERGING", or "STRATEGIC")
 - region (string: "MENA", "EU", "LATAM", "APAC", "AFRICA", "US", or "GLOBAL")
 - title (object with "es" and "en" string fields)
-- summary (object with "es" and "en" string fields, 2-3 sentences each)
-- source (string: news outlet name)
-- url (string: article URL)
-- time (string: e.g. "2h", "4h", "6h")
+- summary (object with "es" and "en" string fields, 2-3 sentences each, neutral analytical tone)
+- source (string: exact outlet name from the Tier-1 list above, e.g. "Financial Times", "Reuters")
+- source_url (string: direct article URL on the Tier-1 outlet's domain)
+- published_at (string: ISO 8601 date of publication, e.g. "2026-05-01")
+- time (string: relative time e.g. "2h", "4h", "12h" — how long ago the article was published)
 - impact (string: "high", "medium", or "low")
-- signals (array of strings like "OIL +", "EUR -")
-- confidence (number 60-98)
+- signals (array of strings like "OIL +", "EUR -", "EQUITIES ?")
+- confidence (number 60-98, your confidence in the investment relevance of the signal)
 
-CRITICAL: Your entire response must be ONLY the JSON array. Do NOT write any text before or after it.`,
-    `Today is ${today}. Find 5-6 real headlines from the past 24 hours. Return ONLY the JSON array, nothing else.`
+VALIDATION CHECKLIST before returning:
+1. Every source_url must be on one of: ft.com, reuters.com, bloomberg.com, wsj.com, economist.com
+2. Every source name must match one of: "Financial Times", "Reuters", "Bloomberg", "Wall Street Journal", "The Economist"
+3. Every published_at must be within the last 48 hours
+
+CRITICAL: Your entire response must be ONLY the JSON array — no preamble, no markdown fences, no explanations. Start with [ and end with ].`,
+    `Today is ${today}. Find 5-6 high-quality headlines from the past 24-48 hours, each backed by a Tier-1 source from the approved list. Topics: macro policy (central banks, fiscal), geopolitical events with market impact, major M&A, energy/commodities, sovereign debt, FX. Return ONLY the JSON array, nothing else.`
   );
 
   const headlines = extractJSON(raw);
@@ -136,7 +144,26 @@ CRITICAL: Your entire response must be ONLY the JSON array. Do NOT write any tex
 
   if (arr.length === 0) throw new Error("No headlines generated");
 
-  return arr.map((h, i) => ({ ...h, id: i + 1 }));
+  // Validate Tier-1 sources and reassign IDs
+  const TIER1_DOMAINS = ["ft.com", "reuters.com", "bloomberg.com", "wsj.com", "economist.com"];
+  const validated = arr.filter((h) => {
+    if (!h.source_url) return false;
+    try {
+      const url = new URL(h.source_url);
+      const ok = TIER1_DOMAINS.some((d) => url.hostname.endsWith(d));
+      if (!ok) console.warn(`   ⚠️  Discarded non-Tier-1 source: ${h.source} (${url.hostname})`);
+      return ok;
+    } catch (_) {
+      console.warn(`   ⚠️  Discarded invalid URL: ${h.source_url}`);
+      return false;
+    }
+  });
+
+  if (validated.length === 0) {
+    throw new Error("No headlines passed Tier-1 validation");
+  }
+
+  return validated.map((h, i) => ({ ...h, id: i + 1 }));
 }
 
 // ─── MARKET DATA ───
@@ -171,10 +198,10 @@ async function main() {
   let headlines = null;
   let marketTicker = null;
 
-  // Run sequentially to avoid overloading
   try {
     headlines = await generateHeadlines(today);
-    console.log(`   ✅ Headlines: ${headlines.length}`);
+    console.log(`   ✅ Headlines: ${headlines.length} (Tier-1 validated)`);
+    headlines.forEach((h) => console.log(`      · [${h.source}] ${h.title.en.slice(0, 70)}...`));
   } catch (err) {
     console.error(`   ❌ Headlines failed: ${err.message}`);
     process.exit(1);
@@ -202,6 +229,7 @@ async function main() {
 
   console.log(`\n✅ Output saved → ${OUTPUT_FILE}`);
   console.log(`   Regions: ${[...new Set(headlines.map((h) => h.region))].join(", ")}`);
+  console.log(`   Sources: ${[...new Set(headlines.map((h) => h.source))].join(", ")}`);
   console.log(`   Generated: ${output.generated_at}\n`);
 }
 

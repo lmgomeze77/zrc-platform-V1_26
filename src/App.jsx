@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
+﻿import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
 import FinancialIntelligenceSystem from "./pages/labs/FinancialIntelligenceSystem";
@@ -982,6 +982,25 @@ const Observatory = ({ lang }) => {
                           <span key={j} style={{ fontFamily: F.mono, fontSize: 9, padding: "2px 8px", background: s.includes("+") ? "rgba(34,197,94,0.08)" : s.includes("-") ? "rgba(239,68,68,0.08)" : "rgba(59,130,246,0.08)", color: s.includes("+") ? C.green : s.includes("-") ? C.red : C.blue, border: `1px solid ${s.includes("+") ? "rgba(34,197,94,0.2)" : s.includes("-") ? "rgba(239,68,68,0.2)" : "rgba(59,130,246,0.2)"}`, letterSpacing: "0.05em" }}>{s}</span>
                         ))}
                       </div>
+                      {item.source && (
+                        <div style={{ marginTop: 6, paddingTop: 10, borderTop: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                          <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em" }}>
+                            {lang === "es" ? "FUENTE" : "SOURCE"}
+                          </span>
+                          {item.source_url ? (
+                            <a href={item.source_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, textDecoration: "none", borderBottom: `1px solid ${C.goldBorder}`, paddingBottom: 1 }}>
+                              {item.source} →
+                            </a>
+                          ) : (
+                            <span style={{ fontFamily: F.mono, fontSize: 10, color: C.gold }}>{item.source}</span>
+                          )}
+                          {item.published_at && (
+                            <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>
+                              · {item.published_at}
+                            </span>
+                          )}
+                        </div>
+                      )}
                     </>
                   ) : (
                     <LockedOverlay message={t.locked} lang={lang} />

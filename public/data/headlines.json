@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-05-01T08:08:45.963Z",
+  "generated_at": "2026-05-01T14:10:16.674Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1674",
-      "change": "-0.27%",
-      "up": false
+      "value": "1.1774",
+      "change": "+0.19%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "17666.90",
-      "change": "-0.61%",
+      "value": "17,462.38",
+      "change": "-0.95%",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
-      "value": "111.42",
-      "change": "+1.16%",
-      "up": true
+      "symbol": "BRENT",
+      "value": "110.50",
+      "change": "-3.3%",
+      "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "106.00",
-      "change": "+0.95%",
-      "up": true
+      "symbol": "GOLD",
+      "value": "4,592",
+      "change": "-50.00",
+      "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4626.64",
-      "change": "+0.11%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "76550.00",
-      "change": "+0.71%",
+      "symbol": "BTC",
+      "value": "78,805.80",
+      "change": "+3.17%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "17.10",
-      "change": "-9.10%",
+      "value": "16.66",
+      "change": "-1.36%",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.39%",
-      "change": "0.00%",
+      "symbol": "US 10Y",
+      "value": "4.42%",
+      "change": "+0.09%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8548",
+      "change": "-0.21%",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7143.57",
-      "change": "+0.11%",
+      "value": "7,257.84",
+      "change": "+0.68%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24101.60",
-      "change": "-0.25%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8631",
-      "change": "+0.07%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.15",
-      "change": "+0.07%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.636",
-      "change": "-0.85%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "5.98",
-      "change": "+0.99%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8383",
-      "change": "-0.01%",
+      "value": "18,440.00",
+      "change": "-1.38%",
       "up": false
     }
   ],
@@ -96,142 +66,74 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "en": "US-Israel Iran War Enters Day 62 Amid Stalled Ceasefire Talks",
-        "es": "Guerra EEUU-Israel contra Irán entra en el día 62 con conversaciones de alto el fuego estancadas"
-      },
-      "summary": {
-        "en": "Negotiations remain deadlocked as the US maintains naval blockade of Strait of Hormuz while Iranian President Pezeshkian denounces continued military action. Trump administration considers extended blockade as gas prices reach $4.30 per gallon nationally.",
-        "es": "Las negociaciones permanecen estancadas mientras EEUU mantiene el bloqueo naval del Estrecho de Ormuz e Irán denuncia la acción militar continuada. La administración Trump considera extender el bloqueo con precios de gasolina en $4.30 por galón."
-      },
-      "source": "CNN",
-      "url": "https://www.cnn.com/2026/04/30/world/live-news/iran-war-news",
-      "time": "4h",
-      "impact": "high",
-      "signals": [
-        "OIL +15%",
-        "USD +",
-        "EUR -",
-        "DEFENSE +"
-      ],
-      "confidence": 95
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
       "region": "US",
       "title": {
-        "en": "Nationwide May Day General Strike Begins Across America",
-        "es": "Comienza huelga general del Día del Trabajo en todo Estados Unidos"
+        "en": "Fed Holds Rates Steady as Powell Signals Extended Stay Despite Succession Drama",
+        "es": "La Fed mantiene tasas estables mientras Powell señala permanencia extendida pese al drama de sucesión"
       },
       "summary": {
-        "en": "Nearly 500 organizations coordinate over 750 events nationwide under 'Workers Over Billionaires' theme, with teachers, students boycotting work and school. First large general strike since Civil War could create measurable GDP impact.",
-        "es": "Casi 500 organizaciones coordinan más de 750 eventos nacionales bajo el tema 'Trabajadores sobre Millonarios', con maestros y estudiantes boicoteando trabajo y escuela. Primera huelga general grande desde la Guerra Civil podría crear impacto medible en PIB."
+        "en": "The Federal Reserve held rates at 3.5%-3.75% in a dramatic 8-4 split decision amid four dissenting votes. Chair Jerome Powell announced he will remain on the Fed Board despite his chairmanship ending May 15, creating uncertainty around Kevin Warsh's nomination process.",
+        "es": "La Reserva Federal mantuvo las tasas en 3.5%-3.75% en una dramática decisión dividida 8-4 con cuatro votos disidentes. El presidente Jerome Powell anunció que permanecerá en la Junta de la Fed pese a que su presidencia termine el 15 de mayo, creando incertidumbre sobre el proceso de nominación de Kevin Warsh."
       },
-      "source": "Fox News",
-      "url": "https://www.foxnews.com/us/may-day-protests-take-place-friday-agitators-across-us-push-workers-billionaires-motto",
-      "time": "1h",
-      "impact": "medium",
-      "signals": [
-        "USD -",
-        "LABOR +",
-        "EQUITIES -"
-      ],
-      "confidence": 87
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "en": "Russian Drone Strike Hits Odesa, 20 Injured as Putin Proposes Victory Day Ceasefire",
-        "es": "Ataque de drones rusos golpea Odesa, 20 heridos mientras Putin propone alto el fuego del Día de la Victoria"
-      },
-      "summary": {
-        "en": "Overnight Russian attack damages residential buildings and kindergarten in Ukrainian port city. Kremlin announces unilateral Victory Day ceasefire for May 9 regardless of Ukraine's response, while Zelensky calls proposal 'manipulative theater.'",
-        "es": "Ataque nocturno ruso daña edificios residenciales y jardín de infancia en ciudad portuaria ucraniana. El Kremlin anuncia alto el fuego unilateral del Día de la Victoria para el 9 de mayo sin importar la respuesta de Ucrania, mientras Zelensky llama la propuesta 'teatro manipulativo.'"
-      },
-      "source": "Kyiv Post",
-      "url": "https://www.kyivpost.com/thread/75133",
-      "time": "7h",
+      "source": "Bloomberg",
+      "source_url": "https://www.bloomberg.com/news/articles/2026-04-28/latest-oil-market-news-and-analysis-for-april-29",
+      "published_at": "2026-04-29",
+      "time": "3h",
       "impact": "high",
       "signals": [
-        "EUR -",
-        "DEFENSE +",
-        "GRAIN +",
-        "RUB -"
+        "USD ?",
+        "BONDS -",
+        "EQUITIES ?"
       ],
       "confidence": 92
     },
     {
-      "id": 4,
-      "tag": "MONITOR",
+      "id": 2,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "en": "Oil Surges Past $99 as Iran Peace Talks Stall, Strait of Hormuz Remains Choked",
+        "es": "Petróleo sube más de $99 mientras se estancan conversaciones de paz con Irán, Estrecho de Hormuz sigue bloqueado"
+      },
+      "summary": {
+        "en": "West Texas Intermediate traded above $99 after advancing 3.7% as the Iran war continues to disrupt global energy supplies. President Trump said Iran has asked the US to lift the naval blockade while peace negotiations proceed, but the Strait of Hormuz closure persists.",
+        "es": "El West Texas Intermediate cotizó por encima de $99 tras avanzar 3.7% mientras la guerra con Irán continúa interrumpiendo los suministros energéticos globales. El presidente Trump dijo que Irán ha pedido a EE.UU. levantar el bloqueo naval mientras proceden las negociaciones de paz, pero el cierre del Estrecho de Hormuz persiste."
+      },
+      "source": "Bloomberg",
+      "source_url": "https://www.bloomberg.com/news/articles/2026-04-28/latest-oil-market-news-and-analysis-for-april-29",
+      "published_at": "2026-04-29",
+      "time": "4h",
+      "impact": "high",
+      "signals": [
+        "OIL ++",
+        "INFLATION +",
+        "EQUITIES -"
+      ],
+      "confidence": 95
+    },
+    {
+      "id": 3,
+      "tag": "STRATEGIC",
       "region": "GLOBAL",
       "title": {
-        "en": "US Delays China Semiconductor Tariffs Until 2027 Under Trump-Xi Truce",
-        "es": "EEUU retrasa aranceles de semiconductores de China hasta 2027 bajo tregua Trump-Xi"
+        "en": "Global M&A Reaches $5 Trillion in Historic 2025 Surge, AI Deals Drive Mega-Transaction Boom",
+        "es": "M&A global alcanza $5 billones en auge histórico de 2025, acuerdos de IA impulsan boom de mega-transacciones"
       },
       "summary": {
-        "en": "White House sets initial 0% tariff rate on Chinese chips, delaying implementation until mid-2027 following October agreement. Decision aims to stabilize supply chains while maintaining pressure point for future negotiations.",
-        "es": "Casa Blanca establece tasa arancelaria inicial del 0% en chips chinos, retrasando implementación hasta mediados de 2027 tras acuerdo de octubre. Decisión busca estabilizar cadenas de suministro manteniendo punto de presión para futuras negociaciones."
+        "en": "Global M&A volumes exceeded $5 trillion in 2025, marking the second-highest deal activity on record with a 40% value increase. Tech M&A surged 77% driven by AI-related assets, including Alphabet's $32 billion Wiz acquisition and major minority investments in AI companies.",
+        "es": "Los volúmenes globales de M&A superaron los $5 billones en 2025, marcando la segunda mayor actividad de transacciones registrada con un aumento del 40% en valor. M&A tecnológico aumentó 77% impulsado por activos relacionados con IA, incluyendo la adquisición de Wiz por $32 mil millones de Alphabet e importantes inversiones minoritarias en empresas de IA."
       },
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/news/us-holds-off-chinese-chip-155541602.html",
-      "time": "14h",
+      "source": "Bloomberg",
+      "source_url": "https://www.bloomberg.com/news/newsletters/2026-01-05/five-big-m-a-trends-to-track-in-2026",
+      "published_at": "2026-01-05",
+      "time": "48h",
       "impact": "medium",
       "signals": [
-        "TECH +",
-        "CNY +",
-        "SEMIS +"
+        "EQUITIES +",
+        "TECH ++",
+        "CREDIT +"
       ],
-      "confidence": 83
-    },
-    {
-      "id": 5,
-      "tag": "EMERGING",
-      "region": "APAC",
-      "title": {
-        "en": "FIFA Confirms Iran Will Play at 2026 World Cup Despite War",
-        "es": "FIFA confirma que Irán jugará en la Copa Mundial 2026 a pesar de la guerra"
-      },
-      "summary": {
-        "en": "FIFA President Infantino reaffirms Iran's participation at North American tournament despite ongoing US-Israeli conflict. Decision highlights sports diplomacy amid geopolitical tensions, though security concerns remain over delegation composition.",
-        "es": "Presidente de FIFA Infantino reafirma participación de Irán en torneo norteamericano pese al conflicto israelo-estadounidense en curso. Decisión resalta diplomacia deportiva en medio de tensiones geopolíticas, aunque persisten preocupaciones de seguridad sobre composición de delegación."
-      },
-      "source": "CNN",
-      "url": "https://www.cnn.com/2026/04/30/world/live-news/iran-war-news",
-      "time": "4h",
-      "impact": "low",
-      "signals": [
-        "SPORTS +",
-        "TRAVEL +"
-      ],
-      "confidence": 78
-    },
-    {
-      "id": 6,
-      "tag": "STRATEGIC",
-      "region": "LATAM",
-      "title": {
-        "en": "Venezuela's Maduro Capture Reshapes Western Hemisphere Dynamics",
-        "es": "Captura de Maduro de Venezuela remodela dinámicas del hemisferio occidental"
-      },
-      "summary": {
-        "en": "US implements renewed prioritization of Western Hemisphere through Venezuelan leader's detention. Move signals Washington's intent to exert significant regional influence ahead of crowded electoral calendar across Latin America.",
-        "es": "EEUU implementa priorización renovada del hemisferio occidental mediante detención del líder venezolano. Movimiento señala intención de Washington de ejercer influencia regional significativa antes del calendario electoral abarrotado en América Latina."
-      },
-      "source": "Lazard",
-      "url": "https://www.lazard.com/research-insights/top-geopolitical-trends-in-2026/",
-      "time": "2h",
-      "impact": "medium",
-      "signals": [
-        "OIL +",
-        "LATAM +",
-        "USD +"
-      ],
-      "confidence": 85
+      "confidence": 88
     }
-  ],
-  "market_updated_at": "2026-05-01T10:59:01.983Z"
+  ]
 }
