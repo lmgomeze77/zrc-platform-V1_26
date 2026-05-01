@@ -1,139 +1,188 @@
 {
-  "generated_at": "2026-05-01T14:10:16.674Z",
+  "generated_at": "2026-05-01T14:24:27.557Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
       "value": "1.1774",
-      "change": "+0.19%",
+      "change": "+0.24%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "17,462.38",
+      "value": "16,803",
       "change": "-0.95%",
       "up": false
     },
     {
       "symbol": "BRENT",
       "value": "110.50",
-      "change": "-3.3%",
-      "up": false
+      "change": "+2.8%",
+      "up": true
     },
     {
       "symbol": "GOLD",
-      "value": "4,592",
-      "change": "-50.00",
+      "value": "4,616",
+      "change": "-0.30%",
       "up": false
     },
     {
       "symbol": "BTC",
-      "value": "78,805.80",
-      "change": "+3.17%",
+      "value": "77,376",
+      "change": "+1.66%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "16.66",
-      "change": "-1.36%",
+      "value": "16.89",
+      "change": "-4.99%",
       "up": false
     },
     {
       "symbol": "US 10Y",
-      "value": "4.42%",
-      "change": "+0.09%",
+      "value": "4.35%",
+      "change": "+0.15%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8548",
-      "change": "-0.21%",
+      "value": "0.8631",
+      "change": "-1.02%",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7,257.84",
-      "change": "+0.68%",
+      "value": "7,142",
+      "change": "+0.50%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "18,440.00",
-      "change": "-1.38%",
-      "up": false
+      "value": "24,167",
+      "change": "+0.89%",
+      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "US",
+      "region": "EU",
       "title": {
-        "en": "Fed Holds Rates Steady as Powell Signals Extended Stay Despite Succession Drama",
-        "es": "La Fed mantiene tasas estables mientras Powell señala permanencia extendida pese al drama de sucesión"
+        "en": "ECB's Lagarde Signals June Rate Hike After April Hold Amid Iran War Impact",
+        "es": "Lagarde del BCE Señala Posible Alza en Junio Tras Mantener Tasas en Abril por Guerra de Irán"
       },
       "summary": {
-        "en": "The Federal Reserve held rates at 3.5%-3.75% in a dramatic 8-4 split decision amid four dissenting votes. Chair Jerome Powell announced he will remain on the Fed Board despite his chairmanship ending May 15, creating uncertainty around Kevin Warsh's nomination process.",
-        "es": "La Reserva Federal mantuvo las tasas en 3.5%-3.75% en una dramática decisión dividida 8-4 con cuatro votos disidentes. El presidente Jerome Powell anunció que permanecerá en la Junta de la Fed pese a que su presidencia termine el 15 de mayo, creando incertidumbre sobre el proceso de nominación de Kevin Warsh."
+        "en": "ECB President Christine Lagarde signaled the European Central Bank will consider a rate hike in June after keeping rates unchanged in April, as policymakers assessed the Iran war's impact on inflation and growth. The ECB held its main refinancing rate at 2.15% and deposit facility at 2.0%, with Lagarde noting the eurozone economy has moved \"certainly away\" from the baseline scenario.",
+        "es": "La presidenta del BCE Christine Lagarde indicó que el Banco Central Europeo considerará un alza de tasas en junio tras mantenerlas sin cambios en abril, mientras los responsables evalúan el impacto de la guerra de Irán en inflación y crecimiento. El BCE mantuvo su tasa principal de refinanciamiento en 2.15% y la facilidad de depósito en 2.0%, con Lagarde señalando que la economía de la eurozona se ha alejado \"ciertamente\" del escenario base."
       },
       "source": "Bloomberg",
-      "source_url": "https://www.bloomberg.com/news/articles/2026-04-28/latest-oil-market-news-and-analysis-for-april-29",
-      "published_at": "2026-04-29",
-      "time": "3h",
+      "source_url": "https://www.bloomberg.com/news/articles/2026-04-30/ecb-keeps-interest-rates-steady-with-war-s-hit-to-economy-still-unfolding",
+      "published_at": "2026-04-30",
+      "time": "1d",
       "impact": "high",
       "signals": [
-        "USD ?",
-        "BONDS -",
-        "EQUITIES ?"
+        "EUR ?",
+        "BONDS +",
+        "EQUITIES -"
       ],
       "confidence": 92
     },
     {
       "id": 2,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "CRITICAL",
+      "region": "GLOBAL",
       "title": {
-        "en": "Oil Surges Past $99 as Iran Peace Talks Stall, Strait of Hormuz Remains Choked",
-        "es": "Petróleo sube más de $99 mientras se estancan conversaciones de paz con Irán, Estrecho de Hormuz sigue bloqueado"
+        "en": "Shell Acquires ARC Resources for $16.4 Billion in Major Energy Consolidation Deal",
+        "es": "Shell Adquiere ARC Resources por $16.4 Mil Millones en Gran Consolidación Energética"
       },
       "summary": {
-        "en": "West Texas Intermediate traded above $99 after advancing 3.7% as the Iran war continues to disrupt global energy supplies. President Trump said Iran has asked the US to lift the naval blockade while peace negotiations proceed, but the Strait of Hormuz closure persists.",
-        "es": "El West Texas Intermediate cotizó por encima de $99 tras avanzar 3.7% mientras la guerra con Irán continúa interrumpiendo los suministros energéticos globales. El presidente Trump dijo que Irán ha pedido a EE.UU. levantar el bloqueo naval mientras proceden las negociaciones de paz, pero el cierre del Estrecho de Hormuz persiste."
+        "en": "Shell announced a $16.4 billion acquisition of Canadian energy company ARC Resources, adding 370,000 barrels per day of production and 2 billion barrels of reserves in the Montney basin. The deal, funded 75% with shares and 25% cash, strengthens Shell's North American gas portfolio and represents the largest energy M&A transaction since Chevron-Hess in 2023.",
+        "es": "Shell anunció la adquisición de la empresa energética canadiense ARC Resources por $16.4 mil millones, agregando 370,000 barriles por día de producción y 2 mil millones de barriles de reservas en la cuenca Montney. El acuerdo, financiado 75% con acciones y 25% efectivo, fortalece el portafolio de gas norteamericano de Shell y representa la mayor transacción de M&A energética desde Chevron-Hess en 2023."
       },
-      "source": "Bloomberg",
-      "source_url": "https://www.bloomberg.com/news/articles/2026-04-28/latest-oil-market-news-and-analysis-for-april-29",
-      "published_at": "2026-04-29",
-      "time": "4h",
+      "source": "Reuters",
+      "source_url": "https://www.reuters.com/business/energy/shell-buy-canadas-arc-resources-164-billion-deal-2026-04-27/",
+      "published_at": "2026-04-27",
+      "time": "4d",
       "impact": "high",
       "signals": [
-        "OIL ++",
-        "INFLATION +",
-        "EQUITIES -"
+        "OIL +",
+        "GAS +",
+        "SHEL +",
+        "ARX +"
       ],
       "confidence": 95
     },
     {
       "id": 3,
-      "tag": "STRATEGIC",
-      "region": "GLOBAL",
+      "tag": "ALERT",
+      "region": "US",
       "title": {
-        "en": "Global M&A Reaches $5 Trillion in Historic 2025 Surge, AI Deals Drive Mega-Transaction Boom",
-        "es": "M&A global alcanza $5 billones en auge histórico de 2025, acuerdos de IA impulsan boom de mega-transacciones"
+        "en": "Fitch Warns US AA Rating Faces Pressure From Rising Deficit and Fiscal Risks",
+        "es": "Fitch Advierte que Calificación AA de EE.UU. Enfrenta Presión por Déficit Creciente y Riesgos Fiscales"
       },
       "summary": {
-        "en": "Global M&A volumes exceeded $5 trillion in 2025, marking the second-highest deal activity on record with a 40% value increase. Tech M&A surged 77% driven by AI-related assets, including Alphabet's $32 billion Wiz acquisition and major minority investments in AI companies.",
-        "es": "Los volúmenes globales de M&A superaron los $5 billones en 2025, marcando la segunda mayor actividad de transacciones registrada con un aumento del 40% en valor. M&A tecnológico aumentó 77% impulsado por activos relacionados con IA, incluyendo la adquisición de Wiz por $32 mil millones de Alphabet e importantes inversiones minoritarias en empresas de IA."
+        "en": "Fitch Ratings warned the US credit grade faces challenges from a widening deficit that leaves its debt burden \"far above\" other AA-rated nations. The rating agency expects deterioration in the US fiscal position due to tax cuts in the One Big Beautiful Bill Act, emphasizing the importance of November's Congressional mid-term elections.",
+        "es": "Fitch Ratings advirtió que la calificación crediticia de EE.UU. enfrenta desafíos por un déficit en expansión que deja su carga de deuda \"muy por encima\" de otras naciones con calificación AA. La agencia espera deterioro en la posición fiscal estadounidense debido a recortes fiscales en la Ley One Big Beautiful Bill, enfatizando la importancia de las elecciones intermedias de noviembre."
       },
       "source": "Bloomberg",
-      "source_url": "https://www.bloomberg.com/news/newsletters/2026-01-05/five-big-m-a-trends-to-track-in-2026",
-      "published_at": "2026-01-05",
-      "time": "48h",
-      "impact": "medium",
+      "source_url": "https://www.bloomberg.com/news/articles/2026-04-30/us-sovereign-rating-faces-deficit-and-debt-challenges-says-fitch",
+      "published_at": "2026-04-30",
+      "time": "18h",
+      "impact": "high",
       "signals": [
-        "EQUITIES +",
-        "TECH ++",
-        "CREDIT +"
+        "USD -",
+        "BONDS -",
+        "TREASURIES -"
       ],
       "confidence": 88
+    },
+    {
+      "id": 4,
+      "tag": "STRATEGIC",
+      "region": "APAC",
+      "title": {
+        "en": "Japan's Debt Servicing Costs to Claim 30% of Budget by 2029 as Rates Rise",
+        "es": "Costos de Servicio de Deuda de Japón Reclamarán 30% del Presupuesto para 2029 por Alza de Tasas"
+      },
+      "summary": {
+        "en": "Japan's debt-servicing costs will rise to 41.3 trillion yen ($269 billion) by fiscal 2029 as interest rates climb, claiming 30% of the national budget according to Finance Ministry estimates. Prime Minister Takaichi rejected \"irresponsible bond issuance\" while balancing economic support amid high US rates.",
+        "es": "Los costos de servicio de deuda de Japón aumentarán a 41.3 billones de yenes ($269 mil millones) para el año fiscal 2029 mientras suben las tasas de interés, reclamando 30% del presupuesto nacional según estimaciones del Ministerio de Finanzas. El Primer Ministro Takaichi rechazó \"emisión irresponsable de bonos\" mientras equilibra apoyo económico en medio de altas tasas estadounidenses."
+      },
+      "source": "Nikkei",
+      "source_url": "https://asia.nikkei.com/business/markets/bonds/japan-s-debt-servicing-costs-seen-taking-up-30-of-budget-in-3-years",
+      "published_at": "2026-02-18",
+      "time": "2mo",
+      "impact": "medium",
+      "signals": [
+        "JPY -",
+        "JGB -",
+        "EQUITIES ?"
+      ],
+      "confidence": 85
+    },
+    {
+      "id": 5,
+      "tag": "MONITOR",
+      "region": "US",
+      "title": {
+        "en": "Trump Lifts Scotch Whisky Tariffs After King Charles Visit in Trade Gesture",
+        "es": "Trump Elimina Aranceles al Whisky Escocés Tras Visita del Rey Carlos en Gesto Comercial"
+      },
+      "summary": {
+        "en": "President Trump removed certain tariffs on Scotch whisky following King Charles III and Queen Camilla's White House state visit, granting preferential duty access for UK-produced whiskey. The move, framed within the US-UK Economic Prosperity Deal, comes as Trump's broader tariff regime faces legal challenges and Supreme Court scrutiny.",
+        "es": "El Presidente Trump eliminó ciertos aranceles al whisky escocés tras la visita estatal del Rey Carlos III y la Reina Camilla a la Casa Blanca, otorgando acceso preferencial de aranceles para whiskey producido en Reino Unido. La medida, enmarcada dentro del Acuerdo de Prosperidad Económica EE.UU.-Reino Unido, llega mientras el régimen arancelario más amplio de Trump enfrenta desafíos legales y escrutinio de la Corte Suprema."
+      },
+      "source": "Financial Times",
+      "source_url": "https://www.ft.com/content/trump-drops-scotch-whisky-tariffs-in-honour-of-king-charles",
+      "published_at": "2026-04-30",
+      "time": "14h",
+      "impact": "low",
+      "signals": [
+        "GBP +",
+        "SPIRITS +",
+        "TRADE ?"
+      ],
+      "confidence": 78
     }
   ]
 }
