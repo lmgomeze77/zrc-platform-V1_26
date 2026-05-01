@@ -348,6 +348,25 @@ const useTickerData = () => {
   return { data, lastUpdate };
 };
 
+const useHeadlines = (fallback) => {
+  const [data, setData] = useState(fallback);
+
+  useEffect(() => {
+    let mounted = true;
+    fetch("/data/headlines.json?v=" + Date.now())
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (mounted && json && Array.isArray(json.headlines) && json.headlines.length > 0) {
+          setData(json.headlines);
+        }
+      })
+      .catch((err) => console.warn("Headlines fetch failed:", err.message));
+    return () => { mounted = false; };
+  }, []);
+
+  return data;
+};
+
 const FEED = [
   {
     id: 1, tag: "CRITICAL", region: "MENA",
