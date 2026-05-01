@@ -940,7 +940,8 @@ const Observatory = ({ lang }) => {
   const [expanded, setExpanded] = useState(null);
   const [filter, setFilter] = useState("ALL");
   const regions = ["ALL", "MENA", "EU", "LATAM", "APAC", "AFRICA"];
-  const filtered = filter === "ALL" ? FEED : FEED.filter((f) => f.region === filter);
+  const feed = useHeadlines(FEED);
+  const filtered = filter === "ALL" ? feed : feed.filter((f) => f.region === filter);
 
   return (
     <Sec id="observatory">
