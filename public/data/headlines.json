@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-04-30T08:15:58.959Z",
+  "generated_at": "2026-05-01T08:08:45.963Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1674",
-      "change": "-0.27%",
-      "up": false
-    },
-    {
-      "symbol": "IBEX 35",
-      "value": "17666.90",
-      "change": "-0.61%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "113.97",
-      "change": "-2.86%",
-      "up": false
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "104.19",
-      "change": "-0.85%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4626.64",
-      "change": "+0.11%",
+      "value": "1.1734",
+      "change": "+0.0003",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "76550.00",
-      "change": "+0.45%",
+      "symbol": "IBEX 35",
+      "value": "17,576.20",
+      "change": "-198.70",
+      "up": false
+    },
+    {
+      "symbol": "BRENT",
+      "value": "111.17",
+      "change": "+0.73",
+      "up": true
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4,634.00",
+      "change": "+4.40",
+      "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "76,450.11",
+      "change": "+237.26",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "17.10",
-      "change": "-9.10%",
+      "value": "16.89",
+      "change": "-1.92",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.39%",
-      "change": "+0.02%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7212.02",
-      "change": "+1.07%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24101.60",
-      "change": "-0.25%",
+      "symbol": "US 10Y",
+      "value": "4.3900",
+      "change": "-0.0027",
       "up": false
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8663",
-      "change": "+0.04%",
+      "value": "0.8621",
+      "change": "-0.0044",
+      "up": false
+    },
+    {
+      "symbol": "S&P 500",
+      "value": "7,250.50",
+      "change": "+6.75",
       "up": true
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "98.15",
-      "change": "+0.07%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.77",
-      "change": "+4.53%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "5.98",
-      "change": "+0.99%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8562",
-      "change": "-0.37%",
+      "symbol": "DAX 40",
+      "value": "23,970.57",
+      "change": "-48.07",
       "up": false
     }
   ],
@@ -98,21 +68,22 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "UAE Exits OPEC After 60 Years Amid Iran War Tensions",
-        "es": "EAU Abandona OPEP Tras 60 Años en Medio de Tensiones por Guerra con Irán"
+        "en": "US-Israel Iran War Enters Day 62 Amid Stalled Ceasefire Talks",
+        "es": "Guerra EEUU-Israel contra Irán entra en el día 62 con conversaciones de alto el fuego estancadas"
       },
       "summary": {
-        "en": "The United Arab Emirates announced withdrawal from OPEC effective May 1, ending nearly 60 years of membership. The decision follows sustained Iranian attacks and export constraints through the Strait of Hormuz, weakening OPEC's production control capacity by 15%.",
-        "es": "Los Emiratos Árabes Unidos anunciaron su retirada de la OPEP con efecto del 1 de mayo, terminando casi 60 años de membresía. La decisión sigue a ataques iraníes sostenidos y restricciones de exportación a través del Estrecho de Hormuz, debilitando la capacidad de control de producción de la OPEP en un 15%."
+        "en": "Negotiations remain deadlocked as the US maintains naval blockade of Strait of Hormuz while Iranian President Pezeshkian denounces continued military action. Trump administration considers extended blockade as gas prices reach $4.30 per gallon nationally.",
+        "es": "Las negociaciones permanecen estancadas mientras EEUU mantiene el bloqueo naval del Estrecho de Ormuz e Irán denuncia la acción militar continuada. La administración Trump considera extender el bloqueo con precios de gasolina en $4.30 por galón."
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/28/uae-opec-oil-iran.html",
-      "time": "2h",
+      "source": "CNN",
+      "url": "https://www.cnn.com/2026/04/30/world/live-news/iran-war-news",
+      "time": "4h",
       "impact": "high",
       "signals": [
-        "OIL +",
+        "OIL +15%",
         "USD +",
-        "AED -"
+        "EUR -",
+        "DEFENSE +"
       ],
       "confidence": 95
     },
@@ -121,116 +92,115 @@
       "tag": "ALERT",
       "region": "US",
       "title": {
-        "en": "Powell Remains Fed Governor Despite Trump Attacks, Blocks Appointment",
-        "es": "Powell Permanece como Gobernador de la Fed a Pesar de Ataques de Trump, Bloquea Nombramiento"
+        "en": "Nationwide May Day General Strike Begins Across America",
+        "es": "Comienza huelga general del Día del Trabajo en todo Estados Unidos"
       },
       "summary": {
-        "en": "Jerome Powell announced he will stay as Fed governor until January 2028 despite his chairmanship ending May 15, citing unprecedented legal attacks from the Trump administration. The decision prevents Trump from filling a key vacancy on the seven-member Fed board.",
-        "es": "Jerome Powell anunció que permanecerá como gobernador de la Fed hasta enero de 2028 a pesar de que su presidencia termine el 15 de mayo, citando ataques legales sin precedentes de la administración Trump. La decisión impide que Trump llene una vacante clave en la junta de siete miembros de la Fed."
+        "en": "Nearly 500 organizations coordinate over 750 events nationwide under 'Workers Over Billionaires' theme, with teachers, students boycotting work and school. First large general strike since Civil War could create measurable GDP impact.",
+        "es": "Casi 500 organizaciones coordinan más de 750 eventos nacionales bajo el tema 'Trabajadores sobre Millonarios', con maestros y estudiantes boicoteando trabajo y escuela. Primera huelga general grande desde la Guerra Civil podría crear impacto medible en PIB."
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/29/fed-meeting-today-live-updates-warsh-powell.html",
-      "time": "12h",
-      "impact": "high",
+      "source": "Fox News",
+      "url": "https://www.foxnews.com/us/may-day-protests-take-place-friday-agitators-across-us-push-workers-billionaires-motto",
+      "time": "1h",
+      "impact": "medium",
       "signals": [
-        "USD +",
-        "BONDS -",
-        "STOCKS -"
+        "USD -",
+        "LABOR +",
+        "EQUITIES -"
       ],
-      "confidence": 92
+      "confidence": 87
     },
     {
       "id": 3,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "en": "Iran Proposes Hormuz Deal as US-Iran Talks Stall, Oil Hits $106",
-        "es": "Irán Propone Acuerdo de Hormuz Mientras se Estancan Conversaciones EE.UU.-Irán, Petróleo Alcanza $106"
+        "en": "Russian Drone Strike Hits Odesa, 20 Injured as Putin Proposes Victory Day Ceasefire",
+        "es": "Ataque de drones rusos golpea Odesa, 20 heridos mientras Putin propone alto el fuego del Día de la Victoria"
       },
       "summary": {
-        "en": "Iran offered new proposal to reopen Strait of Hormuz while Trump cancelled in-person negotiations in Pakistan. Oil prices rose with Brent crude at $106.55 as Goldman Sachs raised forecasts to $90 by late 2026.",
-        "es": "Irán ofreció nueva propuesta para reabrir el Estrecho de Hormuz mientras Trump canceló negociaciones presenciales en Pakistán. Los precios del petróleo subieron con Brent en $106.55 mientras Goldman Sachs elevó pronósticos a $90 para finales de 2026."
+        "en": "Overnight Russian attack damages residential buildings and kindergarten in Ukrainian port city. Kremlin announces unilateral Victory Day ceasefire for May 9 regardless of Ukraine's response, while Zelensky calls proposal 'manipulative theater.'",
+        "es": "Ataque nocturno ruso daña edificios residenciales y jardín de infancia en ciudad portuaria ucraniana. El Kremlin anuncia alto el fuego unilateral del Día de la Victoria para el 9 de mayo sin importar la respuesta de Ucrania, mientras Zelensky llama la propuesta 'teatro manipulativo.'"
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/27/us-iran-peace-talks-stall-global-markets-stocks-oil-treasurys.html",
-      "time": "15h",
+      "source": "Kyiv Post",
+      "url": "https://www.kyivpost.com/thread/75133",
+      "time": "7h",
       "impact": "high",
       "signals": [
-        "OIL +",
         "EUR -",
-        "GBP -"
+        "DEFENSE +",
+        "GRAIN +",
+        "RUB -"
       ],
-      "confidence": 88
+      "confidence": 92
     },
     {
       "id": 4,
       "tag": "MONITOR",
-      "region": "EU",
+      "region": "GLOBAL",
       "title": {
-        "en": "ECB Maintains Rates Amid Middle East War, Inflation Revised Up to 2.6%",
-        "es": "BCE Mantiene Tasas en Medio de Guerra en Oriente Medio, Inflación Revisada al Alza a 2.6%"
+        "en": "US Delays China Semiconductor Tariffs Until 2027 Under Trump-Xi Truce",
+        "es": "EEUU retrasa aranceles de semiconductores de China hasta 2027 bajo tregua Trump-Xi"
       },
       "summary": {
-        "en": "European Central Bank kept rates unchanged at March meeting, citing Middle East war creating upside inflation risks. ECB revised 2026 inflation forecast to 2.6% from higher energy prices, while cutting growth outlook to 0.9%.",
-        "es": "El Banco Central Europeo mantuvo las tasas sin cambios en la reunión de marzo, citando la guerra en Oriente Medio creando riesgos inflacionarios al alza. El BCE revisó el pronóstico de inflación 2026 a 2.6% por precios energéticos más altos, mientras redujo perspectivas de crecimiento a 0.9%."
+        "en": "White House sets initial 0% tariff rate on Chinese chips, delaying implementation until mid-2027 following October agreement. Decision aims to stabilize supply chains while maintaining pressure point for future negotiations.",
+        "es": "Casa Blanca establece tasa arancelaria inicial del 0% en chips chinos, retrasando implementación hasta mediados de 2027 tras acuerdo de octubre. Decisión busca estabilizar cadenas de suministro manteniendo punto de presión para futuras negociaciones."
       },
-      "source": "European Central Bank",
-      "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260319~3057739775.en.html",
-      "time": "6h",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/us-holds-off-chinese-chip-155541602.html",
+      "time": "14h",
       "impact": "medium",
       "signals": [
-        "EUR =",
-        "BONDS =",
-        "ENERGY +"
+        "TECH +",
+        "CNY +",
+        "SEMIS +"
       ],
-      "confidence": 85
+      "confidence": 83
     },
     {
       "id": 5,
-      "tag": "STRATEGIC",
+      "tag": "EMERGING",
       "region": "APAC",
       "title": {
-        "en": "China-US Trade Tensions Persist as Bilateral Trade Falls 25% in 2025",
-        "es": "Tensiones Comerciales China-EE.UU. Persisten Mientras el Comercio Bilateral Cae 25% en 2025"
+        "en": "FIFA Confirms Iran Will Play at 2026 World Cup Despite War",
+        "es": "FIFA confirma que Irán jugará en la Copa Mundial 2026 a pesar de la guerra"
       },
       "summary": {
-        "en": "US-China trade relationship saw biggest drop since 1979 with bilateral trade falling roughly $170 billion in 2025. China's exports to US continued declining 11% in early 2026 amid ongoing tariff impacts and trade war dynamics.",
-        "es": "La relación comercial EE.UU.-China vio la mayor caída desde 1979 con el comercio bilateral cayendo aproximadamente $170 mil millones en 2025. Las exportaciones de China a EE.UU. continuaron declinando 11% a principios de 2026 en medio de impactos arancelarios continuos y dinámicas de guerra comercial."
+        "en": "FIFA President Infantino reaffirms Iran's participation at North American tournament despite ongoing US-Israeli conflict. Decision highlights sports diplomacy amid geopolitical tensions, though security concerns remain over delegation composition.",
+        "es": "Presidente de FIFA Infantino reafirma participación de Irán en torneo norteamericano pese al conflicto israelo-estadounidense en curso. Decisión resalta diplomacia deportiva en medio de tensiones geopolíticas, aunque persisten preocupaciones de seguridad sobre composición de delegación."
       },
-      "source": "UNCTAD",
-      "url": "https://unctad.org/publication/global-trade-update-april-2026-global-trade-growth-continues-fragility-rises",
+      "source": "CNN",
+      "url": "https://www.cnn.com/2026/04/30/world/live-news/iran-war-news",
       "time": "4h",
-      "impact": "medium",
+      "impact": "low",
       "signals": [
-        "CNY -",
-        "USD +",
-        "COMMODITIES -"
+        "SPORTS +",
+        "TRAVEL +"
       ],
-      "confidence": 82
+      "confidence": 78
     },
     {
       "id": 6,
-      "tag": "EMERGING",
-      "region": "GLOBAL",
+      "tag": "STRATEGIC",
+      "region": "LATAM",
       "title": {
-        "en": "Fed Holds Rates Despite 4-Member Dissent as Markets Hit Records",
-        "es": "Fed Mantiene Tasas a Pesar de Disenso de 4 Miembros Mientras Mercados Alcanzan Récords"
+        "en": "Venezuela's Maduro Capture Reshapes Western Hemisphere Dynamics",
+        "es": "Captura de Maduro de Venezuela remodela dinámicas del hemisferio occidental"
       },
       "summary": {
-        "en": "Federal Reserve kept rates at 3.5-3.75% range with unusual 8-4 split decision as four members dissented. S&P 500 and Nasdaq reached new records despite Iran war tensions, with AI momentum offsetting geopolitical risks.",
-        "es": "La Reserva Federal mantuvo tasas en el rango 3.5-3.75% con decisión dividida inusual 8-4 mientras cuatro miembros disentían. S&P 500 y Nasdaq alcanzaron nuevos récords a pesar de tensiones de guerra con Irán, con impulso de IA compensando riesgos geopolíticos."
+        "en": "US implements renewed prioritization of Western Hemisphere through Venezuelan leader's detention. Move signals Washington's intent to exert significant regional influence ahead of crowded electoral calendar across Latin America.",
+        "es": "EEUU implementa priorización renovada del hemisferio occidental mediante detención del líder venezolano. Movimiento señala intención de Washington de ejercer influencia regional significativa antes del calendario electoral abarrotado en América Latina."
       },
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/04/26/stock-market-today-live-updates.html",
-      "time": "18h",
+      "source": "Lazard",
+      "url": "https://www.lazard.com/research-insights/top-geopolitical-trends-in-2026/",
+      "time": "2h",
       "impact": "medium",
       "signals": [
-        "STOCKS +",
-        "TECH +",
-        "VIX -"
+        "OIL +",
+        "LATAM +",
+        "USD +"
       ],
-      "confidence": 78
+      "confidence": 85
     }
-  ],
-  "market_updated_at": "2026-05-01T07:56:24.826Z"
+  ]
 }
