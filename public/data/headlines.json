@@ -1,58 +1,58 @@
 {
-  "generated_at": "2026-05-01T14:24:27.557Z",
+  "generated_at": "2026-05-02T07:28:26.868Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1610",
-      "change": "+0.25%",
-      "up": true
+      "value": "1.1726",
+      "change": "-0.05%",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "11850.00",
-      "change": "+1.15%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "108.94",
-      "change": "-1.31%",
+      "value": "17666.90",
+      "change": "-108.00",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "102.36",
-      "change": "-2.52%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4638.28",
-      "change": "+0.18%",
+      "symbol": "BRENT",
+      "value": "111.04",
+      "change": "+0.64",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "77349.90",
-      "change": "+1.77%",
+      "symbol": "GOLD",
+      "value": "4579.65",
+      "change": "-49.95",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "76523.35",
+      "change": "+339.70",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "16.93",
-      "change": "+0.24%",
+      "value": "16.99",
+      "change": "+0.59",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.327",
-      "change": "+0.089%",
+      "symbol": "US 10Y",
+      "value": "4.389",
+      "change": "-0.002",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8633",
+      "change": "+0.11%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7245.49",
-      "change": "+0.51%",
+      "value": "7230.12",
+      "change": "+0.29%",
       "up": true
     },
     {
@@ -60,160 +60,56 @@
       "value": "24292.38",
       "change": "+1.41%",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8815",
-      "change": "+0.35%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.17",
-      "change": "+0.12%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.79",
-      "change": "+0.80%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.1145",
-      "change": "+0.63%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8500",
-      "change": "-0.22%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "en": "ECB's Lagarde Signals June Rate Hike After April Hold Amid Iran War Impact",
-        "es": "Lagarde del BCE Señala Posible Alza en Junio Tras Mantener Tasas en Abril por Guerra de Irán"
-      },
-      "summary": {
-        "en": "ECB President Christine Lagarde signaled the European Central Bank will consider a rate hike in June after keeping rates unchanged in April, as policymakers assessed the Iran war's impact on inflation and growth. The ECB held its main refinancing rate at 2.15% and deposit facility at 2.0%, with Lagarde noting the eurozone economy has moved \"certainly away\" from the baseline scenario.",
-        "es": "La presidenta del BCE Christine Lagarde indicó que el Banco Central Europeo considerará un alza de tasas en junio tras mantenerlas sin cambios en abril, mientras los responsables evalúan el impacto de la guerra de Irán en inflación y crecimiento. El BCE mantuvo su tasa principal de refinanciamiento en 2.15% y la facilidad de depósito en 2.0%, con Lagarde señalando que la economía de la eurozona se ha alejado \"ciertamente\" del escenario base."
-      },
-      "source": "Bloomberg",
-      "source_url": "https://www.bloomberg.com/news/articles/2026-04-30/ecb-keeps-interest-rates-steady-with-war-s-hit-to-economy-still-unfolding",
-      "published_at": "2026-04-30",
-      "time": "1d",
-      "impact": "high",
-      "signals": [
-        "EUR ?",
-        "BONDS +",
-        "EQUITIES -"
-      ],
-      "confidence": 92
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
       "region": "GLOBAL",
       "title": {
-        "en": "Shell Acquires ARC Resources for $16.4 Billion in Major Energy Consolidation Deal",
-        "es": "Shell Adquiere ARC Resources por $16.4 Mil Millones en Gran Consolidación Energética"
+        "es": "El crudo alcanza máximos de 4 años mientras el Estrecho de Ormuz permanece cerrado por la guerra de Irán",
+        "en": "Oil hits 4-year high as Strait of Hormuz remains closed amid Iran war"
       },
       "summary": {
-        "en": "Shell announced a $16.4 billion acquisition of Canadian energy company ARC Resources, adding 370,000 barrels per day of production and 2 billion barrels of reserves in the Montney basin. The deal, funded 75% with shares and 25% cash, strengthens Shell's North American gas portfolio and represents the largest energy M&A transaction since Chevron-Hess in 2023.",
-        "es": "Shell anunció la adquisición de la empresa energética canadiense ARC Resources por $16.4 mil millones, agregando 370,000 barriles por día de producción y 2 mil millones de barriles de reservas en la cuenca Montney. El acuerdo, financiado 75% con acciones y 25% efectivo, fortalece el portafolio de gas norteamericano de Shell y representa la mayor transacción de M&A energética desde Chevron-Hess en 2023."
+        "es": "Los precios del petróleo han alcanzado niveles no vistos en cuatro años, con el Brent cotizando cerca de $119 por barril, mientras el Estrecho de Ormuz permanece bloqueado por el conflicto entre EE.UU.-Israel e Irán. La interrupción del suministro está causando severas restricciones energéticas globales y contribuyendo a presiones inflacionarias.",
+        "en": "Oil prices have reached levels not seen in four years, with Brent trading near $119 per barrel, as the Strait of Hormuz remains blocked due to the US-Israel conflict with Iran. The supply disruption is causing severe global energy constraints and contributing to inflationary pressures."
       },
-      "source": "Reuters",
-      "source_url": "https://www.reuters.com/business/energy/shell-buy-canadas-arc-resources-164-billion-deal-2026-04-27/",
-      "published_at": "2026-04-27",
-      "time": "4d",
+      "source": "Bloomberg",
+      "source_url": "https://www.bloomberg.com/news/newsletters/2026-05-01/iran-sends-a-new-proposal-to-the-us-to-end-war",
+      "published_at": "2026-05-01",
+      "time": "15h",
       "impact": "high",
       "signals": [
         "OIL +",
-        "GAS +",
-        "SHEL +",
-        "ARX +"
+        "INFLATION +",
+        "USD +"
       ],
       "confidence": 95
     },
     {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "US",
-      "title": {
-        "en": "Fitch Warns US AA Rating Faces Pressure From Rising Deficit and Fiscal Risks",
-        "es": "Fitch Advierte que Calificación AA de EE.UU. Enfrenta Presión por Déficit Creciente y Riesgos Fiscales"
-      },
-      "summary": {
-        "en": "Fitch Ratings warned the US credit grade faces challenges from a widening deficit that leaves its debt burden \"far above\" other AA-rated nations. The rating agency expects deterioration in the US fiscal position due to tax cuts in the One Big Beautiful Bill Act, emphasizing the importance of November's Congressional mid-term elections.",
-        "es": "Fitch Ratings advirtió que la calificación crediticia de EE.UU. enfrenta desafíos por un déficit en expansión que deja su carga de deuda \"muy por encima\" de otras naciones con calificación AA. La agencia espera deterioro en la posición fiscal estadounidense debido a recortes fiscales en la Ley One Big Beautiful Bill, enfatizando la importancia de las elecciones intermedias de noviembre."
-      },
-      "source": "Bloomberg",
-      "source_url": "https://www.bloomberg.com/news/articles/2026-04-30/us-sovereign-rating-faces-deficit-and-debt-challenges-says-fitch",
-      "published_at": "2026-04-30",
-      "time": "18h",
-      "impact": "high",
-      "signals": [
-        "USD -",
-        "BONDS -",
-        "TREASURIES -"
-      ],
-      "confidence": 88
-    },
-    {
-      "id": 4,
-      "tag": "STRATEGIC",
+      "id": 2,
+      "tag": "MONITOR",
       "region": "APAC",
       "title": {
-        "en": "Japan's Debt Servicing Costs to Claim 30% of Budget by 2029 as Rates Rise",
-        "es": "Costos de Servicio de Deuda de Japón Reclamarán 30% del Presupuesto para 2029 por Alza de Tasas"
+        "es": "Japón puede fortalecer el yen pero es solo una solución a corto plazo",
+        "en": "Japan can boost the yen but that's only a short-term fix"
       },
       "summary": {
-        "en": "Japan's debt-servicing costs will rise to 41.3 trillion yen ($269 billion) by fiscal 2029 as interest rates climb, claiming 30% of the national budget according to Finance Ministry estimates. Prime Minister Takaichi rejected \"irresponsible bond issuance\" while balancing economic support amid high US rates.",
-        "es": "Los costos de servicio de deuda de Japón aumentarán a 41.3 billones de yenes ($269 mil millones) para el año fiscal 2029 mientras suben las tasas de interés, reclamando 30% del presupuesto nacional según estimaciones del Ministerio de Finanzas. El Primer Ministro Takaichi rechazó \"emisión irresponsable de bonos\" mientras equilibra apoyo económico en medio de altas tasas estadounidenses."
+        "es": "Japón intervino oficialmente para fortalecer el yen después de que el USDJPY atravesara 160, llevando al par un 3% más bajo. Sin embargo, los analistas advierten que la intervención cambiaria típicamente no es una herramienta efectiva a largo plazo.",
+        "en": "Japan officially intervened to strengthen the yen after USDJPY broke through 160, driving the pair around 3% lower. However, analysts warn that FX intervention is typically not an effective long-term tool."
       },
-      "source": "Nikkei",
-      "source_url": "https://asia.nikkei.com/business/markets/bonds/japan-s-debt-servicing-costs-seen-taking-up-30-of-budget-in-3-years",
-      "published_at": "2026-02-18",
-      "time": "2mo",
+      "source": "Bloomberg",
+      "source_url": "https://www.bloomberg.com/",
+      "published_at": "2026-05-01",
+      "time": "12h",
       "impact": "medium",
       "signals": [
-        "JPY -",
-        "JGB -",
-        "EQUITIES ?"
-      ],
-      "confidence": 85
-    },
-    {
-      "id": 5,
-      "tag": "MONITOR",
-      "region": "US",
-      "title": {
-        "en": "Trump Lifts Scotch Whisky Tariffs After King Charles Visit in Trade Gesture",
-        "es": "Trump Elimina Aranceles al Whisky Escocés Tras Visita del Rey Carlos en Gesto Comercial"
-      },
-      "summary": {
-        "en": "President Trump removed certain tariffs on Scotch whisky following King Charles III and Queen Camilla's White House state visit, granting preferential duty access for UK-produced whiskey. The move, framed within the US-UK Economic Prosperity Deal, comes as Trump's broader tariff regime faces legal challenges and Supreme Court scrutiny.",
-        "es": "El Presidente Trump eliminó ciertos aranceles al whisky escocés tras la visita estatal del Rey Carlos III y la Reina Camilla a la Casa Blanca, otorgando acceso preferencial de aranceles para whiskey producido en Reino Unido. La medida, enmarcada dentro del Acuerdo de Prosperidad Económica EE.UU.-Reino Unido, llega mientras el régimen arancelario más amplio de Trump enfrenta desafíos legales y escrutinio de la Corte Suprema."
-      },
-      "source": "Financial Times",
-      "source_url": "https://www.ft.com/content/trump-drops-scotch-whisky-tariffs-in-honour-of-king-charles",
-      "published_at": "2026-04-30",
-      "time": "14h",
-      "impact": "low",
-      "signals": [
-        "GBP +",
-        "SPIRITS +",
-        "TRADE ?"
+        "JPY +",
+        "USD -",
+        "INTERVENTION +"
       ],
       "confidence": 78
     }
-  ],
-  "market_updated_at": "2026-05-02T07:16:24.000Z"
+  ]
 }
