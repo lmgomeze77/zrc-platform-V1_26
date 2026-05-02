@@ -3,80 +3,80 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1726",
+      "value": "1.1722",
       "change": "-0.05%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
       "value": "17781.00",
-      "change": "0.78%",
+      "change": "+0.78%",
       "up": true
     },
     {
       "symbol": "BRENT crude",
-      "value": "108.17",
-      "change": "-2.02%",
+      "value": "108.11",
+      "change": "-3.62%",
       "up": false
     },
     {
       "symbol": "WTI crude",
-      "value": "102.36",
+      "value": "101.94",
       "change": "-2.76%",
       "up": false
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4612.50",
-      "change": "-0.22%",
+      "value": "4648.72",
+      "change": "-0.16%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "78214.30",
-      "change": "1.43%",
+      "value": "78210.00",
+      "change": "+1.43%",
       "up": true
     },
     {
       "symbol": "VIX",
       "value": "16.99",
-      "change": "0.59%",
+      "change": "+0.59%",
       "up": true
     },
     {
       "symbol": "US 10Y yield",
       "value": "4.39",
-      "change": "0.00%",
-      "up": false
+      "change": "+0.54%",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7230.12",
-      "change": "0.29%",
+      "value": "7236.44",
+      "change": "+0.38%",
       "up": true
     },
     {
       "symbol": "DAX 40",
       "value": "24292.00",
-      "change": "1.41%",
+      "change": "+1.41%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.86358",
-      "change": "0.15%",
-      "up": true
+      "value": "0.8638",
+      "change": "-0.94%",
+      "up": false
     },
     {
       "symbol": "DXY dollar index",
-      "value": "98.22",
-      "change": "0.17%",
+      "value": "98.23",
+      "change": "+0.17%",
       "up": true
     },
     {
       "symbol": "Natural Gas",
       "value": "2.79",
-      "change": "0.80%",
+      "change": "+0.80%",
       "up": true
     },
     {
@@ -142,5 +142,5 @@
       "confidence": 78
     }
   ],
-  "market_updated_at": "2026-05-02T18:39:06.810Z"
+  "market_updated_at": "2026-05-02T22:27:10.194Z"
 }
