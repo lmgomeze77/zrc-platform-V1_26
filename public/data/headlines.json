@@ -3,20 +3,20 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1716",
-      "change": "-0.09%",
+      "value": "1.1720",
+      "change": "-0.12%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "N/A",
-      "change": "N/A",
-      "up": null
+      "value": "17,781.00",
+      "change": "+0.78%",
+      "up": true
     },
     {
       "symbol": "BRENT crude",
       "value": "108.17",
-      "change": "-5.12%",
+      "change": "-2.02%",
       "up": false
     },
     {
@@ -27,14 +27,14 @@
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4614.95",
+      "value": "4,614.95",
       "change": "-0.15%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "78413.45",
-      "change": "+0.20%",
+      "value": "78,515.00",
+      "change": "+0.28%",
       "up": true
     },
     {
@@ -45,27 +45,27 @@
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.39%",
-      "change": "N/A",
-      "up": null
+      "value": "4.35%",
+      "change": "-10bps",
+      "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7230.12",
+      "value": "7,230.12",
       "change": "+0.29%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24292.38",
+      "value": "24,292.00",
       "change": "+1.41%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "N/A",
-      "change": "N/A",
-      "up": null
+      "value": "0.8663",
+      "change": "+0.04%",
+      "up": true
     },
     {
       "symbol": "DXY dollar index",
@@ -81,15 +81,15 @@
     },
     {
       "symbol": "Copper",
-      "value": "6.014",
-      "change": "+0.05%",
+      "value": "5.93",
+      "change": "+0.10%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.8383",
-      "change": "+0.01%",
-      "up": true
+      "value": "6.8292",
+      "change": "-0.02%",
+      "up": false
     }
   ],
   "headlines": [
@@ -142,5 +142,5 @@
       "confidence": 78
     }
   ],
-  "market_updated_at": "2026-05-03T14:40:14.525Z"
+  "market_updated_at": "2026-05-03T18:39:37.788Z"
 }
