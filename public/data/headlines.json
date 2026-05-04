@@ -4,25 +4,25 @@
     {
       "symbol": "EUR/USD",
       "value": "1.1727",
-      "change": "0.06%",
+      "change": "+0.06%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "17356.10",
-      "change": "-2.39%",
+      "value": "17004.50",
+      "change": "-2.12%",
       "up": false
     },
     {
       "symbol": "BRENT crude",
-      "value": "114.06",
-      "change": "5.45%",
+      "value": "114.44",
+      "change": "+5.80%",
       "up": true
     },
     {
       "symbol": "WTI crude",
-      "value": "101.62",
-      "change": "3.68%",
+      "value": "106.42",
+      "change": "+4.39%",
       "up": true
     },
     {
@@ -33,56 +33,56 @@
     },
     {
       "symbol": "BTC/USD",
-      "value": "79598.00",
-      "change": "0.50%",
+      "value": "79810.00",
+      "change": "+2.00%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "17.38",
-      "change": "5.03%",
+      "value": "18.24",
+      "change": "+7.36%",
       "up": true
     },
     {
       "symbol": "US 10Y yield",
       "value": "4.45",
-      "change": "0.08%",
+      "change": "+0.08%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7193.83",
-      "change": "-0.31%",
+      "value": "7200.75",
+      "change": "-0.41%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "23854.00",
-      "change": "-1.28%",
+      "value": "23715.71",
+      "change": "-1.29%",
       "up": false
     },
     {
       "symbol": "EUR/GBP",
       "value": "0.8640",
-      "change": "0.08%",
-      "up": true
+      "change": "0.00%",
+      "up": false
     },
     {
       "symbol": "DXY dollar index",
       "value": "98.43",
-      "change": "0.28%",
+      "change": "+0.28%",
       "up": true
     },
     {
       "symbol": "Natural Gas",
       "value": "2.83",
-      "change": "1.64%",
+      "change": "+1.64%",
       "up": true
     },
     {
       "symbol": "Copper",
       "value": "5.94",
-      "change": "0.17%",
+      "change": "+0.17%",
       "up": true
     },
     {
@@ -142,5 +142,5 @@
       "confidence": 78
     }
   ],
-  "market_updated_at": "2026-05-04T19:09:08.234Z"
+  "market_updated_at": "2026-05-04T22:44:32.549Z"
 }
