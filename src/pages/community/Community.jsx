@@ -11,7 +11,7 @@ const API_BASE = "https://zrc-api.onrender.com";
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300;400;500&display=swap');
 
-.ic-root { position:relative; width:100%; height:100vh; background:#06080C; color:#E8E0CC; font-family:'Cormorant',serif; overflow:hidden; }
+.ic-root { position:fixed; inset:0; width:100%; height:100vh; background:#06080C; color:#E8E0CC; font-family:'Cormorant',serif; overflow:hidden; }
 .ic-root *, .ic-root *::before, .ic-root *::after { box-sizing:border-box; margin:0; padding:0; }
 .ic-grain { position:absolute; inset:-50%; width:200%; height:200%; pointer-events:none; z-index:2; opacity:.032; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); animation:ic-grain .8s steps(1) infinite; }
 @keyframes ic-grain { 0%,100%{transform:translate(0,0)} 10%{transform:translate(-2%,-3%)} 20%{transform:translate(3%,1%)} 30%{transform:translate(-1%,4%)} 40%{transform:translate(4%,-2%)} 50%{transform:translate(-3%,2%)} 60%{transform:translate(2%,-4%)} 70%{transform:translate(-4%,1%)} 80%{transform:translate(1%,3%)} 90%{transform:translate(3%,-1%)} }
@@ -31,7 +31,7 @@ const css = `
 .ic-vert { position:absolute; top:50%; font-family:'Cormorant SC',serif; font-size:10px; letter-spacing:.45em; color:rgba(232,224,204,.1); z-index:4; opacity:0; animation:ic-appear 1s ease forwards 4.1s; }
 .ic-vert-l { left:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%) rotate(180deg); }
 .ic-vert-r { right:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%); }
-.ic-stage { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:20; padding:80px 40px; }
+.ic-stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:20; padding:80px 40px; }
 .ic-center { text-align:center; position:relative; }
 .ic-center::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:500px; height:500px; border:1px solid rgba(184,152,42,.04); border-radius:50%; pointer-events:none; }
 .ic-center::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:340px; height:340px; border:1px solid rgba(184,152,42,.035); border-radius:50%; pointer-events:none; }
@@ -78,7 +78,7 @@ export default function Community({ lang = "es" }) {
   const [gateMsg, setGateMsg]   = useState("");
   const [memberEmail, setMemberEmail] = useState("");
   const [showApply, setShowApply] = useState(false);
-  const [applyName, setApplyName] = useState("");
+  const [applyForm, setApplyForm] = useState({name:"",company:"",role:"",reason:""});
   const [applyDone, setApplyDone] = useState(false);
   const [applying, setApplying] = useState(false);
 
@@ -98,7 +98,12 @@ export default function Community({ lang = "es" }) {
       pendingMsg:"Su solicitud está pendiente de aprobación.",
       noneMsg:"Este email no tiene acceso.",
       applyLabel:"Solicitar acceso",
-      applyName:"Su nombre (opcional)",
+      applyFormTitle:"Solicitud de acceso",
+      applyName:"Nombre completo",
+      applyCompany:"Empresa / Institución",
+      applyRole:"Cargo",
+      applyReason:"¿Por qué le interesa el Inner Circle?",
+      applyNameOld:"Su nombre (opcional)",
       applyBtn:"Enviar solicitud",
       applySent:"Solicitud recibida. Le contactaremos pronto.",
       applyExisting:"Ya existe una solicitud para este email.",
@@ -117,7 +122,12 @@ export default function Community({ lang = "es" }) {
       pendingMsg:"Your application is pending approval.",
       noneMsg:"This email does not have access.",
       applyLabel:"Request access",
-      applyName:"Your name (optional)",
+      applyFormTitle:"Access request",
+      applyName:"Full name",
+      applyCompany:"Company / Institution",
+      applyRole:"Role / Position",
+      applyReason:"Why are you interested in the Inner Circle?",
+      applyNameOld:"Your name (optional)",
       applyBtn:"Submit request",
       applySent:"Request received. We will be in touch.",
       applyExisting:"A pending request already exists for this email.",
@@ -179,7 +189,7 @@ export default function Community({ lang = "es" }) {
     try {
       const res = await fetch(API_BASE + "/api/inner-circle/apply", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.toLowerCase().trim(), name: applyName.trim() }),
+        body: JSON.stringify({ email: email.toLowerCase().trim(), name: applyForm.name.trim(), company: applyForm.company.trim(), role: applyForm.role.trim(), reason: applyForm.reason.trim() }),
       });
       const data = await res.json();
       if (data.ok) {
