@@ -2,6 +2,7 @@
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
 import FinancialIntelligenceSystem from "./pages/labs/FinancialIntelligenceSystem";
+import Community from "./pages/community/Community";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.3
