@@ -81,6 +81,7 @@ export default function Community({ lang = "es" }) {
   const [applyForm, setApplyForm] = useState({firstName:"",lastName:"",company:"",profile:"",aum:"",reason:""});
   const [applyDone, setApplyDone] = useState(false);
   const [applying, setApplying] = useState(false);
+  const [accessStatus, setAccessStatus] = useState(""); // "none"|"pending"|"approved"
 
   const cursorRef = useRef(null);
   const ringRef   = useRef(null);
@@ -95,7 +96,8 @@ export default function Community({ lang = "es" }) {
       gateLabel:"Membresía por invitación",
       gatePlaceholder:"Su email...",
       gateBtn:"Acceder",
-      pendingMsg:"Su solicitud está pendiente de aprobación.",
+      pendingMsg:"Su solicitud está pendiente. Puede completar o actualizar sus datos.",
+      pendingUpdate:"Actualizar solicitud",
       noneMsg:"Este email no tiene acceso.",
       applyLabel:"Solicitar acceso",
       applyFormTitle:"Solicitud de acceso",
@@ -197,7 +199,7 @@ export default function Community({ lang = "es" }) {
     try {
       const res = await fetch(API_BASE + "/api/inner-circle/apply", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.toLowerCase().trim(), name: (applyForm.firstName+" "+applyForm.lastName).trim(), company: applyForm.company.trim(), role: applyForm.profile, aum: applyForm.aum, reason: applyForm.reason.trim() }),
+        body: JSON.stringify({ email: email.toLowerCase().trim(), name: (applyForm.firstName+" "+applyForm.lastName).trim(), company: applyForm.company.trim(), role: applyForm.profile, aum: applyForm.aum, reason: applyForm.reason.trim(), _update: accessStatus === 'pending' }),,
       });
       const data = await res.json();
       if (data.ok) {
@@ -311,7 +313,7 @@ export default function Community({ lang = "es" }) {
                 </button>
               </div>
               {gateMsg && <div className="ic-gate-msg">{gateMsg}</div>}
-              {!showApply && !applyDone && gateMsg === tx.noneMsg && (
+              {!showApply && !applyDone && (accessStatus === "none" || accessStatus === "pending") && gateMsg !== "" && (
                 <button className="ic-check-btn"
                   onClick={() => setShowApply(true)}
                   style={{marginTop:12,display:"block",margin:"12px auto 0"}}>
@@ -394,7 +396,7 @@ export default function Community({ lang = "es" }) {
                     <div style={{textAlign:"center",paddingTop:4}}>
                       <button className="ic-check-btn" onClick={applyAccess}
                         disabled={applying || !applyForm.firstName.trim() || !applyForm.profile}>
-                        {applying ? "..." : tx.applyBtn}
+                        {applying ? "..." : (accessStatus === "pending" ? (tx.pendingUpdate || tx.applyBtn) : tx.applyBtn)}
                       </button>
                     </div>
                   </div>
