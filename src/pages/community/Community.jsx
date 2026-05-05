@@ -47,11 +47,11 @@ const css = `
 .ic-access-label { font-family:'Cormorant SC',serif; font-size:8.5px; letter-spacing:.5em; color:rgba(184,152,42,.45); margin-bottom:14px; }
 
 /* Gate / email input */
-.ic-gate { margin-top:32px; opacity:0; animation:ic-appear 1.2s ease forwards 3.2s; }
+.ic-gate { cursor:auto; margin-top:32px; opacity:0; animation:ic-appear 1.2s ease forwards 3.2s; }
 .ic-input-row { display:flex; gap:0; max-width:360px; margin:0 auto; border-bottom:1px solid rgba(184,152,42,.35); padding-bottom:6px; }
-.ic-email-input { flex:1; background:transparent; border:none; outline:none; font-family:'Cormorant',serif; font-size:17px; font-style:italic; color:#E8E0CC; letter-spacing:.02em; padding:4px 0; }
+.ic-email-input { flex:1; background:transparent; border:none; outline:none; font-family:'Cormorant',serif; font-size:17px; font-style:italic; color:#E8E0CC; letter-spacing:.02em; padding:4px 0; cursor:text; }
 .ic-email-input::placeholder { color:rgba(232,224,204,.3); }
-.ic-check-btn { background:none; border:none; cursor:pointer; font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.35em; color:#B8982A; padding:4px 0 4px 16px; transition:color .3s; white-space:nowrap; }
+.ic-check-btn { cursor:pointer; background:none; border:none; cursor:pointer; font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.35em; color:#B8982A; padding:4px 0 4px 16px; transition:color .3s; white-space:nowrap; }
 .ic-check-btn:hover { color:#D4B050; }
 .ic-check-btn:disabled { opacity:.4; cursor:default; }
 .ic-gate-msg { margin-top:14px; font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.3em; color:rgba(184,152,42,.55); }
