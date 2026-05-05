@@ -11,7 +11,7 @@ const API_BASE = "https://zrc-api.onrender.com";
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300;400;500&display=swap');
 
-.ic-root { position:relative; width:100%; min-height:100vh; background:#06080C; color:#E8E0CC; font-family:'Cormorant',serif; overflow:hidden; }
+.ic-root { position:relative; width:100%; height:100vh; background:#06080C; color:#E8E0CC; font-family:'Cormorant',serif; overflow:hidden; }
 .ic-root *, .ic-root *::before, .ic-root *::after { box-sizing:border-box; margin:0; padding:0; }
 .ic-grain { position:absolute; inset:-50%; width:200%; height:200%; pointer-events:none; z-index:2; opacity:.032; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); animation:ic-grain .8s steps(1) infinite; }
 @keyframes ic-grain { 0%,100%{transform:translate(0,0)} 10%{transform:translate(-2%,-3%)} 20%{transform:translate(3%,1%)} 30%{transform:translate(-1%,4%)} 40%{transform:translate(4%,-2%)} 50%{transform:translate(-3%,2%)} 60%{transform:translate(2%,-4%)} 70%{transform:translate(-4%,1%)} 80%{transform:translate(1%,3%)} 90%{transform:translate(3%,-1%)} }
@@ -40,7 +40,7 @@ const css = `
 .ic-tw { display:block; opacity:0; transform:translateY(38px); }
 .ic-tw:nth-child(1) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.0s; }
 .ic-tw:nth-child(2) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.3s; }
-.ic-tw:nth-child(3) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.6s; color:transparent; -webkit-text-stroke:1px rgba(232,224,204,.22); }
+.ic-tw:nth-child(3) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.6s; color:rgba(232,224,204,.55); }
 .ic-rule-gold { width:38px; height:1px; background:#B8982A; margin:38px auto; opacity:0; animation:ic-appear 1s ease forwards 2.4s; }
 .ic-tagline { font-family:'Cormorant',serif; font-size:clamp(15px,1.9vw,19px); font-weight:300; font-style:italic; color:rgba(232,224,204,0.42); letter-spacing:.04em; line-height:1.75; opacity:0; animation:ic-appear 1.4s ease forwards 2.7s; max-width:420px; margin:0 auto; }
 .ic-access { margin-top:50px; opacity:0; animation:ic-appear 1.2s ease forwards 3.2s; }
