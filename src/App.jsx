@@ -1243,45 +1243,7 @@ const Academia = ({ lang }) => {
   );
 };
 
-const Community = ({ lang }) => {
-  const t = T[lang].comm;
-  const [modal, setModal] = useState(false);
 
-  return (
-    <Sec id="community">
-      <SH label={t.label} title={t.title} sub={t.sub} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 16, alignItems: "start" }}>
-        <FadeIn>
-          <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            {THREADS.map((th) => (
-              <div key={th.id} style={{ padding: "18px 20px", background: C.surface, border: `1px solid ${C.border}` }}>
-                <div style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "center" }}>
-                  <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold }}>{th.author}</span>
-                  <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>· {th.role}</span>
-                </div>
-                <p style={{ fontFamily: F.body, fontSize: 13, color: C.text, margin: "0 0 10px", lineHeight: 1.45, fontWeight: 400 }}>{th.title[lang]}</p>
-                <div style={{ display: "flex", gap: 16 }}>
-                  <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{th.replies} {lang === "es" ? "respuestas" : "replies"}</span>
-                  <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{th.views} {lang === "es" ? "vistas" : "views"}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </FadeIn>
-        <FadeIn delay={0.15}>
-          <div style={{ padding: "28px 24px", background: C.surface, border: `1px solid ${C.goldBorder}` }}>
-            <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.15em", marginBottom: 16 }}>{t.applyTitle.toUpperCase()}</div>
-            <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, marginBottom: 24, fontWeight: 300 }}>{t.applyText}</p>
-            <button onClick={() => setModal(true)} style={{ width: "100%", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", padding: "12px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>{t.applyCta}</button>
-          </div>
-        </FadeIn>
-      </div>
-      <Modal open={modal} onClose={() => setModal(false)} title={T[lang].form.applyTitle}>
-        <ContactForm context="Inner Circle Application" onClose={() => setModal(false)} lang={lang} />
-      </Modal>
-    </Sec>
-  );
-};
 
 const Footer = ({ lang }) => {
   const t = T[lang].footer;
