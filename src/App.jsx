@@ -1297,7 +1297,7 @@ const ZRCPlatform = () => {
       <GoldDivider />
       <Academia lang={lang} />
       <GoldDivider />
-      <Community lang={lang} />
+      <div id="community"><Community lang={lang} /></div>
       <Footer lang={lang} />
     </AuthProvider>
   );
