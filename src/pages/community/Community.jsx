@@ -326,7 +326,7 @@ export default function Community({ lang = "es" }) {
                   backdropFilter:"blur(12px)"}}>
                   {/* Header */}
                   <div style={{padding:"16px 24px 12px",borderBottom:"1px solid rgba(184,152,42,.15)",textAlign:"center"}}>
-                    <div style={{fontFamily:"'Cormorant SC',serif",fontSize:10,letterSpacing:".45em",color:"rgba(184,152,42,.85)"}}>
+                    <div style={{fontFamily:"'Cormorant SC',serif",fontSize:12,letterSpacing:".4em",color:"rgba(184,152,42,.9)"}}>
                       {tx.applyFormTitle}
                     </div>
                   </div>
@@ -336,7 +336,7 @@ export default function Community({ lang = "es" }) {
                     <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:14}}>
                       {[["firstName",tx.applyFirstName,true],["lastName",tx.applyLastName,true]].map(([key,label,req]) => (
                         <div key={key}>
-                          <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{label}{req?" *":""}</div>
+                          <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".25em",color:"rgba(184,152,42,.65)",marginBottom:5}}>{label}{req?" *":""}</div>
                           <input type="text" value={applyForm[key]}
                             onChange={e => setApplyForm(prev => ({...prev,[key]:e.target.value}))}
                             style={{background:"transparent",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
@@ -348,7 +348,7 @@ export default function Community({ lang = "es" }) {
                     </div>
                     {/* Company */}
                     <div style={{marginBottom:14}}>
-                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{tx.applyCompany}</div>
+                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".25em",color:"rgba(184,152,42,.65)",marginBottom:5}}>{tx.applyCompany}</div>
                       <input type="text" value={applyForm.company}
                         onChange={e => setApplyForm(prev => ({...prev,company:e.target.value}))}
                         style={{background:"transparent",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
@@ -358,7 +358,7 @@ export default function Community({ lang = "es" }) {
                     </div>
                     {/* Profile dropdown */}
                     <div style={{marginBottom:14}}>
-                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{tx.applyProfile} *</div>
+                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".25em",color:"rgba(184,152,42,.65)",marginBottom:5}}>{tx.applyProfile} *</div>
                       <select value={applyForm.profile}
                         onChange={e => setApplyForm(prev => ({...prev,profile:e.target.value}))}
                         style={{background:"rgba(10,22,40,0.9)",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
@@ -371,7 +371,7 @@ export default function Community({ lang = "es" }) {
                     </div>
                     {/* AUM dropdown */}
                     <div style={{marginBottom:14}}>
-                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{tx.applyAUM}</div>
+                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".25em",color:"rgba(184,152,42,.65)",marginBottom:5}}>{tx.applyAUM}</div>
                       <select value={applyForm.aum}
                         onChange={e => setApplyForm(prev => ({...prev,aum:e.target.value}))}
                         style={{background:"rgba(10,22,40,0.9)",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
@@ -384,7 +384,7 @@ export default function Community({ lang = "es" }) {
                     </div>
                     {/* Reason */}
                     <div style={{marginBottom:18}}>
-                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{tx.applyReason}</div>
+                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".25em",color:"rgba(184,152,42,.65)",marginBottom:5}}>{tx.applyReason}</div>
                       <textarea value={applyForm.reason} rows={2}
                         onChange={e => setApplyForm(prev => ({...prev,reason:e.target.value}))}
                         style={{background:"transparent",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
