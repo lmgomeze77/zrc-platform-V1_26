@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
+import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
 import FinancialIntelligenceSystem from "./pages/labs/FinancialIntelligenceSystem";
@@ -701,7 +701,7 @@ const MarketTicker = ({ lang }) => {
 
   if (data.length === 0) {
     return (
-      <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, height: 36, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, height: 40, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em" }}>LOADING MARKET DATA…</span>
       </div>
     );
@@ -710,10 +710,10 @@ const MarketTicker = ({ lang }) => {
   const doubled = [...data, ...data];
 
   return (
-    <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflow: "hidden", position: "relative", height: 36 }}>
+    <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflow: "hidden", position: "relative", height: 40 }}>
       <div style={{ display: "flex", alignItems: "center", position: "absolute", whiteSpace: "nowrap", animation: "tickerScroll 60s linear infinite" }}>
         {doubled.map((m, i) => (
-          <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "0 24px", height: 36 }}>
+          <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "0 28px", height: 40 }}>
             <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.05em" }}>{m.s}</span>
             <span style={{ fontFamily: F.mono, fontSize: 11, color: C.text, fontWeight: 500 }}>{m.v}</span>
             <span style={{ fontFamily: F.mono, fontSize: 10, color: m.up ? C.green : C.red, fontWeight: 500 }}>{m.c}</span>
@@ -744,7 +744,7 @@ const Nav = ({ lang, setLang, onNav }) => {
 
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: scrolled ? "rgba(9,9,11,0.92)" : "transparent", backdropFilter: scrolled ? "blur(24px)" : "none", borderBottom: scrolled ? `1px solid ${C.border}` : "1px solid transparent", transition: "all 0.5s" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 56, padding: "0 clamp(16px,3vw,32px)" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 66, padding: "0 clamp(20px,3vw,40px)" }}>
         <div onClick={() => onNav("hero")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}>
           <div style={{ width: 24, height: 24, border: `1.5px solid ${C.gold}`, transform: "rotate(45deg)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{ width: 6, height: 6, background: C.gold, transform: "rotate(-45deg)" }} />
@@ -752,17 +752,17 @@ const Nav = ({ lang, setLang, onNav }) => {
           <span style={{ fontFamily: F.display, fontSize: 15, color: C.text, fontWeight: 400, letterSpacing: "0.12em" }}>ZRC</span>
         </div>
 
-        <div style={{ display: "flex", gap: 16, alignItems: "center", overflowX: "auto" }}>
+        <div style={{ display: "flex", gap: 24, alignItems: "center", overflowX: "auto" }}>
           {T[lang].nav.map((label, i) => (
             <button key={ids[i]} onClick={() => onNav(ids[i])}
-              style={{ fontFamily: F.mono, fontSize: 9.5, letterSpacing: "0.08em", color: C.textMuted, background: "none", border: "none", cursor: "pointer", whiteSpace: "nowrap", padding: "4px 0", transition: "color 0.3s" }}
+              style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.1em", color: C.textMuted, background: "none", border: "none", cursor: "pointer", whiteSpace: "nowrap", padding: "6px 0", transition: "color 0.3s" }}
               onMouseEnter={(e) => { e.target.style.color = C.gold; }}
               onMouseLeave={(e) => { e.target.style.color = C.textMuted; }}
             >
               {label.toUpperCase()}
             </button>
           ))}
-          <button onClick={() => setLang(lang === "es" ? "en" : "es")} style={{ fontFamily: F.mono, fontSize: 9, padding: "3px 10px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 600 }}>
+          <button onClick={() => setLang(lang === "es" ? "en" : "es")} style={{ fontFamily: F.mono, fontSize: 10, padding: "5px 14px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 600 }}>
             {lang === "es" ? "EN" : "ES"}
           </button>
           {user ? (
