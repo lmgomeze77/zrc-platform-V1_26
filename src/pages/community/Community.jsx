@@ -162,8 +162,29 @@ export default function Community({ lang = "es" }) {
     return (
       <>
         <style>{css}</style>
-        <div style={{position:"relative"}}>
-          <button className="ic-back" onClick={() => setView("landing")}>{tx.backLabel}</button>
+        <div style={{
+          position:"fixed",
+          inset:0,
+          overflowY:"auto",
+          zIndex:100,
+          background:"#E8E4DC"
+        }}>
+          <button
+            className="ic-back"
+            onClick={() => setView("landing")}
+            style={{
+              position:"fixed",
+              top:20,
+              left:20,
+              zIndex:200,
+              background:"rgba(10,22,40,0.85)",
+              padding:"8px 18px",
+              borderRadius:2,
+              backdropFilter:"blur(6px)"
+            }}
+          >
+            {tx.backLabel}
+          </button>
           <EditionZero />
         </div>
       </>
