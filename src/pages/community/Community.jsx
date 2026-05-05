@@ -31,7 +31,7 @@ const css = `
 .ic-vert { position:absolute; top:50%; font-family:'Cormorant SC',serif; font-size:8px; letter-spacing:.45em; color:rgba(232,224,204,.1); z-index:4; opacity:0; animation:ic-appear 1s ease forwards 4.1s; }
 .ic-vert-l { left:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%) rotate(180deg); }
 .ic-vert-r { right:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%); }
-.ic-stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:3; padding:80px 40px; }
+.ic-stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:20; padding:80px 40px; }
 .ic-center { text-align:center; position:relative; }
 .ic-center::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:500px; height:500px; border:1px solid rgba(184,152,42,.04); border-radius:50%; pointer-events:none; }
 .ic-center::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:340px; height:340px; border:1px solid rgba(184,152,42,.035); border-radius:50%; pointer-events:none; }
@@ -47,8 +47,8 @@ const css = `
 .ic-access-label { font-family:'Cormorant SC',serif; font-size:8.5px; letter-spacing:.5em; color:rgba(184,152,42,.45); margin-bottom:14px; }
 
 /* Gate / email input */
-.ic-gate { cursor:auto; margin-top:32px; opacity:0; animation:ic-appear 1.2s ease forwards 3.2s; }
-.ic-input-row { display:flex; gap:0; max-width:360px; margin:0 auto; border-bottom:1px solid rgba(184,152,42,.35); padding-bottom:6px; }
+.ic-gate { cursor:auto; margin-top:32px; opacity:0; animation:ic-appear 1.2s ease forwards 1.0s; pointer-events:auto; position:relative; z-index:25; }
+.ic-input-row { display:flex; gap:0; max-width:420px; margin:0 auto; border-bottom:1px solid rgba(184,152,42,.5); padding-bottom:8px; position:relative; z-index:26; cursor:text; }
 .ic-email-input { flex:1; background:transparent; border:none; outline:none; font-family:'Cormorant',serif; font-size:17px; font-style:italic; color:#E8E0CC; letter-spacing:.02em; padding:4px 0; cursor:text; }
 .ic-email-input::placeholder { color:rgba(232,224,204,.3); }
 .ic-check-btn { cursor:pointer; background:none; border:none; cursor:pointer; font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.35em; color:#B8982A; padding:4px 0 4px 16px; transition:color .3s; white-space:nowrap; }
