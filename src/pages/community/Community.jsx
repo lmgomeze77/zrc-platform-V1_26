@@ -18,8 +18,8 @@ const css = `
 .ic-vig { position:absolute; inset:0; background:radial-gradient(ellipse 72% 72% at 50% 50%,transparent 0%,rgba(6,8,12,.82) 100%); pointer-events:none; z-index:1; }
 .ic-light { position:absolute; top:-25vh; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(ellipse at center,rgba(184,152,42,.045) 0%,transparent 65%); pointer-events:none; z-index:0; }
 .ic-rule-top,.ic-rule-bottom { position:absolute; left:44px; right:44px; height:1px; background:linear-gradient(90deg,transparent,rgba(184,152,42,.18),transparent); z-index:5; opacity:0; animation:ic-appear 1s ease forwards 3.6s; }
-.ic-rule-top { top:70px; } .ic-rule-bottom { bottom:70px; }
-.ic-topbar { position:absolute; top:0; left:0; right:0; padding:24px 48px; display:flex; justify-content:space-between; align-items:center; z-index:10; opacity:0; animation:ic-appear 1.2s ease forwards 3.8s; }
+.ic-rule-top { top:82px; } .ic-rule-bottom { bottom:70px; }
+.ic-topbar { position:absolute; top:0; left:0; right:0; padding:28px 48px; display:flex; justify-content:space-between; align-items:center; z-index:10; opacity:0; animation:ic-appear 1.2s ease forwards 3.8s; }
 .ic-tb-brand { font-family:'Cormorant SC',serif; font-size:10px; font-weight:300; letter-spacing:.38em; color:rgba(232,224,204,0.42); }
 .ic-tb-right { font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.3em; color:rgba(184,152,42,.45); }
 .ic-bottombar { position:absolute; bottom:0; left:0; right:0; padding:24px 48px; display:flex; justify-content:space-between; align-items:flex-end; z-index:10; opacity:0; animation:ic-appear 1.2s ease forwards 4.2s; }
@@ -31,20 +31,23 @@ const css = `
 .ic-vert { position:absolute; top:50%; font-family:'Cormorant SC',serif; font-size:8px; letter-spacing:.45em; color:rgba(232,224,204,.1); z-index:4; opacity:0; animation:ic-appear 1s ease forwards 4.1s; }
 .ic-vert-l { left:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%) rotate(180deg); }
 .ic-vert-r { right:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%); }
-.ic-stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:20; padding:80px 40px; }
+.ic-stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:20; padding:80px 40px; overflow-y:auto; }
 .ic-center { text-align:center; position:relative; }
 .ic-center::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:500px; height:500px; border:1px solid rgba(184,152,42,.04); border-radius:50%; pointer-events:none; }
 .ic-center::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:340px; height:340px; border:1px solid rgba(184,152,42,.035); border-radius:50%; pointer-events:none; }
 .ic-eyebrow { display:block; font-family:'Cormorant SC',serif; font-size:10px; font-weight:300; letter-spacing:.55em; color:#B8982A; opacity:0; animation:ic-appear 1.4s ease forwards .5s; margin-bottom:34px; }
 .ic-title { display:block; font-family:'Playfair Display',serif; font-size:clamp(62px,10vw,128px); font-weight:400; font-style:italic; line-height:.9; letter-spacing:-.025em; color:#E8E0CC; }
 .ic-tw { display:block; opacity:0; transform:translateY(38px); }
+ .ic-landing-mode .ic-title { font-size:clamp(44px,7vw,90px); line-height:.88; }
+ .ic-landing-mode .ic-tagline { font-size:clamp(13px,1.4vw,17px); margin-top:14px; }
+ .ic-landing-mode .ic-center { padding-bottom:0; }
 .ic-tw:nth-child(1) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.0s; }
 .ic-tw:nth-child(2) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.3s; }
 .ic-tw:nth-child(3) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.6s; color:rgba(232,224,204,.55); }
 .ic-rule-gold { width:38px; height:1px; background:#B8982A; margin:38px auto; opacity:0; animation:ic-appear 1s ease forwards 2.4s; }
 .ic-tagline { font-family:'Cormorant',serif; font-size:clamp(15px,1.9vw,19px); font-weight:300; font-style:italic; color:rgba(232,224,204,0.42); letter-spacing:.04em; line-height:1.75; opacity:0; animation:ic-appear 1.4s ease forwards 2.7s; max-width:420px; margin:0 auto; }
-.ic-access { margin-top:50px; opacity:0; animation:ic-appear 1.2s ease forwards 3.2s; }
-.ic-access-label { font-family:'Cormorant SC',serif; font-size:8.5px; letter-spacing:.5em; color:rgba(184,152,42,.45); margin-bottom:14px; }
+.ic-access { margin-top:32px; opacity:0; animation:ic-appear 0.8s ease forwards 0.6s; }
+.ic-access-label { font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.5em; color:rgba(184,152,42,.65); margin-bottom:16px; }
 
 /* Gate / email input */
 .ic-gate { cursor:auto; margin-top:32px; opacity:0; animation:ic-appear 1.2s ease forwards 1.0s; pointer-events:auto; position:relative; z-index:25; }
@@ -202,7 +205,7 @@ export default function Community({ lang = "es" }) {
         <div className="ic-rule-top" /><div className="ic-rule-bottom" />
         <div className="ic-topbar"><div className="ic-tb-brand">{tx.brand}</div><div className="ic-tb-right">{tx.location}</div></div>
         <div className="ic-stage">
-          <div className="ic-center">
+          <div className={`ic-center${memberEmail ? " ic-landing-mode" : ""}`}>
             <span className="ic-eyebrow">{tx.eyebrow}</span>
             <span className="ic-title">
               <span className="ic-tw">{tx.the}</span>
@@ -253,7 +256,7 @@ export default function Community({ lang = "es" }) {
 
   // ── LANDING VIEW (approved member) ─────────────────────────
   return chrome(
-    <div className="ic-access" style={{marginTop:50}}>
+    <div className="ic-access">
       <div className="ic-access-label">
         {lang === "es" ? "Bienvenido de nuevo" : "Welcome back"}
       </div>
