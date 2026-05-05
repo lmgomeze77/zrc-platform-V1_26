@@ -322,10 +322,10 @@ export default function Community({ lang = "es" }) {
               )}
               {showApply && !applyDone && (
                 <div style={{marginTop:20,width:"100%",maxWidth:400,margin:"20px auto 0",
-                  background:"rgba(6,8,12,0.85)",border:"1px solid rgba(184,152,42,.3)",
-                  backdropFilter:"blur(12px)"}}>
+                  background:"rgba(4,6,10,0.96)",border:"1px solid rgba(184,152,42,.4)",
+                  backdropFilter:"blur(20px)",position:"relative",zIndex:50}}>
                   {/* Header */}
-                  <div style={{padding:"16px 24px 12px",borderBottom:"1px solid rgba(184,152,42,.15)",textAlign:"center"}}>
+                  <div style={{padding:"16px 24px 12px",borderBottom:"1px solid rgba(184,152,42,.25)",textAlign:"center",marginBottom:4}}>
                     <div style={{fontFamily:"'Cormorant SC',serif",fontSize:12,letterSpacing:".4em",color:"rgba(184,152,42,.9)"}}>
                       {tx.applyFormTitle}
                     </div>
@@ -351,9 +351,9 @@ export default function Community({ lang = "es" }) {
                       <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".25em",color:"rgba(184,152,42,.65)",marginBottom:5}}>{tx.applyCompany}</div>
                       <input type="text" value={applyForm.company}
                         onChange={e => setApplyForm(prev => ({...prev,company:e.target.value}))}
-                        style={{background:"transparent",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
-                          width:"100%",padding:"4px 0",color:"#E8E0CC",fontFamily:"'Cormorant',serif",
-                          fontSize:14,outline:"none",cursor:"text"}}
+                        style={{background:"rgba(255,255,255,0.04)",border:"none",borderBottom:"1px solid rgba(184,152,42,.4)",
+                          width:"100%",padding:"6px 4px",color:"#F0EAD8",fontFamily:"'Cormorant',serif",
+                          fontSize:16,outline:"none",cursor:"text"}}
                       />
                     </div>
                     {/* Profile dropdown */}
@@ -361,10 +361,10 @@ export default function Community({ lang = "es" }) {
                       <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".25em",color:"rgba(184,152,42,.65)",marginBottom:5}}>{tx.applyProfile} *</div>
                       <select value={applyForm.profile}
                         onChange={e => setApplyForm(prev => ({...prev,profile:e.target.value}))}
-                        style={{background:"rgba(10,22,40,0.9)",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
-                          width:"100%",padding:"4px 0",color:applyForm.profile?"#E8E0CC":"rgba(232,224,204,.35)",
-                          fontFamily:"'Cormorant',serif",fontSize:14,outline:"none",cursor:"pointer",
-                          appearance:"none",WebkitAppearance:"none"}}>
+                        style={{background:"rgba(10,18,32,0.95)",border:"1px solid rgba(184,152,42,.3)",
+                          width:"100%",padding:"8px 10px",color:"#E8E0CC",
+                          fontFamily:"'Cormorant',serif",fontSize:15,outline:"none",cursor:"pointer",
+                          appearance:"none",WebkitAppearance:"none",borderRadius:2}}>
                         <option value="" disabled style={{color:"#555"}}>—</option>
                         {tx.applyProfileOpts.map(o => <option key={o} value={o} style={{background:"#0A1628",color:"#E8E0CC"}}>{o}</option>)}
                       </select>
@@ -374,10 +374,10 @@ export default function Community({ lang = "es" }) {
                       <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".25em",color:"rgba(184,152,42,.65)",marginBottom:5}}>{tx.applyAUM}</div>
                       <select value={applyForm.aum}
                         onChange={e => setApplyForm(prev => ({...prev,aum:e.target.value}))}
-                        style={{background:"rgba(10,22,40,0.9)",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
-                          width:"100%",padding:"4px 0",color:applyForm.aum?"#E8E0CC":"rgba(232,224,204,.35)",
-                          fontFamily:"'Cormorant',serif",fontSize:14,outline:"none",cursor:"pointer",
-                          appearance:"none",WebkitAppearance:"none"}}>
+                        style={{background:"rgba(10,18,32,0.95)",border:"1px solid rgba(184,152,42,.3)",
+                          width:"100%",padding:"8px 10px",color:"#E8E0CC",
+                          fontFamily:"'Cormorant',serif",fontSize:15,outline:"none",cursor:"pointer",
+                          appearance:"none",WebkitAppearance:"none",borderRadius:2}}>
                         <option value="" disabled style={{color:"#555"}}>—</option>
                         {tx.applyAUMOpts.map(o => <option key={o} value={o} style={{background:"#0A1628",color:"#E8E0CC"}}>{o}</option>)}
                       </select>
@@ -393,7 +393,7 @@ export default function Community({ lang = "es" }) {
                       />
                     </div>
                     {/* Submit */}
-                    <div style={{textAlign:"center",paddingTop:4}}>
+                    <div style={{textAlign:"center",paddingTop:8,borderTop:"1px solid rgba(184,152,42,.15)",marginTop:4}}>
                       <button className="ic-check-btn" onClick={applyAccess}
                         disabled={applying || !applyForm.firstName.trim() || !applyForm.profile}>
                         {applying ? "..." : (accessStatus === "pending" ? (tx.pendingUpdate || tx.applyBtn) : tx.applyBtn)}
