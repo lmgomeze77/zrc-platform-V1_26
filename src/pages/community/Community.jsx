@@ -282,7 +282,29 @@ export default function Community({ lang = "es" }) {
           </button>
         </div>
         {gateMsg && <div className="ic-gate-msg">{gateMsg}</div>}
-      </div>
+      {!showApply && !applyDone && gateMsg === tx.noneMsg && (
+        <button className="ic-check-btn"
+          onClick={() => setShowApply(true)}
+          style={{marginTop:12,display:"block",margin:"12px auto 0"}}>
+          {tx.applyLabel}
+        </button>
+      )}
+      {showApply && !applyDone && (
+        <div style={{marginTop:14,textAlign:"center"}}>
+          <input className="ic-email-input" type="text"
+            placeholder={tx.applyName}
+            value={applyName}
+            onChange={e => setApplyName(e.target.value)}
+            style={{display:"block",width:"100%",marginBottom:10,
+              borderBottom:"1px solid rgba(184,152,42,.35)",
+              paddingBottom:4,cursor:"text"}}
+          />
+          <button className="ic-check-btn" onClick={applyAccess} disabled={applying}>
+            {applying ? "..." : tx.applyBtn}
+          </button>
+        </div>
+      )}
+    </div></div>
     );
   }
 
