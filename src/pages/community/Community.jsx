@@ -31,7 +31,7 @@ const css = `
 .ic-vert { position:absolute; top:50%; font-family:'Cormorant SC',serif; font-size:10px; letter-spacing:.45em; color:rgba(232,224,204,.1); z-index:4; opacity:0; animation:ic-appear 1s ease forwards 4.1s; }
 .ic-vert-l { left:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%) rotate(180deg); }
 .ic-vert-r { right:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%); }
-.ic-stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:20; padding:80px 40px; }
+.ic-stage { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; z-index:20; padding:100px 40px 40px; }
 .ic-center { text-align:center; position:relative; }
 .ic-center::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:500px; height:500px; border:1px solid rgba(184,152,42,.04); border-radius:50%; pointer-events:none; }
 .ic-center::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:340px; height:340px; border:1px solid rgba(184,152,42,.035); border-radius:50%; pointer-events:none; }
@@ -40,7 +40,7 @@ const css = `
 .ic-tw { display:block; opacity:0; transform:translateY(38px); }
  .ic-landing-mode .ic-title { font-size:clamp(44px,7vw,90px); line-height:.88; }
  .ic-landing-mode .ic-tagline { font-size:clamp(13px,1.4vw,17px); margin-top:14px; }
- .ic-landing-mode .ic-center { padding-bottom:0; }
+ .ic-landing-mode .ic-center { padding-bottom:0; } .ic-center { padding-bottom:20px; }
 .ic-tw:nth-child(1) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.0s; }
 .ic-tw:nth-child(2) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.3s; }
 .ic-tw:nth-child(3) { animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.6s; color:rgba(232,224,204,.55); }
@@ -50,7 +50,7 @@ const css = `
 .ic-access-label { font-family:'Cormorant SC',serif; font-size:12px; letter-spacing:.5em; color:rgba(184,152,42,.75); margin-bottom:16px; }
 
 /* Gate / email input */
-.ic-overlay { position:absolute; bottom:0; left:0; right:0; z-index:30; display:flex; flex-direction:column; align-items:center; padding-bottom:100px; pointer-events:none; } .ic-overlay > * { pointer-events:auto; } .ic-gate { cursor:auto; margin-top:0; opacity:0; animation:ic-appear 1.2s ease forwards 1.0s; pointer-events:auto; position:relative; z-index:25; }
+.ic-overlay { position:absolute; bottom:0; left:0; right:0; z-index:30; display:flex; flex-direction:column; align-items:center; padding-bottom:80px; pointer-events:none; } .ic-overlay > * { pointer-events:auto; } .ic-gate { cursor:auto; margin-top:0; opacity:0; animation:ic-appear 1.2s ease forwards 1.0s; pointer-events:auto; position:relative; z-index:25; }
 .ic-input-row { display:flex; gap:0; max-width:420px; margin:0 auto; border-bottom:1px solid rgba(184,152,42,.5); padding-bottom:8px; position:relative; z-index:26; cursor:text; }
 .ic-email-input { flex:1; background:transparent; border:none; outline:none; font-family:'Cormorant',serif; font-size:17px; font-style:italic; color:#E8E0CC; letter-spacing:.02em; padding:4px 0; cursor:text; }
 .ic-email-input::placeholder { color:rgba(232,224,204,.3); }
@@ -274,47 +274,101 @@ export default function Community({ lang = "es" }) {
 
   // ── GATE VIEW ──────────────────────────────────────────────
   if (view === "gate") {
-    return chrome(
-      <div className="ic-overlay"><div className="ic-gate">
-        <div className="ic-access-label">{tx.gateLabel}</div>
-        <div className="ic-input-row">
-          <input
-            className="ic-email-input"
-            type="email"
-            placeholder={tx.gatePlaceholder}
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            onKeyDown={e => e.key === "Enter" && checkAccess()}
-            autoComplete="email"
-          />
-          <button className="ic-check-btn" onClick={checkAccess} disabled={checking}>
-            {checking ? "..." : tx.gateBtn}
-          </button>
+    return (
+      <>
+        <style>{css}</style>
+        <div className="ic-root">
+          <div className="ic-grain" /><div className="ic-vig" /><div className="ic-light" />
+          <div className="ic-rule-top" /><div className="ic-rule-bottom" />
+          <div className="ic-topbar"><div className="ic-tb-brand">{tx.brand}</div><div className="ic-tb-right">{tx.location}</div></div>
+          <div className="ic-stage">
+            <div className="ic-center">
+              <span className="ic-eyebrow">{tx.eyebrow}</span>
+              <span className="ic-title">
+                <span className="ic-tw">{tx.the}</span>
+                <span className="ic-tw">{tx.inner}</span>
+                <span className="ic-tw">{tx.circle}</span>
+              </span>
+            </div>
+          </div>
+          <div className="ic-overlay">
+            <div className="ic-gate">
+              <div className="ic-access-label">{tx.gateLabel}</div>
+              <div className="ic-input-row">
+                <input className="ic-email-input" type="email" placeholder={tx.gatePlaceholder}
+                  value={email} onChange={e => setEmail(e.target.value)}
+                  onKeyDown={e => e.key === "Enter" && checkAccess()} autoComplete="email" />
+                <button className="ic-check-btn" onClick={checkAccess} disabled={checking}>
+                  {checking ? "..." : tx.gateBtn}
+                </button>
+              </div>
+              {gateMsg && <div className="ic-gate-msg">{gateMsg}</div>}
+              {!showApply && !applyDone && gateMsg === tx.noneMsg && (
+                <button className="ic-check-btn"
+                  onClick={() => setShowApply(true)}
+                  style={{marginTop:12,display:"block",margin:"12px auto 0"}}>
+                  {tx.applyLabel}
+                </button>
+              )}
+              {showApply && !applyDone && (
+                <div style={{marginTop:20,textAlign:"left",maxWidth:360,margin:"20px auto 0",
+                  background:"rgba(10,22,40,0.7)",border:"1px solid rgba(184,152,42,.25)",
+                  padding:"20px 24px",backdropFilter:"blur(8px)"}}>
+                  <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".35em",
+                    color:"rgba(184,152,42,.85)",marginBottom:16,textAlign:"center"}}>
+                    {tx.applyFormTitle}
+                  </div>
+                  {[
+                    {key:"name",label:tx.applyName,required:true},
+                    {key:"company",label:tx.applyCompany,required:false},
+                    {key:"role",label:tx.applyRole,required:false},
+                  ].map(f => (
+                    <div key={f.key} style={{marginBottom:12}}>
+                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:9,letterSpacing:".3em",
+                        color:"rgba(184,152,42,.55)",marginBottom:4}}>
+                        {f.label}{f.required ? " *" : ""}
+                      </div>
+                      <input type="text" value={applyForm[f.key]}
+                        onChange={e => setApplyForm(prev => ({...prev,[f.key]:e.target.value}))}
+                        style={{background:"transparent",border:"none",
+                          borderBottom:"1px solid rgba(184,152,42,.3)",width:"100%",
+                          padding:"3px 0",color:"#E8E0CC",fontFamily:"'Cormorant',serif",
+                          fontSize:15,outline:"none",cursor:"text"}}
+                      />
+                    </div>
+                  ))}
+                  <div style={{marginBottom:16}}>
+                    <div style={{fontFamily:"'Cormorant SC',serif",fontSize:9,letterSpacing:".3em",
+                      color:"rgba(184,152,42,.55)",marginBottom:4}}>{tx.applyReason}</div>
+                    <textarea value={applyForm.reason} rows={2}
+                      onChange={e => setApplyForm(prev => ({...prev,reason:e.target.value}))}
+                      style={{background:"transparent",border:"none",
+                        borderBottom:"1px solid rgba(184,152,42,.3)",width:"100%",
+                        padding:"3px 0",color:"#E8E0CC",fontFamily:"'Cormorant',serif",
+                        fontSize:15,outline:"none",resize:"none",cursor:"text"}}
+                    />
+                  </div>
+                  <div style={{textAlign:"center"}}>
+                    <button className="ic-check-btn" onClick={applyAccess}
+                      disabled={applying || !applyForm.name.trim()}>
+                      {applying ? "..." : tx.applyBtn}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="ic-bottombar">
+            <div className="ic-bl-left">{tx.bottomLeft.split("\n").map((line,i,arr)=>(<span key={i}>{line}{i<arr.length-1&&<br/>}</span>))}</div>
+            <div className="ic-bl-right">
+              <div className="ic-bl-label">{tx.directLabel}</div>
+              <a className="ic-bl-email" href="mailto:luis@zenithrisecapital.com">luis@zenithrisecapital.com</a>
+            </div>
+          </div>
+          <div className="ic-vert ic-vert-l">{tx.vertL}</div>
+          <div className="ic-vert ic-vert-r">{tx.vertR}</div>
         </div>
-        {gateMsg && <div className="ic-gate-msg">{gateMsg}</div>}
-      {!showApply && !applyDone && gateMsg === tx.noneMsg && (
-        <button className="ic-check-btn"
-          onClick={() => setShowApply(true)}
-          style={{marginTop:12,display:"block",margin:"12px auto 0"}}>
-          {tx.applyLabel}
-        </button>
-      )}
-      {showApply && !applyDone && (
-        <div style={{marginTop:14,textAlign:"center"}}>
-          <input className="ic-email-input" type="text"
-            placeholder={tx.applyName}
-            value={applyName}
-            onChange={e => setApplyName(e.target.value)}
-            style={{display:"block",width:"100%",marginBottom:10,
-              borderBottom:"1px solid rgba(184,152,42,.35)",
-              paddingBottom:4,cursor:"text"}}
-          />
-          <button className="ic-check-btn" onClick={applyAccess} disabled={applying}>
-            {applying ? "..." : tx.applyBtn}
-          </button>
-        </div>
-      )}
-    </div></div>
+      </>
     );
   }
 
