@@ -10,21 +10,21 @@ const css = `
 .ez-doc { background:#FAF7F1; color:#1A1A1A; font-family:'EB Garamond',Georgia,serif; max-width:680px; width:100%; border-top:3px solid #0A1628; border-bottom:1px solid #D0C8B4; box-shadow:0 2px 40px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.06); }
 .ez-mast { background:#0A1628; padding:44px 56px 36px; position:relative; overflow:hidden; }
 .ez-mast::before { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; background:radial-gradient(ellipse at center,rgba(184,152,42,.07) 0%,transparent 70%); pointer-events:none; }
-.ez-mast-eyebrow { font-family:'Cormorant SC',serif; font-size:9px; font-weight:300; letter-spacing:.5em; color:rgba(184,152,42,.65); margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.ez-mast-eyebrow { font-family:'Cormorant SC',serif; font-size:11px; font-weight:300; letter-spacing:.5em; color:rgba(184,152,42,.65); margin-bottom:20px; display:flex; align-items:center; gap:14px; }
 .ez-mast-eyebrow::before { content:''; display:inline-block; width:28px; height:1px; background:rgba(184,152,42,.4); }
 .ez-mast-title { font-family:'EB Garamond',serif; font-size:52px; font-weight:400; font-style:italic; color:#FAF7F1; line-height:1; letter-spacing:-.02em; margin-bottom:6px; }
-.ez-mast-sub { font-family:'Cormorant SC',serif; font-size:11px; font-weight:300; letter-spacing:.28em; color:rgba(184,152,42,.75); margin-bottom:28px; }
+.ez-mast-sub { font-family:'Cormorant SC',serif; font-size:13px; font-weight:300; letter-spacing:.28em; color:rgba(184,152,42,.75); margin-bottom:28px; }
 .ez-mast-meta { display:flex; justify-content:space-between; align-items:flex-end; padding-top:24px; border-top:1px solid rgba(184,152,42,.2); }
-.ez-mast-meta-l { font-family:'EB Garamond',serif; font-size:13px; font-style:italic; color:rgba(250,247,241,.5); line-height:1.65; }
-.ez-mast-meta-r { font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.3em; color:rgba(184,152,42,.5); text-align:right; }
+.ez-mast-meta-l { font-family:'EB Garamond',serif; font-size:15px; font-style:italic; color:rgba(250,247,241,.5); line-height:1.65; }
+.ez-mast-meta-r { font-family:'Cormorant SC',serif; font-size:11px; letter-spacing:.3em; color:rgba(184,152,42,.5); text-align:right; }
 .ez-notice { background:#F2EDE2; border-left:3px solid #C9A84C; padding:22px 28px; }
-.ez-notice-head { font-family:'Cormorant SC',serif; font-size:9.5px; font-weight:400; letter-spacing:.3em; color:#0A1628; margin-bottom:10px; }
+.ez-notice-head { font-family:'Cormorant SC',serif; font-size:12px; font-weight:400; letter-spacing:.3em; color:#0A1628; margin-bottom:10px; }
 .ez-notice p { font-size:15px; font-style:italic; color:#555; line-height:1.7; }
 .ez-notice p+p { margin-top:8px; }
 .ez-body { padding:0 56px; }
 .ez-section { padding:48px 0 0; }
 .ez-section+.ez-section { border-top:1px solid #D0C8B4; }
-.ez-kicker { font-family:'Cormorant SC',serif; font-size:9px; font-weight:300; letter-spacing:.45em; color:#B8982A; margin-bottom:10px; display:flex; align-items:center; gap:12px; }
+.ez-kicker { font-family:'Cormorant SC',serif; font-size:11px; font-weight:300; letter-spacing:.45em; color:#B8982A; margin-bottom:10px; display:flex; align-items:center; gap:12px; }
 .ez-kicker::before { content:''; display:inline-block; width:22px; height:1px; background:#B8982A; opacity:.7; }
 .ez-title { font-family:'EB Garamond',serif; font-size:30px; font-weight:500; font-style:italic; color:#0A1628; line-height:1.15; letter-spacing:-.01em; margin-bottom:24px; }
 .ez-text { font-size:18px; line-height:1.82; color:#1A1A1A; }
@@ -32,16 +32,16 @@ const css = `
 .ez-text p:last-child { margin-bottom:0; }
 .ez-reading-item { display:grid; grid-template-columns:auto 1fr; gap:0 18px; padding:18px 0; border-bottom:1px solid #E4DDD0; }
 .ez-reading-item:last-child { border-bottom:none; }
-.ez-r-num { font-family:'Cormorant SC',serif; font-size:11px; letter-spacing:.15em; color:#B8982A; padding-top:3px; min-width:24px; }
+.ez-r-num { font-family:'Cormorant SC',serif; font-size:13px; letter-spacing:.15em; color:#B8982A; padding-top:3px; min-width:24px; }
 .ez-r-source { font-size:18px; font-weight:600; font-style:italic; color:#0A1628; line-height:1.3; margin-bottom:6px; }
 .ez-r-note { font-size:16px; line-height:1.72; color:#555; }
 .ez-signoff { padding:36px 0 48px; border-top:1px solid #D0C8B4; }
 .ez-signoff-note { font-size:16px; font-style:italic; color:#555; line-height:1.75; margin-bottom:28px; }
 .ez-signoff-name { font-family:'EB Garamond',serif; font-size:22px; font-weight:500; color:#0A1628; margin-bottom:4px; }
-.ez-signoff-title { font-family:'Cormorant SC',serif; font-size:10px; font-weight:300; letter-spacing:.3em; color:#888; }
+.ez-signoff-title { font-family:'Cormorant SC',serif; font-size:12px; font-weight:300; letter-spacing:.3em; color:#888; }
 .ez-footer { background:#0E1C34; padding:24px 56px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
-.ez-footer-brand { font-family:'Cormorant SC',serif; font-size:9px; font-weight:300; letter-spacing:.35em; color:rgba(250,247,241,.35); }
-.ez-footer-legal { font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.2em; color:rgba(250,247,241,.22); text-align:right; }
+.ez-footer-brand { font-family:'Cormorant SC',serif; font-size:11px; font-weight:300; letter-spacing:.35em; color:rgba(250,247,241,.35); }
+.ez-footer-legal { font-family:'Cormorant SC',serif; font-size:11px; letter-spacing:.2em; color:rgba(250,247,241,.22); text-align:right; }
 @media(max-width:640px) {
   .ez-wrap{padding:0} .ez-mast{padding:32px 24px 28px}
   .ez-body{padding:0 24px} .ez-footer{padding:20px 24px;flex-direction:column;align-items:flex-start}
