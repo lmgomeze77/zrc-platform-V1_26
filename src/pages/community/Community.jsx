@@ -31,12 +31,12 @@ const css = `
 .ic-vert { position:absolute; top:50%; font-family:'Cormorant SC',serif; font-size:10px; letter-spacing:.45em; color:rgba(232,224,204,.1); z-index:4; opacity:0; animation:ic-appear 1s ease forwards 4.1s; }
 .ic-vert-l { left:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%) rotate(180deg); }
 .ic-vert-r { right:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%); }
-.ic-stage { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; z-index:20; padding:100px 40px 40px; }
+.ic-stage { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; z-index:20; padding:80px 40px 200px; }
 .ic-center { text-align:center; position:relative; }
 .ic-center::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:500px; height:500px; border:1px solid rgba(184,152,42,.04); border-radius:50%; pointer-events:none; }
 .ic-center::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:340px; height:340px; border:1px solid rgba(184,152,42,.035); border-radius:50%; pointer-events:none; }
 .ic-eyebrow { display:block; font-family:'Cormorant SC',serif; font-size:12px; font-weight:300; letter-spacing:.55em; color:#B8982A; opacity:0; animation:ic-appear 1.4s ease forwards .5s; margin-bottom:34px; }
-.ic-title { display:block; font-family:'Playfair Display',serif; font-size:clamp(62px,10vw,128px); font-weight:400; font-style:italic; line-height:.9; letter-spacing:-.025em; color:#E8E0CC; }
+.ic-title { display:block; font-family:'Playfair Display',serif; font-size:clamp(44px,6.5vw,88px); font-weight:400; font-style:italic; line-height:.92; letter-spacing:-.025em; color:#E8E0CC; }
 .ic-tw { display:block; opacity:0; transform:translateY(38px); }
  .ic-landing-mode .ic-title { font-size:clamp(44px,7vw,90px); line-height:.88; }
  .ic-landing-mode .ic-tagline { font-size:clamp(13px,1.4vw,17px); margin-top:14px; }
@@ -50,7 +50,7 @@ const css = `
 .ic-access-label { font-family:'Cormorant SC',serif; font-size:12px; letter-spacing:.5em; color:rgba(184,152,42,.75); margin-bottom:16px; }
 
 /* Gate / email input */
-.ic-overlay { position:absolute; bottom:0; left:0; right:0; z-index:30; display:flex; flex-direction:column; align-items:center; padding-bottom:80px; pointer-events:none; } .ic-overlay > * { pointer-events:auto; } .ic-gate { cursor:auto; margin-top:0; opacity:0; animation:ic-appear 1.2s ease forwards 1.0s; pointer-events:auto; position:relative; z-index:25; }
+.ic-overlay { position:absolute; bottom:0; left:0; right:0; z-index:30; display:flex; flex-direction:column; align-items:center; padding-bottom:90px; pointer-events:none; } .ic-overlay > * { pointer-events:auto; } .ic-gate { cursor:auto; margin-top:0; opacity:0; animation:ic-appear 1.2s ease forwards 1.0s; pointer-events:auto; position:relative; z-index:25; }
 .ic-input-row { display:flex; gap:0; max-width:420px; margin:0 auto; border-bottom:1px solid rgba(184,152,42,.5); padding-bottom:8px; position:relative; z-index:26; cursor:text; }
 .ic-email-input { flex:1; background:transparent; border:none; outline:none; font-family:'Cormorant',serif; font-size:17px; font-style:italic; color:#E8E0CC; letter-spacing:.02em; padding:4px 0; cursor:text; }
 .ic-email-input::placeholder { color:rgba(232,224,204,.3); }
