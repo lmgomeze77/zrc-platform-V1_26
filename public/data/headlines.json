@@ -3,56 +3,56 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1691",
+      "value": "1.1686",
       "change": "-0.05%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17356.10",
-      "change": "-2.39%",
+      "value": "17570.00",
+      "change": "-1.19%",
       "up": false
     },
     {
       "symbol": "BRENT crude",
-      "value": "110.45",
-      "change": "-3.76%",
+      "value": "109.87",
+      "change": "-3.99%",
       "up": false
     },
     {
       "symbol": "WTI crude",
-      "value": "102.29",
-      "change": "-3.95%",
+      "value": "102.27",
+      "change": "-3.90%",
       "up": false
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4560.75",
-      "change": "+0.83%",
+      "value": "4554.64",
+      "change": "+0.70%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "80894.77",
-      "change": "+1.30%",
+      "value": "81550.00",
+      "change": "+1.61%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "17.47",
-      "change": "+7.66%",
-      "up": true
-    },
-    {
-      "symbol": "US 10Y yield",
-      "value": "4.43%",
-      "change": "-0.01%",
+      "value": "17.45",
+      "change": "-4.59%",
       "up": false
     },
     {
+      "symbol": "US 10Y yield",
+      "value": "4.44%",
+      "change": "+0.05%",
+      "up": true
+    },
+    {
       "symbol": "S&P 500",
-      "value": "7260.84",
-      "change": "+0.83%",
+      "value": "7259.22",
+      "change": "+0.81%",
       "up": true
     },
     {
@@ -63,14 +63,14 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8633",
-      "change": "-0.09%",
-      "up": false
+      "value": "0.8663",
+      "change": "+0.04%",
+      "up": true
     },
     {
       "symbol": "DXY dollar index",
-      "value": "98.45",
-      "change": "+0.08%",
+      "value": "98.4936",
+      "change": "+0.12%",
       "up": true
     },
     {
@@ -118,5 +118,5 @@
       "confidence": 73
     }
   ],
-  "market_updated_at": "2026-05-05T19:01:08.338Z"
+  "market_updated_at": "2026-05-05T22:42:38.541Z"
 }
