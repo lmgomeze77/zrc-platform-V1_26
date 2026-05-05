@@ -11,7 +11,7 @@ const API_BASE = "https://zrc-api.onrender.com";
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300;400;500&display=swap');
 
-.ic-root { position:fixed; inset:0; width:100%; height:100vh; background:#06080C; color:#E8E0CC; font-family:'Cormorant',serif; overflow:hidden; }
+.ic-root { position:relative; width:100%; height:100vh; background:#06080C; color:#E8E0CC; font-family:'Cormorant',serif; overflow:hidden; }
 .ic-root *, .ic-root *::before, .ic-root *::after { box-sizing:border-box; margin:0; padding:0; }
 .ic-grain { position:absolute; inset:-50%; width:200%; height:200%; pointer-events:none; z-index:2; opacity:.032; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); animation:ic-grain .8s steps(1) infinite; }
 @keyframes ic-grain { 0%,100%{transform:translate(0,0)} 10%{transform:translate(-2%,-3%)} 20%{transform:translate(3%,1%)} 30%{transform:translate(-1%,4%)} 40%{transform:translate(4%,-2%)} 50%{transform:translate(-3%,2%)} 60%{transform:translate(2%,-4%)} 70%{transform:translate(-4%,1%)} 80%{transform:translate(1%,3%)} 90%{transform:translate(3%,-1%)} }
@@ -50,7 +50,7 @@ const css = `
 .ic-access-label { font-family:'Cormorant SC',serif; font-size:12px; letter-spacing:.5em; color:rgba(184,152,42,.75); margin-bottom:16px; }
 
 /* Gate / email input */
-.ic-overlay { position:fixed; bottom:0; left:0; right:0; z-index:30; display:flex; flex-direction:column; align-items:center; padding-bottom:100px; pointer-events:none; } .ic-overlay > * { pointer-events:auto; } .ic-gate { cursor:auto; margin-top:0; opacity:0; animation:ic-appear 1.2s ease forwards 1.0s; pointer-events:auto; position:relative; z-index:25; }
+.ic-overlay { position:absolute; bottom:0; left:0; right:0; z-index:30; display:flex; flex-direction:column; align-items:center; padding-bottom:100px; pointer-events:none; } .ic-overlay > * { pointer-events:auto; } .ic-gate { cursor:auto; margin-top:0; opacity:0; animation:ic-appear 1.2s ease forwards 1.0s; pointer-events:auto; position:relative; z-index:25; }
 .ic-input-row { display:flex; gap:0; max-width:420px; margin:0 auto; border-bottom:1px solid rgba(184,152,42,.5); padding-bottom:8px; position:relative; z-index:26; cursor:text; }
 .ic-email-input { flex:1; background:transparent; border:none; outline:none; font-family:'Cormorant',serif; font-size:17px; font-style:italic; color:#E8E0CC; letter-spacing:.02em; padding:4px 0; cursor:text; }
 .ic-email-input::placeholder { color:rgba(232,224,204,.3); }
@@ -242,7 +242,7 @@ export default function Community({ lang = "es" }) {
       <style>{css}</style>
       <div ref={cursorRef} style={{position:"fixed",width:5,height:5,background:"#B8982A",borderRadius:"50%",pointerEvents:"none",zIndex:9999,transform:"translate(-50%,-50%)",mixBlendMode:"difference"}} />
       <div ref={ringRef} style={{position:"fixed",width:30,height:30,border:"1px solid rgba(184,152,42,0.35)",borderRadius:"50%",pointerEvents:"none",zIndex:9998,transform:"translate(-50%,-50%)",opacity:0.65,transition:"width .4s,height .4s"}} />
-      <div className="ic-root" style={{cursor:"none"}}>
+      <div className="ic-root">
         <div className="ic-grain" /><div className="ic-vig" /><div className="ic-light" />
         <div className="ic-rule-top" /><div className="ic-rule-bottom" />
         <div className="ic-topbar"><div className="ic-tb-brand">{tx.brand}</div><div className="ic-tb-right">{tx.location}</div></div>
