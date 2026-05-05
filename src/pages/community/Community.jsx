@@ -20,22 +20,22 @@ const css = `
 .ic-rule-top,.ic-rule-bottom { position:absolute; left:44px; right:44px; height:1px; background:linear-gradient(90deg,transparent,rgba(184,152,42,.18),transparent); z-index:5; opacity:0; animation:ic-appear 1s ease forwards 3.6s; }
 .ic-rule-top { top:82px; } .ic-rule-bottom { bottom:70px; }
 .ic-topbar { position:absolute; top:0; left:0; right:0; padding:28px 48px; display:flex; justify-content:space-between; align-items:center; z-index:10; opacity:0; animation:ic-appear 1.2s ease forwards 3.8s; }
-.ic-tb-brand { font-family:'Cormorant SC',serif; font-size:10px; font-weight:300; letter-spacing:.38em; color:rgba(232,224,204,0.42); }
-.ic-tb-right { font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.3em; color:rgba(184,152,42,.45); }
+.ic-tb-brand { font-family:'Cormorant SC',serif; font-size:12px; font-weight:300; letter-spacing:.38em; color:rgba(232,224,204,0.42); }
+.ic-tb-right { font-family:'Cormorant SC',serif; font-size:12px; letter-spacing:.3em; color:rgba(184,152,42,.45); }
 .ic-bottombar { position:absolute; bottom:0; left:0; right:0; padding:24px 48px; display:flex; justify-content:space-between; align-items:flex-end; z-index:10; opacity:0; animation:ic-appear 1.2s ease forwards 4.2s; }
-.ic-bl-left { font-family:'Cormorant',serif; font-size:13px; font-style:italic; color:rgba(232,224,204,0.42); line-height:1.75; max-width:340px; }
+.ic-bl-left { font-family:'Cormorant',serif; font-size:14px; font-style:italic; color:rgba(232,224,204,0.42); line-height:1.75; max-width:340px; }
 .ic-bl-right { text-align:right; }
-.ic-bl-label { font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.32em; color:rgba(184,152,42,.45); margin-bottom:5px; }
-.ic-bl-email { font-family:'Cormorant',serif; font-size:15px; font-style:italic; color:#B8982A; text-decoration:none; letter-spacing:.02em; transition:color .35s; }
+.ic-bl-label { font-family:'Cormorant SC',serif; font-size:12px; letter-spacing:.32em; color:rgba(184,152,42,.45); margin-bottom:5px; }
+.ic-bl-email { font-family:'Cormorant',serif; font-size:16px; font-style:italic; color:#B8982A; text-decoration:none; letter-spacing:.02em; transition:color .35s; }
 .ic-bl-email:hover { color:#D4B050; }
-.ic-vert { position:absolute; top:50%; font-family:'Cormorant SC',serif; font-size:8px; letter-spacing:.45em; color:rgba(232,224,204,.1); z-index:4; opacity:0; animation:ic-appear 1s ease forwards 4.1s; }
+.ic-vert { position:absolute; top:50%; font-family:'Cormorant SC',serif; font-size:10px; letter-spacing:.45em; color:rgba(232,224,204,.1); z-index:4; opacity:0; animation:ic-appear 1s ease forwards 4.1s; }
 .ic-vert-l { left:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%) rotate(180deg); }
 .ic-vert-r { right:14px; writing-mode:vertical-rl; text-orientation:mixed; transform:translateY(-50%); }
 .ic-stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:20; padding:80px 40px; overflow-y:auto; }
 .ic-center { text-align:center; position:relative; }
 .ic-center::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:500px; height:500px; border:1px solid rgba(184,152,42,.04); border-radius:50%; pointer-events:none; }
 .ic-center::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:340px; height:340px; border:1px solid rgba(184,152,42,.035); border-radius:50%; pointer-events:none; }
-.ic-eyebrow { display:block; font-family:'Cormorant SC',serif; font-size:10px; font-weight:300; letter-spacing:.55em; color:#B8982A; opacity:0; animation:ic-appear 1.4s ease forwards .5s; margin-bottom:34px; }
+.ic-eyebrow { display:block; font-family:'Cormorant SC',serif; font-size:12px; font-weight:300; letter-spacing:.55em; color:#B8982A; opacity:0; animation:ic-appear 1.4s ease forwards .5s; margin-bottom:34px; }
 .ic-title { display:block; font-family:'Playfair Display',serif; font-size:clamp(62px,10vw,128px); font-weight:400; font-style:italic; line-height:.9; letter-spacing:-.025em; color:#E8E0CC; }
 .ic-tw { display:block; opacity:0; transform:translateY(38px); }
  .ic-landing-mode .ic-title { font-size:clamp(44px,7vw,90px); line-height:.88; }
@@ -47,25 +47,25 @@ const css = `
 .ic-rule-gold { width:38px; height:1px; background:#B8982A; margin:38px auto; opacity:0; animation:ic-appear 1s ease forwards 2.4s; }
 .ic-tagline { font-family:'Cormorant',serif; font-size:clamp(15px,1.9vw,19px); font-weight:300; font-style:italic; color:rgba(232,224,204,0.42); letter-spacing:.04em; line-height:1.75; opacity:0; animation:ic-appear 1.4s ease forwards 2.7s; max-width:420px; margin:0 auto; }
 .ic-access { margin-top:32px; opacity:0; animation:ic-appear 0.8s ease forwards 0.6s; }
-.ic-access-label { font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.5em; color:rgba(184,152,42,.65); margin-bottom:16px; }
+.ic-access-label { font-family:'Cormorant SC',serif; font-size:12px; letter-spacing:.5em; color:rgba(184,152,42,.75); margin-bottom:16px; }
 
 /* Gate / email input */
 .ic-gate { cursor:auto; margin-top:32px; opacity:0; animation:ic-appear 1.2s ease forwards 1.0s; pointer-events:auto; position:relative; z-index:25; }
 .ic-input-row { display:flex; gap:0; max-width:420px; margin:0 auto; border-bottom:1px solid rgba(184,152,42,.5); padding-bottom:8px; position:relative; z-index:26; cursor:text; }
 .ic-email-input { flex:1; background:transparent; border:none; outline:none; font-family:'Cormorant',serif; font-size:17px; font-style:italic; color:#E8E0CC; letter-spacing:.02em; padding:4px 0; cursor:text; }
 .ic-email-input::placeholder { color:rgba(232,224,204,.3); }
-.ic-check-btn { cursor:pointer; background:none; border:none; cursor:pointer; font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.35em; color:#B8982A; padding:4px 0 4px 16px; transition:color .3s; white-space:nowrap; }
+.ic-check-btn { cursor:pointer; background:none; border:none; cursor:pointer; font-family:'Cormorant SC',serif; font-size:12px; letter-spacing:.35em; color:#B8982A; padding:4px 0 4px 16px; transition:color .3s; white-space:nowrap; }
 .ic-check-btn:hover { color:#D4B050; }
 .ic-check-btn:disabled { opacity:.4; cursor:default; }
-.ic-gate-msg { margin-top:14px; font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.3em; color:rgba(184,152,42,.55); }
+.ic-gate-msg { margin-top:14px; font-family:'Cormorant SC',serif; font-size:12px; letter-spacing:.3em; color:rgba(184,152,42,.55); }
 
 /* Approved — Edition Zero link */
 .ic-edition-link { display:inline-block; margin-top:18px; font-family:'Cormorant SC',serif; font-size:10px; letter-spacing:.38em; color:#B8982A; text-decoration:none; border-bottom:1px solid rgba(184,152,42,.28); padding-bottom:3px; transition:color .4s,border-color .4s; cursor:pointer; background:none; border-top:none; border-left:none; border-right:none; }
 .ic-edition-link:hover { color:#D4B050; border-bottom-color:rgba(212,176,80,.55); }
 
 /* Back button */
-.ic-back { position:absolute; top:24px; left:48px; z-index:20; font-family:'Cormorant SC',serif; font-size:9px; letter-spacing:.35em; color:rgba(184,152,42,.5); cursor:pointer; background:none; border:none; transition:color .3s; padding:0; }
-.ic-back:hover { color:rgba(212,176,80,.9); }
+.ic-back { position:absolute; top:24px; left:48px; z-index:20; font-family:'Cormorant SC',serif; font-size:11px; letter-spacing:.35em; color:rgba(230,218,190,.9); cursor:pointer; background:none; border:none; transition:color .3s; padding:0; }
+.ic-back:hover { color:#ffffff; }
 
 @keyframes ic-appear { from{opacity:0} to{opacity:1} }
 @keyframes ic-riseIn { from{opacity:0;transform:translateY(38px)} to{opacity:1;transform:translateY(0)} }
