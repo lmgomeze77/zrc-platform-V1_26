@@ -78,7 +78,7 @@ export default function Community({ lang = "es" }) {
   const [gateMsg, setGateMsg]   = useState("");
   const [memberEmail, setMemberEmail] = useState("");
   const [showApply, setShowApply] = useState(false);
-  const [applyForm, setApplyForm] = useState({name:"",company:"",role:"",reason:""});
+  const [applyForm, setApplyForm] = useState({firstName:"",lastName:"",company:"",profile:"",aum:"",reason:""});
   const [applyDone, setApplyDone] = useState(false);
   const [applying, setApplying] = useState(false);
 
@@ -99,10 +99,14 @@ export default function Community({ lang = "es" }) {
       noneMsg:"Este email no tiene acceso.",
       applyLabel:"Solicitar acceso",
       applyFormTitle:"Solicitud de acceso",
-      applyName:"Nombre completo",
+      applyFirstName:"Nombre",
+      applyLastName:"Apellidos",
       applyCompany:"Empresa / Institución",
-      applyRole:"Cargo",
-      applyReason:"¿Por qué le interesa el Inner Circle?",
+      applyProfile:"Perfil profesional",
+      applyAUM:"Patrimonio gestionado (AUM)",
+      applyReason:"¿Qué le trae al Inner Circle?",
+      applyProfileOpts:["Inversor privado / Family Office","Gestor de patrimonio / Wealth Advisor","Profesional de inversión","Directivo corporativo / C-suite","Broker / Intermediario financiero","Banquero privado","Emprendedor / Fundador","Otro"],
+      applyAUMOpts:["< €1M","€1M – €5M","€5M – €25M","€25M – €100M","> €100M","Prefiero no indicarlo"],
       applyNameOld:"Su nombre (opcional)",
       applyBtn:"Enviar solicitud",
       applySent:"Solicitud recibida. Le contactaremos pronto.",
@@ -123,10 +127,14 @@ export default function Community({ lang = "es" }) {
       noneMsg:"This email does not have access.",
       applyLabel:"Request access",
       applyFormTitle:"Access request",
-      applyName:"Full name",
+      applyFirstName:"First name",
+      applyLastName:"Last name",
       applyCompany:"Company / Institution",
-      applyRole:"Role / Position",
-      applyReason:"Why are you interested in the Inner Circle?",
+      applyProfile:"Professional profile",
+      applyAUM:"Assets under management (AUM)",
+      applyReason:"What brings you to the Inner Circle?",
+      applyProfileOpts:["Private investor / Family Office","Wealth manager / Wealth Advisor","Investment professional","Corporate executive / C-suite","Broker / Financial intermediary","Private banker","Entrepreneur / Founder","Other"],
+      applyAUMOpts:["< €1M","€1M – €5M","€5M – €25M","€25M – €100M","> €100M","Prefer not to say"],
       applyNameOld:"Your name (optional)",
       applyBtn:"Submit request",
       applySent:"Request received. We will be in touch.",
@@ -189,7 +197,7 @@ export default function Community({ lang = "es" }) {
     try {
       const res = await fetch(API_BASE + "/api/inner-circle/apply", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.toLowerCase().trim(), name: applyForm.name.trim(), company: applyForm.company.trim(), role: applyForm.role.trim(), reason: applyForm.reason.trim() }),
+        body: JSON.stringify({ email: email.toLowerCase().trim(), name: (applyForm.firstName+" "+applyForm.lastName).trim(), company: applyForm.company.trim(), role: applyForm.profile, aum: applyForm.aum, reason: applyForm.reason.trim() }),
       });
       const data = await res.json();
       if (data.ok) {
@@ -311,48 +319,84 @@ export default function Community({ lang = "es" }) {
                 </button>
               )}
               {showApply && !applyDone && (
-                <div style={{marginTop:20,textAlign:"left",maxWidth:360,margin:"20px auto 0",
-                  background:"rgba(10,22,40,0.7)",border:"1px solid rgba(184,152,42,.25)",
-                  padding:"20px 24px",backdropFilter:"blur(8px)"}}>
-                  <div style={{fontFamily:"'Cormorant SC',serif",fontSize:11,letterSpacing:".35em",
-                    color:"rgba(184,152,42,.85)",marginBottom:16,textAlign:"center"}}>
-                    {tx.applyFormTitle}
+                <div style={{marginTop:20,width:"100%",maxWidth:400,margin:"20px auto 0",
+                  background:"rgba(6,8,12,0.85)",border:"1px solid rgba(184,152,42,.3)",
+                  backdropFilter:"blur(12px)"}}>
+                  {/* Header */}
+                  <div style={{padding:"16px 24px 12px",borderBottom:"1px solid rgba(184,152,42,.15)",textAlign:"center"}}>
+                    <div style={{fontFamily:"'Cormorant SC',serif",fontSize:10,letterSpacing:".45em",color:"rgba(184,152,42,.85)"}}>
+                      {tx.applyFormTitle}
+                    </div>
                   </div>
-                  {[
-                    {key:"name",label:tx.applyName,required:true},
-                    {key:"company",label:tx.applyCompany,required:false},
-                    {key:"role",label:tx.applyRole,required:false},
-                  ].map(f => (
-                    <div key={f.key} style={{marginBottom:12}}>
-                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:9,letterSpacing:".3em",
-                        color:"rgba(184,152,42,.55)",marginBottom:4}}>
-                        {f.label}{f.required ? " *" : ""}
-                      </div>
-                      <input type="text" value={applyForm[f.key]}
-                        onChange={e => setApplyForm(prev => ({...prev,[f.key]:e.target.value}))}
-                        style={{background:"transparent",border:"none",
-                          borderBottom:"1px solid rgba(184,152,42,.3)",width:"100%",
-                          padding:"3px 0",color:"#E8E0CC",fontFamily:"'Cormorant',serif",
-                          fontSize:15,outline:"none",cursor:"text"}}
+                  {/* Fields */}
+                  <div style={{padding:"18px 24px 20px"}}>
+                    {/* Name row */}
+                    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:14}}>
+                      {[["firstName",tx.applyFirstName,true],["lastName",tx.applyLastName,true]].map(([key,label,req]) => (
+                        <div key={key}>
+                          <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{label}{req?" *":""}</div>
+                          <input type="text" value={applyForm[key]}
+                            onChange={e => setApplyForm(prev => ({...prev,[key]:e.target.value}))}
+                            style={{background:"transparent",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
+                              width:"100%",padding:"4px 0",color:"#E8E0CC",fontFamily:"'Cormorant',serif",
+                              fontSize:14,outline:"none",cursor:"text"}}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    {/* Company */}
+                    <div style={{marginBottom:14}}>
+                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{tx.applyCompany}</div>
+                      <input type="text" value={applyForm.company}
+                        onChange={e => setApplyForm(prev => ({...prev,company:e.target.value}))}
+                        style={{background:"transparent",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
+                          width:"100%",padding:"4px 0",color:"#E8E0CC",fontFamily:"'Cormorant',serif",
+                          fontSize:14,outline:"none",cursor:"text"}}
                       />
                     </div>
-                  ))}
-                  <div style={{marginBottom:16}}>
-                    <div style={{fontFamily:"'Cormorant SC',serif",fontSize:9,letterSpacing:".3em",
-                      color:"rgba(184,152,42,.55)",marginBottom:4}}>{tx.applyReason}</div>
-                    <textarea value={applyForm.reason} rows={2}
-                      onChange={e => setApplyForm(prev => ({...prev,reason:e.target.value}))}
-                      style={{background:"transparent",border:"none",
-                        borderBottom:"1px solid rgba(184,152,42,.3)",width:"100%",
-                        padding:"3px 0",color:"#E8E0CC",fontFamily:"'Cormorant',serif",
-                        fontSize:15,outline:"none",resize:"none",cursor:"text"}}
-                    />
-                  </div>
-                  <div style={{textAlign:"center"}}>
-                    <button className="ic-check-btn" onClick={applyAccess}
-                      disabled={applying || !applyForm.name.trim()}>
-                      {applying ? "..." : tx.applyBtn}
-                    </button>
+                    {/* Profile dropdown */}
+                    <div style={{marginBottom:14}}>
+                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{tx.applyProfile} *</div>
+                      <select value={applyForm.profile}
+                        onChange={e => setApplyForm(prev => ({...prev,profile:e.target.value}))}
+                        style={{background:"rgba(10,22,40,0.9)",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
+                          width:"100%",padding:"4px 0",color:applyForm.profile?"#E8E0CC":"rgba(232,224,204,.35)",
+                          fontFamily:"'Cormorant',serif",fontSize:14,outline:"none",cursor:"pointer",
+                          appearance:"none",WebkitAppearance:"none"}}>
+                        <option value="" disabled style={{color:"#555"}}>—</option>
+                        {tx.applyProfileOpts.map(o => <option key={o} value={o} style={{background:"#0A1628",color:"#E8E0CC"}}>{o}</option>)}
+                      </select>
+                    </div>
+                    {/* AUM dropdown */}
+                    <div style={{marginBottom:14}}>
+                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{tx.applyAUM}</div>
+                      <select value={applyForm.aum}
+                        onChange={e => setApplyForm(prev => ({...prev,aum:e.target.value}))}
+                        style={{background:"rgba(10,22,40,0.9)",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
+                          width:"100%",padding:"4px 0",color:applyForm.aum?"#E8E0CC":"rgba(232,224,204,.35)",
+                          fontFamily:"'Cormorant',serif",fontSize:14,outline:"none",cursor:"pointer",
+                          appearance:"none",WebkitAppearance:"none"}}>
+                        <option value="" disabled style={{color:"#555"}}>—</option>
+                        {tx.applyAUMOpts.map(o => <option key={o} value={o} style={{background:"#0A1628",color:"#E8E0CC"}}>{o}</option>)}
+                      </select>
+                    </div>
+                    {/* Reason */}
+                    <div style={{marginBottom:18}}>
+                      <div style={{fontFamily:"'Cormorant SC',serif",fontSize:8.5,letterSpacing:".3em",color:"rgba(184,152,42,.5)",marginBottom:4}}>{tx.applyReason}</div>
+                      <textarea value={applyForm.reason} rows={2}
+                        onChange={e => setApplyForm(prev => ({...prev,reason:e.target.value}))}
+                        style={{background:"transparent",border:"none",borderBottom:"1px solid rgba(184,152,42,.25)",
+                          width:"100%",padding:"4px 0",color:"#E8E0CC",fontFamily:"'Cormorant',serif",
+                          fontSize:14,outline:"none",resize:"none",cursor:"text"}}
+                      />
+                    </div>
+                    {/* Submit */}
+                    <div style={{textAlign:"center",paddingTop:4}}>
+                      <button className="ic-check-btn" onClick={applyAccess}
+                        disabled={applying || !applyForm.firstName.trim() || !applyForm.profile}>
+                        {applying ? "..." : tx.applyBtn}
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
