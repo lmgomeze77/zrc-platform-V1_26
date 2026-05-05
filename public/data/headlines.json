@@ -1,146 +1,91 @@
 {
-  "generated_at": "2026-05-02T07:28:26.868Z",
+  "generated_at": "2026-05-05T08:05:17.190Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1686",
-      "change": "-0.05%",
-      "up": false
+      "value": "1.1725",
+      "change": "+0.01%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "17356.10",
+      "value": "17,356.10",
       "change": "-2.39%",
       "up": false
     },
     {
       "symbol": "BRENT",
-      "value": "114.44",
-      "change": "5.80%",
-      "up": true
-    },
-    {
-      "symbol": "WTI",
-      "value": "106.42",
-      "change": "4.39%",
+      "value": "103.57",
+      "change": "+1.60%",
       "up": true
     },
     {
       "symbol": "GOLD",
-      "value": "4583.60",
-      "change": "-0.63%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "80894.77",
-      "change": "1.30%",
-      "up": true
-    },
-    {
-      "symbol": "VIX",
-      "value": "18.29",
-      "change": "7.65%",
-      "up": true
-    },
-    {
-      "symbol": "US 10Y",
-      "value": "4.438",
-      "change": "0.13%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7200.75",
-      "change": "-0.41%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "23715.71",
-      "change": "-1.24%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8637",
-      "change": "-0.01%",
-      "up": false
-    },
-    {
-      "symbol": "DXY",
-      "value": "98.4282",
-      "change": "0.28%",
-      "up": true
-    },
-    {
-      "symbol": "NATGAS",
-      "value": "2.83",
+      "value": "4,587.60",
       "change": "-1.23%",
       "up": false
     },
     {
-      "symbol": "COPPER",
-      "value": "5.86",
-      "change": "1.05%",
+      "symbol": "BTC",
+      "value": "79,705.55",
+      "change": "+1.69%",
       "up": true
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.8232",
-      "change": "-0.11%",
+      "symbol": "VIX",
+      "value": "17.49",
+      "change": "+2.94%",
+      "up": true
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.449",
+      "change": "+1.62%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8641",
+      "change": "+0.10%",
+      "up": true
+    },
+    {
+      "symbol": "S&P 500",
+      "value": "7,201.75",
+      "change": "-0.39%",
+      "up": false
+    },
+    {
+      "symbol": "DAX 40",
+      "value": "23,991.27",
+      "change": "-1.24%",
       "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
-      "region": "GLOBAL",
-      "title": {
-        "es": "El crudo alcanza máximos de 4 años mientras el Estrecho de Ormuz permanece cerrado por la guerra de Irán",
-        "en": "Oil hits 4-year high as Strait of Hormuz remains closed amid Iran war"
-      },
-      "summary": {
-        "es": "Los precios del petróleo han alcanzado niveles no vistos en cuatro años, con el Brent cotizando cerca de $119 por barril, mientras el Estrecho de Ormuz permanece bloqueado por el conflicto entre EE.UU.-Israel e Irán. La interrupción del suministro está causando severas restricciones energéticas globales y contribuyendo a presiones inflacionarias.",
-        "en": "Oil prices have reached levels not seen in four years, with Brent trading near $119 per barrel, as the Strait of Hormuz remains blocked due to the US-Israel conflict with Iran. The supply disruption is causing severe global energy constraints and contributing to inflationary pressures."
-      },
-      "source": "Bloomberg",
-      "source_url": "https://www.bloomberg.com/news/newsletters/2026-05-01/iran-sends-a-new-proposal-to-the-us-to-end-war",
-      "published_at": "2026-05-01",
-      "time": "15h",
-      "impact": "high",
-      "signals": [
-        "OIL +",
-        "INFLATION +",
-        "USD +"
-      ],
-      "confidence": 95
-    },
-    {
-      "id": 2,
-      "tag": "MONITOR",
+      "tag": "EMERGING",
       "region": "APAC",
       "title": {
-        "es": "Japón puede fortalecer el yen pero es solo una solución a corto plazo",
-        "en": "Japan can boost the yen but that's only a short-term fix"
+        "es": "Portugal emite bonos en yuanes por primera vez como país de la eurozona, diversificando fuentes de financiamiento",
+        "en": "Portugal Issues Yuan Bonds as First Eurozone Country, Diversifying Funding Sources"
       },
       "summary": {
-        "es": "Japón intervino oficialmente para fortalecer el yen después de que el USDJPY atravesara 160, llevando al par un 3% más bajo. Sin embargo, los analistas advierten que la intervención cambiaria típicamente no es una herramienta efectiva a largo plazo.",
-        "en": "Japan officially intervened to strengthen the yen after USDJPY broke through 160, driving the pair around 3% lower. However, analysts warn that FX intervention is typically not an effective long-term tool."
+        "es": "Portugal vendió 1.99 mil millones de yuanes en deuda a ocho años en el mercado de bonos offshore, convirtiéndose en el primer país de la eurozona en hacerlo. Esta emisión de 'dim sum bonds' busca diversificar las fuentes de financiamiento y reducir los costos de las tasas de interés, reflejando vínculos económicos más profundos con China.",
+        "en": "Portugal sold 1.99 billion yuan of eight-year debt in the offshore yuan bond market, becoming the first eurozone country to do so. This 'dim sum bond' issuance aims to diversify funding sources and lower interest rate costs, reflecting deepening economic ties with China."
       },
-      "source": "Bloomberg",
-      "source_url": "https://www.bloomberg.com/",
-      "published_at": "2026-05-01",
-      "time": "12h",
-      "impact": "medium",
+      "source": "South China Morning Post",
+      "source_url": "https://www.scmp.com/opinion/comment/article/3350441/chinese-yuan-slowly-surely-cutting-us-dollar-dominance",
+      "published_at": "2026-04-19",
+      "time": "2w",
+      "impact": "low",
       "signals": [
-        "JPY +",
-        "USD -",
-        "INTERVENTION +"
+        "CNY +",
+        "EUR ?",
+        "BONDS +"
       ],
-      "confidence": 78
+      "confidence": 73
     }
-  ],
-  "market_updated_at": "2026-05-05T07:50:36.101Z"
+  ]
 }
