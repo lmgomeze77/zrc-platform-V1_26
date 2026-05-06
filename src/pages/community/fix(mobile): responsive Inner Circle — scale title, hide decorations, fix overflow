@@ -69,6 +69,30 @@ const css = `
 
 @keyframes ic-appear { from{opacity:0} to{opacity:1} }
 @keyframes ic-riseIn { from{opacity:0;transform:translateY(38px)} to{opacity:1;transform:translateY(0)} }
+@media (max-width: 768px) {
+  .ic-root { overflow-y: auto; }
+  .ic-stage { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:80px 24px 160px; }
+  .ic-title { font-size: clamp(46px, 14vw, 72px); }
+  .ic-center::before, .ic-center::after { display: none; }
+  .ic-topbar { padding: 16px 20px; }
+  .ic-tb-right { display: none; }
+  .ic-bottombar { padding: 12px 20px; flex-direction: column; gap: 4px; align-items: flex-start; }
+  .ic-bl-right { display: none; }
+  .ic-vert-l, .ic-vert-r { display: none; }
+  .ic-rule-top { left: 20px; right: 20px; top: 56px; }
+  .ic-rule-bottom { left: 20px; right: 20px; bottom: 56px; }
+  .ic-tagline { font-size: 16px; max-width: 88vw; }
+  .ic-input-row { max-width: 88vw; }
+  .ic-rule-gold { margin: 20px auto; }
+  .ic-eyebrow { margin-bottom: 16px; }
+  .ic-gate { width: 88vw; }
+  .ic-gate-msg { font-size: 8px; }
+}
+@media (max-width: 420px) {
+  .ic-title { font-size: clamp(38px, 17vw, 54px); }
+  .ic-tagline { font-size: 15px; }
+  .ic-bl-left { font-size: 11px; line-height: 1.5; }
+}
 `;
 
 export default function Community({ lang = "es" }) {
