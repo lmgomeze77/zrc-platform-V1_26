@@ -370,55 +370,136 @@ const useHeadlines = (fallback) => {
 
 const FEED = [
   {
-    id: 1, tag: "CRITICAL", region: "MENA",
-    title: { es: "Disrupción en corredor del Mar Rojo — fletes +340% YTD", en: "Red Sea corridor disruption — freight rates +340% YTD" },
-    time: "2h", impact: "high", confidence: 92,
+    id: 1, tag: "CRITICAL", region: "EU",
+    title: { es: "BCE mantiene tipos — Lagarde abre puerta a recorte en junio ante desinflacion en servicios", en: "ECB holds rates — Lagarde signals June cut as services disinflation accelerates" },
+    source: "Financial Times", source_url: "https://www.ft.com/content/ecb-rates-june-2026",
+    published_at: "2026-05-06", time: "4h", impact: "high", confidence: 88,
     summary: {
-      es: "Escalada Houtí fuerza redireccionamiento vía Cabo de Buena Esperanza. Impacto directo en costes de importación europeos, logística energética y primas de seguro en rutas comerciales mediterráneas.",
-      en: "Houthi escalation forces rerouting via Cape of Good Hope. Direct impact on European import costs, energy logistics, and insurance premiums across Mediterranean trade routes.",
+      es: "El BCE mantuvo los tipos de interes en el 3.15% pero el tono de Lagarde fue claramente acomodaticio. La inflacion en servicios bajo al 3.4%, el nivel mas bajo desde 2022, abriendo la puerta a un recorte de 25pb en junio.",
+      en: "The ECB held rates at 3.15% but Lagarde's tone was unambiguously dovish. Services inflation fell to 3.4%, its lowest since 2022, opening the door to a 25bp cut in June."
     },
-    signals: ["OIL +", "SHIPPING +", "EUR -"],
+    situation: {
+      es: "El ciclo de desinflacion europeo lleva seis meses superando las expectativas del mercado. El diferencial con la Fed se amplia — la Fed no recortara antes de septiembre. Esto presiona al EUR/USD hacia la banda baja del 1.06-1.10 que ha dominado el ano. Los bonos soberanos europeos ya descuentan dos recortes en 2026.",
+      en: "The European disinflation cycle has beaten market expectations for six consecutive months. The differential with the Fed is widening — the Fed will not cut before September. This pressures EUR/USD toward the low end of the 1.06-1.10 band that has dominated the year. European sovereign bonds are already pricing in two cuts in 2026."
+    },
+    investment_impact: {
+      es: "Positivo para bonos soberanos europeos a 2-5 anos (Bund, BTP, Bono). Presion bajista estructural sobre EUR/USD. Las utilities y REITs europeos — sectores sensibles a tipos — podrian revalorizarse. Los bancos europeos enfrentan compresion de margen de intermediacion si los recortes se aceleran.",
+      en: "Positive for European sovereign bonds 2-5yr (Bund, BTP, Bono). Structural downward pressure on EUR/USD. European utilities and REITs — rate-sensitive sectors — may reprice upward. European banks face net interest margin compression if cuts accelerate."
+    },
+    zrc_signal: {
+      es: "SOBREPONDERAR bonos soberanos europeos 2-5 anos. El mercado aun no ha descontado completamente un tercer recorte en 2026. La ventana de entrada en BTP italiano 3 anos ofrece una relacion riesgo/retorno favorable dado el spread vs Bund en 165pb.",
+      en: "OVERWEIGHT European sovereign bonds 2-5yr. The market has not fully priced in a third 2026 cut. Entry in Italian BTP 3yr offers favorable risk/return with spread vs Bund at 165bps."
+    },
+    signals: ["ECB", "rates", "EUR/USD", "European bonds", "disinflation"],
+    develops_into_edition: true,
+    edition_note: {
+      es: "El nuevo ciclo de divergencia monetaria Fed-BCE: implicaciones para carteras mixtas europeas con exposicion a renta fija y divisa.",
+      en: "The new Fed-ECB monetary divergence cycle: implications for European multi-asset portfolios with fixed income and FX exposure."
+    }
   },
   {
-    id: 2, tag: "MONITOR", region: "EU",
-    title: { es: "BCE señala divergencia de tipos frente a la Fed", en: "ECB signals rate path divergence from Fed" },
-    time: "4h", impact: "medium", confidence: 78,
+    id: 2, tag: "ALERT", region: "MENA",
+    title: { es: "Iran cierra parcialmente el estrecho de Ormuz a buques con bandera israelí — flete GNL +18%", en: "Iran partially closes Strait of Hormuz to Israeli-flagged vessels — LNG freight +18%" },
+    source: "Reuters", source_url: "https://www.reuters.com/world/middle-east/iran-hormuz-lng-2026",
+    published_at: "2026-05-05", time: "12h", impact: "high", confidence: 82,
     summary: {
-      es: "Última orientación de Lagarde sugiere 2-3 recortes en 2026 mientras la Fed mantiene. Ventanas de arbitraje cambiario para M&A cross-border.",
-      en: "Lagarde's guidance suggests 2-3 cuts in 2026 while Fed holds. Currency arbitrage windows opening for cross-border M&A.",
+      es: "Iran anuncio restricciones de transito para buques con bandera o seguro israelí a traves del estrecho de Ormuz. El mercado de fletes de GNL reacciono con una subida inmediata del 18%. Arabia Saudita no ha confirmado posicion.",
+      en: "Iran announced transit restrictions for Israeli-flagged or Israeli-insured vessels through the Strait of Hormuz. The LNG freight market reacted with an immediate 18% spike. Saudi Arabia has not confirmed its position."
     },
-    signals: ["EUR/USD -", "BONDS +", "EQUITIES ?"],
+    situation: {
+      es: "El estrecho de Ormuz canaliza el 21% del comercio mundial de petroleo y el 17% del GNL. Esta no es la primera amenaza de Iran pero si la primera con implementacion parcial verificable. La reaccion saudita en las proximas 48h determinara si se trata de una escalada real o de una movida diplomatica. Europa importa el 12% de su GNL de rutas que transitan Ormuz.",
+      en: "The Strait of Hormuz channels 21% of global oil trade and 17% of LNG. This is not Iran's first threat but the first with verifiable partial implementation. Saudi Arabia's response in the next 48h will determine whether this is a real escalation or a diplomatic move. Europe imports 12% of its LNG via routes transiting Hormuz."
+    },
+    investment_impact: {
+      es: "Alza inmediata en futuros de GNL TTF europeo y Henry Hub. Positivo para productores de GNL americanos (LNG exporters) y australianos. Compresion de margenes en sectores industriales europeos con alta dependencia energetica. Pressure sobre EUR dado riesgo inflacionario de segunda ronda.",
+      en: "Immediate upside for European TTF and Henry Hub LNG futures. Positive for US and Australian LNG exporters. Margin compression for European energy-intensive industrials. Pressure on EUR given second-round inflation risk."
+    },
+    zrc_signal: {
+      es: "COBERTURA en cartera via futuros de GNL TTF o ETFs de energia europea. Si la escalada se confirma en 48h, rotar hacia productores americanos de LNG. Reducir exposicion a utilities europeas con alta dependencia de gas de importacion.",
+      en: "HEDGE portfolio via TTF LNG futures or European energy ETFs. If escalation is confirmed in 48h, rotate toward US LNG producers. Reduce exposure to European utilities with high import gas dependency."
+    },
+    signals: ["Hormuz", "LNG", "energy security", "Iran", "freight rates"],
+    develops_into_edition: false,
+    edition_note: null
   },
   {
-    id: 3, tag: "EMERGING", region: "LATAM",
-    title: { es: "Reformas de Milei desbloquean pipeline de IED por $12B", en: "Milei reforms unlock $12B in frozen FDI pipeline" },
-    time: "6h", impact: "high", confidence: 85,
+    id: 3, tag: "WATCH", region: "LATAM",
+    title: { es: "Brazil eleva tasa Selic al 13.75% — real se aprecia 2.1% en sesion ante carry trade renovado", en: "Brazil hikes Selic to 13.75% — real appreciates 2.1% intraday on renewed carry trade" },
+    source: "Bloomberg", source_url: "https://www.bloomberg.com/news/brazil-selic-hike-2026",
+    published_at: "2026-05-06", time: "6h", impact: "medium", confidence: 91,
     summary: {
-      es: "Paquete de desregulación aprobado en Senado. Minería, agritech y energía posicionados para first-mover. ZRC monitorizando 4 mandatos activos.",
-      en: "Deregulation package clears Senate. Mining, agritech, and energy positioned for first-mover advantage. ZRC tracking 4 live mandates.",
+      es: "El Banco Central de Brasil subio la Selic 50pb hasta el 13.75%, sorprendiendo al mercado que esperaba 25pb. El real se aprecio un 2.1% frente al dolar en sesion. Los bonos del Tesoro Tesouro Direto a 2 anos subieron 35pb en rendimiento.",
+      en: "Brazil's Central Bank hiked the Selic by 50bps to 13.75%, surprising markets expecting 25bps. The real appreciated 2.1% against the dollar intraday. Tesouro Direto 2yr bonds rose 35bps in yield."
     },
-    signals: ["ARS +", "MINING +", "AGRI +"],
+    situation: {
+      es: "La inflacion brasilena se mantiene por encima del rango objetivo (4.5% objetivo, 5.8% actual) impulsada por servicios y expectativas desancladas. La sorpresa hawkish del BCB recupera credibilidad pero aumenta el riesgo de recession en H2 2026. El diferencial de tipos Brasil-EEUU de 650pb hace al BRL uno de los carry trades mas atractivos del G20.",
+      en: "Brazilian inflation remains above target range (4.5% target, 5.8% actual) driven by services and unanchored expectations. The BCB's hawkish surprise rebuilds credibility but raises H2 2026 recession risk. The 650bp Brazil-US rate differential makes BRL one of the most attractive G20 carry trades."
+    },
+    investment_impact: {
+      es: "Apreciacion del BRL favorable para empresas exportadoras con costes en real (commodities agricolas brasilenas, Vale, Petrobras). Negativo para importadores domesticos. Atractivo renovado para bonos soberanos brasilenos en moneda local via NDF o fondos LATAM. Riesgo: reversion si el ciclo global de risk-off se activa.",
+      en: "BRL appreciation favorable for exporters with real-denominated costs (Brazilian agricultural commodities, Vale, Petrobras). Negative for domestic importers. Renewed appeal for Brazilian local-currency sovereign bonds via NDF or LATAM funds. Risk: reversal if global risk-off cycle activates."
+    },
+    zrc_signal: {
+      es: "MONITOREAR con sesgo positivo en BRL y bonos locales brasilenos. El carry es atractivo pero la ventana es estrecha — posicionarse antes de que el mercado descuente completamente la pausa del ciclo de subidas. Stop si BRL supera 5.20/USD.",
+      en: "MONITOR with positive bias on BRL and Brazilian local bonds. The carry is attractive but the window is narrow — position before the market fully prices in the hike cycle pause. Stop if BRL crosses 5.20/USD."
+    },
+    signals: ["Selic", "BRL", "carry trade", "Brazil rates", "LATAM"],
+    develops_into_edition: false,
+    edition_note: null
   },
   {
-    id: 4, tag: "STRATEGIC", region: "APAC",
-    title: { es: "Retrasos fab TSMC Arizona — tesis semiconductores", en: "TSMC Arizona fab delays reshape semiconductor thesis" },
-    time: "8h", impact: "medium", confidence: 71,
+    id: 4, tag: "DATA", region: "GLOBAL",
+    title: { es: "FMI revisa PIB global 2026 a 2.8% — advierte de fragmentacion comercial como riesgo principal", en: "IMF revises 2026 global GDP to 2.8% — warns trade fragmentation is primary risk" },
+    source: "Wall Street Journal", source_url: "https://www.wsj.com/economy/imf-gdp-revision-2026",
+    published_at: "2026-05-05", time: "1d", impact: "medium", confidence: 85,
     summary: {
-      es: "Timeline producción desplazado a Q3 2027. Soberanía europea de chips se fortalece.",
-      en: "Production timeline pushed to Q3 2027. European chip sovereignty narrative strengthens.",
+      es: "El FMI publico su revision del PIB global para 2026 a la baja hasta el 2.8% (desde 3.1%). La principal razon citada es la fragmentacion comercial y la proliferacion de barreras arancelarias. EEUU se revisa al 1.9%, China al 4.2%.",
+      en: "The IMF published its 2026 global GDP revision down to 2.8% (from 3.1%). The primary reason cited is trade fragmentation and proliferating tariff barriers. US revised to 1.9%, China to 4.2%."
     },
-    signals: ["SEMIS -", "EU TECH +"],
+    situation: {
+      es: "La fragmentacion comercial no es un riesgo nuevo pero el FMI cuantifica por primera vez su impacto en el crecimiento con modelos de equilibrio general. El diferencial de crecimiento emergente/desarrollado se amplia. Los paises con mayor dependencia de cadenas de suministro globales (Mexico, Vietnam, Malasia) son los mas expuestos.",
+      en: "Trade fragmentation is not a new risk but the IMF quantifies its growth impact for the first time using general equilibrium models. The EM/developed growth differential is widening. Countries with the highest global supply chain dependency (Mexico, Vietnam, Malaysia) are most exposed."
+    },
+    investment_impact: {
+      es: "Presion a la baja en activos de mercados emergentes integrados en cadenas de suministro globales. Beneficiarios: economias con demanda interna solida y baja dependencia exportadora (India, Indonesia). Negativo para ETFs de renta variable global market-cap weighted. Positivo para estrategias de seleccion regional activa.",
+      en: "Downward pressure on EM assets integrated in global supply chains. Beneficiaries: economies with solid domestic demand and low export dependency (India, Indonesia). Negative for market-cap-weighted global equity ETFs. Positive for active regional selection strategies."
+    },
+    zrc_signal: {
+      es: "INFRAPONDERAR indices globales de RV en favor de seleccion regional activa. Sobreponderar India e Indonesia dentro de emergentes. Reducir exposicion a Mexico y Vietnam ante riesgo de recomposicion de cadenas de suministro acelerada por aranceles EEUU.",
+      en: "UNDERWEIGHT global equity indices in favor of active regional selection. Overweight India and Indonesia within EM. Reduce Mexico and Vietnam exposure given supply chain recomposition risk from US tariffs."
+    },
+    signals: ["IMF", "GDP revision", "trade fragmentation", "tariffs", "emerging markets"],
+    develops_into_edition: true,
+    edition_note: {
+      es: "La nueva geografia del crecimiento global: ganadores y perdedores de la desglobalizacion y como posicionar carteras institucionales para el ciclo 2026-2028.",
+      en: "The new geography of global growth: winners and losers from deglobalization and how to position institutional portfolios for the 2026-2028 cycle."
+    }
   },
   {
-    id: 5, tag: "ALERT", region: "AFRICA",
-    title: { es: "Gasoducto Morocco-Nigeria: €4.2B en financiación", en: "Morocco-Nigeria gas pipeline secures €4.2B financing" },
-    time: "12h", impact: "high", confidence: 88,
+    id: 5, tag: "WATCH", region: "APAC",
+    title: { es: "PBOC inyecta 500.000M CNY via operaciones repo — yuan onshore toca minimo de 3 meses vs USD", en: "PBOC injects CNY 500bn via repo operations — onshore yuan hits 3-month low vs USD" },
+    source: "Nikkei Asia", source_url: "https://asia.nikkei.com/economy/pboc-yuan-2026",
+    published_at: "2026-05-06", time: "8h", impact: "medium", confidence: 79,
     summary: {
-      es: "Consorcio AfDB y fondos soberanos cierran financiación. Transforma infraestructura energética de África Occidental.",
-      en: "AfDB and sovereign wealth consortium close financing. Transforms West African energy infrastructure.",
+      es: "El Banco Popular de China inyecto 500.000 millones de CNY en el sistema financiero a traves de operaciones repo a 7 dias, la mayor inyeccion desde febrero. El yuan onshore (CNY) se deprecio a 7.28/USD, minimo de tres meses.",
+      en: "The People's Bank of China injected CNY 500bn into the financial system via 7-day repo operations, the largest injection since February. The onshore yuan (CNY) depreciated to 7.28/USD, a three-month low."
     },
-    signals: ["ENERGY +", "INFRA +", "NGN +"],
-  },
+    situation: {
+      es: "La inyeccion de liquidez del PBOC es una respuesta al enfriamiento del credito privado y a la debilidad del sector inmobiliario que persiste a pesar de los estimulos de 2025. La depreciacion del CNY es tolerada por las autoridades como mecanismo de compensacion competitiva ante los aranceles EEUU. Historicamente, depreciaciones sostenidas del CNY generan salidas de capital de mercados emergentes asiaticos.",
+      en: "The PBOC's liquidity injection responds to cooling private credit and persistent real estate weakness despite 2025 stimulus. CNY depreciation is being tolerated by authorities as a competitive offset to US tariffs. Historically, sustained CNY depreciation generates capital outflows from Asian EM markets."
+    },
+    investment_impact: {
+      es: "Presion sobre divisas asiaticas vinculadas al yuan (KRW, TWD, THB). Negativo para renta variable china en moneda local para inversores extranjeros. Positivo para exportadores chinos de manufactura. Los mercados de materias primas denominados en USD se benefician de la debilidad del CNY (reduccion de demanda China en terminos reales menores).",
+      en: "Pressure on Asian currencies linked to yuan (KRW, TWD, THB). Negative for Chinese equities in local currency for foreign investors. Positive for Chinese manufacturing exporters. USD-denominated commodity markets benefit from CNY weakness (lower effective Chinese demand in real terms)."
+    },
+    zrc_signal: {
+      es: "INFRAPONDERAR renta variable china A-shares y H-shares con exposicion a demanda interna. MONITOREAR salidas de capital de mercados asiaticos emergentes como indicador adelantado. Oportunidad tactica en USD/CNH si deprecia mas alla de 7.35.",
+      en: "UNDERWEIGHT Chinese A-shares and H-shares with domestic demand exposure. MONITOR Asian EM capital outflows as leading indicator. Tactical opportunity in USD/CNH if depreciation extends beyond 7.35."
+    },
+    signals: ["PBOC", "CNY", "yuan", "China liquidity", "Asian FX"],
+    develops_into_edition: false,
+    edition_note: null
+  }
 ];
 
 const OPS = [
@@ -989,29 +1070,46 @@ const Observatory = ({ lang }) => {
                 <div style={{ marginTop: 14, paddingTop: 14, borderTop: `1px solid ${C.border}` }}>
                   {user ? (
                     <>
-                      <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.65, margin: "0 0 14px", fontWeight: 300 }}>{item.summary[lang]}</p>
+                      {/* SITUATION */}
+                      <p style={{ fontFamily: F.body, fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", color: C.gold, textTransform: "uppercase", margin: "0 0 4px" }}>
+                        {lang === "es" ? "Situación" : "Situation"}
+                      </p>
+                      <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.7, margin: "0 0 14px", fontWeight: 300 }}>
+                        {(item.situation || item.summary)[lang]}
+                      </p>
+                      {/* INVESTMENT IMPACT */}
+                      <p style={{ fontFamily: F.body, fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", color: C.gold, textTransform: "uppercase", margin: "0 0 4px" }}>
+                        {lang === "es" ? "Exposición de activos" : "Asset exposure"}
+                      </p>
+                      <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.7, margin: "0 0 14px", fontWeight: 300 }}>
+                        {item.investment_impact ? item.investment_impact[lang] : ""}
+                      </p>
+                      {/* ZRC SIGNAL */}
+                      {item.zrc_signal && (
+                        <div style={{ background: `${C.goldDim}`, border: `1px solid ${C.goldBorder}`, borderRadius: 6, padding: "12px 16px", marginBottom: 14 }}>
+                          <p style={{ fontFamily: F.mono, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: C.gold, margin: "0 0 6px" }}>
+                            ZRC SIGNAL
+                          </p>
+                          <p style={{ fontFamily: F.body, fontSize: 13, color: C.text, lineHeight: 1.65, margin: 0, fontWeight: 400 }}>
+                            {item.zrc_signal[lang]}
+                          </p>
+                        </div>
+                      )}
+                      {/* SIGNALS */}
                       <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }}>
                         {item.signals.map((s, j) => (
-                          <span key={j} style={{ fontFamily: F.mono, fontSize: 9, padding: "2px 8px", background: s.includes("+") ? "rgba(34,197,94,0.08)" : s.includes("-") ? "rgba(239,68,68,0.08)" : "rgba(59,130,246,0.08)", color: s.includes("+") ? C.green : s.includes("-") ? C.red : C.blue, border: `1px solid ${s.includes("+") ? "rgba(34,197,94,0.2)" : s.includes("-") ? "rgba(239,68,68,0.2)" : "rgba(59,130,246,0.2)"}`, letterSpacing: "0.05em" }}>{s}</span>
+                          <span key={j} style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.05em", padding: "3px 8px", background: C.surface2, color: C.textMuted, borderRadius: 3 }}>{s}</span>
                         ))}
                       </div>
-                      {item.source && (
-                        <div style={{ marginTop: 6, paddingTop: 10, borderTop: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                          <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em" }}>
-                            {lang === "es" ? "FUENTE" : "SOURCE"}
-                          </span>
-                          {item.source_url ? (
-                            <a href={item.source_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, textDecoration: "none", borderBottom: `1px solid ${C.goldBorder}`, paddingBottom: 1 }}>
-                              {item.source} →
-                            </a>
-                          ) : (
-                            <span style={{ fontFamily: F.mono, fontSize: 10, color: C.gold }}>{item.source}</span>
-                          )}
-                          {item.published_at && (
-                            <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>
-                              · {item.published_at}
-                            </span>
-                          )}
+                      {/* EDITION FLAG */}
+                      {item.develops_into_edition && item.edition_note && (
+                        <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 12, marginTop: 4 }}>
+                          <p style={{ fontFamily: F.mono, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", color: C.amber, margin: "0 0 4px" }}>
+                            {lang === "es" ? "DESARROLLADO EN EDICIÓN MENSUAL" : "DEVELOPED IN MONTHLY EDITION"}
+                          </p>
+                          <p style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
+                            {item.edition_note[lang]}
+                          </p>
                         </div>
                       )}
                     </>
