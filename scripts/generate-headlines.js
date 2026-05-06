@@ -132,118 +132,73 @@ async function generateHeadlines(today) {
   ).join("\n");
 
   const raw = await callClaude(
-    `You are a financial intelligence analyst at an institutional investment firm. Your job: search the web for today's top geopolitical and macroeconomic news and return a JSON array of headlines, each backed by a Tier-1 source.
+    `You are the Chief Intelligence Officer of Zenith Rise Capital, a Madrid-based institutional investment firm advising family offices, sovereign wealth funds, and institutional allocators. Your job is to produce a daily geopolitical and macro intelligence brief — 5 items — that is genuinely useful to a sophisticated investor making real allocation decisions today.
 
-TIER-1 SOURCES — APPROVED LIST (use ONLY these outlets, nothing else):
+Each item must be grounded in a REAL, VERIFIABLE article published in the past 24-48 hours by one of the approved Tier-1 outlets below:
+
 ${outletList}
 
-If a story is only available on aggregators (Yahoo Finance, MSN, ZeroHedge, CNBC, BBC, etc.), DISCARD it. Only include stories where you can cite one of the 12 approved outlets directly. If you cannot find an approved source for a story, do not include that story.
+INTELLIGENCE FRAMEWORK — for each item produce:
 
-DIVERSITY RULE — CRITICAL:
-- Aim for 5-6 headlines from at least 4 DIFFERENT outlets.
-- Maximum 2 headlines from any single outlet.
-- Prefer outlet diversity matching topic geography: Le Monde or Handelsblatt for European stories, Nikkei or SCMP for APAC, NYT/WaPo/Politico for US policy, FT/Reuters/Bloomberg/WSJ/Economist for global financial.
+1. PUBLIC LAYER (visible to all):
+   - title {es, en}: sharp, specific headline. No vague language. Include a quantitative anchor where possible (e.g. "+340% YTD", "€2.3T", "127bps").
+   - tag: "CRITICAL" | "ALERT" | "WATCH" | "DATA"
+   - region: "MENA" | "EU" | "LATAM" | "APAC" | "AFRICA" | "GLOBAL"
+   - source: outlet name (e.g. "Financial Times")
+   - source_url: SPECIFIC article URL — not homepage, not section page, not live blog
+   - published_at: ISO 8601 date e.g. "2026-05-06"
+   - time: relative string e.g. "2h", "4h", "12h", "1d"
+   - impact: "high" | "medium" | "low"
+   - confidence: integer 65–100
 
-Each object in the array must have these exact fields:
-- id (number, leave as 0; will be reassigned)
-- tag (string: "CRITICAL", "ALERT", "MONITOR", "EMERGING", or "STRATEGIC")
-- region (string: "MENA", "EU", "LATAM", "APAC", "AFRICA", "US", or "GLOBAL")
-- title (object with "es" and "en" string fields)
-- summary (object with "es" and "en" string fields, 2-3 sentences each, neutral analytical tone)
-- source (string: exact outlet name from the approved list above)
-- source_url (string: direct article URL on the outlet's domain — must be a SPECIFIC ARTICLE, not a homepage or live blog)
-- published_at (string: ISO 8601 date of publication, e.g. "2026-05-01")
-- time (string: relative time e.g. "2h", "4h", "12h")
-- impact (string: "high", "medium", or "low")
-- signals (array of strings like "OIL +", "EUR -", "EQUITIES ?")
-- confidence (number 60-98)
+2. MEMBER LAYER (investment analysis — only shown to registered members):
+   - summary {es, en}: 2-3 sentences. What happened, precisely. Not a rephrasing of the title.
+   - situation {es, en}: The deeper context. What forces produced this event and what has been building for months that this headline confirms or disrupts. 3-4 sentences.
+   - investment_impact {es, en}: Which asset classes, instruments, sectors or geographies are directly exposed. Be specific — name the instrument type (e.g. "EM sovereign debt", "European energy equities", "USD/BRL", "agricultural commodity futures"). 3-4 sentences.
+   - zrc_signal {es, en}: ZRC's directional view. One of: OVERWEIGHT | UNDERWEIGHT | MONITOR | HEDGE — followed by a specific rationale of 2-3 sentences. This must read as an actual investment recommendation, not generic advice.
+   - signals: array of 3-5 keyword strings (e.g. ["Red Sea", "freight rates", "logistics disruption", "energy"])
+   - develops_into_edition: boolean — true if this signal has enough depth, structural importance and investable thesis to warrant a full Monthly Edition report. Apply this to maximum 1-2 items per batch.
+   - edition_note {es, en}: if develops_into_edition is true, write a 1-sentence pitch for the Monthly Edition piece (e.g. "The structural reshaping of European energy supply chains: who wins, who loses, and where to position."). Omit if false.
 
-VALIDATION CHECKLIST before returning:
-1. Every source_url is on one of the approved domains
-2. Every source name matches one of the 12 approved outlets exactly
-3. Every published_at is within the last 48 hours
-4. No two headlines share the same source_url (no duplicates)
-5. At least 4 different outlets across the array
+QUALITY RULES:
+- Each item must map to a DIFFERENT outlet — no repeat sources in the same batch
+- Prioritise signals with clear, investable consequences over general geopolitical noise
+- The zrc_signal must take a position — "monitor broadly" is not acceptable
+- Do not confuse what happened (summary) with why it matters (situation) with what to do (zrc_signal)
+- Confidence reflects your certainty about the factual basis, not the investment view
 
-CRITICAL: Your entire response must be ONLY the JSON array — no preamble, no markdown fences, no explanations. Start with [ and end with ].`,
-    `Today is ${today}. Find 5-6 high-quality headlines from the past 24-48 hours, each backed by an approved Tier-1 source. Use diverse outlets matching topic geography. Topics: macro policy (central banks, fiscal), geopolitical events with market impact, major M&A, energy/commodities, sovereign debt, FX. Return ONLY the JSON array, nothing else.`
+CRITICAL: Respond with ONLY a valid JSON array. No preamble, no markdown fences, no explanation. Start with [ and end with ].`,
+    `Today is ${today}. Search for and select 5 high-impact geopolitical and macro headlines from the past 24-48 hours. Each must be from a different Tier-1 outlet. Return the JSON array following the schema above exactly.`
   );
 
-  const headlines = extractJSON(raw);
-  const arr = Array.isArray(headlines) ? headlines : headlines.headlines || [];
+  const items = JSON.parse(raw.trim());
 
-  if (arr.length === 0) throw new Error("No headlines generated");
-
-  // ─── Validation: domain check + dedupe ───
-  const seenUrls = new Set();
-  const validated = arr.filter((h) => {
-    if (!h.source_url) {
-      console.warn(`   ⚠️  Discarded (no source_url): ${h.source || "?"}`);
-      return false;
-    }
-    let url;
-    try {
-      url = new URL(h.source_url);
-    } catch (_) {
-      console.warn(`   ⚠️  Discarded invalid URL: ${h.source_url}`);
-      return false;
-    }
-    const isTier1 = TIER1_DOMAINS.some((d) => url.hostname.endsWith(d));
-    if (!isTier1) {
-      console.warn(`   ⚠️  Discarded non-Tier-1: ${h.source} (${url.hostname})`);
-      return false;
-    }
-    if (seenUrls.has(h.source_url)) {
-      console.warn(`   ⚠️  Discarded duplicate URL: ${h.source_url}`);
-      return false;
-    }
-    seenUrls.add(h.source_url);
-    return true;
-  });
-
-  if (validated.length === 0) {
-    throw new Error("No headlines passed Tier-1 validation");
+  if (!Array.isArray(items) || items.length === 0) {
+    throw new Error("Invalid response: not an array or empty");
   }
 
-  // ─── Diversity report ───
-  const sourceCounts = {};
-  validated.forEach((h) => {
-    sourceCounts[h.source] = (sourceCounts[h.source] || 0) + 1;
-  });
-  const uniqueOutlets = Object.keys(sourceCounts).length;
-  console.log(`   ℹ️  Diversity: ${uniqueOutlets} unique outlets`);
-  if (uniqueOutlets < 3) {
-    console.warn(`   ⚠️  Low diversity: only ${uniqueOutlets} outlet(s). Consider re-running.`);
-  }
-
-  return validated.map((h, i) => ({ ...h, id: i + 1 }));
+  // Validate and clean each item
+  return items.map((item, i) => ({
+    id: i + 1,
+    tag: item.tag || "WATCH",
+    region: item.region || "GLOBAL",
+    title: item.title || { es: "", en: "" },
+    source: item.source || "",
+    source_url: item.source_url || "",
+    published_at: item.published_at || today,
+    time: item.time || "24h",
+    impact: item.impact || "medium",
+    confidence: item.confidence || 75,
+    summary: item.summary || { es: "", en: "" },
+    situation: item.situation || { es: "", en: "" },
+    investment_impact: item.investment_impact || { es: "", en: "" },
+    zrc_signal: item.zrc_signal || { es: "", en: "" },
+    signals: item.signals || [],
+    develops_into_edition: !!item.develops_into_edition,
+    edition_note: item.edition_note || null,
+  }));
 }
 
-// ─── MARKET DATA ───
-async function generateMarketData(today) {
-  console.log("📊 Fetching live market data...");
-
-  const raw = await callClaude(
-    `You are a financial data provider. Search for current market prices and return ONLY a raw JSON array — no text before or after it, no explanations, no markdown. Just the [ ... ] array.
-
-Each object must have: symbol (string), value (string), change (string with + or -), up (boolean).
-
-Required instruments in this order:
-1. EUR/USD  2. IBEX 35  3. BRENT  4. GOLD  5. BTC  6. VIX  7. US 10Y  8. EUR/GBP  9. S&P 500  10. DAX 40
-
-CRITICAL: Your entire response must be ONLY the JSON array. Do NOT write any text before or after it.`,
-    `Today is ${today}. Search for the latest market prices right now. Return ONLY the JSON array, nothing else.`
-  );
-
-  const ticker = extractJSON(raw);
-  const arr = Array.isArray(ticker) ? ticker : ticker.market_ticker || [];
-
-  if (arr.length === 0) throw new Error("No market data generated");
-
-  return arr;
-}
-
-// ─── MAIN ───
 async function main() {
   const today = new Date().toISOString().split("T")[0];
   console.log(`\n🏛️  ZRC Intelligence Generator — ${today}\n`);
