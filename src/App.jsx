@@ -684,13 +684,16 @@ const AuthModal = () => {
 };
 
 const LockedOverlay = ({ message, lang }) => {
-  const { openRegister } = useAuth();
+  const { openRegister, openLogin } = useAuth();
   return (
     <div style={{ padding: "32px 24px", background: `linear-gradient(180deg, transparent, ${C.bg})`, display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
       <div style={{ width: 40, height: 40, border: `1px solid ${C.goldBorder}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>🔒</div>
       <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, textAlign: "center" }}>{message}</p>
       <button onClick={openRegister} style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
         {lang === "es" ? "CREAR CUENTA GRATUITA →" : "CREATE FREE ACCOUNT →"}
+      </button>
+      <button onClick={openLogin} style={{ background: "transparent", border: `1px solid ${C.border}`, color: C.textSec, padding: "10px 24px", fontFamily: F.mono, fontSize: 11, letterSpacing: "0.08em", cursor: "pointer", borderRadius: 4, marginTop: 8 }}>
+        {lang === "es" ? "INICIAR SESIÓN" : "SIGN IN"}
       </button>
     </div>
   );
@@ -941,7 +944,16 @@ const Observatory = ({ lang }) => {
   const [expanded, setExpanded] = useState(null);
   const [filter, setFilter] = useState("ALL");
   const regions = ["ALL", "MENA", "EU", "LATAM", "APAC", "AFRICA"];
-  const feed = useHeadlines(FEED);
+  const liveData = useHeadlines(FEED);
+  // Merge live intelligence items with static FEED so we always show >= 5
+  const feed = (() => {
+    if (!liveData || liveData.length === 0) return FEED;
+    // Live data may have fewer items — pad with static items not already present
+    const liveIds = new Set(liveData.map(d => d.id));
+    const extras = FEED.filter(f => !liveIds.has(f.id));
+    const merged = [...liveData, ...extras];
+    return merged.length >= 5 ? merged : merged;
+  })();
   const filtered = filter === "ALL" ? feed : feed.filter((f) => f.region === filter);
 
   return (
