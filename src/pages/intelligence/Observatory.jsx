@@ -114,14 +114,11 @@ export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, 
   const [filter, setFilter]     = useState("ALL");
   const regions = ["ALL","MENA","EU","LATAM","APAC","AFRICA"];
 
-  // Live data from daily pipeline, padded with static FEED if needed
-  const liveData = useHeadlines(FEED);
-  const feed = (() => {
-    if (!liveData || liveData.length === 0) return FEED;
-    const liveIds = new Set(liveData.map(d => d.id));
-    const extras  = FEED.filter(f => !liveIds.has(f.id));
-    return [...liveData, ...extras];
-  })();
+  // Live data from daily pipeline. Static FEED only when API has nothing.
+  const liveData = useHeadlines(null);
+  const feed = (liveData && liveData.length > 0)
+    ? liveData
+    : FEED.map(f => ({ ...f, _static: true }));
 
   const filtered = filter === "ALL" ? feed : feed.filter(f => f.region === filter);
 
@@ -243,14 +240,22 @@ export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, 
                       {item.title[lang]}
                     </h3>
 
-                    {/* SOURCE LINK */}
-                    {item.source_url && (
-                      <a href={item.source_url} target="_blank" rel="noopener noreferrer"
-                        onClick={e => e.stopPropagation()}
-                        style={{ fontFamily:F.mono, fontSize:9, color:C.gold, textDecoration:"none", letterSpacing:"0.05em" }}>
-                        {lang==="es" ? "Ver artículo →" : "Read article →"}
-                      </a>
-                    )}
+                    {/* SOURCE LINK — only render for live (non-static) items with valid Tier-1 URL */}
+                    {(() => {
+                      if (item._static || !item.source_url) return null;
+                      const TIER1 = ["ft.com","reuters.com","bloomberg.com","wsj.com","economist.com","nytimes.com","washingtonpost.com","politico.com","politico.eu","lemonde.fr","handelsblatt.com","nikkei.com","scmp.com"];
+                      let host = "";
+                      try { host = new URL(item.source_url).hostname; } catch { return null; }
+                      const ok = TIER1.some(d => host.endsWith(d));
+                      if (!ok) return null;
+                      return (
+                        <a href={item.source_url} target="_blank" rel="noopener noreferrer"
+                          onClick={e => e.stopPropagation()}
+                          style={{ fontFamily:F.mono, fontSize:9, color:C.gold, textDecoration:"none", letterSpacing:"0.05em" }}>
+                          {lang==="es" ? "Ver artículo →" : "Read article →"}
+                        </a>
+                      );
+                    })()}
                   </div>
 
                   {/* IMPACT + EXPAND */}
