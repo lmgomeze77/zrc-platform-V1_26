@@ -243,7 +243,7 @@ export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, 
                     {/* SOURCE LINK — only render for live (non-static) items with valid Tier-1 URL */}
                     {(() => {
                       if (item._static || !item.source_url) return null;
-                      const TIER1 = ["ft.com","reuters.com","bloomberg.com","wsj.com","economist.com","nytimes.com","washingtonpost.com","politico.com","politico.eu","lemonde.fr","handelsblatt.com","nikkei.com","scmp.com"];
+                      const TIER1 = ["bbc.co.uk","bbc.com","dw.com","lemonde.fr","elpais.com","france24.com","aljazeera.com","theguardian.com","nytimes.com","reuters.com","ft.com","bloomberg.com","wsj.com","economist.com"];
                       let host = "";
                       try { host = new URL(item.source_url).hostname; } catch { return null; }
                       const ok = TIER1.some(d => host.endsWith(d));

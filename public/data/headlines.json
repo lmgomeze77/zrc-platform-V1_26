@@ -1,122 +1,217 @@
 {
-  "generated_at": "2026-05-05T08:05:17.190Z",
+  "generated_at": "2026-05-07T20:21:47.502Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
       "value": "1.1752",
-      "change": "+0.03%",
+      "change": "+0.03",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18127",
-      "change": "+0.12%",
+      "value": "18147.20",
+      "change": "+0.24",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "101.96",
-      "change": "+0.68%",
+      "change": "+0.68",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "95.66",
-      "change": "+0.61%",
+      "symbol": "GOLD",
+      "value": "4697.48",
+      "change": "+3.11",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4753",
-      "change": "+1.00%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "81401",
-      "change": "+0.61%",
-      "up": true
+      "symbol": "BTC",
+      "value": "80914",
+      "change": "-0.34",
+      "up": false
     },
     {
       "symbol": "VIX",
-      "value": "17.32",
-      "change": "-0.40%",
+      "value": "17.39",
+      "change": "-0.40",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.34%",
-      "change": "-0.02%",
+      "symbol": "US 10Y",
+      "value": "4.35",
+      "change": "-0.10",
       "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8631",
+      "change": "+0.02",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7340",
-      "change": "+1.12%",
+      "value": "7374.77",
+      "change": "+0.13",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24990",
-      "change": "+0.30%",
+      "value": "24958.50",
+      "change": "+0.16",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8670",
-      "change": "+0.10%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.03",
-      "change": "-0.01%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.71",
-      "change": "-0.86%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.14",
-      "change": "+0.14%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8016",
-      "change": "-0.13%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "EMERGING",
-      "region": "APAC",
+      "tag": "CRITICAL",
+      "region": "EU",
       "title": {
-        "es": "Portugal emite bonos en yuanes por primera vez como país de la eurozona, diversificando fuentes de financiamiento",
-        "en": "Portugal Issues Yuan Bonds as First Eurozone Country, Diversifying Funding Sources"
+        "en": "Russian attacks kill 27 before deadline for ceasefire proposed by Kyiv",
+        "es": "Ataques rusos matan a 27 personas antes de la fecha límite del alto el fuego propuesto por Kyiv"
       },
       "summary": {
-        "es": "Portugal vendió 1.99 mil millones de yuanes en deuda a ocho años en el mercado de bonos offshore, convirtiéndose en el primer país de la eurozona en hacerlo. Esta emisión de 'dim sum bonds' busca diversificar las fuentes de financiamiento y reducir los costos de las tasas de interés, reflejando vínculos económicos más profundos con China.",
-        "en": "Portugal sold 1.99 billion yuan of eight-year debt in the offshore yuan bond market, becoming the first eurozone country to do so. This 'dim sum bond' issuance aims to diversify funding sources and lower interest rate costs, reflecting deepening economic ties with China."
+        "en": "Russian military operations killed at least 27 Ukrainians on May 7, hours before a midnight ceasefire deadline proposed by Kyiv, signaling continued escalation despite diplomatic efforts. The timing suggests potential strategic leverage before the May 8-9 pause coinciding with Russia's Victory Day commemoration.",
+        "es": "Las operaciones militares rusas mataron al menos a 27 ucranianos el 7 de mayo, horas antes de una fecha límite de alto el fuego propuesta por Kyiv, señalando una escalada continua a pesar de los esfuerzos diplomáticos. El momento sugiere un posible apalancamiento estratégico antes de la pausa del 8-9 de mayo coincidiendo con la conmemoración del Día de la Victoria de Rusia."
       },
-      "source": "South China Morning Post",
-      "source_url": "https://www.scmp.com/opinion/comment/article/3350441/chinese-yuan-slowly-surely-cutting-us-dollar-dominance",
-      "published_at": "2026-04-19",
-      "time": "2w",
-      "impact": "low",
+      "impact": "high",
       "signals": [
-        "CNY +",
-        "EUR ?",
+        "EUR -",
+        "EQUITIES ?",
+        "GOLD +",
         "BONDS +"
       ],
-      "confidence": 73
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260507-russian-attacks-kill-27-before-deadline-for-ceasefire-proposed-by-kyiv",
+      "published_at": "2026-05-07",
+      "time": "6h"
+    },
+    {
+      "id": 2,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "en": "Middle East crisis live: Iran reviewing peace proposal as Trump says a deal 'very possible'",
+        "es": "Crisis de Oriente Medio en directo: Irán revisa propuesta de paz mientras Trump dice que un acuerdo es 'muy posible'"
+      },
+      "summary": {
+        "en": "The US and Iran are exchanging conflicting signals on peace negotiations, with Trump claiming a deal is 'very possible' while Iran reviews proposals. EU guidelines indicate the Iran war's tourism impact remains moderate, suggesting prolonged market uncertainty without imminent resolution.",
+        "es": "EE.UU. e Irán intercambian señales contradictorias sobre negociaciones de paz, con Trump afirmando que un acuerdo es 'muy posible' mientras Irán revisa propuestas. Las directrices de la UE indican que el impacto de la guerra con Irán en el turismo sigue siendo moderado, sugiriendo incertidumbre de mercado prolongada sin una resolución inmediata."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL ?",
+        "USD +",
+        "BONDS ?",
+        "EQUITIES ?"
+      ],
+      "confidence": 85,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/07/middle-east-crisis-iran-trump-us-negotiations-deal-war-peace-proposal-hormuz-latest-news-updates",
+      "published_at": "2026-05-07",
+      "time": "1h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "en": "US and Iran close to temporary truce, Pakistani officials claim",
+        "es": "EE.UU. e Irán cerca de una tregua temporal, según afirman funcionarios pakistaníes"
+      },
+      "summary": {
+        "en": "Pakistani officials report the US and Iran are approaching a temporary truce agreement that would maintain peace and restore shipping routes while broader negotiations continue. A basic deal would materially reduce Middle East geopolitical risk and crude supply constraints.",
+        "es": "Funcionarios pakistaníes informan que EE.UU. e Irán se acercan a un acuerdo de tregua temporal que mantendría la paz y restauraría las rutas de envío mientras continúan las negociaciones más amplias. Un acuerdo básico reduciría materialmente el riesgo geopolítico de Oriente Medio y las restricciones de suministro de petróleo crudo."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL -",
+        "USD -",
+        "EQUITIES +",
+        "SHIPPING +"
+      ],
+      "confidence": 82,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/may/07/us-and-iran-close-to-temporary-truce-pakistani-officials-claim",
+      "published_at": "2026-05-07",
+      "time": "2h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "en": "Is Russian oil becoming a lifeline for Southeast Asia?",
+        "es": "¿Se está convirtiendo el petróleo ruso en un salvavidas para el Sudeste Asiático?"
+      },
+      "summary": {
+        "en": "Southeast Asian governments are prioritizing Russian energy imports over EU pressure as the Iran war constrains global energy supplies and fertilizer availability. This geopolitical realignment reflects economic desperation and signals persistent supply-chain fragmentation with long-term implications for global commodity markets.",
+        "es": "Los gobiernos del Sudeste Asiático están priorizando las importaciones de energía rusa sobre la presión de la UE mientras la guerra con Irán limita los suministros mundiales de energía y disponibilidad de fertilizantes. Este realineamiento geopolítico refleja desesperación económica y señala fragmentación persistente de la cadena de suministro con implicaciones a largo plazo para los mercados de materias primas globales."
+      },
+      "impact": "medium",
+      "signals": [
+        "OIL +",
+        "FERTILIZER +",
+        "ASIA EQUITIES ?",
+        "EUR -"
+      ],
+      "confidence": 78,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/is-russian-oil-becoming-a-lifeline-for-southeast-asia/a-77079277?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-07",
+      "time": "7h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "MENA",
+      "title": {
+        "en": "Israel Says It Killed a Hezbollah Chief Near Beirut, Testing the Truce",
+        "es": "Israel dice que mató a un jefe de Hezbollah cerca de Beirut, poniendo a prueba la tregua"
+      },
+      "summary": {
+        "en": "An Israeli strike killed a Hezbollah commander near Beirut, representing the first major operation near the Lebanese capital since the ceasefire agreement. The action tests fragile truce stability and indicates potential for escalation that could undermine US-led diplomatic efforts to stabilize the broader Middle East.",
+        "es": "Un ataque israelí mató a un comandante de Hezbollah cerca de Beirut, representando la primera operación importante cerca de la capital libanesa desde el acuerdo de cese del fuego. La acción pone a prueba la estabilidad de la tregua frágil e indica potencial para escalada que podría socavar los esfuerzos diplomáticos liderados por EE.UU. para estabilizar el Oriente Medio más amplio."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL +",
+        "GOLD +",
+        "EQUITIES -",
+        "BONDS +"
+      ],
+      "confidence": 84,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/07/world/middleeast/israel-hezbollah-commander-beirut-strike.html",
+      "published_at": "2026-05-07",
+      "time": "1h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "en": "Rosenberg: Russia's Victory Day parade with no tanks a sign Ukraine war not going to plan",
+        "es": "Rosenberg: El desfile del Día de la Victoria de Rusia sin tanques es señal de que la guerra de Ucrania no va según lo planeado"
+      },
+      "summary": {
+        "en": "Russia's May 9 Victory Day parade will feature no military hardware for the first time in nearly two decades, indicating resource constraints or strategic messaging about war performance. The shift signals potential Russian vulnerability and may reflect domestic military capability limitations amid the protracted Ukraine conflict.",
+        "es": "El desfile del Día de la Victoria del 9 de mayo de Rusia no contará con equipos militares por primera vez en casi dos décadas, indicando restricciones de recursos o mensajería estratégica sobre el desempeño de la guerra. El cambio señala una posible vulnerabilidad rusa y puede reflejar limitaciones de capacidad militar doméstica en medio del conflicto prolongado de Ucrania."
+      },
+      "impact": "medium",
+      "signals": [
+        "EUR +",
+        "EQUITIES ?",
+        "GOLD -",
+        "RUB -"
+      ],
+      "confidence": 76,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/cwy2gj2jlr8o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-07",
+      "time": "4h"
     }
-  ],
-  "market_updated_at": "2026-05-07T19:21:36.591Z"
+  ]
 }

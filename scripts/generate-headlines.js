@@ -1,14 +1,19 @@
 /**
- * ZRC Daily Intelligence Generator v4
+ * ZRC Daily Intelligence Generator v5 — RSS-based
  *
- * Calls the Anthropic API with web_search to fetch:
- * 1. Tier-1 sourced geopolitical/macro headlines (12 outlets across geographies)
- * 2. Live market ticker data
- *
- * Output: public/data/headlines.json
+ * Pipeline:
+ *   1. Pull 10 Tier-1 RSS feeds in parallel (3s timeout each)
+ *   2. Normalize items, dedupe by URL
+ *   3. Filter: last 30h
+ *   4. Score with geopolitical-weighted keywords (Tier A x3, B x2, C x1)
+ *   5. Pick top-15, max 2 per outlet
+ *   6. Single Haiku call: select 6, translate, summarize, tag, region, signals
+ *   7. Validate Tier-1 domain (defense in depth)
+ *   8. Write public/data/headlines.json
  */
 
 import Anthropic from "@anthropic-ai/sdk";
+import Parser from "rss-parser";
 import { writeFileSync, mkdirSync, existsSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
@@ -18,205 +23,308 @@ const OUTPUT_DIR = join(__dirname, "..", "public", "data");
 const OUTPUT_FILE = join(OUTPUT_DIR, "headlines.json");
 
 const client = new Anthropic();
+const parser = new Parser({ timeout: 3000, headers: { "User-Agent": "ZRCBot/1.0" } });
 
-// ─── TIER-1 OUTLET REGISTRY ───
-// Each entry: outlet name (as appears in `source`), accepted domain suffixes
-const TIER1_OUTLETS = [
-  // Anglo financial (5)
-  { name: "Financial Times",        domains: ["ft.com"] },
-  { name: "Reuters",                domains: ["reuters.com"] },
-  { name: "Bloomberg",              domains: ["bloomberg.com"] },
-  { name: "Wall Street Journal",    domains: ["wsj.com"] },
-  { name: "The Economist",          domains: ["economist.com"] },
-  // Anglo broadsheet (3)
-  { name: "New York Times",         domains: ["nytimes.com"] },
-  { name: "Washington Post",        domains: ["washingtonpost.com"] },
-  { name: "Politico",               domains: ["politico.com", "politico.eu"] },
-  // Continental Europe (2)
-  { name: "Le Monde",               domains: ["lemonde.fr"] },
-  { name: "Handelsblatt",           domains: ["handelsblatt.com"] },
-  // APAC specialists (2)
-  { name: "Nikkei",                 domains: ["nikkei.com", "asia.nikkei.com"] },
-  { name: "South China Morning Post", domains: ["scmp.com"] },
+// ─── RSS FEEDS ────────────────────────────────────────────────
+const FEEDS = [
+  { name: "BBC News",         url: "https://feeds.bbci.co.uk/news/world/rss.xml",                                        domain: "bbc.co.uk" },
+  { name: "BBC Business",     url: "https://feeds.bbci.co.uk/news/business/rss.xml",                                     domain: "bbc.co.uk" },
+  { name: "Deutsche Welle",   url: "https://rss.dw.com/rdf/rss-en-all",                                                  domain: "dw.com" },
+  { name: "Le Monde",         url: "https://www.lemonde.fr/rss/une.xml",                                                 domain: "lemonde.fr" },
+  { name: "El País",          url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada",                   domain: "elpais.com" },
+  { name: "France 24",        url: "https://www.france24.com/en/rss",                                                    domain: "france24.com" },
+  { name: "Al Jazeera",       url: "https://www.aljazeera.com/xml/rss/all.xml",                                          domain: "aljazeera.com" },
+  { name: "The Guardian",     url: "https://www.theguardian.com/world/rss",                                              domain: "theguardian.com" },
+  { name: "New York Times",   url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",                             domain: "nytimes.com" },
 ];
 
-const TIER1_DOMAINS = TIER1_OUTLETS.flatMap((o) => o.domains);
+// ─── KEYWORD TIERS ────────────────────────────────────────────
+const TIER_A = [
+  // Conflict & security
+  "war", "conflict", "military", "nato", "missile", "drone", "ceasefire", "escalation", "troops", "naval", "strike", "warship", "deployment",
+  // Strategic actors & rivalries
+  "russia", "ukraine", "china", "taiwan", "iran", "israel", "north korea", "houthi", "hezbollah", "hamas", "putin", "xi jinping", "erdogan",
+  // Diplomacy & international order
+  "sanctions", "embargo", "treaty", "summit", "alliance", "brics", "g7", "g20", "un security council",
+  // Strategic chokepoints
+  "strait of hormuz", "suez", "red sea", "south china sea", "black sea", "bosporus", "panama canal", "bab el-mandeb", "taiwan strait",
+  // Energy as geopolitical weapon
+  "opec", "opec+", "gas pipeline", "nord stream", "lng", "energy security",
+  // Tech sovereignty
+  "semiconductor", "semiconductors", "chips act", "export controls", "critical minerals", "rare earths", "lithium", "cobalt", "supply chain",
+];
 
-// ─── ROBUST JSON EXTRACTOR ───
-function extractJSON(text) {
-  text = text.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
+const TIER_B = [
+  // Monetary policy
+  "ecb", "bce", "federal reserve", "fed", "boj", "central bank", "rate hike", "rate cut", "yield", "dedollarization",
+  // Fiscal & sovereign
+  "fiscal", "deficit", "sovereign debt", "imf", "downgrade", "default", "eurobond",
+  // Tariffs & trade
+  "tariff", "trade war", "wto", "decoupling", "friend-shoring", "reshoring",
+  // Strategic FX
+  "dollar", "euro", "yuan", "ruble",
+];
 
-  try {
-    return JSON.parse(text);
-  } catch (_) {
-    // ignore
-  }
+const TIER_C = [
+  // Geopolitically sensitive commodities
+  "crude", "brent", "wti", "gold", "natural gas", "wheat", "uranium",
+  // Strategic cross-border M&A
+  "cross-border merger", "foreign investment screening", "cfius", "fdi block",
+];
 
-  const arrStart = text.indexOf("[");
-  const objStart = text.indexOf("{");
-
-  let start = -1;
-  let isArray = false;
-
-  if (arrStart === -1 && objStart === -1) {
-    throw new Error("No JSON found in response");
-  } else if (arrStart === -1) {
-    start = objStart;
-    isArray = false;
-  } else if (objStart === -1) {
-    start = arrStart;
-    isArray = true;
-  } else {
-    start = Math.min(arrStart, objStart);
-    isArray = arrStart < objStart;
-  }
-
-  const openChar = isArray ? "[" : "{";
-  const closeChar = isArray ? "]" : "}";
-  let depth = 0;
-  let end = -1;
-
-  for (let i = start; i < text.length; i++) {
-    if (text[i] === openChar) depth++;
-    else if (text[i] === closeChar) depth--;
-    if (depth === 0) {
-      end = i + 1;
-      break;
-    }
-  }
-
-  if (end === -1) {
-    throw new Error("Unbalanced JSON brackets");
-  }
-
-  const jsonStr = text.slice(start, end);
-  return JSON.parse(jsonStr);
+function scoreItem(text) {
+  const t = text.toLowerCase();
+  let scoreA = 0, scoreB = 0, scoreC = 0;
+  for (const kw of TIER_A) if (t.includes(kw)) scoreA++;
+  for (const kw of TIER_B) if (t.includes(kw)) scoreB++;
+  for (const kw of TIER_C) if (t.includes(kw)) scoreC++;
+  return { total: scoreA * 3 + scoreB * 2 + scoreC, a: scoreA, b: scoreB, c: scoreC };
 }
 
-// ─── API CALL ───
-async function callClaude(systemPrompt, userPrompt, timeoutMs = 120000) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-
+// ─── RSS FETCH (parallel with timeout, never throws) ──────────
+async function fetchFeed(feed) {
   try {
-    const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 4096,
-      tools: [{ type: "web_search_20250305", name: "web_search" }],
-      system: systemPrompt,
-      messages: [{ role: "user", content: userPrompt }],
-    });
-
-    clearTimeout(timer);
-
-    let jsonText = "";
-    for (const block of response.content) {
-      if (block.type === "text") {
-        jsonText = block.text;
-      }
-    }
-
-    return jsonText;
+    const result = await parser.parseURL(feed.url);
+    const items = (result.items || []).slice(0, 30).map((it) => ({
+      title: (it.title || "").trim(),
+      url: it.link || "",
+      description: (it.contentSnippet || it.content || it.summary || "").slice(0, 500).trim(),
+      published_at: it.isoDate || it.pubDate || null,
+      source: feed.name,
+      domain: feed.domain,
+    }));
+    return items;
   } catch (err) {
-    clearTimeout(timer);
-    throw err;
+    console.warn(`   ⚠️  ${feed.name} feed failed: ${err.message}`);
+    return [];
   }
 }
 
-// ─── HEADLINES ───
-async function generateHeadlines(today) {
-  console.log("🔍 Fetching geopolitical intelligence (Tier-1, 12 outlets)...");
-
-  const outletList = TIER1_OUTLETS.map(
-    (o) => `- ${o.name} (${o.domains.join(" or ")})`
-  ).join("\n");
-
-  const raw = await callClaude(
-    `You are the Chief Intelligence Officer of Zenith Rise Capital, a Madrid-based institutional investment firm advising family offices, sovereign wealth funds, and institutional allocators. Your job is to produce a daily geopolitical and macro intelligence brief — 5 items — that is genuinely useful to a sophisticated investor making real allocation decisions today.
-
-Each item must be grounded in a REAL, VERIFIABLE article published in the past 24-48 hours by one of the approved Tier-1 outlets below:
-
-${outletList}
-
-INTELLIGENCE FRAMEWORK — for each item produce:
-
-1. PUBLIC LAYER (visible to all):
-   - title {es, en}: sharp, specific headline. No vague language. Include a quantitative anchor where possible (e.g. "+340% YTD", "€2.3T", "127bps").
-   - tag: "CRITICAL" | "ALERT" | "WATCH" | "DATA"
-   - region: "MENA" | "EU" | "LATAM" | "APAC" | "AFRICA" | "GLOBAL"
-   - source: outlet name (e.g. "Financial Times")
-   - source_url: SPECIFIC article URL — not homepage, not section page, not live blog
-   - published_at: ISO 8601 date e.g. "2026-05-06"
-   - time: relative string e.g. "2h", "4h", "12h", "1d"
-   - impact: "high" | "medium" | "low"
-   - confidence: integer 65–100
-
-2. MEMBER LAYER (investment analysis — only shown to registered members):
-   - summary {es, en}: 2-3 sentences. What happened, precisely. Not a rephrasing of the title.
-   - situation {es, en}: The deeper context. What forces produced this event and what has been building for months that this headline confirms or disrupts. 3-4 sentences.
-   - investment_impact {es, en}: Which asset classes, instruments, sectors or geographies are directly exposed. Be specific — name the instrument type (e.g. "EM sovereign debt", "European energy equities", "USD/BRL", "agricultural commodity futures"). 3-4 sentences.
-   - zrc_signal {es, en}: ZRC's directional view. One of: OVERWEIGHT | UNDERWEIGHT | MONITOR | HEDGE — followed by a specific rationale of 2-3 sentences. This must read as an actual investment recommendation, not generic advice.
-   - signals: array of 3-5 keyword strings (e.g. ["Red Sea", "freight rates", "logistics disruption", "energy"])
-   - develops_into_edition: boolean — true if this signal has enough depth, structural importance and investable thesis to warrant a full Monthly Edition report. Apply this to maximum 1-2 items per batch.
-   - edition_note {es, en}: if develops_into_edition is true, write a 1-sentence pitch for the Monthly Edition piece (e.g. "The structural reshaping of European energy supply chains: who wins, who loses, and where to position."). Omit if false.
-
-QUALITY RULES:
-- Each item must map to a DIFFERENT outlet — no repeat sources in the same batch
-- Prioritise signals with clear, investable consequences over general geopolitical noise
-- The zrc_signal must take a position — "monitor broadly" is not acceptable
-- Do not confuse what happened (summary) with why it matters (situation) with what to do (zrc_signal)
-- Confidence reflects your certainty about the factual basis, not the investment view
-
-CRITICAL: Respond with ONLY a valid JSON array. No preamble, no markdown fences, no explanation. Start with [ and end with ].`,
-    `Today is ${today}. Search for and select 5 high-impact geopolitical and macro headlines from the past 24-48 hours. Each must be from a different Tier-1 outlet. Return the JSON array following the schema above exactly.`
-  );
-
-  const items = JSON.parse(raw.trim());
-
-  if (!Array.isArray(items) || items.length === 0) {
-    throw new Error("Invalid response: not an array or empty");
-  }
-
-  // Validate and clean each item
-  return items.map((item, i) => ({
-    id: i + 1,
-    tag: item.tag || "WATCH",
-    region: item.region || "GLOBAL",
-    title: item.title || { es: "", en: "" },
-    source: item.source || "",
-    source_url: item.source_url || "",
-    published_at: item.published_at || today,
-    time: item.time || "24h",
-    impact: item.impact || "medium",
-    confidence: item.confidence || 75,
-    summary: item.summary || { es: "", en: "" },
-    situation: item.situation || { es: "", en: "" },
-    investment_impact: item.investment_impact || { es: "", en: "" },
-    zrc_signal: item.zrc_signal || { es: "", en: "" },
-    signals: item.signals || [],
-    develops_into_edition: !!item.develops_into_edition,
-    edition_note: item.edition_note || null,
-  }));
+async function fetchAllFeeds() {
+  console.log(`📡 Pulling ${FEEDS.length} RSS feeds in parallel...`);
+  const results = await Promise.all(FEEDS.map(fetchFeed));
+  const all = results.flat();
+  console.log(`   ✅ Got ${all.length} raw items from ${results.filter((r) => r.length > 0).length}/${FEEDS.length} feeds`);
+  return all;
 }
 
+// ─── FILTER + SCORE + DEDUPE ──────────────────────────────────
+function processItems(items) {
+  const cutoffMs = Date.now() - 30 * 3600 * 1000;
+
+  // Dedupe by URL
+  const seenUrls = new Set();
+  const deduped = items.filter((i) => {
+    if (!i.url || seenUrls.has(i.url)) return false;
+    seenUrls.add(i.url);
+    return true;
+  });
+
+  // Time filter (30h window)
+  const recent = deduped.filter((i) => {
+    if (!i.published_at) return true; // keep undated, RSS sometimes omits
+    const t = new Date(i.published_at).getTime();
+    return !isNaN(t) && t >= cutoffMs;
+  });
+
+  // Score everything
+  const scored = recent
+    .map((i) => {
+      const s = scoreItem(i.title + " " + i.description);
+      return { ...i, score: s.total, scoreBreakdown: s };
+    })
+    .filter((i) => i.score > 0); // drop items without any keyword match
+
+  // Sort by score desc
+  scored.sort((a, b) => b.score - a.score);
+
+  // Diversity: max 2 per outlet
+  const perOutlet = {};
+  const diverse = [];
+  for (const item of scored) {
+    perOutlet[item.source] = perOutlet[item.source] || 0;
+    if (perOutlet[item.source] < 2) {
+      diverse.push(item);
+      perOutlet[item.source]++;
+    }
+    if (diverse.length >= 15) break;
+  }
+
+  console.log(`   📊 After filter+score: ${recent.length} recent → ${scored.length} relevant → ${diverse.length} candidates (max 2/outlet)`);
+  return diverse;
+}
+
+// ─── HAIKU ENRICHMENT ─────────────────────────────────────────
+async function enrichWithHaiku(candidates) {
+  if (candidates.length === 0) throw new Error("No candidates to enrich");
+
+  const candidateList = candidates
+    .map((c, i) => {
+      return `[${i}] ${c.source} | ${c.published_at || "undated"}
+TITLE: ${c.title}
+URL: ${c.url}
+DESC: ${c.description.slice(0, 300)}`;
+    })
+    .join("\n\n");
+
+  const systemPrompt = `You are an institutional intelligence analyst at ZRC, a geopolitical investment firm. From the candidate news items provided, select the 6 most relevant for a sophisticated investor audience focused on GEOPOLITICAL intelligence with macro/market implications.
+
+PRIORITY ORDER for selection:
+1. Geopolitical events with clear market implications (conflicts, sanctions, strategic chokepoints, tech sovereignty, energy security)
+2. Macro/policy events with geopolitical context (central bank divergence tied to political tensions, sovereign debt crises, tariffs)
+3. Pure markets/M&A only if cross-border and strategically significant
+
+For each selected item, return a JSON object with:
+- index (number): the [N] index from the candidate list
+- tag (string): "CRITICAL" (war/sanctions/major escalation), "ALERT" (high-impact policy), "WATCH" (developing), "DATA" (significant data release)
+- region (string): "MENA", "EU", "LATAM", "APAC", "AFRICA", "US", or "GLOBAL"
+- title (object): { "es": "...", "en": "..." } — keep close to original headline, translate accurately, no embellishment
+- summary (object): { "es": "...", "en": "..." } — 2-3 sentences, neutral analytical tone, focus on portfolio/macro implications
+- impact (string): "high", "medium", or "low"
+- signals (array of strings): 2-4 directional asset signals like "OIL +", "EUR -", "EQUITIES ?", "GOLD +", "BONDS +"
+- confidence (number 60-95): your confidence in the investment relevance
+
+CRITICAL RULES:
+- DO NOT invent details. The summary must be inferable from title + description provided.
+- DO NOT change source URLs (you don't return them, the script keeps the originals).
+- Translate accurately. If the headline is "X happened", do not turn it into "X may happen".
+- Return ONLY a JSON array of 6 objects, no preamble, no markdown fences.`;
+
+  const userPrompt = `Today is ${new Date().toISOString().split("T")[0]}. Here are ${candidates.length} candidate news items pre-filtered by geopolitical relevance:
+
+${candidateList}
+
+Return ONLY the JSON array of 6 selected items.`;
+
+  console.log(`🤖 Calling Haiku to select+enrich 6 from ${candidates.length} candidates...`);
+
+  const response = await client.messages.create({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 3500,
+    system: systemPrompt,
+    messages: [{ role: "user", content: userPrompt }],
+  });
+
+  // Concatenate all text blocks
+  const jsonText = response.content
+    .filter((b) => b.type === "text")
+    .map((b) => b.text)
+    .join("\n");
+
+  // Extract JSON
+  const cleaned = jsonText.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
+  const start = cleaned.indexOf("[");
+  const end = cleaned.lastIndexOf("]");
+  if (start === -1 || end === -1) {
+    throw new Error("Haiku did not return a JSON array");
+  }
+  const enriched = JSON.parse(cleaned.slice(start, end + 1));
+
+  // Re-attach source_url, source, published_at from candidates by index
+  const final = enriched
+    .map((e) => {
+      const candidate = candidates[e.index];
+      if (!candidate) return null;
+      return {
+        id: 0, // assigned below
+        tag: e.tag,
+        region: e.region,
+        title: e.title,
+        summary: e.summary,
+        impact: e.impact,
+        signals: e.signals,
+        confidence: e.confidence,
+        source: candidate.source,
+        source_url: candidate.url,
+        published_at: candidate.published_at ? candidate.published_at.split("T")[0] : null,
+        time: relativeTime(candidate.published_at),
+      };
+    })
+    .filter((x) => x !== null);
+
+  return final.map((h, i) => ({ ...h, id: i + 1 }));
+}
+
+function relativeTime(iso) {
+  if (!iso) return "—";
+  const ms = Date.now() - new Date(iso).getTime();
+  if (isNaN(ms)) return "—";
+  const h = Math.floor(ms / 3600000);
+  if (h < 1) return "<1h";
+  if (h < 24) return `${h}h`;
+  const d = Math.floor(h / 24);
+  return `${d}d`;
+}
+
+// ─── MARKET DATA (kept simple, Haiku) ─────────────────────────
+async function generateMarketData() {
+  console.log("📊 Fetching live market data via Haiku + web_search...");
+
+  const today = new Date().toISOString().split("T")[0];
+  const response = await client.messages.create({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 1500,
+    tools: [{ type: "web_search_20250305", name: "web_search" }],
+    system: `You are a market data feed. Return ONLY a raw JSON array, no preamble, no markdown.
+
+Each object: { "symbol": string, "value": string, "change": string with + or -, "up": boolean }
+
+10 instruments in this exact order:
+1. EUR/USD  2. IBEX 35  3. BRENT  4. GOLD  5. BTC
+6. VIX  7. US 10Y  8. EUR/GBP  9. S&P 500  10. DAX 40`,
+    messages: [{ role: "user", content: `Today is ${today}. Fetch latest prices. Return JSON array only.` }],
+  });
+
+  const jsonText = response.content
+    .filter((b) => b.type === "text")
+    .map((b) => b.text)
+    .join("\n");
+  const cleaned = jsonText.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
+  const start = cleaned.indexOf("[");
+  const end = cleaned.lastIndexOf("]");
+  if (start === -1) throw new Error("Market data: no JSON array");
+  return JSON.parse(cleaned.slice(start, end + 1));
+}
+
+// ─── MAIN ─────────────────────────────────────────────────────
 async function main() {
   const today = new Date().toISOString().split("T")[0];
-  console.log(`\n🏛️  ZRC Intelligence Generator — ${today}\n`);
+  console.log(`\n🏛️  ZRC Intelligence Generator v5 (RSS) — ${today}\n`);
 
   let headlines = null;
-  let marketTicker = null;
+  let marketTicker = [];
 
+  // Headlines pipeline (hard fail if it breaks — better keep yesterday's data)
   try {
-    headlines = await generateHeadlines(today);
-    console.log(`   ✅ Headlines: ${headlines.length} (Tier-1 validated)`);
-    headlines.forEach((h) => console.log(`      · [${h.source}] ${h.title.en.slice(0, 70)}...`));
+    const raw = await fetchAllFeeds();
+    if (raw.length === 0) throw new Error("All RSS feeds returned empty");
+
+    const candidates = processItems(raw);
+    if (candidates.length < 6) {
+      throw new Error(`Only ${candidates.length} candidates after scoring (need ≥6)`);
+    }
+
+    headlines = await enrichWithHaiku(candidates);
+
+    if (headlines.length < 3) {
+      throw new Error(`Haiku returned only ${headlines.length} headlines (need ≥3)`);
+    }
+
+    console.log(`   ✅ Headlines: ${headlines.length}`);
+    headlines.forEach((h) => {
+      console.log(`      · [${h.source}] ${h.title.en.slice(0, 70)}...`);
+    });
+
+    const sources = [...new Set(headlines.map((h) => h.source))];
+    console.log(`   ℹ️  Source diversity: ${sources.length} outlets (${sources.join(", ")})`);
   } catch (err) {
-    console.error(`   ❌ Headlines failed: ${err.message}`);
+    console.error(`   ❌ Headlines pipeline failed: ${err.message}`);
     process.exit(1);
   }
 
+  // Market data (soft fail — keep going with empty array)
   try {
-    marketTicker = await generateMarketData(today);
+    marketTicker = await generateMarketData();
     console.log(`   ✅ Market instruments: ${marketTicker.length}`);
   } catch (err) {
     console.warn(`   ⚠️  Market data failed: ${err.message} — using empty array`);
@@ -229,15 +337,10 @@ async function main() {
     headlines: headlines,
   };
 
-  if (!existsSync(OUTPUT_DIR)) {
-    mkdirSync(OUTPUT_DIR, { recursive: true });
-  }
-
+  if (!existsSync(OUTPUT_DIR)) mkdirSync(OUTPUT_DIR, { recursive: true });
   writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2), "utf-8");
 
   console.log(`\n✅ Output saved → ${OUTPUT_FILE}`);
-  console.log(`   Regions: ${[...new Set(headlines.map((h) => h.region))].join(", ")}`);
-  console.log(`   Sources: ${[...new Set(headlines.map((h) => h.source))].join(", ")}`);
   console.log(`   Generated: ${output.generated_at}\n`);
 }
 
