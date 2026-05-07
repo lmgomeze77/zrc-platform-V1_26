@@ -7,3 +7,10 @@ dev-server-error.log
 
 # local backups
 *.backup
+
+# Local env files (NEVER commit secrets)
+.env
+.env.local
+.env.development.local
+.env.production.local
+

@@ -2,11 +2,15 @@
 // ZRC Labs · Visor Inmobiliario Georreferenciado
 // Diseñado para integrarse con la plataforma v3.2 — sistema oscuro, gold #D4A853
 // Sin dependencias adicionales más allá de leaflet + react-leaflet (ya instaladas)
+// + mapbox-gl para vista 3D opcional (lazy-loaded)
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { MapContainer, TileLayer, WMSTileLayer, Marker, Popup, Circle, useMap, LayersControl } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+
+// Lazy load: Mapbox GL (~800kb) solo se carga cuando el usuario activa modo 3D.
+const Visor3D = lazy(() => import("./Visor3D"));
 
 const { BaseLayer, Overlay } = LayersControl;
 
@@ -62,6 +66,7 @@ export default function RealEstateVisor() {
   const [boeAlerts, setBoeAlerts] = useState([]);
   const [matches, setMatches] = useState([]);
   const [activeTab, setActiveTab] = useState("ficha");
+  const [viewMode, setViewMode] = useState("2D"); // "2D" | "3D"
   const [params, setParams] = useState({
     edificabilidad: 1.0,
     precioVenta: 2500,
@@ -137,6 +142,35 @@ export default function RealEstateVisor() {
 
   const fmt = (n) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
 
+  // ─── Modo 3D — render alternativo ───
+  if (viewMode === "3D") {
+    return (
+      <div style={{ minHeight: "100vh", background: C.bg, paddingTop: 60 }}>
+        <div style={{ position: "fixed", top: 60, left: 0, right: 0, bottom: 0 }}>
+          <Suspense
+            fallback={
+              <div style={{
+                display: "flex", alignItems: "center", justifyContent: "center",
+                height: "100%", color: C.gold, fontFamily: F.mono, fontSize: 11,
+                letterSpacing: "0.18em", textTransform: "uppercase",
+              }}>
+                Cargando vista 3D…
+              </div>
+            }
+          >
+            <Visor3D
+              parcela={parcela}
+              risk={risk}
+              residual={residual}
+              boeAlerts={boeAlerts}
+              onClose={() => setViewMode("2D")}
+            />
+          </Suspense>
+        </div>
+      </div>
+    );
+  }
+
   // ============================================================
   return (
     <div style={{ minHeight: "100vh", background: C.bg, color: C.text, fontFamily: F.body, paddingTop: 60 }}>
@@ -154,8 +188,29 @@ export default function RealEstateVisor() {
               Catastro · Riesgos · Planeamiento · Underwriting express · Matching con mandatos ZRC
             </p>
           </div>
-          <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.2em", color: C.gold, border: `1px solid ${C.goldBorder}`, padding: "6px 14px" }}>
-            BETA
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+            {/* Toggle 3D */}
+            <button
+              onClick={() => setViewMode("3D")}
+              disabled={!parcela}
+              title={parcela ? "Ver en 3D" : "Busca una parcela primero"}
+              style={{
+                fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em",
+                padding: "12px 20px",
+                background: parcela ? C.gold : C.surface3,
+                color: parcela ? C.bg : C.textMuted,
+                border: parcela ? "none" : `1px solid ${C.border}`,
+                cursor: parcela ? "pointer" : "not-allowed",
+                textTransform: "uppercase", fontWeight: 600,
+                whiteSpace: "nowrap",
+                transition: "all 0.15s ease",
+              }}
+            >
+              ▲ Vista 3D
+            </button>
+            <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.2em", color: C.gold, border: `1px solid ${C.goldBorder}`, padding: "6px 14px" }}>
+              BETA
+            </div>
           </div>
         </div>
       </div>
