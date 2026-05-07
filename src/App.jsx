@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
+import Observatory from "./pages/intelligence/Observatory";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
 import FinancialIntelligenceSystem from "./pages/labs/FinancialIntelligenceSystem";
 import Community from "./pages/community/Community";
@@ -1019,116 +1020,6 @@ const Hero = ({ lang, onNav }) => {
   );
 };
 
-const Observatory = ({ lang }) => {
-  const t = T[lang].obs;
-  const { user } = useAuth();
-  const [expanded, setExpanded] = useState(null);
-  const [filter, setFilter] = useState("ALL");
-  const regions = ["ALL", "MENA", "EU", "LATAM", "APAC", "AFRICA"];
-  const liveData = useHeadlines(FEED);
-  // Merge live intelligence items with static FEED so we always show >= 5
-  const feed = (() => {
-    if (!liveData || liveData.length === 0) return FEED;
-    // Live data may have fewer items — pad with static items not already present
-    const liveIds = new Set(liveData.map(d => d.id));
-    const extras = FEED.filter(f => !liveIds.has(f.id));
-    const merged = [...liveData, ...extras];
-    return merged.length >= 5 ? merged : merged;
-  })();
-  const filtered = filter === "ALL" ? feed : feed.filter((f) => f.region === filter);
-
-  return (
-    <Sec id="observatory">
-      <SH label={t.label} title={t.title} sub={t.sub} extra={<span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>({FEED.length})</span>} />
-      <FadeIn delay={0.1}>
-        <div style={{ display: "flex", gap: 6, marginBottom: 28, flexWrap: "wrap" }}>
-          {regions.map((r) => (
-            <button key={r} onClick={() => setFilter(r)} style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "5px 14px", background: filter === r ? C.goldDim : "transparent", color: filter === r ? C.gold : C.textMuted, border: `1px solid ${filter === r ? C.goldBorder : C.border}`, cursor: "pointer" }}>{r}</button>
-          ))}
-        </div>
-      </FadeIn>
-      <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        {filtered.map((item, i) => (
-          <FadeIn key={item.id} delay={i * 0.04}>
-            <div onClick={() => setExpanded(expanded === item.id ? null : item.id)} style={{ padding: "18px 22px", background: expanded === item.id ? C.surface2 : C.surface, border: `1px solid ${expanded === item.id ? C.goldBorder : C.border}`, cursor: "pointer", transition: "all 0.3s" }}>
-              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-                <div style={{ flex: 1, minWidth: 260 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                    <Badge label={item.tag} variant={item.tag.toLowerCase()} />
-                    <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{item.region} {"·"} {item.time}</span>
-                  </div>
-                  <h3 style={{ fontFamily: F.body, fontSize: 14, fontWeight: 500, color: C.text, margin: 0, lineHeight: 1.45 }}>{item.title[lang]}</h3>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                  <div style={{ width: 40, height: 3, background: C.border, borderRadius: 2, overflow: "hidden" }}>
-                    <div style={{ width: `${item.confidence}%`, height: "100%", background: item.confidence > 80 ? C.green : item.confidence > 60 ? C.amber : C.red, borderRadius: 2 }} />
-                  </div>
-                  <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{item.confidence}%</span>
-                </div>
-              </div>
-              {expanded === item.id && (
-                <div style={{ marginTop: 14, paddingTop: 14, borderTop: `1px solid ${C.border}` }}>
-                  {user ? (
-                    <>
-                      {/* SITUATION */}
-                      <p style={{ fontFamily: F.body, fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", color: C.gold, textTransform: "uppercase", margin: "0 0 4px" }}>
-                        {lang === "es" ? "Situación" : "Situation"}
-                      </p>
-                      <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.7, margin: "0 0 14px", fontWeight: 300 }}>
-                        {(item.situation || item.summary)[lang]}
-                      </p>
-                      {/* INVESTMENT IMPACT */}
-                      <p style={{ fontFamily: F.body, fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", color: C.gold, textTransform: "uppercase", margin: "0 0 4px" }}>
-                        {lang === "es" ? "Exposición de activos" : "Asset exposure"}
-                      </p>
-                      <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.7, margin: "0 0 14px", fontWeight: 300 }}>
-                        {item.investment_impact ? item.investment_impact[lang] : ""}
-                      </p>
-                      {/* ZRC SIGNAL */}
-                      {item.zrc_signal && (
-                        <div style={{ background: `${C.goldDim}`, border: `1px solid ${C.goldBorder}`, borderRadius: 6, padding: "12px 16px", marginBottom: 14 }}>
-                          <p style={{ fontFamily: F.mono, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: C.gold, margin: "0 0 6px" }}>
-                            ZRC SIGNAL
-                          </p>
-                          <p style={{ fontFamily: F.body, fontSize: 13, color: C.text, lineHeight: 1.65, margin: 0, fontWeight: 400 }}>
-                            {item.zrc_signal[lang]}
-                          </p>
-                        </div>
-                      )}
-                      {/* SIGNALS */}
-                      <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }}>
-                        {item.signals.map((s, j) => (
-                          <span key={j} style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.05em", padding: "3px 8px", background: C.surface2, color: C.textMuted, borderRadius: 3 }}>{s}</span>
-                        ))}
-                      </div>
-                      {/* EDITION FLAG */}
-                      {item.develops_into_edition && item.edition_note && (
-                        <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 12, marginTop: 4 }}>
-                          <p style={{ fontFamily: F.mono, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", color: C.amber, margin: "0 0 4px" }}>
-                            {lang === "es" ? "DESARROLLADO EN EDICIÓN MENSUAL" : "DEVELOPED IN MONTHLY EDITION"}
-                          </p>
-                          <p style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
-                            {item.edition_note[lang]}
-                          </p>
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <LockedOverlay message={t.locked} lang={lang} />
-                  )}
-                </div>
-              )}
-            </div>
-          </FadeIn>
-        ))}
-      </div>
-    </Sec>
-  );
-};
-
-// ══════════════════════════════════════════════════════════════════════════
-// INTELLIGENCE — includes Financial Intelligence System
-// ══════════════════════════════════════════════════════════════════════════
 const Intelligence = ({ lang }) => {
   const t = T[lang].intel;
   const { user } = useAuth();
@@ -1397,7 +1288,7 @@ const ZRCPlatform = () => {
       <MarketTicker lang={lang} />
       <Hero lang={lang} onNav={onNav} />
       <GoldDivider />
-      <Observatory lang={lang} />
+      <Observatory lang={lang} useAuth={useAuth} useHeadlines={useHeadlines} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} T={T} />
       <GoldDivider />
       <Intelligence lang={lang} />
       <GoldDivider />
