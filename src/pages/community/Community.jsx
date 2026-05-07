@@ -142,8 +142,8 @@ export default function Community({ lang = "es" }) {
   if (view === "edition-zero") return (
     <>
       <style>{css}</style>
-      <div style={{position:"relative"}}>
-        <button className="ic-back" onClick={() => setView("landing")}>{tx.backLabel}</button>
+      <div style={{position:"fixed",top:0,left:0,right:0,bottom:0,overflowY:"auto",overflowX:"hidden",zIndex:200,background:"#E8E4DC",WebkitOverflowScrolling:"touch"}}>
+        <button className="ic-back" onClick={() => setView("landing")} style={{position:"fixed",top:20,left:20,zIndex:210,background:"rgba(10,22,40,0.92)",color:"#B8982A",padding:"8px 16px",border:"1px solid rgba(184,152,42,0.4)",borderRadius:2}}>{tx.backLabel}</button>
         <EditionZero />
       </div>
     </>
