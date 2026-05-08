@@ -1,209 +1,154 @@
 {
-  "generated_at": "2026-05-07T20:21:47.502Z",
+  "generated_at": "2026-05-08T07:25:00.831Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1767",
-      "change": "-0.14%",
-      "up": false
+      "value": "1.1752",
+      "change": "+0.03",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
       "value": "18060.80",
-      "change": "-0.24%",
+      "change": "-0.24",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
-      "value": "101.65",
-      "change": "1.59%",
+      "symbol": "BRENT",
+      "value": "100.12",
+      "change": "-1.14",
+      "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4738.86",
+      "change": "+1.00",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "95.64",
-      "change": "0.88%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4739.14",
-      "change": "0.42%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "80914.00",
-      "change": "-0.34%",
+      "symbol": "BTC",
+      "value": "80897.53",
+      "change": "-2.00",
       "up": false
     },
     {
       "symbol": "VIX",
       "value": "17.32",
-      "change": "-0.40%",
+      "change": "-0.40",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
+      "symbol": "US 10Y",
       "value": "4.35",
-      "change": "0.00%",
+      "change": "-1.36",
       "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8643",
+      "change": "+0.02",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7327.00",
-      "change": "-0.15%",
+      "value": "7337.11",
+      "change": "-0.38",
       "up": false
     },
     {
       "symbol": "DAX 40",
       "value": "24903.81",
-      "change": "-0.17%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8663",
-      "change": "0.04%",
+      "change": "+2.07",
       "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.16",
-      "change": "-0.08%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.72",
-      "change": "-1.39%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.19",
-      "change": "0.05%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.80",
-      "change": "0.00%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "en": "Russian attacks kill 27 before deadline for ceasefire proposed by Kyiv",
-        "es": "Ataques rusos matan a 27 personas antes de la fecha límite del alto el fuego propuesto por Kyiv"
+        "es": "EE.UU. dice que atacó objetivos en Irán después del ataque a destructores",
+        "en": "US says it struck targets in Iran after attack on warships"
       },
       "summary": {
-        "en": "Russian military operations killed at least 27 Ukrainians on May 7, hours before a midnight ceasefire deadline proposed by Kyiv, signaling continued escalation despite diplomatic efforts. The timing suggests potential strategic leverage before the May 8-9 pause coinciding with Russia's Victory Day commemoration.",
-        "es": "Las operaciones militares rusas mataron al menos a 27 ucranianos el 7 de mayo, horas antes de una fecha límite de alto el fuego propuesta por Kyiv, señalando una escalada continua a pesar de los esfuerzos diplomáticos. El momento sugiere un posible apalancamiento estratégico antes de la pausa del 8-9 de mayo coincidiendo con la conmemoración del Día de la Victoria de Rusia."
+        "es": "El ejército estadounidense dirigió ataques contra instalaciones militares iraníes en respuesta a un ataque iraní a tres destructores en el Estrecho de Hormuz, marcando la prueba más seria del alto el fuego de un mes. La escalada amenaza el frágil acuerdo de cese de fuego y presenta riesgos significativos para la estabilidad del suministro energético global.",
+        "en": "The US military targeted Iranian military facilities in response to Iranian attacks on three destroyers in the Strait of Hormuz, marking the most serious test of the month-long ceasefire. The escalation threatens the fragile agreement and presents significant risks to global energy supply stability."
       },
       "impact": "high",
       "signals": [
-        "EUR -",
+        "OIL +",
+        "USD +",
         "EQUITIES ?",
-        "GOLD +",
-        "BONDS +"
+        "GOLD +"
       ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260507-russian-attacks-kill-27-before-deadline-for-ceasefire-proposed-by-kyiv",
+      "confidence": 92,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/us-says-it-struck-targets-in-iran-after-attack-on-warships/live-77088159?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-05-07",
-      "time": "6h"
+      "time": "8h"
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "APAC",
       "title": {
-        "en": "Middle East crisis live: Iran reviewing peace proposal as Trump says a deal 'very possible'",
-        "es": "Crisis de Oriente Medio en directo: Irán revisa propuesta de paz mientras Trump dice que un acuerdo es 'muy posible'"
+        "es": "China ve a EE.UU. como un \"Gigante cojo\" mientras agota armas en guerra con Irán",
+        "en": "China Sees a 'Giant With a Limp' as U.S. Drains Weapons on Iran War"
       },
       "summary": {
-        "en": "The US and Iran are exchanging conflicting signals on peace negotiations, with Trump claiming a deal is 'very possible' while Iran reviews proposals. EU guidelines indicate the Iran war's tourism impact remains moderate, suggesting prolonged market uncertainty without imminent resolution.",
-        "es": "EE.UU. e Irán intercambian señales contradictorias sobre negociaciones de paz, con Trump afirmando que un acuerdo es 'muy posible' mientras Irán revisa propuestas. Las directrices de la UE indican que el impacto de la guerra con Irán en el turismo sigue siendo moderado, sugiriendo incertidumbre de mercado prolongada sin una resolución inmediata."
+        "es": "Analistas chinos argumentan que la capacidad de disuasión de EE.UU. frente a China en un posible conflicto por Taiwán se ha debilitado debido al gasto de municiones en la guerra con Irán, proporcionando a Beijing una ventaja táctica en próximas conversaciones con Trump. Esta evaluación tiene implicaciones críticas para la estabilidad geopolítica en el Indo-Pacífico y los precios de activos regionales.",
+        "en": "Chinese analysts argue that US deterrence capability against China in a potential Taiwan conflict has weakened due to munitions depletion in the Iran war, giving Beijing tactical leverage in upcoming negotiations with Trump. This assessment has critical implications for Indo-Pacific stability and regional asset valuations."
       },
       "impact": "high",
       "signals": [
-        "OIL ?",
-        "USD +",
-        "BONDS ?",
-        "EQUITIES ?"
+        "EQUITIES ?",
+        "CNY +",
+        "USD -",
+        "GOLD +"
       ],
-      "confidence": 85,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/may/07/middle-east-crisis-iran-trump-us-negotiations-deal-war-peace-proposal-hormuz-latest-news-updates",
-      "published_at": "2026-05-07",
-      "time": "1h"
+      "confidence": 88,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/08/world/asia/trump-xi-china-us-iran-munitions.html",
+      "published_at": "2026-05-08",
+      "time": "2h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "APAC",
       "title": {
-        "en": "US and Iran close to temporary truce, Pakistani officials claim",
-        "es": "EE.UU. e Irán cerca de una tregua temporal, según afirman funcionarios pakistaníes"
+        "es": "¿Se está convirtiendo el petróleo ruso en un salvavidas para el Sudeste Asiático?",
+        "en": "Is Russian oil becoming a lifeline for Southeast Asia?"
       },
       "summary": {
-        "en": "Pakistani officials report the US and Iran are approaching a temporary truce agreement that would maintain peace and restore shipping routes while broader negotiations continue. A basic deal would materially reduce Middle East geopolitical risk and crude supply constraints.",
-        "es": "Funcionarios pakistaníes informan que EE.UU. e Irán se acercan a un acuerdo de tregua temporal que mantendría la paz y restauraría las rutas de envío mientras continúan las negociaciones más amplias. Un acuerdo básico reduciría materialmente el riesgo geopolítico de Oriente Medio y las restricciones de suministro de petróleo crudo."
+        "es": "Gobiernos del Sudeste Asiático están aumentando importaciones de energía rusa como estrategia de supervivencia económica frente a interrupciones causadas por la guerra con Irán, rechazando presión de la UE. Este reposicionamiento geopolítico tiene implicaciones significativas para sanciones rusas, precios energéticos y dinámicas comerciales regionales.",
+        "en": "Southeast Asian governments are increasing Russian energy imports as an economic survival strategy amid Iran war disruptions, resisting EU pressure. This geopolitical repositioning has significant implications for Russian sanctions effectiveness, energy pricing, and regional trade dynamics."
       },
       "impact": "high",
       "signals": [
-        "OIL -",
-        "USD -",
-        "EQUITIES +",
-        "SHIPPING +"
-      ],
-      "confidence": 82,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/07/us-and-iran-close-to-temporary-truce-pakistani-officials-claim",
-      "published_at": "2026-05-07",
-      "time": "2h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "en": "Is Russian oil becoming a lifeline for Southeast Asia?",
-        "es": "¿Se está convirtiendo el petróleo ruso en un salvavidas para el Sudeste Asiático?"
-      },
-      "summary": {
-        "en": "Southeast Asian governments are prioritizing Russian energy imports over EU pressure as the Iran war constrains global energy supplies and fertilizer availability. This geopolitical realignment reflects economic desperation and signals persistent supply-chain fragmentation with long-term implications for global commodity markets.",
-        "es": "Los gobiernos del Sudeste Asiático están priorizando las importaciones de energía rusa sobre la presión de la UE mientras la guerra con Irán limita los suministros mundiales de energía y disponibilidad de fertilizantes. Este realineamiento geopolítico refleja desesperación económica y señala fragmentación persistente de la cadena de suministro con implicaciones a largo plazo para los mercados de materias primas globales."
-      },
-      "impact": "medium",
-      "signals": [
         "OIL +",
-        "FERTILIZER +",
-        "ASIA EQUITIES ?",
-        "EUR -"
+        "RUB +",
+        "EUR -",
+        "COAL +"
       ],
-      "confidence": 78,
+      "confidence": 85,
       "source": "Deutsche Welle",
       "source_url": "https://www.dw.com/en/is-russian-oil-becoming-a-lifeline-for-southeast-asia/a-77079277?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-05-07",
-      "time": "7h"
+      "time": "18h"
     },
     {
-      "id": 5,
-      "tag": "WATCH",
+      "id": 4,
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Israel Says It Killed a Hezbollah Chief Near Beirut, Testing the Truce",
-        "es": "Israel dice que mató a un jefe de Hezbollah cerca de Beirut, poniendo a prueba la tregua"
+        "es": "El alto el fuego entre EE.UU. e Irán amenazado después de intercambio de golpes en el Estrecho de Hormuz",
+        "en": "US-Iran ceasefire under threat after exchange of strikes in strait of Hormuz"
       },
       "summary": {
-        "en": "An Israeli strike killed a Hezbollah commander near Beirut, representing the first major operation near the Lebanese capital since the ceasefire agreement. The action tests fragile truce stability and indicates potential for escalation that could undermine US-led diplomatic efforts to stabilize the broader Middle East.",
-        "es": "Un ataque israelí mató a un comandante de Hezbollah cerca de Beirut, representando la primera operación importante cerca de la capital libanesa desde el acuerdo de cese del fuego. La acción pone a prueba la estabilidad de la tregua frágil e indica potencial para escalada que podría socavar los esfuerzos diplomáticos liderados por EE.UU. para estabilizar el Oriente Medio más amplio."
+        "es": "EE.UU. e Irán intercambiaron fuego en el Estrecho de Hormuz en la prueba más seria del cese de fuego de un mes, con ambas partes acusándose mutuamente de violaciones. El colapso potencial del acuerdo representa un riesgo crítico para la continuidad del flujo energético global y la volatilidad de activos de riesgo.",
+        "en": "The US and Iran exchanged fire in the Strait of Hormuz in the most serious test of their month-long ceasefire, with mutual accusations of violations. Potential collapse of the agreement represents critical risk to global energy flow continuity and risk asset volatility."
       },
       "impact": "high",
       "signals": [
@@ -212,37 +157,61 @@
         "EQUITIES -",
         "BONDS +"
       ],
-      "confidence": 84,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/07/world/middleeast/israel-hezbollah-commander-beirut-strike.html",
+      "confidence": 91,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/may/07/iran-accuses-us-of-violating-ceasefire-by-targeting-civilian-areas-and-ships-on-strait-of-hormuz",
       "published_at": "2026-05-07",
-      "time": "1h"
+      "time": "7h"
     },
     {
-      "id": 6,
+      "id": 5,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "APAC",
       "title": {
-        "en": "Rosenberg: Russia's Victory Day parade with no tanks a sign Ukraine war not going to plan",
-        "es": "Rosenberg: El desfile del Día de la Victoria de Rusia sin tanques es señal de que la guerra de Ucrania no va según lo planeado"
+        "es": "Líderes del Sudeste Asiático enfrentan repercusiones de la guerra con Irán en cumbre ASEAN",
+        "en": "Southeast Asia's leaders confront fallout from Iran war at ASEAN summit"
       },
       "summary": {
-        "en": "Russia's May 9 Victory Day parade will feature no military hardware for the first time in nearly two decades, indicating resource constraints or strategic messaging about war performance. The shift signals potential Russian vulnerability and may reflect domestic military capability limitations amid the protracted Ukraine conflict.",
-        "es": "El desfile del Día de la Victoria del 9 de mayo de Rusia no contará con equipos militares por primera vez en casi dos décadas, indicando restricciones de recursos o mensajería estratégica sobre el desempeño de la guerra. El cambio señala una posible vulnerabilidad rusa y puede reflejar limitaciones de capacidad militar doméstica en medio del conflicto prolongado de Ucrania."
+        "es": "Los líderes de ASEAN se reúnen para abordar el impacto económico de la guerra con Irán, esperándose un llamado a mayor cooperación energética y reapertura del Estrecho de Hormuz. La coordinación regional en torno a seguridad energética señala vulnerabilidades críticas en cadenas de suministro global y estrategias de diversificación.",
+        "en": "ASEAN leaders convene to address economic fallout from the Iran war, with expected calls for deeper energy cooperation and Strait of Hormuz reopening. Regional coordination on energy security signals critical vulnerabilities in global supply chains and diversification strategies."
       },
       "impact": "medium",
       "signals": [
-        "EUR +",
+        "OIL +",
         "EQUITIES ?",
-        "GOLD -",
-        "RUB -"
+        "CNY +",
+        "COAL +"
       ],
-      "confidence": 76,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cwy2gj2jlr8o?at_medium=RSS&at_campaign=rss",
+      "confidence": 78,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/2026/5/8/southeast-asias-leaders-confront-fallout-from-iran-war-at-asean-summit?traffic_source=rss",
+      "published_at": "2026-05-08",
+      "time": "<1h"
+    },
+    {
+      "id": 6,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Israel dice que mató a un jefe de Hezbollah cerca de Beirut, poniendo a prueba la tregua",
+        "en": "Israel Says It Killed a Hezbollah Chief Near Beirut, Testing the Truce"
+      },
+      "summary": {
+        "es": "Israel realizó un ataque contra un comandante de Hezbollah cerca de Beirut, el primero en la capital desde el inicio de la tregua, complicando los esfuerzos diplomáticos de Washington dirigidos a estabilizar la región. El incidente señala riesgos persistentes de escalada regional incluso dentro de marcos de cese de fuego acordados.",
+        "en": "Israel conducted a strike against a Hezbollah commander near Beirut, the first near the capital since the ceasefire began, complicating Washington's diplomatic efforts to stabilize the region. The incident signals persistent escalation risks even within agreed ceasefire frameworks."
+      },
+      "impact": "medium",
+      "signals": [
+        "EQUITIES -",
+        "GOLD +",
+        "OIL +",
+        "BONDS +"
+      ],
+      "confidence": 82,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/07/world/middleeast/israel-hezbollah-commander-beirut-strike.html",
       "published_at": "2026-05-07",
-      "time": "4h"
+      "time": "12h"
     }
-  ],
-  "market_updated_at": "2026-05-08T07:12:20.942Z"
+  ]
 }
