@@ -4,44 +4,44 @@
     {
       "symbol": "EUR/USD",
       "value": "1.1748",
-      "change": "0.19%",
+      "change": "+0.19%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18060.80",
-      "change": "-0.24%",
-      "up": false
+      "value": "18147.20",
+      "change": "+0.24%",
+      "up": true
     },
     {
       "symbol": "BRENT crude",
       "value": "100.54",
-      "change": "0.48%",
+      "change": "+0.48%",
       "up": true
     },
     {
       "symbol": "WTI crude",
       "value": "95.46",
-      "change": "0.69%",
+      "change": "+0.69%",
       "up": true
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4740.76",
-      "change": "1.16%",
+      "value": "4706.36",
+      "change": "+0.43%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
       "value": "79743.28",
-      "change": "-1.63%",
+      "change": "-1.59%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "17.18",
-      "change": "0.59%",
-      "up": true
+      "value": "17.13",
+      "change": "-1.50%",
+      "up": false
     },
     {
       "symbol": "US 10Y yield",
@@ -64,7 +64,7 @@
     {
       "symbol": "EUR/GBP",
       "value": "0.8663",
-      "change": "0.04%",
+      "change": "+0.04%",
       "up": true
     },
     {
@@ -76,19 +76,19 @@
     {
       "symbol": "Natural Gas",
       "value": "2.79",
-      "change": "0.58%",
+      "change": "+0.58%",
       "up": true
     },
     {
       "symbol": "Copper",
       "value": "6.24",
-      "change": "1.90%",
+      "change": "+1.90%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.8",
-      "change": "0.0%",
+      "value": "6.7968",
+      "change": "-0.17%",
       "up": false
     }
   ],
@@ -244,5 +244,5 @@
       "time": "12h"
     }
   ],
-  "market_updated_at": "2026-05-08T15:12:11.804Z"
+  "market_updated_at": "2026-05-08T19:00:53.532Z"
 }
