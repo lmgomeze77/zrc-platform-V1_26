@@ -3,56 +3,56 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1748",
-      "change": "+0.19%",
+      "value": "1.1769",
+      "change": "0.19%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18060.80",
-      "change": "-0.24%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT",
-      "value": "100.54",
-      "change": "+0.48%",
+      "value": "18147.20",
+      "change": "0.24%",
       "up": true
     },
     {
-      "symbol": "WTI",
-      "value": "95.46",
-      "change": "+0.69%",
+      "symbol": "BRENT crude",
+      "value": "101.73",
+      "change": "1.66%",
       "up": true
     },
     {
-      "symbol": "XAU/USD",
+      "symbol": "WTI crude",
+      "value": "95.92",
+      "change": "1.17%",
+      "up": true
+    },
+    {
+      "symbol": "GOLD",
       "value": "4706.36",
-      "change": "+0.43%",
+      "change": "0.43%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "79916",
-      "change": "-0.57%",
-      "up": false
+      "value": "80369.4",
+      "change": "1.25%",
+      "up": true
     },
     {
       "symbol": "VIX",
       "value": "17.18",
-      "change": "+0.59%",
+      "change": "0.59%",
       "up": true
     },
     {
-      "symbol": "US 10Y",
-      "value": "4.32%",
-      "change": "-0.03%",
+      "symbol": "US 10Y yield",
+      "value": "4.39",
+      "change": "-0.16%",
       "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7398.93",
-      "change": "+0.84%",
+      "change": "0.84%",
       "up": true
     },
     {
@@ -63,8 +63,8 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8663",
-      "change": "+0.04%",
+      "value": "0.8651",
+      "change": "0.04%",
       "up": true
     },
     {
@@ -76,13 +76,13 @@
     {
       "symbol": "Natural Gas",
       "value": "2.79",
-      "change": "+0.58%",
+      "change": "0.58%",
       "up": true
     },
     {
       "symbol": "Copper",
       "value": "6.24",
-      "change": "+1.90%",
+      "change": "1.90%",
       "up": true
     },
     {
@@ -244,5 +244,5 @@
       "time": "12h"
     }
   ],
-  "market_updated_at": "2026-05-08T22:42:33.203Z"
+  "market_updated_at": "2026-05-09T07:28:49.551Z"
 }
