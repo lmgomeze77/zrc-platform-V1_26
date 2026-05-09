@@ -1,248 +1,156 @@
 {
-  "generated_at": "2026-05-08T07:25:00.831Z",
-  "market_ticker": [
-    {
-      "symbol": "EUR/USD",
-      "value": "1.1769",
-      "change": "0.19%",
-      "up": true
-    },
-    {
-      "symbol": "IBEX 35",
-      "value": "18147.20",
-      "change": "0.24%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "101.73",
-      "change": "1.66%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "95.92",
-      "change": "1.17%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD",
-      "value": "4706.36",
-      "change": "0.43%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "80369.4",
-      "change": "1.25%",
-      "up": true
-    },
-    {
-      "symbol": "VIX",
-      "value": "17.18",
-      "change": "0.59%",
-      "up": true
-    },
-    {
-      "symbol": "US 10Y yield",
-      "value": "4.39",
-      "change": "-0.16%",
-      "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7398.93",
-      "change": "0.84%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24450",
-      "change": "-0.98%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8651",
-      "change": "0.04%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "98.16",
-      "change": "-0.08%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.79",
-      "change": "0.58%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.24",
-      "change": "1.90%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.80",
-      "change": "-0.17%",
-      "up": false
-    }
-  ],
+  "generated_at": "2026-05-09T07:51:51.577Z",
+  "market_ticker": [],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EE.UU. dice que atacó objetivos en Irán después del ataque a destructores",
-        "en": "US says it struck targets in Iran after attack on warships"
+        "en": "Middle East war back on? UAE responds to fresh attacks, US and Iran trade fire",
+        "es": "¿Vuelve la guerra al Medio Oriente? EAU responde a nuevos ataques, EEUU e Irán se enfrentan"
       },
       "summary": {
-        "es": "El ejército estadounidense dirigió ataques contra instalaciones militares iraníes en respuesta a un ataque iraní a tres destructores en el Estrecho de Hormuz, marcando la prueba más seria del alto el fuego de un mes. La escalada amenaza el frágil acuerdo de cese de fuego y presenta riesgos significativos para la estabilidad del suministro energético global.",
-        "en": "The US military targeted Iranian military facilities in response to Iranian attacks on three destroyers in the Strait of Hormuz, marking the most serious test of the month-long ceasefire. The escalation threatens the fragile agreement and presents significant risks to global energy supply stability."
+        "en": "The UAE, US Navy, and Iran exchanged military strikes in the Strait of Hormuz, raising escalation risks in a critical energy chokepoint. Trump ordered retaliatory strikes but downplayed the severity, signaling continued volatility in US-Iran tensions.",
+        "es": "EAU, la Armada estadounidense e Irán intercambiaron ataques militares en el Estrecho de Ormuz, elevando riesgos de escalada en un punto crítico de energía. Trump ordenó represalias pero minimizó la gravedad, señalando volatilidad continua en las tensiones EEUU-Irán."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "USD +",
         "EQUITIES ?",
-        "GOLD +"
+        "USD +",
+        "BONDS -"
       ],
       "confidence": 92,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-says-it-struck-targets-in-iran-after-attack-on-warships/live-77088159?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-07",
-      "time": "8h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east-war-back-on-uae-responds-to-fresh-attacks-us-and-iran-trade-fire",
+      "published_at": "2026-05-08",
+      "time": "16h"
     },
     {
       "id": 2,
       "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "es": "China ve a EE.UU. como un \"Gigante cojo\" mientras agota armas en guerra con Irán",
-        "en": "China Sees a 'Giant With a Limp' as U.S. Drains Weapons on Iran War"
+        "en": "China Sees a 'Giant With a Limp' as U.S. Drains Weapons on Iran War",
+        "es": "China ve a un 'Gigante Cojo' mientras EEUU agota armas en la guerra con Irán"
       },
       "summary": {
-        "es": "Analistas chinos argumentan que la capacidad de disuasión de EE.UU. frente a China en un posible conflicto por Taiwán se ha debilitado debido al gasto de municiones en la guerra con Irán, proporcionando a Beijing una ventaja táctica en próximas conversaciones con Trump. Esta evaluación tiene implicaciones críticas para la estabilidad geopolítica en el Indo-Pacífico y los precios de activos regionales.",
-        "en": "Chinese analysts argue that US deterrence capability against China in a potential Taiwan conflict has weakened due to munitions depletion in the Iran war, giving Beijing tactical leverage in upcoming negotiations with Trump. This assessment has critical implications for Indo-Pacific stability and regional asset valuations."
+        "en": "Chinese analysts assess that US military readiness for Taiwan deterrence is diminished by weapons depletion in Iran operations, strengthening Beijing's negotiating position ahead of a Trump-Xi summit. This creates strategic asymmetry in Indo-Pacific balance.",
+        "es": "Analistas chinos evalúan que la capacidad militar estadounidense para disuadir sobre Taiwán se ve mermada por agotamiento de armas en operaciones en Irán, fortaleciendo la posición negociadora de Pekín antes de una cumbre Trump-Xi. Esto crea asimetría estratégica en el equilibrio del Indo-Pacífico."
       },
       "impact": "high",
       "signals": [
         "EQUITIES ?",
-        "CNY +",
         "USD -",
+        "APAC EQUITIES -",
         "GOLD +"
       ],
       "confidence": 88,
       "source": "New York Times",
       "source_url": "https://www.nytimes.com/2026/05/08/world/asia/trump-xi-china-us-iran-munitions.html",
       "published_at": "2026-05-08",
-      "time": "2h"
+      "time": "1d"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "¿Se está convirtiendo el petróleo ruso en un salvavidas para el Sudeste Asiático?",
-        "en": "Is Russian oil becoming a lifeline for Southeast Asia?"
+        "en": "Trump announces three-day ceasefire in Russia-Ukraine war",
+        "es": "Trump anuncia tregua de tres días en la guerra Rusia-Ucrania"
       },
       "summary": {
-        "es": "Gobiernos del Sudeste Asiático están aumentando importaciones de energía rusa como estrategia de supervivencia económica frente a interrupciones causadas por la guerra con Irán, rechazando presión de la UE. Este reposicionamiento geopolítico tiene implicaciones significativas para sanciones rusas, precios energéticos y dinámicas comerciales regionales.",
-        "en": "Southeast Asian governments are increasing Russian energy imports as an economic survival strategy amid Iran war disruptions, resisting EU pressure. This geopolitical repositioning has significant implications for Russian sanctions effectiveness, energy pricing, and regional trade dynamics."
+        "en": "Trump announced a three-day ceasefire in the Russia-Ukraine conflict starting May 9, with confirmation from both sides and a 1,000-prisoner swap per side. This represents a potential diplomatic inflection point, though sustainability remains uncertain.",
+        "es": "Trump anunció una tregua de tres días en el conflicto Rusia-Ucrania a partir del 9 de mayo, con confirmación de ambos lados e intercambio de 1.000 prisioneros por lado. Esto representa un posible punto de inflexión diplomático, aunque la sostenibilidad sigue siendo incierta."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "RUB +",
-        "EUR -",
-        "COAL +"
+        "EUR +",
+        "EQUITIES +",
+        "BONDS +",
+        "OIL -"
       ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/is-russian-oil-becoming-a-lifeline-for-southeast-asia/a-77079277?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-07",
-      "time": "18h"
+      "confidence": 90,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/5/8/trump-announces-three-day-ceasefire-in-russia-ukraine-war?traffic_source=rss",
+      "published_at": "2026-05-08",
+      "time": "13h"
     },
     {
       "id": 4,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "EU",
       "title": {
-        "es": "El alto el fuego entre EE.UU. e Irán amenazado después de intercambio de golpes en el Estrecho de Hormuz",
-        "en": "US-Iran ceasefire under threat after exchange of strikes in strait of Hormuz"
+        "en": "Energy security vs climate crisis: Norway reopens three old gas fields",
+        "es": "Seguridad energética vs crisis climática: Noruega reabre tres campos de gas antiguos"
       },
       "summary": {
-        "es": "EE.UU. e Irán intercambiaron fuego en el Estrecho de Hormuz en la prueba más seria del cese de fuego de un mes, con ambas partes acusándose mutuamente de violaciones. El colapso potencial del acuerdo representa un riesgo crítico para la continuidad del flujo energético global y la volatilidad de activos de riesgo.",
-        "en": "The US and Iran exchanged fire in the Strait of Hormuz in the most serious test of their month-long ceasefire, with mutual accusations of violations. Potential collapse of the agreement represents critical risk to global energy flow continuity and risk asset volatility."
+        "en": "Norway announced reopening of three North Sea gas fields and 70 new offshore exploration licenses, leveraging geopolitical energy security concerns to expand fossil fuel production. This signals continued European reliance on hydrocarbons and potential gas price moderation.",
+        "es": "Noruega anunció la reapertura de tres campos de gas del Mar del Norte y 70 nuevas licencias de exploración marina, aprovechando preocupaciones geopolíticas de seguridad energética para expandir la producción de combustibles fósiles. Esto señala dependencia energética europea continua y posible moderación de precios del gas."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "BONDS +"
+        "GAS -",
+        "EUR +",
+        "OIL ?",
+        "EQUITIES +"
       ],
-      "confidence": 91,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/07/iran-accuses-us-of-violating-ceasefire-by-targeting-civilian-areas-and-ships-on-strait-of-hormuz",
-      "published_at": "2026-05-07",
-      "time": "7h"
+      "confidence": 80,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/energy-security-vs-climate-crisis-norway-reopens-three-old-gas-fields",
+      "published_at": "2026-05-08",
+      "time": "19h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "MENA",
       "title": {
-        "es": "Líderes del Sudeste Asiático enfrentan repercusiones de la guerra con Irán en cumbre ASEAN",
-        "en": "Southeast Asia's leaders confront fallout from Iran war at ASEAN summit"
+        "en": "Oil spill detected off Kharg Island in Iran amid Middle East tensions",
+        "es": "Fuga de petróleo detectada en la isla de Kharg en Irán en medio de tensiones en Medio Oriente"
       },
       "summary": {
-        "es": "Los líderes de ASEAN se reúnen para abordar el impacto económico de la guerra con Irán, esperándose un llamado a mayor cooperación energética y reapertura del Estrecho de Hormuz. La coordinación regional en torno a seguridad energética señala vulnerabilidades críticas en cadenas de suministro global y estrategias de diversificación.",
-        "en": "ASEAN leaders convene to address economic fallout from the Iran war, with expected calls for deeper energy cooperation and Strait of Hormuz reopening. Regional coordination on energy security signals critical vulnerabilities in global supply chains and diversification strategies."
+        "en": "A 50-square-kilometer oil spill was detected near Iran's Kharg Island during ongoing US-Iran military tensions, with unknown origin and limited mitigation prospects. Environmental impact and potential supply-side concerns add to Middle East instability effects on energy markets.",
+        "es": "Se detectó una fuga de petróleo de 50 kilómetros cuadrados cerca de la isla de Kharg de Irán durante tensiones militares EEUU-Irán, con origen desconocido y perspectivas de mitigación limitadas. El impacto ambiental y preocupaciones de oferta agregan efectos al mercado energético por inestabilidad del Medio Oriente."
       },
       "impact": "medium",
       "signals": [
         "OIL +",
         "EQUITIES ?",
-        "CNY +",
-        "COAL +"
+        "COMMODITIES +",
+        "ENERGY INFLATION +"
       ],
-      "confidence": 78,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/5/8/southeast-asias-leaders-confront-fallout-from-iran-war-at-asean-summit?traffic_source=rss",
-      "published_at": "2026-05-08",
-      "time": "<1h"
+      "confidence": 75,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/05/09/en-direct-guerre-au-moyen-orient-une-maree-noire-a-ete-reperee-au-large-de-l-ile-de-kharg-en-iran_6686485_3210.html",
+      "published_at": "2026-05-09",
+      "time": "7h"
     },
     {
       "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "APAC",
       "title": {
-        "es": "Israel dice que mató a un jefe de Hezbollah cerca de Beirut, poniendo a prueba la tregua",
-        "en": "Israel Says It Killed a Hezbollah Chief Near Beirut, Testing the Truce"
+        "en": "Why the Trump-Xi Summit Matters, Even if Little Seems to Come of It",
+        "es": "Por qué importa la cumbre Trump-Xi, incluso si poco parece resultar"
       },
       "summary": {
-        "es": "Israel realizó un ataque contra un comandante de Hezbollah cerca de Beirut, el primero en la capital desde el inicio de la tregua, complicando los esfuerzos diplomáticos de Washington dirigidos a estabilizar la región. El incidente señala riesgos persistentes de escalada regional incluso dentro de marcos de cese de fuego acordados.",
-        "en": "Israel conducted a strike against a Hezbollah commander near Beirut, the first near the capital since the ceasefire began, complicating Washington's diplomatic efforts to stabilize the region. The incident signals persistent escalation risks even within agreed ceasefire frameworks."
+        "en": "The Trump-Xi summit agenda includes Iran war implications, trade disputes, AI competition, and Taiwan—with modest expectations but strategic significance for US-China relations. Outcomes could influence tech decoupling and Taiwan cross-strait risk dynamics.",
+        "es": "La agenda de la cumbre Trump-Xi incluye implicaciones de la guerra con Irán, disputas comerciales, competencia en IA y Taiwán, con expectativas modestas pero significancia estratégica para relaciones EEUU-China. Los resultados podrían influir en el desacoplamiento tecnológico y dinámicas de riesgo en el Estrecho de Taiwán."
       },
       "impact": "medium",
       "signals": [
-        "EQUITIES -",
-        "GOLD +",
-        "OIL +",
-        "BONDS +"
+        "EQUITIES ?",
+        "TECH STOCKS ?",
+        "USD ?",
+        "CNY ?"
       ],
-      "confidence": 82,
+      "confidence": 78,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/07/world/middleeast/israel-hezbollah-commander-beirut-strike.html",
-      "published_at": "2026-05-07",
-      "time": "12h"
+      "source_url": "https://www.nytimes.com/2026/05/09/world/asia/trump-xi-china-us-summit.html",
+      "published_at": "2026-05-09",
+      "time": "3h"
     }
-  ],
-  "market_updated_at": "2026-05-09T07:28:49.551Z"
+  ]
 }
