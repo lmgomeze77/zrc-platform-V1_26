@@ -24,14 +24,14 @@ export default function InnerCircleAccess() {
     const { error } = await supabase.auth.signInWithOtp({
       email: cleanEmail,
       options: {
-        emailRedirectTo: `${window.location.origin}/inner-circle/private`,
+        emailRedirectTo: `${window.location.origin}`,
       },
     });
 
     if (error) {
       setMessage("Error sending access email.");
     } else {
-      setMessage("Secure access link sent.");
+      ocalStorage.setItem("zrc-inner-circle-access","true"); setMessage("Access granted."); window.location.reload();
     }
   }
 
