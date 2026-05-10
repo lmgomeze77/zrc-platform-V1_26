@@ -37,7 +37,7 @@ export default function ProtectedInnerCircle() {
   }
 
   if (!allowed) {
-    window.location.href = "/inner-circle";
+    window.location.reload();
     return null;
   }
 
