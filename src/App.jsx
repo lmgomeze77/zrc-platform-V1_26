@@ -1264,6 +1264,7 @@ const ZRCPlatform = () => {
   const [lang, setLang] = useState("es");
 
   const onNav = (id) => {
+    if (id === "inner-circle") { setIcPage("inner-circle"); return; }
     if (id === "hero") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
