@@ -1,248 +1,214 @@
 {
-  "generated_at": "2026-05-09T07:51:51.577Z",
+  "generated_at": "2026-05-10T08:04:12.142Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1750",
-      "change": "+0.51%",
+      "value": "1.1790",
+      "change": "+0.50",
       "up": true
     },
     {
       "symbol": "IBEX 35",
       "value": "18060.80",
-      "change": "-0.24%",
+      "change": "-0.24",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "101.29",
-      "change": "+1.23%",
+      "change": "+1.23",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "95.42",
-      "change": "+0.64%",
+      "symbol": "GOLD",
+      "value": "4730.70",
+      "change": "+0.42",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4714.89",
-      "change": "+0.62%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "80355.29",
-      "change": "+0.80%",
+      "symbol": "BTC",
+      "value": "80299.76",
+      "change": "+0.26",
       "up": true
     },
     {
       "symbol": "VIX",
       "value": "17.19",
-      "change": "+0.64%",
+      "change": "+0.64",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.364%",
-      "change": "-0.64%",
+      "symbol": "US 10Y",
+      "value": "4.3640",
+      "change": "-0.64",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8646",
+      "change": "-0.03",
       "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7398.93",
-      "change": "+0.84%",
+      "change": "+0.84",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24448.34",
-      "change": "-1.02%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8645",
-      "change": "-0.03%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "97.84",
-      "change": "-0.42%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.757",
-      "change": "-0.43%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.2965",
-      "change": "+1.95%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8006",
-      "change": "-0.01%",
+      "value": "24338.63",
+      "change": "-1.32",
       "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Putin dice que cree que la guerra de Ucrania está 'llegando a su fin'",
+        "en": "Putin says he thinks Ukraine war is 'coming to an end'"
+      },
+      "summary": {
+        "es": "El presidente ruso señala un posible fin del conflicto durante una tregua de tres días, lo que sugiere un cambio en la postura de negociación de Moscú. Esta declaración tiene implicaciones significativas para los mercados de energía europeos, la estabilidad geopolítica y las sanciones comerciales.",
+        "en": "Russian president signals potential end to conflict during a three-day ceasefire, suggesting a shift in Moscow's negotiating posture. This statement carries significant implications for European energy markets, geopolitical stability, and trade sanctions regimes."
+      },
+      "impact": "high",
+      "signals": [
+        "EUR +",
+        "OIL ?",
+        "EQUITIES +",
+        "BONDS +"
+      ],
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/putin-says-he-thinks-ukraine-war-is-coming-to-an-end/a-77106772?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-09",
+      "time": "12h"
+    },
+    {
+      "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Middle East war back on? UAE responds to fresh attacks, US and Iran trade fire",
-        "es": "¿Vuelve la guerra al Medio Oriente? EAU responde a nuevos ataques, EEUU e Irán se enfrentan"
+        "es": "Guardias Revolucionarios advierten a EE.UU. contra ataques a buques; Israel bombardea Líbano",
+        "en": "Iran war live: IRGC warns US against attacks on ships; Israel bombs Lebanon"
       },
       "summary": {
-        "en": "The UAE, US Navy, and Iran exchanged military strikes in the Strait of Hormuz, raising escalation risks in a critical energy chokepoint. Trump ordered retaliatory strikes but downplayed the severity, signaling continued volatility in US-Iran tensions.",
-        "es": "EAU, la Armada estadounidense e Irán intercambiaron ataques militares en el Estrecho de Ormuz, elevando riesgos de escalada en un punto crítico de energía. Trump ordenó represalias pero minimizó la gravedad, señalando volatilidad continua en las tensiones EEUU-Irán."
+        "es": "A pesar de un cese del fuego entre EE.UU. e Irán, los Guardias Revolucionarios advierten contra ataques a buques, mientras Israel continúa operaciones militares en Líbano. Esto indica inestabilidad persistente en el Estrecho de Ormuz y riesgo de escalada regional que afecta los precios del petróleo.",
+        "en": "Despite a US-Iran ceasefire, Iran's IRGC warns against attacks on tankers while Israel continues military operations in Lebanon. This signals persistent instability in the Strait of Hormuz and regional escalation risk with direct crude oil pricing implications."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES ?",
-        "USD +",
+        "GOLD +",
+        "EQUITIES -",
         "BONDS -"
       ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east-war-back-on-uae-responds-to-fresh-attacks-us-and-iran-trade-fire",
-      "published_at": "2026-05-08",
-      "time": "16h"
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
-      "region": "APAC",
-      "title": {
-        "en": "China Sees a 'Giant With a Limp' as U.S. Drains Weapons on Iran War",
-        "es": "China ve a un 'Gigante Cojo' mientras EEUU agota armas en la guerra con Irán"
-      },
-      "summary": {
-        "en": "Chinese analysts assess that US military readiness for Taiwan deterrence is diminished by weapons depletion in Iran operations, strengthening Beijing's negotiating position ahead of a Trump-Xi summit. This creates strategic asymmetry in Indo-Pacific balance.",
-        "es": "Analistas chinos evalúan que la capacidad militar estadounidense para disuadir sobre Taiwán se ve mermada por agotamiento de armas en operaciones en Irán, fortaleciendo la posición negociadora de Pekín antes de una cumbre Trump-Xi. Esto crea asimetría estratégica en el equilibrio del Indo-Pacífico."
-      },
-      "impact": "high",
-      "signals": [
-        "EQUITIES ?",
-        "USD -",
-        "APAC EQUITIES -",
-        "GOLD +"
-      ],
-      "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/08/world/asia/trump-xi-china-us-iran-munitions.html",
-      "published_at": "2026-05-08",
-      "time": "1d"
+      "confidence": 90,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/liveblog/2026/5/10/iran-war-live-irgc-warns-us-against-attacks-on-ships-israel-bombs-lebanon?traffic_source=rss",
+      "published_at": "2026-05-10",
+      "time": "8h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "APAC",
       "title": {
-        "en": "Trump announces three-day ceasefire in Russia-Ukraine war",
-        "es": "Trump anuncia tregua de tres días en la guerra Rusia-Ucrania"
+        "es": "Teherán, Taiwán, comercio... ¿cuáles son los peligros que enfrenta Trump en el equilibrio de la cumbre con Xi?",
+        "en": "Tehran, Taiwan, trade … what are the hazards facing Trump on Xi summit tightrope?"
       },
       "summary": {
-        "en": "Trump announced a three-day ceasefire in the Russia-Ukraine conflict starting May 9, with confirmation from both sides and a 1,000-prisoner swap per side. This represents a potential diplomatic inflection point, though sustainability remains uncertain.",
-        "es": "Trump anunció una tregua de tres días en el conflicto Rusia-Ucrania a partir del 9 de mayo, con confirmación de ambos lados e intercambio de 1.000 prisioneros por lado. Esto representa un posible punto de inflexión diplomático, aunque la sostenibilidad sigue siendo incierta."
+        "es": "Trump se prepara para una cumbre crucial con Xi Jinping en Beijing desde una posición vulnerable, con tensiones comerciales, la cuestión de Taiwán e Irán en la agenda. El resultado podría redefinir dinámicas comerciales globales y la estabilidad del Estrecho de Taiwán.",
+        "en": "Trump prepares for a critical summit with Xi Jinping in Beijing from a weakened position, with trade tensions, Taiwan, and Iran on the agenda. Outcomes could reshape global trade dynamics and cross-strait stability."
       },
       "impact": "high",
       "signals": [
-        "EUR +",
-        "EQUITIES +",
-        "BONDS +",
-        "OIL -"
+        "CNY ?",
+        "EQUITIES ?",
+        "BONDS ?",
+        "TECH -"
       ],
-      "confidence": 90,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/5/8/trump-announces-three-day-ceasefire-in-russia-ukraine-war?traffic_source=rss",
-      "published_at": "2026-05-08",
-      "time": "13h"
+      "confidence": 85,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/news/ng-interactive/2026/may/10/tehran-taiwan-trade-donald-trump-xi-jinping-us-china-summit",
+      "published_at": "2026-05-10",
+      "time": "4h"
     },
     {
       "id": 4,
       "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "en": "Energy security vs climate crisis: Norway reopens three old gas fields",
-        "es": "Seguridad energética vs crisis climática: Noruega reabre tres campos de gas antiguos"
-      },
-      "summary": {
-        "en": "Norway announced reopening of three North Sea gas fields and 70 new offshore exploration licenses, leveraging geopolitical energy security concerns to expand fossil fuel production. This signals continued European reliance on hydrocarbons and potential gas price moderation.",
-        "es": "Noruega anunció la reapertura de tres campos de gas del Mar del Norte y 70 nuevas licencias de exploración marina, aprovechando preocupaciones geopolíticas de seguridad energética para expandir la producción de combustibles fósiles. Esto señala dependencia energética europea continua y posible moderación de precios del gas."
-      },
-      "impact": "medium",
-      "signals": [
-        "GAS -",
-        "EUR +",
-        "OIL ?",
-        "EQUITIES +"
-      ],
-      "confidence": 80,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/energy-security-vs-climate-crisis-norway-reopens-three-old-gas-fields",
-      "published_at": "2026-05-08",
-      "time": "19h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
       "region": "MENA",
       "title": {
-        "en": "Oil spill detected off Kharg Island in Iran amid Middle East tensions",
-        "es": "Fuga de petróleo detectada en la isla de Kharg en Irán en medio de tensiones en Medio Oriente"
+        "es": "Líbano dice que los ataques israelíes mataron a 39 personas",
+        "en": "Lebanon says Israeli strikes killed 39"
       },
       "summary": {
-        "en": "A 50-square-kilometer oil spill was detected near Iran's Kharg Island during ongoing US-Iran military tensions, with unknown origin and limited mitigation prospects. Environmental impact and potential supply-side concerns add to Middle East instability effects on energy markets.",
-        "es": "Se detectó una fuga de petróleo de 50 kilómetros cuadrados cerca de la isla de Kharg de Irán durante tensiones militares EEUU-Irán, con origen desconocido y perspectivas de mitigación limitadas. El impacto ambiental y preocupaciones de oferta agregan efectos al mercado energético por inestabilidad del Medio Oriente."
+        "es": "Israel y Hezbollah continúan intercambios de fuego a pesar de un acuerdo de cese del fuego anunciado el mes anterior, indicando fragilidad del acuerdo y riesgo de reanudación del conflicto. Esto afecta la evaluación de riesgo regional y los precios de commodities.",
+        "en": "Israel and Hezbollah continue trading fire despite a ceasefire deal announced last month, signaling agreement fragility and conflict resumption risk. This affects regional risk assessment and commodity pricing."
       },
       "impact": "medium",
       "signals": [
         "OIL +",
+        "GOLD +",
+        "EQUITIES -"
+      ],
+      "confidence": 78,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/cn4pjegk358o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-09",
+      "time": "10h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "Pakistán, mediador interesado de la guerra en Irán",
+        "en": "Pakistan, interested mediator in Iran war"
+      },
+      "summary": {
+        "es": "Pakistán emerge como mediador inesperado entre Washington y Teherán, utilizando canales discretos para resolver la crisis del Estrecho de Ormuz. Su papel como intermediario afecta la probabilidad de desescalada y estabilidad energética global.",
+        "en": "Pakistan emerges as unexpected mediator between Washington and Tehran, using discrete channels to resolve Strait of Hormuz crisis. Its intermediary role affects probability of de-escalation and global energy stability."
+      },
+      "impact": "medium",
+      "signals": [
+        "OIL ?",
         "EQUITIES ?",
-        "COMMODITIES +",
-        "ENERGY INFLATION +"
+        "PKR -"
       ],
       "confidence": 75,
       "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/live/2026/05/09/en-direct-guerre-au-moyen-orient-une-maree-noire-a-ete-reperee-au-large-de-l-ile-de-kharg-en-iran_6686485_3210.html",
-      "published_at": "2026-05-09",
-      "time": "7h"
+      "source_url": "https://www.lemonde.fr/international/article/2026/05/10/le-pakistan-mediateur-interesse-de-la-guerre-en-iran_6687669_3210.html",
+      "published_at": "2026-05-10",
+      "time": "4h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "en": "Why the Trump-Xi Summit Matters, Even if Little Seems to Come of It",
-        "es": "Por qué importa la cumbre Trump-Xi, incluso si poco parece resultar"
+        "es": "Un desfile reducido del Día de la Victoria muestra la creciente vulnerabilidad de Putin en la guerra de Ucrania",
+        "en": "A Scaled-Back Victory Day Parade Shows Putin's Growing Vulnerability in Ukraine War"
       },
       "summary": {
-        "en": "The Trump-Xi summit agenda includes Iran war implications, trade disputes, AI competition, and Taiwan—with modest expectations but strategic significance for US-China relations. Outcomes could influence tech decoupling and Taiwan cross-strait risk dynamics.",
-        "es": "La agenda de la cumbre Trump-Xi incluye implicaciones de la guerra con Irán, disputas comerciales, competencia en IA y Taiwán, con expectativas modestas pero significancia estratégica para relaciones EEUU-China. Los resultados podrían influir en el desacoplamiento tecnológico y dinámicas de riesgo en el Estrecho de Taiwán."
+        "es": "El desfile militar reducido por temores de seguridad refleja la vulnerabilidad creciente de Rusia y la extensión de riesgos a ciudades rusas. Esta erosión de capacidades proyectadas tiene implicaciones para la durabilidad del conflicto y la evaluación de riesgos de inversión en Rusia.",
+        "en": "The military parade reduction due to security fears reflects Russia's growing vulnerability and extension of war risks to Russian cities. This erosion of projected capability has implications for conflict durability and Russia investment risk assessment."
       },
       "impact": "medium",
       "signals": [
-        "EQUITIES ?",
-        "TECH STOCKS ?",
-        "USD ?",
-        "CNY ?"
+        "RUB -",
+        "EQUITIES -",
+        "BONDS -"
       ],
-      "confidence": 78,
+      "confidence": 80,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/09/world/asia/trump-xi-china-us-summit.html",
+      "source_url": "https://www.nytimes.com/2026/05/09/world/europe/russia-victory-day-parade.html",
       "published_at": "2026-05-09",
-      "time": "3h"
+      "time": "8h"
     }
-  ],
-  "market_updated_at": "2026-05-10T07:51:51.840Z"
+  ]
 }
