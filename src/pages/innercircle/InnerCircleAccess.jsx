@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { supabase } from "../../lib/supabase";
 
-export default function InnerCircleAccess() {
-  const [email, setEmail] = useState("");
+export default function InnerCircleAccess({ onBack }) {
+  const [email, setEmail]     = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function handleAccess(e) {
     e.preventDefault();
+    setLoading(true);
 
     const cleanEmail = email.trim().toLowerCase();
 
@@ -17,60 +19,58 @@ export default function InnerCircleAccess() {
       .single();
 
     if (!data || data.status !== "approved") {
-      setMessage("Access pending approval.");
+      setMessage("Access not granted. Request membership at luis@zenithrisecapital.com");
+      setLoading(false);
       return;
     }
 
-    const { error } = await supabase.auth.signInWithOtp({
+    const { error: signInError } = await supabase.auth.signInWithOtp({
       email: cleanEmail,
       options: {
         emailRedirectTo: `${window.location.origin}`,
       },
     });
 
-    if (error) {
-      setMessage("Error sending access email.");
-    } else {
-      ocalStorage.setItem("zrc-inner-circle-access","true"); setMessage("Access granted."); window.location.reload();
+    if (signInError) {
+      setMessage(signInError.message);
+      setLoading(false);
+      return;
     }
+
+    localStorage.setItem("zrc-inner-circle-access", "true");
+    setMessage("Access granted. Check your email for the magic link.");
+    setLoading(false);
+    window.location.reload();
   }
 
   return (
-    <main className=\"min-h-screen bg-black text-white flex items-center justify-center px-6\">
-      <div className=\"w-full max-w-xl border border-white/10 p-10 bg-white/[0.03]\">
-        <p className=\"text-xs uppercase tracking-[0.35em] text-[#D4A853]\">
-          ZRC Inner Circle
-        </p>
-
-        <h1 className=\"mt-6 text-5xl font-serif\">
-          Restricted Intelligence Access
-        </h1>
-
-        <p className=\"mt-6 text-white/60 leading-7\">
-          Access is reserved for approved investors and strategic operators.
-        </p>
-
-        <form onSubmit={handleAccess} className=\"mt-8 space-y-4\">
+    <div style={{ minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center", background:"#06080C", padding:"40px 24px" }}>
+      <div style={{ maxWidth:420, width:"100%", textAlign:"center" }}>
+        <p style={{ fontFamily:"'Cormorant SC',serif", fontSize:10, letterSpacing:"0.45em", color:"rgba(184,152,42,0.6)", marginBottom:32 }}>ZRC CONFIDENCIAL</p>
+        <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:36, fontStyle:"italic", color:"#E8E0CC", marginBottom:12, fontWeight:400 }}>The Inner Circle</h2>
+        <p style={{ fontFamily:"'Cormorant',serif", fontSize:16, fontStyle:"italic", color:"rgba(232,224,204,0.45)", marginBottom:40, lineHeight:1.7 }}>Acceso privado por invitación</p>
+        <form onSubmit={handleAccess} style={{ display:"flex", flexDirection:"column", gap:12 }}>
           <input
-            type=\"email\"
-            required
-            placeholder=\"Registered email\"
+            type="email"
+            placeholder="Su email..."
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className=\"w-full bg-black border border-white/10 px-5 py-4 text-white outline-none focus:border-[#D4A853]\"
+            onChange={e => setEmail(e.target.value)}
+            required
+            style={{ background:"transparent", border:"none", borderBottom:"1px solid rgba(184,152,42,0.35)", outline:"none", fontFamily:"'Cormorant',serif", fontSize:17, fontStyle:"italic", color:"#E8E0CC", padding:"8px 0", textAlign:"center" }}
           />
-
-          <button className=\"w-full bg-white text-black py-4 uppercase tracking-[0.2em] hover:bg-[#D4A853]\">
-            Send Secure Access Link
+          <button type="submit" disabled={loading} style={{ marginTop:16, background:"none", border:"none", fontFamily:"'Cormorant SC',serif", fontSize:10, letterSpacing:"0.4em", color:"#B8982A", cursor:"pointer", padding:"8px 0" }}>
+            {loading ? "..." : "ACCEDER"}
           </button>
         </form>
-
         {message && (
-          <p className=\"mt-6 text-white/50\">
-            {message}
-          </p>
+          <p style={{ marginTop:20, fontFamily:"'Cormorant SC',serif", fontSize:9, letterSpacing:"0.28em", color:"rgba(184,152,42,0.6)", lineHeight:1.7 }}>{message}</p>
+        )}
+        {onBack && (
+          <button onClick={onBack} style={{ marginTop:32, background:"none", border:"none", fontFamily:"'Cormorant SC',serif", fontSize:9, letterSpacing:"0.3em", color:"rgba(232,224,204,0.3)", cursor:"pointer" }}>
+            ← VOLVER
+          </button>
         )}
       </div>
-    </main>
+    </div>
   );
 }
