@@ -4,6 +4,8 @@ import Observatory from "./pages/intelligence/Observatory";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
 import FinancialIntelligenceSystem from "./pages/labs/FinancialIntelligenceSystem";
 import Community from "./pages/community/Community";
+import InnerCircleAccess from "./pages/innercircle/InnerCircleAccess";
+import ProtectedInnerCircle from "./pages/innercircle/ProtectedInnerCircle";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.3
