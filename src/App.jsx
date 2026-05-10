@@ -821,7 +821,7 @@ const MarketTicker = ({ lang }) => {
 const Nav = ({ lang, setLang, onNav }) => {
   const { user, openLogin, logout } = useAuth();
   const [scrolled, setScrolled] = useState(false);
-  const ids = ["observatory", "intelligence", "brokerage", "advisory", "academia", "community"];
+  const ids = ["observatory", "intelligence", "brokerage", "advisory", "academia", "community", "inner-circle"];
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
@@ -1262,6 +1262,12 @@ const Footer = ({ lang }) => {
 
 const ZRCPlatform = () => {
   const [lang, setLang] = useState("es");
+  const [icPage, setIcPage] = useState(null);
+
+  useEffect(() => {
+    const hasAccess = localStorage.getItem("zrc-inner-circle-access");
+    if (hasAccess === "true") setIcPage("inner-circle-private");
+  }, []);
 
   const onNav = (id) => {
     if (id === "inner-circle") { setIcPage("inner-circle"); return; }
@@ -1301,7 +1307,17 @@ const ZRCPlatform = () => {
       <GoldDivider />
       <Academia lang={lang} />
       <GoldDivider />
-      <div id="community"><Community lang={lang} /></div>
+
+      {icPage === "inner-circle" && (
+        <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
+          <InnerCircleAccess onBack={() => setIcPage(null)} />
+        </div>
+      )}
+      {icPage === "inner-circle-private" && (
+        <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
+          <ProtectedInnerCircle onBack={() => setIcPage(null)} />
+        </div>
+      )}      <div id="community"><Community lang={lang} /></div>
       <Footer lang={lang} />
     </AuthProvider>
   );
