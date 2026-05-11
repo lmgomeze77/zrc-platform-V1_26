@@ -3,33 +3,39 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1790",
-      "change": "+0.50%",
+      "value": "1.1784",
+      "change": "+0.53%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18104.30",
-      "change": "-0.19%",
-      "up": false
+      "value": "18147.20",
+      "change": "+0.24%",
+      "up": true
     },
     {
       "symbol": "BRENT",
-      "value": "101.29",
-      "change": "+1.23%",
-      "up": true
+      "value": "100.00",
+      "change": "-1.00%",
+      "up": false
+    },
+    {
+      "symbol": "WTI",
+      "value": "95.00",
+      "change": "-0.50%",
+      "up": false
     },
     {
       "symbol": "GOLD",
-      "value": "4730.70",
-      "change": "+0.42%",
-      "up": true
+      "value": "4679.56",
+      "change": "-0.76%",
+      "up": false
     },
     {
-      "symbol": "BTC",
-      "value": "80817.20",
-      "change": "+0.03%",
-      "up": true
+      "symbol": "BTC/USD",
+      "value": "80971.89",
+      "change": "-1.43%",
+      "up": false
     },
     {
       "symbol": "VIX",
@@ -40,13 +46,7 @@
     {
       "symbol": "US 10Y",
       "value": "4.364",
-      "change": "-0.68%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8646",
-      "change": "-0.03%",
+      "change": "-0.64%",
       "up": false
     },
     {
@@ -59,6 +59,36 @@
       "symbol": "DAX 40",
       "value": "24338.63",
       "change": "-1.32%",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8652",
+      "change": "+2.28%",
+      "up": true
+    },
+    {
+      "symbol": "DXY",
+      "value": "97.842",
+      "change": "-0.42%",
+      "up": false
+    },
+    {
+      "symbol": "Natural Gas",
+      "value": "2.772",
+      "change": "-1.45%",
+      "up": false
+    },
+    {
+      "symbol": "Copper",
+      "value": "6.15",
+      "change": "+3.00%",
+      "up": true
+    },
+    {
+      "symbol": "USD/CNY",
+      "value": "6.80",
+      "change": "0.00%",
       "up": false
     }
   ],
@@ -213,5 +243,6 @@
       "published_at": "2026-05-11",
       "time": "6h"
     }
-  ]
+  ],
+  "market_updated_at": "2026-05-11T12:33:15.020Z"
 }
