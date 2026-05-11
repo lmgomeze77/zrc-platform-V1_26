@@ -1,40 +1,34 @@
 {
-  "generated_at": "2026-05-10T08:04:12.142Z",
+  "generated_at": "2026-05-11T09:33:39.798Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1750",
-      "change": "-0.14%",
-      "up": false
+      "value": "1.1790",
+      "change": "+0.50%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18147.20",
-      "change": "+0.24%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "105.49",
-      "change": "+4.2%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "100.04",
-      "change": "+4.8%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4692.39",
-      "change": "-0.48%",
+      "value": "18104.30",
+      "change": "-0.19%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "80756.00",
-      "change": "+0.33%",
+      "symbol": "BRENT",
+      "value": "101.29",
+      "change": "+1.23%",
+      "up": true
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4730.70",
+      "change": "+0.42%",
+      "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "80817.20",
+      "change": "+0.03%",
       "up": true
     },
     {
@@ -44,10 +38,16 @@
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.388%",
-      "change": "+0.11%",
-      "up": true
+      "symbol": "US 10Y",
+      "value": "4.364",
+      "change": "-0.68%",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8646",
+      "change": "-0.03%",
+      "up": false
     },
     {
       "symbol": "S&P 500",
@@ -60,186 +60,158 @@
       "value": "24338.63",
       "change": "-1.32%",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8663",
-      "change": "+0.04%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "97.84",
-      "change": "-0.06%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.800",
-      "change": "+1.56%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.1945",
-      "change": "+0.42%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.80",
-      "change": "0.00%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
-      "region": "EU",
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "es": "Putin dice que cree que la guerra de Ucrania está 'llegando a su fin'",
-        "en": "Putin says he thinks Ukraine war is 'coming to an end'"
+        "es": "Crisis de Oriente Medio en vivo: Trump rechaza respuesta de Irán a propuesta de paz estadounidense mientras Teherán advierte sobre nuevos ataques",
+        "en": "Middle East crisis live: Trump rejects Iran response to US peace proposal as Tehran warns of new attacks"
       },
       "summary": {
-        "es": "El presidente ruso señala un posible fin del conflicto durante una tregua de tres días, lo que sugiere un cambio en la postura de negociación de Moscú. Esta declaración tiene implicaciones significativas para los mercados de energía europeos, la estabilidad geopolítica y las sanciones comerciales.",
-        "en": "Russian president signals potential end to conflict during a three-day ceasefire, suggesting a shift in Moscow's negotiating posture. This statement carries significant implications for European energy markets, geopolitical stability, and trade sanctions regimes."
+        "es": "Trump rechaza la respuesta iraniana a su propuesta de paz como 'totalmente inaceptable' mientras Irán advierte represalias contra nuevos ataques estadounidenses o buques extranjeros en el Estrecho de Ormuz. La tregua de un mes muestra signos de deterioro con ataques con drones reportados en toda la región del Golfo.",
+        "en": "Trump rejects Iran's response to his peace proposal as 'totally unacceptable' while Iran warns of retaliation against new US strikes or foreign warships in the Strait of Hormuz. The month-old ceasefire shows signs of fraying with drone strikes reported across the Gulf region."
       },
       "impact": "high",
       "signals": [
-        "EUR +",
-        "OIL ?",
-        "EQUITIES +",
-        "BONDS +"
+        "OIL +",
+        "USD +",
+        "EQUITIES ?",
+        "GOLD +"
       ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/putin-says-he-thinks-ukraine-war-is-coming-to-an-end/a-77106772?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-09",
-      "time": "12h"
+      "confidence": 92,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/11/middle-east-crisis-iran-us-israel-donald-trump-rejects-iran-peace-proposal-latest-news-updates",
+      "published_at": "2026-05-11",
+      "time": "<1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Guardias Revolucionarios advierten a EE.UU. contra ataques a buques; Israel bombardea Líbano",
-        "en": "Iran war live: IRGC warns US against attacks on ships; Israel bombs Lebanon"
+        "es": "Trump califica la respuesta de Irán a la propuesta estadounidense para terminar la guerra como 'totalmente inaceptable'",
+        "en": "Trump calls Iran response to US proposal to end war 'totally unacceptable'"
       },
       "summary": {
-        "es": "A pesar de un cese del fuego entre EE.UU. e Irán, los Guardias Revolucionarios advierten contra ataques a buques, mientras Israel continúa operaciones militares en Líbano. Esto indica inestabilidad persistente en el Estrecho de Ormuz y riesgo de escalada regional que afecta los precios del petróleo.",
-        "en": "Despite a US-Iran ceasefire, Iran's IRGC warns against attacks on tankers while Israel continues military operations in Lebanon. This signals persistent instability in the Strait of Hormuz and regional escalation risk with direct crude oil pricing implications."
+        "es": "Irán solicita el levantamiento del bloqueo naval estadounidense, reconocimiento de soberanía sobre el Estrecho de Ormuz e indemnización por daños de guerra, demandas rechazadas por Trump. El conflicto sobre estos términos clave amenaza la viabilidad de negociaciones de paz y aumenta riesgo de escalada.",
+        "en": "Iran demands lifting of US naval blockade, recognition of sovereignty over Strait of Hormuz, and war damage compensation—demands rejected by Trump. The dispute over these core terms threatens peace negotiation viability and raises escalation risk."
       },
       "impact": "high",
       "signals": [
         "OIL +",
+        "USD +",
         "GOLD +",
-        "EQUITIES -",
-        "BONDS -"
+        "EQUITIES -"
       ],
       "confidence": 90,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/liveblog/2026/5/10/iran-war-live-irgc-warns-us-against-attacks-on-ships-israel-bombs-lebanon?traffic_source=rss",
-      "published_at": "2026-05-10",
-      "time": "8h"
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/clypgz9e5pmo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-11",
+      "time": "7h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "GLOBAL",
       "title": {
-        "es": "Teherán, Taiwán, comercio... ¿cuáles son los peligros que enfrenta Trump en el equilibrio de la cumbre con Xi?",
-        "en": "Tehran, Taiwan, trade … what are the hazards facing Trump on Xi summit tightrope?"
+        "es": "La militarización de los canales de navegación",
+        "en": "The weaponization of shipping channels"
       },
       "summary": {
-        "es": "Trump se prepara para una cumbre crucial con Xi Jinping en Beijing desde una posición vulnerable, con tensiones comerciales, la cuestión de Taiwán e Irán en la agenda. El resultado podría redefinir dinámicas comerciales globales y la estabilidad del Estrecho de Taiwán.",
-        "en": "Trump prepares for a critical summit with Xi Jinping in Beijing from a weakened position, with trade tensions, Taiwan, and Iran on the agenda. Outcomes could reshape global trade dynamics and cross-strait stability."
+        "es": "Expertos advierten que puntos críticos marítimos como el Estrecho de Taiwán y el Estrecho de Malaca están siendo utilizados cada vez más como herramientas de apalancamiento geopolítico. La crisis del Estrecho de Ormuz enfatiza la vulnerabilidad del comercio global a tensiones geoestratégicas.",
+        "en": "Experts warn that critical maritime chokepoints like Taiwan Strait and Strait of Malacca are increasingly weaponized for geopolitical leverage. Hormuz Strait crisis underscores global trade vulnerability to geostrategic tensions."
       },
       "impact": "high",
       "signals": [
-        "CNY ?",
+        "OIL +",
+        "SHIPPING COSTS +",
         "EQUITIES ?",
-        "BONDS ?",
-        "TECH -"
+        "GOLD +"
       ],
-      "confidence": 85,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/news/ng-interactive/2026/may/10/tehran-taiwan-trade-donald-trump-xi-jinping-us-china-summit",
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/the-weaponization-of-shipping-channels/a-77108496?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-05-10",
-      "time": "4h"
+      "time": "1d"
     },
     {
       "id": 4,
-      "tag": "WATCH",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "GLOBAL",
       "title": {
-        "es": "Líbano dice que los ataques israelíes mataron a 39 personas",
-        "en": "Lebanon says Israeli strikes killed 39"
+        "es": "Trump discutirá Irán con Xi Jinping durante visita a China: Funcionarios",
+        "en": "Trump to discuss Iran with Xi Jinping during China visit: Officials"
       },
       "summary": {
-        "es": "Israel y Hezbollah continúan intercambios de fuego a pesar de un acuerdo de cese del fuego anunciado el mes anterior, indicando fragilidad del acuerdo y riesgo de reanudación del conflicto. Esto afecta la evaluación de riesgo regional y los precios de commodities.",
-        "en": "Israel and Hezbollah continue trading fire despite a ceasefire deal announced last month, signaling agreement fragility and conflict resumption risk. This affects regional risk assessment and commodity pricing."
+        "es": "Trump presionará probablemente a China respecto a sus compras de petróleo iraní durante la guerra. Este enfoque bilateral señala fragmentación de sanciones globales y potencial fricción comercial entre Washington y Pekín sobre política iraniana.",
+        "en": "Trump likely to pressure China over Iranian oil purchases during war. This bilateral focus signals fragmentation of global sanctions architecture and potential trade friction between Washington and Beijing over Iran policy."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
         "OIL +",
-        "GOLD +",
-        "EQUITIES -"
+        "CNY -",
+        "USD +",
+        "EQUITIES ?"
       ],
-      "confidence": 78,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cn4pjegk358o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-09",
-      "time": "10h"
+      "confidence": 85,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/5/10/trump-to-discuss-iran-with-xi-jinping-during-china-visit-officials?traffic_source=rss",
+      "published_at": "2026-05-10",
+      "time": "12h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "Pakistán, mediador interesado de la guerra en Irán",
-        "en": "Pakistan, interested mediator in Iran war"
+        "es": "Europa sopesa las señales de alto el fuego de Putin y propuestas de seguridad",
+        "en": "Europe weighs Putin's ceasefire signals and security proposals"
       },
       "summary": {
-        "es": "Pakistán emerge como mediador inesperado entre Washington y Teherán, utilizando canales discretos para resolver la crisis del Estrecho de Ormuz. Su papel como intermediario afecta la probabilidad de desescalada y estabilidad energética global.",
-        "en": "Pakistan emerges as unexpected mediator between Washington and Tehran, using discrete channels to resolve Strait of Hormuz crisis. Its intermediary role affects probability of de-escalation and global energy stability."
+        "es": "Las últimas declaraciones de Putin sobre negociaciones de alto el fuego son recibidas con profundo escepticismo en Europa, con funcionarios cuestionando sustancia de propuestas y la elección de mediador. Promesas repetidas de paz inmediata generan dudas sobre intenciones rusas.",
+        "en": "Putin's latest ceasefire signals meet deep skepticism across Europe, with officials questioning both substance of proposals and mediator choice. Repeated promises of imminent peace raise doubts about Russian intentions."
       },
       "impact": "medium",
       "signals": [
-        "OIL ?",
+        "EUR ?",
+        "RUB -",
         "EQUITIES ?",
-        "PKR -"
+        "BONDS +"
       ],
-      "confidence": 75,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/05/10/le-pakistan-mediateur-interesse-de-la-guerre-en-iran_6687669_3210.html",
+      "confidence": 78,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe-weighs-putin-s-ceasefire-signals-and-security-proposals",
       "published_at": "2026-05-10",
-      "time": "4h"
+      "time": "18h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "es": "Un desfile reducido del Día de la Victoria muestra la creciente vulnerabilidad de Putin en la guerra de Ucrania",
-        "en": "A Scaled-Back Victory Day Parade Shows Putin's Growing Vulnerability in Ukraine War"
+        "es": "Israel torpedea la tregua con Líbano tras matar a más de 400 personas en 24 días",
+        "en": "Israel torpedoes truce with Lebanon after killing over 400 people in 24 days"
       },
       "summary": {
-        "es": "El desfile militar reducido por temores de seguridad refleja la vulnerabilidad creciente de Rusia y la extensión de riesgos a ciudades rusas. Esta erosión de capacidades proyectadas tiene implicaciones para la durabilidad del conflicto y la evaluación de riesgos de inversión en Rusia.",
-        "en": "The military parade reduction due to security fears reflects Russia's growing vulnerability and extension of war risks to Russian cities. This erosion of projected capability has implications for conflict durability and Russia investment risk assessment."
+        "es": "Israel ha intensificado ataques contra Líbano matando a más de 400 personas en 24 días, desmoronando la tregua con Hezbolá. Ambos gobiernos abordan en Estados Unidos la extensión del alto el fuego mientras Hezbolá continúa ataques con drones contra el ejército israelí.",
+        "en": "Israel has escalated attacks on Lebanon killing over 400 people in 24 days, unraveling the Hezbollah truce. Both governments address ceasefire extension in the US while Hezbollah continues drone attacks on Israeli forces."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "RUB -",
+        "OIL +",
         "EQUITIES -",
-        "BONDS -"
+        "GOLD +",
+        "ILS -"
       ],
-      "confidence": 80,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/09/world/europe/russia-victory-day-parade.html",
-      "published_at": "2026-05-09",
-      "time": "8h"
+      "confidence": 91,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-05-11/israel-torpedea-la-tregua-con-libano-tras-matar-a-mas-de-400-personas-en-24-dias.html",
+      "published_at": "2026-05-11",
+      "time": "6h"
     }
-  ],
-  "market_updated_at": "2026-05-11T08:52:00.600Z"
+  ]
 }
