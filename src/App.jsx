@@ -1318,5 +1318,11 @@ const ZRCPlatform = () => {
       <GoldDivider />
 
 
+      <Community lang={lang} />
+      <Footer lang={lang} />
+    </AuthProvider>
+  );
+};
+
 export { ZRCPlatform };
 export default ZRCPlatform;
