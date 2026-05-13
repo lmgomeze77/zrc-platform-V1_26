@@ -1,45 +1,20 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabase";
-import InnerCirclePrivate from "./InnerCirclePrivate";
+import InnerCircle from "./InnerCircle";
 
-export default function ProtectedInnerCircle() {
+export default function ProtectedInnerCircle({ onBack }) {
   const [allowed, setAllowed] = useState(null);
 
   useEffect(() => {
-    async function checkUser() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-
-      if (!user?.email) {
-        setAllowed(false);
-        return;
-      }
-
-      const { data } = await supabase
-        .from("inner_circle_members")
-        .select("status")
-        .eq("email", user.email.toLowerCase())
-        .single();
-
-      setAllowed(data?.status === "approved");
-    }
-
-    checkUser();
+    const hasAccess = localStorage.getItem("zrc-inner-circle-access");
+    setAllowed(hasAccess === "true");
   }, []);
 
-  if (allowed === null) {
-    return (
-      <main className=\"min-h-screen bg-black text-white flex items-center justify-center\">
-        Verifying access...
-      </main>
-    );
-  }
+  if (allowed === null) return null;
 
   if (!allowed) {
-    window.location.reload();
+    if (onBack) { localStorage.removeItem("zrc-inner-circle-access"); onBack(); }
     return null;
   }
 
-  return <InnerCirclePrivate />;
+  return <InnerCircle onBack={onBack} />;
 }
