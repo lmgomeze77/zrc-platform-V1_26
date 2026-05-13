@@ -91,7 +91,7 @@ const AuthProvider = ({ children }) => {
 
 const T = {
   es: {
-    nav: ["Observatorio", "Intelligence", "Brokerage", "Advisory", "Academia", "Comunidad"],
+    nav: ["Observatorio", "Intelligence", "Brokerage", "Advisory", "Academia", "Comunidad", "Inner Circle"],
     hero: {
       tag: "INTELIGENCIA ESTRATÉGICA · INVERSIÓN · EJECUCIÓN",
       h1: "Donde la Inteligencia",
@@ -179,7 +179,7 @@ const T = {
     live: "EN VIVO",
   },
   en: {
-    nav: ["Observatory", "Intelligence", "Brokerage", "Advisory", "Academia", "Community"],
+    nav: ["Observatory", "Intelligence", "Brokerage", "Advisory", "Academia", "Community", "Inner Circle"],
     hero: {
       tag: "STRATEGIC INTELLIGENCE · INVESTMENT · EXECUTION",
       h1: "Where Geopolitical",
