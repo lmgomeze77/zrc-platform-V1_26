@@ -1,248 +1,216 @@
 {
-  "generated_at": "2026-05-12T08:34:42.382Z",
+  "generated_at": "2026-05-13T08:40:08.317Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1774",
-      "change": "-0.13%",
+      "value": "1.1737",
+      "change": "-0.05",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18060.80",
-      "change": "-0.24%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "107.05",
-      "change": "-0.67%",
-      "up": false
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "101.01",
-      "change": "+4.19%",
+      "value": "18197.70",
+      "change": "+1.46",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4714.08",
-      "change": "-0.20%",
+      "symbol": "BRENT",
+      "value": "107.86",
+      "change": "+3.50",
+      "up": true
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4678.10",
+      "change": "-1.22",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "81118.57",
-      "change": "+0.10%",
-      "up": true
+      "symbol": "BTC",
+      "value": "80711.07",
+      "change": "-1.30",
+      "up": false
     },
     {
       "symbol": "VIX",
-      "value": "18.11",
-      "change": "+5.35%",
-      "up": true
+      "value": "17.99",
+      "change": "-2.12",
+      "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.459",
-      "change": "+4bps",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7412.84",
-      "change": "+0.19%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "23954.93",
-      "change": "+0.05%",
+      "symbol": "US 10Y",
+      "value": "4.463",
+      "change": "+1.20",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.867",
-      "change": "0.00%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.33",
-      "change": "+0.03%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.88",
-      "change": "+2.53%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.41",
-      "change": "-0.02%",
+      "value": "0.8662",
+      "change": "-0.08",
       "up": false
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.79",
-      "change": "0.00%",
-      "up": true
+      "symbol": "S&P 500",
+      "value": "7400.96",
+      "change": "-0.16",
+      "up": false
+    },
+    {
+      "symbol": "DAX 40",
+      "value": "23954.93",
+      "change": "-1.62",
+      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "en": "The big questions hanging over the Trump-Xi meeting in China",
-        "es": "Las grandes preguntas que rodean la reunión Trump-Xi en China"
+        "es": "Cumbre Trump-Xi: Trump pedirá a Xi que 'abra' China",
+        "en": "Trump-Xi Summit: Trump to ask Xi to 'open up' China"
       },
       "summary": {
-        "en": "Trump is visiting Beijing to meet Xi Jinping with Taiwan, tariffs, and the Strait of Hormuz on the agenda, raising concerns that the US president may trade security commitments for economic concessions. This summit is the most significant US-China engagement in years and could reshape superpower relations, with implications for tech sovereignty, supply chains, and regional stability.",
-        "es": "Trump visitará Beijing para reunirse con Xi Jinping con Taiwán, aranceles y el Estrecho de Ormuz en la agenda, planteando preocupaciones sobre posibles concesiones de compromisos de seguridad a cambio de ventajas económicas. Esta cumbre podría remodelar las relaciones entre superpotencias con implicaciones para la soberanía tecnológica, cadenas de suministro y estabilidad regional."
+        "es": "Trump se reunirá con Xi Jinping en Beijing para abordar la guerra en Irán, comercio y Taiwán. Esta cumbre de alto nivel ocurre en un momento de tensiones comerciales y geopolíticas, con implicaciones significativas para los mercados globales y la dinámica US-China.",
+        "en": "Trump meets Xi Jinping in Beijing to address the Iran war, trade, and Taiwan. This high-stakes summit occurs amid commercial and geopolitical tensions with significant implications for global markets and US-China dynamics."
       },
       "impact": "high",
       "signals": [
-        "USD +",
         "EQUITIES ?",
-        "SEMICONDUCTORS -",
-        "GOLD +"
+        "USD ?",
+        "TECH STOCKS ?"
       ],
-      "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/12/the-big-questions-hanging-over-the-trump-xi-meeting-in-china",
-      "published_at": "2026-05-11",
-      "time": "9h"
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/trump-xi-summit-trump-to-ask-xi-to-open-up-china/live-77140304?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-13",
+      "time": "3h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "US",
       "title": {
-        "en": "Middle East war live: France, UK host Hormuz meeting as Trump says Iran truce 'on life support'",
-        "es": "Guerra en Oriente Medio: Francia y Reino Unido organizan reunión sobre Ormuz mientras Trump dice que la tregua con Irán está en 'soporte vital'"
+        "es": "La inflación de EE.UU. salta al 3,8% mientras los costos energéticos se disparan por la guerra en Irán",
+        "en": "US inflation jumps to 3.8% as energy costs surge from Iran war"
       },
       "summary": {
-        "en": "The Strait of Hormuz remains effectively closed due to the Iran war, with France and the UK convening a multinational defence ministers meeting to plan restoration of trade flows. Trump signals the ceasefire is deteriorating, raising the risk of renewed conflict and extended disruption to ~20% of global oil supply and critical petrochemical imports.",
-        "es": "El Estrecho de Ormuz permanece efectivamente cerrado por la guerra con Irán, con Francia y Reino Unido convocando una reunión de ministros de defensa para planificar la restauración del flujo comercial. Trump señala el deterioro del cese al fuego, elevando el riesgo de renovado conflicto e interrupción prolongada de ~20% del suministro mundial de petróleo."
+        "es": "La inflación estadounidense alcanza su nivel más alto desde mayo de 2023, impulsada por el aumento de costos energéticos derivados de la guerra en Irán. Este dato de inflación afecta directamente las perspectivas de política monetaria de la Reserva Federal y la valoración de activos.",
+        "en": "US inflation reaches its highest level since May 2023, driven by surging energy costs from the Iran war. This inflation reading directly impacts Federal Reserve policy outlook and asset valuations."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "ENERGY +",
-        "SHIPPING -",
-        "GOLD +"
+        "INFLATION +",
+        "BONDS -",
+        "USD +"
       ],
-      "confidence": 94,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260512-middle-east-live-us-iran-talks-deadlocked-strait-of-hormuz-still-closed",
+      "confidence": 90,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/c202pgxx89lo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-05-12",
-      "time": "4h"
+      "time": "14h"
     },
     {
       "id": 3,
-      "tag": "CRITICAL",
-      "region": "EU",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "en": "Ukraine: Russia breaks ceasefire overnight, Zelenskyy says",
-        "es": "Ucrania: Rusia rompe la tregua durante la noche, dice Zelenskyy"
+        "es": "Gigante de snacks cambia a empaques en blanco y negro mientras la guerra en Irán golpea suministros de tinta",
+        "en": "Snack giant switches to black and white packaging as Iran war hits ink supplies"
       },
       "summary": {
-        "en": "Russia launched approximately 200 drone strikes overnight, ending the three-day Trump-brokered ceasefire with Ukraine. The renewed escalation signals a collapse of diplomatic efforts and the likely resumption of sustained conflict, affecting energy security, defense spending, and European economic stabilization.",
-        "es": "Rusia lanzó aproximadamente 200 ataques con drones durante la noche, terminando la tregua de tres días mediada por Trump. La escalada renovada señala el colapso de esfuerzos diplomáticos y la probable reanudación del conflicto sostenido, afectando seguridad energética, gasto de defensa y estabilización económica europea."
+        "es": "El cierre efectivo del Estrecho de Ormuz ha interrumpido gravemente el suministro global de energía y petroquímicos, afectando incluso a industrias aparentemente remotas como el empaque de alimentos. Esta disrupción de la cadena de suministro tiene implicaciones inflacionarias amplias para los mercados globales.",
+        "en": "The effective closure of the Strait of Hormuz severely disrupts global energy and petrochemical supplies, affecting even seemingly remote industries like food packaging. This supply chain disruption has broad inflationary implications across global markets."
       },
       "impact": "high",
       "signals": [
-        "ENERGY +",
-        "EUR -",
-        "DEFENSE STOCKS +",
-        "GOLD +"
+        "OIL +",
+        "COMMODITIES +",
+        "INFLATION +",
+        "LOGISTICAL COSTS +"
       ],
-      "confidence": 93,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ukraine-russia-breaks-ceasefire-overnight-zelenskyy-says/a-77128198?maca=en-rss-en-all-1573-rdf",
+      "confidence": 85,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/c78k405j8pdo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-05-12",
-      "time": "<1h"
+      "time": "1d"
     },
     {
       "id": 4,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "en": "EU defence ministers meet for talks on Ukraine – Europe live",
-        "es": "Ministros de defensa de la UE se reúnen para conversaciones sobre Ucrania"
+        "es": "Ministro de Relaciones Exteriores ruso dice 'nada está pasando' en charlas de EE.UU. sobre Ucrania y proceso de paz está estancado",
+        "en": "Russian foreign minister says 'nothing is happening' in US talks on Ukraine and peace process is stuck"
       },
       "summary": {
-        "en": "EU defence ministers are convening in Brussels to discuss ramp-up of defence manufacturing and Middle East developments, coinciding with Russia's fresh strikes following ceasefire collapse. This signals accelerated European rearmament and institutional pivot toward geopolitical autonomy from US guarantees.",
-        "es": "Los ministros de defensa de la UE se reúnen en Bruselas para discutir el aumento de manufactura de defensa y desarrollos en Oriente Medio, coincidiendo con ataques rusos tras el colapso del cese al fuego. Esto señala rearmamento europeo acelerado y giro institucional hacia autonomía geopolítica."
+        "es": "El ministro de Relaciones Exteriores ruso Sergei Lavrov declara que los diálogos con EE.UU. sobre Ucrania no avanzan y el proceso de paz está estancado. Simultáneamente, Ucrania advierte sobre inminentes ataques masivos con drones rusos, señalando una escalada continuada del conflicto.",
+        "en": "Russian Foreign Minister Sergei Lavrov states that US talks on Ukraine are stalled and the peace process is deadlocked. Simultaneously, Ukraine warns of imminent mass Russian drone attacks, signaling continued conflict escalation."
       },
       "impact": "high",
       "signals": [
-        "DEFENSE STOCKS +",
         "EUR ?",
-        "EUROBONDS -",
-        "GOVERNMENT SPENDING +"
+        "EQUITIES -",
+        "GOLD +",
+        "DEFENSE STOCKS +"
       ],
       "confidence": 88,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/may/12/europe-defence-ukraine-russia-hungary-latest-news-updates",
-      "published_at": "2026-05-12",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/13/ukraine-russia-war-sergei-lavrov-mark-rutte-bucharest-europe-latest-news-updates",
+      "published_at": "2026-05-13",
       "time": "<1h"
     },
     {
       "id": 5,
-      "tag": "ALERT",
-      "region": "GLOBAL",
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "en": "Snack giant switches to black and white packaging as Iran war hits ink supplies",
-        "es": "Fabricante de aperitivos cambia a embalaje en blanco y negro mientras la guerra con Irán afecta suministros de tinta"
+        "es": "EN DIRECTO, guerra al Oriente Medio: Israel pide evacuar seis localidades del sur del Líbano; dos vehículos atacados en sur de Beirut",
+        "en": "Middle East live: Israel calls to evacuate six localities in southern Lebanon; two vehicles targeted in strikes south of Beirut"
       },
       "summary": {
-        "en": "The Strait of Hormuz closure has severely disrupted global supplies of petrochemicals and specialty chemicals, forcing major manufacturers to modify operations. This signals systemic supply chain stress beyond energy, affecting packaging, manufacturing inputs, and consumer goods pricing with persistence tied to geopolitical resolution.",
-        "es": "El cierre del Estrecho de Ormuz ha interrumpido severamente suministros globales de petroquímicos y químicos especializados, forzando a fabricantes mayores a modificar operaciones. Esto señala estrés sistémico de cadenas de suministro más allá de energía, afectando empaque, insumos manufactureros y precios de bienes de consumo."
+        "es": "Israel continúa ataques contra objetivos en el Líbano a pesar de una tregua nominal, hiriendo civiles y causando evacuaciones masivas. Con 380+ muertes desde el inicio de la tregua, la escalada del conflicto Israel-Líbano presenta riesgos geopolíticos críticos para la estabilidad regional y los precios de energía.",
+        "en": "Israel continues strikes against targets in Lebanon despite a nominal ceasefire, killing civilians and triggering mass evacuations. With 380+ deaths since ceasefire began, the Israel-Lebanon conflict escalation presents critical geopolitical risks to regional stability and energy prices."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "COMMODITIES +",
-        "CONSUMER GOODS +",
-        "CHEMICALS +",
-        "INFLATION +"
+        "OIL +",
+        "RISK PREMIUM +",
+        "EQUITIES -",
+        "USD +"
       ],
-      "confidence": 85,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/c78k405j8pdo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-12",
+      "confidence": 89,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/05/13/en-direct-guerre-au-moyen-orient-israel-appelle-a-evacuer-six-localites-du-sud-du-liban-deux-voitures-visees-par-des-frappes-israeliennes-au-sud-de-beyrouth_6686485_3210.html",
+      "published_at": "2026-05-13",
       "time": "<1h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
+      "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "en": "What Middle Powers Fear from the Trump-Xi Summit",
-        "es": "Lo que las potencias medias temen de la cumbre Trump-Xi"
+        "es": "Se espera que Xi presione a Trump sobre Taiwán y aranceles durante la cumbre",
+        "en": "China's Xi expected to press Trump on Taiwan, tariffs during summit"
       },
       "summary": {
-        "en": "Asian middle powers express concern that Trump may trade security commitments and alliance guarantees for better economic terms with China during this week's Xi meeting. This reflects broader anxiety about potential US strategic realignment in the Indo-Pacific, with implications for Taiwan, South Korea, Japan defense spending, and regional tech decoupling.",
-        "es": "Las potencias medias asiáticas expresan preocupación de que Trump pueda intercambiar compromisos de seguridad y garantías de alianza por mejores términos económicos con China. Esto refleja ansiedad más amplia sobre posible realineación estratégica estadounidense, con implicaciones para defensa de Taiwán, Corea del Sur y Japón, y desacoplamiento tecnológico regional."
+        "es": "El presidente chino Xi Jinping busca presionar a Trump sobre la venta de armas a Taiwán y aranceles comerciales en su cumbre de Beijing. Estos temas son críticos para la relación bilateral y tienen implicaciones sustanciales para el comercio global, los precios de semiconductores y la estabilidad en el Estrecho de Taiwán.",
+        "en": "Chinese President Xi Jinping seeks to press Trump on Taiwan arms sales and trade tariffs at their Beijing summit. These issues are critical to bilateral relations with substantial implications for global trade, semiconductor pricing, and Taiwan Strait stability."
       },
       "impact": "high",
       "signals": [
-        "EQUITIES APAC ?",
-        "SEMICONDUCTORS ?",
-        "USD +",
-        "TREASURIES +"
+        "TECH STOCKS ?",
+        "EQUITIES ?",
+        "USD ?",
+        "SEMICONDUCTORS ?"
       ],
       "confidence": 86,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/11/world/asia/trump-xi-china-summit-iran.html",
-      "published_at": "2026-05-11",
-      "time": "1d"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/5/13/chinas-xi-to-press-trump-on-taiwan-tariffs-during-summit?traffic_source=rss",
+      "published_at": "2026-05-13",
+      "time": "<1h"
     }
-  ],
-  "market_updated_at": "2026-05-13T08:28:31.914Z"
+  ]
 }
