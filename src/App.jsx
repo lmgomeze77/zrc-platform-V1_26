@@ -1290,9 +1290,18 @@ const ZRCPlatform = () => {
         button:hover { opacity: 0.85; }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: ${C.bg}; }
-        ::-webkit-scrollbar-thumb { background: ${C.border}; }
       `}</style>
 
+      {icPage === "inner-circle" && (
+        <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
+          <InnerCircleAccess onBack={() => setIcPage(null)} />
+        </div>
+      )}
+      {icPage === "inner-circle-private" && (
+        <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
+          <ProtectedInnerCircle onBack={() => setIcPage(null)} />
+        </div>
+      )}
       <Nav lang={lang} setLang={setLang} onNav={onNav} />
       <MarketTicker lang={lang} />
       <Hero lang={lang} onNav={onNav} />
@@ -1308,20 +1317,6 @@ const ZRCPlatform = () => {
       <Academia lang={lang} />
       <GoldDivider />
 
-      {icPage === "inner-circle" && (
-        <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
-          <InnerCircleAccess onBack={() => setIcPage(null)} />
-        </div>
-      )}
-      {icPage === "inner-circle-private" && (
-        <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
-          <ProtectedInnerCircle onBack={() => setIcPage(null)} />
-        </div>
-      )}      <div id="community"><Community lang={lang} /></div>
-      <Footer lang={lang} />
-    </AuthProvider>
-  );
-};
 
 export { ZRCPlatform };
 export default ZRCPlatform;
