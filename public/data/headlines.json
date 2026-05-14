@@ -3,8 +3,8 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1710",
-      "change": "-0.14%",
+      "value": "1.1669",
+      "change": "-0.35%",
       "up": false
     },
     {
@@ -27,50 +27,50 @@
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4702.22",
-      "change": "+0.31%",
-      "up": true
+      "value": "4651.93",
+      "change": "-0.74%",
+      "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "79573.79",
-      "change": "-0.91%",
+      "value": "79640",
+      "change": "-2.28%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "17.99",
-      "change": "-0.56%",
-      "up": false
+      "value": "17.90",
+      "change": "+0.17%",
+      "up": true
     },
     {
       "symbol": "US 10Y yield",
       "value": "4.45%",
-      "change": "-0.02%",
+      "change": "-0.02pp",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7444.25",
-      "change": "+0.58%",
+      "value": "7501.24",
+      "change": "+0.77%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24137.00",
-      "change": "+0.76%",
+      "value": "24400",
+      "change": "+1.03%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8670",
-      "change": "+0.06%",
+      "value": "0.8707",
+      "change": "+0.52%",
       "up": true
     },
     {
       "symbol": "DXY dollar index",
       "value": "98.49",
-      "change": "+0.26%",
+      "change": "+0.01%",
       "up": true
     },
     {
@@ -81,15 +81,15 @@
     },
     {
       "symbol": "Copper",
-      "value": "6.60",
+      "value": "6.57",
       "change": "+1.34%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.79",
+      "value": "6.7875",
       "change": "0.00%",
-      "up": true
+      "up": false
     }
   ],
   "headlines": [
@@ -244,5 +244,5 @@
       "time": "2h"
     }
   ],
-  "market_updated_at": "2026-05-14T19:25:00.321Z"
+  "market_updated_at": "2026-05-14T22:46:05.233Z"
 }
