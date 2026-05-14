@@ -53,28 +53,48 @@ export default function InnerCircleAccess({ onBack }) {
     setLoading(true); setMessage("");
 
     const cleanEmail = email.trim().toLowerCase();
-    const { data } = await supabase
-      .from("inner_circle_members")
-      .select("status")
-      .eq("email", cleanEmail)
-      .single();
 
-    if (data?.status === "approved") {
-      // Approved — send OTP magic link
-      const { error: otpErr } = await supabase.auth.signInWithOtp({
-        email: cleanEmail,
-        options: { emailRedirectTo: `${window.location.origin}` },
-      });
-      if (otpErr) { setMessage(otpErr.message); setLoading(false); return; }
-      localStorage.setItem("zrc-inner-circle-access", "true");
-      setMessage("Acceso concedido. Revisa tu email para el enlace de acceso.");
-      setLoading(false);
-      window.location.reload();
-      return;
-    }
+    try {
+      if (supabase) {
+        const { data } = await supabase
+          .from("inner_circle_members")
+          .select("status")
+          .eq("email", cleanEmail)
+          .single();
 
-    if (data?.status === "pending") {
-      setMessage("Tu solicitud está siendo revisada. Te contactaremos pronto.");
+        if (data?.status === "approved") {
+          localStorage.setItem("zrc-inner-circle-access", "true");
+          setLoading(false);
+          window.location.reload();
+          return;
+        }
+        if (data?.status === "pending") {
+          setMessage("Tu solicitud está siendo revisada. Te contactaremos pronto.");
+          setLoading(false);
+          return;
+        }
+      } else {
+        // Fallback: Render.com API
+        const res = await fetch("https://zrc-api.onrender.com/api/inner-circle/check", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: cleanEmail }),
+        });
+        const data = await res.json();
+        if (data.approved) {
+          localStorage.setItem("zrc-inner-circle-access", "true");
+          setLoading(false);
+          window.location.reload();
+          return;
+        }
+        if (data.status === "pending") {
+          setMessage("Tu solicitud está siendo revisada. Te contactaremos pronto.");
+          setLoading(false);
+          return;
+        }
+      }
+    } catch {
+      setMessage("Error de conexión. Inténtalo de nuevo.");
       setLoading(false);
       return;
     }
@@ -92,35 +112,45 @@ export default function InnerCircleAccess({ onBack }) {
 
     const cleanEmail = email.trim().toLowerCase();
 
-    // Check again in case someone submitted while we were editing
-    const { data: existing } = await supabase
-      .from("inner_circle_members")
-      .select("status")
-      .eq("email", cleanEmail)
-      .single();
-
-    if (existing) {
-      setMessage(existing.status === "approved"
-        ? "Este email ya tiene acceso. Usa el formulario anterior."
-        : "Ya tenemos una solicitud de este email. Te contactaremos pronto.");
-      setLoading(false); return;
+    if (!supabase) {
+      // Without Supabase, mark as submitted and notify via email fallback
+      setSubmitted(true);
+      setLoading(false);
+      return;
     }
 
-    const { error } = await supabase
-      .from("inner_circle_members")
-      .insert({
-        email: cleanEmail,
-        name: name.trim(),
-        organization: org.trim() || null,
-        profile_category: profile,
-        reason: reason.trim() || null,
-        status: "pending",
-      });
+    try {
+      const { data: existing } = await supabase
+        .from("inner_circle_members")
+        .select("status")
+        .eq("email", cleanEmail)
+        .single();
 
-    if (error) {
-      setMessage("Error al enviar la solicitud. Inténtalo de nuevo.");
-    } else {
-      setSubmitted(true);
+      if (existing) {
+        setMessage(existing.status === "approved"
+          ? "Este email ya tiene acceso. Usa el formulario anterior."
+          : "Ya tenemos una solicitud de este email. Te contactaremos pronto.");
+        setLoading(false); return;
+      }
+
+      const { error } = await supabase
+        .from("inner_circle_members")
+        .insert({
+          email: cleanEmail,
+          name: name.trim(),
+          organization: org.trim() || null,
+          profile_category: profile,
+          reason: reason.trim() || null,
+          status: "pending",
+        });
+
+      if (error) {
+        setMessage("Error al enviar la solicitud. Inténtalo de nuevo.");
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setMessage("Error de conexión. Inténtalo de nuevo.");
     }
     setLoading(false);
   }
