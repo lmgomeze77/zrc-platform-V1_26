@@ -1318,7 +1318,7 @@ const ZRCPlatform = () => {
       <GoldDivider />
 
 
-      <Community lang={lang} />
+      <Community lang={lang} onAccess={() => setIcPage("inner-circle-private")} />
       <Footer lang={lang} />
     </AuthProvider>
   );

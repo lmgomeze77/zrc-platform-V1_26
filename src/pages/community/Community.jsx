@@ -69,7 +69,7 @@ const css = `
   .ic-tagline{font-size:14px;}
 }
 `
-export default function Community({ lang = "es" }) {
+export default function Community({ lang = "es", onAccess }) {
   const [view, setView]         = useState("gate");
   const [email, setEmail]       = useState("");
   const [checking, setChecking] = useState(false);
@@ -132,7 +132,7 @@ export default function Community({ lang = "es" }) {
         body: JSON.stringify({ email: email.toLowerCase().trim() }),
       });
       const data = await res.json();
-      if (data.approved) setView("landing");
+      if (data.approved) { if (onAccess) { onAccess(); } else { setView("landing"); } }
       else if (data.status === "pending") setGateMsg(tx.pendingMsg);
       else setGateMsg(tx.noneMsg);
     } catch { setGateMsg("Error. Intentelo de nuevo."); }
