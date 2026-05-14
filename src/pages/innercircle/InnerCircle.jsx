@@ -16,6 +16,15 @@ import {
   RadioTower,
   BriefcaseBusiness,
   Layers,
+  Calendar,
+  MapPin,
+  TrendingUp,
+  Zap,
+  Building2,
+  Landmark,
+  ChevronRight,
+  Users,
+  Activity,
 } from "lucide-react";
 
 /**
@@ -45,6 +54,10 @@ const IMAGE_LIBRARY = {
   logistics: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1800&q=80",
   energy: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1800&q=80",
   report: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80",
+  iberia: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1800&q=80",
+  solar: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1800&q=80",
+  city: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1800&q=80",
+  datacenter: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=80",
 };
 
 const signals = [
@@ -130,6 +143,152 @@ const membership = [
 
 const regions = ["Madrid", "Miami", "Mexico City", "Bogotá", "Dubai", "Singapore", "Rotterdam", "Suez", "Panama", "Tangier"];
 
+const events = [
+  {
+    id: "EVT / 001",
+    type: "Roundtable",
+    title: "Iberia Real Assets & Private Credit",
+    subtitle: "Deuda privada, activos reales y compresión de spreads en el ciclo post-BCE",
+    date: "12 Jun 2026",
+    location: "Madrid",
+    format: "Presencial — aforo limitado",
+    seats: "14 plazas",
+    tags: ["Real Estate", "Private Credit", "Iberia"],
+  },
+  {
+    id: "EVT / 002",
+    type: "Workshop",
+    title: "Energy Transition Mandates in Southern Europe",
+    subtitle: "Infraestructura de almacenamiento, contratos PPA y posicionamiento en el corredor atlántico",
+    date: "3 Jul 2026",
+    location: "Bilbao",
+    format: "Presencial — formato taller",
+    seats: "20 plazas",
+    tags: ["Energía", "Infraestructura", "ESG Capital"],
+  },
+  {
+    id: "EVT / 003",
+    type: "Private Dinner",
+    title: "GCC–Iberia Capital Corridor",
+    subtitle: "Capital soberano del Golfo, vehículos de co-inversión y mandatos de diversificación hacia Europa",
+    date: "18 Sep 2026",
+    location: "Dubai",
+    format: "Cena privada — solo por invitación",
+    seats: "12 plazas",
+    tags: ["GCC", "Sovereign Capital", "Co-investment"],
+  },
+  {
+    id: "EVT / 004",
+    type: "Intelligence Session",
+    title: "Special Situations Europe 2026",
+    subtitle: "Distressed assets, recapitalizaciones y oportunidades de turnaround en el ciclo actual",
+    date: "29 May 2026",
+    location: "Virtual — cifrado",
+    format: "Sesión cerrada — máx. 30 asistentes",
+    seats: "Plazas disponibles",
+    tags: ["Special Situations", "Distressed", "Europa"],
+    upcoming: true,
+  },
+  {
+    id: "EVT / 005",
+    type: "Annual Forum",
+    title: "ZRC Intelligence Forum 2026",
+    subtitle: "Perspectivas macro, asignación de capital y señales de posicionamiento para el siguiente ciclo",
+    date: "16–17 Oct 2026",
+    location: "Madrid",
+    format: "Conferencia anual de miembros",
+    seats: "Sólo miembros Inner Circle y Council",
+    tags: ["Macro", "Capital Allocation", "Networking"],
+  },
+];
+
+const opportunities = [
+  {
+    id: "OPP / 011",
+    geography: "España",
+    sector: "Logística",
+    title: "Plataformas logísticas peri-urbanas — Corredor Madrid–Valencia",
+    thesis: "La aceleración del nearshoring industrial y la presión sobre plazos de entrega last-mile están generando escasez de superficie logística de Clase A en un radio de 30–60 km de los nodos urbanos de Madrid y Valencia. Los yields se mantienen 80–120 bps sobre la media europea.",
+    signal: "Demanda corporativa confirmada. Escasez de suelo finalista. Ventana de entrada 12–18 meses.",
+    type: "Core+ / Value-Add",
+    return: "7.8–9.2% TIR est.",
+    horizon: "5–7 años",
+    status: "Active",
+    icon: Building2,
+  },
+  {
+    id: "OPP / 014",
+    geography: "España",
+    sector: "Energía",
+    title: "Solar + almacenamiento en el corredor Extremadura–Andalucía",
+    thesis: "España tiene una de las irradiaciones más altas de Europa occidental y un marco regulatorio que favorece contratos PPA a largo plazo. El corredor Extremadura–Andalucía concentra proyectos en fase RTB con acceso a red confirmado, permitiendo estructuras de financiación de proyecto con leverage conservador.",
+    signal: "Contexto de precios eléctricos volátiles. Demanda corporativa de PPAs verdes en expansión. Infraestructura de conexión disponible.",
+    type: "Infrastructure / Project Finance",
+    return: "8.5–11% TIR est.",
+    horizon: "15–20 años",
+    status: "Watching",
+    icon: Zap,
+  },
+  {
+    id: "OPP / 019",
+    geography: "Europa Sur",
+    sector: "Digital Infrastructure",
+    title: "Data Centers de edge computing — Sur de Europa",
+    thesis: "La expansión de la IA generativa y los requisitos de soberanía de datos están creando una demanda estructural de capacidad de cómputo distribuida. El sur de Europa (España, Portugal, Italia) combina costes energéticos competitivos, latencia favorable hacia África y Oriente Medio, y marcos regulatorios estables.",
+    signal: "Compromisos de hiperescalares confirmados en Barcelona y Lisboa. Escasez de suelo con acceso a red de alta tensión.",
+    type: "Infrastructure / Growth",
+    return: "10–14% TIR est.",
+    horizon: "7–10 años",
+    status: "Live",
+    icon: Activity,
+  },
+  {
+    id: "OPP / 023",
+    geography: "GCC / MENA",
+    sector: "Private Credit",
+    title: "Financiación puente en transición energética — Arabia Saudí y Emiratos",
+    thesis: "Visión 2030 y las metas net-zero de los Emiratos están generando una pipeline de proyectos de infraestructura energética que supera la capacidad de los bancos regionales. El private credit internacional puede acceder a estructuras senior secured con colateral real y rendimientos superiores al mercado europeo.",
+    signal: "Spreads 350–450 bps sobre SOFR. Garantías soberanas parciales. Vehículos de acceso disponibles para inversores institucionales cualificados.",
+    type: "Private Credit / Senior Secured",
+    return: "SOFR + 380 bps est.",
+    horizon: "3–5 años",
+    status: "Active",
+    icon: Landmark,
+  },
+];
+
+const featuredNote = {
+  id: "BLACK BRIEF / MAYO 2026",
+  title: "El Corredor Energético Ibérico",
+  subtitle: "Una tesis de inversión estructural",
+  author: "ZRC Intelligence Desk",
+  date: "Mayo 2026",
+  readTime: "12 min",
+  classification: "INNER CIRCLE — CONFIDENTIAL",
+  sections: [
+    {
+      heading: "La tesis",
+      body: "España y Portugal han pasado de ser importadores energéticos dependientes a convertirse en el eje de un corredor energético europeo. La combinación de capacidad renovable instalada (>80 GW en España a cierre de 2025), infraestructura de GNL de primer nivel y posición geográfica estratégica entre el Atlántico, el Mediterráneo y el Norte de África define una oportunidad de inversión de largo plazo que el mercado está subvalorando.",
+    },
+    {
+      heading: "Por qué ahora",
+      body: "Tres catalizadores concurren simultáneamente: (1) la REPowerEU acelera los flujos de capital hacia infraestructura energética ibérica, (2) el corredor submarino BarMar de hidrógeno verde conectará Barcelona con Marsella para 2030, y (3) la dependencia energética alemana y francesa crea demanda estructural de acuerdos de suministro a largo plazo. El capital institucional ya está moviéndose: en los últimos 18 meses, más de €4.200M de capital privado han entrado en activos energéticos en la península.",
+    },
+    {
+      heading: "La transmisión al capital",
+      body: "Los inversores con exposición a activos de infraestructura energética ibérica están accediendo a yields en el rango 7–11% TIR dependiendo del perfil de riesgo: desde contratos PPA regulados hasta plataformas de proyecto en fase greenfield. El denominador común es la reducción de la prima de riesgo geopolítico respecto a alternativas en Oriente Medio o África subsahariana, manteniendo rendimientos superiores a los de infraestructura core centroeuropea.",
+    },
+    {
+      heading: "Riesgos a vigilar",
+      body: "Riesgo regulatorio en revisión de mecanismos de captura de ingresos extraordinarios. Presión sobre márgenes si los precios spot del mercado eléctrico español continúan bajo presión. Riesgo de ejecución en proyectos de almacenamiento ante cuellos de botella en permisos municipales. Mitigante principal: estructuras con contratos PPA firmados previos al cierre de inversión.",
+    },
+    {
+      heading: "Ángulo de posicionamiento",
+      body: "Favorecemos exposición a plataformas de proyecto en fase RTB (Ready to Build) con PPA firmados, almacenamiento con acceso a red confirmado y operadores con track record en el mercado español. Evitamos exposición especulativa a tecnologías de hidrógeno verde hasta que la infraestructura de transporte esté operativa (2028–2030). El vehículo preferido es equity directo o co-inversión junto a gestores especializados con presencia local.",
+    },
+  ],
+};
+
 function classNames(...items) {
   return items.filter(Boolean).join(" ");
 }
@@ -148,7 +307,7 @@ function NoiseOverlay() {
 }
 
 function TopNav() {
-  const nav = ["Layers", "Black Brief", "Radar", "Membership", "Access"];
+  const nav = ["Intelligence", "Eventos", "Oportunidades", "Radar", "Membership", "Access"];
   return (
     <header className="fixed left-0 right-0 top-0 z-40 border-b border-white/10 bg-black/65 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
@@ -161,9 +320,9 @@ function TopNav() {
             <div className="font-serif text-sm tracking-[0.18em] text-white">Inner Circle</div>
           </div>
         </a>
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           {nav.map((item) => (
-            <a key={item} href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-[11px] uppercase tracking-[0.24em] text-white/45 transition hover:text-white">
+            <a key={item} href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-[10px] uppercase tracking-[0.22em] text-white/45 transition hover:text-white">
               {item}
             </a>
           ))}
@@ -284,7 +443,7 @@ function SectionLabel({ eyebrow, title, text }) {
 
 function LayersSection() {
   return (
-    <section id="layers" className="border-t border-white/10 bg-black px-5 py-28 md:px-8">
+    <section id="intelligence" className="border-t border-white/10 bg-black px-5 py-28 md:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionLabel eyebrow="Intelligence Architecture" title="Three layers. One private operating picture." text="The Inner Circle transforms fragmented information into structured intelligence for capital allocation and strategic positioning." />
         <div className="grid gap-5 md:grid-cols-3">
@@ -383,6 +542,221 @@ function DeliverablesSection() {
   );
 }
 
+function FeaturedNoteSection() {
+  const [expanded, setExpanded] = useState(false);
+  const visibleSections = expanded ? featuredNote.sections : featuredNote.sections.slice(0, 2);
+
+  return (
+    <section className="border-t border-white/10 bg-black px-5 py-28 md:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 grid gap-10 md:grid-cols-[1fr_2fr]">
+          <div>
+            <div className="mb-5 text-[11px] uppercase tracking-[0.35em] text-[#D4A853]">Black Brief</div>
+            <h2 className="font-serif text-4xl font-light tracking-[-0.035em] text-white md:text-5xl">{featuredNote.title}</h2>
+            <p className="mt-4 font-serif text-xl italic text-white/45">{featuredNote.subtitle}</p>
+            <div className="mt-8 space-y-3">
+              <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.28em] text-white/35">
+                <span className="text-[#D4A853]">■</span> {featuredNote.classification}
+              </div>
+              <div className="text-[10px] uppercase tracking-[0.24em] text-white/35">{featuredNote.author} · {featuredNote.date}</div>
+              <div className="text-[10px] uppercase tracking-[0.24em] text-white/35">Lectura estimada: {featuredNote.readTime}</div>
+            </div>
+            <div className="relative mt-10 overflow-hidden">
+              <img
+                src={IMAGE_LIBRARY.solar}
+                alt="Solar energy infrastructure Iberia"
+                className="h-56 w-full object-cover grayscale"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-[9px] uppercase tracking-[0.28em] text-white/40">Infraestructura Solar — Corredor Atlántico</div>
+            </div>
+          </div>
+
+          <div className="border border-white/10 bg-white/[0.02] p-8">
+            <div className="mb-8 flex items-center gap-4 border-b border-white/10 pb-6">
+              <FileText size={16} className="text-[#D4A853]" />
+              <div className="text-[10px] uppercase tracking-[0.3em] text-white/40">Nota de inteligencia — Edición Mayo 2026</div>
+            </div>
+            <div className="space-y-8">
+              {visibleSections.map((section, i) => (
+                <motion.div
+                  key={section.heading}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                >
+                  <div className="mb-3 text-[10px] uppercase tracking-[0.28em] text-[#D4A853]">{section.heading}</div>
+                  <p className="leading-8 text-white/65">{section.body}</p>
+                </motion.div>
+              ))}
+            </div>
+            {!expanded && (
+              <div className="mt-8 border-t border-white/10 pt-6">
+                <div className="h-12 bg-gradient-to-t from-black to-transparent -mt-20 mb-4 pointer-events-none" />
+                <button
+                  onClick={() => setExpanded(true)}
+                  className="group inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-white/45 transition hover:text-white"
+                >
+                  Leer análisis completo <ChevronRight size={14} className="transition group-hover:translate-x-1" />
+                </button>
+              </div>
+            )}
+            {expanded && (
+              <div className="mt-8 border-t border-white/10 pt-6">
+                <button
+                  onClick={() => setExpanded(false)}
+                  className="text-[11px] uppercase tracking-[0.28em] text-white/35 transition hover:text-white/60"
+                >
+                  Cerrar
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EventBoardSection() {
+  return (
+    <section id="eventos" className="border-t border-white/10 bg-black px-5 py-28 md:px-8">
+      <div className="mx-auto max-w-7xl">
+        <SectionLabel
+          eyebrow="Agenda de Miembros"
+          title="Eventos privados. Acceso restringido."
+          text="Roundtables, sesiones de inteligencia y foros de capital reservados a miembros Inner Circle y Council. El formato es reducido por diseño."
+        />
+        <div className="space-y-4">
+          {events.map((event, i) => (
+            <motion.div
+              key={event.id}
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              className="group grid gap-4 border border-white/10 bg-white/[0.018] p-6 transition hover:border-[#D4A853]/40 hover:bg-white/[0.035] md:grid-cols-[auto_1fr_auto]"
+            >
+              <div className="flex flex-col justify-between md:w-32">
+                <div className="text-[9px] uppercase tracking-[0.28em] text-[#D4A853]">{event.type}</div>
+                <div className="mt-3 font-serif text-2xl text-white">{event.date}</div>
+              </div>
+
+              <div className="border-l border-white/10 pl-6">
+                <div className="text-[9px] uppercase tracking-[0.22em] text-white/30 mb-2">{event.id}</div>
+                <h3 className="font-serif text-2xl text-white leading-tight">{event.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-white/50">{event.subtitle}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {event.tags.map((tag) => (
+                    <span key={tag} className="rounded-full border border-white/10 px-3 py-1 text-[9px] uppercase tracking-[0.18em] text-white/40">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-between text-right md:w-44">
+                <div className="flex items-center justify-end gap-2 text-[9px] uppercase tracking-[0.2em] text-white/35">
+                  <MapPin size={11} /> {event.location}
+                </div>
+                <div className="mt-3">
+                  <div className="text-[9px] uppercase tracking-[0.2em] text-white/30 mb-1">{event.format}</div>
+                  <div className={`text-[10px] uppercase tracking-[0.2em] ${event.upcoming ? "text-[#D4A853]" : "text-white/45"}`}>
+                    {event.seats}
+                  </div>
+                </div>
+                <a
+                  href="#access"
+                  className="mt-4 inline-flex items-center justify-end gap-2 text-[10px] uppercase tracking-[0.22em] text-white/35 transition group-hover:text-white/80"
+                >
+                  Solicitar plaza <ChevronRight size={12} />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OpportunitiesSection() {
+  return (
+    <section id="oportunidades" className="border-t border-white/10 bg-black px-5 py-28 md:px-8">
+      <div className="mx-auto max-w-7xl">
+        <SectionLabel
+          eyebrow="Opportunity Radar — España & Internacional"
+          title="Oportunidades de inversión curadas."
+          text="Tesis con señal confirmada, geografía clara y ángulo de inversión para capital institucional. No son recomendaciones de inversión. Son inteligencia de posicionamiento."
+        />
+
+        <div className="grid gap-6 lg:grid-cols-2">
+          {opportunities.map((opp, i) => {
+            const Icon = opp.icon;
+            return (
+              <motion.div
+                key={opp.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group relative border border-white/10 bg-white/[0.022] p-7 transition hover:border-[#D4A853]/50 hover:bg-white/[0.038]"
+              >
+                <div className="mb-6 flex items-start justify-between">
+                  <div>
+                    <div className="text-[9px] uppercase tracking-[0.28em] text-[#D4A853] mb-1">{opp.id}</div>
+                    <div className="flex items-center gap-2">
+                      <span className="rounded-full border border-white/10 px-2 py-0.5 text-[9px] uppercase tracking-[0.18em] text-white/40">{opp.geography}</span>
+                      <span className="rounded-full border border-white/10 px-2 py-0.5 text-[9px] uppercase tracking-[0.18em] text-white/40">{opp.sector}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className={`h-1.5 w-1.5 rounded-full ${opp.status === "Live" ? "bg-[#D4A853]" : opp.status === "Active" ? "bg-green-400" : "bg-white/30"}`} />
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-white/35">{opp.status}</span>
+                  </div>
+                </div>
+
+                <div className="mb-1 flex items-center gap-3">
+                  <Icon size={18} className="shrink-0 text-[#D4A853] transition group-hover:scale-110" />
+                  <h3 className="font-serif text-2xl leading-tight text-white">{opp.title}</h3>
+                </div>
+
+                <p className="mt-5 leading-7 text-sm text-white/55">{opp.thesis}</p>
+
+                <div className="mt-5 border-t border-white/10 pt-5">
+                  <div className="mb-3 text-[9px] uppercase tracking-[0.25em] text-[#D4A853]">Señal</div>
+                  <p className="text-sm leading-6 text-white/45 italic">{opp.signal}</p>
+                </div>
+
+                <div className="mt-6 grid grid-cols-3 gap-4 border-t border-white/10 pt-5">
+                  <div>
+                    <div className="text-[9px] uppercase tracking-[0.22em] text-white/30 mb-1">Tipo</div>
+                    <div className="text-xs text-white/65">{opp.type}</div>
+                  </div>
+                  <div>
+                    <div className="text-[9px] uppercase tracking-[0.22em] text-white/30 mb-1">Retorno Est.</div>
+                    <div className="text-xs text-[#D4A853]">{opp.return}</div>
+                  </div>
+                  <div>
+                    <div className="text-[9px] uppercase tracking-[0.22em] text-white/30 mb-1">Horizonte</div>
+                    <div className="text-xs text-white/65">{opp.horizon}</div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 border border-white/10 bg-white/[0.015] p-5 text-center">
+          <p className="text-[10px] uppercase tracking-[0.28em] text-white/30">
+            Las oportunidades presentadas tienen carácter exclusivamente informativo. No constituyen asesoramiento de inversión ni oferta de valores. Acceso reservado a miembros cualificados.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function MembershipSection() {
   return (
     <section id="membership" className="border-t border-white/10 bg-black px-5 py-28 md:px-8">
@@ -475,6 +849,9 @@ export default function InnerCircle() {
       <TopNav />
       <Hero />
       <LayersSection />
+      <FeaturedNoteSection />
+      <EventBoardSection />
+      <OpportunitiesSection />
       <BlackBrief />
       <RadarSection />
       <DeliverablesSection />
