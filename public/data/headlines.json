@@ -1,245 +1,217 @@
 {
-  "generated_at": "2026-05-10T08:04:12.142Z",
+  "generated_at": "2026-05-14T08:33:47.680Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1785",
-      "change": "+0.53%",
-      "up": true
-    },
-    {
-      "symbol": "IBEX 35",
-      "value": "18147.20",
-      "change": "+0.24%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "101.29",
-      "change": "+1.23%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "95.42",
-      "change": "+0.64%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4730.70",
-      "change": "+0.42%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "80610.75",
-      "change": "+0.46%",
-      "up": true
-    },
-    {
-      "symbol": "VIX",
-      "value": "17.19",
-      "change": "+0.64%",
-      "up": true
-    },
-    {
-      "symbol": "US 10Y yield",
-      "value": "4.364",
-      "change": "-0.68%",
+      "value": "1.1705",
+      "change": "-0.33%",
       "up": false
     },
     {
-      "symbol": "S&P 500",
-      "value": "7398.93",
-      "change": "+0.84%",
+      "symbol": "IBEX 35",
+      "value": "18060.80",
+      "change": "-0.24%",
+      "up": false
+    },
+    {
+      "symbol": "BRENT",
+      "value": "106.15",
+      "change": "-1.51%",
+      "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4757.59",
+      "change": "+0.50%",
       "up": true
     },
     {
-      "symbol": "DAX 40",
-      "value": "24339.00",
-      "change": "-1.32%",
+      "symbol": "BTC",
+      "value": "79641.86",
+      "change": "-1.71%",
+      "up": false
+    },
+    {
+      "symbol": "VIX",
+      "value": "17.85",
+      "change": "-2.12%",
+      "up": false
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.467%",
+      "change": "-0.012%",
       "up": false
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8646",
-      "change": "-0.84%",
+      "value": "0.8662",
+      "change": "-0.08%",
       "up": false
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "97.78",
-      "change": "-0.16%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.757",
-      "change": "-0.43%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.2965",
-      "change": "+1.95%",
+      "symbol": "S&P 500",
+      "value": "7460.00",
+      "change": "+0.70%",
       "up": true
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.7965",
-      "change": "-0.18%",
+      "symbol": "DAX 40",
+      "value": "24136.81",
+      "change": "-1.62%",
       "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
-      "region": "EU",
+      "tag": "CRITICAL",
+      "region": "APAC",
       "title": {
-        "es": "Putin dice que cree que la guerra de Ucrania está 'llegando a su fin'",
-        "en": "Putin says he thinks Ukraine war is 'coming to an end'"
+        "es": "Trump en China: Xi advierte que EE UU y China podrían entrar en conflicto si se maneja mal el tema de Taiwán",
+        "en": "Trump China visit: Xi Jinping warns US and China could 'come into conflict' if Taiwan issue mishandled"
       },
       "summary": {
-        "es": "El presidente ruso señala un posible fin del conflicto durante una tregua de tres días, lo que sugiere un cambio en la postura de negociación de Moscú. Esta declaración tiene implicaciones significativas para los mercados de energía europeos, la estabilidad geopolítica y las sanciones comerciales.",
-        "en": "Russian president signals potential end to conflict during a three-day ceasefire, suggesting a shift in Moscow's negotiating posture. This statement carries significant implications for European energy markets, geopolitical stability, and trade sanctions regimes."
+        "es": "Durante la cumbre de alto nivel en Beijing, Xi Jinping advierte explícitamente sobre el riesgo de conflicto entre potencias si la cuestión de Taiwán no se maneja adecuadamente. Las negociaciones abarcan comercio, inteligencia artificial y la guerra en Irán, en un contexto de crecientes tensiones geopolíticas.",
+        "en": "During high-level summit talks in Beijing, Xi Jinping explicitly warns of conflict risk between powers over Taiwan mishandling. Negotiations cover trade, AI, and the Iran war amid rising geopolitical tensions."
       },
       "impact": "high",
       "signals": [
-        "EUR +",
-        "OIL ?",
-        "EQUITIES +",
-        "BONDS +"
+        "USD +",
+        "EQUITIES ?",
+        "TREASURIES +",
+        "GOLD +"
       ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/putin-says-he-thinks-ukraine-war-is-coming-to-an-end/a-77106772?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-09",
-      "time": "12h"
+      "confidence": 92,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/us-news/live/2026/may/14/donald-trump-china-xi-jinping-live-updates-talks-meeting-summit-visit-beijing-latest-news",
+      "published_at": "2026-05-14",
+      "time": "<1h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Guardias Revolucionarios advierten a EE.UU. contra ataques a buques; Israel bombardea Líbano",
-        "en": "Iran war live: IRGC warns US against attacks on ships; Israel bombs Lebanon"
-      },
-      "summary": {
-        "es": "A pesar de un cese del fuego entre EE.UU. e Irán, los Guardias Revolucionarios advierten contra ataques a buques, mientras Israel continúa operaciones militares en Líbano. Esto indica inestabilidad persistente en el Estrecho de Ormuz y riesgo de escalada regional que afecta los precios del petróleo.",
-        "en": "Despite a US-Iran ceasefire, Iran's IRGC warns against attacks on tankers while Israel continues military operations in Lebanon. This signals persistent instability in the Strait of Hormuz and regional escalation risk with direct crude oil pricing implications."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "BONDS -"
-      ],
-      "confidence": 90,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/liveblog/2026/5/10/iran-war-live-irgc-warns-us-against-attacks-on-ships-israel-bombs-lebanon?traffic_source=rss",
-      "published_at": "2026-05-10",
-      "time": "8h"
-    },
-    {
-      "id": 3,
       "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "es": "Teherán, Taiwán, comercio... ¿cuáles son los peligros que enfrenta Trump en el equilibrio de la cumbre con Xi?",
-        "en": "Tehran, Taiwan, trade … what are the hazards facing Trump on Xi summit tightrope?"
+        "es": "Comercio, tecnología y tierras raras dominarán la visita de Trump a China",
+        "en": "Trade, tech, and rare earths to dominate Trump's China trip"
       },
       "summary": {
-        "es": "Trump se prepara para una cumbre crucial con Xi Jinping en Beijing desde una posición vulnerable, con tensiones comerciales, la cuestión de Taiwán e Irán en la agenda. El resultado podría redefinir dinámicas comerciales globales y la estabilidad del Estrecho de Taiwán.",
-        "en": "Trump prepares for a critical summit with Xi Jinping in Beijing from a weakened position, with trade tensions, Taiwan, and Iran on the agenda. Outcomes could reshape global trade dynamics and cross-strait stability."
+        "es": "Una delegación de ejecutivos de las mayores empresas globales acompaña a Trump a China, enfocándose en comercio, tecnología y minerales de tierras raras críticos para industrias modernas. La ausencia de acuerdos o escalada de aranceles tiene implicaciones directas en cadenas de suministro global.",
+        "en": "Major corporate executives accompany Trump to China, focusing on trade, technology, and critical rare earth minerals for modern industries. Supply chain and tariff outcomes carry global implications."
       },
       "impact": "high",
       "signals": [
         "CNY ?",
-        "EQUITIES ?",
-        "BONDS ?",
-        "TECH -"
+        "TECH EQUITIES ?",
+        "COMMODITIES ?",
+        "USD +"
       ],
-      "confidence": 85,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/news/ng-interactive/2026/may/10/tehran-taiwan-trade-donald-trump-xi-jinping-us-china-summit",
-      "published_at": "2026-05-10",
-      "time": "4h"
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/trade-tech-and-rare-earths-to-dominate-trump-s-china-trip",
+      "published_at": "2026-05-13",
+      "time": "11h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Guerra en Irán día 76: Vance dice que hay progreso en negociaciones; Israel bombardea Líbano",
+        "en": "Iran war day 76: Vance says progress made in talks; Israel pounds Lebanon"
+      },
+      "summary": {
+        "es": "El Vicepresidente Vance reporta avances en negociaciones con Irán mientras continúan operaciones militares activas de Israel contra Líbano. El conflicto en su día 76 mantiene presión en precios de energía y estabilidad regional con impacto en mercados globales.",
+        "en": "Vice President Vance reports progress in Iran talks as Israel continues active military operations against Lebanon. The 76-day conflict maintains energy price pressures and regional instability with global market impact."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL +",
+        "BONDS +",
+        "USD +",
+        "EQUITIES -"
+      ],
+      "confidence": 90,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/5/14/iran-war-day-76-vance-says-progress-made-in-talks-israel-pounds-lebanon?traffic_source=rss",
+      "published_at": "2026-05-14",
+      "time": "1h"
     },
     {
       "id": 4,
-      "tag": "WATCH",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "Líbano dice que los ataques israelíes mataron a 39 personas",
-        "en": "Lebanon says Israeli strikes killed 39"
+        "es": "Rusia bombardea Kyiv después de que Putin sugiera que la guerra podría terminar pronto",
+        "en": "Russia Pummels Kyiv After Putin Hints That War Could End Soon"
       },
       "summary": {
-        "es": "Israel y Hezbollah continúan intercambios de fuego a pesar de un acuerdo de cese del fuego anunciado el mes anterior, indicando fragilidad del acuerdo y riesgo de reanudación del conflicto. Esto afecta la evaluación de riesgo regional y los precios de commodities.",
-        "en": "Israel and Hezbollah continue trading fire despite a ceasefire deal announced last month, signaling agreement fragility and conflict resumption risk. This affects regional risk assessment and commodity pricing."
+        "es": "Tras la expiración de una tregua de tres días, Rusia intensifica ataques con drones y misiles contra Kyiv, contradiciendo señales de negociación. La reanudación de la escalada militar sugiere negociaciones estancadas y riesgo de prolongación del conflicto con implicaciones para energía europea.",
+        "en": "After a three-day truce expires, Russia intensifies drone and missile attacks on Kyiv, contradicting negotiation signals. Military escalation resumption suggests stalled talks and prolonged conflict risk with European energy implications."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "OIL +",
-        "GOLD +",
-        "EQUITIES -"
+        "ENERGY EU +",
+        "EUR -",
+        "BONDS +",
+        "GOLD +"
       ],
-      "confidence": 78,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cn4pjegk358o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-09",
-      "time": "10h"
+      "confidence": 87,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/14/world/europe/ukraine-strike-kyiv-russia-putin.html",
+      "published_at": "2026-05-14",
+      "time": "<1h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "Pakistán, mediador interesado de la guerra en Irán",
-        "en": "Pakistan, interested mediator in Iran war"
+        "es": "Advertencia: alza en tarifas aéreas europeas 'inevitable' por la guerra en Irán",
+        "en": "Warning higher Europe air fares 'inevitable' due to Iran war"
       },
       "summary": {
-        "es": "Pakistán emerge como mediador inesperado entre Washington y Teherán, utilizando canales discretos para resolver la crisis del Estrecho de Ormuz. Su papel como intermediario afecta la probabilidad de desescalada y estabilidad energética global.",
-        "en": "Pakistan emerges as unexpected mediator between Washington and Tehran, using discrete channels to resolve Strait of Hormuz crisis. Its intermediary role affects probability of de-escalation and global energy stability."
+        "es": "La industria aérea internacional advierte que las tarifas subirán inevitablemente debido a precios altos de petróleo derivados de la guerra en Irán. El shock de costos se transmitirá a consumidores europeos y afectará demanda de viajes y turismo.",
+        "en": "International aviation industry warns fares will inevitably rise due to elevated oil prices from Iran war. Cost shock will transmit to European consumers, affecting travel demand and tourism."
       },
       "impact": "medium",
       "signals": [
-        "OIL ?",
-        "EQUITIES ?",
-        "PKR -"
+        "OIL +",
+        "TRAVEL EQUITIES -",
+        "INFLATION +",
+        "EUR -"
       ],
-      "confidence": 75,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/05/10/le-pakistan-mediateur-interesse-de-la-guerre-en-iran_6687669_3210.html",
-      "published_at": "2026-05-10",
-      "time": "4h"
+      "confidence": 82,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/clyprnelzxzo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-13",
+      "time": "9h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
+      "tag": "CRITICAL",
+      "region": "APAC",
       "title": {
-        "es": "Un desfile reducido del Día de la Victoria muestra la creciente vulnerabilidad de Putin en la guerra de Ucrania",
-        "en": "A Scaled-Back Victory Day Parade Shows Putin's Growing Vulnerability in Ukraine War"
+        "es": "Xi Jinping advierte a Donald Trump que las relaciones entre China y EE UU dependen de Taiwán",
+        "en": "Xi Jinping warns Donald Trump that US-China relations depend on Taiwan"
       },
       "summary": {
-        "es": "El desfile militar reducido por temores de seguridad refleja la vulnerabilidad creciente de Rusia y la extensión de riesgos a ciudades rusas. Esta erosión de capacidades proyectadas tiene implicaciones para la durabilidad del conflicto y la evaluación de riesgos de inversión en Rusia.",
-        "en": "The military parade reduction due to security fears reflects Russia's growing vulnerability and extension of war risks to Russian cities. This erosion of projected capability has implications for conflict durability and Russia investment risk assessment."
+        "es": "Xi Jinping enfatiza que la relación bilateral entre China y EE UU está vinculada directamente al tema de Taiwán durante su encuentro en Beijing. El mensaje refuerza que Taiwán es línea roja para China y que cualquier paso incorrecto de Trump podría deteriorar relaciones críticas.",
+        "en": "Xi Jinping emphasizes that US-China bilateral relations are directly tied to Taiwan during Beijing meeting. Message reinforces Taiwan as red line for China and that missteps by Trump could deteriorate critical relations."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "RUB -",
-        "EQUITIES -",
-        "BONDS -"
+        "USD +",
+        "EQUITIES ?",
+        "TREASURIES +",
+        "SEMICONDUCTORS ?"
       ],
-      "confidence": 80,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/09/world/europe/russia-victory-day-parade.html",
-      "published_at": "2026-05-09",
-      "time": "8h"
+      "confidence": 89,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-05-14/donald-trump-ante-xi-jinping-la-relacion-entre-china-y-estados-unidos-va-a-ser-mejor-que-nunca.html",
+      "published_at": "2026-05-14",
+      "time": "2h"
     }
-  ],
-  "market_updated_at": "2026-05-10T14:42:54.507Z"
+  ]
 }
