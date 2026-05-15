@@ -1,248 +1,217 @@
 {
-  "generated_at": "2026-05-14T08:33:47.680Z",
+  "generated_at": "2026-05-15T08:45:19.560Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1767",
-      "change": "-0.14%",
+      "value": "1.1700",
+      "change": "-0.14",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17790.90",
-      "change": "+0.77%",
+      "value": "17809.20",
+      "change": "+154.30",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "106.89",
-      "change": "+1.11%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
+      "symbol": "BRENT",
       "value": "102.49",
-      "change": "+1.31%",
+      "change": "+1.31",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4702.22",
-      "change": "-0.31%",
+      "symbol": "GOLD",
+      "value": "4703.00",
+      "change": "-15.00",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "81293.00",
-      "change": "+2.89%",
+      "symbol": "BTC",
+      "value": "80772.40",
+      "change": "+2058.40",
       "up": true
     },
     {
       "symbol": "VIX",
       "value": "17.90",
-      "change": "+0.17%",
+      "change": "+0.03",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.46",
-      "change": "+0.00%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7501.24",
-      "change": "+0.77%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24262.35",
-      "change": "-0.79%",
+      "symbol": "US 10Y",
+      "value": "4.45",
+      "change": "-0.09",
       "up": false
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8703",
-      "change": "-0.02%",
+      "value": "0.8665",
+      "change": "-0.0002",
       "up": false
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "99.05",
-      "change": "+0.16%",
+      "symbol": "S&P 500",
+      "value": "7501.24",
+      "change": "+56.99",
       "up": true
     },
     {
-      "symbol": "Natural Gas",
-      "value": "2.84",
-      "change": "-0.79%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.53",
-      "change": "-1.53%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8004",
-      "change": "-0.03%",
-      "up": false
+      "symbol": "DAX 40",
+      "value": "24390.00",
+      "change": "+256.20",
+      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
-      "region": "APAC",
+      "tag": "ALERT",
+      "region": "GLOBAL",
       "title": {
-        "es": "Trump en China: Xi advierte que EE UU y China podrían entrar en conflicto si se maneja mal el tema de Taiwán",
-        "en": "Trump China visit: Xi Jinping warns US and China could 'come into conflict' if Taiwan issue mishandled"
+        "es": "Trump dice que Xi ofreció ayuda para abrir el Estrecho de Ormuz y se comprometió a no armar a Irán",
+        "en": "Trump says Xi offered help to open Hormuz, vowed not to arm Iran"
       },
       "summary": {
-        "es": "Durante la cumbre de alto nivel en Beijing, Xi Jinping advierte explícitamente sobre el riesgo de conflicto entre potencias si la cuestión de Taiwán no se maneja adecuadamente. Las negociaciones abarcan comercio, inteligencia artificial y la guerra en Irán, en un contexto de crecientes tensiones geopolíticas.",
-        "en": "During high-level summit talks in Beijing, Xi Jinping explicitly warns of conflict risk between powers over Taiwan mishandling. Negotiations cover trade, AI, and the Iran war amid rising geopolitical tensions."
+        "es": "Trump reporta que Xi Jinping ofreció asistencia china para mantener abierto el Estrecho de Ormuz y se comprometió a no suministrar equipo militar a Irán durante su guerra con EE.UU. e Israel. Este acuerdo reduce significativamente los riesgos geopolíticos de interrupción energética global y mejora la posición estratégica estadounidense en Oriente Próximo.",
+        "en": "Trump reports that Xi Jinping offered Chinese assistance to keep the Strait of Hormuz open and pledged not to supply military equipment to Iran during its war with the US and Israel. This agreement significantly reduces geopolitical risks of global energy disruption and strengthens the US strategic position in the Middle East."
       },
       "impact": "high",
       "signals": [
-        "USD +",
-        "EQUITIES ?",
-        "TREASURIES +",
-        "GOLD +"
+        "OIL +",
+        "BONDS +",
+        "EQUITIES +",
+        "USD +"
       ],
-      "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/us-news/live/2026/may/14/donald-trump-china-xi-jinping-live-updates-talks-meeting-summit-visit-beijing-latest-news",
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/trump-says-xi-offered-help-to-open-hormuz-vowed-not-to-arm-iran",
       "published_at": "2026-05-14",
-      "time": "<1h"
+      "time": "14h"
     },
     {
       "id": 2,
       "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "es": "Comercio, tecnología y tierras raras dominarán la visita de Trump a China",
-        "en": "Trade, tech, and rare earths to dominate Trump's China trip"
+        "es": "Xi advierte a Trump sobre 'choques e incluso conflictos' con EE.UU. sobre Taiwán",
+        "en": "Xi warns Trump of 'clashes and even conflicts' with US over Taiwan"
       },
       "summary": {
-        "es": "Una delegación de ejecutivos de las mayores empresas globales acompaña a Trump a China, enfocándose en comercio, tecnología y minerales de tierras raras críticos para industrias modernas. La ausencia de acuerdos o escalada de aranceles tiene implicaciones directas en cadenas de suministro global.",
-        "en": "Major corporate executives accompany Trump to China, focusing on trade, technology, and critical rare earth minerals for modern industries. Supply chain and tariff outcomes carry global implications."
+        "es": "El presidente Xi Jinping emitió una advertencia explícita a Trump sobre posibles choques e conflictos respecto a Taiwán durante su encuentro en Beijing. La advertencia mantiene la tensión geopolítica sobre el status quo del Estrecho de Taiwán a pesar del tono cordial general de la cumbre.",
+        "en": "President Xi Jinping issued an explicit warning to Trump about potential clashes and conflicts regarding Taiwan during their Beijing meeting. The warning maintains geopolitical tension over the Taiwan Strait status quo despite the otherwise cordial summit tone."
       },
       "impact": "high",
       "signals": [
-        "CNY ?",
-        "TECH EQUITIES ?",
-        "COMMODITIES ?",
-        "USD +"
+        "EQUITIES ?",
+        "USD +",
+        "GOLD +",
+        "TWD -"
       ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/trade-tech-and-rare-earths-to-dominate-trump-s-china-trip",
-      "published_at": "2026-05-13",
-      "time": "11h"
+      "confidence": 90,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/may/14/trump-xi-jinping-meet-beijing-ahead-of-summit-trade-iran-war-ai-talks",
+      "published_at": "2026-05-14",
+      "time": "15h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "APAC",
       "title": {
-        "es": "Guerra en Irán día 76: Vance dice que hay progreso en negociaciones; Israel bombardea Líbano",
-        "en": "Iran war day 76: Vance says progress made in talks; Israel pounds Lebanon"
+        "es": "Cumbre Trump-Xi en Beijing: acuerdos comerciales alcanzados mientras persisten tensiones sobre Taiwán",
+        "en": "Trump China visit: US president says problems 'settled', meets Xi on final day of summit"
       },
       "summary": {
-        "es": "El Vicepresidente Vance reporta avances en negociaciones con Irán mientras continúan operaciones militares activas de Israel contra Líbano. El conflicto en su día 76 mantiene presión en precios de energía y estabilidad regional con impacto en mercados globales.",
-        "en": "Vice President Vance reports progress in Iran talks as Israel continues active military operations against Lebanon. The 76-day conflict maintains energy price pressures and regional instability with global market impact."
+        "es": "Trump reporta que la cumbre de dos días en Beijing ha producido 'acuerdos comerciales fantásticos' para ambos países, con múltiples problemas resueltos. El silencio de Trump sobre Taiwán después de las conversaciones se interpreta como la mejor opción para los mercados e inversores preocupados.",
+        "en": "Trump reports that the two-day Beijing summit has produced 'fantastic trade deals' for both countries, with multiple issues resolved. Trump's silence on Taiwan after talks is interpreted as the best possible outcome for concerned markets and investors."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "BONDS +",
+        "EQUITIES +",
         "USD +",
-        "EQUITIES -"
+        "CNY -",
+        "TARIFFS ?"
       ],
-      "confidence": 90,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/5/14/iran-war-day-76-vance-says-progress-made-in-talks-israel-pounds-lebanon?traffic_source=rss",
-      "published_at": "2026-05-14",
-      "time": "1h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Rusia bombardea Kyiv después de que Putin sugiera que la guerra podría terminar pronto",
-        "en": "Russia Pummels Kyiv After Putin Hints That War Could End Soon"
-      },
-      "summary": {
-        "es": "Tras la expiración de una tregua de tres días, Rusia intensifica ataques con drones y misiles contra Kyiv, contradiciendo señales de negociación. La reanudación de la escalada militar sugiere negociaciones estancadas y riesgo de prolongación del conflicto con implicaciones para energía europea.",
-        "en": "After a three-day truce expires, Russia intensifies drone and missile attacks on Kyiv, contradicting negotiation signals. Military escalation resumption suggests stalled talks and prolonged conflict risk with European energy implications."
-      },
-      "impact": "high",
-      "signals": [
-        "ENERGY EU +",
-        "EUR -",
-        "BONDS +",
-        "GOLD +"
-      ],
-      "confidence": 87,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/14/world/europe/ukraine-strike-kyiv-russia-putin.html",
-      "published_at": "2026-05-14",
+      "confidence": 85,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/15/trump-china-visit-live-updates-xi-jinping-talks-meeting-summit-latest-news",
+      "published_at": "2026-05-15",
       "time": "<1h"
     },
     {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Advertencia: alza en tarifas aéreas europeas 'inevitable' por la guerra en Irán",
-        "en": "Warning higher Europe air fares 'inevitable' due to Iran war"
-      },
-      "summary": {
-        "es": "La industria aérea internacional advierte que las tarifas subirán inevitablemente debido a precios altos de petróleo derivados de la guerra en Irán. El shock de costos se transmitirá a consumidores europeos y afectará demanda de viajes y turismo.",
-        "en": "International aviation industry warns fares will inevitably rise due to elevated oil prices from Iran war. Cost shock will transmit to European consumers, affecting travel demand and tourism."
-      },
-      "impact": "medium",
-      "signals": [
-        "OIL +",
-        "TRAVEL EQUITIES -",
-        "INFLATION +",
-        "EUR -"
-      ],
-      "confidence": 82,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/clyprnelzxzo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-13",
-      "time": "9h"
-    },
-    {
-      "id": 6,
+      "id": 4,
       "tag": "CRITICAL",
-      "region": "APAC",
+      "region": "MENA",
       "title": {
-        "es": "Xi Jinping advierte a Donald Trump que las relaciones entre China y EE UU dependen de Taiwán",
-        "en": "Xi Jinping warns Donald Trump that US-China relations depend on Taiwan"
+        "es": "Barco 'armería flotante' presuntamente incautado por Irán",
+        "en": "'Floating armoury' ship reportedly seized by Iran"
       },
       "summary": {
-        "es": "Xi Jinping enfatiza que la relación bilateral entre China y EE UU está vinculada directamente al tema de Taiwán durante su encuentro en Beijing. El mensaje refuerza que Taiwán es línea roja para China y que cualquier paso incorrecto de Trump podría deteriorar relaciones críticas.",
-        "en": "Xi Jinping emphasizes that US-China bilateral relations are directly tied to Taiwan during Beijing meeting. Message reinforces Taiwan as red line for China and that missteps by Trump could deteriorate critical relations."
+        "es": "Personal militar iraniano incautó un buque descrito como 'armería flotante' en el Golfo de Omán, escalando las tensiones en una de las rutas comerciales más críticas del mundo. Este incidente refuerza los riesgos de interrupción del comercio marítimo y volatilidad de precios de energía en una región ya inestable.",
+        "en": "Iranian military personnel seized a vessel described as a 'floating armoury' in the Gulf of Oman, escalating tensions in one of the world's most critical trade routes. This incident reinforces risks of maritime trade disruption and energy price volatility in an already unstable region."
       },
       "impact": "high",
       "signals": [
-        "USD +",
-        "EQUITIES ?",
-        "TREASURIES +",
-        "SEMICONDUCTORS ?"
+        "OIL +",
+        "SHIPPING +",
+        "BONDS +",
+        "EQUITIES -"
       ],
-      "confidence": 89,
-      "source": "El País",
-      "source_url": "https://elpais.com/internacional/2026-05-14/donald-trump-ante-xi-jinping-la-relacion-entre-china-y-estados-unidos-va-a-ser-mejor-que-nunca.html",
+      "confidence": 87,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/cx219xwxg9no?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-05-14",
-      "time": "2h"
+      "time": "19h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "La reconstrucción del arsenal balístico de Irán contradice la tesis de una victoria aplastante de EE.UU.",
+        "en": "Iran's ballistic arsenal reconstruction contradicts US 'crushing victory' thesis"
+      },
+      "summary": {
+        "es": "Investigaciones del New York Times y Washington Post revelan que la República Islámica ha preservado stocks significativos de misiles y lanzadores, contradiciendo las afirmaciones de victoria militar estadounidense. Esta reconstitución capaz sugiere que los conflictos en Oriente Próximo pueden persistir, elevando la incertidumbre geopolítica y los precios energéticos.",
+        "en": "New York Times and Washington Post investigations reveal that the Islamic Republic has preserved significant stocks of missiles and launchers, contradicting US military victory claims. This capable reconstitution suggests Middle Eastern conflicts may persist, elevating geopolitical uncertainty and energy prices."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL +",
+        "GOLD +",
+        "USD +",
+        "EQUITIES -"
+      ],
+      "confidence": 86,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/05/15/la-reconstitution-de-l-arsenal-balistique-de-l-iran-contredit-la-these-d-une-victoire-ecrasante-des-etats-unis_6689313_3210.html",
+      "published_at": "2026-05-15",
+      "time": "5h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "Modi insta a los indios a comprar menos oro y reducir viajes al extranjero",
+        "en": "Why Modi wants Indians to buy less gold and take fewer foreign holidays"
+      },
+      "summary": {
+        "es": "El primer ministro Modi ha instado a los indios a ahorrar dólares mientras la guerra y los shocks petroleros afectan la rupia y la economía. Esta intervención de política económica refleja presiones macroeconómicas significativas derivadas de tensiones geopolíticas, señalando debilidad de divisas emergentes en contextos de estrés global.",
+        "en": "PM Modi has urged Indians to save dollars as war and oil shocks strain the rupee and economy. This economic policy intervention reflects significant macroeconomic pressures from geopolitical tensions, signaling emerging market currency weakness amid global stress."
+      },
+      "impact": "medium",
+      "signals": [
+        "INR -",
+        "GOLD +",
+        "EMERGING MARKETS -",
+        "USD +"
+      ],
+      "confidence": 78,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/c775v7dlndyo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-14",
+      "time": "8h"
     }
-  ],
-  "market_updated_at": "2026-05-15T08:33:52.590Z"
+  ]
 }
