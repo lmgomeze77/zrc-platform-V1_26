@@ -1,248 +1,211 @@
 {
-  "generated_at": "2026-05-15T08:45:19.560Z",
+  "generated_at": "2026-05-16T07:58:56.311Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1628",
-      "change": "-0.37%",
+      "value": "1.1705",
+      "change": "-0.28%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
       "value": "17809.20",
-      "change": "0.87%",
+      "change": "+0.87%",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "109.26",
-      "change": "3.35%",
+      "symbol": "BRENT",
+      "value": "107.16",
+      "change": "+1.36%",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "105.42",
-      "change": "4.20%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4540.02",
-      "change": "-2.12%",
+      "symbol": "GOLD",
+      "value": "4682.50",
+      "change": "-0.09%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "80434.60",
-      "change": "0.87%",
+      "symbol": "BTC",
+      "value": "80533.42",
+      "change": "+0.95%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "17.98",
-      "change": "4.17%",
+      "value": "18.01",
+      "change": "+4.35%",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.595",
-      "change": "3.05%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7501.24",
-      "change": "0.77%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24141.34",
-      "change": "1.32%",
+      "symbol": "US 10Y",
+      "value": "4.526",
+      "change": "+1.55%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8639",
-      "change": "-0.07%",
+      "value": "0.8725",
+      "change": "+0.23%",
+      "up": true
+    },
+    {
+      "symbol": "S&P 500",
+      "value": "7408.50",
+      "change": "-1.24%",
       "up": false
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "99.27",
-      "change": "0.46%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.96",
-      "change": "2.28%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.274",
-      "change": "-4.87%",
+      "symbol": "DAX 40",
+      "value": "23950.57",
+      "change": "-2.07%",
       "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8120",
-      "change": "0.40%",
-      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "APAC",
       "title": {
-        "es": "Trump dice que Xi ofreció ayuda para abrir el Estrecho de Ormuz y se comprometió a no armar a Irán",
-        "en": "Trump says Xi offered help to open Hormuz, vowed not to arm Iran"
+        "es": "Cumbre EE.UU.-China expone los límites de Trump sobre la guerra en Irán y Taiwán",
+        "en": "US-China summit exposes Trump's limits on Iran war, Taiwan"
       },
       "summary": {
-        "es": "Trump reporta que Xi Jinping ofreció asistencia china para mantener abierto el Estrecho de Ormuz y se comprometió a no suministrar equipo militar a Irán durante su guerra con EE.UU. e Israel. Este acuerdo reduce significativamente los riesgos geopolíticos de interrupción energética global y mejora la posición estratégica estadounidense en Oriente Próximo.",
-        "en": "Trump reports that Xi Jinping offered Chinese assistance to keep the Strait of Hormuz open and pledged not to supply military equipment to Iran during its war with the US and Israel. This agreement significantly reduces geopolitical risks of global energy disruption and strengthens the US strategic position in the Middle East."
+        "es": "Trump buscó que China ayude a terminar la guerra en Irán durante su visita de dos días a Pekín, pero el resultado no parece garantizado. Xi Jinping aprovechó para advertir a EE.UU. sobre Taiwán. Este resultado muestra limitaciones en la capacidad negociadora de Trump con Beijing sobre conflictos regionales clave.",
+        "en": "Trump sought Chinese assistance to end the Iran war during his two-day Beijing visit, but success appears uncertain. Xi Jinping used the opportunity to warn the US over Taiwan. The outcome reveals limits to Trump's negotiating leverage with Beijing on critical regional conflicts."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "BONDS +",
-        "EQUITIES +",
-        "USD +"
+        "USD ?",
+        "EQUITIES ?",
+        "GEOPOLITICAL RISK +"
       ],
       "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/trump-says-xi-offered-help-to-open-hormuz-vowed-not-to-arm-iran",
-      "published_at": "2026-05-14",
-      "time": "14h"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/us-china-summit-exposes-trump-s-limits-on-iran-war-taiwan/a-77171942?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-15",
+      "time": "18h"
     },
     {
       "id": 2,
       "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "es": "Xi advierte a Trump sobre 'choques e incluso conflictos' con EE.UU. sobre Taiwán",
-        "en": "Xi warns Trump of 'clashes and even conflicts' with US over Taiwan"
+        "es": "Trump advierte a Taiwán contra declarar independencia, horas después de cumbre con Xi",
+        "en": "Trump warns Taiwan against declaring independence, hours after summit with China's Xi"
       },
       "summary": {
-        "es": "El presidente Xi Jinping emitió una advertencia explícita a Trump sobre posibles choques e conflictos respecto a Taiwán durante su encuentro en Beijing. La advertencia mantiene la tensión geopolítica sobre el status quo del Estrecho de Taiwán a pesar del tono cordial general de la cumbre.",
-        "en": "President Xi Jinping issued an explicit warning to Trump about potential clashes and conflicts regarding Taiwan during their Beijing meeting. The warning maintains geopolitical tension over the Taiwan Strait status quo despite the otherwise cordial summit tone."
+        "es": "El presidente Trump pidió a Beijing y Taipei que 'reduzcan tensiones' sobre la isla autogobernada. Esta advertencia directa a Taiwán, emitida inmediatamente después de negociaciones con Xi Jinping, señala un giro estratégico en la posición estadounidense sobre el estatus de Taiwán.",
+        "en": "President Trump called for Beijing and Taipei to 'cool down' tensions over the self-governing island. This direct warning to Taiwan, issued immediately after negotiations with Xi Jinping, signals a strategic shift in US positioning on Taiwan's status."
       },
       "impact": "high",
       "signals": [
-        "EQUITIES ?",
+        "TAIWAN EQUITIES -",
         "USD +",
-        "GOLD +",
-        "TWD -"
+        "TECH STOCKS ?"
       ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/14/trump-xi-jinping-meet-beijing-ahead-of-summit-trade-iran-war-ai-talks",
-      "published_at": "2026-05-14",
-      "time": "15h"
+      "confidence": 85,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/ce8p61v7l68o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-16",
+      "time": "2h"
     },
     {
       "id": 3,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Cumbre Trump-Xi en Beijing: acuerdos comerciales alcanzados mientras persisten tensiones sobre Taiwán",
-        "en": "Trump China visit: US president says problems 'settled', meets Xi on final day of summit"
-      },
-      "summary": {
-        "es": "Trump reporta que la cumbre de dos días en Beijing ha producido 'acuerdos comerciales fantásticos' para ambos países, con múltiples problemas resueltos. El silencio de Trump sobre Taiwán después de las conversaciones se interpreta como la mejor opción para los mercados e inversores preocupados.",
-        "en": "Trump reports that the two-day Beijing summit has produced 'fantastic trade deals' for both countries, with multiple issues resolved. Trump's silence on Taiwan after talks is interpreted as the best possible outcome for concerned markets and investors."
-      },
-      "impact": "high",
-      "signals": [
-        "EQUITIES +",
-        "USD +",
-        "CNY -",
-        "TARIFFS ?"
-      ],
-      "confidence": 85,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/may/15/trump-china-visit-live-updates-xi-jinping-talks-meeting-summit-latest-news",
-      "published_at": "2026-05-15",
-      "time": "<1h"
-    },
-    {
-      "id": 4,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Barco 'armería flotante' presuntamente incautado por Irán",
-        "en": "'Floating armoury' ship reportedly seized by Iran"
-      },
-      "summary": {
-        "es": "Personal militar iraniano incautó un buque descrito como 'armería flotante' en el Golfo de Omán, escalando las tensiones en una de las rutas comerciales más críticas del mundo. Este incidente refuerza los riesgos de interrupción del comercio marítimo y volatilidad de precios de energía en una región ya inestable.",
-        "en": "Iranian military personnel seized a vessel described as a 'floating armoury' in the Gulf of Oman, escalating tensions in one of the world's most critical trade routes. This incident reinforces risks of maritime trade disruption and energy price volatility in an already unstable region."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL +",
-        "SHIPPING +",
-        "BONDS +",
-        "EQUITIES -"
-      ],
-      "confidence": 87,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cx219xwxg9no?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-14",
-      "time": "19h"
-    },
-    {
-      "id": 5,
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "La reconstrucción del arsenal balístico de Irán contradice la tesis de una victoria aplastante de EE.UU.",
-        "en": "Iran's ballistic arsenal reconstruction contradicts US 'crushing victory' thesis"
+        "es": "Líbano dice que seis muertos en ataque israelí mientras EE.UU. anuncia extensión de tregua",
+        "en": "Lebanon says six killed in Israeli strike as US announces ceasefire extension"
       },
       "summary": {
-        "es": "Investigaciones del New York Times y Washington Post revelan que la República Islámica ha preservado stocks significativos de misiles y lanzadores, contradiciendo las afirmaciones de victoria militar estadounidense. Esta reconstitución capaz sugiere que los conflictos en Oriente Próximo pueden persistir, elevando la incertidumbre geopolítica y los precios energéticos.",
-        "en": "New York Times and Washington Post investigations reveal that the Islamic Republic has preserved significant stocks of missiles and launchers, contradicting US military victory claims. This capable reconstitution suggests Middle Eastern conflicts may persist, elevating geopolitical uncertainty and energy prices."
+        "es": "Pese al anuncio de Trump de una tregua el mes pasado, Israel y Hezbollah han continuado intercambiando fuego. La extensión de la tregua coincide con nuevos ataques israelíes, lo que sugiere fragilidad en los acuerdos y riesgo de escalada renovada.",
+        "en": "Despite Trump's ceasefire announcement last month, Israel and Hezbollah have continued exchanging fire. The ceasefire extension coincides with fresh Israeli strikes, suggesting fragility in agreements and risk of renewed escalation."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "GOLD +",
-        "USD +",
-        "EQUITIES -"
+        "EMERGING MARKETS -"
       ],
-      "confidence": 86,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/05/15/la-reconstitution-de-l-arsenal-balistique-de-l-iran-contredit-la-these-d-une-victoire-ecrasante-des-etats-unis_6689313_3210.html",
+      "confidence": 87,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/cqlpzzl0d67o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-05-15",
-      "time": "5h"
+      "time": "7h"
     },
     {
-      "id": 6,
+      "id": 4,
+      "tag": "ALERT",
+      "region": "APAC",
+      "title": {
+        "es": "Taiwán dice que es nación 'soberana' con 'compromiso de seguridad' de EE.UU. tras advertencia de Trump",
+        "en": "Taiwan says it is a 'sovereign' nation with US 'security commitment' after Trump's warning"
+      },
+      "summary": {
+        "es": "El ministerio de relaciones exteriores de Taiwán reafirmó su condición de nación 'soberana e independiente' y las ventas de armas estadounidenses como parte del compromiso de seguridad de Washington. La declaración contradice explícitamente la advertencia de Trump emitida horas antes.",
+        "en": "Taiwan's foreign ministry reaffirmed the island's status as a 'sovereign and independent' nation and US arms sales as part of Washington's security commitment. The statement explicitly contradicts Trump's warning issued hours earlier."
+      },
+      "impact": "high",
+      "signals": [
+        "TAIWAN EQUITIES ?",
+        "USD -",
+        "GEOPOLITICAL RISK +"
+      ],
+      "confidence": 86,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/asia-pacific/20260516-taiwan-says-it-is-a-sovereign-nation-with-us-security-commitment-after-trump-s-warning",
+      "published_at": "2026-05-16",
+      "time": "2h"
+    },
+    {
+      "id": 5,
       "tag": "WATCH",
       "region": "APAC",
       "title": {
-        "es": "Modi insta a los indios a comprar menos oro y reducir viajes al extranjero",
-        "en": "Why Modi wants Indians to buy less gold and take fewer foreign holidays"
+        "es": "Pakistán enfrenta presión por su rol de mediador en la guerra de Irán",
+        "en": "Pakistan faces pressure over mediator role in Iran war"
       },
       "summary": {
-        "es": "El primer ministro Modi ha instado a los indios a ahorrar dólares mientras la guerra y los shocks petroleros afectan la rupia y la economía. Esta intervención de política económica refleja presiones macroeconómicas significativas derivadas de tensiones geopolíticas, señalando debilidad de divisas emergentes en contextos de estrés global.",
-        "en": "PM Modi has urged Indians to save dollars as war and oil shocks strain the rupee and economy. This economic policy intervention reflects significant macroeconomic pressures from geopolitical tensions, signaling emerging market currency weakness amid global stress."
+        "es": "Pakistán intenta equilibrar su posición como mediador entre Washington, Teherán, Beijing y aliados del Golfo en el conflicto de Irán. Reportes recientes de medios estadounidenses ponen a Islamabad bajo mayor escrutinio, elevando el riesgo político y comercial.",
+        "en": "Pakistan is attempting to balance its mediator role between Washington, Tehran, Beijing and Gulf allies in the Iran conflict. Recent US media reports place Islamabad under heightened scrutiny, elevating political and commercial risk."
       },
       "impact": "medium",
       "signals": [
-        "INR -",
-        "GOLD +",
+        "PKR -",
         "EMERGING MARKETS -",
-        "USD +"
+        "GEOPOLITICAL RISK +"
       ],
       "confidence": 78,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/c775v7dlndyo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-14",
-      "time": "8h"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/pakistan-faces-pressure-over-mediator-role-in-iran-war/a-77174786?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-15",
+      "time": "17h"
+    },
+    {
+      "id": 6,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Entre Líbano e Israel, la tregua se prolonga para consolidar negociaciones políticas y militares",
+        "en": "Between Lebanon and Israel, ceasefire extended to consolidate political and military negotiations"
+      },
+      "summary": {
+        "es": "Las dos delegaciones acordaron una extensión de 45 días del alto el fuego, que ha reducido pero no detenido los combates entre Israel y Hezbollah. Se prevé una segunda ronda de negociaciones a principios de junio, indicando avance limitado pero tangible hacia un acuerdo político.",
+        "en": "The two delegations agreed to a 45-day ceasefire extension, which has reduced but not halted fighting between Israel and Hezbollah. A second round of talks is planned for early June, indicating limited but tangible progress toward a political agreement."
+      },
+      "impact": "medium",
+      "signals": [
+        "OIL -",
+        "EMERGING MARKETS +",
+        "BONDS +"
+      ],
+      "confidence": 82,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/05/16/entre-le-liban-et-israel-la-treve-prolongee-pour-consolider-des-negociations-politiques-et-militaires_6689686_3210.html",
+      "published_at": "2026-05-16",
+      "time": "3h"
     }
-  ],
-  "market_updated_at": "2026-05-16T07:44:26.537Z"
+  ]
 }
