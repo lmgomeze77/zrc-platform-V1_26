@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-16T07:58:56.311Z",
+  "generated_at": "2026-05-17T08:16:21.828Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1714",
-      "change": "-0.34%",
+      "value": "1.1626",
+      "change": "-0.35%",
       "up": false
     },
     {
@@ -14,27 +14,21 @@
       "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "109.26",
       "change": "+3.35%",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "105.42",
-      "change": "+4.20%",
-      "up": true
-    },
-    {
       "symbol": "GOLD",
-      "value": "4545.41",
+      "value": "4548.00",
       "change": "-2.63%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "78180.23",
-      "change": "-1.11%",
+      "symbol": "BTC",
+      "value": "78180.20",
+      "change": "-1.34%",
       "up": false
     },
     {
@@ -44,9 +38,15 @@
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.59%",
-      "change": "+10.00",
+      "symbol": "US 10Y",
+      "value": "4.597%",
+      "change": "+3.00%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8726",
+      "change": "+0.24%",
       "up": true
     },
     {
@@ -60,183 +60,158 @@
       "value": "23950.57",
       "change": "-2.07%",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8725",
-      "change": "+0.23%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.27",
-      "change": "+0.46%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.96",
-      "change": "+2.28%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.27",
-      "change": "-5.12%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8120",
-      "change": "+0.40%",
-      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "APAC",
       "title": {
-        "es": "Cumbre EE.UU.-China expone los límites de Trump sobre la guerra en Irán y Taiwán",
-        "en": "US-China summit exposes Trump's limits on Iran war, Taiwan"
+        "en": "Is a Chinese invasion of Taiwan imminent?",
+        "es": "¿Es inminente una invasión china de Taiwán?"
       },
       "summary": {
-        "es": "Trump buscó que China ayude a terminar la guerra en Irán durante su visita de dos días a Pekín, pero el resultado no parece garantizado. Xi Jinping aprovechó para advertir a EE.UU. sobre Taiwán. Este resultado muestra limitaciones en la capacidad negociadora de Trump con Beijing sobre conflictos regionales clave.",
-        "en": "Trump sought Chinese assistance to end the Iran war during his two-day Beijing visit, but success appears uncertain. Xi Jinping used the opportunity to warn the US over Taiwan. The outcome reveals limits to Trump's negotiating leverage with Beijing on critical regional conflicts."
+        "en": "Trump meets Xi Jinping in Beijing for historic summit amid escalating tensions over Taiwan, global trade rivalry, and technology competition. The summit signals potential shifts in US-China strategic positioning that could reshape investment flows and geopolitical risk premiums across Asia.",
+        "es": "Trump se reúne con Xi Jinping en Pekín para cumbre histórica en medio de tensiones crecientes sobre Taiwán, rivalidad comercial global y competencia tecnológica. La cumbre sugiere posibles cambios en el posicionamiento estratégico EEUU-China que podrían remodelar los flujos de inversión y las primas de riesgo geopolítico en Asia."
       },
       "impact": "high",
       "signals": [
-        "USD ?",
-        "EQUITIES ?",
-        "GEOPOLITICAL RISK +"
-      ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-china-summit-exposes-trump-s-limits-on-iran-war-taiwan/a-77171942?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-15",
-      "time": "18h"
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
-      "region": "APAC",
-      "title": {
-        "es": "Trump advierte a Taiwán contra declarar independencia, horas después de cumbre con Xi",
-        "en": "Trump warns Taiwan against declaring independence, hours after summit with China's Xi"
-      },
-      "summary": {
-        "es": "El presidente Trump pidió a Beijing y Taipei que 'reduzcan tensiones' sobre la isla autogobernada. Esta advertencia directa a Taiwán, emitida inmediatamente después de negociaciones con Xi Jinping, señala un giro estratégico en la posición estadounidense sobre el estatus de Taiwán.",
-        "en": "President Trump called for Beijing and Taipei to 'cool down' tensions over the self-governing island. This direct warning to Taiwan, issued immediately after negotiations with Xi Jinping, signals a strategic shift in US positioning on Taiwan's status."
-      },
-      "impact": "high",
-      "signals": [
-        "TAIWAN EQUITIES -",
+        "APAC EQUITIES ?",
         "USD +",
-        "TECH STOCKS ?"
+        "SEMICONDUCTORS ?",
+        "GOLD +"
       ],
-      "confidence": 85,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/ce8p61v7l68o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-16",
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260517-is-a-chinese-invasion-of-taiwan-imminent",
+      "published_at": "2026-05-17",
       "time": "2h"
     },
     {
-      "id": 3,
-      "tag": "ALERT",
+      "id": 2,
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Líbano dice que seis muertos en ataque israelí mientras EE.UU. anuncia extensión de tregua",
-        "en": "Lebanon says six killed in Israeli strike as US announces ceasefire extension"
+        "en": "Iran war live: Tehran plans tolls in Hormuz; Trump warns of 'very bad time'",
+        "es": "Guerra en Irán en directo: Teherán planea peajes en Hormuz; Trump advierte de 'mal momento'"
       },
       "summary": {
-        "es": "Pese al anuncio de Trump de una tregua el mes pasado, Israel y Hezbollah han continuado intercambiando fuego. La extensión de la tregua coincide con nuevos ataques israelíes, lo que sugiere fragilidad en los acuerdos y riesgo de escalada renovada.",
-        "en": "Despite Trump's ceasefire announcement last month, Israel and Hezbollah have continued exchanging fire. The ceasefire extension coincides with fresh Israeli strikes, suggesting fragility in agreements and risk of renewed escalation."
+        "en": "Iran signals imminent tolls or controls on Strait of Hormuz shipping while Trump threatens escalation, creating critical supply-chain and energy security risks. This threatens roughly 20% of global oil transit and elevates shipping insurance costs, sovereign bond yields, and crude volatility.",
+        "es": "Irán señala peajes inminentes o controles en el transporte del Estrecho de Ormuz mientras Trump amenaza con escalada, creando riesgos críticos en cadena de suministro y seguridad energética. Esto amenaza aproximadamente el 20% del tránsito mundial de petróleo y eleva costos de seguros de envío, rendimientos de bonos soberanos y volatilidad del crudo."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GOLD +",
-        "EMERGING MARKETS -"
+        "SHIPPING +",
+        "BONDS -",
+        "GOLD +"
       ],
-      "confidence": 87,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cqlpzzl0d67o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-15",
-      "time": "7h"
+      "confidence": 91,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/liveblog/2026/5/17/iran-war-live-tehran-eyes-tolls-in-hormuz-trump-warns-of-very-bad-time?traffic_source=rss",
+      "published_at": "2026-05-17",
+      "time": "8h"
+    },
+    {
+      "id": 3,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "en": "Iran war day 79: Tehran to unveil Hormuz toll plan; Israel bombs Lebanon",
+        "es": "Día 79 guerra en Irán: Teherán revelará plan de peajes en Hormuz; Israel bombardea Líbano"
+      },
+      "summary": {
+        "en": "Iran prepares to announce Hormuz Strait toll scheme while Israel continues offensive operations in Lebanon amid ceasefire violations. This dual escalation threatens regional stability, energy chokepoint security, and increases likelihood of broader conflict expansion affecting commodity prices and emerging-market exposure.",
+        "es": "Irán se prepara para anunciar esquema de peajes en Estrecho de Hormuz mientras Israel continúa operaciones ofensivas en Líbano en medio de violaciones de tregua. Esta doble escalada amenaza la estabilidad regional, la seguridad del cuello de botella energético, e incrementa probabilidad de expansión de conflicto más amplia que afecte precios de commodities y exposición de mercados emergentes."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL +",
+        "EQUITIES ?",
+        "BONDS -",
+        "INSURANCE +"
+      ],
+      "confidence": 89,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/5/17/iran-war-day-79-tehran-to-unveil-hormuz-toll-plan-israel-bombs-lebanon?traffic_source=rss",
+      "published_at": "2026-05-17",
+      "time": "<1h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "es": "Taiwán dice que es nación 'soberana' con 'compromiso de seguridad' de EE.UU. tras advertencia de Trump",
-        "en": "Taiwan says it is a 'sovereign' nation with US 'security commitment' after Trump's warning"
+        "en": "Taiwan urges Trump to advance arms deal after China summit",
+        "es": "Taiwán urge a Trump que adelante acuerdo de armas tras cumbre con China"
       },
       "summary": {
-        "es": "El ministerio de relaciones exteriores de Taiwán reafirmó su condición de nación 'soberana e independiente' y las ventas de armas estadounidenses como parte del compromiso de seguridad de Washington. La declaración contradice explícitamente la advertencia de Trump emitida horas antes.",
-        "en": "Taiwan's foreign ministry reaffirmed the island's status as a 'sovereign and independent' nation and US arms sales as part of Washington's security commitment. The statement explicitly contradicts Trump's warning issued hours earlier."
+        "en": "Taiwan pressures the US for accelerated arms transfers following Trump's Beijing summit, signaling concern about shifting US commitments on defensive capabilities. This reflects Taiwan's hedging against perceived warming US-China relations and directly impacts defense contracting valuations and Taiwan-facing asset positioning.",
+        "es": "Taiwán presiona a EEUU para transferencias de armas aceleradas tras cumbre de Trump en Pekín, señalando preocupación sobre cambio en compromisos estadounidenses en capacidades defensivas. Esto refleja cobertura de Taiwán contra supuesto calentamiento de relaciones EEUU-China e impacta directamente valuaciones de contratación de defensa y posicionamiento de activos orientados a Taiwán."
       },
       "impact": "high",
       "signals": [
-        "TAIWAN EQUITIES ?",
-        "USD -",
-        "GEOPOLITICAL RISK +"
+        "DEFENSE EQUITIES +",
+        "USD +",
+        "APAC RISK ?",
+        "SEMICONDUCTORS ?"
       ],
-      "confidence": 86,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/asia-pacific/20260516-taiwan-says-it-is-a-sovereign-nation-with-us-security-commitment-after-trump-s-warning",
+      "confidence": 85,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/taiwan-urges-trump-to-advance-arms-deal-after-china-summit/a-77178649?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-05-16",
-      "time": "2h"
+      "time": "22h"
     },
     {
       "id": 5,
-      "tag": "WATCH",
-      "region": "APAC",
+      "tag": "ALERT",
+      "region": "GLOBAL",
       "title": {
-        "es": "Pakistán enfrenta presión por su rol de mediador en la guerra de Irán",
-        "en": "Pakistan faces pressure over mediator role in Iran war"
+        "en": "China Will Host Putin, Days After Trump's Visit",
+        "es": "China recibirá a Putin, días después de la visita de Trump"
       },
       "summary": {
-        "es": "Pakistán intenta equilibrar su posición como mediador entre Washington, Teherán, Beijing y aliados del Golfo en el conflicto de Irán. Reportes recientes de medios estadounidenses ponen a Islamabad bajo mayor escrutinio, elevando el riesgo político y comercial.",
-        "en": "Pakistan is attempting to balance its mediator role between Washington, Tehran, Beijing and Gulf allies in the Iran conflict. Recent US media reports place Islamabad under heightened scrutiny, elevating political and commercial risk."
+        "en": "Putin travels to Beijing for talks with Xi following Trump's summit, signaling coordinated Russia-China strategic positioning and potential alignment against US interests. This timing reinforces de-dollarization initiatives, BRICS coordination, and challenges to Western-led trade frameworks with portfolio implications across FX and emerging markets.",
+        "es": "Putin viaja a Pekín para conversaciones con Xi tras cumbre de Trump, señalando posicionamiento estratégico coordinado Rusia-China y potencial alineación contra intereses estadounidenses. Esta sincronización refuerza iniciativas de des-dolarización, coordinación BRICS y desafíos a marcos comerciales liderados por Occidente con implicaciones de portafolio en FX y mercados emergentes."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "PKR -",
-        "EMERGING MARKETS -",
-        "GEOPOLITICAL RISK +"
+        "USD -",
+        "EMERGING MARKETS +",
+        "GOLD +",
+        "BONDS ?"
       ],
-      "confidence": 78,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/pakistan-faces-pressure-over-mediator-role-in-iran-war/a-77174786?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-15",
-      "time": "17h"
+      "confidence": 88,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/16/world/europe/putin-china-visit-trump.html",
+      "published_at": "2026-05-16",
+      "time": "20h"
     },
     {
       "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "EU",
       "title": {
-        "es": "Entre Líbano e Israel, la tregua se prolonga para consolidar negociaciones políticas y militares",
-        "en": "Between Lebanon and Israel, ceasefire extended to consolidate political and military negotiations"
+        "en": "Large-scale Ukrainian drone attack kills three in Moscow region, says Russia",
+        "es": "Ataque masivo de drones ucranianos mata a tres en región de Moscú, según Rusia"
       },
       "summary": {
-        "es": "Las dos delegaciones acordaron una extensión de 45 días del alto el fuego, que ha reducido pero no detenido los combates entre Israel y Hezbollah. Se prevé una segunda ronda de negociaciones a principios de junio, indicando avance limitado pero tangible hacia un acuerdo político.",
-        "en": "The two delegations agreed to a 45-day ceasefire extension, which has reduced but not halted fighting between Israel and Hezbollah. A second round of talks is planned for early June, indicating limited but tangible progress toward a political agreement."
+        "en": "Ukraine executes large-scale drone strike deep into Russian territory, continuing pattern of expanding operational range and targeting critical infrastructure near Moscow. Escalating mutual drone and artillery campaigns raise war-funding pressure on Western allies, energy infrastructure vulnerability, and European defense spending implications.",
+        "es": "Ucrania ejecuta ataque de drones a gran escala profundamente en territorio ruso, continuando patrón de rango operacional expandido y apuntando a infraestructura crítica cerca de Moscú. Campañas escalonadas de drones y artillería mutua elevan presión de financiamiento de guerra en aliados occidentales, vulnerabilidad de infraestructura energética, e implicaciones de gasto de defensa europeo."
       },
       "impact": "medium",
       "signals": [
-        "OIL -",
-        "EMERGING MARKETS +",
-        "BONDS +"
+        "EUR -",
+        "DEFENSE +",
+        "BONDS -",
+        "COMMODITIES +"
       ],
-      "confidence": 82,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/05/16/entre-le-liban-et-israel-la-treve-prolongee-pour-consolider-des-negociations-politiques-et-militaires_6689686_3210.html",
-      "published_at": "2026-05-16",
-      "time": "3h"
+      "confidence": 78,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/c5ye480kxpmo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-17",
+      "time": "<1h"
     }
-  ],
-  "market_updated_at": "2026-05-17T08:04:53.630Z"
+  ]
 }
