@@ -3,26 +3,26 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1650",
-      "change": "0.43%",
-      "up": true
+      "value": "1.1733",
+      "change": "-1.24%",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17809.20",
-      "change": "0.87%",
-      "up": true
+      "value": "N/A",
+      "change": "N/A",
+      "up": null
     },
     {
       "symbol": "BRENT crude",
       "value": "109.26",
-      "change": "3.35%",
+      "change": "+3.35%",
       "up": true
     },
     {
       "symbol": "WTI crude",
       "value": "105.42",
-      "change": "4.20%",
+      "change": "+4.20%",
       "up": true
     },
     {
@@ -33,20 +33,20 @@
     },
     {
       "symbol": "BTC/USD",
-      "value": "78233.58",
-      "change": "-1.07%",
-      "up": false
+      "value": "78350.22",
+      "change": "+0.48%",
+      "up": true
     },
     {
       "symbol": "VIX",
       "value": "18.43",
-      "change": "6.78%",
+      "change": "+6.78%",
       "up": true
     },
     {
       "symbol": "US 10Y yield",
       "value": "4.595",
-      "change": "3.05%",
+      "change": "+3.05%",
       "up": true
     },
     {
@@ -63,20 +63,20 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8564",
-      "change": "0.32%",
-      "up": true
+      "value": "0.86",
+      "change": "N/A",
+      "up": null
     },
     {
       "symbol": "DXY dollar index",
       "value": "99.21",
-      "change": "0.49%",
+      "change": "+0.49%",
       "up": true
     },
     {
       "symbol": "Natural Gas",
       "value": "2.96",
-      "change": "2.28%",
+      "change": "+2.28%",
       "up": true
     },
     {
@@ -87,9 +87,9 @@
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.8300",
-      "change": "-0.77%",
-      "up": false
+      "value": "N/A",
+      "change": "N/A",
+      "up": null
     }
   ],
   "headlines": [
@@ -244,5 +244,5 @@
       "time": "<1h"
     }
   ],
-  "market_updated_at": "2026-05-17T18:48:04.930Z"
+  "market_updated_at": "2026-05-17T22:40:45.361Z"
 }
