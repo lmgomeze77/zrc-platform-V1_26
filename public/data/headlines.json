@@ -1,248 +1,211 @@
 {
-  "generated_at": "2026-05-17T08:16:21.828Z",
+  "generated_at": "2026-05-18T09:54:50.989Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1620",
-      "change": "-0.13%",
+      "value": "1.1600",
+      "change": "-0.28",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17809.20",
-      "change": "+0.87%",
+      "value": "17622.70",
+      "change": "-186.50",
+      "up": false
+    },
+    {
+      "symbol": "BRENT",
+      "value": "111.19",
+      "change": "+1.93",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "109.47",
-      "change": "+1.77%",
-      "up": true
+      "symbol": "GOLD",
+      "value": "4545.00",
+      "change": "-16.90",
+      "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "106.00",
-      "change": "+2.09%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4545.28",
-      "change": "+0.10%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "76869.00",
-      "change": "-0.45%",
+      "symbol": "BTC",
+      "value": "76960.00",
+      "change": "-1138.16",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "18.99",
-      "change": "+3.04%",
+      "value": "18.95",
+      "change": "+0.52",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.63",
-      "change": "+0.04%",
+      "symbol": "US 10Y",
+      "value": "4.632",
+      "change": "+0.033",
       "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8706",
+      "change": "-0.0019",
+      "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7408.50",
-      "change": "-1.24%",
+      "change": "-92.74",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "23951.00",
-      "change": "-2.10%",
+      "value": "23950.57",
+      "change": "-505.69",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8728",
-      "change": "+0.19%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.39",
-      "change": "+0.11%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.037",
-      "change": "+2.60%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.29",
-      "change": "-4.87%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8120",
-      "change": "+0.40%",
-      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "en": "Is a Chinese invasion of Taiwan imminent?",
-        "es": "¿Es inminente una invasión china de Taiwán?"
+        "es": "Xi Jinping se prepara para recibir a Vladimir Putin en China, cuatro días después de hospedar a Donald Trump",
+        "en": "Xi Jinping prepares to welcome Vladimir Putin to China, four days after hosting Donald Trump"
       },
       "summary": {
-        "en": "Trump meets Xi Jinping in Beijing for historic summit amid escalating tensions over Taiwan, global trade rivalry, and technology competition. The summit signals potential shifts in US-China strategic positioning that could reshape investment flows and geopolitical risk premiums across Asia.",
-        "es": "Trump se reúne con Xi Jinping en Pekín para cumbre histórica en medio de tensiones crecientes sobre Taiwán, rivalidad comercial global y competencia tecnológica. La cumbre sugiere posibles cambios en el posicionamiento estratégico EEUU-China que podrían remodelar los flujos de inversión y las primas de riesgo geopolítico en Asia."
+        "es": "China recibe a Putin apenas días después de la visita de Trump, consolidando la alianza rusa-china como punto de fricción geopolítica occidental. Esta secuencia de diplomacia sugiere continuidad en el eje Moscú-Beijing a pesar de las presiones de Washington, con implicaciones para dinámicas comerciales y de seguridad global.",
+        "en": "China hosts Putin days after Trump's visit, reinforcing the Russia-China alliance as a persistent Western concern. This diplomatic sequence signals continuity in the Moscow-Beijing axis despite Washington's pressure, with implications for global trade and security dynamics."
       },
       "impact": "high",
       "signals": [
-        "APAC EQUITIES ?",
-        "USD +",
-        "SEMICONDUCTORS ?",
-        "GOLD +"
+        "EQUITIES ?",
+        "USD ?",
+        "COMMODITIES +"
       ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260517-is-a-chinese-invasion-of-taiwan-imminent",
-      "published_at": "2026-05-17",
-      "time": "2h"
+      "confidence": 82,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/may/18/xi-jinping-vladimir-putin-china-russia-four-days-after-donald-trump-us-visit",
+      "published_at": "2026-05-18",
+      "time": "6h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Iran war live: Tehran plans tolls in Hormuz; Trump warns of 'very bad time'",
-        "es": "Guerra en Irán en directo: Teherán planea peajes en Hormuz; Trump advierte de 'mal momento'"
+        "es": "Crisis de Oriente Medio en vivo: Trump advierte que 'se acaba el tiempo' para que Irán alcance un acuerdo de paz",
+        "en": "Middle East crisis live: Trump warns 'clock is ticking' for Iran to reach peace deal"
       },
       "summary": {
-        "en": "Iran signals imminent tolls or controls on Strait of Hormuz shipping while Trump threatens escalation, creating critical supply-chain and energy security risks. This threatens roughly 20% of global oil transit and elevates shipping insurance costs, sovereign bond yields, and crude volatility.",
-        "es": "Irán señala peajes inminentes o controles en el transporte del Estrecho de Ormuz mientras Trump amenaza con escalada, creando riesgos críticos en cadena de suministro y seguridad energética. Esto amenaza aproximadamente el 20% del tránsito mundial de petróleo y eleva costos de seguros de envío, rendimientos de bonos soberanos y volatilidad del crudo."
+        "es": "Trump emite advertencias directas sobre negociaciones con Irán mientras persisten ataques con drones y un bloqueo efectivo del Estrecho de Ormuz. La escalada amenaza con interrumpir flujos de energía global y destabilizar mercados financieros si fracasan las conversaciones de paz.",
+        "en": "Trump issues direct warnings on Iran negotiations amid ongoing drone attacks and effective Strait of Hormuz closure. Escalation threatens to disrupt global energy flows and destabilize financial markets if peace talks fail."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "SHIPPING +",
-        "BONDS -",
-        "GOLD +"
+        "GOLD +",
+        "BONDS -"
       ],
-      "confidence": 91,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/liveblog/2026/5/17/iran-war-live-tehran-eyes-tolls-in-hormuz-trump-warns-of-very-bad-time?traffic_source=rss",
-      "published_at": "2026-05-17",
-      "time": "8h"
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/18/us-israel-iran-lebanon-donald-trump-hormuz-oil-latest-news-updates",
+      "published_at": "2026-05-18",
+      "time": "<1h"
     },
     {
       "id": 3,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Iran war day 79: Tehran to unveil Hormuz toll plan; Israel bombs Lebanon",
-        "es": "Día 79 guerra en Irán: Teherán revelará plan de peajes en Hormuz; Israel bombardea Líbano"
+        "es": "Un ataque con drones provoca un incendio en los alrededores de la instalación nuclear de Emiratos Árabes Unidos",
+        "en": "Drone strike sparks a fire on the edge of UAE nuclear facility"
       },
       "summary": {
-        "en": "Iran prepares to announce Hormuz Strait toll scheme while Israel continues offensive operations in Lebanon amid ceasefire violations. This dual escalation threatens regional stability, energy chokepoint security, and increases likelihood of broader conflict expansion affecting commodity prices and emerging-market exposure.",
-        "es": "Irán se prepara para anunciar esquema de peajes en Estrecho de Hormuz mientras Israel continúa operaciones ofensivas en Líbano en medio de violaciones de tregua. Esta doble escalada amenaza la estabilidad regional, la seguridad del cuello de botella energético, e incrementa probabilidad de expansión de conflicto más amplia que afecte precios de commodities y exposición de mercados emergentes."
+        "es": "Un ataque con drones causa un incendio cerca de la planta nuclear de Barakah en la era de un alto el fuego frágil entre EE.UU. e Irán. El incidente demuestra el riesgo de escalada hacia una guerra renovada y amenaza la estabilidad energética regional crítica.",
+        "en": "A drone strike causes a fire near the Barakah nuclear plant during a fragile US-Iran ceasefire. The incident demonstrates renewed war escalation risks and threatens critical regional energy stability."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES ?",
-        "BONDS -",
-        "INSURANCE +"
+        "GOLD +",
+        "EQUITIES -"
       ],
-      "confidence": 89,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/5/17/iran-war-day-79-tehran-to-unveil-hormuz-toll-plan-israel-bombs-lebanon?traffic_source=rss",
+      "confidence": 85,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260517-drone-strike-sparks-a-fire-on-the-edge-of-uae-nuclear-facility",
       "published_at": "2026-05-17",
-      "time": "<1h"
+      "time": "13h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "en": "Taiwan urges Trump to advance arms deal after China summit",
-        "es": "Taiwán urge a Trump que adelante acuerdo de armas tras cumbre con China"
+        "es": "Drones rusos golpean dos barcos frente a la costa de Ucrania, incluyendo un buque de propiedad china",
+        "en": "Russian drones hit two ships off Ukraine's coast, including Chinese-owned vessel"
       },
       "summary": {
-        "en": "Taiwan pressures the US for accelerated arms transfers following Trump's Beijing summit, signaling concern about shifting US commitments on defensive capabilities. This reflects Taiwan's hedging against perceived warming US-China relations and directly impacts defense contracting valuations and Taiwan-facing asset positioning.",
-        "es": "Taiwán presiona a EEUU para transferencias de armas aceleradas tras cumbre de Trump en Pekín, señalando preocupación sobre cambio en compromisos estadounidenses en capacidades defensivas. Esto refleja cobertura de Taiwán contra supuesto calentamiento de relaciones EEUU-China e impacta directamente valuaciones de contratación de defensa y posicionamiento de activos orientados a Taiwán."
+        "es": "Ataques rusos con cientos de drones golpean buques civiles en el Mar Negro, incluyendo un buque de bandera china, escalando riesgos para el comercio marítimo global. La intensificación del conflicto amenaza cadenas de suministro y expone activos chinos a riesgos de colateral en la guerra de Ucrania.",
+        "en": "Russian drone attacks targeting civilian vessels in the Black Sea, including a Chinese-flagged ship, escalate maritime commerce risks. Conflict intensification threatens global supply chains and exposes Chinese assets to Ukraine war collateral damage."
       },
       "impact": "high",
       "signals": [
-        "DEFENSE EQUITIES +",
-        "USD +",
-        "APAC RISK ?",
-        "SEMICONDUCTORS ?"
+        "SHIPPING +",
+        "COMMODITIES ?",
+        "CNY -"
       ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/taiwan-urges-trump-to-advance-arms-deal-after-china-summit/a-77178649?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-16",
-      "time": "22h"
+      "confidence": 80,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20260518-russian-drones-hit-two-ships-off-ukraine-coast-including-chinese-owned-vessel-odesa",
+      "published_at": "2026-05-18",
+      "time": "<1h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "MENA",
       "title": {
-        "en": "China Will Host Putin, Days After Trump's Visit",
-        "es": "China recibirá a Putin, días después de la visita de Trump"
+        "es": "Los precios del petróleo suben después de que Trump advierte a Irán sobre conversaciones de paz estancadas",
+        "en": "Oil prices rise after Trump warns Iran over stalled peace talks"
       },
       "summary": {
-        "en": "Putin travels to Beijing for talks with Xi following Trump's summit, signaling coordinated Russia-China strategic positioning and potential alignment against US interests. This timing reinforces de-dollarization initiatives, BRICS coordination, and challenges to Western-led trade frameworks with portfolio implications across FX and emerging markets.",
-        "es": "Putin viaja a Pekín para conversaciones con Xi tras cumbre de Trump, señalando posicionamiento estratégico coordinado Rusia-China y potencial alineación contra intereses estadounidenses. Esta sincronización refuerza iniciativas de des-dolarización, coordinación BRICS y desafíos a marcos comerciales liderados por Occidente con implicaciones de portafolio en FX y mercados emergentes."
+        "es": "Los precios del petróleo repuntan tras advertencias de Trump sobre Irán mientras el Estrecho de Ormuz permanece efectivamente cerrado. La volatilidad refleja riesgos de oferta energética global y mercados nerviosos sobre una posible reanudación de conflictos.",
+        "en": "Oil prices rise on Trump's Iran warnings while the Strait of Hormuz remains effectively closed. Volatility reflects global energy supply risks and market anxiety over potential conflict resumption."
       },
       "impact": "high",
       "signals": [
-        "USD -",
-        "EMERGING MARKETS +",
-        "GOLD +",
-        "BONDS ?"
+        "OIL +",
+        "EQUITIES -",
+        "BONDS +"
       ],
-      "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/16/world/europe/putin-china-visit-trump.html",
-      "published_at": "2026-05-16",
-      "time": "20h"
+      "confidence": 83,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/czx2ne2ryppo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-18",
+      "time": "2h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
+      "tag": "ALERT",
+      "region": "LATAM",
       "title": {
-        "en": "Large-scale Ukrainian drone attack kills three in Moscow region, says Russia",
-        "es": "Ataque masivo de drones ucranianos mata a tres en región de Moscú, según Rusia"
+        "es": "Cuba compra más de 300 drones de Rusia e Irán — reportaje",
+        "en": "Cuba buys more than 300 drones from Russia and Iran — report"
       },
       "summary": {
-        "en": "Ukraine executes large-scale drone strike deep into Russian territory, continuing pattern of expanding operational range and targeting critical infrastructure near Moscow. Escalating mutual drone and artillery campaigns raise war-funding pressure on Western allies, energy infrastructure vulnerability, and European defense spending implications.",
-        "es": "Ucrania ejecuta ataque de drones a gran escala profundamente en territorio ruso, continuando patrón de rango operacional expandido y apuntando a infraestructura crítica cerca de Moscú. Campañas escalonadas de drones y artillería mutua elevan presión de financiamiento de guerra en aliados occidentales, vulnerabilidad de infraestructura energética, e implicaciones de gasto de defensa europeo."
+        "es": "Cuba adquiere cientos de drones de Rusia e Irán con posibles planes para atacar objetivos estadounidenses como Guantánamo, marcando escalada en cooperación del eje adversario en la esfera occidental. Expande la presencia de capacidades de Moscú y Teherán en el hemisferio occidental con implicaciones de seguridad de EE.UU.",
+        "en": "Cuba acquires hundreds of drones from Russia and Iran with potential plans to attack US targets including Guantanamo, marking adversary-axis escalation in the Western Hemisphere. Expands Moscow and Tehran capability presence in the Western Hemisphere with US security implications."
       },
       "impact": "medium",
       "signals": [
-        "EUR -",
-        "DEFENSE +",
-        "BONDS -",
-        "COMMODITIES +"
+        "USD +",
+        "EQUITIES ?",
+        "COMMODITIES ?"
       ],
-      "confidence": 78,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/c5ye480kxpmo?at_medium=RSS&at_campaign=rss",
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/cuba-buys-more-than-300-drones-from-russia-and-iran-report/a-77191599?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-05-17",
-      "time": "<1h"
+      "time": "11h"
     }
-  ],
-  "market_updated_at": "2026-05-18T09:33:20.632Z"
+  ]
 }
