@@ -3,62 +3,62 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1620",
-      "change": "-0.35%",
-      "up": false
+      "value": "1.1655",
+      "change": "0.25%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
       "value": "17804.50",
-      "change": "+0.28%",
+      "change": "0.28%",
       "up": true
     },
     {
       "symbol": "BRENT crude",
-      "value": "110.39",
-      "change": "-1.53%",
-      "up": false
+      "value": "112.93",
+      "change": "2.59%",
+      "up": true
     },
     {
       "symbol": "WTI crude",
       "value": "103.58",
-      "change": "-3.90%",
+      "change": "-0.85%",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4542.49",
-      "change": "-0.12%",
+      "symbol": "GOLD",
+      "value": "4486.86",
+      "change": "-0.59%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "76565.02",
-      "change": "-1.01%",
+      "value": "76794.74",
+      "change": "-0.22%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "17.96",
-      "change": "+0.79%",
+      "value": "18.06",
+      "change": "1.35%",
       "up": true
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.60%",
-      "change": "-0.02%",
-      "up": false
+      "value": "4.67",
+      "change": "0.05%",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7372",
-      "change": "-0.42%",
+      "value": "7352",
+      "change": "-0.69%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "24632.83",
-      "change": "+1.49%",
+      "value": "24400.65",
+      "change": "0.38%",
       "up": true
     },
     {
@@ -70,7 +70,7 @@
     {
       "symbol": "DXY dollar index",
       "value": "99.08",
-      "change": "+0.09%",
+      "change": "0.09%",
       "up": true
     },
     {
@@ -88,7 +88,7 @@
     {
       "symbol": "USD/CNY",
       "value": "6.80",
-      "change": "-0.37%",
+      "change": "-0.26%",
       "up": false
     }
   ],
@@ -244,5 +244,5 @@
       "time": "8h"
     }
   ],
-  "market_updated_at": "2026-05-19T19:30:51.454Z"
+  "market_updated_at": "2026-05-19T22:55:10.127Z"
 }
