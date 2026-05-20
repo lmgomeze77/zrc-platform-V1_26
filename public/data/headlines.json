@@ -3,57 +3,57 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1633",
-      "change": "0.18%",
-      "up": true
+      "value": "1.1586",
+      "change": "-0.15%",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17810.35",
+      "value": "17790.90",
       "change": "0.77%",
       "up": true
     },
     {
       "symbol": "BRENT crude",
-      "value": "111.15",
-      "change": "-1.95%",
+      "value": "110.34",
+      "change": "-2.34%",
       "up": false
     },
     {
       "symbol": "WTI crude",
       "value": "101.85",
-      "change": "-2.74%",
+      "change": "-5.15%",
       "up": false
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4503.89",
-      "change": "0.34%",
+      "value": "4702.22",
+      "change": "0.30%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "77070.99",
-      "change": "0.66%",
+      "value": "77433.12",
+      "change": "0.77%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "18.06",
-      "change": "1.35%",
+      "value": "17.96",
+      "change": "0.79%",
       "up": true
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.67",
+      "value": "4.67%",
       "change": "0.05%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7379.78",
-      "change": "-0.31%",
-      "up": false
+      "value": "7418.87",
+      "change": "0.89%",
+      "up": true
     },
     {
       "symbol": "DAX 40",
@@ -69,8 +69,8 @@
     },
     {
       "symbol": "DXY dollar index",
-      "value": "99.3575",
-      "change": "0.04%",
+      "value": "99.35",
+      "change": "0.05%",
       "up": true
     },
     {
@@ -87,8 +87,8 @@
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.8003",
-      "change": "-0.13%",
+      "value": "6.7991",
+      "change": "-0.26%",
       "up": false
     }
   ],
@@ -244,5 +244,5 @@
       "time": "1h"
     }
   ],
-  "market_updated_at": "2026-05-20T19:58:27.995Z"
+  "market_updated_at": "2026-05-20T23:01:54.552Z"
 }
