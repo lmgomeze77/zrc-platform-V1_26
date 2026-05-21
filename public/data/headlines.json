@@ -15,14 +15,14 @@
     },
     {
       "symbol": "BRENT crude",
-      "value": "105.54",
-      "change": "-5.16%",
+      "value": "105.36",
+      "change": "-0.11%",
       "up": false
     },
     {
       "symbol": "WTI crude",
-      "value": "99.21",
-      "change": "-4.25%",
+      "value": "99.50",
+      "change": "-1.47%",
       "up": false
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "symbol": "BTC/USD",
-      "value": "77261.83",
+      "value": "77768.17",
       "change": "+0.25%",
       "up": true
     },
@@ -45,32 +45,32 @@
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.63",
-      "change": "-0.04%",
+      "value": "4.556%",
+      "change": "-0.01%",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7413.42",
-      "change": "-0.26%",
+      "value": "7432.97",
+      "change": "-0.31%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "24623",
-      "change": "-0.46%",
+      "value": "24596.88",
+      "change": "-0.57%",
       "up": false
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8642",
-      "change": "-0.13%",
+      "value": "0.8646",
+      "change": "-0.09%",
       "up": false
     },
     {
       "symbol": "DXY dollar index",
-      "value": "99.33",
-      "change": "+0.24%",
+      "value": "99.39",
+      "change": "+0.30%",
       "up": true
     },
     {
@@ -87,9 +87,9 @@
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.81",
-      "change": "+0.15%",
-      "up": true
+      "value": "6.7992",
+      "change": "-0.05%",
+      "up": false
     }
   ],
   "headlines": [
@@ -244,5 +244,5 @@
       "time": "<1h"
     }
   ],
-  "market_updated_at": "2026-05-21T16:31:43.602Z"
+  "market_updated_at": "2026-05-21T19:40:12.041Z"
 }
