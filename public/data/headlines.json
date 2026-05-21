@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-05-20T09:24:37.487Z",
+  "generated_at": "2026-05-21T09:34:04.432Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
       "value": "1.1622",
-      "change": "-0.01%",
+      "change": "-0.01",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18051.70",
-      "change": "+2.27%",
+      "value": "17790.90",
+      "change": "+136.00",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "105.54",
-      "change": "-5.16%",
+      "change": "-5.16",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "102.09",
-      "change": "-5.66%",
-      "up": false
+      "symbol": "GOLD",
+      "value": "4548.70",
+      "change": "+37.50",
+      "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4538.41",
-      "change": "-0.12%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "77768.17",
-      "change": "+0.89%",
+      "symbol": "BTC",
+      "value": "77687.42",
+      "change": "+1245.41",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "17.44",
-      "change": "-3.43%",
+      "value": "17.41",
+      "change": "-0.65",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.67%",
-      "change": "+8.23%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7432.97",
-      "change": "+1.08%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24400.66",
-      "change": "+0.57%",
+      "symbol": "US 10Y",
+      "value": "4.67",
+      "change": "+0.16",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8653",
-      "change": "-0.01%",
+      "value": "0.8543",
+      "change": "-0.0020",
       "up": false
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "99.1454",
-      "change": "+0.05%",
+      "symbol": "S&P 500",
+      "value": "7432.97",
+      "change": "+76.06",
       "up": true
     },
     {
-      "symbol": "Natural Gas",
-      "value": "3.04",
-      "change": "+1.19%",
+      "symbol": "DAX 40",
+      "value": "24814.64",
+      "change": "+76.52",
       "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.18",
-      "change": "+0.31%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7991",
-      "change": "-0.26%",
-      "up": false
     }
   ],
   "headlines": [
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Buques cisterna chinos y surcoreanos cruzan el Estrecho de Ormuz mientras Irán amenaza con abrir 'nuevos frentes'",
-        "en": "Middle East war live: Chinese, South Korean oil tankers pass through Strait of Hormuz as Iran threatens new fronts"
+        "es": "Día 83 de la guerra contra Irán: Teherán 'revisa' la última respuesta de EE.UU. para terminar el conflicto",
+        "en": "Iran war day 83: Tehran 'reviewing' latest US response to end conflict"
       },
       "summary": {
-        "es": "Buques cisterna de China y Corea del Sur atravesaron el Estrecho de Ormuz mientras Irán amenaza con abrir nuevos frentes si EE.UU. reanuda los ataques. El choque en este crítico paso marítimo energético escala tensiones geopolíticas con implicaciones directas para los precios del petróleo y la estabilidad de suministros globales.",
-        "en": "Chinese and South Korean tankers transited the Strait of Hormuz while Iran threatened to open new conflict fronts if the US resumes strikes. Escalating tensions at this critical energy chokepoint have direct implications for oil prices and global supply stability."
+        "es": "Irán continúa negociaciones diplomáticas con EE.UU. mientras las tensiones en el Estrecho de Ormuz se profundizan. El cierre efectivo del estrecho amenaza el suministro global de energía y genera volatilidad en los mercados de crudo y transporte marítimo.",
+        "en": "Iran maintains diplomatic channels with the US while tensions in the Strait of Hormuz deepen. The effective blockade of the strait threatens global energy supply and creates volatility in crude and shipping markets."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES ?",
-        "GOLD +",
-        "USD +"
+        "EQUITIES -",
+        "SHIPPING +",
+        "BONDS +"
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260520-middle-east-war-live-trump-to-attend-g7-summit-in-france-in-june",
-      "published_at": "2026-05-20",
-      "time": "5h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/5/21/iran-war-day-83-tehran-reviewing-latest-us-response-to-end-conflict?traffic_source=rss",
+      "published_at": "2026-05-21",
+      "time": "2h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
-      "region": "APAC",
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "es": "Xi recibe a Putin en Beijing y elogia los lazos 'inquebrantables' de China con Rusia",
-        "en": "Xi welcomes Putin in Beijing, hails China's 'unyielding' ties with Russia"
+        "es": "Cómo Irán ganó poder en la guerra",
+        "en": "How Iran Gained Leverage in the War"
       },
       "summary": {
-        "es": "Xi Jinping recibió a Putin en una visita enfocada en seguridad energética, con ambos líderes reafirmando cooperación bilateral de 'alto nivel sin precedentes'. Esta profundización de vínculos China-Rusia, incluyendo potenciales acuerdos de gasoductos, impacta dinámicas de energía global y divisiones geopolíticas.",
-        "en": "Xi Jinping received Putin for a state visit focused on energy security, with leaders reaffirming 'unprecedented' bilateral cooperation. Deepening China-Russia ties, including potential pipeline agreements, reshape global energy dynamics and geopolitical alignments."
+        "es": "Irán ha empleado 'coerción triangular' atacando estados del Golfo y cerrando el Estrecho de Ormuz, compensando su desventaja militar. Esta estrategia expone vulnerabilidades estructurales estadounidenses en seguridad energética global.",
+        "en": "Iran has employed 'triangular coercion' by attacking Gulf states and closing the Strait of Hormuz, offsetting military disadvantage. This strategy exposes structural US vulnerabilities in global energy security."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GAS +",
-        "EUR -",
-        "CNY ?"
+        "GEOPOLITICAL RISK +",
+        "SHIPPING +",
+        "USD -"
       ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/asia-pacific/20260520-xi-welcomes-putin-in-beijing-hails-china-s-unyielding-ties-with-russia",
+      "confidence": 90,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/20/world/middleeast/iran-strait-of-hormuz-triangular-coercion.html",
       "published_at": "2026-05-20",
-      "time": "3h"
+      "time": "1d"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "EU",
       "title": {
-        "es": "Temores inflacionarios nublan la agenda económica del G7 mientras persiste la guerra con Irán",
-        "en": "Inflation Fears Cloud G7 Economic Agenda as Iran War Persists"
+        "es": "'La paz en Europa ya no es la situación por defecto', advierte el presidente checo Petr Pavel",
+        "en": "'Peace in Europe no longer default situation', warns Czech president Petr Pavel"
       },
       "summary": {
-        "es": "Estados Unidos y Europa se enfrentan sobre la decisión de la administración Trump de flexibilizar sanciones petroleras contra Rusia. La persistencia de la guerra iraní mantiene presiones inflacionarias globales mientras se amplía la divergencia transatlántica en política energética.",
-        "en": "The US and Europe are at odds over the Trump administration's decision to ease oil sanctions on Russia, amid persistent Iran conflict. Energy policy divergence between transatlantic allies creates inflation pressures and policy fragmentation risks."
+        "es": "Líderes europeos se reúnen en Praga para discutir el estado de la alianza transatlántica, reflejando crecientes preocupaciones sobre seguridad regional. La advertencia señala riesgos geopolíticos persistentes que afectan a mercados de defensa europeos y volatilidad de bonos soberanos.",
+        "en": "European state officials meet in Prague to discuss transatlantic alliance security, reflecting rising regional security concerns. The warning signals persistent geopolitical risks affecting European defense spending and sovereign bond volatility."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "EUR -",
+        "EU DEFENSE +",
+        "EUR ?",
         "BONDS -",
-        "USD +"
+        "EQUITIES -"
       ],
-      "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/19/business/inflation-g7-economic-agenda-iran-war.html",
-      "published_at": "2026-05-19",
-      "time": "16h"
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/21/czech-republic-petr-pavel-ukraine-baltics-drones-russia-nato-security-latest-news-updates",
+      "published_at": "2026-05-21",
+      "time": "<1h"
     },
     {
       "id": 4,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "APAC",
       "title": {
-        "es": "Guerra con Irán: Teherán advierte a EE.UU. de 'sorpresas'; Xi y Putin se reúnen en Beijing",
-        "en": "Iran war live: Tehran warns US of 'surprises'; Xi, Putin meet in Beijing"
+        "es": "Rosenberg: Putin disfruta de la bienvenida china pero regresa sin acuerdo de gasoducto",
+        "en": "Rosenberg: Putin enjoys Xi's Chinese welcome but heads home without pipeline deal"
       },
       "summary": {
-        "es": "Irán advirtió de 'sorpresas' después de que Trump amenazara con acciones militares y diera al país '2-3 días' para alcanzar un acuerdo. La escalada de amenazas iraní plantea riesgo de expansión de conflicto con implicaciones críticas para mercados energéticos y de bonos globales.",
-        "en": "Iran warned of 'surprises' after Trump threatened military action and gave the country 'two to three days' to reach a deal. Rising Iranian threats create escalation risk with critical implications for energy markets and global bond valuations."
+        "es": "A pesar de la demostración de solidaridad entre Rusia y China, las negociaciones sobre infraestructura energética no avanzaron. El fracaso refleja límites en la alineación estratégica y afecta planes de diversificación de energía rusa lejos de mercados occidentales.",
+        "en": "Despite Russia-China solidarity display, energy infrastructure negotiations stalled. The failure reflects limits in strategic alignment and affects Russian energy diversification away from Western markets."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "VIX +"
+        "RUSSIAN ENERGY -",
+        "SINO-RUSSIAN TIES ?",
+        "OIL ?",
+        "COMMODITIES -"
       ],
-      "confidence": 89,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/liveblog/2026/5/20/iran-war-live-tehran-warns-of-many-more-surprises-if-conflict-resumes?traffic_source=rss",
+      "confidence": 82,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/c8r8me3nlllo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-05-20",
-      "time": "9h"
+      "time": "16h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "EU",
       "title": {
-        "es": "China confirma que comprará 200 aviones Boeing tras cumbre Trump-Xi",
-        "en": "China confirms it will buy 200 Boeing jets after Trump-Xi summit"
+        "es": "Reino Unido suaviza nuevas sanciones al petróleo ruso ante aumento de precios de combustible",
+        "en": "UK waters down new Russian oil sanctions as fuel prices rise"
       },
       "summary": {
-        "es": "China confirmó la compra de 200 aviones Boeing y ambos lados buscan extender la tregua arancelaria acordada en octubre. Este acuerdo comercial señala una modulación temporal de tensiones comerciales US-China y reduce riesgos de escalada tarifaria inmediata.",
-        "en": "China confirmed purchase of 200 Boeing aircraft, with both sides working toward extending the tariff truce agreed in October. This trade agreement signals temporary modulation of US-China tensions and reduces immediate tariff escalation risks."
+        "es": "El Reino Unido reduce sanciones al petróleo ruso debido a preocupaciones sobre suministro de combustibles, amplificadas por el bloqueo efectivo del Estrecho de Ormuz. La flexibilización de sanciones refleja fragilidad en la cohesión occidental y presiones inflacionarias en energía.",
+        "en": "UK weakens Russian oil sanctions due to fuel supply concerns exacerbated by Strait of Hormuz blockade. Sanction rollback reflects fragility in Western cohesion and inflationary pressures on energy."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "US EQUITIES +",
-        "CNY +",
-        "TARIFFS -",
-        "TECH ?"
+        "OIL +",
+        "SANCTIONS DIVERGENCE +",
+        "GBP -",
+        "INFLATION +"
       ],
-      "confidence": 82,
+      "confidence": 85,
       "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/c98rjydlgp4o?at_medium=RSS&at_campaign=rss",
+      "source_url": "https://www.bbc.com/news/articles/cy42x3g7r89o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-05-20",
-      "time": "4h"
+      "time": "19h"
     },
     {
       "id": 6,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Reino Unido flexibiliza sanciones sobre petróleo ruso conforme suben precios del combustible",
-        "en": "UK loosens Russian oil sanctions as fuel prices rise"
+        "es": "Guerra en Ucrania: actividades de refinería detenidas en el centro de Rusia tras ataques de drones ucranianos",
+        "en": "Ukraine war: refinery operations halted in central Russia following Ukrainian drone strikes"
       },
       "summary": {
-        "es": "Reino Unido otorgó una exención a sanciones petroleras rusas debido a preocupaciones de suministro y el bloqueo efectivo del Estrecho de Ormuz. La flexibilización de sanciones energéticas occidentales contra Rusia señala fragmentación de alianzas y presiones inflacionarias crecientes.",
-        "en": "The UK granted a waiver on Russian oil sanctions due to supply concerns and the effective Strait of Hormuz blockade. Loosening of Western energy sanctions on Russia signals alliance fragmentation and mounting inflation pressures."
+        "es": "Las refinerías dañadas representan más del 30% de la producción de gasolina rusa y el 25% del diésel. Los ataques erosionan capacidad energética rusa y, combinados con la prohibición de exportación de gasolina hasta julio, presionan precios de crudo global.",
+        "en": "Damaged refineries represent over 30% of Russian gasoline and 25% of diesel production. Strikes erode Russian energy capacity and, combined with export bans through July, pressure global crude prices."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "OIL -",
-        "GBP -",
-        "EUR ?",
-        "BONDS -"
+        "OIL +",
+        "RUSSIAN ENERGY -",
+        "INFLATION +",
+        "GEOPOLITICAL RISK +"
       ],
-      "confidence": 80,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/cy42x3g7r89o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-20",
-      "time": "1h"
+      "confidence": 91,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/05/21/en-direct-guerre-en-ukraine-les-activites-de-raffinage-a-l-arret-dans-le-centre-de-la-russie-apres-des-frappes-de-drones-ukrainiens_6690053_3210.html",
+      "published_at": "2026-05-21",
+      "time": "<1h"
     }
-  ],
-  "market_updated_at": "2026-05-21T08:51:07.959Z"
+  ]
 }
