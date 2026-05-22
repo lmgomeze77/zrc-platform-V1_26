@@ -1,6 +1,97 @@
 {
   "generated_at": "2026-05-22T08:56:13.661Z",
-  "market_ticker": [],
+  "market_ticker": [
+    {
+      "symbol": "EUR/USD",
+      "value": "1.1608",
+      "change": "-0.09%",
+      "up": false
+    },
+    {
+      "symbol": "IBEX 35",
+      "value": "18051.70",
+      "change": "+2.16%",
+      "up": true
+    },
+    {
+      "symbol": "BRENT crude",
+      "value": "104.52",
+      "change": "+1.89%",
+      "up": true
+    },
+    {
+      "symbol": "WTI crude",
+      "value": "101.07",
+      "change": "+2.90%",
+      "up": true
+    },
+    {
+      "symbol": "GOLD (XAU/USD)",
+      "value": "4519.65",
+      "change": "-0.51%",
+      "up": false
+    },
+    {
+      "symbol": "BTC/USD",
+      "value": "77306.40",
+      "change": "+0.20%",
+      "up": true
+    },
+    {
+      "symbol": "VIX",
+      "value": "16.76",
+      "change": "-3.90%",
+      "up": false
+    },
+    {
+      "symbol": "US 10Y yield",
+      "value": "4.607%",
+      "change": "+0.81%",
+      "up": true
+    },
+    {
+      "symbol": "S&P 500",
+      "value": "7445.72",
+      "change": "+0.17%",
+      "up": true
+    },
+    {
+      "symbol": "DAX 40",
+      "value": "24606.77",
+      "change": "-0.53%",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8649",
+      "change": "+0.01%",
+      "up": true
+    },
+    {
+      "symbol": "DXY dollar index",
+      "value": "99.27",
+      "change": "+0.01%",
+      "up": true
+    },
+    {
+      "symbol": "Natural Gas",
+      "value": "3.02",
+      "change": "+0.62%",
+      "up": true
+    },
+    {
+      "symbol": "Copper",
+      "value": "6.28",
+      "change": "+2.00%",
+      "up": true
+    },
+    {
+      "symbol": "USD/CNY",
+      "value": "6.8032",
+      "change": "+0.04%",
+      "up": true
+    }
+  ],
   "headlines": [
     {
       "id": 1,
@@ -150,5 +241,6 @@
       "published_at": "2026-05-22",
       "time": "6h"
     }
-  ]
+  ],
+  "market_updated_at": "2026-05-22T12:10:42.386Z"
 }
