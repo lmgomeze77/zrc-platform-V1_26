@@ -1,246 +1,211 @@
 {
-  "generated_at": "2026-05-22T08:56:13.661Z",
+  "generated_at": "2026-05-23T08:13:09.452Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
       "value": "1.1614",
-      "change": "-0.47%",
+      "change": "-0.25",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17975",
-      "change": "-0.42%",
-      "up": false
+      "value": "18051.70",
+      "change": "+2.16",
+      "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "103.94",
-      "change": "1.33%",
+      "change": "+1.33",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "97.00",
-      "change": "0.67%",
+      "symbol": "GOLD",
+      "value": "4540.50",
+      "change": "+0.13",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4509.38",
-      "change": "-0.73%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "75411.69",
-      "change": "-2.75%",
+      "symbol": "BTC",
+      "value": "75691.00",
+      "change": "-2.36",
       "up": false
     },
     {
       "symbol": "VIX",
       "value": "16.70",
-      "change": "-0.36%",
+      "change": "-0.36",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.54%",
-      "change": "-0.61%",
+      "symbol": "US 10Y",
+      "value": "4.546",
+      "change": "-0.038",
       "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7138.94",
-      "change": "0.37%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24783",
-      "change": "0.72%",
-      "up": true
     },
     {
       "symbol": "EUR/GBP",
       "value": "0.8647",
-      "change": "-0.03%",
+      "change": "-0.03",
       "up": false
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "99.28",
-      "change": "0.01%",
+      "symbol": "S&P 500",
+      "value": "7445.72",
+      "change": "+0.17",
       "up": true
     },
     {
-      "symbol": "Natural Gas",
-      "value": "3.02",
-      "change": "0.62%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.30",
-      "change": "0.66%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7948",
-      "change": "0.04%",
-      "up": true
+      "symbol": "DAX 40",
+      "value": "24606.77",
+      "change": "-0.53",
+      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "El jefe de la marina de EE.UU. dice que la venta de armas de $14 mil millones a Taiwán está pausada debido a la guerra de Irán",
-        "en": "US navy chief says $14bn arms sale to Taiwan paused due to Iran war"
+        "es": "Marco Rubio: la 'decepción' de Trump con la OTAN será discutida en la cumbre",
+        "en": "Marco Rubio: Trump 'disappointment' with Nato will be discussed at summit"
       },
       "summary": {
-        "es": "El secretario de la Marina de EE.UU. informó que la venta de armas de $14 mil millones a Taiwán está pausada para asegurar municiones para la guerra de Irán. Esta decisión refleja la reorientación de recursos de defensa estadounidenses hacia el conflicto de Irán, con implicaciones para la estabilidad en el Estrecho de Taiwán y las capacidades defensivas de la isla.",
-        "en": "The US Navy chief reported that the $14bn arms sale to Taiwan is paused to secure munitions for the Iran war. This decision reflects the reorientation of US defense resources toward the Iran conflict, with implications for Taiwan Strait stability and the island's defensive capabilities."
+        "es": "El Secretario de Estado estadounidense señala que Trump está decepcionado porque los aliados de la OTAN se negaron a involucrarse más activamente en operaciones contra Irán, con implicaciones para la cumbre de julio. Esta tensión refleja una divergencia estratégica fundamental sobre compromisos de seguridad y podría afectar inversiones defensivas europeas y la cohesión de la alianza.",
+        "en": "US Secretary of State indicates Trump is disappointed that NATO allies refused deeper involvement in Iran operations, setting the stage for a contentious July summit. This tension reflects fundamental strategic divergence over security commitments and could impact European defense spending and alliance cohesion."
       },
       "impact": "high",
       "signals": [
-        "EQUITIES (Taiwan defense) -",
-        "GEOPOLITICAL_RISK +",
-        "USD (military spending pressure) ?"
+        "EUR -",
+        "DEFENSE +",
+        "BONDS ?"
       ],
       "confidence": 88,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/c232z4yk437o?at_medium=RSS&at_campaign=rss",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/may/22/marco-rubio-trump-disappointment-with-nato-will-be-discussed-at-summit",
       "published_at": "2026-05-22",
-      "time": "<1h"
+      "time": "15h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "APAC",
       "title": {
-        "es": "Irán y Omán en negociaciones sobre sistema de pago de buques en el Estrecho de Ormuz",
-        "en": "Iran and Oman in Talks Over Strait of Hormuz Ship Payment System"
+        "es": "Las ventas de armas estadounidenses a Taiwán se encuentran en 'pausa' debido a la guerra de Irán",
+        "en": "US arms sales to Taiwan on 'pause' due to Iran war, says acting navy chief"
       },
       "summary": {
-        "es": "Irán y Omán negocian un sistema de peajes para barcos en el Estrecho de Ormuz, lo que sugiere que EE.UU. e Irán no están cerca de un acuerdo para terminar la guerra que ha dañado gravemente la economía global. Esta iniciativa podría alterar el control del comercio de energía y establecer nuevos precedentes para el acceso marítimo estratégico.",
-        "en": "Iran and Oman are negotiating a toll system for ships in the Strait of Hormuz, suggesting the US and Iran are not close to ending the war that has severely damaged the global economy. This initiative could alter energy trade control and establish new precedents for strategic maritime access."
+        "es": "El Secretario de la Marina interino confirma que las ventas de armas a Taiwán han sido suspendidas para asegurar municiones suficientes para operaciones en Irán. Esta pausa señala una reorientación de prioridades estratégicas estadounidenses con implicaciones críticas para la seguridad regional de Asia-Pacífico y para inversiones en defensa taiwanesa.",
+        "en": "Acting US Navy Secretary confirms arms sales to Taiwan have been paused to ensure sufficient munitions for Iran operations. This suspension signals a reorientation of US strategic priorities with critical implications for Indo-Pacific security and Taiwan defense investments."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "SHIPPING_COSTS +",
-        "GEOPOLITICAL_RISK +",
-        "GLOBAL_TRADE -"
+        "TAIWAN RISK +",
+        "DEFENSE -",
+        "EQUITIES ?"
       ],
-      "confidence": 92,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/21/world/middleeast/iran-strait-of-hormuz-tolls.html",
+      "confidence": 85,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/may/22/us-arms-sales-taiwan-pause-iran-war-says-acting-navy-chief",
       "published_at": "2026-05-22",
-      "time": "7h"
+      "time": "23h"
     },
     {
       "id": 3,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Irán ejerce presión sobre cables de telecomunicaciones submarinos en el Estrecho de Ormuz",
-        "en": "Iran puts pressure on submarine telecommunications cables in the Strait of Hormuz"
+        "es": "Guerra en Oriente Medio: Irán considera última propuesta de paz, acusa a EE.UU. de 'demandas excesivas'",
+        "en": "Middle East war live: Iran considers latest peace proposal, accuses US of 'excessive demands'"
       },
       "summary": {
-        "es": "Después de bloquear el tráfico marítimo, Irán considera gravar a los usuarios de los cables de fibra óptica submarina en el Estrecho de Ormuz, que son vitales para Internet y sectores sensibles como energía y banca. Esta táctica escala las vulnerabilidades de infraestructura crítica global y podría afectar la conectividad financiera y de energía a nivel mundial.",
-        "en": "After blocking maritime traffic, Iran is considering taxing users of submarine fiber optic cables in the Strait of Hormuz, which are vital for Internet and sensitive sectors like energy and banking. This tactic escalates critical infrastructure vulnerabilities and could disrupt global financial and energy connectivity."
+        "es": "Teherán acusa a Washington de demandas excesivas mientras considera una nueva propuesta de paz, mientras reportes sugieren que EE.UU. está estudiando nuevos ataques. La escalada potencial con riesgo de ruptura de negociaciones afecta directamente precios de energía y volatilidad geopolítica global.",
+        "en": "Tehran accuses US of 'excessive demands' while considering peace proposal, as reports suggest Washington may launch new strikes. Potential escalation risks and negotiation breakdown directly impact global energy prices and geopolitical volatility."
       },
       "impact": "high",
       "signals": [
-        "CYBER_RISK +",
-        "GLOBAL_INFRASTRUCTURE_RISK +",
-        "FINANCIALS -",
-        "TECH_EQUITIES -"
+        "OIL +",
+        "GOLD +",
+        "EQUITIES -"
       ],
       "confidence": 90,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/economie/article/2026/05/22/l-iran-met-la-pression-sur-les-cables-telecoms-sous-marins-du-detroit-d-ormuz_6692229_3234.html",
-      "published_at": "2026-05-22",
-      "time": "4h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260523-live-iran-considers-latest-peace-proposal-accuses-us-of-excessive-demands",
+      "published_at": "2026-05-23",
+      "time": "2h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
+      "tag": "WATCH",
+      "region": "MENA",
       "title": {
-        "es": "Ministros de asuntos exteriores de la OTAN se reúnen para navegar la cambiante asociación con EE.UU.",
-        "en": "Nato foreign ministers meet to navigate shifting partnership with the US"
+        "es": "Nuevas alianzas emergen en Oriente Medio — ¿cuál 'ganará'?",
+        "en": "New alliances emerge in Middle East — which one will 'win'?"
       },
       "summary": {
-        "es": "El jefe de la OTAN intenta gestionar expectativas después de que Trump anunciara el despliegue de 5,000 tropas en Polonia, mientras enfrenta diferencias con aliados europeos sobre la postura de EE.UU. en la guerra de Irán. La cumbre de Ankara próxima será crucial para definir la cohesión de la alianza en un contexto de crecientes tensiones geopolíticas.",
-        "en": "NATO chief attempts to manage expectations after Trump announced deployment of 5,000 troops to Poland, while facing divisions with European allies over US posture in the Iran war. The upcoming Ankara summit will be critical for defining alliance cohesion amid rising geopolitical tensions."
-      },
-      "impact": "high",
-      "signals": [
-        "EUR -",
-        "DEFENSE_EQUITIES +",
-        "GEOPOLITICAL_RISK +",
-        "US_EQUITY_DIVERGENCE ?"
-      ],
-      "confidence": 87,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/may/22/nato-mark-rutte-us-donald-trump-troops-poland-summit-russia-baltics-drones-tensions-ukraine-latest-news-updates",
-      "published_at": "2026-05-22",
-      "time": "<1h"
-    },
-    {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Alemania acusa a dos hombres de conspiración para matar a líderes judíos bajo órdenes de Irán",
-        "en": "Germany Charges Two Men With Plotting to Kill Jewish Leaders on Iran's Behalf"
-      },
-      "summary": {
-        "es": "Autoridades europeas han detectado un aumento en actividades de inteligencia iraní en Europa tras la guerra entre EE.UU. e Irán, resultado en cargos por conspiración para asesinato en Alemania. El escalamiento de operaciones de Irán en suelo europeo señala una expansión de la guerra proxy y riesgos de seguridad para activos e intereses occidentales.",
-        "en": "European authorities have detected a rise in Iranian intelligence operations in Europe following the US-Iran war, resulting in murder plot charges in Germany. The escalation of Iran's operations on European soil signals expansion of proxy warfare and security risks for Western assets and interests."
+        "es": "Se profundiza la división regional: Emiratos Árabes Unidos e Israel se acercan mientras Arabia Saudita refuerza cooperación con Egipto, Turquía y Pakistán, con divergencias sobre la guerra de Irán. Esta fragmentación de las alianzas del Golfo redefine dinámicas de seguridad regional y flujos de inversión.",
+        "en": "Regional rift deepens as UAE and Israel draw closer while Saudi Arabia strengthens ties with Egypt, Turkey, and Pakistan, reflecting divergent approaches to the Iran war. This fragmentation of Gulf alliances redefines regional security dynamics and investment flows."
       },
       "impact": "medium",
       "signals": [
-        "GEOPOLITICAL_RISK +",
-        "EUROPEAN_SECURITY -",
-        "EQUITIES (DEFENSE) +"
+        "GEOPOLITICAL RISK +",
+        "GULF EQUITIES ?",
+        "ENERGY FLOWS ?"
       ],
-      "confidence": 82,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/21/world/europe/germany-murder-plot-iran.html",
+      "confidence": 80,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/new-alliances-emerge-in-middle-east-which-one-will-win/a-77246663?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-05-22",
-      "time": "8h"
+      "time": "11h"
     },
     {
-      "id": 6,
-      "tag": "ALERT",
+      "id": 5,
+      "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "Rubio se reúne con aliados de la OTAN mientras Trump expresa decepción por la postura de Europa sobre la guerra de Irán",
-        "en": "Rubio meets NATO allies as Trump voices disappointment over Europe's Iran war stance"
+        "es": "Putin promete represalias después de acusar a Ucrania de atacar un dormitorio estudiantil",
+        "en": "Putin vows retaliation after accusing Ukraine of hitting student dormitory"
       },
       "summary": {
-        "es": "El secretario de Estado Marco Rubio mantiene conversaciones con ministros de asuntos exteriores europeos en Suecia, horas después de que la administración Trump criticara a los aliados de la OTAN por no hacer más para apoyar la guerra contra Irán. Esta fricción transatlántica refleja divergencias estratégicas sobre prioridades geopolíticas y amenaza la cohesión de defensa occidental.",
-        "en": "US Secretary of State Marco Rubio holds talks with European foreign ministers in Sweden, hours after the Trump administration criticized NATO allies for not doing more to support the US-Israel war on Iran. This transatlantic friction reflects strategic divergence over geopolitical priorities and threatens Western defense cohesion."
+        "es": "Putin promete represalias tras un ataque aéreo en territorio ocupado por Rusia; Ucrania afirma haber golpeado una unidad militar de drones. La escalada de represalias recíprocas genera incertidumbre sobre la trayectoria del conflicto y presiona activos europeos vinculados a seguridad energética.",
+        "en": "Putin vows retaliation following aerial strike on Russian-occupied territory; Ukraine claims it targeted military drone unit. Escalating tit-for-tat cycle increases uncertainty over conflict trajectory and pressures European assets tied to energy security."
       },
       "impact": "high",
       "signals": [
         "EUR -",
-        "TRANSATLANTIC_RISK +",
-        "DEFENSE_SPENDING +",
+        "ENERGY +",
+        "EQUITIES -"
+      ],
+      "confidence": 87,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/c5y74lwx395o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-23",
+      "time": "<1h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Antes de que Europa nombre a alguien para hablar con Putin, debate qué discutir",
+        "en": "Before Europe Anoints Someone to Talk to Putin, It Debates What to Talk About"
+      },
+      "summary": {
+        "es": "Europa contempla designar un enviado para negociaciones sobre paz en Ucrania con Rusia, pero primero debe definir objetivos y límites. Esta cautela refleja divisiones estratégicas europeas sobre resolución de conflictos y tiene implicaciones para la cohesión de la UE y estabilidad de mercados de bonos europeos.",
+        "en": "Europe considers appointing envoy for Ukraine-Russia peace talks but must first define negotiation parameters and red lines. This deliberation reflects strategic European divisions on conflict resolution with implications for EU cohesion and eurozone bond stability."
+      },
+      "impact": "medium",
+      "signals": [
+        "EUR ?",
+        "BONDS ?",
         "EQUITIES ?"
       ],
-      "confidence": 85,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260522-nato-allies-to-sound-out-us-top-diplomat-after-trump-iran-ire",
+      "confidence": 78,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/22/world/europe/ukraine-russia-putin-europe-peace-talks.html",
       "published_at": "2026-05-22",
-      "time": "6h"
+      "time": "23h"
     }
-  ],
-  "market_updated_at": "2026-05-23T08:01:50.135Z"
+  ]
 }
