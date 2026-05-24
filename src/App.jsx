@@ -6,6 +6,7 @@ import FinancialIntelligenceSystem from "./pages/labs/FinancialIntelligenceSyste
 import Community from "./pages/community/Community";
 import InnerCircleAccess from "./pages/innercircle/InnerCircleAccess";
 import ProtectedInnerCircle from "./pages/innercircle/ProtectedInnerCircle";
+import PricingPage from "./pages/PricingPage";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.3
@@ -31,11 +32,12 @@ const F = {
 const AuthContext = createContext(null);
 const useAuth = () => useContext(AuthContext);
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children, lang }) => {
   const [user, setUser] = useState(null);
   const [showAuth, setShowAuth] = useState(false);
   const [authMode, setAuthMode] = useState("login");
   const [authCallback, setAuthCallback] = useState(null);
+  const [showPricing, setShowPricing] = useState(false);
 
   const login = (userData) => {
     setUser(userData);
@@ -81,10 +83,12 @@ const AuthProvider = ({ children }) => {
         setShowAuth,
         authMode,
         setAuthMode,
+        openPricing: () => setShowPricing(true),
       }}
     >
       {children}
       {showAuth && <AuthModal />}
+      {showPricing && <PricingPage onClose={() => setShowPricing(false)} lang={lang} />}
     </AuthContext.Provider>
   );
 };
@@ -371,6 +375,18 @@ const useHeadlines = (fallback) => {
   return data;
 };
 
+const useSubscription = (email) => {
+  const [tier, setTier] = useState("free");
+  useEffect(() => {
+    if (!email) { setTier("free"); return; }
+    fetch(`/api/subscription?email=${encodeURIComponent(email)}`)
+      .then((r) => (r.ok ? r.json() : { tier: "free" }))
+      .then((d) => setTier(d.tier || "free"))
+      .catch(() => setTier("free"));
+  }, [email]);
+  return tier;
+};
+
 const FEED = [
   {
     id: 1, tag: "CRITICAL", region: "EU",
@@ -515,12 +531,12 @@ const TOOLS = [
   {
     name: "GeoRisk Dashboard",
     desc: { es: "Scoring de riesgo geopolítico en tiempo real con sliders de escenario.", en: "Real-time geopolitical risk scoring with scenario sliders." },
-    icon: "◈", status: "LIVE", ml: true,
+    icon: "◈", status: "LIVE", ml: true, requiredTier: null,
   },
   {
     name: "Real Estate Visor",
     desc: { es: "Visor inmobiliario con catastro, capas de riesgo, planeamiento y matching de mandatos ZRC.", en: "Real estate visor with cadastre, risk layers, planning and ZRC mandate matching." },
-    icon: "◇", status: "BETA", ml: false,
+    icon: "◇", status: "BETA", ml: false, requiredTier: null,
   },
   {
     name: "Financial Intelligence System",
@@ -528,22 +544,22 @@ const TOOLS = [
       es: "Motor de inteligencia financiera para PYMEs familiares: cash flow 13 semanas, capital circulante, motor de riesgos e informe semanal generado por IA.",
       en: "Financial intelligence engine for family-owned SMEs: 13-week cash flow, working capital optimizer, risk engine and AI-generated board report.",
     },
-    icon: "◆", status: "LIVE", ml: true,
+    icon: "◆", status: "LIVE", ml: true, requiredTier: "intelligence",
   },
   {
     name: "Valuation Engine",
     desc: { es: "DCF automatizado, múltiplos y valoración normalizada para PYMEs.", en: "Automated DCF, multiples, and normalized valuation for SMEs." },
-    icon: "◇", status: "BETA", ml: true,
+    icon: "◇", status: "BETA", ml: true, requiredTier: "intelligence",
   },
   {
     name: "Deal Flow Radar",
     desc: { es: "Pipeline ML-enhanced identificando empresas sub-optimizadas en Europa del Sur.", en: "ML-enhanced pipeline identifying sub-optimized companies across Southern Europe." },
-    icon: "◆", status: "LIVE", ml: true,
+    icon: "◆", status: "LIVE", ml: true, requiredTier: "intelligence",
   },
   {
     name: "Macro Pulse",
     desc: { es: "Tracker de señales de bancos centrales con NLP.", en: "Central bank signal tracker with NLP analysis." },
-    icon: "○", status: "Q3 2026", ml: true,
+    icon: "○", status: "Q3 2026", ml: true, requiredTier: "intelligence",
   },
 ];
 
@@ -819,7 +835,7 @@ const MarketTicker = ({ lang }) => {
 };
 
 const Nav = ({ lang, setLang, onNav }) => {
-  const { user, openLogin, logout } = useAuth();
+  const { user, openLogin, logout, openPricing } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const ids = ["observatory", "intelligence", "brokerage", "advisory", "academia", "community", "inner-circle"];
 
@@ -849,6 +865,9 @@ const Nav = ({ lang, setLang, onNav }) => {
               {label.toUpperCase()}
             </button>
           ))}
+          <button onClick={openPricing} style={{ fontFamily: F.mono, fontSize: 10, padding: "5px 14px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 600, letterSpacing: "0.08em" }}>
+            PRICING
+          </button>
           <button onClick={() => setLang(lang === "es" ? "en" : "es")} style={{ fontFamily: F.mono, fontSize: 10, padding: "5px 14px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 600 }}>
             {lang === "es" ? "EN" : "ES"}
           </button>
@@ -1022,12 +1041,54 @@ const Hero = ({ lang, onNav }) => {
   );
 };
 
+const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => (
+  <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 310, background: "rgba(0,0,0,0.75)", backdropFilter: "blur(10px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+    <div onClick={(e) => e.stopPropagation()} style={{ background: C.surface, border: `1px solid ${C.goldBorder}`, maxWidth: 460, width: "100%", padding: 36, position: "relative" }}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: C.gold }} />
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
+        <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.15em" }}>INTELLIGENCE · {lang === "es" ? "ACCESO PREMIUM" : "PREMIUM ACCESS"}</span>
+        <button onClick={onClose} style={{ background: "none", border: "none", color: C.textMuted, fontSize: 18, cursor: "pointer", padding: 0 }}>✕</button>
+      </div>
+      <h3 style={{ fontFamily: F.display, fontSize: 26, fontWeight: 400, color: C.text, margin: "0 0 10px" }}>{tool.name}</h3>
+      <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.65, fontWeight: 300, margin: "0 0 24px" }}>{tool.desc[lang]}</p>
+      <div style={{ padding: "16px 20px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, marginBottom: 20 }}>
+        <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 6 }}>
+          {lang === "es" ? "DESDE" : "FROM"}
+        </div>
+        <div style={{ fontFamily: F.display, fontSize: 32, color: C.gold, lineHeight: 1 }}>€99<span style={{ fontSize: 14, color: C.textMuted, fontFamily: F.mono }}>/mo</span></div>
+        <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, marginTop: 4 }}>Intelligence · {lang === "es" ? "todas las herramientas" : "all tools"}</div>
+      </div>
+      <button
+        onClick={() => { onClose(); onOpenPricing(); }}
+        style={{ width: "100%", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", padding: "12px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}
+      >
+        {lang === "es" ? "VER TODOS LOS PLANES →" : "VIEW ALL PLANS →"}
+      </button>
+    </div>
+  </div>
+);
+
 const Intelligence = ({ lang }) => {
   const t = T[lang].intel;
-  const { user } = useAuth();
+  const { user, openPricing } = useAuth();
+  const tier = useSubscription(user?.email);
   const [showGeoRisk, setShowGeoRisk] = useState(false);
   const [showVisor, setShowVisor] = useState(false);
   const [showFIS, setShowFIS] = useState(false);
+  const [upgradeTool, setUpgradeTool] = useState(null);
+
+  const canAccess = (tool) => {
+    if (!tool.requiredTier) return true;
+    if (tier === "institutional") return true;
+    return tier === tool.requiredTier;
+  };
+
+  const handleLaunch = (tool) => {
+    if (!canAccess(tool)) { setUpgradeTool(tool); return; }
+    if (tool.name === "GeoRisk Dashboard") setShowGeoRisk(true);
+    if (tool.name === "Real Estate Visor") setShowVisor(true);
+    if (tool.name === "Financial Intelligence System") setShowFIS(true);
+  };
 
   return (
     <Sec id="intelligence">
@@ -1046,45 +1107,87 @@ const Intelligence = ({ lang }) => {
       </FadeIn>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1 }}>
-        {TOOLS.map((tool, i) => (
-          <FadeIn key={i} delay={i * 0.08}>
-            <div style={{ padding: 28, background: C.surface, border: `1px solid ${C.border}`, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: tool.status === "LIVE" ? C.green : tool.status === "BETA" ? C.amber : "transparent" }} />
-              <div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
-                  <span style={{ fontSize: 22, color: C.gold, opacity: 0.6 }}>{tool.icon}</span>
-                  <div style={{ display: "flex", gap: 4 }}>
-                    {tool.ml && <Badge label="ML" variant="ml" />}
-                    <Badge label={tool.status} variant={tool.status.toLowerCase()} />
+        {TOOLS.map((tool, i) => {
+          const locked = user && !canAccess(tool);
+          return (
+            <FadeIn key={i} delay={i * 0.08}>
+              <div style={{ padding: 28, background: C.surface, border: `1px solid ${locked ? C.goldBorder : C.border}`, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: tool.status === "LIVE" ? C.green : tool.status === "BETA" ? C.amber : "transparent" }} />
+                {locked && (
+                  <div style={{ position: "absolute", top: 10, right: 10 }}>
+                    <span style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, background: C.goldDim, border: `1px solid ${C.goldBorder}`, padding: "2px 7px", letterSpacing: "0.1em" }}>INTELLIGENCE</span>
                   </div>
+                )}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
+                    <span style={{ fontSize: 22, color: locked ? C.textMuted : C.gold, opacity: locked ? 0.4 : 0.6 }}>{tool.icon}</span>
+                    <div style={{ display: "flex", gap: 4 }}>
+                      {tool.ml && <Badge label="ML" variant="ml" />}
+                      <Badge label={tool.status} variant={tool.status.toLowerCase()} />
+                    </div>
+                  </div>
+                  <h3 style={{ fontFamily: F.display, fontSize: 19, fontWeight: 400, color: locked ? C.textSec : C.text, margin: "0 0 10px" }}>{tool.name}</h3>
+                  <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, fontWeight: 300 }}>{tool.desc[lang]}</p>
                 </div>
-                <h3 style={{ fontFamily: F.display, fontSize: 19, fontWeight: 400, color: C.text, margin: "0 0 10px" }}>{tool.name}</h3>
-                <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, fontWeight: 300 }}>{tool.desc[lang]}</p>
+                {user ? (
+                  locked ? (
+                    <button
+                      onClick={() => setUpgradeTool(tool)}
+                      style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}
+                    >
+                      🔒 {lang === "es" ? "DESBLOQUEAR →" : "UNLOCK →"}
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleLaunch(tool)}
+                      style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}
+                    >
+                      {tool.status === "LIVE" ? "LAUNCH →" : tool.status === "BETA" ? "REQUEST ACCESS" : "NOTIFY ME"}
+                    </button>
+                  )
+                ) : (
+                  <div style={{ marginTop: 20, padding: "12px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, textAlign: "center" }}>
+                    <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.1em" }}>🔒 {t.locked}</span>
+                  </div>
+                )}
               </div>
-              {user ? (
-                <button
-                  onClick={() => {
-                    if (tool.name === "GeoRisk Dashboard") setShowGeoRisk(true);
-                    if (tool.name === "Real Estate Visor") setShowVisor(true);
-                    if (tool.name === "Financial Intelligence System") setShowFIS(true);
-                  }}
-                  style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}
-                >
-                  {tool.status === "LIVE" ? "LAUNCH →" : tool.status === "BETA" ? "REQUEST ACCESS" : "NOTIFY ME"}
-                </button>
-              ) : (
-                <div style={{ marginTop: 20, padding: "12px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, textAlign: "center" }}>
-                  <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.1em" }}>🔒 {t.locked}</span>
-                </div>
-              )}
-            </div>
-          </FadeIn>
-        ))}
+            </FadeIn>
+          );
+        })}
       </div>
 
       {!user && <FadeIn delay={0.3}><LockedOverlay message={t.locked} lang={lang} /></FadeIn>}
 
-      {/* GeoRisk Dashboard overlay */}
+      {/* Upgrade CTA for free members */}
+      {user && tier === "free" && (
+        <FadeIn delay={0.3}>
+          <div style={{ marginTop: 28, padding: "20px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+            <div>
+              <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.12em", marginBottom: 4 }}>INTELLIGENCE · €99/MO</div>
+              <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, margin: 0, fontWeight: 300 }}>
+                {lang === "es" ? "Desbloquea el Financial Intelligence System, Valuation Engine, Deal Flow Radar y Macro Pulse." : "Unlock the Financial Intelligence System, Valuation Engine, Deal Flow Radar and Macro Pulse."}
+              </p>
+            </div>
+            <button
+              onClick={openPricing}
+              style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", padding: "10px 24px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600, whiteSpace: "nowrap" }}
+            >
+              {lang === "es" ? "VER PLANES →" : "VIEW PLANS →"}
+            </button>
+          </div>
+        </FadeIn>
+      )}
+
+      {upgradeTool && (
+        <UpgradeModal
+          tool={upgradeTool}
+          lang={lang}
+          onClose={() => setUpgradeTool(null)}
+          onOpenPricing={openPricing}
+        />
+      )}
+
+      {/* Tool overlays */}
       {showGeoRisk && (
         <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <button onClick={() => setShowGeoRisk(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
@@ -1094,7 +1197,6 @@ const Intelligence = ({ lang }) => {
         </div>
       )}
 
-      {/* Real Estate Visor overlay */}
       {showVisor && (
         <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <button onClick={() => setShowVisor(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
@@ -1104,7 +1206,6 @@ const Intelligence = ({ lang }) => {
         </div>
       )}
 
-      {/* Financial Intelligence System overlay */}
       {showFIS && (
         <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <FinancialIntelligenceSystem onClose={() => setShowFIS(false)} />
@@ -1280,7 +1381,7 @@ const ZRCPlatform = () => {
   };
 
   return (
-    <AuthProvider>
+    <AuthProvider lang={lang}>
       <style>{`
         * { box-sizing: border-box; }
         body { margin: 0; background: ${C.bg}; color: ${C.text}; }

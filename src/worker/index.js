@@ -1,37 +1,192 @@
 // src/worker/index.js
-// ZRC Backend Worker — endpoint /api/lead
-// Intercepta solo /api/*. Todo lo demás lo sirven los assets estáticos automáticamente.
+// ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
+
+// Fill these with real Stripe Price IDs from your dashboard
+// Dashboard → Products → select plan → copy "Price ID" (starts with price_)
+const PRICE_TIERS = {
+  // Intelligence Monthly  (price_XXXX)
+  "price_intelligence_monthly": "intelligence",
+  // Intelligence Annual   (price_XXXX)
+  "price_intelligence_annual": "intelligence",
+  // Institutional Monthly (price_XXXX)
+  "price_institutional_monthly": "institutional",
+  // Institutional Annual  (price_XXXX)
+  "price_institutional_annual": "institutional",
+};
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // CORS preflight (por si llamamos desde otro dominio en el futuro)
-    if (request.method === "OPTIONS") {
-      return corsResponse();
-    }
+    if (request.method === "OPTIONS") return corsResponse();
 
-    // Routing manual
-    if (url.pathname === "/api/lead" && request.method === "POST") {
+    if (url.pathname === "/api/lead" && request.method === "POST")
       return handleLead(request, env);
-    }
 
-    if (url.pathname === "/api/health" && request.method === "GET") {
+    if (url.pathname === "/api/health" && request.method === "GET")
       return jsonResponse({ ok: true, ts: Date.now() });
-    }
 
-    // Cualquier otro /api/* → 404 (no caemos al SPA fallback)
-    if (url.pathname.startsWith("/api/")) {
+    if (url.pathname === "/api/stripe-webhook" && request.method === "POST")
+      return handleStripeWebhook(request, env);
+
+    if (url.pathname === "/api/subscription" && request.method === "GET")
+      return handleSubscriptionCheck(request, env);
+
+    if (url.pathname === "/api/claude" && request.method === "POST")
+      return handleClaude(request, env);
+
+    if (url.pathname.startsWith("/api/"))
       return jsonResponse({ error: "Not found" }, 404);
-    }
 
-    // Fallback (no debería ocurrir si run_worker_first solo apunta a /api/*)
     return env.ASSETS.fetch(request);
   },
 };
 
 // ============================================================
-// /api/lead — captura de leads del Visor
+// /api/stripe-webhook
+// ============================================================
+async function handleStripeWebhook(request, env) {
+  const body = await request.text();
+  const sig = request.headers.get("stripe-signature");
+
+  if (!env.STRIPE_WEBHOOK_SECRET) {
+    console.error("STRIPE_WEBHOOK_SECRET not set");
+    return jsonResponse({ error: "Webhook not configured" }, 500);
+  }
+
+  try {
+    await verifyStripeSignature(body, sig, env.STRIPE_WEBHOOK_SECRET);
+  } catch (err) {
+    console.error("Stripe signature verification failed:", err.message);
+    return jsonResponse({ error: "Invalid signature" }, 400);
+  }
+
+  let event;
+  try {
+    event = JSON.parse(body);
+  } catch {
+    return jsonResponse({ error: "Invalid JSON" }, 400);
+  }
+
+  try {
+    switch (event.type) {
+      case "checkout.session.completed": {
+        const session = event.data.object;
+        const email =
+          session.customer_email ||
+          session.customer_details?.email;
+        const priceId =
+          session.line_items?.data?.[0]?.price?.id || "";
+        const tier = getTierFromPrice(priceId);
+        if (email) {
+          await upsertSubscription(env, {
+            email,
+            tier,
+            status: "active",
+            stripeCustomerId: session.customer,
+            stripeSubscriptionId: session.subscription,
+          });
+        }
+        break;
+      }
+      case "customer.subscription.updated": {
+        const sub = event.data.object;
+        const tier = getTierFromPrice(
+          sub.items?.data?.[0]?.price?.id || ""
+        );
+        await upsertSubscriptionByCustomer(env, {
+          stripeCustomerId: sub.customer,
+          tier,
+          status: sub.status === "active" ? "active" : "inactive",
+        });
+        break;
+      }
+      case "customer.subscription.deleted": {
+        const sub = event.data.object;
+        await upsertSubscriptionByCustomer(env, {
+          stripeCustomerId: sub.customer,
+          tier: "free",
+          status: "cancelled",
+        });
+        break;
+      }
+      case "invoice.payment_failed": {
+        const invoice = event.data.object;
+        await upsertSubscriptionByCustomer(env, {
+          stripeCustomerId: invoice.customer,
+          status: "past_due",
+        });
+        break;
+      }
+    }
+  } catch (err) {
+    console.error("Webhook handler error:", err);
+    // Return 200 so Stripe doesn't retry — event already logged
+  }
+
+  return jsonResponse({ received: true });
+}
+
+// ============================================================
+// /api/subscription?email=
+// ============================================================
+async function handleSubscriptionCheck(request, env) {
+  const url = new URL(request.url);
+  const email = url.searchParams.get("email");
+
+  if (!email || !isValidEmail(email))
+    return jsonResponse({ tier: "free" });
+
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
+    return jsonResponse({ tier: "free" });
+
+  try {
+    const resp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/subscriptions?email=eq.${encodeURIComponent(email)}&status=eq.active&select=tier&limit=1`,
+      {
+        headers: {
+          apikey: env.SUPABASE_SERVICE_KEY,
+          Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+        },
+      }
+    );
+    if (!resp.ok) return jsonResponse({ tier: "free" });
+    const data = await resp.json();
+    return jsonResponse({ tier: data?.[0]?.tier || "free" });
+  } catch (err) {
+    console.error("Subscription check error:", err);
+    return jsonResponse({ tier: "free" });
+  }
+}
+
+// ============================================================
+// /api/claude  (proxy for AI Report in FIS)
+// ============================================================
+async function handleClaude(request, env) {
+  if (!env.ANTHROPIC_API_KEY)
+    return jsonResponse({ error: "AI not configured" }, 503);
+
+  let body;
+  try { body = await request.json(); } catch {
+    return jsonResponse({ error: "Invalid JSON" }, 400);
+  }
+
+  const resp = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": env.ANTHROPIC_API_KEY,
+      "anthropic-version": "2023-06-01",
+    },
+    body: JSON.stringify(body),
+  });
+
+  const data = await resp.json();
+  return jsonResponse(data, resp.status);
+}
+
+// ============================================================
+// /api/lead  (unchanged)
 // ============================================================
 async function handleLead(request, env) {
   let payload;
@@ -43,37 +198,26 @@ async function handleLead(request, env) {
 
   const { email, sector, source, rc, parcela } = payload;
 
-  // Validación básica
-  if (!email || !isValidEmail(email)) {
+  if (!email || !isValidEmail(email))
     return jsonResponse({ error: "Email inválido" }, 400);
-  }
-  if (!sector || sector.length > 100) {
+  if (!sector || sector.length > 100)
     return jsonResponse({ error: "Sector inválido" }, 400);
-  }
 
   const sourceClean = (source || "unknown").substring(0, 50);
   const rcClean = rc ? String(rc).substring(0, 20) : null;
   const parcelaClean = parcela ? JSON.stringify(parcela).substring(0, 2000) : null;
 
-  // Headers de contexto (útil para analytics)
   const userAgent = request.headers.get("User-Agent") || "";
   const country = request.cf?.country || "";
   const referer = request.headers.get("Referer") || "";
 
-  // Insertar en D1
   try {
     await env.DB.prepare(
       `INSERT INTO leads (email, sector, source, rc, parcela_json, country, user_agent, referer, created_at)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
     ).bind(
-      email,
-      sector,
-      sourceClean,
-      rcClean,
-      parcelaClean,
-      country,
-      userAgent.substring(0, 500),
-      referer.substring(0, 500),
+      email, sector, sourceClean, rcClean, parcelaClean,
+      country, userAgent.substring(0, 500), referer.substring(0, 500),
       new Date().toISOString()
     ).run();
   } catch (err) {
@@ -81,18 +225,14 @@ async function handleLead(request, env) {
     return jsonResponse({ error: "Storage error" }, 500);
   }
 
-  // Enviar emails con Resend (no bloqueante — si falla, el lead ya está guardado)
   if (env.RESEND_API_KEY) {
     try {
-      // Email de notificación interna
       await sendResendEmail(env, {
         from: "ZRC Labs <labs@zenithrisecapital.com>",
         to: env.NOTIFY_EMAIL || "luis@zenithrisecapital.com",
         subject: `🔔 Nuevo lead Visor — ${sector}`,
         html: notifyEmailHTML({ email, sector, source: sourceClean, rc: rcClean, country }),
       });
-
-      // Email de bienvenida al lead
       await sendResendEmail(env, {
         from: "Zenith Rise Capital <noreply@zenithrisecapital.com>",
         to: email,
@@ -101,7 +241,6 @@ async function handleLead(request, env) {
       });
     } catch (err) {
       console.error("Resend error:", err);
-      // No fallamos la respuesta — el lead ya está guardado
     }
   }
 
@@ -109,7 +248,94 @@ async function handleLead(request, env) {
 }
 
 // ============================================================
-// HELPERS
+// STRIPE HELPERS
+// ============================================================
+function getTierFromPrice(priceId) {
+  return PRICE_TIERS[priceId] || "intelligence";
+}
+
+async function verifyStripeSignature(body, sig, secret) {
+  if (!sig) throw new Error("No stripe-signature header");
+
+  const parts = sig.split(",").reduce((acc, part) => {
+    const [k, v] = part.split("=");
+    if (k === "t") acc.timestamp = v;
+    if (k === "v1") acc.signature = v;
+    return acc;
+  }, {});
+
+  if (!parts.timestamp || !parts.signature)
+    throw new Error("Malformed stripe-signature");
+
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw", encoder.encode(secret),
+    { name: "HMAC", hash: "SHA-256" }, false, ["sign"]
+  );
+  const mac = await crypto.subtle.sign(
+    "HMAC", key, encoder.encode(`${parts.timestamp}.${body}`)
+  );
+  const hex = Array.from(new Uint8Array(mac))
+    .map((b) => b.toString(16).padStart(2, "0")).join("");
+
+  if (hex !== parts.signature) throw new Error("Signature mismatch");
+
+  if (Math.abs(Date.now() / 1000 - parseInt(parts.timestamp, 10)) > 300)
+    throw new Error("Webhook timestamp too old");
+}
+
+// ============================================================
+// SUPABASE HELPERS
+// ============================================================
+async function upsertSubscription(env, { email, tier, status, stripeCustomerId, stripeSubscriptionId }) {
+  const resp = await fetch(`${env.SUPABASE_URL}/rest/v1/subscriptions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      apikey: env.SUPABASE_SERVICE_KEY,
+      Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+      Prefer: "resolution=merge-duplicates",
+    },
+    body: JSON.stringify({
+      email,
+      tier,
+      status,
+      stripe_customer_id: stripeCustomerId,
+      stripe_subscription_id: stripeSubscriptionId,
+      updated_at: new Date().toISOString(),
+    }),
+  });
+  if (!resp.ok) {
+    const txt = await resp.text();
+    throw new Error(`Supabase upsert error: ${resp.status} ${txt}`);
+  }
+}
+
+async function upsertSubscriptionByCustomer(env, { stripeCustomerId, tier, status }) {
+  const patch = { updated_at: new Date().toISOString() };
+  if (tier) patch.tier = tier;
+  if (status) patch.status = status;
+
+  const resp = await fetch(
+    `${env.SUPABASE_URL}/rest/v1/subscriptions?stripe_customer_id=eq.${encodeURIComponent(stripeCustomerId)}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: env.SUPABASE_SERVICE_KEY,
+        Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+      },
+      body: JSON.stringify(patch),
+    }
+  );
+  if (!resp.ok) {
+    const txt = await resp.text();
+    throw new Error(`Supabase patch error: ${resp.status} ${txt}`);
+  }
+}
+
+// ============================================================
+// GENERAL HELPERS
 // ============================================================
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
