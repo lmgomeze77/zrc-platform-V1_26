@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-23T08:13:09.452Z",
+  "generated_at": "2026-05-24T08:24:47.605Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1603",
+      "value": "1.1605",
       "change": "-0.16%",
       "up": false
     },
@@ -14,27 +14,21 @@
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "103.54",
-      "change": "+0.93%",
+      "symbol": "BRENT",
+      "value": "100.21",
+      "change": "+0.71%",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "96.60",
-      "change": "+0.26%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4509.38",
-      "change": "-0.74%",
+      "symbol": "GOLD",
+      "value": "4523.20",
+      "change": "-0.42%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "76698.12",
-      "change": "+1.76%",
+      "symbol": "BTC",
+      "value": "76663.87",
+      "change": "+2.77%",
       "up": true
     },
     {
@@ -44,10 +38,16 @@
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.558%",
+      "symbol": "US 10Y",
+      "value": "4.5580",
       "change": "-0.61%",
       "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8643",
+      "change": "+0.03%",
+      "up": true
     },
     {
       "symbol": "S&P 500",
@@ -60,183 +60,158 @@
       "value": "24888.56",
       "change": "+1.15%",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8639",
-      "change": "-0.13%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.32",
-      "change": "+0.08%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.907",
-      "change": "-3.21%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.28",
-      "change": "+2.00%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7948",
-      "change": "+0.00%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "Marco Rubio: la 'decepción' de Trump con la OTAN será discutida en la cumbre",
-        "en": "Marco Rubio: Trump 'disappointment' with Nato will be discussed at summit"
+        "es": "Varios muertos y decenas de heridos en un ataque masivo ruso con drones y misiles en la región de Kyiv",
+        "en": "Several dead, dozens injured in massive Russian drone and missile attack on Kyiv region"
       },
       "summary": {
-        "es": "El Secretario de Estado estadounidense señala que Trump está decepcionado porque los aliados de la OTAN se negaron a involucrarse más activamente en operaciones contra Irán, con implicaciones para la cumbre de julio. Esta tensión refleja una divergencia estratégica fundamental sobre compromisos de seguridad y podría afectar inversiones defensivas europeas y la cohesión de la alianza.",
-        "en": "US Secretary of State indicates Trump is disappointed that NATO allies refused deeper involvement in Iran operations, setting the stage for a contentious July summit. This tension reflects fundamental strategic divergence over security commitments and could impact European defense spending and alliance cohesion."
+        "es": "Rusia ejecutó un ataque masivo con misiles hipersónicos Oreshnik contra Kyiv tras prometer represalias por ataques ucranianos. Al menos cuatro muertos y decenas de heridos marcan una escalada en la intensidad del conflicto con implicaciones para la seguridad energética europea y el financiamiento de defensa.",
+        "en": "Russia executed a massive attack using Oreshnik hypersonic missiles against Kyiv after vowing retaliation for Ukrainian strikes. At least four killed and dozens wounded mark an escalation in conflict intensity with implications for European energy security and defense funding."
       },
       "impact": "high",
       "signals": [
         "EUR -",
+        "EQUITIES ?",
         "DEFENSE +",
-        "BONDS ?"
+        "BONDS +"
       ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/22/marco-rubio-trump-disappointment-with-nato-will-be-discussed-at-summit",
-      "published_at": "2026-05-22",
-      "time": "15h"
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20260524-russian-ballistic-missile-attack-hits-kyiv-after-moscow-vows-retaliation",
+      "published_at": "2026-05-24",
+      "time": "6h"
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "MENA",
       "title": {
-        "es": "Las ventas de armas estadounidenses a Taiwán se encuentran en 'pausa' debido a la guerra de Irán",
-        "en": "US arms sales to Taiwan on 'pause' due to Iran war, says acting navy chief"
+        "es": "Crisis de Oriente Medio en directo: Rubio ve progreso inicial en reapertura del Estrecho de Ormuz tras afirmación de Trump",
+        "en": "Middle East crisis live: Rubio sees initial progress on reopening Hormuz after Trump claims Iran deal 'largely negotiated'"
       },
       "summary": {
-        "es": "El Secretario de la Marina interino confirma que las ventas de armas a Taiwán han sido suspendidas para asegurar municiones suficientes para operaciones en Irán. Esta pausa señala una reorientación de prioridades estratégicas estadounidenses con implicaciones críticas para la seguridad regional de Asia-Pacífico y para inversiones en defensa taiwanesa.",
-        "en": "Acting US Navy Secretary confirms arms sales to Taiwan have been paused to ensure sufficient munitions for Iran operations. This suspension signals a reorientation of US strategic priorities with critical implications for Indo-Pacific security and Taiwan defense investments."
+        "es": "El Secretario de Estado estadounidense indicó que un acuerdo sobre el Estrecho de Ormuz podría anunciarse en horas, con Trump afirmando que el pacto con Irán está 'prácticamente negociado'. La reapertura de este chokepoint estratégico tendría implicaciones inmediatas para precios de petróleo y seguros marítimos globales.",
+        "en": "US Secretary of State indicated an agreement on Strait of Hormuz could be announced within hours, with Trump claiming the Iran deal is 'largely negotiated.' Reopening this strategic chokepoint would have immediate implications for global oil prices and maritime insurance costs."
       },
       "impact": "high",
       "signals": [
-        "TAIWAN RISK +",
-        "DEFENSE -",
-        "EQUITIES ?"
+        "OIL -",
+        "GOLD -",
+        "EQUITIES +",
+        "USD -"
       ],
-      "confidence": 85,
+      "confidence": 90,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/22/us-arms-sales-taiwan-pause-iran-war-says-acting-navy-chief",
-      "published_at": "2026-05-22",
-      "time": "23h"
+      "source_url": "https://www.theguardian.com/world/live/2026/may/24/iran-deal-strait-of-hormuz-trump-middle-east-crisis-live",
+      "published_at": "2026-05-24",
+      "time": "<1h"
     },
     {
       "id": 3,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "La guerra de Estados Unidos e Israel contra Irán en directo: Irán afirma que el borrador del acuerdo incluye fin de la guerra y levantamiento de sanciones al petróleo iraní",
+        "en": "US-Israel war against Iran live: Iran claims draft agreement includes end of war and lifting of sanctions on Iranian oil"
+      },
+      "summary": {
+        "es": "Irán reporta que el borrador del acuerdo con EE.UU. contempla el cese de hostilidades y el levantamiento de sanciones petroleras, mientras Trump confirma avances 'significativos'. La potencial normalización de exportaciones de crudo iraní podría rebalancar mercados de energía global y afectar dinámicas de precios de commodities.",
+        "en": "Iran reports the draft agreement with the US includes cessation of hostilities and lifting of oil sanctions, while Trump confirms 'significant progress.' Potential normalization of Iranian crude exports could rebalance global energy markets and affect commodity price dynamics."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL -",
+        "GOLD -",
+        "EQUITIES +",
+        "USD -"
+      ],
+      "confidence": 88,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-05-24/la-guerra-de-estados-unidos-e-israel-contra-iran-en-directo.html",
+      "published_at": "2026-05-24",
+      "time": "<1h"
+    },
+    {
+      "id": 4,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Guerra en Oriente Medio: Irán considera última propuesta de paz, acusa a EE.UU. de 'demandas excesivas'",
-        "en": "Middle East war live: Iran considers latest peace proposal, accuses US of 'excessive demands'"
+        "es": "Sobreviví a un ataque con misil en el Estrecho de Ormuz, pero mi amigo aún no ha sido encontrado",
+        "en": "I survived a missile strike in the Strait of Hormuz, but my friend has not been found"
       },
       "summary": {
-        "es": "Teherán acusa a Washington de demandas excesivas mientras considera una nueva propuesta de paz, mientras reportes sugieren que EE.UU. está estudiando nuevos ataques. La escalada potencial con riesgo de ruptura de negociaciones afecta directamente precios de energía y volatilidad geopolítica global.",
-        "en": "Tehran accuses US of 'excessive demands' while considering peace proposal, as reports suggest Washington may launch new strikes. Potential escalation risks and negotiation breakdown directly impact global energy prices and geopolitical volatility."
+        "es": "Un buque cisterna fue alcanzado por misiles en el Estrecho de Ormuz al inicio de la guerra con Irán, dejando víctimas y desaparecidos. Este incidente ilustra los riesgos operacionales en una de las rutas marítimas más críticas para el comercio de petróleo global, impactando seguros y primas de riesgo.",
+        "en": "An oil tanker was struck by missiles in the Strait of Hormuz at the start of the Iran war, resulting in casualties and missing crew. This incident illustrates operational risks in one of the world's most critical maritime routes for crude oil trade, impacting insurance costs and risk premiums."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GOLD +",
-        "EQUITIES -"
+        "SHIPPING +",
+        "EQUITIES ?",
+        "GOLD +"
       ],
-      "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260523-live-iran-considers-latest-peace-proposal-accuses-us-of-excessive-demands",
+      "confidence": 85,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/ce8pn63q771o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-05-23",
-      "time": "2h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "MENA",
-      "title": {
-        "es": "Nuevas alianzas emergen en Oriente Medio — ¿cuál 'ganará'?",
-        "en": "New alliances emerge in Middle East — which one will 'win'?"
-      },
-      "summary": {
-        "es": "Se profundiza la división regional: Emiratos Árabes Unidos e Israel se acercan mientras Arabia Saudita refuerza cooperación con Egipto, Turquía y Pakistán, con divergencias sobre la guerra de Irán. Esta fragmentación de las alianzas del Golfo redefine dinámicas de seguridad regional y flujos de inversión.",
-        "en": "Regional rift deepens as UAE and Israel draw closer while Saudi Arabia strengthens ties with Egypt, Turkey, and Pakistan, reflecting divergent approaches to the Iran war. This fragmentation of Gulf alliances redefines regional security dynamics and investment flows."
-      },
-      "impact": "medium",
-      "signals": [
-        "GEOPOLITICAL RISK +",
-        "GULF EQUITIES ?",
-        "ENERGY FLOWS ?"
-      ],
-      "confidence": 80,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/new-alliances-emerge-in-middle-east-which-one-will-win/a-77246663?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-22",
-      "time": "11h"
+      "time": "9h"
     },
     {
       "id": 5,
-      "tag": "CRITICAL",
-      "region": "EU",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "Putin promete represalias después de acusar a Ucrania de atacar un dormitorio estudiantil",
-        "en": "Putin vows retaliation after accusing Ukraine of hitting student dormitory"
+        "es": "EE.UU. e Irán establecen un tono optimista mientras toma forma el acuerdo sobre Ormuz",
+        "en": "US, Iran strike upbeat tone as Hormuz deal takes shape"
       },
       "summary": {
-        "es": "Putin promete represalias tras un ataque aéreo en territorio ocupado por Rusia; Ucrania afirma haber golpeado una unidad militar de drones. La escalada de represalias recíprocas genera incertidumbre sobre la trayectoria del conflicto y presiona activos europeos vinculados a seguridad energética.",
-        "en": "Putin vows retaliation following aerial strike on Russian-occupied territory; Ukraine claims it targeted military drone unit. Escalating tit-for-tat cycle increases uncertainty over conflict trajectory and pressures European assets tied to energy security."
+        "es": "Trump indicó progreso en negociaciones con Irán sobre el Estrecho de Ormuz, aunque Teherán advierte sobre brechas importantes. Las conversaciones sobre la reapertura de este paso estratégico podrían transformar la dinámica de precios de energía y reducir primas de riesgo geopolítico en mercados globales.",
+        "en": "Trump signaled progress in talks with Iran on Strait of Hormuz, though Tehran warned major gaps remain. Negotiations over reopening this strategic passage could transform energy pricing dynamics and reduce geopolitical risk premiums in global markets."
       },
       "impact": "high",
       "signals": [
-        "EUR -",
-        "ENERGY +",
-        "EQUITIES -"
+        "OIL -",
+        "GOLD -",
+        "RISK_PREMIUM -",
+        "EQUITIES +"
       ],
       "confidence": 87,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/c5y74lwx395o?at_medium=RSS&at_campaign=rss",
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/us-iran-strike-upbeat-tone-as-hormuz-deal-takes-shape/a-77274080?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-05-23",
-      "time": "<1h"
+      "time": "15h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Antes de que Europa nombre a alguien para hablar con Putin, debate qué discutir",
-        "en": "Before Europe Anoints Someone to Talk to Putin, It Debates What to Talk About"
+        "es": "Una vez copiloto de Trump contra Irán, Netanyahu es ahora solo un pasajero",
+        "en": "Once Trump's Co-Pilot Against Iran, Netanyahu Is Now a Mere Passenger"
       },
       "summary": {
-        "es": "Europa contempla designar un enviado para negociaciones sobre paz en Ucrania con Rusia, pero primero debe definir objetivos y límites. Esta cautela refleja divisiones estratégicas europeas sobre resolución de conflictos y tiene implicaciones para la cohesión de la UE y estabilidad de mercados de bonos europeos.",
-        "en": "Europe considers appointing envoy for Ukraine-Russia peace talks but must first define negotiation parameters and red lines. This deliberation reflects strategic European divisions on conflict resolution with implications for EU cohesion and eurozone bond stability."
+        "es": "Israel ha sido mayormente excluido de las negociaciones de paz con Irán, lo que representa un revés significativo para Netanyahu con riesgos geopolíticos considerables. Esta desalineación entre aliados estadounidenses crea incertidumbre sobre compromisos de seguridad regional y potencial escalada unilateral israelí.",
+        "en": "Israel has been largely excluded from peace negotiations with Iran, representing a significant setback for Netanyahu with considerable geopolitical risks. This misalignment among US allies creates uncertainty over regional security commitments and potential unilateral Israeli escalation."
       },
       "impact": "medium",
       "signals": [
-        "EUR ?",
-        "BONDS ?",
-        "EQUITIES ?"
+        "EQUITIES ?",
+        "USD ?",
+        "GOLD +",
+        "RISK_PREMIUM ?"
       ],
-      "confidence": 78,
+      "confidence": 82,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/22/world/europe/ukraine-russia-putin-europe-peace-talks.html",
-      "published_at": "2026-05-22",
-      "time": "23h"
+      "source_url": "https://www.nytimes.com/2026/05/23/world/middleeast/israel-trump-iran.html",
+      "published_at": "2026-05-23",
+      "time": "17h"
     }
-  ],
-  "market_updated_at": "2026-05-24T08:11:55.637Z"
+  ]
 }
