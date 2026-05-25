@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git stash *)",
+      "Bash(git checkout *)",
+      "Bash(git push *)",
+      "WebFetch(domain:zenith-risecapital.lmgomeze77.workers.dev)",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git pull *)",
+      "WebFetch(domain:zenithrisecapital.com)",
+      "Bash(curl -sI https://zenithrisecapital.com)",
+      "Bash(curl -sI https://www.zenithrisecapital.com)",
+      "WebFetch(domain:www.zenithrisecapital.com)"
+    ]
+  }
+}
