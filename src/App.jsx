@@ -7,6 +7,7 @@ import Community from "./pages/community/Community";
 import InnerCircleAccess from "./pages/innercircle/InnerCircleAccess";
 import ProtectedInnerCircle from "./pages/innercircle/ProtectedInnerCircle";
 import PricingPage from "./pages/PricingPage";
+import MacroPulse from "./pages/intelligence/MacroPulse";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.3
@@ -558,8 +559,8 @@ const TOOLS = [
   },
   {
     name: "Macro Pulse",
-    desc: { es: "Tracker de señales de bancos centrales con NLP.", en: "Central bank signal tracker with NLP analysis." },
-    icon: "○", status: "Q3 2026", ml: true, requiredTier: "intelligence",
+    desc: { es: "Tracker de señales de bancos centrales con NLP. Ciclos de tipos, divergencia Fed–BCE, señales de cartera.", en: "Central bank signal tracker with NLP. Rate cycles, Fed–ECB divergence, portfolio signals." },
+    icon: "○", status: "BETA", ml: true, requiredTier: "intelligence",
   },
 ];
 
@@ -1075,6 +1076,7 @@ const Intelligence = ({ lang }) => {
   const [showGeoRisk, setShowGeoRisk] = useState(false);
   const [showVisor, setShowVisor] = useState(false);
   const [showFIS, setShowFIS] = useState(false);
+  const [showMacroPulse, setShowMacroPulse] = useState(false);
   const [upgradeTool, setUpgradeTool] = useState(null);
 
   const canAccess = (tool) => {
@@ -1088,6 +1090,7 @@ const Intelligence = ({ lang }) => {
     if (tool.name === "GeoRisk Dashboard") setShowGeoRisk(true);
     if (tool.name === "Real Estate Visor") setShowVisor(true);
     if (tool.name === "Financial Intelligence System") setShowFIS(true);
+    if (tool.name === "Macro Pulse") setShowMacroPulse(true);
   };
 
   return (
@@ -1209,6 +1212,12 @@ const Intelligence = ({ lang }) => {
       {showFIS && (
         <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <FinancialIntelligenceSystem onClose={() => setShowFIS(false)} />
+        </div>
+      )}
+
+      {showMacroPulse && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+          <MacroPulse onClose={() => setShowMacroPulse(false)} />
         </div>
       )}
     </Sec>
