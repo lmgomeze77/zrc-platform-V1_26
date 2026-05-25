@@ -378,14 +378,17 @@ const useHeadlines = (fallback) => {
 
 const useSubscription = (email) => {
   const [tier, setTier] = useState("free");
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    if (!email) { setTier("free"); return; }
-    fetch(`/api/subscription?email=${encodeURIComponent(email)}`)
+    if (!email) { setTier("free"); setLoading(false); return; }
+    setLoading(true);
+    const normalised = email.trim().toLowerCase();
+    fetch(`/api/subscription?email=${encodeURIComponent(normalised)}`)
       .then((r) => (r.ok ? r.json() : { tier: "free" }))
-      .then((d) => setTier(d.tier || "free"))
-      .catch(() => setTier("free"));
+      .then((d) => { setTier(d.tier || "free"); setLoading(false); })
+      .catch(() => { setTier("free"); setLoading(false); });
   }, [email]);
-  return tier;
+  return { tier, loading };
 };
 
 const FEED = [
@@ -1072,7 +1075,7 @@ const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => (
 const Intelligence = ({ lang }) => {
   const t = T[lang].intel;
   const { user, openPricing } = useAuth();
-  const tier = useSubscription(user?.email);
+  const { tier, loading: tierLoading } = useSubscription(user?.email);
   const [showGeoRisk, setShowGeoRisk] = useState(false);
   const [showVisor, setShowVisor] = useState(false);
   const [showFIS, setShowFIS] = useState(false);
@@ -1111,7 +1114,8 @@ const Intelligence = ({ lang }) => {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1 }}>
         {TOOLS.map((tool, i) => {
-          const locked = user && !canAccess(tool);
+          const locked = user && !tierLoading && !canAccess(tool);
+          const checking = user && tierLoading && !!tool.requiredTier;
           return (
             <FadeIn key={i} delay={i * 0.08}>
               <div style={{ padding: 28, background: C.surface, border: `1px solid ${locked ? C.goldBorder : C.border}`, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
@@ -1133,7 +1137,11 @@ const Intelligence = ({ lang }) => {
                   <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, fontWeight: 300 }}>{tool.desc[lang]}</p>
                 </div>
                 {user ? (
-                  locked ? (
+                  checking ? (
+                    <div style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em" }}>
+                      · · ·
+                    </div>
+                  ) : locked ? (
                     <button
                       onClick={() => setUpgradeTool(tool)}
                       style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}
@@ -1145,7 +1153,7 @@ const Intelligence = ({ lang }) => {
                       onClick={() => handleLaunch(tool)}
                       style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}
                     >
-                      {tool.status === "LIVE" ? "LAUNCH →" : tool.status === "BETA" ? "REQUEST ACCESS" : "NOTIFY ME"}
+                      {tool.status === "LIVE" ? "LAUNCH →" : tool.status === "BETA" ? "LAUNCH BETA →" : "NOTIFY ME"}
                     </button>
                   )
                 ) : (
@@ -1162,7 +1170,7 @@ const Intelligence = ({ lang }) => {
       {!user && <FadeIn delay={0.3}><LockedOverlay message={t.locked} lang={lang} /></FadeIn>}
 
       {/* Upgrade CTA for free members */}
-      {user && tier === "free" && (
+      {user && !tierLoading && tier === "free" && (
         <FadeIn delay={0.3}>
           <div style={{ marginTop: 28, padding: "20px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
             <div>
