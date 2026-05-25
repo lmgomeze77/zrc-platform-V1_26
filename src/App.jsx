@@ -8,12 +8,13 @@ import InnerCircleAccess from "./pages/innercircle/InnerCircleAccess";
 import ProtectedInnerCircle from "./pages/innercircle/ProtectedInnerCircle";
 import PricingPage from "./pages/PricingPage";
 import MacroPulse from "./pages/intelligence/MacroPulse";
+import GeoRiskML from "./pages/intelligence/GeoRiskML";
 
 // ══════════════════════════════════════════════════════════════════════════
-// ZENITH RISE CAPITAL — PLATFORM v3.3
-// Live ticker · Clickable hero nav · GeoRisk Dashboard integration
+// ZENITH RISE CAPITAL — PLATFORM v3.4
+// Live ticker · Clickable hero nav · GeoRisk Dashboard + GeoRiskML
 // Hero Background: Dark Overlay v1 — mapa, radar, montañas, nodos
-// + Financial Intelligence System (FIS)
+// + Financial Intelligence System (FIS) · + GeoRisk Predictive ML
 // ══════════════════════════════════════════════════════════════════════════
 
 const C = {
@@ -538,6 +539,11 @@ const TOOLS = [
   {
     name: "GeoRisk Dashboard",
     desc: { es: "Scoring de riesgo geopolítico en tiempo real con sliders de escenario.", en: "Real-time geopolitical risk scoring with scenario sliders." },
+    icon: "◈", status: "LIVE", ml: true, requiredTier: null,
+  },
+  {
+    name: "GeoRisk Predictive ML",
+    desc: { es: "Análisis geopolítico predictivo con IA: forecast 12M, NLP analyzer, matriz de correlaciones y decision engine institucional.", en: "Predictive geopolitical intelligence with AI: 12M forecast, NLP analyzer, correlation matrix and institutional decision engine." },
     icon: "◈", status: "LIVE", ml: true, requiredTier: null,
   },
   {
@@ -1080,6 +1086,7 @@ const Intelligence = ({ lang }) => {
   const { user, openPricing } = useAuth();
   const { tier, loading: tierLoading } = useSubscription(user?.email);
   const [showGeoRisk, setShowGeoRisk] = useState(false);
+  const [showGeoRiskML, setShowGeoRiskML] = useState(false);
   const [showVisor, setShowVisor] = useState(false);
   const [showFIS, setShowFIS] = useState(false);
   const [showMacroPulse, setShowMacroPulse] = useState(false);
@@ -1094,6 +1101,7 @@ const Intelligence = ({ lang }) => {
   const handleLaunch = (tool) => {
     if (!canAccess(tool)) { setUpgradeTool(tool); return; }
     if (tool.name === "GeoRisk Dashboard") setShowGeoRisk(true);
+    if (tool.name === "GeoRisk Predictive ML") setShowGeoRiskML(true);
     if (tool.name === "Real Estate Visor") setShowVisor(true);
     if (tool.name === "Financial Intelligence System") setShowFIS(true);
     if (tool.name === "Macro Pulse") setShowMacroPulse(true);
@@ -1208,6 +1216,15 @@ const Intelligence = ({ lang }) => {
             ✕ CLOSE DASHBOARD
           </button>
           <GeoRiskDashboard />
+        </div>
+      )}
+
+      {showGeoRiskML && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+          <button onClick={() => setShowGeoRiskML(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
+            ✕ CLOSE ML DASHBOARD
+          </button>
+          <GeoRiskML />
         </div>
       )}
 
