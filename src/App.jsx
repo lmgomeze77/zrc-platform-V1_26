@@ -30,6 +30,9 @@ const F = {
   mono: "'IBM Plex Mono', 'Fira Code', monospace",
 };
 
+// API base — always hits the Cloudflare Worker regardless of frontend host
+const API_BASE = "https://zenith-risecapital.lmgomeze77.workers.dev";
+
 const AuthContext = createContext(null);
 const useAuth = () => useContext(AuthContext);
 
@@ -383,7 +386,7 @@ const useSubscription = (email) => {
     if (!email) { setTier("free"); setLoading(false); return; }
     setLoading(true);
     const normalised = email.trim().toLowerCase();
-    fetch(`/api/subscription?email=${encodeURIComponent(normalised)}`)
+    fetch(`${API_BASE}/api/subscription?email=${encodeURIComponent(normalised)}`)
       .then((r) => (r.ok ? r.json() : { tier: "free" }))
       .then((d) => { setTier(d.tier || "free"); setLoading(false); })
       .catch(() => { setTier("free"); setLoading(false); });
