@@ -1,248 +1,217 @@
 {
-  "generated_at": "2026-05-24T08:24:47.605Z",
+  "generated_at": "2026-05-25T09:58:46.886Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.16",
-      "change": "-0.05%",
+      "value": "1.1644",
+      "change": "-0.13",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17985.30",
-      "change": "0.06%",
+      "value": "18175.10",
+      "change": "+10.10",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "100.21",
-      "change": "0.71%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "96.60",
-      "change": "0.26%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4523.20",
-      "change": "-0.42%",
+      "symbol": "BRENT",
+      "value": "95.43",
+      "change": "-6.00",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "76988.00",
-      "change": "0.38%",
+      "symbol": "GOLD",
+      "value": "4500.00",
+      "change": "-23.20",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "76988",
+      "change": "+0.41",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "16.70",
-      "change": "-0.36%",
+      "value": "16.71",
+      "change": "-0.24",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.56",
-      "change": "-0.22%",
+      "symbol": "US 10Y",
+      "value": "4.558",
+      "change": "-0.026",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8638",
+      "change": "-0.0012",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7542",
-      "change": "0.92%",
+      "value": "7473.47",
+      "change": "+27.75",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25000",
-      "change": "0.70%",
+      "value": "24888.56",
+      "change": "+281.76",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8622",
-      "change": "-0.25%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.34",
-      "change": "0.02%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.895",
-      "change": "-0.86%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.37",
-      "change": "1.41%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.79",
-      "change": "-0.12%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Irán dice que se ha avanzado en muchos temas con EE.UU. pero advierte que el acuerdo no es 'inminente'",
+        "en": "Iran says progress made on many issues with US but warns deal not 'imminent'"
+      },
+      "summary": {
+        "es": "Negociaciones entre EE.UU. e Irán avanzan hacia un potencial acuerdo que incluiría una extensión de 60 días del alto el fuego, reapertura del Estrecho de Ormuz y nuevas conversaciones nucleares. Las señales mixtas sobre el cronograma del acuerdo generan incertidumbre en los mercados de energía y activos de riesgo.",
+        "en": "US-Iran negotiations advance toward potential deal including 60-day ceasefire extension, Strait of Hormuz reopening, and further nuclear talks. Mixed signals on deal timeline create uncertainty in energy markets and risk assets."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL -",
+        "EUR ?",
+        "GOLD -",
+        "EQUITIES +"
+      ],
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/25/iran-war-news-middle-east-crisis-oil-price-us-tehran-peace-talks-deal-strait-hormuz",
+      "published_at": "2026-05-25",
+      "time": "<1h"
+    },
+    {
+      "id": 2,
+      "tag": "DATA",
+      "region": "GLOBAL",
+      "title": {
+        "es": "Los precios del petróleo caen en medio de señales mixtas sobre el acuerdo entre EE.UU. e Irán",
+        "en": "Oil prices fall amid mixed signals on US-Iran peace deal"
+      },
+      "summary": {
+        "es": "Los precios del petróleo retroceden ante esperanzas de resolución del conflicto entre EE.UU. e Irán, mientras los mercados de valores japoneses alcanzan máximos históricos. La reapertura del Estrecho de Ormuz reduciría presiones sobre suministro global de energía.",
+        "en": "Oil prices decline on hopes of US-Iran conflict resolution, while Japanese equities hit record highs. Strait of Hormuz reopening would ease global energy supply pressures and reduce geopolitical risk premium."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL -",
+        "JPY +",
+        "EQUITIES +",
+        "GOLD -"
+      ],
+      "confidence": 85,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/2026/5/25/oil-prices-fall-amid-mixed-signals-on-us-iran-peace-deal?traffic_source=rss",
+      "published_at": "2026-05-25",
+      "time": "8h"
+    },
+    {
+      "id": 3,
       "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "Varios muertos y decenas de heridos en un ataque masivo ruso con drones y misiles en la región de Kyiv",
-        "en": "Several dead, dozens injured in massive Russian drone and missile attack on Kyiv region"
+        "es": "No sabemos cuál es el número de muertos entre personal militar: Kiiv se tambalea por los ataques rusos",
+        "en": "'We don't know what the death toll among military personnel is': Kyiv reels from Russian strikes"
       },
       "summary": {
-        "es": "Rusia ejecutó un ataque masivo con misiles hipersónicos Oreshnik contra Kyiv tras prometer represalias por ataques ucranianos. Al menos cuatro muertos y decenas de heridos marcan una escalada en la intensidad del conflicto con implicaciones para la seguridad energética europea y el financiamiento de defensa.",
-        "en": "Russia executed a massive attack using Oreshnik hypersonic missiles against Kyiv after vowing retaliation for Ukrainian strikes. At least four killed and dozens wounded mark an escalation in conflict intensity with implications for European energy security and defense funding."
+        "es": "Rusia ejecuta nuevos ataques masivos con drones y misiles contra Kiiv, con bajas militares sin cuantificar aún. La escalación continua de ataques contra infraestructura ucraniana amplifica riesgos de prolongación del conflicto y potencial ampliación regional.",
+        "en": "Russia conducts fresh large-scale drone and missile strikes on Kyiv with unquantified military casualties. Ongoing escalation of attacks on Ukrainian infrastructure amplifies conflict duration risks and potential regional expansion concerns."
       },
       "impact": "high",
       "signals": [
         "EUR -",
-        "EQUITIES ?",
-        "DEFENSE +",
+        "GOLD +",
+        "EQUITIES -",
         "BONDS +"
       ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260524-russian-ballistic-missile-attack-hits-kyiv-after-moscow-vows-retaliation",
-      "published_at": "2026-05-24",
-      "time": "6h"
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "Crisis de Oriente Medio en directo: Rubio ve progreso inicial en reapertura del Estrecho de Ormuz tras afirmación de Trump",
-        "en": "Middle East crisis live: Rubio sees initial progress on reopening Hormuz after Trump claims Iran deal 'largely negotiated'"
-      },
-      "summary": {
-        "es": "El Secretario de Estado estadounidense indicó que un acuerdo sobre el Estrecho de Ormuz podría anunciarse en horas, con Trump afirmando que el pacto con Irán está 'prácticamente negociado'. La reapertura de este chokepoint estratégico tendría implicaciones inmediatas para precios de petróleo y seguros marítimos globales.",
-        "en": "US Secretary of State indicated an agreement on Strait of Hormuz could be announced within hours, with Trump claiming the Iran deal is 'largely negotiated.' Reopening this strategic chokepoint would have immediate implications for global oil prices and maritime insurance costs."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL -",
-        "GOLD -",
-        "EQUITIES +",
-        "USD -"
-      ],
       "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/may/24/iran-deal-strait-of-hormuz-trump-middle-east-crisis-live",
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/we-don-t-know-what-the-death-toll-among-military-personnel-is-kyiv-reels-from-russian-strikes",
       "published_at": "2026-05-24",
-      "time": "<1h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "La guerra de Estados Unidos e Israel contra Irán en directo: Irán afirma que el borrador del acuerdo incluye fin de la guerra y levantamiento de sanciones al petróleo iraní",
-        "en": "US-Israel war against Iran live: Iran claims draft agreement includes end of war and lifting of sanctions on Iranian oil"
-      },
-      "summary": {
-        "es": "Irán reporta que el borrador del acuerdo con EE.UU. contempla el cese de hostilidades y el levantamiento de sanciones petroleras, mientras Trump confirma avances 'significativos'. La potencial normalización de exportaciones de crudo iraní podría rebalancar mercados de energía global y afectar dinámicas de precios de commodities.",
-        "en": "Iran reports the draft agreement with the US includes cessation of hostilities and lifting of oil sanctions, while Trump confirms 'significant progress.' Potential normalization of Iranian crude exports could rebalance global energy markets and affect commodity price dynamics."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL -",
-        "GOLD -",
-        "EQUITIES +",
-        "USD -"
-      ],
-      "confidence": 88,
-      "source": "El País",
-      "source_url": "https://elpais.com/internacional/2026-05-24/la-guerra-de-estados-unidos-e-israel-contra-iran-en-directo.html",
-      "published_at": "2026-05-24",
-      "time": "<1h"
+      "time": "13h"
     },
     {
       "id": 4,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Sobreviví a un ataque con misil en el Estrecho de Ormuz, pero mi amigo aún no ha sido encontrado",
-        "en": "I survived a missile strike in the Strait of Hormuz, but my friend has not been found"
+        "es": "Un ataque ruso a gran escala contra Ucrania deja cuatro muertos y decenas de heridos",
+        "en": "Large-scale Russian attack on Ukraine leaves four dead and dozens injured"
       },
       "summary": {
-        "es": "Un buque cisterna fue alcanzado por misiles en el Estrecho de Ormuz al inicio de la guerra con Irán, dejando víctimas y desaparecidos. Este incidente ilustra los riesgos operacionales en una de las rutas marítimas más críticas para el comercio de petróleo global, impactando seguros y primas de riesgo.",
-        "en": "An oil tanker was struck by missiles in the Strait of Hormuz at the start of the Iran war, resulting in casualties and missing crew. This incident illustrates operational risks in one of the world's most critical maritime routes for crude oil trade, impacting insurance costs and risk premiums."
+        "es": "Rusia confirma el uso del misil hipersónico Oreshnik en tercer ataque contra Kiiv, marcando escalada en capacidades de armas empleadas. Francia y Alemania condenan el uso de esta tecnología, señalando intensificación de conflicto sin señales de negociaciones.",
+        "en": "Russia confirms third use of hypersonic Oreshnik missile against Kyiv, marking escalation in weapon capabilities deployed. France and Germany condemn use, signaling conflict intensification without negotiation signals."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "SHIPPING +",
-        "EQUITIES ?",
-        "GOLD +"
+        "EUR -",
+        "GOLD +",
+        "DEFENSE +",
+        "EQUITIES -"
       ],
-      "confidence": 85,
+      "confidence": 92,
       "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/ce8pn63q771o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-23",
-      "time": "9h"
+      "source_url": "https://www.bbc.com/news/articles/clyp6831yp5o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-25",
+      "time": "5h"
     },
     {
       "id": 5,
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "EE.UU. e Irán establecen un tono optimista mientras toma forma el acuerdo sobre Ormuz",
-        "en": "US, Iran strike upbeat tone as Hormuz deal takes shape"
+        "es": "Los ataques israelíes golpean Líbano a pesar de las señales de que EE.UU. e Irán están cerca de un acuerdo de paz",
+        "en": "Israeli strikes pound Lebanon despite signs US and Iran are close to peace deal"
       },
       "summary": {
-        "es": "Trump indicó progreso en negociaciones con Irán sobre el Estrecho de Ormuz, aunque Teherán advierte sobre brechas importantes. Las conversaciones sobre la reapertura de este paso estratégico podrían transformar la dinámica de precios de energía y reducir primas de riesgo geopolítico en mercados globales.",
-        "en": "Trump signaled progress in talks with Iran on Strait of Hormuz, though Tehran warned major gaps remain. Negotiations over reopening this strategic passage could transform energy pricing dynamics and reduce geopolitical risk premiums in global markets."
+        "es": "Israel continúa ataques contra sur y este de Líbano mientras se reporta avance en negociaciones entre EE.UU. e Irán. La fragilidad del alto el fuego Israel-Hezbollah y los ataques simultáneos generan riesgo de escalada regional independiente de acuerdos diplomáticos.",
+        "en": "Israel continues strikes on southern and eastern Lebanon while US-Iran negotiations advance. Fragile Israel-Hezbollah ceasefire and simultaneous attacks create risk of regional escalation independent of diplomatic agreements."
       },
       "impact": "high",
       "signals": [
-        "OIL -",
-        "GOLD -",
-        "RISK_PREMIUM -",
-        "EQUITIES +"
+        "OIL +",
+        "GOLD +",
+        "MENA EQUITIES -",
+        "BONDS +"
       ],
       "confidence": 87,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-iran-strike-upbeat-tone-as-hormuz-deal-takes-shape/a-77274080?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-23",
-      "time": "15h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/may/24/israeli-strikes-pound-lebanon",
+      "published_at": "2026-05-24",
+      "time": "14h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Una vez copiloto de Trump contra Irán, Netanyahu es ahora solo un pasajero",
-        "en": "Once Trump's Co-Pilot Against Iran, Netanyahu Is Now a Mere Passenger"
+        "es": "Irán: día 87 de guerra, Trump dice que EE.UU. no tiene prisa por firmar acuerdo, decepcionando el optimismo",
+        "en": "Iran war day 87: Trump says US not in rush to sign deal, dashing optimism"
       },
       "summary": {
-        "es": "Israel ha sido mayormente excluido de las negociaciones de paz con Irán, lo que representa un revés significativo para Netanyahu con riesgos geopolíticos considerables. Esta desalineación entre aliados estadounidenses crea incertidumbre sobre compromisos de seguridad regional y potencial escalada unilateral israelí.",
-        "en": "Israel has been largely excluded from peace negotiations with Iran, representing a significant setback for Netanyahu with considerable geopolitical risks. This misalignment among US allies creates uncertainty over regional security commitments and potential unilateral Israeli escalation."
+        "es": "Trump modera expectativas sobre timeline de acuerdo con Irán, mientras medios iraníes reportan desacuerdos sobre temas clave. El cambio de tono reduce esperanzas inmediatas de resolución, generando presión en precios de petróleo y volatilidad en mercados de riesgo.",
+        "en": "Trump tempers expectations on Iran deal timeline while Iranian media report disagreements on key issues. Tone shift reduces near-term resolution hopes, creating oil price pressure and risk-market volatility."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "EQUITIES ?",
-        "USD ?",
+        "OIL +",
+        "EQUITIES -",
         "GOLD +",
-        "RISK_PREMIUM ?"
+        "BONDS +"
       ],
-      "confidence": 82,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/23/world/middleeast/israel-trump-iran.html",
-      "published_at": "2026-05-23",
-      "time": "17h"
+      "confidence": 86,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/5/25/iran-war-day-87-trump-says-us-not-in-rush-to-sign-deal-dashing-optimism?traffic_source=rss",
+      "published_at": "2026-05-25",
+      "time": "2h"
     }
-  ],
-  "market_updated_at": "2026-05-25T09:42:37.600Z"
+  ]
 }
