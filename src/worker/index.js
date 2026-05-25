@@ -32,6 +32,7 @@ export default {
     if (url.pathname === "/api/subscription" && request.method === "GET")
       return handleSubscriptionCheck(request, env);
 
+
     if (url.pathname === "/api/claude" && request.method === "POST")
       return handleClaude(request, env);
 
