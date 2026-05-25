@@ -1385,11 +1385,6 @@ const ZRCPlatform = () => {
   const [lang, setLang] = useState("es");
   const [icPage, setIcPage] = useState(null);
 
-  useEffect(() => {
-    const hasAccess = localStorage.getItem("zrc-inner-circle-access");
-    if (hasAccess === "true") setIcPage("inner-circle-private");
-  }, []);
-
   const onNav = (id) => {
     if (id === "inner-circle") { setIcPage("inner-circle"); return; }
     if (id === "hero") {
