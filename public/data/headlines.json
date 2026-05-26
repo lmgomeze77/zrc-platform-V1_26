@@ -1,248 +1,214 @@
 {
-  "generated_at": "2026-05-25T09:58:46.886Z",
+  "generated_at": "2026-05-26T09:44:59.314Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
       "value": "1.1644",
-      "change": "-0.06%",
-      "up": false
+      "change": "+0.36",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18328",
-      "change": "+1.90%",
+      "value": "17850",
+      "change": "+1.00",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "98.11",
-      "change": "+0.89%",
+      "change": "+0.89",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "91.39",
-      "change": "+0.45%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
+      "symbol": "GOLD",
       "value": "4529.47",
-      "change": "-0.68%",
+      "change": "-0.20",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "76683.00",
-      "change": "-0.38%",
+      "symbol": "BTC",
+      "value": "77786",
+      "change": "-0.60",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "16.68",
-      "change": "-0.12%",
+      "value": "16.59",
+      "change": "-0.66",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.51%",
-      "change": "+0.02%",
-      "up": true
+      "symbol": "US 10Y",
+      "value": "4.38",
+      "change": "-0.25",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8632",
+      "change": "-0.08",
+      "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7473.47",
-      "change": "+0.37%",
+      "change": "+0.37",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24889",
-      "change": "+1.15%",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8626",
-      "change": "+0.11%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.96",
-      "change": "-0.28%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.02",
-      "change": "-4.28%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.37",
-      "change": "-0.74%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7948",
-      "change": "+0.00%",
+      "value": "25240.71",
+      "change": "+1.41",
       "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Irán dice que se ha avanzado en muchos temas con EE.UU. pero advierte que el acuerdo no es 'inminente'",
-        "en": "Iran says progress made on many issues with US but warns deal not 'imminent'"
+        "es": "Israel intensifica ataques aéreos en Líbano y promete 'aplastar' a Hezbollah",
+        "en": "Israel pounds Lebanon with fresh air strikes, vows to 'crush' Hezbollah"
       },
       "summary": {
-        "es": "Negociaciones entre EE.UU. e Irán avanzan hacia un potencial acuerdo que incluiría una extensión de 60 días del alto el fuego, reapertura del Estrecho de Ormuz y nuevas conversaciones nucleares. Las señales mixtas sobre el cronograma del acuerdo generan incertidumbre en los mercados de energía y activos de riesgo.",
-        "en": "US-Iran negotiations advance toward potential deal including 60-day ceasefire extension, Strait of Hormuz reopening, and further nuclear talks. Mixed signals on deal timeline create uncertainty in energy markets and risk assets."
+        "es": "Israel intensificó los ataques aéreos en Líbano después de que Netanyahu prometiera aplastar a Hezbollah, profundizando los temores de un conflicto regional más amplio. La escalada ocurre a pesar de un alto el fuego en abril y mientras se desarrollan nuevas negociaciones entre EE.UU. e Irán en Doha.",
+        "en": "Israel intensified air strikes across Lebanon after PM Netanyahu vowed to crush Hezbollah, deepening fears of wider regional conflict. The escalation occurs despite an April ceasefire and amid ongoing US-Iran negotiations in Doha."
       },
       "impact": "high",
       "signals": [
-        "OIL -",
-        "EUR ?",
-        "GOLD -",
-        "EQUITIES +"
+        "OIL +",
+        "EQUITIES -",
+        "GOLD +",
+        "USD +"
       ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/may/25/iran-war-news-middle-east-crisis-oil-price-us-tehran-peace-talks-deal-strait-hormuz",
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260525-israel-steps-up-lebanon-strikes-as-netanyahu-escalates-offensive",
       "published_at": "2026-05-25",
-      "time": "<1h"
+      "time": "14h"
     },
     {
       "id": 2,
-      "tag": "DATA",
-      "region": "GLOBAL",
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "es": "Los precios del petróleo caen en medio de señales mixtas sobre el acuerdo entre EE.UU. e Irán",
-        "en": "Oil prices fall amid mixed signals on US-Iran peace deal"
+        "es": "El ejército estadounidense dice que lanzó nuevos ataques contra el sur de Irán",
+        "en": "US military says it launched new strikes on southern Iran"
       },
       "summary": {
-        "es": "Los precios del petróleo retroceden ante esperanzas de resolución del conflicto entre EE.UU. e Irán, mientras los mercados de valores japoneses alcanzan máximos históricos. La reapertura del Estrecho de Ormuz reduciría presiones sobre suministro global de energía.",
-        "en": "Oil prices decline on hopes of US-Iran conflict resolution, while Japanese equities hit record highs. Strait of Hormuz reopening would ease global energy supply pressures and reduce geopolitical risk premium."
+        "es": "El Comando Central de EE.UU. confirma ataques de 'autodefensa' contra instalaciones militares en el sur de Irán. Los ataques se producen mientras negociadores iraníes sénior están en Qatar para conversaciones de paz, señalando una dinámica contradictoria de escalada militar simultánea a los esfuerzos diplomáticos.",
+        "en": "US Central Command confirms 'self-defense' strikes on military facilities in southern Iran. Strikes occur as senior Iranian negotiators are in Qatar for peace talks, creating contradictory dynamics of military escalation alongside diplomatic efforts."
       },
       "impact": "high",
       "signals": [
-        "OIL -",
-        "JPY +",
-        "EQUITIES +",
-        "GOLD -"
+        "OIL +",
+        "EQUITIES -",
+        "GOLD +",
+        "USD +"
       ],
-      "confidence": 85,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/5/25/oil-prices-fall-amid-mixed-signals-on-us-iran-peace-deal?traffic_source=rss",
-      "published_at": "2026-05-25",
-      "time": "8h"
+      "confidence": 90,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/us-military-says-it-launched-new-strikes-on-southern-iran/live-77284965?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-26",
+      "time": "2h"
     },
     {
       "id": 3,
       "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "No sabemos cuál es el número de muertos entre personal militar: Kiiv se tambalea por los ataques rusos",
-        "en": "'We don't know what the death toll among military personnel is': Kyiv reels from Russian strikes"
+        "es": "Rusia amenaza con nuevos ataques contra Kiev y advierte a extranjeros que se vayan",
+        "en": "Russia threatens fresh Kyiv strikes, warns foreigners to leave"
       },
       "summary": {
-        "es": "Rusia ejecuta nuevos ataques masivos con drones y misiles contra Kiiv, con bajas militares sin cuantificar aún. La escalación continua de ataques contra infraestructura ucraniana amplifica riesgos de prolongación del conflicto y potencial ampliación regional.",
-        "en": "Russia conducts fresh large-scale drone and missile strikes on Kyiv with unquantified military casualties. Ongoing escalation of attacks on Ukrainian infrastructure amplifies conflict duration risks and potential regional expansion concerns."
+        "es": "Rusia advirtió que intensificará los ataques contra Kiev, dirigiéndose a centros de 'toma de decisiones', tras una descarga de drones, misiles e hipersónicos que mató a cuatro personas. La advertencia indica una escalada en la intensidad de los ataques y riesgo geopolítico para diplomáticos y civiles extranjeros.",
+        "en": "Russia warned of intensified strikes on Kyiv targeting 'decision-making centres' following weekend barrage of drones, missiles, and hypersonic weapons. Warning indicates escalation in attack intensity and geopolitical risk for foreign diplomats and civilians."
       },
       "impact": "high",
       "signals": [
         "EUR -",
-        "GOLD +",
         "EQUITIES -",
+        "GOLD +",
         "BONDS +"
       ],
-      "confidence": 90,
+      "confidence": 91,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/we-don-t-know-what-the-death-toll-among-military-personnel-is-kyiv-reels-from-russian-strikes",
-      "published_at": "2026-05-24",
-      "time": "13h"
+      "source_url": "https://www.france24.com/en/europe/20260525-russia-threatens-fresh-kyiv-strikes-warns-foreigners-to-leave",
+      "published_at": "2026-05-25",
+      "time": "14h"
     },
     {
       "id": 4,
-      "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "es": "Un ataque ruso a gran escala contra Ucrania deja cuatro muertos y decenas de heridos",
-        "en": "Large-scale Russian attack on Ukraine leaves four dead and dozens injured"
-      },
-      "summary": {
-        "es": "Rusia confirma el uso del misil hipersónico Oreshnik en tercer ataque contra Kiiv, marcando escalada en capacidades de armas empleadas. Francia y Alemania condenan el uso de esta tecnología, señalando intensificación de conflicto sin señales de negociaciones.",
-        "en": "Russia confirms third use of hypersonic Oreshnik missile against Kyiv, marking escalation in weapon capabilities deployed. France and Germany condemn use, signaling conflict intensification without negotiation signals."
-      },
-      "impact": "high",
-      "signals": [
-        "EUR -",
-        "GOLD +",
-        "DEFENSE +",
-        "EQUITIES -"
-      ],
-      "confidence": 92,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/clyp6831yp5o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-25",
-      "time": "5h"
-    },
-    {
-      "id": 5,
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Los ataques israelíes golpean Líbano a pesar de las señales de que EE.UU. e Irán están cerca de un acuerdo de paz",
-        "en": "Israeli strikes pound Lebanon despite signs US and Iran are close to peace deal"
+        "es": "Medio Oriente: Rubio dice que acuerdo con Irán 'podría tomar días'",
+        "en": "Middle East: Rubio says Iran deal 'could take days'"
       },
       "summary": {
-        "es": "Israel continúa ataques contra sur y este de Líbano mientras se reporta avance en negociaciones entre EE.UU. e Irán. La fragilidad del alto el fuego Israel-Hezbollah y los ataques simultáneos generan riesgo de escalada regional independiente de acuerdos diplomáticos.",
-        "en": "Israel continues strikes on southern and eastern Lebanon while US-Iran negotiations advance. Fragile Israel-Hezbollah ceasefire and simultaneous attacks create risk of regional escalation independent of diplomatic agreements."
+        "es": "El Secretario de Estado Rubio afirmó que un acuerdo sigue siendo posible a pesar de los recientes ataques estadounidenses contra Irán. La declaración sugiere que las negociaciones de paz continúan en paralelo a la escalada militar, con potencial para reapertura del Estrecho de Hormuz y alivio del comercio global de petróleo.",
+        "en": "US Secretary of State Rubio stated a deal remains possible despite recent US strikes on Iran. Statement suggests peace negotiations continue parallel to military escalation, with potential for Strait of Hormuz reopening and global oil trade relief."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "GOLD +",
-        "MENA EQUITIES -",
+        "OIL -",
+        "EQUITIES +",
+        "USD ?"
+      ],
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/middle-east-rubio-says-iran-deal-could-take-days/live-77292206?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-26",
+      "time": "<1h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Briefing de martes: Con inquietud creciente en casa, ¿qué sigue para el líder aislado de Rusia?",
+        "en": "Tuesday briefing: With unease at home spreading, what next for Russia's isolated leader?"
+      },
+      "summary": {
+        "es": "Reportaje analiza la disminución de aprobación de Putin y el descontento que se expande desde la sociedad general hasta círculos del Kremlin. La debilidad política interna de Rusia durante el conflicto en Ucrania tiene implicaciones para la durabilidad de su estrategia geopolítica y riesgos de escalada impredecible.",
+        "en": "Analysis examines Putin's declining approval ratings and spreading discontent from broader society to Kremlin circles. Russia's internal political weakness during Ukraine conflict has implications for geopolitical strategy durability and risks of unpredictable escalation."
+      },
+      "impact": "medium",
+      "signals": [
+        "EUR ?",
+        "EQUITIES ?",
         "BONDS +"
       ],
-      "confidence": 87,
+      "confidence": 75,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/24/israeli-strikes-pound-lebanon",
-      "published_at": "2026-05-24",
-      "time": "14h"
+      "source_url": "https://www.theguardian.com/world/2026/may/26/tuesday-briefing-with-unease-at-home-spreading-what-next-for-russias-isolated-leader",
+      "published_at": "2026-05-26",
+      "time": "3h"
     },
     {
       "id": 6,
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Irán: día 87 de guerra, Trump dice que EE.UU. no tiene prisa por firmar acuerdo, decepcionando el optimismo",
-        "en": "Iran war day 87: Trump says US not in rush to sign deal, dashing optimism"
+        "es": "Donald Trump busca un acuerdo que neutralizaría el stock de uranio altamente enriquecido de Irán",
+        "en": "Donald Trump seeks a deal that would neutralize Iran's highly enriched uranium stockpile"
       },
       "summary": {
-        "es": "Trump modera expectativas sobre timeline de acuerdo con Irán, mientras medios iraníes reportan desacuerdos sobre temas clave. El cambio de tono reduce esperanzas inmediatas de resolución, generando presión en precios de petróleo y volatilidad en mercados de riesgo.",
-        "en": "Trump tempers expectations on Iran deal timeline while Iranian media report disagreements on key issues. Tone shift reduces near-term resolution hopes, creating oil price pressure and risk-market volatility."
+        "es": "Trump busca lograr un acuerdo superior al de 2015 sobre el programa nuclear iraní, enfocándose en neutralizar el stock de uranio altamente enriquecido. Irán se resiste a conceder una victoria simbólica a Washington, lo que crea una tensión fundamental entre los objetivos estadounidenses de no proliferación y el orgullo político iraní.",
+        "en": "Trump seeks to achieve an agreement superior to 2015 regarding Iran's nuclear program, focusing on neutralizing highly enriched uranium stockpile. Iran resists conceding symbolic victory to Washington, creating fundamental tension between US non-proliferation objectives and Iranian political pride."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES -",
-        "GOLD +",
-        "BONDS +"
+        "EQUITIES ?",
+        "GOLD +"
       ],
-      "confidence": 86,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/5/25/iran-war-day-87-trump-says-us-not-in-rush-to-sign-deal-dashing-optimism?traffic_source=rss",
-      "published_at": "2026-05-25",
-      "time": "2h"
+      "confidence": 82,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/05/26/donald-trump-en-quete-d-un-accord-qui-neutraliserait-le-stock-d-uranium-hautement-enrichi-iranien_6693863_3210.html",
+      "published_at": "2026-05-26",
+      "time": "1h"
     }
-  ],
-  "market_updated_at": "2026-05-26T09:30:23.466Z"
+  ]
 }
