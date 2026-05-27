@@ -817,7 +817,7 @@ const MarketTicker = ({ lang }) => {
 
   if (data.length === 0) {
     return (
-      <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, height: 40, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, position: "fixed", top: 0, left: 0, right: 0, height: 44, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 101 }}>
         <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em" }}>LOADING MARKET DATA…</span>
       </div>
     );
@@ -826,10 +826,10 @@ const MarketTicker = ({ lang }) => {
   const doubled = [...data, ...data];
 
   return (
-    <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflow: "hidden", position: "relative", height: 40 }}>
+    <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflow: "hidden", position: "fixed", top: 0, left: 0, right: 0, height: 44, zIndex: 101 }}>
       <div style={{ display: "flex", alignItems: "center", position: "absolute", whiteSpace: "nowrap", animation: "tickerScroll 60s linear infinite" }}>
         {doubled.map((m, i) => (
-          <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "0 28px", height: 40 }}>
+          <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "0 28px", height: 44 }}>
             <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.05em" }}>{m.s}</span>
             <span style={{ fontFamily: F.mono, fontSize: 11, color: C.text, fontWeight: 500 }}>{m.v}</span>
             <span style={{ fontFamily: F.mono, fontSize: 10, color: m.up ? C.green : C.red, fontWeight: 500 }}>{m.c}</span>
@@ -859,8 +859,8 @@ const Nav = ({ lang, setLang, onNav }) => {
   }, []);
 
   return (
-    <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: scrolled ? "rgba(9,9,11,0.92)" : "transparent", backdropFilter: scrolled ? "blur(24px)" : "none", borderBottom: scrolled ? `1px solid ${C.border}` : "1px solid transparent", transition: "all 0.5s" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 66, padding: "0 clamp(20px,3vw,40px)" }}>
+    <nav style={{ position: "fixed", top: 44, left: 0, right: 0, zIndex: 100, background: scrolled ? "rgba(9,9,11,0.95)" : "rgba(9,9,11,0.7)", backdropFilter: "blur(20px)", borderBottom: `1px solid ${scrolled ? C.border : "rgba(255,255,255,0.06)"}`, transition: "all 0.4s" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 76, padding: "0 clamp(20px,3vw,40px)" }}>
         <div onClick={() => onNav("hero")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}>
           <div style={{ width: 24, height: 24, border: `1.5px solid ${C.gold}`, transform: "rotate(45deg)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{ width: 6, height: 6, background: C.gold, transform: "rotate(-45deg)" }} />
@@ -918,7 +918,7 @@ const Hero = ({ lang, onNav }) => {
         alignItems: "center",
         position: "relative",
         overflow: "hidden",
-        padding: "80px clamp(16px,4vw,48px) 60px",
+        padding: "132px clamp(16px,4vw,48px) 60px",
         background: "#09090B",
       }}
     >
