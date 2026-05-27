@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { supabase } from "../../lib/supabase";
+
+// Always call the Cloudflare Worker — works regardless of frontend host
+const IC_API = "https://zenith-risecapital.lmgomeze77.workers.dev";
+const IC_EMAIL_KEY = "zrc-ic-email"; // localStorage key for email pre-fill
 
 const G = "#D4A853";
 const PROFILE_CATEGORIES = [
@@ -33,9 +36,9 @@ const labelStyle = {
   marginBottom:6,
 };
 
-export default function InnerCircleAccess({ onBack }) {
-  const [mode, setMode]     = useState("check"); // "check" | "request"
-  const [email, setEmail]   = useState("");
+export default function InnerCircleAccess({ onBack, onApproved }) {
+  const [mode, setMode]     = useState("check");
+  const [email, setEmail]   = useState(() => localStorage.getItem(IC_EMAIL_KEY) || "");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -53,45 +56,26 @@ export default function InnerCircleAccess({ onBack }) {
     setLoading(true); setMessage("");
 
     const cleanEmail = email.trim().toLowerCase();
+    localStorage.setItem(IC_EMAIL_KEY, cleanEmail); // remember for next time
 
     try {
-      if (supabase) {
-        const { data } = await supabase
-          .from("inner_circle_members")
-          .select("status")
-          .eq("email", cleanEmail)
-          .single();
+      const res = await fetch(
+        `${IC_API}/api/inner-circle/check?email=${encodeURIComponent(cleanEmail)}`
+      );
+      const data = await res.json();
 
-        if (data?.status === "approved") {
-          localStorage.setItem("zrc-inner-circle-access", "true");
-          setLoading(false);
-          window.location.reload();
-          return;
-        }
-        if (data?.status === "pending") {
-          setMessage("Tu solicitud está siendo revisada. Te contactaremos pronto.");
-          setLoading(false);
-          return;
-        }
-      } else {
-        // Fallback: Render.com API
-        const res = await fetch("https://zrc-api.onrender.com/api/inner-circle/check", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: cleanEmail }),
-        });
-        const data = await res.json();
-        if (data.approved) {
-          localStorage.setItem("zrc-inner-circle-access", "true");
-          setLoading(false);
-          window.location.reload();
-          return;
-        }
-        if (data.status === "pending") {
-          setMessage("Tu solicitud está siendo revisada. Te contactaremos pronto.");
-          setLoading(false);
-          return;
-        }
+      if (data.status === "approved") {
+        setLoading(false);
+        if (onApproved) { onApproved(); return; }
+        // Fallback if parent doesn't pass onApproved
+        localStorage.setItem("zrc-inner-circle-access", "true");
+        window.location.reload();
+        return;
+      }
+      if (data.status === "pending") {
+        setMessage("Tu solicitud está siendo revisada. Te contactaremos pronto.");
+        setLoading(false);
+        return;
       }
     } catch {
       setMessage("Error de conexión. Inténtalo de nuevo.");
@@ -112,42 +96,28 @@ export default function InnerCircleAccess({ onBack }) {
 
     const cleanEmail = email.trim().toLowerCase();
 
-    if (!supabase) {
-      // Without Supabase, mark as submitted and notify via email fallback
-      setSubmitted(true);
-      setLoading(false);
-      return;
-    }
-
     try {
-      const { data: existing } = await supabase
-        .from("inner_circle_members")
-        .select("status")
-        .eq("email", cleanEmail)
-        .single();
-
-      if (existing) {
-        setMessage(existing.status === "approved"
-          ? "Este email ya tiene acceso. Usa el formulario anterior."
-          : "Ya tenemos una solicitud de este email. Te contactaremos pronto.");
-        setLoading(false); return;
-      }
-
-      const { error } = await supabase
-        .from("inner_circle_members")
-        .insert({
+      const res = await fetch(`${IC_API}/api/inner-circle/apply`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           email: cleanEmail,
           name: name.trim(),
           organization: org.trim() || null,
           profile_category: profile,
           reason: reason.trim() || null,
-          status: "pending",
-        });
+        }),
+      });
+      const data = await res.json();
 
-      if (error) {
-        setMessage("Error al enviar la solicitud. Inténtalo de nuevo.");
-      } else {
+      if (data.ok) {
         setSubmitted(true);
+      } else if (data.error === "already_approved") {
+        setMessage("Este email ya tiene acceso. Usa el formulario anterior.");
+      } else if (data.error === "already_pending") {
+        setMessage("Ya tenemos una solicitud de este email. Te contactaremos pronto.");
+      } else {
+        setMessage(data.error || "Error al enviar la solicitud. Inténtalo de nuevo.");
       }
     } catch {
       setMessage("Error de conexión. Inténtalo de nuevo.");

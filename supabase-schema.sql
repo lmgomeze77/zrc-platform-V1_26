@@ -1,50 +1,71 @@
 -- ============================================================
 -- ZRC PLATFORM — Supabase Schema
 -- Run this in Supabase SQL Editor to set up everything needed
+-- Safe to re-run: all statements use IF NOT EXISTS / ON CONFLICT
 -- ============================================================
 
--- ── 1. INNER CIRCLE MEMBERS TABLE ───────────────────────────
-CREATE TABLE IF NOT EXISTS inner_circle_members (
-  id               uuid        DEFAULT gen_random_uuid() PRIMARY KEY,
-  email            text        NOT NULL UNIQUE,
-  name             text,
-  organization     text,
-  profile_category text,
-  reason           text,
-  status           text        NOT NULL DEFAULT 'pending'
-                               CHECK (status IN ('pending','approved','rejected')),
-  notes            text,
-  created_at       timestamptz DEFAULT now(),
-  approved_at      timestamptz
+-- ── 1. SUBSCRIPTIONS TABLE (Stripe-linked tiers) ─────────────
+CREATE TABLE IF NOT EXISTS subscriptions (
+  id                     uuid        DEFAULT gen_random_uuid() PRIMARY KEY,
+  email                  text        NOT NULL UNIQUE,
+  tier                   text        NOT NULL DEFAULT 'free',    -- 'free' | 'intelligence' | 'institutional'
+  status                 text        NOT NULL DEFAULT 'active',  -- 'active' | 'inactive' | 'past_due' | 'cancelled'
+  stripe_customer_id     text,
+  stripe_subscription_id text,
+  created_at             timestamptz DEFAULT now(),
+  updated_at             timestamptz DEFAULT now()
 );
 
--- Index for fast email lookups
-CREATE INDEX IF NOT EXISTS idx_inner_circle_email ON inner_circle_members(email);
+CREATE INDEX IF NOT EXISTS idx_subscriptions_stripe_customer
+  ON subscriptions(stripe_customer_id);
 
--- ── 2. ROW LEVEL SECURITY ────────────────────────────────────
+ALTER TABLE subscriptions ENABLE ROW LEVEL SECURITY;
+-- Service role bypasses RLS automatically — no policy needed for the Worker.
+
+-- To grant free access to a founding member (no Stripe payment required):
+-- INSERT INTO subscriptions (email, tier, status)
+-- VALUES ('member@example.com', 'intelligence', 'active')
+-- ON CONFLICT (email) DO UPDATE
+--   SET tier = excluded.tier, status = excluded.status, updated_at = now();
+
+
+-- ── 2. INNER CIRCLE MEMBERS TABLE ───────────────────────────
+CREATE TABLE IF NOT EXISTS inner_circle_members (
+  id                 uuid        DEFAULT gen_random_uuid() PRIMARY KEY,
+  email              text        NOT NULL UNIQUE,
+  name               text,
+  organization       text,
+  profile_category   text,
+  reason             text,
+  status             text        NOT NULL DEFAULT 'pending'
+                                 CHECK (status IN ('pending','approved','rejected')),
+  notes              text,
+  welcome_email_sent boolean     NOT NULL DEFAULT false,
+  created_at         timestamptz DEFAULT now(),
+  approved_at        timestamptz,
+  updated_at         timestamptz DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_inner_circle_email  ON inner_circle_members(email);
+CREATE INDEX IF NOT EXISTS idx_inner_circle_status ON inner_circle_members(status);
+
 ALTER TABLE inner_circle_members ENABLE ROW LEVEL SECURITY;
+-- Service role (Worker) bypasses RLS automatically.
+-- All reads/writes go through the Cloudflare Worker using the service_role key.
+-- No anon policies needed.
 
--- Allow anonymous users to check their own status (for the access gate)
-CREATE POLICY IF NOT EXISTS "anon can check own status"
-  ON inner_circle_members FOR SELECT TO anon
-  USING (true);
-
--- Allow anonymous users to submit membership applications
-CREATE POLICY IF NOT EXISTS "anon can apply"
-  ON inner_circle_members FOR INSERT TO anon
-  WITH CHECK (status = 'pending');
-
--- ── 3. ADD COLUMNS (safe to run multiple times) ──────────────
+-- Add new columns to existing tables (safe if already present):
 ALTER TABLE inner_circle_members
-  ADD COLUMN IF NOT EXISTS profile_category text,
-  ADD COLUMN IF NOT EXISTS organization      text,
-  ADD COLUMN IF NOT EXISTS reason            text;
+  ADD COLUMN IF NOT EXISTS welcome_email_sent boolean NOT NULL DEFAULT false,
+  ADD COLUMN IF NOT EXISTS updated_at         timestamptz DEFAULT now();
 
--- ── 4. SEED YOUR ACCOUNT AS APPROVED ────────────────────────
-INSERT INTO inner_circle_members (email, name, status, approved_at)
-VALUES ('luis@zenithrisecapital.com', 'Luis Miguel Gómez', 'approved', now())
+
+-- ── 3. SEED YOUR ACCOUNT AS APPROVED ────────────────────────
+INSERT INTO inner_circle_members (email, name, status, approved_at, welcome_email_sent)
+VALUES ('luis@zenithrisecapital.com', 'Luis Miguel Gómez', 'approved', now(), true)
 ON CONFLICT (email) DO UPDATE
-  SET status = 'approved', approved_at = now();
+  SET status = 'approved', approved_at = now(), welcome_email_sent = true;
+
 
 -- ============================================================
 -- USEFUL QUERIES FOR DAILY MANAGEMENT
@@ -56,7 +77,11 @@ ON CONFLICT (email) DO UPDATE
 -- WHERE status = 'pending'
 -- ORDER BY created_at DESC;
 
--- APPROVE A MEMBER (triggers webhook → sends approval email)
+-- APPROVE A MEMBER via one-click link (recommended):
+--   Click the APPROVE button in the email you receive from ZRC Inner Circle.
+--   This calls the Worker endpoint which approves + sends the welcome email.
+
+-- APPROVE A MEMBER manually via SQL (Edge Function webhook sends welcome email):
 -- UPDATE inner_circle_members
 -- SET status = 'approved', approved_at = now()
 -- WHERE email = 'applicant@email.com';
@@ -69,33 +94,32 @@ ON CONFLICT (email) DO UPDATE
 -- VIEW ALL MEMBERS BY STATUS
 -- SELECT status, count(*) FROM inner_circle_members GROUP BY status;
 
+
 -- ============================================================
--- EDGE FUNCTION SETUP (run once in Supabase CLI or Dashboard)
+-- EDGE FUNCTION SETUP (backup path — fires on manual SQL approval)
 -- ============================================================
+-- The primary approval path is the one-click APPROVE link in the admin email
+-- (Worker endpoint). The Edge Function is a backup for manual SQL approvals.
+--
 -- 1. Deploy the function:
 --    supabase functions deploy inner-circle-notifications
 --
--- 2. Set secrets:
---    supabase secrets set RESEND_API_KEY=re_xxxxxxxxxxxx
---    supabase secrets set ADMIN_EMAIL=luis@zenithrisecapital.com
+-- 2. Set secrets in Supabase Dashboard → Edge Functions → Secrets:
+--    RESEND_API_KEY   = re_xxxxxxxxxxxx
+--    ADMIN_EMAIL      = luis@zenithrisecapital.com
 --
--- 3. Create TWO Database Webhooks in Supabase Dashboard:
+-- 3. Create ONE Database Webhook in Supabase Dashboard:
 --    Dashboard → Database → Webhooks → Create webhook
 --
---    WEBHOOK A — New Applications:
---      Name:   inner-circle-new-application
---      Table:  inner_circle_members
---      Events: INSERT
---      URL:    https://<project-ref>.supabase.co/functions/v1/inner-circle-notifications
---      Header: Authorization: Bearer <service_role_key>
---
---    WEBHOOK B — Approvals:
+--    WEBHOOK — Approvals only:
 --      Name:   inner-circle-approval
 --      Table:  inner_circle_members
---      Events: UPDATE
+--      Events: UPDATE (only)
 --      URL:    https://<project-ref>.supabase.co/functions/v1/inner-circle-notifications
 --      Header: Authorization: Bearer <service_role_key>
 --
--- NOTE: Both webhooks point to the SAME function.
---       The function detects INSERT vs UPDATE automatically.
+--    NOTE: Only the UPDATE webhook is needed.
+--          Admin notification emails are sent by the Worker on apply.
+--          The Edge Function only sends the welcome email on manual SQL approval
+--          (when welcome_email_sent is false — prevents double-send with Worker).
 -- ============================================================

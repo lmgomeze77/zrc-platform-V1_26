@@ -1427,7 +1427,13 @@ const ZRCPlatform = () => {
 
       {icPage === "inner-circle" && (
         <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
-          <InnerCircleAccess onBack={() => setIcPage(null)} />
+          <InnerCircleAccess
+            onBack={() => setIcPage(null)}
+            onApproved={() => {
+              localStorage.setItem("zrc-inner-circle-access", "true");
+              setIcPage("inner-circle-private");
+            }}
+          />
         </div>
       )}
       {icPage === "inner-circle-private" && (

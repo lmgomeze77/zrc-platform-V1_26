@@ -36,6 +36,15 @@ export default {
     if (url.pathname === "/api/claude" && request.method === "POST")
       return handleClaude(request, env);
 
+    if (url.pathname === "/api/inner-circle/check" && request.method === "GET")
+      return handleInnerCircleCheck(request, env);
+
+    if (url.pathname === "/api/inner-circle/apply" && request.method === "POST")
+      return handleInnerCircleApply(request, env);
+
+    if (url.pathname === "/api/inner-circle/approve" && request.method === "GET")
+      return handleInnerCircleApprove(request, env);
+
     if (url.pathname.startsWith("/api/"))
       return jsonResponse({ error: "Not found" }, 404);
 
@@ -437,6 +446,297 @@ function welcomeEmailHTML({ email, sector }) {
     </div>
   </div>
 </body></html>`;
+}
+
+// ============================================================
+// /api/inner-circle/check?email=
+// ============================================================
+async function handleInnerCircleCheck(request, env) {
+  const url = new URL(request.url);
+  const email = url.searchParams.get("email");
+
+  if (!email || !isValidEmail(email))
+    return jsonResponse({ status: "not_found" });
+
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
+    return jsonResponse({ status: "not_found" });
+
+  try {
+    const resp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/inner_circle_members?email=eq.${encodeURIComponent(email.trim().toLowerCase())}&select=status&limit=1`,
+      {
+        headers: {
+          apikey: env.SUPABASE_SERVICE_KEY,
+          Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+        },
+      }
+    );
+    if (!resp.ok) return jsonResponse({ status: "not_found" });
+    const data = await resp.json();
+    return jsonResponse({ status: data?.[0]?.status || "not_found" });
+  } catch (err) {
+    console.error("IC check error:", err);
+    return jsonResponse({ status: "not_found" });
+  }
+}
+
+// ============================================================
+// /api/inner-circle/apply  (POST)
+// ============================================================
+async function handleInnerCircleApply(request, env) {
+  let payload;
+  try { payload = await request.json(); } catch {
+    return jsonResponse({ error: "Invalid JSON" }, 400);
+  }
+
+  const { email, name, organization, profile_category, reason } = payload;
+
+  if (!email || !isValidEmail(email))
+    return jsonResponse({ error: "Email inválido" }, 400);
+  if (!name || name.trim().length < 2)
+    return jsonResponse({ error: "Nombre requerido" }, 400);
+
+  const cleanEmail = email.trim().toLowerCase();
+
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
+    return jsonResponse({ error: "Service unavailable" }, 503);
+
+  // Check if already exists
+  try {
+    const checkResp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/inner_circle_members?email=eq.${encodeURIComponent(cleanEmail)}&select=status&limit=1`,
+      { headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` } }
+    );
+    if (checkResp.ok) {
+      const existing = await checkResp.json();
+      if (existing?.[0]) {
+        if (existing[0].status === "approved")
+          return jsonResponse({ ok: false, error: "already_approved" });
+        return jsonResponse({ ok: false, error: "already_pending" });
+      }
+    }
+  } catch { /* proceed to insert */ }
+
+  // Insert application
+  try {
+    const insertResp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/inner_circle_members`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: env.SUPABASE_SERVICE_KEY,
+          Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify({
+          email: cleanEmail,
+          name: name.trim(),
+          organization: organization?.trim() || null,
+          profile_category: profile_category || null,
+          reason: reason?.trim() || null,
+          status: "pending",
+        }),
+      }
+    );
+    if (!insertResp.ok && insertResp.status !== 201) {
+      const txt = await insertResp.text();
+      console.error("IC insert error:", insertResp.status, txt);
+      return jsonResponse({ error: "Error al guardar la solicitud" }, 500);
+    }
+  } catch (err) {
+    console.error("IC insert error:", err);
+    return jsonResponse({ error: "Error al guardar la solicitud" }, 500);
+  }
+
+  // Send admin notification email with one-click approve button
+  if (env.RESEND_API_KEY) {
+    try {
+      const adminToken = env.INNER_CIRCLE_ADMIN_TOKEN || "";
+      const approveUrl = `https://zenith-risecapital.lmgomeze77.workers.dev/api/inner-circle/approve?token=${encodeURIComponent(adminToken)}&email=${encodeURIComponent(cleanEmail)}`;
+      await sendResendEmail(env, {
+        from: "ZRC Inner Circle <noreply@zenithrisecapital.com>",
+        to: env.NOTIFY_EMAIL || "luis@zenithrisecapital.com",
+        subject: `⭕ Nueva solicitud Inner Circle — ${name.trim()}`,
+        html: icAdminEmailHTML({ name: name.trim(), email: cleanEmail, organization: organization?.trim(), profile_category, reason: reason?.trim(), approveUrl }),
+      });
+    } catch (err) {
+      console.error("IC admin email error:", err);
+    }
+  }
+
+  return jsonResponse({ ok: true });
+}
+
+// ============================================================
+// /api/inner-circle/approve?token=&email=
+// ============================================================
+async function handleInnerCircleApprove(request, env) {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("token");
+  const email = url.searchParams.get("email");
+
+  const adminToken = env.INNER_CIRCLE_ADMIN_TOKEN;
+  if (!adminToken || token !== adminToken)
+    return new Response("Unauthorized", { status: 403 });
+
+  if (!email || !isValidEmail(email))
+    return new Response("Invalid email", { status: 400 });
+
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
+    return new Response("Service unavailable", { status: 503 });
+
+  const cleanEmail = email.trim().toLowerCase();
+
+  // Fetch current member record
+  let member = null;
+  try {
+    const checkResp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/inner_circle_members?email=eq.${encodeURIComponent(cleanEmail)}&select=id,name,status,welcome_email_sent&limit=1`,
+      { headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` } }
+    );
+    if (checkResp.ok) {
+      const data = await checkResp.json();
+      member = data?.[0] || null;
+    }
+  } catch { /* proceed */ }
+
+  if (!member)
+    return htmlResponse(icApproveResultHTML({ success: false, email: cleanEmail, message: "Solicitud no encontrada." }));
+
+  if (member.status === "approved")
+    return htmlResponse(icApproveResultHTML({ success: true, alreadyApproved: true, name: member.name, email: cleanEmail }));
+
+  // Approve: set status, approved_at, welcome_email_sent=true (prevent Edge Function double-send)
+  try {
+    const patchResp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/inner_circle_members?email=eq.${encodeURIComponent(cleanEmail)}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: env.SUPABASE_SERVICE_KEY,
+          Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+        },
+        body: JSON.stringify({
+          status: "approved",
+          approved_at: new Date().toISOString(),
+          welcome_email_sent: true,
+          updated_at: new Date().toISOString(),
+        }),
+      }
+    );
+    if (!patchResp.ok) {
+      const txt = await patchResp.text();
+      console.error("IC approve PATCH error:", patchResp.status, txt);
+      return htmlResponse(icApproveResultHTML({ success: false, email: cleanEmail, message: "Error al actualizar en base de datos." }));
+    }
+  } catch (err) {
+    console.error("IC approve error:", err);
+    return htmlResponse(icApproveResultHTML({ success: false, email: cleanEmail, message: "Error de conexión." }));
+  }
+
+  // Send welcome email
+  if (env.RESEND_API_KEY) {
+    try {
+      await sendResendEmail(env, {
+        from: "Zenith Rise Capital <noreply@zenithrisecapital.com>",
+        to: cleanEmail,
+        subject: "Bienvenido al Inner Circle · Zenith Rise Capital",
+        html: icWelcomeEmailHTML({ name: member.name, email: cleanEmail }),
+      });
+    } catch (err) {
+      console.error("IC welcome email error:", err);
+    }
+  }
+
+  return htmlResponse(icApproveResultHTML({ success: true, name: member.name, email: cleanEmail }));
+}
+
+// ============================================================
+// INNER CIRCLE EMAIL TEMPLATES
+// ============================================================
+function icAdminEmailHTML({ name, email, organization, profile_category, reason, approveUrl }) {
+  return `<!DOCTYPE html>
+<html><body style="font-family:'Helvetica Neue',sans-serif;background:#09090B;color:#FAFAFA;padding:32px;margin:0;">
+  <div style="max-width:560px;margin:0 auto;background:#111113;border:1px solid rgba(212,168,83,0.3);padding:40px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.25em;color:#D4A853;text-transform:uppercase;margin-bottom:8px;">
+      ZRC INNER CIRCLE
+    </div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;color:#E8E0CC;margin:0 0 28px;">
+      Nueva solicitud de acceso
+    </h2>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:28px;">
+      <tr><td style="padding:8px 0;color:#71717A;width:150px;vertical-align:top;">Nombre</td><td style="padding:8px 0;color:#FAFAFA;"><strong>${escapeHTML(name)}</strong></td></tr>
+      <tr><td style="padding:8px 0;color:#71717A;vertical-align:top;">Email</td><td style="padding:8px 0;color:#D4A853;font-family:'IBM Plex Mono',monospace;font-size:12px;">${escapeHTML(email)}</td></tr>
+      ${organization ? `<tr><td style="padding:8px 0;color:#71717A;vertical-align:top;">Organización</td><td style="padding:8px 0;color:#FAFAFA;">${escapeHTML(organization)}</td></tr>` : ""}
+      ${profile_category ? `<tr><td style="padding:8px 0;color:#71717A;vertical-align:top;">Perfil</td><td style="padding:8px 0;color:#FAFAFA;">${escapeHTML(profile_category)}</td></tr>` : ""}
+      ${reason ? `<tr><td style="padding:8px 0;color:#71717A;vertical-align:top;">Motivo</td><td style="padding:8px 0;color:#FAFAFA;line-height:1.6;">${escapeHTML(reason)}</td></tr>` : ""}
+    </table>
+    <a href="${approveUrl}" style="display:block;text-align:center;padding:16px 28px;background:#D4A853;color:#000;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.35em;text-transform:uppercase;font-weight:700;margin-bottom:16px;">
+      ✓ APROBAR ACCESO
+    </a>
+    <p style="font-size:11px;color:#52525B;text-align:center;line-height:1.6;margin:0 0 20px;">
+      Un clic aprueba al miembro y le envía el email de bienvenida automáticamente.
+    </p>
+    <div style="padding:16px;background:#0A0A0C;border:1px solid #27272A;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#52525B;line-height:1.8;">
+      Alternativa SQL:<br>
+      UPDATE inner_circle_members<br>
+      SET status = 'approved', approved_at = now()<br>
+      WHERE email = '${escapeHTML(email)}';
+    </div>
+    <div style="margin-top:24px;padding-top:16px;border-top:1px solid #27272A;font-size:11px;color:#52525B;">
+      Zenith Rise Capital · Inner Circle
+    </div>
+  </div>
+</body></html>`;
+}
+
+function icWelcomeEmailHTML({ name, email }) {
+  const firstName = escapeHTML((name || email).split(" ")[0]);
+  return `<!DOCTYPE html>
+<html><body style="font-family:'Helvetica Neue',sans-serif;background:#06080C;color:#E8E0CC;padding:32px;margin:0;">
+  <div style="max-width:520px;margin:0 auto;background:#09090B;border:1px solid rgba(212,168,83,0.25);padding:48px 40px;">
+    <div style="text-align:center;margin-bottom:36px;">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.45em;color:rgba(212,168,83,0.6);text-transform:uppercase;margin:0;">ZRC CONFIDENCIAL</p>
+    </div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:34px;font-style:italic;color:#E8E0CC;text-align:center;margin:0 0 14px;">
+      Bienvenido, ${firstName}.
+    </h1>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(232,224,204,0.45);text-align:center;line-height:1.7;margin:0 0 40px;">
+      Tu solicitud ha sido aprobada.<br>Formas parte del Inner Circle.
+    </p>
+    <div style="background:rgba(212,168,83,0.05);border:1px solid rgba(212,168,83,0.2);padding:24px;margin-bottom:32px;">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(212,168,83,0.7);text-transform:uppercase;margin:0 0 14px;">Cómo acceder</p>
+      <ol style="font-size:14px;color:rgba(232,224,204,0.7);line-height:2.2;margin:0;padding-left:20px;">
+        <li>Visita <strong style="color:#D4A853;">zenithrisecapital.com</strong></li>
+        <li>Navega hasta la sección <strong>Community</strong></li>
+        <li>Haz clic en <strong>Inner Circle</strong></li>
+        <li>Introduce este email:<br><strong style="color:#D4A853;">${escapeHTML(email)}</strong></li>
+      </ol>
+    </div>
+    <a href="https://www.zenithrisecapital.com" style="display:block;text-align:center;padding:14px 28px;background:rgba(212,168,83,0.1);color:#D4A853;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;border:1px solid rgba(212,168,83,0.3);">
+      ACCEDER AL INNER CIRCLE →
+    </a>
+    <div style="margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.05);font-size:11px;color:rgba(232,224,204,0.2);text-align:center;line-height:1.7;">
+      Zenith Rise Capital · Inner Circle<br>zenithrisecapital.com
+    </div>
+  </div>
+</body></html>`;
+}
+
+function icApproveResultHTML({ success, name, email, message, alreadyApproved }) {
+  const bg = "#06080C", gold = "#D4A853";
+  const base = `font-family:'Helvetica Neue',sans-serif;background:${bg};color:#E8E0CC;min-height:100vh;display:flex;align-items:center;justify-content:center;margin:0;padding:24px;box-sizing:border-box;`;
+  if (alreadyApproved) return `<!DOCTYPE html><html><body style="${base}"><div style="max-width:380px;width:100%;text-align:center;"><p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.3em;color:rgba(212,168,83,0.5);margin-bottom:20px;">ZRC INNER CIRCLE</p><div style="font-size:36px;margin-bottom:16px;color:${gold};">ℹ</div><h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;color:#E8E0CC;margin:0 0 12px;">Ya aprobado</h2><p style="font-size:14px;color:rgba(232,224,204,0.5);line-height:1.6;">${escapeHTML(name || email)} ya tiene acceso.</p></div></body></html>`;
+  if (success) return `<!DOCTYPE html><html><body style="${base}"><div style="max-width:380px;width:100%;text-align:center;"><p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.3em;color:rgba(212,168,83,0.5);margin-bottom:20px;">ZRC INNER CIRCLE</p><div style="width:56px;height:56px;border-radius:50%;border:1px solid rgba(212,168,83,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:26px;color:${gold};">✓</div><h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:30px;color:#E8E0CC;margin:0 0 12px;">Aprobado</h2><p style="font-size:15px;color:rgba(232,224,204,0.6);line-height:1.6;margin:0 0 8px;"><strong style="color:#E8E0CC;">${escapeHTML(name || email)}</strong></p><p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(212,168,83,0.6);">Email de bienvenida enviado →</p></div></body></html>`;
+  return `<!DOCTYPE html><html><body style="${base}"><div style="max-width:380px;width:100%;text-align:center;"><p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.3em;color:rgba(212,168,83,0.5);margin-bottom:20px;">ZRC INNER CIRCLE</p><div style="font-size:36px;margin-bottom:16px;">✗</div><h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;color:#E8E0CC;margin:0 0 12px;">Error</h2><p style="font-size:14px;color:rgba(232,224,204,0.5);line-height:1.6;">${escapeHTML(message || "Error desconocido")}</p></div></body></html>`;
+}
+
+function htmlResponse(body) {
+  return new Response(body, {
+    headers: { "Content-Type": "text/html; charset=utf-8" },
+  });
 }
 
 function escapeHTML(s) {
