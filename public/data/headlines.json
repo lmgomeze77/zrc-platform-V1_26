@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-05-26T09:44:59.314Z",
+  "generated_at": "2026-05-27T09:38:53.169Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1634",
-      "change": "+0.03%",
-      "up": true
+      "value": "1.1638",
+      "change": "-0.12",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17773.81",
-      "change": "+0.16%",
+      "value": "18387.40",
+      "change": "+402.10",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "95.48",
-      "change": "+2.21%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "92.04",
-      "change": "-4.72%",
+      "symbol": "BRENT",
+      "value": "99.18",
+      "change": "-0.41",
       "up": false
     },
     {
       "symbol": "GOLD",
-      "value": "4537.50",
-      "change": "+0.32%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "76550.78",
-      "change": "-0.97%",
+      "value": "4550",
+      "change": "-1.00",
       "up": false
     },
     {
-      "symbol": "VIX",
-      "value": "16.75",
-      "change": "+0.96%",
+      "symbol": "BTC",
+      "value": "76054.20",
+      "change": "+375.64",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.4880",
-      "change": "-1.86%",
+      "symbol": "VIX",
+      "value": "16.76",
+      "change": "+0.17",
+      "up": true
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.49",
+      "change": "-0.07",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8620",
+      "change": "-0.0019",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7517.40",
-      "change": "+0.59%",
+      "value": "7519.12",
+      "change": "+45.65",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25389.10",
-      "change": "+2.01%",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8637",
-      "change": "-0.12%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.037",
-      "change": "+0.12%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.92",
-      "change": "-1.65%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.20",
-      "change": "-3.08%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "7.28",
-      "change": "-0.41%",
+      "value": "25184.89",
+      "change": "-174.86",
       "up": false
     }
   ],
@@ -98,148 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Israel intensifica ataques aéreos en Líbano y promete 'aplastar' a Hezbollah",
-        "en": "Israel pounds Lebanon with fresh air strikes, vows to 'crush' Hezbollah"
+        "es": "Crisis de Oriente Medio en directo: Israel bombardea masivamente el Líbano y mata a líder senior de Hamás en Gaza",
+        "en": "Middle East crisis live: Israel hits Lebanon with huge bombing raid and kills senior Hamas leader in Gaza"
       },
       "summary": {
-        "es": "Israel intensificó los ataques aéreos en Líbano después de que Netanyahu prometiera aplastar a Hezbollah, profundizando los temores de un conflicto regional más amplio. La escalada ocurre a pesar de un alto el fuego en abril y mientras se desarrollan nuevas negociaciones entre EE.UU. e Irán en Doha.",
-        "en": "Israel intensified air strikes across Lebanon after PM Netanyahu vowed to crush Hezbollah, deepening fears of wider regional conflict. The escalation occurs despite an April ceasefire and amid ongoing US-Iran negotiations in Doha."
+        "es": "Los ataques israelíes en el Líbano socavan el supuesto alto el fuego con Hezbollah mientras Irán acusa a EE.UU. de violar un tratado separado. La escalada amenaza la estabilidad regional y las negociaciones diplomáticas en curso.",
+        "en": "Israeli strikes on Lebanon undermine supposed ceasefire with Hezbollah while Iran accuses US of violating separate truce. The escalation threatens regional stability and ongoing diplomatic negotiations."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES -",
         "GOLD +",
+        "EQUITIES -",
         "USD +"
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260525-israel-steps-up-lebanon-strikes-as-netanyahu-escalates-offensive",
-      "published_at": "2026-05-25",
-      "time": "14h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/27/iran-war-us-update-live-israel-lebanon-strikes-latest-news-ceasefire-peace-talks-middle-east-live-updates",
+      "published_at": "2026-05-27",
+      "time": "<1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "El ejército estadounidense dice que lanzó nuevos ataques contra el sur de Irán",
-        "en": "US military says it launched new strikes on southern Iran"
+        "es": "Irán acusa a EE.UU. de violar el alto el fuego con ataques cerca del Estrecho de Ormuz",
+        "en": "Iran says US violated ceasefire with strikes near Hormuz"
       },
       "summary": {
-        "es": "El Comando Central de EE.UU. confirma ataques de 'autodefensa' contra instalaciones militares en el sur de Irán. Los ataques se producen mientras negociadores iraníes sénior están en Qatar para conversaciones de paz, señalando una dinámica contradictoria de escalada militar simultánea a los esfuerzos diplomáticos.",
-        "en": "US Central Command confirms 'self-defense' strikes on military facilities in southern Iran. Strikes occur as senior Iranian negotiators are in Qatar for peace talks, creating contradictory dynamics of military escalation alongside diplomatic efforts."
+        "es": "Irán acusa a Estados Unidos de incumplir un frágil alto el fuego con ataques aéreos cerca del Estrecho de Ormuz, después de casi siete semanas de conflicto. Washington argumenta que los ataques fueron defensivos contra sitios de misiles y buques que supuestamente colocaban minas.",
+        "en": "Iran accuses US of breaching fragile ceasefire with airstrikes near Strait of Hormuz after nearly seven weeks of conflict. Washington claims strikes were defensive against missile sites and mine-laying vessels."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "EQUITIES -",
+        "OIL +++",
+        "SHIPPING -",
         "GOLD +",
-        "USD +"
+        "EQUITIES -"
       ],
-      "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-military-says-it-launched-new-strikes-on-southern-iran/live-77284965?maca=en-rss-en-all-1573-rdf",
+      "confidence": 94,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260526-iran-says-us-violated-ceasefire-with-strikes-near-hormuz-war",
       "published_at": "2026-05-26",
-      "time": "2h"
+      "time": "11h"
     },
     {
       "id": 3,
       "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "es": "Rusia amenaza con nuevos ataques contra Kiev y advierte a extranjeros que se vayan",
-        "en": "Russia threatens fresh Kyiv strikes, warns foreigners to leave"
-      },
-      "summary": {
-        "es": "Rusia advirtió que intensificará los ataques contra Kiev, dirigiéndose a centros de 'toma de decisiones', tras una descarga de drones, misiles e hipersónicos que mató a cuatro personas. La advertencia indica una escalada en la intensidad de los ataques y riesgo geopolítico para diplomáticos y civiles extranjeros.",
-        "en": "Russia warned of intensified strikes on Kyiv targeting 'decision-making centres' following weekend barrage of drones, missiles, and hypersonic weapons. Warning indicates escalation in attack intensity and geopolitical risk for foreign diplomats and civilians."
-      },
-      "impact": "high",
-      "signals": [
-        "EUR -",
-        "EQUITIES -",
-        "GOLD +",
-        "BONDS +"
-      ],
-      "confidence": 91,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260525-russia-threatens-fresh-kyiv-strikes-warns-foreigners-to-leave",
-      "published_at": "2026-05-25",
-      "time": "14h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Medio Oriente: Rubio dice que acuerdo con Irán 'podría tomar días'",
-        "en": "Middle East: Rubio says Iran deal 'could take days'"
+        "es": "Decenas de muertos en el Líbano mientras Israel intensifica ataques",
+        "en": "Dozens killed in Lebanon as Israel intensifies strikes"
       },
       "summary": {
-        "es": "El Secretario de Estado Rubio afirmó que un acuerdo sigue siendo posible a pesar de los recientes ataques estadounidenses contra Irán. La declaración sugiere que las negociaciones de paz continúan en paralelo a la escalada militar, con potencial para reapertura del Estrecho de Hormuz y alivio del comercio global de petróleo.",
-        "en": "US Secretary of State Rubio stated a deal remains possible despite recent US strikes on Iran. Statement suggests peace negotiations continue parallel to military escalation, with potential for Strait of Hormuz reopening and global oil trade relief."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL -",
-        "EQUITIES +",
-        "USD ?"
-      ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/middle-east-rubio-says-iran-deal-could-take-days/live-77292206?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-26",
-      "time": "<1h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Briefing de martes: Con inquietud creciente en casa, ¿qué sigue para el líder aislado de Rusia?",
-        "en": "Tuesday briefing: With unease at home spreading, what next for Russia's isolated leader?"
-      },
-      "summary": {
-        "es": "Reportaje analiza la disminución de aprobación de Putin y el descontento que se expande desde la sociedad general hasta círculos del Kremlin. La debilidad política interna de Rusia durante el conflicto en Ucrania tiene implicaciones para la durabilidad de su estrategia geopolítica y riesgos de escalada impredecible.",
-        "en": "Analysis examines Putin's declining approval ratings and spreading discontent from broader society to Kremlin circles. Russia's internal political weakness during Ukraine conflict has implications for geopolitical strategy durability and risks of unpredictable escalation."
-      },
-      "impact": "medium",
-      "signals": [
-        "EUR ?",
-        "EQUITIES ?",
-        "BONDS +"
-      ],
-      "confidence": 75,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/26/tuesday-briefing-with-unease-at-home-spreading-what-next-for-russias-isolated-leader",
-      "published_at": "2026-05-26",
-      "time": "3h"
-    },
-    {
-      "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "Donald Trump busca un acuerdo que neutralizaría el stock de uranio altamente enriquecido de Irán",
-        "en": "Donald Trump seeks a deal that would neutralize Iran's highly enriched uranium stockpile"
-      },
-      "summary": {
-        "es": "Trump busca lograr un acuerdo superior al de 2015 sobre el programa nuclear iraní, enfocándose en neutralizar el stock de uranio altamente enriquecido. Irán se resiste a conceder una victoria simbólica a Washington, lo que crea una tensión fundamental entre los objetivos estadounidenses de no proliferación y el orgullo político iraní.",
-        "en": "Trump seeks to achieve an agreement superior to 2015 regarding Iran's nuclear program, focusing on neutralizing highly enriched uranium stockpile. Iran resists conceding symbolic victory to Washington, creating fundamental tension between US non-proliferation objectives and Iranian political pride."
+        "es": "Israel dice haber golpeado 100 sitios de infraestructura de Hezbollah en el Líbano, después de que el Primer Ministro Netanyahu promete 'aplastar' al grupo respaldado por Irán. La intensificación de ataques socava los esfuerzos diplomáticos para frenar la escalada.",
+        "en": "Israel claims to have struck 100 Hezbollah infrastructure sites in Lebanon after PM Netanyahu vows to 'crush' Iran-backed group. Attack intensification undermines diplomatic efforts to contain escalation."
       },
       "impact": "high",
       "signals": [
         "OIL +",
+        "GOLD +",
+        "EQUITIES -",
+        "USD +"
+      ],
+      "confidence": 90,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/cx211rgngp0o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-27",
+      "time": "5h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Las facturas de energía subirán para millones mientras el impacto de la guerra de Irán golpea",
+        "en": "Energy bills to rise for millions as impact of Iran war hits"
+      },
+      "summary": {
+        "es": "Los hogares del Reino Unido enfrentarán aumentos de 221 libras anuales en facturas de energía bajo el nuevo tope de precios del regulador, reflejo directo de la volatilidad de petróleo causada por la guerra en Irán. La transmisión de presión inflacionaria amenaza objetivos de política monetaria central.",
+        "en": "UK households face £221 annual energy bill increases under regulator's new price cap, directly reflecting oil volatility from Iran war. Pass-through of inflation pressure threatens central bank policy objectives."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL +",
+        "GBP -",
+        "INFLATION +",
+        "BONDS -"
+      ],
+      "confidence": 88,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/ce8pw464986o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-27",
+      "time": "1h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Putin ofrece condonación de deuda a nuevos reclutas para la guerra de Ucrania",
+        "en": "Putin offers debt relief to new recruits for Ukraine war"
+      },
+      "summary": {
+        "es": "Rusia cancelará deudas de hasta 10 millones de rublos para nuevos reclutas bajo decreto presidencial, mientras que una nueva ley permite el uso de fuerzas armadas rusas para proteger ciudadanos en el extranjero. Estas medidas señalan presión de recursos y potencial expansión geográfica del conflicto.",
+        "en": "Russia cancels debts up to 10 million rubles for new recruits via presidential decree while new law enables Russian armed forces to protect citizens abroad. Measures signal resource pressure and potential geographic conflict expansion."
+      },
+      "impact": "high",
+      "signals": [
+        "RUB -",
+        "EUR +",
         "EQUITIES ?",
+        "DEFENSE +"
+      ],
+      "confidence": 85,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/putin-offers-debt-relief-to-new-recruits-for-ukraine-war/a-77292937?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-26",
+      "time": "21h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "MENA",
+      "title": {
+        "es": "Israel intensifica ofensiva en el Líbano mientras EE.UU. presiona por acuerdo de paz con Irán",
+        "en": "Israel Steps Up Lebanon Offensive as U.S. Pushes for Iran Peace Deal"
+      },
+      "summary": {
+        "es": "La intensificación de ataques israelíes en el Líbano contra Hezbollah respaldado por Irán complica esfuerzos diplomáticos estadounidenses para alcanzar un acuerdo de paz con Teherán. Esta tensión entre operaciones militares e iniciativas diplomáticas crea incertidumbre sobre la trayectoria geopolítica regional.",
+        "en": "Israel's intensified attacks on Iranian-backed Hezbollah in Lebanon complicate US diplomatic efforts for Iran peace deal. Tension between military operations and diplomatic initiatives creates uncertainty over regional geopolitical trajectory."
+      },
+      "impact": "medium",
+      "signals": [
+        "OIL ?",
+        "EQUITIES -",
+        "USD +",
         "GOLD +"
       ],
       "confidence": 82,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/05/26/donald-trump-en-quete-d-un-accord-qui-neutraliserait-le-stock-d-uranium-hautement-enrichi-iranien_6693863_3210.html",
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/26/world/middleeast/israel-strikes-escalation-lebanon.html",
       "published_at": "2026-05-26",
-      "time": "1h"
+      "time": "17h"
     }
-  ],
-  "market_updated_at": "2026-05-27T08:55:39.559Z"
+  ]
 }
