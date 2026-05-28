@@ -1403,7 +1403,11 @@ const ZRCPlatform = () => {
   const [icPage, setIcPage] = useState(null);
 
   const onNav = (id) => {
-    if (id === "inner-circle") { setIcPage("inner-circle"); return; }
+    if (id === "inner-circle") {
+      const hasAccess = localStorage.getItem("zrc-inner-circle-access") === "true";
+      setIcPage(hasAccess ? "inner-circle-private" : "inner-circle");
+      return;
+    }
     if (id === "hero") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -1438,7 +1442,10 @@ const ZRCPlatform = () => {
       )}
       {icPage === "inner-circle-private" && (
         <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
-          <ProtectedInnerCircle onBack={() => setIcPage(null)} />
+          <ProtectedInnerCircle
+            onBack={() => setIcPage(null)}
+            onUnauthorized={() => setIcPage("inner-circle")}
+          />
         </div>
       )}
       <Nav lang={lang} setLang={setLang} onNav={onNav} />

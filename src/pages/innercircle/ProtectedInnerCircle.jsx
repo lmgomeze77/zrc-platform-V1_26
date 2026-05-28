@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import InnerCircle from "./InnerCircle";
 
-export default function ProtectedInnerCircle({ onBack }) {
+export default function ProtectedInnerCircle({ onBack, onUnauthorized }) {
   const [allowed, setAllowed] = useState(null);
 
   useEffect(() => {
@@ -12,7 +12,9 @@ export default function ProtectedInnerCircle({ onBack }) {
   if (allowed === null) return null;
 
   if (!allowed) {
-    if (onBack) { localStorage.removeItem("zrc-inner-circle-access"); onBack(); }
+    localStorage.removeItem("zrc-inner-circle-access");
+    const redirect = onUnauthorized || onBack;
+    if (redirect) redirect();
     return null;
   }
 
