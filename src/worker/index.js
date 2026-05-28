@@ -503,8 +503,29 @@ async function handleInnerCircleLogin(request, env) {
   const cleanEmail = email.trim().toLowerCase();
 
   try {
-    // Call the ic_verify_password RPC (bcrypt comparison in Supabase)
-    const resp = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/ic_verify_password`, {
+    // Step 1: fetch the member row directly
+    const memberResp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/inner_circle_members?email=eq.${encodeURIComponent(cleanEmail)}&select=status,password_hash&limit=1`,
+      {
+        headers: {
+          apikey: env.SUPABASE_SERVICE_KEY,
+          Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+        },
+      }
+    );
+    if (!memberResp.ok) return jsonResponse({ status: "denied" });
+    const members = await memberResp.json();
+    const member = members?.[0];
+
+    if (!member || member.status !== "approved")
+      return jsonResponse({ status: "denied" });
+
+    // Step 2a: no password set yet → allow (admin needs to run SQL to set passwords)
+    if (!member.password_hash)
+      return jsonResponse({ status: "approved" });
+
+    // Step 2b: password hash exists → verify via Supabase pgcrypto RPC
+    const rpcResp = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/ic_verify_password`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -514,11 +535,10 @@ async function handleInnerCircleLogin(request, env) {
       body: JSON.stringify({ p_email: cleanEmail, p_password: password }),
     });
 
-    if (!resp.ok) return jsonResponse({ status: "denied" });
-    const valid = await resp.json();
+    if (!rpcResp.ok) return jsonResponse({ status: "denied" });
+    const valid = await rpcResp.json();
 
-    if (valid === true) return jsonResponse({ status: "approved" });
-    return jsonResponse({ status: "denied" });
+    return jsonResponse({ status: valid === true ? "approved" : "denied" });
   } catch (err) {
     console.error("IC login error:", err);
     return jsonResponse({ status: "denied" });
