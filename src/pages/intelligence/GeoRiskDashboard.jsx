@@ -187,14 +187,20 @@ function analyzeText(text) {
 export default function GeoRiskDashboard() {
   const [activeScenario, setActiveScenario] = useState("tariff_escalation");
   const [sector, setSector] = useState("global");
-  const [scenarioWeights, setScenarioWeights] = useState(
-    Object.fromEntries(Object.entries(SCENARIOS).map(([k, v]) => [k, v.prob]))
-  );
+  const DEFAULT_WEIGHTS = Object.fromEntries(Object.entries(SCENARIOS).map(([k, v]) => [k, v.prob]));
+  const [scenarioWeights, setScenarioWeights] = useState(DEFAULT_WEIGHTS);
   const [nlpText, setNlpText] = useState("");
   const [nlpResult, setNlpResult] = useState(null);
   const [time, setTime] = useState(new Date());
   const [sparkData, setSparkData] = useState({});
   const [tab, setTab] = useState("scenarios");
+
+  const isCustomized = useMemo(() =>
+    Object.entries(scenarioWeights).some(([k, v]) => Math.abs(v - DEFAULT_WEIGHTS[k]) > 0.005),
+    [scenarioWeights]
+  );
+
+  const resetWeights = () => setScenarioWeights({ ...DEFAULT_WEIGHTS });
 
   useEffect(() => {
     const t = setInterval(() => setTime(new Date()), 1000);
@@ -345,7 +351,15 @@ export default function GeoRiskDashboard() {
           <DataTicker items={tickerItems} />
 
           <div style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 20, padding: "16px 0", alignItems: "center" }}>
-            <RiskGauge value={compositeRisk} size={110} label="Riesgo Compuesto" />
+            <div style={{ textAlign: "center" }}>
+              <RiskGauge value={compositeRisk} size={110} label="Riesgo Compuesto" />
+              <div style={{
+                fontSize: 9, fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginTop: 2,
+                color: isCustomized ? "#F59E0B" : "#10B981",
+              }}>
+                {isCustomized ? "▲ ESCENARIO PERSONALIZADO" : "● BASE ZRC RESEARCH"}
+              </div>
+            </div>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
               <span style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginRight: 4 }}>SECTOR:</span>
               {Object.entries(SECTORS).map(([k, v]) => (
@@ -388,53 +402,100 @@ export default function GeoRiskDashboard() {
           {/* SCENARIOS */}
           {tab === "scenarios" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 12 }}>
-                {Object.entries(SCENARIOS).map(([sk, sv]) => (
-                  <div key={sk} onClick={() => setActiveScenario(sk)} style={{
-                    background: activeScenario === sk ? "#0d1829" : "#0a1322",
-                    border: `1px solid ${activeScenario === sk ? sv.color + "60" : "#1a274440"}`,
-                    borderRadius: 6, padding: 16, cursor: "pointer",
-                    transition: "all 0.3s", position: "relative", overflow: "hidden"
-                  }}>
-                    {activeScenario === sk && <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${sv.color}, transparent)` }} />}
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
-                      <div>
-                        <div style={{ fontSize: 13, fontWeight: 600, color: sv.color, marginBottom: 2 }}>{sv.label}</div>
-                        <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace" }}>{sv.desc}</div>
-                      </div>
-                      <RiskGauge value={sv.risk} size={56} />
-                    </div>
-                    <div style={{ marginTop: 8 }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                        <span style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>PROBABILIDAD</span>
-                        <span style={{ fontSize: 14, fontWeight: 700, color: sv.color, fontFamily: "'JetBrains Mono', monospace" }}>
-                          {(scenarioWeights[sk] * 100).toFixed(0)}%
-                        </span>
-                      </div>
-                      <input type="range" min={0} max={80} value={scenarioWeights[sk] * 100}
-                        onClick={e => e.stopPropagation()}
-                        onChange={e => {
-                          const newW = { ...scenarioWeights, [sk]: parseInt(e.target.value) / 100 };
-                          setScenarioWeights(newW);
-                        }}
-                        style={{ width: "100%", accentColor: sv.color }}
-                      />
-                    </div>
-                    {activeScenario === sk && (
-                      <div style={{ marginTop: 12, paddingTop: 10, borderTop: `1px solid ${sv.color}20` }}>
-                        <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>
-                          VECTORES DE IMPACTO
-                        </div>
-                        {Object.entries(sv.impact).map(([vk, vi]) => (
-                          <div key={vk} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "3px 0" }}>
-                            <span style={{ fontSize: 11, color: "#94A3B8" }}>{ECONOMIC_VARIABLES[vk]?.label}</span>
-                            <MiniBar value={vi} max={1} color={sv.color} width={60} />
-                          </div>
-                        ))}
-                      </div>
-                    )}
+
+              {/* Methodology callout */}
+              <div style={{
+                background: "#0a1322", border: "1px solid #1e3a5f",
+                borderLeft: "3px solid #3B82F6",
+                borderRadius: 6, padding: "12px 16px", marginBottom: 16,
+                display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap",
+              }}>
+                <div>
+                  <div style={{ fontSize: 10, fontFamily: "'JetBrains Mono', monospace", color: "#3B82F6", letterSpacing: 1, marginBottom: 4 }}>
+                    METODOLOGÍA · SCORE COMPUESTO
                   </div>
-                ))}
+                  <div style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.6, maxWidth: 680 }}>
+                    El score es el promedio ponderado por probabilidad del riesgo intrínseco de cada escenario, ajustado por multiplicador sectorial.
+                    {" "}<span style={{ color: "#CBD5E1" }}>Las probabilidades por defecto son estimaciones del equipo ZRC Research.</span>
+                    {" "}Puedes ajustar los sliders para explorar escenarios propios — el score se recalcula en tiempo real.
+                    {" "}<span style={{ color: "#F59E0B" }}>Las modificaciones no reflejan el análisis oficial de ZRC.</span>
+                  </div>
+                </div>
+                {isCustomized && (
+                  <button onClick={resetWeights} style={{
+                    flexShrink: 0, padding: "6px 14px",
+                    background: "transparent", border: "1px solid #3B82F660",
+                    color: "#60A5FA", fontSize: 10, fontFamily: "'JetBrains Mono', monospace",
+                    letterSpacing: 1, cursor: "pointer", borderRadius: 4, whiteSpace: "nowrap",
+                    transition: "all 0.2s",
+                  }}>
+                    ↺ RESTABLECER VALORES ZRC
+                  </button>
+                )}
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 12 }}>
+                {Object.entries(SCENARIOS).map(([sk, sv]) => {
+                  const isModified = Math.abs(scenarioWeights[sk] - DEFAULT_WEIGHTS[sk]) > 0.005;
+                  return (
+                    <div key={sk} onClick={() => setActiveScenario(sk)} style={{
+                      background: activeScenario === sk ? "#0d1829" : "#0a1322",
+                      border: `1px solid ${activeScenario === sk ? sv.color + "60" : "#1a274440"}`,
+                      borderRadius: 6, padding: 16, cursor: "pointer",
+                      transition: "all 0.3s", position: "relative", overflow: "hidden"
+                    }}>
+                      {activeScenario === sk && <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${sv.color}, transparent)` }} />}
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
+                        <div>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: sv.color, marginBottom: 2 }}>{sv.label}</div>
+                          <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace" }}>{sv.desc}</div>
+                        </div>
+                        <RiskGauge value={sv.risk} size={56} />
+                      </div>
+                      <div style={{ marginTop: 8 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                            <span style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>
+                              PROB. ESCENARIO
+                            </span>
+                            {isModified && (
+                              <span style={{ fontSize: 9, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", background: "#F59E0B15", border: "1px solid #F59E0B30", borderRadius: 2, padding: "1px 5px" }}>
+                                AJUSTADO · ZRC: {(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%
+                              </span>
+                            )}
+                          </div>
+                          <span style={{ fontSize: 14, fontWeight: 700, color: isModified ? "#F59E0B" : sv.color, fontFamily: "'JetBrains Mono', monospace" }}>
+                            {(scenarioWeights[sk] * 100).toFixed(0)}%
+                          </span>
+                        </div>
+                        <div style={{ fontSize: 9, color: "#475569", fontFamily: "'JetBrains Mono', monospace", marginBottom: 6 }}>
+                          Arrastra para explorar tu propio escenario
+                        </div>
+                        <input type="range" min={0} max={80} value={scenarioWeights[sk] * 100}
+                          onClick={e => e.stopPropagation()}
+                          onChange={e => {
+                            e.stopPropagation();
+                            setScenarioWeights({ ...scenarioWeights, [sk]: parseInt(e.target.value) / 100 });
+                          }}
+                          style={{ width: "100%", accentColor: isModified ? "#F59E0B" : sv.color }}
+                        />
+                      </div>
+                      {activeScenario === sk && (
+                        <div style={{ marginTop: 12, paddingTop: 10, borderTop: `1px solid ${sv.color}20` }}>
+                          <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>
+                            VECTORES DE IMPACTO
+                          </div>
+                          {Object.entries(sv.impact).map(([vk, vi]) => (
+                            <div key={vk} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "3px 0" }}>
+                              <span style={{ fontSize: 11, color: "#94A3B8" }}>{ECONOMIC_VARIABLES[vk]?.label}</span>
+                              <MiniBar value={vi} max={1} color={sv.color} width={60} />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
