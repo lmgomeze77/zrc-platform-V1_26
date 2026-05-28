@@ -39,6 +39,9 @@ export default {
     if (url.pathname === "/api/inner-circle/check" && request.method === "GET")
       return handleInnerCircleCheck(request, env);
 
+    if (url.pathname === "/api/inner-circle/login" && request.method === "POST")
+      return handleInnerCircleLogin(request, env);
+
     if (url.pathname === "/api/inner-circle/apply" && request.method === "POST")
       return handleInnerCircleApply(request, env);
 
@@ -481,6 +484,56 @@ async function handleInnerCircleCheck(request, env) {
 }
 
 // ============================================================
+// /api/inner-circle/login  (POST)  — email + password verification
+// ============================================================
+async function handleInnerCircleLogin(request, env) {
+  let payload;
+  try { payload = await request.json(); } catch {
+    return jsonResponse({ error: "Invalid JSON" }, 400);
+  }
+
+  const { email, password } = payload;
+
+  if (!email || !isValidEmail(email) || !password)
+    return jsonResponse({ status: "denied" });
+
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
+    return jsonResponse({ status: "denied" });
+
+  const cleanEmail = email.trim().toLowerCase();
+
+  try {
+    // Call the ic_verify_password RPC (bcrypt comparison in Supabase)
+    const resp = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/ic_verify_password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: env.SUPABASE_SERVICE_KEY,
+        Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+      },
+      body: JSON.stringify({ p_email: cleanEmail, p_password: password }),
+    });
+
+    if (!resp.ok) return jsonResponse({ status: "denied" });
+    const valid = await resp.json();
+
+    if (valid === true) return jsonResponse({ status: "approved" });
+    return jsonResponse({ status: "denied" });
+  } catch (err) {
+    console.error("IC login error:", err);
+    return jsonResponse({ status: "denied" });
+  }
+}
+
+// Generates a random readable password (no ambiguous chars)
+function generatePassword(length = 10) {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
+  const arr = new Uint8Array(length);
+  crypto.getRandomValues(arr);
+  return Array.from(arr).map(b => chars[b % chars.length]).join("");
+}
+
+// ============================================================
 // /api/inner-circle/apply  (POST)
 // ============================================================
 async function handleInnerCircleApply(request, env) {
@@ -607,7 +660,10 @@ async function handleInnerCircleApprove(request, env) {
   if (member.status === "approved")
     return htmlResponse(icApproveResultHTML({ success: true, alreadyApproved: true, name: member.name, email: cleanEmail }));
 
-  // Approve: set status, approved_at, welcome_email_sent=true (prevent Edge Function double-send)
+  // Generate a password for the new member
+  const plainPassword = generatePassword(10);
+
+  // Approve: set status, approved_at, welcome_email_sent=true
   try {
     const patchResp = await fetch(
       `${env.SUPABASE_URL}/rest/v1/inner_circle_members?email=eq.${encodeURIComponent(cleanEmail)}`,
@@ -636,14 +692,29 @@ async function handleInnerCircleApprove(request, env) {
     return htmlResponse(icApproveResultHTML({ success: false, email: cleanEmail, message: "Error de conexión." }));
   }
 
-  // Send welcome email
+  // Store bcrypt hash of the generated password via Supabase RPC
+  try {
+    await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/ic_set_password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: env.SUPABASE_SERVICE_KEY,
+        Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+      },
+      body: JSON.stringify({ p_email: cleanEmail, p_password: plainPassword }),
+    });
+  } catch (err) {
+    console.error("IC set password error:", err);
+  }
+
+  // Send welcome email with the access password
   if (env.RESEND_API_KEY) {
     try {
       await sendResendEmail(env, {
         from: "Zenith Rise Capital <noreply@zenithrisecapital.com>",
         to: cleanEmail,
         subject: "Bienvenido al Inner Circle · Zenith Rise Capital",
-        html: icWelcomeEmailHTML({ name: member.name, email: cleanEmail }),
+        html: icWelcomeEmailHTML({ name: member.name, email: cleanEmail, password: plainPassword }),
       });
     } catch (err) {
       console.error("IC welcome email error:", err);
@@ -692,7 +763,7 @@ function icAdminEmailHTML({ name, email, organization, profile_category, reason,
 </body></html>`;
 }
 
-function icWelcomeEmailHTML({ name, email }) {
+function icWelcomeEmailHTML({ name, email, password }) {
   const firstName = escapeHTML((name || email).split(" ")[0]);
   return `<!DOCTYPE html>
 <html><body style="font-family:'Helvetica Neue',sans-serif;background:#06080C;color:#E8E0CC;padding:32px;margin:0;">
@@ -706,18 +777,33 @@ function icWelcomeEmailHTML({ name, email }) {
     <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(232,224,204,0.45);text-align:center;line-height:1.7;margin:0 0 40px;">
       Tu solicitud ha sido aprobada.<br>Formas parte del Inner Circle.
     </p>
+    <div style="background:rgba(212,168,83,0.05);border:1px solid rgba(212,168,83,0.2);padding:24px;margin-bottom:24px;">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(212,168,83,0.7);text-transform:uppercase;margin:0 0 14px;">Tus credenciales de acceso</p>
+      <table style="width:100%;font-size:14px;border-collapse:collapse;">
+        <tr>
+          <td style="padding:8px 0;color:rgba(232,224,204,0.5);width:90px;">Email</td>
+          <td style="padding:8px 0;color:#D4A853;font-family:'IBM Plex Mono',monospace;font-size:13px;">${escapeHTML(email)}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;color:rgba(232,224,204,0.5);">Contraseña</td>
+          <td style="padding:8px 0;color:#E8E0CC;font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:700;letter-spacing:0.1em;">${escapeHTML(password || "—")}</td>
+        </tr>
+      </table>
+    </div>
     <div style="background:rgba(212,168,83,0.05);border:1px solid rgba(212,168,83,0.2);padding:24px;margin-bottom:32px;">
       <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(212,168,83,0.7);text-transform:uppercase;margin:0 0 14px;">Cómo acceder</p>
       <ol style="font-size:14px;color:rgba(232,224,204,0.7);line-height:2.2;margin:0;padding-left:20px;">
         <li>Visita <strong style="color:#D4A853;">zenithrisecapital.com</strong></li>
-        <li>Navega hasta la sección <strong>Community</strong></li>
-        <li>Haz clic en <strong>Inner Circle</strong></li>
-        <li>Introduce este email:<br><strong style="color:#D4A853;">${escapeHTML(email)}</strong></li>
+        <li>Haz clic en <strong>Inner Circle</strong> en el menú</li>
+        <li>Introduce tu email y la contraseña de arriba</li>
       </ol>
     </div>
     <a href="https://www.zenithrisecapital.com" style="display:block;text-align:center;padding:14px 28px;background:rgba(212,168,83,0.1);color:#D4A853;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;border:1px solid rgba(212,168,83,0.3);">
       ACCEDER AL INNER CIRCLE →
     </a>
+    <p style="font-size:11px;color:rgba(232,224,204,0.25);text-align:center;margin-top:20px;line-height:1.6;">
+      Guarda esta contraseña en un lugar seguro. Si necesitas resetearla contacta a luis@zenithrisecapital.com
+    </p>
     <div style="margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.05);font-size:11px;color:rgba(232,224,204,0.2);text-align:center;line-height:1.7;">
       Zenith Rise Capital · Inner Circle<br>zenithrisecapital.com
     </div>

@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-// Always call the Cloudflare Worker — works regardless of frontend host
 const IC_API = "https://zenith-risecapital.lmgomeze77.workers.dev";
-const IC_EMAIL_KEY = "zrc-ic-email"; // localStorage key for email pre-fill
+const IC_EMAIL_KEY = "zrc-ic-email";
 
 const G = "#D4A853";
 const PROFILE_CATEGORIES = [
@@ -37,10 +36,11 @@ const labelStyle = {
 };
 
 export default function InnerCircleAccess({ onBack, onApproved }) {
-  const [mode, setMode]     = useState("check");
-  const [email, setEmail]   = useState(() => localStorage.getItem(IC_EMAIL_KEY) || "");
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [mode, setMode]         = useState("check");
+  const [email, setEmail]       = useState(() => localStorage.getItem(IC_EMAIL_KEY) || "");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading]   = useState(false);
+  const [message, setMessage]   = useState("");
 
   // Request form fields
   const [name, setName]         = useState("");
@@ -49,62 +49,35 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
   const [reason, setReason]     = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  // Auto-check on mount if a saved email exists
-  useEffect(() => {
-    const saved = localStorage.getItem(IC_EMAIL_KEY);
-    if (saved && saved.includes("@")) autoCheck(saved);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  async function autoCheck(savedEmail) {
-    setLoading(true);
-    try {
-      const res = await fetch(`${IC_API}/api/inner-circle/check?email=${encodeURIComponent(savedEmail)}`);
-      const data = await res.json();
-      if (data.status === "approved") {
-        if (onApproved) { onApproved(); return; }
-        localStorage.setItem("zrc-inner-circle-access", "true");
-        window.location.reload();
-      }
-    } catch { /* silent — user can still submit manually */ }
-    setLoading(false);
-  }
-
-  // ── CHECK: is this email approved? ──────────────────────────
+  // ── LOGIN: verify email + password ──────────────────────────
   async function handleCheck(e) {
     e.preventDefault();
-    if (!email.includes("@")) return;
+    if (!email.includes("@") || !password) return;
     setLoading(true); setMessage("");
 
     const cleanEmail = email.trim().toLowerCase();
-    localStorage.setItem(IC_EMAIL_KEY, cleanEmail); // remember for next time
+    localStorage.setItem(IC_EMAIL_KEY, cleanEmail);
 
     try {
-      const res = await fetch(
-        `${IC_API}/api/inner-circle/check?email=${encodeURIComponent(cleanEmail)}`
-      );
+      const res = await fetch(`${IC_API}/api/inner-circle/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: cleanEmail, password }),
+      });
       const data = await res.json();
 
       if (data.status === "approved") {
+        localStorage.setItem("zrc-inner-circle-access", "true");
         setLoading(false);
         if (onApproved) { onApproved(); return; }
-        // Fallback if parent doesn't pass onApproved
-        localStorage.setItem("zrc-inner-circle-access", "true");
         window.location.reload();
         return;
       }
-      if (data.status === "pending") {
-        setMessage("Tu solicitud está siendo revisada. Te contactaremos pronto.");
-        setLoading(false);
-        return;
-      }
+
+      setMessage("Credenciales incorrectas. Verifica tu email y contraseña.");
     } catch {
       setMessage("Error de conexión. Inténtalo de nuevo.");
-      setLoading(false);
-      return;
     }
-
-    // Not found — show request form
-    setMode("request");
     setLoading(false);
   }
 
@@ -133,7 +106,8 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
       if (data.ok) {
         setSubmitted(true);
       } else if (data.error === "already_approved") {
-        setMessage("Este email ya tiene acceso. Usa el formulario anterior.");
+        setMessage("Este email ya tiene acceso. Usa el formulario de inicio de sesión.");
+        setMode("check");
       } else if (data.error === "already_pending") {
         setMessage("Ya tenemos una solicitud de este email. Te contactaremos pronto.");
       } else {
@@ -220,13 +194,13 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
           </p>
         </form>
         <div style={{ textAlign:"center", marginTop:20 }}>
-          <button onClick={() => setMode("check")} style={{ background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:9, letterSpacing:"0.3em", color:"rgba(232,224,204,0.3)", cursor:"pointer" }}>← VOLVER</button>
+          <button onClick={() => { setMode("check"); setMessage(""); }} style={{ background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:9, letterSpacing:"0.3em", color:"rgba(232,224,204,0.3)", cursor:"pointer" }}>← VOLVER</button>
         </div>
       </div>
     </div>
   );
 
-  // ── CHECK FORM (default) ────────────────────────────────────
+  // ── LOGIN FORM (default) ─────────────────────────────────────
   return (
     <div style={containerStyle}>
       <div style={cardStyle}>
@@ -239,13 +213,23 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
           <input type="email" required value={email} onChange={e=>setEmail(e.target.value)}
             placeholder="Su email..."
             style={{ ...inputStyle, textAlign:"center", fontSize:16, borderBottom:`1px solid rgba(184,152,42,0.4)` }} />
+          <input type="password" required value={password} onChange={e=>setPassword(e.target.value)}
+            placeholder="Contraseña..."
+            style={{ ...inputStyle, textAlign:"center", fontSize:16, borderBottom:`1px solid rgba(184,152,42,0.4)` }} />
           <button type="submit" disabled={loading}
             style={{ background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:10, letterSpacing:"0.45em", color:G, cursor:"pointer", padding:"10px 0", transition:"opacity 0.2s" }}>
             {loading ? "..." : "ACCEDER"}
           </button>
         </form>
         {message && <p style={{ marginTop:20, fontFamily:"'IBM Plex Mono',monospace", fontSize:9, letterSpacing:"0.25em", color:"rgba(184,152,42,0.6)", lineHeight:1.8 }}>{message}</p>}
-        {onBack && <button onClick={onBack} style={{ marginTop:36, background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:9, letterSpacing:"0.3em", color:"rgba(232,224,204,0.25)", cursor:"pointer" }}>← VOLVER</button>}
+        <div style={{ marginTop:28, borderTop:"1px solid rgba(184,152,42,0.12)", paddingTop:20 }}>
+          <p style={{ fontFamily:"'IBM Plex Mono',monospace", fontSize:8, letterSpacing:"0.28em", color:"rgba(232,224,204,0.2)", marginBottom:8 }}>¿AÚN NO ERES MIEMBRO?</p>
+          <button onClick={() => { setMode("request"); setMessage(""); }}
+            style={{ background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:9, letterSpacing:"0.3em", color:"rgba(184,152,42,0.5)", cursor:"pointer", textDecoration:"underline", textUnderlineOffset:3 }}>
+            Solicitar membresía →
+          </button>
+        </div>
+        {onBack && <button onClick={onBack} style={{ marginTop:24, background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:9, letterSpacing:"0.3em", color:"rgba(232,224,204,0.25)", cursor:"pointer" }}>← VOLVER</button>}
       </div>
     </div>
   );

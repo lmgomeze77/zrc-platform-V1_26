@@ -279,6 +279,7 @@ function SuccessModal({ lang, onClose }) {
 export default function Community({ lang = "es", onAccess }) {
   const [view, setView]         = useState("gate");
   const [email, setEmail]       = useState("");
+  const [password, setPassword] = useState("");
   const [checking, setChecking] = useState(false);
   const [gateMsg, setGateMsg]   = useState("");
   const [notFound, setNotFound] = useState(false);
@@ -294,9 +295,9 @@ export default function Community({ lang = "es", onAccess }) {
     es:{
       eyebrow:"ZRC Confidencial",the:"The",inner:"Inner",circle:"Circle",
       tagline:"Una nota de inteligencia privada para quienes han ganado una lectura mas cercana.",
-      gateLabel:"Membresia por invitacion",gatePlaceholder:"Su email...",gateBtn:"Acceder",
+      gateLabel:"Acceso exclusivo",gatePlaceholder:"Su email...",passwordPlaceholder:"Contraseña...",gateBtn:"Acceder",
       pendingMsg:"Su solicitud esta pendiente de aprobacion.",
-      noneMsg:"Este email no tiene acceso.",
+      noneMsg:"Credenciales incorrectas.",
       applyLink:"Solicitar membresía →",
       welcomeLabel:"Bienvenido de nuevo",readEdition:"Leer Edition Zero ->",
       bottomLeft:"Distribuido el primer martes de cada mes.",
@@ -305,9 +306,9 @@ export default function Community({ lang = "es", onAccess }) {
     en:{
       eyebrow:"ZRC Confidential",the:"The",inner:"Inner",circle:"Circle",
       tagline:"A private intelligence brief for those who have earned a closer read.",
-      gateLabel:"Membership by invitation",gatePlaceholder:"Your email...",gateBtn:"Enter",
+      gateLabel:"Exclusive access",gatePlaceholder:"Your email...",passwordPlaceholder:"Password...",gateBtn:"Enter",
       pendingMsg:"Your application is pending approval.",
-      noneMsg:"This email does not have access.",
+      noneMsg:"Incorrect credentials.",
       applyLink:"Request membership →",
       welcomeLabel:"Welcome back",readEdition:"Read Edition Zero ->",
       bottomLeft:"Distributed on the first Tuesday of each month.",
@@ -336,42 +337,23 @@ export default function Community({ lang = "es", onAccess }) {
   }, []);
 
   const checkAccess = async () => {
-    if (!email.includes("@")) return;
+    if (!email.includes("@") || !password) return;
     setChecking(true); setGateMsg(""); setNotFound(false);
     const cleanEmail = email.toLowerCase().trim();
     try {
-      if (supabase) {
-        const { data } = await supabase
-          .from("inner_circle_members")
-          .select("status")
-          .eq("email", cleanEmail)
-          .single();
-
-        if (data?.status === "approved") {
-          localStorage.setItem("zrc-inner-circle-access", "true");
-          if (onAccess) { onAccess(); } else { setView("landing"); }
-        } else if (data?.status === "pending") {
-          setGateMsg(tx.pendingMsg);
-        } else {
-          setGateMsg(tx.noneMsg);
-          setNotFound(true);
-        }
+      const res = await fetch(`${IC_API}/api/inner-circle/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: cleanEmail, password }),
+      });
+      const data = await res.json();
+      if (data.status === "approved") {
+        localStorage.setItem("zrc-inner-circle-access", "true");
+        localStorage.setItem("zrc-ic-email", cleanEmail);
+        if (onAccess) { onAccess(); } else { setView("landing"); }
       } else {
-        const res = await fetch("/api/inner-circle/check", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: cleanEmail }),
-        });
-        const data = await res.json();
-        if (data.approved) {
-          localStorage.setItem("zrc-inner-circle-access", "true");
-          if (onAccess) { onAccess(); } else { setView("landing"); }
-        } else if (data.status === "pending") {
-          setGateMsg(tx.pendingMsg);
-        } else {
-          setGateMsg(tx.noneMsg);
-          setNotFound(true);
-        }
+        setGateMsg(tx.noneMsg);
+        setNotFound(true);
       }
     } catch { setGateMsg("Error. Intentelo de nuevo."); }
     finally { setChecking(false); }
@@ -426,6 +408,11 @@ export default function Community({ lang = "es", onAccess }) {
                   <input className="ic-email-input" type="email" placeholder={tx.gatePlaceholder}
                     value={email} onChange={e => { setEmail(e.target.value); setGateMsg(""); setNotFound(false); }}
                     onKeyDown={e => e.key==="Enter" && checkAccess()} autoComplete="email"/>
+                </div>
+                <div className="ic-input-row" style={{marginTop:"10px"}}>
+                  <input className="ic-email-input" type="password" placeholder={tx.passwordPlaceholder}
+                    value={password} onChange={e => { setPassword(e.target.value); setGateMsg(""); setNotFound(false); }}
+                    onKeyDown={e => e.key==="Enter" && checkAccess()} autoComplete="current-password"/>
                   <button className="ic-check-btn" onClick={checkAccess} disabled={checking}>
                     {checking ? "..." : tx.gateBtn}
                   </button>
