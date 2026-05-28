@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-05-27T09:38:53.169Z",
+  "generated_at": "2026-05-28T09:55:41.312Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1612",
-      "change": "-0.12%",
+      "value": "1.1620",
+      "change": "-0.08%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18291",
-      "change": "0.67%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "96.30",
-      "change": "2.13%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "90.35",
-      "change": "-3.75%",
+      "value": "11250.50",
+      "change": "-0.45%",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4456.83",
-      "change": "0.02%",
-      "up": true
+      "symbol": "BRENT",
+      "value": "93.55",
+      "change": "-3.23%",
+      "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "75139.18",
+      "symbol": "GOLD",
+      "value": "4472.10",
+      "change": "-1.39%",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "74950.74",
       "change": "-1.96%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "16.29",
-      "change": "-4.23%",
+      "value": "16.95",
+      "change": "-0.35%",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.47%",
-      "change": "-0.23%",
+      "symbol": "US 10Y",
+      "value": "4.4810",
+      "change": "-0.27%",
       "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7520.36",
-      "change": "0.02%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "25142.00",
-      "change": "0.39%",
-      "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8661",
-      "change": "0.02%",
+      "value": "0.8672",
+      "change": "+0.12%",
       "up": true
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "99.28",
-      "change": "0.06%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.12",
-      "change": "3.60%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.35",
-      "change": "-0.76%",
+      "symbol": "S&P 500",
+      "value": "7513.47",
+      "change": "-0.08%",
       "up": false
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.7821",
-      "change": "-0.06%",
+      "symbol": "DAX 40",
+      "value": "20185.30",
+      "change": "-0.62%",
       "up": false
     }
   ],
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Crisis de Oriente Medio en directo: Israel bombardea masivamente el Líbano y mata a líder senior de Hamás en Gaza",
-        "en": "Middle East crisis live: Israel hits Lebanon with huge bombing raid and kills senior Hamas leader in Gaza"
+        "es": "Irán y EE.UU. intercambian ataques aéreos después de que Trump rechaza reportaje sobre acuerdo en Ormuz",
+        "en": "Iran and US trade air strikes after Trump dismisses report of Hormuz deal"
       },
       "summary": {
-        "es": "Los ataques israelíes en el Líbano socavan el supuesto alto el fuego con Hezbollah mientras Irán acusa a EE.UU. de violar un tratado separado. La escalada amenaza la estabilidad regional y las negociaciones diplomáticas en curso.",
-        "en": "Israeli strikes on Lebanon undermine supposed ceasefire with Hezbollah while Iran accuses US of violating separate truce. The escalation threatens regional stability and ongoing diplomatic negotiations."
+        "es": "La Guardia Revolucionaria iraní atacó una base aérea estadounidense tras ataques de EE.UU. a operaciones de drones iraníes cerca del Estrecho de Ormuz, después de que Trump rechazara reportes de un posible acuerdo con Teherán. Este escalamiento representa el enfrentamiento más serio desde el inicio de un frágil alto al fuego en abril, amenazando las negociaciones diplomáticas en curso.",
+        "en": "Iran's Revolutionary Guard targeted a US airbase following US military strikes on Iranian drone operations near the Strait of Hormuz, after Trump rejected reports of a potential compromise deal with Tehran. This escalation represents the most serious clash since a fragile ceasefire began in April, threatening ongoing diplomatic negotiations."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GOLD +",
+        "BONDS +",
         "EQUITIES -",
-        "USD +"
+        "USD ?"
       ],
       "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/may/27/iran-war-us-update-live-israel-lebanon-strikes-latest-news-ceasefire-peace-talks-middle-east-live-updates",
-      "published_at": "2026-05-27",
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260528-iran-and-us-trade-air-strikes-after-trump-dismisses-report-of-hormuz-deal",
+      "published_at": "2026-05-28",
       "time": "<1h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Irán acusa a EE.UU. de violar el alto el fuego con ataques cerca del Estrecho de Ormuz",
-        "en": "Iran says US violated ceasefire with strikes near Hormuz"
+        "es": "Guerra de Irán: La escasez de petróleo amenaza la seguridad energética global",
+        "en": "Iran war: Oil shortages threaten global energy security"
       },
       "summary": {
-        "es": "Irán acusa a Estados Unidos de incumplir un frágil alto el fuego con ataques aéreos cerca del Estrecho de Ormuz, después de casi siete semanas de conflicto. Washington argumenta que los ataques fueron defensivos contra sitios de misiles y buques que supuestamente colocaban minas.",
-        "en": "Iran accuses US of breaching fragile ceasefire with airstrikes near Strait of Hormuz after nearly seven weeks of conflict. Washington claims strikes were defensive against missile sites and mine-laying vessels."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL +++",
-        "SHIPPING -",
-        "GOLD +",
-        "EQUITIES -"
-      ],
-      "confidence": 94,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260526-iran-says-us-violated-ceasefire-with-strikes-near-hormuz-war",
-      "published_at": "2026-05-26",
-      "time": "11h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Decenas de muertos en el Líbano mientras Israel intensifica ataques",
-        "en": "Dozens killed in Lebanon as Israel intensifies strikes"
-      },
-      "summary": {
-        "es": "Israel dice haber golpeado 100 sitios de infraestructura de Hezbollah en el Líbano, después de que el Primer Ministro Netanyahu promete 'aplastar' al grupo respaldado por Irán. La intensificación de ataques socava los esfuerzos diplomáticos para frenar la escalada.",
-        "en": "Israel claims to have struck 100 Hezbollah infrastructure sites in Lebanon after PM Netanyahu vows to 'crush' Iran-backed group. Attack intensification undermines diplomatic efforts to contain escalation."
+        "es": "Las reservas estratégicas de petróleo están disminuyendo rápidamente mientras los países liberan suministros de emergencia para mitigar el impacto económico del conflicto de Oriente Medio. La presión sobre la oferta global de energía se intensifica con implicaciones inflacionarias para mercados desarrollados y emergentes.",
+        "en": "Strategic petroleum reserves are declining rapidly as countries release emergency crude supplies to cushion the economic impact of the Middle East conflict. Pressure on global energy supply is intensifying with inflationary implications for developed and emerging markets."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "USD +"
+        "INFLATION +",
+        "BONDS -",
+        "EQUITIES -"
       ],
       "confidence": 90,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cx211rgngp0o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-27",
-      "time": "5h"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/iran-war-oil-shortages-threaten-global-energy-security/a-77313462?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-28",
+      "time": "<1h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Israel continúa su escalada en Líbano con nuevas advertencias de evacuación",
+        "en": "Israel Continues Its Escalation in Lebanon With New Evacuation Warnings"
+      },
+      "summary": {
+        "es": "El ejército israelí emitió advertencias de evacuación generalizadas para dos ciudades del sur de Líbano, señalando nuevos ataques aéreos inminentes. La expansión geográfica del conflicto más allá de Gaza extiende el riesgo sistémico a los mercados regionales y a las cadenas de suministro global.",
+        "en": "The Israeli military issued sweeping evacuation warnings for two southern Lebanese cities, indicating imminent airstrikes. The geographic expansion of the conflict beyond Gaza extends systemic risk to regional markets and global supply chains."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL +",
+        "EQUITIES -",
+        "GOLD +",
+        "USD ?"
+      ],
+      "confidence": 88,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/27/world/middleeast/israel-hezbollah-lebanon.html",
+      "published_at": "2026-05-28",
+      "time": "9h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Las facturas de energía subirán para millones mientras el impacto de la guerra de Irán golpea",
+        "es": "Las facturas energéticas subirán para millones al impacto de la guerra de Irán",
         "en": "Energy bills to rise for millions as impact of Iran war hits"
       },
       "summary": {
-        "es": "Los hogares del Reino Unido enfrentarán aumentos de 221 libras anuales en facturas de energía bajo el nuevo tope de precios del regulador, reflejo directo de la volatilidad de petróleo causada por la guerra en Irán. La transmisión de presión inflacionaria amenaza objetivos de política monetaria central.",
-        "en": "UK households face £221 annual energy bill increases under regulator's new price cap, directly reflecting oil volatility from Iran war. Pass-through of inflation pressure threatens central bank policy objectives."
+        "es": "Un hogar con consumo típico de energía pagará £221 anuales adicionales bajo el nuevo tope de precios del regulador británico. El impacto inflacionario del conflicto de Irán se transmite directamente a los consumidores europeos, planteando presiones sobre deflación de demanda y tasas de política monetaria.",
+        "en": "A household using typical energy consumption will pay £221 more annually under the regulator's new price cap. The inflationary impact of the Iran conflict is directly transmitting to European consumers, creating pressure on demand deflation and monetary policy rates."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
+        "EUR -",
+        "BONDS +",
         "GBP -",
-        "INFLATION +",
-        "BONDS -"
+        "EQUITIES ?"
       ],
-      "confidence": 88,
+      "confidence": 85,
       "source": "BBC Business",
       "source_url": "https://www.bbc.com/news/articles/ce8pw464986o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-05-27",
-      "time": "1h"
+      "time": "1d"
     },
     {
       "id": 5,
-      "tag": "ALERT",
+      "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "Putin ofrece condonación de deuda a nuevos reclutas para la guerra de Ucrania",
-        "en": "Putin offers debt relief to new recruits for Ukraine war"
+        "es": "Casi medio millón de rusos muertos en la guerra de Ucrania, dice jefe de espías británicos",
+        "en": "Nearly half a million Russians killed in Ukraine war, UK spy chief says"
       },
       "summary": {
-        "es": "Rusia cancelará deudas de hasta 10 millones de rublos para nuevos reclutas bajo decreto presidencial, mientras que una nueva ley permite el uso de fuerzas armadas rusas para proteger ciudadanos en el extranjero. Estas medidas señalan presión de recursos y potencial expansión geográfica del conflicto.",
-        "en": "Russia cancels debts up to 10 million rubles for new recruits via presidential decree while new law enables Russian armed forces to protect citizens abroad. Measures signal resource pressure and potential geographic conflict expansion."
+        "es": "El jefe del MI6 estima que casi 500,000 soldados rusos han muerto en Ucrania desde el inicio de la invasión hace más de cuatro años, con fuerzas rusas retrocediendo en el terreno por primera vez desde finales de 2022. El gasto de defensa ruso sostenido plantea restricciones fiscales de largo plazo con implicaciones para la recuperación económica rusa y la dinámica geopolítica de sanciones.",
+        "en": "The head of MI6 estimates nearly 500,000 Russian soldiers have been killed in Ukraine since the invasion began over four years ago, with Russian forces retreating on the battlefield for the first time since late 2022. Sustained Russian defense spending creates long-term fiscal constraints with implications for Russian economic recovery and sanctions geopolitics."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
         "RUB -",
-        "EUR +",
+        "GOLD +",
         "EQUITIES ?",
-        "DEFENSE +"
+        "BONDS +"
       ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/putin-offers-debt-relief-to-new-recruits-for-ukraine-war/a-77292937?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-26",
-      "time": "21h"
+      "confidence": 82,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/may/27/nearly-half-a-million-russians-killed-in-ukraine-war-uk-spy-chief-says",
+      "published_at": "2026-05-27",
+      "time": "16h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Israel intensifica ofensiva en el Líbano mientras EE.UU. presiona por acuerdo de paz con Irán",
-        "en": "Israel Steps Up Lebanon Offensive as U.S. Pushes for Iran Peace Deal"
+        "es": "Kaja Kallas advierte contra caer en 'trampa' rusa mientras ministros de la UE se reúnen para negociaciones",
+        "en": "Kaja Kallas warns against walking into Russian 'trap' as EU ministers meet for talks"
       },
       "summary": {
-        "es": "La intensificación de ataques israelíes en el Líbano contra Hezbollah respaldado por Irán complica esfuerzos diplomáticos estadounidenses para alcanzar un acuerdo de paz con Teherán. Esta tensión entre operaciones militares e iniciativas diplomáticas crea incertidumbre sobre la trayectoria geopolítica regional.",
-        "en": "Israel's intensified attacks on Iranian-backed Hezbollah in Lebanon complicate US diplomatic efforts for Iran peace deal. Tension between military operations and diplomatic initiatives creates uncertainty over regional geopolitical trajectory."
+        "es": "La jefa diplomática de la UE advierte contra enfocarse en personalidades en lugar de estrategia durante negociaciones sobre Ucrania, mientras Zelenskyy confirma un 'paquete de defensa importante' con Suecia. El escepticismo sobre avances diplomáticos y la intensificación de compromisos defensivos subrayan expectativas divergentes entre actores clave con implicaciones para la volatilidad de sanciones y geopolítica energética.",
+        "en": "The EU's chief diplomat cautions against focusing on personalities rather than strategy during Ukraine negotiations, as Zelenskyy confirms a 'major defence package' with Sweden. Skepticism about diplomatic progress and intensifying defense commitments underscore divergent expectations among key actors with implications for sanctions volatility and energy geopolitics."
       },
       "impact": "medium",
       "signals": [
-        "OIL ?",
-        "EQUITIES -",
-        "USD +",
-        "GOLD +"
+        "EUR ?",
+        "EQUITIES ?",
+        "GOLD +",
+        "BONDS ?"
       ],
-      "confidence": 82,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/26/world/middleeast/israel-strikes-escalation-lebanon.html",
-      "published_at": "2026-05-26",
-      "time": "17h"
+      "confidence": 78,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/28/europe-russia-ukraine-talks-heatwave-kaja-kallas-putin-latest-news-updates",
+      "published_at": "2026-05-28",
+      "time": "<1h"
     }
-  ],
-  "market_updated_at": "2026-05-28T09:39:02.603Z"
+  ]
 }
