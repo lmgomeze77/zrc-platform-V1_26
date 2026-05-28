@@ -100,7 +100,7 @@ const AuthProvider = ({ children, lang }) => {
 
 const T = {
   es: {
-    nav: ["Observatorio", "Intelligence", "Brokerage", "Advisory", "Academia", "Comunidad", "Inner Circle"],
+    nav: ["Observatorio", "Intelligence", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "INTELIGENCIA ESTRATÉGICA · INVERSIÓN · EJECUCIÓN",
       h1: "Donde la Inteligencia",
@@ -188,7 +188,7 @@ const T = {
     live: "EN VIVO",
   },
   en: {
-    nav: ["Observatory", "Intelligence", "Brokerage", "Advisory", "Academia", "Community", "Inner Circle"],
+    nav: ["Observatory", "Intelligence", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "STRATEGIC INTELLIGENCE · INVESTMENT · EXECUTION",
       h1: "Where Geopolitical",
@@ -850,7 +850,7 @@ const MarketTicker = ({ lang }) => {
 const Nav = ({ lang, setLang, onNav }) => {
   const { user, openLogin, logout, openPricing } = useAuth();
   const [scrolled, setScrolled] = useState(false);
-  const ids = ["observatory", "intelligence", "brokerage", "advisory", "academia", "community", "inner-circle"];
+  const ids = ["observatory", "intelligence", "brokerage", "advisory", "academia", "inner-circle"];
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
@@ -1403,11 +1403,7 @@ const ZRCPlatform = () => {
   const [icPage, setIcPage] = useState(null);
 
   const onNav = (id) => {
-    if (id === "inner-circle") {
-      const hasAccess = localStorage.getItem("zrc-inner-circle-access") === "true";
-      setIcPage(hasAccess ? "inner-circle-private" : "inner-circle");
-      return;
-    }
+    if (id === "inner-circle") { setIcPage("inner-circle"); return; }
     if (id === "hero") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;

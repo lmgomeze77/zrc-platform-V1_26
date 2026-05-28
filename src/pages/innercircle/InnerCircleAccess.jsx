@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Always call the Cloudflare Worker — works regardless of frontend host
 const IC_API = "https://zenith-risecapital.lmgomeze77.workers.dev";
@@ -48,6 +48,26 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
   const [profile, setProfile]   = useState("");
   const [reason, setReason]     = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  // Auto-check on mount if a saved email exists
+  useEffect(() => {
+    const saved = localStorage.getItem(IC_EMAIL_KEY);
+    if (saved && saved.includes("@")) autoCheck(saved);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function autoCheck(savedEmail) {
+    setLoading(true);
+    try {
+      const res = await fetch(`${IC_API}/api/inner-circle/check?email=${encodeURIComponent(savedEmail)}`);
+      const data = await res.json();
+      if (data.status === "approved") {
+        if (onApproved) { onApproved(); return; }
+        localStorage.setItem("zrc-inner-circle-access", "true");
+        window.location.reload();
+      }
+    } catch { /* silent — user can still submit manually */ }
+    setLoading(false);
+  }
 
   // ── CHECK: is this email approved? ──────────────────────────
   async function handleCheck(e) {
