@@ -1,8 +1,8 @@
-﻿# wrangler.toml
+# wrangler.toml
 # ZRC Platform - SPA + API en un solo Worker
 
 name = "zenith-risecapital"
-compatibility_date = "2026-04-01"
+compatibility_date = "2026-05-28"
 main = "./src/worker/index.js"
 
 [assets]
