@@ -2,6 +2,27 @@ import { useEffect, useRef, useState } from "react";
 import EditionZero from "./EditionZero";
 import { supabase } from "../../lib/supabase";
 
+const IC_API = "https://zenith-risecapital.lmgomeze77.workers.dev";
+
+const PROFILE_CATEGORIES = [
+  "Investor — Family Office",
+  "Investor — Institutional",
+  "Investor — Private Equity / VC",
+  "Investor — Real Assets",
+  "Investment Manager / Portfolio Manager",
+  "CIO / Chief Investment Officer",
+  "CFO / Finance Director",
+  "Investment Banker / M&A Advisor",
+  "Broker / Capital Markets",
+  "Real Estate Professional",
+  "Corporate Executive / CEO",
+  "Entrepreneur / Business Owner",
+  "Academic / Researcher",
+  "Geopolitical Analyst / Strategist",
+  "Legal / Regulatory Professional",
+  "Other",
+];
+
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300;400&display=swap');
 
@@ -32,6 +53,8 @@ const css = `
 .ic-check-btn{background:none;border:none;cursor:pointer;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.35em;color:#B8982A;padding:3px 0 3px 12px;white-space:nowrap;transition:color .3s;}
 .ic-check-btn:hover{color:#D4B050;}.ic-check-btn:disabled{opacity:.4;cursor:default;}
 .ic-gate-msg{margin-top:10px;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.28em;color:rgba(184,152,42,.55);}
+.ic-apply-link{background:none;border:none;cursor:pointer;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.28em;color:#B8982A;text-decoration:underline;text-underline-offset:3px;padding:0;transition:color .3s;display:block;margin:6px auto 0;}
+.ic-apply-link:hover{color:#D4B050;}
 .ic-welcome{margin-top:22px;opacity:0;animation:ic-appear 1.2s ease forwards 3.1s;}
 .ic-edition-link{display:inline-block;font-family:'Cormorant SC',serif;font-size:10px;letter-spacing:.38em;color:#B8982A;border-bottom:1px solid rgba(184,152,42,.28);padding-bottom:3px;transition:color .4s,border-color .4s;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;}
 .ic-edition-link:hover{color:#D4B050;border-bottom-color:rgba(212,176,80,.55);}
@@ -68,11 +91,199 @@ const css = `
   .ic-tagline{font-size:14px;}
 }
 `
+
+const modalOverlayStyle = {
+  position: "fixed", inset: 0, zIndex: 10000,
+  background: "rgba(6,8,12,0.88)", backdropFilter: "blur(6px)",
+  display: "flex", alignItems: "center", justifyContent: "center",
+  padding: "24px",
+};
+const modalCardStyle = {
+  background: "#0C0F15", border: "1px solid rgba(184,152,42,0.25)",
+  maxWidth: 480, width: "100%", padding: "40px 36px",
+  fontFamily: "'Cormorant',serif",
+};
+const mLabelStyle = {
+  display: "block", fontFamily: "'Cormorant SC',serif", fontSize: 8,
+  letterSpacing: "0.45em", textTransform: "uppercase",
+  color: "rgba(184,152,42,0.5)", marginBottom: 6,
+};
+const mInputStyle = {
+  width: "100%", background: "transparent", border: "none",
+  borderBottom: "1px solid rgba(184,152,42,0.25)", outline: "none",
+  fontFamily: "'Cormorant',serif", fontSize: 15, color: "#E8E0CC",
+  padding: "6px 0", boxSizing: "border-box",
+};
+
+function ApplyModal({ email, lang, onClose, onSuccess }) {
+  const [name, setName]       = useState("");
+  const [org, setOrg]         = useState("");
+  const [profile, setProfile] = useState("");
+  const [reason, setReason]   = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError]     = useState("");
+
+  const t = {
+    es: {
+      title: "Solicitar membresía",
+      sub: "Las admisiones son manuales y selectivas. Completa tu perfil.",
+      nameLabel: "Nombre completo *", namePlaceholder: "Luis García",
+      emailLabel: "Email", orgLabel: "Organización / Empresa",
+      orgPlaceholder: "Firma, fondo, empresa...",
+      profileLabel: "Perfil profesional *", profileDefault: "Selecciona tu perfil...",
+      reasonLabel: "Motivo de acceso (opcional)",
+      reasonPlaceholder: "Describe brevemente tu interés estratégico...",
+      submitBtn: "Enviar solicitud", sending: "Enviando...",
+      cancel: "Cancelar",
+      errRequired: "Nombre y perfil son obligatorios.",
+      errPending: "Ya tenemos una solicitud con este email. Te contactaremos pronto.",
+      errApproved: "Este email ya tiene acceso. Usa el formulario de acceso.",
+      errGeneric: "Error al enviar. Inténtalo de nuevo.",
+    },
+    en: {
+      title: "Request membership",
+      sub: "Admissions are manual and selective. Complete your profile.",
+      nameLabel: "Full name *", namePlaceholder: "Luis García",
+      emailLabel: "Email", orgLabel: "Organization / Company",
+      orgPlaceholder: "Firm, fund, company...",
+      profileLabel: "Professional profile *", profileDefault: "Select your profile...",
+      reasonLabel: "Reason for access (optional)",
+      reasonPlaceholder: "Briefly describe your strategic interest...",
+      submitBtn: "Submit application", sending: "Sending...",
+      cancel: "Cancel",
+      errRequired: "Name and profile are required.",
+      errPending: "We already have an application for this email. We'll be in touch.",
+      errApproved: "This email already has access. Use the access form.",
+      errGeneric: "Error sending. Please try again.",
+    },
+  };
+  const tx = t[lang] || t.es;
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!name.trim() || !profile) { setError(tx.errRequired); return; }
+    setLoading(true); setError("");
+    const cleanEmail = email.toLowerCase().trim();
+    try {
+      const res = await fetch(`${IC_API}/api/inner-circle/apply`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: cleanEmail,
+          name: name.trim(),
+          organization: org.trim() || null,
+          profile_category: profile,
+          reason: reason.trim() || null,
+        }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        onSuccess();
+      } else if (data.error === "already_pending") {
+        setError(tx.errPending);
+      } else if (data.error === "already_approved") {
+        setError(tx.errApproved);
+      } else {
+        setError(data.error || tx.errGeneric);
+      }
+    } catch {
+      setError(tx.errGeneric);
+    }
+    setLoading(false);
+  }
+
+  return (
+    <div style={modalOverlayStyle} onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+      <div style={modalCardStyle}>
+        <div style={{ textAlign: "center", marginBottom: 28 }}>
+          <div style={{ fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.5em", color: "rgba(184,152,42,0.5)", marginBottom: 12 }}>ZRC INNER CIRCLE</div>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, fontStyle: "italic", fontWeight: 400, color: "#E8E0CC", margin: "0 0 10px" }}>{tx.title}</h2>
+          <p style={{ fontFamily: "'Cormorant',serif", fontSize: 14, fontStyle: "italic", color: "rgba(232,224,204,0.38)", lineHeight: 1.6, margin: 0 }}>{tx.sub}</p>
+        </div>
+
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+          <label style={{ display: "block" }}>
+            <span style={mLabelStyle}>{tx.nameLabel}</span>
+            <input style={mInputStyle} value={name} onChange={e => setName(e.target.value)} placeholder={tx.namePlaceholder} required />
+          </label>
+
+          <label style={{ display: "block" }}>
+            <span style={mLabelStyle}>{tx.emailLabel}</span>
+            <input style={{ ...mInputStyle, color: "rgba(232,224,204,0.4)" }} value={email} readOnly />
+          </label>
+
+          <label style={{ display: "block" }}>
+            <span style={mLabelStyle}>{tx.orgLabel}</span>
+            <input style={mInputStyle} value={org} onChange={e => setOrg(e.target.value)} placeholder={tx.orgPlaceholder} />
+          </label>
+
+          <label style={{ display: "block" }}>
+            <span style={mLabelStyle}>{tx.profileLabel}</span>
+            <select required value={profile} onChange={e => setProfile(e.target.value)}
+              style={{ ...mInputStyle, cursor: "pointer", appearance: "none" }}>
+              <option value="">{tx.profileDefault}</option>
+              {PROFILE_CATEGORIES.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+            </select>
+          </label>
+
+          <label style={{ display: "block" }}>
+            <span style={mLabelStyle}>{tx.reasonLabel}</span>
+            <textarea rows={3} value={reason} onChange={e => setReason(e.target.value)}
+              placeholder={tx.reasonPlaceholder}
+              style={{ ...mInputStyle, resize: "none", paddingTop: 6 }} />
+          </label>
+
+          {error && (
+            <p style={{ fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.25em", color: "rgba(184,152,42,0.7)", textAlign: "center", margin: 0 }}>{error}</p>
+          )}
+
+          <div style={{ display: "flex", gap: 12, marginTop: 4 }}>
+            <button type="button" onClick={onClose}
+              style={{ flex: 1, background: "none", border: "1px solid rgba(184,152,42,0.2)", color: "rgba(232,224,204,0.35)", fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.4em", padding: "11px 0", cursor: "pointer" }}>
+              {tx.cancel}
+            </button>
+            <button type="submit" disabled={loading}
+              style={{ flex: 2, background: "#B8982A", border: "none", color: "#000", fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.4em", fontWeight: 700, padding: "11px 0", cursor: loading ? "default" : "pointer", opacity: loading ? 0.6 : 1 }}>
+              {loading ? tx.sending : tx.submitBtn}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function SuccessModal({ lang, onClose }) {
+  const t = {
+    es: { title: "Solicitud recibida", body: "Revisaremos tu perfil y te contactaremos en los próximos días. Las admisiones son manuales y selectivas.", close: "Cerrar" },
+    en: { title: "Application received", body: "We'll review your profile and reach out within a few days. Admissions are manual and selective.", close: "Close" },
+  };
+  const tx = t[lang] || t.es;
+  return (
+    <div style={modalOverlayStyle}>
+      <div style={{ ...modalCardStyle, textAlign: "center", maxWidth: 400 }}>
+        <div style={{ width: 44, height: 44, borderRadius: "50%", border: "1px solid rgba(184,152,42,0.4)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", background: "rgba(184,152,42,0.06)" }}>
+          <span style={{ color: "#B8982A", fontSize: 18 }}>✓</span>
+        </div>
+        <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 24, fontStyle: "italic", fontWeight: 400, color: "#E8E0CC", margin: "0 0 12px" }}>{tx.title}</h2>
+        <p style={{ fontFamily: "'Cormorant',serif", fontSize: 15, fontStyle: "italic", color: "rgba(232,224,204,0.42)", lineHeight: 1.7, margin: "0 0 28px" }}>{tx.body}</p>
+        <button onClick={onClose}
+          style={{ background: "none", border: "1px solid rgba(184,152,42,0.3)", color: "rgba(184,152,42,0.7)", fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.4em", padding: "10px 28px", cursor: "pointer" }}>
+          {tx.close}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function Community({ lang = "es", onAccess }) {
   const [view, setView]         = useState("gate");
   const [email, setEmail]       = useState("");
   const [checking, setChecking] = useState(false);
   const [gateMsg, setGateMsg]   = useState("");
+  const [notFound, setNotFound] = useState(false);
+  const [showApply, setShowApply]   = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const cursorRef = useRef(null);
   const ringRef   = useRef(null);
   const rxRef = useRef(0), ryRef = useRef(0);
@@ -85,7 +296,8 @@ export default function Community({ lang = "es", onAccess }) {
       tagline:"Una nota de inteligencia privada para quienes han ganado una lectura mas cercana.",
       gateLabel:"Membresia por invitacion",gatePlaceholder:"Su email...",gateBtn:"Acceder",
       pendingMsg:"Su solicitud esta pendiente de aprobacion.",
-      noneMsg:"Este email no tiene acceso. Puede solicitar membresia.",
+      noneMsg:"Este email no tiene acceso.",
+      applyLink:"Solicitar membresía →",
       welcomeLabel:"Bienvenido de nuevo",readEdition:"Leer Edition Zero ->",
       bottomLeft:"Distribuido el primer martes de cada mes.",
       directLabel:"Directo",brand:"Zenith Rise Capital",location:"Madrid - Est. 2024",backLabel:"<- Volver",
@@ -95,7 +307,8 @@ export default function Community({ lang = "es", onAccess }) {
       tagline:"A private intelligence brief for those who have earned a closer read.",
       gateLabel:"Membership by invitation",gatePlaceholder:"Your email...",gateBtn:"Enter",
       pendingMsg:"Your application is pending approval.",
-      noneMsg:"This email does not have access. You may request membership.",
+      noneMsg:"This email does not have access.",
+      applyLink:"Request membership →",
       welcomeLabel:"Welcome back",readEdition:"Read Edition Zero ->",
       bottomLeft:"Distributed on the first Tuesday of each month.",
       directLabel:"Direct",brand:"Zenith Rise Capital",location:"Madrid - Est. 2024",backLabel:"<- Back",
@@ -124,7 +337,7 @@ export default function Community({ lang = "es", onAccess }) {
 
   const checkAccess = async () => {
     if (!email.includes("@")) return;
-    setChecking(true); setGateMsg("");
+    setChecking(true); setGateMsg(""); setNotFound(false);
     const cleanEmail = email.toLowerCase().trim();
     try {
       if (supabase) {
@@ -141,9 +354,9 @@ export default function Community({ lang = "es", onAccess }) {
           setGateMsg(tx.pendingMsg);
         } else {
           setGateMsg(tx.noneMsg);
+          setNotFound(true);
         }
       } else {
-        // Fallback: Cloudflare Worker
         const res = await fetch("/api/inner-circle/check", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -157,6 +370,7 @@ export default function Community({ lang = "es", onAccess }) {
           setGateMsg(tx.pendingMsg);
         } else {
           setGateMsg(tx.noneMsg);
+          setNotFound(true);
         }
       }
     } catch { setGateMsg("Error. Intentelo de nuevo."); }
@@ -176,6 +390,17 @@ export default function Community({ lang = "es", onAccess }) {
   return (
     <>
       <style>{css}</style>
+      {showApply && !showSuccess && (
+        <ApplyModal
+          email={email}
+          lang={lang}
+          onClose={() => setShowApply(false)}
+          onSuccess={() => { setShowApply(false); setShowSuccess(true); }}
+        />
+      )}
+      {showSuccess && (
+        <SuccessModal lang={lang} onClose={() => setShowSuccess(false)} />
+      )}
       <div ref={cursorRef} style={{position:"fixed",width:5,height:5,background:"#B8982A",borderRadius:"50%",pointerEvents:"none",zIndex:9999,transform:"translate(-50%,-50%)",mixBlendMode:"difference"}} />
       <div ref={ringRef}   style={{position:"fixed",width:28,height:28,border:"1px solid rgba(184,152,42,0.35)",borderRadius:"50%",pointerEvents:"none",zIndex:9998,transform:"translate(-50%,-50%)",opacity:.65}} />
       <div className="ic-root" style={{cursor:"none"}}>
@@ -199,13 +424,18 @@ export default function Community({ lang = "es", onAccess }) {
                 <div className="ic-access-label">{tx.gateLabel}</div>
                 <div className="ic-input-row">
                   <input className="ic-email-input" type="email" placeholder={tx.gatePlaceholder}
-                    value={email} onChange={e => setEmail(e.target.value)}
+                    value={email} onChange={e => { setEmail(e.target.value); setGateMsg(""); setNotFound(false); }}
                     onKeyDown={e => e.key==="Enter" && checkAccess()} autoComplete="email"/>
                   <button className="ic-check-btn" onClick={checkAccess} disabled={checking}>
                     {checking ? "..." : tx.gateBtn}
                   </button>
                 </div>
                 {gateMsg && <div className="ic-gate-msg">{gateMsg}</div>}
+                {notFound && (
+                  <button className="ic-apply-link" onClick={() => setShowApply(true)}>
+                    {tx.applyLink}
+                  </button>
+                )}
               </div>
             )}
             {view === "landing" && (
