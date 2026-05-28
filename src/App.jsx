@@ -93,7 +93,7 @@ const AuthProvider = ({ children, lang }) => {
     >
       {children}
       {showAuth && <AuthModal />}
-      {showPricing && <PricingPage onClose={() => setShowPricing(false)} lang={lang} />}
+      {showPricing && <PricingPage onClose={() => setShowPricing(false)} lang={lang} onRegister={openRegister} />}
     </AuthContext.Provider>
   );
 };

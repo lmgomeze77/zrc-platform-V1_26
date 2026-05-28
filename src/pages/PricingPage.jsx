@@ -75,7 +75,7 @@ const PLANS = [
   },
 ];
 
-export default function PricingPage({ onClose, lang = "es" }) {
+export default function PricingPage({ onClose, lang = "es", onRegister }) {
   const [billing, setBilling] = useState("annual");
 
   return (
@@ -229,9 +229,17 @@ export default function PricingPage({ onClose, lang = "es" }) {
                 : "GeoRisk Dashboard and Real Estate Visor available with a free account."}
             </div>
           </div>
-          <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.08em" }}>
+          <button
+            onClick={() => { if (onRegister) { onClose(); onRegister(); } }}
+            style={{
+              fontFamily: F.mono, fontSize: 9, letterSpacing: "0.08em",
+              color: C.gold, background: "none", border: `1px solid ${C.goldBorder}`,
+              padding: "8px 18px", cursor: "pointer", whiteSpace: "nowrap",
+              transition: "background 0.2s",
+            }}
+          >
             {lang === "es" ? "REGISTRATE GRATIS →" : "REGISTER FREE →"}
-          </span>
+          </button>
         </div>
 
         {/* Trust */}
