@@ -113,7 +113,7 @@ function NoiseOverlay() {
 }
 
 function TopNav({ onBack }) {
-  const nav = ["Intelligence","Eventos","Oportunidades","Radar","Membership","Access"];
+  const nav = ["Intelligence","Eventos","Oportunidades","Radar","Membership","Contacto"];
   return (
     <header style={{ position:"fixed", left:0, right:0, top:0, zIndex:40, borderBottom:"1px solid rgba(255,255,255,0.1)", background:"rgba(0,0,0,0.65)", backdropFilter:"blur(20px)" }}>
       <div style={{ maxWidth:1200, margin:"0 auto", display:"flex", alignItems:"center", justifyContent:"space-between", padding:"14px 32px" }}>
@@ -197,11 +197,11 @@ function Hero() {
             A private intelligence environment for investors, operators and strategic decision-makers. ZRC Inner Circle connects geopolitical signals, private market intelligence and off-market opportunities into actionable capital context.
           </p>
           <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
-            <a href="#access" style={{ display:"inline-flex", alignItems:"center", gap:12, padding:"14px 24px", background:"#fff", color:"#000", borderRadius:40, ...S.label, textDecoration:"none" }}>
-              Request Access <ArrowRight size={15} />
+            <a href="#intelligence" style={{ display:"inline-flex", alignItems:"center", gap:12, padding:"14px 24px", background:"#fff", color:"#000", borderRadius:40, ...S.label, textDecoration:"none" }}>
+              Ver Inteligencia <ArrowRight size={15} />
             </a>
-            <a href="#intelligence" style={{ display:"inline-flex", alignItems:"center", gap:12, padding:"14px 24px", border:"1px solid rgba(255,255,255,0.15)", color:"rgba(255,255,255,0.7)", borderRadius:40, ...S.label, textDecoration:"none" }}>
-              View Intelligence Layers
+            <a href="#oportunidades" style={{ display:"inline-flex", alignItems:"center", gap:12, padding:"14px 24px", border:"1px solid rgba(255,255,255,0.15)", color:"rgba(255,255,255,0.7)", borderRadius:40, ...S.label, textDecoration:"none" }}>
+              Oportunidades
             </a>
           </div>
         </motion.div>
@@ -345,7 +345,7 @@ function EventBoardSection() {
                   <div style={{ ...S.label, fontSize:9, color:"rgba(255,255,255,0.3)", marginBottom:4 }}>{ev.format}</div>
                   <div style={{ ...S.label, fontSize:9, color: ev.upcoming ? G : "rgba(255,255,255,0.45)" }}>{ev.seats}</div>
                 </div>
-                <a href="#access" style={{ ...S.label, fontSize:9, color:"rgba(255,255,255,0.35)", textDecoration:"none", display:"flex", alignItems:"center", justifyContent:"flex-end", gap:6, marginTop:8 }}>
+                <a href="#contacto" style={{ ...S.label, fontSize:9, color:"rgba(255,255,255,0.35)", textDecoration:"none", display:"flex", alignItems:"center", justifyContent:"flex-end", gap:6, marginTop:8 }}>
                   Solicitar plaza <ChevronRight size={12} />
                 </a>
               </div>
@@ -522,43 +522,33 @@ function MembershipSection() {
   );
 }
 
-function AccessSection() {
+function ContactSection() {
   return (
-    <section id="access" style={{ borderTop:"1px solid rgba(255,255,255,0.1)", background:"#000", padding:"80px 32px", position:"relative", overflow:"hidden" }}>
+    <section id="contacto" style={{ borderTop:"1px solid rgba(255,255,255,0.1)", background:"#000", padding:"80px 32px", position:"relative", overflow:"hidden" }}>
       <div style={{ position:"absolute", inset:0, opacity:0.18 }}>
         <img src={IMG.boardroom} alt="" style={{ width:"100%", height:"100%", objectFit:"cover", filter:"grayscale(100%)" }} />
         <div style={{ position:"absolute", inset:0, background:"rgba(0,0,0,0.9)" }} />
       </div>
-      <div style={{ maxWidth:1200, margin:"0 auto", position:"relative", display:"grid", gridTemplateColumns:"1.05fr 0.95fr", gap:40 }}>
-        <div>
-          <SectionLabel eyebrow="Request Access" title="Private intelligence for capital, not a public feed." text="Access requests are reviewed manually. The goal is to preserve quality, confidentiality and strategic relevance across the membership base." />
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:14 }}>
-            {[{ Icon:Eye, text:"Reviewed profile" },{ Icon:BriefcaseBusiness, text:"Strategic relevance" },{ Icon:Layers, text:"Controlled access" }].map(({ Icon, text }) => (
-              <div key={text} style={{ border:"1px solid rgba(255,255,255,0.1)", background:"rgba(255,255,255,0.025)", padding:20 }}>
-                <Icon size={19} color={G} style={{ marginBottom:28, display:"block" }} />
-                <div style={{ ...S.label, fontSize:10, color:"rgba(255,255,255,0.55)" }}>{text}</div>
-              </div>
-            ))}
-          </div>
+      <div style={{ maxWidth:1200, margin:"0 auto", position:"relative" }}>
+        <SectionLabel eyebrow="Contacto & Soporte" title="Acceso directo al equipo ZRC." text="Como miembro Inner Circle tienes línea directa con el equipo. Escríbenos para consultas, oportunidades específicas o gestión de tu membresía." />
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:16 }}>
+          {[
+            { Icon:KeyRound,         label:"Equipo ZRC",        value:"luis@zenithrisecapital.com",     sub:"Contacto directo" },
+            { Icon:BriefcaseBusiness, label:"Deal Flow",         value:"investment@zenithrisecapital.com", sub:"Oportunidades & mandatos" },
+            { Icon:Shield,           label:"Soporte",           value:"support@zenithrisecapital.com",  sub:"Acceso y plataforma" },
+          ].map(({ Icon, label, value, sub }) => (
+            <a key={label} href={`mailto:${value}`} style={{ border:"1px solid rgba(255,255,255,0.1)", background:"rgba(255,255,255,0.025)", padding:28, textDecoration:"none", display:"block", transition:"border-color 0.2s" }}>
+              <Icon size={20} color={G} style={{ marginBottom:20, display:"block" }} />
+              <div style={{ ...S.goldLabel, fontSize:9, marginBottom:8 }}>{label}</div>
+              <div style={{ ...S.serif, fontSize:17, color:"#fff", marginBottom:6, wordBreak:"break-all" }}>{value}</div>
+              <div style={{ ...S.label, fontSize:9, color:"rgba(255,255,255,0.35)" }}>{sub}</div>
+            </a>
+          ))}
         </div>
-        <div style={{ border:"1px solid rgba(255,255,255,0.1)", background:"rgba(0,0,0,0.75)", padding:28, backdropFilter:"blur(8px)" }}>
-          <div style={{ ...S.goldLabel, marginBottom:28 }}>Access Form — Membership Request</div>
-          <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
-            {[["Full name","text"],["Email","email"],["Organization","text"],["LinkedIn / Website","url"]].map(([label, type]) => (
-              <label key={label} style={{ display:"block" }}>
-                <span style={{ ...S.label, fontSize:9, color:"rgba(255,255,255,0.35)", display:"block", marginBottom:6 }}>{label}</span>
-                <input type={type} placeholder={label} style={{ width:"100%", border:"1px solid rgba(255,255,255,0.1)", background:"rgba(255,255,255,0.025)", padding:"12px 16px", color:"#fff", outline:"none", boxSizing:"border-box", fontFamily:"inherit", fontSize:14 }} />
-              </label>
-            ))}
-            <label style={{ display:"block" }}>
-              <span style={{ ...S.label, fontSize:9, color:"rgba(255,255,255,0.35)", display:"block", marginBottom:6 }}>Reason for access</span>
-              <textarea rows={3} placeholder="Briefly explain your strategic interest" style={{ width:"100%", resize:"none", border:"1px solid rgba(255,255,255,0.1)", background:"rgba(255,255,255,0.025)", padding:"12px 16px", color:"#fff", outline:"none", boxSizing:"border-box", fontFamily:"inherit", fontSize:14 }} />
-            </label>
-          </div>
-          <button style={{ marginTop:20, display:"inline-flex", width:"100%", alignItems:"center", justifyContent:"center", gap:12, padding:"14px 24px", background:"#fff", color:"#000", border:"none", ...S.label, cursor:"pointer", borderRadius:40, boxSizing:"border-box" }}>
-            Submit Request <ArrowRight size={15} />
-          </button>
-          <p style={{ marginTop:16, textAlign:"center", ...S.label, fontSize:10, color:"rgba(255,255,255,0.35)", lineHeight:1.6 }}>Manual approval only. Submission does not guarantee membership.</p>
+        <div style={{ marginTop:20, border:"1px solid rgba(255,255,255,0.08)", background:"rgba(255,255,255,0.012)", padding:20, textAlign:"center" }}>
+          <p style={{ ...S.label, fontSize:9, color:"rgba(255,255,255,0.28)", margin:0 }}>
+            Miembro Inner Circle verificado · Acceso activo · Zenith Rise Capital
+          </p>
         </div>
       </div>
     </section>
@@ -595,7 +585,7 @@ export default function InnerCircle({ onBack }) {
       <RadarSection />
       <DeliverablesSection />
       <MembershipSection />
-      <AccessSection />
+      <ContactSection />
       <ICFooter />
     </main>
   );
