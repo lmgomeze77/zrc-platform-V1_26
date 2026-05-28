@@ -538,7 +538,9 @@ async function handleInnerCircleLogin(request, env) {
     if (!rpcResp.ok) return jsonResponse({ status: "denied" });
     const valid = await rpcResp.json();
 
-    return jsonResponse({ status: valid === true ? "approved" : "denied" });
+    // Supabase REST wraps scalar returns in an array: [true] or [false]
+    const isValid = valid === true || (Array.isArray(valid) && valid[0] === true);
+    return jsonResponse({ status: isValid ? "approved" : "denied" });
   } catch (err) {
     console.error("IC login error:", err);
     return jsonResponse({ status: "denied" });
