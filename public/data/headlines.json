@@ -1,248 +1,217 @@
 {
-  "generated_at": "2026-05-28T09:55:41.312Z",
+  "generated_at": "2026-05-29T09:46:34.783Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1641",
-      "change": "-0.53%",
+      "value": "1.16388",
+      "change": "-0.09",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "17645.25",
-      "change": "-0.27%",
-      "up": false
+      "value": "18387.40",
+      "change": "+2.24",
+      "up": true
     },
     {
-      "symbol": "BRENT CRUDE",
+      "symbol": "BRENT",
       "value": "94.07",
-      "change": "+1.98%",
+      "change": "+1.82",
       "up": true
     },
     {
-      "symbol": "WTI CRUDE",
-      "value": "90.24",
-      "change": "+1.76%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4516.25",
-      "change": "+0.45%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "73285.78",
-      "change": "-2.90%",
+      "symbol": "GOLD",
+      "value": "4417.10",
+      "change": "-0.70",
       "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "73690.45",
+      "change": "+1.00",
+      "up": true
     },
     {
       "symbol": "VIX",
-      "value": "15.73",
-      "change": "-3.44%",
+      "value": "15.74",
+      "change": "-3.38",
       "up": false
     },
     {
-      "symbol": "US 10Y YIELD",
-      "value": "4.455%",
-      "change": "-0.58%",
-      "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7563.63",
-      "change": "+0.58%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "25039.00",
-      "change": "-0.55%",
+      "symbol": "US 10Y",
+      "value": "4.4550",
+      "change": "-0.58",
       "up": false
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8672",
-      "change": "+0.07%",
+      "value": "0.8667",
+      "change": "+0.13",
       "up": true
     },
     {
-      "symbol": "DXY DOLLAR INDEX",
-      "value": "99.28",
-      "change": "+0.08%",
+      "symbol": "S&P 500",
+      "value": "7563.63",
+      "change": "+0.58",
       "up": true
     },
     {
-      "symbol": "NATURAL GAS",
-      "value": "3.308",
-      "change": "+0.12%",
-      "up": true
-    },
-    {
-      "symbol": "COPPER",
-      "value": "6.25",
-      "change": "-2.34%",
+      "symbol": "DAX 40",
+      "value": "25157.17",
+      "change": "-0.08",
       "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7799",
-      "change": "+0.01%",
-      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Irán y EE.UU. intercambian ataques aéreos después de que Trump rechaza reportaje sobre acuerdo en Ormuz",
-        "en": "Iran and US trade air strikes after Trump dismisses report of Hormuz deal"
+        "es": "Ataque con dron ruso 'incidente de seguridad más grave' en Rumania desde inicio de guerra en Ucrania",
+        "en": "Russian drone strike 'most serious security incident' in Romania since start of Ukraine war"
       },
       "summary": {
-        "es": "La Guardia Revolucionaria iraní atacó una base aérea estadounidense tras ataques de EE.UU. a operaciones de drones iraníes cerca del Estrecho de Ormuz, después de que Trump rechazara reportes de un posible acuerdo con Teherán. Este escalamiento representa el enfrentamiento más serio desde el inicio de un frágil alto al fuego en abril, amenazando las negociaciones diplomáticas en curso.",
-        "en": "Iran's Revolutionary Guard targeted a US airbase following US military strikes on Iranian drone operations near the Strait of Hormuz, after Trump rejected reports of a potential compromise deal with Tehran. This escalation represents the most serious clash since a fragile ceasefire began in April, threatening ongoing diplomatic negotiations."
+        "es": "Un dron ruso impactó un bloque de apartamentos cerca de la frontera de Rumania con Ucrania, causando heridos y desencadenando una respuesta fuerte de la OTAN. El incidente marca una escalada significativa en el desbordamiento del conflicto ucraniano hacia territorio de un estado miembro de la alianza, elevando el riesgo de confrontación directa entre Rusia y la OTAN.",
+        "en": "A Russian drone hit an apartment block near Romania's border with Ukraine, causing casualties and prompting a strong NATO response. The incident marks a significant escalation in the spillover of the Ukraine conflict onto NATO member territory, raising the risk of direct Russia-NATO confrontation."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "BONDS +",
-        "EQUITIES -",
-        "USD ?"
+        "EUR +",
+        "DEFENSE STOCKS +",
+        "EQUITIES ?",
+        "BONDS +"
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260528-iran-and-us-trade-air-strikes-after-trump-dismisses-report-of-hormuz-deal",
-      "published_at": "2026-05-28",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/may/29/romania-ukraine-russia-galati-drone-strike-europe-live-breaking-news",
+      "published_at": "2026-05-29",
       "time": "<1h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Guerra de Irán: La escasez de petróleo amenaza la seguridad energética global",
-        "en": "Iran war: Oil shortages threaten global energy security"
+        "es": "En el bloqueo del Estrecho de Ormuz, EE.UU. e Irán despliegan guerra económica",
+        "en": "In Strait of Hormuz Standoff, U.S. and Iran Deploy Economic Warfare"
       },
       "summary": {
-        "es": "Las reservas estratégicas de petróleo están disminuyendo rápidamente mientras los países liberan suministros de emergencia para mitigar el impacto económico del conflicto de Oriente Medio. La presión sobre la oferta global de energía se intensifica con implicaciones inflacionarias para mercados desarrollados y emergentes.",
-        "en": "Strategic petroleum reserves are declining rapidly as countries release emergency crude supplies to cushion the economic impact of the Middle East conflict. Pressure on global energy supply is intensifying with inflationary implications for developed and emerging markets."
+        "es": "El bloqueo estadounidense y el control iraní del Estrecho de Ormuz han creado un punto muerto que es ni paz ni conflicto abierto, con ambas potencias intentando estrangulamiento económico. Esta situación representa un riesgo crítico para la seguridad energética global y los precios del petróleo, afectando directamente los márgenes corporativos y la inflación.",
+        "en": "The U.S. blockade and Iran's control of the Strait of Hormuz have created a stalemate between peace and open conflict, with both powers pursuing economic strangulation. This situation represents a critical risk to global energy security and oil prices, directly affecting corporate margins and inflation."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "INFLATION +",
-        "BONDS -",
+        "SHIPPING COSTS +",
+        "USD +",
         "EQUITIES -"
       ],
       "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/iran-war-oil-shortages-threaten-global-energy-security/a-77313462?maca=en-rss-en-all-1573-rdf",
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/28/world/middleeast/iran-us-blockade-strait-hormuz.html",
       "published_at": "2026-05-28",
-      "time": "<1h"
+      "time": "12h"
     },
     {
       "id": 3,
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Israel continúa su escalada en Líbano con nuevas advertencias de evacuación",
-        "en": "Israel Continues Its Escalation in Lebanon With New Evacuation Warnings"
+        "es": "Guerra Irán: escasez de petróleo amenaza la seguridad energética global",
+        "en": "Iran war: Oil shortages threaten global energy security"
       },
       "summary": {
-        "es": "El ejército israelí emitió advertencias de evacuación generalizadas para dos ciudades del sur de Líbano, señalando nuevos ataques aéreos inminentes. La expansión geográfica del conflicto más allá de Gaza extiende el riesgo sistémico a los mercados regionales y a las cadenas de suministro global.",
-        "en": "The Israeli military issued sweeping evacuation warnings for two southern Lebanese cities, indicating imminent airstrikes. The geographic expansion of the conflict beyond Gaza extends systemic risk to regional markets and global supply chains."
+        "es": "Las reservas estratégicas de petróleo están disminuyendo rápidamente a medida que los países liberan suministros de emergencia para mitigar el impacto económico del conflicto de Oriente Medio. Esta dinámica crea presiones inflacionarias duraderas y volatilidad en los mercados de materias primas con implicaciones para políticas monetarias centrales.",
+        "en": "Strategic petroleum reserves are declining rapidly as countries release emergency supplies to cushion the economic impact of Middle East conflict. This dynamic creates sustained inflationary pressures and commodity market volatility with implications for central bank policies."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES -",
-        "GOLD +",
-        "USD ?"
+        "INFLATION +",
+        "BONDS -",
+        "GOLD +"
       ],
       "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/27/world/middleeast/israel-hezbollah-lebanon.html",
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/iran-war-oil-shortages-threaten-global-energy-security/a-77313462?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-05-28",
-      "time": "9h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Las facturas energéticas subirán para millones al impacto de la guerra de Irán",
-        "en": "Energy bills to rise for millions as impact of Iran war hits"
-      },
-      "summary": {
-        "es": "Un hogar con consumo típico de energía pagará £221 anuales adicionales bajo el nuevo tope de precios del regulador británico. El impacto inflacionario del conflicto de Irán se transmite directamente a los consumidores europeos, planteando presiones sobre deflación de demanda y tasas de política monetaria.",
-        "en": "A household using typical energy consumption will pay £221 more annually under the regulator's new price cap. The inflationary impact of the Iran conflict is directly transmitting to European consumers, creating pressure on demand deflation and monetary policy rates."
-      },
-      "impact": "high",
-      "signals": [
-        "EUR -",
-        "BONDS +",
-        "GBP -",
-        "EQUITIES ?"
-      ],
-      "confidence": 85,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/ce8pw464986o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-27",
       "time": "1d"
     },
     {
-      "id": 5,
+      "id": 4,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Casi medio millón de rusos muertos en la guerra de Ucrania, dice jefe de espías británicos",
-        "en": "Nearly half a million Russians killed in Ukraine war, UK spy chief says"
+        "es": "Los precios del petróleo caen tras informe de avance en negociaciones EE.UU.-Irán",
+        "en": "Oil prices fall after report of breakthrough in US-Iran talks"
       },
       "summary": {
-        "es": "El jefe del MI6 estima que casi 500,000 soldados rusos han muerto en Ucrania desde el inicio de la invasión hace más de cuatro años, con fuerzas rusas retrocediendo en el terreno por primera vez desde finales de 2022. El gasto de defensa ruso sostenido plantea restricciones fiscales de largo plazo con implicaciones para la recuperación económica rusa y la dinámica geopolítica de sanciones.",
-        "en": "The head of MI6 estimates nearly 500,000 Russian soldiers have been killed in Ukraine since the invasion began over four years ago, with Russian forces retreating on the battlefield for the first time since late 2022. Sustained Russian defense spending creates long-term fiscal constraints with implications for Russian economic recovery and sanctions geopolitics."
+        "es": "Un informe de tregua extendida de 60 días, sujeto a la aprobación de Trump, ha llevado a una caída en los precios globales del petróleo. Este desarrollo sugiere potencial para desescalada en el Estrecho de Ormuz, con implicaciones para la inflación y la política monetaria de los bancos centrales.",
+        "en": "A report of extended 60-day ceasefire, subject to Trump's approval, has led to falling global oil prices. This development suggests potential de-escalation in Strait of Hormuz dynamics, with implications for inflation and central bank monetary policy."
       },
       "impact": "medium",
       "signals": [
-        "RUB -",
-        "GOLD +",
-        "EQUITIES ?",
-        "BONDS +"
+        "OIL -",
+        "INFLATION -",
+        "BONDS +",
+        "EQUITIES ?"
       ],
       "confidence": 82,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/27/nearly-half-a-million-russians-killed-in-ukraine-war-uk-spy-chief-says",
-      "published_at": "2026-05-27",
-      "time": "16h"
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/cp3p62xddq4o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-28",
+      "time": "19h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Israel lleva a cabo ataque en suburbios de Beirut, el primero cerca de la capital en semanas",
+        "en": "Israel carries out strike on Beirut suburbs, first near capital in weeks"
+      },
+      "summary": {
+        "es": "Un ataque israelí golpeó edificios en los suburbios del sur de Beirut, el primero cerca de la capital en semanas, en medio de un alto el fuego que no ha logrado detener los enfrentamientos entre tropas israelíes y Hezbollah. Esta escalada indica deterioro en la estabilidad del cese del fuego y mayor riesgo de conflagración regional con consecuencias para precios de energía y volatilidad de activos.",
+        "en": "An Israeli strike hit buildings in Beirut's southern suburbs, the first near the capital in weeks, amid a ceasefire that has failed to halt fighting between Israeli troops and Hezbollah. This escalation indicates ceasefire deterioration and increased risk of regional conflagration affecting energy prices and asset volatility."
+      },
+      "impact": "medium",
+      "signals": [
+        "OIL +",
+        "EQUITIES -",
+        "GOLD +",
+        "DEFENSE STOCKS ?"
+      ],
+      "confidence": 85,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260528-israel-carries-out-strike-on-beirut-suburbs-first-near-capital-in-weeks",
+      "published_at": "2026-05-28",
+      "time": "18h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "Kaja Kallas advierte contra caer en 'trampa' rusa mientras ministros de la UE se reúnen para negociaciones",
-        "en": "Kaja Kallas warns against walking into Russian 'trap' as EU ministers meet for talks"
+        "es": "Netanyahu dice que Israel controlará el 70 por ciento de Gaza, presionando a Hamás",
+        "en": "Netanyahu Says Israel Will Control 70 Percent of Gaza, Squeezing Hamas"
       },
       "summary": {
-        "es": "La jefa diplomática de la UE advierte contra enfocarse en personalidades en lugar de estrategia durante negociaciones sobre Ucrania, mientras Zelenskyy confirma un 'paquete de defensa importante' con Suecia. El escepticismo sobre avances diplomáticos y la intensificación de compromisos defensivos subrayan expectativas divergentes entre actores clave con implicaciones para la volatilidad de sanciones y geopolítica energética.",
-        "en": "The EU's chief diplomat cautions against focusing on personalities rather than strategy during Ukraine negotiations, as Zelenskyy confirms a 'major defence package' with Sweden. Skepticism about diplomatic progress and intensifying defense commitments underscore divergent expectations among key actors with implications for sanctions volatility and energy geopolitics."
+        "es": "El ejército israelí continúa realizando ataques y ocupando territorio a pesar de un cese del fuego con Hamás, con Netanyahu indicando intención de controlar el 70% de Gaza. Esta postura sugiere prolongación del conflicto, riesgo de escalada regional, y continuidad de disrupciones en la estabilidad geopolítica de Oriente Medio con implicaciones para mercados globales.",
+        "en": "Israel's military continues conducting strikes and seizing territory despite a ceasefire with Hamas, with Netanyahu indicating intent to control 70% of Gaza. This stance suggests conflict prolongation, regional escalation risk, and continued Middle East geopolitical instability with implications for global markets."
       },
       "impact": "medium",
       "signals": [
-        "EUR ?",
-        "EQUITIES ?",
+        "OIL +",
+        "EQUITIES -",
         "GOLD +",
-        "BONDS ?"
+        "VOLATILITY +"
       ],
-      "confidence": 78,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/may/28/europe-russia-ukraine-talks-heatwave-kaja-kallas-putin-latest-news-updates",
+      "confidence": 84,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/28/world/middleeast/israel-gaza-hamas-70-percent.html",
       "published_at": "2026-05-28",
-      "time": "<1h"
+      "time": "11h"
     }
-  ],
-  "market_updated_at": "2026-05-29T08:59:47.360Z"
+  ]
 }
