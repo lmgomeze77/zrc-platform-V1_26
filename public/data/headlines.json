@@ -4,19 +4,19 @@
     {
       "symbol": "EUR/USD",
       "value": "1.1662",
-      "change": "0.11%",
+      "change": "+0.14%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
       "value": "18434",
-      "change": "0.85%",
+      "change": "+0.85%",
       "up": true
     },
     {
       "symbol": "BRENT crude",
-      "value": "91.37",
-      "change": "-1.43%",
+      "value": "91.12",
+      "change": "-1.70%",
       "up": false
     },
     {
@@ -28,14 +28,14 @@
     {
       "symbol": "GOLD (XAU/USD)",
       "value": "4539.09",
-      "change": "0.97%",
+      "change": "+0.97%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "73462.87",
-      "change": "0.04%",
-      "up": true
+      "value": "73484.89",
+      "change": "-0.35%",
+      "up": false
     },
     {
       "symbol": "VIX",
@@ -52,31 +52,31 @@
     {
       "symbol": "S&P 500",
       "value": "7580.06",
-      "change": "0.22%",
+      "change": "+0.22%",
       "up": true
     },
     {
       "symbol": "DAX 40",
       "value": "25105",
-      "change": "0.05%",
+      "change": "+0.05%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8665",
-      "change": "-0.63%",
+      "value": "0.8638",
+      "change": "-0.22%",
       "up": false
     },
     {
       "symbol": "DXY dollar index",
-      "value": "98.89",
-      "change": "-0.13%",
+      "value": "98.9674",
+      "change": "-0.05%",
       "up": false
     },
     {
       "symbol": "Natural Gas",
       "value": "3.29",
-      "change": "0.15%",
+      "change": "+0.15%",
       "up": true
     },
     {
@@ -244,5 +244,5 @@
       "time": "15h"
     }
   ],
-  "market_updated_at": "2026-05-30T18:54:50.214Z"
+  "market_updated_at": "2026-05-30T22:43:55.592Z"
 }
