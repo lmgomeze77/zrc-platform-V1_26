@@ -3,8 +3,8 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1668",
-      "change": "0.14%",
+      "value": "1.1662",
+      "change": "0.11%",
       "up": true
     },
     {
@@ -14,21 +14,21 @@
       "up": true
     },
     {
-      "symbol": "BRENT",
+      "symbol": "BRENT crude",
       "value": "91.37",
       "change": "-1.43%",
       "up": false
     },
     {
-      "symbol": "WTI",
-      "value": "87.51",
-      "change": "-1.57%",
+      "symbol": "WTI crude",
+      "value": "87.36",
+      "change": "-1.73%",
       "up": false
     },
     {
-      "symbol": "GOLD",
-      "value": "4539.27",
-      "change": "0.98%",
+      "symbol": "GOLD (XAU/USD)",
+      "value": "4539.09",
+      "change": "0.97%",
       "up": true
     },
     {
@@ -44,9 +44,9 @@
       "up": false
     },
     {
-      "symbol": "US 10Y",
-      "value": "4.44",
-      "change": "-0.04%",
+      "symbol": "US 10Y yield",
+      "value": "4.44%",
+      "change": "-0.01%",
       "up": false
     },
     {
@@ -64,31 +64,31 @@
     {
       "symbol": "EUR/GBP",
       "value": "0.8665",
-      "change": "-0.03%",
+      "change": "-0.63%",
       "up": false
     },
     {
-      "symbol": "DXY",
+      "symbol": "DXY dollar index",
       "value": "98.89",
       "change": "-0.13%",
       "up": false
     },
     {
-      "symbol": "NATGAS",
-      "value": "3.33",
-      "change": "1.37%",
+      "symbol": "Natural Gas",
+      "value": "3.29",
+      "change": "0.15%",
       "up": true
     },
     {
-      "symbol": "COPPER",
+      "symbol": "Copper",
       "value": "6.37",
       "change": "-0.48%",
       "up": false
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7634",
-      "change": "-0.13%",
+      "value": "6.7797",
+      "change": "-0.12%",
       "up": false
     }
   ],
@@ -244,5 +244,5 @@
       "time": "15h"
     }
   ],
-  "market_updated_at": "2026-05-30T14:57:19.081Z"
+  "market_updated_at": "2026-05-30T18:54:50.214Z"
 }
