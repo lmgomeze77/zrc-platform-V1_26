@@ -1,40 +1,34 @@
 {
-  "generated_at": "2026-05-29T09:46:34.783Z",
+  "generated_at": "2026-05-30T08:24:04.356Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1668",
-      "change": "+0.14%",
+      "value": "1.1659",
+      "change": "+0.03%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "17985.30",
-      "change": "+0.06%",
+      "value": "18434",
+      "change": "+0.85%",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "91.12",
       "change": "-1.70%",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "87.20",
-      "change": "-1.99%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
+      "symbol": "GOLD",
       "value": "4593.00",
       "change": "+1.34%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "73361.08",
-      "change": "-0.35%",
+      "symbol": "BTC",
+      "value": "73411.11",
+      "change": "-0.19%",
       "up": false
     },
     {
@@ -44,9 +38,15 @@
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
+      "symbol": "US 10Y",
       "value": "4.4530",
       "change": "-0.04%",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8660",
+      "change": "-0.05%",
       "up": false
     },
     {
@@ -57,38 +57,8 @@
     },
     {
       "symbol": "DAX 40",
-      "value": "25104.70",
-      "change": "+0.05%",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.867",
-      "change": "0.00%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "98.82",
-      "change": "-0.15%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.308",
-      "change": "+0.12%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.39",
-      "change": "-0.56%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7954",
-      "change": "-0.15%",
+      "value": "25157.17",
+      "change": "-0.08%",
       "up": false
     }
   ],
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "Ataque con dron ruso 'incidente de seguridad más grave' en Rumania desde inicio de guerra en Ucrania",
-        "en": "Russian drone strike 'most serious security incident' in Romania since start of Ukraine war"
+        "es": "Rumania: un dron ruso golpea un edificio de apartamentos",
+        "en": "Romania: Russian drone hits apartment building"
       },
       "summary": {
-        "es": "Un dron ruso impactó un bloque de apartamentos cerca de la frontera de Rumania con Ucrania, causando heridos y desencadenando una respuesta fuerte de la OTAN. El incidente marca una escalada significativa en el desbordamiento del conflicto ucraniano hacia territorio de un estado miembro de la alianza, elevando el riesgo de confrontación directa entre Rusia y la OTAN.",
-        "en": "A Russian drone hit an apartment block near Romania's border with Ukraine, causing casualties and prompting a strong NATO response. The incident marks a significant escalation in the spillover of the Ukraine conflict onto NATO member territory, raising the risk of direct Russia-NATO confrontation."
+        "es": "Un dron ruso atacó un edificio residencial en Galati, Rumania (miembro de la OTAN), hiriendo a dos personas e incitando una fuerte condena de la alianza militar y la UE. El incidente marca una escalada potencial en la confrontación Rusia-OTAN al expandir las operaciones aéreas rusas hacia territorio aliado.",
+        "en": "A Russian drone struck an apartment building in Galati, Romania (NATO member), injuring two people and prompting strong condemnation from the military alliance and the EU. The incident marks potential escalation in Russia-NATO confrontation as Russian air operations expand into allied territory."
       },
       "impact": "high",
       "signals": [
         "EUR +",
-        "DEFENSE STOCKS +",
+        "BONDS +",
         "EQUITIES ?",
-        "BONDS +"
+        "DEFENSE STOCKS +"
       ],
       "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/may/29/romania-ukraine-russia-galati-drone-strike-europe-live-breaking-news",
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260529-romania-russian-drone-hits-apartment-building",
       "published_at": "2026-05-29",
-      "time": "<1h"
+      "time": "17h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "En el bloqueo del Estrecho de Ormuz, EE.UU. e Irán despliegan guerra económica",
-        "en": "In Strait of Hormuz Standoff, U.S. and Iran Deploy Economic Warfare"
+        "es": "El frente invisible de Putin: drones, sabotajes y la guerra híbrida ponen a prueba a Europa",
+        "en": "Putin's invisible front: drones, sabotage and hybrid warfare test Europe"
       },
       "summary": {
-        "es": "El bloqueo estadounidense y el control iraní del Estrecho de Ormuz han creado un punto muerto que es ni paz ni conflicto abierto, con ambas potencias intentando estrangulamiento económico. Esta situación representa un riesgo crítico para la seguridad energética global y los precios del petróleo, afectando directamente los márgenes corporativos y la inflación.",
-        "en": "The U.S. blockade and Iran's control of the Strait of Hormuz have created a stalemate between peace and open conflict, with both powers pursuing economic strangulation. This situation represents a critical risk to global energy security and oil prices, directly affecting corporate margins and inflation."
+        "es": "Rusia intensifica una campaña de presión encubierta sobre el flanco oriental de la OTAN mediante drones y sabotajes, mientras la guerra en Ucrania continúa. Esta estrategia de guerra híbrida inquieta a gobiernos y servicios de inteligencia europeos, presionando potencialmente la inversión en defensa y seguridad regional.",
+        "en": "Russia intensifies covert pressure campaign on NATO's eastern flank through drones and sabotage while Ukraine war continues. This hybrid warfare strategy concerns European governments and intelligence services, potentially driving defense spending and regional security investments."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "SHIPPING COSTS +",
-        "USD +",
-        "EQUITIES -"
+        "EUR -",
+        "DEFENSE STOCKS +",
+        "BONDS +",
+        "EQUITIES ?"
       ],
-      "confidence": 90,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/28/world/middleeast/iran-us-blockade-strait-hormuz.html",
-      "published_at": "2026-05-28",
-      "time": "12h"
+      "confidence": 88,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-05-30/el-frente-invisible-de-putin-drones-sabotajes-y-la-guerra-hibrida-ponen-a-prueba-a-europa.html",
+      "published_at": "2026-05-30",
+      "time": "4h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Guerra Irán: escasez de petróleo amenaza la seguridad energética global",
-        "en": "Iran war: Oil shortages threaten global energy security"
+        "es": "EE.UU. 'más que capaz' de reanudar la guerra contra Irán, dice Pete Hegseth",
+        "en": "US 'more than capable' of resuming war against Iran, Pete Hegseth says"
       },
       "summary": {
-        "es": "Las reservas estratégicas de petróleo están disminuyendo rápidamente a medida que los países liberan suministros de emergencia para mitigar el impacto económico del conflicto de Oriente Medio. Esta dinámica crea presiones inflacionarias duraderas y volatilidad en los mercados de materias primas con implicaciones para políticas monetarias centrales.",
-        "en": "Strategic petroleum reserves are declining rapidly as countries release emergency supplies to cushion the economic impact of Middle East conflict. This dynamic creates sustained inflationary pressures and commodity market volatility with implications for central bank policies."
+        "es": "El Jefe del Pentágono advierte que EE.UU. está preparado para reanudar hostilidades contra Irán mientras el Presidente Trump establece líneas rojas para cualquier acuerdo de paz. La declaración marca una postura militar dura que afecta directamente los mercados energéticos y la estabilidad geopolítica del Golfo Pérsico.",
+        "en": "Pentagon chief warns US is prepared to resume hostilities against Iran as President Trump sets red lines for any peace deal. The statement marks a hardline military posture directly affecting energy markets and Persian Gulf geopolitical stability."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "INFLATION +",
-        "BONDS -",
+        "USD +",
+        "EQUITIES -",
         "GOLD +"
       ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/iran-war-oil-shortages-threaten-global-energy-security/a-77313462?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-28",
-      "time": "1d"
+      "confidence": 90,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/may/30/us-more-than-capable-of-resuming-war-against-iran-pete-hegseth-says",
+      "published_at": "2026-05-30",
+      "time": "2h"
     },
     {
       "id": 4,
       "tag": "WATCH",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Los precios del petróleo caen tras informe de avance en negociaciones EE.UU.-Irán",
-        "en": "Oil prices fall after report of breakthrough in US-Iran talks"
+        "es": "Ucrania utiliza drones de IA para atacar convoyes vitales que abastecen a las tropas rusas",
+        "en": "Ukraine using AI drones to strike vital convoys supplying Russian troops"
       },
       "summary": {
-        "es": "Un informe de tregua extendida de 60 días, sujeto a la aprobación de Trump, ha llevado a una caída en los precios globales del petróleo. Este desarrollo sugiere potencial para desescalada en el Estrecho de Ormuz, con implicaciones para la inflación y la política monetaria de los bancos centrales.",
-        "en": "A report of extended 60-day ceasefire, subject to Trump's approval, has led to falling global oil prices. This development suggests potential de-escalation in Strait of Hormuz dynamics, with implications for inflation and central bank monetary policy."
+        "es": "Ucrania deplega drones impulsados por IA para atacar camiones rusos cargados con munición, combustible y alimentos en territorios ocupados. La adopción de tecnología autónoma en operaciones de combate representa un cambio táctico significativo con implicaciones para las cadenas de suministro militares y las dinámicas del conflicto.",
+        "en": "Ukraine deploys AI-powered drones to target Russian trucks carrying ammunition, fuel and food in occupied territories. The adoption of autonomous technology in combat operations represents significant tactical shift with implications for military supply chains and conflict dynamics."
       },
       "impact": "medium",
       "signals": [
-        "OIL -",
-        "INFLATION -",
-        "BONDS +",
-        "EQUITIES ?"
+        "EQUITIES ?",
+        "DEFENSE TECH +",
+        "COMMODITIES +",
+        "EUR ?"
       ],
       "confidence": 82,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/cp3p62xddq4o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-28",
-      "time": "19h"
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/cdjp0n7rn41o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-05-30",
+      "time": "6h"
     },
     {
       "id": 5,
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Israel lleva a cabo ataque en suburbios de Beirut, el primero cerca de la capital en semanas",
-        "en": "Israel carries out strike on Beirut suburbs, first near capital in weeks"
+        "es": "Guerra en Irán: EE.UU. levantará el bloqueo naval de puertos, dice Trump",
+        "en": "Iran war: US to lift naval blockade of ports, Trump says"
       },
       "summary": {
-        "es": "Un ataque israelí golpeó edificios en los suburbios del sur de Beirut, el primero cerca de la capital en semanas, en medio de un alto el fuego que no ha logrado detener los enfrentamientos entre tropas israelíes y Hezbollah. Esta escalada indica deterioro en la estabilidad del cese del fuego y mayor riesgo de conflagración regional con consecuencias para precios de energía y volatilidad de activos.",
-        "en": "An Israeli strike hit buildings in Beirut's southern suburbs, the first near the capital in weeks, amid a ceasefire that has failed to halt fighting between Israeli troops and Hezbollah. This escalation indicates ceasefire deterioration and increased risk of regional conflagration affecting energy prices and asset volatility."
+        "es": "El Presidente Trump señala un potencial levantamiento del bloqueo naval estadounidense en puertos iraníes, aunque sin anunciar una determinación final sobre un acuerdo de paz. El movimiento sugiere negociaciones en curso que podrían alterar significativamente los flujos de energía global y las primas de riesgo geopolítico.",
+        "en": "President Trump signals potential lifting of US naval blockade on Iranian ports without announcing final determination on peace deal. The move suggests ongoing negotiations that could significantly alter global energy flows and geopolitical risk premiums."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "OIL +",
-        "EQUITIES -",
-        "GOLD +",
-        "DEFENSE STOCKS ?"
+        "OIL -",
+        "USD -",
+        "EQUITIES +",
+        "EMERGING MARKETS +"
       ],
       "confidence": 85,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260528-israel-carries-out-strike-on-beirut-suburbs-first-near-capital-in-weeks",
-      "published_at": "2026-05-28",
-      "time": "18h"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/iran-war-us-to-lift-naval-blockade-of-ports-trump-says/live-77338255?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-29",
+      "time": "17h"
     },
     {
       "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "EU",
       "title": {
-        "es": "Netanyahu dice que Israel controlará el 70 por ciento de Gaza, presionando a Hamás",
-        "en": "Netanyahu Says Israel Will Control 70 Percent of Gaza, Squeezing Hamas"
+        "es": "Rumania dice que podría invocar el Artículo 4 de la OTAN. ¿Qué haría eso?",
+        "en": "Romania Says It Could Invoke NATO's Article 4. What Would That Do?"
       },
       "summary": {
-        "es": "El ejército israelí continúa realizando ataques y ocupando territorio a pesar de un cese del fuego con Hamás, con Netanyahu indicando intención de controlar el 70% de Gaza. Esta postura sugiere prolongación del conflicto, riesgo de escalada regional, y continuidad de disrupciones en la estabilidad geopolítica de Oriente Medio con implicaciones para mercados globales.",
-        "en": "Israel's military continues conducting strikes and seizing territory despite a ceasefire with Hamas, with Netanyahu indicating intent to control 70% of Gaza. This stance suggests conflict prolongation, regional escalation risk, and continued Middle East geopolitical instability with implications for global markets."
+        "es": "El Ministro de Relaciones Exteriores rumano señala que el país podría invocar el Artículo 4 del Tratado de la OTAN (consultas sobre amenazas a la seguridad) tras el ataque del dron ruso. La escalada de consultaciones de la OTAN podría llevar a una postura defensiva más militarizada en el flanco oriental europeo.",
+        "en": "Romanian Foreign Minister signals country could invoke NATO Article 4 (consultation clause on security threats) following Russian drone attack. NATO escalation in consultations could lead to more militarized defensive posture on Europe's eastern flank."
       },
       "impact": "medium",
       "signals": [
-        "OIL +",
-        "EQUITIES -",
-        "GOLD +",
-        "VOLATILITY +"
+        "EUR +",
+        "DEFENSE STOCKS +",
+        "BONDS +",
+        "EQUITIES ?"
       ],
-      "confidence": 84,
+      "confidence": 80,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/28/world/middleeast/israel-gaza-hamas-70-percent.html",
-      "published_at": "2026-05-28",
-      "time": "11h"
+      "source_url": "https://www.nytimes.com/2026/05/29/world/europe/nato-article-4-romania-russia.html",
+      "published_at": "2026-05-29",
+      "time": "15h"
     }
-  ],
-  "market_updated_at": "2026-05-30T08:12:18.036Z"
+  ]
 }
