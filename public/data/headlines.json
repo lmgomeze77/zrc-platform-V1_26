@@ -1,248 +1,217 @@
 {
-  "generated_at": "2026-05-30T08:24:04.356Z",
+  "generated_at": "2026-05-31T08:40:50.197Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1663",
-      "change": "+0.38%",
+      "value": "1.1659",
+      "change": "+0.03",
       "up": true
     },
     {
       "symbol": "IBEX 35",
       "value": "18387.40",
-      "change": "+2.24%",
+      "change": "+402.10",
       "up": true
     },
     {
       "symbol": "BRENT",
       "value": "91.12",
-      "change": "-1.70%",
-      "up": false
-    },
-    {
-      "symbol": "WTI",
-      "value": "87.36",
-      "change": "-1.73%",
+      "change": "-1.70",
       "up": false
     },
     {
       "symbol": "GOLD",
-      "value": "4541.41",
-      "change": "+1.02%",
+      "value": "4593.00",
+      "change": "+60.60",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "73906.00",
-      "change": "+0.08%",
+      "symbol": "BTC",
+      "value": "73876.63",
+      "change": "+300.13",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "16.33",
-      "change": "-4.00%",
+      "value": "15.32",
+      "change": "-2.67",
       "up": false
     },
     {
       "symbol": "US 10Y",
-      "value": "4.45",
-      "change": "-0.02%",
-      "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7580.06",
-      "change": "+0.22%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "25105.00",
-      "change": "+0.05%",
+      "value": "4.44",
+      "change": "+0.01",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8638",
-      "change": "+0.03%",
+      "value": "0.8668",
+      "change": "+0.05",
       "up": true
     },
     {
-      "symbol": "DXY",
-      "value": "98.94",
-      "change": "+0.03%",
+      "symbol": "S&P 500",
+      "value": "7580.06",
+      "change": "+16.43",
       "up": true
     },
     {
-      "symbol": "Natural Gas",
-      "value": "3.29",
-      "change": "+0.15%",
+      "symbol": "DAX 40",
+      "value": "25104.70",
+      "change": "+0.05",
       "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.36",
-      "change": "-0.57%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7664",
-      "change": "-0.37%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "es": "Rumania: un dron ruso golpea un edificio de apartamentos",
-        "en": "Romania: Russian drone hits apartment building"
-      },
-      "summary": {
-        "es": "Un dron ruso atacó un edificio residencial en Galati, Rumania (miembro de la OTAN), hiriendo a dos personas e incitando una fuerte condena de la alianza militar y la UE. El incidente marca una escalada potencial en la confrontación Rusia-OTAN al expandir las operaciones aéreas rusas hacia territorio aliado.",
-        "en": "A Russian drone struck an apartment building in Galati, Romania (NATO member), injuring two people and prompting strong condemnation from the military alliance and the EU. The incident marks potential escalation in Russia-NATO confrontation as Russian air operations expand into allied territory."
-      },
-      "impact": "high",
-      "signals": [
-        "EUR +",
-        "BONDS +",
-        "EQUITIES ?",
-        "DEFENSE STOCKS +"
-      ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260529-romania-russian-drone-hits-apartment-building",
-      "published_at": "2026-05-29",
-      "time": "17h"
-    },
-    {
-      "id": 2,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "El frente invisible de Putin: drones, sabotajes y la guerra híbrida ponen a prueba a Europa",
-        "en": "Putin's invisible front: drones, sabotage and hybrid warfare test Europe"
+        "es": "El dron ruso que golpeó Rumania también golpeó la confianza europea",
+        "en": "The Russian Drone That Hit Romania Also Hit European Confidence"
       },
       "summary": {
-        "es": "Rusia intensifica una campaña de presión encubierta sobre el flanco oriental de la OTAN mediante drones y sabotajes, mientras la guerra en Ucrania continúa. Esta estrategia de guerra híbrida inquieta a gobiernos y servicios de inteligencia europeos, presionando potencialmente la inversión en defensa y seguridad regional.",
-        "en": "Russia intensifies covert pressure campaign on NATO's eastern flank through drones and sabotage while Ukraine war continues. This hybrid warfare strategy concerns European governments and intelligence services, potentially driving defense spending and regional security investments."
+        "es": "Un dron ruso impactó territorio de la OTAN en Rumania, exponiendo fallas en la defensa colectiva y aumentando la incertidumbre sobre el compromiso de Washington. El incidente erosiona la confianza en la solidaridad de la alianza y las intenciones estratégicas rusas.",
+        "en": "A Russian drone struck NATO territory in Romania, exposing collective defense gaps and raising concerns about US commitment to alliance security. The incident erodes confidence in NATO solidarity and signals escalating Russia-NATO proximity risks."
       },
       "impact": "high",
       "signals": [
         "EUR -",
-        "DEFENSE STOCKS +",
-        "BONDS +",
-        "EQUITIES ?"
+        "BONDS -",
+        "DEFENSE_EQUITIES +",
+        "VOLATILITY +"
       ],
-      "confidence": 88,
-      "source": "El País",
-      "source_url": "https://elpais.com/internacional/2026-05-30/el-frente-invisible-de-putin-drones-sabotajes-y-la-guerra-hibrida-ponen-a-prueba-a-europa.html",
+      "confidence": 92,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/05/30/world/europe/europe-nato-russia-anxiety.html",
       "published_at": "2026-05-30",
-      "time": "4h"
+      "time": "15h"
     },
     {
-      "id": 3,
-      "tag": "CRITICAL",
+      "id": 2,
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "EE.UU. 'más que capaz' de reanudar la guerra contra Irán, dice Pete Hegseth",
-        "en": "US 'more than capable' of resuming war against Iran, Pete Hegseth says"
+        "es": "Una economía quebrada y un régimen fortalecido: los iraníes abandonados a soportar las consecuencias de la guerra",
+        "en": "A broken economy and an emboldened regime: Iranians abandoned to endure fallout from war"
       },
       "summary": {
-        "es": "El Jefe del Pentágono advierte que EE.UU. está preparado para reanudar hostilidades contra Irán mientras el Presidente Trump establece líneas rojas para cualquier acuerdo de paz. La declaración marca una postura militar dura que afecta directamente los mercados energéticos y la estabilidad geopolítica del Golfo Pérsico.",
-        "en": "Pentagon chief warns US is prepared to resume hostilities against Iran as President Trump sets red lines for any peace deal. The statement marks a hardline military posture directly affecting energy markets and Persian Gulf geopolitical stability."
+        "es": "La guerra entre EE.UU.-Israel ha debilitado significativamente la economía iraní mientras fortalece al régimen en el poder, contradicting hopes for regime change. El daño económico y la consolidación del control represivo tienen implicaciones para la estabilidad regional y los mercados de energía.",
+        "en": "The US-Israel war has damaged Iran's economy while strengthening the regime, contrary to intervention hopes. Economic deterioration combined with regime consolidation carries implications for regional stability and oil market risk premiums."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "USD +",
-        "EQUITIES -",
-        "GOLD +"
+        "GOLD +",
+        "EMERGING_MARKETS -",
+        "VOLATILITY +"
       ],
       "confidence": 90,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/may/30/us-more-than-capable-of-resuming-war-against-iran-pete-hegseth-says",
+      "source_url": "https://www.theguardian.com/news/ng-interactive/2026/may/30/iran-broken-economy-emboldened-regime-iranians-abandoned-fallout-of-war",
       "published_at": "2026-05-30",
-      "time": "2h"
+      "time": "1d"
     },
     {
-      "id": 4,
-      "tag": "WATCH",
+      "id": 3,
+      "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Ucrania utiliza drones de IA para atacar convoyes vitales que abastecen a las tropas rusas",
-        "en": "Ukraine using AI drones to strike vital convoys supplying Russian troops"
+        "es": "Rusia retira al embajador de Armenia por los vínculos con la UE",
+        "en": "Russia recalls Armenia ambassador over EU ties"
       },
       "summary": {
-        "es": "Ucrania deplega drones impulsados por IA para atacar camiones rusos cargados con munición, combustible y alimentos en territorios ocupados. La adopción de tecnología autónoma en operaciones de combate representa un cambio táctico significativo con implicaciones para las cadenas de suministro militares y las dinámicas del conflicto.",
-        "en": "Ukraine deploys AI-powered drones to target Russian trucks carrying ammunition, fuel and food in occupied territories. The adoption of autonomous technology in combat operations represents significant tactical shift with implications for military supply chains and conflict dynamics."
+        "es": "Rusia retiró su embajador de Armenia tras advertencias de Putin sobre buscar membresía en la UE, evocando el 'escenario ucraniano'. La escalada refleja el conflicto geopolítico por la reorientación estratégica de Armenia hacia Occidente.",
+        "en": "Russia recalled its ambassador from Armenia following Putin's warnings against EU membership, alluding to Ukraine's experience. The escalation reflects Putin's assertion of sphere-of-influence doctrine and risks deepening Armenia's geopolitical vulnerability."
       },
       "impact": "medium",
       "signals": [
-        "EQUITIES ?",
-        "DEFENSE TECH +",
-        "COMMODITIES +",
-        "EUR ?"
-      ],
-      "confidence": 82,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cdjp0n7rn41o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-05-30",
-      "time": "6h"
-    },
-    {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "Guerra en Irán: EE.UU. levantará el bloqueo naval de puertos, dice Trump",
-        "en": "Iran war: US to lift naval blockade of ports, Trump says"
-      },
-      "summary": {
-        "es": "El Presidente Trump señala un potencial levantamiento del bloqueo naval estadounidense en puertos iraníes, aunque sin anunciar una determinación final sobre un acuerdo de paz. El movimiento sugiere negociaciones en curso que podrían alterar significativamente los flujos de energía global y las primas de riesgo geopolítico.",
-        "en": "President Trump signals potential lifting of US naval blockade on Iranian ports without announcing final determination on peace deal. The move suggests ongoing negotiations that could significantly alter global energy flows and geopolitical risk premiums."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL -",
-        "USD -",
-        "EQUITIES +",
-        "EMERGING MARKETS +"
+        "EUR ?",
+        "RUB -",
+        "EMERGING_MARKETS ?",
+        "GEOPOLITICAL_RISK +"
       ],
       "confidence": 85,
       "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/iran-war-us-to-lift-naval-blockade-of-ports-trump-says/live-77338255?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-05-29",
-      "time": "17h"
+      "source_url": "https://www.dw.com/en/russia-recalls-armenia-ambassador-over-eu-ties/a-77354081?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-30",
+      "time": "23h"
+    },
+    {
+      "id": 4,
+      "tag": "CRITICAL",
+      "region": "EU",
+      "title": {
+        "es": "Rusia atacó Ucrania con 229 drones en la noche",
+        "en": "Russia attacked Ukraine with 229 drones overnight"
+      },
+      "summary": {
+        "es": "Rusia lanzó un ataque masivo de 229 drones contra Ucrania, con la defensa antiaérea neutralizando 212. El patrón de intensificación de ataques sugiere una nueva fase de escalada y desgaste en la contienda.",
+        "en": "Russia launched a mass drone attack with 229 units; Ukrainian air defense neutralized 212 but 14 attack drones struck 11 sites. The scale signals possible escalation phase and sustained attrition campaign."
+      },
+      "impact": "high",
+      "signals": [
+        "EUR -",
+        "DEFENSE_EQUITIES +",
+        "ENERGY_EUROPE +",
+        "VOLATILITY +"
+      ],
+      "confidence": 93,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/05/31/en-direct-guerre-en-ukraine-la-russie-a-attaque-l-ukraine-avec-229-drones-dans-la-nuit_6695365_3210.html",
+      "published_at": "2026-05-31",
+      "time": "1h"
+    },
+    {
+      "id": 5,
+      "tag": "CRITICAL",
+      "region": "EU",
+      "title": {
+        "es": "Ucrania: El OIEA busca acceso a la planta nuclear de Zaporizhzhia tras presunto ataque de dron",
+        "en": "Ukraine: IAEA seeks access to Zaporizhzhia nuclear plant after reported drone strike"
+      },
+      "summary": {
+        "es": "Se reportó un ataque de dron a la central nuclear de Zaporizhzhia, con Rusia e Ucrania culpándose mutuamente. El OIEA busca inspeccionar la instalación, elevando el riesgo de escalada nuclear.",
+        "en": "A drone strike on Zaporizhzhia nuclear plant is disputed; Russia blames Ukraine, Ukraine denies. IAEA inspection request signals critical nuclear safety risk and potential accident implications for European energy markets."
+      },
+      "impact": "high",
+      "signals": [
+        "ENERGY_EUROPE +",
+        "GOLD +",
+        "EQUITIES -",
+        "VOLATILITY +"
+      ],
+      "confidence": 91,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ukraine-iaea-seeks-access-to-zaporizhzhia-nuclear-plant-after-reported-drone-strike/a-77361296?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-05-31",
+      "time": "5h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "Rumania dice que podría invocar el Artículo 4 de la OTAN. ¿Qué haría eso?",
-        "en": "Romania Says It Could Invoke NATO's Article 4. What Would That Do?"
+        "es": "Guerra en Irán en directo: Líbano critica la invasión de Israel; acuerdo EE.UU.-Teherán en duda",
+        "en": "Iran war live: Lebanon slams Israel's invasion; US-Tehran deal in limbo"
       },
       "summary": {
-        "es": "El Ministro de Relaciones Exteriores rumano señala que el país podría invocar el Artículo 4 del Tratado de la OTAN (consultas sobre amenazas a la seguridad) tras el ataque del dron ruso. La escalada de consultaciones de la OTAN podría llevar a una postura defensiva más militarizada en el flanco oriental europeo.",
-        "en": "Romanian Foreign Minister signals country could invoke NATO Article 4 (consultation clause on security threats) following Russian drone attack. NATO escalation in consultations could lead to more militarized defensive posture on Europe's eastern flank."
+        "es": "El primer ministro libanés describe los ataques israelíes como castigo colectivo mientras se cuestiona un posible acuerdo EE.UU.-Irán. El colapso del alto el fuego entre Hezbollah e Israel y la tensión en las negociaciones elevan el riesgo de nueva escalada.",
+        "en": "Lebanon's PM characterizes Israeli strikes as collective punishment while US-Iran deal negotiations stall. Ceasefire breakdown and escalating rhetoric increase regional conflict risk and oil supply uncertainty."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "EUR +",
-        "DEFENSE STOCKS +",
-        "BONDS +",
-        "EQUITIES ?"
+        "OIL +",
+        "VOLATILITY +",
+        "GOLD +",
+        "EMERGING_MARKETS -"
       ],
-      "confidence": 80,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/05/29/world/europe/nato-article-4-romania-russia.html",
-      "published_at": "2026-05-29",
-      "time": "15h"
+      "confidence": 89,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/liveblog/2026/5/31/iran-war-live-lebanon-accuses-israel-of-scorched-earth-policy?traffic_source=rss",
+      "published_at": "2026-05-31",
+      "time": "8h"
     }
-  ],
-  "market_updated_at": "2026-05-31T08:31:19.631Z"
+  ]
 }
