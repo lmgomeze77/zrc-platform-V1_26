@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 const IC_API = "https://zenith-risecapital.lmgomeze77.workers.dev";
 const IC_EMAIL_KEY = "zrc-ic-email";
@@ -39,6 +40,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
   const [mode, setMode]         = useState("check");
   const [email, setEmail]       = useState(() => localStorage.getItem(IC_EMAIL_KEY) || "");
   const [password, setPassword] = useState("");
+  const [showPw, setShowPw]     = useState(false);
   const [loading, setLoading]   = useState(false);
   const [message, setMessage]   = useState("");
 
@@ -49,7 +51,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
   const [reason, setReason]     = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  // ── LOGIN: verify email + password ──────────────────────────
+  // ── LOGIN: verify email + password ───────────────────────────
   async function handleCheck(e) {
     e.preventDefault();
     if (!email.includes("@") || !password) return;
@@ -127,7 +129,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
     maxWidth:460, width:"100%", textAlign:"center",
   };
 
-  // ── SUBMITTED STATE ─────────────────────────────────────────
+  // ── SUBMITTED STATE ─────────────────────────────────────
   if (submitted) return (
     <div style={containerStyle}>
       <div style={cardStyle}>
@@ -146,7 +148,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
     </div>
   );
 
-  // ── REQUEST FORM ────────────────────────────────────────────
+  // ── REQUEST FORM ──────────────────────────────────────────
   if (mode === "request") return (
     <div style={containerStyle}>
       <div style={{ ...cardStyle, maxWidth:520, textAlign:"left" }}>
@@ -200,7 +202,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
     </div>
   );
 
-  // ── LOGIN FORM (default) ─────────────────────────────────────
+  // ── LOGIN FORM (default) ──────────────────────────────────────
   return (
     <div style={containerStyle}>
       <div style={cardStyle}>
@@ -213,9 +215,15 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
           <input type="email" required value={email} onChange={e=>setEmail(e.target.value)}
             placeholder="Su email..."
             style={{ ...inputStyle, textAlign:"center", fontSize:16, borderBottom:`1px solid rgba(184,152,42,0.4)` }} />
-          <input type="password" required value={password} onChange={e=>setPassword(e.target.value)}
-            placeholder="Contraseña..."
-            style={{ ...inputStyle, textAlign:"center", fontSize:16, borderBottom:`1px solid rgba(184,152,42,0.4)` }} />
+          <div style={{ position:"relative", display:"flex", alignItems:"center" }}>
+            <input type={showPw ? "text" : "password"} required value={password} onChange={e=>setPassword(e.target.value)}
+              placeholder="Contraseña..."
+              style={{ ...inputStyle, textAlign:"center", fontSize:16, borderBottom:`1px solid rgba(184,152,42,0.4)`, paddingRight:28 }} />
+            <button type="button" onClick={() => setShowPw(v => !v)}
+              style={{ position:"absolute", right:0, background:"none", border:"none", cursor:"pointer", padding:"4px", color:"rgba(184,152,42,0.5)", display:"flex", alignItems:"center" }}>
+              {showPw ? <EyeOff size={15} /> : <Eye size={15} />}
+            </button>
+          </div>
           <button type="submit" disabled={loading}
             style={{ background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:10, letterSpacing:"0.45em", color:G, cursor:"pointer", padding:"10px 0", transition:"opacity 0.2s" }}>
             {loading ? "..." : "ACCEDER"}
