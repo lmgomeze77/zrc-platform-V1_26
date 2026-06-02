@@ -3,9 +3,9 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.0640",
-      "change": "-0.12%",
-      "up": false
+      "value": "1.1637",
+      "change": "0.05%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
@@ -21,38 +21,38 @@
     },
     {
       "symbol": "WTI crude",
-      "value": "91.23",
-      "change": "-1.54%",
-      "up": false
+      "value": "92.42",
+      "change": "5.85%",
+      "up": true
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4526.84",
-      "change": "+1.60%",
+      "value": "4494.61",
+      "change": "0.21%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "69666.36",
-      "change": "-4.00%",
+      "value": "69350.73",
+      "change": "-4.71%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "15.32",
-      "change": "-2.67%",
-      "up": false
+      "value": "16.05",
+      "change": "4.77%",
+      "up": true
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.47",
-      "change": "+0.40%",
+      "value": "4.46%",
+      "change": "0.01%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7599.96",
-      "change": "+0.26%",
+      "value": "7584.15",
+      "change": "0.05%",
       "up": true
     },
     {
@@ -63,32 +63,32 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8545",
-      "change": "+0.15%",
+      "value": "0.8645",
+      "change": "0.00%",
       "up": true
     },
     {
       "symbol": "DXY dollar index",
-      "value": "99.122",
-      "change": "+0.32%",
-      "up": true
+      "value": "99.0870",
+      "change": "-0.11%",
+      "up": false
     },
     {
       "symbol": "Natural Gas",
       "value": "3.19",
-      "change": "+0.33%",
+      "change": "0.33%",
       "up": true
     },
     {
       "symbol": "Copper",
       "value": "6.56",
-      "change": "+0.57%",
+      "change": "0.57%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.8820",
-      "change": "-0.25%",
+      "value": "6.7612",
+      "change": "-0.06%",
       "up": false
     }
   ],
@@ -244,5 +244,5 @@
       "time": "6h"
     }
   ],
-  "market_updated_at": "2026-06-02T13:46:13.078Z"
+  "market_updated_at": "2026-06-02T17:57:25.049Z"
 }
