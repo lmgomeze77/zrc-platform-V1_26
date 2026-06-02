@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-06-01T11:25:10.041Z",
+  "generated_at": "2026-06-02T10:16:01.330Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
       "value": "1.1637",
-      "change": "+0.05%",
-      "up": true
+      "change": "-0.05",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18368.90",
-      "change": "+1.01%",
+      "value": "18387.40",
+      "change": "+2.24",
       "up": true
     },
     {
       "symbol": "BRENT",
-      "value": "94.58",
-      "change": "-0.42%",
-      "up": false
-    },
-    {
-      "symbol": "WTI",
-      "value": "92.42",
-      "change": "+5.93%",
+      "value": "94.99",
+      "change": "+3.87",
       "up": true
     },
     {
       "symbol": "GOLD",
-      "value": "4536.59",
-      "change": "-1.40%",
-      "up": false
+      "value": "4526.84",
+      "change": "+26.84",
+      "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "71218.58",
-      "change": "-3.37%",
+      "symbol": "BTC",
+      "value": "71827.00",
+      "change": "-2130.00",
       "up": false
     },
     {
       "symbol": "VIX",
       "value": "16.05",
-      "change": "+4.77%",
+      "change": "+0.73",
       "up": true
     },
     {
       "symbol": "US 10Y",
-      "value": "4.46",
-      "change": "+0.01%",
+      "value": "4.475",
+      "change": "+0.022",
       "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8645",
+      "change": "-0.0003",
+      "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7599.96",
-      "change": "+0.26%",
+      "change": "+19.90",
       "up": true
     },
     {
       "symbol": "DAX 40",
       "value": "25003.04",
-      "change": "-0.40%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8645",
-      "change": "0.00%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.19",
-      "change": "+0.00%",
-      "up": true
-    },
-    {
-      "symbol": "NATGAS",
-      "value": "3.19",
-      "change": "+0.33%",
-      "up": true
-    },
-    {
-      "symbol": "COPPER",
-      "value": "6.56",
-      "change": "+0.57%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7612",
-      "change": "-0.06%",
+      "change": "-101.66",
       "up": false
     }
   ],
@@ -98,24 +68,24 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Crisis en Oriente Medio en directo: Israel ataca el sur de Beirut mientras Kuwait condena ataque iraní con misiles y drones",
-        "en": "Middle East crisis live: Israel targets southern Beirut as Kuwait condemns Iranian missile and drone attack"
+        "es": "Crisis de Oriente Medio: Continúan los enfrentamientos en Líbano a pesar de que Trump declara la desescalada entre Israel y Hezbollah",
+        "en": "Middle East crisis live: Conflict continues in Lebanon despite Trump hailing Israeli-Hezbollah de-escalation"
       },
       "summary": {
-        "es": "Intensificación de intercambios militares entre EE.UU.-Israel e Irán con ataques simultáneos contra objetivos en Líbano, Kuwait y el Golfo Pérsico. Los esfuerzos de desescalada se ven comprometidos mientras Netanyahu ordena bombardeos en Beirut tras ataques iraníes contra bases estadounidenses. El conflicto amenaza la estabilidad del estratégico Estrecho de Ormuz y afecta directamente la seguridad energética global.",
-        "en": "Intensifying military exchanges between US-Israel and Iran with simultaneous attacks on targets in Lebanon, Kuwait, and the Persian Gulf. De-escalation efforts are undermined as Netanyahu orders bombing of Beirut following Iranian strikes on US bases. Conflict threatens stability of the strategically critical Strait of Hormuz and directly impacts global energy security."
+        "es": "Las fuerzas israelíes continúan operaciones militares en el sur del Líbano e interceptan misiles mientras Trump afirma haber logrado un acuerdo de cese de hostilidades. La persistencia de enfrentamientos a pesar de las declaraciones de desescalada plantea riesgos significativos para la estabilidad regional y la continuidad de negociaciones con Irán.",
+        "en": "Israeli military continues operations in southern Lebanon and intercepts missiles while Trump claims a ceasefire agreement. Continued clashes despite de-escalation rhetoric pose significant risks to regional stability and ongoing Iran negotiations."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES -",
         "GOLD +",
-        "USD +"
+        "EQUITIES -",
+        "BONDS -"
       ],
       "confidence": 92,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/jun/01/iran-war-live-news-updates-kuwait-missile-drone-attack-us-strikes-iran-radar-sites",
-      "published_at": "2026-06-01",
+      "source_url": "https://www.theguardian.com/world/live/2026/jun/02/iran-us-israel-lebanon-trump-netanyahu-hezbollah-beirut-hormuz-talks-oil-latest-news-updates",
+      "published_at": "2026-06-02",
       "time": "<1h"
     },
     {
@@ -123,126 +93,125 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los ataques iraníes han dañado 20 sitios militares estadounidenses desde el inicio de la guerra, muestran imágenes satelitales",
-        "en": "Iran attacks damage 20 US military sites since start of war, satellite images show"
+        "es": "Actualizaciones de Oriente Medio: Las negociaciones entre EE.UU. e Irán parecen estancadas",
+        "en": "Middle East updates: US-Iran talks appear to stall"
       },
       "summary": {
-        "es": "Análisis de satélites revela que los ataques iraníes han causado daños más extensos de lo reconocido públicamente, con 20 instalaciones militares estadounidenses afectadas desde el inicio del conflicto. Esta magnitud subestimada de daños sugiere escalada real mayor que la narrativa oficial y aumenta la probabilidad de represalias estadounidenses coordinadas. Implicaciones para la seguridad de activos e infraestructura crítica en la región.",
-        "en": "Satellite analysis reveals Iranian attacks have caused more extensive damage than publicly acknowledged, with 20 US military installations affected since conflict start. This underestimated damage magnitude suggests greater actual escalation than official narrative and increases probability of coordinated US retaliation. Implications for asset security and critical infrastructure in the region."
+        "es": "Un funcionario militar iraní advierte que 'la guerra es inevitable' debido a que Teherán rechaza rendirse, mientras que persisten reportes de enfrentamientos entre Israel y Hezbollah tras la afirmación de Trump sobre el cese de fuego. El estancamiento de las negociaciones y las amenazas bélicas crean volatilidad en los mercados energéticos.",
+        "en": "Iranian military official warns 'war is inevitable' as Tehran refuses to surrender, with continued Israel-Hezbollah clashes despite Trump's ceasefire claims. Stalled talks and military threats create energy market volatility and escalation risk."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "DEFENSE EQUITIES +",
         "USD +",
-        "VOLATILITY +"
+        "EQUITIES -",
+        "GOLD +"
       ],
       "confidence": 90,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/c2l2yl7r8r2o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-01",
-      "time": "5h"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/middle-east-updates-us-iran-talks-appear-to-stall/live-77386529?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-02",
+      "time": "<1h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "MENA",
       "title": {
-        "es": "Rusia suspende sus exportaciones de queroseno 'para asegurar la estabilidad del mercado interno' tras ataques a refinerías",
-        "en": "Russia suspends jet fuel exports 'to ensure domestic market stability' after refinery attacks"
+        "es": "Trump dice que las negociaciones con Irán avanzan rápidamente a pesar de la amenaza de ampliar la guerra",
+        "en": "Trump says Iran talks moving fast despite threat to widen war"
       },
       "summary": {
-        "es": "Rusia suspende exportaciones de queroseno hasta el 30 de noviembre en respuesta a daños de drones en infraestructura energética crítica. La medida refleja vulnerabilidad de la capacidad productiva rusa y afecta directamente mercados globales de combustible de aviación. La restricción mantiene presión alcista sobre precios energéticos mundiales y amplifica dislocaciones de suministro geopolítico.",
-        "en": "Russia suspends jet fuel exports through November 30 in response to drone damage to critical energy infrastructure. Measure reflects vulnerability of Russian productive capacity and directly impacts global aviation fuel markets. Restriction maintains upward pressure on world energy prices and amplifies geopolitical supply dislocations."
+        "es": "Trump afirma que las negociaciones con Irán avanzan a paso rápido, mientras que Teherán amenaza con ampliar el conflicto bloqueando el Estrecho de Ormuz y activando puntos de presión regionales. La volatilidad en las negociaciones y las amenazas a rutas críticas de energía generan riesgos significativos para los mercados de petróleo y comercio global.",
+        "en": "Trump claims rapid progress in Iran talks even as Tehran threatens to widen war via Strait of Hormuz blockade and regional pressure points. Negotiation volatility and threats to critical energy routes create major oil and global trade risks."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "JET FUEL +",
-        "ENERGY EQUITIES +",
-        "USD +"
+        "OIL ++",
+        "SHIPPING -",
+        "GOLD +",
+        "EQUITIES -"
       ],
       "confidence": 88,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/live/2026/06/01/en-direct-guerre-en-ukraine-la-russie-suspend-ses-exportations-de-kerosene-pour-assurer-la-stabilite-du-marche-interieur-apres-des-attaques-sur-ses-raffineries_6695365_3210.html",
-      "published_at": "2026-06-01",
-      "time": "2h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260602-trump-says-iran-talks-moving-fast-despite-threat-to-widen-war",
+      "published_at": "2026-06-02",
+      "time": "<1h"
     },
     {
       "id": 4,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "Guerra en Irán día 94: EE.UU. ataca sitios iraníes; Kuwait intercepta misiles",
-        "en": "Iran war day 94: US strikes Iranian sites; Kuwait intercepts missiles"
+        "es": "Al menos 12 personas muertas y decenas heridas en ataques rusos a Ucrania",
+        "en": "At least 12 people killed, dozens wounded in Russian attacks on Ukraine"
       },
       "summary": {
-        "es": "Continúan los intercambios de ataques entre EE.UU. e Irán alrededor del Estrecho de Ormuz mientras Kuwait reporta intercepciones de misiles. La escalada en el día 94 del conflicto ocurre mientras persisten negociaciones de paz, sugiriendo que las conversaciones avanzan en paralelo a operaciones militares activas. Israel ha intensificado simultáneamente su ofensiva en el sur del Líbano, ampliando el teatro de operaciones.",
-        "en": "Continued exchange of attacks between US and Iran around Strait of Hormuz as Kuwait reports missile interceptions. Day 94 escalation occurs while peace negotiations persist, suggesting talks proceed parallel to active military operations. Israel has simultaneously intensified offensive into southern Lebanon, expanding theater of operations."
+        "es": "Rusia lanzó 656 drones y 73 misiles contra Ucrania durante la noche según la fuerza aérea ucraniana. La intensidad y escala de los ataques con armas de largo alcance subrayan la sostenida escalada militar y sus implicaciones para la seguridad energética europaea y los precios de las materias primas.",
+        "en": "Russia launched 656 drones and 73 missiles at Ukraine overnight, marking sustained military escalation. Attack intensity underscores ongoing conflict durability and implications for European energy security and commodity pricing."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
         "OIL +",
-        "EQUITIES -",
+        "EUR -",
         "GOLD +",
-        "SHIPPING COSTS +"
+        "ENERGY ++"
       ],
-      "confidence": 89,
+      "confidence": 85,
       "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/1/iran-war-day-94-us-strikes-iranian-sites-kuwait-intercepts-missiles?traffic_source=rss",
-      "published_at": "2026-06-01",
+      "source_url": "https://www.aljazeera.com/news/2026/6/2/at-least-nine-people-killed-dozens-wounded-in-russian-attacks-on-ukraine?traffic_source=rss",
+      "published_at": "2026-06-02",
       "time": "3h"
     },
     {
       "id": 5,
-      "tag": "WATCH",
-      "region": "APAC",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "Líder de la oposición de Taiwán se dirige a EE.UU.",
-        "en": "Taiwan opposition leader heads to US"
+        "es": "EN DIRECTO, guerra en Ucrania: Rusia atacó con cientos de drones y misiles, causando al menos 13 muertos y más de 100 heridos",
+        "en": "Live: Ukraine war - Russia attacked with hundreds of drones and missiles, at least 13 dead and over 100 wounded"
       },
       "summary": {
-        "es": "La líder del KMT (Kuomintang), Cheng Li-wun, realiza una gira de dos semanas en EE.UU. con interés expresado en reunirse con el presidente Trump. La visita señala competencia política entre el gobierno y la oposición taiwanesa por influencia con la administración estadounidense en contexto de tensiones Taiwán-China. Indicador de diplomacia directa no estatal con implicaciones para relaciones comerciales y de defensa bilateral.",
-        "en": "KMT leader Cheng Li-wun conducts two-week US tour with expressed interest in meeting President Trump. Visit signals political competition between Taiwan's government and opposition for US administration influence amid Taiwan-China tensions. Indicator of direct non-state diplomacy with implications for bilateral trade and defense relations."
+        "es": "Ciudades clave como Kiev, Dnipro y Járkov fueron severamente golpeadas. Zelensky subraya la necesidad de que Europa desarrolle un sistema antimisil balístico propio. La persistencia de ataques masivos refuerza la divergencia de política defensiva europea y tiene implicaciones para gastos militares y fragmentación de la UE.",
+        "en": "Major cities including Kyiv, Dnipro, and Kharkiv severely hit. Zelensky emphasizes Europe's need for independent ballistic missile defense. Sustained massive attacks reinforce EU defense policy divergence with implications for military spending and cohesion."
       },
       "impact": "medium",
       "signals": [
-        "TAIWAN EQUITIES ?",
-        "USD +",
-        "SEMICONDUCTORS ?",
-        "DEFENSE ?"
+        "EUR ?",
+        "DEFENSE STOCKS +",
+        "BONDS +",
+        "GROWTH -"
       ],
-      "confidence": 72,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/taiwan-opposition-leader-heads-to-us/a-77375444?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-01",
-      "time": "<1h"
+      "confidence": 82,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/06/02/en-direct-guerre-en-ukraine-la-russie-a-mene-une-attaque-avec-656-drones-et-73-missiles-faisant-au-moins-13-morts-et-plus-de-100-blesses-selon-les-autorites-ukrainiennes_6695365_3210.html",
+      "published_at": "2026-06-02",
+      "time": "2h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "APAC",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "Cómo China mantiene viva la economía de Corea del Norte",
-        "en": "How China keeps North Korea's economy alive"
+        "es": "Trump fragiliza a Netanyahu obligándolo a posponer su ofensiva sobre Beirut",
+        "en": "Trump weakens Netanyahu by forcing him to postpone offensive on Beirut"
       },
       "summary": {
-        "es": "Análisis revela que Corea del Norte depende de China para el 95% de su comercio legítimo, aunque Rusia ahora proporciona ingresos significativos. La dependencia estructural de Pekín sobre Pyongyang como actor proxy geopolítico se mantiene a pesar de la diversificación rusa reciente. Dinámicas comerciales bilateral afectan proyecciones de presión de sanciones y política de desnuclearización regional.",
-        "en": "Analysis shows North Korea depends on China for 95% of legitimate trade, though Russia now provides significant income. Beijing's structural dependency on Pyongyang as geopolitical proxy actor persists despite recent Russian diversification. Bilateral trade dynamics affect sanctions pressure projections and regional denuclearization policy."
+        "es": "Trump ha ordenado a Israel no atacar la capital del Líbano, lo que debilita la posición política de Netanyahu. Como en Gaza e Irán, solo Trump logra contener el uso de la fuerza militar israelí, generando fricción política interna que afecta la cohesión de la coalición de gobierno israelí.",
+        "en": "Trump has ordered Israel not to attack Lebanese capital, weakening Netanyahu's political position. As with Gaza and Iran, only Trump constrains Israeli military force use, generating domestic political friction that undermines Israeli government coalition cohesion."
       },
       "impact": "medium",
       "signals": [
-        "CNY -",
-        "COMMODITIES ?",
+        "EQUITIES ?",
         "GOLD +",
-        "GEOPOLITICAL RISK +"
+        "RISK ASSETS -",
+        "USD ?"
       ],
-      "confidence": 68,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/how-china-keeps-north-korea-s-economy-alive/a-77295494?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-01",
-      "time": "2h"
+      "confidence": 80,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/06/02/en-israel-la-guerre-comme-seul-horizon-politique-et-strategique_6696297_3210.html",
+      "published_at": "2026-06-02",
+      "time": "6h"
     }
-  ],
-  "market_updated_at": "2026-06-02T09:55:57.371Z"
+  ]
 }
