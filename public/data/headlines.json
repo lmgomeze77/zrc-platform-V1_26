@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-06-02T10:16:01.330Z",
+  "generated_at": "2026-06-03T10:51:47.384Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1619",
-      "change": "-0.11%",
+      "value": "1.1624",
+      "change": "-0.11",
       "up": false
     },
     {
       "symbol": "IBEX 35",
       "value": "18234.50",
-      "change": "+0.27%",
+      "change": "+0.27",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "96.89",
-      "change": "+0.93%",
+      "symbol": "BRENT",
+      "value": "96.00",
+      "change": "+1.04",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "95.64",
-      "change": "+2.01%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4442.20",
-      "change": "-1.02%",
+      "symbol": "GOLD",
+      "value": "4457.02",
+      "change": "-1.11",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "69495.57",
-      "change": "-4.00%",
+      "symbol": "BTC",
+      "value": "69503.15",
+      "change": "-4.30",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "15.77",
-      "change": "-1.74%",
+      "value": "15.98",
+      "change": "-0.50",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.46%",
-      "change": "+0.02%",
+      "symbol": "US 10Y",
+      "value": "4.475",
+      "change": "+0.49",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8642",
+      "change": "+0.01",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7609.78",
-      "change": "+0.13%",
+      "value": "7609.77",
+      "change": "+0.09",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24978.00",
-      "change": "-0.58%",
+      "value": "24950.43",
+      "change": "-0.69",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8662",
-      "change": "-0.23%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.21",
-      "change": "+0.01%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.17",
-      "change": "+0.05%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.65",
-      "change": "+1.53%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7684",
-      "change": "+0.09%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Crisis de Oriente Medio: Continúan los enfrentamientos en Líbano a pesar de que Trump declara la desescalada entre Israel y Hezbollah",
-        "en": "Middle East crisis live: Conflict continues in Lebanon despite Trump hailing Israeli-Hezbollah de-escalation"
+        "es": "El aeropuerto de Kuwait fue golpeado por drones iraníes mientras fracasan las negociaciones EE.UU.-Irán",
+        "en": "Kuwait airport hit by Iranian drones as US-Iran talks stall"
       },
       "summary": {
-        "es": "Las fuerzas israelíes continúan operaciones militares en el sur del Líbano e interceptan misiles mientras Trump afirma haber logrado un acuerdo de cese de hostilidades. La persistencia de enfrentamientos a pesar de las declaraciones de desescalada plantea riesgos significativos para la estabilidad regional y la continuidad de negociaciones con Irán.",
-        "en": "Israeli military continues operations in southern Lebanon and intercepts missiles while Trump claims a ceasefire agreement. Continued clashes despite de-escalation rhetoric pose significant risks to regional stability and ongoing Iran negotiations."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "BONDS -"
-      ],
-      "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/jun/02/iran-us-israel-lebanon-trump-netanyahu-hezbollah-beirut-hormuz-talks-oil-latest-news-updates",
-      "published_at": "2026-06-02",
-      "time": "<1h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Actualizaciones de Oriente Medio: Las negociaciones entre EE.UU. e Irán parecen estancadas",
-        "en": "Middle East updates: US-Iran talks appear to stall"
-      },
-      "summary": {
-        "es": "Un funcionario militar iraní advierte que 'la guerra es inevitable' debido a que Teherán rechaza rendirse, mientras que persisten reportes de enfrentamientos entre Israel y Hezbollah tras la afirmación de Trump sobre el cese de fuego. El estancamiento de las negociaciones y las amenazas bélicas crean volatilidad en los mercados energéticos.",
-        "en": "Iranian military official warns 'war is inevitable' as Tehran refuses to surrender, with continued Israel-Hezbollah clashes despite Trump's ceasefire claims. Stalled talks and military threats create energy market volatility and escalation risk."
+        "es": "Irán lanzó ataques con drones y misiles contra Kuwait, dañando severamente su aeropuerto internacional, mientras se deteriora el frágil alto el fuego en el conflicto EE.UU.-Irán. El ataque amenaza la estabilidad de un aliado clave de EE.UU. en el Golfo Pérsico y señala una escalada en las tensiones regionales con implicaciones directas para los flujos de petróleo y la seguridad energética global.",
+        "en": "Iran launched a series of drone and missile attacks on Kuwait, severely damaging its international airport, as the fragile ceasefire in the US-Iran conflict deteriorates. The attack threatens stability in a key US Gulf ally with direct implications for oil flows and global energy security."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "USD +",
         "EQUITIES -",
-        "GOLD +"
+        "GULF CREDIT -"
+      ],
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/kuwait-airport-hit-by-iranian-drones-as-us-iran-talks-stall",
+      "published_at": "2026-06-03",
+      "time": "1h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EU",
+      "title": {
+        "es": "Buque de guerra ruso golpeado en base de la Flota del Báltico, dice Ucrania",
+        "en": "Live: Russian warship at Baltic Fleet base struck overnight, Ukraine says"
+      },
+      "summary": {
+        "es": "Las fuerzas militares ucranianas afirman haber golpeado el buque de guerra Boikiy en su base de la Flota del Báltico, causando un incendio masivo, mientras Rusia promete continuar ataques sistemáticos. La escalada de ataques ucranianos de largo alcance contra objetivos navales y energéticos rusos intensifica la guerra de attrición y señala una capacidad ofensiva ucraniana sostenida.",
+        "en": "Ukrainian military claims to have struck Russia's Boikiy warship at its Baltic Fleet base, causing a major fire, while Russia vows to continue systematic strikes. The escalating Ukrainian long-range attacks on Russian naval and energy targets intensify the war of attrition and signal sustained Ukrainian offensive capability."
+      },
+      "impact": "high",
+      "signals": [
+        "EUR -",
+        "DEFENSE STOCKS +",
+        "ENERGY VOLATILITY +",
+        "RUSSIAN DEBT -"
       ],
       "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/middle-east-updates-us-iran-talks-appear-to-stall/live-77386529?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-02",
-      "time": "<1h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20260603-live-ukrainian-drone-attack-st-petersburg-injures-several-damages-infrastructure",
+      "published_at": "2026-06-03",
+      "time": "3h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Trump dice que las negociaciones con Irán avanzan rápidamente a pesar de la amenaza de ampliar la guerra",
-        "en": "Trump says Iran talks moving fast despite threat to widen war"
+        "es": "Kuwait dice que el aeropuerto fue golpeado por ataques iraníes mientras EE.UU. e Irán lanzan nuevos ataques",
+        "en": "Kuwait says airport hit by Iranian strikes as US and Iran launch fresh attacks"
       },
       "summary": {
-        "es": "Trump afirma que las negociaciones con Irán avanzan a paso rápido, mientras que Teherán amenaza con ampliar el conflicto bloqueando el Estrecho de Ormuz y activando puntos de presión regionales. La volatilidad en las negociaciones y las amenazas a rutas críticas de energía generan riesgos significativos para los mercados de petróleo y comercio global.",
-        "en": "Trump claims rapid progress in Iran talks even as Tehran threatens to widen war via Strait of Hormuz blockade and regional pressure points. Negotiation volatility and threats to critical energy routes create major oil and global trade risks."
+        "es": "Los ataques iraníes causaron daños significativos a una terminal del aeropuerto internacional de Kuwait, mientras EE.UU. respondió con ataques a objetivos iraníes incluida la isla de Qeshm. El intercambio de fuego directo entre potencias nucleares escaladas en una región crítica para el comercio mundial amenaza interrupciones en el Estrecho de Ormuz.",
+        "en": "Iranian strikes caused significant damage to Kuwait's international airport terminal, while the US responded with attacks on Iranian targets including Qeshm Island. Direct exchange of fire between escalated nuclear powers in a critical region for global commerce threatens disruptions in the Strait of Hormuz."
       },
       "impact": "high",
       "signals": [
         "OIL ++",
-        "SHIPPING -",
-        "GOLD +",
-        "EQUITIES -"
+        "USD +",
+        "SHIPPING COSTS +",
+        "REGIONAL EQUITIES -"
       ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260602-trump-says-iran-talks-moving-fast-despite-threat-to-widen-war",
-      "published_at": "2026-06-02",
-      "time": "<1h"
+      "confidence": 91,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jun/03/us-fires-missile-tanker-strait-of-hormuz",
+      "published_at": "2026-06-03",
+      "time": "9h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Al menos 12 personas muertas y decenas heridas en ataques rusos a Ucrania",
-        "en": "At least 12 people killed, dozens wounded in Russian attacks on Ukraine"
+        "es": "Ucrania golpea San Petersburgo el primer día de un evento marquesina de Putin",
+        "en": "Ukraine Strikes St. Petersburg on First Day of a Marquee Putin Event"
       },
       "summary": {
-        "es": "Rusia lanzó 656 drones y 73 misiles contra Ucrania durante la noche según la fuerza aérea ucraniana. La intensidad y escala de los ataques con armas de largo alcance subrayan la sostenida escalada militar y sus implicaciones para la seguridad energética europaea y los precios de las materias primas.",
-        "en": "Russia launched 656 drones and 73 missiles at Ukraine overnight, marking sustained military escalation. Attack intensity underscores ongoing conflict durability and implications for European energy security and commodity pricing."
+        "es": "Ucrania atacó una base naval y terminal petrolera en la región de San Petersburgo durante el primer día de la conferencia económica anual del Kremlin (conocida como el 'Davos ruso'). El ataque simboliza la capacidad ucraniana para golpear objetivos de alto valor simbólico y energético dentro de Rusia, escalando la guerra de desgaste.",
+        "en": "Ukraine struck a naval base and oil terminal in the St. Petersburg region on the opening day of the Kremlin's annual economic conference (known as 'Russia's Davos'). The attack demonstrates Ukrainian capability to hit high-value symbolic and energy targets deep within Russia, escalating the war of attrition."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "OIL +",
-        "EUR -",
-        "GOLD +",
-        "ENERGY ++"
+        "ENERGY VOLATILITY +",
+        "RUB -",
+        "RUSSIAN EQUITIES -",
+        "DEFENSE TECH +"
       ],
-      "confidence": 85,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/2/at-least-nine-people-killed-dozens-wounded-in-russian-attacks-on-ukraine?traffic_source=rss",
-      "published_at": "2026-06-02",
-      "time": "3h"
+      "confidence": 88,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/03/world/europe/ukraine-russia-attack-st-petersburg-putin.html",
+      "published_at": "2026-06-03",
+      "time": "1h"
     },
     {
       "id": 5,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "EN DIRECTO, guerra en Ucrania: Rusia atacó con cientos de drones y misiles, causando al menos 13 muertos y más de 100 heridos",
-        "en": "Live: Ukraine war - Russia attacked with hundreds of drones and missiles, at least 13 dead and over 100 wounded"
+        "es": "Rusia aprovecha déficit de Patriot para golpear Kiev y Dnipro con misiles hipersónicos",
+        "en": "Russia exploits Patriot shortage to strike Kyiv and Dnipro with hypersonic missiles"
       },
       "summary": {
-        "es": "Ciudades clave como Kiev, Dnipro y Járkov fueron severamente golpeadas. Zelensky subraya la necesidad de que Europa desarrolle un sistema antimisil balístico propio. La persistencia de ataques masivos refuerza la divergencia de política defensiva europea y tiene implicaciones para gastos militares y fragmentación de la UE.",
-        "en": "Major cities including Kyiv, Dnipro, and Kharkiv severely hit. Zelensky emphasizes Europe's need for independent ballistic missile defense. Sustained massive attacks reinforce EU defense policy divergence with implications for military spending and cohesion."
+        "es": "Rusia ejecutó un masivo ataque del 2 de junio que mató a 23 personas utilizando misiles hipersónicos que solo pueden ser interceptados por sistemas Patriot estadounidenses. La escasez crítica de estos sistemas defensivos expone una vulnerabilidad clave ucraniana y subraya la dependencia de suministro occidental continuo para la viabilidad defensiva.",
+        "en": "Russia executed a massive June 2 attack that killed 23 people using hypersonic missiles that can only be intercepted by US Patriot systems. The critical shortage of these defensive systems exposes a key Ukrainian vulnerability and underscores dependence on sustained Western supply for defensive viability."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "EUR ?",
         "DEFENSE STOCKS +",
-        "BONDS +",
-        "GROWTH -"
+        "EUR -",
+        "US DEBT +",
+        "UKRAINE CREDIT -"
       ],
-      "confidence": 82,
+      "confidence": 87,
       "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/live/2026/06/02/en-direct-guerre-en-ukraine-la-russie-a-mene-une-attaque-avec-656-drones-et-73-missiles-faisant-au-moins-13-morts-et-plus-de-100-blesses-selon-les-autorites-ukrainiennes_6695365_3210.html",
-      "published_at": "2026-06-02",
-      "time": "2h"
+      "source_url": "https://www.lemonde.fr/international/article/2026/06/03/guerre-en-ukraine-la-russie-profite-du-deficit-de-patriot-pour-frapper-kiev-et-dnipro-avec-des-missiles-hypersoniques_6696539_3210.html",
+      "published_at": "2026-06-03",
+      "time": "6h"
     },
     {
       "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "APAC",
       "title": {
-        "es": "Trump fragiliza a Netanyahu obligándolo a posponer su ofensiva sobre Beirut",
-        "en": "Trump weakens Netanyahu by forcing him to postpone offensive on Beirut"
+        "es": "Elecciones parlamentarias en Armenia: qué está en juego",
+        "en": "Parliamentary elections in Armenia: What's at stake"
       },
       "summary": {
-        "es": "Trump ha ordenado a Israel no atacar la capital del Líbano, lo que debilita la posición política de Netanyahu. Como en Gaza e Irán, solo Trump logra contener el uso de la fuerza militar israelí, generando fricción política interna que afecta la cohesión de la coalición de gobierno israelí.",
-        "en": "Trump has ordered Israel not to attack Lebanese capital, weakening Netanyahu's political position. As with Gaza and Iran, only Trump constrains Israeli military force use, generating domestic political friction that undermines Israeli government coalition cohesion."
+        "es": "Armenia realizará elecciones parlamentarias el 7 de junio que servirán como prueba de la opinión pública sobre su dirección geopolítica futura, en medio de un gradual alejamiento del tradicional aliado ruso hacia la Unión Europea. El resultado determinará si Armenia profundiza su pivote occidental o reafirma sus vínculos con Moscú.",
+        "en": "Armenia holds parliamentary elections on June 7 that will test public opinion on its geopolitical future direction amid gradual drift away from traditional Russian ally toward the EU. The outcome will determine whether Armenia deepens its Western pivot or reaffirms ties with Moscow."
       },
       "impact": "medium",
       "signals": [
-        "EQUITIES ?",
-        "GOLD +",
-        "RISK ASSETS -",
-        "USD ?"
+        "RUB -",
+        "EUR +",
+        "EMERGING MARKETS ?",
+        "CAUCASUS RISK +"
       ],
-      "confidence": 80,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/06/02/en-israel-la-guerre-comme-seul-horizon-politique-et-strategique_6696297_3210.html",
-      "published_at": "2026-06-02",
-      "time": "6h"
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/parliamentary-elections-in-armenia-what-s-at-stake/a-77400608?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-03",
+      "time": "2h"
     }
-  ],
-  "market_updated_at": "2026-06-03T10:27:08.330Z"
+  ]
 }
