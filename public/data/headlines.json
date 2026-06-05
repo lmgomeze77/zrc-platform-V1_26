@@ -1,52 +1,52 @@
 {
-  "generated_at": "2026-06-04T09:51:30.628Z",
+  "generated_at": "2026-06-05T09:39:31.038Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1615",
-      "change": "+0.04%",
+      "value": "1.1660",
+      "change": "+0.07%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18184.90",
-      "change": "-0.97%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "95.25",
-      "change": "+0.23%",
+      "value": "17702.60",
+      "change": "+0.064%",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "92.13",
-      "change": "-4.07%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4463.82",
-      "change": "+0.50%",
+      "symbol": "BRENT",
+      "value": "95.18",
+      "change": "+0.16%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "63194.53",
-      "change": "-0.20%",
+      "symbol": "GOLD",
+      "value": "4502.30",
+      "change": "-0.06%",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "63303.17",
+      "change": "-2.33%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "16.06",
-      "change": "+1.84%",
-      "up": true
+      "value": "15.60",
+      "change": "-2.86%",
+      "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.46%",
-      "change": "-0.89%",
+      "symbol": "US 10Y",
+      "value": "4.4650",
+      "change": "-0.58%",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8670",
+      "change": "-0.12%",
       "up": false
     },
     {
@@ -57,39 +57,9 @@
     },
     {
       "symbol": "DAX 40",
-      "value": "24945.00",
+      "value": "24944.95",
       "change": "+0.60%",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8665",
-      "change": "+0.23%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.30",
-      "change": "-0.10%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.36",
-      "change": "+4.46%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.42",
-      "change": "-1.47%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7753",
-      "change": "-0.77%",
-      "up": false
     }
   ],
   "headlines": [
@@ -98,151 +68,149 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Israel y Líbano acuerdan nuevo alto el fuego mientras Trump intenta poner fin a la guerra con Irán",
-        "en": "Israel and Lebanon agree new ceasefire as Trump scrambles to end Iran war"
+        "es": "Guerra en Oriente Medio: Israel continúa ataques en el sur del Líbano a pesar del alto el fuego",
+        "en": "War in Middle East Live: Israeli military continues strikes in southern Lebanon despite ceasefire"
       },
       "summary": {
-        "es": "EE.UU. ha anunciado un acuerdo de alto el fuego entre Israel y Líbano dependiente del cese de fuego de Hezbolá, aunque Israel continúa realizando ataques con drones. Este desarrollo refleja los esfuerzos de la administración Trump por resolver uno de los mayores conflictos regionales con implicaciones significativas para la estabilidad energética y los mercados de riesgo.",
-        "en": "The US has announced a ceasefire agreement between Israel and Lebanon contingent on Hezbollah ceasing fire, though Israel continues drone strikes. This reflects Trump administration efforts to resolve a major regional conflict with significant implications for energy stability and risk assets."
+        "es": "Israel continúa operaciones militares en el sur del Líbano después de un acuerdo de alto el fuego que ha sido rechazado por Hezbolá. La escalada de violencia con más de 3.500 muertes mantiene la inestabilidad regional y presión sobre los mercados energéticos y de riesgo.",
+        "en": "Israel continues military operations in southern Lebanon following a ceasefire agreement rejected by Hezbollah. Escalating violence with over 3,500 deaths sustains regional instability and pressure on energy and risk assets."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES ?",
-        "RISK-SENTIMENT ?",
-        "USD +"
+        "GOLD +",
+        "EQUITIES -",
+        "EM -"
       ],
       "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/04/israel-lebanon-renew-ceasefire-hezbollah-trump-iran-deal-middle-east-us",
-      "published_at": "2026-06-04",
-      "time": "2h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260605-war-in-middle-east-live-israeli-military-continues-strikes-in-southern-lebanon-despite-ceasefire",
+      "published_at": "2026-06-05",
+      "time": "1h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "100 días de guerra con Irán: los estados del Golfo enfrentan consecuencias de seguridad y económicas",
-        "en": "100 days of Iran war: Gulf states grapple with security and economic consequences"
+        "es": "Guerra en Irán día 98: Teherán cuestiona acuerdo mientras continúan combates en el Líbano",
+        "en": "Iran war day 98: Tehran raises doubts on deal as Lebanon fighting continues"
       },
       "summary": {
-        "es": "La guerra de EE.UU.-Israel con Irán ha obligado a los estados del Golfo a reevaluar sus supuestos sobre seguridad, alianzas y estabilidad regional. Los impactos económicos y de suministro de energía están transformando las dinámicas de política exterior y exposición al riesgo geopolítico en una de las regiones más críticas para el comercio global.",
-        "en": "The US-Israel war with Iran has forced Gulf states to reassess assumptions about security, alliances, and regional stability. Economic and energy supply impacts are reshaping foreign policy dynamics and geopolitical risk exposure in one of the world's most critical trade regions."
+        "es": "Irán expresa dudas sobre los acuerdos diplomáticos mientras los combates persisten en el Líbano, deteriorando las perspectivas de resolución del conflicto. La incertidumbre geopolítica sostenida afecta la confianza de inversores y volatilidad de activos de riesgo.",
+        "en": "Iran expresses doubts on diplomatic agreements as fighting persists in Lebanon, deteriorating conflict resolution prospects. Sustained geopolitical uncertainty affects investor confidence and risk asset volatility."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EM-EQUITIES -",
         "GOLD +",
-        "VOLATILITY +"
+        "BONDS +",
+        "RISK_ASSETS -"
       ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/100-days-of-iran-war-gulf-states-grapple-with-security-and-economic-consequences/a-77393748?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-04",
-      "time": "<1h"
+      "confidence": 90,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/6/5/iran-war-day-98-tehran-raises-doubts-on-deal-as-lebanon-fighting-continues?traffic_source=rss",
+      "published_at": "2026-06-05",
+      "time": "3h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "APAC",
       "title": {
-        "es": "Guerra con Irán: ni un acuerdo de paz solucionará la crisis energética",
-        "en": "Iran war: Even a peace deal won't fix energy crunch"
+        "es": "Zelensky propone negociaciones cara a cara con Putin en carta abierta",
+        "en": "Zelensky proposes face-to-face talks in open letter to Putin"
       },
       "summary": {
-        "es": "La crisis energética y de cadena de suministro derivada de la guerra probablemente persistirá incluso si EE.UU. e Irán retroceden del conflicto, ya que la reapertura del Estrecho de Ormuz y la reparación de infraestructuras podrían tomar meses o años. Esto implica presión sostenida en precios de energía y costos de transporte global independientemente del resultado diplomático.",
-        "en": "The energy and supply chain crisis from the war is unlikely to ease even if the US and Iran step back, as reopening the Strait of Hormuz and repairing infrastructure could take months or years. This implies sustained energy price pressure and global transport costs regardless of diplomatic outcomes."
+        "es": "El presidente ucraniano propone negociaciones directas con Rusia para terminar la guerra. Esta iniciativa diplomática inesperada podría señalar un cambio en la estrategia de conflicto y afectar expectativas de financiamiento de defensa occidental y precios de commodities.",
+        "en": "Ukrainian president proposes direct negotiations with Russia to end the war. This unexpected diplomatic initiative could signal a strategic shift and affect expectations for Western defense financing and commodity prices."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "SHIPPING +",
-        "INFLATION +",
-        "BONDS -"
+        "EUR +",
+        "DEFENSE_STOCKS -",
+        "GOLD -",
+        "RATES ?"
       ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/iran-war-even-a-peace-deal-won-t-fix-energy-crunch/a-77322623?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-04",
-      "time": "2h"
+      "confidence": 88,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/cwy2ypyp4x4o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-05",
+      "time": "1h"
     },
     {
       "id": 4,
-      "tag": "CRITICAL",
-      "region": "EU",
+      "tag": "WATCH",
+      "region": "APAC",
       "title": {
-        "es": "Ataques ucranianos matan a varios en Crimea tras apuntar Kyiv a sitios de energía militar en San Petersburgo",
-        "en": "Ukrainian attacks kill several in Crimea after Kyiv targets St. Petersburg energy, military sites"
+        "es": "Xi Jinping se dirige a Corea del Norte mientras enfrenta dictador fortalecido",
+        "en": "What To Know as China's Xi Jinping Heads to North Korea"
       },
       "summary": {
-        "es": "Ucrania atacó infraestructura energética y militar en San Petersburgo durante el foro económico ruso, matando a civiles en Crimea en represalia. El Secretario de Estado Rubio advierte de un riesgo 'real' de escalada, lo que indica una intensificación potencial del conflicto con implicaciones para mercados de energía europeos y volatilidad de riesgo.",
-        "en": "Ukraine struck energy and military infrastructure in St. Petersburg during Russia's economic forum, killing civilians in Crimea in retaliation. Secretary of State Rubio warns of 'real' escalation risk, indicating potential conflict intensification with implications for European energy markets and risk volatility."
+        "es": "La visita de Xi a Pyongyang ocurre mientras Corea del Norte se ha vuelto menos dependiente de China gracias a su alianza con Rusia. Este realineamiento afecta dinámicas regionales en Asia y puede tener implicaciones para seguridad tecnológica y cadenas de suministro.",
+        "en": "Xi's visit to Pyongyang occurs as North Korea has become less dependent on China due to its Russia alliance. This realignment affects regional dynamics in Asia and may have implications for tech security and supply chains."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "EUR -",
-        "ENERGY +",
-        "RISK-SENTIMENT -"
+        "CNY ?",
+        "TECH_STOCKS ?",
+        "APAC_EQUITIES -"
       ],
-      "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260604-ukrainian-strike-kills-three-in-crimea-after-kyiv-targets-st-petersburg-energy-military-sites",
-      "published_at": "2026-06-04",
-      "time": "5h"
+      "confidence": 78,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/04/world/asia/china-north-korea-xi-jinping-visit.html",
+      "published_at": "2026-06-05",
+      "time": "6h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "US",
       "title": {
-        "es": "Péter Magyar, primer ministro húngaro: \"No fui elegido para simplemente cambiar de gobierno, sino para cambiar de régimen\"",
-        "en": "Péter Magyar, Hungarian PM: 'I was not elected to simply change government, but to change regime'"
+        "es": "Trump anuncia inversión de $700 millones en carbón usando poderes de tiempos de guerra",
+        "en": "Trump announces $700m coal investment using wartime powers"
       },
       "summary": {
-        "es": "El nuevo primer ministro húngaro explica planes para recuperar 16.000 millones de euros en fondos congelados por la Comisión Europea y promete no bloquear las negociaciones de adhesión de Ucrania a la UE. Este cambio político reorienta la política exterior de Hungría hacia mayor alineación con la UE, con implicaciones para fondos europeos y dinámicas fiscales del bloque.",
-        "en": "Hungary's new PM outlines plans to recover €16 billion in EU-frozen funds and promises not to block Ukraine's EU accession talks. This political shift realigns Hungary's foreign policy toward greater EU alignment, with implications for EU fund flows and bloc fiscal dynamics."
+        "es": "La administración Trump usa poderes de emergencia para financiar inversión en carbón ante el aumento de costos energéticos impulsado por la guerra de Irán. Esta medida refleja presiones inflacionarias en energía y cambios en política energética con implicaciones para transición energética.",
+        "en": "Trump administration uses emergency powers to finance coal investment amid energy cost increases driven by Iran war. This reflects inflationary energy pressures and shifts in energy policy with implications for energy transition."
       },
       "impact": "medium",
       "signals": [
-        "EUR +",
-        "EU-EQUITIES +",
-        "BONDS +",
-        "RISK-SENTIMENT +"
+        "COAL +",
+        "ENERGY +",
+        "USD +",
+        "CLEAN_ENERGY -"
       ],
-      "confidence": 78,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/06/04/peter-magyar-premier-ministre-hongrois-je-n-ai-pas-ete-elu-pour-simplement-changer-de-gouvernement-mais-pour-changer-de-regime_6697013_3210.html",
-      "published_at": "2026-06-04",
-      "time": "5h"
+      "confidence": 82,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/cy0209r62k5o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-05",
+      "time": "9h"
     },
     {
       "id": 6,
       "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "Ucrania repele a Rusia en mayo por segundo mes consecutivo, según ISW",
-        "en": "Ukraine pushed Russia back in May for second month running, ISW finds"
+        "es": "Un dron marino explota en puerto rumano de Constanta, reporta ministerio de defensa",
+        "en": "Maritime drone explodes in Romanian port of Constanta, defense ministry reports"
       },
       "summary": {
-        "es": "Ucrania recuperó más territorio del que perdió ante fuerzas rusas en mayo durante el segundo mes consecutivo, según datos del Institute for the Study of War. Este patrón de contraataques tácticos exitosos sugiere cambios en la dinámica militar que podrían afectar perspectivas de negociación y riesgo geopolítico en el largo plazo.",
-        "en": "Ukraine recaptured more territory than it lost to Russian forces in May for the second consecutive month, per ISW data. This pattern of successful tactical counterattacks suggests shifts in military dynamics that could affect long-term negotiation prospects and geopolitical risk."
+        "es": "Un dron marino ruso explota en puerto civil rumano en el Mar Negro, elevando riesgos de escalada en la frontera de la OTAN. El incidente subraya amenazas a infraestructura crítica regional y posibles implicaciones para seguridad de la energía y rutas comerciales.",
+        "en": "Russian maritime drone explodes in Romanian civilian port on Black Sea, raising NATO border escalation risks. Incident underscores threats to critical regional infrastructure and possible implications for energy security and trade routes."
       },
       "impact": "medium",
       "signals": [
-        "EUR +",
-        "EM-CURRENCIES +",
-        "EQUITIES ?",
-        "VOLATILITY -"
+        "EUR -",
+        "NATO_STOCKS +",
+        "GRAIN ?",
+        "OIL +"
       ],
-      "confidence": 72,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/ukraine-pushed-russia-back-in-may-for-second-month-running-isw-finds",
-      "published_at": "2026-06-03",
-      "time": "14h"
+      "confidence": 80,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/06/05/en-direct-guerre-en-ukraine-quatre-personnes-tuees-dans-une-attaque-russe-sur-un-site-agroalimentaire-pres-de-kiev_6695365_3210.html",
+      "published_at": "2026-06-05",
+      "time": "<1h"
     }
-  ],
-  "market_updated_at": "2026-06-05T08:59:35.904Z"
+  ]
 }
