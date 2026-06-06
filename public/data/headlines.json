@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-06-05T09:39:31.038Z",
+  "generated_at": "2026-06-06T08:29:42.499Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1523",
-      "change": "-0.76%",
+      "value": "1.1527",
+      "change": "-0.80",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18442.61",
-      "change": "+0.59%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "94.81",
-      "change": "-2.04%",
+      "value": "18298.40",
+      "change": "-0.97",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "90.54",
-      "change": "-2.69%",
+      "symbol": "BRENT",
+      "value": "93.09",
+      "change": "-2.04",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4329.33",
-      "change": "-3.10%",
+      "symbol": "GOLD",
+      "value": "4365.30",
+      "change": "-3.10",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "61345.00",
-      "change": "-3.83%",
+      "symbol": "BTC",
+      "value": "60954.01",
+      "change": "-3.32",
       "up": false
     },
     {
       "symbol": "VIX",
       "value": "21.51",
-      "change": "+39.68%",
+      "change": "+39.68",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.48%",
-      "change": "-0.13%",
-      "up": false
+      "symbol": "US 10Y",
+      "value": "4.5360",
+      "change": "+1.32",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8652",
+      "change": "+0.04",
+      "up": true
     },
     {
       "symbol": "S&P 500",
       "value": "7383.74",
-      "change": "-2.64%",
+      "change": "-2.64",
       "up": false
     },
     {
       "symbol": "DAX 40",
       "value": "24759.05",
-      "change": "-0.75%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8645",
-      "change": "-0.09%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "100.07",
-      "change": "+0.66%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.22",
-      "change": "-3.58%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.42",
-      "change": "-1.47%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7753",
-      "change": "-0.23%",
+      "change": "-0.75",
       "up": false
     }
   ],
@@ -98,150 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Guerra en Oriente Medio: Israel continúa ataques en el sur del Líbano a pesar del alto el fuego",
-        "en": "War in Middle East Live: Israeli military continues strikes in southern Lebanon despite ceasefire"
+        "es": "Países del Golfo bajo ataque de Irán tras intercambio de fuego con EE.UU., en última amenaza al frágil alto el fuego",
+        "en": "Gulf countries targeted by Iran after exchange of fire with US, in latest threat to fragile ceasefire"
       },
       "summary": {
-        "es": "Israel continúa operaciones militares en el sur del Líbano después de un acuerdo de alto el fuego que ha sido rechazado por Hezbolá. La escalada de violencia con más de 3.500 muertes mantiene la inestabilidad regional y presión sobre los mercados energéticos y de riesgo.",
-        "en": "Israel continues military operations in southern Lebanon following a ceasefire agreement rejected by Hezbollah. Escalating violence with over 3,500 deaths sustains regional instability and pressure on energy and risk assets."
+        "es": "EE.UU. e Irán intercambiaron ataques el sábado por la mañana, con Irán disparando misiles balísticos hacia Kuwait y Bahrán después de que EE.UU. derribara drones e impactara sitios de radar iranís. Este escalamiento amenaza directamente la frágil estabilidad del cese al fuego en Oriente Medio, con implicaciones inmediatas para los precios del petróleo y la aseguración de riesgos geopolíticos.",
+        "en": "The US and Iran exchanged strikes on Saturday morning, with Iran firing ballistic missiles at Kuwait and Bahrain after the US shot down drones and struck Iranian radar sites. This escalation directly threatens the fragile Middle East ceasefire stability, with immediate implications for oil pricing and geopolitical risk premiums."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "GOLD +",
-        "EQUITIES -",
-        "EM -"
+        "VIX +",
+        "EM EQUITIES -"
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260605-war-in-middle-east-live-israeli-military-continues-strikes-in-southern-lebanon-despite-ceasefire",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jun/06/us-says-iran-radar-sites-struck-and-drones-intercepted-in-latest-threat-to-fragile-ceasefire",
       "published_at": "2026-06-05",
-      "time": "1h"
+      "time": "8h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Guerra en Irán día 98: Teherán cuestiona acuerdo mientras continúan combates en el Líbano",
-        "en": "Iran war day 98: Tehran raises doubts on deal as Lebanon fighting continues"
+        "es": "Ucrania bajo intenso ataque de drones mientras Zelensky busca reunión directa con Putin",
+        "en": "Ukraine under heavy drone attack as Zelensky seeks direct meeting with Putin"
       },
       "summary": {
-        "es": "Irán expresa dudas sobre los acuerdos diplomáticos mientras los combates persisten en el Líbano, deteriorando las perspectivas de resolución del conflicto. La incertidumbre geopolítica sostenida afecta la confianza de inversores y volatilidad de activos de riesgo.",
-        "en": "Iran expresses doubts on diplomatic agreements as fighting persists in Lebanon, deteriorating conflict resolution prospects. Sustained geopolitical uncertainty affects investor confidence and risk asset volatility."
+        "es": "Rusia disparó cientos de drones contra Ucrania, matando a siete personas y destruyendo una fábrica de productos lácteos infantiles, mientras Zelensky busca negociaciones directas con Putin. El evento refleja la escalada de la guerra de drones y las tensiones en torno a posibles negociaciones de paz, con implicaciones para los precios de energía europeos y la estabilidad fiscal de la UE.",
+        "en": "Russia fired hundreds of drones at Ukraine, killing seven people and destroying a milk products factory, as Zelensky seeks direct talks with Putin. The event reflects intensifying drone warfare and tensions over potential peace negotiations, with implications for European energy prices and EU fiscal stability."
+      },
+      "impact": "high",
+      "signals": [
+        "EUR -",
+        "OIL +",
+        "DEFENSE EQUITIES +",
+        "BONDS +"
+      ],
+      "confidence": 90,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260605-ukraine-under-heavy-drone-attack-as-zelensky-seeks-direct-meeting-with-putin",
+      "published_at": "2026-06-05",
+      "time": "18h"
+    },
+    {
+      "id": 3,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "Xi Jinping se dirige a Corea del Norte en medio de una dictadura norcoreana envalentonada cuya alianza con Rusia reduce su dependencia de China",
+        "en": "What To Know as China's Xi Jinping Heads to North Korea"
+      },
+      "summary": {
+        "es": "La visita de Xi Jinping a Pyongyang ocurre mientras Corea del Norte se siente envalentonada por su alianza con Rusia, reduciendo su dependencia histórica de China. Este viaje señala una reconfiguración de la geopolítica asiática con implicaciones para la estabilidad regional, el comercio de semiconductores y la postura de defensa estadounidense en el Pacífico.",
+        "en": "Xi Jinping's visit to Pyongyang occurs as North Korea is emboldened by its Russian alliance, reducing historical dependence on China. The trip signals a reconfiguration of Asian geopolitics with implications for regional stability, semiconductor trade, and US defense posture in the Pacific."
+      },
+      "impact": "medium",
+      "signals": [
+        "APAC EQUITIES ?",
+        "SEMICONDUCTORS ?",
+        "USD +",
+        "DEFENSE EQUITIES +"
+      ],
+      "confidence": 78,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/04/world/asia/china-north-korea-xi-jinping-visit.html",
+      "published_at": "2026-06-05",
+      "time": "1d"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Israel ataca sur del Líbano tras ordenar evacuaciones de nueve pueblos",
+        "en": "Israel strikes southern Lebanon after ordering evacuations of nine villages"
+      },
+      "summary": {
+        "es": "Israel ordenó evacuaciones forzadas de nueve pueblos en el sur del Líbano y realizó ataques aéreos que mataron a seis personas, un día después de que Hezbollah rechazara una propuesta de alto el fuego. La escalada representa una amenaza significativa al frágil acuerdo de cese al fuego y aumenta el riesgo de una confrontación regional más amplia.",
+        "en": "Israel issued forced evacuation orders for nine southern Lebanese villages and conducted strikes killing six people, one day after Hezbollah rejected a ceasefire proposal. The escalation represents a significant threat to the fragile ceasefire agreement and increases risk of broader regional confrontation."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "GOLD +",
         "BONDS +",
-        "RISK_ASSETS -"
-      ],
-      "confidence": 90,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/5/iran-war-day-98-tehran-raises-doubts-on-deal-as-lebanon-fighting-continues?traffic_source=rss",
-      "published_at": "2026-06-05",
-      "time": "3h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "APAC",
-      "title": {
-        "es": "Zelensky propone negociaciones cara a cara con Putin en carta abierta",
-        "en": "Zelensky proposes face-to-face talks in open letter to Putin"
-      },
-      "summary": {
-        "es": "El presidente ucraniano propone negociaciones directas con Rusia para terminar la guerra. Esta iniciativa diplomática inesperada podría señalar un cambio en la estrategia de conflicto y afectar expectativas de financiamiento de defensa occidental y precios de commodities.",
-        "en": "Ukrainian president proposes direct negotiations with Russia to end the war. This unexpected diplomatic initiative could signal a strategic shift and affect expectations for Western defense financing and commodity prices."
-      },
-      "impact": "high",
-      "signals": [
-        "EUR +",
-        "DEFENSE_STOCKS -",
-        "GOLD -",
-        "RATES ?"
+        "LATAM CURRENCY +"
       ],
       "confidence": 88,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cwy2ypyp4x4o?at_medium=RSS&at_campaign=rss",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jun/05/israel-strikes-southern-lebanon-evacuations-nine-villages",
       "published_at": "2026-06-05",
-      "time": "1h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Xi Jinping se dirige a Corea del Norte mientras enfrenta dictador fortalecido",
-        "en": "What To Know as China's Xi Jinping Heads to North Korea"
-      },
-      "summary": {
-        "es": "La visita de Xi a Pyongyang ocurre mientras Corea del Norte se ha vuelto menos dependiente de China gracias a su alianza con Rusia. Este realineamiento afecta dinámicas regionales en Asia y puede tener implicaciones para seguridad tecnológica y cadenas de suministro.",
-        "en": "Xi's visit to Pyongyang occurs as North Korea has become less dependent on China due to its Russia alliance. This realignment affects regional dynamics in Asia and may have implications for tech security and supply chains."
-      },
-      "impact": "medium",
-      "signals": [
-        "CNY ?",
-        "TECH_STOCKS ?",
-        "APAC_EQUITIES -"
-      ],
-      "confidence": 78,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/04/world/asia/china-north-korea-xi-jinping-visit.html",
-      "published_at": "2026-06-05",
-      "time": "6h"
+      "time": "16h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "US",
+      "region": "EU",
       "title": {
-        "es": "Trump anuncia inversión de $700 millones en carbón usando poderes de tiempos de guerra",
-        "en": "Trump announces $700m coal investment using wartime powers"
+        "es": "Una pregunta circula alrededor de la gran conferencia de Putin: ¿Podría terminar la guerra?",
+        "en": "A Question Swirling Around Putin's Big Conference: Could the War End?"
       },
       "summary": {
-        "es": "La administración Trump usa poderes de emergencia para financiar inversión en carbón ante el aumento de costos energéticos impulsado por la guerra de Irán. Esta medida refleja presiones inflacionarias en energía y cambios en política energética con implicaciones para transición energética.",
-        "en": "Trump administration uses emergency powers to finance coal investment amid energy cost increases driven by Iran war. This reflects inflationary energy pressures and shifts in energy policy with implications for energy transition."
+        "es": "En el Foro Económico de San Petersburgo, las élites rusas expresaron que Rusia enfrenta la opción de detener el conflicto o sacrificar más vidas, mientras Putin pareció señalar continuación de la guerra. Este posicionamiento clarifica las expectativas de largo plazo para la guerra en Ucrania y afecta la valoración de activos relacionados con la energía europea y la exposición de bonos soberanos.",
+        "en": "At the St. Petersburg Economic Forum, Russian elites stated Russia faces a choice between halting the conflict or sacrificing further, while Putin signaled continuation of war. This positioning clarifies long-term expectations for the Ukraine conflict and affects valuation of European energy assets and sovereign bond exposure."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "COAL +",
-        "ENERGY +",
-        "USD +",
-        "CLEAN_ENERGY -"
+        "EUR -",
+        "BONDS +",
+        "OIL +",
+        "RUSSIAN EQUITIES -"
       ],
-      "confidence": 82,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/cy0209r62k5o?at_medium=RSS&at_campaign=rss",
+      "confidence": 85,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/05/world/europe/putin-war-st-petersburg-economic-forum.html",
       "published_at": "2026-06-05",
-      "time": "9h"
+      "time": "14h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Un dron marino explota en puerto rumano de Constanta, reporta ministerio de defensa",
-        "en": "Maritime drone explodes in Romanian port of Constanta, defense ministry reports"
+        "es": "Oriente Medio: ONU duplica llamada de ayuda a Líbano en medio de guerra con Israel",
+        "en": "Middle East: UN doubles Lebanon aid appeal amid Israel war"
       },
       "summary": {
-        "es": "Un dron marino ruso explota en puerto civil rumano en el Mar Negro, elevando riesgos de escalada en la frontera de la OTAN. El incidente subraya amenazas a infraestructura crítica regional y posibles implicaciones para seguridad de la energía y rutas comerciales.",
-        "en": "Russian maritime drone explodes in Romanian civilian port on Black Sea, raising NATO border escalation risks. Incident underscores threats to critical regional infrastructure and possible implications for energy security and trade routes."
+        "es": "La ONU ha duplicado su llamada de ayuda para Líbano, buscando $331.5 millones adicionales para abordar la crisis humanitaria en deterioro mientras Israel continúa ataques aéreos en el sur. El aumento dramático en necesidades de asistencia refleja la magnitud de la crisis y señala un conflicto regional prolongado con implicaciones para los flujos de migrantes y la estabilidad fiscal de países vecinos.",
+        "en": "The UN has doubled its Lebanon aid appeal, seeking an additional $331.5 million to address the worsening humanitarian crisis as Israel conducts fresh southern strikes. The dramatic increase in assistance needs reflects conflict scale and signals prolonged regional conflict with implications for migrant flows and neighbor-state fiscal stability."
       },
       "impact": "medium",
       "signals": [
-        "EUR -",
-        "NATO_STOCKS +",
-        "GRAIN ?",
-        "OIL +"
+        "EM CURRENCY -",
+        "GOLD +",
+        "HUMANITARIAN BONDS ?",
+        "REGIONAL EQUITIES -"
       ],
-      "confidence": 80,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/live/2026/06/05/en-direct-guerre-en-ukraine-quatre-personnes-tuees-dans-une-attaque-russe-sur-un-site-agroalimentaire-pres-de-kiev_6695365_3210.html",
+      "confidence": 75,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/middle-east-un-doubles-lebanon-aid-appeal-amid-israel-war/live-77434702?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-06-05",
-      "time": "<1h"
+      "time": "20h"
     }
-  ],
-  "market_updated_at": "2026-06-06T08:19:51.176Z"
+  ]
 }
