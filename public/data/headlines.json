@@ -4,18 +4,18 @@
     {
       "symbol": "EUR/USD",
       "value": "1.1528",
-      "change": "-0.72%",
+      "change": "-1.44%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18442.61",
-      "change": "+0.60%",
+      "value": "18234.50",
+      "change": "+0.27%",
       "up": true
     },
     {
       "symbol": "BRENT crude",
-      "value": "94.81",
+      "value": "93.09",
       "change": "-2.04%",
       "up": false
     },
@@ -26,9 +26,9 @@
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
+      "symbol": "GOLD",
       "value": "4329.33",
-      "change": "-3.10%",
+      "change": "-3.28%",
       "up": false
     },
     {
@@ -45,13 +45,13 @@
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.48%",
-      "change": "+2.72%",
+      "value": "4.540",
+      "change": "+1.41%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7583.74",
+      "value": "7383.74",
       "change": "-2.64%",
       "up": false
     },
@@ -63,14 +63,14 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8636",
-      "change": "-0.04%",
+      "value": "0.8635",
+      "change": "-0.14%",
       "up": false
     },
     {
-      "symbol": "DXY dollar index",
+      "symbol": "DXY",
       "value": "100.07",
-      "change": "+0.67%",
+      "change": "+0.00%",
       "up": true
     },
     {
@@ -81,14 +81,14 @@
     },
     {
       "symbol": "Copper",
-      "value": "6.2755",
-      "change": "-3.97%",
+      "value": "6.30",
+      "change": "-3.50%",
       "up": false
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7887",
-      "change": "+0.19%",
+      "value": "6.7657",
+      "change": "+0.00%",
       "up": true
     }
   ],
@@ -244,5 +244,5 @@
       "time": "20h"
     }
   ],
-  "market_updated_at": "2026-06-06T11:13:32.263Z"
+  "market_updated_at": "2026-06-06T15:03:08.870Z"
 }
