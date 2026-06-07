@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-06-06T08:29:42.499Z",
+  "generated_at": "2026-06-07T08:51:19.410Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1598",
-      "change": "-0.76%",
+      "value": "1.1527",
+      "change": "-0.80",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18442.61",
-      "change": "+0.59%",
+      "value": "18234.50",
+      "change": "+0.27",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "93.09",
-      "change": "-2.04%",
+      "change": "-2.04",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "90.54",
-      "change": "-2.69%",
+      "symbol": "GOLD",
+      "value": "4341.07",
+      "change": "-3.10",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4329.33",
-      "change": "-3.27%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "61499.94",
-      "change": "+1.01%",
+      "symbol": "BTC",
+      "value": "60591.84",
+      "change": "+0.67",
       "up": true
     },
     {
       "symbol": "VIX",
       "value": "21.51",
-      "change": "+39.68%",
+      "change": "+39.68",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.55",
-      "change": "+2.72%",
+      "symbol": "US 10Y",
+      "value": "4.54",
+      "change": "+1.32",
       "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8635",
+      "change": "-0.14",
+      "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7383.74",
-      "change": "-2.64%",
+      "change": "-2.64",
       "up": false
     },
     {
       "symbol": "DAX 40",
       "value": "24759.05",
-      "change": "-0.75%",
+      "change": "-0.75",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8662",
-      "change": "+0.18%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "100.07",
-      "change": "+0.66%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.23",
-      "change": "-3.21%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.25",
-      "change": "-3.97%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7753",
-      "change": "+0.27%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Países del Golfo bajo ataque de Irán tras intercambio de fuego con EE.UU., en última amenaza al frágil alto el fuego",
-        "en": "Gulf countries targeted by Iran after exchange of fire with US, in latest threat to fragile ceasefire"
+        "es": "Kuwait y Bahréin atacados por Irán tras intercambio de fuego con EE.UU.",
+        "en": "Kuwait and Bahrain targeted by Iran after exchange of fire with US"
       },
       "summary": {
-        "es": "EE.UU. e Irán intercambiaron ataques el sábado por la mañana, con Irán disparando misiles balísticos hacia Kuwait y Bahrán después de que EE.UU. derribara drones e impactara sitios de radar iranís. Este escalamiento amenaza directamente la frágil estabilidad del cese al fuego en Oriente Medio, con implicaciones inmediatas para los precios del petróleo y la aseguración de riesgos geopolíticos.",
-        "en": "The US and Iran exchanged strikes on Saturday morning, with Iran firing ballistic missiles at Kuwait and Bahrain after the US shot down drones and struck Iranian radar sites. This escalation directly threatens the fragile Middle East ceasefire stability, with immediate implications for oil pricing and geopolitical risk premiums."
+        "es": "Irán lanzó misiles balísticos y drones contra Kuwait y Bahréin horas después de que EE.UU. derribara drones iraníes e impactara sitios de radar. Este es el último de una serie de enfrentamientos que amenazan el frágil alto el fuego en el Golfo Pérsico, con implicaciones directas para la seguridad energética global y las rutas marítimas críticas.",
+        "en": "Iran fired ballistic missiles and drones at Kuwait and Bahrain hours after the US shot down Iranian drones and struck radar sites. This is the latest in a series of clashes threatening the fragile ceasefire in the Persian Gulf, with direct implications for global energy security and critical maritime routes."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GOLD +",
-        "VIX +",
-        "EM EQUITIES -"
+        "GEOPOLITICAL_RISK +",
+        "USD +",
+        "EQUITIES -"
       ],
       "confidence": 92,
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/world/2026/jun/06/us-says-iran-radar-sites-struck-and-drones-intercepted-in-latest-threat-to-fragile-ceasefire",
-      "published_at": "2026-06-05",
-      "time": "8h"
+      "published_at": "2026-06-06",
+      "time": "21h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Ucrania bajo intenso ataque de drones mientras Zelensky busca reunión directa con Putin",
-        "en": "Ukraine under heavy drone attack as Zelensky seeks direct meeting with Putin"
+        "es": "EE.UU. derriba dos drones iraníes que amenazan el tráfico marítimo del Estrecho de Ormuz",
+        "en": "US downs two Iranian drones targeting Hormuz shipping traffic"
       },
       "summary": {
-        "es": "Rusia disparó cientos de drones contra Ucrania, matando a siete personas y destruyendo una fábrica de productos lácteos infantiles, mientras Zelensky busca negociaciones directas con Putin. El evento refleja la escalada de la guerra de drones y las tensiones en torno a posibles negociaciones de paz, con implicaciones para los precios de energía europeos y la estabilidad fiscal de la UE.",
-        "en": "Russia fired hundreds of drones at Ukraine, killing seven people and destroying a milk products factory, as Zelensky seeks direct talks with Putin. The event reflects intensifying drone warfare and tensions over potential peace negotiations, with implications for European energy prices and EU fiscal stability."
+        "es": "El ejército estadounidense derribó dos drones de ataque iraní que amenazaban el tráfico marítimo en el Estrecho de Ormuz, el último enfrentamiento en el conflicto de Irán-EE.UU. La escalada directa en el punto de estrangulamiento energético más crítico del mundo representa un riesgo severo para los mercados de petróleo y las cadenas de suministro globales.",
+        "en": "The US military downed two Iranian attack drones threatening Strait of Hormuz shipping traffic in the latest clash between Iran and the US. Direct escalation at the world's most critical energy chokepoint represents severe risk to oil markets and global supply chains."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL ++",
+        "SHIPPING_COSTS +",
+        "SAFE_HAVENS +",
+        "EQUITIES -"
+      ],
+      "confidence": 94,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260607-middle-east-live-us-downs-two-iranian-drones-targeting-hormuz-shipping-traffic",
+      "published_at": "2026-06-07",
+      "time": "2h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Ucrania golpea San Petersburgo nuevamente después de que Putin rechaza negociaciones",
+        "en": "Ukraine hits St. Petersburg again after Putin rejects talks"
+      },
+      "summary": {
+        "es": "Drones ucranianos atacaron San Petersburgo y la región circundante por segunda vez después de que el presidente Putin rechazara las propuestas de negociación de paz del presidente Zelenskyy. La escalada de ataques profundos en territorio ruso y el rechazo explícito a negociaciones amplían el conflicto y reducen perspectivas de resolución a corto plazo.",
+        "en": "Ukrainian drones targeted St. Petersburg and surrounding region for the second time after President Putin rejected Ukrainian President Zelenskyy's peace talk offers. Escalating deep strikes on Russian territory and explicit rejection of negotiations broaden the conflict and reduce near-term resolution prospects."
       },
       "impact": "high",
       "signals": [
         "EUR -",
-        "OIL +",
-        "DEFENSE EQUITIES +",
-        "BONDS +"
+        "RUSSIAN_ASSETS -",
+        "DEFENSE_STOCKS +",
+        "COMMODITIES +"
       ],
       "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260605-ukraine-under-heavy-drone-attack-as-zelensky-seeks-direct-meeting-with-putin",
-      "published_at": "2026-06-05",
-      "time": "18h"
-    },
-    {
-      "id": 3,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Xi Jinping se dirige a Corea del Norte en medio de una dictadura norcoreana envalentonada cuya alianza con Rusia reduce su dependencia de China",
-        "en": "What To Know as China's Xi Jinping Heads to North Korea"
-      },
-      "summary": {
-        "es": "La visita de Xi Jinping a Pyongyang ocurre mientras Corea del Norte se siente envalentonada por su alianza con Rusia, reduciendo su dependencia histórica de China. Este viaje señala una reconfiguración de la geopolítica asiática con implicaciones para la estabilidad regional, el comercio de semiconductores y la postura de defensa estadounidense en el Pacífico.",
-        "en": "Xi Jinping's visit to Pyongyang occurs as North Korea is emboldened by its Russian alliance, reducing historical dependence on China. The trip signals a reconfiguration of Asian geopolitics with implications for regional stability, semiconductor trade, and US defense posture in the Pacific."
-      },
-      "impact": "medium",
-      "signals": [
-        "APAC EQUITIES ?",
-        "SEMICONDUCTORS ?",
-        "USD +",
-        "DEFENSE EQUITIES +"
-      ],
-      "confidence": 78,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/04/world/asia/china-north-korea-xi-jinping-visit.html",
-      "published_at": "2026-06-05",
-      "time": "1d"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ukraine-hits-st-petersburg-again-after-putin-rejects-talks/a-77445845?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-06",
+      "time": "13h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Israel ataca sur del Líbano tras ordenar evacuaciones de nueve pueblos",
-        "en": "Israel strikes southern Lebanon after ordering evacuations of nine villages"
+        "es": "Frágil alto el fuego Israel-Hezbollah bajo prueba",
+        "en": "Shaky Israel-Hezbollah ceasefire tested"
       },
       "summary": {
-        "es": "Israel ordenó evacuaciones forzadas de nueve pueblos en el sur del Líbano y realizó ataques aéreos que mataron a seis personas, un día después de que Hezbollah rechazara una propuesta de alto el fuego. La escalada representa una amenaza significativa al frágil acuerdo de cese al fuego y aumenta el riesgo de una confrontación regional más amplia.",
-        "en": "Israel issued forced evacuation orders for nine southern Lebanese villages and conducted strikes killing six people, one day after Hezbollah rejected a ceasefire proposal. The escalation represents a significant threat to the fragile ceasefire agreement and increases risk of broader regional confrontation."
+        "es": "Dos proyectiles fueron disparados desde Líbano hacia territorio israelí, desafiando el alto el fuego recientemente anunciado. Las violaciones tempranas del acuerdo indican inestabilidad persistente en la región y elevado riesgo de reanudación de las hostilidades a gran escala.",
+        "en": "Two projectiles were fired from Lebanon toward Israeli territory, challenging the newly announced ceasefire. Early agreement violations indicate persistent regional instability and elevated risk of large-scale hostilities resuming."
       },
       "impact": "high",
       "signals": [
+        "GEOPOLITICAL_RISK +",
         "OIL +",
-        "GOLD +",
-        "BONDS +",
-        "LATAM CURRENCY +"
+        "ISRAELI_ASSETS ?",
+        "DEFENSE_STOCKS +"
       ],
       "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/05/israel-strikes-southern-lebanon-evacuations-nine-villages",
-      "published_at": "2026-06-05",
-      "time": "16h"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/middle-east-shaky-israel-hezbollah-ceasefire-tested/live-77442602?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-07",
+      "time": "<1h"
     },
     {
       "id": 5,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "Una pregunta circula alrededor de la gran conferencia de Putin: ¿Podría terminar la guerra?",
-        "en": "A Question Swirling Around Putin's Big Conference: Could the War End?"
+        "es": "Dron ruso impacta sitio de almacenamiento de combustible nuclear gastado cerca de la central de Chernóbil",
+        "en": "Russian drone strikes spent nuclear fuel storage site near Chernobyl nuclear plant"
       },
       "summary": {
-        "es": "En el Foro Económico de San Petersburgo, las élites rusas expresaron que Rusia enfrenta la opción de detener el conflicto o sacrificar más vidas, mientras Putin pareció señalar continuación de la guerra. Este posicionamiento clarifica las expectativas de largo plazo para la guerra en Ucrania y afecta la valoración de activos relacionados con la energía europea y la exposición de bonos soberanos.",
-        "en": "At the St. Petersburg Economic Forum, Russian elites stated Russia faces a choice between halting the conflict or sacrificing further, while Putin signaled continuation of war. This positioning clarifies long-term expectations for the Ukraine conflict and affects valuation of European energy assets and sovereign bond exposure."
+        "es": "Un dron ruso impactó un sitio de almacenamiento de combustible nuclear gastado en las proximidades de la central de Chernóbil. Aunque la agencia atómica ucraniana reportó que la situación radiológica se mantuvo dentro de límites normales, el ataque directo a infraestructura nuclear representa un riesgo de escalada catastrófica y daño ambiental de larga duración.",
+        "en": "A Russian drone struck a spent nuclear fuel storage facility near the Chernobyl nuclear plant. Although Ukraine's atomic agency reported radiological situation remained within normal limits, direct attack on nuclear infrastructure represents catastrophic escalation risk and long-term environmental damage."
       },
       "impact": "high",
       "signals": [
         "EUR -",
-        "BONDS +",
-        "OIL +",
-        "RUSSIAN EQUITIES -"
+        "SAFE_HAVENS +",
+        "UKRAINE_RISK ++",
+        "ENERGY_SECURITY -"
       ],
       "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/05/world/europe/putin-war-st-petersburg-economic-forum.html",
-      "published_at": "2026-06-05",
-      "time": "14h"
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/06/07/en-direct-guerre-en-ukraine-un-drone-russe-frappe-un-site-de-stockage-de-combustible-nucleaire-usage-pres-de-la-centrale-de-tchernobyl_6698620_3210.html",
+      "published_at": "2026-06-07",
+      "time": "<1h"
     },
     {
       "id": 6,
       "tag": "WATCH",
       "region": "MENA",
       "title": {
-        "es": "Oriente Medio: ONU duplica llamada de ayuda a Líbano en medio de guerra con Israel",
-        "en": "Middle East: UN doubles Lebanon aid appeal amid Israel war"
+        "es": "Día 100 de la guerra con Irán: EE.UU. e Irán intercambian ataques nuevamente, elevando tensiones",
+        "en": "Iran war day 100: US, Iran trade attacks again, raising tensions"
       },
       "summary": {
-        "es": "La ONU ha duplicado su llamada de ayuda para Líbano, buscando $331.5 millones adicionales para abordar la crisis humanitaria en deterioro mientras Israel continúa ataques aéreos en el sur. El aumento dramático en necesidades de asistencia refleja la magnitud de la crisis y señala un conflicto regional prolongado con implicaciones para los flujos de migrantes y la estabilidad fiscal de países vecinos.",
-        "en": "The UN has doubled its Lebanon aid appeal, seeking an additional $331.5 million to address the worsening humanitarian crisis as Israel conducts fresh southern strikes. The dramatic increase in assistance needs reflects conflict scale and signals prolonged regional conflict with implications for migrant flows and neighbor-state fiscal stability."
+        "es": "En el día 100 del conflicto, EE.UU. derribó drones iraníes sobre el Estrecho de Ormuz mientras persisten los enfrentamientos. La duración y repetición de estos intercambios sugieren una escalada sostenida en lugar de de-escalada, con riesgo permanente para el tráfico marítimo vital para el comercio internacional.",
+        "en": "On day 100 of the conflict, the US shot down Iranian drones over Strait of Hormuz as clashes persist. The duration and repetition of these exchanges suggest sustained escalation rather than de-escalation, with ongoing risk to maritime traffic vital for international commerce."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "EM CURRENCY -",
-        "GOLD +",
-        "HUMANITARIAN BONDS ?",
-        "REGIONAL EQUITIES -"
+        "OIL +",
+        "SHIPPING_RISK +",
+        "RISK_ASSETS -",
+        "GEOPOLITICAL_PREMIUM +"
       ],
-      "confidence": 75,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/middle-east-un-doubles-lebanon-aid-appeal-amid-israel-war/live-77434702?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-05",
-      "time": "20h"
+      "confidence": 87,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/6/7/iran-war-day-100-us-iran-trade-attacks-again-raising-tensions?traffic_source=rss",
+      "published_at": "2026-06-07",
+      "time": "1h"
     }
-  ],
-  "market_updated_at": "2026-06-07T08:40:54.877Z"
+  ]
 }
