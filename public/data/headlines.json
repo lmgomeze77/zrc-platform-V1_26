@@ -9,32 +9,32 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "18184.90",
-      "change": "-0.97%",
-      "up": false
+      "value": "18234.50",
+      "change": "+0.27%",
+      "up": true
     },
     {
-      "symbol": "BRENT",
+      "symbol": "BRENT crude",
       "value": "93.09",
       "change": "-2.04%",
       "up": false
     },
     {
-      "symbol": "WTI",
+      "symbol": "WTI crude",
       "value": "90.54",
       "change": "-2.69%",
       "up": false
     },
     {
-      "symbol": "GOLD",
+      "symbol": "GOLD (XAU/USD)",
       "value": "4414.21",
       "change": "-1.37%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "60949.20",
-      "change": "-3.60%",
+      "value": "60641",
+      "change": "-0.33%",
       "up": false
     },
     {
@@ -44,7 +44,7 @@
       "up": true
     },
     {
-      "symbol": "US 10Y",
+      "symbol": "US 10Y yield",
       "value": "4.55",
       "change": "+1.32%",
       "up": true
@@ -63,33 +63,33 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8641",
-      "change": "-0.13%",
+      "value": "0.8634",
+      "change": "-0.12%",
       "up": false
     },
     {
-      "symbol": "DXY",
+      "symbol": "DXY dollar index",
       "value": "100.07",
       "change": "+0.64%",
       "up": true
     },
     {
-      "symbol": "NAT GAS",
-      "value": "3.229",
+      "symbol": "Natural Gas",
+      "value": "3.23",
       "change": "-3.21%",
       "up": false
     },
     {
-      "symbol": "COPPER",
-      "value": "6.28",
-      "change": "-3.83%",
+      "symbol": "Copper",
+      "value": "6.26",
+      "change": "-3.80%",
       "up": false
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7657",
-      "change": "-0.67%",
-      "up": false
+      "value": "6.7887",
+      "change": "+0.19%",
+      "up": true
     }
   ],
   "headlines": [
@@ -244,5 +244,5 @@
       "time": "1h"
     }
   ],
-  "market_updated_at": "2026-06-07T11:31:31.382Z"
+  "market_updated_at": "2026-06-07T15:15:56.350Z"
 }
