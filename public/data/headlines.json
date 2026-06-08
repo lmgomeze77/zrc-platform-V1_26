@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-06-07T08:51:19.410Z",
+  "generated_at": "2026-06-08T10:29:47.841Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
       "value": "1.1523",
-      "change": "-0.35%",
+      "change": "-0.51",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18184.90",
-      "change": "-0.97%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "97.68",
-      "change": "+4.93%",
+      "value": "18234.50",
+      "change": "+49.60",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "93.63",
-      "change": "+3.41%",
+      "symbol": "BRENT",
+      "value": "93.09",
+      "change": "-1.94",
+      "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4365.30",
+      "change": "-139.70",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "62512.63",
+      "change": "+1566.02",
       "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4329.33",
-      "change": "-3.28%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "61673.93",
-      "change": "-3.60%",
-      "up": false
     },
     {
       "symbol": "VIX",
       "value": "21.51",
-      "change": "+39.68%",
+      "change": "+6.11",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.55%",
-      "change": "+0.06%",
+      "symbol": "US 10Y",
+      "value": "4.54",
+      "change": "+0.06",
       "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8635",
+      "change": "-0.0012",
+      "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7383.74",
-      "change": "-2.64%",
+      "change": "-200.57",
       "up": false
     },
     {
       "symbol": "DAX 40",
       "value": "24759.05",
-      "change": "-0.75%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8662",
-      "change": "+0.18%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "100.11",
-      "change": "+0.04%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.17",
-      "change": "-1.79%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.28",
-      "change": "-3.97%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7657",
-      "change": "+0.00%",
+      "change": "-185.90",
       "up": false
     }
   ],
@@ -98,151 +68,148 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Kuwait y Bahréin atacados por Irán tras intercambio de fuego con EE.UU.",
-        "en": "Kuwait and Bahrain targeted by Iran after exchange of fire with US"
+        "es": "Israel e Irán intercambian ataques mientras la crisis de Oriente Medio amenaza con escalada",
+        "en": "Israel and Iran exchange strikes as Middle East crisis threatens to escalate"
       },
       "summary": {
-        "es": "Irán lanzó misiles balísticos y drones contra Kuwait y Bahréin horas después de que EE.UU. derribara drones iraníes e impactara sitios de radar. Este es el último de una serie de enfrentamientos que amenazan el frágil alto el fuego en el Golfo Pérsico, con implicaciones directas para la seguridad energética global y las rutas marítimas críticas.",
-        "en": "Iran fired ballistic missiles and drones at Kuwait and Bahrain hours after the US shot down Iranian drones and struck radar sites. This is the latest in a series of clashes threatening the fragile ceasefire in the Persian Gulf, with direct implications for global energy security and critical maritime routes."
+        "es": "Israel ha lanzado ataques aéreos contra Irán después de que los iraníes dispararan misiles contra el norte de Israel, marcando el primer intercambio de fuego directo. El incidente rompe el frágil alto el fuego acordado en abril y genera temores de regreso a una guerra regional a gran escala, con implicaciones críticas para los precios energéticos y la estabilidad geopolítica.",
+        "en": "Israel has launched airstrikes on Iran after Iranian missiles struck northern Israel, marking the first direct exchange of fire. The incident shatters a fragile April ceasefire and raises fears of return to full-scale regional war, with critical implications for energy prices and geopolitical stability."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GEOPOLITICAL_RISK +",
-        "USD +",
-        "EQUITIES -"
+        "EQUITIES -",
+        "GOLD +",
+        "BONDS +"
       ],
       "confidence": 92,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/06/us-says-iran-radar-sites-struck-and-drones-intercepted-in-latest-threat-to-fragile-ceasefire",
-      "published_at": "2026-06-06",
-      "time": "21h"
+      "source_url": "https://www.theguardian.com/world/2026/jun/08/israel-netanyahu-airstrikes-iran-retaliation-defies-trump",
+      "published_at": "2026-06-08",
+      "time": "1h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "APAC",
       "title": {
-        "es": "EE.UU. derriba dos drones iraníes que amenazan el tráfico marítimo del Estrecho de Ormuz",
-        "en": "US downs two Iranian drones targeting Hormuz shipping traffic"
+        "es": "Los mercados bursátiles asiáticos se desploman en medio del conflicto Irán-Israel y turbulencias en Wall Street",
+        "en": "Asia's stock markets dive amid Iran-Israel conflict, Wall Street jitters"
       },
       "summary": {
-        "es": "El ejército estadounidense derribó dos drones de ataque iraní que amenazaban el tráfico marítimo en el Estrecho de Ormuz, el último enfrentamiento en el conflicto de Irán-EE.UU. La escalada directa en el punto de estrangulamiento energético más crítico del mundo representa un riesgo severo para los mercados de petróleo y las cadenas de suministro globales.",
-        "en": "The US military downed two Iranian attack drones threatening Strait of Hormuz shipping traffic in the latest clash between Iran and the US. Direct escalation at the world's most critical energy chokepoint represents severe risk to oil markets and global supply chains."
+        "es": "Los principales índices bursátiles asiáticos han caído bruscamente, con el índice principal de Corea del Sur desplomándose casi un 9%, mientras que también se registran caídas significativas en Japón, Taiwán y Hong Kong. La volatilidad refleja preocupaciones sobre la escalada geopolítica y el impacto potencial en cadenas de suministro globales y precios energéticos.",
+        "en": "Major Asian stock indices have plunged sharply, with South Korea's main index falling nearly 9%, alongside significant declines in Japan, Taiwan, and Hong Kong. The volatility reflects concerns over geopolitical escalation and potential impacts on global supply chains and energy prices."
       },
       "impact": "high",
       "signals": [
-        "OIL ++",
-        "SHIPPING_COSTS +",
-        "SAFE_HAVENS +",
-        "EQUITIES -"
+        "EQUITIES -",
+        "VOLATILITY +",
+        "OIL +",
+        "USD +"
       ],
-      "confidence": 94,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260607-middle-east-live-us-downs-two-iranian-drones-targeting-hormuz-shipping-traffic",
-      "published_at": "2026-06-07",
-      "time": "2h"
+      "confidence": 88,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/2026/6/8/asias-stock-markets-dive-amid-iran-israel-conflict-wall-street-jitters?traffic_source=rss",
+      "published_at": "2026-06-08",
+      "time": "1h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Ucrania golpea San Petersburgo nuevamente después de que Putin rechaza negociaciones",
-        "en": "Ukraine hits St. Petersburg again after Putin rejects talks"
-      },
-      "summary": {
-        "es": "Drones ucranianos atacaron San Petersburgo y la región circundante por segunda vez después de que el presidente Putin rechazara las propuestas de negociación de paz del presidente Zelenskyy. La escalada de ataques profundos en territorio ruso y el rechazo explícito a negociaciones amplían el conflicto y reducen perspectivas de resolución a corto plazo.",
-        "en": "Ukrainian drones targeted St. Petersburg and surrounding region for the second time after President Putin rejected Ukrainian President Zelenskyy's peace talk offers. Escalating deep strikes on Russian territory and explicit rejection of negotiations broaden the conflict and reduce near-term resolution prospects."
-      },
-      "impact": "high",
-      "signals": [
-        "EUR -",
-        "RUSSIAN_ASSETS -",
-        "DEFENSE_STOCKS +",
-        "COMMODITIES +"
-      ],
-      "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ukraine-hits-st-petersburg-again-after-putin-rejects-talks/a-77445845?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-06",
-      "time": "13h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Frágil alto el fuego Israel-Hezbollah bajo prueba",
-        "en": "Shaky Israel-Hezbollah ceasefire tested"
+        "es": "Irán e Israel intercambian ataques mientras Trump pide que detengan los ataques",
+        "en": "Live Updates: Iran and Israel Trade Strikes as Trump Calls on Them to Stop"
       },
       "summary": {
-        "es": "Dos proyectiles fueron disparados desde Líbano hacia territorio israelí, desafiando el alto el fuego recientemente anunciado. Las violaciones tempranas del acuerdo indican inestabilidad persistente en la región y elevado riesgo de reanudación de las hostilidades a gran escala.",
-        "en": "Two projectiles were fired from Lebanon toward Israeli territory, challenging the newly announced ceasefire. Early agreement violations indicate persistent regional instability and elevated risk of large-scale hostilities resuming."
+        "es": "Irán ha lanzado oleadas de misiles contra Israel e Israel ha respondido golpeando objetivos militares e infraestructura petroquímica iraní, provocando el colapso de una frágil tregua de dos meses. Trump ha solicitado que ambas partes detengan inmediatamente los ataques, lo que subraya la pérdida de influencia diplomática estadounidense en la región.",
+        "en": "Iran launched waves of missiles at Israel and Israel responded by striking military targets and Iranian petrochemical infrastructure, collapsing a two-month uneasy truce. Trump has called for both sides to 'immediately stop' attacks, underscoring loss of US diplomatic leverage in the region."
       },
       "impact": "high",
       "signals": [
-        "GEOPOLITICAL_RISK +",
         "OIL +",
-        "ISRAELI_ASSETS ?",
-        "DEFENSE_STOCKS +"
+        "EQUITIES -",
+        "USD ?",
+        "GEOPOLITICAL RISK +"
       ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/middle-east-shaky-israel-hezbollah-ceasefire-tested/live-77442602?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-07",
+      "confidence": 93,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/live/2026/06/08/world/iran-israel-lebanon-attacks",
+      "published_at": "2026-06-08",
       "time": "<1h"
     },
     {
-      "id": 5,
+      "id": 4,
       "tag": "CRITICAL",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Dron ruso impacta sitio de almacenamiento de combustible nuclear gastado cerca de la central de Chernóbil",
-        "en": "Russian drone strikes spent nuclear fuel storage site near Chernobyl nuclear plant"
+        "es": "Israel e Irán intercambian ataques por primera vez desde la tregua en una 'pesadilla autocreada para Trump'",
+        "en": "Israel, Iran trade strikes for first time since truce in 'self-created nightmare for Trump'"
       },
       "summary": {
-        "es": "Un dron ruso impactó un sitio de almacenamiento de combustible nuclear gastado en las proximidades de la central de Chernóbil. Aunque la agencia atómica ucraniana reportó que la situación radiológica se mantuvo dentro de límites normales, el ataque directo a infraestructura nuclear representa un riesgo de escalada catastrófica y daño ambiental de larga duración.",
-        "en": "A Russian drone struck a spent nuclear fuel storage facility near the Chernobyl nuclear plant. Although Ukraine's atomic agency reported radiological situation remained within normal limits, direct attack on nuclear infrastructure represents catastrophic escalation risk and long-term environmental damage."
+        "es": "Israel e Irán intercambiaron ataques el 8 de junio, la primera vez desde el inicio del alto el fuego hace dos meses, a pesar de que el Presidente Trump pidió moderación. Las conversaciones entre ambas partes y EE.UU. se han estancado, señalando una erosión significativa de la estrategia de negociación estadounidense.",
+        "en": "Israel and Iran exchanged attacks on June 8, the first time since the ceasefire began two months ago, despite Trump calling for restraint. Talks between the parties and the US have stalled, signaling significant erosion of US negotiation strategy."
       },
       "impact": "high",
       "signals": [
-        "EUR -",
-        "SAFE_HAVENS +",
-        "UKRAINE_RISK ++",
-        "ENERGY_SECURITY -"
+        "OIL +",
+        "EQUITIES -",
+        "USD -",
+        "CREDIT SPREADS +"
       ],
-      "confidence": 85,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/live/2026/06/07/en-direct-guerre-en-ukraine-un-drone-russe-frappe-un-site-de-stockage-de-combustible-nucleaire-usage-pres-de-la-centrale-de-tchernobyl_6698620_3210.html",
-      "published_at": "2026-06-07",
+      "confidence": 90,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/israel-iran-trade-strikes-for-first-time-since-truce-in-self-created-nightmare-for-trump",
+      "published_at": "2026-06-08",
+      "time": "1h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Letonia: Un caza de la OTAN derriba un dron extraviado",
+        "en": "Latvia: NATO jet shoots down stray drone"
+      },
+      "summary": {
+        "es": "Un caza de la OTAN derribó un dron sobre el este de Letonia, el primer incidente de este tipo, con la milicia atribuyendo la intrusión aérea a la 'guerra electromagnética rusa'. El evento subraya la creciente tensión en la frontera oriental de la OTAN y los riesgos de escalada no intencional.",
+        "en": "A NATO jet shot down a drone over eastern Latvia, the first incident of its kind, with military attributing the airspace breach to 'Russian electromagnetic warfare.' The event underscores rising tensions on NATO's eastern border and risks of unintended escalation."
+      },
+      "impact": "medium",
+      "signals": [
+        "EUR +",
+        "DEFENSE STOCKS +",
+        "GEOPOLITICAL RISK +"
+      ],
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/latvia-nato-jet-shoots-down-stray-drone/a-77456678?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-08",
       "time": "<1h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "MENA",
+      "region": "APAC",
       "title": {
-        "es": "Día 100 de la guerra con Irán: EE.UU. e Irán intercambian ataques nuevamente, elevando tensiones",
-        "en": "Iran war day 100: US, Iran trade attacks again, raising tensions"
+        "es": "Una 'Transformación Milagrosa': Cómo Kim Jong-un Fortaleció Corea del Norte",
+        "en": "A 'Miraculous Transformation': How Kim Jong-un Fortified North Korea"
       },
       "summary": {
-        "es": "En el día 100 del conflicto, EE.UU. derribó drones iraníes sobre el Estrecho de Ormuz mientras persisten los enfrentamientos. La duración y repetición de estos intercambios sugieren una escalada sostenida en lugar de de-escalada, con riesgo permanente para el tráfico marítimo vital para el comercio internacional.",
-        "en": "On day 100 of the conflict, the US shot down Iranian drones over Strait of Hormuz as clashes persist. The duration and repetition of these exchanges suggest sustained escalation rather than de-escalation, with ongoing risk to maritime traffic vital for international commerce."
+        "es": "Corea del Norte ha revitalizado su economía durante la pandemia aprovechando la guerra de Rusia en Ucrania, mientras Kim Jong-un ha consolidado el control político mediante represión. La creciente integración norcoreana con Rusia plantea riesgos geopolíticos para la estabilidad regional y potencialmente para los mercados de defensa y energía en Asia.",
+        "en": "North Korea has revitalized its economy during the pandemic by leveraging Russia's war in Ukraine, while Kim Jong-un has consolidated political control through repression. Growing North Korean integration with Russia poses geopolitical risks to regional stability and potentially to defense and energy markets in Asia."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "SHIPPING_RISK +",
-        "RISK_ASSETS -",
-        "GEOPOLITICAL_PREMIUM +"
+        "GEOPOLITICAL RISK +",
+        "DEFENSE STOCKS ?",
+        "KRW ?"
       ],
-      "confidence": 87,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/7/iran-war-day-100-us-iran-trade-attacks-again-raising-tensions?traffic_source=rss",
-      "published_at": "2026-06-07",
-      "time": "1h"
+      "confidence": 68,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/08/world/asia/north-korea-kim-jong-un-pandemic-economy.html",
+      "published_at": "2026-06-08",
+      "time": "6h"
     }
-  ],
-  "market_updated_at": "2026-06-08T10:10:44.319Z"
+  ]
 }
