@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T10:29:47.841Z",
+  "generated_at": "2026-06-09T09:35:34.799Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -9,238 +9,206 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "18272.90",
-      "change": "+1.60%",
-      "up": true
+      "value": "18269.76",
+      "change": "-0.97%",
+      "up": false
     },
     {
-      "symbol": "BRENT crude",
-      "value": "96.14",
-      "change": "+3.28%",
-      "up": true
+      "symbol": "BRENT",
+      "value": "93.3",
+      "change": "-0.9%",
+      "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "91.28",
-      "change": "+0.86%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
+      "symbol": "GOLD",
       "value": "4320.89",
       "change": "+0.09%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
+      "symbol": "BTC",
       "value": "63414.08",
       "change": "+0.74%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "21.51",
-      "change": "+39.68%",
+      "value": "18.92",
+      "change": "-12.04%",
+      "up": false
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.554",
+      "change": "+0.04%",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.57",
-      "change": "+0.18%",
-      "up": true
+      "symbol": "EUR/GBP",
+      "value": "0.8643",
+      "change": "-0.12%",
+      "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7424.03",
-      "change": "+0.55%",
+      "value": "7405.73",
+      "change": "+0.30%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24660.63",
-      "change": "-0.40%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "1.1571",
-      "change": "+0.04%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "100.11",
-      "change": "+0.04%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.17",
-      "change": "-1.79%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.29",
-      "change": "-0.15%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7657",
-      "change": "-0.0030%",
+      "value": "24705.82",
+      "change": "-0.58%",
       "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Israel e Irán intercambian ataques mientras la crisis de Oriente Medio amenaza con escalada",
-        "en": "Israel and Iran exchange strikes as Middle East crisis threatens to escalate"
+        "en": "Israel and Iran step back from further strikes after renewed clashes",
+        "es": "Israel e Irán se retiran de nuevos ataques tras enfrentamientos renovados"
       },
       "summary": {
-        "es": "Israel ha lanzado ataques aéreos contra Irán después de que los iraníes dispararan misiles contra el norte de Israel, marcando el primer intercambio de fuego directo. El incidente rompe el frágil alto el fuego acordado en abril y genera temores de regreso a una guerra regional a gran escala, con implicaciones críticas para los precios energéticos y la estabilidad geopolítica.",
-        "en": "Israel has launched airstrikes on Iran after Iranian missiles struck northern Israel, marking the first direct exchange of fire. The incident shatters a fragile April ceasefire and raises fears of return to full-scale regional war, with critical implications for energy prices and geopolitical stability."
+        "en": "Israel and Iran exchanged fire for the first time since a US-brokered ceasefire two months ago, then appeared to pull back from escalation. Both sides warned of retaliation if attacked again, with the Trump administration working to contain the conflict. This fragile de-escalation has significant implications for regional stability and energy markets.",
+        "es": "Israel e Irán intercambiaron fuego por primera vez desde un alto el fuego mediado por EE.UU. hace dos meses, luego parecieron retroceder de la escalada. Ambos lados advirtieron represalias si son atacados nuevamente, mientras la administración Trump trabaja para contener el conflicto. Esta desescalada frágil tiene implicaciones significativas para la estabilidad regional y los mercados energéticos."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES -",
-        "GOLD +",
-        "BONDS +"
+        "EQUITIES ?",
+        "GOLD +"
       ],
       "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/08/israel-netanyahu-airstrikes-iran-retaliation-defies-trump",
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260608-israel-and-iran-step-back-from-further-strikes-after-renewed-clashes",
       "published_at": "2026-06-08",
-      "time": "1h"
+      "time": "10h"
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "MENA",
       "title": {
-        "es": "Los mercados bursátiles asiáticos se desploman en medio del conflicto Irán-Israel y turbulencias en Wall Street",
-        "en": "Asia's stock markets dive amid Iran-Israel conflict, Wall Street jitters"
+        "en": "Houthis Threaten to Widen Iran War by Blocking Israeli Shipping in Red Sea",
+        "es": "Los hutíes amenazan ampliar la guerra con Irán bloqueando el envío israelí en el Mar Rojo"
       },
       "summary": {
-        "es": "Los principales índices bursátiles asiáticos han caído bruscamente, con el índice principal de Corea del Sur desplomándose casi un 9%, mientras que también se registran caídas significativas en Japón, Taiwán y Hong Kong. La volatilidad refleja preocupaciones sobre la escalada geopolítica y el impacto potencial en cadenas de suministro globales y precios energéticos.",
-        "en": "Major Asian stock indices have plunged sharply, with South Korea's main index falling nearly 9%, alongside significant declines in Japan, Taiwan, and Hong Kong. The volatility reflects concerns over geopolitical escalation and potential impacts on global supply chains and energy prices."
+        "en": "Iran-backed Houthis threatened a partial blockade of Red Sea shipping lanes, directly threatening global maritime routes and supply chain security. This escalation could strangle international commerce and significantly disrupt energy and goods transport. The threat comes amid already fragile Middle East ceasefire arrangements.",
+        "es": "Los hutíes respaldados por Irán amenazaron con un bloqueo parcial de las rutas marítimas del Mar Rojo, amenazando directamente las rutas marítimas globales y la seguridad de la cadena de suministro. Esta escalada podría estrangular el comercio internacional y perturbar significativamente el transporte de energía y bienes. La amenaza surge en medio de arreglos de alto el fuego de Oriente Medio ya frágiles."
       },
       "impact": "high",
       "signals": [
-        "EQUITIES -",
-        "VOLATILITY +",
         "OIL +",
-        "USD +"
+        "SHIPPING COSTS +",
+        "EQUITIES -",
+        "BONDS +"
       ],
-      "confidence": 88,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/6/8/asias-stock-markets-dive-amid-iran-israel-conflict-wall-street-jitters?traffic_source=rss",
+      "confidence": 90,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/08/world/middleeast/houthis-yemen-red-sea-israel-shipping.html",
       "published_at": "2026-06-08",
-      "time": "1h"
+      "time": "18h"
     },
     {
       "id": 3,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "APAC",
       "title": {
-        "es": "Irán e Israel intercambian ataques mientras Trump pide que detengan los ataques",
-        "en": "Live Updates: Iran and Israel Trade Strikes as Trump Calls on Them to Stop"
+        "en": "China Reasserts Itself, to Contain North Korea's Tilt Toward Russia",
+        "es": "China se reafirma para contener la inclinación de Corea del Norte hacia Rusia"
       },
       "summary": {
-        "es": "Irán ha lanzado oleadas de misiles contra Israel e Israel ha respondido golpeando objetivos militares e infraestructura petroquímica iraní, provocando el colapso de una frágil tregua de dos meses. Trump ha solicitado que ambas partes detengan inmediatamente los ataques, lo que subraya la pérdida de influencia diplomática estadounidense en la región.",
-        "en": "Iran launched waves of missiles at Israel and Israel responded by striking military targets and Iranian petrochemical infrastructure, collapsing a two-month uneasy truce. Trump has called for both sides to 'immediately stop' attacks, underscoring loss of US diplomatic leverage in the region."
+        "en": "Xi Jinping made a rare visit to North Korea to reassert China's senior role in the alliance and counteract Kim Jong-un's growing ties with Russia. This strategic repositioning reflects competition for influence in Northeast Asia and has implications for future sanctions regimes and US-China-Russia trilateral dynamics. The visit signals China's concern over erosion of its regional control.",
+        "es": "Xi Jinping realizó una rara visita a Corea del Norte para reafirmar el papel senior de China en la alianza y contrarrestar los crecientes vínculos de Kim Jong-un con Rusia. Este reposicionamiento estratégico refleja la competencia por la influencia en Asia del Noreste e implica consecuencias para futuras estructuras de sanciones y la dinámica trilateral US-China-Rusia. La visita señala la preocupación de China por la erosión de su control regional."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "EQUITIES -",
-        "USD ?",
-        "GEOPOLITICAL RISK +"
+        "EQUITIES ?",
+        "GOLD +",
+        "TECH STOCKS -"
       ],
-      "confidence": 93,
+      "confidence": 88,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/live/2026/06/08/world/iran-israel-lebanon-attacks",
+      "source_url": "https://www.nytimes.com/2026/06/08/world/asia/xi-kim-china-north-korea-summit.html",
       "published_at": "2026-06-08",
-      "time": "<1h"
+      "time": "14h"
     },
     {
       "id": 4,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "GLOBAL",
       "title": {
-        "es": "Israel e Irán intercambian ataques por primera vez desde la tregua en una 'pesadilla autocreada para Trump'",
-        "en": "Israel, Iran trade strikes for first time since truce in 'self-created nightmare for Trump'"
+        "en": "US adds BYD to list of firms with alleged Chinese military ties",
+        "es": "EE.UU. añade a BYD a la lista de empresas con supuestos vínculos militares chinos"
       },
       "summary": {
-        "es": "Israel e Irán intercambiaron ataques el 8 de junio, la primera vez desde el inicio del alto el fuego hace dos meses, a pesar de que el Presidente Trump pidió moderación. Las conversaciones entre ambas partes y EE.UU. se han estancado, señalando una erosión significativa de la estrategia de negociación estadounidense.",
-        "en": "Israel and Iran exchanged attacks on June 8, the first time since the ceasefire began two months ago, despite Trump calling for restraint. Talks between the parties and the US have stalled, signaling significant erosion of US negotiation strategy."
+        "en": "The Pentagon designated BYD as a company with alleged Chinese military ties, escalating US-China technology and trade restrictions. This move signals intensifying decoupling efforts and threatens major supply chains, particularly in electric vehicles and semiconductors. The listing increases regulatory risk for multinational firms operating in both jurisdictions.",
+        "es": "El Pentágono designó a BYD como empresa con presuntos vínculos militares chinos, escalando las restricciones comerciales y tecnológicas EE.UU.-China. Este movimiento señala esfuerzos de desacoplamiento intensificado y amenaza cadenas de suministro importantes, particularmente en vehículos eléctricos y semiconductores. La designación aumenta el riesgo regulatorio para empresas multinacionales que operan en ambas jurisdicciones."
+      },
+      "impact": "high",
+      "signals": [
+        "EQUITIES -",
+        "TECH STOCKS -",
+        "USD +",
+        "BONDS +"
+      ],
+      "confidence": 85,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/c75y6e5p9reo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-09",
+      "time": "2h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "en": "Russia's fuel crisis intensifies as Ukraine steps up strikes on occupied territories",
+        "es": "La crisis de combustible de Rusia se intensifica mientras Ucrania intensifica los ataques en territorios ocupados"
+      },
+      "summary": {
+        "en": "Ukraine has intensified strikes on Russian-occupied territories, significantly constraining Moscow's ability to supply military and civilian needs. This strategic targeting of energy infrastructure deepens Russia's logistical challenges and could impact both military effectiveness and civilian morale. The widening supply crisis may force additional macro adjustments in Russia's war economy.",
+        "es": "Ucrania ha intensificado los ataques en territorios ocupados por Rusia, limitando significativamente la capacidad de Moscú de suministrar necesidades militares y civiles. Este objetivo estratégico de infraestructura energética profundiza los desafíos logísticos de Rusia y podría afectar la efectividad militar y la moral civil. La crisis de suministro cada vez mayor puede forzar ajustes macroeconómicos adicionales en la economía de guerra de Rusia."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES -",
-        "USD -",
-        "CREDIT SPREADS +"
-      ],
-      "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/israel-iran-trade-strikes-for-first-time-since-truce-in-self-created-nightmare-for-trump",
-      "published_at": "2026-06-08",
-      "time": "1h"
-    },
-    {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Letonia: Un caza de la OTAN derriba un dron extraviado",
-        "en": "Latvia: NATO jet shoots down stray drone"
-      },
-      "summary": {
-        "es": "Un caza de la OTAN derribó un dron sobre el este de Letonia, el primer incidente de este tipo, con la milicia atribuyendo la intrusión aérea a la 'guerra electromagnética rusa'. El evento subraya la creciente tensión en la frontera oriental de la OTAN y los riesgos de escalada no intencional.",
-        "en": "A NATO jet shot down a drone over eastern Latvia, the first incident of its kind, with military attributing the airspace breach to 'Russian electromagnetic warfare.' The event underscores rising tensions on NATO's eastern border and risks of unintended escalation."
-      },
-      "impact": "medium",
-      "signals": [
         "EUR +",
-        "DEFENSE STOCKS +",
-        "GEOPOLITICAL RISK +"
+        "EQUITIES ?",
+        "BONDS +"
       ],
-      "confidence": 72,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/latvia-nato-jet-shoots-down-stray-drone/a-77456678?maca=en-rss-en-all-1573-rdf",
+      "confidence": 82,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/cn75l36vdd8o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-06-08",
-      "time": "<1h"
+      "time": "10h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "Una 'Transformación Milagrosa': Cómo Kim Jong-un Fortaleció Corea del Norte",
-        "en": "A 'Miraculous Transformation': How Kim Jong-un Fortified North Korea"
+        "en": "Latvia: NATO jet shoots down stray drone",
+        "es": "Letonia: caza de la OTAN derriba un dron extraviado"
       },
       "summary": {
-        "es": "Corea del Norte ha revitalizado su economía durante la pandemia aprovechando la guerra de Rusia en Ucrania, mientras Kim Jong-un ha consolidado el control político mediante represión. La creciente integración norcoreana con Rusia plantea riesgos geopolíticos para la estabilidad regional y potencialmente para los mercados de defensa y energía en Asia.",
-        "en": "North Korea has revitalized its economy during the pandemic by leveraging Russia's war in Ukraine, while Kim Jong-un has consolidated political control through repression. Growing North Korean integration with Russia poses geopolitical risks to regional stability and potentially to defense and energy markets in Asia."
+        "en": "A NATO fighter jet shot down a Russian drone over eastern Latvia for the first time, attributed to Russian electromagnetic warfare. This incident marks an escalation in NATO-Russia direct military interactions and highlights Russian operational activities near NATO borders. The event underscores growing security tensions in the Baltic region and NATO's readiness posture.",
+        "es": "Un caza de la OTAN derribó un dron ruso sobre el este de Letonia por primera vez, atribuido a la guerra electrónica rusa. Este incidente marca una escalada en las interacciones militares directas OTAN-Rusia e destaca las actividades operacionales rusas cerca de las fronteras de la OTAN. El evento subraya las crecientes tensiones de seguridad en la región del Báltico y la postura de disposición de la OTAN."
       },
       "impact": "medium",
       "signals": [
-        "GEOPOLITICAL RISK +",
-        "DEFENSE STOCKS ?",
-        "KRW ?"
+        "EUR +",
+        "EQUITIES ?",
+        "DEFENSE STOCKS +"
       ],
-      "confidence": 68,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/08/world/asia/north-korea-kim-jong-un-pandemic-economy.html",
+      "confidence": 78,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/latvia-nato-jet-shoots-down-stray-drone/a-77456678?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-06-08",
-      "time": "6h"
+      "time": "23h"
     }
-  ],
-  "market_updated_at": "2026-06-09T08:54:15.309Z"
+  ]
 }
