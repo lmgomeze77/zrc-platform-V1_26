@@ -1,245 +1,217 @@
 {
-  "generated_at": "2026-06-09T09:35:34.799Z",
+  "generated_at": "2026-06-10T09:52:15.591Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1540",
-      "change": "+0.63%",
+      "value": "1.1543",
+      "change": "+0.05",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18184.90",
-      "change": "-0.97%",
+      "value": "18131.55",
+      "change": "-127.15",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
-      "value": "92.00",
-      "change": "+0.60%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "88.80",
-      "change": "+0.60%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4177.88",
-      "change": "-1.95%",
+      "symbol": "BRENT",
+      "value": "91.96",
+      "change": "-2.29",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "61500.00",
-      "change": "-17.10%",
+      "symbol": "GOLD",
+      "value": "4358.50",
+      "change": "-4.90",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "61593.51",
+      "change": "-2003.06",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "20.45",
-      "change": "+8.09%",
+      "value": "18.92",
+      "change": "-2.59",
+      "up": false
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.57",
+      "change": "+0.04",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.54%",
-      "change": "+0.01%",
+      "symbol": "EUR/GBP",
+      "value": "0.8649",
+      "change": "+0.0063",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7386.65",
-      "change": "-0.26%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24550.00",
-      "change": "-0.57%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8632",
-      "change": "-0.14%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.73",
-      "change": "-0.31%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.18",
-      "change": "+1.48%",
+      "value": "7423.63",
+      "change": "+39.89",
       "up": true
     },
     {
-      "symbol": "Copper",
-      "value": "6.29",
-      "change": "-0.15%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7840",
-      "change": "-0.02%",
+      "symbol": "DAX 40",
+      "value": "24705.82",
+      "change": "-179.24",
       "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Israel and Iran step back from further strikes after renewed clashes",
-        "es": "Israel e Irán se retiran de nuevos ataques tras enfrentamientos renovados"
+        "es": "Irán ataca bases estadounidenses en Jordania y el Golfo tras ataques ordenados por Trump cerca de Ormuz",
+        "en": "Iran targets US bases in Jordan and the Gulf after Trump orders strikes near Hormuz"
       },
       "summary": {
-        "en": "Israel and Iran exchanged fire for the first time since a US-brokered ceasefire two months ago, then appeared to pull back from escalation. Both sides warned of retaliation if attacked again, with the Trump administration working to contain the conflict. This fragile de-escalation has significant implications for regional stability and energy markets.",
-        "es": "Israel e Irán intercambiaron fuego por primera vez desde un alto el fuego mediado por EE.UU. hace dos meses, luego parecieron retroceder de la escalada. Ambos lados advirtieron represalias si son atacados nuevamente, mientras la administración Trump trabaja para contener el conflicto. Esta desescalada frágil tiene implicaciones significativas para la estabilidad regional y los mercados energéticos."
+        "es": "La Guardia Revolucionaria Iraní ejecutó ataques con misiles y drones contra bases militares estadounidenses en Jordania, Kuwait y Baréin en represalia por los ataques estadounidenses cerca del Estrecho de Ormuz. Este intercambio marca uno de los enfrentamientos más grandes desde el inicio de la escalada, con riesgo inmediato de ampliación del conflicto que amenaza la seguridad energética global.",
+        "en": "Iran's Revolutionary Guards carried out missile and drone attacks on US military bases in Jordan, Kuwait and Bahrain in retaliation for American strikes near the Strait of Hormuz. This exchange marks one of the largest escalations with immediate risk of broader conflict threatening global energy security."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "EQUITIES ?",
+        "USD +",
+        "EQUITIES -",
         "GOLD +"
       ],
       "confidence": 92,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260608-israel-and-iran-step-back-from-further-strikes-after-renewed-clashes",
-      "published_at": "2026-06-08",
-      "time": "10h"
+      "source_url": "https://www.france24.com/en/video/20260610-iran-targets-us-bases-in-jordan-and-the-gulf-after-trump-orders-strikes-near-hormuz",
+      "published_at": "2026-06-10",
+      "time": "<1h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Houthis Threaten to Widen Iran War by Blocking Israeli Shipping in Red Sea",
-        "es": "Los hutíes amenazan ampliar la guerra con Irán bloqueando el envío israelí en el Mar Rojo"
+        "es": "Actualizaciones en vivo de la guerra Irán-EE.UU.: comercio de ataques en nueva prueba del cese al fuego",
+        "en": "Iran War Live Updates: U.S. and Iran Trade Strikes in New Test of Cease-Fire"
       },
       "summary": {
-        "en": "Iran-backed Houthis threatened a partial blockade of Red Sea shipping lanes, directly threatening global maritime routes and supply chain security. This escalation could strangle international commerce and significantly disrupt energy and goods transport. The threat comes amid already fragile Middle East ceasefire arrangements.",
-        "es": "Los hutíes respaldados por Irán amenazaron con un bloqueo parcial de las rutas marítimas del Mar Rojo, amenazando directamente las rutas marítimas globales y la seguridad de la cadena de suministro. Esta escalada podría estrangular el comercio internacional y perturbar significativamente el transporte de energía y bienes. La amenaza surge en medio de arreglos de alto el fuego de Oriente Medio ya frágiles."
+        "es": "El ejército estadounidense golpeó el sur de Irán en respuesta al derribo de un helicóptero Apache, mientras Irán retalió con drones y misiles contra objetivos militares estadounidenses en Baréin y Jordania. El breakdown del cese al fuego pone en riesgo cualquier negociación diplomática y afecta la estabilidad de la región del Golfo Pérsico.",
+        "en": "The US military struck southern Iran in response to the downing of an American helicopter, with Iran retaliating by launching drones and missiles at US military targets in Bahrain and Jordan. The breakdown of the ceasefire jeopardizes any diplomatic negotiations and destabilizes the Persian Gulf region."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "SHIPPING COSTS +",
+        "BONDS -",
         "EQUITIES -",
-        "BONDS +"
+        "GOLD +"
       ],
       "confidence": 90,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/08/world/middleeast/houthis-yemen-red-sea-israel-shipping.html",
-      "published_at": "2026-06-08",
-      "time": "18h"
+      "source_url": "https://www.nytimes.com/live/2026/06/10/world/iran-war-trump-us",
+      "published_at": "2026-06-10",
+      "time": "<1h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "en": "China Reasserts Itself, to Contain North Korea's Tilt Toward Russia",
-        "es": "China se reafirma para contener la inclinación de Corea del Norte hacia Rusia"
+        "es": "Los estados bálticos temen el desbordamiento de la guerra Rusia-Ucrania tras incursiones de drones",
+        "en": "Baltic states fear Russia-Ukraine war spillover after drone incursions"
       },
       "summary": {
-        "en": "Xi Jinping made a rare visit to North Korea to reassert China's senior role in the alliance and counteract Kim Jong-un's growing ties with Russia. This strategic repositioning reflects competition for influence in Northeast Asia and has implications for future sanctions regimes and US-China-Russia trilateral dynamics. The visit signals China's concern over erosion of its regional control.",
-        "es": "Xi Jinping realizó una rara visita a Corea del Norte para reafirmar el papel senior de China en la alianza y contrarrestar los crecientes vínculos de Kim Jong-un con Rusia. Este reposicionamiento estratégico refleja la competencia por la influencia en Asia del Noreste e implica consecuencias para futuras estructuras de sanciones y la dinámica trilateral US-China-Rusia. La visita señala la preocupación de China por la erosión de su control regional."
+        "es": "Una serie de incursiones de drones está alimentando la ansiedad sobre un posible conflicto militar con Rusia en los estados bálticos. El riesgo de escalada hacia la OTAN tiene implicaciones críticas para la estabilidad europea, los flujos comerciales transatlánticos y la volatilidad de bonos y divisas.",
+        "en": "Repeated drone incursions fuel anxieties about a possible military conflict with Russia in the Baltic states. Risk of NATO escalation has critical implications for European stability, transatlantic trade flows, and bond/currency volatility."
       },
       "impact": "high",
       "signals": [
-        "EQUITIES ?",
+        "EUR -",
+        "BONDS -",
         "GOLD +",
-        "TECH STOCKS -"
+        "USD +"
       ],
-      "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/08/world/asia/xi-kim-china-north-korea-summit.html",
-      "published_at": "2026-06-08",
-      "time": "14h"
+      "confidence": 85,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/longform/2026/6/10/baltic-states-fear-russia-ukraine-war-spillover-after-drone-incursions?traffic_source=rss",
+      "published_at": "2026-06-10",
+      "time": "1h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
-      "region": "GLOBAL",
-      "title": {
-        "en": "US adds BYD to list of firms with alleged Chinese military ties",
-        "es": "EE.UU. añade a BYD a la lista de empresas con supuestos vínculos militares chinos"
-      },
-      "summary": {
-        "en": "The Pentagon designated BYD as a company with alleged Chinese military ties, escalating US-China technology and trade restrictions. This move signals intensifying decoupling efforts and threatens major supply chains, particularly in electric vehicles and semiconductors. The listing increases regulatory risk for multinational firms operating in both jurisdictions.",
-        "es": "El Pentágono designó a BYD como empresa con presuntos vínculos militares chinos, escalando las restricciones comerciales y tecnológicas EE.UU.-China. Este movimiento señala esfuerzos de desacoplamiento intensificado y amenaza cadenas de suministro importantes, particularmente en vehículos eléctricos y semiconductores. La designación aumenta el riesgo regulatorio para empresas multinacionales que operan en ambas jurisdicciones."
-      },
-      "impact": "high",
-      "signals": [
-        "EQUITIES -",
-        "TECH STOCKS -",
-        "USD +",
-        "BONDS +"
-      ],
-      "confidence": 85,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/c75y6e5p9reo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-09",
-      "time": "2h"
-    },
-    {
-      "id": 5,
       "tag": "WATCH",
       "region": "EU",
       "title": {
-        "en": "Russia's fuel crisis intensifies as Ukraine steps up strikes on occupied territories",
-        "es": "La crisis de combustible de Rusia se intensifica mientras Ucrania intensifica los ataques en territorios ocupados"
+        "es": "Guerra en Ucrania: Kiev ataca líneas clave de suministro ruso",
+        "en": "War in Ukraine: Kyiv strikes key Russian supply lines"
       },
       "summary": {
-        "en": "Ukraine has intensified strikes on Russian-occupied territories, significantly constraining Moscow's ability to supply military and civilian needs. This strategic targeting of energy infrastructure deepens Russia's logistical challenges and could impact both military effectiveness and civilian morale. The widening supply crisis may force additional macro adjustments in Russia's war economy.",
-        "es": "Ucrania ha intensificado los ataques en territorios ocupados por Rusia, limitando significativamente la capacidad de Moscú de suministrar necesidades militares y civiles. Este objetivo estratégico de infraestructura energética profundiza los desafíos logísticos de Rusia y podría afectar la efectividad militar y la moral civil. La crisis de suministro cada vez mayor puede forzar ajustes macroeconómicos adicionales en la economía de guerra de Rusia."
+        "es": "Las fuerzas ucranianas están atacando la ruta terrestre crítica hacia Crimea, donde confían las tropas rusas para suministros, indicando una creciente vulnerabilidad rusa. Una disrupción prolongada de estas líneas de suministro podría acelerar cambios en las dinámicas del conflicto y afectar previsiones de resolución.",
+        "en": "Ukrainian forces are now able to launch concentrated attacks on the critical land corridor to Crimea that Russian troops depend on for supplies, indicating growing Russian vulnerability. Prolonged disruption of these supply lines could accelerate shifts in conflict dynamics and resolution timelines."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "EUR +",
+        "RUB -",
+        "GOLD +",
         "EQUITIES ?",
         "BONDS +"
       ],
+      "confidence": 80,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/war-in-ukraine-kyiv-strikes-key-russian-supply-lines/a-77480640?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-10",
+      "time": "1h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "APAC",
+      "title": {
+        "es": "EE.UU. añade BYD a la lista de empresas con presuntos vínculos militares chinos",
+        "en": "US adds BYD to list of firms with alleged Chinese military ties"
+      },
+      "summary": {
+        "es": "El Pentágono incluyó a BYD en su lista de empresas chinas con presuntos vínculos militares, advirtiendo a firmas estadounidenses sobre riesgos de asociación. Esta acción amplia la campaña de soberanía tecnológica estadounidense y profundiza la desaceleración del comercio bilateral, con implicaciones para cadenas de suministro de EV y semiconductores.",
+        "en": "The Pentagon added BYD to its list of Chinese companies with alleged military ties, warning US firms of risks in working with flagged entities. This broadens US tech sovereignty efforts and deepens bilateral trade slowdown, with implications for EV and semiconductor supply chains."
+      },
+      "impact": "medium",
+      "signals": [
+        "CNY -",
+        "USD +",
+        "EQUITIES -",
+        "TECH -"
+      ],
       "confidence": 82,
       "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/cn75l36vdd8o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-08",
-      "time": "10h"
+      "source_url": "https://www.bbc.com/news/articles/c75y6e5p9reo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-09",
+      "time": "1d"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "APAC",
       "title": {
-        "en": "Latvia: NATO jet shoots down stray drone",
-        "es": "Letonia: caza de la OTAN derriba un dron extraviado"
+        "es": "La reunión de Xi 'fue un éxito para Kim Jong Un', dice experto",
+        "en": "Xi meeting 'was a success for Kim Jong Un', expert says"
       },
       "summary": {
-        "en": "A NATO fighter jet shot down a Russian drone over eastern Latvia for the first time, attributed to Russian electromagnetic warfare. This incident marks an escalation in NATO-Russia direct military interactions and highlights Russian operational activities near NATO borders. The event underscores growing security tensions in the Baltic region and NATO's readiness posture.",
-        "es": "Un caza de la OTAN derribó un dron ruso sobre el este de Letonia por primera vez, atribuido a la guerra electrónica rusa. Este incidente marca una escalada en las interacciones militares directas OTAN-Rusia e destaca las actividades operacionales rusas cerca de las fronteras de la OTAN. El evento subraya las crecientes tensiones de seguridad en la región del Báltico y la postura de disposición de la OTAN."
+        "es": "En la cumbre China-Corea del Norte de esta semana, no hubo mención del programa nuclear norcoreano o desnuclearización, lo que los expertos califican como éxito para Kim Jong Un. El enfoque chino en alianza geopolítica sobre presión de no proliferación debilita posibles sanciones internacionales y refuerza el bloque Rusia-China-Corea del Norte.",
+        "en": "The China-North Korea summit this week made no mention of North Korea's nuclear program or denuclearization, which experts call a success for Kim Jong Un. China's prioritization of geopolitical alliance over non-proliferation pressure weakens potential international sanctions and reinforces the Russia-China-North Korea bloc."
       },
       "impact": "medium",
       "signals": [
-        "EUR +",
-        "EQUITIES ?",
-        "DEFENSE STOCKS +"
+        "CNY +",
+        "GOLD +",
+        "USD ?",
+        "EQUITIES -"
       ],
       "confidence": 78,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/latvia-nato-jet-shoots-down-stray-drone/a-77456678?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-08",
-      "time": "23h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/tv-shows/a-propos/20260609-xi-meeting-was-a-success-for-kim-jong-un-experts-says",
+      "published_at": "2026-06-09",
+      "time": "12h"
     }
-  ],
-  "market_updated_at": "2026-06-10T09:35:19.770Z"
+  ]
 }
