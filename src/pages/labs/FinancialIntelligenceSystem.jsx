@@ -666,7 +666,7 @@ Return ONLY valid JSON, no markdown fences, no preamble:
       const res = await fetch("https://zenith-risecapital.lmgomeze77.workers.dev/api/claude", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ model: "claude-sonnet-4-6", max_tokens: 1000, system: systemPrompt, messages: [{ role: "user", content: `Generate the report:\n${JSON.stringify(payload, null, 2)}` }] }),
+        body: JSON.stringify({ model: "claude-sonnet-4-6", max_tokens: 4000, system: systemPrompt, messages: [{ role: "user", content: `Generate the report:\n${JSON.stringify(payload, null, 2)}` }] }),
       });
       const data = await res.json();
       setReport(JSON.parse((data.content?.[0]?.text || "").replace(/```json|```/g, "").trim()));
