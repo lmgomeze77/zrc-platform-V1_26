@@ -663,10 +663,10 @@ function ReportPanel({ model, inputs }) {
 Return ONLY valid JSON, no markdown fences, no preamble:
 {"executive_summary":"2-3 sentences","key_risks":["r1","r2","r3"],"recommended_actions":[{"priority":"High/Medium","action":"...","impact":"...","timing":"...","owner":"CEO/CFO/ZRC"}],"strategic_view":"2-3 sentences","forward_view":"2-3 sentences"}`;
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
+      const res = await fetch("https://zenith-risecapital.lmgomeze77.workers.dev/api/claude", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, system: systemPrompt, messages: [{ role: "user", content: `Generate the report:\n${JSON.stringify(payload, null, 2)}` }] }),
+        body: JSON.stringify({ model: "claude-sonnet-4-6", max_tokens: 1000, system: systemPrompt, messages: [{ role: "user", content: `Generate the report:\n${JSON.stringify(payload, null, 2)}` }] }),
       });
       const data = await res.json();
       setReport(JSON.parse((data.content?.[0]?.text || "").replace(/```json|```/g, "").trim()));
