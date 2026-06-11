@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-06-10T09:52:15.591Z",
+  "generated_at": "2026-06-11T10:17:22.003Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1543",
-      "change": "+0.04%",
-      "up": true
+      "value": "1.1533",
+      "change": "-0.02",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
       "value": "18142.10",
-      "change": "-0.18%",
+      "change": "-0.18",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "92.15",
-      "change": "+5.28%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "89.71",
-      "change": "+1.69%",
-      "up": true
+      "change": "-0.95",
+      "up": false
     },
     {
       "symbol": "GOLD",
-      "value": "4062.59",
-      "change": "-0.21%",
+      "value": "4189.20",
+      "change": "-2.27",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "62314.00",
-      "change": "+0.17%",
+      "symbol": "BTC",
+      "value": "61815.30",
+      "change": "+0.21",
       "up": true
     },
     {
       "symbol": "VIX",
       "value": "21.25",
-      "change": "+4.01%",
+      "change": "+5.71",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.548%",
-      "change": "+0.02%",
-      "up": true
+      "symbol": "US 10Y",
+      "value": "4.519",
+      "change": "-0.20",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8629",
+      "change": "-0.18",
+      "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7295.96",
-      "change": "-1.23%",
+      "value": "7350.54",
+      "change": "-1.62",
       "up": false
     },
     {
       "symbol": "DAX 40",
       "value": "24307.36",
-      "change": "-0.51%",
+      "change": "-0.69",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8630",
-      "change": "-0.02%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "100.08",
-      "change": "+0.14%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.16",
-      "change": "-0.80%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.28",
-      "change": "-1.89%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7766",
-      "change": "+0.65%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Irán ataca bases estadounidenses en Jordania y el Golfo tras ataques ordenados por Trump cerca de Ormuz",
-        "en": "Iran targets US bases in Jordan and the Gulf after Trump orders strikes near Hormuz"
+        "es": "Guerra de Irán día 104: Irán ataca bases estadounidenses, cierra el estrecho después de los ataques de Trump",
+        "en": "Iran war day 104: Iran attacks US bases, closes strait after Trump strikes"
       },
       "summary": {
-        "es": "La Guardia Revolucionaria Iraní ejecutó ataques con misiles y drones contra bases militares estadounidenses en Jordania, Kuwait y Baréin en represalia por los ataques estadounidenses cerca del Estrecho de Ormuz. Este intercambio marca uno de los enfrentamientos más grandes desde el inicio de la escalada, con riesgo inmediato de ampliación del conflicto que amenaza la seguridad energética global.",
-        "en": "Iran's Revolutionary Guards carried out missile and drone attacks on US military bases in Jordan, Kuwait and Bahrain in retaliation for American strikes near the Strait of Hormuz. This exchange marks one of the largest escalations with immediate risk of broader conflict threatening global energy security."
+        "es": "Irán cierra el Estrecho de Ormuz y lanza ataques de represalia contra bases estadounidenses en Kuwait, Bahréin y Jordania tras los ataques estadounidenses. Este cierre del principal chokepoint de energía global y la escalada de hostilidades representa una amenaza crítica para los precios del petróleo y la estabilidad financiera mundial.",
+        "en": "Iran closes the Strait of Hormuz and launches retaliatory strikes on US bases in Kuwait, Bahrain, and Jordan following US attacks. This closure of the world's critical energy chokepoint and military escalation poses severe risks to oil prices and global financial stability."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
+        "OIL +++",
         "USD +",
         "EQUITIES -",
         "GOLD +"
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260610-iran-targets-us-bases-in-jordan-and-the-gulf-after-trump-orders-strikes-near-hormuz",
-      "published_at": "2026-06-10",
-      "time": "<1h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/6/11/iran-war-day-104-iran-says-it-attacks-us-bases-after-american-strikes?traffic_source=rss",
+      "published_at": "2026-06-11",
+      "time": "4h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Actualizaciones en vivo de la guerra Irán-EE.UU.: comercio de ataques en nueva prueba del cese al fuego",
-        "en": "Iran War Live Updates: U.S. and Iran Trade Strikes in New Test of Cease-Fire"
+        "es": "Estados Unidos e Irán intercambian fuego por segundo día, socavando el frágil alto el fuego",
+        "en": "US and Iran exchange fire for a second day, undermining shaky ceasefire"
       },
       "summary": {
-        "es": "El ejército estadounidense golpeó el sur de Irán en respuesta al derribo de un helicóptero Apache, mientras Irán retalió con drones y misiles contra objetivos militares estadounidenses en Baréin y Jordania. El breakdown del cese al fuego pone en riesgo cualquier negociación diplomática y afecta la estabilidad de la región del Golfo Pérsico.",
-        "en": "The US military struck southern Iran in response to the downing of an American helicopter, with Iran retaliating by launching drones and missiles at US military targets in Bahrain and Jordan. The breakdown of the ceasefire jeopardizes any diplomatic negotiations and destabilizes the Persian Gulf region."
+        "es": "Estados Unidos e Irán intercambian ataques aéreos por segundo día consecutivo, con Trump amenazando con más ataques si Teherán no acepta un acuerdo de paz. La escalada ha socavado una tregua frágil que había durado cuatro meses, elevando significativamente el riesgo de una guerra a gran escala en Oriente Medio.",
+        "en": "The US and Iran trade air attacks for a second consecutive day, with Trump threatening further strikes if Tehran refuses a peace deal immediately. The escalation has undermined a fragile four-month ceasefire, significantly raising the risk of full-scale Middle East conflict."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "BONDS -",
+        "OIL ++",
+        "USD +",
         "EQUITIES -",
-        "GOLD +"
+        "VIX +"
       ],
-      "confidence": 90,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/live/2026/06/10/world/iran-war-trump-us",
-      "published_at": "2026-06-10",
+      "confidence": 94,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260611-us-and-iran-exchange-fire-for-a-second-day-undermining-shaky-ceasefire",
+      "published_at": "2026-06-11",
       "time": "<1h"
     },
     {
       "id": 3,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "EN DIRECTO, guerra en Oriente Medio: Irán confirma el cierre total \"hasta nuevo aviso\" del Estrecho de Ormuz",
+        "en": "LIVE, Middle East war: Iran confirms total closure 'until further notice' of Strait of Hormuz"
+      },
+      "summary": {
+        "es": "Irán confirma el cierre total del Estrecho de Ormuz \"hasta nuevo aviso\", aunque Estados Unidos alega que los buques comerciales continúan transitando. Este cierre amenaza con interrumpir aproximadamente el 20% del comercio mundial de petróleo, creando volatilidad severa en los mercados energéticos y financieros globales.",
+        "en": "Iran confirms total closure of the Strait of Hormuz 'until further notice,' though the US claims commercial vessels continue transiting. This closure threatens approximately 20% of global oil trade, creating severe volatility in global energy and financial markets."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL +++",
+        "SHIPPING ++",
+        "USD +",
+        "BONDS -"
+      ],
+      "confidence": 93,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/06/11/en-direct-guerre-au-moyen-orient-apres-les-attaques-americaines-de-la-nuit-l-iran-considere-que-le-cessez-le-feu-est-pratiquement-denue-de-sens_6697888_3210.html",
+      "published_at": "2026-06-11",
+      "time": "2h"
+    },
+    {
+      "id": 4,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Los estados bálticos temen el desbordamiento de la guerra Rusia-Ucrania tras incursiones de drones",
-        "en": "Baltic states fear Russia-Ukraine war spillover after drone incursions"
+        "es": "Ucrania: la planta nuclear de Zaporizhzhia pierde el suministro eléctrico",
+        "en": "Ukraine: Zaporizhzhia nuclear plant's power cut off"
       },
       "summary": {
-        "es": "Una serie de incursiones de drones está alimentando la ansiedad sobre un posible conflicto militar con Rusia en los estados bálticos. El riesgo de escalada hacia la OTAN tiene implicaciones críticas para la estabilidad europea, los flujos comerciales transatlánticos y la volatilidad de bonos y divisas.",
-        "en": "Repeated drone incursions fuel anxieties about a possible military conflict with Russia in the Baltic states. Risk of NATO escalation has critical implications for European stability, transatlantic trade flows, and bond/currency volatility."
+        "es": "Un ataque cerca de la planta nuclear más grande de Europa, en la Ucrania ocupada por Rusia, ha causado un apagón en la zona. El incidente presenta riesgos significativos de seguridad nuclear y podría provocar consecuencias transfronterizas en toda Europa, afectando la confianza de los inversores en la estabilidad regional.",
+        "en": "An attack near Europe's largest nuclear power plant in Russian-occupied Ukraine has caused a power outage in the area. The incident presents significant nuclear safety risks and could trigger cross-border consequences across Europe, affecting investor confidence in regional stability."
       },
       "impact": "high",
       "signals": [
         "EUR -",
-        "BONDS -",
+        "EQUITIES -",
         "GOLD +",
-        "USD +"
-      ],
-      "confidence": 85,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/longform/2026/6/10/baltic-states-fear-russia-ukraine-war-spillover-after-drone-incursions?traffic_source=rss",
-      "published_at": "2026-06-10",
-      "time": "1h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Guerra en Ucrania: Kiev ataca líneas clave de suministro ruso",
-        "en": "War in Ukraine: Kyiv strikes key Russian supply lines"
-      },
-      "summary": {
-        "es": "Las fuerzas ucranianas están atacando la ruta terrestre crítica hacia Crimea, donde confían las tropas rusas para suministros, indicando una creciente vulnerabilidad rusa. Una disrupción prolongada de estas líneas de suministro podría acelerar cambios en las dinámicas del conflicto y afectar previsiones de resolución.",
-        "en": "Ukrainian forces are now able to launch concentrated attacks on the critical land corridor to Crimea that Russian troops depend on for supplies, indicating growing Russian vulnerability. Prolonged disruption of these supply lines could accelerate shifts in conflict dynamics and resolution timelines."
-      },
-      "impact": "medium",
-      "signals": [
-        "RUB -",
-        "GOLD +",
-        "EQUITIES ?",
         "BONDS +"
       ],
-      "confidence": 80,
+      "confidence": 88,
       "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/war-in-ukraine-kyiv-strikes-key-russian-supply-lines/a-77480640?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-10",
-      "time": "1h"
+      "source_url": "https://www.dw.com/en/ukraine-zaporizhzhia-nuclear-plant-s-power-cut-off/live-77498904?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-11",
+      "time": "<1h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "EE.UU. añade BYD a la lista de empresas con presuntos vínculos militares chinos",
-        "en": "US adds BYD to list of firms with alleged Chinese military ties"
+        "es": "La guerra de Irán cambia el paso a Lagarde",
+        "en": "Iran war changes Lagarde's pace"
       },
       "summary": {
-        "es": "El Pentágono incluyó a BYD en su lista de empresas chinas con presuntos vínculos militares, advirtiendo a firmas estadounidenses sobre riesgos de asociación. Esta acción amplia la campaña de soberanía tecnológica estadounidense y profundiza la desaceleración del comercio bilateral, con implicaciones para cadenas de suministro de EV y semiconductores.",
-        "en": "The Pentagon added BYD to its list of Chinese companies with alleged military ties, warning US firms of risks in working with flagged entities. This broadens US tech sovereignty efforts and deepens bilateral trade slowdown, with implications for EV and semiconductor supply chains."
+        "es": "La crisis de Irán ha alterado las previsiones del Banco Central Europeo, obligando a la presidenta Lagarde a reconsiderar los planes de tipos de interés debido a los riesgos inflacionarios derivados de la escalada geopolítica. Esta divergencia de política monetaria refleja cómo los conflictos globales impactan directamente en decisiones macroeconómicas europeas.",
+        "en": "The Iran crisis has disrupted the ECB's forecasts, forcing President Lagarde to reconsider interest rate plans due to inflationary risks from geopolitical escalation. This monetary policy divergence reflects how global conflicts directly impact European macroeconomic decisions."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "CNY -",
-        "USD +",
-        "EQUITIES -",
-        "TECH -"
+        "EUR ?",
+        "BONDS -",
+        "ECB RATE UP",
+        "EQUITIES ?"
       ],
-      "confidence": 82,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/c75y6e5p9reo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-09",
-      "time": "1d"
+      "confidence": 85,
+      "source": "El País",
+      "source_url": "https://elpais.com/economia/2026-06-11/la-guerra-de-iran-cambia-el-paso-a-lagarde.html",
+      "published_at": "2026-06-11",
+      "time": "6h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "La reunión de Xi 'fue un éxito para Kim Jong Un', dice experto",
-        "en": "Xi meeting 'was a success for Kim Jong Un', expert says"
+        "es": "Ucrania dice que misiles golpearon fábrica militar en lo profundo de Rusia",
+        "en": "Ukraine says missiles hit military plant deep inside Russia"
       },
       "summary": {
-        "es": "En la cumbre China-Corea del Norte de esta semana, no hubo mención del programa nuclear norcoreano o desnuclearización, lo que los expertos califican como éxito para Kim Jong Un. El enfoque chino en alianza geopolítica sobre presión de no proliferación debilita posibles sanciones internacionales y refuerza el bloque Rusia-China-Corea del Norte.",
-        "en": "The China-North Korea summit this week made no mention of North Korea's nuclear program or denuclearization, which experts call a success for Kim Jong Un. China's prioritization of geopolitical alliance over non-proliferation pressure weakens potential international sanctions and reinforces the Russia-China-North Korea bloc."
+        "es": "La milicia ucraniana reporta haber atacado una planta militar profunda dentro de Rusia, además de golpear una refinería rusa y buques de la \"flota fantasma\" en el Mar Negro. Estos ataques indican una mayor capacidad operativa de Ucrania y erosión de la capacidad industrial rusa, con implicaciones para la escalada del conflicto y los precios energéticos.",
+        "en": "Ukraine's military reports striking a military plant deep inside Russia, along with hitting a Russian oil refinery and 'shadow fleet' tankers in the Black Sea. These attacks indicate increased Ukrainian operational capacity and erosion of Russian industrial capability, with implications for conflict escalation and energy prices."
       },
       "impact": "medium",
       "signals": [
-        "CNY +",
-        "GOLD +",
-        "USD ?",
-        "EQUITIES -"
+        "OIL +",
+        "RUB -",
+        "EQUITIES ?",
+        "GOLD +"
       ],
-      "confidence": 78,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/tv-shows/a-propos/20260609-xi-meeting-was-a-success-for-kim-jong-un-experts-says",
-      "published_at": "2026-06-09",
-      "time": "12h"
+      "confidence": 82,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/c5yzm2nzgr2o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-10",
+      "time": "22h"
     }
-  ],
-  "market_updated_at": "2026-06-11T09:58:33.231Z"
+  ]
 }
