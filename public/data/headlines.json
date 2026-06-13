@@ -3,7 +3,7 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1574",
+      "value": "1.1569",
       "change": "-0.08%",
       "up": false
     },
@@ -15,8 +15,8 @@
     },
     {
       "symbol": "BRENT crude",
-      "value": "89.38",
-      "change": "-1.08%",
+      "value": "87.33",
+      "change": "-3.46%",
       "up": false
     },
     {
@@ -33,26 +33,26 @@
     },
     {
       "symbol": "BTC/USD",
-      "value": "63788.98",
-      "change": "+1.50%",
+      "value": "63802.00",
+      "change": "+0.35%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "19.24",
-      "change": "-1.03%",
+      "value": "18.85",
+      "change": "-3.08%",
       "up": false
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.47%",
-      "change": "-0.10%",
+      "value": "4.47",
+      "change": "-0.22%",
       "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7425.87",
-      "change": "+0.37%",
+      "change": "+0.50%",
       "up": true
     },
     {
@@ -63,9 +63,9 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8628",
-      "change": "+0.03%",
-      "up": true
+      "value": "0.8632",
+      "change": "-0.08%",
+      "up": false
     },
     {
       "symbol": "DXY dollar index",
@@ -88,7 +88,7 @@
     {
       "symbol": "USD/CNY",
       "value": "6.7787",
-      "change": "+0.10%",
+      "change": "+0.09%",
       "up": true
     }
   ],
@@ -244,5 +244,5 @@
       "time": "22h"
     }
   ],
-  "market_updated_at": "2026-06-13T11:44:46.512Z"
+  "market_updated_at": "2026-06-13T15:23:35.382Z"
 }
