@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-06-12T10:05:08.226Z",
+  "generated_at": "2026-06-13T08:53:16.024Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1515",
-      "change": "+0.50%",
-      "up": true
+      "value": "1.1567",
+      "change": "-0.11",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18185.00",
-      "change": "-0.97%",
+      "value": "16345.89",
+      "change": "-1.40",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "89.38",
-      "change": "-1.10%",
+      "change": "-1.00",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "84.88",
-      "change": "-3.17%",
+      "symbol": "GOLD",
+      "value": "4224.41",
+      "change": "+3.01",
+      "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "63639.85",
+      "change": "-0.10",
       "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4219.32",
-      "change": "+0.20%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "63788.98",
-      "change": "+1.50%",
-      "up": true
     },
     {
       "symbol": "VIX",
-      "value": "19.06",
-      "change": "-1.95%",
+      "value": "19.51",
+      "change": "-0.20",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.47%",
-      "change": "-0.22%",
+      "symbol": "US 10Y",
+      "value": "4.455",
+      "change": "-0.01",
       "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8629",
+      "change": "+0.05",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7424.36",
-      "change": "+0.50%",
+      "value": "7410.85",
+      "change": "+1.75",
       "up": true
     },
     {
       "symbol": "DAX 40",
       "value": "24635.30",
-      "change": "+1.76%",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8631",
-      "change": "+0.07%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.8007",
-      "change": "-0.06%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.14",
-      "change": "+1.75%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.43",
-      "change": "+2.68%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7787",
-      "change": "+0.10%",
+      "change": "+1.76",
       "up": true
     }
   ],
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Más de 50 bases militares iraníes dañadas en ataques estadounidenses desde el inicio de la guerra, muestran imágenes satelitales",
-        "en": "More than 50 Iranian military bases damaged in US strikes since start of war, satellite images show"
+        "es": "Guerra en Oriente Medio en directo: Líbano reporta nuevos ataques israelíes en el sur tras advertencia de las FDI",
+        "en": "Middle East war live: Lebanon reports new Israeli strikes in south after IDF warning"
       },
       "summary": {
-        "es": "Imágenes satelitales confirman daños extensos a más de 50 bases militares iraníes, incluyendo pérdidas de aviones y buques de guerra. Esta escalada militar directa eleva el riesgo de ruptura de negociaciones de alto el fuego y afecta significativamente la estabilidad energética del Golfo.",
-        "en": "Satellite imagery confirms extensive damage to over 50 Iranian military bases, including losses of aircraft and warships. This direct military escalation raises risk of ceasefire breakdown and significantly impacts Gulf energy stability."
+        "es": "Nuevos ataques aéreos israelíes en el sur de Líbano después de que el ejército israelí advirtiera a residentes que evacúen 20 pueblos. La escalada ocurre mientras EE.UU. reporta haber derribado drones iraníes, indicando intensificación de tensiones regionales con implicaciones para energía y activos de riesgo.",
+        "en": "Fresh Israeli airstrikes on southern Lebanon follow IDF evacuation orders for 20 towns, as US military reports downing Iranian drones. Escalation signals deteriorating ceasefire dynamics with implications for regional energy security and risk asset valuations."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "GOLD +",
         "EQUITIES -",
-        "USD +"
+        "GEOPOLITICAL RISK +"
       ],
       "confidence": 92,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cd6p6z7pq9wo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-11",
-      "time": "10h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260612-middle-east-live-iran-says-us-war-deal-could-be-signed-remotely-in-coming-days",
+      "published_at": "2026-06-12",
+      "time": "11h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Fuerzas estadounidenses derriban drones iraníes cerca del Estrecho de Ormuz",
-        "en": "US forces shoot down Iranian drones near Strait of Hormuz"
+        "es": "Irán y EE.UU. afirman que el acuerdo para terminar la guerra 'nunca ha estado más cerca'",
+        "en": "Iran, US say deal to end war 'has never been closer'"
       },
       "summary": {
-        "es": "Fuerzas estadounidenses derribaron drones iraníes que intentaban atacar buques comerciales en el Estrecho de Ormuz, horas después de que Trump anunciara un 'gran acuerdo' de paz. El incidente demuestra la fragilidad del presunto alto el fuego y el riesgo de cierre del chokepoint energético crítico.",
-        "en": "US forces shot down Iranian drones attempting to strike commercial vessels in the Strait of Hormuz, hours after Trump announced a 'great settlement'. The incident demonstrates fragility of claimed ceasefire and risk to critical energy chokepoint."
+        "es": "Ministro de Relaciones Exteriores de Irán y presidente de EE.UU. declaran inminencia de acuerdo. Mediadores en Pakistán trabajan para 'finalizar próximos pasos', generando volatilidad en mercados de riesgo con implicaciones potenciales para el petróleo y activos defensivos.",
+        "en": "Iran's foreign minister and US president both signal imminent war-ending agreement, with mediators in Pakistan finalizing terms. Potential breakthrough creates binary risk scenario for oil markets and geopolitical risk premium, with USD and safe-haven assets sensitive to deal timing."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "SHIPPING +",
-        "GOLD +",
-        "RISK-ASSETS -"
+        "OIL ?",
+        "USD +",
+        "GOLD -",
+        "EQUITIES ?"
       ],
-      "confidence": 94,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260612-middle-east-live-us-forces-shoot-down-iranian-drones-near-strait-of-hormuz",
+      "confidence": 90,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/iran-us-say-deal-to-end-war-has-never-been-closer/live-77520654?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-06-12",
-      "time": "7h"
+      "time": "16h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "BCE sube tasas de interés de la eurozona mientras la guerra de Irán aviva la inflación",
-        "en": "ECB raises eurozone interest rates as Iran war stokes inflation"
-      },
-      "summary": {
-        "es": "El Banco Central Europeo aumentó la tasa de depósito principal a 2.25%, su primer alza desde 2023, citando la inflación causada por la guerra de Irán. Se esperan dos subidas adicionales antes de la primavera, señalando divergencia de política monetaria alimentada por tensiones geopolíticas.",
-        "en": "ECB raised main deposit rate to 2.25%, its first increase since 2023, citing inflation from Iran war. Two further hikes expected by spring, signaling monetary policy divergence driven by geopolitical tensions."
-      },
-      "impact": "high",
-      "signals": [
-        "EUR +",
-        "BONDS -",
-        "EQUITIES -",
-        "DOLLAR -"
-      ],
-      "confidence": 91,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/business/2026/jun/11/ecb-eurozone-interest-rates-iran-war-inflation",
-      "published_at": "2026-06-11",
-      "time": "21h"
-    },
-    {
-      "id": 4,
-      "tag": "CRITICAL",
+      "tag": "WATCH",
       "region": "MENA",
       "title": {
-        "es": "Crisis de Oriente Medio: Irán niega acuerdo de paz final después de que Trump afirma que el acuerdo podría firmarse pronto",
-        "en": "Middle East crisis live: Iran says no final peace agreement reached, after Trump claims deal could be signed soon"
+        "es": "Un peligroso limbo deja a Irán y al mundo entre la paz y la guerra",
+        "en": "A Dangerous Limbo Leaves Iran, and the World, Between Peace and War"
       },
       "summary": {
-        "es": "Trump afirmó que se ha alcanzado un 'gran acuerdo' con Irán, pero portavoces iraníes negaron cualquier conclusión final. Israel reporta 310 ataques a objetivos de Hezbollah en Líbano en una semana, indicando que la violencia de baja intensidad persiste pese a los anuncios de paz.",
-        "en": "Trump claimed 'great settlement' reached but Iranian officials denied any final conclusion. Israel reported 310 strikes on Hezbollah targets in Lebanon, indicating low-intensity violence continues despite peace announcements."
+        "es": "Dos meses después del anuncio de un alto el fuego nominal, Irán, Israel y EE.UU. permanecen atrapados en una violencia de baja intensidad que se ha convertido en la nueva normalidad. Este estado de incertidumbre prolongada mantiene primas de riesgo elevadas y crea resistencia para resolución sostenida.",
+        "en": "Two months into nominal ceasefire, low-intensity conflict persists between Iran, Israel, and US as new operational baseline. Sustained ambiguity keeps geopolitical risk premium embedded in markets, with structural uncertainty constraining capital flows and investment decisions across region."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "GOLD +",
-        "EQUITIES -",
+        "EM CURRENCIES -",
         "VOLATILITY +"
       ],
-      "confidence": 93,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/jun/12/middle-east-crisis-live-us-iran-israel-lebanon-trump-hormuz-oil-peace-deal-doubt-latest-news-updates",
+      "confidence": 88,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/12/world/middleeast/iran-war-limbo.html",
       "published_at": "2026-06-12",
-      "time": "<1h"
+      "time": "20h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Reino Unido se compromete a eliminar gradualmente las importaciones rusas de diésel y combustible para aviones de aquí a fin de año",
+        "en": "UK vows to phase out Russian diesel and jet fuel imports by new year"
+      },
+      "summary": {
+        "es": "Reino Unido implementa nuevas sanciones contra Rusia como parte de su respuesta a la guerra en Ucrania, eliminando gradualmente importaciones de combustible ruso. La medida aumenta presiones inflacionarias en energía europea y amplía fragmentación de cadenas de suministro occidental.",
+        "en": "UK escalates Russia sanctions by phasing out diesel and jet fuel imports, reinforcing energy decoupling. Measure tightens European energy costs and signals sustained Western sanctions coordination, with implications for UK inflation, aviation costs, and energy security strategy."
+      },
+      "impact": "medium",
+      "signals": [
+        "OIL +",
+        "GBP -",
+        "ENERGY +",
+        "INFLATION +"
+      ],
+      "confidence": 85,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/ceqdl8xre7qo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-12",
+      "time": "12h"
     },
     {
       "id": 5,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "La economía del Reino Unido se contrae cuando se sienten los impactos de la guerra de Irán",
+        "es": "EN DIRECTO, guerra en Ucrania: Volodymyr Zelensky se félicita de la represa de las negociaciones sobre la adhesión de Kiev a la UE",
+        "en": "Ukraine war live: Volodymyr Zelensky welcomes resumption of EU membership negotiations"
+      },
+      "summary": {
+        "es": "Unión Europea anuncia reanudación formal de negociaciones de adhesión con Ucrania el lunes tras levantamiento del veto húngaro. Zelensky participará en Consejo Europeo los días 18-19 de junio, señalizando avances geopolíticos importantes para integración y estabilidad financiera en Europa del Este.",
+        "en": "EU formally resumes Ukraine accession talks Monday after Hungary lifts veto, with Zelensky attending June 18-19 European Council. Diplomatic breakthrough signals medium-term eurozone expansion and geopolitical reorientation, with implications for capital flows to emerging Eastern Europe and EU institutional dynamics."
+      },
+      "impact": "medium",
+      "signals": [
+        "EUR +",
+        "EEMS +",
+        "EQUITIES +",
+        "GEOPOLITICAL RISK -"
+      ],
+      "confidence": 84,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/06/13/en-direct-guerre-en-ukraine-volodymyr-zelensky-se-felicite-de-la-reprise-des-negociations-sur-l-adhesion-de-kiev-a-l-ue_6698620_3210.html",
+      "published_at": "2026-06-12",
+      "time": "9h"
+    },
+    {
+      "id": 6,
+      "tag": "DATA",
+      "region": "EU",
+      "title": {
+        "es": "La economía del Reino Unido se contrae por el impacto de la guerra de Irán",
         "en": "UK economy contracts as Iran war impact felt"
       },
       "summary": {
-        "es": "La economía británica se contrajo ligeramente en abril según datos oficiales, reflejando el inicio del impacto de la guerra de Irán en las empresas. Este dato sugiere que la disrupción energética y comercial ya genera efectos macroeconómicos medibles en economías europeas clave.",
-        "en": "UK economy contracted slightly in April per official data, reflecting initial impact of Iran war on business activity. This indicates energy disruption and trade effects already generating measurable macro impacts on key European economies."
+        "es": "Economía británica se contrae en abril reflejando impacto inicial de la guerra de Irán en negocios. Datos oficiales confirman transmisión de choques geopolíticos hacia actividad real, presionando crecimiento y potencialmente forzando respuesta de política monetaria.",
+        "en": "UK economy contracts in April as Iran war begins impacting business activity, confirmed by official data. Real-economy transmission of geopolitical shock signals stagflation risk for UK, constraining BoE rate path and pressuring sterling valuations amid inflation concerns."
       },
       "impact": "medium",
       "signals": [
         "GBP -",
-        "BONDS +",
-        "EQUITIES -",
-        "OIL +"
+        "GILTS +",
+        "UK EQUITIES -",
+        "INFLATION +"
       ],
-      "confidence": 85,
+      "confidence": 82,
       "source": "BBC Business",
       "source_url": "https://www.bbc.com/news/articles/c77y47248k4o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-06-12",
-      "time": "<1h"
-    },
-    {
-      "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "Trump dice que el acuerdo de paz con Irán está cerca después de amenazar con nuevos ataques",
-        "en": "Trump says Iran peace deal is near after threatening new strikes"
-      },
-      "summary": {
-        "es": "Trump anunció la suspensión de planes de nuevos ataques aéreos a Irán, afirmando que negociadores estaban cerca de extender el alto el fuego frágil. Horas antes había amenazado con intensificar el conflicto atacando la industria petrolera iraní, mostrando volatilidad en señales de política estadounidense.",
-        "en": "Trump announced suspension of new air strike plans on Iran, claiming negotiators were close to extending fragile ceasefire. Hours earlier he threatened to intensify conflict by targeting Iran's oil industry, showing volatility in US policy signals."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL ?",
-        "GOLD ?",
-        "USD ?",
-        "VOLATILITY +"
-      ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260611-trump-says-iran-peace-deal-is-near-after-threatening-new-strikes",
-      "published_at": "2026-06-11",
-      "time": "12h"
+      "time": "22h"
     }
-  ],
-  "market_updated_at": "2026-06-13T08:42:41.860Z"
+  ]
 }
