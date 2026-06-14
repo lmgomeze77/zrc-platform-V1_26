@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-06-13T08:53:16.024Z",
+  "generated_at": "2026-06-14T09:28:33.165Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1569",
-      "change": "-0.08%",
+      "value": "1.1518",
+      "change": "-0.18",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "18231.40",
-      "change": "-0.55%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "86.28",
-      "change": "-4.15%",
-      "up": false
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "84.88",
-      "change": "-3.23%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4219.32",
-      "change": "+0.20%",
+      "value": "18764.40",
+      "change": "+2.59",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "64120.11",
-      "change": "+1.56%",
+      "symbol": "BRENT",
+      "value": "87.33",
+      "change": "-3.05",
+      "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4238.80",
+      "change": "+124.80",
+      "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "63885.36",
+      "change": "+200.19",
       "up": true
     },
     {
       "symbol": "VIX",
       "value": "17.68",
-      "change": "-9.05%",
+      "change": "-1.76",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.47%",
-      "change": "-10bps",
-      "up": false
+      "symbol": "US 10Y",
+      "value": "4.477",
+      "change": "+0.016",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8635",
+      "change": "+0.0009",
+      "up": true
     },
     {
       "symbol": "S&P 500",
       "value": "7431.46",
-      "change": "+0.50%",
+      "change": "+37.16",
       "up": true
     },
     {
       "symbol": "DAX 40",
       "value": "24635.30",
-      "change": "+1.76%",
+      "change": "+509.90",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8656",
-      "change": "-0.22%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.81",
-      "change": "-0.05%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.12",
-      "change": "+1.07%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.43",
-      "change": "+2.68%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7634",
-      "change": "0.00%",
-      "up": false
     }
   ],
   "headlines": [
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Guerra en Oriente Medio en directo: Líbano reporta nuevos ataques israelíes en el sur tras advertencia de las FDI",
-        "en": "Middle East war live: Lebanon reports new Israeli strikes in south after IDF warning"
+        "es": "Crisis de Oriente Medio en directo: Trump dice que el acuerdo con Irán se firmará hoy pero fuentes indican que Teherán 'aún no' ha tomado decisión final",
+        "en": "Middle East crisis live: Trump says Iran deal will be signed today but sources tell media Tehran 'not yet' taken final decision"
       },
       "summary": {
-        "es": "Nuevos ataques aéreos israelíes en el sur de Líbano después de que el ejército israelí advirtiera a residentes que evacúen 20 pueblos. La escalada ocurre mientras EE.UU. reporta haber derribado drones iraníes, indicando intensificación de tensiones regionales con implicaciones para energía y activos de riesgo.",
-        "en": "Fresh Israeli airstrikes on southern Lebanon follow IDF evacuation orders for 20 towns, as US military reports downing Iranian drones. Escalation signals deteriorating ceasefire dynamics with implications for regional energy security and risk asset valuations."
+        "es": "Trump afirma que un acuerdo de paz con Irán podría firmarse el domingo con reapertura inmediata del Estrecho de Ormuz, pero Teherán mantiene dudas sobre el cronograma y no ha confirmado una decisión final. El potencial acuerdo tiene implicaciones críticas para la seguridad energética global y los precios del petróleo.",
+        "en": "Trump says an Iran peace deal could be signed Sunday with immediate Strait of Hormuz reopening, but Tehran maintains doubts on timeline and has not confirmed final decision. The potential deal has critical implications for global energy security and oil prices."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "GEOPOLITICAL RISK +"
+        "OIL -",
+        "EQUITIES +",
+        "GOLD -",
+        "RISK_ASSETS +"
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260612-middle-east-live-iran-says-us-war-deal-could-be-signed-remotely-in-coming-days",
-      "published_at": "2026-06-12",
-      "time": "11h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/jun/14/iran-us-middle-east-crisis-donald-trump-peace-deal-strait-hormuz-open-pakistan-latest-news-updates",
+      "published_at": "2026-06-14",
+      "time": "<1h"
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Irán y EE.UU. afirman que el acuerdo para terminar la guerra 'nunca ha estado más cerca'",
-        "en": "Iran, US say deal to end war 'has never been closer'"
+        "es": "Rusia tiene misiles balísticos en abundancia. Ucrania tiene pocas formas de detenerlos",
+        "en": "Russia Is Rich in Ballistic Missiles. Ukraine Is Short of Ways to Stop Them"
       },
       "summary": {
-        "es": "Ministro de Relaciones Exteriores de Irán y presidente de EE.UU. declaran inminencia de acuerdo. Mediadores en Pakistán trabajan para 'finalizar próximos pasos', generando volatilidad en mercados de riesgo con implicaciones potenciales para el petróleo y activos defensivos.",
-        "en": "Iran's foreign minister and US president both signal imminent war-ending agreement, with mediators in Pakistan finalizing terms. Potential breakthrough creates binary risk scenario for oil markets and geopolitical risk premium, with USD and safe-haven assets sensitive to deal timing."
+        "es": "Ucrania se está quedando sin interceptores Patriot de fabricación estadounidense y solicita urgentemente más suministros. Esta brecha de defensa aérea tiene implicaciones para la sostenibilidad del esfuerzo de guerra ucraniano y la demanda de defensa occidental.",
+        "en": "Ukraine is running critically short of US-made Patriot air-defense interceptors and urgently requesting additional supplies. This air-defense gap has implications for the sustainability of Ukraine's war effort and Western defense demand."
       },
       "impact": "high",
       "signals": [
-        "OIL ?",
-        "USD +",
-        "GOLD -",
-        "EQUITIES ?"
-      ],
-      "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/iran-us-say-deal-to-end-war-has-never-been-closer/live-77520654?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-12",
-      "time": "16h"
-    },
-    {
-      "id": 3,
-      "tag": "WATCH",
-      "region": "MENA",
-      "title": {
-        "es": "Un peligroso limbo deja a Irán y al mundo entre la paz y la guerra",
-        "en": "A Dangerous Limbo Leaves Iran, and the World, Between Peace and War"
-      },
-      "summary": {
-        "es": "Dos meses después del anuncio de un alto el fuego nominal, Irán, Israel y EE.UU. permanecen atrapados en una violencia de baja intensidad que se ha convertido en la nueva normalidad. Este estado de incertidumbre prolongada mantiene primas de riesgo elevadas y crea resistencia para resolución sostenida.",
-        "en": "Two months into nominal ceasefire, low-intensity conflict persists between Iran, Israel, and US as new operational baseline. Sustained ambiguity keeps geopolitical risk premium embedded in markets, with structural uncertainty constraining capital flows and investment decisions across region."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL +",
-        "GOLD +",
-        "EM CURRENCIES -",
-        "VOLATILITY +"
+        "DEFENSE_STOCKS +",
+        "EUR ?",
+        "US_EQUITIES +",
+        "GEOPOLITICAL_RISK +"
       ],
       "confidence": 88,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/12/world/middleeast/iran-war-limbo.html",
-      "published_at": "2026-06-12",
-      "time": "20h"
+      "source_url": "https://www.nytimes.com/2026/06/13/world/europe/ukraine-russia-patriot-interceptors.html",
+      "published_at": "2026-06-13",
+      "time": "1d"
+    },
+    {
+      "id": 3,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Guerra en Oriente Medio en directo: Trump dice que el acuerdo con Irán se firmará el domingo",
+        "en": "Middle East war live: Trump says Iran deal to be signed Sunday"
+      },
+      "summary": {
+        "es": "Trump y líderes pakistaníes predicen la firma de un acuerdo el domingo para terminar la guerra contra Irán, con apertura inmediata del Estrecho de Ormuz. Un acuerdo exitoso transformaría significativamente los precios energéticos globales y la valoración de activos sensibles al riesgo geopolítico.",
+        "en": "Trump and Pakistani leaders predict Sunday signing of an agreement to end the Iran war, with immediate Strait of Hormuz reopening. A successful deal would significantly transform global energy prices and valuation of geopolitical risk-sensitive assets."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL -",
+        "EQUITIES +",
+        "GOLD -",
+        "USD ?"
+      ],
+      "confidence": 90,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260614-middle-east-war-live-trump-says-iran-deal-to-be-signed-sunday",
+      "published_at": "2026-06-14",
+      "time": "4h"
     },
     {
       "id": 4,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Reino Unido se compromete a eliminar gradualmente las importaciones rusas de diésel y combustible para aviones de aquí a fin de año",
-        "en": "UK vows to phase out Russian diesel and jet fuel imports by new year"
+        "es": "Líbano reporta ataques israelíes en el sur y este en medio de amplias advertencias de evacuación",
+        "en": "Lebanon reports Israeli strikes in south and east amid broad evacuation warnings"
       },
       "summary": {
-        "es": "Reino Unido implementa nuevas sanciones contra Rusia como parte de su respuesta a la guerra en Ucrania, eliminando gradualmente importaciones de combustible ruso. La medida aumenta presiones inflacionarias en energía europea y amplía fragmentación de cadenas de suministro occidental.",
-        "en": "UK escalates Russia sanctions by phasing out diesel and jet fuel imports, reinforcing energy decoupling. Measure tightens European energy costs and signals sustained Western sanctions coordination, with implications for UK inflation, aviation costs, and energy security strategy."
+        "es": "El ejército israelí emite advertencias de evacuación para múltiples ubicaciones en Líbano mientras continúan los ataques aéreos. La intensificación del conflicto en el Líbano eleva riesgos de escalada regional en paralelo a las negociaciones de paz con Irán.",
+        "en": "Israeli army issues evacuation warnings for multiple locations in Lebanon as airstrikes continue. Escalation in Lebanon conflict elevates regional escalation risks parallel to Iran peace negotiations."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
         "OIL +",
-        "GBP -",
-        "ENERGY +",
-        "INFLATION +"
+        "EQUITIES -",
+        "GOLD +",
+        "VOLATILITY +"
       ],
       "confidence": 85,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/ceqdl8xre7qo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-12",
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260613-lebanon-reports-israeli-strikes-in-south-and-east-amid-broad-evacuation-warnings",
+      "published_at": "2026-06-13",
       "time": "12h"
     },
     {
       "id": 5,
-      "tag": "ALERT",
-      "region": "EU",
+      "tag": "WATCH",
+      "region": "MENA",
       "title": {
-        "es": "EN DIRECTO, guerra en Ucrania: Volodymyr Zelensky se félicita de la represa de las negociaciones sobre la adhesión de Kiev a la UE",
-        "en": "Ukraine war live: Volodymyr Zelensky welcomes resumption of EU membership negotiations"
+        "es": "Guerra con Irán día 107: Washington y Teherán cerca de firmar primera etapa del acuerdo",
+        "en": "Iran war day 107: Washington, Tehran close to signing first stage of deal"
       },
       "summary": {
-        "es": "Unión Europea anuncia reanudación formal de negociaciones de adhesión con Ucrania el lunes tras levantamiento del veto húngaro. Zelensky participará en Consejo Europeo los días 18-19 de junio, señalizando avances geopolíticos importantes para integración y estabilidad financiera en Europa del Este.",
-        "en": "EU formally resumes Ukraine accession talks Monday after Hungary lifts veto, with Zelensky attending June 18-19 European Council. Diplomatic breakthrough signals medium-term eurozone expansion and geopolitical reorientation, with implications for capital flows to emerging Eastern Europe and EU institutional dynamics."
+        "es": "Trump anuncia que un acuerdo para detener la guerra con Irán podría firmarse el domingo, aunque Teherán mantiene escepticismo sobre el cronograma. La negociación por etapas sugiere un proceso más largo que afectará a la incertidumbre de precios energéticos a mediano plazo.",
+        "en": "Trump announces Iran war agreement could be signed Sunday, though Tehran remains skeptical on timeline. Phased negotiation approach suggests longer process affecting medium-term energy price uncertainty."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "EUR +",
-        "EEMS +",
-        "EQUITIES +",
-        "GEOPOLITICAL RISK -"
+        "OIL ?",
+        "EQUITIES ?",
+        "GOLD -",
+        "RISK_SENTIMENT ?"
       ],
-      "confidence": 84,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/live/2026/06/13/en-direct-guerre-en-ukraine-volodymyr-zelensky-se-felicite-de-la-reprise-des-negociations-sur-l-adhesion-de-kiev-a-l-ue_6698620_3210.html",
-      "published_at": "2026-06-12",
-      "time": "9h"
+      "confidence": 87,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/6/14/iran-war-day-107-washington-tehran-close-to-signing-first-stage-of-deal?traffic_source=rss",
+      "published_at": "2026-06-14",
+      "time": "2h"
     },
     {
       "id": 6,
-      "tag": "DATA",
+      "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "La economía del Reino Unido se contrae por el impacto de la guerra de Irán",
-        "en": "UK economy contracts as Iran war impact felt"
+        "es": "Atmósfera de fiebre del oro en la feria aérea militar de Berlín",
+        "en": "Gold rush atmosphere at Berlin's military air trade show"
       },
       "summary": {
-        "es": "Economía británica se contrae en abril reflejando impacto inicial de la guerra de Irán en negocios. Datos oficiales confirman transmisión de choques geopolíticos hacia actividad real, presionando crecimiento y potencialmente forzando respuesta de política monetaria.",
-        "en": "UK economy contracts in April as Iran war begins impacting business activity, confirmed by official data. Real-economy transmission of geopolitical shock signals stagflation risk for UK, constraining BoE rate path and pressuring sterling valuations amid inflation concerns."
+        "es": "La feria aérea ILA de Berlín establece récords impulsada por el auge del sector de defensa, que está obteniendo miles de millones en contratos debido a guerras y crisis geopolíticas. El repunte en gasto defensivo europeo refleja un cambio estructural en asignación de capital y políticas de seguridad.",
+        "en": "Berlin's ILA Air Show breaks records driven by defense sector boom, securing billions in contracts from ongoing wars and crises. European defense spending surge reflects structural shift in capital allocation and security policies."
       },
       "impact": "medium",
       "signals": [
-        "GBP -",
-        "GILTS +",
-        "UK EQUITIES -",
-        "INFLATION +"
+        "DEFENSE_STOCKS +",
+        "EUR +",
+        "EQUITIES +",
+        "GOVT_BONDS ?"
       ],
-      "confidence": 82,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/c77y47248k4o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-12",
-      "time": "22h"
+      "confidence": 80,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/gold-rush-atmosphere-at-berlin-s-military-air-trade-show/a-77538303?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-13",
+      "time": "16h"
     }
-  ],
-  "market_updated_at": "2026-06-14T08:58:03.801Z"
+  ]
 }
