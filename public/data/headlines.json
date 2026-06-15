@@ -1,159 +1,104 @@
 {
-  "generated_at": "2026-06-14T09:28:33.165Z",
+  "generated_at": "2026-06-15T11:56:22.027Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
       "value": "1.1611",
-      "change": "0.36%",
+      "change": "+0.36%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18764.40",
-      "change": "2.59%",
+      "value": "18594.90",
+      "change": "+0.32%",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "84.44",
-      "change": "-3.84%",
+      "symbol": "BRENT",
+      "value": "87.33",
+      "change": "-3.37%",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "80.14",
-      "change": "-5.59%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4317.28",
-      "change": "2.32%",
+      "symbol": "GOLD",
+      "value": "4327.17",
+      "change": "+2.04%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "65531.65",
-      "change": "1.41%",
+      "symbol": "BTC",
+      "value": "63794.90",
+      "change": "+0.16%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "17.68",
+      "value": "19.51",
       "change": "-9.05%",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.428%",
-      "change": "-0.57%",
+      "symbol": "US 10Y",
+      "value": "4.428",
+      "change": "-0.057%",
       "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7431.46",
-      "change": "0.50%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "25077.32",
-      "change": "1.26%",
-      "up": true
     },
     {
       "symbol": "EUR/GBP",
       "value": "0.8643",
-      "change": "0.16%",
+      "change": "+0.02%",
       "up": true
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "99.52",
-      "change": "-0.23%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.067",
-      "change": "-1.70%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.40",
-      "change": "3.23%",
+      "symbol": "S&P 500",
+      "value": "7431.46",
+      "change": "+0.50%",
       "up": true
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.7571",
-      "change": "-0.08%",
-      "up": false
+      "symbol": "DAX 40",
+      "value": "25050.32",
+      "change": "+1.26%",
+      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "GLOBAL",
       "title": {
-        "es": "Crisis de Oriente Medio en directo: Trump dice que el acuerdo con Irán se firmará hoy pero fuentes indican que Teherán 'aún no' ha tomado decisión final",
-        "en": "Middle East crisis live: Trump says Iran deal will be signed today but sources tell media Tehran 'not yet' taken final decision"
+        "es": "Cumbre del G7 abre en Francia con la guerra de Ucrania y nuevo acuerdo EE.UU.-Irán en la agenda",
+        "en": "G7 summit opens in France with Ukraine war, new US-Iran agreement on agenda"
       },
       "summary": {
-        "es": "Trump afirma que un acuerdo de paz con Irán podría firmarse el domingo con reapertura inmediata del Estrecho de Ormuz, pero Teherán mantiene dudas sobre el cronograma y no ha confirmado una decisión final. El potencial acuerdo tiene implicaciones críticas para la seguridad energética global y los precios del petróleo.",
-        "en": "Trump says an Iran peace deal could be signed Sunday with immediate Strait of Hormuz reopening, but Tehran maintains doubts on timeline and has not confirmed final decision. The potential deal has critical implications for global energy security and oil prices."
+        "es": "Los líderes del G7 se reúnen en Évian-les-Bains con la guerra de Ucrania y un memorándum de entendimiento entre EE.UU. e Irán anunciado en vísperas de la cumbre como temas centrales. Las negociaciones buscan resoluciones en Ucrania, Gaza e Irán con implicaciones significativas para la estabilidad geopolítica y los mercados globales.",
+        "en": "G7 leaders gather in Évian-les-Bains with Ukraine war and a US-Iran memorandum of understanding announced on the eve of the summit as central agenda items. Negotiations aim for resolutions in Ukraine, Gaza, and Iran with significant implications for geopolitical stability and global markets."
       },
       "impact": "high",
       "signals": [
         "OIL -",
+        "EUR +",
         "EQUITIES +",
-        "GOLD -",
-        "RISK_ASSETS +"
+        "GOLD -"
       ],
       "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/jun/14/iran-us-middle-east-crisis-donald-trump-peace-deal-strait-hormuz-open-pakistan-latest-news-updates",
-      "published_at": "2026-06-14",
-      "time": "<1h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20260615-trump-to",
+      "published_at": "2026-06-15",
+      "time": "8h"
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "GLOBAL",
       "title": {
-        "es": "Rusia tiene misiles balísticos en abundancia. Ucrania tiene pocas formas de detenerlos",
-        "en": "Russia Is Rich in Ballistic Missiles. Ukraine Is Short of Ways to Stop Them"
+        "es": "Los precios del petróleo caen y las acciones suben tras anunciarse el acuerdo EE.UU.-Irán",
+        "en": "Oil prices fall and shares jump after US-Iran deal announced"
       },
       "summary": {
-        "es": "Ucrania se está quedando sin interceptores Patriot de fabricación estadounidense y solicita urgentemente más suministros. Esta brecha de defensa aérea tiene implicaciones para la sostenibilidad del esfuerzo de guerra ucraniano y la demanda de defensa occidental.",
-        "en": "Ukraine is running critically short of US-made Patriot air-defense interceptors and urgently requesting additional supplies. This air-defense gap has implications for the sustainability of Ukraine's war effort and Western defense demand."
-      },
-      "impact": "high",
-      "signals": [
-        "DEFENSE_STOCKS +",
-        "EUR ?",
-        "US_EQUITIES +",
-        "GEOPOLITICAL_RISK +"
-      ],
-      "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/13/world/europe/ukraine-russia-patriot-interceptors.html",
-      "published_at": "2026-06-13",
-      "time": "1d"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Guerra en Oriente Medio en directo: Trump dice que el acuerdo con Irán se firmará el domingo",
-        "en": "Middle East war live: Trump says Iran deal to be signed Sunday"
-      },
-      "summary": {
-        "es": "Trump y líderes pakistaníes predicen la firma de un acuerdo el domingo para terminar la guerra contra Irán, con apertura inmediata del Estrecho de Ormuz. Un acuerdo exitoso transformaría significativamente los precios energéticos globales y la valoración de activos sensibles al riesgo geopolítico.",
-        "en": "Trump and Pakistani leaders predict Sunday signing of an agreement to end the Iran war, with immediate Strait of Hormuz reopening. A successful deal would significantly transform global energy prices and valuation of geopolitical risk-sensitive assets."
+        "es": "El acuerdo entre EE.UU. e Irán incluye la reapertura de la clave vía acuática del Estrecho de Ormuz, provocando caídas inmediatas en los precios del petróleo y ganancias en los mercados de renta variable. La resolución de la tensión en Irán reduce el premio de riesgo geopolítico en los mercados energéticos y de valores.",
+        "en": "The US-Iran agreement includes the reopening of the strategically critical Strait of Hormuz waterway, triggering immediate declines in oil prices and gains in equity markets. The resolution of Iran tensions reduces the geopolitical risk premium in energy and equity markets."
       },
       "impact": "high",
       "signals": [
@@ -162,87 +107,109 @@
         "GOLD -",
         "USD ?"
       ],
-      "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260614-middle-east-war-live-trump-says-iran-deal-to-be-signed-sunday",
-      "published_at": "2026-06-14",
-      "time": "4h"
+      "confidence": 94,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/c6217106px6o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-15",
+      "time": "<1h"
     },
     {
-      "id": 4,
-      "tag": "ALERT",
+      "id": 3,
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Líbano reporta ataques israelíes en el sur y este en medio de amplias advertencias de evacuación",
-        "en": "Lebanon reports Israeli strikes in south and east amid broad evacuation warnings"
+        "es": "Israel ataca afueras de Beirut mientras se intensifica el enfrentamiento con Hezbolá",
+        "en": "Israel Strikes Beirut Outskirts as Fighting With Hezbollah Escalates"
       },
       "summary": {
-        "es": "El ejército israelí emite advertencias de evacuación para múltiples ubicaciones en Líbano mientras continúan los ataques aéreos. La intensificación del conflicto en el Líbano eleva riesgos de escalada regional en paralelo a las negociaciones de paz con Irán.",
-        "en": "Israeli army issues evacuation warnings for multiple locations in Lebanon as airstrikes continue. Escalation in Lebanon conflict elevates regional escalation risks parallel to Iran peace negotiations."
+        "es": "Los ataques israelíes en Beirut complican un momento delicado mientras EE.UU. e Irán avanzan hacia un acuerdo marco. La escalada Israel-Hezbolá crea incertidumbre sobre la durabilidad del acuerdo iraní y puede desestabilizar los mercados de energía y valores si la violencia se intensifica.",
+        "en": "Israeli strikes on Beirut complicate a delicate moment as the US and Iran edge toward finalizing a framework peace agreement. The Israel-Hezbollah escalation creates uncertainty about the durability of the Iran deal and could destabilize energy and equity markets if violence intensifies."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "EQUITIES -",
         "GOLD +",
-        "VOLATILITY +"
+        "USD +"
       ],
-      "confidence": 85,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260613-lebanon-reports-israeli-strikes-in-south-and-east-amid-broad-evacuation-warnings",
-      "published_at": "2026-06-13",
-      "time": "12h"
+      "confidence": 88,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/14/world/middleeast/israel-strikes-beirut-hezbollah.html",
+      "published_at": "2026-06-14",
+      "time": "16h"
     },
     {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "MENA",
+      "id": 4,
+      "tag": "CRITICAL",
+      "region": "EU",
       "title": {
-        "es": "Guerra con Irán día 107: Washington y Teherán cerca de firmar primera etapa del acuerdo",
-        "en": "Iran war day 107: Washington, Tehran close to signing first stage of deal"
+        "es": "Zelenskyy dice que Rusia 'deliberadamente' atacó sitio de la UNESCO, con 11 muertos confirmados",
+        "en": "Zelenskyy says Russia 'deliberately' targeted Unesco site, as 11 people confirmed dead"
       },
       "summary": {
-        "es": "Trump anuncia que un acuerdo para detener la guerra con Irán podría firmarse el domingo, aunque Teherán mantiene escepticismo sobre el cronograma. La negociación por etapas sugiere un proceso más largo que afectará a la incertidumbre de precios energéticos a mediano plazo.",
-        "en": "Trump announces Iran war agreement could be signed Sunday, though Tehran remains skeptical on timeline. Phased negotiation approach suggests longer process affecting medium-term energy price uncertainty."
+        "es": "Ataques rusos masivos en Ucrania durante la noche destruyen el monasterio Pechersk Lavra en Kyiv, Patrimonio de la UNESCO, matando 11 personas. El ataque deliberado a infraestructura cultural coincide con la cumbre del G7 y subraya la persistencia del conflicto, afectando el sentimiento de riesgo y las valuaciones de mercados europeos.",
+        "en": "Massive Russian overnight attacks on Ukraine destroy the Pechersk Lavra monastery in Kyiv, a UNESCO World Heritage Site, killing 11 people. The deliberate targeting of cultural infrastructure coincides with the G7 summit and underscores the conflict's persistence, affecting risk sentiment and European market valuations."
       },
       "impact": "high",
       "signals": [
-        "OIL ?",
-        "EQUITIES ?",
-        "GOLD -",
-        "RISK_SENTIMENT ?"
+        "EUR -",
+        "EQUITIES -",
+        "GOLD +",
+        "BONDS +"
       ],
-      "confidence": 87,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/14/iran-war-day-107-washington-tehran-close-to-signing-first-stage-of-deal?traffic_source=rss",
-      "published_at": "2026-06-14",
-      "time": "2h"
+      "confidence": 91,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/jun/15/eu-g7-ukraine-kyiv-russia-war-iran-zelenskyy-macron-trump-europe-latest-news-updates",
+      "published_at": "2026-06-15",
+      "time": "<1h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Israel dice que continuará ocupando y demoliendo casas en el sur del Líbano pese al acuerdo entre EE.UU. e Irán",
+        "en": "Israel says it will continue occupying and demolishing houses in southern Lebanon despite US-Iran agreement"
+      },
+      "summary": {
+        "es": "Israel rechaza la presión internacional para detener operaciones en el sur del Líbano a pesar del nuevo acuerdo entre EE.UU. e Irán que busca reducir tensiones regionales. La continuación de operaciones israelíes crea divergencia entre la diplomacia estadounidense y las acciones sobre el terreno, aumentando volatilidad en mercados MENA.",
+        "en": "Israel rejects international pressure to halt operations in southern Lebanon despite the new US-Iran agreement aimed at reducing regional tensions. The continuation of Israeli operations creates divergence between US diplomacy and on-the-ground actions, increasing MENA market volatility."
+      },
+      "impact": "medium",
+      "signals": [
+        "OIL +",
+        "EQUITIES -",
+        "GOLD +"
+      ],
+      "confidence": 82,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-06-15/ultima-hora-de-la-guerra-de-estados-unidos-e-israel-contra-iran-en-directo.html",
+      "published_at": "2026-06-15",
+      "time": "<1h"
     },
     {
       "id": 6,
       "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "Atmósfera de fiebre del oro en la feria aérea militar de Berlín",
-        "en": "Gold rush atmosphere at Berlin's military air trade show"
+        "es": "IA, drones y tecnología ucraniana en exhibición en la feria de defensa Eurosatory",
+        "en": "AI, drones and Ukrainian tech on show at Eurosatory defense fair"
       },
       "summary": {
-        "es": "La feria aérea ILA de Berlín establece récords impulsada por el auge del sector de defensa, que está obteniendo miles de millones en contratos debido a guerras y crisis geopolíticas. El repunte en gasto defensivo europeo refleja un cambio estructural en asignación de capital y políticas de seguridad.",
-        "en": "Berlin's ILA Air Show breaks records driven by defense sector boom, securing billions in contracts from ongoing wars and crises. European defense spending surge reflects structural shift in capital allocation and security policies."
+        "es": "Más de 2.500 empresas exhiben en Eurosatory nuevas tecnologías de defensa, incluyendo soluciones de IA y drones desarrollados por Ucrania durante la guerra. El enfoque en tecnología de defensa y soberanía tecnológica refleja la prioridad estratégica de Europa y ofrece oportunidades de inversión en proveedores de defensa avanzada.",
+        "en": "Over 2,500 companies exhibit at Eurosatory new defense technologies, including AI solutions and drones developed by Ukraine during the war. The focus on defense technology and tech sovereignty reflects Europe's strategic priority and offers investment opportunities in advanced defense suppliers."
       },
       "impact": "medium",
       "signals": [
-        "DEFENSE_STOCKS +",
+        "DEFENSE_EQUITIES +",
         "EUR +",
-        "EQUITIES +",
-        "GOVT_BONDS ?"
+        "TECH ?"
       ],
-      "confidence": 80,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/gold-rush-atmosphere-at-berlin-s-military-air-trade-show/a-77538303?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-13",
-      "time": "16h"
+      "confidence": 72,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260615-ai-drones-and-ukrainian-tech-on-show-at-eurosatory-defense-fair",
+      "published_at": "2026-06-15",
+      "time": "1h"
     }
-  ],
-  "market_updated_at": "2026-06-15T11:38:14.302Z"
+  ]
 }
