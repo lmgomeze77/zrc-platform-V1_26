@@ -45,7 +45,7 @@ async function fetchMarketData() {
   console.log(`📊 Fetching live market data — ${today} ${time} UTC\n`);
 
   const response = await client.messages.create({
-    model: "claude-haiku-4-5-20251001",
+    model: "claude-sonnet-4-6",
     max_tokens: 3000,
     tools: [{ type: "web_search_20250305", name: "web_search" }],
     system: `You are a financial data terminal. Your ONLY job is to search for current market prices and return a JSON array. After searching, respond with ONLY the raw JSON array — no explanations, no preamble, no markdown fences. Just [ ... ].`,
