@@ -199,7 +199,7 @@ Return ONLY the JSON array of 6 selected items.`;
   console.log(`🤖 Calling Haiku to select+enrich 6 from ${candidates.length} candidates...`);
 
   const response = await client.messages.create({
-    model: "claude-haiku-4-5-20251001",
+    model: "claude-sonnet-4-6",
     max_tokens: 3500,
     system: systemPrompt,
     messages: [{ role: "user", content: userPrompt }],
