@@ -4,37 +4,37 @@
     {
       "symbol": "EUR/USD",
       "value": "1.1594",
-      "change": "0.04%",
+      "change": "+0.04%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19050.30",
-      "change": "2.59%",
+      "value": "19035.78",
+      "change": "+0.69%",
       "up": true
     },
     {
       "symbol": "BRENT crude",
-      "value": "78.89",
+      "value": "78.82",
       "change": "-5.23%",
       "up": false
     },
     {
       "symbol": "WTI crude",
-      "value": "80.59",
-      "change": "-4.13%",
+      "value": "79.85",
+      "change": "-1.63%",
       "up": false
     },
     {
       "symbol": "GOLD (XAU/USD)",
       "value": "4340.36",
-      "change": "0.71%",
+      "change": "+0.71%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "66304",
-      "change": "0.90%",
+      "value": "66304.00",
+      "change": "+0.90%",
       "up": true
     },
     {
@@ -46,38 +46,38 @@
     {
       "symbol": "US 10Y yield",
       "value": "4.47%",
-      "change": "-0.28%",
+      "change": "-0.03%",
       "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7554.29",
-      "change": "1.65%",
+      "change": "+1.65%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24915.79",
-      "change": "1.05%",
+      "value": "24910.00",
+      "change": "+0.07%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
       "value": "0.8636",
-      "change": "-0.05%",
+      "change": "-0.23%",
       "up": false
     },
     {
       "symbol": "DXY dollar index",
-      "value": "99.52",
-      "change": "-0.11%",
+      "value": "99.57",
+      "change": "-0.06%",
       "up": false
     },
     {
       "symbol": "Natural Gas",
-      "value": "3.15",
-      "change": "0.96%",
-      "up": true
+      "value": "3.097",
+      "change": "-0.51%",
+      "up": false
     },
     {
       "symbol": "Copper",
@@ -244,5 +244,5 @@
       "time": "19h"
     }
   ],
-  "market_updated_at": "2026-06-16T18:23:53.656Z"
+  "market_updated_at": "2026-06-16T23:16:15.221Z"
 }
