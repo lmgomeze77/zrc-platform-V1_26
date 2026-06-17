@@ -1,248 +1,217 @@
 {
-  "generated_at": "2026-06-16T11:04:30.454Z",
+  "generated_at": "2026-06-17T10:48:32.000Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1612",
-      "change": "0.20%",
+      "value": "1.1616",
+      "change": "+0.19%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18330.90",
-      "change": "-1.10%",
+      "value": "19050.30",
+      "change": "+0.16%",
+      "up": true
+    },
+    {
+      "symbol": "BRENT",
+      "value": "78.89",
+      "change": "-5.16%",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
-      "value": "78.82",
-      "change": "-5.23%",
+      "symbol": "GOLD",
+      "value": "4337.14",
+      "change": "-0.92%",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "80.97",
-      "change": "0.27%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4340.02",
-      "change": "2.86%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "66105.16",
-      "change": "0.35%",
-      "up": true
+      "symbol": "BTC",
+      "value": "65688.11",
+      "change": "-0.80%",
+      "up": false
     },
     {
       "symbol": "VIX",
       "value": "16.20",
-      "change": "-8.37%",
+      "change": "-1.97%",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.47%",
-      "change": "0.00%",
+      "symbol": "US 10Y",
+      "value": "4.43",
+      "change": "-0.05",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8648",
+      "change": "+0.07%",
       "up": true
     },
     {
       "symbol": "S&P 500",
       "value": "7554.29",
-      "change": "1.65%",
+      "change": "+1.65%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24800.00",
-      "change": "-0.20%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8628",
-      "change": "-0.20%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "99.57",
-      "change": "-0.06%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.17",
-      "change": "0.96%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.50",
-      "change": "0.53%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7634",
-      "change": "-0.41%",
+      "value": "24830.19",
+      "change": "-0.32%",
       "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "Cumbre del G7: ¿Un caso de Zelensky y Europa 'contra Trump'?",
-        "en": "G7 summit: A case of Zelenksy and Europe 'versus Trump'?"
+        "es": "EE.UU. señala el retorno de sanciones a Rusia mientras G7 se une en torno a Ucrania",
+        "en": "US signals to return of sanctions on Russia as G7 unites around Ukraine"
       },
       "summary": {
-        "es": "El presidente ucraniano Zelensky se une a la cumbre del G7 para presionar a Rusia a fin de terminar la guerra, mientras líderes europeos intenten persuadir al presidente Trump para aumentar el apoyo. La divergencia entre la estrategia estadounidense y europea sobre Ucrania tiene implicaciones significativas para la alineación geopolítica y el financiamiento de la defensa.",
-        "en": "Ukrainian President Zelensky joins the G7 summit to pressure Russia to end the war, as European leaders attempt to persuade President Trump to increase support. The divergence between US and European strategy on Ukraine has significant implications for geopolitical alignment and defense funding."
+        "es": "Los líderes del G7 acordaron intensificar la presión sobre Rusia para terminar la guerra de más de cuatro años contra Ucrania. Trump indicó que Washington podría reimprimir sanciones previamente suspendidas si Moscú no negocia. Este giro geopolítico afecta directamente los mercados de energía, commodities y relaciones comerciales globales.",
+        "en": "G7 leaders agreed to intensify pressure on Russia to end the four-year war against Ukraine, with Trump signaling Washington could re-impose previously waived sanctions if Moscow does not negotiate. This geopolitical shift directly impacts energy markets, commodities, and global trade relations."
       },
       "impact": "high",
       "signals": [
-        "EUR ?",
+        "OIL +",
+        "RUB -",
         "EQUITIES ?",
-        "BONDS +",
-        "USD ?"
+        "EUR ?"
       ],
-      "confidence": 88,
+      "confidence": 92,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260616-g7-summit-a-case-of-zelenksy-and-europe-versus-trump",
-      "published_at": "2026-06-16",
-      "time": "1h"
+      "source_url": "https://www.france24.com/en/us-signals-to-return-of-sanctions-on-russia-as-g7-unites-around-ukraine",
+      "published_at": "2026-06-17",
+      "time": "<1h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
-      "region": "EU",
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "es": "Zelensky llega a la cumbre del G7 mientras Trump señala un posible avance en Ucrania",
-        "en": "Zelensky arrives ahead of G7 summit as Trump signals possible Ukraine breakthrough"
+        "es": "EE.UU., Irán y Hezbollah se enfrentan por términos difusos del acuerdo de cese al fuego",
+        "en": "US, Iran, Hezbollah spar over murky terms of ceasefire deal"
       },
       "summary": {
-        "es": "Zelensky arriba a la cumbre del G7 en Evian mientras Trump expresa optimismo sobre perspectivas de paz después de más de cuatro años de guerra. Una posible resolución del conflicto podría reducir la volatilidad geopolítica y el gasto de defensa, afectando bonos y acciones de defensa europeas.",
-        "en": "Zelensky arrives at the G7 summit in Evian as Trump expresses optimism about peace prospects after over four years of war. A potential conflict resolution could reduce geopolitical volatility and defense spending, impacting European defense equities and bonds."
+        "es": "Las partes disputan la interpretación del acuerdo de cese al fuego intermediado por EE.UU.: Irán exige retirada israelí de Líbano mientras Netanyahu insiste en presencia militar prolongada. Las discrepancias sobre términos clave del acuerdo crean riesgo de escalada y volatilidad en mercados de energía y activos de riesgo regional.",
+        "en": "Parties dispute the interpretation of the US-brokered ceasefire agreement: Iran demands Israeli withdrawal from Lebanon while Netanyahu insists on prolonged military presence. Disagreements over key terms create escalation risk and volatility in energy markets and regional risk assets."
       },
       "impact": "high",
       "signals": [
-        "EUR +",
-        "EQUITIES +",
-        "BONDS +",
-        "DEFENSE -"
+        "OIL +",
+        "USD +",
+        "EQUITIES -",
+        "GOLD +"
       ],
-      "confidence": 85,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260616-g7-leaders-to-meet-zelensky-as-trump-signals-possible-ukraine-breakthrough",
+      "confidence": 90,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/us-iran-hezbollah-spar-over-murky-terms-of-ceasefire-deal/live-77573728?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-06-16",
-      "time": "8h"
+      "time": "11h"
     },
     {
       "id": 3,
       "tag": "WATCH",
-      "region": "MENA",
+      "region": "GLOBAL",
       "title": {
-        "es": "El acuerdo EE.UU.-Irán puede reactivar el flujo de petróleo, pero los problemas estructurales de la región persisten",
-        "en": "US-Iran deal may get oil flowing again, but region's root problems are unsolved"
+        "es": "Los precios del petróleo continúan cayendo en medio de esperanzas de paz y apertura del Estrecho de Ormuz",
+        "en": "Oil prices continue slide amid hopes for peace, opening of Strait of Hormuz"
       },
       "summary": {
-        "es": "A pesar de un acuerdo frágil entre EE.UU. e Irán, analistas dudan de que se pueda alcanzar una solución final en 60 días, y la inestabilidad podría resurgir rápidamente. La incertidumbre sobre la durabilidad del acuerdo mantiene volatilidad en precios de energía y riesgo geopolítico.",
-        "en": "Despite a fragile US-Iran agreement, analysts doubt a final settlement can be reached in 60 days, and instability could soon resurface. Uncertainty over the deal's durability sustains volatility in energy prices and geopolitical risk premium."
+        "es": "El Brent cayó al precio más bajo desde principios de marzo tras el acuerdo marco entre EE.UU. e Irán. La reapertura esperada del Estrecho de Ormuz reduce presión inflacionaria global y presiones sobre cadenas de suministro. Este movimiento de precios refleja repricing de riesgos geopolíticos en mercados de energía y commodities.",
+        "en": "Brent crude dropped to its lowest price since early March following the US-Iran framework deal. The expected reopening of the Strait of Hormuz reduces global inflationary pressure and supply chain constraints. This price movement reflects repricing of geopolitical risks in energy and commodity markets."
       },
       "impact": "high",
       "signals": [
-        "OIL ?",
-        "EQUITIES ?",
-        "GOLD +",
-        "BONDS ?"
+        "OIL -",
+        "BONDS +",
+        "EQUITIES +",
+        "INFLATION -"
       ],
-      "confidence": 84,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/15/us-iran-ceasefire-respite-true-peace-distant",
-      "published_at": "2026-06-16",
+      "confidence": 88,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/2026/6/17/oil-prices-continue-slide-amid-hopes-for-peace-opening-of-strait-of-hormuz?traffic_source=rss",
+      "published_at": "2026-06-17",
       "time": "3h"
     },
     {
       "id": 4,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Las minas navales podrían obstaculizar el comercio del Golfo después de la guerra",
-        "en": "Naval Mines Could Still Stymie Gulf Shipping After War"
+        "es": "Trump dice que EE.UU. 'no tiene nada que ver' con la guerra de Ucrania en la cumbre del G7",
+        "en": "Trump Says U.S. Has 'Nothing to Do' With Ukraine War at G7 Summit"
       },
       "summary": {
-        "es": "La Marina estadounidense desplegará contramedidas basadas en drones para buscar minas que Irán haya colocado en el fondo y la superficie del mar. El riesgo persistente de congestión en choques estratégicos de envío eleva los costos logísticos globales y la volatilidad del flete marítimo.",
-        "en": "The US Navy will deploy drone-based countermeasures to search for mines Iran may have laid on the sea floor and surface. Persistent risk of chokepoint congestion elevates global logistics costs and shipping volatility, with implications for trade and inflation."
+        "es": "Las declaraciones de Trump subrayan una nueva realidad de seguridad para aliados europeos que durante ocho décadas dependieron de protección estadounidense. Esta postura sienta cambios fundamentales en arquitectura de defensa transatlántica y calculó geopolítico de inversores sobre compromisos de seguridad estadounidenses. Implica revaluación de riesgos para activos europeos y OTAN.",
+        "en": "Trump's remarks underscore a new security reality for US allies in Europe who have relied on American protection for eight decades. This stance signals fundamental shifts in transatlantic defense architecture and investor calculations regarding US security commitments, requiring revaluation of risks for European and NATO-exposed assets."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "SHIPPING +",
-        "EQUITIES -",
-        "INFLATION +"
+        "EUR -",
+        "DEFENSE +",
+        "EQUITIES ?",
+        "USD +"
       ],
-      "confidence": 82,
+      "confidence": 89,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/16/world/middleeast/strait-hormuz-mines-clearing.html",
-      "published_at": "2026-06-16",
-      "time": "6h"
+      "source_url": "https://www.nytimes.com/2026/06/16/world/europe/trump-ukraine-war-g7.html",
+      "published_at": "2026-06-17",
+      "time": "3h"
     },
     {
       "id": 5,
       "tag": "WATCH",
       "region": "MENA",
       "title": {
-        "es": "El acuerdo con Irán presenta una pesadilla política para Netanyahu",
-        "en": "Iran deal presents political nightmare for Netanyahu"
+        "es": "Los aliados árabes de EE.UU. temen un acuerdo precipitado con Irán",
+        "en": "US Arab allies fear a rushed deal with Iran"
       },
       "summary": {
-        "es": "El acuerdo de cese del fuego de Trump con Irán coloca al primer ministro israelí Netanyahu en un dilema político y de seguridad. La divergencia entre la estrategia estadounidense y los intereses estratégicos de Israel introduce incertidumbre sobre la estabilidad regional y la alineación geopolítica.",
-        "en": "Trump's ceasefire agreement with Iran leaves Israeli PM Netanyahu trapped in a new political and security dilemma. The divergence between US strategy and Israeli interests introduces uncertainty over regional stability and geopolitical alignment."
+        "es": "Líderes de Emiratos Árabes Unidos, Qatar y Egipto expresan preocupación sobre los términos del acuerdo Iran-EE.UU. Trump busca que países del Golfo financien inversiones en Irán tras imponer una guerra que controlaron largamente. Esta tensión entre aliados arabiegos y administración Trump crea incertidumbre en relaciones comerciales del Golfo y estabilidad regional.",
+        "en": "Leaders of UAE, Qatar, and Egypt express concern over the Iran-US deal terms. Trump seeks Gulf states to finance investments in Iran after they bore the conflict financially. This tension between Arab allies and the Trump administration creates uncertainty in Gulf trade relations and regional stability."
       },
       "impact": "medium",
       "signals": [
-        "EQUITIES ?",
-        "BONDS ?",
-        "SHEKEL -",
-        "GOLD +"
+        "OIL ?",
+        "MENA EQUITIES -",
+        "USD +",
+        "GOLD ?"
       ],
-      "confidence": 80,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cj4gnqw8j52o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-16",
-      "time": "7h"
+      "confidence": 78,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/06/17/les-allies-arabes-des-etats-unis-craignent-un-accord-bacle-avec-l-iran_6704188_3210.html",
+      "published_at": "2026-06-17",
+      "time": "1h"
     },
     {
       "id": 6,
-      "tag": "DATA",
-      "region": "GLOBAL",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "¿Cómo podría afectar el acuerdo EE.UU.-Irán a los precios del petróleo y el costo de los alimentos?",
-        "en": "How could the US-Iran deal affect oil prices and the cost of food?"
+        "es": "Reino Unido investiga reportes de buque de guerra ruso que disparó tiros de advertencia cerca de un yate en el Canal de la Mancha",
+        "en": "UK investigating reports Russian warship fired warning shots near yacht in English Channel"
       },
       "summary": {
-        "es": "Expertos advierten que el impacto de la guerra continuará afectando la economía global durante meses. La reapertura del comercio energético podría aliviar presiones inflacionarias pero con efectos diferenciados según regiones y sectores.",
-        "en": "Experts warn the impact of the war will continue affecting the global economy for months. Reopening energy trade could ease inflation pressures but with differentiated effects across regions and sectors."
+        "es": "Un buque de guerra ruso disparó tiros de advertencia contra un yate británico en el Canal de la Mancha, marcando una escalada de incidentes provocadores rusos en aguas británicas. Este acto de presión militar refleja tensiones estratégicas transatlánticas en aumento y riesgo de fricción militar accidental. Afecta percepciones de seguridad europea y confianza en estabilidad regional.",
+        "en": "A Russian warship fired warning shots near a British yacht in the English Channel, marking an escalation of provocative Russian incidents in British waters. This military pressure reflects rising transatlantic strategic tensions and risk of accidental military friction, affecting European security perceptions and regional stability confidence."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL -",
-        "INFLATION -",
-        "COMMODITIES ?",
-        "EQUITIES +"
+        "GBP ?",
+        "DEFENSE +",
+        "EQUITIES -",
+        "GOLD +"
       ],
-      "confidence": 83,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/cd0p8me2m5do?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-15",
-      "time": "19h"
+      "confidence": 75,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/c20yzm84r7lo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-17",
+      "time": "2h"
     }
-  ],
-  "market_updated_at": "2026-06-17T10:20:35.106Z"
+  ]
 }
