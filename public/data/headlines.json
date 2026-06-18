@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-06-17T10:48:32.000Z",
+  "generated_at": "2026-06-18T10:15:45.923Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1512",
-      "change": "+0.10%",
-      "up": true
-    },
-    {
-      "symbol": "IBEX 35",
-      "value": "19064.70",
-      "change": "+0.17%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "79.47",
-      "change": "+0.63%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "74.82",
-      "change": "-2.91%",
+      "value": "1.1513",
+      "change": "-0.10",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
+      "symbol": "IBEX 35",
+      "value": "18941.50",
+      "change": "-88.50",
+      "up": false
+    },
+    {
+      "symbol": "BRENT",
+      "value": "78.66",
+      "change": "-1.12",
+      "up": false
+    },
+    {
+      "symbol": "GOLD",
       "value": "4301.37",
-      "change": "+0.98%",
+      "change": "+0.98",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "64019.52",
-      "change": "-2.21%",
+      "symbol": "BTC",
+      "value": "64930",
+      "change": "-1.60",
       "up": false
     },
     {
       "symbol": "VIX",
       "value": "18.44",
-      "change": "+12.37%",
+      "change": "+2.03",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.46%",
-      "change": "+0.79%",
+      "symbol": "US 10Y",
+      "value": "4.463",
+      "change": "+0.79",
       "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7511.35",
-      "change": "-0.57%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24936.04",
-      "change": "-0.20%",
-      "up": false
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8637",
-      "change": "+0.11%",
+      "value": "0.8626",
+      "change": "-0.12",
+      "up": false
+    },
+    {
+      "symbol": "S&P 500",
+      "value": "7554.29",
+      "change": "+1.65",
       "up": true
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "100.23",
-      "change": "+0.14%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.15",
-      "change": "+0.05%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.51",
-      "change": "+0.35%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8130",
-      "change": "+0.05%",
+      "symbol": "DAX 40",
+      "value": "24979.61",
+      "change": "+0.34",
       "up": true
     }
   ],
@@ -96,153 +66,152 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "EE.UU. señala el retorno de sanciones a Rusia mientras G7 se une en torno a Ucrania",
-        "en": "US signals to return of sanctions on Russia as G7 unites around Ukraine"
+        "es": "Trump y Pezeshkian firman acuerdo para terminar la guerra con Irán y reapertura del Estrecho de Ormuz",
+        "en": "Trump, Pezeshkian sign deal to end Iran war, reopen Hormuz"
       },
       "summary": {
-        "es": "Los líderes del G7 acordaron intensificar la presión sobre Rusia para terminar la guerra de más de cuatro años contra Ucrania. Trump indicó que Washington podría reimprimir sanciones previamente suspendidas si Moscú no negocia. Este giro geopolítico afecta directamente los mercados de energía, commodities y relaciones comerciales globales.",
-        "en": "G7 leaders agreed to intensify pressure on Russia to end the four-year war against Ukraine, with Trump signaling Washington could re-impose previously waived sanctions if Moscow does not negotiate. This geopolitical shift directly impacts energy markets, commodities, and global trade relations."
+        "es": "Trump e Irán firmaron un memorándum para extender el alto el fuego por 60 días y reapertura del Estrecho de Ormuz. Este acuerdo transforma el panorama geopolítico de Oriente Medio y tiene implicaciones directas en los precios del petróleo y la estabilidad comercial global.",
+        "en": "Trump and Iran signed a memorandum to extend the ceasefire for 60 days and reopen the Strait of Hormuz. This agreement transforms the Middle East geopolitical landscape with direct implications for oil prices and global trade stability."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "RUB -",
-        "EQUITIES ?",
-        "EUR ?"
+        "OIL -",
+        "EQUITIES +",
+        "USD +",
+        "EM RISK -"
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/us-signals-to-return-of-sanctions-on-russia-as-g7-unites-around-ukraine",
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/trump-pezeshkian-sign-deal-to-end-iran-war-reopen-hormuz/live-77596195?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-06-17",
-      "time": "<1h"
+      "time": "10h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EE.UU., Irán y Hezbollah se enfrentan por términos difusos del acuerdo de cese al fuego",
-        "en": "US, Iran, Hezbollah spar over murky terms of ceasefire deal"
+        "es": "Crisis en Oriente Medio en directo: Teherán dice que cobrará a los barcos en el Estrecho de Ormuz tras 60 días; presidentes de EE.UU. e Irán firman acuerdo de paz",
+        "en": "Middle East crisis live: Tehran says it will charge ships in strait of Hormuz after 60 days; US-Iran presidents sign peace deal"
       },
       "summary": {
-        "es": "Las partes disputan la interpretación del acuerdo de cese al fuego intermediado por EE.UU.: Irán exige retirada israelí de Líbano mientras Netanyahu insiste en presencia militar prolongada. Las discrepancias sobre términos clave del acuerdo crean riesgo de escalada y volatilidad en mercados de energía y activos de riesgo regional.",
-        "en": "Parties dispute the interpretation of the US-brokered ceasefire agreement: Iran demands Israeli withdrawal from Lebanon while Netanyahu insists on prolonged military presence. Disagreements over key terms create escalation risk and volatility in energy markets and regional risk assets."
+        "es": "Irán anuncia que el Estrecho de Ormuz 'no volverá a condiciones previas a la guerra' tras ventana de 60 días, con posibles peajes para buques. El acuerdo bilateral introduce incertidumbre sobre los términos finales y su impacto en el comercio marítimo global.",
+        "en": "Iran announces the Strait of Hormuz will 'not return to prewar conditions' after 60-day window, with possible tolls for ships. The bilateral deal introduces uncertainty over final terms and impact on global maritime commerce."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "USD +",
-        "EQUITIES -",
+        "SHIPPING RATES +",
+        "GULF EQUITIES ?",
         "GOLD +"
       ],
-      "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-iran-hezbollah-spar-over-murky-terms-of-ceasefire-deal/live-77573728?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-16",
-      "time": "11h"
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/jun/18/middle-east-crisis-live-us-iran-presidents-sign-peace-deal-mou-trump-tehran-strait-of-hormuz-toll-lebanon-israel",
+      "published_at": "2026-06-18",
+      "time": "<1h"
     },
     {
       "id": 3,
-      "tag": "WATCH",
+      "tag": "ALERT",
       "region": "GLOBAL",
       "title": {
-        "es": "Los precios del petróleo continúan cayendo en medio de esperanzas de paz y apertura del Estrecho de Ormuz",
-        "en": "Oil prices continue slide amid hopes for peace, opening of Strait of Hormuz"
+        "es": "Los precios del petróleo caen y las acciones suben cuando EE.UU. e Irán firman acuerdo marco para terminar la guerra",
+        "en": "Oil prices fall, stocks rally as US, Iran sign framework to end war"
       },
       "summary": {
-        "es": "El Brent cayó al precio más bajo desde principios de marzo tras el acuerdo marco entre EE.UU. e Irán. La reapertura esperada del Estrecho de Ormuz reduce presión inflacionaria global y presiones sobre cadenas de suministro. Este movimiento de precios refleja repricing de riesgos geopolíticos en mercados de energía y commodities.",
-        "en": "Brent crude dropped to its lowest price since early March following the US-Iran framework deal. The expected reopening of the Strait of Hormuz reduces global inflationary pressure and supply chain constraints. This price movement reflects repricing of geopolitical risks in energy and commodity markets."
+        "es": "El crudo Brent cayó 2.3% y los índices bursátiles en Japón, Corea del Sur y Taiwan subieron tras el acuerdo EE.UU.-Irán. La reacción de mercados refleja alivio ante la reducción de riesgo geopolítico en la región con mayor relevancia para suministro energético global.",
+        "en": "Brent crude fell 2.3% while major indices in Japan, South Korea and Taiwan climbed following the US-Iran agreement. Market reaction reflects relief from reduced geopolitical risk in the region with highest relevance for global energy supply."
       },
       "impact": "high",
       "signals": [
         "OIL -",
-        "BONDS +",
         "EQUITIES +",
-        "INFLATION -"
+        "VIX -",
+        "USD +"
       ],
-      "confidence": 88,
+      "confidence": 90,
       "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/6/17/oil-prices-continue-slide-amid-hopes-for-peace-opening-of-strait-of-hormuz?traffic_source=rss",
-      "published_at": "2026-06-17",
-      "time": "3h"
+      "source_url": "https://www.aljazeera.com/economy/2026/6/18/oil-prices-fall-stocks-rally-as-us-iran-sign-framework-to-end-war?traffic_source=rss",
+      "published_at": "2026-06-18",
+      "time": "6h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Trump dice que EE.UU. 'no tiene nada que ver' con la guerra de Ucrania en la cumbre del G7",
-        "en": "Trump Says U.S. Has 'Nothing to Do' With Ukraine War at G7 Summit"
+        "es": "G7 aplaude la unidad en Rusia mientras Trump señala una postura más dura hacia Moscú",
+        "en": "G7 hails unity on Russia as Trump signals tougher line on Moscow"
       },
       "summary": {
-        "es": "Las declaraciones de Trump subrayan una nueva realidad de seguridad para aliados europeos que durante ocho décadas dependieron de protección estadounidense. Esta postura sienta cambios fundamentales en arquitectura de defensa transatlántica y calculó geopolítico de inversores sobre compromisos de seguridad estadounidenses. Implica revaluación de riesgos para activos europeos y OTAN.",
-        "en": "Trump's remarks underscore a new security reality for US allies in Europe who have relied on American protection for eight decades. This stance signals fundamental shifts in transatlantic defense architecture and investor calculations regarding US security commitments, requiring revaluation of risks for European and NATO-exposed assets."
+        "es": "Los líderes del G7 celebraron la unidad para aumentar presión sobre Rusia sobre Ucrania, con Trump señalando una postura más enérgica. Esta afirmación contrasta con su historial de ambigüedad en políticas de Rusia y tiene implicaciones para sanciones, defensa europea e inversión en mercados emergentes vinculados a Rusia.",
+        "en": "G7 leaders welcomed growing unity to pressure Russia on Ukraine, with Trump signaling a tougher line. This stance contrasts with his historical ambiguity on Russia policy and affects sanctions, European defense spending, and investment in Russia-linked emerging markets."
       },
       "impact": "high",
       "signals": [
-        "EUR -",
-        "DEFENSE +",
-        "EQUITIES ?",
-        "USD +"
+        "RUSSIAN ASSETS -",
+        "DEFENSE STOCKS +",
+        "EUR +",
+        "COMMODITIES ?"
       ],
-      "confidence": 89,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/16/world/europe/trump-ukraine-war-g7.html",
-      "published_at": "2026-06-17",
-      "time": "3h"
+      "confidence": 85,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20260618-g7-unity-russia-trump-tougher-line-moscow",
+      "published_at": "2026-06-18",
+      "time": "7h"
     },
     {
       "id": 5,
-      "tag": "WATCH",
-      "region": "MENA",
-      "title": {
-        "es": "Los aliados árabes de EE.UU. temen un acuerdo precipitado con Irán",
-        "en": "US Arab allies fear a rushed deal with Iran"
-      },
-      "summary": {
-        "es": "Líderes de Emiratos Árabes Unidos, Qatar y Egipto expresan preocupación sobre los términos del acuerdo Iran-EE.UU. Trump busca que países del Golfo financien inversiones en Irán tras imponer una guerra que controlaron largamente. Esta tensión entre aliados arabiegos y administración Trump crea incertidumbre en relaciones comerciales del Golfo y estabilidad regional.",
-        "en": "Leaders of UAE, Qatar, and Egypt express concern over the Iran-US deal terms. Trump seeks Gulf states to finance investments in Iran after they bore the conflict financially. This tension between Arab allies and the Trump administration creates uncertainty in Gulf trade relations and regional stability."
-      },
-      "impact": "medium",
-      "signals": [
-        "OIL ?",
-        "MENA EQUITIES -",
-        "USD +",
-        "GOLD ?"
-      ],
-      "confidence": 78,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/06/17/les-allies-arabes-des-etats-unis-craignent-un-accord-bacle-avec-l-iran_6704188_3210.html",
-      "published_at": "2026-06-17",
-      "time": "1h"
-    },
-    {
-      "id": 6,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Reino Unido investiga reportes de buque de guerra ruso que disparó tiros de advertencia cerca de un yate en el Canal de la Mancha",
-        "en": "UK investigating reports Russian warship fired warning shots near yacht in English Channel"
+        "es": "EE.UU. dice a la OTAN que revisará su presencia militar en Europa",
+        "en": "US tells NATO it will review its force presence in Europe"
       },
       "summary": {
-        "es": "Un buque de guerra ruso disparó tiros de advertencia contra un yate británico en el Canal de la Mancha, marcando una escalada de incidentes provocadores rusos en aguas británicas. Este acto de presión militar refleja tensiones estratégicas transatlánticas en aumento y riesgo de fricción militar accidental. Afecta percepciones de seguridad europea y confianza en estabilidad regional.",
-        "en": "A Russian warship fired warning shots near a British yacht in the English Channel, marking an escalation of provocative Russian incidents in British waters. This military pressure reflects rising transatlantic strategic tensions and risk of accidental military friction, affecting European security perceptions and regional stability confidence."
+        "es": "El Secretario de Defensa estadounidense anunció que el Pentágono revisará su presencia militar en Europa en seis meses, condicionado al esfuerzo de aliados europeos. Esta revisión introduce riesgo geopolítico para la defensa europea y podría acelerar gastos de defensa independiente en EU, con implicaciones para políticas fiscales y presupuestarias.",
+        "en": "US Defense Secretary announced Pentagon will review its force presence in Europe within six months, contingent on European allies' defense spending efforts. This review creates geopolitical risk for European security and may accelerate independent EU defense spending with fiscal/budgetary implications."
+      },
+      "impact": "high",
+      "signals": [
+        "DEFENSE STOCKS +",
+        "EUR VOLATILITY +",
+        "GERMAN BUNDS -",
+        "NATO EQUITIES +"
+      ],
+      "confidence": 82,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/us-tells-nato-it-will-review-its-force-presence-in-europe",
+      "published_at": "2026-06-18",
+      "time": "<1h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Moscú es golpeada por el mayor ataque ucraniano desde el inicio de la guerra a escala completa de Rusia",
+        "en": "Moscow hit by largest Ukrainian attack since start of Russia's full-scale war"
+      },
+      "summary": {
+        "es": "Casi 200 drones ucranianos golpearon una refinería y centro comercial en el sureste de Moscú en el mayor ataque a la capital desde 2022. El ataque ocurre mientras Zelenskyy negocia con Trump, señalando que Ukraine mantiene capacidad operativa e intensificación de conflicto pese a diplomacia.",
+        "en": "Nearly 200 Ukrainian drones struck a refinery and shopping center southeast of Moscow in the largest attack on the capital since 2022. The strike occurs while Zelenskyy negotiates with Trump, signaling Ukraine's operational capability and conflict intensification despite diplomatic efforts."
       },
       "impact": "medium",
       "signals": [
-        "GBP ?",
-        "DEFENSE +",
-        "EQUITIES -",
-        "GOLD +"
+        "RUSSIAN ENERGY -",
+        "OIL VOLATILITY +",
+        "DEFENSE STOCKS ?",
+        "COMMODITIES +"
       ],
-      "confidence": 75,
+      "confidence": 78,
       "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/c20yzm84r7lo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-17",
-      "time": "2h"
+      "source_url": "https://www.bbc.com/news/articles/c98291g5rr1o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-18",
+      "time": "<1h"
     }
-  ],
-  "market_updated_at": "2026-06-18T10:00:30.100Z"
+  ]
 }
