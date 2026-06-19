@@ -3,9 +3,9 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1454",
-      "change": "-0.26%",
-      "up": false
+      "value": "1.1471",
+      "change": "0.17%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
@@ -16,26 +16,26 @@
     {
       "symbol": "BRENT crude",
       "value": "80.59",
-      "change": "+0.93%",
+      "change": "0.93%",
       "up": true
     },
     {
       "symbol": "WTI crude",
-      "value": "77.15",
-      "change": "+0.72%",
-      "up": true
+      "value": "76.51",
+      "change": "-1.14%",
+      "up": false
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4136.59",
-      "change": "-1.74%",
+      "value": "4151.27",
+      "change": "-1.38%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "62941.00",
-      "change": "+0.87%",
-      "up": true
+      "value": "64020.41",
+      "change": "-1.86%",
+      "up": false
     },
     {
       "symbol": "VIX",
@@ -45,14 +45,14 @@
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.45",
-      "change": "-0.02%",
-      "up": false
+      "value": "4.46%",
+      "change": "0.02%",
+      "up": true
     },
     {
       "symbol": "S&P 500",
       "value": "7500.58",
-      "change": "+1.08%",
+      "change": "1.08%",
       "up": true
     },
     {
@@ -63,15 +63,15 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8671",
-      "change": "+0.04%",
-      "up": true
+      "value": "0.8664",
+      "change": "-0.18%",
+      "up": false
     },
     {
       "symbol": "DXY dollar index",
-      "value": "100.81",
-      "change": "+0.72%",
-      "up": true
+      "value": "100.79",
+      "change": "-0.06%",
+      "up": false
     },
     {
       "symbol": "Natural Gas",
@@ -88,7 +88,7 @@
     {
       "symbol": "USD/CNY",
       "value": "6.7938",
-      "change": "+0.23%",
+      "change": "0.23%",
       "up": true
     }
   ],
@@ -244,5 +244,5 @@
       "time": "20h"
     }
   ],
-  "market_updated_at": "2026-06-19T19:21:03.747Z"
+  "market_updated_at": "2026-06-19T22:41:14.677Z"
 }
