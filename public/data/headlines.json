@@ -1,248 +1,156 @@
 {
-  "generated_at": "2026-06-18T10:15:45.923Z",
-  "market_ticker": [
-    {
-      "symbol": "EUR/USD",
-      "value": "1.1474",
-      "change": "-0.24%",
-      "up": false
-    },
-    {
-      "symbol": "IBEX 35",
-      "value": "18950",
-      "change": "0.06%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "79.95",
-      "change": "0.12%",
-      "up": true
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "76.80",
-      "change": "0.26%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4173.05",
-      "change": "-1.21%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "62716.01",
-      "change": "-2.67%",
-      "up": false
-    },
-    {
-      "symbol": "VIX",
-      "value": "16.40",
-      "change": "-11.06%",
-      "up": false
-    },
-    {
-      "symbol": "US 10Y yield",
-      "value": "4.49%",
-      "change": "+0.54%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7486.7",
-      "change": "+1.08%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24936.04",
-      "change": "-0.27%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8667",
-      "change": "+0.03%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "100.81",
-      "change": "+0.15%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.21",
-      "change": "-0.82%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.32",
-      "change": "-0.84%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7938",
-      "change": "+0.23%",
-      "up": true
-    }
-  ],
+  "generated_at": "2026-06-19T10:20:35.634Z",
+  "market_ticker": [],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Trump y Pezeshkian firman acuerdo para terminar la guerra con Irán y reapertura del Estrecho de Ormuz",
-        "en": "Trump, Pezeshkian sign deal to end Iran war, reopen Hormuz"
+        "es": "Conversaciones EE.UU.-Irán abruptamente canceladas tras intercambio de ataques mortales entre Israel y Hezbollah",
+        "en": "US-Iran talks abruptly called off after Israel and Hezbollah trade deadly attacks"
       },
       "summary": {
-        "es": "Trump e Irán firmaron un memorándum para extender el alto el fuego por 60 días y reapertura del Estrecho de Ormuz. Este acuerdo transforma el panorama geopolítico de Oriente Medio y tiene implicaciones directas en los precios del petróleo y la estabilidad comercial global.",
-        "en": "Trump and Iran signed a memorandum to extend the ceasefire for 60 days and reopen the Strait of Hormuz. This agreement transforms the Middle East geopolitical landscape with direct implications for oil prices and global trade stability."
+        "es": "Las negociaciones programadas entre EE.UU. e Irán en Suiza para implementar un acuerdo de paz fueron canceladas después de que Hezbollah matara a cuatro soldados israelíes. El colapso de las conversaciones de implementación amenaza directamente el acuerdo de cese del fuego firmado recientemente, con implicaciones significativas para la estabilidad de precios de energía y la volatilidad geopolítica en Oriente Medio.",
+        "en": "Talks scheduled between the US and Iran in Switzerland to implement a peace deal were cancelled after Hezbollah killed four Israeli soldiers. The collapse of implementation negotiations directly threatens the recently signed ceasefire agreement, with major implications for energy price stability and Middle East geopolitical volatility."
       },
       "impact": "high",
       "signals": [
-        "OIL -",
-        "EQUITIES +",
-        "USD +",
-        "EM RISK -"
+        "OIL +",
+        "BONDS -",
+        "EQUITIES ?",
+        "USD +"
       ],
       "confidence": 92,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/trump-pezeshkian-sign-deal-to-end-iran-war-reopen-hormuz/live-77596195?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-17",
-      "time": "10h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jun/19/us-iran-talks-in-switzerland-cancelled",
+      "published_at": "2026-06-19",
+      "time": "<1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Crisis en Oriente Medio en directo: Teherán dice que cobrará a los barcos en el Estrecho de Ormuz tras 60 días; presidentes de EE.UU. e Irán firman acuerdo de paz",
-        "en": "Middle East crisis live: Tehran says it will charge ships in strait of Hormuz after 60 days; US-Iran presidents sign peace deal"
+        "es": "Israel intensifica ataques en el Líbano en medio del conflicto con EE.UU. sobre el acuerdo con Irán",
+        "en": "Israel steps up attacks in Lebanon amid fallout with US over Iran deal"
       },
       "summary": {
-        "es": "Irán anuncia que el Estrecho de Ormuz 'no volverá a condiciones previas a la guerra' tras ventana de 60 días, con posibles peajes para buques. El acuerdo bilateral introduce incertidumbre sobre los términos finales y su impacto en el comercio marítimo global.",
-        "en": "Iran announces the Strait of Hormuz will 'not return to prewar conditions' after 60-day window, with possible tolls for ships. The bilateral deal introduces uncertainty over final terms and impact on global maritime commerce."
+        "es": "Israel realizó ataques aéreos intensificados en el sur del Líbano mientras Hezbollah reporta combates intensos, minando el acuerdo recién logrado entre EE.UU. e Irán. Esta escalada subraya la fragmentación geopolítica en Oriente Medio y el riesgo de que terceros socaven los acuerdos de paz, con consecuencias directas para la volatilidad de precios de petróleo y la exposición de inversores a la región.",
+        "en": "Israel conducted intensified air strikes in southern Lebanon while Hezbollah reports intense fighting, undermining the newly achieved US-Iran agreement. This escalation underscores geopolitical fragmentation in the Middle East and the risk of third parties undermining peace deals, with direct consequences for oil price volatility and investor exposure to the region."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "SHIPPING RATES +",
-        "GULF EQUITIES ?",
-        "GOLD +"
+        "GOLD +",
+        "EQUITIES -",
+        "EMERGING MKTS -"
       ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/jun/18/middle-east-crisis-live-us-iran-presidents-sign-peace-deal-mou-trump-tehran-strait-of-hormuz-toll-lebanon-israel",
-      "published_at": "2026-06-18",
+      "confidence": 90,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/israel-steps-up-attacks-in-lebanon-amid-fallout-with-us-over-iran-deal",
+      "published_at": "2026-06-19",
       "time": "<1h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "EU",
       "title": {
-        "es": "Los precios del petróleo caen y las acciones suben cuando EE.UU. e Irán firman acuerdo marco para terminar la guerra",
-        "en": "Oil prices fall, stocks rally as US, Iran sign framework to end war"
+        "es": "'Si Ucrania arde, tu Moscú arderá', advierte Zelenskyy tras ataques nocturnos en Rusia",
+        "en": "'If Ukraine burns, your Moscow will burn,' Zelenskyy warns after overnight strikes in Russia"
       },
       "summary": {
-        "es": "El crudo Brent cayó 2.3% y los índices bursátiles en Japón, Corea del Sur y Taiwan subieron tras el acuerdo EE.UU.-Irán. La reacción de mercados refleja alivio ante la reducción de riesgo geopolítico en la región con mayor relevancia para suministro energético global.",
-        "en": "Brent crude fell 2.3% while major indices in Japan, South Korea and Taiwan climbed following the US-Iran agreement. Market reaction reflects relief from reduced geopolitical risk in the region with highest relevance for global energy supply."
+        "es": "Zelenskyy escaló la retórica tras ataques con drones nocturnos contra la capital rusa, ampliando la campaña ucraniana para llevar el conflicto a territorio ruso. Esta intensificación de la estrategia de ataque profundo tiene implicaciones para la evaluación de riesgo de NATO por parte del Secretario Hegseth y subraya el alcance geográfico expansivo del conflicto, con repercusiones en la inversión defensiva europea y la estabilidad de precios de energía.",
+        "en": "Zelenskyy escalated rhetoric following overnight drone strikes against the Russian capital, expanding Ukraine's campaign to bring the conflict into Russian territory. This intensification of deep-strike strategy has implications for NATO risk assessment by Secretary Hegseth and underscores the expanding geographic scope of the conflict, with repercussions for European defense investment and energy price stability."
       },
       "impact": "high",
       "signals": [
-        "OIL -",
-        "EQUITIES +",
-        "VIX -",
-        "USD +"
+        "EUR -",
+        "DEFENSE STOCKS +",
+        "OIL +",
+        "BONDS +"
       ],
-      "confidence": 90,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/6/18/oil-prices-fall-stocks-rally-as-us-iran-sign-framework-to-end-war?traffic_source=rss",
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/jun/18/ukraine-russia-moscow-strikes-nato-defence-ministers-hegseth-rutte-latest-news-updates",
       "published_at": "2026-06-18",
-      "time": "6h"
+      "time": "18h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "G7 aplaude la unidad en Rusia mientras Trump señala una postura más dura hacia Moscú",
-        "en": "G7 hails unity on Russia as Trump signals tougher line on Moscow"
+        "es": "Estrecho de Ormuz: el ejército alemán se prepara para un posible despliegue",
+        "en": "Strait of Hormuz: German military prepares for possible deployment"
       },
       "summary": {
-        "es": "Los líderes del G7 celebraron la unidad para aumentar presión sobre Rusia sobre Ucrania, con Trump señalando una postura más enérgica. Esta afirmación contrasta con su historial de ambigüedad en políticas de Rusia y tiene implicaciones para sanciones, defensa europea e inversión en mercados emergentes vinculados a Rusia.",
-        "en": "G7 leaders welcomed growing unity to pressure Russia on Ukraine, with Trump signaling a tougher line. This stance contrasts with his historical ambiguity on Russia policy and affects sanctions, European defense spending, and investment in Russia-linked emerging markets."
+        "es": "Siguiendo el acuerdo tentativo con Irán, se planea reabrir el Estrecho de Ormuz y la Bundeswehr alemana se prepara para asistir en el desminado. El posible despliegue militar europeo en una zona crítica de chokepoint energético señala una nueva arquitectura de seguridad postacuerdo y tiene implicaciones directas para la estabilidad del flujo de petróleo y la exposición geopolítica alemana.",
+        "en": "Following the tentative agreement with Iran, the Strait of Hormuz is planned to reopen and the German Bundeswehr is preparing to assist with mine-clearing operations. The potential European military deployment in a critical energy chokepoint signals a new post-agreement security architecture and has direct implications for oil flow stability and German geopolitical exposure."
       },
       "impact": "high",
       "signals": [
-        "RUSSIAN ASSETS -",
-        "DEFENSE STOCKS +",
+        "OIL +",
         "EUR +",
-        "COMMODITIES ?"
+        "DEFENSE STOCKS +",
+        "SHIPPING +"
       ],
       "confidence": 85,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260618-g7-unity-russia-trump-tougher-line-moscow",
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/strait-of-hormuz-german-military-prepares-for-possible-deployment/a-77613999?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-06-18",
-      "time": "7h"
+      "time": "18h"
     },
     {
       "id": 5,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "EE.UU. dice a la OTAN que revisará su presencia militar en Europa",
-        "en": "US tells NATO it will review its force presence in Europe"
+        "es": "Ucrania golpea refinería de Moscú en ataque masivo con drones",
+        "en": "Ukraine Strikes Moscow Refinery in Large-Scale Drone Attack"
       },
       "summary": {
-        "es": "El Secretario de Defensa estadounidense anunció que el Pentágono revisará su presencia militar en Europa en seis meses, condicionado al esfuerzo de aliados europeos. Esta revisión introduce riesgo geopolítico para la defensa europea y podría acelerar gastos de defensa independiente en EU, con implicaciones para políticas fiscales y presupuestarias.",
-        "en": "US Defense Secretary announced Pentagon will review its force presence in Europe within six months, contingent on European allies' defense spending efforts. This review creates geopolitical risk for European security and may accelerate independent EU defense spending with fiscal/budgetary implications."
+        "es": "Un ataque con drones a gran escala cerró los aeropuertos de Moscú durante varias horas y forma parte de una campaña cada vez más agresiva de Ucrania para llevar el conflicto al territorio ruso. El objetivo de infraestructura energética crítica subraya la estrategia de degradación económica y tiene implicaciones para la volatilidad de precios de petróleo, disrupciones logísticas y la evaluación de riesgo de la cadena de suministro global.",
+        "en": "A large-scale drone attack shut down Moscow's airports for several hours and is part of an increasingly aggressive Ukrainian campaign to bring the conflict into Russian territory. The targeting of critical energy infrastructure underscores an economic degradation strategy and has implications for oil price volatility, logistical disruptions, and global supply chain risk assessment."
       },
       "impact": "high",
       "signals": [
-        "DEFENSE STOCKS +",
-        "EUR VOLATILITY +",
-        "GERMAN BUNDS -",
-        "NATO EQUITIES +"
+        "OIL +",
+        "EQUITIES -",
+        "EUR +",
+        "GOLD +"
       ],
-      "confidence": 82,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/us-tells-nato-it-will-review-its-force-presence-in-europe",
-      "published_at": "2026-06-18",
-      "time": "<1h"
+      "confidence": 87,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/18/world/europe/moscow-ukraine-drone-attack-fire.html",
+      "published_at": "2026-06-19",
+      "time": "9h"
     },
     {
       "id": 6,
       "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "Moscú es golpeada por el mayor ataque ucraniano desde el inicio de la guerra a escala completa de Rusia",
-        "en": "Moscow hit by largest Ukrainian attack since start of Russia's full-scale war"
+        "es": "Hegseth critica a aliados de la OTAN por respuesta 'vergonzosa' a la guerra de EE.UU. en Irán",
+        "en": "Hegseth Berates NATO Allies for 'Shameful' Response to U.S. War in Iran"
       },
       "summary": {
-        "es": "Casi 200 drones ucranianos golpearon una refinería y centro comercial en el sureste de Moscú en el mayor ataque a la capital desde 2022. El ataque ocurre mientras Zelenskyy negocia con Trump, señalando que Ukraine mantiene capacidad operativa e intensificación de conflicto pese a diplomacia.",
-        "en": "Nearly 200 Ukrainian drones struck a refinery and shopping center southeast of Moscow in the largest attack on the capital since 2022. The strike occurs while Zelenskyy negotiates with Trump, signaling Ukraine's operational capability and conflict intensification despite diplomatic efforts."
+        "es": "El Secretario de Defensa Pete Hegseth utilizó una reunión de ministros de defensa de la OTAN para continuar las críticas agudas de la administración Trump a las políticas militares europeas. Esta fractura transatlántica sobre compromiso de defensa tiene implicaciones para la cohesión de la OTAN, las decisiones de gasto de defensa europea y la dinámica de alianza en contexto de conflictos múltiples (Ucrania, Irán).",
+        "en": "Defense Secretary Pete Hegseth used a NATO defense ministers meeting to continue the Trump administration's sharp criticism of European military policies. This transatlantic fracture over defense commitment has implications for NATO cohesion, European defense spending decisions, and alliance dynamics amid multiple conflicts (Ukraine, Iran)."
       },
       "impact": "medium",
       "signals": [
-        "RUSSIAN ENERGY -",
-        "OIL VOLATILITY +",
+        "EUR -",
         "DEFENSE STOCKS ?",
-        "COMMODITIES +"
+        "BONDS +",
+        "USD +"
       ],
-      "confidence": 78,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/c98291g5rr1o?at_medium=RSS&at_campaign=rss",
+      "confidence": 80,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/18/world/middleeast/hegseth-nato-us-iran-war-trump.html",
       "published_at": "2026-06-18",
-      "time": "<1h"
+      "time": "20h"
     }
-  ],
-  "market_updated_at": "2026-06-19T10:07:20.438Z"
+  ]
 }
