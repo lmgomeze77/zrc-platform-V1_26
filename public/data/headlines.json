@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-06-19T10:20:35.634Z",
+  "generated_at": "2026-06-20T08:49:43.425Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1477",
-      "change": "0.17%",
+      "value": "1.1458",
+      "change": "+0.0001",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19347.40",
-      "change": "-0.29%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "80.38",
-      "change": "-0.86%",
-      "up": false
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "76.51",
-      "change": "-0.12%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4155.26",
-      "change": "-1.25%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "63675.74",
-      "change": "1.56%",
+      "value": "17809",
+      "change": "+155",
       "up": true
+    },
+    {
+      "symbol": "BRENT",
+      "value": "80.38",
+      "change": "+0.53",
+      "up": true
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4169.80",
+      "change": "-76.10",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "62471.16",
+      "change": "-1784.67",
+      "up": false
     },
     {
       "symbol": "VIX",
       "value": "16.78",
-      "change": "2.32%",
+      "change": "+0.38",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.455%",
-      "change": "-0.25%",
+      "symbol": "US 10Y",
+      "value": "4.488",
+      "change": "+0.025",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8556",
+      "change": "-0.0012",
       "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7500.58",
-      "change": "1.08%",
+      "change": "+80.48",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25026.00",
-      "change": "-0.20%",
+      "value": "24985.82",
+      "change": "-89.51",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8667",
-      "change": "-0.12%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "100.76",
-      "change": "0.02%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.210",
-      "change": "-0.71%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.32",
-      "change": "-0.84%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7693",
-      "change": "0.00%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Conversaciones EE.UU.-Irán abruptamente canceladas tras intercambio de ataques mortales entre Israel y Hezbollah",
-        "en": "US-Iran talks abruptly called off after Israel and Hezbollah trade deadly attacks"
+        "es": "Líbano emerge como eslabón débil en el acuerdo entre EE.UU. e Irán para terminar la guerra",
+        "en": "Lebanon Emerges as Weak Link in U.S.-Iran Deal to End War"
       },
       "summary": {
-        "es": "Las negociaciones programadas entre EE.UU. e Irán en Suiza para implementar un acuerdo de paz fueron canceladas después de que Hezbollah matara a cuatro soldados israelíes. El colapso de las conversaciones de implementación amenaza directamente el acuerdo de cese del fuego firmado recientemente, con implicaciones significativas para la estabilidad de precios de energía y la volatilidad geopolítica en Oriente Medio.",
-        "en": "Talks scheduled between the US and Iran in Switzerland to implement a peace deal were cancelled after Hezbollah killed four Israeli soldiers. The collapse of implementation negotiations directly threatens the recently signed ceasefire agreement, with major implications for energy price stability and Middle East geopolitical volatility."
+        "es": "El conflicto entre Israel y Hezbollah se ha convertido en un obstáculo principal para implementar el acuerdo de paz entre EE.UU. e Irán, amenazando la resolución de la guerra más amplia en Oriente Medio. Los incumplimientos del alto el fuego y la reanudación de ataques han causado el aplazamiento de negociaciones diplomáticas cruciales, creando riesgo de escalada sistémica.",
+        "en": "The Israel-Hezbollah conflict has become a primary obstacle to implementing the broader US-Iran peace deal, threatening resolution of the wider Middle East war. Ceasefire violations and renewed attacks have disrupted critical diplomatic negotiations, creating systemic escalation risk."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "BONDS -",
-        "EQUITIES ?",
-        "USD +"
+        "USD +",
+        "EQUITIES -",
+        "GOLD +"
       ],
       "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/19/us-iran-talks-in-switzerland-cancelled",
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/19/world/middleeast/lebanon-us-iran-deal-ceasefire.html",
       "published_at": "2026-06-19",
-      "time": "<1h"
+      "time": "10h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Israel intensifica ataques en el Líbano en medio del conflicto con EE.UU. sobre el acuerdo con Irán",
-        "en": "Israel steps up attacks in Lebanon amid fallout with US over Iran deal"
+        "es": "Irán presiona a EE.UU. sobre el alto el fuego en Líbano",
+        "en": "Iran war day 113: Tehran presses US over Lebanon ceasefire"
       },
       "summary": {
-        "es": "Israel realizó ataques aéreos intensificados en el sur del Líbano mientras Hezbollah reporta combates intensos, minando el acuerdo recién logrado entre EE.UU. e Irán. Esta escalada subraya la fragmentación geopolítica en Oriente Medio y el riesgo de que terceros socaven los acuerdos de paz, con consecuencias directas para la volatilidad de precios de petróleo y la exposición de inversores a la región.",
-        "en": "Israel conducted intensified air strikes in southern Lebanon while Hezbollah reports intense fighting, undermining the newly achieved US-Iran agreement. This escalation underscores geopolitical fragmentation in the Middle East and the risk of third parties undermining peace deals, with direct consequences for oil price volatility and investor exposure to the region."
+        "es": "Irán cuestiona el cumplimiento de EE.UU. en la implementación del acuerdo de paz mientras los ataques israelíes continúan socavando la frágil tregua en Líbano. Este punto de fricción bilateral amenaza con descarrilar las negociaciones más amplias y crear presión de represalia de Irán.",
+        "en": "Iran challenges US commitment to implementing the peace deal as Israeli strikes continue undermining the fragile Lebanon ceasefire. This bilateral friction point threatens to derail broader negotiations and create Iranian retaliation pressure."
       },
       "impact": "high",
       "signals": [
         "OIL +",
+        "EUR -",
         "GOLD +",
-        "EQUITIES -",
-        "EMERGING MKTS -"
+        "BONDS -"
       ],
       "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/israel-steps-up-attacks-in-lebanon-amid-fallout-with-us-over-iran-deal",
-      "published_at": "2026-06-19",
-      "time": "<1h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jun/19/israel-hezbollah-renew-ceasefire-lebanon-us-iran-agreement",
+      "published_at": "2026-06-20",
+      "time": "3h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
-      "region": "EU",
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "es": "'Si Ucrania arde, tu Moscú arderá', advierte Zelenskyy tras ataques nocturnos en Rusia",
-        "en": "'If Ukraine burns, your Moscow will burn,' Zelenskyy warns after overnight strikes in Russia"
+        "es": "Conversaciones EE.UU.-Irán abruptamente canceladas después de que Israel y Hezbollah intercambien ataques mortales",
+        "en": "US-Iran talks abruptly called off after Israel and Hezbollah trade deadly attacks"
       },
       "summary": {
-        "es": "Zelenskyy escaló la retórica tras ataques con drones nocturnos contra la capital rusa, ampliando la campaña ucraniana para llevar el conflicto a territorio ruso. Esta intensificación de la estrategia de ataque profundo tiene implicaciones para la evaluación de riesgo de NATO por parte del Secretario Hegseth y subraya el alcance geográfico expansivo del conflicto, con repercusiones en la inversión defensiva europea y la estabilidad de precios de energía.",
-        "en": "Zelenskyy escalated rhetoric following overnight drone strikes against the Russian capital, expanding Ukraine's campaign to bring the conflict into Russian territory. This intensification of deep-strike strategy has implications for NATO risk assessment by Secretary Hegseth and underscores the expanding geographic scope of the conflict, with repercussions for European defense investment and energy price stability."
+        "es": "Las negociaciones diplomáticas de alto nivel dirigidas por el Vicepresidente JD Vance en Suiza fueron canceladas repentinamente tras escalada de violencia en Líbano. Esta interrupción del proceso de paz indica ruptura inmediata en la implementación del acuerdo y riesgo de regresión a conflicto abierto.",
+        "en": "High-level diplomatic negotiations led by VP JD Vance in Switzerland were abruptly cancelled following violence escalation in Lebanon. This peace process disruption signals immediate implementation breakdown and reversion-to-conflict risk."
       },
       "impact": "high",
       "signals": [
-        "EUR -",
-        "DEFENSE STOCKS +",
         "OIL +",
-        "BONDS +"
+        "USD +",
+        "EQUITIES -",
+        "GOLD +"
       ],
-      "confidence": 88,
+      "confidence": 94,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/jun/18/ukraine-russia-moscow-strikes-nato-defence-ministers-hegseth-rutte-latest-news-updates",
-      "published_at": "2026-06-18",
-      "time": "18h"
+      "source_url": "https://www.theguardian.com/world/2026/jun/19/us-iran-talks-in-switzerland-cancelled",
+      "published_at": "2026-06-19",
+      "time": "23h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Estrecho de Ormuz: el ejército alemán se prepara para un posible despliegue",
-        "en": "Strait of Hormuz: German military prepares for possible deployment"
+        "es": "Un ingrediente faltante en los ataques de Ucrania a Rusia: misiles balísticos",
+        "en": "A Missing Ingredient in Ukraine's Barrages on Russia: Ballistic Missiles"
       },
       "summary": {
-        "es": "Siguiendo el acuerdo tentativo con Irán, se planea reabrir el Estrecho de Ormuz y la Bundeswehr alemana se prepara para asistir en el desminado. El posible despliegue militar europeo en una zona crítica de chokepoint energético señala una nueva arquitectura de seguridad postacuerdo y tiene implicaciones directas para la estabilidad del flujo de petróleo y la exposición geopolítica alemana.",
-        "en": "Following the tentative agreement with Iran, the Strait of Hormuz is planned to reopen and the German Bundeswehr is preparing to assist with mine-clearing operations. The potential European military deployment in a critical energy chokepoint signals a new post-agreement security architecture and has direct implications for oil flow stability and German geopolitical exposure."
+        "es": "Expertos militares advierten que los ataques con drones ucranianos, aunque han logrado avances tácticos, requieren misiles balísticos para forzar a Rusia a reconsiderar sus objetivos de guerra estratégicos. Esta brecha de capacidades tiene implicaciones para la duración del conflicto y la seguridad de la OTAN.",
+        "en": "Military experts warn that Ukrainian drone attacks, while achieving tactical breakthroughs, require ballistic missiles to force Russia to reconsider strategic war objectives. This capability gap has implications for conflict duration and NATO security."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "EUR +",
-        "DEFENSE STOCKS +",
-        "SHIPPING +"
+        "EQUITIES -",
+        "EUR -",
+        "GOLD +",
+        "DEFENSE STOCKS +"
       ],
       "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/strait-of-hormuz-german-military-prepares-for-possible-deployment/a-77613999?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-18",
-      "time": "18h"
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/19/world/europe/ukraine-drone-attacks-ballistic-missiles.html",
+      "published_at": "2026-06-19",
+      "time": "19h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Ucrania golpea refinería de Moscú en ataque masivo con drones",
-        "en": "Ukraine Strikes Moscow Refinery in Large-Scale Drone Attack"
+        "es": "Israel y Hezbollah acuerdan alto el fuego, dice EE.UU., mientras se reportan más ataques en Líbano",
+        "en": "Israel and Hezbollah agree ceasefire, US says, as more Lebanon strikes reported"
       },
       "summary": {
-        "es": "Un ataque con drones a gran escala cerró los aeropuertos de Moscú durante varias horas y forma parte de una campaña cada vez más agresiva de Ucrania para llevar el conflicto al territorio ruso. El objetivo de infraestructura energética crítica subraya la estrategia de degradación económica y tiene implicaciones para la volatilidad de precios de petróleo, disrupciones logísticas y la evaluación de riesgo de la cadena de suministro global.",
-        "en": "A large-scale drone attack shut down Moscow's airports for several hours and is part of an increasingly aggressive Ukrainian campaign to bring the conflict into Russian territory. The targeting of critical energy infrastructure underscores an economic degradation strategy and has implications for oil price volatility, logistical disruptions, and global supply chain risk assessment."
+        "es": "Un acuerdo de alto el fuego fue anunciado entre Israel y Hezbollah tras preocupaciones de que la escalada continuada socavaría el acuerdo para terminar la guerra entre EE.UU. e Irán. Sin embargo, reportes simultáneos de ataques israelíes adicionales sugieren que la tregua es frágil y susceptible al incumplimiento inmediato.",
+        "en": "A ceasefire agreement was announced between Israel and Hezbollah following concerns that continued escalation would undermine the US-Iran war-ending accord. However, simultaneous reports of additional Israeli strikes suggest the truce is fragile and subject to immediate breach."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "EQUITIES -",
-        "EUR +",
+        "OIL ?",
+        "USD +",
+        "EQUITIES ?",
         "GOLD +"
       ],
-      "confidence": 87,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/18/world/europe/moscow-ukraine-drone-attack-fire.html",
+      "confidence": 88,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.com/news/articles/cwyk7kkygj5o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-06-19",
-      "time": "9h"
+      "time": "13h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "GLOBAL",
       "title": {
-        "es": "Hegseth critica a aliados de la OTAN por respuesta 'vergonzosa' a la guerra de EE.UU. en Irán",
-        "en": "Hegseth Berates NATO Allies for 'Shameful' Response to U.S. War in Iran"
+        "es": "Cinco formas en que el acuerdo de paz con Irán podría afectarte a ti y tu dinero",
+        "en": "Five ways the Iran peace deal could affect you and your money"
       },
       "summary": {
-        "es": "El Secretario de Defensa Pete Hegseth utilizó una reunión de ministros de defensa de la OTAN para continuar las críticas agudas de la administración Trump a las políticas militares europeas. Esta fractura transatlántica sobre compromiso de defensa tiene implicaciones para la cohesión de la OTAN, las decisiones de gasto de defensa europea y la dinámica de alianza en contexto de conflictos múltiples (Ucrania, Irán).",
-        "en": "Defense Secretary Pete Hegseth used a NATO defense ministers meeting to continue the Trump administration's sharp criticism of European military policies. This transatlantic fracture over defense commitment has implications for NATO cohesion, European defense spending decisions, and alliance dynamics amid multiple conflicts (Ukraine, Iran)."
+        "es": "Los precios del combustible y gas han caído en días recientes como resultado de la reducción de tensiones geopolíticas por el acuerdo de paz con Irán. Este efecto de alivio de riesgo tiene implicaciones inflacionarias potencialmente globales, aunque la fragilidad del acuerdo presiona en sentido contrario.",
+        "en": "Fuel and gas prices have fallen in recent days as a result of reduced geopolitical tensions from the Iran peace deal. This risk-relief effect has potentially global inflation implications, though deal fragility creates countervailing pressure."
       },
       "impact": "medium",
       "signals": [
-        "EUR -",
-        "DEFENSE STOCKS ?",
-        "BONDS +",
-        "USD +"
+        "OIL -",
+        "COMMODITIES -",
+        "INFLATION ?",
+        "EQUITIES +"
       ],
-      "confidence": 80,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/18/world/middleeast/hegseth-nato-us-iran-war-trump.html",
-      "published_at": "2026-06-18",
-      "time": "20h"
+      "confidence": 78,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.com/news/articles/c4g5574pwreo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-19",
+      "time": "23h"
     }
-  ],
-  "market_updated_at": "2026-06-20T08:36:47.328Z"
+  ]
 }
