@@ -4,19 +4,19 @@
     {
       "symbol": "EUR/USD",
       "value": "1.1469",
-      "change": "-1.21%",
-      "up": false
+      "change": "0.10%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19404.70",
-      "change": "-0.16%",
+      "value": "18265.30",
+      "change": "-0.50%",
       "up": false
     },
     {
       "symbol": "BRENT crude",
-      "value": "80.38",
-      "change": "+0.66%",
+      "value": "80.57",
+      "change": "+0.90%",
       "up": true
     },
     {
@@ -27,14 +27,14 @@
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4160.26",
-      "change": "-1.16%",
+      "value": "4155.41",
+      "change": "-1.28%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
       "value": "63675.74",
-      "change": "+1.56%",
+      "change": "+1.59%",
       "up": true
     },
     {
@@ -45,9 +45,9 @@
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.455%",
-      "change": "+0.09%",
-      "up": true
+      "value": "4.45%",
+      "change": "-0.01%",
+      "up": false
     },
     {
       "symbol": "S&P 500",
@@ -63,32 +63,32 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8667",
-      "change": "-0.12%",
+      "value": "0.8665",
+      "change": "-0.09%",
       "up": false
     },
     {
       "symbol": "DXY dollar index",
-      "value": "99.28",
-      "change": "+0.35%",
-      "up": true
+      "value": "100.79",
+      "change": "-0.06%",
+      "up": false
     },
     {
       "symbol": "Natural Gas",
-      "value": "3.210",
-      "change": "-0.71%",
+      "value": "3.197",
+      "change": "-1.11%",
       "up": false
     },
     {
       "symbol": "Copper",
-      "value": "6.30",
-      "change": "-3.08%",
+      "value": "6.337",
+      "change": "-0.76%",
       "up": false
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7693",
-      "change": "+0.01%",
+      "value": "6.7784",
+      "change": "+0.08%",
       "up": true
     }
   ],
@@ -244,5 +244,5 @@
       "time": "23h"
     }
   ],
-  "market_updated_at": "2026-06-20T19:04:45.183Z"
+  "market_updated_at": "2026-06-20T22:55:05.464Z"
 }
