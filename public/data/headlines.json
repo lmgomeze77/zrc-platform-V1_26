@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-06-20T08:49:43.425Z",
+  "generated_at": "2026-06-21T09:43:40.874Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1471",
-      "change": "+0.12%",
+      "value": "1.1468",
+      "change": "+0.01",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19347.40",
-      "change": "-0.29%",
+      "value": "19404.10",
+      "change": "-0.29",
       "up": false
     },
     {
-      "symbol": "BRENT crude",
+      "symbol": "BRENT",
       "value": "80.57",
-      "change": "+0.93%",
+      "change": "+0.90",
       "up": true
     },
     {
-      "symbol": "WTI crude",
-      "value": "76.51",
-      "change": "-0.12%",
+      "symbol": "GOLD",
+      "value": "4172.90",
+      "change": "-1.72",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4160.26",
-      "change": "-1.16%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "64224.00",
-      "change": "+0.85%",
+      "symbol": "BTC",
+      "value": "64227.43",
+      "change": "+0.84",
       "up": true
     },
     {
       "symbol": "VIX",
       "value": "16.78",
-      "change": "+2.32%",
+      "change": "+2.32",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.455%",
-      "change": "+0.00%",
+      "symbol": "US 10Y",
+      "value": "4.488",
+      "change": "+0.56",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8671",
+      "change": "-0.07",
       "up": false
     },
     {
       "symbol": "S&P 500",
       "value": "7500.58",
-      "change": "+1.08%",
+      "change": "+1.08",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24985.82",
-      "change": "-0.16%",
+      "value": "25025.21",
+      "change": "-0.01",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8667",
-      "change": "-0.12%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "100.85",
-      "change": "+0.00%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.197",
-      "change": "-1.11%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.30",
-      "change": "-3.08%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7693",
-      "change": "+0.01%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Líbano emerge como eslabón débil en el acuerdo entre EE.UU. e Irán para terminar la guerra",
-        "en": "Lebanon Emerges as Weak Link in U.S.-Iran Deal to End War"
+        "es": "Conversaciones de paz entre EE.UU. e Irán comienzan tras cierre del Estrecho de Ormuz por Teherán",
+        "en": "US-Iran peace talks to begin, after Tehran closed Strait of Hormuz"
       },
       "summary": {
-        "es": "El conflicto entre Israel y Hezbollah se ha convertido en un obstáculo principal para implementar el acuerdo de paz entre EE.UU. e Irán, amenazando la resolución de la guerra más amplia en Oriente Medio. Los incumplimientos del alto el fuego y la reanudación de ataques han causado el aplazamiento de negociaciones diplomáticas cruciales, creando riesgo de escalada sistémica.",
-        "en": "The Israel-Hezbollah conflict has become a primary obstacle to implementing the broader US-Iran peace deal, threatening resolution of the wider Middle East war. Ceasefire violations and renewed attacks have disrupted critical diplomatic negotiations, creating systemic escalation risk."
+        "es": "Irán ha cerrado el Estrecho de Ormuz en respuesta a ataques israelíes en Líbano, mientras delegaciones llegan a Suiza para negociaciones de paz. El cierre amenaza una ruta crítica de suministro global de petróleo (aproximadamente el 20-30% del comercio mundial de crudo) durante negociaciones diplomáticas de alto nivel con el VP estadounidense JD Vance.",
+        "en": "Iran has closed the Strait of Hormuz in response to Israeli strikes in Lebanon while delegations arrive in Switzerland for peace negotiations. The closure threatens a critical global oil supply route representing approximately 20-30% of global crude trade during high-level diplomatic talks with US VP JD Vance."
       },
       "impact": "high",
       "signals": [
@@ -113,136 +83,132 @@
         "GOLD +"
       ],
       "confidence": 92,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/19/world/middleeast/lebanon-us-iran-deal-ceasefire.html",
-      "published_at": "2026-06-19",
-      "time": "10h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/us-iran-peace-talks-to-begin-after-tehran-closed-strait-of-hormuz",
+      "published_at": "2026-06-21",
+      "time": "<1h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "Irán presiona a EE.UU. sobre el alto el fuego en Líbano",
-        "en": "Iran war day 113: Tehran presses US over Lebanon ceasefire"
+        "es": "Ucrania golpea Crimea en ataque de drones con consecuencias letales",
+        "en": "Ukraine hits Russia-controlled Crimea in deadly drone attack"
       },
       "summary": {
-        "es": "Irán cuestiona el cumplimiento de EE.UU. en la implementación del acuerdo de paz mientras los ataques israelíes continúan socavando la frágil tregua en Líbano. Este punto de fricción bilateral amenaza con descarrilar las negociaciones más amplias y crear presión de represalia de Irán.",
-        "en": "Iran challenges US commitment to implementing the peace deal as Israeli strikes continue undermining the fragile Lebanon ceasefire. This bilateral friction point threatens to derail broader negotiations and create Iranian retaliation pressure."
+        "es": "Ucrania realizó un ataque aéreo exitoso contra un depósito importante en Crimea controlada por Rusia, causando incendios significativos. Las autoridades rusas han suspendido las ventas públicas de combustible en la región, señalando impacto operacional en la logística de la ocupación.",
+        "en": "Ukraine conducted a successful aerial attack against a major depot in Russian-controlled Crimea, causing significant fires. Russian authorities have halted public fuel sales in the region, signaling operational impact on occupation logistics."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "EUR -",
-        "GOLD +",
-        "BONDS -"
+        "ENERGY EU +",
+        "RUB -",
+        "EQUITIES ?"
       ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/19/israel-hezbollah-renew-ceasefire-lebanon-us-iran-agreement",
-      "published_at": "2026-06-20",
-      "time": "3h"
+      "confidence": 78,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ukraine-hits-russia-controlled-crimea-in-deadly-drone-attack/a-77642973?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-21",
+      "time": "<1h"
     },
     {
       "id": 3,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Conversaciones EE.UU.-Irán abruptamente canceladas después de que Israel y Hezbollah intercambien ataques mortales",
-        "en": "US-Iran talks abruptly called off after Israel and Hezbollah trade deadly attacks"
+        "es": "Ronda de conversaciones entre EE.UU. e Irán en Suiza: conflicto en Líbano amenaza acuerdos sobre Ormuz",
+        "en": "Mideast Live Updates: New Round of U.S.-Iran Talks Set to Start in Switzerland"
       },
       "summary": {
-        "es": "Las negociaciones diplomáticas de alto nivel dirigidas por el Vicepresidente JD Vance en Suiza fueron canceladas repentinamente tras escalada de violencia en Líbano. Esta interrupción del proceso de paz indica ruptura inmediata en la implementación del acuerdo y riesgo de regresión a conflicto abierto.",
-        "en": "High-level diplomatic negotiations led by VP JD Vance in Switzerland were abruptly cancelled following violence escalation in Lebanon. This peace process disruption signals immediate implementation breakdown and reversion-to-conflict risk."
+        "es": "VP JD Vance participa en negociaciones con representantes iranís mientras el conflicto en Líbano amenaza tanto el acuerdo diplomático como la reapertura del Estrecho de Ormuz. La escalada israelí en Líbano y la respuesta iraní crean riesgo de fracaso negociador y prolongación del bloqueo energético.",
+        "en": "VP JD Vance participates in negotiations with Iranian representatives while the Lebanon conflict threatens both the diplomatic agreement and Strait of Hormuz reopening. Israeli escalation in Lebanon and Iranian response create risk of negotiation failure and prolonged energy blockade."
       },
       "impact": "high",
       "signals": [
         "OIL +",
+        "GEOPOLITICAL RISK +",
         "USD +",
-        "EQUITIES -",
-        "GOLD +"
+        "EM -"
       ],
-      "confidence": 94,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/19/us-iran-talks-in-switzerland-cancelled",
-      "published_at": "2026-06-19",
-      "time": "23h"
+      "confidence": 90,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/live/2026/06/21/world/iran-us-trump-lebanon",
+      "published_at": "2026-06-21",
+      "time": "<1h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
+      "tag": "WATCH",
+      "region": "APAC",
       "title": {
-        "es": "Un ingrediente faltante en los ataques de Ucrania a Rusia: misiles balísticos",
-        "en": "A Missing Ingredient in Ukraine's Barrages on Russia: Ballistic Missiles"
+        "es": "Mientras el mundo busca petróleo, China mantiene tanques llenos",
+        "en": "While the World Scrambles for Oil, China Sits on Full Tanks"
       },
       "summary": {
-        "es": "Expertos militares advierten que los ataques con drones ucranianos, aunque han logrado avances tácticos, requieren misiles balísticos para forzar a Rusia a reconsiderar sus objetivos de guerra estratégicos. Esta brecha de capacidades tiene implicaciones para la duración del conflicto y la seguridad de la OTAN.",
-        "en": "Military experts warn that Ukrainian drone attacks, while achieving tactical breakthroughs, require ballistic missiles to force Russia to reconsider strategic war objectives. This capability gap has implications for conflict duration and NATO security."
+        "es": "China ha acumulado reservas estratégicas significativas de petróleo y es probable que no aumente rápidamente sus compras del Golfo Pérsico incluso si el Estrecho de Ormuz se reabre. Esta postura reduce la demanda potencial que podría aliviar presiones de precios globales en caso de resolución de crisis.",
+        "en": "China has accumulated significant strategic oil reserves and is unlikely to quickly increase Gulf purchases even if the Strait of Hormuz reopens. This positioning reduces potential demand that could ease global price pressures in event of crisis resolution."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "EQUITIES -",
-        "EUR -",
-        "GOLD +",
-        "DEFENSE STOCKS +"
+        "OIL ?",
+        "COMMODITIES ?",
+        "CHINA GEOPOLITICAL +"
       ],
-      "confidence": 85,
+      "confidence": 75,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/19/world/europe/ukraine-drone-attacks-ballistic-missiles.html",
-      "published_at": "2026-06-19",
-      "time": "19h"
+      "source_url": "https://www.nytimes.com/2026/06/21/business/china-oil-iran.html",
+      "published_at": "2026-06-21",
+      "time": "<1h"
     },
     {
       "id": 5,
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Israel y Hezbollah acuerdan alto el fuego, dice EE.UU., mientras se reportan más ataques en Líbano",
-        "en": "Israel and Hezbollah agree ceasefire, US says, as more Lebanon strikes reported"
+        "es": "La guerra agrieta la relación estratégica de los países del Golfo con Estados Unidos",
+        "en": "War fractures strategic relationship between Gulf countries and United States"
       },
       "summary": {
-        "es": "Un acuerdo de alto el fuego fue anunciado entre Israel y Hezbollah tras preocupaciones de que la escalada continuada socavaría el acuerdo para terminar la guerra entre EE.UU. e Irán. Sin embargo, reportes simultáneos de ataques israelíes adicionales sugieren que la tregua es frágil y susceptible al incumplimiento inmediato.",
-        "en": "A ceasefire agreement was announced between Israel and Hezbollah following concerns that continued escalation would undermine the US-Iran war-ending accord. However, simultaneous reports of additional Israeli strikes suggest the truce is fragile and subject to immediate breach."
+        "es": "La escalada militar en Oriente Próximo ha erosionado la alianza EE.UU.-Golfo, con bases militares estadounidenses ahora viéndose como objetivos en lugar de protección. El cierre de Ormuz fuerza a los Estados del Golfo a buscar rutas alternativas para exportar petróleo, indicando realineamiento geopolítico.",
+        "en": "Military escalation in Middle East has eroded US-Gulf alliance, with US military bases now viewed as targets rather than protection. Hormuz closure forces Gulf states to seek alternative export routes, signaling geopolitical realignment."
       },
       "impact": "high",
       "signals": [
-        "OIL ?",
-        "USD +",
-        "EQUITIES ?",
-        "GOLD +"
+        "USD -",
+        "GEOPOLITICAL RISK +",
+        "OIL +",
+        "EM +"
       ],
-      "confidence": 88,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.com/news/articles/cwyk7kkygj5o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-19",
-      "time": "13h"
+      "confidence": 85,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-06-21/la-guerra-agrieta-la-relacion-estrategica-de-los-paises-del-golfo-con-estados-unidos.html",
+      "published_at": "2026-06-21",
+      "time": "6h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "GLOBAL",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "Cinco formas en que el acuerdo de paz con Irán podría afectarte a ti y tu dinero",
-        "en": "Five ways the Iran peace deal could affect you and your money"
+        "es": "Conversaciones EE.UU.-Irán en Suiza: ¿es Líbano el tema principal; quiénes asisten?",
+        "en": "US-Iran talks in Switzerland: Is Lebanon top of agenda; who is attending?"
       },
       "summary": {
-        "es": "Los precios del combustible y gas han caído en días recientes como resultado de la reducción de tensiones geopolíticas por el acuerdo de paz con Irán. Este efecto de alivio de riesgo tiene implicaciones inflacionarias potencialmente globales, aunque la fragilidad del acuerdo presiona en sentido contrario.",
-        "en": "Fuel and gas prices have fallen in recent days as a result of reduced geopolitical tensions from the Iran peace deal. This risk-relief effect has potentially global inflation implications, though deal fragility creates countervailing pressure."
+        "es": "Irán enfatiza que las conversaciones deben resultar en presión estadounidense sobre Israel para detener la guerra en Líbano, que ha sufrido nuevos ataques. El Líbano se ha convertido en el tema central de negociación, con implicaciones para la estabilidad regional y acceso a energía.",
+        "en": "Iran emphasizes talks must result in US pressure on Israel to halt Lebanon war, which has suffered renewed attacks. Lebanon has become central negotiation topic, with implications for regional stability and energy access."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "OIL -",
-        "COMMODITIES -",
-        "INFLATION ?",
-        "EQUITIES +"
+        "OIL +",
+        "EM -",
+        "GEOPOLITICAL RISK +"
       ],
-      "confidence": 78,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.com/news/articles/c4g5574pwreo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-19",
-      "time": "23h"
+      "confidence": 88,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/6/21/us-iran-talks-in-switzerland-is-lebanon-top-of-agenda-who-is-attending?traffic_source=rss",
+      "published_at": "2026-06-21",
+      "time": "<1h"
     }
-  ],
-  "market_updated_at": "2026-06-21T09:31:29.153Z"
+  ]
 }
