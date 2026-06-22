@@ -1,245 +1,156 @@
 {
-  "generated_at": "2026-06-21T09:43:40.874Z",
-  "market_ticker": [
-    {
-      "symbol": "EUR/USD",
-      "value": "1.1462",
-      "change": "-0.07%",
-      "up": false
-    },
-    {
-      "symbol": "IBEX 35",
-      "value": "19347.40",
-      "change": "-0.29%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "78.41",
-      "change": "-2.10%",
-      "up": false
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "77.54",
-      "change": "+0.27%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4188.42",
-      "change": "+0.68%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "64196.82",
-      "change": "-0.14%",
-      "up": false
-    },
-    {
-      "symbol": "VIX",
-      "value": "16.78",
-      "change": "+2.32%",
-      "up": true
-    },
-    {
-      "symbol": "US 10Y yield",
-      "value": "4.455",
-      "change": "-0.18%",
-      "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7500.58",
-      "change": "+1.08%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24985.82",
-      "change": "-0.16%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8666",
-      "change": "-0.13%",
-      "up": false
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "100.85",
-      "change": "0.00%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.197",
-      "change": "-1.11%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.25",
-      "change": "-3.70%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7693",
-      "change": "+0.10%",
-      "up": true
-    }
-  ],
+  "generated_at": "2026-06-22T11:46:04.086Z",
+  "market_ticker": [],
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Conversaciones de paz entre EE.UU. e Irán comienzan tras cierre del Estrecho de Ormuz por Teherán",
-        "en": "US-Iran peace talks to begin, after Tehran closed Strait of Hormuz"
+        "es": "EE.UU. e Irán acuerdan una 'hoja de ruta' hacia un acuerdo final en las conversaciones de Suiza",
+        "en": "US, Iran agree on 'roadmap' towards final deal in Switzerland talks"
       },
       "summary": {
-        "es": "Irán ha cerrado el Estrecho de Ormuz en respuesta a ataques israelíes en Líbano, mientras delegaciones llegan a Suiza para negociaciones de paz. El cierre amenaza una ruta crítica de suministro global de petróleo (aproximadamente el 20-30% del comercio mundial de crudo) durante negociaciones diplomáticas de alto nivel con el VP estadounidense JD Vance.",
-        "en": "Iran has closed the Strait of Hormuz in response to Israeli strikes in Lebanon while delegations arrive in Switzerland for peace negotiations. The closure threatens a critical global oil supply route representing approximately 20-30% of global crude trade during high-level diplomatic talks with US VP JD Vance."
+        "es": "EE.UU. e Irán han alcanzado un acuerdo sobre una hoja de ruta para un acuerdo final tras negociaciones de alto nivel en Suiza, con avances en temas del Estrecho de Ormuz y Líbano. Las conversaciones técnicas continuarán durante la semana. Este desarrollo reduce significativamente el riesgo geopolítico inmediato en una región crítica para la seguridad energética global.",
+        "en": "The US and Iran have agreed on a roadmap toward a final settlement following high-level negotiations in Switzerland, with progress on Strait of Hormuz and Lebanon issues. Technical talks will continue through the week. This development significantly reduces near-term geopolitical risk in a region critical to global energy security."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "USD +",
-        "EQUITIES -",
-        "GOLD +"
+        "OIL -",
+        "EQUITIES +",
+        "USD ?",
+        "GOLD -"
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/us-iran-peace-talks-to-begin-after-tehran-closed-strait-of-hormuz",
-      "published_at": "2026-06-21",
-      "time": "<1h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/6/22/us-iran-agree-on-roadmap-towards-final-deal-in-switzerland-talks?traffic_source=rss",
+      "published_at": "2026-06-22",
+      "time": "3h"
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "APAC",
       "title": {
-        "es": "Ucrania golpea Crimea en ataque de drones con consecuencias letales",
-        "en": "Ukraine hits Russia-controlled Crimea in deadly drone attack"
+        "es": "China sanciona a gigantes tecnológicos estadounidenses semanas después de que el Pentágono las incluyera en la lista negra",
+        "en": "China sanctions US tech giants weeks after Pentagon blacklisted Chinese firms"
       },
       "summary": {
-        "es": "Ucrania realizó un ataque aéreo exitoso contra un depósito importante en Crimea controlada por Rusia, causando incendios significativos. Las autoridades rusas han suspendido las ventas públicas de combustible en la región, señalando impacto operacional en la logística de la ocupación.",
-        "en": "Ukraine conducted a successful aerial attack against a major depot in Russian-controlled Crimea, causing significant fires. Russian authorities have halted public fuel sales in the region, signaling operational impact on occupation logistics."
-      },
-      "impact": "medium",
-      "signals": [
-        "ENERGY EU +",
-        "RUB -",
-        "EQUITIES ?"
-      ],
-      "confidence": 78,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ukraine-hits-russia-controlled-crimea-in-deadly-drone-attack/a-77642973?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-21",
-      "time": "<1h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Ronda de conversaciones entre EE.UU. e Irán en Suiza: conflicto en Líbano amenaza acuerdos sobre Ormuz",
-        "en": "Mideast Live Updates: New Round of U.S.-Iran Talks Set to Start in Switzerland"
-      },
-      "summary": {
-        "es": "VP JD Vance participa en negociaciones con representantes iranís mientras el conflicto en Líbano amenaza tanto el acuerdo diplomático como la reapertura del Estrecho de Ormuz. La escalada israelí en Líbano y la respuesta iraní crean riesgo de fracaso negociador y prolongación del bloqueo energético.",
-        "en": "VP JD Vance participates in negotiations with Iranian representatives while the Lebanon conflict threatens both the diplomatic agreement and Strait of Hormuz reopening. Israeli escalation in Lebanon and Iranian response create risk of negotiation failure and prolonged energy blockade."
+        "es": "El ministerio de comercio chino ha impuesto sanciones a 10 empresas tecnológicas estadounidenses, bloqueando exportaciones de artículos de doble uso con aplicaciones militares y civiles, incluyendo fabricantes de drones y empresas de tierras raras. Este movimiento escala la guerra comercial y tecnológica entre ambas potencias.",
+        "en": "China's commerce ministry has sanctioned 10 US tech companies, blocking exports of dual-use items with military and civilian applications, including drone makers and rare earth firms. This escalates the ongoing tech and trade war between the superpowers."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "GEOPOLITICAL RISK +",
+        "TECH EQUITIES -",
         "USD +",
-        "EM -"
+        "SEMICONDUCTORS ?",
+        "RARE EARTHS +"
       ],
       "confidence": 90,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/business/20260622-china-sanctions-us-tech-giants-weeks-after-pentagon-blacklisted-chinese-firms",
+      "published_at": "2026-06-22",
+      "time": "4h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Explosión en planta de gas de Qatar deja al menos 54 heridos",
+        "en": "Explosion at Qatar Gas Plant Leaves at Least 54 Injured"
+      },
+      "summary": {
+        "es": "Una explosión en una instalación clave de producción de gas natural en Qatar ha causado al menos 54 heridos, ocurrida durante el reinicio de operaciones tras la guerra entre EE.UU.-Israel contra Irán. Las autoridades atribuyen el incidente a un fallo técnico pero golpea la producción de gas licuado en un momento de tensión energética global.",
+        "en": "An explosion at a key natural gas production facility in Qatar has injured at least 54 people, occurring during operations restart following the US-Israel war against Iran. Authorities blame technical malfunction but impacts LNG output during heightened global energy tensions."
+      },
+      "impact": "medium",
+      "signals": [
+        "LNG +",
+        "OIL +",
+        "ENERGY EQUITIES ?",
+        "EUR +"
+      ],
+      "confidence": 82,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/live/2026/06/21/world/iran-us-trump-lebanon",
-      "published_at": "2026-06-21",
-      "time": "<1h"
+      "source_url": "https://www.nytimes.com/2026/06/22/world/middleeast/qatar-explosion-gas.html",
+      "published_at": "2026-06-22",
+      "time": "2h"
     },
     {
       "id": 4,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "Mientras el mundo busca petróleo, China mantiene tanques llenos",
-        "en": "While the World Scrambles for Oil, China Sits on Full Tanks"
+        "es": "Zelenskyy promete 'devolver la guerra a Rusia' después de que enjambres de drones se dirijan hacia Moscú",
+        "en": "Zelenskyy pledges to 'bring war back to Russia' after drones swarm toward Moscow – Europe live"
       },
       "summary": {
-        "es": "China ha acumulado reservas estratégicas significativas de petróleo y es probable que no aumente rápidamente sus compras del Golfo Pérsico incluso si el Estrecho de Ormuz se reabre. Esta postura reduce la demanda potencial que podría aliviar presiones de precios globales en caso de resolución de crisis.",
-        "en": "China has accumulated significant strategic oil reserves and is unlikely to quickly increase Gulf purchases even if the Strait of Hormuz reopens. This positioning reduces potential demand that could ease global price pressures in event of crisis resolution."
+        "es": "Ucrania ha lanzado ataques con drones masivos hacia Moscú mientras Rusia intercepta 300 drones en todo el país. La UE y Reino Unido están 'reevaluando' una cumbre prevista para el 22 de julio. La escalada de operaciones ofensivas ucranianas y la incertidumbre diplomática europea generan volatilidad geopolítica.",
+        "en": "Ukraine has launched massive drone attacks on Moscow while Russia intercepts 300 drones nationwide. The EU and UK are 'reassessing' a scheduled summit for July 22. The escalation of Ukrainian offensive operations and European diplomatic uncertainty generate geopolitical volatility."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "OIL ?",
-        "COMMODITIES ?",
-        "CHINA GEOPOLITICAL +"
+        "EUR -",
+        "DEFENSE EQUITIES +",
+        "EQUITIES ?",
+        "CREDIT SPREADS +"
       ],
-      "confidence": 75,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/21/business/china-oil-iran.html",
-      "published_at": "2026-06-21",
+      "confidence": 85,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/jun/22/zelenskyy-ukraine-russia-drones-europe-heatwave-trump-meloni-latest-news-updates",
+      "published_at": "2026-06-22",
       "time": "<1h"
     },
     {
       "id": 5,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "EU",
       "title": {
-        "es": "La guerra agrieta la relación estratégica de los países del Golfo con Estados Unidos",
-        "en": "War fractures strategic relationship between Gulf countries and United States"
+        "es": "Miles huyen de los bastiones de Donbas de Ucrania mientras Rusia avanza más",
+        "en": "Thousands Are Fleeing Ukraine's Donbas Strongholds as Russia Pushes Closer"
       },
       "summary": {
-        "es": "La escalada militar en Oriente Próximo ha erosionado la alianza EE.UU.-Golfo, con bases militares estadounidenses ahora viéndose como objetivos en lugar de protección. El cierre de Ormuz fuerza a los Estados del Golfo a buscar rutas alternativas para exportar petróleo, indicando realineamiento geopolítico.",
-        "en": "Military escalation in Middle East has eroded US-Gulf alliance, with US military bases now viewed as targets rather than protection. Hormuz closure forces Gulf states to seek alternative export routes, signaling geopolitical realignment."
+        "es": "Miles de civiles huyen de ciudades clave como Sloviansk y Kramatorsk en Donbas mientras fuerzas rusas intensifican bombardeos y ataques con drones. El avance ruso en el este amenaza las últimas posiciones ucranianas, con implicaciones para la duración del conflicto y la estabilidad de refugiados en Europa.",
+        "en": "Thousands of civilians are fleeing key Donbas cities like Sloviansk and Kramatorsk as Russian forces intensify bombing and drone attacks. Russian advances in the east threaten Ukraine's last strongholds, with implications for conflict duration and refugee stability in Europe."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "USD -",
-        "GEOPOLITICAL RISK +",
-        "OIL +",
-        "EM +"
+        "EUR -",
+        "EQUITIES ?",
+        "COMMODITIES +",
+        "CREDIT SPREADS +"
       ],
-      "confidence": 85,
-      "source": "El País",
-      "source_url": "https://elpais.com/internacional/2026-06-21/la-guerra-agrieta-la-relacion-estrategica-de-los-paises-del-golfo-con-estados-unidos.html",
-      "published_at": "2026-06-21",
-      "time": "6h"
+      "confidence": 80,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/22/world/europe/ukraine-donetsk-donbas-sloviansk-kramatorsk-russia.html",
+      "published_at": "2026-06-22",
+      "time": "2h"
     },
     {
       "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "EU",
       "title": {
-        "es": "Conversaciones EE.UU.-Irán en Suiza: ¿es Líbano el tema principal; quiénes asisten?",
-        "en": "US-Iran talks in Switzerland: Is Lebanon top of agenda; who is attending?"
+        "es": "Con el euro digital, Europa intenta contrarrestar la dominación abrumadora del 'rey dólar'",
+        "en": "With digital euro, Europe seeks to counter overwhelming dominance of the 'dollar king'"
       },
       "summary": {
-        "es": "Irán enfatiza que las conversaciones deben resultar en presión estadounidense sobre Israel para detener la guerra en Líbano, que ha sufrido nuevos ataques. El Líbano se ha convertido en el tema central de negociación, con implicaciones para la estabilidad regional y acceso a energía.",
-        "en": "Iran emphasizes talks must result in US pressure on Israel to halt Lebanon war, which has suffered renewed attacks. Lebanon has become central negotiation topic, with implications for regional stability and energy access."
+        "es": "El Parlamento Europeo examinará el martes un sistema de euro digital destinado a reducir los costos de pago, acelerar transacciones y disminuir la dependencia de actores estadounidenses en el sector financiero. Esta iniciativa refleja la estrategia geopolítica de la UE para reducir la dominancia del dólar en pagos internacionales.",
+        "en": "The European Parliament will examine on Tuesday a digital euro system aimed at reducing payment costs, accelerating transactions, and decreasing dependence on US financial sector actors. This initiative reflects the EU's geopolitical strategy to reduce dollar dominance in international payments."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "EM -",
-        "GEOPOLITICAL RISK +"
+        "EUR +",
+        "USD -",
+        "FINTECH EQUITIES ?",
+        "BONDS +"
       ],
-      "confidence": 88,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/21/us-iran-talks-in-switzerland-is-lebanon-top-of-agenda-who-is-attending?traffic_source=rss",
-      "published_at": "2026-06-21",
-      "time": "<1h"
+      "confidence": 78,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/economie/article/2026/06/22/avec-l-euro-numerique-l-europe-tente-de-contrer-la-domination-ecrasante-du-roi-dollar_6706429_3234.html",
+      "published_at": "2026-06-22",
+      "time": "7h"
     }
-  ],
-  "market_updated_at": "2026-06-22T11:26:47.063Z"
+  ]
 }
