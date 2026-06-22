@@ -1,6 +1,97 @@
 {
   "generated_at": "2026-06-22T11:46:04.086Z",
-  "market_ticker": [],
+  "market_ticker": [
+    {
+      "symbol": "EUR/USD",
+      "value": "1.1459",
+      "change": "-0.09%",
+      "up": false
+    },
+    {
+      "symbol": "IBEX 35",
+      "value": "19347.40",
+      "change": "-0.29%",
+      "up": false
+    },
+    {
+      "symbol": "BRENT crude",
+      "value": "78.41",
+      "change": "-2.10%",
+      "up": false
+    },
+    {
+      "symbol": "WTI crude",
+      "value": "75.50",
+      "change": "-1.54%",
+      "up": false
+    },
+    {
+      "symbol": "GOLD (XAU/USD)",
+      "value": "4188.42",
+      "change": "+0.68%",
+      "up": true
+    },
+    {
+      "symbol": "BTC/USD",
+      "value": "64196.82",
+      "change": "-0.02%",
+      "up": false
+    },
+    {
+      "symbol": "VIX",
+      "value": "16.41",
+      "change": "+2.32%",
+      "up": true
+    },
+    {
+      "symbol": "US 10Y yield",
+      "value": "4.49%",
+      "change": "+0.03%",
+      "up": true
+    },
+    {
+      "symbol": "S&P 500",
+      "value": "7500.58",
+      "change": "+1.08%",
+      "up": true
+    },
+    {
+      "symbol": "DAX 40",
+      "value": "25120.78",
+      "change": "+0.54%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8665",
+      "change": "-0.19%",
+      "up": false
+    },
+    {
+      "symbol": "DXY dollar index",
+      "value": "100.93",
+      "change": "+0.19%",
+      "up": true
+    },
+    {
+      "symbol": "Natural Gas",
+      "value": "3.197",
+      "change": "-1.11%",
+      "up": false
+    },
+    {
+      "symbol": "Copper",
+      "value": "6.35",
+      "change": "+0.39%",
+      "up": true
+    },
+    {
+      "symbol": "USD/CNY",
+      "value": "6.7789",
+      "change": "+0.15%",
+      "up": true
+    }
+  ],
   "headlines": [
     {
       "id": 1,
@@ -152,5 +243,6 @@
       "published_at": "2026-06-22",
       "time": "7h"
     }
-  ]
+  ],
+  "market_updated_at": "2026-06-22T18:08:16.154Z"
 }
