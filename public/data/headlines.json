@@ -1,121 +1,91 @@
 {
-  "generated_at": "2026-06-23T09:32:09.605Z",
+  "generated_at": "2026-06-25T08:55:12.639Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1363",
-      "change": "+0.04%",
-      "up": true
+      "value": "1.1367",
+      "change": "-0.13",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
       "value": "19505.00",
-      "change": "+0.81%",
+      "change": "+157.60",
       "up": true
     },
     {
-      "symbol": "BRENT crude",
-      "value": "73.12",
-      "change": "-1.35%",
+      "symbol": "BRENT",
+      "value": "75.47",
+      "change": "-1.33",
       "up": false
     },
     {
-      "symbol": "WTI crude",
-      "value": "69.42",
-      "change": "-1.31%",
+      "symbol": "GOLD",
+      "value": "4036.00",
+      "change": "-77.00",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "3981.03",
-      "change": "-0.46%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "62320.38",
-      "change": "-4.76%",
+      "symbol": "BTC",
+      "value": "60204.00",
+      "change": "-1950.00",
       "up": false
     },
     {
       "symbol": "VIX",
       "value": "18.24",
-      "change": "-6.41%",
+      "change": "-1.25",
       "up": false
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.41",
-      "change": "+0.02%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7358.22",
-      "change": "-0.10%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24740.36",
-      "change": "-0.62%",
+      "symbol": "US 10Y",
+      "value": "4.40",
+      "change": "-0.09",
       "up": false
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8615",
-      "change": "-0.12%",
+      "value": "0.8618",
+      "change": "-0.0005",
       "up": false
     },
     {
-      "symbol": "DXY dollar index",
-      "value": "101.61",
-      "change": "+0.20%",
-      "up": true
+      "symbol": "S&P 500",
+      "value": "7370.88",
+      "change": "-50.00",
+      "up": false
     },
     {
-      "symbol": "Natural Gas",
-      "value": "3.25",
-      "change": "+0.89%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "5.99",
-      "change": "+0.76%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8073",
-      "change": "-0.08%",
+      "symbol": "DAX 40",
+      "value": "24898.72",
+      "change": "-240.97",
       "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Día 116 de la guerra en Irán: EE.UU. alivia sanciones a Irán; el cese del fuego en Líbano se mantiene",
-        "en": "Iran war day 116: US eases Iran sanctions; Lebanon ceasefire holds"
+        "es": "El precio del petróleo cae a niveles previos a la guerra con Irán mientras más petroleros salen del Estrecho de Ormuz",
+        "en": "Oil price falls to pre-Iran war levels as more tankers exit strait of Hormuz"
       },
       "summary": {
-        "es": "Estados Unidos alivia las sanciones petroleras durante 60 días tras el acuerdo de Irán para permitir inspecciones nucleares internacionales. Este movimiento marca un punto de quiebre en la escalada regional y tiene implicaciones directas en el suministro global de petróleo y la estabilidad de precios energéticos.",
-        "en": "The US eases oil sanctions for 60 days after Iran agrees to allow international nuclear inspections. This marks a major shift in regional escalation with direct implications for global oil supply and energy price stability."
+        "es": "Los precios del petróleo han caído por debajo de los niveles anteriores a la guerra de Irán en febrero, ya que el tráfico de buques se ha duplicado en 24 horas después del cierre efectivo del Estrecho de Ormuz. Esta reversión sugiere una resolución gradual de los choques de suministro energético y una normalización potencial de los mercados de energía.",
+        "en": "Oil prices have fallen below pre-February Iran war levels as vessel traffic doubled in 24 hours, indicating gradual normalization of energy supply routes after the strait's effective closure. The recovery in tanker movements signals a potential unwinding of supply-side energy shocks and reduced geopolitical energy premium."
       },
       "impact": "high",
       "signals": [
-        "OIL +",
-        "USD -",
+        "OIL -",
         "EQUITIES +",
-        "GOLD -"
+        "BONDS +",
+        "USD -"
       ],
-      "confidence": 92,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/23/iran-war-day-116-us-eases-iran-sanctions-lebanon-ceasefire-holds?traffic_source=rss",
-      "published_at": "2026-06-23",
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/business/2026/jun/25/oil-price-falls-pre-iran-war-levels-more-tankers-exit-strait-of-hormuz",
+      "published_at": "2026-06-25",
       "time": "1h"
     },
     {
@@ -123,126 +93,125 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Irán acepta el retorno de inspectores nucleares de la ONU como parte del acuerdo con EE.UU.",
-        "en": "Iran agrees to UN nuclear inspectors' return as part of agreement with US"
+        "es": "Israel dice que las FDI permanecen en el sur del Líbano, socavando las negociaciones de paz con Irán",
+        "en": "Israel says IDF is staying in southern Lebanon, undermining Iran peace talks"
       },
       "summary": {
-        "es": "Irán acepta permitir el regreso de inspectores nucleares de la ONU mientras Washington levanta sanciones sobre exportaciones petroleras iraníes y reabre el Estrecho de Ormuz. Este acuerdo tiene implicaciones significativas para el precio del crudo, la estabilidad del comercio marítimo global y el riesgo geopolítico regional.",
-        "en": "Iran agrees to UN nuclear inspectors returning while the US lifts sanctions on Iranian oil exports and reopens the Strait of Hormuz. This deal has major implications for crude pricing, global maritime trade stability, and regional geopolitical risk."
+        "es": "El ministro de Defensa israelí Israel Katz anunció que las tropas no se retirarán del sur del Líbano, complicando directamente los esfuerzos diplomáticos entre Irán y Estados Unidos. Esta postura erosiona los términos de un posible acuerdo que Teherán considera vinculante al cese del conflicto en Líbano.",
+        "en": "Israel's defense minister refused to withdraw troops from southern Lebanon, directly undermining Iran-US peace negotiations where Tehran views Lebanese conflict resolution as essential to any broader deal. This stance risks prolonging Middle East tensions and jeopardizes de-escalation assumptions priced into markets."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "SHIPPING +",
-        "USD -",
-        "GEOPOLITICAL RISK -"
+        "GOLD +",
+        "EQUITIES -",
+        "VIX +"
       ],
-      "confidence": 94,
+      "confidence": 90,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/22/iran-us-talks-progress-pakistan-qatar-lebanon-israel",
-      "published_at": "2026-06-22",
-      "time": "16h"
+      "source_url": "https://www.theguardian.com/world/2026/jun/24/israel-defence-minister-israel-katzrefuses-to-pull-out-of-southern-lebanon-undermining-iran-peace-talks",
+      "published_at": "2026-06-24",
+      "time": "11h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Explosión en planta de gas de Qatar mata al menos a 13 e injuria a 66",
-        "en": "Explosion at Qatar Gas Plant Kills at Least 13 and Injures 66"
+        "es": "Irán advierte contra intentos de cruzar el Estrecho de Ormuz sin autorización",
+        "en": "Iran warns against attempts to cross Strait of Hormuz without authorisation"
       },
       "summary": {
-        "es": "Una explosión en un sitio clave de producción de gas natural en Qatar causó al menos 13 muertes durante operaciones de reinicio tras la guerra entre EE.UU. e Israel contra Irán. La afectación de infraestructura energética crítica en el Golfo amenaza suministros globales de GNL y presiona precios energéticos.",
-        "en": "A blast at Qatar's key natural gas production site killed at least 13 during restart operations following the US-Israel war against Iran. Damage to critical Gulf energy infrastructure threatens global LNG supplies and energy prices."
+        "es": "La Guardia Revolucionaria Iraní advirtió que tomaría \"medidas apropiadas\" contra buques que intenten navegar el Estrecho de Ormuz sin autorización de Teherán, mientras el secretario de Estado estadounidense Rubio visita Bahréin. Esta escalada de retórica coincide con intentos de establecer rutas alternativas y subraya la persistencia del riesgo de choques de suministro energético.",
+        "en": "Iran's Revolutionary Guards threatened to take 'appropriate measures' against vessels attempting unauthorized Strait of Hormuz transit, as US Secretary of State Rubio meets Gulf allies. This rhetoric escalation signals renewed blockade risks and undermines assumptions of normalized energy flows."
       },
       "impact": "high",
       "signals": [
-        "ENERGY +",
-        "LNG +",
-        "EQUITIES ?",
-        "INFLATION +"
+        "OIL +",
+        "GOLD +",
+        "EQUITIES -",
+        "BONDS +"
       ],
-      "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/22/world/middleeast/qatar-explosion-gas.html",
-      "published_at": "2026-06-22",
-      "time": "19h"
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260625-middle-east-live-trump-seeks-88-billion-in-extra-funding-mostly-for-iran-war",
+      "published_at": "2026-06-25",
+      "time": "8h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "WATCH",
+      "region": "APAC",
       "title": {
-        "es": "Daños de guerra en Líbano estimados en 1.300 millones de dólares; ¿quién pagará?",
-        "en": "Lebanon war damage estimated at $1.3 billion, but who will foot the bill?"
+        "es": "Corea del Norte despliega su primer destructor, prometiendo proyectar poder nuclear por mar",
+        "en": "North Korea Deploys Its First Destroyer, Vowing to Project Nuclear Power by Sea"
       },
       "summary": {
-        "es": "Organismos de la ONU estiman daños en el sur de Líbano por 1.380 millones de dólares en la última guerra Israel-Hezbollah. Un acuerdo propuesto entre EE.UU. e Irán incluiría 300.000 millones en reconstrucción, lo que genera interrogantes sobre viabilidad fiscal y asignación de riesgos soberano de Líbano.",
-        "en": "UN agencies estimate $1.38 billion in war damage in southern Lebanon from the latest Israel-Hezbollah conflict. A proposed US-Iran deal includes $300 billion in reconstruction, raising questions about Lebanon's fiscal viability and sovereign risk."
+        "es": "Corea del Norte desplegó el Choe Hyon, un destructor de 5.000 toneladas armado con misiles nucleares, marcando una escalada significativa en capacidades ofensivas marítimas. Este avance tecnológico intensifica tensiones en el Indo-Pacífico y podría acelerar gastos defensivos regionionales y realineamientos estratégicos.",
+        "en": "North Korea deployed its largest warship, the Choe Hyon (5,000 tons), equipped with nuclear-capable missiles, signaling a qualitative shift in regional military capabilities. This escalation heightens Indo-Pacific tensions and may trigger defensive spending acceleration across South Korea, Japan, and allied partners."
       },
       "impact": "medium",
       "signals": [
-        "LEBANESE BONDS -",
+        "DEFENSE EQUITIES +",
         "USD +",
-        "DEBT SUSTAINABILITY ?",
-        "EM CREDIT -"
+        "APAC EQUITIES -",
+        "GOLD +"
       ],
-      "confidence": 82,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/lebanon-damage-estimated-at-1-3-billion-but-who-will-foot-the-bill",
-      "published_at": "2026-06-23",
-      "time": "3h"
+      "confidence": 78,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/25/world/asia/north-korea-destroyer-nuclear.html",
+      "published_at": "2026-06-25",
+      "time": "<1h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "US",
       "title": {
-        "es": "Vance dice que inspectores nucleares de la ONU regresarán a Irán mientras EE.UU. suspende sanciones",
-        "en": "Vance says UN nuclear inspectors will return to Iran as US suspends sanctions"
+        "es": "Trump solicita al Congreso $87 mil millones, principalmente para costos \"urgentes\" de la guerra con Irán",
+        "en": "Trump asks Congress for $87bn, mostly for 'urgent' Iran war costs"
       },
       "summary": {
-        "es": "El vicepresidente Vance anuncia la suspensión temporal de sanciones petroleras estadounidenses tras acuerdo iraní para readmitir inspectores nucleares, buscando estabilizar el Estrecho de Ormuz. La reapertura de este chokepoint estratégico reduce prima de riesgo geopolítico pero intensifica negociaciones sobre congelación de activos iraní.",
-        "en": "VP Vance announces temporary suspension of US oil sanctions following Iran's agreement to readmit nuclear inspectors and reopen the Strait of Hormuz. This reduces geopolitical risk premium but intensifies negotiations over Iran's frozen assets."
+        "es": "Trump solicitó $87 mil millones al Congreso principalmente para financiar operaciones militares contra Irán, aunque la solicitud enfrenta resistencia legislativa después de críticas previas a la campaña. Este presupuesto significativo subraya el costo fiscal de la campaña y plantea implicaciones para el déficit estadounidense y las decisiones de política monetaria.",
+        "en": "Trump's $87bn emergency budget request for Iran war operations faces congressional headwinds after recent legislative pushback. This substantial fiscal commitment signals sustained defense spending and widening US fiscal deficits, with implications for Treasury yields and Fed policy divergence."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "STRAIT OF HORMUZ +",
-        "GEOPOLITICAL RISK -",
-        "USD ?"
+        "USD +",
+        "TREASURIES -",
+        "EQUITIES ?",
+        "DEFENSE STOCKS +"
       ],
-      "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260622-vance-says-un-nuclear-inspectors-will-return-to-iran-as-us-suspends-sanctions",
-      "published_at": "2026-06-22",
-      "time": "11h"
+      "confidence": 82,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c1eydwldzdjo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-25",
+      "time": "8h"
     },
     {
       "id": 6,
       "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "EN DIRECTO, guerra en Ucrania: ataques rusos causaron al menos cinco muertos y decenas de heridos",
-        "en": "EN DIRECT, Ukraine war: Russian attacks left at least five dead and dozens injured"
+        "es": "Trump dice que aliados de la OTAN 'decepcionaron' a EE.UU. al no respaldar la guerra contra Irán",
+        "en": "Trump says NATO allies 'let down' US by not backing Iran war"
       },
       "summary": {
-        "es": "Ataques rusos con drones en múltiples oblasts ucranianos resultan en al menos cinco muertes y decenas de heridos, con Ucrania reportando 118 interceptaciones de 135 drones lanzados. La persistencia de operaciones militares mantiene presión sobre precios energéticos europeos y riesgo de cadenas de suministro global.",
-        "en": "Russian drone attacks across multiple Ukrainian oblasts result in at least five deaths, with Ukraine intercepting 118 of 135 drones. Ongoing military operations maintain pressure on European energy prices and global supply chain risk."
+        "es": "Trump expresó decepción ante NATO por no respaldar la campaña militar estadounidense contra Irán, aunque reconoció que Washington operó de forma autosuficiente. Esta fricción expone divergencias atlánticas sobre estrategia de Medio Oriente y plantea riesgos para la cohesión de alianzas transatlánticas y futuro compromiso estadounidense en defensa europea.",
+        "en": "Trump criticized NATO allies for withholding military support for Iran operations, highlighting transatlantic strategic divergence on Middle East engagement. This tension signals erosion of alliance cohesion and raises questions about US prioritization of regional conflicts versus European security commitments."
       },
       "impact": "medium",
       "signals": [
-        "ENERGY EU +",
-        "EUR ?",
-        "WHEAT +",
-        "RISK ASSETS -"
+        "EUR -",
+        "DEFENSE SPENDING +",
+        "NATO COHESION ?",
+        "US EQUITIES ?"
       ],
-      "confidence": 78,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/live/2026/06/23/en-direct-guerre-en-ukraine-kiev-dit-avoir-intercepte-118-des-135-drones-lances-par-la-russie-dans-la-nuit_6706390_3210.html",
-      "published_at": "2026-06-23",
-      "time": "1h"
+      "confidence": 75,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20260624-trump-nato-allies-let-down-us-not-backing-iran-war",
+      "published_at": "2026-06-24",
+      "time": "10h"
     }
-  ],
-  "market_updated_at": "2026-06-25T08:43:11.706Z"
+  ]
 }
