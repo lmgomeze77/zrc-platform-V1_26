@@ -3,14 +3,14 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1387",
-      "change": "-0.06%",
+      "value": "1.1386",
+      "change": "-0.29%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
       "value": "19505.00",
-      "change": "+0.81%",
+      "change": "0.81%",
       "up": true
     },
     {
@@ -22,13 +22,13 @@
     {
       "symbol": "WTI crude",
       "value": "70.14",
-      "change": "-2.30%",
+      "change": "-1.23%",
       "up": false
     },
     {
       "symbol": "GOLD (XAU/USD)",
       "value": "4036.02",
-      "change": "+0.22%",
+      "change": "0.22%",
       "up": true
     },
     {
@@ -40,12 +40,12 @@
     {
       "symbol": "VIX",
       "value": "18.68",
-      "change": "+0.27%",
+      "change": "0.27%",
       "up": true
     },
     {
       "symbol": "US 10Y yield",
-      "value": "4.41",
+      "value": "4.40",
       "change": "-0.23%",
       "up": false
     },
@@ -58,37 +58,37 @@
     {
       "symbol": "DAX 40",
       "value": "24994.83",
-      "change": "+1.03%",
+      "change": "1.03%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8625",
-      "change": "+0.12%",
-      "up": true
+      "value": "0.8614",
+      "change": "-0.29%",
+      "up": false
     },
     {
       "symbol": "DXY dollar index",
       "value": "101.43",
-      "change": "+0.37%",
+      "change": "0.37%",
       "up": true
     },
     {
       "symbol": "Natural Gas",
       "value": "3.33",
-      "change": "+1.11%",
+      "change": "1.11%",
       "up": true
     },
     {
       "symbol": "Copper",
-      "value": "6.02",
-      "change": "+1.22%",
+      "value": "6.10",
+      "change": "0.43%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
       "value": "6.8047",
-      "change": "+0.05%",
+      "change": "0.05%",
       "up": true
     }
   ],
@@ -244,5 +244,5 @@
       "time": "<1h"
     }
   ],
-  "market_updated_at": "2026-06-26T12:04:52.672Z"
+  "market_updated_at": "2026-06-26T16:04:21.481Z"
 }
