@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-06-25T08:55:12.639Z",
+  "generated_at": "2026-06-26T08:57:43.694Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1340",
-      "change": "-0.35%",
-      "up": false
-    },
-    {
-      "symbol": "IBEX 35",
-      "value": "11247.50",
-      "change": "-0.42%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "74.43",
-      "change": "-1.11%",
-      "up": false
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "70.45",
-      "change": "-3.77%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4036.02",
-      "change": "+0.22%",
+      "value": "1.1377",
+      "change": "+0.14%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "59442.00",
-      "change": "-2.35%",
+      "symbol": "IBEX 35",
+      "value": "19505.00",
+      "change": "+0.81%",
+      "up": true
+    },
+    {
+      "symbol": "BRENT",
+      "value": "73.43",
+      "change": "-0.60%",
+      "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "3992.80",
+      "change": "-0.39%",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "59233.00",
+      "change": "-2.38%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "19.00",
-      "change": "+1.98%",
+      "value": "18.68",
+      "change": "+0.27%",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.373",
-      "change": "-0.36%",
+      "symbol": "US 10Y",
+      "value": "4.40%",
+      "change": "-0.23%",
       "up": false
     },
     {
+      "symbol": "EUR/GBP",
+      "value": "0.8627",
+      "change": "+0.13%",
+      "up": true
+    },
+    {
       "symbol": "S&P 500",
-      "value": "7375.20",
-      "change": "+0.23%",
+      "value": "7366.20",
+      "change": "+0.11%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24994.83",
-      "change": "+1.03%",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8620",
-      "change": "+0.04%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "101.415",
-      "change": "-0.10%",
+      "value": "24890.69",
+      "change": "-0.96%",
       "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.319",
-      "change": "+1.41%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.026",
-      "change": "-0.66%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8014",
-      "change": "+0.25%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,151 +68,150 @@
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "El precio del petróleo cae a niveles previos a la guerra con Irán mientras más petroleros salen del Estrecho de Ormuz",
-        "en": "Oil price falls to pre-Iran war levels as more tankers exit strait of Hormuz"
+        "en": "Oil price falls to pre-Iran war levels as more tankers exit strait of Hormuz",
+        "es": "El precio del petróleo cae a niveles anteriores a la guerra con Irán mientras más petroleros salen del estrecho de Ormuz"
       },
       "summary": {
-        "es": "Los precios del petróleo han caído por debajo de los niveles anteriores a la guerra de Irán en febrero, ya que el tráfico de buques se ha duplicado en 24 horas después del cierre efectivo del Estrecho de Ormuz. Esta reversión sugiere una resolución gradual de los choques de suministro energético y una normalización potencial de los mercados de energía.",
-        "en": "Oil prices have fallen below pre-February Iran war levels as vessel traffic doubled in 24 hours, indicating gradual normalization of energy supply routes after the strait's effective closure. The recovery in tanker movements signals a potential unwinding of supply-side energy shocks and reduced geopolitical energy premium."
+        "en": "Brent crude has fallen to $72.24/barrel as tanker traffic through the Strait of Hormuz normalizes, easing inflation concerns across Atlantic markets. The de-escalation of shipping risks signals reduced geopolitical premium in energy markets and lower near-term inflationary pressures for monetary policy.",
+        "es": "El crudo Brent ha caído a $72,24/barril mientras el tráfico de petroleros por el estrecho de Ormuz se normaliza, aliviando preocupaciones inflacionarias en mercados atlánticos. La desescalada de riesgos de envíos señala una reducción en la prima geopolítica de mercados energéticos y menores presiones inflacionarias a corto plazo para la política monetaria."
       },
       "impact": "high",
       "signals": [
         "OIL -",
+        "INFLATION -",
         "EQUITIES +",
-        "BONDS +",
         "USD -"
       ],
-      "confidence": 88,
+      "confidence": 90,
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/business/2026/jun/25/oil-price-falls-pre-iran-war-levels-more-tankers-exit-strait-of-hormuz",
       "published_at": "2026-06-25",
-      "time": "1h"
+      "time": "17h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Israel dice que las FDI permanecen en el sur del Líbano, socavando las negociaciones de paz con Irán",
-        "en": "Israel says IDF is staying in southern Lebanon, undermining Iran peace talks"
+        "en": "Iran strikes ship in Strait of Hormuz, undermining efforts to restore traffic",
+        "es": "Irán ataca un buque en el estrecho de Ormuz, socavando esfuerzos para restaurar el tráfico"
       },
       "summary": {
-        "es": "El ministro de Defensa israelí Israel Katz anunció que las tropas no se retirarán del sur del Líbano, complicando directamente los esfuerzos diplomáticos entre Irán y Estados Unidos. Esta postura erosiona los términos de un posible acuerdo que Teherán considera vinculante al cese del conflicto en Líbano.",
-        "en": "Israel's defense minister refused to withdraw troops from southern Lebanon, directly undermining Iran-US peace negotiations where Tehran views Lebanese conflict resolution as essential to any broader deal. This stance risks prolonging Middle East tensions and jeopardizes de-escalation assumptions priced into markets."
+        "en": "Iran attacked a vessel in the Strait of Hormuz despite ongoing U.S.-led peace negotiations, signaling Tehran's willingness to disrupt 20% of global oil supply as leverage. The incident directly contradicts shipping normalization and threatens energy price stability amid diplomatic fragility.",
+        "es": "Irán atacó un buque en el estrecho de Ormuz a pesar de negociaciones de paz lideradas por EE.UU., señalando la disposición de Teherán a interrumpir el 20% del suministro global de petróleo como palanca. El incidente contradice directamente la normalización del tráfico y amenaza la estabilidad de precios energéticos en medio de fragilidad diplomática."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "VIX +"
+        "GEOPOLITICAL RISK +",
+        "USD +",
+        "SHIPPING +"
       ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/24/israel-defence-minister-israel-katzrefuses-to-pull-out-of-southern-lebanon-undermining-iran-peace-talks",
-      "published_at": "2026-06-24",
-      "time": "11h"
+      "confidence": 92,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/25/world/middleeast/iran-strait-of-hormuz-threat-rubio-bahrain.html",
+      "published_at": "2026-06-25",
+      "time": "10h"
     },
     {
       "id": 3,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Irán advierte contra intentos de cruzar el Estrecho de Ormuz sin autorización",
-        "en": "Iran warns against attempts to cross Strait of Hormuz without authorisation"
+        "en": "US wants Iran deal but 'not at any price', Rubio says",
+        "es": "EE.UU. quiere acuerdo con Irán pero 'no a cualquier precio', dice Rubio"
       },
       "summary": {
-        "es": "La Guardia Revolucionaria Iraní advirtió que tomaría \"medidas apropiadas\" contra buques que intenten navegar el Estrecho de Ormuz sin autorización de Teherán, mientras el secretario de Estado estadounidense Rubio visita Bahréin. Esta escalada de retórica coincide con intentos de establecer rutas alternativas y subraya la persistencia del riesgo de choques de suministro energético.",
-        "en": "Iran's Revolutionary Guards threatened to take 'appropriate measures' against vessels attempting unauthorized Strait of Hormuz transit, as US Secretary of State Rubio meets Gulf allies. This rhetoric escalation signals renewed blockade risks and undermines assumptions of normalized energy flows."
+        "en": "U.S. Secretary of State Rubio set red lines on Iran negotiations, rejecting any agreement allowing Tehran shipping fees through Hormuz, warning of 'total chaos'. The conditional stance signals limited deal probability and persistent military/economic pressure on Iranian revenue streams.",
+        "es": "El Secretario de Estado estadounidense Rubio estableció líneas rojas en negociaciones con Irán, rechazando acuerdos que permitan a Teherán imponer aranceles en envíos por Ormuz, advirtiendo sobre 'caos total'. La postura condicional señala baja probabilidad de acuerdo y presión militar/económica persistente en flujos de ingresos iraníes."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "BONDS +"
+        "GEOPOLITICAL RISK +",
+        "EQUITIES ?",
+        "USD +"
       ],
-      "confidence": 92,
+      "confidence": 88,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260625-middle-east-live-trump-seeks-88-billion-in-extra-funding-mostly-for-iran-war",
+      "source_url": "https://www.france24.com/en/middle-east/20260625-us-seeks-iran-deal-not-at-any-price-rubio",
       "published_at": "2026-06-25",
-      "time": "8h"
+      "time": "10h"
     },
     {
       "id": 4,
       "tag": "WATCH",
       "region": "APAC",
       "title": {
-        "es": "Corea del Norte despliega su primer destructor, prometiendo proyectar poder nuclear por mar",
-        "en": "North Korea Deploys Its First Destroyer, Vowing to Project Nuclear Power by Sea"
+        "en": "North Korea deploys its first destroyer, vowing to project nuclear power by sea",
+        "es": "Corea del Norte despliega su primer destructor, prometiendo proyectar poder nuclear por mar"
       },
       "summary": {
-        "es": "Corea del Norte desplegó el Choe Hyon, un destructor de 5.000 toneladas armado con misiles nucleares, marcando una escalada significativa en capacidades ofensivas marítimas. Este avance tecnológico intensifica tensiones en el Indo-Pacífico y podría acelerar gastos defensivos regionionales y realineamientos estratégicos.",
-        "en": "North Korea deployed its largest warship, the Choe Hyon (5,000 tons), equipped with nuclear-capable missiles, signaling a qualitative shift in regional military capabilities. This escalation heightens Indo-Pacific tensions and may trigger defensive spending acceleration across South Korea, Japan, and allied partners."
+        "en": "North Korea launched the Choe Hyon, a 5,000-ton warship armed with nuclear-capable missiles, marking significant escalation in maritime nuclear capability projection. The development increases regional security tensions and raises risk premium for Northeast Asian trade corridors and allied defense spending.",
+        "es": "Corea del Norte lanzó el Choe Hyon, un destructor de 5.000 toneladas armado con misiles capaces de portar armas nucleares, marcando una escalada significativa en la proyección de capacidad nuclear marítima. El desarrollo aumenta tensiones de seguridad regionales y eleva la prima de riesgo para corredores comerciales de Asia nororiental y gasto de defensa aliado."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "DEFENSE EQUITIES +",
-        "USD +",
-        "APAC EQUITIES -",
-        "GOLD +"
+        "GEOPOLITICAL RISK +",
+        "DEFENSE STOCKS +",
+        "ASIAN EQUITIES -",
+        "USD +"
       ],
-      "confidence": 78,
+      "confidence": 85,
       "source": "New York Times",
       "source_url": "https://www.nytimes.com/2026/06/25/world/asia/north-korea-destroyer-nuclear.html",
       "published_at": "2026-06-25",
-      "time": "<1h"
+      "time": "1d"
     },
     {
       "id": 5,
-      "tag": "ALERT",
-      "region": "US",
+      "tag": "WATCH",
+      "region": "APAC",
       "title": {
-        "es": "Trump solicita al Congreso $87 mil millones, principalmente para costos \"urgentes\" de la guerra con Irán",
-        "en": "Trump asks Congress for $87bn, mostly for 'urgent' Iran war costs"
+        "en": "North Korea: Kim Jong Un oversees ballistic missile tests, calls for stronger 'offensive posture'",
+        "es": "Corea del Norte: Kim Jong Un supervisa pruebas de misiles balísticos, pide 'postura ofensiva' más fuerte"
       },
       "summary": {
-        "es": "Trump solicitó $87 mil millones al Congreso principalmente para financiar operaciones militares contra Irán, aunque la solicitud enfrenta resistencia legislativa después de críticas previas a la campaña. Este presupuesto significativo subraya el costo fiscal de la campaña y plantea implicaciones para el déficit estadounidense y las decisiones de política monetaria.",
-        "en": "Trump's $87bn emergency budget request for Iran war operations faces congressional headwinds after recent legislative pushback. This substantial fiscal commitment signals sustained defense spending and widening US fiscal deficits, with implications for Treasury yields and Fed policy divergence."
+        "en": "North Korea conducted ballistic missile tests with Kim Jong Un demanding enhanced strike capabilities along the South Korean border, signaling escalatory intent beyond naval deployments. The coordinated weapons development pattern increases inter-Korean tensions and regional military spending pressure.",
+        "es": "Corea del Norte realizó pruebas de misiles balísticos con Kim Jong Un exigiendo capacidades de ataque mejoradas a lo largo de la frontera de Corea del Sur, señalando intención escalatoria más allá de despliegues navales. El patrón de desarrollo de armas coordinado aumenta tensiones intercoreanas y presión de gasto militar regional."
       },
       "impact": "medium",
       "signals": [
-        "USD +",
-        "TREASURIES -",
-        "EQUITIES ?",
-        "DEFENSE STOCKS +"
+        "GEOPOLITICAL RISK +",
+        "DEFENSE STOCKS +",
+        "KRW -",
+        "SAFE HAVENS +"
       ],
       "confidence": 82,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c1eydwldzdjo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-25",
-      "time": "8h"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/north-korea-kim-jong-un-oversees-ballistic-missile-tests-calls-for-stronger-offensive-posture/a-77716329?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-26",
+      "time": "5h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
+      "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Trump dice que aliados de la OTAN 'decepcionaron' a EE.UU. al no respaldar la guerra contra Irán",
-        "en": "Trump says NATO allies 'let down' US by not backing Iran war"
+        "en": "Heathrow expects fall in passengers and profits this year because of Iran war",
+        "es": "Heathrow espera caída de pasajeros y ganancias este año por la guerra con Irán"
       },
       "summary": {
-        "es": "Trump expresó decepción ante NATO por no respaldar la campaña militar estadounidense contra Irán, aunque reconoció que Washington operó de forma autosuficiente. Esta fricción expone divergencias atlánticas sobre estrategia de Medio Oriente y plantea riesgos para la cohesión de alianzas transatlánticas y futuro compromiso estadounidense en defensa europea.",
-        "en": "Trump criticized NATO allies for withholding military support for Iran operations, highlighting transatlantic strategic divergence on Middle East engagement. This tension signals erosion of alliance cohesion and raises questions about US prioritization of regional conflicts versus European security commitments."
+        "en": "Europe's busiest airport projects 1.1% passenger decline and profit reduction due to Middle East conflict, reflecting broad travel demand destruction from geopolitical instability. The announcement signals spillover macro effects on European transport, tourism, and corporate profit margins.",
+        "es": "El aeropuerto más transitado de Europa proyecta caída de 1,1% en pasajeros y reducción de ganancias debido al conflicto de Oriente Medio, reflejando destrucción generalizada de demanda de viajes por inestabilidad geopolítica. El anuncio señala efectos macro secundarios en transporte europeo, turismo y márgenes de ganancias corporativas."
       },
       "impact": "medium",
       "signals": [
-        "EUR -",
-        "DEFENSE SPENDING +",
-        "NATO COHESION ?",
-        "US EQUITIES ?"
+        "EUROPEAN EQUITIES -",
+        "TRAVEL STOCKS -",
+        "TOURISM -",
+        "STERLING ?"
       ],
-      "confidence": 75,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260624-trump-nato-allies-let-down-us-not-backing-iran-war",
-      "published_at": "2026-06-24",
-      "time": "10h"
+      "confidence": 80,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/uk-news/2026/jun/26/heathrow-expects-fall-in-passengers-and-profits-this-year-because-of-iran-war",
+      "published_at": "2026-06-26",
+      "time": "<1h"
     }
-  ],
-  "market_updated_at": "2026-06-26T08:44:50.883Z"
+  ]
 }
