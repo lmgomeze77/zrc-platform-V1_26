@@ -42,8 +42,15 @@ async function handleRequest(request, env, ctx) {
       return handleSubscriptionCheck(request, env);
 
 
-    if (url.pathname === "/api/claude" && request.method === "POST")
-      return handleClaude(request, env);
+    if (url.pathname === "/api/claude" && request.method === "POST") {
+      const keySet = !!env.ANTHROPIC_API_KEY;
+      let reqBody = "?";
+      try { reqBody = JSON.stringify(await request.json()); } catch (_) {}
+      return new Response(JSON.stringify({ reached: true, key_set: keySet, body_len: reqBody.length }), {
+        status: 200,
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      });
+    }
 
     if (url.pathname === "/api/inner-circle/check" && request.method === "GET")
       return handleInnerCircleCheck(request, env);
