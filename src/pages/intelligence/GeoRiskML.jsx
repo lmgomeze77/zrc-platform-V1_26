@@ -439,7 +439,7 @@ export default function GeoRiskML() {
         setWeights(newW);
       }
     } catch (e) {
-      setNlpResult({ error: "Error NLP — verifica conectividad." });
+      setNlpResult({ error: `Error NLP: ${e.message}` });
     } finally { setNlpLoading(false); }
   };
 
@@ -449,7 +449,7 @@ export default function GeoRiskML() {
       const result = await callClaudeML({ mode: "decision", riskScore: compositeRisk, variables: variableImpacts, scenario: dominantScenario });
       setDecisionResult(result);
     } catch (e) {
-      setDecisionResult({ error: "Error en motor de decisión." });
+      setDecisionResult({ error: `Error en motor de decisión: ${e.message}` });
     } finally { setDecisionLoading(false); }
   };
 
