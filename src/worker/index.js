@@ -24,7 +24,7 @@ export default {
       return handleLead(request, env);
 
     if (url.pathname === "/api/health" && request.method === "GET")
-      return jsonResponse({ ok: true, ts: Date.now() });
+      return jsonResponse({ ok: true, ts: Date.now(), anthropic_key_set: !!env.ANTHROPIC_API_KEY });
 
     if (url.pathname === "/api/stripe-webhook" && request.method === "POST")
       return handleStripeWebhook(request, env);
