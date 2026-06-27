@@ -327,13 +327,18 @@ Responde con este JSON exacto:
     })
   });
 
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    const body = await response.text();
+    throw new Error(`Worker returned ${response.status} ${contentType}: ${body.slice(0, 150)}`);
+  }
   if (!response.ok) throw new Error(`API error ${response.status}`);
   const data = await response.json();
   const text = data.content?.[0]?.text || "{}";
   const clean = text.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
   const start = clean.indexOf("{");
   const end = clean.lastIndexOf("}");
-  if (start === -1 || end === -1) throw new Error(`No JSON in response: ${clean.slice(0, 120)}`);
+  if (start === -1 || end === -1) throw new Error(`No JSON object in: ${clean.slice(0, 120)}`);
   return JSON.parse(clean.slice(start, end + 1));
 }
 
