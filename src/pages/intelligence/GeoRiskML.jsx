@@ -413,7 +413,7 @@ export default function GeoRiskML() {
       });
       setMlForecast(result);
     } catch (e) {
-      setMlError("Error al conectar con el motor ML. Verifica la API key.");
+      setMlError(`Error al conectar con el motor ML: ${e.message}`);
     } finally { setMlLoading(false); }
   };
 
