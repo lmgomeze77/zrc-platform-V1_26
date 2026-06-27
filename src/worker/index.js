@@ -184,17 +184,26 @@ async function handleClaude(request, env) {
     return jsonResponse({ error: "Invalid JSON" }, 400);
   }
 
-  const resp = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": env.ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
-    },
-    body: JSON.stringify(body),
-  });
+  let resp;
+  try {
+    resp = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": env.ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+      },
+      body: JSON.stringify(body),
+    });
+  } catch (err) {
+    return jsonResponse({ error: `Fetch failed: ${err.message}` }, 502);
+  }
 
-  const data = await resp.json();
+  const text = await resp.text();
+  let data;
+  try { data = JSON.parse(text); } catch {
+    return jsonResponse({ error: `Anthropic non-JSON (${resp.status}): ${text.slice(0, 300)}` }, 502);
+  }
   return jsonResponse(data, resp.status);
 }
 
