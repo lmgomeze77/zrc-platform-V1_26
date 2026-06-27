@@ -42,12 +42,8 @@ async function handleRequest(request, env, ctx) {
       return handleSubscriptionCheck(request, env);
 
 
-    if (url.pathname === "/api/claude") {
-      return new Response(JSON.stringify({ reached: true, method: request.method, key_set: !!env.ANTHROPIC_API_KEY }), {
-        status: 200,
-        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
-      });
-    }
+    if (url.pathname === "/api/claude" && request.method === "POST")
+      return handleClaude(request, env);
 
     if (url.pathname === "/api/inner-circle/check" && request.method === "GET")
       return handleInnerCircleCheck(request, env);
