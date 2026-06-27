@@ -42,11 +42,8 @@ async function handleRequest(request, env, ctx) {
       return handleSubscriptionCheck(request, env);
 
 
-    if (url.pathname === "/api/claude" && request.method === "POST") {
-      const keySet = !!env.ANTHROPIC_API_KEY;
-      let reqBody = "?";
-      try { reqBody = JSON.stringify(await request.json()); } catch (_) {}
-      return new Response(JSON.stringify({ reached: true, key_set: keySet, body_len: reqBody.length }), {
+    if (url.pathname === "/api/claude") {
+      return new Response(JSON.stringify({ reached: true, method: request.method, key_set: !!env.ANTHROPIC_API_KEY }), {
         status: 200,
         headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
       });
