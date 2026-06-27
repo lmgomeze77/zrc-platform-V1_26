@@ -12,6 +12,11 @@ not_found_handling = "single-page-application"
 binding = "ASSETS"
 run_worker_first = true
 
+# Route API requests on the custom domain through the Worker
+routes = [
+  { pattern = "zenithrisecapital.com/api/*", zone_name = "zenithrisecapital.com" }
+]
+
 # D1 - base de datos de leads
 [[d1_databases]]
 binding = "DB"

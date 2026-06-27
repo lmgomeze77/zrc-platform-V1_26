@@ -316,7 +316,7 @@ Responde con este JSON exacto:
 }`;
   }
 
-  const response = await fetch("https://zenith-risecapital.lmgomeze77.workers.dev/api/claude", {
+  const response = await fetch("/api/claude", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
