@@ -329,9 +329,12 @@ Responde con este JSON exacto:
 
   if (!response.ok) throw new Error(`API error ${response.status}`);
   const data = await response.json();
-  const text = data.content[0]?.text || "{}";
-  const clean = text.replace(/```json|```/g, "").trim();
-  return JSON.parse(clean);
+  const text = data.content?.[0]?.text || "{}";
+  const clean = text.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
+  const start = clean.indexOf("{");
+  const end = clean.lastIndexOf("}");
+  if (start === -1 || end === -1) throw new Error(`No JSON in response: ${clean.slice(0, 120)}`);
+  return JSON.parse(clean.slice(start, end + 1));
 }
 
 // ── Main Component ────────────────────────────────────────────────
