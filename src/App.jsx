@@ -1083,7 +1083,7 @@ const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => (
 
 const Intelligence = ({ lang }) => {
   const t = T[lang].intel;
-  const { user, openPricing } = useAuth();
+  const { user, openPricing, setShowAuth } = useAuth();
   const { tier, loading: tierLoading } = useSubscription(user?.email);
   const [showGeoRisk, setShowGeoRisk] = useState(false);
   const [showGeoRiskML, setShowGeoRiskML] = useState(false);
@@ -1168,9 +1168,12 @@ const Intelligence = ({ lang }) => {
                     </button>
                   )
                 ) : (
-                  <div style={{ marginTop: 20, padding: "12px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, textAlign: "center" }}>
+                  <button
+                    onClick={() => setShowAuth(true)}
+                    style={{ marginTop: 20, padding: "12px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, textAlign: "center", width: "100%", cursor: "pointer" }}
+                  >
                     <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.1em" }}>🔒 {t.locked}</span>
-                  </div>
+                  </button>
                 )}
               </div>
             </FadeIn>
