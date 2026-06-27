@@ -16,6 +16,15 @@ const PRICE_TIERS = {
 
 export default {
   async fetch(request, env, ctx) {
+    try {
+      return await handleRequest(request, env, ctx);
+    } catch (err) {
+      return jsonResponse({ error: `Worker error: ${err.message}`, stack: err.stack?.slice(0, 300) }, 500);
+    }
+  }
+};
+
+async function handleRequest(request, env, ctx) {
     const url = new URL(request.url);
 
     if (request.method === "OPTIONS") return corsResponse();
@@ -52,8 +61,7 @@ export default {
       return jsonResponse({ error: "Not found" }, 404);
 
     return env.ASSETS.fetch(request);
-  },
-};
+}
 
 // ============================================================
 // /api/stripe-webhook
