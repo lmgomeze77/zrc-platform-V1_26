@@ -1,53 +1,53 @@
 {
-  "generated_at": "2026-06-26T08:57:43.694Z",
+  "generated_at": "2026-06-27T08:31:53.771Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1385",
-      "change": "+0.13%",
-      "up": true
+      "value": "1.1387",
+      "change": "-0.276%",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19355.51",
-      "change": "-0.97%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT crude",
-      "value": "72.86",
-      "change": "-2.20%",
-      "up": false
-    },
-    {
-      "symbol": "WTI crude",
-      "value": "69.31",
-      "change": "-3.62%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4051.92",
-      "change": "+0.62%",
+      "value": "16745.35",
+      "change": "+0.06%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "59419.35",
-      "change": "-2.91%",
+      "symbol": "BRENT",
+      "value": "72.95",
+      "change": "-3.07%",
       "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4089.49",
+      "change": "+1.87%",
+      "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "59803.47",
+      "change": "+0.05%",
+      "up": true
     },
     {
       "symbol": "VIX",
-      "value": "18.89",
-      "change": "+1.40%",
+      "value": "18.41",
+      "change": "-2.54%",
+      "up": false
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.40",
+      "change": "+0.03",
       "up": true
     },
     {
-      "symbol": "US 10Y yield",
-      "value": "4.37%",
-      "change": "-0.03%",
-      "up": false
+      "symbol": "EUR/GBP",
+      "value": "0.8627",
+      "change": "+0.12%",
+      "up": true
     },
     {
       "symbol": "S&P 500",
@@ -57,90 +57,60 @@
     },
     {
       "symbol": "DAX 40",
-      "value": "24681.72",
-      "change": "-1.29%",
+      "value": "24898.72",
+      "change": "-0.96%",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8627",
-      "change": "+0.12%",
-      "up": true
-    },
-    {
-      "symbol": "DXY dollar index",
-      "value": "101.36",
-      "change": "-0.07%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.33",
-      "change": "+1.11%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.10",
-      "change": "+0.43%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7897",
-      "change": "+0.01%",
-      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Oil price falls to pre-Iran war levels as more tankers exit strait of Hormuz",
-        "es": "El precio del petróleo cae a niveles anteriores a la guerra con Irán mientras más petroleros salen del estrecho de Ormuz"
+        "es": "Oriente Medio en guerra en directo: Irán acusa a EE.UU. de 'violación flagrante' del acuerdo de paz tras últimos ataques",
+        "en": "Middle East war live: Iran accuses US of 'blatant violation' of peace deal after latest strikes"
       },
       "summary": {
-        "en": "Brent crude has fallen to $72.24/barrel as tanker traffic through the Strait of Hormuz normalizes, easing inflation concerns across Atlantic markets. The de-escalation of shipping risks signals reduced geopolitical premium in energy markets and lower near-term inflationary pressures for monetary policy.",
-        "es": "El crudo Brent ha caído a $72,24/barril mientras el tráfico de petroleros por el estrecho de Ormuz se normaliza, aliviando preocupaciones inflacionarias en mercados atlánticos. La desescalada de riesgos de envíos señala una reducción en la prima geopolítica de mercados energéticos y menores presiones inflacionarias a corto plazo para la política monetaria."
+        "es": "Irán acusa a EE.UU. de violar el acuerdo de paz tras ataques estadounidenses a instalaciones de defensa iraní. Los ataques responden a un ataque drone previo iraní contra un buque de carga, escalando tensiones en el Estrecho de Ormuz y amenazando la reapertura del corredor de energía global.",
+        "en": "Iran accuses the US of violating the peace deal following American strikes on Iranian defense facilities. The strikes respond to a prior Iranian drone attack on a cargo vessel, escalating tensions in the Strait of Hormuz and threatening the reopened global energy corridor."
       },
       "impact": "high",
       "signals": [
-        "OIL -",
-        "INFLATION -",
-        "EQUITIES +",
-        "USD -"
+        "OIL +",
+        "USD +",
+        "EQUITIES -",
+        "GEOPOLITICAL_RISK +"
       ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/business/2026/jun/25/oil-price-falls-pre-iran-war-levels-more-tankers-exit-strait-of-hormuz",
-      "published_at": "2026-06-25",
-      "time": "17h"
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260626-middle-east-war-us-strikes-iran-trump-ceasefire-violated",
+      "published_at": "2026-06-26",
+      "time": "10h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Iran strikes ship in Strait of Hormuz, undermining efforts to restore traffic",
-        "es": "Irán ataca un buque en el estrecho de Ormuz, socavando esfuerzos para restaurar el tráfico"
+        "es": "EE.UU. dice haber atacado objetivos iraníes tras ataque a buque de carga en el Estrecho de Ormuz",
+        "en": "US says it struck Iran targets after attack on cargo ship in the strait of Hormuz"
       },
       "summary": {
-        "en": "Iran attacked a vessel in the Strait of Hormuz despite ongoing U.S.-led peace negotiations, signaling Tehran's willingness to disrupt 20% of global oil supply as leverage. The incident directly contradicts shipping normalization and threatens energy price stability amid diplomatic fragility.",
-        "es": "Irán atacó un buque en el estrecho de Ormuz a pesar de negociaciones de paz lideradas por EE.UU., señalando la disposición de Teherán a interrumpir el 20% del suministro global de petróleo como palanca. El incidente contradice directamente la normalización del tráfico y amenaza la estabilidad de precios energéticos en medio de fragilidad diplomática."
+        "es": "El ejército estadounidense ejecutó ataques en represalia contra instalaciones militares iraníes tras un ataque drone a un buque de carga, representando la prueba más severa del alto el fuego entre EE.UU. e Irán que reabrió el Estrecho de Ormuz.",
+        "en": "The US military executed retaliatory strikes against Iranian military facilities following a drone attack on a cargo vessel, representing the most severe test of the US-Iran ceasefire that reopened the Strait of Hormuz."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "GEOPOLITICAL RISK +",
+        "SHIPPING_RISK +",
         "USD +",
-        "SHIPPING +"
+        "EM_BONDS -"
       ],
-      "confidence": 92,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/25/world/middleeast/iran-strait-of-hormuz-threat-rubio-bahrain.html",
-      "published_at": "2026-06-25",
+      "confidence": 91,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jun/26/us-says-it-struck-iran-targets-after-attack-on-cargo-ship-on-the-strait-of-hormuz",
+      "published_at": "2026-06-26",
       "time": "10h"
     },
     {
@@ -148,101 +118,98 @@
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "en": "US wants Iran deal but 'not at any price', Rubio says",
-        "es": "EE.UU. quiere acuerdo con Irán pero 'no a cualquier precio', dice Rubio"
+        "es": "Israel y Líbano firman acuerdo marco tras negociaciones mediadas por EE.UU.",
+        "en": "Israel and Lebanon sign framework agreement after US-brokered talks"
       },
       "summary": {
-        "en": "U.S. Secretary of State Rubio set red lines on Iran negotiations, rejecting any agreement allowing Tehran shipping fees through Hormuz, warning of 'total chaos'. The conditional stance signals limited deal probability and persistent military/economic pressure on Iranian revenue streams.",
-        "es": "El Secretario de Estado estadounidense Rubio estableció líneas rojas en negociaciones con Irán, rechazando acuerdos que permitan a Teherán imponer aranceles en envíos por Ormuz, advirtiendo sobre 'caos total'. La postura condicional señala baja probabilidad de acuerdo y presión militar/económica persistente en flujos de ingresos iraníes."
+        "es": "Israel y Líbano alcanzaron un acuerdo marco mediado por EE.UU., aunque Hezbollah no es parte del mismo y los ceses al fuego previos entre ambos países han experimentado ataques cruzados casi diarios. Este desarrollo refleja esfuerzos de estabilización regional en medio de tensiones persistentes.",
+        "en": "Israel and Lebanon reached a US-brokered framework agreement, though Hezbollah is not a party and previous ceasefires have still seen near-daily cross-border strikes. This reflects stabilization efforts amid persistent regional tensions."
       },
-      "impact": "high",
+      "impact": "medium",
       "signals": [
-        "OIL +",
-        "GEOPOLITICAL RISK +",
-        "EQUITIES ?",
-        "USD +"
+        "GEOPOLITICAL_RISK ?",
+        "USD +",
+        "EQUITIES ?"
       ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260625-us-seeks-iran-deal-not-at-any-price-rubio",
-      "published_at": "2026-06-25",
-      "time": "10h"
+      "confidence": 78,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cg5315n1v5go?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-26",
+      "time": "9h"
     },
     {
       "id": 4,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "en": "North Korea deploys its first destroyer, vowing to project nuclear power by sea",
-        "es": "Corea del Norte despliega su primer destructor, prometiendo proyectar poder nuclear por mar"
-      },
-      "summary": {
-        "en": "North Korea launched the Choe Hyon, a 5,000-ton warship armed with nuclear-capable missiles, marking significant escalation in maritime nuclear capability projection. The development increases regional security tensions and raises risk premium for Northeast Asian trade corridors and allied defense spending.",
-        "es": "Corea del Norte lanzó el Choe Hyon, un destructor de 5.000 toneladas armado con misiles capaces de portar armas nucleares, marcando una escalada significativa en la proyección de capacidad nuclear marítima. El desarrollo aumenta tensiones de seguridad regionales y eleva la prima de riesgo para corredores comerciales de Asia nororiental y gasto de defensa aliado."
-      },
-      "impact": "high",
-      "signals": [
-        "GEOPOLITICAL RISK +",
-        "DEFENSE STOCKS +",
-        "ASIAN EQUITIES -",
-        "USD +"
-      ],
-      "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/25/world/asia/north-korea-destroyer-nuclear.html",
-      "published_at": "2026-06-25",
-      "time": "1d"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "en": "North Korea: Kim Jong Un oversees ballistic missile tests, calls for stronger 'offensive posture'",
-        "es": "Corea del Norte: Kim Jong Un supervisa pruebas de misiles balísticos, pide 'postura ofensiva' más fuerte"
-      },
-      "summary": {
-        "en": "North Korea conducted ballistic missile tests with Kim Jong Un demanding enhanced strike capabilities along the South Korean border, signaling escalatory intent beyond naval deployments. The coordinated weapons development pattern increases inter-Korean tensions and regional military spending pressure.",
-        "es": "Corea del Norte realizó pruebas de misiles balísticos con Kim Jong Un exigiendo capacidades de ataque mejoradas a lo largo de la frontera de Corea del Sur, señalando intención escalatoria más allá de despliegues navales. El patrón de desarrollo de armas coordinado aumenta tensiones intercoreanas y presión de gasto militar regional."
-      },
-      "impact": "medium",
-      "signals": [
-        "GEOPOLITICAL RISK +",
-        "DEFENSE STOCKS +",
-        "KRW -",
-        "SAFE HAVENS +"
-      ],
-      "confidence": 82,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/north-korea-kim-jong-un-oversees-ballistic-missile-tests-calls-for-stronger-offensive-posture/a-77716329?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-26",
-      "time": "5h"
-    },
-    {
-      "id": 6,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "en": "Heathrow expects fall in passengers and profits this year because of Iran war",
-        "es": "Heathrow espera caída de pasajeros y ganancias este año por la guerra con Irán"
+        "es": "Los ataques ucranianos desencadenan declaración de estado de emergencia en Crimea",
+        "en": "Ukrainian Attacks Spur State of Emergency Declaration in Crimea"
       },
       "summary": {
-        "en": "Europe's busiest airport projects 1.1% passenger decline and profit reduction due to Middle East conflict, reflecting broad travel demand destruction from geopolitical instability. The announcement signals spillover macro effects on European transport, tourism, and corporate profit margins.",
-        "es": "El aeropuerto más transitado de Europa proyecta caída de 1,1% en pasajeros y reducción de ganancias debido al conflicto de Oriente Medio, reflejando destrucción generalizada de demanda de viajes por inestabilidad geopolítica. El anuncio señala efectos macro secundarios en transporte europeo, turismo y márgenes de ganancias corporativas."
+        "es": "Semanas de intensos ataques ucranianos han generado una declaración de estado de emergencia en Crimea, reflejando un nivel de perturbación no visto desde la anexión rusa en 2014. Esto señala una escalada significativa en la campaña de largo alcance ucraniana contra territorios ocupados rusos.",
+        "en": "Weeks of intense Ukrainian strikes have prompted a state of emergency declaration in Crimea, reflecting disruption levels unseen since Russia's 2014 annexation. This signals significant escalation in Ukraine's long-range campaign against Russian-occupied territory."
       },
       "impact": "medium",
       "signals": [
-        "EUROPEAN EQUITIES -",
-        "TRAVEL STOCKS -",
-        "TOURISM -",
-        "STERLING ?"
+        "RUB -",
+        "EUR +",
+        "ENERGY_RISK +",
+        "DEFENSE_EQUITIES +"
       ],
-      "confidence": 80,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/uk-news/2026/jun/26/heathrow-expects-fall-in-passengers-and-profits-this-year-because-of-iran-war",
+      "confidence": 82,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/26/world/europe/crimea-ukraine-state-emergency.html",
       "published_at": "2026-06-26",
-      "time": "<1h"
+      "time": "15h"
+    },
+    {
+      "id": 5,
+      "tag": "DATA",
+      "region": "GLOBAL",
+      "title": {
+        "es": "¿Qué ocurre con los precios de la gasolina ahora que el petróleo vuelve a los niveles previos a la guerra con Irán?",
+        "en": "What's happening to petrol prices now oil is back to pre-Iran war levels?"
+      },
+      "summary": {
+        "es": "Los precios del petróleo han retornado a niveles anteriores a la guerra de Irán que comenzó el 28 de febrero, después de que el conflicto inicial causara saltos en costos de combustible por disrupciones en producción y transporte energético en Oriente Medio.",
+        "en": "Oil prices have returned to pre-Iran war levels following the conflict that began on 28 February, which initially caused fuel cost spikes due to disruptions in Middle Eastern energy production and transport."
+      },
+      "impact": "medium",
+      "signals": [
+        "OIL -",
+        "INFLATION -",
+        "EQUITIES +",
+        "EMERGING_MARKETS +"
+      ],
+      "confidence": 85,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/c20zgjzz0e4o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-26",
+      "time": "18h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "MENA",
+      "title": {
+        "es": "Cómo la guerra con Irán impacta la estrategia de IA de Abu Dabi",
+        "en": "How the Iran war impacts Abu Dhabi's AI strategy"
+      },
+      "summary": {
+        "es": "Las ambiciones de Abu Dabi de convertir a los EAU en un centro global de infraestructura digital e IA ('Estrategia de IA de los EAU 2031') enfrentan presión tras la guerra con Irán, aunque los EAU son conocidos por su resiliencia empresarial. El conflicto afecta inversiones estratégicas de tech en la región.",
+        "en": "Abu Dhabi's ambitions to establish the UAE as a global hub for digital infrastructure and AI ('UAE AI Strategy 2031') face pressure from the Iran war, though the UAE is known for business resilience. The conflict impacts strategic tech investment in the region."
+      },
+      "impact": "medium",
+      "signals": [
+        "TECH_EQUITIES ?",
+        "UAE_FDI -",
+        "GEOPOLITICAL_RISK +"
+      ],
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/how-the-iran-war-impacts-abu-dhabi-s-ai-strategy/a-77722632?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-26",
+      "time": "17h"
     }
-  ],
-  "market_updated_at": "2026-06-27T08:21:57.832Z"
+  ]
 }
