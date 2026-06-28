@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-06-27T08:31:53.771Z",
+  "generated_at": "2026-06-28T08:47:06.968Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1410",
-      "change": "-0.28%",
-      "up": false
+      "value": "1.1386",
+      "change": "+0.22%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,438.47",
-      "change": "+0.47%",
+      "value": "19438.47",
+      "change": "+0.64%",
       "up": true
     },
     {
-      "symbol": "BRENT Crude",
-      "value": "72.60",
-      "change": "-3.84%",
+      "symbol": "BRENT",
+      "value": "72.00",
+      "change": "-1.57%",
       "up": false
     },
     {
-      "symbol": "WTI Crude",
-      "value": "68.86",
-      "change": "-3.74%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,085.66",
-      "change": "+1.47%",
+      "symbol": "GOLD",
+      "value": "4089.49",
+      "change": "+1.87%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "59,350.00",
-      "change": "-2.91%",
+      "symbol": "BTC",
+      "value": "60197.53",
+      "change": "-0.50%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "18.41",
+      "value": "18.40",
       "change": "-2.54%",
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.372%",
-      "change": "-0.46%",
-      "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7,354.02",
-      "change": "-0.05%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24,671.22",
-      "change": "-1.29%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8617",
-      "change": "+0.54%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "101.13",
+      "symbol": "US 10Y",
+      "value": "4.40",
       "change": "-0.07%",
       "up": false
     },
     {
-      "symbol": "Natural Gas",
-      "value": "3.226",
-      "change": "-2.09%",
+      "symbol": "EUR/GBP",
+      "value": "0.8613",
+      "change": "-0.11%",
       "up": false
     },
     {
-      "symbol": "Copper",
-      "value": "6.2100",
-      "change": "+2.14%",
+      "symbol": "S&P 500",
+      "value": "7388.66",
+      "change": "+0.41%",
       "up": true
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.7982",
-      "change": "+0.04%",
+      "symbol": "DAX 40",
+      "value": "24994.83",
+      "change": "+1.03%",
       "up": true
     }
   ],
@@ -98,149 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Oriente Medio en guerra en directo: Irán acusa a EE.UU. de 'violación flagrante' del acuerdo de paz tras últimos ataques",
-        "en": "Middle East war live: Iran accuses US of 'blatant violation' of peace deal after latest strikes"
+        "es": "Día 121 de la guerra con Irán: Irán ataca Bahréin y Kuwait mientras EE.UU. golpea cerca del Estrecho de Ormuz",
+        "en": "Iran war day 121: Iran attacks Bahrain, Kuwait as US strikes near Hormuz"
       },
       "summary": {
-        "es": "Irán acusa a EE.UU. de violar el acuerdo de paz tras ataques estadounidenses a instalaciones de defensa iraní. Los ataques responden a un ataque drone previo iraní contra un buque de carga, escalando tensiones en el Estrecho de Ormuz y amenazando la reapertura del corredor de energía global.",
-        "en": "Iran accuses the US of violating the peace deal following American strikes on Iranian defense facilities. The strikes respond to a prior Iranian drone attack on a cargo vessel, escalating tensions in the Strait of Hormuz and threatening the reopened global energy corridor."
+        "es": "Las Guardias Revolucionarias iraníes lanzaron ataques contra Bahréin y Kuwait en respuesta a los bombardeos estadounidenses sobre 10 emplazamientos iraníes. El conflicto se acerca al Estrecho de Ormuz, amenazando el paso de aproximadamente el 20% del suministro mundial de petróleo. Irán amenaza con suspender completamente las negociaciones si continúan los ataques.",
+        "en": "Iran's Revolutionary Guard launched attacks on Bahrain and Kuwait in retaliation for US airstrikes on 10 Iranian sites. The conflict is converging on the Strait of Hormuz, threatening passage of approximately 20% of global oil supply. Iran threatens a complete halt to negotiations if US strikes continue."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "USD +",
+        "GOLD +",
         "EQUITIES -",
-        "GEOPOLITICAL_RISK +"
+        "BONDS +"
       ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260626-middle-east-war-us-strikes-iran-trump-ceasefire-violated",
-      "published_at": "2026-06-26",
-      "time": "10h"
+      "confidence": 95,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/6/28/iran-war-day-121-iran-attacks-bahrain-kuwait-as-us-strikes-near-hormuz?traffic_source=rss",
+      "published_at": "2026-06-28",
+      "time": "2h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EE.UU. dice haber atacado objetivos iraníes tras ataque a buque de carga en el Estrecho de Ormuz",
-        "en": "US says it struck Iran targets after attack on cargo ship in the strait of Hormuz"
+        "es": "EE.UU. e Irán intercambian más ataques, poniendo a prueba la tregua",
+        "en": "U.S. and Iran Trade More Strikes, Testing Truce"
       },
       "summary": {
-        "es": "El ejército estadounidense ejecutó ataques en represalia contra instalaciones militares iraníes tras un ataque drone a un buque de carga, representando la prueba más severa del alto el fuego entre EE.UU. e Irán que reabrió el Estrecho de Ormuz.",
-        "en": "The US military executed retaliatory strikes against Iranian military facilities following a drone attack on a cargo vessel, representing the most severe test of the US-Iran ceasefire that reopened the Strait of Hormuz."
+        "es": "Las fuerzas estadounidenses ejecutaron nuevos ataques aéreos contra Irán, justificándolos como represalia por un ataque a un petrolero en el Estrecho de Ormuz. Irán respondió atacando objetivos estadounidenses en Bahréin y Kuwait, poniendo en peligro el marco de alto el fuego recientemente anunciado. La dinámica de escalada bilateral eleva el riesgo de una interrupción prolongada del tráfico marítimo en Ormuz.",
+        "en": "US forces carried out additional airstrikes on Iran, citing retaliation for an oil tanker attack in the Strait of Hormuz. Iran responded by striking US targets in Bahrain and Kuwait, jeopardizing the recently announced ceasefire framework. The bilateral escalation cycle raises the risk of a prolonged disruption to Hormuz shipping traffic."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "SHIPPING_RISK +",
-        "USD +",
-        "EM_BONDS -"
+        "SHIPPING +",
+        "USD ?",
+        "GOLD +"
       ],
-      "confidence": 91,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/26/us-says-it-struck-iran-targets-after-attack-on-cargo-ship-on-the-strait-of-hormuz",
-      "published_at": "2026-06-26",
-      "time": "10h"
+      "confidence": 95,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/live/2026/06/27/world/us-iran-strikes-hormuz",
+      "published_at": "2026-06-28",
+      "time": "1h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Israel y Líbano firman acuerdo marco tras negociaciones mediadas por EE.UU.",
-        "en": "Israel and Lebanon sign framework agreement after US-brokered talks"
+        "es": "El alto el fuego entre EE.UU. e Irán amenazado por nuevos ataques",
+        "en": "US-Iran ceasefire threatened by renewed strikes"
       },
       "summary": {
-        "es": "Israel y Líbano alcanzaron un acuerdo marco mediado por EE.UU., aunque Hezbollah no es parte del mismo y los ceses al fuego previos entre ambos países han experimentado ataques cruzados casi diarios. Este desarrollo refleja esfuerzos de estabilización regional en medio de tensiones persistentes.",
-        "en": "Israel and Lebanon reached a US-brokered framework agreement, though Hezbollah is not a party and previous ceasefires have still seen near-daily cross-border strikes. This reflects stabilization efforts amid persistent regional tensions."
+        "es": "Israel realizó un ataque aéreo en el sur del Líbano un día después del anuncio del acuerdo marco entre Israel y el Líbano, complicando los esfuerzos diplomáticos regionales. Irán acusó a Washington de una 'violación flagrante' del acuerdo de paz tras los últimos ataques estadounidenses. La simultaneidad de frentes —Líbano, Hormuz y negociaciones directas EE.UU.-Irán— eleva el riesgo de una espiral de escalada regional.",
+        "en": "Israel conducted an airstrike in southern Lebanon one day after the announced US-brokered framework agreement between Israel and Lebanon, complicating regional diplomacy. Iran accused Washington of a 'blatant violation' of the peace deal following the latest US strikes. The simultaneity of active fronts—Lebanon, Hormuz, and direct US-Iran talks—raises the risk of a broader regional escalation spiral."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "GEOPOLITICAL_RISK ?",
-        "USD +",
-        "EQUITIES ?"
+        "OIL +",
+        "GOLD +",
+        "EM EQUITIES -",
+        "BONDS +"
       ],
-      "confidence": 78,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cg5315n1v5go?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-26",
-      "time": "9h"
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/us-iran-ceasefire-threatened-by-renewed-strikes",
+      "published_at": "2026-06-27",
+      "time": "17h"
     },
     {
       "id": 4,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Los ataques ucranianos desencadenan declaración de estado de emergencia en Crimea",
-        "en": "Ukrainian Attacks Spur State of Emergency Declaration in Crimea"
+        "es": "EE.UU. lanza una segunda noche de ataques contra Irán tras buque alcanzado por dron",
+        "en": "US launches second night of strikes on Iran after ship hit by drone"
       },
       "summary": {
-        "es": "Semanas de intensos ataques ucranianos han generado una declaración de estado de emergencia en Crimea, reflejando un nivel de perturbación no visto desde la anexión rusa en 2014. Esto señala una escalada significativa en la campaña de largo alcance ucraniana contra territorios ocupados rusos.",
-        "en": "Weeks of intense Ukrainian strikes have prompted a state of emergency declaration in Crimea, reflecting disruption levels unseen since Russia's 2014 annexation. This signals significant escalation in Ukraine's long-range campaign against Russian-occupied territory."
+        "es": "EE.UU. ejecutó una segunda ronda de ataques contra Irán tras el ataque con dron iraní a un buque comercial en el Estrecho de Ormuz, estableciendo un patrón de represalia vinculado directamente a incidentes de navegación. Esta dinámica convierte cada nuevo incidente marítimo en un potencial detonante de escalada militar, con implicaciones directas para las primas de seguro marítimo y los precios del crudo. Los mercados energéticos deberán monitorizar el ritmo de reapertura del estrecho.",
+        "en": "The US executed a second round of strikes on Iran following an alleged Iranian drone attack on a commercial vessel in the Strait of Hormuz, establishing a retaliation pattern directly linked to maritime incidents. This dynamic turns each new maritime incident into a potential military escalation trigger, with direct implications for shipping insurance premiums and crude prices. Energy markets will need to monitor the pace of any Hormuz reopening."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "RUB -",
-        "EUR +",
-        "ENERGY_RISK +",
-        "DEFENSE_EQUITIES +"
+        "OIL +",
+        "TANKER RATES +",
+        "USD +",
+        "EQUITIES -"
       ],
-      "confidence": 82,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/26/world/europe/crimea-ukraine-state-emergency.html",
-      "published_at": "2026-06-26",
-      "time": "15h"
+      "confidence": 93,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/6/27/us-launches-second-night-of-strikes-against-iran-after-ship-struck-by-drone?traffic_source=rss",
+      "published_at": "2026-06-27",
+      "time": "10h"
     },
     {
       "id": 5,
-      "tag": "DATA",
-      "region": "GLOBAL",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "¿Qué ocurre con los precios de la gasolina ahora que el petróleo vuelve a los niveles previos a la guerra con Irán?",
-        "en": "What's happening to petrol prices now oil is back to pre-Iran war levels?"
+        "es": "Ucrania golpea planta de armas rusa y centro de combustible en Moscú",
+        "en": "Ukraine strikes Russian weapons plant, Moscow fuel hub"
       },
       "summary": {
-        "es": "Los precios del petróleo han retornado a niveles anteriores a la guerra de Irán que comenzó el 28 de febrero, después de que el conflicto inicial causara saltos en costos de combustible por disrupciones en producción y transporte energético en Oriente Medio.",
-        "en": "Oil prices have returned to pre-Iran war levels following the conflict that began on 28 February, which initially caused fuel cost spikes due to disruptions in Middle Eastern energy production and transport."
+        "es": "Ucrania atacó instalaciones en las regiones de Volgogrado y Vladímir como parte de la estrategia de Zelenski de llevar la guerra al interior ruso para presionar a Putin hacia negociaciones. Los ataques a infraestructura energética y de defensa en territorio ruso profundo podrían intensificar la presión sobre la economía de guerra rusa. Para los mercados, el riesgo es una respuesta rusa escalatoria que afecte el suministro energético europeo o desestabilice las conversaciones de paz.",
+        "en": "Ukraine struck facilities in the Volgograd and Vladimir regions as part of Zelensky's strategy to bring the war to Russian territory and pressure Putin toward peace negotiations. Attacks on energy and defense infrastructure deep inside Russia could intensify pressure on the Russian war economy. For markets, the key risk is a Russian escalatory response affecting European energy supply or destabilizing peace talks."
       },
       "impact": "medium",
       "signals": [
-        "OIL -",
-        "INFLATION -",
-        "EQUITIES +",
-        "EMERGING_MARKETS +"
+        "GAS EU +",
+        "RUB -",
+        "DEFENSE EQUITIES +",
+        "EUR ?"
       ],
-      "confidence": 85,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/c20zgjzz0e4o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-26",
-      "time": "18h"
+      "confidence": 82,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ukraine-strikes-russian-weapons-plant-moscow-fuel-hub/a-77735059?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-27",
+      "time": "16h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Cómo la guerra con Irán impacta la estrategia de IA de Abu Dabi",
-        "en": "How the Iran war impacts Abu Dhabi's AI strategy"
+        "es": "Los hombres ucranianos en edad militar podrían perder la protección de la UE",
+        "en": "Military-age Ukrainian men could lose EU protection"
       },
       "summary": {
-        "es": "Las ambiciones de Abu Dabi de convertir a los EAU en un centro global de infraestructura digital e IA ('Estrategia de IA de los EAU 2031') enfrentan presión tras la guerra con Irán, aunque los EAU son conocidos por su resiliencia empresarial. El conflicto afecta inversiones estratégicas de tech en la región.",
-        "en": "Abu Dhabi's ambitions to establish the UAE as a global hub for digital infrastructure and AI ('UAE AI Strategy 2031') face pressure from the Iran war, though the UAE is known for business resilience. The conflict impacts strategic tech investment in the region."
+        "es": "La Comisión Europea ha sugerido retirar el estatus de protección temporal a los hombres ucranianos en edad militar, una medida respaldada por varios estados miembros y por el propio Kyiv. De aplicarse, la medida podría canalizar decenas de miles de hombres de vuelta hacia el esfuerzo bélico ucraniano, con implicaciones para la sostenibilidad militar y la mano de obra en los países de acogida. El debate refleja la tensión creciente entre la solidaridad europea con Ucrania y las presiones políticas internas en la UE.",
+        "en": "The European Commission has suggested withdrawing temporary protection status from military-age Ukrainian men, a move backed by several EU member states and Kyiv itself. If implemented, the measure could channel tens of thousands of men back toward the Ukrainian war effort, with implications for military sustainability and labor markets in host countries. The debate reflects growing tension between EU solidarity with Ukraine and domestic political pressures within member states."
       },
       "impact": "medium",
       "signals": [
-        "TECH_EQUITIES ?",
-        "UAE_FDI -",
-        "GEOPOLITICAL_RISK +"
+        "EUR ?",
+        "UAH ?",
+        "EU DEFENSE SPEND +",
+        "EASTERN EU EQUITIES ?"
       ],
-      "confidence": 72,
+      "confidence": 74,
       "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/how-the-iran-war-impacts-abu-dhabi-s-ai-strategy/a-77722632?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-26",
-      "time": "17h"
+      "source_url": "https://www.dw.com/en/military-age-ukrainian-men-could-lose-eu-protection/a-77729285?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-27",
+      "time": "23h"
     }
-  ],
-  "market_updated_at": "2026-06-28T08:37:00.874Z"
+  ]
 }
