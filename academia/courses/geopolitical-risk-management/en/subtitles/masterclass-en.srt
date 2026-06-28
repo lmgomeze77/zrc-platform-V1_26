@@ -1,0 +1,1260 @@
+1
+00:00:00,000 --> 00:00:04,200
+On the 24th of February, 2022,
+
+2
+00:00:04,300 --> 00:00:08,600
+at five in the morning
+Moscow time,
+
+3
+00:00:08,700 --> 00:00:13,200
+Russia launched its full-scale
+invasion of Ukraine.
+
+4
+00:00:13,300 --> 00:00:17,500
+In the seventy-two hours
+that followed,
+
+5
+00:00:17,600 --> 00:00:22,000
+the MOEX index collapsed
+forty-five percent.
+
+6
+00:00:22,100 --> 00:00:26,500
+The ruble lost thirty percent
+of its value in days.
+
+7
+00:00:26,600 --> 00:00:31,000
+And European natural gas prices
+—the TTF benchmark—
+
+8
+00:00:31,100 --> 00:00:36,000
+began a climb that would take them
+more than ten times higher.
+
+9
+00:00:36,800 --> 00:00:41,500
+How many fund managers and investors
+with exposure to those assets
+
+10
+00:00:41,600 --> 00:00:46,000
+had incorporated that risk
+into their models?
+
+11
+00:00:47,000 --> 00:00:52,000
+Fewer than forty percent of the market
+assigned a meaningful probability.
+
+12
+00:00:52,100 --> 00:00:57,000
+Even with troop concentration signals
+available in public sources
+
+13
+00:00:57,100 --> 00:01:01,000
+since November
+the year before.
+
+14
+00:01:02,000 --> 00:01:07,000
+That gap between the signal and the price
+is the problem this course solves.
+
+15
+00:01:08,000 --> 00:01:11,500
+Welcome to Zenith Academia.
+
+16
+00:01:11,600 --> 00:01:15,500
+I'm an analyst
+at Zenith Rise Capital.
+
+17
+00:01:15,600 --> 00:01:20,000
+Over the next twenty-eight minutes
+we're going to build a practical framework
+
+18
+00:01:20,100 --> 00:01:25,000
+for identifying, measuring and integrating
+geopolitical risk into investment decisions.
+
+19
+00:01:26,000 --> 00:01:30,500
+We are not doing geopolitics
+for its own intellectual pleasure.
+
+20
+00:01:30,600 --> 00:01:34,500
+We're doing it because
+it has a price.
+
+21
+00:01:34,600 --> 00:01:39,500
+There is a spread widening,
+a currency depreciation,
+
+22
+00:01:39,600 --> 00:01:44,000
+a margin collapse behind every
+material geopolitical event.
+
+23
+00:01:45,000 --> 00:01:49,500
+Three data points to move this
+from intuition to evidence.
+
+24
+00:01:50,000 --> 00:01:55,000
+First: every major disruption
+in the Strait of Hormuz since 1973
+
+25
+00:01:55,100 --> 00:02:00,000
+has generated an average crude oil spike
+of twenty to forty percent.
+
+26
+00:02:01,000 --> 00:02:06,000
+Second: sovereign bond spreads widen
+300–1,500 basis points
+
+27
+00:02:06,100 --> 00:02:11,000
+in the year before the event.
+The year before.
+
+28
+00:02:11,500 --> 00:02:15,500
+The signal was in the market
+before anyone called it news.
+
+29
+00:02:16,000 --> 00:02:21,000
+Third: emerging-market currencies absorb
+fifteen to thirty-five percent depreciation
+
+30
+00:02:21,100 --> 00:02:25,500
+in the twelve months following
+a material geopolitical escalation.
+
+31
+00:02:26,500 --> 00:02:30,500
+Geopolitical risk already has a price.
+
+32
+00:02:30,600 --> 00:02:35,000
+What most investors are missing
+is the framework to read it.
+
+33
+00:02:36,000 --> 00:02:40,000
+And that is exactly what we're going
+to build together today.
+
+34
+00:02:41,000 --> 00:02:50,000
+[Pause · Section transition]
+
+35
+00:02:50,500 --> 00:03:00,000
+The ZRC Framework · Four Layers
+of Geopolitical Risk.
+
+36
+00:03:00,500 --> 00:03:05,000
+The most common mistake I see
+in geopolitical analysis applied
+
+37
+00:03:05,100 --> 00:03:09,500
+to investment is not a lack of information.
+Today there is plenty of that.
+
+38
+00:03:09,600 --> 00:03:14,500
+The mistake is collapsing everything
+into one blurry category —
+
+39
+00:03:14,600 --> 00:03:19,500
+"country risk", "political risk" —
+blending phenomena with different horizons.
+
+40
+00:03:20,000 --> 00:03:25,000
+A country can have fragile institutions
+going back decades — structural risk —
+
+41
+00:03:25,100 --> 00:03:30,000
+and at the same time be experiencing
+a balance-of-payments crisis right now.
+
+42
+00:03:30,100 --> 00:03:35,000
+And simultaneously have a border conflict
+cutting a specific supply chain.
+
+43
+00:03:35,100 --> 00:03:40,000
+Four distinct phenomena.
+If we analyse them as one,
+
+44
+00:03:40,100 --> 00:03:45,000
+we will never know which is dominant,
+which is transitory,
+
+45
+00:03:45,100 --> 00:03:49,500
+which actually warrants action.
+At ZRC, we call this:
+
+46
+00:03:49,600 --> 00:03:54,000
+the Four-Layer Framework.
+
+47
+00:03:55,000 --> 00:04:00,000
+The first layer is the structural layer.
+This is the long-run substrate.
+
+48
+00:04:00,100 --> 00:04:05,000
+The quality of state institutions,
+social cohesion,
+
+49
+00:04:05,100 --> 00:04:10,000
+the country's geopolitical positioning
+in the international system.
+
+50
+00:04:10,500 --> 00:04:15,500
+Changes at this layer are slow.
+They are measured in decades.
+
+51
+00:04:15,600 --> 00:04:20,500
+But they determine the ceiling of
+risk-adjusted returns sustainably available.
+
+52
+00:04:21,000 --> 00:04:26,000
+A country with weak institutions
+can deliver extraordinary short-term returns.
+
+53
+00:04:26,100 --> 00:04:31,000
+Carry trades in fragile currencies
+can be spectacular while they last.
+
+54
+00:04:31,100 --> 00:04:36,000
+But the permanent valuation ceiling
+is constrained by the structural risk premium.
+
+55
+00:04:37,000 --> 00:04:42,000
+Key variables: Rule of Law Index,
+Fragile States Index,
+
+56
+00:04:42,100 --> 00:04:47,000
+positioning in military
+and commercial alliances.
+
+57
+00:04:48,000 --> 00:04:53,000
+The second layer is the regulatory layer.
+It operates over the medium term.
+
+58
+00:04:53,100 --> 00:04:58,000
+It captures all normative changes
+driven by political decisions:
+
+59
+00:04:58,100 --> 00:05:03,000
+international sanctions,
+capital controls,
+
+60
+00:05:03,100 --> 00:05:08,000
+foreign investment restrictions,
+confiscatory tax changes.
+
+61
+00:05:09,000 --> 00:05:14,000
+This layer has gained critical relevance
+since 2022. Here is why:
+
+62
+00:05:14,100 --> 00:05:19,000
+Western democracies demonstrated they would
+weaponise the international financial system
+
+63
+00:05:19,100 --> 00:05:24,000
+— SWIFT access, central bank reserves,
+dollar settlement —
+
+64
+00:05:24,100 --> 00:05:28,500
+as a geopolitical pressure tool.
+
+65
+00:05:29,000 --> 00:05:34,000
+The immobilisation of three hundred billion
+in Russian central bank reserves
+
+66
+00:05:34,100 --> 00:05:39,000
+was an act without modern precedent
+in the financial system.
+
+67
+00:05:40,000 --> 00:05:45,000
+The third layer is the operational layer.
+Most immediate for earnings impact.
+
+68
+00:05:45,100 --> 00:05:50,000
+Supply chain disruption,
+severed access to critical infrastructure,
+
+69
+00:05:50,100 --> 00:05:55,000
+interruption of transport routes,
+loss of access to critical inputs.
+
+70
+00:05:55,500 --> 00:06:00,500
+These events tend to be sudden
+and high-visibility.
+
+71
+00:06:00,600 --> 00:06:05,500
+But they also carry — in many cases —
+greater reversibility once resolved.
+
+72
+00:06:06,000 --> 00:06:11,000
+The fourth layer is the market layer.
+It captures how the first three
+
+73
+00:06:11,100 --> 00:06:16,000
+translate into observable signals:
+widening spreads,
+
+74
+00:06:16,100 --> 00:06:21,000
+currency depreciation,
+portfolio capital outflows,
+
+75
+00:06:21,100 --> 00:06:26,000
+elevated sector volatility,
+safe-haven asset appreciation.
+
+76
+00:06:27,000 --> 00:06:32,000
+This layer is the noisiest
+in the short term.
+
+77
+00:06:32,100 --> 00:06:37,000
+Markets overreact.
+Then correct.
+
+78
+00:06:37,100 --> 00:06:42,000
+But it is also where the best
+entry and exit opportunities lie
+
+79
+00:06:42,100 --> 00:06:47,000
+for investors with a solid analytical
+framework in the upstream layers.
+
+80
+00:06:48,000 --> 00:06:53,000
+One key idea before we move on:
+the four layers are not independent.
+
+81
+00:06:53,100 --> 00:06:58,000
+An operational shock without underlying
+structural weakness
+
+82
+00:06:58,100 --> 00:07:02,500
+tends to be transitory.
+
+83
+00:07:03,000 --> 00:07:08,000
+Severity and reversibility are read
+by assessing how many layers
+
+84
+00:07:08,100 --> 00:07:13,000
+are simultaneously
+compromised.
+
+85
+00:07:13,100 --> 00:07:18,000
+The more layers in play at once,
+the more persistent the impact.
+
+86
+00:07:19,000 --> 00:07:24,000
+That is the framework.
+Now let us see how it reaches price.
+
+87
+00:07:25,000 --> 00:07:30,000
+[Pause · Section transition]
+
+88
+00:07:30,500 --> 00:07:37,000
+Transmission Channels
+to Asset Prices.
+
+89
+00:07:38,000 --> 00:07:43,000
+Identifying the geopolitical risk
+is the first step.
+
+90
+00:07:43,100 --> 00:07:48,000
+The second — more demanding
+and more rewarding —
+
+91
+00:07:48,100 --> 00:07:53,000
+is tracing the mechanism by which
+that risk reaches asset prices.
+
+92
+00:07:54,000 --> 00:07:59,000
+There is an enormous difference between
+knowing there is tension in the Red Sea
+
+93
+00:07:59,100 --> 00:08:04,500
+and knowing exactly which margins
+will compress, by how much and when.
+
+94
+00:08:05,000 --> 00:08:09,500
+The first is an observation.
+The second is an investment input.
+
+95
+00:08:10,000 --> 00:08:14,500
+There are four primary
+transmission channels.
+
+96
+00:08:16,000 --> 00:08:21,000
+The first: the energy channel.
+The most direct and most studied.
+
+97
+00:08:21,100 --> 00:08:26,000
+Producer and consumer states have
+historically used energy flows
+
+98
+00:08:26,100 --> 00:08:31,000
+as a political pressure tool.
+
+99
+00:08:31,500 --> 00:08:36,500
+The first-round mechanism:
+any disruption in energy production
+
+100
+00:08:36,600 --> 00:08:41,500
+or transport raises the cost
+of those inputs for everyone.
+
+101
+00:08:42,000 --> 00:08:47,000
+The second-round mechanism
+is what most analysts underestimate.
+
+102
+00:08:47,100 --> 00:08:52,000
+Higher energy costs
+compress industrial margins,
+
+103
+00:08:52,100 --> 00:08:57,000
+push inflation upward,
+force rates higher for longer,
+
+104
+00:08:57,100 --> 00:09:02,000
+and reduce consumer purchasing power,
+deteriorating aggregate growth.
+
+105
+00:09:03,000 --> 00:09:08,000
+The clearest recent example:
+Russia's gas curtailment to Europe in 2022.
+
+106
+00:09:08,100 --> 00:09:13,000
+The TTF climbed
+more than ten times from its lows.
+
+107
+00:09:13,500 --> 00:09:18,500
+It precipitated an industrial crisis
+in chemicals, fertilisers, aluminium, glass.
+
+108
+00:09:19,000 --> 00:09:24,000
+Germany revised its growth projections
+down 1.5–2.5 GDP percentage points.
+
+109
+00:09:24,500 --> 00:09:28,500
+That is not noise.
+That is a price factor with a name.
+
+110
+00:09:30,000 --> 00:09:35,000
+The second channel:
+supply chains.
+
+111
+00:09:35,100 --> 00:09:40,000
+Three decades of globalisation
+have created ultra-efficient
+
+112
+00:09:40,100 --> 00:09:44,500
+but deeply fragile supply chains.
+
+113
+00:09:45,000 --> 00:09:50,000
+Many sectors depend on components
+manufactured in few geographies.
+
+114
+00:09:50,500 --> 00:09:55,500
+Vulnerabilities that only become visible
+when geopolitical tension activates them.
+
+115
+00:09:56,000 --> 00:10:01,000
+Think for a moment
+about semiconductors.
+
+116
+00:10:01,100 --> 00:10:06,000
+TSMC manufactures in Taiwan
+between sixty and ninety-two percent
+
+117
+00:10:06,100 --> 00:10:11,000
+of the world's advanced chip production,
+depending on the technology node.
+
+118
+00:10:11,500 --> 00:10:16,500
+Not sixty percent of one type.
+Sixty to ninety-two percent of all of them.
+
+119
+00:10:17,000 --> 00:10:22,000
+What would happen if there were
+a disruption in Taiwan?
+
+120
+00:10:22,100 --> 00:10:27,000
+Not necessarily an invasion.
+A partial naval blockade would be enough.
+
+121
+00:10:27,100 --> 00:10:32,000
+The impact would propagate immediately
+to automotive, consumer electronics,
+
+122
+00:10:32,100 --> 00:10:37,000
+medical equipment and defence
+production worldwide.
+
+123
+00:10:37,500 --> 00:10:42,500
+Does your analysis of companies
+with advanced semiconductor exposure
+
+124
+00:10:42,600 --> 00:10:47,000
+include that vulnerability
+or ignore it?
+
+125
+00:10:48,500 --> 00:10:53,500
+The third channel:
+currencies and capital flows.
+
+126
+00:10:53,600 --> 00:10:58,500
+In periods of elevated uncertainty,
+capital migrates to safe havens:
+
+127
+00:10:58,600 --> 00:11:03,500
+dollars, Swiss francs,
+Treasuries and gold.
+
+128
+00:11:04,000 --> 00:11:09,000
+But the most important story
+in this channel over recent years
+
+129
+00:11:09,100 --> 00:11:14,000
+is not private capital movement.
+It is the weaponisation of finance.
+
+130
+00:11:14,500 --> 00:11:19,500
+When the West immobilised three hundred
+billion in Russian central bank reserves,
+
+131
+00:11:19,600 --> 00:11:24,500
+it was not just a sanction.
+It was a message to every central bank.
+
+132
+00:11:25,000 --> 00:11:30,000
+If your geopolitical positioning
+conflicts with Western interests,
+
+133
+00:11:30,100 --> 00:11:35,000
+your reserves in dollars and euros
+are not safe.
+
+134
+00:11:36,000 --> 00:11:41,000
+The consequences of that precedent
+are still unfolding.
+
+135
+00:11:41,100 --> 00:11:46,000
+The acceleration in reserve diversification
+toward gold and renminbi
+
+136
+00:11:46,100 --> 00:11:50,500
+in emerging-market central banks
+is not coincidence.
+
+137
+00:11:50,600 --> 00:11:55,000
+It is a rational response
+to a risk once considered theoretical.
+
+138
+00:11:57,000 --> 00:12:02,000
+The fourth channel:
+risk premia.
+
+139
+00:12:02,100 --> 00:12:07,000
+The most abstract, perhaps the most pervasive.
+Geopolitics affects the discount rate
+
+140
+00:12:07,100 --> 00:12:12,000
+investors apply to future cash flows
+from geopolitically exposed assets.
+
+141
+00:12:12,500 --> 00:12:17,500
+This premium rarely appears labelled.
+It surfaces as a valuation discount
+
+142
+00:12:17,600 --> 00:12:22,000
+or a multiple haircut.
+But it is real and measurable.
+
+143
+00:12:22,500 --> 00:12:27,500
+In 2023, European energy infrastructure
+with Eastern Europe exposure
+
+144
+00:12:27,600 --> 00:12:32,500
+traded at discounts of fifteen
+to twenty-five percent vs peers.
+
+145
+00:12:33,000 --> 00:12:38,000
+Not explained by operational fundamentals.
+Explained by the geopolitical risk premium.
+
+146
+00:12:38,500 --> 00:12:43,500
+Two types of situations result:
+assets that deserve the discount
+
+147
+00:12:43,600 --> 00:12:48,000
+and assets that are undervalued because
+the market premium is excessive.
+
+148
+00:12:48,500 --> 00:12:53,000
+The analytical framework is what allows you
+to tell them apart.
+
+149
+00:12:55,000 --> 00:13:00,000
+[Pause · Section transition]
+
+150
+00:13:01,000 --> 00:13:07,000
+The ZRC Geopolitical Scoring
+Methodology. From signal to decision.
+
+151
+00:13:08,000 --> 00:13:13,000
+We have covered what geopolitical risk is,
+how it breaks down into layers
+
+152
+00:13:13,100 --> 00:13:18,000
+and how it reaches asset prices.
+Now comes the question I get most often.
+
+153
+00:13:18,500 --> 00:13:23,500
+"This all sounds compelling,
+but how do I turn it into a number?"
+
+154
+00:13:24,000 --> 00:13:29,000
+"How does this
+enter my model?"
+
+155
+00:13:29,500 --> 00:13:33,500
+It is exactly the right question.
+And it has an answer.
+
+156
+00:13:34,000 --> 00:13:39,000
+The primary obstacle is not
+a lack of information.
+
+157
+00:13:39,100 --> 00:13:44,000
+It is the difficulty of converting
+largely qualitative information
+
+158
+00:13:44,100 --> 00:13:49,000
+into a quantitative input
+that can enter decision models.
+
+159
+00:13:49,500 --> 00:13:54,000
+The ZRC Scoring Methodology
+solves that in four steps.
+
+160
+00:13:55,500 --> 00:14:00,500
+Step one:
+the exposure inventory.
+
+161
+00:14:00,600 --> 00:14:05,500
+Before evaluating anything, map all
+the geopolitical exposures of the asset:
+
+162
+00:14:05,600 --> 00:14:10,500
+geographies where it operates,
+countries its supply chain depends on,
+
+163
+00:14:10,600 --> 00:14:15,500
+markets where it sells,
+currencies in which it reports.
+
+164
+00:14:16,000 --> 00:14:21,000
+This inventory is not
+a one-time exercise.
+
+165
+00:14:21,100 --> 00:14:26,000
+Update it whenever the asset changes
+its operating model
+
+166
+00:14:26,100 --> 00:14:31,000
+or whenever the geopolitical environment
+of any relevant geography changes.
+
+167
+00:14:32,000 --> 00:14:37,000
+Step two:
+the layer-by-layer evaluation.
+
+168
+00:14:37,100 --> 00:14:42,000
+For each geography identified,
+assess the four ZRC layers
+
+169
+00:14:42,100 --> 00:14:47,000
+on a scale of one to five.
+One is minimal risk, five is severe.
+
+170
+00:14:47,500 --> 00:14:52,500
+This assessment draws on primary
+and secondary sources:
+
+171
+00:14:52,600 --> 00:14:57,500
+IMF, World Bank, OECD,
+Oxford Analytica, Eurasia Group.
+
+172
+00:14:58,000 --> 00:15:03,000
+Step three:
+weighting by transmission channel.
+
+173
+00:15:03,100 --> 00:15:08,000
+Not all layers carry equal weight
+for every asset.
+
+174
+00:15:08,100 --> 00:15:13,000
+A manufacturer should weight
+the operational layer more heavily.
+
+175
+00:15:13,100 --> 00:15:18,000
+A financial entity with sovereign debt
+should weight regulatory more heavily.
+
+176
+00:15:18,500 --> 00:15:23,500
+Weights are documented explicitly —
+not as bureaucracy,
+
+177
+00:15:23,600 --> 00:15:28,500
+but so they can be revisited
+when circumstances change.
+
+178
+00:15:29,000 --> 00:15:34,000
+Step four: the composite score
+and decision thresholds.
+
+179
+00:15:34,100 --> 00:15:39,000
+Multiply scores by weights, sum the layers:
+a number between one and five.
+
+180
+00:15:39,500 --> 00:15:44,500
+Score 1.0–2.0: low risk.
+Routine quarterly monitoring.
+
+181
+00:15:44,600 --> 00:15:49,500
+2.1–3.5: moderate risk.
+Enhanced monitoring plus scenario analysis.
+
+182
+00:15:49,600 --> 00:15:54,500
+Above 3.6: elevated risk.
+Deep due diligence and active hedging.
+
+183
+00:15:55,500 --> 00:16:00,500
+Before the case study, let me be direct
+about what this scoring cannot do.
+
+184
+00:16:00,600 --> 00:16:05,500
+It does not capture genuine black-swan
+events well.
+
+185
+00:16:05,600 --> 00:16:10,500
+It does not eliminate analyst bias.
+And it can create false precision
+
+186
+00:16:10,600 --> 00:16:15,500
+if we forget the scores are expert
+judgements, not objective facts.
+
+187
+00:16:16,000 --> 00:16:21,000
+Its value is in structuring the analysis
+and forcing explicit assumptions —
+
+188
+00:16:21,100 --> 00:16:26,000
+not producing a number
+that replaces human judgement.
+
+189
+00:16:27,000 --> 00:16:32,000
+[Pause · Section transition]
+
+190
+00:16:33,000 --> 00:16:39,000
+Case Study. Let us apply
+everything we have covered.
+
+191
+00:16:39,500 --> 00:16:44,500
+The asset: a mid-size European industrial
+company, revenue ~€800 million.
+
+192
+00:16:44,600 --> 00:16:49,500
+Precision machinery manufacturer
+with supply chain in East Asia.
+
+193
+00:16:49,600 --> 00:16:54,500
+Sixty-five percent of critical components
+transit through the Red Sea and Suez Canal.
+
+194
+00:16:55,000 --> 00:17:00,000
+The trigger: escalation of Houthi attacks
+in the Red Sea, November 2023.
+
+195
+00:17:00,100 --> 00:17:05,000
+And the decision of major shipping lines
+to reroute via the Cape of Good Hope.
+
+196
+00:17:06,000 --> 00:17:11,000
+We apply the ZRC Framework.
+Structural layer: Yemen.
+
+197
+00:17:11,100 --> 00:17:16,000
+Yemen has been in active civil war since
+2014. Structural fragility, no resolution.
+
+198
+00:17:16,100 --> 00:17:21,000
+Score: four out of five.
+Not new information in November 2023.
+
+199
+00:17:21,100 --> 00:17:26,000
+It had been observable
+for nearly a decade.
+
+200
+00:17:27,000 --> 00:17:32,000
+Regulatory layer: Houthi operations
+did not generate direct sanctions
+
+201
+00:17:32,100 --> 00:17:37,000
+for the company, but activated
+the European naval operation Aspides.
+
+202
+00:17:37,100 --> 00:17:42,000
+Modified the marine insurance context
+in the zone. Score: two out of five.
+
+203
+00:17:43,000 --> 00:17:48,000
+Operational layer: here the impact
+was immediate and material.
+
+204
+00:17:48,100 --> 00:17:53,000
+Transit times extended
+by ten to fourteen days.
+
+205
+00:17:53,100 --> 00:17:58,000
+Freight rates tripled.
+Hull and cargo insurance multiplied 5–10x.
+
+206
+00:17:58,500 --> 00:18:03,500
+For the company: higher working capital,
+pressure on fixed-price contracts,
+
+207
+00:18:03,600 --> 00:18:08,500
+delivery delays that triggered
+contractual penalty clauses.
+
+208
+00:18:09,000 --> 00:18:13,000
+Score: five out of five. Severe impact.
+
+209
+00:18:14,000 --> 00:18:19,000
+Market layer: shares of companies
+with high Asia-Europe logistics dependence
+
+210
+00:18:19,100 --> 00:18:24,000
+corrected eight to fifteen percent
+in January–February 2024.
+
+211
+00:18:24,100 --> 00:18:29,000
+The sector traded at a P/E discount
+of 1.5–2 turns below historical average.
+
+212
+00:18:29,500 --> 00:18:34,000
+Score: three out of five.
+
+213
+00:18:35,000 --> 00:18:40,000
+With weights for this asset:
+45% operational, 20% structural,
+
+214
+00:18:40,100 --> 00:18:45,000
+20% market, 15% regulatory,
+the composite score comes to:
+
+215
+00:18:45,100 --> 00:18:50,000
+3.85. Elevated risk.
+
+216
+00:18:50,500 --> 00:18:55,500
+Which would have triggered deep due diligence
+and evaluation of active hedges.
+
+217
+00:18:56,000 --> 00:19:01,000
+I want to pause and make a point
+that I think is central.
+
+218
+00:19:01,100 --> 00:19:06,000
+Yemen's structural fragility — layer one —
+had been visible for nearly a decade.
+
+219
+00:19:06,100 --> 00:19:11,000
+The company's dependence
+on the Asia-Suez corridor
+
+220
+00:19:11,100 --> 00:19:16,000
+was in its annual reports,
+in its supplier contracts.
+
+221
+00:19:17,000 --> 00:19:22,000
+Geopolitical analysis of an asset
+does not begin when the crisis erupts.
+
+222
+00:19:22,100 --> 00:19:27,000
+It begins at initial due diligence.
+
+223
+00:19:27,500 --> 00:19:32,500
+Investors who incorporated the Red Sea
+corridor's vulnerability
+
+224
+00:19:32,600 --> 00:19:37,500
+into their risk analysis were positioned
+to act when the escalation came.
+
+225
+00:19:37,600 --> 00:19:42,000
+Those who had not
+were left reacting.
+
+226
+00:19:43,000 --> 00:19:48,000
+[Pause · Section transition]
+
+227
+00:19:50,000 --> 00:19:55,000
+Synthesis. Three ideas
+to take away.
+
+228
+00:19:56,000 --> 00:20:01,000
+First: geopolitical risk already has
+a price in markets.
+
+229
+00:20:01,100 --> 00:20:06,000
+Not incorporating it is implicitly
+pricing it at zero.
+
+230
+00:20:06,100 --> 00:20:11,000
+And in nearly every case,
+that is wrong.
+
+231
+00:20:12,000 --> 00:20:17,000
+Second: the ZRC Four-Layer Framework
+allows disaggregation of what would
+
+232
+00:20:17,100 --> 00:20:22,000
+otherwise be a vague, unmanageable category
+into variables with distinct horizons,
+
+233
+00:20:22,100 --> 00:20:27,000
+distinct mechanisms
+and distinct reversibility profiles.
+
+234
+00:20:27,500 --> 00:20:32,500
+That converts qualitative analysis
+into actionable quantitative inputs.
+
+235
+00:20:33,500 --> 00:20:38,500
+Third: the geopolitical score does not
+replace analytical judgement —
+
+236
+00:20:38,600 --> 00:20:43,500
+it structures it.
+Its value is in forcing explicitness:
+
+237
+00:20:43,600 --> 00:20:48,500
+compelling you to name the exposures,
+the layers at risk and the channels.
+
+238
+00:20:48,600 --> 00:20:53,000
+What you name, you can manage.
+What remains implicit, you cannot.
+
+239
+00:20:54,500 --> 00:20:59,500
+If you have found this framework useful —
+and I hope you have found it
+
+240
+00:20:59,600 --> 00:21:04,500
+practical and directly applicable —
+here is what comes next in Zenith Academia.
+
+241
+00:21:05,000 --> 00:21:10,000
+The next module, ZRC-ACAD-ENE-02,
+goes deep into energy markets
+
+242
+00:21:10,100 --> 00:21:15,000
+and geopolitics: OPEC+ moves,
+LNG redeployment, energy-intensive sectors.
+
+243
+00:21:15,500 --> 00:21:20,500
+The third course, ZRC-ACAD-SCH-03,
+works through critical supply chains:
+
+244
+00:21:20,600 --> 00:21:25,500
+semiconductors, lithium, rare earths,
+and reshoring as structural trend.
+
+245
+00:21:26,500 --> 00:21:31,500
+And if you want to go beyond
+the course format, the Inner Circle
+
+246
+00:21:31,600 --> 00:21:36,500
+gives you access to the weekly
+ZRC Intelligence briefing.
+
+247
+00:21:36,600 --> 00:21:41,500
+Where we apply exactly this framework
+to the week's events in real time.
+
+248
+00:21:42,000 --> 00:21:47,000
+And to ZRC Observatory,
+our near-real-time
+
+249
+00:21:47,100 --> 00:21:52,000
+geopolitical signal
+monitoring platform.
+
+250
+00:21:53,500 --> 00:21:58,500
+The world is changing faster than
+the models most of us use to analyse it.
+
+251
+00:21:58,600 --> 00:22:03,500
+The competitive advantage in this
+environment is not having more data.
+
+252
+00:22:03,600 --> 00:22:08,500
+It is having a better framework
+for reading it.
+
+253
+00:22:10,000 --> 00:22:15,000
+That is what we do at ZRC.
+
+254
+00:22:15,100 --> 00:22:20,000
+And it is what we want to teach you
+to do at Zenith Academia.
+
+255
+00:22:21,000 --> 00:22:26,000
+See you in the next module.
+
+256
+00:22:27,000 --> 00:28:00,000
+[Closing music · Zenith Academia]
+

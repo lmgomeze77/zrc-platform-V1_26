@@ -1,0 +1,1249 @@
+1
+00:00:00,000 --> 00:00:04,200
+El 24 de febrero de 2022,
+
+2
+00:00:04,300 --> 00:00:08,600
+a las cinco de la mañana
+hora de Moscú,
+
+3
+00:00:08,700 --> 00:00:13,200
+comenzó la invasión rusa
+de Ucrania a gran escala.
+
+4
+00:00:13,300 --> 00:00:17,500
+En las setenta y dos horas
+siguientes,
+
+5
+00:00:17,600 --> 00:00:22,000
+el índice MOEX colapsó
+un cuarenta y cinco por ciento.
+
+6
+00:00:22,100 --> 00:00:26,500
+El rublo perdió un treinta por ciento
+de su valor en días.
+
+7
+00:00:26,600 --> 00:00:31,000
+Y los mercados de gas natural europeos
+—el TTF—
+
+8
+00:00:31,100 --> 00:00:36,000
+comenzaron una escalada que los llevaría
+a multiplicarse por diez.
+
+9
+00:00:36,800 --> 00:00:41,500
+¿Cuántos gestores e inversores
+con exposición a esos activos
+
+10
+00:00:41,600 --> 00:00:46,000
+habían incorporado ese riesgo
+a sus modelos?
+
+11
+00:00:47,000 --> 00:00:52,000
+Menos del cuarenta por ciento del mercado
+asignaba probabilidad significativa.
+
+12
+00:00:52,100 --> 00:00:57,000
+Incluso con señales de concentración
+de tropas en fuentes públicas
+
+13
+00:00:57,100 --> 00:01:01,000
+desde noviembre
+del año anterior.
+
+14
+00:01:02,000 --> 00:01:07,000
+Ese gap entre la señal y el precio
+es el problema que este curso resuelve.
+
+15
+00:01:08,000 --> 00:01:11,500
+Bienvenidos a ZRC Academia.
+
+16
+00:01:11,600 --> 00:01:15,500
+Soy analista
+de Zenith Rise Capital.
+
+17
+00:01:15,600 --> 00:01:20,000
+En los próximos veintiocho minutos
+trabajaremos juntos un marco práctico
+
+18
+00:01:20,100 --> 00:01:25,000
+para identificar, medir e integrar
+el riesgo geopolítico en vuestras decisiones.
+
+19
+00:01:26,000 --> 00:01:30,500
+No hacemos geopolítica
+por el placer intelectual.
+
+20
+00:01:30,600 --> 00:01:34,500
+La hacemos porque
+tiene un precio.
+
+21
+00:01:34,600 --> 00:01:39,500
+Hay un diferencial de spreads,
+una depreciación de divisa,
+
+22
+00:01:39,600 --> 00:01:44,000
+un colapso de márgenes industriales
+detrás de cada evento geopolítico.
+
+23
+00:01:45,000 --> 00:01:49,500
+Tres datos para pasar
+de intuición a evidencia.
+
+24
+00:01:50,000 --> 00:01:55,000
+Primero: cada disrupción en el Estrecho
+de Ormuz desde 1973
+
+25
+00:01:55,100 --> 00:02:00,000
+ha generado un repunte del crudo
+de entre el 20 y el 40 por ciento.
+
+26
+00:02:01,000 --> 00:02:06,000
+Segundo: los spreads de bonos soberanos
+se amplían 300-1.500 pb
+
+27
+00:02:06,100 --> 00:02:11,000
+en el año previo al evento.
+El año previo.
+
+28
+00:02:11,500 --> 00:02:15,500
+La señal estaba en el mercado
+antes de que fuera noticia.
+
+29
+00:02:16,000 --> 00:02:21,000
+Tercero: las monedas emergentes absorben
+entre el 15 y el 35 por ciento
+
+30
+00:02:21,100 --> 00:02:25,500
+de depreciación en los doce meses
+tras una escalada geopolítica.
+
+31
+00:02:26,500 --> 00:02:30,500
+El riesgo geopolítico ya tiene precio.
+
+32
+00:02:30,600 --> 00:02:35,000
+Lo que falta es el marco
+para leerlo correctamente.
+
+33
+00:02:36,000 --> 00:02:40,000
+Y eso es exactamente lo que vamos
+a construir juntos hoy.
+
+34
+00:02:41,000 --> 00:02:50,000
+[Pausa · Cambio de sección]
+
+35
+00:02:50,500 --> 00:03:00,000
+Marco ZRC · Las cuatro capas
+del riesgo geopolítico.
+
+36
+00:03:00,500 --> 00:03:05,000
+El error más frecuente que veo
+en el análisis geopolítico aplicado
+
+37
+00:03:05,100 --> 00:03:09,500
+no es la falta de información.
+Hoy hay información de sobra.
+
+38
+00:03:09,600 --> 00:03:14,500
+El error es mezclar en una categoría
+única —"riesgo país"—
+
+39
+00:03:14,600 --> 00:03:19,500
+fenómenos con horizontes temporales
+y mecanismos completamente distintos.
+
+40
+00:03:20,000 --> 00:03:25,000
+Un país puede tener instituciones frágiles
+desde hace décadas —riesgo estructural—
+
+41
+00:03:25,100 --> 00:03:30,000
+y al mismo tiempo sufrir
+una crisis de balanza de pagos hoy.
+
+42
+00:03:30,100 --> 00:03:35,000
+Y simultáneamente tener un conflicto
+que corta una cadena de suministro.
+
+43
+00:03:35,100 --> 00:03:40,000
+Cuatro fenómenos distintos.
+Si los analizamos como uno solo,
+
+44
+00:03:40,100 --> 00:03:45,000
+nunca sabremos cuál es dominante,
+cuál es transitorio,
+
+45
+00:03:45,100 --> 00:03:49,500
+cuál justifica una acción.
+En ZRC lo llamamos:
+
+46
+00:03:49,600 --> 00:03:54,000
+el Marco de las Cuatro Capas.
+
+47
+00:03:55,000 --> 00:04:00,000
+La primera capa es la estructural.
+Es el sustrato de largo plazo.
+
+48
+00:04:00,100 --> 00:04:05,000
+La calidad de las instituciones del estado,
+la cohesión social,
+
+49
+00:04:05,100 --> 00:04:10,000
+el posicionamiento geopolítico del país
+en el sistema internacional.
+
+50
+00:04:10,500 --> 00:04:15,500
+Los cambios en esta capa son lentos.
+Se miden en décadas.
+
+51
+00:04:15,600 --> 00:04:20,500
+Pero determinan el techo de rentabilidad
+ajustada al riesgo disponible.
+
+52
+00:04:21,000 --> 00:04:26,000
+Un país con instituciones débiles
+puede daros retornos extraordinarios
+
+53
+00:04:26,100 --> 00:04:31,000
+a corto plazo.
+Pero el techo de valoración permanente
+
+54
+00:04:31,100 --> 00:04:36,000
+está limitado por la prima estructural
+que los mercados le asignan.
+
+55
+00:04:37,000 --> 00:04:42,000
+Las variables clave aquí:
+Índice de Estado de Derecho,
+
+56
+00:04:42,100 --> 00:04:47,000
+Fragile States Index,
+posición en alianzas militares y comerciales.
+
+57
+00:04:48,000 --> 00:04:53,000
+La segunda capa es la regulatoria.
+Opera en el medio plazo.
+
+58
+00:04:53,100 --> 00:04:58,000
+Recoge todos los cambios normativos
+derivados de decisiones políticas:
+
+59
+00:04:58,100 --> 00:05:03,000
+sanciones internacionales,
+controles de capital,
+
+60
+00:05:03,100 --> 00:05:08,000
+restricciones a la inversión extranjera,
+cambios fiscales confiscatorios.
+
+61
+00:05:09,000 --> 00:05:14,000
+Esta capa ha ganado relevancia crítica
+desde 2022, y os diré por qué:
+
+62
+00:05:14,100 --> 00:05:19,000
+las democracias occidentales demostraron
+que usarían el sistema financiero
+
+63
+00:05:19,100 --> 00:05:24,000
+—SWIFT, reservas del banco central,
+liquidación en dólares—
+
+64
+00:05:24,100 --> 00:05:28,500
+como arma geopolítica.
+
+65
+00:05:29,000 --> 00:05:34,000
+La congelación de trescientos mil millones
+de dólares en reservas rusas
+
+66
+00:05:34,100 --> 00:05:39,000
+fue un hecho sin precedentes
+en el sistema financiero moderno.
+
+67
+00:05:40,000 --> 00:05:45,000
+La tercera capa es la operativa.
+Es la más inmediata en resultados.
+
+68
+00:05:45,100 --> 00:05:50,000
+Disrupción de cadenas de suministro,
+corte de infraestructura crítica,
+
+69
+00:05:50,100 --> 00:05:55,000
+interrupción de rutas de transporte,
+pérdida de acceso a insumos.
+
+70
+00:05:55,500 --> 00:06:00,500
+Estos eventos son frecuentemente repentinos.
+Son los que aparecen en todos los medios.
+
+71
+00:06:00,600 --> 00:06:05,500
+Pero también tienen, en muchos casos,
+mayor capacidad de reversión.
+
+72
+00:06:06,000 --> 00:06:11,000
+La cuarta capa es la de mercado.
+Recoge cómo las tres anteriores
+
+73
+00:06:11,100 --> 00:06:16,000
+se traducen en señales observables:
+ampliación de spreads,
+
+74
+00:06:16,100 --> 00:06:21,000
+depreciación de divisas,
+salidas de flujos de cartera,
+
+75
+00:06:21,100 --> 00:06:26,000
+volatilidad elevada en sectores expuestos,
+revalorización de activos refugio.
+
+76
+00:06:27,000 --> 00:06:32,000
+Esta capa es la más ruidosa
+en el corto plazo.
+
+77
+00:06:32,100 --> 00:06:37,000
+Los mercados sobrereaccionan.
+Luego corrigen.
+
+78
+00:06:37,100 --> 00:06:42,000
+Pero es también donde están
+las mejores oportunidades
+
+79
+00:06:42,100 --> 00:06:47,000
+para el inversor con un marco
+de análisis sólido.
+
+80
+00:06:48,000 --> 00:06:53,000
+Idea fundamental antes de avanzar:
+las cuatro capas no son independientes.
+
+81
+00:06:53,100 --> 00:06:58,000
+Un shock en la capa operativa
+sin debilidad estructural subyacente
+
+82
+00:06:58,100 --> 00:07:02,500
+tiende a ser transitorio.
+
+83
+00:07:03,000 --> 00:07:08,000
+La severidad del riesgo se lee
+analizando cuántas capas
+
+84
+00:07:08,100 --> 00:07:13,000
+están comprometidas
+simultáneamente.
+
+85
+00:07:13,100 --> 00:07:18,000
+Cuantas más capas activas,
+mayor la persistencia del impacto.
+
+86
+00:07:19,000 --> 00:07:24,000
+Este es el marco.
+Ahora veamos cómo llega al precio.
+
+87
+00:07:25,000 --> 00:07:30,000
+[Pausa · Cambio de sección]
+
+88
+00:07:30,500 --> 00:07:37,000
+Canales de transmisión
+al precio de los activos.
+
+89
+00:07:38,000 --> 00:07:43,000
+Identificar el riesgo geopolítico
+es el primer paso.
+
+90
+00:07:43,100 --> 00:07:48,000
+El segundo —más exigente
+y más rentable—
+
+91
+00:07:48,100 --> 00:07:53,000
+es trazar el mecanismo por el que
+ese riesgo alcanza el precio del activo.
+
+92
+00:07:54,000 --> 00:07:59,000
+Hay una diferencia enorme
+entre saber que hay tensión en el Mar Rojo
+
+93
+00:07:59,100 --> 00:08:04,500
+y saber exactamente qué márgenes
+se van a comprimir, cuánto y cuándo.
+
+94
+00:08:05,000 --> 00:08:09,500
+La primera es una observación.
+La segunda es un input de inversión.
+
+95
+00:08:10,000 --> 00:08:14,500
+Hay cuatro canales principales
+de transmisión.
+
+96
+00:08:16,000 --> 00:08:21,000
+El primero: el canal energético.
+El más directo y el más estudiado.
+
+97
+00:08:21,100 --> 00:08:26,000
+Los estados han utilizado históricamente
+los flujos energéticos como herramienta
+
+98
+00:08:26,100 --> 00:08:31,000
+de presión política.
+
+99
+00:08:31,500 --> 00:08:36,500
+El mecanismo de primera ronda:
+cualquier disrupción en producción
+
+100
+00:08:36,600 --> 00:08:41,500
+o transporte de energía
+eleva el coste de esos insumos.
+
+101
+00:08:42,000 --> 00:08:47,000
+El mecanismo de segunda ronda
+es el que más se subestima.
+
+102
+00:08:47,100 --> 00:08:52,000
+El encarecimiento energético
+comprime márgenes industriales,
+
+103
+00:08:52,100 --> 00:08:57,000
+eleva la inflación,
+fuerza tipos más altos durante más tiempo,
+
+104
+00:08:57,100 --> 00:09:02,000
+y reduce el poder adquisitivo
+de los consumidores.
+
+105
+00:09:03,000 --> 00:09:08,000
+El ejemplo más claro:
+la reducción de gas ruso a Europa en 2022.
+
+106
+00:09:08,100 --> 00:09:13,000
+El TTF se multiplicó
+más de diez veces desde los mínimos.
+
+107
+00:09:13,500 --> 00:09:18,500
+Precipitó una crisis industrial
+en química, fertilizantes, aluminio, vidrio.
+
+108
+00:09:19,000 --> 00:09:24,000
+Alemania revisó sus perspectivas
+de crecimiento a la baja en 1,5-2,5 p.p.
+
+109
+00:09:24,500 --> 00:09:28,500
+Eso no es ruido.
+Eso es un factor de precio.
+
+110
+00:09:30,000 --> 00:09:35,000
+El segundo canal:
+las cadenas de suministro.
+
+111
+00:09:35,100 --> 00:09:40,000
+Tres décadas de globalización
+han creado cadenas ultra-eficientes
+
+112
+00:09:40,100 --> 00:09:44,500
+pero profundamente frágiles.
+
+113
+00:09:45,000 --> 00:09:50,000
+Muchos sectores dependen de componentes
+fabricados en pocas geografías.
+
+114
+00:09:50,500 --> 00:09:55,500
+Vulnerabilidades que solo se hacen visibles
+cuando la geopolítica las activa.
+
+115
+00:09:56,000 --> 00:10:01,000
+Pensad un momento
+en los semiconductores.
+
+116
+00:10:01,100 --> 00:10:06,000
+TSMC fabrica en Taiwán
+entre el 60 y el 92 por ciento
+
+117
+00:10:06,100 --> 00:10:11,000
+de la producción mundial de chips
+avanzados.
+
+118
+00:10:11,500 --> 00:10:16,500
+No el 60 % de un tipo de chip.
+El 60-92 % de todos los chips avanzados.
+
+119
+00:10:17,000 --> 00:10:22,000
+¿Qué ocurriría si hubiera
+una disrupción en Taiwán?
+
+120
+00:10:22,100 --> 00:10:27,000
+No necesariamente una invasión.
+Un bloqueo naval parcial bastaría.
+
+121
+00:10:27,100 --> 00:10:32,000
+El impacto se propagaría
+a automoción, electrónica,
+
+122
+00:10:32,100 --> 00:10:37,000
+equipos médicos, defensa,
+en todo el mundo.
+
+123
+00:10:37,500 --> 00:10:42,500
+¿Vuestro análisis de empresas
+con exposición a semiconductores
+
+124
+00:10:42,600 --> 00:10:47,000
+incluye esa vulnerabilidad
+o la ignora?
+
+125
+00:10:48,500 --> 00:10:53,500
+El tercer canal:
+divisas y flujos de capital.
+
+126
+00:10:53,600 --> 00:10:58,500
+En períodos de incertidumbre geopolítica,
+el capital migra a activos refugio:
+
+127
+00:10:58,600 --> 00:11:03,500
+dólares, francos suizos,
+bonos del Tesoro, oro.
+
+128
+00:11:04,000 --> 00:11:09,000
+Pero la historia más importante
+de este canal en los últimos años
+
+129
+00:11:09,100 --> 00:11:14,000
+no es el movimiento del capital privado.
+Es la weaponización financiera.
+
+130
+00:11:14,500 --> 00:11:19,500
+Cuando en 2022 Occidente inmovilizó
+300.000 millones de reservas rusas,
+
+131
+00:11:19,600 --> 00:11:24,500
+no era solo una sanción.
+Era un mensaje a todos los bancos centrales.
+
+132
+00:11:25,000 --> 00:11:30,000
+Si vuestro posicionamiento geopolítico
+entra en conflicto con Occidente,
+
+133
+00:11:30,100 --> 00:11:35,000
+vuestras reservas en dólares y euros
+no son seguras.
+
+134
+00:11:36,000 --> 00:11:41,000
+El impacto de ese precedente
+está todavía desarrollándose.
+
+135
+00:11:41,100 --> 00:11:46,000
+La diversificación acelerada hacia oro
+y yuan en bancos centrales emergentes
+
+136
+00:11:46,100 --> 00:11:50,500
+no es casualidad.
+Es una respuesta racional.
+
+137
+00:11:52,000 --> 00:11:57,000
+El cuarto canal:
+las primas de riesgo.
+
+138
+00:11:57,100 --> 00:12:02,000
+El más abstracto, quizás el más pervasivo.
+La geopolítica afecta a la tasa de descuento
+
+139
+00:12:02,100 --> 00:12:07,000
+que los inversores aplican a los flujos futuros
+de activos con exposición geopolítica.
+
+140
+00:12:07,500 --> 00:12:12,500
+Esta prima no siempre aparece etiquetada.
+Suele manifestarse como un descuento de múltiplo.
+
+141
+00:12:13,000 --> 00:12:18,000
+En 2023, empresas europeas de infraestructura
+con exposición a Europa del Este
+
+142
+00:12:18,100 --> 00:12:23,000
+cotizaban con descuentos del 15-25 %
+respecto a sus comparables.
+
+143
+00:12:23,500 --> 00:12:28,000
+No por fundamentales operativos distintos.
+Por prima de riesgo geopolítico.
+
+144
+00:12:29,000 --> 00:12:34,000
+Y eso crea dos tipos de situaciones:
+activos que merecen el descuento
+
+145
+00:12:34,100 --> 00:12:39,000
+y activos que están infravalorados
+porque la prima es excesiva.
+
+146
+00:12:39,500 --> 00:12:44,000
+El marco analítico es lo que permite
+distinguir entre los dos casos.
+
+147
+00:12:45,000 --> 00:12:50,000
+[Pausa · Cambio de sección]
+
+148
+00:12:51,000 --> 00:12:57,000
+Metodología de scoring geopolítico ZRC.
+De la señal a la decisión.
+
+149
+00:12:58,000 --> 00:13:03,000
+Hemos hablado de qué es el riesgo,
+de cómo se descompone en capas
+
+150
+00:13:03,100 --> 00:13:08,000
+y de cómo llega al precio de los activos.
+Ahora viene la pregunta que más me hacen.
+
+151
+00:13:08,500 --> 00:13:13,500
+"Todo esto suena bien,
+pero ¿cómo lo convierto en un número?"
+
+152
+00:13:14,000 --> 00:13:19,000
+"¿Cómo entra esto
+en mi modelo?"
+
+153
+00:13:19,500 --> 00:13:23,500
+Es la pregunta correcta.
+Y tiene una respuesta.
+
+154
+00:13:24,000 --> 00:13:29,000
+El principal obstáculo no es
+la falta de información.
+
+155
+00:13:29,100 --> 00:13:34,000
+Es la dificultad de convertir información
+mayoritariamente cualitativa
+
+156
+00:13:34,100 --> 00:13:39,000
+en un input cuantitativo
+que entre en los modelos de decisión.
+
+157
+00:13:39,500 --> 00:13:44,000
+La Metodología de Scoring ZRC
+resuelve eso en cuatro pasos.
+
+158
+00:13:45,500 --> 00:13:50,500
+El primer paso:
+el inventario de exposición.
+
+159
+00:13:50,600 --> 00:13:55,500
+Antes de evaluar nada, mapeamos todas
+las exposiciones geopolíticas del activo:
+
+160
+00:13:55,600 --> 00:14:00,500
+geografías donde opera,
+países de los que depende su cadena,
+
+161
+00:14:00,600 --> 00:14:05,500
+mercados donde vende,
+divisas en las que reporta.
+
+162
+00:14:06,000 --> 00:14:11,000
+Este inventario no es un ejercicio
+de una sola vez.
+
+163
+00:14:11,100 --> 00:14:16,000
+Debe actualizarse cuando el activo
+cambia su modelo operativo
+
+164
+00:14:16,100 --> 00:14:21,000
+o cuando el entorno geopolítico
+de alguna geografía relevante cambia.
+
+165
+00:14:22,000 --> 00:14:27,000
+El segundo paso:
+la evaluación por capas.
+
+166
+00:14:27,100 --> 00:14:32,000
+Para cada geografía identificada,
+evaluamos las cuatro capas ZRC
+
+167
+00:14:32,100 --> 00:14:37,000
+con una puntuación de 1 a 5.
+1 es riesgo mínimo, 5 es riesgo severo.
+
+168
+00:14:37,500 --> 00:14:42,500
+Esta evaluación no es opinión libre.
+Se basa en fuentes primarias y secundarias:
+
+169
+00:14:42,600 --> 00:14:47,500
+FMI, Banco Mundial, OCDE,
+Oxford Analytica, Eurasia Group.
+
+170
+00:14:48,000 --> 00:14:53,000
+El tercer paso:
+la ponderación por canal de transmisión.
+
+171
+00:14:53,100 --> 00:14:58,000
+No todas las capas tienen el mismo peso
+para todos los activos.
+
+172
+00:14:58,100 --> 00:15:03,000
+Una empresa manufacturera debe ponderar
+más la capa operativa.
+
+173
+00:15:03,100 --> 00:15:08,000
+Una entidad financiera con deuda soberana
+debe ponderar más la regulatoria.
+
+174
+00:15:08,500 --> 00:15:13,500
+La ponderación se documenta explícitamente.
+No como burocracia,
+
+175
+00:15:13,600 --> 00:15:18,500
+sino para poder revisarla
+cuando cambien las circunstancias.
+
+176
+00:15:19,000 --> 00:15:24,000
+El cuarto paso: el score compuesto
+y los umbrales de decisión.
+
+177
+00:15:24,100 --> 00:15:29,000
+Puntuaciones por peso, suma por capas:
+obtenemos un número entre 1 y 5.
+
+178
+00:15:29,500 --> 00:15:34,500
+Score de 1 a 2: riesgo bajo.
+Revisión trimestral rutinaria.
+
+179
+00:15:34,600 --> 00:15:39,500
+De 2,1 a 3,5: riesgo moderado.
+Monitorización reforzada y escenarios.
+
+180
+00:15:39,600 --> 00:15:44,500
+Por encima de 3,6: riesgo elevado.
+Due diligence profunda y coberturas activas.
+
+181
+00:15:45,500 --> 00:15:50,500
+Antes de avanzar, quiero ser explícito
+sobre lo que el scoring no puede hacer.
+
+182
+00:15:50,600 --> 00:15:55,500
+No captura bien los cisnes negros genuinos.
+No elimina el sesgo del analista.
+
+183
+00:15:55,600 --> 00:16:00,500
+Y puede crear falsa precisión
+si se olvida que los scores son juicios,
+
+184
+00:16:00,600 --> 00:16:05,500
+no certezas objetivas.
+
+185
+00:16:06,000 --> 00:16:11,000
+Su valor está en estructurar el análisis
+y forzar la explicitud de las suposiciones.
+
+186
+00:16:11,500 --> 00:16:16,000
+Lo que se nombra se puede gestionar.
+Lo que permanece implícito, no.
+
+187
+00:16:17,000 --> 00:16:22,000
+[Pausa · Cambio de sección]
+
+188
+00:16:23,000 --> 00:16:29,000
+Caso práctico. Vamos a aplicar
+todo lo que hemos visto.
+
+189
+00:16:29,500 --> 00:16:34,500
+El activo: una empresa industrial europea
+de tamaño medio, ~800 M€ de revenue.
+
+190
+00:16:34,600 --> 00:16:39,500
+Fabricante de maquinaria de precisión
+con cadena de suministro en Asia Oriental.
+
+191
+00:16:39,600 --> 00:16:44,500
+El 65 % de sus componentes críticos
+transita por el Mar Rojo y el Canal de Suez.
+
+192
+00:16:45,000 --> 00:16:50,000
+El evento: escalada de ataques hutíes
+en el Mar Rojo, noviembre de 2023.
+
+193
+00:16:50,100 --> 00:16:55,000
+Y la decisión de las grandes navieras
+de desviar por el Cabo de Buena Esperanza.
+
+194
+00:16:56,000 --> 00:17:01,000
+Aplicamos el Marco ZRC.
+Capa estructural: Yemen.
+
+195
+00:17:01,100 --> 00:17:06,000
+Yemen lleva en guerra civil activa desde 2014.
+Fragilidad estructural, sin resolución próxima.
+
+196
+00:17:06,100 --> 00:17:11,000
+Puntuación: 4 sobre 5.
+Esta información no era nueva en 2023.
+
+197
+00:17:11,100 --> 00:17:16,000
+Llevaba casi una década
+siendo observable.
+
+198
+00:17:17,000 --> 00:17:22,000
+Capa regulatoria: los ataques hutíes
+no generaron sanciones directas
+
+199
+00:17:22,100 --> 00:17:27,000
+para la empresa, pero activaron
+la operación naval europea Aspides.
+
+200
+00:17:27,100 --> 00:17:32,000
+Modificó el contexto de seguros marítimos
+en la zona. Puntuación: 2 sobre 5.
+
+201
+00:17:33,000 --> 00:17:38,000
+Capa operativa: aquí el impacto
+fue inmediato y material.
+
+202
+00:17:38,100 --> 00:17:43,000
+Los tiempos de tránsito
+se alargaron 10-14 días.
+
+203
+00:17:43,100 --> 00:17:48,000
+Los costes de flete se triplicaron.
+Los seguros se multiplicaron por 5-10.
+
+204
+00:17:48,500 --> 00:17:53,500
+Para la empresa: más capital circulante,
+presión sobre contratos a precio fijo,
+
+205
+00:17:53,600 --> 00:17:58,500
+retrasos que activaron
+penalizaciones contractuales.
+
+206
+00:17:59,000 --> 00:18:03,000
+Puntuación: 5 sobre 5. Impacto severo.
+
+207
+00:18:04,000 --> 00:18:09,000
+Capa de mercado: las acciones de empresas
+con dependencia logística Asia-Europa
+
+208
+00:18:09,100 --> 00:18:14,000
+corrigieron un 8-15 %
+en enero-febrero de 2024.
+
+209
+00:18:14,100 --> 00:18:19,000
+El sector cotizó con descuento de PER
+de 1,5-2 vueltas bajo su media histórica.
+
+210
+00:18:19,500 --> 00:18:24,000
+Puntuación: 3 sobre 5.
+
+211
+00:18:25,000 --> 00:18:30,000
+Con ponderación de este activo:
+45 % operativa, 20 % estructural,
+
+212
+00:18:30,100 --> 00:18:35,000
+20 % mercado, 15 % regulatoria,
+el score compuesto resulta en:
+
+213
+00:18:35,100 --> 00:18:40,000
+3,85. Riesgo elevado.
+
+214
+00:18:40,500 --> 00:18:45,500
+Lo que habría activado due diligence profunda
+y evaluación de coberturas activas.
+
+215
+00:18:46,000 --> 00:18:51,000
+Y aquí quiero hacer una pausa
+sobre algo que me parece crítico.
+
+216
+00:18:51,100 --> 00:18:56,000
+La fragilidad de Yemen —capa uno—
+llevaba casi una década siendo visible.
+
+217
+00:18:56,100 --> 00:19:01,000
+La dependencia de la empresa
+del corredor Asia-Suez
+
+218
+00:19:01,100 --> 00:19:06,000
+estaba en sus informes anuales,
+en sus contratos con proveedores.
+
+219
+00:19:07,000 --> 00:19:12,000
+El análisis geopolítico de un activo
+no empieza cuando estalla la crisis.
+
+220
+00:19:12,100 --> 00:19:17,000
+Empieza en la due diligence inicial.
+
+221
+00:19:17,500 --> 00:19:22,500
+Los inversores que incorporaron
+la vulnerabilidad del Mar Rojo
+
+222
+00:19:22,600 --> 00:19:27,500
+a su análisis de riesgo operativo
+estuvieron en posición de actuar.
+
+223
+00:19:27,600 --> 00:19:32,000
+Los que no lo habían hecho,
+reaccionaron.
+
+224
+00:19:33,000 --> 00:19:38,000
+[Pausa · Cambio de sección]
+
+225
+00:19:40,000 --> 00:19:45,000
+Síntesis. Tres ideas
+para llevarse de esta sesión.
+
+226
+00:19:46,000 --> 00:19:51,000
+Primera: el riesgo geopolítico
+ya tiene precio en los mercados.
+
+227
+00:19:51,100 --> 00:19:56,000
+No incorporarlo es tomar implícitamente
+la posición de que vale cero.
+
+228
+00:19:56,100 --> 00:20:01,000
+Y eso, en casi todos los casos,
+está equivocado.
+
+229
+00:20:02,000 --> 00:20:07,000
+Segunda: el Marco ZRC de cuatro capas
+permite desagregar lo que sería
+
+230
+00:20:07,100 --> 00:20:12,000
+una categoría vaga e inmanejable
+en variables con horizontes distintos,
+
+231
+00:20:12,100 --> 00:20:17,000
+mecanismos distintos
+y reversibilidades distintas.
+
+232
+00:20:17,500 --> 00:20:22,500
+Eso transforma el análisis cualitativo
+en inputs cuantitativos accionables.
+
+233
+00:20:23,500 --> 00:20:28,500
+Tercera: el scoring geopolítico
+no reemplaza el juicio analítico.
+
+234
+00:20:28,600 --> 00:20:33,500
+Lo estructura.
+Su valor está en forzar la explicitud:
+
+235
+00:20:33,600 --> 00:20:38,500
+en obligar a nombrar las exposiciones,
+las capas en riesgo y los canales.
+
+236
+00:20:38,600 --> 00:20:43,000
+Lo que se nombra se puede gestionar.
+Lo que permanece implícito, no.
+
+237
+00:20:44,500 --> 00:20:49,500
+Si este enfoque os ha resultado útil
+—y confío en que lo habéis encontrado
+
+238
+00:20:49,600 --> 00:20:54,500
+práctico y directamente aplicable—
+os quiero decir qué viene a continuación.
+
+239
+00:20:55,000 --> 00:21:00,000
+El siguiente módulo, ZRC-ACAD-ENE-02,
+entra en detalle en los mercados de energía
+
+240
+00:21:00,100 --> 00:21:05,000
+y la geopolítica del petróleo,
+el gas y los minerales críticos.
+
+241
+00:21:05,500 --> 00:21:10,500
+El tercer curso, ZRC-ACAD-SCH-03,
+trabaja las cadenas de suministro críticas:
+
+242
+00:21:10,600 --> 00:21:15,500
+semiconductores, litio, tierras raras,
+y la dinámica del reshoring.
+
+243
+00:21:16,500 --> 00:21:21,500
+Y si queréis ir más allá del formato de curso,
+el Inner Circle de Zenith Academia
+
+244
+00:21:21,600 --> 00:21:26,500
+os da acceso al briefing semanal
+de ZRC Intelligence.
+
+245
+00:21:26,600 --> 00:21:31,500
+Donde aplicamos exactamente este marco
+a los eventos de la semana.
+
+246
+00:21:32,000 --> 00:21:37,000
+Y al ZRC Observatory,
+nuestra plataforma de monitorización
+
+247
+00:21:37,100 --> 00:21:42,000
+de señales geopolíticas
+en tiempo casi real.
+
+248
+00:21:43,500 --> 00:21:48,500
+El mundo está cambiando más rápido
+que los modelos que usamos para analizarlo.
+
+249
+00:21:48,600 --> 00:21:53,500
+La ventaja competitiva en este entorno
+no es tener más datos.
+
+250
+00:21:53,600 --> 00:21:58,500
+Es tener un marco mejor
+para leerlos.
+
+251
+00:22:00,000 --> 00:22:05,000
+Eso es lo que hacemos en ZRC.
+
+252
+00:22:05,100 --> 00:22:10,000
+Y es lo que queremos enseñaros
+a hacer en Zenith Academia.
+
+253
+00:22:11,000 --> 00:22:16,000
+Hasta el próximo módulo.
+
+254
+00:22:17,000 --> 00:28:00,000
+[Música de cierre · ZRC Academia]
+

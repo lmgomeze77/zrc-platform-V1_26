@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestión del Riesgo Geopolítico — Zenith Academia</title>
+<meta name="description" content="Masterclass de 28 minutos para inversores y profesionales financieros. Marco ZRC, scoring geopolítico 0-100 y canales de transmisión a precios de activos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & custom properties ─────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:       #0B2545;
+  --navy-dark:  #060D18;
+  --navy-mid:   #0D1B2A;
+  --navy-card:  #112035;
+  --gold:       #C9A227;
+  --gold-light: #D4BC6A;
+  --gold-dim:   rgba(201,162,39,.12);
+  --gold-dim2:  rgba(201,162,39,.06);
+  --cream:      #E8E0D0;
+  --text:       #B8C8D8;
+  --text-muted: #7A9ABB;
+  --border:     #1E3A5C;
+  --serif:      'Cormorant Garamond', Georgia, serif;
+  --sans:       Calibri, Arial, sans-serif;
+  --radius:     6px;
+  --max:        1100px;
+  --transition: .22s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--navy-dark);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--gold-light); }
+
+/* ── Utility ─────────────────────────────────────────────*/
+.container { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
+.gold { color: var(--gold); }
+.label {
+  font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; font-family: var(--sans);
+}
+
+/* ── Nav ─────────────────────────────────────────────────*/
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(6,13,24,.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem 1.5rem; max-width: var(--max); margin: 0 auto;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: .75rem;
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 700;
+  color: var(--cream);
+}
+.nav-logo-mark {
+  width: 32px; height: 32px;
+  background: var(--gold); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; font-weight: 700; color: var(--navy-dark);
+  font-family: var(--serif); letter-spacing: .05em; flex-shrink: 0;
+}
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a {
+  font-size: .82rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text-muted); transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-actions { display: flex; align-items: center; gap: .75rem; }
+.lang-btn {
+  background: none; border: 1px solid var(--border);
+  color: var(--text-muted); font-family: var(--sans);
+  font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+  padding: .35rem .7rem; border-radius: 4px; cursor: pointer;
+  transition: all var(--transition);
+}
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── Hero ─────────────────────────────────────────────── */
+.hero {
+  background: var(--navy);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 1.5rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,162,39,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start;
+}
+.hero-badge {
+  display: inline-block; padding: .3rem .8rem;
+  border: 1px solid var(--gold); border-radius: 3px;
+  font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.25rem;
+}
+.hero-title {
+  font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.9rem);
+  font-weight: 700; line-height: 1.1; color: #fff;
+  margin-bottom: 1.1rem; letter-spacing: .02em;
+}
+.hero-sub {
+  font-size: 1.05rem; color: var(--text); line-height: 1.7;
+  margin-bottom: 1.8rem; max-width: 560px;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.2rem;
+}
+.chip {
+  background: rgba(255,255,255,.05); border: 1px solid var(--border);
+  border-radius: 3px; padding: .28rem .7rem;
+  font-size: .78rem; color: var(--text-muted); letter-spacing: .04em;
+}
+.chip span { color: var(--cream); font-weight: 600; }
+
+/* Hero card */
+.hero-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 2rem 1.75rem;
+  position: sticky; top: 80px;
+}
+.hero-card-price {
+  font-family: var(--serif); font-size: 2.6rem; font-weight: 700;
+  color: var(--gold); line-height: 1; margin-bottom: .3rem;
+}
+.hero-card-vat { font-size: .78rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+.btn-primary {
+  display: block; width: 100%; padding: .95rem 1rem;
+  background: var(--gold); color: var(--navy-dark);
+  font-family: var(--sans); font-size: .88rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; text-align: center;
+  border: none; border-radius: var(--radius); cursor: pointer;
+  text-decoration: none; transition: background var(--transition);
+}
+.btn-primary:hover { background: var(--gold-light); }
+.card-includes { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.card-includes-title {
+  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: .85rem;
+}
+.include-item {
+  display: flex; align-items: flex-start; gap: .6rem;
+  font-size: .85rem; color: var(--text); margin-bottom: .5rem;
+}
+.include-item::before {
+  content: '✓'; color: var(--gold); font-weight: 700;
+  margin-top: .05rem; flex-shrink: 0;
+}
+
+/* ── Section base ──────────────────────────────────────── */
+section { padding: 5rem 1.5rem; }
+section:nth-child(even) { background: var(--navy-mid); }
+
+.section-header { text-align: center; margin-bottom: 3.5rem; }
+.section-title {
+  font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 700; color: #fff; margin-bottom: .6rem; line-height: 1.15;
+}
+.section-sub { font-size: .95rem; color: var(--text-muted); max-width: 540px; margin: 0 auto; }
+.gold-rule {
+  width: 48px; height: 2px; background: var(--gold);
+  margin: .8rem auto 0;
+}
+
+/* ── What you'll learn ─────────────────────────────────── */
+.learn-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.2rem;
+}
+.learn-card {
+  background: var(--navy-card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 1.3rem 1.4rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+  transition: border-color var(--transition);
+}
+.learn-card:hover { border-color: rgba(201,162,39,.4); }
+.learn-icon {
+  width: 32px; height: 32px; border-radius: 4px;
+  background: var(--gold-dim); border: 1px solid rgba(201,162,39,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; flex-shrink: 0; color: var(--gold);
+}
+.learn-text { font-size: .9rem; color: var(--text); line-height: 1.55; }
+
+/* ── Syllabus ──────────────────────────────────────────── */
+.syllabus { max-width: 760px; margin: 0 auto; }
+.syl-item {
+  border: 1px solid var(--border); border-radius: 6px;
+  margin-bottom: .75rem; overflow: hidden;
+  transition: border-color var(--transition);
+}
+.syl-item.open, .syl-item:hover { border-color: rgba(201,162,39,.35); }
+.syl-header {
+  display: flex; align-items: center; gap: 1rem;
+  width: 100%; background: var(--navy-card); border: none;
+  padding: 1.1rem 1.3rem; cursor: pointer; text-align: left;
+}
+.syl-num {
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 700;
+  color: var(--gold); opacity: .5; min-width: 28px; line-height: 1;
+}
+.syl-item.open .syl-num { opacity: 1; }
+.syl-title-wrap { flex: 1; }
+.syl-title {
+  font-family: var(--serif); font-size: 1.08rem; font-weight: 600;
+  color: var(--cream); display: block; line-height: 1.25;
+}
+.syl-time { font-size: .75rem; color: var(--text-muted); margin-top: .2rem; display: block; }
+.syl-arrow {
+  color: var(--gold); font-size: .8rem; transition: transform .2s;
+  flex-shrink: 0;
+}
+.syl-item.open .syl-arrow { transform: rotate(180deg); }
+.syl-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .28s ease, padding .28s ease;
+  background: var(--navy-mid);
+}
+.syl-item.open .syl-body { max-height: 200px; }
+.syl-body-inner {
+  padding: 1rem 1.3rem 1.1rem 3.8rem;
+  font-size: .88rem; color: var(--text); line-height: 1.6;
+}
+
+/* ── Audience ──────────────────────────────────────────── */
+.audience-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem; max-width: 860px; margin: 0 auto;
+}
+.audience-card {
+  background: var(--navy-card); border: 1px solid var(--border);
+  border-radius: 6px; padding: 1.3rem 1.2rem;
+  text-align: center; transition: border-color var(--transition);
+}
+.audience-card:hover { border-color: rgba(201,162,39,.4); }
+.audience-icon { font-size: 1.6rem; margin-bottom: .7rem; }
+.audience-label { font-size: .88rem; color: var(--text); line-height: 1.45; }
+
+/* ── Instructor ────────────────────────────────────────── */
+.instructor-card {
+  max-width: 800px; margin: 0 auto;
+  display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
+  background: var(--navy-card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 2.5rem;
+  align-items: start;
+}
+.instructor-avatar {
+  width: 160px; height: 160px; border-radius: 50%;
+  background: var(--navy); border: 3px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 3rem; font-weight: 700;
+  color: var(--gold); margin: 0 auto;
+}
+.instructor-name {
+  font-family: var(--serif); font-size: 1.6rem; font-weight: 700;
+  color: #fff; margin-bottom: .3rem;
+}
+.instructor-role { font-size: .85rem; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: .04em; }
+.instructor-bio { font-size: .92rem; color: var(--text); line-height: 1.7; }
+.instructor-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+.tag {
+  font-size: .72rem; padding: .25rem .65rem;
+  border: 1px solid var(--border); border-radius: 3px;
+  color: var(--text-muted); letter-spacing: .06em;
+}
+
+/* ── Preview ───────────────────────────────────────────── */
+.preview-inner { max-width: 800px; margin: 0 auto; }
+.video-frame {
+  background: var(--navy-dark);
+  border: 1px solid var(--border); border-radius: 8px;
+  aspect-ratio: 16/9; position: relative;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow: hidden; margin-bottom: 2rem;
+}
+.video-frame::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(201,162,39,.04) 0%, transparent 70%);
+}
+.video-play {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(201,162,39,.15); border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.2rem; position: relative; z-index: 1;
+}
+.video-play-icon {
+  width: 0; height: 0;
+  border-style: solid; border-width: 14px 0 14px 24px;
+  border-color: transparent transparent transparent var(--gold);
+  margin-left: 4px;
+}
+.video-coming {
+  font-family: var(--serif); font-size: 1.1rem; color: var(--text-muted);
+  position: relative; z-index: 1; text-align: center;
+}
+.video-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  background: var(--gold); color: var(--navy-dark);
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; padding: .3rem .65rem; border-radius: 3px;
+}
+.preview-excerpt {
+  background: var(--navy-card); border: 1px solid var(--border);
+  border-left: 3px solid var(--gold); border-radius: 6px;
+  padding: 1.5rem 1.75rem;
+}
+.preview-excerpt-title {
+  font-family: var(--serif); font-size: 1rem; font-weight: 600;
+  color: var(--gold); margin-bottom: .75rem;
+}
+.preview-excerpt p { font-size: .9rem; color: var(--text); line-height: 1.7; }
+
+/* ── CTA section ───────────────────────────────────────── */
+.cta-section {
+  background: var(--navy); text-align: center; padding: 5rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.cta-price {
+  font-family: var(--serif); font-size: 3.5rem; font-weight: 700;
+  color: var(--gold); line-height: 1; margin-bottom: .5rem;
+}
+.cta-desc { color: var(--text-muted); font-size: .9rem; margin-bottom: 2rem; }
+.btn-cta-wrap { display: inline-flex; flex-direction: column; align-items: center; gap: .6rem; }
+.btn-cta {
+  display: inline-block; padding: 1.05rem 3rem;
+  background: var(--gold); color: var(--navy-dark);
+  font-family: var(--sans); font-size: .9rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  border: none; border-radius: var(--radius); cursor: pointer;
+  text-decoration: none; transition: background var(--transition);
+}
+.btn-cta:hover { background: var(--gold-light); }
+
+/* ── Footer ────────────────────────────────────────────── */
+footer {
+  background: var(--navy-dark);
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 1.5rem; text-align: center;
+  font-size: .78rem; color: var(--text-muted);
+}
+footer strong { color: var(--gold); }
+.footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: .8rem; flex-wrap: wrap; }
+.footer-links a { color: var(--text-muted); font-size: .75rem; }
+.footer-links a:hover { color: var(--gold); }
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-card { position: static; }
+  .instructor-card { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+  .instructor-tags { justify-content: center; }
+  .nav-links { display: none; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 3rem 1.25rem 2.5rem; }
+  section { padding: 3.5rem 1.25rem; }
+  .learn-grid { grid-template-columns: 1fr; }
+  .audience-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">ZRC</div>
+      <span>Zenith <span class="gold">Academia</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#learn" data-key="navLearn">Qué aprenderás</a>
+      <a href="#syllabus" data-key="navSyllabus">Temario</a>
+      <a href="#instructor" data-key="navInstructor">Instructor</a>
+      <a href="#preview" data-key="navPreview">Vista previa</a>
+    </div>
+    <div class="nav-actions">
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge" data-key="heroBadge">ZRC-ACAD-GRM-01 · Zenith Academia</div>
+      <h1 class="hero-title" data-key="heroTitle">Gestión del Riesgo Geopolítico<br>para la Inversión</h1>
+      <p class="hero-sub" data-key="heroSub">Aprende a identificar, medir y gestionar el riesgo geopolítico con el Marco ZRC: las cuatro capas de riesgo, los canales de transmisión a precios de activos y la metodología de scoring 0-100 para decisiones de inversión accionables.</p>
+      <div class="hero-meta">
+        <div class="chip" data-key="chipDuration">⏱ Duración: <span>28 min</span></div>
+        <div class="chip" data-key="chipLevel">◆ Nivel: <span>Avanzado</span></div>
+        <div class="chip" data-key="chipLang">🌐 Idiomas: <span>ES · EN</span></div>
+        <div class="chip" data-key="chipUpdated">📅 <span>Junio 2025</span></div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-price">29 €</div>
+      <div class="hero-card-vat" data-key="vatNote">IVA incluido · Acceso de por vida</div>
+      <a class="btn-primary" href="https://buy.stripe.com/5kQ7sMe9u6AIdQYfDc2Nq07" data-key="btnBuy">Comprar acceso · 29 €</a>
+      <div class="card-includes">
+        <div class="card-includes-title" data-key="includesTitle">Este curso incluye</div>
+        <div class="include-item" data-key="inc1">Masterclass de 28 minutos</div>
+        <div class="include-item" data-key="inc2">Manual escrito ES + EN (~3.500 palabras)</div>
+        <div class="include-item" data-key="inc3">21 diapositivas de presentación (ES + EN)</div>
+        <div class="include-item" data-key="inc4">4 ejercicios de análisis con soluciones</div>
+        <div class="include-item" data-key="inc5">Subtítulos SRT en español e inglés</div>
+        <div class="include-item" data-key="inc6">Acceso de por vida</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── What you'll learn ─────────────────────────────────── -->
+<section id="learn" style="background: var(--navy-mid);">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-key="learnLabel">Objetivos de aprendizaje</div>
+      <h2 class="section-title" data-key="learnTitle">Qué aprenderás</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <div class="learn-icon">①</div>
+        <div class="learn-text" data-key="obj1">Entender por qué el riesgo geopolítico es una variable de precio y no solo un factor de contexto macroeconómico.</div>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">②</div>
+        <div class="learn-text" data-key="obj2">Aplicar el Marco ZRC de cuatro capas para mapear el riesgo de cualquier activo o geografía de inversión.</div>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">③</div>
+        <div class="learn-text" data-key="obj3">Identificar los cuatro canales de transmisión de shocks geopolíticos a precios de activos y carteras.</div>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">④</div>
+        <div class="learn-text" data-key="obj4">Construir un score geopolítico cuantitativo (escala 0-100) con la metodología ZRC y sus tres umbrales de decisión.</div>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">⑤</div>
+        <div class="learn-text" data-key="obj5">Analizar casos reales: colapso del MOEX 2022, semiconductores de Taiwán y el corredor logístico del Mar Rojo 2023-2024.</div>
+      </div>
+      <div class="learn-card">
+        <div class="learn-icon">⑥</div>
+        <div class="learn-text" data-key="obj6">Redactar memos de decisión de inversión con análisis geopolítico estructurado e integrado en la tesis financiera.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Syllabus ───────────────────────────────────────────── -->
+<section id="syllabus" style="background: var(--navy);">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-key="sylLabel">Contenidos · 28 minutos</div>
+      <h2 class="section-title" data-key="sylTitle">Temario</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="syllabus">
+
+      <div class="syl-item open">
+        <button class="syl-header" onclick="toggleSyl(this)">
+          <span class="syl-num">01</span>
+          <span class="syl-title-wrap">
+            <span class="syl-title" data-key="syl1Title">El riesgo geopolítico como factor de precio</span>
+            <span class="syl-time" data-key="syl1Time">0 – 3 min · Introducción</span>
+          </span>
+          <span class="syl-arrow">▾</span>
+        </button>
+        <div class="syl-body">
+          <div class="syl-body-inner" data-key="syl1Body">Gancho: el colapso del MOEX el 24 de febrero de 2022 (–45 % en 72 horas). Por qué los modelos financieros clásicos no incorporan el riesgo geopolítico. La tesis central del curso: el riesgo geopolítico tiene precio.</div>
+        </div>
+      </div>
+
+      <div class="syl-item">
+        <button class="syl-header" onclick="toggleSyl(this)">
+          <span class="syl-num">02</span>
+          <span class="syl-title-wrap">
+            <span class="syl-title" data-key="syl2Title">Marco ZRC — Las cuatro capas de riesgo</span>
+            <span class="syl-time" data-key="syl2Time">3 – 9 min · Marco conceptual</span>
+          </span>
+          <span class="syl-arrow">▾</span>
+        </button>
+        <div class="syl-body">
+          <div class="syl-body-inner" data-key="syl2Body">El Marco ZRC de cuatro capas: Estructural, Regulatoria, Operativa y De mercado. Horizontes temporales y nivel de severidad de cada capa. Cómo la concurrencia de capas amplifica el riesgo total.</div>
+        </div>
+      </div>
+
+      <div class="syl-item">
+        <button class="syl-header" onclick="toggleSyl(this)">
+          <span class="syl-num">03</span>
+          <span class="syl-title-wrap">
+            <span class="syl-title" data-key="syl3Title">Canales de transmisión a precios de activos</span>
+            <span class="syl-time" data-key="syl3Time">9 – 16 min · Mecanismos</span>
+          </span>
+          <span class="syl-arrow">▾</span>
+        </button>
+        <div class="syl-body">
+          <div class="syl-body-inner" data-key="syl3Body">Los cuatro canales: Energía, Cadenas de suministro, Divisas y flujos de capital, Prima de riesgo. Lectura cruzada canal × posición de cartera. Ejemplo: ejercicios militares en el Estrecho de Taiwan (hipotético).</div>
+        </div>
+      </div>
+
+      <div class="syl-item">
+        <button class="syl-header" onclick="toggleSyl(this)">
+          <span class="syl-num">04</span>
+          <span class="syl-title-wrap">
+            <span class="syl-title" data-key="syl4Title">Metodología de scoring geopolítico ZRC</span>
+            <span class="syl-time" data-key="syl4Time">16 – 22 min · Metodología</span>
+          </span>
+          <span class="syl-arrow">▾</span>
+        </button>
+        <div class="syl-body">
+          <div class="syl-body-inner" data-key="syl4Body">La fórmula ZRC: puntuación ponderada de 0 a 100 a partir de las cuatro capas. Ponderaciones y justificación. Los tres umbrales de decisión: Bajo (0-35), Moderado (36-55), Elevado (56-75), Severo (76-100).</div>
+        </div>
+      </div>
+
+      <div class="syl-item">
+        <button class="syl-header" onclick="toggleSyl(this)">
+          <span class="syl-num">05</span>
+          <span class="syl-title-wrap">
+            <span class="syl-title" data-key="syl5Title">Caso práctico: corredor logístico del Mar Rojo</span>
+            <span class="syl-time" data-key="syl5Time">22 – 26 min · Caso práctico</span>
+          </span>
+          <span class="syl-arrow">▾</span>
+        </button>
+        <div class="syl-body">
+          <div class="syl-body-inner" data-key="syl5Body">Ataques hutíes 2023-2024: –42 % de tráfico en el Canal de Suez, fletes ×3,5 en 8 semanas. Aplicación del scoring ZRC al Puerto de Ain Sokhna (Egipto): 64/100, Riesgo Elevado. Lectura de postura de inversión.</div>
+        </div>
+      </div>
+
+      <div class="syl-item">
+        <button class="syl-header" onclick="toggleSyl(this)">
+          <span class="syl-num">06</span>
+          <span class="syl-title-wrap">
+            <span class="syl-title" data-key="syl6Title">Síntesis y principios de inversión bajo incertidumbre</span>
+            <span class="syl-time" data-key="syl6Time">26 – 28 min · Cierre</span>
+          </span>
+          <span class="syl-arrow">▾</span>
+        </button>
+        <div class="syl-body">
+          <div class="syl-body-inner" data-key="syl6Body">Los tres principios para invertir bajo incertidumbre geopolítica. El scoring como punto de partida, no de llegada. Próximos pasos: Zenith Academia y ZRC Inner Circle.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Audience ───────────────────────────────────────────── -->
+<section id="audience" style="background: var(--navy-mid);">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-key="audLabel">Perfil del alumno</div>
+      <h2 class="section-title" data-key="audTitle">¿Para quién es este curso?</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-icon">📊</div>
+        <div class="audience-label" data-key="aud1">Gestores de carteras y analistas de fondos con exposición internacional</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">🏢</div>
+        <div class="audience-label" data-key="aud2">Directivos y CFOs con operaciones en mercados geopolíticamente sensibles</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">⚖️</div>
+        <div class="audience-label" data-key="aud3">Profesionales de banca de inversión y M&amp;A cross-border</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">🌍</div>
+        <div class="audience-label" data-key="aud4">Asesores patrimoniales con clientes en mercados emergentes</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">🛡️</div>
+        <div class="audience-label" data-key="aud5">Profesionales de seguros, reaseguro y gestión de riesgos corporativos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Instructor ─────────────────────────────────────────── -->
+<section id="instructor" style="background: var(--navy);">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-key="instrLabel">Tu instructor</div>
+      <h2 class="section-title" data-key="instrTitle">Ficha del instructor</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="instructor-card">
+      <div>
+        <div class="instructor-avatar">LG</div>
+      </div>
+      <div>
+        <div class="instructor-name">Luis Miguel Gómez Elvira</div>
+        <div class="instructor-role" data-key="instrRole">Founder &amp; CIO · Zenith Rise Capital · Profesor de Finanzas</div>
+        <div class="instructor-bio" data-key="instrBio">Luis Miguel Gómez Elvira es el fundador y Chief Investment Officer de Zenith Rise Capital, firma especializada en inteligencia de inversión y gestión de riesgos de cartera. Con más de quince años de experiencia en los mercados financieros internacionales, ha desarrollado metodologías propias para el análisis del riesgo geopolítico aplicado a decisiones de inversión. Es profesor de finanzas y el diseñador del programa formativo de Zenith Academia.</div>
+        <div class="instructor-tags">
+          <span class="tag" data-key="tag1">Riesgo geopolítico</span>
+          <span class="tag" data-key="tag2">Gestión de carteras</span>
+          <span class="tag" data-key="tag3">Mercados emergentes</span>
+          <span class="tag" data-key="tag4">Finanzas internacionales</span>
+          <span class="tag" data-key="tag5">Due diligence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Preview ────────────────────────────────────────────── -->
+<section id="preview" style="background: var(--navy-mid);">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" data-key="previewLabel">Vista previa gratuita</div>
+      <h2 class="section-title" data-key="previewTitle">Primeros minutos del curso</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="preview-inner">
+      <div class="video-frame">
+        <div class="video-badge" data-key="previewBadge">Vista previa · 0:00 – 3:00</div>
+        <div class="video-play"><div class="video-play-icon"></div></div>
+        <div class="video-coming" data-key="previewComing">Disponible en el lanzamiento del curso</div>
+      </div>
+      <div class="preview-excerpt">
+        <div class="preview-excerpt-title" data-key="excerptTitle">◆ Resumen del bloque de apertura (0:00 – 3:00)</div>
+        <p data-key="excerptBody">El 24 de febrero de 2022, el índice MOEX de la Bolsa de Moscú cayó un 45 % en 72 horas. El rublo perdió el 30 % de su valor frente al dólar en diez días. Los fondos con exposición rusa sufrieron pérdidas de entre el 60 y el 90 % en pocas semanas. Este no fue un accidente: fue el resultado de que los mercados no habían incorporado el riesgo geopolítico en sus precios. En este curso aprenderás a no cometer ese mismo error.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="label" data-key="ctaLabel" style="margin-bottom: .5rem;">Inscripción</div>
+  <div class="cta-price">29 €</div>
+  <p class="cta-desc" data-key="ctaDesc">Acceso de por vida · Materiales en ES y EN · Subtítulos incluidos</p>
+  <div class="btn-cta-wrap">
+    <a class="btn-cta" href="https://buy.stripe.com/5kQ7sMe9u6AIdQYfDc2Nq07" data-key="btnBuy2">Comprar acceso · 29 €</a>
+    <span style="font-size:.75rem;color:var(--text-muted);margin-top:.4rem;" data-key="ctaSafe">🔒 Pago seguro con Stripe</span>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────────── -->
+<footer>
+  <div><strong>Zenith Academia</strong> · <strong>Zenith Rise Capital</strong> · Calesius Global S.L.</div>
+  <div style="margin-top: .4rem; color: var(--text-muted);">ZRC-ACAD-GRM-01 · © 2025 · Todos los derechos reservados</div>
+  <div class="footer-links">
+    <a href="#learn" data-key="footLearn">Qué aprenderás</a>
+    <a href="#syllabus" data-key="footSyl">Temario</a>
+    <a href="#instructor" data-key="footInstr">Instructor</a>
+    <a href="../../README.md" data-key="footCatalog">Catálogo</a>
+  </div>
+</footer>
+
+<!-- ── Scripts ─────────────────────────────────────────────── -->
+<script>
+/* ── Syllabus accordion ─── */
+function toggleSyl(btn) {
+  const item = btn.closest('.syl-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.syl-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── Language toggle ────── */
+const T = {
+  es: {
+    pageTitle:     'Gestión del Riesgo Geopolítico — Zenith Academia',
+    navLearn:      'Qué aprenderás',
+    navSyllabus:   'Temario',
+    navInstructor: 'Instructor',
+    navPreview:    'Vista previa',
+    heroBadge:     'ZRC-ACAD-GRM-01 · Zenith Academia',
+    heroTitle:     'Gestión del Riesgo Geopolítico<br>para la Inversión',
+    heroSub:       'Aprende a identificar, medir y gestionar el riesgo geopolítico con el Marco ZRC: las cuatro capas de riesgo, los canales de transmisión a precios de activos y la metodología de scoring 0-100 para decisiones de inversión accionables.',
+    chipDuration:  '⏱ Duración: <span>28 min</span>',
+    chipLevel:     '◆ Nivel: <span>Avanzado</span>',
+    chipLang:      '🌐 Idiomas: <span>ES · EN</span>',
+    chipUpdated:   '📅 <span>Junio 2025</span>',
+    vatNote:       'IVA incluido · Pago seguro con Stripe · Acceso de por vida',
+    btnBuy:        'Comprar acceso · 29 €',
+    includesTitle: 'Este curso incluye',
+    inc1:          'Masterclass de 28 minutos',
+    inc2:          'Manual escrito ES + EN (~3.500 palabras)',
+    inc3:          '21 diapositivas de presentación (ES + EN)',
+    inc4:          '4 ejercicios de análisis con soluciones',
+    inc5:          'Subtítulos SRT en español e inglés',
+    inc6:          'Acceso de por vida',
+    learnLabel:    'Objetivos de aprendizaje',
+    learnTitle:    'Qué aprenderás',
+    obj1:          'Entender por qué el riesgo geopolítico es una variable de precio y no solo un factor de contexto macroeconómico.',
+    obj2:          'Aplicar el Marco ZRC de cuatro capas para mapear el riesgo de cualquier activo o geografía de inversión.',
+    obj3:          'Identificar los cuatro canales de transmisión de shocks geopolíticos a precios de activos y carteras.',
+    obj4:          'Construir un score geopolítico cuantitativo (escala 0-100) con la metodología ZRC y sus tres umbrales de decisión.',
+    obj5:          'Analizar casos reales: colapso del MOEX 2022, semiconductores de Taiwán y el corredor logístico del Mar Rojo 2023-2024.',
+    obj6:          'Redactar memos de decisión de inversión con análisis geopolítico estructurado e integrado en la tesis financiera.',
+    sylLabel:      'Contenidos · 28 minutos',
+    sylTitle:      'Temario',
+    syl1Title:     'El riesgo geopolítico como factor de precio',
+    syl1Time:      '0 – 3 min · Introducción',
+    syl1Body:      'Gancho: el colapso del MOEX el 24 de febrero de 2022 (–45 % en 72 horas). Por qué los modelos financieros clásicos no incorporan el riesgo geopolítico. La tesis central del curso: el riesgo geopolítico tiene precio.',
+    syl2Title:     'Marco ZRC — Las cuatro capas de riesgo',
+    syl2Time:      '3 – 9 min · Marco conceptual',
+    syl2Body:      'El Marco ZRC de cuatro capas: Estructural, Regulatoria, Operativa y De mercado. Horizontes temporales y nivel de severidad de cada capa. Cómo la concurrencia de capas amplifica el riesgo total.',
+    syl3Title:     'Canales de transmisión a precios de activos',
+    syl3Time:      '9 – 16 min · Mecanismos',
+    syl3Body:      'Los cuatro canales: Energía, Cadenas de suministro, Divisas y flujos de capital, Prima de riesgo. Lectura cruzada canal × posición de cartera. Ejemplo: ejercicios militares en el Estrecho de Taiwan (hipotético).',
+    syl4Title:     'Metodología de scoring geopolítico ZRC',
+    syl4Time:      '16 – 22 min · Metodología',
+    syl4Body:      'La fórmula ZRC: puntuación ponderada de 0 a 100 a partir de las cuatro capas. Ponderaciones y justificación. Los tres umbrales de decisión: Bajo (0-35), Moderado (36-55), Elevado (56-75), Severo (76-100).',
+    syl5Title:     'Caso práctico: corredor logístico del Mar Rojo',
+    syl5Time:      '22 – 26 min · Caso práctico',
+    syl5Body:      'Ataques hutíes 2023-2024: –42 % de tráfico en el Canal de Suez, fletes ×3,5 en 8 semanas. Aplicación del scoring ZRC al Puerto de Ain Sokhna (Egipto): 64/100, Riesgo Elevado. Lectura de postura de inversión.',
+    syl6Title:     'Síntesis y principios de inversión bajo incertidumbre',
+    syl6Time:      '26 – 28 min · Cierre',
+    syl6Body:      'Los tres principios para invertir bajo incertidumbre geopolítica. El scoring como punto de partida, no de llegada. Próximos pasos: Zenith Academia y ZRC Inner Circle.',
+    audLabel:      'Perfil del alumno',
+    audTitle:      '¿Para quién es este curso?',
+    aud1:          'Gestores de carteras y analistas de fondos con exposición internacional',
+    aud2:          'Directivos y CFOs con operaciones en mercados geopolíticamente sensibles',
+    aud3:          'Profesionales de banca de inversión y M&A cross-border',
+    aud4:          'Asesores patrimoniales con clientes en mercados emergentes',
+    aud5:          'Profesionales de seguros, reaseguro y gestión de riesgos corporativos',
+    instrLabel:    'Tu instructor',
+    instrTitle:    'Ficha del instructor',
+    instrRole:     'Founder &amp; CIO · Zenith Rise Capital · Profesor de Finanzas',
+    instrBio:      'Luis Miguel Gómez Elvira es el fundador y Chief Investment Officer de Zenith Rise Capital, firma especializada en inteligencia de inversión y gestión de riesgos de cartera. Con más de quince años de experiencia en los mercados financieros internacionales, ha desarrollado metodologías propias para el análisis del riesgo geopolítico aplicado a decisiones de inversión. Es profesor de finanzas y el diseñador del programa formativo de Zenith Academia.',
+    tag1:          'Riesgo geopolítico',
+    tag2:          'Gestión de carteras',
+    tag3:          'Mercados emergentes',
+    tag4:          'Finanzas internacionales',
+    tag5:          'Due diligence',
+    previewLabel:  'Vista previa gratuita',
+    previewTitle:  'Primeros minutos del curso',
+    previewBadge:  'Vista previa · 0:00 – 3:00',
+    previewComing: 'Disponible en el lanzamiento del curso',
+    excerptTitle:  '◆ Resumen del bloque de apertura (0:00 – 3:00)',
+    excerptBody:   'El 24 de febrero de 2022, el índice MOEX de la Bolsa de Moscú cayó un 45 % en 72 horas. El rublo perdió el 30 % de su valor frente al dólar en diez días. Los fondos con exposición rusa sufrieron pérdidas de entre el 60 y el 90 % en pocas semanas. Este no fue un accidente: fue el resultado de que los mercados no habían incorporado el riesgo geopolítico en sus precios. En este curso aprenderás a no cometer ese mismo error.',
+    ctaLabel:      'Inscripción',
+    ctaDesc:       'Acceso de por vida · Materiales en ES y EN · Subtítulos incluidos',
+    btnBuy2:       'Comprar acceso · 29 €',
+    ctaSafe:       '🔒 Pago seguro con Stripe',
+    footLearn:     'Qué aprenderás',
+    footSyl:       'Temario',
+    footInstr:     'Instructor',
+    footCatalog:   'Catálogo',
+  },
+  en: {
+    pageTitle:     'Geopolitical Risk Management — Zenith Academia',
+    navLearn:      'What you\'ll learn',
+    navSyllabus:   'Syllabus',
+    navInstructor: 'Instructor',
+    navPreview:    'Preview',
+    heroBadge:     'ZRC-ACAD-GRM-01 · Zenith Academia',
+    heroTitle:     'Geopolitical Risk Management<br>for Investors',
+    heroSub:       'Learn to identify, measure, and manage geopolitical risk using the ZRC Framework: four risk layers, transmission channels to asset prices, and a 0-100 scoring methodology for actionable investment decisions.',
+    chipDuration:  '⏱ Duration: <span>28 min</span>',
+    chipLevel:     '◆ Level: <span>Advanced</span>',
+    chipLang:      '🌐 Languages: <span>ES · EN</span>',
+    chipUpdated:   '📅 <span>June 2025</span>',
+    vatNote:       'VAT included · Secure payment via Stripe · Lifetime access',
+    btnBuy:        'Buy access · €29',
+    includesTitle: 'This course includes',
+    inc1:          '28-minute masterclass',
+    inc2:          'Written handbook ES + EN (~3,500 words)',
+    inc3:          '21-slide presentation deck (ES + EN)',
+    inc4:          '4 analysis exercises with solutions',
+    inc5:          'SRT subtitles in Spanish and English',
+    inc6:          'Lifetime access',
+    learnLabel:    'Learning objectives',
+    learnTitle:    'What you\'ll learn',
+    obj1:          'Understand why geopolitical risk is a price variable, not just a macroeconomic backdrop.',
+    obj2:          'Apply the ZRC four-layer framework to map the risk of any asset or investment geography.',
+    obj3:          'Identify the four transmission channels through which geopolitical shocks reach asset prices and portfolios.',
+    obj4:          'Build a quantitative geopolitical score (0-100 scale) using the ZRC methodology and its three decision thresholds.',
+    obj5:          'Analyse real cases: MOEX collapse 2022, Taiwan semiconductors, and the Red Sea logistics corridor 2023-2024.',
+    obj6:          'Write investment decision memos with structured geopolitical analysis integrated into the financial thesis.',
+    sylLabel:      'Contents · 28 minutes',
+    sylTitle:      'Syllabus',
+    syl1Title:     'Geopolitical risk as a price factor',
+    syl1Time:      '0 – 3 min · Introduction',
+    syl1Body:      'Hook: the MOEX collapse on 24 February 2022 (−45% in 72 hours). Why classical financial models fail to incorporate geopolitical risk. The course\'s central thesis: geopolitical risk has a price.',
+    syl2Title:     'The ZRC Framework — Four layers of risk',
+    syl2Time:      '3 – 9 min · Conceptual framework',
+    syl2Body:      'The ZRC four-layer framework: Structural, Regulatory, Operational, and Market. Time horizons and severity levels per layer. How layer concurrence amplifies total risk.',
+    syl3Title:     'Transmission channels to asset prices',
+    syl3Time:      '9 – 16 min · Mechanisms',
+    syl3Body:      'The four channels: Energy, Supply chains, Currencies and capital flows, Risk premia. Cross-reading channel × portfolio position. Example: military exercises in the Taiwan Strait (hypothetical).',
+    syl4Title:     'ZRC geopolitical scoring methodology',
+    syl4Time:      '16 – 22 min · Methodology',
+    syl4Body:      'The ZRC formula: weighted 0-100 score derived from the four layers. Weightings and rationale. Three decision thresholds: Low (0-35), Moderate (36-55), Elevated (56-75), Severe (76-100).',
+    syl5Title:     'Case study: the Red Sea logistics corridor',
+    syl5Time:      '22 – 26 min · Case study',
+    syl5Body:      'Houthi attacks 2023-2024: −42% of Suez Canal traffic, freight rates ×3.5 in 8 weeks. ZRC scoring applied to Port of Ain Sokhna (Egypt): 64/100, Elevated Risk. Investment posture reading.',
+    syl6Title:     'Synthesis and principles for investing under uncertainty',
+    syl6Time:      '26 – 28 min · Closing',
+    syl6Body:      'Three principles for investing under geopolitical uncertainty. Scoring as a starting point, not an endpoint. Next steps: Zenith Academia and the ZRC Inner Circle.',
+    audLabel:      'Student profile',
+    audTitle:      'Who is this course for?',
+    aud1:          'Portfolio managers and fund analysts with international exposure',
+    aud2:          'Executives and CFOs of companies operating in geopolitically sensitive markets',
+    aud3:          'Investment banking and cross-border M&A professionals',
+    aud4:          'Wealth advisers with clients invested in emerging markets',
+    aud5:          'Insurance, reinsurance, and corporate risk management professionals',
+    instrLabel:    'Your instructor',
+    instrTitle:    'Instructor profile',
+    instrRole:     'Founder &amp; CIO · Zenith Rise Capital · Finance Professor',
+    instrBio:      'Luis Miguel Gómez Elvira is the founder and Chief Investment Officer of Zenith Rise Capital, a firm specialising in investment intelligence and portfolio risk management. With over fifteen years of experience in international financial markets, he has developed proprietary methodologies for geopolitical risk analysis applied to investment decision-making. He is a finance professor and the designer of the Zenith Academia training programme.',
+    tag1:          'Geopolitical risk',
+    tag2:          'Portfolio management',
+    tag3:          'Emerging markets',
+    tag4:          'International finance',
+    tag5:          'Due diligence',
+    previewLabel:  'Free preview',
+    previewTitle:  'First minutes of the course',
+    previewBadge:  'Preview · 0:00 – 3:00',
+    previewComing: 'Available at course launch',
+    excerptTitle:  '◆ Opening block summary (0:00 – 3:00)',
+    excerptBody:   'On 24 February 2022, the MOEX index of the Moscow Exchange fell 45% in 72 hours. The ruble lost 30% of its value against the dollar in ten days. Funds with Russian exposure suffered losses of 60–90% in a matter of weeks. This was not an accident — it was the result of markets failing to price in geopolitical risk. In this course, you will learn how not to make the same mistake.',
+    ctaLabel:      'Enrol',
+    ctaDesc:       'Lifetime access · Materials in ES and EN · Subtitles included',
+    btnBuy2:       'Buy access · €29',
+    ctaSafe:       '🔒 Secure payment via Stripe',
+    footLearn:     'What you\'ll learn',
+    footSyl:       'Syllabus',
+    footInstr:     'Instructor',
+    footCatalog:   'Catalogue',
+  }
+};
+
+let lang = 'es';
+
+function toggleLang() {
+  lang = lang === 'es' ? 'en' : 'es';
+  document.documentElement.lang = lang;
+  document.getElementById('lang-btn').textContent = lang === 'es' ? 'EN' : 'ES';
+  document.title = T[lang].pageTitle;
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+  });
+}
+</script>
+</body>
+</html>
