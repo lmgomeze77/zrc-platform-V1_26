@@ -3,15 +3,15 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1388",
-      "change": "+0.16%",
-      "up": true
+      "value": "1.1410",
+      "change": "-0.28%",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
       "value": "19,438.47",
-      "change": "-0.16%",
-      "up": false
+      "change": "+0.47%",
+      "up": true
     },
     {
       "symbol": "BRENT Crude",
@@ -21,21 +21,21 @@
     },
     {
       "symbol": "WTI Crude",
-      "value": "69.23",
+      "value": "68.86",
       "change": "-3.74%",
       "up": false
     },
     {
-      "symbol": "Gold (XAU/USD)",
-      "value": "4,096.30",
-      "change": "+1.20%",
+      "symbol": "GOLD (XAU/USD)",
+      "value": "4,085.66",
+      "change": "+1.47%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "60,237.37",
-      "change": "+1.53%",
-      "up": true
+      "value": "59,350.00",
+      "change": "-2.91%",
+      "up": false
     },
     {
       "symbol": "VIX",
@@ -63,33 +63,33 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8629",
-      "change": "+0.12%",
+      "value": "0.8617",
+      "change": "+0.54%",
       "up": true
     },
     {
       "symbol": "DXY",
-      "value": "101.37",
-      "change": "+0.01%",
-      "up": true
+      "value": "101.13",
+      "change": "-0.07%",
+      "up": false
     },
     {
       "symbol": "Natural Gas",
-      "value": "3.279",
-      "change": "-0.66%",
+      "value": "3.226",
+      "change": "-2.09%",
       "up": false
     },
     {
       "symbol": "Copper",
       "value": "6.2100",
-      "change": "+2.23%",
+      "change": "+2.14%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7748",
-      "change": "-0.06%",
-      "up": false
+      "value": "6.7982",
+      "change": "+0.04%",
+      "up": true
     }
   ],
   "headlines": [
@@ -242,5 +242,5 @@
       "time": "17h"
     }
   ],
-  "market_updated_at": "2026-06-27T22:50:11.884Z"
+  "market_updated_at": "2026-06-28T08:37:00.874Z"
 }
