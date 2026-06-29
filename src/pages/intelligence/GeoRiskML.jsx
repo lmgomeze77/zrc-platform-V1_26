@@ -7,11 +7,11 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 // ═══════════════════════════════════════════════════════════════════
 
 const ECONOMIC_VARIABLES = {
-  interest_rates:  { label: "Tipos de Interés",   source: "Fed Funds Rate · Federal Reserve",  unit: "%",   base: 4.75,  vol: 0.15 },
-  inflation_cpi:   { label: "Inflación / IPC",    source: "CPI YoY · EE.UU. · BLS",           unit: "%",   base: 3.2,   vol: 0.25 },
-  fx_eurusd:       { label: "EUR/USD",            source: "Spot FX · ECB Reference Rate",      unit: "",    base: 1.074, vol: 0.008 },
-  commodities:     { label: "Materias Primas",    source: "Bloomberg Commodity Index (BCOM)",  unit: "idx", base: 118.4, vol: 3.5 },
-  sovereign_yield: { label: "Yield Soberano 10Y", source: "US Treasury 10Y · Federal Reserve", unit: "%",   base: 4.48,  vol: 0.10 },
+  interest_rates:  { label: "Tipos de Interés",   source: "Tipo Depósito · BCE",               unit: "%",   base: 4.75,  vol: 0.15 },
+  inflation_cpi:   { label: "Inflación / IPC",    source: "HICP YoY · Zona Euro · Eurostat",   unit: "%",   base: 3.2,   vol: 0.25 },
+  fx_eurusd:       { label: "EUR/USD",            source: "Spot FX · Tipo Ref. BCE",           unit: "",    base: 1.074, vol: 0.008 },
+  commodities:     { label: "Materias Primas",    source: "S&P GSCI · S&P Global",             unit: "idx", base: 118.4, vol: 3.5 },
+  sovereign_yield: { label: "Yield Soberano 10Y", source: "Yield Comp. 10Y · Zona Euro · BCE", unit: "%",   base: 4.48,  vol: 0.10 },
   capital_flows:   { label: "Flujos IED",         source: "IED Neta · Zona Euro · BCE",        unit: "Bn€", base: -12.3, vol: 1.8 },
 };
 
