@@ -380,13 +380,14 @@ function jsonResponse(body, status = 200) {
 }
 
 function corsResponse() {
-  return new Response(null, {
+  return new Response("", {
     status: 204,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Headers": "Content-Type, content-type",
       "Access-Control-Max-Age": "86400",
+      "Vary": "Origin",
     },
   });
 }

@@ -316,9 +316,12 @@ Responde con este JSON exacto:
 }`;
   }
 
+  // Omit Content-Type so the browser sends text/plain (a "simple" CORS request)
+  // which avoids the Safari preflight bug while the Worker still parses JSON correctly.
   const response = await fetch("https://zenith-risecapital.lmgomeze77.workers.dev/api/claude", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    mode: "cors",
+    credentials: "omit",
     body: JSON.stringify({
       model: "claude-sonnet-4-6",
       max_tokens: 2048,
