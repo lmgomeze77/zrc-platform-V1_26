@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-06-28T08:47:06.968Z",
+  "generated_at": "2026-06-29T10:50:02.257Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1413",
-      "change": "-0.02%",
+      "value": "1.1410",
+      "change": "-0.0027",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,438.47",
-      "change": "-0.15%",
+      "value": "18184.90",
+      "change": "-178.00",
       "up": false
     },
     {
-      "symbol": "BRENT Crude",
+      "symbol": "BRENT",
       "value": "72.01",
-      "change": "+0.03%",
+      "change": "+0.02",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "69.99",
-      "change": "+1.10%",
+      "symbol": "GOLD",
+      "value": "4073.72",
+      "change": "-27.38",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "60127",
+      "change": "+227",
       "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,072.80",
-      "change": "-0.57%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "59,547.60",
-      "change": "-0.84%",
-      "up": false
     },
     {
       "symbol": "VIX",
       "value": "18.41",
-      "change": "-2.54%",
+      "change": "-0.48",
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.37%",
-      "change": "-2.08%",
-      "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7,354.02",
-      "change": "-0.05%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "24,671.22",
-      "change": "-1.29%",
+      "symbol": "US 10Y",
+      "value": "4.372",
+      "change": "-0.020",
       "up": false
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8634",
-      "change": "-0.09%",
+      "value": "0.8631",
+      "change": "-0.0005",
       "up": false
     },
     {
-      "symbol": "DXY",
-      "value": "101.34",
-      "change": "-0.10%",
+      "symbol": "S&P 500",
+      "value": "7354.02",
+      "change": "-3.88",
       "up": false
     },
     {
-      "symbol": "Natural Gas",
-      "value": "3.302",
-      "change": "+2.20%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.1375",
-      "change": "+1.05%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7617",
-      "change": "-0.04%",
+      "symbol": "DAX 40",
+      "value": "24671.22",
+      "change": "-322.78",
       "up": false
     }
   ],
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Día 121 de la guerra con Irán: Irán ataca Bahréin y Kuwait mientras EE.UU. golpea cerca del Estrecho de Ormuz",
-        "en": "Iran war day 121: Iran attacks Bahrain, Kuwait as US strikes near Hormuz"
+        "es": "Irán ataca Bahréin y Kuwait y amenaza con detener negociaciones tras nuevos ataques de EE.UU.",
+        "en": "Iran attacks Bahrain and Kuwait, threatens to halt talks after fresh US strikes"
       },
       "summary": {
-        "es": "Las Guardias Revolucionarias iraníes lanzaron ataques contra Bahréin y Kuwait en respuesta a los bombardeos estadounidenses sobre 10 emplazamientos iraníes. El conflicto se acerca al Estrecho de Ormuz, amenazando el paso de aproximadamente el 20% del suministro mundial de petróleo. Irán amenaza con suspender completamente las negociaciones si continúan los ataques.",
-        "en": "Iran's Revolutionary Guard launched attacks on Bahrain and Kuwait in retaliation for US airstrikes on 10 Iranian sites. The conflict is converging on the Strait of Hormuz, threatening passage of approximately 20% of global oil supply. Iran threatens a complete halt to negotiations if US strikes continue."
+        "es": "Irán lanzó ataques con drones y misiles contra Bahréin y Kuwait en respuesta a nuevos bombardeos estadounidenses, amenazando con suspender negociaciones y cerrar nuevamente el Estrecho de Ormuz. La escalada pone en riesgo directo el tráfico marítimo del Golfo Pérsico, que concentra aproximadamente el 20% del comercio global de petróleo. Los mercados de energía y activos de refugio enfrentan presión alcista significativa.",
+        "en": "Iran launched drone and missile attacks on Bahrain and Kuwait in response to new US air strikes, threatening to suspend negotiations and close the Strait of Hormuz again. The escalation directly endangers Persian Gulf maritime traffic, which handles roughly 20% of global oil trade. Energy markets and safe-haven assets face significant upward pressure."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "GOLD +",
         "EQUITIES -",
-        "BONDS +"
+        "USD +"
       ],
       "confidence": 95,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/28/iran-war-day-121-iran-attacks-bahrain-kuwait-as-us-strikes-near-hormuz?traffic_source=rss",
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260628-iran-threatens-to-halt-talks-after-fresh-us-strikes-attacks-bahrain-and-kuwait",
       "published_at": "2026-06-28",
-      "time": "2h"
+      "time": "12h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "EE.UU. e Irán intercambian más ataques, poniendo a prueba la tregua",
-        "en": "U.S. and Iran Trade More Strikes, Testing Truce"
-      },
-      "summary": {
-        "es": "Las fuerzas estadounidenses ejecutaron nuevos ataques aéreos contra Irán, justificándolos como represalia por un ataque a un petrolero en el Estrecho de Ormuz. Irán respondió atacando objetivos estadounidenses en Bahréin y Kuwait, poniendo en peligro el marco de alto el fuego recientemente anunciado. La dinámica de escalada bilateral eleva el riesgo de una interrupción prolongada del tráfico marítimo en Ormuz.",
-        "en": "US forces carried out additional airstrikes on Iran, citing retaliation for an oil tanker attack in the Strait of Hormuz. Iran responded by striking US targets in Bahrain and Kuwait, jeopardizing the recently announced ceasefire framework. The bilateral escalation cycle raises the risk of a prolonged disruption to Hormuz shipping traffic."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL +",
-        "SHIPPING +",
-        "USD ?",
-        "GOLD +"
-      ],
-      "confidence": 95,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/live/2026/06/27/world/us-iran-strikes-hormuz",
-      "published_at": "2026-06-28",
-      "time": "1h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "El alto el fuego entre EE.UU. e Irán amenazado por nuevos ataques",
-        "en": "US-Iran ceasefire threatened by renewed strikes"
-      },
-      "summary": {
-        "es": "Israel realizó un ataque aéreo en el sur del Líbano un día después del anuncio del acuerdo marco entre Israel y el Líbano, complicando los esfuerzos diplomáticos regionales. Irán acusó a Washington de una 'violación flagrante' del acuerdo de paz tras los últimos ataques estadounidenses. La simultaneidad de frentes —Líbano, Hormuz y negociaciones directas EE.UU.-Irán— eleva el riesgo de una espiral de escalada regional.",
-        "en": "Israel conducted an airstrike in southern Lebanon one day after the announced US-brokered framework agreement between Israel and Lebanon, complicating regional diplomacy. Iran accused Washington of a 'blatant violation' of the peace deal following the latest US strikes. The simultaneity of active fronts—Lebanon, Hormuz, and direct US-Iran talks—raises the risk of a broader regional escalation spiral."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL +",
-        "GOLD +",
-        "EM EQUITIES -",
-        "BONDS +"
-      ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/us-iran-ceasefire-threatened-by-renewed-strikes",
-      "published_at": "2026-06-27",
-      "time": "17h"
-    },
-    {
-      "id": 4,
       "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "EE.UU. lanza una segunda noche de ataques contra Irán tras buque alcanzado por dron",
-        "en": "US launches second night of strikes on Iran after ship hit by drone"
+        "es": "EE.UU. e Irán acuerdan detener ataques en medio de informes de nuevas negociaciones",
+        "en": "US, Iran agree to halt strikes amid reports of fresh talks"
       },
       "summary": {
-        "es": "EE.UU. ejecutó una segunda ronda de ataques contra Irán tras el ataque con dron iraní a un buque comercial en el Estrecho de Ormuz, estableciendo un patrón de represalia vinculado directamente a incidentes de navegación. Esta dinámica convierte cada nuevo incidente marítimo en un potencial detonante de escalada militar, con implicaciones directas para las primas de seguro marítimo y los precios del crudo. Los mercados energéticos deberán monitorizar el ritmo de reapertura del estrecho.",
-        "en": "The US executed a second round of strikes on Iran following an alleged Iranian drone attack on a commercial vessel in the Strait of Hormuz, establishing a retaliation pattern directly linked to maritime incidents. This dynamic turns each new maritime incident into a potential military escalation trigger, with direct implications for shipping insurance premiums and crude prices. Energy markets will need to monitor the pace of any Hormuz reopening."
+        "es": "Un funcionario estadounidense confirmó que ambas partes acordaron pausar los ataques y permitir el tránsito de buques por el Estrecho de Ormuz, con reanudación de conversaciones técnicas prevista para el martes. El acuerdo es frágil dado el intercambio de acusaciones mutuas sobre violaciones del alto el fuego. Los mercados de petróleo podrían aliviar parte de la prima de riesgo geopolítico, aunque la incertidumbre persiste.",
+        "en": "A US official confirmed both sides agreed to pause attacks and allow vessels to transit the Strait of Hormuz, with technical talks set to resume Tuesday. The agreement is fragile given mutual accusations of ceasefire violations over the weekend. Oil markets may partially unwind geopolitical risk premiums, though uncertainty remains elevated."
+      },
+      "impact": "high",
+      "signals": [
+        "OIL ?",
+        "GOLD -",
+        "EQUITIES +",
+        "USD -"
+      ],
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/us-iran-agree-to-halt-strikes-amid-reports-of-fresh-talks/live-77746775?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-06-29",
+      "time": "5h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Putin admite que los ataques con drones ucranianos están generando escasez de combustible en Rusia",
+        "en": "Putin admits Ukrainian drone strikes are driving Russian fuel shortages"
+      },
+      "summary": {
+        "es": "Putin reconoció públicamente que la campaña ucraniana de drones de largo alcance está causando problemas 'evidentes' en la infraestructura energética rusa, incendiando refinerías y forzando restricciones de combustible en varias regiones. Aunque minimizó el impacto, la admisión señala una presión creciente sobre la capacidad productiva rusa. Esto tiene implicaciones para los precios globales del petróleo refinado y la sostenibilidad fiscal del Kremlin.",
+        "en": "Putin publicly acknowledged that Ukraine's long-range drone campaign is causing 'obvious' problems to Russian energy infrastructure, igniting refineries and forcing fuel shortages across multiple regions. Though he downplayed severity, the admission signals growing strain on Russian productive capacity. This carries implications for global refined oil product prices and Kremlin fiscal sustainability."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "TANKER RATES +",
-        "USD +",
+        "RUB -",
+        "BONDS ?",
+        "GOLD +"
+      ],
+      "confidence": 87,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jun/28/putin-admits-ukrainian-strikes-driving-russian-fuel-shortages",
+      "published_at": "2026-06-29",
+      "time": "1h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Guerra Rusia-Ucrania: ¿Por qué Putin rechazó los límites a los ataques de largo alcance?",
+        "en": "Russia-Ukraine war: Why has Putin rejected limits on long-range strikes?"
+      },
+      "summary": {
+        "es": "Putin rechazó la propuesta ucraniana de limitar mutuamente los ataques de largo alcance, una iniciativa que Ucrania habría impulsado tras intensificar sus golpes contra la infraestructura energética rusa. El rechazo indica que Moscú mantiene la escalada como palanca de negociación, complicando cualquier vía hacia una tregua. La continuidad de los ataques a refinerías rusas añade volatilidad a los mercados energéticos europeos.",
+        "en": "Putin rejected Ukraine's proposed mutual halt to long-range strikes, which Ukraine had pushed after intensifying attacks on Russian energy infrastructure. The rejection signals Moscow is maintaining escalation as a negotiating lever, complicating any path toward a truce. Continued strikes on Russian refineries add volatility to European energy markets."
+      },
+      "impact": "medium",
+      "signals": [
+        "OIL +",
+        "EUR -",
+        "NATGAS +",
         "EQUITIES -"
       ],
-      "confidence": 93,
+      "confidence": 82,
       "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/27/us-launches-second-night-of-strikes-against-iran-after-ship-struck-by-drone?traffic_source=rss",
-      "published_at": "2026-06-27",
-      "time": "10h"
+      "source_url": "https://www.aljazeera.com/news/2026/6/29/russia-ukraine-war-why-has-putin-rejected-limits-on-long-range-strikes?traffic_source=rss",
+      "published_at": "2026-06-29",
+      "time": "<1h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "US",
       "title": {
-        "es": "Ucrania golpea planta de armas rusa y centro de combustible en Moscú",
-        "en": "Ukraine strikes Russian weapons plant, Moscow fuel hub"
+        "es": "Warsh, presidente de la Fed, debuta en Europa con tres mensajes",
+        "en": "Fed Chair Warsh makes European debut with three messages at Sintra forum"
       },
       "summary": {
-        "es": "Ucrania atacó instalaciones en las regiones de Volgogrado y Vladímir como parte de la estrategia de Zelenski de llevar la guerra al interior ruso para presionar a Putin hacia negociaciones. Los ataques a infraestructura energética y de defensa en territorio ruso profundo podrían intensificar la presión sobre la economía de guerra rusa. Para los mercados, el riesgo es una respuesta rusa escalatoria que afecte el suministro energético europeo o desestabilice las conversaciones de paz.",
-        "en": "Ukraine struck facilities in the Volgograd and Vladimir regions as part of Zelensky's strategy to bring the war to Russian territory and pressure Putin toward peace negotiations. Attacks on energy and defense infrastructure deep inside Russia could intensify pressure on the Russian war economy. For markets, the key risk is a Russian escalatory response affecting European energy supply or destabilizing peace talks."
+        "es": "El presidente de la Reserva Federal, Warsh, participó como ponente estrella en el foro anual de banqueros centrales en Sintra en un contexto de elevada incertidumbre geopolítica. Sus señales sobre política monetaria serán interpretadas por los mercados en función de la escalada en el Golfo y sus efectos inflacionarios potenciales. La divergencia entre bancos centrales globales ante shocks de oferta energética es un factor clave para posicionamiento en divisas y renta fija.",
+        "en": "Fed Chair Warsh appeared as the keynote speaker at the annual central bankers' forum in Sintra amid elevated geopolitical uncertainty. His monetary policy signals will be interpreted by markets in the context of the Gulf escalation and its potential inflationary effects. Central bank divergence in response to energy supply shocks is a key factor for currency and fixed income positioning."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "GAS EU +",
-        "RUB -",
-        "DEFENSE EQUITIES +",
-        "EUR ?"
+        "USD ?",
+        "BONDS ?",
+        "EUR -",
+        "GOLD +"
       ],
-      "confidence": 82,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ukraine-strikes-russian-weapons-plant-moscow-fuel-hub/a-77735059?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-27",
-      "time": "16h"
+      "confidence": 83,
+      "source": "El País",
+      "source_url": "https://elpais.com/economia/2026-06-29/warsh-presidente-de-la-fed-debuta-en-europa-con-tres-mensajes.html",
+      "published_at": "2026-06-29",
+      "time": "7h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "APAC",
       "title": {
-        "es": "Los hombres ucranianos en edad militar podrían perder la protección de la UE",
-        "en": "Military-age Ukrainian men could lose EU protection"
+        "es": "Corea del Sur presenta plan de inversión en chips e inteligencia artificial por 880.000 millones de dólares",
+        "en": "South Korea unveils $880bn chip and AI investment plan"
       },
       "summary": {
-        "es": "La Comisión Europea ha sugerido retirar el estatus de protección temporal a los hombres ucranianos en edad militar, una medida respaldada por varios estados miembros y por el propio Kyiv. De aplicarse, la medida podría canalizar decenas de miles de hombres de vuelta hacia el esfuerzo bélico ucraniano, con implicaciones para la sostenibilidad militar y la mano de obra en los países de acogida. El debate refleja la tensión creciente entre la solidaridad europea con Ucrania y las presiones políticas internas en la UE.",
-        "en": "The European Commission has suggested withdrawing temporary protection status from military-age Ukrainian men, a move backed by several EU member states and Kyiv itself. If implemented, the measure could channel tens of thousands of men back toward the Ukrainian war effort, with implications for military sustainability and labor markets in host countries. The debate reflects growing tension between EU solidarity with Ukraine and domestic political pressures within member states."
+        "es": "Corea del Sur anunció un ambicioso plan de inversión de 880.000 millones de dólares en semiconductores e inteligencia artificial, en respuesta directa a la competencia estratégica de China, Taiwán y Japón en tecnología avanzada. La iniciativa refleja la aceleración de la fragmentación tecnológica global y la carrera por la soberanía en chips. Representa una oportunidad significativa para el sector de semiconductores surcoreano y sus cadenas de suministro.",
+        "en": "South Korea announced an $880bn investment plan in semiconductors and AI, directly responding to strategic competition from China, Taiwan, and Japan in advanced technology. The initiative reflects the acceleration of global tech fragmentation and the race for chip sovereignty. It represents a significant opportunity for South Korea's semiconductor sector and its supply chains."
       },
       "impact": "medium",
       "signals": [
-        "EUR ?",
-        "UAH ?",
-        "EU DEFENSE SPEND +",
-        "EASTERN EU EQUITIES ?"
+        "KRW +",
+        "TECH EQUITIES +",
+        "SEMIS +",
+        "USD ?"
       ],
-      "confidence": 74,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/military-age-ukrainian-men-could-lose-eu-protection/a-77729285?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-27",
-      "time": "23h"
+      "confidence": 80,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/c9q2pwzngjqo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-06-29",
+      "time": "1h"
     }
-  ],
-  "market_updated_at": "2026-06-29T10:15:20.212Z"
+  ]
 }
