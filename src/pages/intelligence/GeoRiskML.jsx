@@ -7,12 +7,12 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 // ═══════════════════════════════════════════════════════════════════
 
 const ECONOMIC_VARIABLES = {
-  interest_rates:  { label: "Tipos de Interés",    unit: "%",   base: 4.75,  vol: 0.15 },
-  inflation_cpi:   { label: "Inflación / IPC",     unit: "%",   base: 3.2,   vol: 0.25 },
-  fx_eurusd:       { label: "EUR/USD",             unit: "",    base: 1.074, vol: 0.008 },
-  commodities:     { label: "Materias Primas",     unit: "idx", base: 118.4, vol: 3.5 },
-  sovereign_yield: { label: "Yield Soberano 10Y",  unit: "%",   base: 4.48,  vol: 0.10 },
-  capital_flows:   { label: "Flujos IED",          unit: "Bn€", base: -12.3, vol: 1.8 },
+  interest_rates:  { label: "Tipos de Interés",   source: "Fed Funds Rate · Federal Reserve",  unit: "%",   base: 4.75,  vol: 0.15 },
+  inflation_cpi:   { label: "Inflación / IPC",    source: "CPI YoY · EE.UU. · BLS",           unit: "%",   base: 3.2,   vol: 0.25 },
+  fx_eurusd:       { label: "EUR/USD",            source: "Spot FX · ECB Reference Rate",      unit: "",    base: 1.074, vol: 0.008 },
+  commodities:     { label: "Materias Primas",    source: "Bloomberg Commodity Index (BCOM)",  unit: "idx", base: 118.4, vol: 3.5 },
+  sovereign_yield: { label: "Yield Soberano 10Y", source: "US Treasury 10Y · Federal Reserve", unit: "%",   base: 4.48,  vol: 0.10 },
+  capital_flows:   { label: "Flujos IED",         source: "IED Neta · Zona Euro · BCE",        unit: "Bn€", base: -12.3, vol: 1.8 },
 };
 
 const SCENARIOS = {
@@ -711,7 +711,10 @@ export default function GeoRiskML() {
                 const impCol = imp > 0.1 ? "#F59E0B" : imp < -0.1 ? "#10B981" : "#94A3B8";
                 return (
                   <div key={k} style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr 1.2fr 1.5fr", padding:"12px 16px", borderBottom:"1px solid #1a274430", alignItems:"center", background:i%2 ? "#0a1322" : "#0c1526" }}>
-                    <span style={{ fontSize:12, fontWeight:500, color:"#CBD5E1" }}>{v.label}</span>
+                    <div>
+                      <div style={{ fontSize:12, fontWeight:500, color:"#CBD5E1" }}>{v.label}</div>
+                      <div style={{ fontSize:9, color:"#475569", fontFamily:"monospace", letterSpacing:"0.04em", marginTop:2 }}>{v.source}</div>
+                    </div>
                     <span style={{ fontFamily:"monospace", fontSize:12, color:"#94A3B8" }}>{fmt(v.base, k==="fx_eurusd"?3:2)}{v.unit}</span>
                     <MiniBar value={imp} max={0.8} width={50} />
                     <span style={{ fontFamily:"monospace", fontSize:13, fontWeight:600, color:impCol }}>
@@ -793,7 +796,10 @@ export default function GeoRiskML() {
                 const c = imp > 0.1 ? "#EF4444" : imp < -0.1 ? "#10B981" : "#94A3B8";
                 return (
                   <div key={k} style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr 1fr", padding:"12px 16px", borderBottom:"1px solid #1a274430", alignItems:"center", background:i%2?"#0a1322":"#0c1526" }}>
-                    <span style={{ fontSize:12, color:"#CBD5E1" }}>{v.label}</span>
+                    <div>
+                      <div style={{ fontSize:12, color:"#CBD5E1" }}>{v.label}</div>
+                      <div style={{ fontSize:9, color:"#475569", fontFamily:"monospace", letterSpacing:"0.04em", marginTop:2 }}>{v.source}</div>
+                    </div>
                     <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:12, fontWeight:600, color:c }}>{imp>=0?"+":""}{fmt(imp,3)}</span>
                     <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:12, color:"#64748B" }}>{fmt(v.base, k==="fx_eurusd"?3:2)}{v.unit}</span>
                     <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:13, fontWeight:600, color:c }}>{fmt(proj, k==="fx_eurusd"?3:2)}{v.unit}</span>
