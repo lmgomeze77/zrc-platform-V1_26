@@ -9,8 +9,8 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "19387.40",
-      "change": "-0.20%",
+      "value": "19,438.47",
+      "change": "-0.15%",
       "up": false
     },
     {
@@ -20,45 +20,75 @@
       "up": true
     },
     {
-      "symbol": "GOLD",
-      "value": "4062.30",
-      "change": "-0.83%",
+      "symbol": "WTI",
+      "value": "70.06",
+      "change": "+1.20%",
+      "up": true
+    },
+    {
+      "symbol": "XAU/USD",
+      "value": "3,985.88",
+      "change": "-0.76%",
       "up": false
     },
     {
-      "symbol": "BTC",
-      "value": "59860.62",
-      "change": "-0.29%",
+      "symbol": "BTC/USD",
+      "value": "59,221.32",
+      "change": "-0.98%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "17.65",
-      "change": "-4.13%",
+      "value": "17.53",
+      "change": "-0.68%",
       "up": false
     },
     {
       "symbol": "US 10Y",
-      "value": "4.375",
+      "value": "4.378%",
       "change": "+0.14%",
       "up": true
     },
     {
-      "symbol": "EUR/GBP",
-      "value": "0.8755",
-      "change": "+0.04%",
-      "up": true
-    },
-    {
       "symbol": "S&P 500",
-      "value": "7440.43",
+      "value": "7,440.43",
       "change": "+1.18%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24626.89",
+      "value": "24,626.89",
       "change": "-0.18%",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8617",
+      "change": "-0.12%",
+      "up": false
+    },
+    {
+      "symbol": "DXY",
+      "value": "101.09",
+      "change": "+0.20%",
+      "up": true
+    },
+    {
+      "symbol": "Natural Gas",
+      "value": "3.178",
+      "change": "-3.08%",
+      "up": false
+    },
+    {
+      "symbol": "Copper",
+      "value": "6.188",
+      "change": "-0.31%",
+      "up": false
+    },
+    {
+      "symbol": "USD/CNY",
+      "value": "6.7982",
+      "change": "-0.11%",
       "up": false
     }
   ],
@@ -213,5 +243,6 @@
       "published_at": "2026-06-29",
       "time": "15h"
     }
-  ]
+  ],
+  "market_updated_at": "2026-06-30T12:03:35.302Z"
 }
