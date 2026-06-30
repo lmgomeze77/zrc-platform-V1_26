@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T10:50:02.257Z",
+  "generated_at": "2026-06-30T09:27:52.052Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -9,86 +9,56 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,438.47",
-      "change": "-0.16%",
+      "value": "19387.40",
+      "change": "-0.20%",
       "up": false
     },
     {
-      "symbol": "BRENT CRUDE",
-      "value": "73.32",
-      "change": "-0.80%",
+      "symbol": "BRENT",
+      "value": "73.22",
+      "change": "+0.85%",
+      "up": true
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4062.30",
+      "change": "-0.83%",
       "up": false
     },
     {
-      "symbol": "WTI CRUDE",
-      "value": "70.01",
-      "change": "-1.05%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,001.70",
-      "change": "-0.92%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "59,776.20",
-      "change": "-0.98%",
+      "symbol": "BTC",
+      "value": "59860.62",
+      "change": "-0.29%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "17.53",
-      "change": "-0.68%",
+      "value": "17.65",
+      "change": "-4.13%",
       "up": false
     },
     {
-      "symbol": "US 10Y YIELD",
-      "value": "4.368",
-      "change": "-0.21%",
-      "up": false
+      "symbol": "US 10Y",
+      "value": "4.375",
+      "change": "+0.14%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8755",
+      "change": "+0.04%",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,440.43",
+      "value": "7440.43",
       "change": "+1.18%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24,626.89",
+      "value": "24626.89",
       "change": "-0.18%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8631",
-      "change": "+0.16%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "101.13",
-      "change": "+0.25%",
-      "up": true
-    },
-    {
-      "symbol": "NATURAL GAS",
-      "value": "3.172",
-      "change": "-0.06%",
-      "up": false
-    },
-    {
-      "symbol": "COPPER",
-      "value": "6.188",
-      "change": "+0.24%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7983",
-      "change": "-0.09%",
       "up": false
     }
   ],
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Irán ataca Bahréin y Kuwait y amenaza con detener negociaciones tras nuevos ataques de EE.UU.",
-        "en": "Iran attacks Bahrain and Kuwait, threatens to halt talks after fresh US strikes"
+        "es": "La escalada de ataques entre EE.UU. e Irán amenaza el acuerdo de paz provisional",
+        "en": "Escalating US-Iran strikes threaten interim peace agreement"
       },
       "summary": {
-        "es": "Irán lanzó ataques con drones y misiles contra Bahréin y Kuwait en respuesta a nuevos bombardeos estadounidenses, amenazando con suspender negociaciones y cerrar nuevamente el Estrecho de Ormuz. La escalada pone en riesgo directo el tráfico marítimo del Golfo Pérsico, que concentra aproximadamente el 20% del comercio global de petróleo. Los mercados de energía y activos de refugio enfrentan presión alcista significativa.",
-        "en": "Iran launched drone and missile attacks on Bahrain and Kuwait in response to new US air strikes, threatening to suspend negotiations and close the Strait of Hormuz again. The escalation directly endangers Persian Gulf maritime traffic, which handles roughly 20% of global oil trade. Energy markets and safe-haven assets face significant upward pressure."
+        "es": "Irán atacó Bahréin y Kuwait mientras se intensifican las tensiones en torno al control del Estrecho de Ormuz, poniendo en riesgo el frágil acuerdo provisional entre Washington y Teherán. La ambigüedad del memorando de paz alimenta nuevas hostilidades con implicaciones directas para los flujos de petróleo global. Los mercados de energía y activos de refugio permanecen en alerta máxima.",
+        "en": "Iran attacked Bahrain and Kuwait as tensions escalate over control of the Strait of Hormuz, jeopardizing the fragile interim US-Iran memorandum. The broadly worded peace agreement is failing to contain fresh hostilities, with direct implications for global oil supply flows. Energy markets and safe-haven assets remain on high alert."
       },
       "impact": "high",
       "signals": [
@@ -113,136 +83,135 @@
         "USD +"
       ],
       "confidence": 95,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260628-iran-threatens-to-halt-talks-after-fresh-us-strikes-attacks-bahrain-and-kuwait",
-      "published_at": "2026-06-28",
-      "time": "12h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jun/28/escalating-us-iran-strikes-threaten-interim-peace-agreement",
+      "published_at": "2026-06-29",
+      "time": "23h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EE.UU. e Irán acuerdan detener ataques en medio de informes de nuevas negociaciones",
-        "en": "US, Iran agree to halt strikes amid reports of fresh talks"
+        "es": "Cómo los barcos arriesgan el 'paso seguro' por el Estrecho de Ormuz",
+        "en": "How ships are risking 'safe' passage through the Strait of Hormuz"
       },
       "summary": {
-        "es": "Un funcionario estadounidense confirmó que ambas partes acordaron pausar los ataques y permitir el tránsito de buques por el Estrecho de Ormuz, con reanudación de conversaciones técnicas prevista para el martes. El acuerdo es frágil dado el intercambio de acusaciones mutuas sobre violaciones del alto el fuego. Los mercados de petróleo podrían aliviar parte de la prima de riesgo geopolítico, aunque la incertidumbre persiste.",
-        "en": "A US official confirmed both sides agreed to pause attacks and allow vessels to transit the Strait of Hormuz, with technical talks set to resume Tuesday. The agreement is fragile given mutual accusations of ceasefire violations over the weekend. Oil markets may partially unwind geopolitical risk premiums, though uncertainty remains elevated."
+        "es": "A pesar de las negociaciones entre Irán y Omán para gestionar el Estrecho de Ormuz, dos ataques recientes a embarcaciones cuestionan la viabilidad del corredor alternativo frente a la costa omaní. La amenaza de minas y la falta de un acuerdo operativo efectivo mantienen disrupciones reales en las rutas de transporte marítimo global. El riesgo para el tráfico petrolero y los fletes sigue siendo elevado.",
+        "en": "Despite Iran-Oman talks on managing the Strait of Hormuz, two recent ship attacks cast doubt on the viability of an alternative corridor off the Omani coast intended to bypass mine threats. The absence of an effective operational agreement sustains real disruptions to global shipping lanes. Risks to oil tanker traffic and freight rates remain elevated."
       },
       "impact": "high",
       "signals": [
-        "OIL ?",
-        "GOLD -",
-        "EQUITIES +",
-        "USD -"
+        "OIL +",
+        "SHIPPING +",
+        "GOLD +",
+        "EQUITIES -"
       ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-iran-agree-to-halt-strikes-amid-reports-of-fresh-talks/live-77746775?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-06-29",
-      "time": "5h"
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260630-how-ships-are-risking-safe-passage-through-the-strait-of-hormuz",
+      "published_at": "2026-06-30",
+      "time": "3h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Putin admite que los ataques con drones ucranianos están generando escasez de combustible en Rusia",
-        "en": "Putin admits Ukrainian drone strikes are driving Russian fuel shortages"
+        "es": "Estrecho de Ormuz: 'Irán ha dejado muy claro que hay nuevas reglas', dice analista",
+        "en": "Strait of Hormuz: 'Iran has made it very clear that there are new rules', analyst says"
       },
       "summary": {
-        "es": "Putin reconoció públicamente que la campaña ucraniana de drones de largo alcance está causando problemas 'evidentes' en la infraestructura energética rusa, incendiando refinerías y forzando restricciones de combustible en varias regiones. Aunque minimizó el impacto, la admisión señala una presión creciente sobre la capacidad productiva rusa. Esto tiene implicaciones para los precios globales del petróleo refinado y la sostenibilidad fiscal del Kremlin.",
-        "en": "Putin publicly acknowledged that Ukraine's long-range drone campaign is causing 'obvious' problems to Russian energy infrastructure, igniting refineries and forcing fuel shortages across multiple regions. Though he downplayed severity, the admission signals growing strain on Russian productive capacity. This carries implications for global refined oil product prices and Kremlin fiscal sustainability."
+        "es": "Irán celebró su primera reunión con Omán para gestionar el Estrecho de Ormuz desde la firma del acuerdo provisional con EE.UU., señalando que Teherán busca un rol central en la supervisión del paso estratégico. Analistas advierten que Irán está imponiendo nuevas condiciones de facto sobre el tráfico marítimo, redefiniendo el equilibrio de poder en la región. Esto tiene implicaciones directas para los precios del petróleo y la estabilidad de las cadenas de suministro energético global.",
+        "en": "Iran held its first meeting with Oman to manage the Strait of Hormuz since signing the preliminary deal with the US, signaling Tehran's intent to play a central role in overseeing the strategic waterway. Analysts warn Iran is imposing new de facto conditions on maritime traffic, reshuffling the regional balance of power. This carries direct implications for oil pricing and global energy supply chain stability."
       },
       "impact": "high",
       "signals": [
         "OIL +",
-        "RUB -",
-        "BONDS ?",
-        "GOLD +"
+        "GOLD +",
+        "USD +",
+        "BONDS ?"
       ],
-      "confidence": 87,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/28/putin-admits-ukrainian-strikes-driving-russian-fuel-shortages",
+      "confidence": 90,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/strait-of-hormuz-iran-has-made-it-very-clear-that-there-are-new-rules-analyst-says",
       "published_at": "2026-06-29",
-      "time": "1h"
+      "time": "14h"
     },
     {
       "id": 4,
-      "tag": "WATCH",
+      "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Guerra Rusia-Ucrania: ¿Por qué Putin rechazó los límites a los ataques de largo alcance?",
-        "en": "Russia-Ukraine war: Why has Putin rejected limits on long-range strikes?"
+        "es": "La UE inicia tres meses de negociaciones con China sobre el déficit comercial de 360.000 millones de euros",
+        "en": "EU sets up three months of talks with China over €360bn trade deficit"
       },
       "summary": {
-        "es": "Putin rechazó la propuesta ucraniana de limitar mutuamente los ataques de largo alcance, una iniciativa que Ucrania habría impulsado tras intensificar sus golpes contra la infraestructura energética rusa. El rechazo indica que Moscú mantiene la escalada como palanca de negociación, complicando cualquier vía hacia una tregua. La continuidad de los ataques a refinerías rusas añade volatilidad a los mercados energéticos europeos.",
-        "en": "Putin rejected Ukraine's proposed mutual halt to long-range strikes, which Ukraine had pushed after intensifying attacks on Russian energy infrastructure. The rejection signals Moscow is maintaining escalation as a negotiating lever, complicating any path toward a truce. Continued strikes on Russian refineries add volatility to European energy markets."
+        "es": "La UE y China acordaron entablar negociaciones durante tres meses para reequilibrar una relación comercial con un déficit de 360.000 millones de euros anuales, en su primera declaración conjunta en siete años. El acuerdo busca evitar una guerra comercial abierta, aunque la escala del desequilibrio y las tensiones previas sugieren que las negociaciones serán complejas. El resultado afectará directamente a sectores industriales europeos, el euro y las cadenas de suministro globales.",
+        "en": "The EU and China agreed to three months of talks to rebalance a trade relationship carrying a €360bn annual deficit, issuing their first joint statement in seven years. The deal aims to avert an open trade war, though the scale of the imbalance and prior tensions suggest difficult negotiations ahead. The outcome will directly affect European industrial sectors, the euro, and global supply chains."
       },
-      "impact": "medium",
+      "impact": "high",
       "signals": [
-        "OIL +",
-        "EUR -",
-        "NATGAS +",
-        "EQUITIES -"
+        "EUR ?",
+        "EQUITIES +",
+        "CHINA ASSETS +",
+        "TRADE WAR RISK -"
       ],
-      "confidence": 82,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/6/29/russia-ukraine-war-why-has-putin-rejected-limits-on-long-range-strikes?traffic_source=rss",
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jun/29/eu-sets-up-three-months-of-talks-with-china-over-360bn-trade-deficit",
       "published_at": "2026-06-29",
-      "time": "<1h"
+      "time": "14h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "US",
+      "region": "APAC",
       "title": {
-        "es": "Warsh, presidente de la Fed, debuta en Europa con tres mensajes",
-        "en": "Fed Chair Warsh makes European debut with three messages at Sintra forum"
+        "es": "China aumenta la presión militar y económica sobre Japón",
+        "en": "China Increases Military and Economic Pressure on Japan"
       },
       "summary": {
-        "es": "El presidente de la Reserva Federal, Warsh, participó como ponente estrella en el foro anual de banqueros centrales en Sintra en un contexto de elevada incertidumbre geopolítica. Sus señales sobre política monetaria serán interpretadas por los mercados en función de la escalada en el Golfo y sus efectos inflacionarios potenciales. La divergencia entre bancos centrales globales ante shocks de oferta energética es un factor clave para posicionamiento en divisas y renta fija.",
-        "en": "Fed Chair Warsh appeared as the keynote speaker at the annual central bankers' forum in Sintra amid elevated geopolitical uncertainty. His monetary policy signals will be interpreted by markets in the context of the Gulf escalation and its potential inflationary effects. Central bank divergence in response to energy supply shocks is a key factor for currency and fixed income positioning."
+        "es": "Beijing intensifica su campaña de presión sobre Tokio mediante vuelos de bombarderos cerca de Japón, detención de empresarios y restricciones a exportaciones de tierras raras. Estas tácticas de coerción multidimensional elevan el riesgo geopolítico en el Indo-Pacífico con implicaciones para cadenas de suministro tecnológico global y la postura defensiva de Japón. Los mercados de materiales críticos y el yen japonés son activos clave a monitorizar.",
+        "en": "Beijing is intensifying its coercion campaign against Tokyo through bomber flights near Japan, detention of businesspeople, and restrictions on rare earth exports. These multi-domain pressure tactics raise geopolitical risk across the Indo-Pacific with implications for global tech supply chains and Japan's defense posture. Critical materials markets and the Japanese yen are key assets to monitor."
       },
       "impact": "high",
       "signals": [
-        "USD ?",
-        "BONDS ?",
-        "EUR -",
-        "GOLD +"
+        "RARE EARTHS +",
+        "JPY -",
+        "DEFENSE EQUITIES +",
+        "TECH EQUITIES -"
       ],
-      "confidence": 83,
-      "source": "El País",
-      "source_url": "https://elpais.com/economia/2026-06-29/warsh-presidente-de-la-fed-debuta-en-europa-con-tres-mensajes.html",
-      "published_at": "2026-06-29",
-      "time": "7h"
+      "confidence": 91,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/06/30/world/asia/china-japan-rare-earths-patrols.html",
+      "published_at": "2026-06-30",
+      "time": "<1h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "Corea del Sur presenta plan de inversión en chips e inteligencia artificial por 880.000 millones de dólares",
-        "en": "South Korea unveils $880bn chip and AI investment plan"
+        "es": "Putin admite escasez de combustible causada por ataques ucranianos",
+        "en": "Putin makes rare admission of fuel shortages caused by Ukrainian strikes"
       },
       "summary": {
-        "es": "Corea del Sur anunció un ambicioso plan de inversión de 880.000 millones de dólares en semiconductores e inteligencia artificial, en respuesta directa a la competencia estratégica de China, Taiwán y Japón en tecnología avanzada. La iniciativa refleja la aceleración de la fragmentación tecnológica global y la carrera por la soberanía en chips. Representa una oportunidad significativa para el sector de semiconductores surcoreano y sus cadenas de suministro.",
-        "en": "South Korea announced an $880bn investment plan in semiconductors and AI, directly responding to strategic competition from China, Taiwan, and Japan in advanced technology. The initiative reflects the acceleration of global tech fragmentation and the race for chip sovereignty. It represents a significant opportunity for South Korea's semiconductor sector and its supply chains."
+        "es": "Putin reconoció públicamente que los ataques ucranianos están 'creando problemas' en el suministro de combustible ruso, aunque negó que la situación sea crítica. Esta inusual admisión sugiere que la campaña ucraniana contra infraestructura energética está generando presión interna real sobre la capacidad logística y bélica de Rusia. Los mercados de energía europeos y los activos rusos deben ser monitorizados ante posibles escaladas.",
+        "en": "Putin publicly acknowledged that Ukrainian strikes are 'obviously creating problems' for Russian fuel supplies, while denying the situation is critical. This rare admission suggests Ukraine's infrastructure campaign is generating genuine internal pressure on Russia's logistical and military capacity. European energy markets and Russia-exposed assets warrant monitoring for potential escalation responses."
       },
       "impact": "medium",
       "signals": [
-        "KRW +",
-        "TECH EQUITIES +",
-        "SEMIS +",
-        "USD ?"
+        "OIL ?",
+        "EUR GAS +",
+        "RUSSIA ASSETS -",
+        "DEFENSE EQUITIES +"
       ],
-      "confidence": 80,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/c9q2pwzngjqo?at_medium=RSS&at_campaign=rss",
+      "confidence": 82,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/clyw31zvpgmo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-06-29",
-      "time": "1h"
+      "time": "15h"
     }
-  ],
-  "market_updated_at": "2026-06-30T08:50:39.680Z"
+  ]
 }
