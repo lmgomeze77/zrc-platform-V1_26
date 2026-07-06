@@ -509,31 +509,40 @@ export default function GeoRiskDashboard() {
                             <span style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>
                               PROB. ESCENARIO
                             </span>
-                            {isModified && (
-                              <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
-                                <span style={{ fontSize: 9, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", background: "#F59E0B15", border: "1px solid #F59E0B30", borderRadius: 2, padding: "1px 5px" }}>
-                                  AJUSTADO · ZRC: {(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%
-                                </span>
-                                <button
-                                  onClick={e => { e.stopPropagation(); setScenarioWeights({ ...scenarioWeights, [sk]: DEFAULT_WEIGHTS[sk] }); }}
-                                  title="Devolver el círculo a la probabilidad ZRC"
-                                  style={{ background: "transparent", border: "none", color: "#60A5FA", fontSize: 11, cursor: "pointer", padding: 0, lineHeight: 1 }}
-                                >↺</button>
-                              </span>
-                            )}
+                            <button
+                              onClick={e => { e.stopPropagation(); setScenarioWeights({ ...scenarioWeights, [sk]: DEFAULT_WEIGHTS[sk] }); }}
+                              title={`Dejar en el nivel ZRC (${(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%) sin arrastrar`}
+                              disabled={!isModified}
+                              style={{
+                                background: isModified ? "#3B82F615" : "transparent",
+                                border: `1px solid ${isModified ? "#3B82F660" : "#1a274460"}`,
+                                color: isModified ? "#60A5FA" : "#334155",
+                                fontSize: 11, borderRadius: 3, padding: "0px 5px", lineHeight: 1.6,
+                                cursor: isModified ? "pointer" : "default", flexShrink: 0,
+                              }}
+                            >↺</button>
                           </div>
                           <span style={{ fontSize: 14, fontWeight: 700, color: isModified ? "#F59E0B" : sv.color, fontFamily: "'JetBrains Mono', monospace" }}>
                             {(scenarioWeights[sk] * 100).toFixed(0)}%
                           </span>
                         </div>
+                        {isModified && (
+                          <div style={{ marginBottom: 4 }}>
+                            <span style={{ fontSize: 9, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", background: "#F59E0B15", border: "1px solid #F59E0B30", borderRadius: 2, padding: "1px 5px" }}>
+                              AJUSTADO · ZRC: {(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%
+                            </span>
+                          </div>
+                        )}
                         <div style={{ fontSize: 9, color: "#475569", fontFamily: "'JetBrains Mono', monospace", marginBottom: 6 }}>
-                          Desliza el círculo para explorar tu propio escenario · la marca gris indica el valor ZRC
+                          Desliza el círculo, o pulsa ↺ — el círculo en sombra marca el nivel estimado por ZRC
                         </div>
-                        <div style={{ position: "relative", paddingTop: 2 }}>
-                          <div title={`Valor ZRC: ${(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%`} style={{
-                            position: "absolute", left: `${(DEFAULT_WEIGHTS[sk] * 100 / 80) * 100}%`, top: 2,
-                            width: 2, height: 10, background: "#64748B", borderRadius: 1,
-                            transform: "translateX(-1px)", pointerEvents: "none",
+                        <div style={{ position: "relative", height: 12, display: "flex", alignItems: "center" }}>
+                          <div title={`Nivel ZRC: ${(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%`} style={{
+                            position: "absolute", left: `${(DEFAULT_WEIGHTS[sk] * 100 / 80) * 100}%`, top: "50%",
+                            width: 13, height: 13, borderRadius: "50%",
+                            border: `2px solid ${isModified ? "#94A3B8" : sv.color}`,
+                            background: isModified ? "rgba(148,163,184,0.15)" : `${sv.color}25`,
+                            transform: "translate(-50%, -50%)", pointerEvents: "none", zIndex: 1,
                           }} />
                           <input type="range" min={0} max={80} value={scenarioWeights[sk] * 100}
                             onClick={e => e.stopPropagation()}
@@ -541,7 +550,7 @@ export default function GeoRiskDashboard() {
                               e.stopPropagation();
                               setScenarioWeights({ ...scenarioWeights, [sk]: parseInt(e.target.value) / 100 });
                             }}
-                            style={{ width: "100%", accentColor: isModified ? "#F59E0B" : sv.color }}
+                            style={{ width: "100%", accentColor: isModified ? "#F59E0B" : sv.color, position: "relative", zIndex: 2 }}
                           />
                         </div>
                       </div>
