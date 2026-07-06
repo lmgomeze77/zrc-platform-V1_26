@@ -6,12 +6,12 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 // ═══════════════════════════════════════════════════════
 
 const ECONOMIC_VARIABLES = {
-  interest_rates:  { label: "Tipos de Interés",      unit: "%",   base: 4.75,  volatility: 0.15 },
-  inflation_cpi:   { label: "Inflación / IPC",       unit: "%",   base: 3.2,   volatility: 0.25 },
-  fx_eurusd:       { label: "Tipo Cambio EUR/USD",   unit: "",    base: 1.074, volatility: 0.008 },
-  commodities:     { label: "Materias Primas",       unit: "idx", base: 118.4, volatility: 3.5 },
-  sovereign_yield: { label: "Yield Soberano 10Y",    unit: "%",   base: 4.48,  volatility: 0.10 },
-  capital_flows:   { label: "Flujos Capital IED",    unit: "Bn€", base: -12.3, volatility: 1.8 },
+  interest_rates:  { label: "Tipos de Interés",      source: "Tipo Depósito · BCE",               unit: "%",   base: 4.75,  volatility: 0.15 },
+  inflation_cpi:   { label: "Inflación / IPC",       source: "HICP YoY · Zona Euro · Eurostat",   unit: "%",   base: 3.2,   volatility: 0.25 },
+  fx_eurusd:       { label: "Tipo Cambio EUR/USD",   source: "Spot FX · Tipo Ref. BCE",           unit: "",    base: 1.074, volatility: 0.008 },
+  commodities:     { label: "Materias Primas",       source: "S&P GSCI · S&P Global",             unit: "idx", base: 118.4, volatility: 3.5 },
+  sovereign_yield: { label: "Yield Soberano 10Y",    source: "Yield Comp. 10Y · Zona Euro · BCE", unit: "%",   base: 4.48,  volatility: 0.10 },
+  capital_flows:   { label: "Flujos Capital IED",    source: "IED Neta · Zona Euro · BCE",        unit: "Bn€", base: -12.3, volatility: 1.8 },
 };
 
 const SCENARIOS = {
@@ -610,7 +610,10 @@ export default function GeoRiskDashboard() {
                       alignItems: "center", background: i % 2 ? "#0a1322" : "#0c1526",
                       transition: "background 0.2s"
                     }}>
-                      <span style={{ fontSize: 12, fontWeight: 500, color: "#CBD5E1" }}>{v.label}</span>
+                      <div>
+                        <div style={{ fontSize: 12, fontWeight: 500, color: "#CBD5E1" }}>{v.label}</div>
+                        <div style={{ fontSize: 9, color: "#475569", fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.04em", marginTop: 2 }}>{v.source}</div>
+                      </div>
                       <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#94A3B8" }}>
                         {fmt(v.base, k === "fx_eurusd" ? 3 : 2)}{v.unit}
                       </span>
