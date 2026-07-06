@@ -539,12 +539,12 @@ const TOOLS = [
   {
     name: "GeoRisk Dashboard",
     desc: { es: "Scoring de riesgo geopolítico en tiempo real con sliders de escenario.", en: "Real-time geopolitical risk scoring with scenario sliders." },
-    icon: "◈", status: "LIVE", ml: true, requiredTier: null,
+    icon: "◈", status: "LIVE", ml: true, requiredTier: "intelligence",
   },
   {
     name: "GeoRisk Predictive ML",
     desc: { es: "Análisis geopolítico predictivo con IA: forecast 12M, NLP analyzer, matriz de correlaciones y decision engine institucional.", en: "Predictive geopolitical intelligence with AI: 12M forecast, NLP analyzer, correlation matrix and institutional decision engine." },
-    icon: "◈", status: "LIVE", ml: true, requiredTier: null,
+    icon: "◈", status: "LIVE", ml: true, requiredTier: "intelligence",
   },
   {
     name: "Real Estate Visor",
@@ -1054,32 +1054,69 @@ const Hero = ({ lang, onNav }) => {
   );
 };
 
-const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => (
-  <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 310, background: "rgba(0,0,0,0.75)", backdropFilter: "blur(10px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
-    <div onClick={(e) => e.stopPropagation()} style={{ background: C.surface, border: `1px solid ${C.goldBorder}`, maxWidth: 460, width: "100%", padding: 36, position: "relative" }}>
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: C.gold }} />
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
-        <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.15em" }}>INTELLIGENCE · {lang === "es" ? "ACCESO PREMIUM" : "PREMIUM ACCESS"}</span>
-        <button onClick={onClose} style={{ background: "none", border: "none", color: C.textMuted, fontSize: 18, cursor: "pointer", padding: 0 }}>✕</button>
-      </div>
-      <h3 style={{ fontFamily: F.display, fontSize: 26, fontWeight: 400, color: C.text, margin: "0 0 10px" }}>{tool.name}</h3>
-      <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.65, fontWeight: 300, margin: "0 0 24px" }}>{tool.desc[lang]}</p>
-      <div style={{ padding: "16px 20px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, marginBottom: 20 }}>
-        <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 6 }}>
-          {lang === "es" ? "DESDE" : "FROM"}
+const STRIPE_BUY_BUTTON_ID = "buy_btn_1Tq8ynJXE9tayTtocEsR3EAW";
+const STRIPE_PUBLISHABLE_KEY = "pk_live_51TRu5kJXE9tayTtonMWDzgXR6MH9Nwe7rM7nICKMJjdntuGp583eWF9whqI4dQcvgvCcdrpwBdxBg0fsh7V7dPmI00ZowEZyOo";
+
+const StripeBuyButton = () => {
+  useEffect(() => {
+    if (document.querySelector('script[src="https://js.stripe.com/v3/buy-button.js"]')) return;
+    const script = document.createElement("script");
+    script.src = "https://js.stripe.com/v3/buy-button.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  return (
+    <stripe-buy-button
+      buy-button-id={STRIPE_BUY_BUTTON_ID}
+      publishable-key={STRIPE_PUBLISHABLE_KEY}
+    />
+  );
+};
+
+const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => {
+  const isGeoRisk = tool.name === "GeoRisk Dashboard" || tool.name === "GeoRisk Predictive ML";
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 310, background: "rgba(0,0,0,0.75)", backdropFilter: "blur(10px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: C.surface, border: `1px solid ${C.goldBorder}`, maxWidth: 460, width: "100%", padding: 36, position: "relative" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: C.gold }} />
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
+          <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.15em" }}>INTELLIGENCE · {lang === "es" ? "ACCESO PREMIUM" : "PREMIUM ACCESS"}</span>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: C.textMuted, fontSize: 18, cursor: "pointer", padding: 0 }}>✕</button>
         </div>
-        <div style={{ fontFamily: F.display, fontSize: 32, color: C.gold, lineHeight: 1 }}>€99<span style={{ fontSize: 14, color: C.textMuted, fontFamily: F.mono }}>/mo</span></div>
-        <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, marginTop: 4 }}>Intelligence · {lang === "es" ? "todas las herramientas" : "all tools"}</div>
+        <h3 style={{ fontFamily: F.display, fontSize: 26, fontWeight: 400, color: C.text, margin: "0 0 10px" }}>{tool.name}</h3>
+        <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.65, fontWeight: 300, margin: "0 0 24px" }}>{tool.desc[lang]}</p>
+        <div style={{ padding: "16px 20px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, marginBottom: 20 }}>
+          <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 6 }}>
+            {lang === "es" ? "DESDE" : "FROM"}
+          </div>
+          <div style={{ fontFamily: F.display, fontSize: 32, color: C.gold, lineHeight: 1 }}>€99<span style={{ fontSize: 14, color: C.textMuted, fontFamily: F.mono }}>/mo</span></div>
+          <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, marginTop: 4 }}>Intelligence · {lang === "es" ? "todas las herramientas" : "all tools"}</div>
+        </div>
+
+        {isGeoRisk && (
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8, textAlign: "center" }}>
+              {lang === "es" ? "COMPRA DIRECTA · PAGO SEGURO VÍA STRIPE" : "DIRECT PURCHASE · SECURE STRIPE CHECKOUT"}
+            </div>
+            <StripeBuyButton />
+          </div>
+        )}
+
+        <button
+          onClick={() => { onClose(); onOpenPricing(); }}
+          style={{
+            width: "100%", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", padding: "12px 20px",
+            background: isGeoRisk ? "transparent" : C.gold, color: isGeoRisk ? C.gold : C.bg,
+            border: isGeoRisk ? `1px solid ${C.goldBorder}` : "none", cursor: "pointer", fontWeight: 600,
+          }}
+        >
+          {lang === "es" ? "VER TODOS LOS PLANES →" : "VIEW ALL PLANS →"}
+        </button>
       </div>
-      <button
-        onClick={() => { onClose(); onOpenPricing(); }}
-        style={{ width: "100%", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", padding: "12px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}
-      >
-        {lang === "es" ? "VER TODOS LOS PLANES →" : "VIEW ALL PLANS →"}
-      </button>
     </div>
-  </div>
-);
+  );
+};
 
 const Intelligence = ({ lang }) => {
   const t = T[lang].intel;

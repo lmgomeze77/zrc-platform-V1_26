@@ -46,6 +46,33 @@ const SECTORS = {
   energy:      { label: "Energía",     mult: 1.08 },
 };
 
+const ASSETS = [
+  "Deuda soberana core", "Renta fija High Yield", "Real estate prime",
+  "Materias primas", "Equity exportador", "Efectivo / Money Market"
+];
+
+// Sensibilidad estimada de precio (%) por unidad de vector de impacto [-1,1].
+// Modelo ilustrativo ZRC — no constituye proyección exacta de mercado.
+const ASSET_SENSITIVITY = {
+  "Deuda soberana core":       { interest_rates: -9,  sovereign_yield: -11, capital_flows: 2  },
+  "Renta fija High Yield":     { interest_rates: -6,  sovereign_yield: -7,  capital_flows: 4, inflation_cpi: -2 },
+  "Real estate prime":         { interest_rates: -8,  sovereign_yield: -5,  capital_flows: 7  },
+  "Materias primas":           { commodities: 12, inflation_cpi: 3 },
+  "Equity exportador":         { fx_eurusd: -35, capital_flows: 4 },
+  "Efectivo / Money Market":   { interest_rates: 3, sovereign_yield: 1 },
+};
+
+function estimatePriceImpact(asset, impactVector) {
+  const sens = ASSET_SENSITIVITY[asset] || {};
+  let total = 0;
+  Object.entries(sens).forEach(([vk, coef]) => { total += (impactVector[vk] || 0) * coef; });
+  return total;
+}
+
+function riskLabel(v) {
+  return v < 40 ? "BAJO" : v < 65 ? "MODERADO" : v < 80 ? "ELEVADO" : "CRÍTICO";
+}
+
 const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 const fmt   = (v, d = 2) => Number(v).toFixed(d);
 
@@ -346,11 +373,11 @@ Responde con este JSON exacto:
 
 // ── Main Component ────────────────────────────────────────────────
 
+const DEFAULT_WEIGHTS = Object.fromEntries(Object.entries(SCENARIOS).map(([k, v]) => [k, v.prob]));
+
 export default function GeoRiskML() {
   const [sector, setSector] = useState("global");
-  const [weights, setWeights] = useState(
-    Object.fromEntries(Object.entries(SCENARIOS).map(([k, v]) => [k, v.prob]))
-  );
+  const [weights, setWeights] = useState({ ...DEFAULT_WEIGHTS });
   const [tab, setTab] = useState("forecast");
   const [time, setTime] = useState(new Date());
   const [sparkData, setSparkData] = useState({});
@@ -382,6 +409,12 @@ export default function GeoRiskML() {
 
   const sectorMult = SECTORS[sector].mult;
 
+  const isCustomized = useMemo(() =>
+    Object.entries(weights).some(([k, v]) => Math.abs(v - DEFAULT_WEIGHTS[k]) > 0.005),
+    [weights]
+  );
+  const resetWeights = () => setWeights({ ...DEFAULT_WEIGHTS });
+
   const computeImpact = useCallback((varKey) => {
     let total = 0;
     Object.entries(SCENARIOS).forEach(([sk, sv]) => {
@@ -406,6 +439,15 @@ export default function GeoRiskML() {
       Object.keys(ECONOMIC_VARIABLES).map(k => [k, computeImpact(k)])
     );
   }, [computeImpact]);
+
+  const assetImpacts = useMemo(() => {
+    return ASSETS.map(asset => {
+      const pct = estimatePriceImpact(asset, variableImpacts);
+      const dir = pct > 1.5 ? "SOBREPONDERAR" : pct < -1.5 ? "INFRAPONDERAR" : "NEUTRAL";
+      const col = pct > 1.5 ? "#10B981" : pct < -1.5 ? "#EF4444" : "#F59E0B";
+      return { asset, pct, dir, col };
+    });
+  }, [variableImpacts]);
 
   // Build stochastic forecast on weight change
   useEffect(() => {
@@ -524,6 +566,45 @@ export default function GeoRiskML() {
             </div>
           </div>
         </header>
+
+        {/* ── DIFERENCIADOR: QUÉ APORTA GEORISK ML SOBRE EL DASHBOARD ── */}
+        <div style={{
+          background: "rgba(139,92,246,0.06)", border: "1px solid rgba(139,92,246,0.25)",
+          borderLeft: "3px solid #A78BFA", borderRadius: 6, padding: "12px 16px", margin: "16px 0",
+        }}>
+          <div style={{ fontSize: 10, fontFamily: "'JetBrains Mono',monospace", color: "#A78BFA", letterSpacing: 1, marginBottom: 6 }}>
+            POR QUÉ GEORISK ML — Y NO SOLO EL DASHBOARD
+          </div>
+          <div style={{ fontSize: 12, color: "#CBD5E1", lineHeight: 1.7, maxWidth: 760 }}>
+            El GeoRisk Dashboard modela escenarios con reglas fijas definidas por ZRC Research. <b>GeoRisk ML añade una capa predictiva con IA (Claude Sonnet)</b>:
+            forecast de riesgo a 12 meses con intervalo de confianza, un <b>NLP Analyzer</b> que lee noticias/briefings en tiempo real y ajusta automáticamente
+            las probabilidades de escenario, y un <b>Decision Engine institucional</b> que traduce el perfil de riesgo en recomendaciones tácticas con nivel de convicción —
+            el mismo tipo de output que un comité de inversión necesita para pasar de "cuál es el riesgo" a "qué hacemos con la cartera".
+          </div>
+        </div>
+
+        {/* ── RESUMEN PARA COMITÉ DE INVERSIÓN ── */}
+        {(() => {
+          const top = [...assetImpacts].sort((a, b) => Math.abs(b.pct) - Math.abs(a.pct))[0];
+          return (
+            <div style={{
+              background: "#0a1322", border: "1px solid #F59E0B30", borderLeft: "3px solid #F59E0B",
+              borderRadius: 6, padding: "12px 16px", marginBottom: 16,
+            }}>
+              <div style={{ fontSize: 10, fontFamily: "'JetBrains Mono',monospace", color: "#F59E0B", letterSpacing: 1, marginBottom: 8 }}>
+                RESUMEN PARA COMITÉ DE INVERSIÓN
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, color: "#CBD5E1", lineHeight: 1.9 }}>
+                <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "base ZRC Research"}.</li>
+                <li>Escenario dominante: <b style={{ color: dominantScenario.color }}>{dominantScenario.label}</b> ({(weights[dominantScenario.key] * 100).toFixed(0)}% prob.).</li>
+                {top && (
+                  <li>Llamada táctica principal: <b style={{ color: top.col }}>{top.dir}</b> en <b>{top.asset}</b> — impacto estimado {top.pct >= 0 ? "+" : ""}{fmt(top.pct, 1)}% a 12M bajo el mix actual.</li>
+                )}
+                <li>Pulsa <b>ANALIZAR</b> en la pestaña Predictivo ML para un outlook 30D/90D generado por IA, o <b>EJECUTAR ENGINE</b> en Decision Engine para recomendaciones tácticas con conviction level.</li>
+              </ul>
+            </div>
+          );
+        })()}
 
         {/* ── SCORE BAR ── */}
         <div style={{ display:"grid", gridTemplateColumns:"auto 1fr auto auto", gap:20, padding:"16px 0", alignItems:"center", borderBottom:"1px solid #1a274440" }}>
@@ -731,8 +812,31 @@ export default function GeoRiskML() {
         {/* ═══════════════ TAB: ESCENARIOS ═══════════════ */}
         {tab === "scenarios" && (
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
+            <div style={{
+              background:"#0a1322", border:"1px solid #1e3a5f", borderLeft:"3px solid #3B82F6",
+              borderRadius:6, padding:"12px 16px", marginBottom:16,
+              display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:16, flexWrap:"wrap",
+            }}>
+              <div style={{ fontSize:12, color:"#94A3B8", lineHeight:1.6, maxWidth:680 }}>
+                <span style={{ color:"#CBD5E1" }}>El círculo de cada slider aparece por defecto en la probabilidad estimada por los algoritmos de ZRC.</span>
+                {" "}Deslízalo para explorar tu propio escenario, o deja que el NLP Analyzer lo ajuste automáticamente al leer una noticia.
+                {" "}Queda marcado como "AJUSTADO" con el valor ZRC original visible; usa ↺ para devolver el círculo a su posición.
+              </div>
+              {isCustomized && (
+                <button onClick={resetWeights} style={{
+                  flexShrink:0, padding:"6px 14px", background:"transparent", border:"1px solid #3B82F660",
+                  color:"#60A5FA", fontSize:10, fontFamily:"monospace", letterSpacing:1, cursor:"pointer",
+                  borderRadius:4, whiteSpace:"nowrap",
+                }}>
+                  ↺ RESTABLECER VALORES ZRC
+                </button>
+              )}
+            </div>
+
             <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))", gap:12 }}>
-              {Object.entries(SCENARIOS).map(([sk, sv]) => (
+              {Object.entries(SCENARIOS).map(([sk, sv]) => {
+                const isModified = Math.abs(weights[sk] - DEFAULT_WEIGHTS[sk]) > 0.005;
+                return (
                 <div key={sk} onClick={() => setActiveScenario(sk)} style={{
                   background: activeScenario===sk ? "#0d1829" : "#0a1322",
                   border:`1px solid ${activeScenario===sk ? sv.color+"60" : "#1a274440"}`,
@@ -747,15 +851,36 @@ export default function GeoRiskML() {
                     <RiskGauge value={sv.risk} size={56} />
                   </div>
                   <div style={{ marginTop:8 }}>
-                    <div style={{ display:"flex", justifyContent:"space-between", marginBottom:6 }}>
-                      <span style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>PROBABILIDAD</span>
-                      <span style={{ fontSize:14, fontWeight:700, color:sv.color, fontFamily:"monospace" }}>{(weights[sk]*100).toFixed(0)}%</span>
+                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:6 }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:6 }}>
+                        <span style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>PROBABILIDAD</span>
+                        {isModified && (
+                          <span style={{ display:"inline-flex", alignItems:"center", gap:4 }}>
+                            <span style={{ fontSize:9, fontFamily:"monospace", color:"#F59E0B", background:"#F59E0B15", border:"1px solid #F59E0B30", borderRadius:2, padding:"1px 5px" }}>
+                              AJUSTADO · ZRC: {(DEFAULT_WEIGHTS[sk]*100).toFixed(0)}%
+                            </span>
+                            <button
+                              onClick={e => { e.stopPropagation(); setWeights(prev => ({ ...prev, [sk]: DEFAULT_WEIGHTS[sk] })); }}
+                              title="Devolver el círculo a la probabilidad ZRC"
+                              style={{ background:"transparent", border:"none", color:"#60A5FA", fontSize:11, cursor:"pointer", padding:0, lineHeight:1 }}
+                            >↺</button>
+                          </span>
+                        )}
+                      </div>
+                      <span style={{ fontSize:14, fontWeight:700, color: isModified ? "#F59E0B" : sv.color, fontFamily:"monospace" }}>{(weights[sk]*100).toFixed(0)}%</span>
                     </div>
-                    <input type="range" min={0} max={80} value={weights[sk]*100}
-                      onClick={e => e.stopPropagation()}
-                      onChange={e => setWeights(prev => ({ ...prev, [sk]:parseInt(e.target.value)/100 }))}
-                      style={{ width:"100%", accentColor:sv.color }}
-                    />
+                    <div style={{ position:"relative", paddingTop:2 }}>
+                      <div title={`Valor ZRC: ${(DEFAULT_WEIGHTS[sk]*100).toFixed(0)}%`} style={{
+                        position:"absolute", left:`${(DEFAULT_WEIGHTS[sk] * 100 / 80) * 100}%`, top:2,
+                        width:2, height:10, background:"#64748B", borderRadius:1,
+                        transform:"translateX(-1px)", pointerEvents:"none",
+                      }} />
+                      <input type="range" min={0} max={80} value={weights[sk]*100}
+                        onClick={e => e.stopPropagation()}
+                        onChange={e => setWeights(prev => ({ ...prev, [sk]:parseInt(e.target.value)/100 }))}
+                        style={{ width:"100%", accentColor: isModified ? "#F59E0B" : sv.color }}
+                      />
+                    </div>
                   </div>
                   {activeScenario===sk && (
                     <div style={{ marginTop:12, paddingTop:10, borderTop:`1px solid ${sv.color}20` }}>
@@ -766,10 +891,26 @@ export default function GeoRiskML() {
                           <MiniBar value={vi} max={1} color={sv.color} width={60} />
                         </div>
                       ))}
+                      <div style={{ fontSize:9, color:"#64748B", fontFamily:"monospace", letterSpacing:1, margin:"10px 0 6px" }}>
+                        EJEMPLO · IMPACTO ESTIMADO EN PRECIOS (12M, si se materializa este escenario)
+                      </div>
+                      {ASSETS.map(a => {
+                        const pct = estimatePriceImpact(a, sv.impact);
+                        const c = pct > 0.5 ? "#EF4444" : pct < -0.5 ? "#10B981" : "#64748B";
+                        return (
+                          <div key={a} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"3px 0" }}>
+                            <span style={{ fontSize:11, color:"#94A3B8" }}>{a}</span>
+                            <span style={{ fontSize:11, fontFamily:"monospace", fontWeight:600, color:c }}>
+                              {pct >= 0 ? "+" : ""}{fmt(pct, 1)}%
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -806,6 +947,25 @@ export default function GeoRiskML() {
                   </div>
                 );
               })}
+            </div>
+
+            {/* Asset price impact examples */}
+            <div style={{ background:"#0a1322", border:"1px solid #1a2744", borderRadius:6, overflow:"hidden", marginTop:12 }}>
+              <div style={{ padding:"10px 16px", background:"#0d1829", borderBottom:"1px solid #1a2744", fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
+                EJEMPLOS DE IMPACTO EN PRECIOS DE ACTIVOS · 12M · MIX ACTUAL DE PROBABILIDADES
+              </div>
+              <div style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1.3fr", padding:"10px 16px", background:"#0d1829", borderBottom:"1px solid #1a2744", fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
+                <span>CLASE DE ACTIVO</span><span style={{textAlign:"right"}}>IMPACTO PRECIO EST.</span><span style={{textAlign:"right"}}>RECOMENDACIÓN</span>
+              </div>
+              {assetImpacts.map((a, i) => (
+                <div key={a.asset} style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1.3fr", padding:"12px 16px", borderBottom:"1px solid #1a274430", alignItems:"center", background:i%2?"#0a1322":"#0c1526" }}>
+                  <span style={{ fontSize:12, color:"#CBD5E1" }}>{a.asset}</span>
+                  <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:13, fontWeight:600, color:a.col }}>{a.pct>=0?"+":""}{fmt(a.pct,1)}%</span>
+                  <span style={{ textAlign:"right" }}>
+                    <span style={{ fontFamily:"monospace", fontSize:10, fontWeight:700, letterSpacing:1, color:a.col, padding:"2px 8px", borderRadius:2, background:`${a.col}15`, border:`1px solid ${a.col}30` }}>{a.dir}</span>
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         )}

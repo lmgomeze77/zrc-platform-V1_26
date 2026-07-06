@@ -23,6 +23,7 @@ const PLANS = [
     features: {
       es: [
         "GeoRisk Dashboard · escenarios ilimitados",
+        "GeoRisk Predictive ML · forecast IA, NLP y decision engine",
         "Real Estate Visor · referencias ilimitadas",
         "Financial Intelligence System",
         "Informe AI board-ready semanal",
@@ -32,6 +33,7 @@ const PLANS = [
       ],
       en: [
         "GeoRisk Dashboard · unlimited scenarios",
+        "GeoRisk Predictive ML · AI forecast, NLP and decision engine",
         "Real Estate Visor · unlimited references",
         "Financial Intelligence System",
         "Weekly AI board-ready report",
@@ -225,8 +227,8 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
             </div>
             <div style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, fontWeight: 300 }}>
               {lang === "es"
-                ? "GeoRisk Dashboard y Real Estate Visor disponibles con cuenta gratuita."
-                : "GeoRisk Dashboard and Real Estate Visor available with a free account."}
+                ? "Real Estate Visor disponible con cuenta gratuita. GeoRisk Dashboard y GeoRisk Predictive ML requieren plan Intelligence o Institutional."
+                : "Real Estate Visor available with a free account. GeoRisk Dashboard and GeoRisk Predictive ML require an Intelligence or Institutional plan."}
             </div>
           </div>
           <button

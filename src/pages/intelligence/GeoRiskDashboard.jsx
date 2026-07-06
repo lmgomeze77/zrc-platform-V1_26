@@ -54,6 +54,28 @@ const ASSETS = [
   "Materias primas", "Equity exportador", "Efectivo / Money Market"
 ];
 
+// Sensibilidad estimada de precio (%) por unidad de vector de impacto [-1,1].
+// Modelo ilustrativo ZRC — no constituye proyección exacta de mercado.
+const ASSET_SENSITIVITY = {
+  "Deuda soberana core":       { interest_rates: -9,  sovereign_yield: -11, capital_flows: 2  },
+  "Renta fija High Yield":     { interest_rates: -6,  sovereign_yield: -7,  capital_flows: 4, inflation_cpi: -2 },
+  "Real estate prime":         { interest_rates: -8,  sovereign_yield: -5,  capital_flows: 7  },
+  "Materias primas":           { commodities: 12, inflation_cpi: 3 },
+  "Equity exportador":         { fx_eurusd: -35, capital_flows: 4 },
+  "Efectivo / Money Market":   { interest_rates: 3, sovereign_yield: 1 },
+};
+
+function estimatePriceImpact(asset, impactVector) {
+  const sens = ASSET_SENSITIVITY[asset] || {};
+  let total = 0;
+  Object.entries(sens).forEach(([vk, coef]) => { total += (impactVector[vk] || 0) * coef; });
+  return total;
+}
+
+function riskLabel(v) {
+  return v < 40 ? "BAJO" : v < 65 ? "MODERADO" : v < 80 ? "ELEVADO" : "CRÍTICO";
+}
+
 const NLP_KEYWORDS = {
   war: 0.95, conflict: 0.85, sanction: 0.80, invasion: 0.92, escalation: 0.78,
   attack: 0.82, blockade: 0.75, coup: 0.88, guerra: 0.95, conflicto: 0.85,
@@ -416,9 +438,14 @@ export default function GeoRiskDashboard() {
                   </div>
                   <div style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.6, maxWidth: 680 }}>
                     El score es el promedio ponderado por probabilidad del riesgo intrínseco de cada escenario, ajustado por multiplicador sectorial.
-                    {" "}<span style={{ color: "#CBD5E1" }}>Las probabilidades por defecto son estimaciones del equipo ZRC Research.</span>
-                    {" "}Puedes ajustar los sliders para explorar escenarios propios — el score se recalcula en tiempo real.
+                    {" "}<span style={{ color: "#CBD5E1" }}>El círculo de cada slider aparece por defecto en la probabilidad estimada por los algoritmos de ZRC Research.</span>
+                    {" "}Puedes deslizarlo para explorar escenarios propios — el score se recalcula en tiempo real y queda marcado como "AJUSTADO", indicando el valor ZRC original.
                     {" "}<span style={{ color: "#F59E0B" }}>Las modificaciones no reflejan el análisis oficial de ZRC.</span>
+                    {" "}Usa el botón ↺ (por escenario o global) para devolver el círculo a su posición ZRC.
+                  </div>
+                  <div style={{ fontSize: 11, color: "#475569", lineHeight: 1.6, maxWidth: 680, marginTop: 8, borderTop: "1px solid #1a274460", paddingTop: 8 }}>
+                    ¿Necesitas forecast a 12 meses, NLP en tiempo real y un decision engine institucional sobre estos mismos escenarios?
+                    {" "}<span style={{ color: "#A78BFA" }}>GeoRisk Predictive ML</span> es la evolución con IA de este dashboard.
                   </div>
                 </div>
                 {isCustomized && (
@@ -433,6 +460,30 @@ export default function GeoRiskDashboard() {
                   </button>
                 )}
               </div>
+
+              {/* IC Summary */}
+              {(() => {
+                const top = [...allocationSignals].sort((a, b) => Math.abs(b.signal) - Math.abs(a.signal))[0];
+                const topImpact = top ? estimatePriceImpact(top.asset, Object.fromEntries(Object.keys(ECONOMIC_VARIABLES).map(k => [k, computeImpact(k)]))) : 0;
+                const worstScenario = Object.entries(SCENARIOS).sort((a, b) => (scenarioWeights[b[0]] * b[1].risk) - (scenarioWeights[a[0]] * a[1].risk))[0][1];
+                return (
+                  <div style={{
+                    background: "#0a1322", border: "1px solid #F59E0B30", borderLeft: "3px solid #F59E0B",
+                    borderRadius: 6, padding: "12px 16px", marginBottom: 16,
+                  }}>
+                    <div style={{ fontSize: 10, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", letterSpacing: 1, marginBottom: 8 }}>
+                      RESUMEN PARA COMITÉ DE INVERSIÓN
+                    </div>
+                    <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, color: "#CBD5E1", lineHeight: 1.9 }}>
+                      <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "base ZRC Research"}.</li>
+                      <li>Riesgo a vigilar: <b>{worstScenario.label}</b> (riesgo intrínseco {worstScenario.risk}/100).</li>
+                      {top && (
+                        <li>Llamada táctica principal: <b style={{ color: top.col }}>{top.dir}</b> en <b>{top.asset}</b> — impacto estimado {topImpact >= 0 ? "+" : ""}{fmt(topImpact, 1)}% a 12M bajo el mix actual.</li>
+                      )}
+                    </ul>
+                  </div>
+                );
+              })()}
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 12 }}>
                 {Object.entries(SCENARIOS).map(([sk, sv]) => {
@@ -459,8 +510,15 @@ export default function GeoRiskDashboard() {
                               PROB. ESCENARIO
                             </span>
                             {isModified && (
-                              <span style={{ fontSize: 9, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", background: "#F59E0B15", border: "1px solid #F59E0B30", borderRadius: 2, padding: "1px 5px" }}>
-                                AJUSTADO · ZRC: {(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%
+                              <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+                                <span style={{ fontSize: 9, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", background: "#F59E0B15", border: "1px solid #F59E0B30", borderRadius: 2, padding: "1px 5px" }}>
+                                  AJUSTADO · ZRC: {(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%
+                                </span>
+                                <button
+                                  onClick={e => { e.stopPropagation(); setScenarioWeights({ ...scenarioWeights, [sk]: DEFAULT_WEIGHTS[sk] }); }}
+                                  title="Devolver el círculo a la probabilidad ZRC"
+                                  style={{ background: "transparent", border: "none", color: "#60A5FA", fontSize: 11, cursor: "pointer", padding: 0, lineHeight: 1 }}
+                                >↺</button>
                               </span>
                             )}
                           </div>
@@ -469,16 +527,23 @@ export default function GeoRiskDashboard() {
                           </span>
                         </div>
                         <div style={{ fontSize: 9, color: "#475569", fontFamily: "'JetBrains Mono', monospace", marginBottom: 6 }}>
-                          Arrastra para explorar tu propio escenario
+                          Desliza el círculo para explorar tu propio escenario · la marca gris indica el valor ZRC
                         </div>
-                        <input type="range" min={0} max={80} value={scenarioWeights[sk] * 100}
-                          onClick={e => e.stopPropagation()}
-                          onChange={e => {
-                            e.stopPropagation();
-                            setScenarioWeights({ ...scenarioWeights, [sk]: parseInt(e.target.value) / 100 });
-                          }}
-                          style={{ width: "100%", accentColor: isModified ? "#F59E0B" : sv.color }}
-                        />
+                        <div style={{ position: "relative", paddingTop: 2 }}>
+                          <div title={`Valor ZRC: ${(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%`} style={{
+                            position: "absolute", left: `${(DEFAULT_WEIGHTS[sk] * 100 / 80) * 100}%`, top: 2,
+                            width: 2, height: 10, background: "#64748B", borderRadius: 1,
+                            transform: "translateX(-1px)", pointerEvents: "none",
+                          }} />
+                          <input type="range" min={0} max={80} value={scenarioWeights[sk] * 100}
+                            onClick={e => e.stopPropagation()}
+                            onChange={e => {
+                              e.stopPropagation();
+                              setScenarioWeights({ ...scenarioWeights, [sk]: parseInt(e.target.value) / 100 });
+                            }}
+                            style={{ width: "100%", accentColor: isModified ? "#F59E0B" : sv.color }}
+                          />
+                        </div>
                       </div>
                       {activeScenario === sk && (
                         <div style={{ marginTop: 12, paddingTop: 10, borderTop: `1px solid ${sv.color}20` }}>
@@ -491,6 +556,21 @@ export default function GeoRiskDashboard() {
                               <MiniBar value={vi} max={1} color={sv.color} width={60} />
                             </div>
                           ))}
+                          <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, margin: "10px 0 6px" }}>
+                            EJEMPLO · IMPACTO ESTIMADO EN PRECIOS (12M, si se materializa este escenario)
+                          </div>
+                          {ASSETS.map(a => {
+                            const pct = estimatePriceImpact(a, sv.impact);
+                            const c = pct > 0.5 ? "#EF4444" : pct < -0.5 ? "#10B981" : "#64748B";
+                            return (
+                              <div key={a} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "3px 0" }}>
+                                <span style={{ fontSize: 11, color: "#94A3B8" }}>{a}</span>
+                                <span style={{ fontSize: 11, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, color: c }}>
+                                  {pct >= 0 ? "+" : ""}{fmt(pct, 1)}%
+                                </span>
+                              </div>
+                            );
+                          })}
                         </div>
                       )}
                     </div>
@@ -621,49 +701,56 @@ export default function GeoRiskDashboard() {
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
               <div style={{ background: "#0a1322", border: "1px solid #1a2744", borderRadius: 6, overflow: "hidden" }}>
                 <div style={{
-                  display: "grid", gridTemplateColumns: "2fr 1fr 1.5fr 3fr",
+                  display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr 1.3fr 2.6fr",
                   padding: "10px 16px", background: "#0d1829", borderBottom: "1px solid #1a2744",
                   fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1
                 }}>
-                  <span>CLASE DE ACTIVO</span><span>SEÑAL</span><span>RECOMENDACIÓN</span><span>RACIONAL</span>
+                  <span>CLASE DE ACTIVO</span><span>SEÑAL</span><span>IMPACTO PRECIO EST. (12M)</span><span>RECOMENDACIÓN</span><span>RACIONAL</span>
                 </div>
-                {allocationSignals.map((a, i) => (
-                  <div key={i} style={{
-                    display: "grid", gridTemplateColumns: "2fr 1fr 1.5fr 3fr",
-                    padding: "14px 16px", borderBottom: "1px solid #1a274430",
-                    alignItems: "center", background: i % 2 ? "#0a1322" : "#0c1526"
-                  }}>
-                    <span style={{ fontSize: 12, fontWeight: 500, color: "#CBD5E1" }}>{a.asset}</span>
-                    <div style={{
-                      fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 600,
-                      color: a.col, display: "flex", alignItems: "center", gap: 4
+                {allocationSignals.map((a, i) => {
+                  const priceImpact = estimatePriceImpact(a.asset, Object.fromEntries(Object.keys(ECONOMIC_VARIABLES).map(k => [k, computeImpact(k)])));
+                  const pCol = priceImpact > 0.5 ? "#EF4444" : priceImpact < -0.5 ? "#10B981" : "#64748B";
+                  return (
+                    <div key={i} style={{
+                      display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr 1.3fr 2.6fr",
+                      padding: "14px 16px", borderBottom: "1px solid #1a274430",
+                      alignItems: "center", background: i % 2 ? "#0a1322" : "#0c1526"
                     }}>
+                      <span style={{ fontSize: 12, fontWeight: 500, color: "#CBD5E1" }}>{a.asset}</span>
+                      <div style={{
+                        fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 600,
+                        color: a.col, display: "flex", alignItems: "center", gap: 4
+                      }}>
+                        <span style={{
+                          width: 6, height: 6, borderRadius: "50%", background: a.col,
+                          boxShadow: `0 0 4px ${a.col}80`, display: "inline-block"
+                        }} />
+                        {a.signal > 0 ? "+" : ""}{fmt(a.signal, 0)}
+                      </div>
+                      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 700, color: pCol }}>
+                        {priceImpact >= 0 ? "+" : ""}{fmt(priceImpact, 1)}%
+                      </span>
                       <span style={{
-                        width: 6, height: 6, borderRadius: "50%", background: a.col,
-                        boxShadow: `0 0 4px ${a.col}80`, display: "inline-block"
-                      }} />
-                      {a.signal > 0 ? "+" : ""}{fmt(a.signal, 0)}
+                        fontFamily: "'JetBrains Mono', monospace", fontSize: 10, fontWeight: 700,
+                        letterSpacing: 1, color: a.col,
+                        padding: "2px 8px", borderRadius: 2,
+                        background: `${a.col}15`, border: `1px solid ${a.col}30`,
+                        display: "inline-block", textAlign: "center"
+                      }}>
+                        {a.dir}
+                      </span>
+                      <span style={{ fontSize: 11, color: "#94A3B8", lineHeight: 1.4 }}>{a.rationale}</span>
                     </div>
-                    <span style={{
-                      fontFamily: "'JetBrains Mono', monospace", fontSize: 10, fontWeight: 700,
-                      letterSpacing: 1, color: a.col,
-                      padding: "2px 8px", borderRadius: 2,
-                      background: `${a.col}15`, border: `1px solid ${a.col}30`,
-                      display: "inline-block", textAlign: "center"
-                    }}>
-                      {a.dir}
-                    </span>
-                    <span style={{ fontSize: 11, color: "#94A3B8", lineHeight: 1.4 }}>{a.rationale}</span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
               <div style={{
                 marginTop: 12, padding: 12, background: "#0d182960", borderRadius: 4,
                 border: "1px dashed #1a274480", fontSize: 10, color: "#475569",
                 fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.6
               }}>
-                ⚠ DISCLAIMER: Las señales de asignación se generan mediante el modelo cuantitativo propietario de Zenith Rise Capital
-                y no constituyen asesoramiento de inversión. Los resultados dependen de las probabilidades de escenario asignadas por el
+                ⚠ DISCLAIMER: Las señales de asignación y los impactos de precio estimados se generan mediante el modelo cuantitativo propietario de Zenith Rise Capital
+                (sensibilidad histórica ilustrativa por clase de activo) y no constituyen asesoramiento de inversión. Los resultados dependen de las probabilidades de escenario asignadas por el
                 analista y del multiplicador sectorial seleccionado. Consulte con un asesor financiero cualificado antes de tomar decisiones de inversión.
               </div>
             </div>
