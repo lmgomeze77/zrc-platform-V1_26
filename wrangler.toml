@@ -17,3 +17,7 @@ run_worker_first = true
 binding = "DB"
 database_name = "zrc-leads"
 database_id = "b5f9835f-93db-4cbc-94e3-1c615cf4c36d"
+
+# GeoRisk Index — snapshot semanal (lunes 06:00 UTC)
+[triggers]
+crons = ["0 6 * * 1"]

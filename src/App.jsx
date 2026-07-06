@@ -9,6 +9,7 @@ import ProtectedInnerCircle from "./pages/innercircle/ProtectedInnerCircle";
 import PricingPage from "./pages/PricingPage";
 import MacroPulse from "./pages/intelligence/MacroPulse";
 import GeoRiskML from "./pages/intelligence/GeoRiskML";
+import GeoRiskIndex from "./pages/intelligence/GeoRiskIndex";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.4
@@ -100,7 +101,7 @@ const AuthProvider = ({ children, lang }) => {
 
 const T = {
   es: {
-    nav: ["Observatorio", "Intelligence", "Brokerage", "Advisory", "Academia", "Inner Circle"],
+    nav: ["Observatorio", "Intelligence", "GeoRisk Index", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "INTELIGENCIA ESTRATÉGICA · INVERSIÓN · EJECUCIÓN",
       h1: "Donde la Inteligencia",
@@ -128,23 +129,23 @@ const T = {
       locked: "Acceso exclusivo para miembros registrados",
     },
     brok: {
-      label: "03 — BROKERAGE",
+      label: "04 — BROKERAGE",
       title: "Singular Opportunities",
       sub: "Oportunidades off-market curadas. Due diligence de grado institucional.",
       req: "SOLICITAR TEASER →",
     },
     adv: {
-      label: "04 — ADVISORY",
+      label: "05 — ADVISORY",
       title: "M&A & Growth Strategy",
       sub: "Advisory institucional para empresas navegando complejidad.",
     },
     acad: {
-      label: "05 — ZENITH ACADEMIA",
+      label: "06 — ZENITH ACADEMIA",
       title: "Educación Impulsada por Inteligencia",
       sub: "Programas de nivel postgraduado impartidos por practitioners.",
     },
     comm: {
-      label: "06 — THE INNER CIRCLE",
+      label: "07 — THE INNER CIRCLE",
       title: "Comunidad de Inteligencia",
       sub: "Red privada de inversores, operadores y estrategas.",
       applyTitle: "Solicitar Membresía",
@@ -188,7 +189,7 @@ const T = {
     live: "EN VIVO",
   },
   en: {
-    nav: ["Observatory", "Intelligence", "Brokerage", "Advisory", "Academia", "Inner Circle"],
+    nav: ["Observatory", "Intelligence", "GeoRisk Index", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "STRATEGIC INTELLIGENCE · INVESTMENT · EXECUTION",
       h1: "Where Geopolitical",
@@ -216,23 +217,23 @@ const T = {
       locked: "Exclusive access for registered members",
     },
     brok: {
-      label: "03 — BROKERAGE",
+      label: "04 — BROKERAGE",
       title: "Singular Opportunities",
       sub: "Curated off-market opportunities. Institutional-grade due diligence.",
       req: "REQUEST TEASER →",
     },
     adv: {
-      label: "04 — ADVISORY",
+      label: "05 — ADVISORY",
       title: "M&A & Growth Strategy",
       sub: "Institutional advisory for companies navigating complexity.",
     },
     acad: {
-      label: "05 — ZENITH ACADEMIA",
+      label: "06 — ZENITH ACADEMIA",
       title: "Intelligence-Driven Education",
       sub: "Postgraduate programs taught by practitioners.",
     },
     comm: {
-      label: "06 — THE INNER CIRCLE",
+      label: "07 — THE INNER CIRCLE",
       title: "Intelligence Community",
       sub: "Private network of investors, operators, and strategists.",
       applyTitle: "Apply for Membership",
@@ -850,7 +851,7 @@ const MarketTicker = ({ lang }) => {
 const Nav = ({ lang, setLang, onNav }) => {
   const { user, openLogin, logout, openPricing } = useAuth();
   const [scrolled, setScrolled] = useState(false);
-  const ids = ["observatory", "intelligence", "brokerage", "advisory", "academia", "inner-circle"];
+  const ids = ["observatory", "intelligence", "georisk-index", "brokerage", "advisory", "academia", "inner-circle"];
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
@@ -1491,6 +1492,8 @@ const ZRCPlatform = () => {
       <Observatory lang={lang} useAuth={useAuth} useHeadlines={useHeadlines} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} T={T} />
       <GoldDivider />
       <Intelligence lang={lang} />
+      <GoldDivider />
+      <GeoRiskIndex lang={lang} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} />
       <GoldDivider />
       <Brokerage lang={lang} />
       <GoldDivider />

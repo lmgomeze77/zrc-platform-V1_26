@@ -21,7 +21,12 @@ export default {
     } catch (err) {
       return jsonResponse({ error: `Worker error: ${err.message}`, stack: err.stack?.slice(0, 300) }, 500);
     }
-  }
+  },
+
+  // Cloudflare Cron Trigger — see [triggers] in wrangler.toml (Mondays 06:00 UTC)
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(computeAndStoreWeeklySnapshot(env, "zrc_weekly_cron"));
+  },
 };
 
 async function handleRequest(request, env, ctx) {
@@ -56,6 +61,12 @@ async function handleRequest(request, env, ctx) {
 
     if (url.pathname === "/api/inner-circle/approve" && request.method === "GET")
       return handleInnerCircleApprove(request, env);
+
+    if (url.pathname === "/api/georisk-index" && request.method === "GET")
+      return handleGeoRiskIndexGet(request, env);
+
+    if (url.pathname === "/api/georisk-index/snapshot" && request.method === "POST")
+      return handleGeoRiskIndexSnapshot(request, env);
 
     if (url.pathname.startsWith("/api/"))
       return jsonResponse({ error: "Not found" }, 404);
@@ -362,6 +373,108 @@ async function upsertSubscriptionByCustomer(env, { stripeCustomerId, tier, statu
     const txt = await resp.text();
     throw new Error(`Supabase patch error: ${resp.status} ${txt}`);
   }
+}
+
+// ============================================================
+// GEORISK INDEX — /api/georisk-index (GET) · /api/georisk-index/snapshot (POST)
+// ============================================================
+// Mirrors the default ZRC scenario mix used by GeoRisk Dashboard / GeoRisk ML
+// (sector = Global, multiplier x1.00) so the public index tracks the same
+// methodology as the paid tools.
+const GEORISK_INDEX_SCENARIOS = [
+  { key: "tariff_escalation", label: "Escalada Arancelaria", prob: 0.42, risk: 78 },
+  { key: "mena_instability", label: "Inestabilidad MENA", prob: 0.28, risk: 85 },
+  { key: "eu_fragmentation", label: "Fragmentación Europea", prob: 0.18, risk: 72 },
+  { key: "detente", label: "Distensión Geopolítica", prob: 0.12, risk: 28 },
+];
+
+function computeGeoRiskIndexValue() {
+  const value = GEORISK_INDEX_SCENARIOS.reduce((sum, s) => sum + s.prob * s.risk, 0);
+  const dominant = GEORISK_INDEX_SCENARIOS.reduce((a, b) => (b.prob > a.prob ? b : a));
+  const label = value < 40 ? "BAJO" : value < 65 ? "MODERADO" : value < 80 ? "ELEVADO" : "CRÍTICO";
+  return { value: Math.round(value * 100) / 100, dominantScenario: dominant.label, riskLabel: label };
+}
+
+// Monday (UTC) of the ISO week containing `date`
+function isoWeekMonday(date) {
+  const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  const day = d.getUTCDay() || 7; // Sunday -> 7
+  if (day !== 1) d.setUTCDate(d.getUTCDate() - (day - 1));
+  return d.toISOString().slice(0, 10); // YYYY-MM-DD
+}
+
+async function computeAndStoreWeeklySnapshot(env, source) {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) {
+    console.error("GeoRisk Index: Supabase not configured");
+    return { ok: false, error: "Service unavailable" };
+  }
+
+  const { value, dominantScenario, riskLabel } = computeGeoRiskIndexValue();
+  const weekStart = isoWeekMonday(new Date());
+
+  try {
+    const resp = await fetch(`${env.SUPABASE_URL}/rest/v1/georisk_index_weekly`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: env.SUPABASE_SERVICE_KEY,
+        Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+        Prefer: "resolution=merge-duplicates",
+      },
+      body: JSON.stringify({
+        week_start: weekStart,
+        index_value: value,
+        dominant_scenario: dominantScenario,
+        risk_label: riskLabel,
+        source: source || "manual_snapshot",
+      }),
+    });
+    if (!resp.ok) {
+      const txt = await resp.text();
+      throw new Error(`Supabase upsert error: ${resp.status} ${txt}`);
+    }
+    return { ok: true, weekStart, value, dominantScenario, riskLabel };
+  } catch (err) {
+    console.error("GeoRisk Index snapshot error:", err);
+    return { ok: false, error: err.message };
+  }
+}
+
+async function handleGeoRiskIndexGet(request, env) {
+  const live = computeGeoRiskIndexValue();
+
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
+    return jsonResponse({ history: [], live });
+
+  try {
+    const resp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/georisk_index_weekly?select=week_start,index_value,dominant_scenario,risk_label,source&order=week_start.asc`,
+      {
+        headers: {
+          apikey: env.SUPABASE_SERVICE_KEY,
+          Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+        },
+      }
+    );
+    if (!resp.ok) return jsonResponse({ history: [], live });
+    const history = await resp.json();
+    return jsonResponse({ history, live });
+  } catch (err) {
+    console.error("GeoRisk Index fetch error:", err);
+    return jsonResponse({ history: [], live });
+  }
+}
+
+// Manual trigger to seed/force this week's print — e.g. right after deploy,
+// or to re-run editorially. Gated behind the same admin token as Inner Circle.
+async function handleGeoRiskIndexSnapshot(request, env) {
+  const auth = request.headers.get("Authorization") || "";
+  const token = auth.replace(/^Bearer\s+/i, "");
+  if (!env.INNER_CIRCLE_ADMIN_TOKEN || token !== env.INNER_CIRCLE_ADMIN_TOKEN)
+    return jsonResponse({ error: "Unauthorized" }, 403);
+
+  const result = await computeAndStoreWeeklySnapshot(env, "manual_snapshot");
+  return jsonResponse(result, result.ok ? 200 : 500);
 }
 
 // ============================================================

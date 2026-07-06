@@ -67,6 +67,29 @@ ON CONFLICT (email) DO UPDATE
   SET status = 'approved', approved_at = now(), welcome_email_sent = true;
 
 
+-- ── 4. GEORISK INDEX — WEEKLY SNAPSHOTS ─────────────────────
+-- Public-facing weekly print of the ZRC GeoRisk composite score.
+-- Written by the Worker's Monday cron (or the manual snapshot endpoint);
+-- read by the public GeoRisk Index page (no login required).
+CREATE TABLE IF NOT EXISTS georisk_index_weekly (
+  id                uuid        DEFAULT gen_random_uuid() PRIMARY KEY,
+  week_start        date        NOT NULL UNIQUE,   -- Monday (ISO week) the print belongs to
+  index_value       numeric(5,2) NOT NULL,          -- composite risk score, 0-100
+  dominant_scenario text,
+  risk_label        text,       -- BAJO | MODERADO | ELEVADO | CRÍTICO
+  source            text        NOT NULL DEFAULT 'zrc_weekly_cron', -- 'zrc_weekly_cron' | 'manual_snapshot'
+  notes             text,
+  created_at        timestamptz DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_georisk_index_week ON georisk_index_weekly(week_start);
+
+ALTER TABLE georisk_index_weekly ENABLE ROW LEVEL SECURITY;
+-- Service role (Worker) bypasses RLS automatically for both the cron writer
+-- and the public read endpoint (/api/georisk-index) — no anon policy needed,
+-- since the frontend never talks to Supabase directly.
+
+
 -- ============================================================
 -- USEFUL QUERIES FOR DAILY MANAGEMENT
 -- ============================================================
@@ -93,6 +116,17 @@ ON CONFLICT (email) DO UPDATE
 
 -- VIEW ALL MEMBERS BY STATUS
 -- SELECT status, count(*) FROM inner_circle_members GROUP BY status;
+
+-- VIEW GEORISK INDEX HISTORY
+-- SELECT week_start, index_value, risk_label, dominant_scenario, source
+-- FROM georisk_index_weekly ORDER BY week_start;
+
+-- MANUALLY BACKFILL/CORRECT A WEEKLY PRINT (e.g. editorial override)
+-- INSERT INTO georisk_index_weekly (week_start, index_value, dominant_scenario, risk_label, source, notes)
+-- VALUES ('2026-07-06', 72.9, 'Escalada Arancelaria', 'ELEVADO', 'manual_snapshot', 'Seed inicial')
+-- ON CONFLICT (week_start) DO UPDATE
+--   SET index_value = excluded.index_value, dominant_scenario = excluded.dominant_scenario,
+--       risk_label = excluded.risk_label, source = excluded.source, notes = excluded.notes;
 
 
 -- ============================================================
