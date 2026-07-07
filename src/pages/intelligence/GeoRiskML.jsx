@@ -6,35 +6,83 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 // Evolución del GeoRisk Dashboard → análisis predictivo con IA
 // ═══════════════════════════════════════════════════════════════════
 
-const ECONOMIC_VARIABLES = {
-  interest_rates:  { label: "Tipos de Interés",   source: "Tipo Depósito · BCE",               unit: "%",   base: 4.75,  vol: 0.15 },
-  inflation_cpi:   { label: "Inflación / IPC",    source: "HICP YoY · Zona Euro · Eurostat",   unit: "%",   base: 3.2,   vol: 0.25 },
-  fx_eurusd:       { label: "EUR/USD",            source: "Spot FX · Tipo Ref. BCE",           unit: "",    base: 1.074, vol: 0.008 },
-  commodities:     { label: "Materias Primas",    source: "S&P GSCI · S&P Global",             unit: "idx", base: 118.4, vol: 3.5 },
-  sovereign_yield: { label: "Yield Soberano 10Y", source: "Yield Comp. 10Y · Zona Euro · BCE", unit: "%",   base: 4.48,  vol: 0.10 },
-  capital_flows:   { label: "Flujos IED",         source: "IED Neta · Zona Euro · BCE",        unit: "Bn€", base: -12.3, vol: 1.8 },
+const REGIONS = {
+  eu:   { key: "eu",   label: "Zona Euro" },
+  usa:  { key: "usa",  label: "Estados Unidos" },
+  asia: { key: "asia", label: "Asia (China)" },
 };
 
+// Todas las regiones comparten las mismas claves de variable (interest_rates,
+// inflation_cpi, fx, commodities, sovereign_yield, capital_flows) pero con su
+// propia fuente/nivel — el selector de región cambia qué referencia se lee.
+const ECONOMIC_VARIABLES_BY_REGION = {
+  eu: {
+    interest_rates:  { label: "Tipos de Interés",   source: "Tipo Depósito · BCE",               unit: "%",   base: 4.75,  vol: 0.15, decimals: 2 },
+    inflation_cpi:   { label: "Inflación / IPC",    source: "HICP YoY · Zona Euro · Eurostat",   unit: "%",   base: 3.2,   vol: 0.25, decimals: 2 },
+    fx:              { label: "EUR/USD",            source: "Spot FX · Tipo Ref. BCE",           unit: "",    base: 1.074, vol: 0.008, decimals: 3 },
+    commodities:     { label: "Materias Primas",    source: "S&P GSCI · S&P Global",             unit: "idx", base: 118.4, vol: 3.5, decimals: 2 },
+    sovereign_yield: { label: "Yield Soberano 10Y", source: "Bund 10Y · Zona Euro · BCE",        unit: "%",   base: 4.48,  vol: 0.10, decimals: 2 },
+    capital_flows:   { label: "Flujos IED",         source: "IED Neta · Zona Euro · BCE",        unit: "Bn€", base: -12.3, vol: 1.8, decimals: 2 },
+  },
+  usa: {
+    interest_rates:  { label: "Tipos de Interés",   source: "Fed Funds Rate · Federal Reserve",  unit: "%",   base: 5.25,  vol: 0.15, decimals: 2 },
+    inflation_cpi:   { label: "Inflación / IPC",    source: "CPI YoY · BLS",                      unit: "%",   base: 3.0,   vol: 0.25, decimals: 2 },
+    fx:              { label: "Índice Dólar (DXY)", source: "ICE US Dollar Index",                unit: "idx", base: 104.2, vol: 0.8, decimals: 2 },
+    commodities:     { label: "Materias Primas",    source: "S&P GSCI · S&P Global",              unit: "idx", base: 118.4, vol: 3.5, decimals: 2 },
+    sovereign_yield: { label: "Yield Soberano 10Y", source: "US Treasury 10Y · Fed",              unit: "%",   base: 4.35,  vol: 0.12, decimals: 2 },
+    capital_flows:   { label: "Flujos IED",         source: "Net TIC Flows · US Treasury",        unit: "Bn$", base: -38.6, vol: 5.2, decimals: 2 },
+  },
+  asia: {
+    interest_rates:  { label: "Tipos de Interés",   source: "LPR 1Y · PBOC",                      unit: "%",   base: 3.45,  vol: 0.10, decimals: 2 },
+    inflation_cpi:   { label: "Inflación / IPC",    source: "CPI YoY · China · NBS",              unit: "%",   base: 0.4,   vol: 0.30, decimals: 2 },
+    fx:              { label: "USD/CNY",            source: "Spot FX · PBOC Fixing",              unit: "",    base: 7.28,  vol: 0.02, decimals: 2 },
+    commodities:     { label: "Materias Primas",    source: "S&P GSCI · S&P Global",              unit: "idx", base: 118.4, vol: 3.5, decimals: 2 },
+    sovereign_yield: { label: "Yield Soberano 10Y", source: "China Govt Bond 10Y · PBOC",         unit: "%",   base: 2.15,  vol: 0.08, decimals: 2 },
+    capital_flows:   { label: "Flujos IED",         source: "IED Neta · China · SAFE",            unit: "Bn$", base: -9.4,  vol: 2.1, decimals: 2 },
+  },
+};
+
+// El riesgo intrínseco (prob/risk) de cada escenario es global; lo que cambia
+// por región es cómo se transmite a cada variable (impactByRegion).
+// Convención: en "fx", positivo = el índice/par cotizado SUBE (EUR/USD, DXY o
+// USD/CNY según la región) — ver ASSET_SENSITIVITY_BY_REGION para cómo esto
+// se traduce a "divisa local más débil/fuerte" en cada caso.
 const SCENARIOS = {
   tariff_escalation: {
     label: "Escalada Arancelaria", desc: "Tensiones EE.UU.–China–UE",
     prob: 0.42, risk: 78, color: "#F59E0B",
-    impact: { interest_rates: 0.35, inflation_cpi: 0.55, fx_eurusd: -0.08, commodities: 0.45, sovereign_yield: 0.40, capital_flows: -0.60 }
+    impactByRegion: {
+      eu:   { interest_rates: 0.35,  inflation_cpi: 0.55, fx: -0.08, commodities: 0.45, sovereign_yield: 0.40,  capital_flows: -0.60 },
+      usa:  { interest_rates: 0.15,  inflation_cpi: 0.65, fx: 0.30,  commodities: 0.45, sovereign_yield: 0.25,  capital_flows: 0.35 },
+      asia: { interest_rates: -0.10, inflation_cpi: 0.20, fx: 0.55,  commodities: 0.45, sovereign_yield: -0.15, capital_flows: -0.75 },
+    }
   },
   mena_instability: {
     label: "Inestabilidad MENA", desc: "Conflicto MENA · Disrupción energética",
     prob: 0.28, risk: 85, color: "#EF4444",
-    impact: { interest_rates: 0.20, inflation_cpi: 0.75, fx_eurusd: -0.12, commodities: 0.90, sovereign_yield: 0.30, capital_flows: -0.45 }
+    impactByRegion: {
+      eu:   { interest_rates: 0.20, inflation_cpi: 0.75, fx: -0.12, commodities: 0.90, sovereign_yield: 0.30,  capital_flows: -0.45 },
+      usa:  { interest_rates: 0.10, inflation_cpi: 0.55, fx: 0.25,  commodities: 0.90, sovereign_yield: 0.15,  capital_flows: 0.30 },
+      asia: { interest_rates: 0.05, inflation_cpi: 0.60, fx: 0.30,  commodities: 0.90, sovereign_yield: -0.10, capital_flows: -0.50 },
+    }
   },
   eu_fragmentation: {
     label: "Fragmentación Europea", desc: "Tensiones soberanas · Spreads periféricos",
     prob: 0.18, risk: 72, color: "#8B5CF6",
-    impact: { interest_rates: 0.45, inflation_cpi: 0.30, fx_eurusd: -0.20, commodities: 0.15, sovereign_yield: 0.85, capital_flows: -0.70 }
+    impactByRegion: {
+      eu:   { interest_rates: 0.45, inflation_cpi: 0.30, fx: -0.20, commodities: 0.15, sovereign_yield: 0.85,  capital_flows: -0.70 },
+      usa:  { interest_rates: 0.05, inflation_cpi: 0.10, fx: 0.35,  commodities: 0.10, sovereign_yield: -0.10, capital_flows: 0.55 },
+      asia: { interest_rates: 0.05, inflation_cpi: 0.05, fx: 0.15,  commodities: 0.05, sovereign_yield: -0.05, capital_flows: -0.20 },
+    }
   },
   detente: {
     label: "Distensión Geopolítica", desc: "Acuerdos diplomáticos · Reducción de primas",
     prob: 0.12, risk: 28, color: "#10B981",
-    impact: { interest_rates: -0.20, inflation_cpi: -0.30, fx_eurusd: 0.08, commodities: -0.35, sovereign_yield: -0.40, capital_flows: 0.50 }
+    impactByRegion: {
+      eu:   { interest_rates: -0.20, inflation_cpi: -0.30, fx: 0.08,  commodities: -0.35, sovereign_yield: -0.40, capital_flows: 0.50 },
+      usa:  { interest_rates: -0.10, inflation_cpi: -0.20, fx: -0.15, commodities: -0.35, sovereign_yield: -0.15, capital_flows: -0.10 },
+      asia: { interest_rates: -0.05, inflation_cpi: -0.10, fx: -0.30, commodities: -0.35, sovereign_yield: -0.10, capital_flows: 0.65 },
+    }
   },
 };
 
@@ -53,17 +101,24 @@ const ASSETS = [
 
 // Sensibilidad estimada de precio (%) por unidad de vector de impacto [-1,1].
 // Modelo ilustrativo ZRC — no constituye proyección exacta de mercado.
-const ASSET_SENSITIVITY = {
+// "fx" cambia de signo entre regiones porque EUR/USD y DXY suben cuando la
+// divisa local SE FORTALECE, mientras que USD/CNY sube cuando el yuan SE
+// DEBILITA — el coeficiente refleja ese efecto en el exportador local.
+const ASSET_SENSITIVITY_BASE = {
   "Deuda soberana core":       { interest_rates: -9,  sovereign_yield: -11, capital_flows: 2  },
   "Renta fija High Yield":     { interest_rates: -6,  sovereign_yield: -7,  capital_flows: 4, inflation_cpi: -2 },
   "Real estate prime":         { interest_rates: -8,  sovereign_yield: -5,  capital_flows: 7  },
   "Materias primas":           { commodities: 12, inflation_cpi: 3 },
-  "Equity exportador":         { fx_eurusd: -35, capital_flows: 4 },
   "Efectivo / Money Market":   { interest_rates: 3, sovereign_yield: 1 },
 };
+const ASSET_SENSITIVITY_BY_REGION = {
+  eu:   { ...ASSET_SENSITIVITY_BASE, "Equity exportador": { fx: -35, capital_flows: 4 } },
+  usa:  { ...ASSET_SENSITIVITY_BASE, "Equity exportador": { fx: -35, capital_flows: 4 } },
+  asia: { ...ASSET_SENSITIVITY_BASE, "Equity exportador": { fx: 35,  capital_flows: 4 } },
+};
 
-function estimatePriceImpact(asset, impactVector) {
-  const sens = ASSET_SENSITIVITY[asset] || {};
+function estimatePriceImpact(asset, impactVector, region = "eu") {
+  const sens = ASSET_SENSITIVITY_BY_REGION[region]?.[asset] || {};
   let total = 0;
   Object.entries(sens).forEach(([vk, coef]) => { total += (impactVector[vk] || 0) * coef; });
   return total;
@@ -210,8 +265,8 @@ function ForecastChart({ curve, color = "#3B82F6" }) {
 }
 
 // Heatmap correlación escenario × variable
-function CorrelationHeatmap({ scenarios, scenarioWeights }) {
-  const vars = Object.entries(ECONOMIC_VARIABLES);
+function CorrelationHeatmap({ scenarios, scenarioWeights, economicVariables, region }) {
+  const vars = Object.entries(economicVariables);
   const scens = Object.entries(scenarios);
   const cellW = 72, cellH = 36;
   const labelW = 140, labelH = 70;
@@ -252,7 +307,7 @@ function CorrelationHeatmap({ scenarios, scenarioWeights }) {
               {vv.label}
             </text>
             {scens.map(([sk, sv], j) => {
-              const impact = sv.impact[vk] || 0;
+              const impact = sv.impactByRegion[region][vk] || 0;
               const weighted = impact * (scenarioWeights[sk] || 0);
               return (
                 <g key={sk}>
@@ -377,6 +432,7 @@ const DEFAULT_WEIGHTS = Object.fromEntries(Object.entries(SCENARIOS).map(([k, v]
 
 export default function GeoRiskML() {
   const [sector, setSector] = useState("global");
+  const [region, setRegion] = useState("eu");
   const [weights, setWeights] = useState({ ...DEFAULT_WEIGHTS });
   const [tab, setTab] = useState("forecast");
   const [time, setTime] = useState(new Date());
@@ -397,6 +453,9 @@ export default function GeoRiskML() {
     return () => clearInterval(t);
   }, []);
 
+  const ECONOMIC_VARIABLES = ECONOMIC_VARIABLES_BY_REGION[region];
+  const fxExporterSign = region === "asia" ? 1 : -1;
+
   useEffect(() => {
     const d = {};
     Object.entries(ECONOMIC_VARIABLES).forEach(([k, v]) => {
@@ -405,7 +464,7 @@ export default function GeoRiskML() {
       );
     });
     setSparkData(d);
-  }, []);
+  }, [region]);
 
   const sectorMult = SECTORS[sector].mult;
 
@@ -418,10 +477,10 @@ export default function GeoRiskML() {
   const computeImpact = useCallback((varKey) => {
     let total = 0;
     Object.entries(SCENARIOS).forEach(([sk, sv]) => {
-      total += (weights[sk] || 0) * (sv.impact[varKey] || 0) * sectorMult;
+      total += (weights[sk] || 0) * (sv.impactByRegion[region]?.[varKey] || 0) * sectorMult;
     });
     return total;
-  }, [weights, sectorMult]);
+  }, [weights, sectorMult, region]);
 
   const compositeRisk = useMemo(() => {
     let r = 0;
@@ -438,16 +497,16 @@ export default function GeoRiskML() {
     return Object.fromEntries(
       Object.keys(ECONOMIC_VARIABLES).map(k => [k, computeImpact(k)])
     );
-  }, [computeImpact]);
+  }, [computeImpact, ECONOMIC_VARIABLES]);
 
   const assetImpacts = useMemo(() => {
     return ASSETS.map(asset => {
-      const pct = estimatePriceImpact(asset, variableImpacts);
+      const pct = estimatePriceImpact(asset, variableImpacts, region);
       const dir = pct > 1.5 ? "SOBREPONDERAR" : pct < -1.5 ? "INFRAPONDERAR" : "NEUTRAL";
       const col = pct > 1.5 ? "#10B981" : pct < -1.5 ? "#EF4444" : "#F59E0B";
       return { asset, pct, dir, col };
     });
-  }, [variableImpacts]);
+  }, [variableImpacts, region]);
 
   // Build stochastic forecast on weight change
   useEffect(() => {
@@ -612,6 +671,18 @@ export default function GeoRiskML() {
 
           <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
             <div style={{ display:"flex", gap:6, flexWrap:"wrap", alignItems:"center" }}>
+              <span style={{ fontSize:10, color:"#64748B", fontFamily:"'JetBrains Mono',monospace", letterSpacing:1, marginRight:4 }}>REGIÓN:</span>
+              {Object.entries(REGIONS).map(([k, v]) => (
+                <button key={k} className="grml-btn" onClick={() => setRegion(k)} style={{
+                  padding:"4px 10px", borderRadius:3, border:"1px solid",
+                  borderColor: region===k ? "#A78BFA" : "#1a2744",
+                  background: region===k ? "#A78BFA15" : "transparent",
+                  color: region===k ? "#C4B5FD" : "#64748B",
+                  fontSize:11, cursor:"pointer", fontFamily:"'JetBrains Mono',monospace"
+                }}>{v.label}</button>
+              ))}
+            </div>
+            <div style={{ display:"flex", gap:6, flexWrap:"wrap", alignItems:"center" }}>
               <span style={{ fontSize:10, color:"#64748B", fontFamily:"'JetBrains Mono',monospace", letterSpacing:1, marginRight:4 }}>SECTOR:</span>
               {Object.entries(SECTORS).map(([k, v]) => (
                 <button key={k} className="grml-btn" onClick={() => setSector(k)} style={{
@@ -622,6 +693,9 @@ export default function GeoRiskML() {
                   fontSize:11, cursor:"pointer", fontFamily:"'JetBrains Mono',monospace"
                 }}>{v.label}</button>
               ))}
+            </div>
+            <div style={{ fontSize:9, color:"#475569", fontFamily:"'JetBrains Mono',monospace" }}>
+              Las variables, fuentes y niveles se leen sobre {REGIONS[region].label} · el riesgo compuesto del escenario es global
             </div>
 
             {/* Risk bar */}
@@ -796,10 +870,10 @@ export default function GeoRiskML() {
                       <div style={{ fontSize:12, fontWeight:500, color:"#CBD5E1" }}>{v.label}</div>
                       <div style={{ fontSize:9, color:"#475569", fontFamily:"monospace", letterSpacing:"0.04em", marginTop:2 }}>{v.source}</div>
                     </div>
-                    <span style={{ fontFamily:"monospace", fontSize:12, color:"#94A3B8" }}>{fmt(v.base, k==="fx_eurusd"?3:2)}{v.unit}</span>
+                    <span style={{ fontFamily:"monospace", fontSize:12, color:"#94A3B8" }}>{fmt(v.base, v.decimals ?? 2)}{v.unit}</span>
                     <MiniBar value={imp} max={0.8} width={50} />
                     <span style={{ fontFamily:"monospace", fontSize:13, fontWeight:600, color:impCol }}>
-                      {fmt(proj, k==="fx_eurusd"?3:2)}{v.unit}
+                      {fmt(proj, v.decimals ?? 2)}{v.unit}
                     </span>
                     <SparkLine data={sparkData[k]} color={impCol} w={110} h={24} />
                   </div>
@@ -897,14 +971,14 @@ export default function GeoRiskML() {
                   {activeScenario===sk && (
                     <div style={{ marginTop:12, paddingTop:10, borderTop:`1px solid ${sv.color}20` }}>
                       <div style={{ fontSize:9, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>VECTORES DE IMPACTO · FUENTE Y NIVEL ACTUAL POR VARIABLE</div>
-                      {Object.entries(sv.impact).map(([vk, vi]) => {
+                      {Object.entries(sv.impactByRegion[region]).map(([vk, vi]) => {
                         const ev = ECONOMIC_VARIABLES[vk];
                         return (
                           <div key={vk} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"4px 0" }}>
                             <div>
                               <div style={{ fontSize:11, color:"#94A3B8" }}>{ev?.label}</div>
                               <div style={{ fontSize:9, color:"#475569", fontFamily:"monospace" }}>
-                                {ev?.source} · actual: {fmt(ev?.base, vk === "fx_eurusd" ? 3 : 2)}{ev?.unit}
+                                {ev?.source} · actual: {fmt(ev?.base, ev?.decimals ?? 2)}{ev?.unit}
                               </div>
                             </div>
                             <div style={{ display:"flex", alignItems:"center", gap:8 }}>
@@ -915,10 +989,10 @@ export default function GeoRiskML() {
                         );
                       })}
                       <div style={{ fontSize:9, color:"#64748B", fontFamily:"monospace", letterSpacing:1, margin:"10px 0 6px" }}>
-                        EJEMPLO · IMPACTO ESTIMADO EN PRECIOS (12M, si se materializa este escenario)
+                        EJEMPLO · IMPACTO ESTIMADO EN PRECIOS (12M, si se materializa este escenario) · {REGIONS[region].label}
                       </div>
                       {ASSETS.map(a => {
-                        const pct = estimatePriceImpact(a, sv.impact);
+                        const pct = estimatePriceImpact(a, sv.impactByRegion[region], region);
                         const c = pct > 0.5 ? "#EF4444" : pct < -0.5 ? "#10B981" : "#64748B";
                         return (
                           <div key={a} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"3px 0" }}>
@@ -946,7 +1020,7 @@ export default function GeoRiskML() {
                 <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>MATRIZ DE CORRELACIÓN ESCENARIO × VARIABLE</div>
                 <div style={{ fontSize:11, color:"#94A3B8" }}>Impacto ponderado por probabilidad asignada. Actualización en tiempo real.</div>
               </div>
-              <CorrelationHeatmap scenarios={SCENARIOS} scenarioWeights={weights} />
+              <CorrelationHeatmap scenarios={SCENARIOS} scenarioWeights={weights} economicVariables={ECONOMIC_VARIABLES} region={region} />
             </div>
 
             {/* Weighted impacts table */}
@@ -965,8 +1039,8 @@ export default function GeoRiskML() {
                       <div style={{ fontSize:9, color:"#475569", fontFamily:"monospace", letterSpacing:"0.04em", marginTop:2 }}>{v.source}</div>
                     </div>
                     <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:12, fontWeight:600, color:c }}>{imp>=0?"+":""}{fmt(imp,3)}</span>
-                    <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:12, color:"#64748B" }}>{fmt(v.base, k==="fx_eurusd"?3:2)}{v.unit}</span>
-                    <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:13, fontWeight:600, color:c }}>{fmt(proj, k==="fx_eurusd"?3:2)}{v.unit}</span>
+                    <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:12, color:"#64748B" }}>{fmt(v.base, v.decimals ?? 2)}{v.unit}</span>
+                    <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:13, fontWeight:600, color:c }}>{fmt(proj, v.decimals ?? 2)}{v.unit}</span>
                   </div>
                 );
               })}
