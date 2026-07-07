@@ -896,13 +896,24 @@ export default function GeoRiskML() {
                   </div>
                   {activeScenario===sk && (
                     <div style={{ marginTop:12, paddingTop:10, borderTop:`1px solid ${sv.color}20` }}>
-                      <div style={{ fontSize:9, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>VECTORES DE IMPACTO</div>
-                      {Object.entries(sv.impact).map(([vk, vi]) => (
-                        <div key={vk} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"3px 0" }}>
-                          <span style={{ fontSize:11, color:"#94A3B8" }}>{ECONOMIC_VARIABLES[vk]?.label}</span>
-                          <MiniBar value={vi} max={1} color={sv.color} width={60} />
-                        </div>
-                      ))}
+                      <div style={{ fontSize:9, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>VECTORES DE IMPACTO · FUENTE Y NIVEL ACTUAL POR VARIABLE</div>
+                      {Object.entries(sv.impact).map(([vk, vi]) => {
+                        const ev = ECONOMIC_VARIABLES[vk];
+                        return (
+                          <div key={vk} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"4px 0" }}>
+                            <div>
+                              <div style={{ fontSize:11, color:"#94A3B8" }}>{ev?.label}</div>
+                              <div style={{ fontSize:9, color:"#475569", fontFamily:"monospace" }}>
+                                {ev?.source} · actual: {fmt(ev?.base, vk === "fx_eurusd" ? 3 : 2)}{ev?.unit}
+                              </div>
+                            </div>
+                            <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                              <SparkLine data={sparkData[vk]} color={sv.color} w={36} h={16} />
+                              <MiniBar value={vi} max={1} color={sv.color} width={50} />
+                            </div>
+                          </div>
+                        );
+                      })}
                       <div style={{ fontSize:9, color:"#64748B", fontFamily:"monospace", letterSpacing:1, margin:"10px 0 6px" }}>
                         EJEMPLO · IMPACTO ESTIMADO EN PRECIOS (12M, si se materializa este escenario)
                       </div>
