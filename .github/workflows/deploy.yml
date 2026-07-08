@@ -26,6 +26,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        # VITE_MAPBOX_TOKEN habilita el mapa 3D del Visor y la miniatura de
+        # ubicación en los informes PDF — sin él, ambos se degradan a "sin mapa".
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
