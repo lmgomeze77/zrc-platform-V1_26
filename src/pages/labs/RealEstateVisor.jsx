@@ -122,6 +122,15 @@ export default function RealEstateVisor({ pendingReport, onReportHandled } = {})
       const superficie = parseFloat(debi?.sfc) || null;
       const uso = debi?.luso || debi?.cuso || "—";
       const antiguedad = debi?.ant || "—";
+      // Campos opcionales — Catastro solo los devuelve para determinados tipos
+      // de inmueble (p.ej. coeficiente/localización interior en pisos dentro
+      // de un edificio), así que siempre pueden venir vacíos.
+      const loint = dt?.locs?.lous?.lourb?.loint || {};
+      const coefParticipacion = bi?.idbi?.cpt ? `${bi.idbi.cpt}%` : null;
+      const bloque = loint?.bq || null;
+      const escalera = loint?.es || null;
+      const planta = loint?.pt || null;
+      const puerta = loint?.pu || null;
 
       const geoResp = await fetch(`${CATASTRO_COORD}?Provincia=&Municipio=&SRS=EPSG:4326&RC=${encodeURIComponent(targetRc.substring(0, 14))}`);
       const geoText = await geoResp.text();
@@ -129,7 +138,10 @@ export default function RealEstateVisor({ pendingReport, onReportHandled } = {})
       const yMatch = geoText.match(/<ycen>([^<]+)<\/ycen>/);
       const coords = xMatch && yMatch ? [parseFloat(yMatch[1]), parseFloat(xMatch[1])] : null;
 
-      const parcelaData = { rc: targetRc, direccion, municipio, provincia, superficie, uso, antiguedad, coords };
+      const parcelaData = {
+        rc: targetRc, direccion, municipio, provincia, superficie, uso, antiguedad, coords,
+        coefParticipacion, bloque, escalera, planta, puerta,
+      };
       setParcela(parcelaData);
       setPosition(coords);
       setSearchCount((c) => c + 1);
@@ -410,6 +422,8 @@ export default function RealEstateVisor({ pendingReport, onReportHandled } = {})
                     ["Uso principal", parcela.uso],
                     ["Superficie", parcela.superficie ? `${parcela.superficie.toLocaleString("es-ES")} m²` : "—"],
                     ["Antigüedad", parcela.antiguedad],
+                    ...(formatLocalizacionInterior(parcela) ? [["Localización interior", formatLocalizacionInterior(parcela)]] : []),
+                    ...(parcela.coefParticipacion ? [["Coef. participación", parcela.coefParticipacion]] : []),
                     ["RC", <span style={{ fontFamily: F.mono, fontSize: 11 }}>{parcela.rc}</span>],
                   ]} />
                   <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 8 }}>
@@ -816,6 +830,17 @@ for (const [alias, target] of Object.entries(PROVINCE_ALIASES)) {
 
 function priceByProvince(prov) {
   return PRICE_LOOKUP[normalizeProv(prov)] || 2000;
+}
+
+// Bloque/escalera/planta/puerta — solo presentes cuando el RC identifica una
+// unidad dentro de un edificio (piso), no un inmueble completo o suelo.
+export function formatLocalizacionInterior(parcela) {
+  const parts = [];
+  if (parcela?.bloque) parts.push(`Bloque ${parcela.bloque}`);
+  if (parcela?.escalera) parts.push(`Esc. ${parcela.escalera}`);
+  if (parcela?.planta) parts.push(`Planta ${parcela.planta}`);
+  if (parcela?.puerta) parts.push(`Puerta ${parcela.puerta}`);
+  return parts.length ? parts.join(" · ") : null;
 }
 
 function calcResidual(parcela, p) {

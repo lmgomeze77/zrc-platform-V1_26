@@ -254,7 +254,7 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLaye
         <Metric label="Superficie" value={parcela.superficie ? `${parcela.superficie.toLocaleString("es-ES")} m²` : "—"} />
         <Metric label="Uso" value={parcela.uso || "—"} />
         <Metric label="Antigüedad" value={parcela.antiguedad ? `${parcela.antiguedad}` : "—"} />
-        <Metric label="Plantas" value="—" hint="Catastro pendiente" />
+        <Metric label="Localización" value={parcela.planta ? `Planta ${parcela.planta}${parcela.puerta ? ` · Puerta ${parcela.puerta}` : ""}` : "—"} hint={parcela.planta ? null : "Catastro pendiente"} />
       </div>
 
       {activeLayer === "value" && residual && (
