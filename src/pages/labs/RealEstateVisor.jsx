@@ -54,8 +54,8 @@ const CATASTRO_COORD = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacion
 //   Teaser   → https://www.zenithrisecapital.com/?visor_report=teaser&session_id={CHECKOUT_SESSION_ID}
 //   Informe  → https://www.zenithrisecapital.com/?visor_report=informe&session_id={CHECKOUT_SESSION_ID}
 const STRIPE_LINKS = {
-  teaser: "https://buy.stripe.com/REPLACE_WITH_TEASER_LINK",
-  informe: "https://buy.stripe.com/REPLACE_WITH_INFORME_LINK",
+  teaser: "https://buy.stripe.com/3cIbJ29Tegbi4gobmW2Nq08",
+  informe: "https://buy.stripe.com/14A3cw7L6cZ6cMU0Ii2Nq09",
 };
 
 function FlyTo({ position, zoom = 18 }) {
