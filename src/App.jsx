@@ -1129,6 +1129,23 @@ const Intelligence = ({ lang }) => {
   const [showFIS, setShowFIS] = useState(false);
   const [showMacroPulse, setShowMacroPulse] = useState(false);
   const [upgradeTool, setUpgradeTool] = useState(null);
+  const [pendingVisorReport, setPendingVisorReport] = useState(null);
+
+  // Vuelta desde el Payment Link de Stripe tras comprar el Teaser/Informe
+  // Investigado del Visor Inmobiliario: ?visor_report=teaser|informe&session_id=...
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const reportType = params.get("visor_report");
+    const sessionId = params.get("session_id");
+    if ((reportType === "teaser" || reportType === "informe") && sessionId) {
+      setPendingVisorReport({ type: reportType, sessionId });
+      setShowVisor(true);
+      params.delete("visor_report");
+      params.delete("session_id");
+      const rest = params.toString();
+      window.history.replaceState({}, "", window.location.pathname + (rest ? `?${rest}` : ""));
+    }
+  }, []);
 
   const canAccess = (tool) => {
     if (!tool.requiredTier) return true;
@@ -1274,7 +1291,10 @@ const Intelligence = ({ lang }) => {
           <button onClick={() => setShowVisor(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
             ✕ CLOSE VISOR
           </button>
-          <RealEstateVisor />
+          <RealEstateVisor
+            pendingReport={pendingVisorReport}
+            onReportHandled={() => setPendingVisorReport(null)}
+          />
         </div>
       )}
 
