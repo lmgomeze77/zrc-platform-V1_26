@@ -8,6 +8,8 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { MapContainer, TileLayer, WMSTileLayer, Marker, Popup, Circle, useMap, LayersControl } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+// @react-pdf/renderer (~700kb) solo se carga bajo demanda al generar un
+// informe pagado, para no engordar el bundle principal del sitio.
 
 // Lazy load: Mapbox GL (~800kb) solo se carga cuando el usuario activa modo 3D.
 const Visor3D = lazy(() => import("./Visor3D"));
@@ -46,6 +48,16 @@ const WMS = {
 const CATASTRO_DNP = "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejero.svc/json/Consulta_DNPRC";
 const CATASTRO_COORD = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC";
 
+// Stripe Payment Links — sustituir por los enlaces reales del Dashboard
+// (Payment Links → Create link). En cada Payment Link, configurar el
+// redirect "After payment" a:
+//   Teaser   → https://www.zenithrisecapital.com/?visor_report=teaser&session_id={CHECKOUT_SESSION_ID}
+//   Informe  → https://www.zenithrisecapital.com/?visor_report=informe&session_id={CHECKOUT_SESSION_ID}
+const STRIPE_LINKS = {
+  teaser: "https://buy.stripe.com/3cIbJ29Tegbi4gobmW2Nq08",
+  informe: "https://buy.stripe.com/14A3cw7L6cZ6cMU0Ii2Nq09",
+};
+
 function FlyTo({ position, zoom = 18 }) {
   const map = useMap();
   useEffect(() => { if (position) map.flyTo(position, zoom, { duration: 1.2 }); }, [position, zoom, map]);
@@ -53,7 +65,7 @@ function FlyTo({ position, zoom = 18 }) {
 }
 
 // ============================================================
-export default function RealEstateVisor() {
+export default function RealEstateVisor({ pendingReport, onReportHandled } = {}) {
   const [rc, setRc] = useState("");
   const [loading, setLoading] = useState(false);
   const [searchCount, setSearchCount] = useState(0);
@@ -67,6 +79,7 @@ export default function RealEstateVisor() {
   const [matches, setMatches] = useState([]);
   const [activeTab, setActiveTab] = useState("ficha");
   const [viewMode, setViewMode] = useState("2D"); // "2D" | "3D"
+  const [reportStatus, setReportStatus] = useState(null); // null | { stage, type, message }
   const [params, setParams] = useState({
     edificabilidad: 1.0,
     precioVenta: 2500,
@@ -75,21 +88,24 @@ export default function RealEstateVisor() {
     margenPromotor: 0.18,
   });
 
-  const handleSearch = async (e) => {
-    e?.preventDefault();
-    if (!rc || rc.length < 14) {
+  // rcOverride/skipGate: usados por el retorno de pago para recargar la
+  // parcela comprada sin pasar por el límite de 3 búsquedas gratuitas.
+  const handleSearch = async (e, rcOverride, skipGate) => {
+    e?.preventDefault?.();
+    const targetRc = rcOverride ?? rc;
+    if (!targetRc || targetRc.length < 14) {
       setError("Introduce una referencia catastral válida (14 o 20 caracteres).");
-      return;
+      return null;
     }
-    if (searchCount >= 3) {
+    if (!skipGate && searchCount >= 3) {
       setShowLeadModal(true);
-      return;
+      return null;
     }
     setLoading(true);
     setError(null);
     setParcela(null); setResidual(null); setRisk(null); setBoeAlerts([]); setMatches([]);
     try {
-      const dnpResp = await fetch(`${CATASTRO_DNP}?RefCat=${encodeURIComponent(rc)}`);
+      const dnpResp = await fetch(`${CATASTRO_DNP}?RefCat=${encodeURIComponent(targetRc)}`);
       const dnpData = await dnpResp.json();
       const consulta = dnpData?.consulta_dnprcResult;
       if (consulta?.control?.cuerr > 0) {
@@ -107,13 +123,13 @@ export default function RealEstateVisor() {
       const uso = debi?.luso || debi?.cuso || "—";
       const antiguedad = debi?.ant || "—";
 
-      const geoResp = await fetch(`${CATASTRO_COORD}?Provincia=&Municipio=&SRS=EPSG:4326&RC=${encodeURIComponent(rc.substring(0, 14))}`);
+      const geoResp = await fetch(`${CATASTRO_COORD}?Provincia=&Municipio=&SRS=EPSG:4326&RC=${encodeURIComponent(targetRc.substring(0, 14))}`);
       const geoText = await geoResp.text();
       const xMatch = geoText.match(/<xcen>([^<]+)<\/xcen>/);
       const yMatch = geoText.match(/<ycen>([^<]+)<\/ycen>/);
       const coords = xMatch && yMatch ? [parseFloat(yMatch[1]), parseFloat(xMatch[1])] : null;
 
-      const parcelaData = { rc, direccion, municipio, provincia, superficie, uso, antiguedad, coords };
+      const parcelaData = { rc: targetRc, direccion, municipio, provincia, superficie, uso, antiguedad, coords };
       setParcela(parcelaData);
       setPosition(coords);
       setSearchCount((c) => c + 1);
@@ -121,13 +137,19 @@ export default function RealEstateVisor() {
       const precioBase = priceByProvince(provincia);
       const newParams = { ...params, precioVenta: precioBase };
       setParams(newParams);
-      if (superficie) setResidual(calcResidual(parcelaData, newParams));
-      setRisk(buildRiskLayers(coords));
-      setBoeAlerts(buildBOEAlerts(municipio, provincia));
-      setMatches(matchAgainstZRCMandates(parcelaData));
+      const residualData = superficie ? calcResidual(parcelaData, newParams) : null;
+      if (residualData) setResidual(residualData);
+      const riskData = buildRiskLayers(coords);
+      const boeData = buildBOEAlerts(municipio, provincia);
+      const matchesData = matchAgainstZRCMandates(parcelaData);
+      setRisk(riskData);
+      setBoeAlerts(boeData);
+      setMatches(matchesData);
       setActiveTab("ficha");
+      return { parcelaData, residualData, riskData, boeData, matchesData, params: newParams };
     } catch (err) {
       setError(err.message || "Error al consultar Catastro.");
+      return null;
     } finally {
       setLoading(false);
     }
@@ -139,6 +161,65 @@ export default function RealEstateVisor() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
+
+  // ─── Retorno desde Stripe tras pagar Teaser/Informe ───
+  useEffect(() => {
+    if (!pendingReport?.sessionId || !pendingReport?.type) return;
+    let cancelled = false;
+
+    (async () => {
+      setReportStatus({ stage: "verifying", type: pendingReport.type, message: "Verificando el pago…" });
+      try {
+        const resp = await fetch(`/api/checkout-session?session_id=${encodeURIComponent(pendingReport.sessionId)}`);
+        const data = await resp.json();
+        if (cancelled) return;
+
+        if (!data.paid || !data.clientReferenceId) {
+          setReportStatus({ stage: "error", type: pendingReport.type, message: "No hemos podido confirmar el pago. Si el cargo se realizó, escríbenos a labs@zenithrisecapital.com con tu referencia catastral." });
+          return;
+        }
+
+        setReportStatus({ stage: "loading", type: pendingReport.type, message: "Pago confirmado. Cargando la parcela…" });
+        const result = await handleSearch(null, data.clientReferenceId, true);
+        if (cancelled) return;
+        if (!result || !result.parcelaData) {
+          setReportStatus({ stage: "error", type: pendingReport.type, message: "El pago se confirmó pero no hemos podido recargar la parcela. Escríbenos a labs@zenithrisecapital.com." });
+          return;
+        }
+
+        setReportStatus({ stage: "generating", type: pendingReport.type, message: "Generando tu informe en PDF…" });
+        const { generateReportBlob, downloadBlob } = await import("./visorReports");
+        const marketRef = { precioM2: priceByProvince(result.parcelaData.provincia), ...MARKET_REF_META };
+        const blob = await generateReportBlob(pendingReport.type, {
+          parcela: result.parcelaData,
+          residual: result.residualData,
+          risk: result.riskData,
+          boeAlerts: result.boeData,
+          matches: result.matchesData,
+          params: result.params,
+          marketRef,
+        });
+        if (cancelled) return;
+        const label = pendingReport.type === "informe" ? "informe-investigado" : "teaser";
+        downloadBlob(blob, `zrc-${label}-${result.parcelaData.rc}.pdf`);
+        setReportStatus({ stage: "done", type: pendingReport.type, message: "Informe descargado. Revisa tu carpeta de descargas." });
+      } catch (err) {
+        if (!cancelled) setReportStatus({ stage: "error", type: pendingReport.type, message: err.message || "Error inesperado al generar el informe." });
+      } finally {
+        onReportHandled?.();
+      }
+    })();
+
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingReport]);
+
+  const goToCheckout = (type) => {
+    if (!parcela) return;
+    const link = STRIPE_LINKS[type];
+    const url = `${link}?client_reference_id=${encodeURIComponent(parcela.rc)}`;
+    window.location.href = url;
+  };
 
   const fmt = (n) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
 
@@ -196,6 +277,7 @@ export default function RealEstateVisor() {
           .zrc-visor-tabs-wrap { margin: 20px 0 14px; }
         }
       `}</style>
+      {reportStatus && <ReportStatusBanner status={reportStatus} onDismiss={() => setReportStatus(null)} />}
       {/* HEADER */}
       <div className="zrc-visor-header">
         <div className="zrc-visor-header-row">
@@ -331,8 +413,9 @@ export default function RealEstateVisor() {
                     ["RC", <span style={{ fontFamily: F.mono, fontSize: 11 }}>{parcela.rc}</span>],
                   ]} />
                   <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 8 }}>
-                    <GhostBtn>📄 Generar teaser PDF · 9€</GhostBtn>
-                    <GhostBtn>📊 Exportar Excel · incl. Pro</GhostBtn>
+                    <GhostBtn onClick={() => goToCheckout("teaser")}>📄 Generar teaser PDF · 9€</GhostBtn>
+                    <GhostBtn emphasis onClick={() => goToCheckout("informe")}>🔎 Informe Investigado · 30€</GhostBtn>
+                    <GhostBtn disabled>📊 Exportar Excel · incl. Pro</GhostBtn>
                   </div>
                 </Panel>
               )}
@@ -532,11 +615,40 @@ const Slider = ({ label, min, max, step, value, onChange }) => (
   </div>
 );
 
-const GhostBtn = ({ children }) => (
-  <button style={{
-    background: C.surface2, color: C.text, border: `1px solid ${C.border}`,
-    padding: "10px 14px", fontSize: 12, fontFamily: F.body, cursor: "pointer", textAlign: "left",
-  }}>
+const ReportStatusBanner = ({ status, onDismiss }) => {
+  const colors = { verifying: C.gold, loading: C.gold, generating: C.gold, done: C.green, error: C.red };
+  const color = colors[status.stage] || C.gold;
+  const title = status.type === "informe" ? "Informe Investigado" : "Teaser PDF";
+  return (
+    <div style={{
+      position: "fixed", top: 16, left: "50%", transform: "translateX(-50%)", zIndex: 400,
+      background: C.surface, border: `1px solid ${color}`, borderLeft: `4px solid ${color}`,
+      padding: "12px 18px", display: "flex", alignItems: "center", gap: 14,
+      maxWidth: "calc(100vw - 32px)", boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+    }}>
+      <div>
+        <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.14em", color, textTransform: "uppercase", marginBottom: 3 }}>{title}</div>
+        <div style={{ fontSize: 12, color: C.text }}>{status.message}</div>
+      </div>
+      {(status.stage === "done" || status.stage === "error") && (
+        <button onClick={onDismiss} style={{ background: "none", border: "none", color: C.textMuted, cursor: "pointer", fontSize: 16, lineHeight: 1 }}>×</button>
+      )}
+    </div>
+  );
+};
+
+const GhostBtn = ({ children, onClick, disabled, emphasis }) => (
+  <button
+    onClick={onClick}
+    disabled={disabled}
+    style={{
+      background: emphasis ? C.goldDim : C.surface2, color: emphasis ? C.gold : C.text,
+      border: `1px solid ${emphasis ? C.goldBorder : C.border}`,
+      padding: "10px 14px", fontSize: 12, fontFamily: F.body,
+      cursor: disabled ? "wait" : "pointer", textAlign: "left",
+      opacity: disabled ? 0.6 : 1,
+    }}
+  >
     {children}
   </button>
 );

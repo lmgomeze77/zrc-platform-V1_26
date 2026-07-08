@@ -46,6 +46,9 @@ async function handleRequest(request, env, ctx) {
     if (url.pathname === "/api/subscription" && request.method === "GET")
       return handleSubscriptionCheck(request, env);
 
+    if (url.pathname === "/api/checkout-session" && request.method === "GET")
+      return handleCheckoutSessionCheck(request, env);
+
 
     if (url.pathname === "/api/claude" && request.method === "POST")
       return handleClaude(request, env);
@@ -188,6 +191,42 @@ async function handleSubscriptionCheck(request, env) {
   } catch (err) {
     console.error("Subscription check error:", err);
     return jsonResponse({ tier: "free" });
+  }
+}
+
+// ============================================================
+// /api/checkout-session?session_id=  (verifica pagos únicos: teaser/informe)
+// ============================================================
+// Requiere el secreto STRIPE_SECRET_KEY (Dashboard → Developers → API keys →
+// Secret key). Se usa para confirmar server-side que una sesión de un Payment
+// Link se pagó de verdad antes de generar el PDF — no basta con confiar en
+// que el navegador vuelva con un session_id en la URL.
+async function handleCheckoutSessionCheck(request, env) {
+  const url = new URL(request.url);
+  const sessionId = url.searchParams.get("session_id");
+
+  if (!sessionId || !/^cs_[a-zA-Z0-9_]+$/.test(sessionId))
+    return jsonResponse({ paid: false, error: "session_id inválido" }, 400);
+
+  if (!env.STRIPE_SECRET_KEY)
+    return jsonResponse({ paid: false, error: "Stripe no configurado" }, 500);
+
+  try {
+    const resp = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}`, {
+      headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
+    });
+    if (!resp.ok) return jsonResponse({ paid: false, error: "Sesión no encontrada" }, 404);
+    const session = await resp.json();
+
+    return jsonResponse({
+      paid: session.payment_status === "paid",
+      clientReferenceId: session.client_reference_id || null,
+      customerEmail: session.customer_details?.email || session.customer_email || null,
+      amountTotal: session.amount_total,
+    });
+  } catch (err) {
+    console.error("Checkout session check error:", err);
+    return jsonResponse({ paid: false, error: "Error al verificar el pago" }, 502);
   }
 }
 
