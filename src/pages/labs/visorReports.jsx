@@ -4,7 +4,7 @@
 // mismos datos (parcela/residual/risk/boeAlerts/matches) ya calculados en
 // RealEstateVisor — no hay lógica de negocio duplicada en el servidor.
 
-import { Document, Page, View, Text, StyleSheet, pdf } from "@react-pdf/renderer";
+import { Document, Page, View, Text, StyleSheet, pdf, Svg, Rect, Circle, Image } from "@react-pdf/renderer";
 
 const GOLD = "#B8863E"; // versión oscurecida del gold de marca para que se lea bien en fondo blanco/impreso
 const INK = "#18181B";
@@ -66,7 +66,21 @@ function Footer() {
   );
 }
 
+// Bloque/escalera/planta/puerta — solo presentes cuando el RC identifica una
+// unidad dentro de un edificio (piso), no un inmueble completo o suelo.
+// Copia local de la misma función en RealEstateVisor.jsx: se duplica (en vez
+// de importarla) para no acoplar este chunk lazy-loaded al de leaflet/mapa 2D.
+function formatLocalizacionInterior(parcela) {
+  const parts = [];
+  if (parcela?.bloque) parts.push(`Bloque ${parcela.bloque}`);
+  if (parcela?.escalera) parts.push(`Esc. ${parcela.escalera}`);
+  if (parcela?.planta) parts.push(`Planta ${parcela.planta}`);
+  if (parcela?.puerta) parts.push(`Puerta ${parcela.puerta}`);
+  return parts.length ? parts.join(" · ") : null;
+}
+
 function FichaBox({ parcela }) {
+  const loint = formatLocalizacionInterior(parcela);
   return (
     <View style={s.section}>
       <Text style={s.sectionTitle}>Datos catastrales</Text>
@@ -76,9 +90,48 @@ function FichaBox({ parcela }) {
       </View>
       <View style={s.row}>
         <View style={s.col}><Text style={s.label}>ANTIGÜEDAD</Text><Text style={s.value}>{parcela.antiguedad || "—"}</Text></View>
-        <View style={s.col}><Text style={s.label}>REFERENCIA CATASTRAL</Text><Text style={s.value}>{parcela.rc}</Text></View>
+        <View style={s.col}><Text style={s.label}>REFERENCIA CATASTRAL</Text><Text style={{ ...s.value, fontSize: 9 }}>{parcela.rc}</Text></View>
       </View>
+      {(loint || parcela.coefParticipacion) && (
+        <View style={s.row}>
+          <View style={s.col}><Text style={s.label}>LOCALIZACIÓN INTERIOR</Text><Text style={s.value}>{loint || "—"}</Text></View>
+          <View style={s.col}><Text style={s.label}>COEF. PARTICIPACIÓN</Text><Text style={s.value}>{parcela.coefParticipacion || "—"}</Text></View>
+        </View>
+      )}
     </View>
+  );
+}
+
+function LocationMap({ mapDataUrl }) {
+  if (!mapDataUrl) return null;
+  return (
+    <View style={{ marginBottom: 16 }}>
+      <Image src={mapDataUrl} style={{ width: "100%", height: 130, objectFit: "cover" }} />
+    </View>
+  );
+}
+
+// Barra horizontal 0-100 para el Investability Score.
+function ScoreGauge({ score, color }) {
+  const width = 240, height = 10, filled = Math.max(0, Math.min(100, score)) / 100 * width;
+  return (
+    <Svg width={width} height={height} style={{ marginTop: 6, marginBottom: 6 }}>
+      <Rect x={0} y={0} width={width} height={height} rx={5} fill={BORDER} />
+      <Rect x={0} y={0} width={filled} height={height} rx={5} fill={color} />
+    </Svg>
+  );
+}
+
+// Semáforo de 3 puntos para el nivel de riesgo global (bajo/medio/alto).
+function RiskDots({ level }) {
+  const levels = ["low", "mid", "high"];
+  const active = levels.indexOf(level);
+  return (
+    <Svg width={70} height={16}>
+      {levels.map((lv, i) => (
+        <Circle key={lv} cx={10 + i * 26} cy={8} r={i === active ? 7 : 5} fill={i === active ? RISK_COLOR[lv] : BORDER} />
+      ))}
+    </Svg>
   );
 }
 
@@ -106,7 +159,8 @@ function InvestabilityBox({ residual }) {
     <View style={{ ...s.box, borderLeft: `4 solid ${color}` }}>
       <Text style={s.label}>INVESTABILITY SCORE</Text>
       <Text style={{ fontSize: 18, fontFamily: "Helvetica-Bold", color }}>{residual.investabilityScore}/100</Text>
-      <Text style={{ fontSize: 9, color: INK, marginTop: 4 }}>{residual.investabilityLabel}</Text>
+      <ScoreGauge score={residual.investabilityScore} color={color} />
+      <Text style={{ fontSize: 9, color: INK, marginTop: 2 }}>{residual.investabilityLabel}</Text>
     </View>
   );
 }
@@ -114,12 +168,13 @@ function InvestabilityBox({ residual }) {
 // ============================================================
 // TEASER · 1 página
 // ============================================================
-export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef }) {
+export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef, mapDataUrl }) {
   const topAlert = boeAlerts?.[0];
   return (
     <Document title={`Teaser · ${parcela.direccion}`}>
       <Page size="A4" style={s.page}>
         <Header parcela={parcela} tag="TEASER" />
+        <LocationMap mapDataUrl={mapDataUrl} />
         <FichaBox parcela={parcela} />
         {residual && <ValorBox residual={residual} marketRef={marketRef} />}
         {residual && <InvestabilityBox residual={residual} />}
@@ -135,9 +190,12 @@ export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef }
         {risk?.overall && (
           <View style={s.section}>
             <Text style={s.sectionTitle}>Capa de riesgo</Text>
-            <Text style={{ fontSize: 10 }}>
-              Nivel de riesgo global: <Text style={{ color: RISK_COLOR[risk.overall], fontFamily: "Helvetica-Bold" }}>{RISK_LABEL[risk.overall]}</Text> — desglose completo de los 6 factores en el Informe Investigado.
-            </Text>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+              <RiskDots level={risk.overall} />
+              <Text style={{ fontSize: 10 }}>
+                Nivel de riesgo global: <Text style={{ color: RISK_COLOR[risk.overall], fontFamily: "Helvetica-Bold" }}>{RISK_LABEL[risk.overall]}</Text> — desglose completo de los 6 factores en el Informe Investigado.
+              </Text>
+            </View>
           </View>
         )}
         <View style={s.cta}>
@@ -157,12 +215,13 @@ export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef }
 // ============================================================
 // INFORME INVESTIGADO · multi-página
 // ============================================================
-export function InformeDocument({ parcela, residual, risk, boeAlerts, matches, params, marketRef }) {
+export function InformeDocument({ parcela, residual, risk, boeAlerts, matches, params, marketRef, mapDataUrl }) {
   const escenarios = residual ? buildScenarios(parcela, params) : [];
   return (
     <Document title={`Informe Investigado · ${parcela.direccion}`}>
       <Page size="A4" style={s.page}>
         <Header parcela={parcela} tag="INFORME INVESTIGADO" />
+        <LocationMap mapDataUrl={mapDataUrl} />
 
         <View style={s.section}>
           <Text style={s.sectionTitle}>Resumen ejecutivo</Text>
@@ -177,6 +236,7 @@ export function InformeDocument({ parcela, residual, risk, boeAlerts, matches, p
                 </>
               ) : "Sin datos de superficie suficientes para calcular el valor residual."}
             </Text>
+            {risk?.overall && <View style={{ marginTop: 8 }}><RiskDots level={risk.overall} /></View>}
           </View>
         </View>
 
@@ -294,11 +354,42 @@ function buildScenarios(parcela, params) {
 }
 
 // ============================================================
+// Mapa de ubicación (Mapbox Static Images API)
+// ============================================================
+// Requiere VITE_MAPBOX_TOKEN en build time (mismo token que usa Visor3D).
+// Se degrada a "sin mapa" en cualquier fallo — nunca bloquea la generación
+// del PDF por un problema de red o de token.
+async function fetchStaticMapDataUrl(coords) {
+  const token = import.meta.env.VITE_MAPBOX_TOKEN;
+  if (!token || !coords) return null;
+  const [lat, lng] = coords;
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+
+  const marker = `pin-s+D4A853(${lng},${lat})`;
+  const url = `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/${marker}/${lng},${lat},15,0/1100x260@2x?access_token=${encodeURIComponent(token)}`;
+
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) return null;
+    const blob = await resp.blob();
+    return await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(blob);
+    });
+  } catch {
+    return null;
+  }
+}
+
+// ============================================================
 // Helpers de generación/descarga
 // ============================================================
 export async function generateReportBlob(type, data) {
+  const mapDataUrl = await fetchStaticMapDataUrl(data.parcela?.coords);
   const Doc = type === "informe" ? InformeDocument : TeaserDocument;
-  const instance = pdf(<Doc {...data} />);
+  const instance = pdf(<Doc {...data} mapDataUrl={mapDataUrl} />);
   return instance.toBlob();
 }
 
