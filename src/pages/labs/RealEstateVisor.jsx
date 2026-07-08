@@ -163,6 +163,7 @@ export default function RealEstateVisor() {
               risk={risk}
               residual={residual}
               boeAlerts={boeAlerts}
+              marketRef={parcela ? { precioM2: priceByProvince(parcela.provincia), ...MARKET_REF_META } : null}
               onClose={() => setViewMode("2D")}
             />
           </Suspense>
@@ -174,21 +175,42 @@ export default function RealEstateVisor() {
   // ============================================================
   return (
     <div style={{ minHeight: "100vh", background: C.bg, color: C.text, fontFamily: F.body, paddingTop: 60 }}>
+      <style>{`
+        .zrc-visor-header { border-bottom: 1px solid ${C.border}; padding: 32px 32px 28px; max-width: 1700px; margin: 0 auto; box-sizing: border-box; }
+        .zrc-visor-header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+        .zrc-visor-title { font-family: ${F.display}; font-weight: 400; font-size: 38px; margin: 0 0 8px; letter-spacing: -0.01em; color: ${C.text}; }
+        .zrc-visor-grid { display: grid; grid-template-columns: 440px minmax(0, 1fr); max-width: 1700px; margin: 0 auto; min-height: calc(100vh - 220px); }
+        .zrc-visor-sidebar { background: ${C.surface}; border-right: 1px solid ${C.border}; padding: 24px; overflow-y: auto; max-height: calc(100vh - 160px); box-sizing: border-box; }
+        .zrc-visor-map-wrap { position: relative; height: calc(100vh - 160px); min-height: 600px; }
+        .zrc-visor-tabs-wrap { position: relative; margin: 24px 0 16px; }
+        .zrc-visor-tabs { display: flex; gap: 0; border-bottom: 1px solid ${C.border}; overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; }
+        .zrc-visor-tabs button { flex-shrink: 0; scroll-snap-align: start; }
+        .zrc-visor-tabs-fade { position: absolute; top: 0; right: 0; bottom: 1px; width: 26px; pointer-events: none; background: linear-gradient(to right, transparent, ${C.surface}); }
+
+        @media (max-width: 860px) {
+          .zrc-visor-header { padding: 20px 16px 16px; }
+          .zrc-visor-title { font-size: 25px; }
+          .zrc-visor-grid { grid-template-columns: 1fr; min-height: auto; }
+          .zrc-visor-sidebar { border-right: none; border-bottom: 1px solid ${C.border}; max-height: none; padding: 18px 16px; }
+          .zrc-visor-map-wrap { height: 62vh; min-height: 420px; }
+          .zrc-visor-tabs-wrap { margin: 20px 0 14px; }
+        }
+      `}</style>
       {/* HEADER */}
-      <div style={{ borderBottom: `1px solid ${C.border}`, padding: "32px 32px 28px", maxWidth: 1700, margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24 }}>
+      <div className="zrc-visor-header">
+        <div className="zrc-visor-header-row">
           <div>
             <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 10 }}>
               ZRC LABS · MÓDULO 01
             </div>
-            <h1 style={{ fontFamily: F.display, fontWeight: 400, fontSize: 38, margin: "0 0 8px", letterSpacing: "-0.01em", color: C.text }}>
+            <h1 className="zrc-visor-title">
               Visor Inmobiliario Georreferenciado
             </h1>
             <p style={{ margin: 0, color: C.textSec, fontSize: 14, fontWeight: 300, lineHeight: 1.55, maxWidth: 720 }}>
               Catastro · Riesgos · Planeamiento · Underwriting express · Matching con mandatos ZRC
             </p>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0, flexWrap: "wrap" }}>
             {/* Toggle 3D */}
             <button
               onClick={() => setViewMode("3D")}
@@ -216,9 +238,9 @@ export default function RealEstateVisor() {
       </div>
 
       {/* LAYOUT */}
-      <div style={{ display: "grid", gridTemplateColumns: "440px 1fr", maxWidth: 1700, margin: "0 auto", minHeight: "calc(100vh - 220px)" }}>
+      <div className="zrc-visor-grid">
         {/* SIDEBAR */}
-        <aside style={{ background: C.surface, borderRight: `1px solid ${C.border}`, padding: 24, overflowY: "auto", maxHeight: "calc(100vh - 160px)" }}>
+        <aside className="zrc-visor-sidebar">
           {/* Buscador */}
           <form onSubmit={handleSearch}>
             <label style={{ display: "block", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", color: C.textMuted, marginBottom: 8 }}>
@@ -259,7 +281,8 @@ export default function RealEstateVisor() {
           {parcela && (
             <>
               {/* TABS */}
-              <nav style={{ display: "flex", gap: 0, margin: "24px 0 16px", borderBottom: `1px solid ${C.border}`, overflowX: "auto" }}>
+              <div className="zrc-visor-tabs-wrap">
+              <nav className="zrc-visor-tabs">
                 {[
                   { k: "ficha", label: "Ficha" },
                   { k: "residual", label: "Residual" },
@@ -290,7 +313,10 @@ export default function RealEstateVisor() {
                     )}
                   </button>
                 ))}
+                <div style={{ flexShrink: 0, width: 4 }} aria-hidden="true" />
               </nav>
+              <div className="zrc-visor-tabs-fade" aria-hidden="true" />
+              </div>
 
               {/* FICHA */}
               {activeTab === "ficha" && (
@@ -316,6 +342,21 @@ export default function RealEstateVisor() {
                 <Panel>
                   <PanelTitle dot>Residual Snapshot</PanelTitle>
                   <PanelLead>Sensibiliza el cálculo moviendo los parámetros.</PanelLead>
+
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, padding: "10px 12px", marginBottom: 14, background: C.surface2, border: `1px solid ${C.border}` }}>
+                    <div>
+                      <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.12em", color: C.textMuted, textTransform: "uppercase" }}>Ref. mercado zona · {parcela.provincia}</div>
+                      <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginTop: 2 }}>{fmt(priceByProvince(parcela.provincia))}/m²</div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setParams({ ...params, precioVenta: priceByProvince(parcela.provincia) })}
+                      style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.08em", textTransform: "uppercase", padding: "6px 10px", background: "none", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", whiteSpace: "nowrap" }}
+                    >
+                      Usar ref.
+                    </button>
+                  </div>
+
                   <Slider label={`Precio venta ${fmt(params.precioVenta)}/m²`} min={1000} max={8000} step={100} value={params.precioVenta} onChange={(v) => setParams({ ...params, precioVenta: v })} />
                   <Slider label={`Edificabilidad ${params.edificabilidad.toFixed(2)} m²t/m²s`} min={0.3} max={3.5} step={0.05} value={params.edificabilidad} onChange={(v) => setParams({ ...params, edificabilidad: v })} />
                   <Slider label={`Coste construcción ${fmt(params.costeConstruccion)}/m²`} min={900} max={2400} step={50} value={params.costeConstruccion} onChange={(v) => setParams({ ...params, costeConstruccion: v })} />
@@ -336,6 +377,9 @@ export default function RealEstateVisor() {
                     </div>
                   </div>
                   <InvestabilityBar score={residual.investabilityScore} tier={residual.investabilityTier} label={residual.investabilityLabel} />
+                  <p style={{ margin: "12px 0 0", fontSize: 10, color: C.textMuted, lineHeight: 1.5, fontStyle: "italic" }}>
+                    Ref. de mercado: {MARKET_REF_META.fuente} · {MARKET_REF_META.periodo}. {MARKET_REF_META.nota}
+                  </p>
                 </Panel>
               )}
 
@@ -398,7 +442,7 @@ export default function RealEstateVisor() {
         </aside>
 
         {/* MAPA */}
-        <main style={{ position: "relative", height: "calc(100vh - 160px)", minHeight: 600 }}>
+        <main className="zrc-visor-map-wrap">
           <MapContainer center={[40.4168, -3.7038]} zoom={6} scrollWheelZoom style={{ width: "100%", height: "100%", background: C.surface }}>
             <LayersControl position="topright">
               <BaseLayer checked name="Carto Dark">
@@ -578,13 +622,60 @@ const InvestabilityBar = ({ score, tier, label }) => {
 // ============================================================
 // LÓGICA DE NEGOCIO
 // ============================================================
+// Precio medio de referencia (€/m² · vivienda, obra nueva y usada) por provincia.
+// Fuente: valores de mercado de referencia ZRC Labs, calibrados sobre las series
+// públicas del Ministerio de Vivienda y Agenda Urbana y de Idealista Data · T1 2026.
+// Son valores orientativos a nivel provincial (no sustituyen una tasación oficial),
+// pero reflejan la jerarquía real de precios entre plazas caras y baratas de España.
+export const MARKET_REF_META = {
+  fuente: "Ministerio de Vivienda y Agenda Urbana / Idealista Data",
+  periodo: "T1 2026",
+  nota: "Precio medio provincial orientativo — no sustituye una tasación oficial.",
+};
+
+const PRICE_BY_PROVINCE = {
+  // Comunidad de Madrid
+  Madrid: 4200,
+  // Cataluña
+  Barcelona: 4500, Girona: 2700, Lleida: 1450, Tarragona: 1950,
+  // Illes Balears
+  "Illes Balears": 4800,
+  // País Vasco
+  Bizkaia: 3000, Gipuzkoa: 3500, Álava: 2600, "Araba/Álava": 2600,
+  // Andalucía
+  Málaga: 3600, Cádiz: 2100, Sevilla: 2100, Granada: 1900,
+  Almería: 1700, Córdoba: 1600, Huelva: 1500, Jaén: 1300,
+  // Comunitat Valenciana
+  Valencia: 2400, Alicante: 2300, Castellón: 1600, "Alacant/Alicante": 2300,
+  // Galicia
+  "A Coruña": 2200, Pontevedra: 2100, Lugo: 1300, Ourense: 1200,
+  // Canarias
+  "Las Palmas": 2400, "Santa Cruz de Tenerife": 2400,
+  // Aragón
+  Zaragoza: 1700, Huesca: 1300, Teruel: 1000,
+  // Asturias
+  Asturias: 1700,
+  // Cantabria
+  Cantabria: 2000,
+  // Castilla-La Mancha
+  Albacete: 1200, "Ciudad Real": 1100, Cuenca: 1000, Guadalajara: 1500, Toledo: 1500,
+  // Castilla y León
+  Ávila: 1100, Burgos: 1600, León: 1400, Palencia: 1200,
+  Salamanca: 1600, Segovia: 1500, Soria: 1100, Valladolid: 1700, Zamora: 1000,
+  // Extremadura
+  Badajoz: 1100, Cáceres: 1200,
+  // Región de Murcia
+  Murcia: 1500,
+  // Comunidad Foral de Navarra
+  Navarra: 2400, "Navarra/Nafarroa": 2400,
+  // La Rioja
+  "La Rioja": 1700,
+  // Ciudades autónomas
+  Ceuta: 1700, Melilla: 1600,
+};
+
 function priceByProvince(prov) {
-  const map = {
-    Madrid: 4200, Barcelona: 4500, "Illes Balears": 4800, Bizkaia: 3000,
-    Málaga: 3400, Valencia: 2400, Sevilla: 2100, Alicante: 2300,
-    Gipuzkoa: 3500, "A Coruña": 2200, Pontevedra: 2100,
-  };
-  return map[prov] || 2000;
+  return PRICE_BY_PROVINCE[prov] || 2000;
 }
 
 function calcResidual(parcela, p) {

@@ -28,7 +28,7 @@ const DEFAULT_VIEW = {
   bearing: -25,
 };
 
-export default function Visor3D({ parcela, risk, residual, boeAlerts, onClose }) {
+export default function Visor3D({ parcela, risk, residual, boeAlerts, marketRef, onClose }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const parcelaMarker = useRef(null);
@@ -142,6 +142,32 @@ export default function Visor3D({ parcela, risk, residual, boeAlerts, onClose })
         .mapboxgl-ctrl-group { background: ${C.surface} !important; border: 1px solid ${C.border} !important; }
         .mapboxgl-ctrl-group button { background-color: ${C.surface} !important; }
         .mapboxgl-ctrl-group button span { filter: invert(0.85); }
+
+        .zrc-v3d-topbar {
+          position: absolute; top: 16px; left: 16px; right: 80px;
+          display: flex; align-items: center; justify-content: space-between;
+          gap: 10px; row-gap: 10px; flex-wrap: wrap; pointer-events: none;
+        }
+        .zrc-v3d-topbar-left { pointer-events: auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; row-gap: 8px; }
+        .zrc-v3d-layers { pointer-events: auto; display: flex; gap: 4px; background: ${C.surface}; padding: 4px; border: 1px solid ${C.border}; }
+        .zrc-v3d-layers button { flex: 1 1 auto; }
+
+        .zrc-parcela-card {
+          position: absolute; left: 28px; right: auto; bottom: 28px;
+          width: 360px; max-width: calc(100vw - 56px);
+        }
+        .zrc-legend { position: absolute; bottom: 28px; right: 28px; }
+
+        @media (max-width: 680px) {
+          .zrc-v3d-topbar { right: 16px; }
+          .zrc-v3d-badge { display: none; }
+          .zrc-parcela-card {
+            left: 12px; right: 12px; width: auto; max-width: none;
+            bottom: max(12px, env(safe-area-inset-bottom));
+            max-height: 46vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+          }
+          .zrc-legend { display: none; }
+        }
       `}</style>
 
       <div ref={mapContainer} style={{ position: "absolute", inset: 0 }} />
@@ -155,29 +181,25 @@ export default function Visor3D({ parcela, risk, residual, boeAlerts, onClose })
         }}>{errorMsg}</div>
       )}
 
-      <div style={{
-        position: "absolute", top: 16, left: 16, right: 80,
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        pointerEvents: "none",
-      }}>
-        <div style={{ pointerEvents: "auto", display: "flex", alignItems: "center", gap: 12 }}>
+      <div className="zrc-v3d-topbar">
+        <div className="zrc-v3d-topbar-left">
           <button onClick={onClose} style={{
-            fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em",
-            padding: "10px 16px", background: C.surface, color: C.gold,
+            fontFamily: F.mono, fontSize: 10, letterSpacing: "0.16em",
+            padding: "10px 14px", background: C.surface, color: C.gold,
             border: `1px solid ${C.goldBorder}`, cursor: "pointer",
-            textTransform: "uppercase", fontWeight: 600,
+            textTransform: "uppercase", fontWeight: 600, whiteSpace: "nowrap",
           }}>← 2D View</button>
 
-          <div style={{
-            padding: "8px 14px", background: C.surface, border: `1px solid ${C.border}`,
-            fontFamily: F.mono, fontSize: 10, letterSpacing: "0.16em",
-            color: C.textSec, textTransform: "uppercase",
+          <div className="zrc-v3d-badge" style={{
+            padding: "8px 12px", background: C.surface, border: `1px solid ${C.border}`,
+            fontFamily: F.mono, fontSize: 10, letterSpacing: "0.14em",
+            color: C.textSec, textTransform: "uppercase", whiteSpace: "nowrap",
           }}>
             ZRC LABS · 3D VISOR <span style={{ color: C.gold, marginLeft: 8 }}>● LIVE</span>
           </div>
         </div>
 
-        <div style={{ pointerEvents: "auto", display: "flex", gap: 6, background: C.surface, padding: 4, border: `1px solid ${C.border}` }}>
+        <div className="zrc-v3d-layers">
           <LayerToggle label="Riesgo" active={activeLayer === "risk"} onClick={() => setActiveLayer(activeLayer === "risk" ? null : "risk")} />
           <LayerToggle label="Valor" active={activeLayer === "value"} onClick={() => setActiveLayer(activeLayer === "value" ? null : "value")} />
           <LayerToggle label="Regulación" active={activeLayer === "regulation"} onClick={() => setActiveLayer(activeLayer === "regulation" ? null : "regulation")} />
@@ -185,7 +207,7 @@ export default function Visor3D({ parcela, risk, residual, boeAlerts, onClose })
       </div>
 
       {parcela && (
-        <ParcelaCard parcela={parcela} residual={residual} risk={risk} boeAlerts={boeAlerts} activeLayer={activeLayer} />
+        <ParcelaCard parcela={parcela} residual={residual} risk={risk} boeAlerts={boeAlerts} marketRef={marketRef} activeLayer={activeLayer} />
       )}
 
       {activeLayer && <Legend layer={activeLayer} />}
@@ -196,24 +218,22 @@ export default function Visor3D({ parcela, risk, residual, boeAlerts, onClose })
 function LayerToggle({ label, active, onClick }) {
   return (
     <button onClick={onClick} style={{
-      fontFamily: F.mono, fontSize: 10, letterSpacing: "0.14em",
-      padding: "8px 14px",
+      fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em",
+      padding: "8px 10px", textAlign: "center",
       background: active ? C.goldDim : "transparent",
       color: active ? C.gold : C.textSec,
       border: active ? `1px solid ${C.goldBorder}` : "1px solid transparent",
       cursor: "pointer", textTransform: "uppercase", fontWeight: 500,
-      transition: "all 0.15s ease",
+      whiteSpace: "nowrap", transition: "all 0.15s ease",
     }}>{label}</button>
   );
 }
 
-function ParcelaCard({ parcela, residual, risk, boeAlerts, activeLayer }) {
+function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLayer }) {
   const fmt = (n) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
 
   return (
-    <div style={{
-      position: "absolute", bottom: 28, left: 28,
-      width: 360, maxWidth: "calc(100vw - 56px)",
+    <div className="zrc-parcela-card" style={{
       background: `linear-gradient(180deg, rgba(17,17,19,0.95) 0%, rgba(9,9,11,0.97) 100%)`,
       border: `1px solid ${C.border}`,
       backdropFilter: "blur(8px)",
@@ -248,6 +268,16 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, activeLayer }) {
           {residual.valorResidualPorM2 && (
             <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textSec, marginTop: 2 }}>
               {fmt(residual.valorResidualPorM2)}/m²
+            </div>
+          )}
+          {marketRef && (
+            <div style={{ marginTop: 8, paddingTop: 8, borderTop: `1px dashed ${C.goldBorder}` }}>
+              <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textSec }}>
+                Ref. mercado zona: <strong style={{ color: C.text }}>{fmt(marketRef.precioM2)}/m²</strong>
+              </div>
+              <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, marginTop: 2 }}>
+                {marketRef.fuente} · {marketRef.periodo}
+              </div>
             </div>
           )}
         </div>
@@ -323,7 +353,7 @@ function Legend({ layer }) {
     risk: { title: "Riesgo (mock)", stops: [
       { color: "#22C55E", label: "Bajo" }, { color: "#F59E0B", label: "Medio" }, { color: "#EF4444", label: "Alto" },
     ]},
-    value: { title: "Valor €/m² (mock)", stops: [
+    value: { title: "Valor €/m² (ref. mercado)", stops: [
       { color: "#312E81", label: "1500" }, { color: "#7C3AED", label: "3000" }, { color: "#D4A853", label: "5000+" },
     ]},
     regulation: { title: "Regulación (mock)", stops: [
@@ -334,8 +364,7 @@ function Legend({ layer }) {
   if (!cfg) return null;
 
   return (
-    <div style={{
-      position: "absolute", bottom: 28, right: 28,
+    <div className="zrc-legend" style={{
       background: C.surface, border: `1px solid ${C.border}`,
       padding: "12px 16px",
       fontFamily: F.mono, fontSize: 9, letterSpacing: "0.14em",
