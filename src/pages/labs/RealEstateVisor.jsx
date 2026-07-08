@@ -674,8 +674,36 @@ const PRICE_BY_PROVINCE = {
   Ceuta: 1700, Melilla: 1600,
 };
 
+// El Catastro devuelve la provincia en mayúsculas (p.ej. "ALICANTE") y a veces en
+// orden/formato distinto al de esta tabla, así que la búsqueda se normaliza en
+// vez de comparar el string tal cual (si no, todo caía siempre en el fallback 2000).
+function normalizeProv(s) {
+  return (s || "")
+    .toString()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase()
+    .replace(/[^A-Z]+/g, " ")
+    .trim();
+}
+
+const PROVINCE_ALIASES = {
+  "CORUÑA A": "A Coruña", "CORUÑA": "A Coruña",
+  "RIOJA LA": "La Rioja", "RIOJA": "La Rioja",
+  "BALEARS ILLES": "Illes Balears", "BALEARES": "Illes Balears",
+  "ALICANTE ALACANT": "Alicante", "ALACANT ALICANTE": "Alicante", "ALACANT": "Alicante",
+  "CASTELLON CASTELLO": "Castellón", "CASTELLO": "Castellón",
+  "PALMAS LAS": "Las Palmas",
+  "ARABA ALAVA": "Álava",
+};
+
+const PRICE_LOOKUP = {};
+for (const [k, v] of Object.entries(PRICE_BY_PROVINCE)) PRICE_LOOKUP[normalizeProv(k)] = v;
+for (const [alias, target] of Object.entries(PROVINCE_ALIASES)) {
+  if (PRICE_BY_PROVINCE[target] != null) PRICE_LOOKUP[normalizeProv(alias)] = PRICE_BY_PROVINCE[target];
+}
+
 function priceByProvince(prov) {
-  return PRICE_BY_PROVINCE[prov] || 2000;
+  return PRICE_LOOKUP[normalizeProv(prov)] || 2000;
 }
 
 function calcResidual(parcela, p) {
