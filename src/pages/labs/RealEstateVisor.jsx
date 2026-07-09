@@ -4,10 +4,11 @@
 // Sin dependencias adicionales más allá de leaflet + react-leaflet (ya instaladas)
 // + mapbox-gl para vista 3D opcional (lazy-loaded)
 
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { MapContainer, TileLayer, WMSTileLayer, Marker, Popup, Circle, useMap, LayersControl } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { useSubscription } from "../../hooks/useSubscription";
 // @react-pdf/renderer (~700kb) solo se carga bajo demanda al generar un
 // informe pagado, para no engordar el bundle principal del sitio.
 
@@ -56,6 +57,11 @@ const CATASTRO_COORD = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacion
 const STRIPE_LINKS = {
   teaser: "https://buy.stripe.com/3cIbJ29Tegbi4gobmW2Nq08",
   informe: "https://buy.stripe.com/14A3cw7L6cZ6cMU0Ii2Nq09",
+  // Suscripciones (recurrentes) — igual que Intelligence/Institutional en
+  // PricingPage.jsx, sin redirect especial: el webhook actualiza el tier en
+  // Supabase y el Visor lo recoge solo con /api/subscription?email=.
+  standard: "https://buy.stripe.com/REPLACE_WITH_STANDARD_LINK",
+  earlybird: "https://buy.stripe.com/REPLACE_WITH_EARLYBIRD_LINK",
 };
 
 function FlyTo({ position, zoom = 18 }) {
@@ -65,7 +71,11 @@ function FlyTo({ position, zoom = 18 }) {
 }
 
 // ============================================================
-export default function RealEstateVisor({ pendingReport, onReportHandled } = {}) {
+export default function RealEstateVisor({ pendingReport, onReportHandled, useAuth } = {}) {
+  const auth = useAuth?.();
+  const { tier } = useSubscription(auth?.user?.email);
+  const hasUnlimitedSearch = tier === "visor_standard" || tier === "visor_earlybird" || tier === "institutional";
+  const rcInputRef = useRef(null);
   const [rc, setRc] = useState("");
   const [loading, setLoading] = useState(false);
   const [searchCount, setSearchCount] = useState(0);
@@ -97,7 +107,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled } = {})
       setError("Introduce una referencia catastral válida (14 o 20 caracteres).");
       return null;
     }
-    if (!skipGate && searchCount >= 3) {
+    if (!skipGate && !hasUnlimitedSearch && searchCount >= 3) {
       setShowLeadModal(true);
       return null;
     }
@@ -233,6 +243,20 @@ export default function RealEstateVisor({ pendingReport, onReportHandled } = {})
     window.location.href = url;
   };
 
+  // Standard/Early Bird son suscripciones de cuenta, no ligadas a una
+  // parcela — necesitan email para poder comprobar el tier luego, así que
+  // exigen login (requireAuth) igual que Intelligence/Institutional.
+  const goToSubscription = (type) => {
+    const link = STRIPE_LINKS[type];
+    const open = () => {
+      const email = auth?.user?.email;
+      const url = email ? `${link}?prefilled_email=${encodeURIComponent(email)}` : link;
+      window.location.href = url;
+    };
+    if (auth?.requireAuth) auth.requireAuth(open);
+    else open();
+  };
+
   const fmt = (n) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
 
   // ─── Modo 3D — render alternativo ───
@@ -341,6 +365,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled } = {})
               Referencia catastral
             </label>
             <input
+              ref={rcInputRef}
               type="text"
               value={rc}
               onChange={(e) => setRc(e.target.value.toUpperCase().replace(/\s/g, ""))}
@@ -528,12 +553,23 @@ export default function RealEstateVisor({ pendingReport, onReportHandled } = {})
 
           {!parcela && !error && (
             <div style={{ marginTop: 24, padding: 18, background: C.surface2, border: `1px solid ${C.border}`, borderLeft: `3px solid ${C.gold}` }}>
-              <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginBottom: 10 }}>Más profundidad</div>
-              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", fontSize: 12, color: C.textSec, lineHeight: 1.7 }}>
-                <li><span style={{ color: C.gold, fontWeight: 600 }}>Standard</span> · 89€/mes — ilimitado + comparables</li>
-                <li><span style={{ color: C.gold, fontWeight: 600 }}>Análisis Pro</span> · 30€/informe — riesgos certificados</li>
-                <li><span style={{ color: C.gold, fontWeight: 600 }}>Early Bird</span> · 950€/año — pre-mercado + matching</li>
-              </ul>
+              <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginBottom: 12 }}>Más profundidad</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                <PlanRow
+                  name="Standard" price="89€/mes" desc="Búsquedas ilimitadas · comparables (próximamente)"
+                  active={tier === "visor_standard"}
+                  onClick={() => goToSubscription("standard")}
+                />
+                <PlanRow
+                  name="Análisis Pro" price="30€/informe" desc="Riesgos certificados — busca una parcela primero"
+                  onClick={() => rcInputRef.current?.focus()}
+                />
+                <PlanRow
+                  name="Early Bird" price="950€/año" desc="Todo Standard · acceso pre-mercado (próximamente)"
+                  active={tier === "visor_earlybird"}
+                  onClick={() => goToSubscription("earlybird")}
+                />
+              </div>
             </div>
           )}
         </aside>
@@ -650,6 +686,31 @@ const ReportStatusBanner = ({ status, onDismiss }) => {
     </div>
   );
 };
+
+const PlanRow = ({ name, price, desc, active, onClick }) => (
+  <button
+    onClick={active ? undefined : onClick}
+    style={{
+      display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12,
+      width: "100%", textAlign: "left", background: "none",
+      border: `1px solid ${active ? C.goldBorder : C.border}`,
+      padding: "10px 12px", cursor: active ? "default" : "pointer",
+    }}
+  >
+    <div>
+      <div style={{ fontSize: 12, color: C.textSec }}>
+        <span style={{ color: C.gold, fontWeight: 600 }}>{name}</span> · {price}
+      </div>
+      <div style={{ fontSize: 11, color: C.textMuted, marginTop: 2 }}>{desc}</div>
+    </div>
+    <span style={{
+      flexShrink: 0, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.08em", textTransform: "uppercase",
+      padding: "4px 8px", color: active ? C.green : C.gold, border: `1px solid ${active ? C.green : C.goldBorder}`,
+    }}>
+      {active ? "Activo" : "Elegir"}
+    </span>
+  </button>
+);
 
 const GhostBtn = ({ children, onClick, disabled, emphasis }) => (
   <button

@@ -1294,6 +1294,7 @@ const Intelligence = ({ lang }) => {
           <RealEstateVisor
             pendingReport={pendingVisorReport}
             onReportHandled={() => setPendingVisorReport(null)}
+            useAuth={useAuth}
           />
         </div>
       )}
