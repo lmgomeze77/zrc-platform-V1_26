@@ -12,10 +12,10 @@ const PRICE_TIERS = {
   "price_institutional_monthly": "institutional",
   // Institutional Annual  (price_XXXX)
   "price_institutional_annual": "institutional",
-  // Visor Inmobiliario · Standard (89€/mes)   (price_XXXX)
-  "price_visor_standard_monthly": "visor_standard",
-  // Visor Inmobiliario · Early Bird (950€/año) (price_XXXX)
-  "price_visor_earlybird_annual": "visor_earlybird",
+  // Visor Inmobiliario · Standard (89€/mes)
+  "price_1TrGJVJXE9tayTtoA0b4UWUB": "visor_standard",
+  // Visor Inmobiliario · Early Bird (950€/año)
+  "price_1TrGd9JXE9tayTto0fZpTLDy": "visor_earlybird",
 };
 
 export default {

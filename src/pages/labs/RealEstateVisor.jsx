@@ -60,8 +60,8 @@ const STRIPE_LINKS = {
   // Suscripciones (recurrentes) — igual que Intelligence/Institutional en
   // PricingPage.jsx, sin redirect especial: el webhook actualiza el tier en
   // Supabase y el Visor lo recoge solo con /api/subscription?email=.
-  standard: "https://buy.stripe.com/REPLACE_WITH_STANDARD_LINK",
-  earlybird: "https://buy.stripe.com/REPLACE_WITH_EARLYBIRD_LINK",
+  standard: "https://buy.stripe.com/00w3cwe9uf7e8wE0Ii2Nq0a",
+  earlybird: "https://buy.stripe.com/6oU7sM4yU1go008cr02Nq0b",
 };
 
 function FlyTo({ position, zoom = 18 }) {
