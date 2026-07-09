@@ -12,6 +12,10 @@ const PRICE_TIERS = {
   "price_institutional_monthly": "institutional",
   // Institutional Annual  (price_XXXX)
   "price_institutional_annual": "institutional",
+  // Visor Inmobiliario · Standard (89€/mes)   (price_XXXX)
+  "price_visor_standard_monthly": "visor_standard",
+  // Visor Inmobiliario · Early Bird (950€/año) (price_XXXX)
+  "price_visor_earlybird_annual": "visor_earlybird",
 };
 
 export default {
@@ -110,8 +114,11 @@ async function handleStripeWebhook(request, env) {
         const email =
           session.customer_email ||
           session.customer_details?.email;
-        const priceId =
-          session.line_items?.data?.[0]?.price?.id || "";
+        // El evento del webhook NO trae line_items expandido por defecto,
+        // así que hay que volver a pedirle la sesión a la API de Stripe con
+        // el price ya resuelto — si no, priceId siempre viene vacío y
+        // getTierFromPrice() cae siempre en el tier por defecto.
+        const priceId = await fetchSessionPriceId(env, session.id);
         const tier = getTierFromPrice(priceId);
         if (email) {
           await upsertSubscription(env, {
@@ -332,6 +339,25 @@ async function handleLead(request, env) {
 // ============================================================
 function getTierFromPrice(priceId) {
   return PRICE_TIERS[priceId] || "intelligence";
+}
+
+// Los Checkout Sessions no incluyen line_items en el payload del webhook
+// salvo que se pidan expandidos, así que hay que volver a consultar la
+// sesión a la API de Stripe (requiere STRIPE_SECRET_KEY).
+async function fetchSessionPriceId(env, sessionId) {
+  if (!env.STRIPE_SECRET_KEY || !sessionId) return "";
+  try {
+    const resp = await fetch(
+      `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}?expand[]=line_items`,
+      { headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}` } }
+    );
+    if (!resp.ok) return "";
+    const session = await resp.json();
+    return session.line_items?.data?.[0]?.price?.id || "";
+  } catch (err) {
+    console.error("fetchSessionPriceId error:", err);
+    return "";
+  }
 }
 
 async function verifyStripeSignature(body, sig, secret) {
