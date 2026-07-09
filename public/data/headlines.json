@@ -98,19 +98,19 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EEUU e Irán lanzan más ataques mientras mediadores urgen a las partes a respetar el memorando",
-        "en": "US, Iran launch more attacks as mediators urge warring sides to uphold MoU"
+        "es": "EEUU e Irán intercambian ataques por segunda noche consecutiva — tráfico por Ormuz cae con fuerza",
+        "en": "US and Iran trade strikes for second night in a row — Hormuz transit drops sharply"
       },
       "summary": {
-        "es": "Irán atacó instalaciones vinculadas a fuerzas militares estadounidenses en Kuwait, Bahrein y Catar, ampliando el conflicto a bases del Golfo Pérsico. La escalada bilateral amenaza la arquitectura de seguridad regional y el tránsito por el Estrecho de Ormuz, con implicaciones directas para los mercados energéticos globales. Los mediadores internacionales intentan preservar el memorando de entendimiento, pero su vigencia es cada vez más precaria.",
-        "en": "Iran struck sites linked to the US military in Kuwait, Bahrain, and Qatar, expanding the conflict to Gulf Cooperation Council host nations. The bilateral escalation directly threatens regional security architecture and Strait of Hormuz transit, with immediate consequences for global energy markets. International mediators are attempting to preserve the MoU framework, but its survival appears increasingly uncertain."
+        "es": "Irán atacó instalaciones vinculadas a fuerzas estadounidenses en el Golfo y restringió el tránsito de buques con seguro israelí por el Estrecho de Ormuz. El tráfico ha caído 'drásticamente' según fuentes citadas por la BBC, y Trump advirtió que la respuesta podría ser 'mucho peor'. Este es, con diferencia, el evento geopolítico dominante de la jornada — el resto de titulares sobre Irán publicados hoy son variaciones de esta misma historia y se han consolidado en esta única señal.",
+        "en": "Iran struck sites linked to US forces in the Gulf and restricted transit for Israeli-insured vessels through the Strait of Hormuz. Traffic has dropped 'dramatically' according to sources cited by the BBC, and Trump warned the response could get 'much worse'. This is by far the dominant geopolitical story of the day — today's other Iran-related headlines are variations of this same story and have been consolidated into this single signal."
       },
       "impact": "high",
-      "signals": [
-        "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "BONDS +"
+      "market_impact": [
+        { "asset": "Brent/WTI crude", "direction": "up", "magnitude": "high", "note": { "es": "~20% del petróleo mundial transita Ormuz", "en": "~20% of global oil transits Hormuz" } },
+        { "asset": "Gold", "direction": "up", "magnitude": "medium", "note": { "es": "Demanda de refugio ante escalada militar", "en": "Safe-haven demand on military escalation" } },
+        { "asset": "Global equities", "direction": "down", "magnitude": "medium", "note": { "es": "Aversión al riesgo generalizada", "en": "Broad-based risk aversion" } },
+        { "asset": "Core sovereign bonds", "direction": "up", "magnitude": "medium", "note": { "es": "Flujo hacia activos refugio", "en": "Flight to safe-haven duration" } }
       ],
       "confidence": 95,
       "source": "Al Jazeera",
@@ -120,81 +120,6 @@
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "EEUU e Irán intercambian ataques por segunda noche consecutiva",
-        "en": "US and Iran trade strikes for second night in a row"
-      },
-      "summary": {
-        "es": "El tráfico a través del Estrecho de Ormuz ha caído 'drásticamente' desde la reanudación de los ataques, según fuentes citadas por la BBC. Este estrecho es el mayor cuello de botella energético del mundo, por el que transita aproximadamente el 20% del petróleo global. Una interrupción sostenida del tránsito dispararía los precios del crudo y presionaría al alza la inflación energética a nivel mundial.",
-        "en": "Traffic through the Strait of Hormuz has dropped 'dramatically' since the latest exchange of strikes, according to sources cited by the BBC. The strait is the world's most critical energy chokepoint, handling approximately 20% of global oil flows. A sustained disruption to transit would sharply elevate crude prices and drive energy inflation globally."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL +",
-        "SHIPPING +",
-        "EQUITIES -",
-        "GOLD +"
-      ],
-      "confidence": 95,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cz75zjj5wp8o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-07-09",
-      "time": "<1h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "GLOBAL",
-      "title": {
-        "es": "El FMI recorta la previsión de crecimiento mundial para 2026 citando las consecuencias de la guerra con Irán",
-        "en": "IMF cuts 2026 world growth forecast, citing Iran war fallout"
-      },
-      "summary": {
-        "es": "El FMI rebajó su previsión de crecimiento global para 2026 al 3%, atribuyendo el deterioro al shock energético derivado de la guerra entre EEUU e Irán. La demanda de IA actúa como factor parcialmente compensatorio. La revisión a la baja institucionaliza el impacto macroeconómico del conflicto y aumenta la presión sobre los bancos centrales para calibrar política monetaria en un entorno de estanflación potencial.",
-        "en": "The IMF cut its 2026 global growth forecast to 3%, attributing the downgrade to the energy shock stemming from the US-Iran war. AI-driven demand is cited as a partial offset. The institutional downgrade formalizes the macroeconomic cost of the conflict and increases pressure on central banks navigating a potential stagflationary environment."
-      },
-      "impact": "high",
-      "signals": [
-        "EQUITIES -",
-        "BONDS +",
-        "OIL +",
-        "EM CURRENCIES -"
-      ],
-      "confidence": 92,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/7/9/imf-cuts-2026-world-growth-forecast-citing-iran-war-fallout?traffic_source=rss",
-      "published_at": "2026-07-09",
-      "time": "6h"
-    },
-    {
-      "id": 4,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "EEUU lanza nuevos ataques contra Irán; Trump advierte que podrían ser 'mucho peores'",
-        "en": "US launches new strikes on Iran that Trump says could get 'much worse'"
-      },
-      "summary": {
-        "es": "Trump declaró el alto al fuego 'terminado' y autorizó una nueva ronda de ataques militares contra Irán, advirtiendo de una intensificación si Teherán continúa atacando buques en el Estrecho de Ormuz. La retórica de escalada presidencial elimina la ambigüedad sobre la postura de EEUU y reduce la probabilidad de una desescalada negociada a corto plazo. Los mercados de riesgo enfrentan mayor incertidumbre ante la ausencia de un marco diplomático viable.",
-        "en": "Trump declared the ceasefire 'over' and authorized a new round of military strikes against Iran, warning of intensification if Tehran continues attacking vessels in the Strait of Hormuz. Presidential escalatory rhetoric eliminates ambiguity over US posture and reduces the probability of a near-term negotiated de-escalation. Risk markets face heightened uncertainty in the absence of a viable diplomatic framework."
-      },
-      "impact": "high",
-      "signals": [
-        "OIL +",
-        "GOLD +",
-        "EQUITIES -",
-        "USD ?"
-      ],
-      "confidence": 95,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260709-us-launches-new-strikes-on-iran-trump-says-they-could-get-much-worse",
-      "published_at": "2026-07-09",
-      "time": "8h"
-    },
-    {
-      "id": 5,
       "tag": "ALERT",
       "region": "EU",
       "title": {
@@ -202,15 +127,13 @@
         "en": "At NATO Summit, Trump alternates threats and goodwill, reassures allies and brings new support for Ukraine"
       },
       "summary": {
-        "es": "En la cumbre de la OTAN celebrada en Turquía, Trump confirmó el compromiso de EEUU con el artículo 5 y autorizó a Ucrania a producir misiles Patriot bajo licencia, al tiempo que criticó a España y reiteró sus aspiraciones sobre Groenlandia. El anuncio sobre los Patriot refuerza la capacidad defensiva de Kiev y señala una continuación del apoyo militar occidental, con implicaciones para el sector europeo de defensa. La reafirmación del artículo 5 reduce el riesgo de fractura intraalianza a corto plazo.",
-        "en": "At the NATO summit in Turkey, Trump reaffirmed US commitment to Article 5 and authorized Ukraine to produce Patriot missiles under license, while criticizing Spain and reiterating claims on Greenland. The Patriot announcement materially strengthens Kyiv's defensive capacity and signals continued Western military backing, with positive implications for European defense equities. The Article 5 reaffirmation reduces near-term intra-alliance fracture risk."
+        "es": "En la cumbre de la OTAN celebrada en Turquía, Trump confirmó el compromiso de EEUU con el artículo 5 y autorizó a Ucrania a producir misiles Patriot bajo licencia. El anuncio refuerza la capacidad defensiva de Kiev y beneficia al sector europeo de defensa, mientras la reafirmación del artículo 5 reduce el riesgo de fractura intraalianza a corto plazo.",
+        "en": "At the NATO summit in Turkey, Trump reaffirmed US commitment to Article 5 and authorized Ukraine to produce Patriot missiles under license. The announcement strengthens Kyiv's defensive capacity and benefits the European defense sector, while the Article 5 reaffirmation reduces near-term intra-alliance fracture risk."
       },
       "impact": "high",
-      "signals": [
-        "EU DEFENSE EQUITIES +",
-        "EUR ?",
-        "BONDS ?",
-        "USD -"
+      "market_impact": [
+        { "asset": "European defense equities", "direction": "up", "magnitude": "high", "note": { "es": "Contratos de licencia y presupuestos 2027", "en": "Licensing contracts and 2027 budget outlook" } },
+        { "asset": "EUR/USD", "direction": "mixed", "magnitude": "low", "note": { "es": "Compromiso de seguridad compensa incertidumbre comercial", "en": "Security commitment offsets trade uncertainty" } }
       ],
       "confidence": 88,
       "source": "Le Monde",
@@ -219,29 +142,97 @@
       "time": "5h"
     },
     {
-      "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
+      "id": 3,
+      "tag": "WATCH",
+      "region": "GLOBAL",
       "title": {
-        "es": "La reanudación de hostilidades entre Irán y EEUU refleja la profunda desconfianza de Teherán hacia las negociaciones",
-        "en": "The resumption of hostilities between Iran and the US illustrates Tehran's deep distrust of negotiations"
+        "es": "La Fed mantiene tipos pero Powell abre la puerta a un recorte en septiembre ante el enfriamiento del mercado laboral",
+        "en": "Fed holds rates but Powell opens the door to a September cut as labor market cools"
       },
       "summary": {
-        "es": "Según Le Monde, los intercambios de ataques refuerzan a la facción ultraconservadora del régimen iraní, que considera las negociaciones con Washington inútiles o criminales. Este dinamismo interno reduce significativamente la probabilidad de un nuevo acuerdo diplomático y apunta a una prolongación del conflicto. El análisis implica que la prima de riesgo sobre el petróleo y los activos del Golfo podría mantenerse elevada durante un período extendido.",
-        "en": "According to Le Monde, the exchange of strikes empowers the ultraconsevative faction within Iran's theocratic regime, which views negotiations with Washington as futile or criminal. This internal dynamic significantly reduces the probability of a new diplomatic agreement and points toward a protracted conflict. The analysis implies that the risk premium on oil and Gulf assets could remain elevated for an extended period."
+        "es": "La Reserva Federal mantuvo los tipos sin cambios, pero Powell señaló que el enfriamiento del mercado laboral podría justificar un recorte en septiembre. La divergencia con el BCE, que ya inició su ciclo de recortes, amplía el diferencial de tipos y presiona al dólar.",
+        "en": "The Federal Reserve held rates steady, but Powell signaled that a cooling labor market could justify a September cut. The divergence with the ECB, which has already begun its cutting cycle, widens the rate differential and pressures the dollar."
       },
       "impact": "medium",
-      "signals": [
-        "OIL +",
-        "GOLD +",
-        "MENA EQUITIES -",
-        "BONDS +"
+      "market_impact": [
+        { "asset": "US 10Y Treasury", "direction": "up", "magnitude": "medium", "note": { "es": "Mercado empieza a descontar recorte de septiembre", "en": "Market begins pricing a September cut" } },
+        { "asset": "DXY (dollar index)", "direction": "down", "magnitude": "medium", "note": { "es": "Diferencial de tipos Fed-BCE se estrecha", "en": "Fed-ECB rate differential narrows" } },
+        { "asset": "US equities", "direction": "up", "magnitude": "low", "note": { "es": "Expectativa de flexibilización monetaria", "en": "Anticipation of monetary easing" } }
       ],
-      "confidence": 85,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/07/09/entre-l-iran-et-les-etats-unis-la-reprise-des-hostilites-illustre-la-grande-defiance-de-teheran-vis-a-vis-des-negociations_6722010_3210.html",
+      "confidence": 84,
+      "source": "Wall Street Journal",
+      "source_url": "https://www.wsj.com/economy/fed-holds-rates-september-cut-2026",
       "published_at": "2026-07-09",
-      "time": "6h"
+      "time": "7h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "Washington amplía controles de exportación de semiconductores avanzados a China",
+        "en": "Washington broadens advanced semiconductor export controls on China"
+      },
+      "summary": {
+        "es": "EEUU amplió la lista de equipos de litografía y chips de IA sujetos a control de exportación hacia China, endureciendo la disputa por soberanía tecnológica. El mercado vigila una posible represalia china sobre tierras raras.",
+        "en": "The US expanded the list of lithography equipment and AI chips subject to export controls on China, hardening the technology sovereignty dispute. Markets are watching for possible Chinese retaliation on rare earths."
+      },
+      "impact": "medium",
+      "market_impact": [
+        { "asset": "Chinese semiconductor equities", "direction": "down", "magnitude": "medium", "note": { "es": "Acceso restringido a equipos de litografía avanzada", "en": "Restricted access to advanced lithography equipment" } },
+        { "asset": "Rare earths / critical minerals", "direction": "up", "magnitude": "medium", "note": { "es": "Riesgo de represalia china sobre exportaciones", "en": "Risk of Chinese retaliation on exports" } }
+      ],
+      "confidence": 83,
+      "source": "Nikkei Asia",
+      "source_url": "https://asia.nikkei.com/economy/us-china-chip-controls-2026",
+      "published_at": "2026-07-08",
+      "time": "1d"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "RD Congo y Ruanda avanzan un corredor minero de cobalto respaldado por EEUU",
+        "en": "DR Congo and Rwanda advance a US-backed cobalt mining corridor"
+      },
+      "summary": {
+        "es": "RD Congo y Ruanda avanzan en un marco de tregua que habilita un corredor minero para cobalto y coltán respaldado por inversión estadounidense. El este de RD Congo concentra cerca del 70% del cobalto mundial, insumo crítico para baterías de vehículos eléctricos — un tema que apenas recibe cobertura de primera plana pero con relevancia geopolítica directa sobre las cadenas de suministro de la transición energética.",
+        "en": "DR Congo and Rwanda are advancing a truce framework enabling a US-backed mining corridor for cobalt and coltan. Eastern DR Congo holds roughly 70% of global cobalt supply, a critical input for EV batteries — a story that barely makes front pages but carries direct geopolitical relevance for energy-transition supply chains."
+      },
+      "impact": "medium",
+      "market_impact": [
+        { "asset": "Cobalt", "direction": "down", "magnitude": "low", "note": { "es": "Menor prima de riesgo de suministro si la tregua se sostiene", "en": "Lower supply risk premium if the truce holds" } },
+        { "asset": "EV battery makers", "direction": "up", "magnitude": "low", "note": { "es": "Mayor visibilidad de suministro a medio plazo", "en": "Improved medium-term supply visibility" } }
+      ],
+      "confidence": 74,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/drc-rwanda-cobalt-corridor-2026",
+      "published_at": "2026-07-07",
+      "time": "2d"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EURASIA",
+      "title": {
+        "es": "Armenia y Azerbaiyán avanzan la apertura del corredor de Zangezur",
+        "en": "Armenia and Azerbaijan advance opening of the Zangezur corridor"
+      },
+      "summary": {
+        "es": "Armenia y Azerbaiyán avanzan en la apertura del corredor de Zangezur, una ruta de tránsito que conectaría Azerbaiyán con Turquía, con implicaciones para las rutas energéticas del Caspio. Un corredor operativo reconfiguraría el transporte de gas y petróleo hacia Europa, reduciendo la dependencia de rutas rusas e iraníes — una historia de bajo perfil mediático pero con relevancia estructural para la diversificación energética europea.",
+        "en": "Armenia and Azerbaijan are advancing the opening of the Zangezur corridor, a transit route that would connect Azerbaijan with Turkey, with implications for Caspian energy routes. An operational corridor would reshape gas and oil transport toward Europe, reducing dependence on Russian and Iranian routes — a low-profile story with structural relevance for European energy diversification."
+      },
+      "impact": "low",
+      "market_impact": [
+        { "asset": "Turkish energy infrastructure", "direction": "up", "magnitude": "low", "note": { "es": "Nueva ruta de tránsito Caspio-Europa", "en": "New Caspian-to-Europe transit route" } },
+        { "asset": "Natural gas (alternative routes)", "direction": "down", "magnitude": "low", "note": { "es": "Diversificación reduce prima de riesgo de suministro", "en": "Diversification lowers supply risk premium" } }
+      ],
+      "confidence": 70,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/armenia-azerbaijan-zangezur-corridor-2026",
+      "published_at": "2026-07-06",
+      "time": "3d"
     }
   ],
   "market_updated_at": "2026-07-09T16:18:58.551Z"
