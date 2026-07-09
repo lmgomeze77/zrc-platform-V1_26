@@ -3,32 +3,32 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1400",
-      "change": "-0.06%",
-      "up": false
+      "value": "1.1438",
+      "change": "+0.18%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,131.19",
-      "change": "-2.58%",
-      "up": false
+      "value": "19,352.10",
+      "change": "+1.10%",
+      "up": true
     },
     {
       "symbol": "BRENT Crude",
-      "value": "79.25",
+      "value": "78.30",
       "change": "+1.38%",
       "up": true
     },
     {
       "symbol": "WTI Crude",
-      "value": "74.15",
-      "change": "+0.86%",
+      "value": "74.20",
+      "change": "+0.22%",
       "up": true
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4,074.74",
-      "change": "-0.07%",
+      "value": "4,075.08",
+      "change": "-0.06%",
       "up": false
     },
     {
@@ -39,50 +39,50 @@
     },
     {
       "symbol": "VIX",
-      "value": "16.90",
-      "change": "+4.77%",
-      "up": true
+      "value": "16.25",
+      "change": "-3.85%",
+      "up": false
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "4.58%",
-      "change": "+0.87%",
+      "value": "4.57%",
+      "change": "+0.02%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,482.71",
-      "change": "-0.28%",
-      "up": false
+      "value": "7,542.00",
+      "change": "+0.80%",
+      "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "24,897.45",
-      "change": "-2.23%",
-      "up": false
+      "value": "25,029.00",
+      "change": "+0.53%",
+      "up": true
     },
     {
       "symbol": "EUR/GBP",
       "value": "0.8520",
-      "change": "-0.18%",
+      "change": "-0.12%",
       "up": false
     },
     {
       "symbol": "DXY",
-      "value": "100.935",
+      "value": "100.94",
       "change": "-0.12%",
       "up": false
     },
     {
       "symbol": "Natural Gas",
-      "value": "3.215",
+      "value": "3.22",
       "change": "+0.21%",
       "up": true
     },
     {
       "symbol": "Copper",
-      "value": "6.1273",
-      "change": "+0.15%",
+      "value": "6.2425",
+      "change": "+1.19%",
       "up": true
     },
     {
@@ -107,10 +107,42 @@
       },
       "impact": "high",
       "market_impact": [
-        { "asset": "Brent/WTI crude", "direction": "up", "magnitude": "high", "note": { "es": "~20% del petróleo mundial transita Ormuz", "en": "~20% of global oil transits Hormuz" } },
-        { "asset": "Gold", "direction": "up", "magnitude": "medium", "note": { "es": "Demanda de refugio ante escalada militar", "en": "Safe-haven demand on military escalation" } },
-        { "asset": "Global equities", "direction": "down", "magnitude": "medium", "note": { "es": "Aversión al riesgo generalizada", "en": "Broad-based risk aversion" } },
-        { "asset": "Core sovereign bonds", "direction": "up", "magnitude": "medium", "note": { "es": "Flujo hacia activos refugio", "en": "Flight to safe-haven duration" } }
+        {
+          "asset": "Brent/WTI crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "~20% del petróleo mundial transita Ormuz",
+            "en": "~20% of global oil transits Hormuz"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Demanda de refugio ante escalada militar",
+            "en": "Safe-haven demand on military escalation"
+          }
+        },
+        {
+          "asset": "Global equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Aversión al riesgo generalizada",
+            "en": "Broad-based risk aversion"
+          }
+        },
+        {
+          "asset": "Core sovereign bonds",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Flujo hacia activos refugio",
+            "en": "Flight to safe-haven duration"
+          }
+        }
       ],
       "confidence": 95,
       "source": "Al Jazeera",
@@ -132,8 +164,24 @@
       },
       "impact": "high",
       "market_impact": [
-        { "asset": "European defense equities", "direction": "up", "magnitude": "high", "note": { "es": "Contratos de licencia y presupuestos 2027", "en": "Licensing contracts and 2027 budget outlook" } },
-        { "asset": "EUR/USD", "direction": "mixed", "magnitude": "low", "note": { "es": "Compromiso de seguridad compensa incertidumbre comercial", "en": "Security commitment offsets trade uncertainty" } }
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Contratos de licencia y presupuestos 2027",
+            "en": "Licensing contracts and 2027 budget outlook"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Compromiso de seguridad compensa incertidumbre comercial",
+            "en": "Security commitment offsets trade uncertainty"
+          }
+        }
       ],
       "confidence": 88,
       "source": "Le Monde",
@@ -155,9 +203,33 @@
       },
       "impact": "medium",
       "market_impact": [
-        { "asset": "US 10Y Treasury", "direction": "up", "magnitude": "medium", "note": { "es": "Mercado empieza a descontar recorte de septiembre", "en": "Market begins pricing a September cut" } },
-        { "asset": "DXY (dollar index)", "direction": "down", "magnitude": "medium", "note": { "es": "Diferencial de tipos Fed-BCE se estrecha", "en": "Fed-ECB rate differential narrows" } },
-        { "asset": "US equities", "direction": "up", "magnitude": "low", "note": { "es": "Expectativa de flexibilización monetaria", "en": "Anticipation of monetary easing" } }
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mercado empieza a descontar recorte de septiembre",
+            "en": "Market begins pricing a September cut"
+          }
+        },
+        {
+          "asset": "DXY (dollar index)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Diferencial de tipos Fed-BCE se estrecha",
+            "en": "Fed-ECB rate differential narrows"
+          }
+        },
+        {
+          "asset": "US equities",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Expectativa de flexibilización monetaria",
+            "en": "Anticipation of monetary easing"
+          }
+        }
       ],
       "confidence": 84,
       "source": "Wall Street Journal",
@@ -179,8 +251,24 @@
       },
       "impact": "medium",
       "market_impact": [
-        { "asset": "Chinese semiconductor equities", "direction": "down", "magnitude": "medium", "note": { "es": "Acceso restringido a equipos de litografía avanzada", "en": "Restricted access to advanced lithography equipment" } },
-        { "asset": "Rare earths / critical minerals", "direction": "up", "magnitude": "medium", "note": { "es": "Riesgo de represalia china sobre exportaciones", "en": "Risk of Chinese retaliation on exports" } }
+        {
+          "asset": "Chinese semiconductor equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Acceso restringido a equipos de litografía avanzada",
+            "en": "Restricted access to advanced lithography equipment"
+          }
+        },
+        {
+          "asset": "Rare earths / critical minerals",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de represalia china sobre exportaciones",
+            "en": "Risk of Chinese retaliation on exports"
+          }
+        }
       ],
       "confidence": 83,
       "source": "Nikkei Asia",
@@ -202,8 +290,24 @@
       },
       "impact": "medium",
       "market_impact": [
-        { "asset": "Cobalt", "direction": "down", "magnitude": "low", "note": { "es": "Menor prima de riesgo de suministro si la tregua se sostiene", "en": "Lower supply risk premium if the truce holds" } },
-        { "asset": "EV battery makers", "direction": "up", "magnitude": "low", "note": { "es": "Mayor visibilidad de suministro a medio plazo", "en": "Improved medium-term supply visibility" } }
+        {
+          "asset": "Cobalt",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Menor prima de riesgo de suministro si la tregua se sostiene",
+            "en": "Lower supply risk premium if the truce holds"
+          }
+        },
+        {
+          "asset": "EV battery makers",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor visibilidad de suministro a medio plazo",
+            "en": "Improved medium-term supply visibility"
+          }
+        }
       ],
       "confidence": 74,
       "source": "Al Jazeera",
@@ -225,8 +329,24 @@
       },
       "impact": "low",
       "market_impact": [
-        { "asset": "Turkish energy infrastructure", "direction": "up", "magnitude": "low", "note": { "es": "Nueva ruta de tránsito Caspio-Europa", "en": "New Caspian-to-Europe transit route" } },
-        { "asset": "Natural gas (alternative routes)", "direction": "down", "magnitude": "low", "note": { "es": "Diversificación reduce prima de riesgo de suministro", "en": "Diversification lowers supply risk premium" } }
+        {
+          "asset": "Turkish energy infrastructure",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Nueva ruta de tránsito Caspio-Europa",
+            "en": "New Caspian-to-Europe transit route"
+          }
+        },
+        {
+          "asset": "Natural gas (alternative routes)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Diversificación reduce prima de riesgo de suministro",
+            "en": "Diversification lowers supply risk premium"
+          }
+        }
       ],
       "confidence": 70,
       "source": "Deutsche Welle",
@@ -235,5 +355,5 @@
       "time": "3d"
     }
   ],
-  "market_updated_at": "2026-07-09T16:18:58.551Z"
+  "market_updated_at": "2026-07-09T19:16:34.083Z"
 }
