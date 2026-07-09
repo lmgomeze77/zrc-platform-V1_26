@@ -3,61 +3,61 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1438",
+      "value": "1.1433",
       "change": "+0.18%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,352.10",
-      "change": "+1.10%",
-      "up": true
+      "value": "19,131.19",
+      "change": "-2.59%",
+      "up": false
     },
     {
       "symbol": "BRENT Crude",
-      "value": "78.30",
+      "value": "79.25",
       "change": "+1.38%",
       "up": true
     },
     {
       "symbol": "WTI Crude",
-      "value": "74.20",
-      "change": "+0.22%",
-      "up": true
+      "value": "74.15",
+      "change": "-2.42%",
+      "up": false
     },
     {
       "symbol": "GOLD (XAU/USD)",
       "value": "4,075.08",
-      "change": "-0.06%",
+      "change": "-0.07%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "62,199.55",
-      "change": "-0.80%",
+      "value": "62,870.76",
+      "change": "-1.70%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "16.25",
-      "change": "-3.85%",
-      "up": false
+      "value": "16.90",
+      "change": "+4.77%",
+      "up": true
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "4.57%",
-      "change": "+0.02%",
+      "value": "4.60%",
+      "change": "+0.03%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,542.00",
-      "change": "+0.80%",
+      "value": "7,543.64",
+      "change": "+0.81%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25,029.00",
+      "value": "25,029.45",
       "change": "+0.53%",
       "up": true
     },
@@ -81,8 +81,8 @@
     },
     {
       "symbol": "Copper",
-      "value": "6.2425",
-      "change": "+1.19%",
+      "value": "6.1273",
+      "change": "+0.15%",
       "up": true
     },
     {
@@ -355,5 +355,5 @@
       "time": "3d"
     }
   ],
-  "market_updated_at": "2026-07-09T19:16:34.083Z"
+  "market_updated_at": "2026-07-09T23:00:14.615Z"
 }
