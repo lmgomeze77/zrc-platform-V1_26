@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-06-30T09:27:52.052Z",
+  "generated_at": "2026-07-09T09:32:15.752Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1443",
-      "change": "+0.06%",
+      "value": "1.1413",
+      "change": "+0.0003",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,131.19",
-      "change": "-2.59%",
+      "value": "19131.19",
+      "change": "-433.67",
       "up": false
     },
     {
       "symbol": "BRENT",
-      "value": "77.85",
-      "change": "-0.22%",
+      "value": "74.08",
+      "change": "+2.09",
+      "up": true
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4156.86",
+      "change": "-10.64",
       "up": false
     },
     {
-      "symbol": "WTI",
-      "value": "73.37",
-      "change": "-0.20%",
-      "up": false
-    },
-    {
-      "symbol": "XAU/USD",
-      "value": "4,075.08",
-      "change": "-1.61%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "62,255.29",
-      "change": "-1.97%",
+      "symbol": "BTC",
+      "value": "62302.94",
+      "change": "-1528.96",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "16.90",
-      "change": "+4.77%",
+      "value": "18.43",
+      "change": "+2.30",
       "up": true
     },
     {
       "symbol": "US 10Y",
-      "value": "4.563%",
-      "change": "-0.09%",
+      "value": "4.52",
+      "change": "+0.041",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8532",
+      "change": "-0.0009",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7,482.71",
-      "change": "-0.28%",
+      "value": "7432.94",
+      "change": "-70.91",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "24,897.45",
-      "change": "-2.08%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8528",
-      "change": "+0.06%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "100.63",
-      "change": "-0.13%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.334",
-      "change": "+2.11%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.2063",
-      "change": "+1.44%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.8038",
-      "change": "-0.04%",
+      "value": "24962.78",
+      "change": "-509.58",
       "up": false
     }
   ],
@@ -98,151 +68,150 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "La escalada de ataques entre EE.UU. e Irán amenaza el acuerdo de paz provisional",
-        "en": "Escalating US-Iran strikes threaten interim peace agreement"
+        "es": "EEUU e Irán lanzan más ataques mientras mediadores urgen a las partes a respetar el memorando",
+        "en": "US, Iran launch more attacks as mediators urge warring sides to uphold MoU"
       },
       "summary": {
-        "es": "Irán atacó Bahréin y Kuwait mientras se intensifican las tensiones en torno al control del Estrecho de Ormuz, poniendo en riesgo el frágil acuerdo provisional entre Washington y Teherán. La ambigüedad del memorando de paz alimenta nuevas hostilidades con implicaciones directas para los flujos de petróleo global. Los mercados de energía y activos de refugio permanecen en alerta máxima.",
-        "en": "Iran attacked Bahrain and Kuwait as tensions escalate over control of the Strait of Hormuz, jeopardizing the fragile interim US-Iran memorandum. The broadly worded peace agreement is failing to contain fresh hostilities, with direct implications for global oil supply flows. Energy markets and safe-haven assets remain on high alert."
+        "es": "Irán atacó instalaciones vinculadas a fuerzas militares estadounidenses en Kuwait, Bahrein y Catar, ampliando el conflicto a bases del Golfo Pérsico. La escalada bilateral amenaza la arquitectura de seguridad regional y el tránsito por el Estrecho de Ormuz, con implicaciones directas para los mercados energéticos globales. Los mediadores internacionales intentan preservar el memorando de entendimiento, pero su vigencia es cada vez más precaria.",
+        "en": "Iran struck sites linked to the US military in Kuwait, Bahrain, and Qatar, expanding the conflict to Gulf Cooperation Council host nations. The bilateral escalation directly threatens regional security architecture and Strait of Hormuz transit, with immediate consequences for global energy markets. International mediators are attempting to preserve the MoU framework, but its survival appears increasingly uncertain."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "GOLD +",
         "EQUITIES -",
-        "USD +"
+        "BONDS +"
       ],
       "confidence": 95,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/28/escalating-us-iran-strikes-threaten-interim-peace-agreement",
-      "published_at": "2026-06-29",
-      "time": "23h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/7/9/us-iran-launch-more-attacks-as-mediators-urge-warring-sides-to-uphold-mou?traffic_source=rss",
+      "published_at": "2026-07-09",
+      "time": "<1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Cómo los barcos arriesgan el 'paso seguro' por el Estrecho de Ormuz",
-        "en": "How ships are risking 'safe' passage through the Strait of Hormuz"
+        "es": "EEUU e Irán intercambian ataques por segunda noche consecutiva",
+        "en": "US and Iran trade strikes for second night in a row"
       },
       "summary": {
-        "es": "A pesar de las negociaciones entre Irán y Omán para gestionar el Estrecho de Ormuz, dos ataques recientes a embarcaciones cuestionan la viabilidad del corredor alternativo frente a la costa omaní. La amenaza de minas y la falta de un acuerdo operativo efectivo mantienen disrupciones reales en las rutas de transporte marítimo global. El riesgo para el tráfico petrolero y los fletes sigue siendo elevado.",
-        "en": "Despite Iran-Oman talks on managing the Strait of Hormuz, two recent ship attacks cast doubt on the viability of an alternative corridor off the Omani coast intended to bypass mine threats. The absence of an effective operational agreement sustains real disruptions to global shipping lanes. Risks to oil tanker traffic and freight rates remain elevated."
+        "es": "El tráfico a través del Estrecho de Ormuz ha caído 'drásticamente' desde la reanudación de los ataques, según fuentes citadas por la BBC. Este estrecho es el mayor cuello de botella energético del mundo, por el que transita aproximadamente el 20% del petróleo global. Una interrupción sostenida del tránsito dispararía los precios del crudo y presionaría al alza la inflación energética a nivel mundial.",
+        "en": "Traffic through the Strait of Hormuz has dropped 'dramatically' since the latest exchange of strikes, according to sources cited by the BBC. The strait is the world's most critical energy chokepoint, handling approximately 20% of global oil flows. A sustained disruption to transit would sharply elevate crude prices and drive energy inflation globally."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "SHIPPING +",
-        "GOLD +",
-        "EQUITIES -"
+        "EQUITIES -",
+        "GOLD +"
       ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260630-how-ships-are-risking-safe-passage-through-the-strait-of-hormuz",
-      "published_at": "2026-06-30",
-      "time": "3h"
+      "confidence": 95,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cz75zjj5wp8o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-07-09",
+      "time": "<1h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "GLOBAL",
       "title": {
-        "es": "Estrecho de Ormuz: 'Irán ha dejado muy claro que hay nuevas reglas', dice analista",
-        "en": "Strait of Hormuz: 'Iran has made it very clear that there are new rules', analyst says"
+        "es": "El FMI recorta la previsión de crecimiento mundial para 2026 citando las consecuencias de la guerra con Irán",
+        "en": "IMF cuts 2026 world growth forecast, citing Iran war fallout"
       },
       "summary": {
-        "es": "Irán celebró su primera reunión con Omán para gestionar el Estrecho de Ormuz desde la firma del acuerdo provisional con EE.UU., señalando que Teherán busca un rol central en la supervisión del paso estratégico. Analistas advierten que Irán está imponiendo nuevas condiciones de facto sobre el tráfico marítimo, redefiniendo el equilibrio de poder en la región. Esto tiene implicaciones directas para los precios del petróleo y la estabilidad de las cadenas de suministro energético global.",
-        "en": "Iran held its first meeting with Oman to manage the Strait of Hormuz since signing the preliminary deal with the US, signaling Tehran's intent to play a central role in overseeing the strategic waterway. Analysts warn Iran is imposing new de facto conditions on maritime traffic, reshuffling the regional balance of power. This carries direct implications for oil pricing and global energy supply chain stability."
+        "es": "El FMI rebajó su previsión de crecimiento global para 2026 al 3%, atribuyendo el deterioro al shock energético derivado de la guerra entre EEUU e Irán. La demanda de IA actúa como factor parcialmente compensatorio. La revisión a la baja institucionaliza el impacto macroeconómico del conflicto y aumenta la presión sobre los bancos centrales para calibrar política monetaria en un entorno de estanflación potencial.",
+        "en": "The IMF cut its 2026 global growth forecast to 3%, attributing the downgrade to the energy shock stemming from the US-Iran war. AI-driven demand is cited as a partial offset. The institutional downgrade formalizes the macroeconomic cost of the conflict and increases pressure on central banks navigating a potential stagflationary environment."
+      },
+      "impact": "high",
+      "signals": [
+        "EQUITIES -",
+        "BONDS +",
+        "OIL +",
+        "EM CURRENCIES -"
+      ],
+      "confidence": 92,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/2026/7/9/imf-cuts-2026-world-growth-forecast-citing-iran-war-fallout?traffic_source=rss",
+      "published_at": "2026-07-09",
+      "time": "6h"
+    },
+    {
+      "id": 4,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "EEUU lanza nuevos ataques contra Irán; Trump advierte que podrían ser 'mucho peores'",
+        "en": "US launches new strikes on Iran that Trump says could get 'much worse'"
+      },
+      "summary": {
+        "es": "Trump declaró el alto al fuego 'terminado' y autorizó una nueva ronda de ataques militares contra Irán, advirtiendo de una intensificación si Teherán continúa atacando buques en el Estrecho de Ormuz. La retórica de escalada presidencial elimina la ambigüedad sobre la postura de EEUU y reduce la probabilidad de una desescalada negociada a corto plazo. Los mercados de riesgo enfrentan mayor incertidumbre ante la ausencia de un marco diplomático viable.",
+        "en": "Trump declared the ceasefire 'over' and authorized a new round of military strikes against Iran, warning of intensification if Tehran continues attacking vessels in the Strait of Hormuz. Presidential escalatory rhetoric eliminates ambiguity over US posture and reduces the probability of a near-term negotiated de-escalation. Risk markets face heightened uncertainty in the absence of a viable diplomatic framework."
       },
       "impact": "high",
       "signals": [
         "OIL +",
         "GOLD +",
-        "USD +",
-        "BONDS ?"
+        "EQUITIES -",
+        "USD ?"
       ],
-      "confidence": 90,
+      "confidence": 95,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/strait-of-hormuz-iran-has-made-it-very-clear-that-there-are-new-rules-analyst-says",
-      "published_at": "2026-06-29",
-      "time": "14h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "La UE inicia tres meses de negociaciones con China sobre el déficit comercial de 360.000 millones de euros",
-        "en": "EU sets up three months of talks with China over €360bn trade deficit"
-      },
-      "summary": {
-        "es": "La UE y China acordaron entablar negociaciones durante tres meses para reequilibrar una relación comercial con un déficit de 360.000 millones de euros anuales, en su primera declaración conjunta en siete años. El acuerdo busca evitar una guerra comercial abierta, aunque la escala del desequilibrio y las tensiones previas sugieren que las negociaciones serán complejas. El resultado afectará directamente a sectores industriales europeos, el euro y las cadenas de suministro globales.",
-        "en": "The EU and China agreed to three months of talks to rebalance a trade relationship carrying a €360bn annual deficit, issuing their first joint statement in seven years. The deal aims to avert an open trade war, though the scale of the imbalance and prior tensions suggest difficult negotiations ahead. The outcome will directly affect European industrial sectors, the euro, and global supply chains."
-      },
-      "impact": "high",
-      "signals": [
-        "EUR ?",
-        "EQUITIES +",
-        "CHINA ASSETS +",
-        "TRADE WAR RISK -"
-      ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jun/29/eu-sets-up-three-months-of-talks-with-china-over-360bn-trade-deficit",
-      "published_at": "2026-06-29",
-      "time": "14h"
+      "source_url": "https://www.france24.com/en/middle-east/20260709-us-launches-new-strikes-on-iran-trump-says-they-could-get-much-worse",
+      "published_at": "2026-07-09",
+      "time": "8h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "China aumenta la presión militar y económica sobre Japón",
-        "en": "China Increases Military and Economic Pressure on Japan"
+        "es": "En la cumbre de la OTAN, Trump alterna amenazas y efusividad, tranquiliza a sus aliados y aporta nuevo apoyo a Ucrania",
+        "en": "At NATO Summit, Trump alternates threats and goodwill, reassures allies and brings new support for Ukraine"
       },
       "summary": {
-        "es": "Beijing intensifica su campaña de presión sobre Tokio mediante vuelos de bombarderos cerca de Japón, detención de empresarios y restricciones a exportaciones de tierras raras. Estas tácticas de coerción multidimensional elevan el riesgo geopolítico en el Indo-Pacífico con implicaciones para cadenas de suministro tecnológico global y la postura defensiva de Japón. Los mercados de materiales críticos y el yen japonés son activos clave a monitorizar.",
-        "en": "Beijing is intensifying its coercion campaign against Tokyo through bomber flights near Japan, detention of businesspeople, and restrictions on rare earth exports. These multi-domain pressure tactics raise geopolitical risk across the Indo-Pacific with implications for global tech supply chains and Japan's defense posture. Critical materials markets and the Japanese yen are key assets to monitor."
+        "es": "En la cumbre de la OTAN celebrada en Turquía, Trump confirmó el compromiso de EEUU con el artículo 5 y autorizó a Ucrania a producir misiles Patriot bajo licencia, al tiempo que criticó a España y reiteró sus aspiraciones sobre Groenlandia. El anuncio sobre los Patriot refuerza la capacidad defensiva de Kiev y señala una continuación del apoyo militar occidental, con implicaciones para el sector europeo de defensa. La reafirmación del artículo 5 reduce el riesgo de fractura intraalianza a corto plazo.",
+        "en": "At the NATO summit in Turkey, Trump reaffirmed US commitment to Article 5 and authorized Ukraine to produce Patriot missiles under license, while criticizing Spain and reiterating claims on Greenland. The Patriot announcement materially strengthens Kyiv's defensive capacity and signals continued Western military backing, with positive implications for European defense equities. The Article 5 reaffirmation reduces near-term intra-alliance fracture risk."
       },
       "impact": "high",
       "signals": [
-        "RARE EARTHS +",
-        "JPY -",
-        "DEFENSE EQUITIES +",
-        "TECH EQUITIES -"
+        "EU DEFENSE EQUITIES +",
+        "EUR ?",
+        "BONDS ?",
+        "USD -"
       ],
-      "confidence": 91,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/06/30/world/asia/china-japan-rare-earths-patrols.html",
-      "published_at": "2026-06-30",
-      "time": "<1h"
+      "confidence": 88,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/07/09/au-sommet-de-l-otan-donald-trump-alterne-menaces-et-effusions-rassure-ses-allies-et-apporte-un-nouveau-soutien-a-l-ukraine_6722015_3210.html",
+      "published_at": "2026-07-09",
+      "time": "5h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "Putin admite escasez de combustible causada por ataques ucranianos",
-        "en": "Putin makes rare admission of fuel shortages caused by Ukrainian strikes"
+        "es": "La reanudación de hostilidades entre Irán y EEUU refleja la profunda desconfianza de Teherán hacia las negociaciones",
+        "en": "The resumption of hostilities between Iran and the US illustrates Tehran's deep distrust of negotiations"
       },
       "summary": {
-        "es": "Putin reconoció públicamente que los ataques ucranianos están 'creando problemas' en el suministro de combustible ruso, aunque negó que la situación sea crítica. Esta inusual admisión sugiere que la campaña ucraniana contra infraestructura energética está generando presión interna real sobre la capacidad logística y bélica de Rusia. Los mercados de energía europeos y los activos rusos deben ser monitorizados ante posibles escaladas.",
-        "en": "Putin publicly acknowledged that Ukrainian strikes are 'obviously creating problems' for Russian fuel supplies, while denying the situation is critical. This rare admission suggests Ukraine's infrastructure campaign is generating genuine internal pressure on Russia's logistical and military capacity. European energy markets and Russia-exposed assets warrant monitoring for potential escalation responses."
+        "es": "Según Le Monde, los intercambios de ataques refuerzan a la facción ultraconservadora del régimen iraní, que considera las negociaciones con Washington inútiles o criminales. Este dinamismo interno reduce significativamente la probabilidad de un nuevo acuerdo diplomático y apunta a una prolongación del conflicto. El análisis implica que la prima de riesgo sobre el petróleo y los activos del Golfo podría mantenerse elevada durante un período extendido.",
+        "en": "According to Le Monde, the exchange of strikes empowers the ultraconsevative faction within Iran's theocratic regime, which views negotiations with Washington as futile or criminal. This internal dynamic significantly reduces the probability of a new diplomatic agreement and points toward a protracted conflict. The analysis implies that the risk premium on oil and Gulf assets could remain elevated for an extended period."
       },
       "impact": "medium",
       "signals": [
-        "OIL ?",
-        "EUR GAS +",
-        "RUSSIA ASSETS -",
-        "DEFENSE EQUITIES +"
+        "OIL +",
+        "GOLD +",
+        "MENA EQUITIES -",
+        "BONDS +"
       ],
-      "confidence": 82,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/clyw31zvpgmo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-06-29",
-      "time": "15h"
+      "confidence": 85,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/07/09/entre-l-iran-et-les-etats-unis-la-reprise-des-hostilites-illustre-la-grande-defiance-de-teheran-vis-a-vis-des-negociations_6722010_3210.html",
+      "published_at": "2026-07-09",
+      "time": "6h"
     }
-  ],
-  "market_updated_at": "2026-07-09T08:59:16.772Z"
+  ]
 }
