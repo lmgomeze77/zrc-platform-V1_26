@@ -75,6 +75,8 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
   const auth = useAuth?.();
   const { tier } = useSubscription(auth?.user?.email);
   const hasUnlimitedSearch = tier === "visor_standard" || tier === "visor_earlybird" || tier === "institutional";
+  const hasComparables = tier === "visor_standard" || tier === "visor_earlybird" || tier === "institutional";
+  const hasPreMercado = tier === "visor_earlybird" || tier === "institutional";
   const rcInputRef = useRef(null);
   const [rc, setRc] = useState("");
   const [loading, setLoading] = useState(false);
@@ -405,9 +407,11 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                 {[
                   { k: "ficha", label: "Ficha" },
                   { k: "residual", label: "Residual" },
+                  { k: "comparables", label: "Comparables", locked: !hasComparables },
                   { k: "riesgos", label: "Riesgos", badge: risk?.overall },
                   { k: "boe", label: "Alertas", count: boeAlerts.length },
                   { k: "match", label: "Matching", count: matches.length, gold: true },
+                  { k: "premercado", label: "Pre-mercado", locked: !hasPreMercado },
                 ].map((t) => (
                   <button
                     key={t.k}
@@ -423,6 +427,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                     }}
                   >
                     {t.label}
+                    {t.locked && <span style={{ fontSize: 10 }}>🔒</span>}
                     {t.badge && <RiskPill level={t.badge} />}
                     {t.count > 0 && (
                       <span style={{
@@ -505,6 +510,31 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                 </Panel>
               )}
 
+              {/* COMPARABLES */}
+              {activeTab === "comparables" && (
+                <Panel>
+                  {hasComparables ? (
+                    residual ? (
+                      <ComparablesPanel
+                        provincia={parcela.provincia}
+                        precioRefM2={priceByProvince(parcela.provincia)}
+                        precioVenta={params.precioVenta}
+                        fmt={fmt}
+                      />
+                    ) : (
+                      <Empty>Sin superficie catastral suficiente para posicionar el activo frente al mercado.</Empty>
+                    )
+                  ) : (
+                    <PaywallCard
+                      title="Comparables de mercado"
+                      body="Posiciona tu precio de venta asumido frente a la banda de mercado de la provincia (P25 · mediana · P75) y compáralo con perfiles sintéticos de referencia."
+                      cta="Desbloquear con Standard · 89€/mes"
+                      onClick={() => goToSubscription("standard")}
+                    />
+                  )}
+                </Panel>
+              )}
+
               {/* RIESGOS */}
               {activeTab === "riesgos" && risk && (
                 <Panel>
@@ -548,6 +578,22 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                   </button>
                 </Panel>
               )}
+
+              {/* PRE-MERCADO */}
+              {activeTab === "premercado" && (
+                <Panel>
+                  {hasPreMercado ? (
+                    <PreMercadoPanel parcela={parcela} />
+                  ) : (
+                    <PaywallCard
+                      title="Acceso pre-mercado"
+                      body="Visibilidad completa de los mandatos de inversión activos en ZRC — tipología, ticket y tesis de cada Family Office/fondo — antes de que el activo llegue a mercado público."
+                      cta="Desbloquear con Early Bird · 950€/año"
+                      onClick={() => goToSubscription("earlybird")}
+                    />
+                  )}
+                </Panel>
+              )}
             </>
           )}
 
@@ -556,7 +602,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginBottom: 12 }}>Más profundidad</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <PlanRow
-                  name="Standard" price="89€/mes" desc="Búsquedas ilimitadas · comparables (próximamente)"
+                  name="Standard" price="89€/mes" desc="Búsquedas ilimitadas · comparables de mercado"
                   active={tier === "visor_standard"}
                   onClick={() => goToSubscription("standard")}
                 />
@@ -565,7 +611,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                   onClick={() => rcInputRef.current?.focus()}
                 />
                 <PlanRow
-                  name="Early Bird" price="950€/año" desc="Todo Standard · acceso pre-mercado (próximamente)"
+                  name="Early Bird" price="950€/año" desc="Todo Standard · acceso pre-mercado (mandatos ZRC)"
                   active={tier === "visor_earlybird"}
                   onClick={() => goToSubscription("earlybird")}
                 />
@@ -684,6 +730,93 @@ const ReportStatusBanner = ({ status, onDismiss }) => {
         <button onClick={onDismiss} style={{ background: "none", border: "none", color: C.textMuted, cursor: "pointer", fontSize: 16, lineHeight: 1 }}>×</button>
       )}
     </div>
+  );
+};
+
+const PaywallCard = ({ title, body, cta, onClick }) => (
+  <div style={{ padding: 20, background: C.surface2, border: `1px dashed ${C.goldBorder}`, textAlign: "center" }}>
+    <div style={{ fontSize: 22, marginBottom: 10 }}>🔒</div>
+    <div style={{ fontFamily: F.display, fontSize: 18, color: C.text, marginBottom: 8 }}>{title}</div>
+    <p style={{ fontSize: 12, color: C.textSec, lineHeight: 1.6, margin: "0 0 16px" }}>{body}</p>
+    <button
+      onClick={onClick}
+      style={{
+        padding: "10px 20px", background: C.gold, color: C.bg, border: "none",
+        fontFamily: F.mono, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em",
+        textTransform: "uppercase", cursor: "pointer",
+      }}
+    >
+      {cta}
+    </button>
+  </div>
+);
+
+// Banda de mercado: min ── P25 ── mediana ── P75 ── max, con marcador de
+// posición del precio de venta asumido en el cálculo residual.
+const ComparablesPanel = ({ provincia, precioRefM2, precioVenta, fmt }) => {
+  const { band, percentile, posicion, comps } = buildComparables(precioRefM2, precioVenta);
+  const markerPct = Math.max(2, Math.min(98, percentile));
+  return (
+    <>
+      <PanelTitle dot>Comparables de mercado</PanelTitle>
+      <PanelLead>Banda de precio/m² modelada a partir del precio de referencia de {provincia}, comparada con tu precio de venta asumido.</PanelLead>
+
+      <div style={{ marginBottom: 18 }}>
+        <div style={{ position: "relative", height: 8, background: C.surface3, borderRadius: 4, marginTop: 28 }}>
+          <div style={{
+            position: "absolute", left: `${markerPct}%`, top: -22, transform: "translateX(-50%)",
+            fontFamily: F.mono, fontSize: 10, color: C.gold, whiteSpace: "nowrap", fontWeight: 600,
+          }}>
+            {fmt(precioVenta)}
+          </div>
+          <div style={{
+            position: "absolute", left: `${markerPct}%`, top: -6, transform: "translateX(-50%)",
+            width: 2, height: 20, background: C.gold,
+          }} />
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: 6 }}>
+          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>{fmt(band.min)}</span>
+          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>P25</span>
+          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>Mediana</span>
+          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>P75</span>
+          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>{fmt(band.max)}</span>
+        </div>
+      </div>
+
+      <div style={{ padding: "10px 14px", background: C.surface2, border: `1px solid ${C.border}`, marginBottom: 16, fontSize: 12, color: C.textSec, lineHeight: 1.5 }}>
+        Percentil <strong style={{ color: C.gold }}>{percentile}</strong> de la banda estimada — {posicion}.
+      </div>
+
+      <PanelTitle>Perfiles comparables</PanelTitle>
+      <ul style={{ listStyle: "none", padding: 0, margin: "0 0 12px", display: "flex", flexDirection: "column", gap: 8 }}>
+        {comps.map((c) => (
+          <li key={c.label} style={{ display: "flex", justifyContent: "space-between", padding: "10px 12px", background: C.surface2, borderLeft: `3px solid ${C.goldBorder}`, fontSize: 12 }}>
+            <span style={{ color: C.textSec }}>{c.label}</span>
+            <strong style={{ color: C.text }}>{fmt(c.pricePerM2)}/m²</strong>
+          </li>
+        ))}
+      </ul>
+      <p style={{ margin: 0, fontSize: 10, color: C.textMuted, lineHeight: 1.5, fontStyle: "italic" }}>
+        Banda modelada a partir del precio medio provincial ({MARKET_REF_META.fuente} · {MARKET_REF_META.periodo}), no de transacciones
+        individuales verificadas — úsala para contrastar el rango realista de la zona, no como tasación de comparables exactos.
+      </p>
+    </>
+  );
+};
+
+// Lista completa de mandatos activos ZRC (no solo los que superan el fit
+// mínimo) — el valor de "pre-mercado" es ver toda la demanda institucional
+// activa, no solo la que ya encaja con la parcela buscada.
+const PreMercadoPanel = ({ parcela }) => {
+  const withFit = ZRC_MANDATOS.map((m) => ({ ...m, fit: m.fitFn(parcela) })).sort((a, b) => b.fit - a.fit);
+  return (
+    <>
+      <PanelTitle dot>Mandatos activos ZRC</PanelTitle>
+      <PanelLead>Toda la demanda institucional activa en deal-flow ZRC ahora mismo — tipología, ticket y tesis — para sourcear antes de que el activo llegue a mercado.</PanelLead>
+      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+        {withFit.map((m) => <MatchItem key={m.id} m={m} />)}
+      </ul>
+    </>
   );
 };
 
@@ -978,26 +1111,58 @@ function buildBOEAlerts(municipio, provincia) {
   ];
 }
 
+// Mandatos activos de inversión ZRC — módulo compartido entre el matching
+// reactivo (por parcela buscada) y el panel "Pre-mercado" de Early Bird,
+// que muestra la lista completa independientemente del fit.
+const ZRC_MANDATOS = [
+  { id: "M1", label: "Family Office Levante", tipologia: "Residencial premium Madrid/Barcelona", ticket: "8-25M€",
+    fitFn: (p) => p.provincia === "Madrid" || p.provincia === "Barcelona" ? 88 : 35,
+    thesis: "Activos prime con plusvalía a 5-7 años en zonas consolidadas." },
+  { id: "M2", label: "Hospitality Costa del Sol", tipologia: "Hotelero / branded residences", ticket: "15-60M€",
+    fitFn: (p) => p.provincia === "Málaga" ? 92 : 20,
+    thesis: "Reposicionamiento 4★+ con OpCo/PropCo split." },
+  { id: "M3", label: "Fondo agroindustrial", tipologia: "Suelo rústico productivo", ticket: "20-80M€",
+    fitFn: (p) => /agra|olivo|olivar|secano/i.test(p.uso || "") ? 95 : 10,
+    thesis: "Olivar superintensivo y leñosos tecnificados." },
+  { id: "M4", label: "Promotor mid-cap nacional", tipologia: "Suelo finalista urbano", ticket: "5-20M€",
+    fitFn: (p) => p.superficie > 800 ? 75 : 40,
+    thesis: "Suelo urbano consolidado para residencial libre." },
+  { id: "M5", label: "FO industrial logística", tipologia: "Naves last-mile <50km capital", ticket: "3-15M€",
+    fitFn: (p) => /industrial|almac|nave/i.test(p.uso || "") ? 90 : 15,
+    thesis: "Last-mile rentado a operador tier-1." },
+];
+
 function matchAgainstZRCMandates(parcela) {
-  const mandatos = [
-    { id: "M1", label: "Family Office Levante", tipologia: "Residencial premium Madrid/Barcelona", ticket: "8-25M€",
-      fitFn: (p) => p.provincia === "Madrid" || p.provincia === "Barcelona" ? 88 : 35,
-      thesis: "Activos prime con plusvalía a 5-7 años en zonas consolidadas." },
-    { id: "M2", label: "Hospitality Costa del Sol", tipologia: "Hotelero / branded residences", ticket: "15-60M€",
-      fitFn: (p) => p.provincia === "Málaga" ? 92 : 20,
-      thesis: "Reposicionamiento 4★+ con OpCo/PropCo split." },
-    { id: "M3", label: "Fondo agroindustrial", tipologia: "Suelo rústico productivo", ticket: "20-80M€",
-      fitFn: (p) => /agra|olivo|olivar|secano/i.test(p.uso || "") ? 95 : 10,
-      thesis: "Olivar superintensivo y leñosos tecnificados." },
-    { id: "M4", label: "Promotor mid-cap nacional", tipologia: "Suelo finalista urbano", ticket: "5-20M€",
-      fitFn: (p) => p.superficie > 800 ? 75 : 40,
-      thesis: "Suelo urbano consolidado para residencial libre." },
-    { id: "M5", label: "FO industrial logística", tipologia: "Naves last-mile <50km capital", ticket: "3-15M€",
-      fitFn: (p) => /industrial|almac|nave/i.test(p.uso || "") ? 90 : 15,
-      thesis: "Last-mile rentado a operador tier-1." },
-  ];
-  return mandatos.map((m) => ({ ...m, fit: m.fitFn(parcela) }))
+  return ZRC_MANDATOS.map((m) => ({ ...m, fit: m.fitFn(parcela) }))
     .filter((m) => m.fit >= 60).sort((a, b) => b.fit - a.fit);
+}
+
+// ============================================================
+// COMPARABLES — banda de mercado modelada a partir del precio de
+// referencia provincial (Ministerio de Vivienda/Idealista Data), NO de
+// transacciones individuales reales (no tenemos acceso a un proveedor de
+// comparables/MLS licenciado). Se etiqueta siempre como banda estimada.
+// ============================================================
+function buildComparables(precioRefM2, precioVentaAsumido) {
+  const band = {
+    min: precioRefM2 * 0.65,
+    p25: precioRefM2 * 0.85,
+    median: precioRefM2 * 1.00,
+    p75: precioRefM2 * 1.18,
+    max: precioRefM2 * 1.45,
+  };
+  const clamped = Math.max(band.min, Math.min(band.max, precioVentaAsumido));
+  const percentile = Math.round(((clamped - band.min) / (band.max - band.min)) * 100);
+  const posicion = precioVentaAsumido < band.p25 ? "por debajo del rango típico (P25)"
+    : precioVentaAsumido < band.median ? "entre el mínimo típico y la mediana"
+    : precioVentaAsumido < band.p75 ? "entre la mediana y el rango prime (P75)"
+    : "en el rango prime de la zona (P75+)";
+  const comps = [
+    { label: "Comparable conservador (P25)", pricePerM2: band.p25 },
+    { label: "Mediana de la zona", pricePerM2: band.median },
+    { label: "Comparable prime (P75)", pricePerM2: band.p75 },
+  ];
+  return { band, percentile, posicion, comps };
 }
 
 
