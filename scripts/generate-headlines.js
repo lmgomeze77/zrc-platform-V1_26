@@ -1,15 +1,22 @@
 /**
- * ZRC Daily Intelligence Generator v5 — RSS-based
+ * ZRC Daily Intelligence Generator v6 — RSS-based
  *
  * Pipeline:
  *   1. Pull 10 Tier-1 RSS feeds in parallel (3s timeout each)
  *   2. Normalize items, dedupe by URL
  *   3. Filter: last 30h
- *   4. Score with geopolitical-weighted keywords (Tier A x3, B x2, C x1)
- *   5. Pick top-15, max 2 per outlet
- *   6. Single Haiku call: select 6, translate, summarize, tag, region, signals
- *   7. Validate Tier-1 domain (defense in depth)
- *   8. Write public/data/headlines.json
+ *   4. Score with geopolitical-weighted keywords (Tier A x3, B x2, C x1),
+ *      tag each item with a topic CLUSTER for anti-duplication
+ *   5. Pick top-15, max 2 per outlet, max 3 per cluster
+ *   6. Single Haiku call: rank up to 10 candidates (translate, summarize, tag,
+ *      region, structured market_impact), prioritizing topic diversity and
+ *      at least one under-the-radar (non-front-page) item when available
+ *   7. Deterministic JS post-filter: keep at most 1 selection per cluster,
+ *      so the same underlying story (e.g. a single conflict) never produces
+ *      more than one signal — backfill from the ranked list if needed to
+ *      reach 6
+ *   8. Validate Tier-1 domain (defense in depth)
+ *   9. Write public/data/headlines.json
  */
 
 import Anthropic from "@anthropic-ai/sdk";
@@ -72,13 +79,54 @@ const TIER_C = [
   "cross-border merger", "foreign investment screening", "cfius", "fdi block",
 ];
 
+// Under-the-radar regions/themes: rarely front-page but geopolitically and
+// macro-relevant (critical minerals supply chains, secondary conflict zones,
+// transit corridors). Weighted like Tier A so they can compete for a slot
+// instead of being drowned out by mega-story volume.
+const TIER_UNDERREPORTED = [
+  "sahel", "mali", "niger", "burkina faso", "wagner", "africa corps", "sudan",
+  "drc", "congo", "cobalt", "rwanda", "m23", "mozambique", "gulf of guinea",
+  "caucasus", "armenia", "azerbaijan", "nagorno-karabakh", "zangezur",
+  "central asia", "kazakhstan", "uzbekistan", "arctic council",
+  "cyberattack", "cyber warfare", "submarine cable", "venezuela", "maduro",
+];
+
 function scoreItem(text) {
   const t = text.toLowerCase();
-  let scoreA = 0, scoreB = 0, scoreC = 0;
+  let scoreA = 0, scoreB = 0, scoreC = 0, scoreU = 0;
   for (const kw of TIER_A) if (t.includes(kw)) scoreA++;
   for (const kw of TIER_B) if (t.includes(kw)) scoreB++;
   for (const kw of TIER_C) if (t.includes(kw)) scoreC++;
-  return { total: scoreA * 3 + scoreB * 2 + scoreC, a: scoreA, b: scoreB, c: scoreC };
+  for (const kw of TIER_UNDERREPORTED) if (t.includes(kw)) scoreU++;
+  return { total: scoreA * 3 + scoreB * 2 + scoreC + scoreU * 3, a: scoreA, b: scoreB, c: scoreC, u: scoreU };
+}
+
+// ─── TOPIC CLUSTERS (anti-duplication) ─────────────────────────
+// Groups candidates by underlying story so the same event (e.g. a single
+// conflict flare-up covered by five outlets) can't fill most of the feed.
+const CLUSTERS = [
+  { key: "iran-israel",         kws: ["iran", "israel", "gaza", "hormuz", "houthi", "hezbollah", "tehran", "idf", "hamas"] },
+  { key: "russia-ukraine",      kws: ["russia", "ukraine", "putin", "kremlin", "donbas", "kyiv", "zelensky"] },
+  { key: "china-taiwan",        kws: ["china", "taiwan", "beijing", "xi jinping", "south china sea", "taiwan strait"] },
+  { key: "nato-europe-defense", kws: ["nato", "alliance", "article 5", "european defense", "bundeswehr"] },
+  { key: "trade-tech",          kws: ["tariff", "trade war", "wto", "decoupling", "friend-shoring", "reshoring", "export controls", "semiconductor", "chips act"] },
+  { key: "monetary-policy",     kws: ["ecb", "bce", "federal reserve", "fed", "boj", "central bank", "rate hike", "rate cut"] },
+  { key: "sovereign-fiscal",    kws: ["fiscal", "deficit", "sovereign debt", "imf", "downgrade", "default", "eurobond"] },
+  { key: "energy-security",     kws: ["opec", "opec+", "gas pipeline", "nord stream", "lng", "energy security"] },
+  { key: "africa-minerals",     kws: ["sahel", "mali", "niger", "burkina faso", "wagner", "africa corps", "sudan", "drc", "congo", "cobalt", "rwanda", "m23", "lithium", "rare earths"] },
+  { key: "caucasus-c-asia",     kws: ["caucasus", "armenia", "azerbaijan", "nagorno-karabakh", "zangezur", "central asia", "kazakhstan", "uzbekistan"] },
+  { key: "latam-politics",      kws: ["venezuela", "maduro", "brazil", "selic", "argentina", "mexico"] },
+];
+
+function clusterOf(text) {
+  const t = text.toLowerCase();
+  let best = null, bestCount = 0;
+  for (const c of CLUSTERS) {
+    let count = 0;
+    for (const kw of c.kws) if (t.includes(kw)) count++;
+    if (count > bestCount) { best = c.key; bestCount = count; }
+  }
+  return best; // null if no cluster keywords matched (treated as unique topic)
 }
 
 // ─── RSS FETCH (parallel with timeout, never throws) ──────────
@@ -127,31 +175,61 @@ function processItems(items) {
     return !isNaN(t) && t >= cutoffMs;
   });
 
-  // Score everything
+  // Score everything + tag topic cluster
   const scored = recent
     .map((i) => {
-      const s = scoreItem(i.title + " " + i.description);
-      return { ...i, score: s.total, scoreBreakdown: s };
+      const text = i.title + " " + i.description;
+      const s = scoreItem(text);
+      return { ...i, score: s.total, scoreBreakdown: s, cluster: clusterOf(text) };
     })
     .filter((i) => i.score > 0); // drop items without any keyword match
 
   // Sort by score desc
   scored.sort((a, b) => b.score - a.score);
 
-  // Diversity: max 2 per outlet
+  // Diversity: max 2 per outlet, max 3 per topic cluster — prevents a single
+  // mega-story (e.g. one conflict covered by every outlet) from consuming
+  // most of the candidate pool before it even reaches Haiku.
   const perOutlet = {};
+  const perCluster = {};
   const diverse = [];
   for (const item of scored) {
     perOutlet[item.source] = perOutlet[item.source] || 0;
-    if (perOutlet[item.source] < 2) {
-      diverse.push(item);
-      perOutlet[item.source]++;
+    if (perOutlet[item.source] >= 2) continue;
+    if (item.cluster) {
+      perCluster[item.cluster] = perCluster[item.cluster] || 0;
+      if (perCluster[item.cluster] >= 3) continue;
     }
+    diverse.push(item);
+    perOutlet[item.source]++;
+    if (item.cluster) perCluster[item.cluster]++;
     if (diverse.length >= 15) break;
   }
 
-  console.log(`   📊 After filter+score: ${recent.length} recent → ${scored.length} relevant → ${diverse.length} candidates (max 2/outlet)`);
+  console.log(`   📊 After filter+score: ${recent.length} recent → ${scored.length} relevant → ${diverse.length} candidates (max 2/outlet, max 3/cluster)`);
   return diverse;
+}
+
+// ─── DIVERSITY POST-FILTER (anti-duplication safeguard) ───────
+// Ranked entries come back in priority order. Keep at most one per topic
+// cluster (entries with no cluster are always unique) so a single dominant
+// story can't consume most of the final feed. Backfill from skipped
+// duplicate-cluster entries, in rank order, only if still short of target.
+function diversifyByCluster(rankedEntries, targetCount) {
+  const used = new Set();
+  const kept = [];
+  const skipped = [];
+  for (const e of rankedEntries) {
+    if (e.cluster && used.has(e.cluster)) { skipped.push(e); continue; }
+    kept.push(e);
+    if (e.cluster) used.add(e.cluster);
+    if (kept.length >= targetCount) break;
+  }
+  for (const e of skipped) {
+    if (kept.length >= targetCount) break;
+    kept.push(e);
+  }
+  return kept.slice(0, targetCount);
 }
 
 // ─── HAIKU ENRICHMENT ─────────────────────────────────────────
@@ -160,47 +238,51 @@ async function enrichWithHaiku(candidates) {
 
   const candidateList = candidates
     .map((c, i) => {
-      return `[${i}] ${c.source} | ${c.published_at || "undated"}
+      return `[${i}] ${c.source} | ${c.published_at || "undated"} | CLUSTER: ${c.cluster || "unique"}
 TITLE: ${c.title}
 URL: ${c.url}
 DESC: ${c.description.slice(0, 300)}`;
     })
     .join("\n\n");
 
-  const systemPrompt = `You are an institutional intelligence analyst at ZRC, a geopolitical investment firm. From the candidate news items provided, select the 6 most relevant for a sophisticated investor audience focused on GEOPOLITICAL intelligence with macro/market implications.
+  const systemPrompt = `You are an institutional intelligence analyst at ZRC, a geopolitical investment firm. From the candidate news items provided, rank up to 10 items (best first) for a sophisticated investor audience focused on GEOPOLITICAL intelligence with macro/market implications. Only 6 will ultimately be published, so your ranking order matters — the top of your list should be the 6 you would run today.
 
 PRIORITY ORDER for selection:
 1. Geopolitical events with clear market implications (conflicts, sanctions, strategic chokepoints, tech sovereignty, energy security)
 2. Macro/policy events with geopolitical context (central bank divergence tied to political tensions, sovereign debt crises, tariffs)
 3. Pure markets/M&A only if cross-border and strategically significant
 
-For each selected item, return a JSON object with:
+ANTI-DUPLICATION RULE (critical): each candidate is tagged with a CLUSTER. Never rank two items from the SAME cluster back-to-back near the top — if a single story (e.g. one conflict) dominates the candidates, select only its single best/most complete item high in the ranking, then move to OTHER clusters for the rest. Do not let one underlying event fill most of the list.
+
+DIVERSITY RULE: across your ranked list, aim to cover distinct themes — e.g. one conflict/security item, one monetary/fiscal policy item, one trade/tariffs or tech-sovereignty item — and if any candidate concerns a secondary/regional theme not covered by the mainstream mega-story clusters (e.g. Sahel, Caucasus, Central Asia, critical minerals corridors, African security, Latin American politics), include it even if its raw prominence is lower than the top headlines. Prioritize geopolitical/macro significance over mainstream prominence for these under-the-radar items.
+
+For each ranked item, return a JSON object with:
 - index (number): the [N] index from the candidate list
 - tag (string): "CRITICAL" (war/sanctions/major escalation), "ALERT" (high-impact policy), "WATCH" (developing), "DATA" (significant data release)
-- region (string): "MENA", "EU", "LATAM", "APAC", "AFRICA", "US", or "GLOBAL"
+- region (string): "MENA", "EU", "LATAM", "APAC", "AFRICA", "EURASIA", "US", or "GLOBAL"
 - title (object): { "es": "...", "en": "..." } — keep close to original headline, translate accurately, no embellishment
 - summary (object): { "es": "...", "en": "..." } — 2-3 sentences, neutral analytical tone, focus on portfolio/macro implications
 - impact (string): "high", "medium", or "low"
-- signals (array of strings): 2-4 directional asset signals like "OIL +", "EUR -", "EQUITIES ?", "GOLD +", "BONDS +"
+- market_impact (array of 2-4 objects): structured price/macro impact, each { "asset": "Brent crude" | "EUR/USD" | "Gold" | "US 10Y Treasury" | "European equities" | "EM currencies" | etc (specific asset/instrument name), "direction": "up" | "down" | "mixed", "magnitude": "high" | "medium" | "low", "note": { "es": "...", "en": "..." } } — note is a short (<12 words) causal rationale per asset
 - confidence (number 60-95): your confidence in the investment relevance
 
 CRITICAL RULES:
 - DO NOT invent details. The summary must be inferable from title + description provided.
 - DO NOT change source URLs (you don't return them, the script keeps the originals).
 - Translate accurately. If the headline is "X happened", do not turn it into "X may happen".
-- Return ONLY a JSON array of 6 objects, no preamble, no markdown fences.`;
+- Return ONLY a JSON array of up to 10 ranked objects, no preamble, no markdown fences.`;
 
   const userPrompt = `Today is ${new Date().toISOString().split("T")[0]}. Here are ${candidates.length} candidate news items pre-filtered by geopolitical relevance:
 
 ${candidateList}
 
-Return ONLY the JSON array of 6 selected items.`;
+Return ONLY the JSON array of up to 10 ranked items (best first).`;
 
-  console.log(`🤖 Calling Haiku to select+enrich 6 from ${candidates.length} candidates...`);
+  console.log(`🤖 Calling Haiku to rank+enrich up to 10 from ${candidates.length} candidates...`);
 
   const response = await client.messages.create({
     model: "claude-sonnet-4-6",
-    max_tokens: 3500,
+    max_tokens: 4500,
     system: systemPrompt,
     messages: [{ role: "user", content: userPrompt }],
   });
@@ -218,10 +300,10 @@ Return ONLY the JSON array of 6 selected items.`;
   if (start === -1 || end === -1) {
     throw new Error("Haiku did not return a JSON array");
   }
-  const enriched = JSON.parse(cleaned.slice(start, end + 1));
+  const ranked = JSON.parse(cleaned.slice(start, end + 1));
 
-  // Re-attach source_url, source, published_at from candidates by index
-  const final = enriched
+  // Re-attach source_url, source, published_at, cluster from candidates by index
+  const enriched = ranked
     .map((e) => {
       const candidate = candidates[e.index];
       if (!candidate) return null;
@@ -232,15 +314,18 @@ Return ONLY the JSON array of 6 selected items.`;
         title: e.title,
         summary: e.summary,
         impact: e.impact,
-        signals: e.signals,
+        market_impact: e.market_impact,
         confidence: e.confidence,
         source: candidate.source,
         source_url: candidate.url,
         published_at: candidate.published_at ? candidate.published_at.split("T")[0] : null,
         time: relativeTime(candidate.published_at),
+        cluster: candidate.cluster, // deterministic, JS-computed — not trusted from Haiku
       };
     })
     .filter((x) => x !== null);
+
+  const final = diversifyByCluster(enriched, 6).map(({ cluster, ...h }) => h);
 
   return final.map((h, i) => ({ ...h, id: i + 1 }));
 }
@@ -289,7 +374,7 @@ Each object: { "symbol": string, "value": string, "change": string with + or -, 
 // ─── MAIN ─────────────────────────────────────────────────────
 async function main() {
   const today = new Date().toISOString().split("T")[0];
-  console.log(`\n🏛️  ZRC Intelligence Generator v5 (RSS) — ${today}\n`);
+  console.log(`\n🏛️  ZRC Intelligence Generator v6 (RSS) — ${today}\n`);
 
   let headlines = null;
   let marketTicker = [];
