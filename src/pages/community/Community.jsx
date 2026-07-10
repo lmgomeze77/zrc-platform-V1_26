@@ -69,9 +69,10 @@ const css = `
 @keyframes ic-appear{from{opacity:0}to{opacity:1}}
 @keyframes ic-riseIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @media (max-width:768px){
+  .ic-root{height:auto;min-height:0;}
   .ic-top{padding:12px 18px;}
   .ic-tb-right{display:none;}
-  .ic-middle{padding:10px 20px;}
+  .ic-middle{padding:56px 20px;}
   .ic-title{font-size:clamp(40px,12vw,64px);}
   .ic-tagline{font-size:15px;max-width:88vw;}
   .ic-rule{margin:12px auto;}
@@ -85,7 +86,7 @@ const css = `
 @media (max-width:420px){
   .ic-title{font-size:clamp(34px,13vw,50px);}
   .ic-top{padding:10px 14px;}
-  .ic-middle{padding:8px 14px;}
+  .ic-middle{padding:40px 14px;}
   .ic-bottom{padding:8px 14px 12px;}
   .ic-input-row{max-width:88vw;}
   .ic-tagline{font-size:14px;}
