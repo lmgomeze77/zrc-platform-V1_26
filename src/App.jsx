@@ -99,6 +99,71 @@ const AuthProvider = ({ children, lang }) => {
   );
 };
 
+const LEGAL_TEXT = {
+  es: {
+    privacy: {
+      title: "Política de Privacidad",
+      updated: "Última actualización: julio 2026",
+      sections: [
+        { h: "1. Responsable del tratamiento", p: ["Calesius Global SL (\"ZRC\", \"nosotros\"), CIF B56399207, con domicilio en Madrid, España, es responsable del tratamiento de los datos personales que nos facilitas a través de zenithrisecapital.com. Puedes contactarnos en luis@zenithrisecapital.com para cualquier cuestión relativa a privacidad."] },
+        { h: "2. Datos que recopilamos", p: ["Recopilamos los datos que nos facilitas voluntariamente al registrarte, solicitar información, aplicar a The Inner Circle o contactar con Advisory/Brokerage: nombre, email, teléfono, empresa, cargo y mensaje. También recopilamos datos técnicos de navegación (dirección IP, tipo de dispositivo, páginas visitadas) a través de cookies y herramientas analíticas."] },
+        { h: "3. Finalidad del tratamiento", p: ["Utilizamos tus datos para gestionar el acceso a la plataforma, responder a solicitudes de información, prestar los servicios de Observatorio, Intelligence, Brokerage, Advisory y Academia, gestionar la membresía de The Inner Circle, y enviar comunicaciones relacionadas cuando lo hayas autorizado."] },
+        { h: "4. Base legal", p: ["El tratamiento se basa en la ejecución de una relación contractual o precontractual, en el consentimiento del usuario y, en su caso, en el interés legítimo de ZRC para el correcto funcionamiento y seguridad de la plataforma."] },
+        { h: "5. Conservación de datos", p: ["Conservamos los datos personales durante el tiempo necesario para cumplir la finalidad para la que se recabaron y, posteriormente, durante los plazos de prescripción legal aplicables."] },
+        { h: "6. Destinatarios y transferencias", p: ["No cedemos tus datos a terceros salvo obligación legal o proveedores tecnológicos necesarios para operar la plataforma (hosting, email, procesamiento de pagos), que actúan como encargados del tratamiento bajo contrato. Algunos proveedores pueden ubicarse fuera del Espacio Económico Europeo, en cuyo caso se aplican garantías adecuadas conforme al RGPD (cláusulas contractuales tipo)."] },
+        { h: "7. Tus derechos", p: ["Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad de los datos escribiendo a luis@zenithrisecapital.com. Asimismo, tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (aepd.es)."] },
+        { h: "8. Cookies", p: ["Utilizamos cookies propias y de terceros para el funcionamiento esencial de la plataforma y, con tu consentimiento, para análisis de uso. Puedes gestionar tus preferencias desde la configuración de tu navegador."] },
+        { h: "9. Seguridad", p: ["Aplicamos medidas técnicas y organizativas razonables para proteger tus datos frente a accesos no autorizados, pérdida o alteración."] },
+      ],
+    },
+    legal: {
+      title: "Aviso Legal",
+      updated: "Última actualización: julio 2026",
+      sections: [
+        { h: "1. Datos identificativos", p: ["El presente sitio web zenithrisecapital.com (\"ZRC\", \"Zenith Rise Capital\") es titularidad de Calesius Global SL, con CIF B56399207 y domicilio social en Madrid, España. Presencia adicional en Luxemburgo. Contacto: luis@zenithrisecapital.com."] },
+        { h: "2. Objeto", p: ["ZRC opera una plataforma de inteligencia geopolítica, análisis de inversión, brokerage de oportunidades off-market, advisory estratégico y formación (Zenith Academia). El acceso y uso de este sitio atribuye la condición de usuario e implica la aceptación de las condiciones aquí recogidas."] },
+        { h: "3. Naturaleza de los contenidos — no es asesoramiento de inversión", p: ["Los contenidos, señales, análisis y datos publicados en ZRC tienen carácter informativo y educativo. No constituyen recomendación personalizada de inversión, asesoramiento financiero, legal o fiscal, ni una oferta o invitación a comprar o vender ningún instrumento financiero. Toda decisión de inversión es responsabilidad exclusiva del usuario, que debe contar con asesoramiento profesional independiente cuando sea necesario."] },
+        { h: "4. Propiedad intelectual", p: ["Todos los contenidos del sitio (textos, marcas, logotipos, diseño, bases de datos, software) son propiedad de Calesius Global SL o de terceros licenciantes, y están protegidos por la normativa de propiedad intelectual e industrial. Queda prohibida su reproducción o distribución sin autorización expresa."] },
+        { h: "5. Exclusión de responsabilidad", p: ["ZRC no garantiza la exactitud, exhaustividad o actualidad permanente de la información publicada, ni se hace responsable de las decisiones adoptadas con base en ella. El acceso a determinadas secciones (Observatorio, Intelligence, Inner Circle) puede estar restringido a usuarios registrados o autorizados."] },
+        { h: "6. Enlaces a terceros", p: ["El sitio puede incluir enlaces a fuentes o webs de terceros (medios, datos de mercado). ZRC no controla ni se responsabiliza del contenido de dichos sitios externos."] },
+        { h: "7. Legislación aplicable y jurisdicción", p: ["Las presentes condiciones se rigen por la legislación española. Para cualquier controversia, las partes se someten a los Juzgados y Tribunales de Madrid, salvo que la normativa de consumidores establezca un fuero distinto de carácter imperativo."] },
+        { h: "8. Modificaciones", p: ["Calesius Global SL se reserva el derecho a modificar el presente aviso legal para adaptarlo a novedades legislativas o cambios en el servicio."] },
+      ],
+    },
+  },
+  en: {
+    privacy: {
+      title: "Privacy Policy",
+      updated: "Last updated: July 2026",
+      sections: [
+        { h: "1. Data controller", p: ["Calesius Global SL (\"ZRC\", \"we\"), tax ID B56399207, registered in Madrid, Spain, is the controller of the personal data you provide through zenithrisecapital.com. You can contact us at luis@zenithrisecapital.com for any privacy-related matter."] },
+        { h: "2. Data we collect", p: ["We collect data you voluntarily provide when registering, requesting information, applying to The Inner Circle, or contacting Advisory/Brokerage: name, email, phone, company, role and message. We also collect technical browsing data (IP address, device type, pages visited) through cookies and analytics tools."] },
+        { h: "3. Purpose of processing", p: ["We use your data to manage platform access, respond to information requests, deliver the Observatory, Intelligence, Brokerage, Advisory and Academia services, manage The Inner Circle membership, and send related communications when authorized."] },
+        { h: "4. Legal basis", p: ["Processing is based on the performance of a contract or pre-contractual relationship, user consent, and, where applicable, ZRC's legitimate interest in the proper functioning and security of the platform."] },
+        { h: "5. Data retention", p: ["We retain personal data for as long as necessary to fulfil the purpose for which it was collected, and afterwards for the applicable legal limitation periods."] },
+        { h: "6. Recipients and international transfers", p: ["We do not share your data with third parties except where legally required or with technology providers necessary to operate the platform (hosting, email, payment processing), acting as data processors under contract. Some providers may be located outside the European Economic Area, in which case appropriate GDPR safeguards apply (standard contractual clauses)."] },
+        { h: "7. Your rights", p: ["You may exercise your rights of access, rectification, erasure, objection, restriction of processing and data portability by writing to luis@zenithrisecapital.com. You also have the right to lodge a complaint with the Spanish Data Protection Agency (aepd.es)."] },
+        { h: "8. Cookies", p: ["We use first- and third-party cookies for the essential operation of the platform and, with your consent, for usage analytics. You can manage your preferences in your browser settings."] },
+        { h: "9. Security", p: ["We apply reasonable technical and organizational measures to protect your data against unauthorized access, loss or alteration."] },
+      ],
+    },
+    legal: {
+      title: "Legal Notice",
+      updated: "Last updated: July 2026",
+      sections: [
+        { h: "1. Identification", p: ["This website zenithrisecapital.com (\"ZRC\", \"Zenith Rise Capital\") is owned by Calesius Global SL, tax ID B56399207, registered office in Madrid, Spain, with additional presence in Luxembourg. Contact: luis@zenithrisecapital.com."] },
+        { h: "2. Purpose", p: ["ZRC operates a platform for geopolitical intelligence, investment analysis, off-market brokerage opportunities, strategic advisory, and education (Zenith Academia). Access to and use of this site grants the status of user and implies acceptance of the terms set out here."] },
+        { h: "3. Nature of content — not investment advice", p: ["Content, signals, analysis and data published on ZRC are for informational and educational purposes only. They do not constitute personalized investment advice, financial, legal or tax advice, nor an offer or solicitation to buy or sell any financial instrument. Any investment decision is the sole responsibility of the user, who should seek independent professional advice where necessary."] },
+        { h: "4. Intellectual property", p: ["All content on the site (text, trademarks, logos, design, databases, software) is owned by Calesius Global SL or third-party licensors and is protected by intellectual and industrial property law. Reproduction or distribution without express authorization is prohibited."] },
+        { h: "5. Disclaimer", p: ["ZRC does not guarantee the accuracy, completeness or ongoing timeliness of the information published, nor is it liable for decisions made based on it. Access to certain sections (Observatory, Intelligence, Inner Circle) may be restricted to registered or authorized users."] },
+        { h: "6. Third-party links", p: ["The site may include links to third-party sources or websites (media, market data). ZRC does not control and is not responsible for the content of such external sites."] },
+        { h: "7. Governing law and jurisdiction", p: ["These terms are governed by Spanish law. Any dispute shall be submitted to the Courts of Madrid, unless mandatory consumer-protection rules establish a different venue."] },
+        { h: "8. Changes", p: ["Calesius Global SL reserves the right to amend this legal notice to reflect legislative developments or changes to the service."] },
+      ],
+    },
+  },
+};
+
 const T = {
   es: {
     nav: ["Observatorio", "Intelligence", "GeoRisk Index", "Brokerage", "Advisory", "Academia", "Inner Circle"],
@@ -185,6 +250,8 @@ const T = {
     footer: {
       legal: "© 2026 Calesius Global SL · CIF B56399207 · Todos los derechos reservados",
       loc: "MADRID · LUXEMBURGO · GLOBAL",
+      privacyLink: "Política de Privacidad",
+      legalLink: "Aviso Legal",
     },
     live: "EN VIVO",
   },
@@ -273,6 +340,8 @@ const T = {
     footer: {
       legal: "© 2026 Calesius Global SL · CIF B56399207 · All rights reserved",
       loc: "MADRID · LUXEMBOURG · GLOBAL",
+      privacyLink: "Privacy Policy",
+      legalLink: "Legal Notice",
     },
     live: "LIVE",
   },
@@ -851,6 +920,7 @@ const MarketTicker = ({ lang }) => {
 const Nav = ({ lang, setLang, onNav }) => {
   const { user, openLogin, logout, openPricing } = useAuth();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const ids = ["observatory", "intelligence", "georisk-index", "brokerage", "advisory", "academia", "inner-circle"];
 
   useEffect(() => {
@@ -859,19 +929,26 @@ const Nav = ({ lang, setLang, onNav }) => {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
+  const go = (id) => { onNav(id); setMobileOpen(false); };
+
   return (
     <nav style={{ position: "fixed", top: 44, left: 0, right: 0, zIndex: 100, background: scrolled ? "rgba(9,9,11,0.95)" : "rgba(9,9,11,0.7)", backdropFilter: "blur(20px)", borderBottom: `1px solid ${scrolled ? C.border : "rgba(255,255,255,0.06)"}`, transition: "all 0.4s" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 76, padding: "0 clamp(20px,3vw,40px)" }}>
-        <div onClick={() => onNav("hero")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}>
+        <div onClick={() => go("hero")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
           <div style={{ width: 24, height: 24, border: `1.5px solid ${C.gold}`, transform: "rotate(45deg)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{ width: 6, height: 6, background: C.gold, transform: "rotate(-45deg)" }} />
           </div>
           <span style={{ fontFamily: F.display, fontSize: 15, color: C.text, fontWeight: 400, letterSpacing: "0.12em" }}>ZRC</span>
         </div>
 
-        <div style={{ display: "flex", gap: 24, alignItems: "center", overflowX: "auto" }}>
+        <button className="nav-hamburger" onClick={() => setMobileOpen((o) => !o)} aria-label="Menu"
+          style={{ display: "none", background: "none", border: `1px solid ${C.border}`, color: C.gold, width: 36, height: 36, alignItems: "center", justifyContent: "center", cursor: "pointer", flexShrink: 0 }}>
+          <span style={{ fontFamily: F.mono, fontSize: 14 }}>{mobileOpen ? "✕" : "☰"}</span>
+        </button>
+
+        <div className={`nav-links${mobileOpen ? " nav-links-open" : ""}`} style={{ display: "flex", gap: 24, alignItems: "center" }}>
           {T[lang].nav.map((label, i) => (
-            <button key={ids[i]} onClick={() => onNav(ids[i])}
+            <button key={ids[i]} onClick={() => go(ids[i])}
               style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.1em", color: C.textMuted, background: "none", border: "none", cursor: "pointer", whiteSpace: "nowrap", padding: "6px 0", transition: "color 0.3s" }}
               onMouseEnter={(e) => { e.target.style.color = C.gold; }}
               onMouseLeave={(e) => { e.target.style.color = C.textMuted; }}
@@ -879,7 +956,7 @@ const Nav = ({ lang, setLang, onNav }) => {
               {label.toUpperCase()}
             </button>
           ))}
-          <button onClick={openPricing} style={{ fontFamily: F.mono, fontSize: 10, padding: "5px 14px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 600, letterSpacing: "0.08em" }}>
+          <button onClick={() => { openPricing(); setMobileOpen(false); }} style={{ fontFamily: F.mono, fontSize: 10, padding: "5px 14px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 600, letterSpacing: "0.08em" }}>
             PRICING
           </button>
           <button onClick={() => setLang(lang === "es" ? "en" : "es")} style={{ fontFamily: F.mono, fontSize: 10, padding: "5px 14px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 600 }}>
@@ -891,7 +968,7 @@ const Nav = ({ lang, setLang, onNav }) => {
               <button onClick={logout} style={{ fontFamily: F.mono, fontSize: 8, padding: "2px 8px", background: "transparent", color: C.textMuted, border: `1px solid ${C.border}`, cursor: "pointer" }}>✕</button>
             </div>
           ) : (
-            <button onClick={openLogin} style={{ fontFamily: F.mono, fontSize: 9, padding: "4px 12px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>LOGIN</button>
+            <button onClick={() => { openLogin(); setMobileOpen(false); }} style={{ fontFamily: F.mono, fontSize: 9, padding: "4px 12px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>LOGIN</button>
           )}
         </div>
       </div>
@@ -1448,14 +1525,43 @@ const Academia = ({ lang }) => {
 
 
 
+const LegalModal = ({ open, onClose, content }) => {
+  if (!open || !content) return null;
+  return (
+    <Modal open={open} onClose={onClose} title={content.title}>
+      <p style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", color: C.textMuted, marginTop: 0, marginBottom: 20 }}>{content.updated}</p>
+      {content.sections.map((s, i) => (
+        <div key={i} style={{ marginBottom: 18 }}>
+          <h4 style={{ fontFamily: F.body, fontSize: 13, fontWeight: 600, color: C.text, margin: "0 0 6px" }}>{s.h}</h4>
+          {s.p.map((para, j) => (
+            <p key={j} style={{ fontFamily: F.body, fontSize: 13, lineHeight: 1.6, color: C.textSec, margin: "0 0 8px" }}>{para}</p>
+          ))}
+        </div>
+      ))}
+    </Modal>
+  );
+};
+
 const Footer = ({ lang }) => {
   const t = T[lang].footer;
+  const [legalModal, setLegalModal] = useState(null);
   return (
     <footer style={{ borderTop: `1px solid ${C.border}`, padding: "40px clamp(16px,4vw,48px)" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-        <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.08em" }}>{t.legal}</span>
-        <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.15em" }}>{t.loc}</span>
+      <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 20 }}>
+          <button onClick={() => setLegalModal("privacy")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.08em", color: C.textMuted, textDecoration: "underline", textUnderlineOffset: 3 }}>
+            {t.privacyLink}
+          </button>
+          <button onClick={() => setLegalModal("legal")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.08em", color: C.textMuted, textDecoration: "underline", textUnderlineOffset: 3 }}>
+            {t.legalLink}
+          </button>
+        </div>
+        <div style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+          <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.08em" }}>{t.legal}</span>
+          <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.15em" }}>{t.loc}</span>
+        </div>
       </div>
+      <LegalModal open={!!legalModal} onClose={() => setLegalModal(null)} content={legalModal ? LEGAL_TEXT[lang][legalModal] : null} />
     </footer>
   );
 };
@@ -1485,6 +1591,37 @@ const ZRCPlatform = () => {
         button:hover { opacity: 0.85; }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: ${C.bg}; }
+        html { overflow-x: hidden; }
+        body { overflow-x: hidden; }
+
+        @media (max-width: 860px) {
+          .nav-hamburger { display: flex !important; }
+          .nav-links {
+            display: none !important;
+          }
+          .nav-links.nav-links-open {
+            display: flex !important;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 2px;
+            position: fixed;
+            top: 120px;
+            left: 0;
+            right: 0;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            background: rgba(9,9,11,0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid ${C.border};
+            padding: 8px 20px 20px;
+          }
+          .nav-links.nav-links-open button {
+            width: 100%;
+            text-align: left;
+            padding: 12px 0 !important;
+            border-bottom: 1px solid ${C.border};
+          }
+        }
       `}</style>
 
       {icPage === "inner-circle" && (
