@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-07-09T09:32:15.752Z",
+  "generated_at": "2026-07-10T09:28:46.486Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1443",
-      "change": "+0.11%",
+      "value": "1.1438",
+      "change": "+0.18",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,397.00",
-      "change": "-1.24%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "78.59",
-      "change": "+0.73%",
+      "value": "19671.80",
+      "change": "+265.20",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "72.23",
-      "change": "-1.75%",
-      "up": false
+      "symbol": "BRENT",
+      "value": "78.59",
+      "change": "+1.60",
+      "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,111.28",
-      "change": "-0.30%",
-      "up": false
+      "symbol": "GOLD",
+      "value": "4110.60",
+      "change": "+23.00",
+      "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "63,222.00",
-      "change": "+1.93%",
+      "symbol": "BTC",
+      "value": "63222.00",
+      "change": "+1212.00",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "16.25",
-      "change": "-3.85%",
+      "value": "16.95",
+      "change": "+0.65",
+      "up": true
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.54",
+      "change": "-0.04",
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.54%",
-      "change": "-0.04%",
-      "up": false
+      "symbol": "EUR/GBP",
+      "value": "0.8528",
+      "change": "+0.0001",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,528.55",
-      "change": "+0.61%",
+      "value": "7536.02",
+      "change": "+53.31",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25,118.27",
-      "change": "+0.83%",
+      "value": "25131.00",
+      "change": "+12.50",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8524",
-      "change": "-0.13%",
-      "up": false
-    },
-    {
-      "symbol": "DXY",
-      "value": "100.935",
-      "change": "-0.12%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.01",
-      "change": "-6.21%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.12",
-      "change": "-0.49%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7809",
-      "change": "-0.22%",
-      "up": false
     }
   ],
   "headlines": [
@@ -98,69 +68,117 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EEUU e Irán intercambian ataques por segunda noche consecutiva — tráfico por Ormuz cae con fuerza",
-        "en": "US and Iran trade strikes for second night in a row — Hormuz transit drops sharply"
+        "es": "El conflicto EEUU-Irán escala con nuevos ataques de misiles que amenazan el alto el fuego en Oriente Medio",
+        "en": "US-Iran conflict escalates as fresh missile strikes threaten Middle East ceasefire"
       },
       "summary": {
-        "es": "Irán atacó instalaciones vinculadas a fuerzas estadounidenses en el Golfo y restringió el tránsito de buques con seguro israelí por el Estrecho de Ormuz. El tráfico ha caído 'drásticamente' según fuentes citadas por la BBC, y Trump advirtió que la respuesta podría ser 'mucho peor'. Este es, con diferencia, el evento geopolítico dominante de la jornada — el resto de titulares sobre Irán publicados hoy son variaciones de esta misma historia y se han consolidado en esta única señal.",
-        "en": "Iran struck sites linked to US forces in the Gulf and restricted transit for Israeli-insured vessels through the Strait of Hormuz. Traffic has dropped 'dramatically' according to sources cited by the BBC, and Trump warned the response could get 'much worse'. This is by far the dominant geopolitical story of the day — today's other Iran-related headlines are variations of this same story and have been consolidated into this single signal."
+        "es": "EEUU lanzó nuevos ataques aéreos contra Irán, quien respondió con misiles contra Bahrein, Qatar, Kuwait y Jordania, donde están estacionadas fuerzas militares estadounidenses. La escalada amenaza un frágil alto el fuego interino en Oriente Medio. El riesgo de cierre del Estrecho de Ormuz y la interrupción del suministro de crudo son las principales preocupaciones para los mercados de energía globales.",
+        "en": "The US launched fresh air strikes on Iran, which responded by firing missiles at Bahrain, Qatar, Kuwait and Jordan — all hosting US military forces. The escalation directly threatens a fragile interim ceasefire across the broader Middle East. The primary market risk is a potential Strait of Hormuz disruption and a sharp spike in global crude prices."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent/WTI crude",
+          "asset": "Brent crude",
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "~20% del petróleo mundial transita Ormuz",
-            "en": "~20% of global oil transits Hormuz"
+            "es": "Riesgo de cierre del Estrecho de Ormuz impulsa prima de riesgo",
+            "en": "Strait of Hormuz closure risk drives sharp risk premium"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Demanda de refugio ante escalada militar",
-            "en": "Safe-haven demand on military escalation"
+            "es": "Demanda de refugio seguro máxima ante escalada militar directa",
+            "en": "Safe-haven demand surges on direct US-Iran military exchange"
           }
         },
         {
-          "asset": "Global equities",
+          "asset": "US 10Y Treasury",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Aversión al riesgo generalizada",
-            "en": "Broad-based risk aversion"
+            "es": "Vuelo hacia la calidad comprime rendimientos del Tesoro",
+            "en": "Flight-to-quality compresses Treasury yields"
           }
         },
         {
-          "asset": "Core sovereign bonds",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "high",
           "note": {
-            "es": "Flujo hacia activos refugio",
-            "en": "Flight to safe-haven duration"
+            "es": "Monedas de mercados emergentes importadores de petróleo bajo presión severa",
+            "en": "Oil-importing EM currencies face severe depreciation pressure"
           }
         }
       ],
       "confidence": 95,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/7/9/us-iran-launch-more-attacks-as-mediators-urge-warring-sides-to-uphold-mou?traffic_source=rss",
-      "published_at": "2026-07-09",
-      "time": "<1h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260710-us-iran-conflict-escalates-missile-strikes-threaten-middle-east-ceasefire",
+      "published_at": "2026-07-10",
+      "time": "6h"
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "EURASIA",
       "title": {
-        "es": "En la cumbre de la OTAN, Trump alterna amenazas y efusividad, tranquiliza a sus aliados y aporta nuevo apoyo a Ucrania",
-        "en": "At NATO Summit, Trump alternates threats and goodwill, reassures allies and brings new support for Ukraine"
+        "es": "Drones ucranianos incendian instalaciones petroleras rusas",
+        "en": "Ukrainian drone strikes ignite fires at Russian oil sites"
       },
       "summary": {
-        "es": "En la cumbre de la OTAN celebrada en Turquía, Trump confirmó el compromiso de EEUU con el artículo 5 y autorizó a Ucrania a producir misiles Patriot bajo licencia. El anuncio refuerza la capacidad defensiva de Kiev y beneficia al sector europeo de defensa, mientras la reafirmación del artículo 5 reduce el riesgo de fractura intraalianza a corto plazo.",
-        "en": "At the NATO summit in Turkey, Trump reaffirmed US commitment to Article 5 and authorized Ukraine to produce Patriot missiles under license. The announcement strengthens Kyiv's defensive capacity and benefits the European defense sector, while the Article 5 reaffirmation reduces near-term intra-alliance fracture risk."
+        "es": "Un ataque nocturno ucraniano alcanzó instalaciones clave de petróleo en el sur de Rusia, añadiendo presión a una red de combustible ya tensada por ataques repetidos. Esta estrategia busca degradar la capacidad logística y los ingresos energéticos rusos. El daño acumulado a la infraestructura energética rusa puede tener implicaciones para los mercados europeos de gas y diésel.",
+        "en": "An overnight Ukrainian assault reached key oil facilities in southern Russia, adding pressure to a fuel network already strained by repeated strikes. The strategy aims to degrade Russian logistical capacity and energy export revenues. Cumulative damage to Russian energy infrastructure carries implications for European diesel and gas supply margins."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Reducción de capacidad de refinería rusa apoya precios del crudo",
+            "en": "Russian refinery capacity loss supports crude prices"
+          }
+        },
+        {
+          "asset": "European natural gas (TTF)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Daño a infraestructura energética rusa eleva prima de riesgo del gas europeo",
+            "en": "Russian energy infrastructure damage raises European gas risk premium"
+          }
+        },
+        {
+          "asset": "Russian ruble",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Pérdida de ingresos por exportaciones debilita el rublo",
+            "en": "Export revenue loss weakens the ruble"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ukrainian-drone-strikes-ignite-fires-at-russian-oil-sites/a-77900682?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-07-10",
+      "time": "<1h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "La cumbre de la OTAN de Trump y la de todos los demás",
+        "en": "Trump's NATO Summit, and Everyone Else's"
+      },
+      "summary": {
+        "es": "Mientras Trump insultó a aliados y exigió lealtad, la alianza avanzó discretamente hacia una mayor responsabilidad europea en defensa. La cumbre señala una aceleración del proceso de autonomía estratégica europea, con implicaciones directas para el gasto en defensa continental. Este desacoplamiento gradual EEUU-Europa redefine los flujos de capital hacia el sector defensa europeo.",
+        "en": "While Trump publicly insulted allies and demanded loyalty at the NATO summit, the alliance quietly moved toward greater European defense responsibility. The summit signals acceleration of European strategic autonomy, with direct implications for continental defense spending trajectories. This gradual US-Europe decoupling reshapes capital flows into European defense equities."
       },
       "impact": "high",
       "market_impact": [
@@ -169,191 +187,160 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Contratos de licencia y presupuestos 2027",
-            "en": "Licensing contracts and 2027 budget outlook"
+            "es": "Mayor autonomía europea impulsa gasto y valoraciones de defensa",
+            "en": "European autonomy push drives defense spending and valuations"
           }
         },
         {
           "asset": "EUR/USD",
           "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Compromiso de seguridad compensa incertidumbre comercial",
-            "en": "Security commitment offsets trade uncertainty"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/07/09/au-sommet-de-l-otan-donald-trump-alterne-menaces-et-effusions-rassure-ses-allies-et-apporte-un-nouveau-soutien-a-l-ukraine_6722015_3210.html",
-      "published_at": "2026-07-09",
-      "time": "5h"
-    },
-    {
-      "id": 3,
-      "tag": "WATCH",
-      "region": "GLOBAL",
-      "title": {
-        "es": "La Fed mantiene tipos pero Powell abre la puerta a un recorte en septiembre ante el enfriamiento del mercado laboral",
-        "en": "Fed holds rates but Powell opens the door to a September cut as labor market cools"
-      },
-      "summary": {
-        "es": "La Reserva Federal mantuvo los tipos sin cambios, pero Powell señaló que el enfriamiento del mercado laboral podría justificar un recorte en septiembre. La divergencia con el BCE, que ya inició su ciclo de recortes, amplía el diferencial de tipos y presiona al dólar.",
-        "en": "The Federal Reserve held rates steady, but Powell signaled that a cooling labor market could justify a September cut. The divergence with the ECB, which has already begun its cutting cycle, widens the rate differential and pressures the dollar."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mercado empieza a descontar recorte de septiembre",
-            "en": "Market begins pricing a September cut"
+            "es": "Tensión OTAN genera incertidumbre sobre cohesión del bloque europeo",
+            "en": "NATO tension creates uncertainty over European bloc cohesion"
           }
         },
         {
-          "asset": "DXY (dollar index)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Diferencial de tipos Fed-BCE se estrecha",
-            "en": "Fed-ECB rate differential narrows"
-          }
-        },
-        {
-          "asset": "US equities",
-          "direction": "up",
+          "asset": "US defense equities",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Expectativa de flexibilización monetaria",
-            "en": "Anticipation of monetary easing"
+            "es": "Posible redistribución de contratos hacia proveedores europeos",
+            "en": "Possible reallocation of contracts toward European suppliers"
           }
         }
       ],
-      "confidence": 84,
-      "source": "Wall Street Journal",
-      "source_url": "https://www.wsj.com/economy/fed-holds-rates-september-cut-2026",
+      "confidence": 85,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/07/09/world/europe/nato-trump-turkey-summit.html",
       "published_at": "2026-07-09",
-      "time": "7h"
+      "time": "19h"
     },
     {
       "id": 4,
-      "tag": "WATCH",
-      "region": "APAC",
+      "tag": "ALERT",
+      "region": "GLOBAL",
       "title": {
-        "es": "Washington amplía controles de exportación de semiconductores avanzados a China",
-        "en": "Washington broadens advanced semiconductor export controls on China"
+        "es": "China amplía su arsenal antisanciones, elevando los riesgos para empresas extranjeras",
+        "en": "China expands anti-sanctions toolkit, raising risks for foreign firms"
       },
       "summary": {
-        "es": "EEUU amplió la lista de equipos de litografía y chips de IA sujetos a control de exportación hacia China, endureciendo la disputa por soberanía tecnológica. El mercado vigila una posible represalia china sobre tierras raras.",
-        "en": "The US expanded the list of lithography equipment and AI chips subject to export controls on China, hardening the technology sovereignty dispute. Markets are watching for possible Chinese retaliation on rare earths."
+        "es": "Beijing está desplegando nuevas medidas para ampliar su capacidad de represalia contra sanciones y controles de exportación de EEUU y la UE. Esta expansión del arsenal legal y económico chino aumenta el riesgo operativo para multinacionales con exposición a China. Los inversores deben reevaluar el riesgo de activos de empresas con cadenas de suministro o ingresos significativos en China.",
+        "en": "Beijing is rolling out measures to expand its ability to retaliate against US and EU sanctions and export controls. This expansion of China's legal and economic toolkit increases operational risk for multinationals with China exposure. Investors must reassess asset risk for firms with significant China-linked supply chains or revenue streams."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Chinese semiconductor equities",
+          "asset": "China-exposed multinational equities",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Acceso restringido a equipos de litografía avanzada",
-            "en": "Restricted access to advanced lithography equipment"
+            "es": "Mayor riesgo regulatorio y de represalia para empresas occidentales en China",
+            "en": "Elevated regulatory and retaliation risk for Western firms in China"
           }
         },
         {
-          "asset": "Rare earths / critical minerals",
-          "direction": "up",
+          "asset": "Semiconductor equities",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de represalia china sobre exportaciones",
-            "en": "Risk of Chinese retaliation on exports"
+            "es": "Controles de exportación y contramedidas chinas presionan al sector",
+            "en": "Export controls and Chinese countermeasures pressure the sector"
+          }
+        },
+        {
+          "asset": "CNY/USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Escalada de tensiones comerciales genera volatilidad en el yuan",
+            "en": "Escalating trade tensions generate yuan volatility"
           }
         }
       ],
-      "confidence": 83,
-      "source": "Nikkei Asia",
-      "source_url": "https://asia.nikkei.com/economy/us-china-chip-controls-2026",
-      "published_at": "2026-07-08",
-      "time": "1d"
+      "confidence": 87,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/7/10/china-expands-anti-sanctions-toolkit-raising-risks-for-foreign-firms?traffic_source=rss",
+      "published_at": "2026-07-10",
+      "time": "9h"
     },
     {
       "id": 5,
       "tag": "WATCH",
       "region": "AFRICA",
       "title": {
-        "es": "RD Congo y Ruanda avanzan un corredor minero de cobalto respaldado por EEUU",
-        "en": "DR Congo and Rwanda advance a US-backed cobalt mining corridor"
+        "es": "Congo: la ONU lamenta el aumento de los combates en Kivu del Sur",
+        "en": "Congo: UN laments uptick in fighting in South Kivu"
       },
       "summary": {
-        "es": "RD Congo y Ruanda avanzan en un marco de tregua que habilita un corredor minero para cobalto y coltán respaldado por inversión estadounidense. El este de RD Congo concentra cerca del 70% del cobalto mundial, insumo crítico para baterías de vehículos eléctricos — un tema que apenas recibe cobertura de primera plana pero con relevancia geopolítica directa sobre las cadenas de suministro de la transición energética.",
-        "en": "DR Congo and Rwanda are advancing a truce framework enabling a US-backed mining corridor for cobalt and coltan. Eastern DR Congo holds roughly 70% of global cobalt supply, a critical input for EV batteries — a story that barely makes front pages but carries direct geopolitical relevance for energy-transition supply chains."
+        "es": "El jefe de derechos humanos de la ONU llamó a un cese inmediato de los combates en el este del Congo, donde se han intensificado los enfrentamientos entre el ejército congoleño y la milicia M23 respaldada por Ruanda en Kivu del Sur. El conflicto persiste en una región que alberga reservas críticas de coltán, cobalto y otros minerales estratégicos para cadenas de suministro tecnológicas globales. Una escalada sostenida podría perturbar el suministro de minerales críticos e impactar a fabricantes de baterías y semiconductores.",
+        "en": "The UN human rights chief called for an immediate halt to fighting in eastern DRC, where clashes between the Congolese army and Rwanda-backed M23 militia have intensified in South Kivu. The conflict persists in a region holding critical reserves of coltan, cobalt and other strategic minerals central to global tech supply chains. Sustained escalation could disrupt critical mineral supply and impact battery and semiconductor manufacturers."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Cobalt",
-          "direction": "down",
-          "magnitude": "low",
+          "asset": "Cobalt futures",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Menor prima de riesgo de suministro si la tregua se sostiene",
-            "en": "Lower supply risk premium if the truce holds"
+            "es": "Interrupción minera en Kivu Sur presiona precios del cobalto",
+            "en": "South Kivu mining disruption pressures cobalt prices upward"
           }
         },
         {
-          "asset": "EV battery makers",
-          "direction": "up",
+          "asset": "EV battery supply chain equities",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Mayor visibilidad de suministro a medio plazo",
-            "en": "Improved medium-term supply visibility"
+            "es": "Riesgo de suministro de minerales críticos pesa sobre fabricantes de baterías",
+            "en": "Critical mineral supply risk weighs on battery manufacturers"
           }
         }
       ],
-      "confidence": 74,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/drc-rwanda-cobalt-corridor-2026",
-      "published_at": "2026-07-07",
-      "time": "2d"
+      "confidence": 75,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/congo-un-laments-uptick-in-fighting-in-south-kivu/a-77887082?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-07-09",
+      "time": "19h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EURASIA",
+      "region": "EU",
       "title": {
-        "es": "Armenia y Azerbaiyán avanzan la apertura del corredor de Zangezur",
-        "en": "Armenia and Azerbaijan advance opening of the Zangezur corridor"
+        "es": "El director de Jackdaw advierte del riesgo de escasez de gas en invierno si no se aprueba el campo",
+        "en": "Jackdaw boss warns of winter fuel shortage risk if gas field not approved"
       },
       "summary": {
-        "es": "Armenia y Azerbaiyán avanzan en la apertura del corredor de Zangezur, una ruta de tránsito que conectaría Azerbaiyán con Turquía, con implicaciones para las rutas energéticas del Caspio. Un corredor operativo reconfiguraría el transporte de gas y petróleo hacia Europa, reduciendo la dependencia de rutas rusas e iraníes — una historia de bajo perfil mediático pero con relevancia estructural para la diversificación energética europea.",
-        "en": "Armenia and Azerbaijan are advancing the opening of the Zangezur corridor, a transit route that would connect Azerbaijan with Turkey, with implications for Caspian energy routes. An operational corridor would reshape gas and oil transport toward Europe, reducing dependence on Russian and Iranian routes — a low-profile story with structural relevance for European energy diversification."
+        "es": "Adura Energy advierte que el gobierno del Reino Unido debe aprobar urgentemente la producción del campo Jackdaw en el Mar del Norte para evitar escasez de suministro doméstico en invierno. Esto ocurre en un contexto de elevada dependencia europea de fuentes de gas alternativas tras la reducción del suministro ruso. El rechazo o demora en la aprobación podría estrechar los márgenes de seguridad energética del Reino Unido y elevar los precios del gas doméstico.",
+        "en": "Adura Energy warns that the UK government must urgently approve North Sea Jackdaw field production to avoid domestic supply shortages this winter. The warning comes amid elevated European dependence on alternative gas sources following reduced Russian supply. A rejection or delay could tighten UK energy security margins and push domestic gas prices higher."
       },
-      "impact": "low",
+      "impact": "medium",
       "market_impact": [
         {
-          "asset": "Turkish energy infrastructure",
+          "asset": "UK natural gas",
           "direction": "up",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Nueva ruta de tránsito Caspio-Europa",
-            "en": "New Caspian-to-Europe transit route"
+            "es": "Riesgo de escasez invernal presiona precios del gas doméstico",
+            "en": "Winter shortage risk pushes domestic gas prices higher"
           }
         },
         {
-          "asset": "Natural gas (alternative routes)",
+          "asset": "GBP/USD",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Diversificación reduce prima de riesgo de suministro",
-            "en": "Diversification lowers supply risk premium"
+            "es": "Inseguridad energética pesa sobre la libra esterlina",
+            "en": "Energy insecurity weighs on sterling"
           }
         }
       ],
       "confidence": 70,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/armenia-azerbaijan-zangezur-corridor-2026",
-      "published_at": "2026-07-06",
-      "time": "3d"
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/cdx78n4nkvyo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-07-09",
+      "time": "23h"
     }
-  ],
-  "market_updated_at": "2026-07-10T08:54:42.907Z"
+  ]
 }
