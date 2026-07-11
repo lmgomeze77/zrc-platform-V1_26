@@ -453,11 +453,78 @@ const GEORISK_INDEX_SCENARIOS = [
   { key: "detente", label: "Distensión Geopolítica", prob: 0.12, risk: 28 },
 ];
 
-function computeGeoRiskIndexValue() {
-  const value = GEORISK_INDEX_SCENARIOS.reduce((sum, s) => sum + s.prob * s.risk, 0);
-  const dominant = GEORISK_INDEX_SCENARIOS.reduce((a, b) => (b.prob > a.prob ? b : a));
+// Small, capped adjustment so the weekly print moves with that week's actual
+// news flow instead of staying frozen at the structural baseline. Reuses the
+// same daily headlines feed (public/data/headlines.json) already generated
+// by scripts/generate-headlines.js — no separate data pipeline needed.
+const NEWS_TAG_WEIGHT = { CRITICAL: 1, ALERT: 0.6, WATCH: 0.3, DATA: 0.15 };
+const MAX_NEWS_OVERLAY = 3; // points, either direction — keeps the weekly move "minimal" by design
+
+function round2(n) {
+  return Math.round(n * 100) / 100;
+}
+
+// Maps a headline to one of the 4 base scenarios, if it's relevant to any.
+function matchScenario(headline) {
+  const text = `${headline.title?.en || ""} ${headline.summary?.en || ""}`.toLowerCase();
+  if (headline.region === "MENA" || /\biran\b|israel|gaza|houthi|hezbollah|hamas|red sea|hormuz/.test(text))
+    return "mena_instability";
+  if (/tariff|trade war|export controls?|decoupl|reshoring|friend-shoring/.test(text))
+    return "tariff_escalation";
+  if (headline.region === "EU" || /\beu\b|eurozone|european union|\becb\b|\bbce\b/.test(text))
+    return "eu_fragmentation";
+  if (/ceasefire|peace (talks|deal)|de-escalat|d[eé]tente|diplomatic breakthrough/.test(text))
+    return "detente";
+  return null;
+}
+
+async function fetchLatestHeadlines(env) {
+  if (!env.ASSETS) return [];
+  try {
+    const resp = await env.ASSETS.fetch(new Request("https://zrc-internal.local/data/headlines.json"));
+    if (!resp.ok) return [];
+    const data = await resp.json();
+    return Array.isArray(data.headlines) ? data.headlines : [];
+  } catch (err) {
+    console.error("GeoRisk Index: headlines fetch failed", err);
+    return [];
+  }
+}
+
+// Escalatory scenario matches push the index up; détente matches pull it down.
+// The result is clamped to +/-MAX_NEWS_OVERLAY so a single dramatic headline
+// can't swing the print — it's a nudge on top of the structural baseline, not
+// a replacement for it.
+function computeNewsOverlay(headlines) {
+  const weight = { tariff_escalation: 0, mena_instability: 0, eu_fragmentation: 0, detente: 0 };
+  for (const h of headlines) {
+    const scenario = matchScenario(h);
+    if (scenario) weight[scenario] += NEWS_TAG_WEIGHT[h.tag] || 0.2;
+  }
+  const escalatory = weight.tariff_escalation + weight.mena_instability + weight.eu_fragmentation;
+  const raw = escalatory - weight.detente * 1.5;
+  const delta = Math.max(-MAX_NEWS_OVERLAY, Math.min(MAX_NEWS_OVERLAY, raw));
+  const [topKey, topWeight] = Object.entries(weight).sort((a, b) => b[1] - a[1])[0];
+  return { delta: round2(delta), matchedScenario: topWeight > 0 ? topKey : null };
+}
+
+async function computeGeoRiskIndexValue(env) {
+  const base = GEORISK_INDEX_SCENARIOS.reduce((sum, s) => sum + s.prob * s.risk, 0);
+  const structuralDominant = GEORISK_INDEX_SCENARIOS.reduce((a, b) => (b.prob > a.prob ? b : a));
+
+  const headlines = await fetchLatestHeadlines(env);
+  const { delta, matchedScenario } = computeNewsOverlay(headlines);
+  const scenarioLabel = matchedScenario
+    ? GEORISK_INDEX_SCENARIOS.find((s) => s.key === matchedScenario).label
+    : structuralDominant.label;
+
+  const value = Math.max(0, Math.min(100, base + delta));
   const label = value < 40 ? "BAJO" : value < 65 ? "MODERADO" : value < 80 ? "ELEVADO" : "CRÍTICO";
-  return { value: Math.round(value * 100) / 100, dominantScenario: dominant.label, riskLabel: label };
+  const note = headlines.length
+    ? `Base ${round2(base)} + overlay noticias ${delta >= 0 ? "+" : ""}${delta} (${headlines.length} señales, dominante: ${scenarioLabel})`
+    : `Base ${round2(base)}, sin overlay (sin señales disponibles esta semana)`;
+
+  return { value: round2(value), dominantScenario: scenarioLabel, riskLabel: label, note };
 }
 
 // Monday (UTC) of the ISO week containing `date`
@@ -474,7 +541,7 @@ async function computeAndStoreWeeklySnapshot(env, source) {
     return { ok: false, error: "Service unavailable" };
   }
 
-  const { value, dominantScenario, riskLabel } = computeGeoRiskIndexValue();
+  const { value, dominantScenario, riskLabel, note } = await computeGeoRiskIndexValue(env);
   const weekStart = isoWeekMonday(new Date());
 
   try {
@@ -492,6 +559,7 @@ async function computeAndStoreWeeklySnapshot(env, source) {
         dominant_scenario: dominantScenario,
         risk_label: riskLabel,
         source: source || "manual_snapshot",
+        notes: note,
       }),
     });
     if (!resp.ok) {
@@ -506,7 +574,7 @@ async function computeAndStoreWeeklySnapshot(env, source) {
 }
 
 async function handleGeoRiskIndexGet(request, env) {
-  const live = computeGeoRiskIndexValue();
+  const live = await computeGeoRiskIndexValue(env);
 
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
     return jsonResponse({ history: [], live });
