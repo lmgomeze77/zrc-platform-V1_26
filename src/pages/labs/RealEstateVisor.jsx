@@ -187,85 +187,104 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
   }, [params]);
 
   // ─── Retorno desde Stripe tras pagar Teaser/Informe ───
-  useEffect(() => {
-    if (!pendingReport?.sessionId || !pendingReport?.type) return;
-    let cancelled = false;
+  // pendingReportCacheRef guarda el último { type, sessionId } visto para
+  // poder reintentar manualmente (botón "Reintentar" en el banner) incluso
+  // después de que el padre limpie pendingReport vía onReportHandled().
+  const pendingReportCacheRef = useRef(null);
+  const pendingCancelRef = useRef(false);
 
+  const runPendingReportFlow = async (pending) => {
+    pendingCancelRef.current = false;
+    const isCancelled = () => pendingCancelRef.current;
     const CONTACT = "Escríbenos a labs@zenithrisecapital.com con tu referencia catastral y te lo enviamos manualmente.";
 
-    (async () => {
-      // Guarda contra el placeholder {CHECKOUT_SESSION_ID} sin sustituir —
-      // pasaría si el redirect "After payment" del Payment Link no está bien
-      // configurado en Stripe, y evita lanzar un fetch a una URL rota.
-      if (!/^cs_/.test(pendingReport.sessionId)) {
-        setReportStatus({ stage: "error", type: pendingReport.type, message: `No hemos podido leer el ID de sesión de Stripe. ${CONTACT}` });
-        onReportHandled?.();
-        return;
-      }
+    // Guarda contra el placeholder {CHECKOUT_SESSION_ID} sin sustituir —
+    // pasaría si el redirect "After payment" del Payment Link no está bien
+    // configurado en Stripe, y evita lanzar un fetch a una URL rota.
+    if (!/^cs_/.test(pending.sessionId)) {
+      setReportStatus({ stage: "error", type: pending.type, retryable: false, message: `No hemos podido leer el ID de sesión de Stripe. ${CONTACT}` });
+      return;
+    }
 
-      setReportStatus({ stage: "verifying", type: pendingReport.type, message: "Verificando el pago…" });
+    setReportStatus({ stage: "verifying", type: pending.type, message: "Verificando el pago…" });
 
-      let sessionData;
+    // Reintenta una vez la verificación: justo tras volver de un checkout
+    // externo (Stripe), la primera petición fetch() en Safari/iOS puede
+    // fallar por red si la conexión aún no se ha restablecido del todo.
+    let sessionData = null;
+    let fetchErr = null;
+    for (let attempt = 0; attempt < 2; attempt++) {
       try {
-        const resp = await fetch(`/api/checkout-session?session_id=${encodeURIComponent(pendingReport.sessionId)}`);
+        const resp = await fetch(`/api/checkout-session?session_id=${encodeURIComponent(pending.sessionId)}`);
         sessionData = await resp.json();
-      } catch {
-        if (!cancelled) setReportStatus({ stage: "error", type: pendingReport.type, message: `No hemos podido verificar el pago (fallo de red). ${CONTACT}` });
-        onReportHandled?.();
-        return;
-      }
-      if (cancelled) return;
-
-      if (!sessionData.paid || !sessionData.clientReferenceId) {
-        setReportStatus({ stage: "error", type: pendingReport.type, message: `No hemos podido confirmar el pago. Si el cargo se realizó, ${CONTACT.toLowerCase()}` });
-        onReportHandled?.();
-        return;
-      }
-
-      setReportStatus({ stage: "loading", type: pendingReport.type, message: "Pago confirmado. Cargando la parcela…" });
-      let result;
-      try {
-        result = await handleSearch(null, sessionData.clientReferenceId, true);
-      } catch {
-        result = null;
-      }
-      if (cancelled) return;
-      if (!result || !result.parcelaData) {
-        setReportStatus({ stage: "error", type: pendingReport.type, message: `Pago confirmado, pero no hemos podido recargar la parcela (RC ${sessionData.clientReferenceId}). ${CONTACT}` });
-        onReportHandled?.();
-        return;
-      }
-
-      setReportStatus({ stage: "generating", type: pendingReport.type, message: "Generando tu informe en PDF…" });
-      try {
-        const { generateReportBlob, downloadBlob } = await import("./visorReports");
-        const marketRef = { precioM2: priceByProvince(result.parcelaData.provincia), ...MARKET_REF_META };
-        const blob = await generateReportBlob(pendingReport.type, {
-          parcela: result.parcelaData,
-          residual: result.residualData,
-          risk: result.riskData,
-          boeAlerts: result.boeData,
-          matches: result.matchesData,
-          params: result.params,
-          marketRef,
-        });
-        if (cancelled) return;
-        const label = pendingReport.type === "informe" ? "informe-investigado" : "teaser";
-        downloadBlob(blob, `zrc-${label}-${result.parcelaData.rc}.pdf`);
-        setReportStatus({ stage: "done", type: pendingReport.type, message: "Informe descargado. Revisa tu carpeta de descargas." });
+        fetchErr = null;
+        break;
       } catch (err) {
-        if (!cancelled) {
-          setReportStatus({
-            stage: "error", type: pendingReport.type,
-            message: `Pago confirmado (RC ${result.parcelaData.rc}), pero hubo un fallo generando el PDF. ${CONTACT} (detalle técnico: ${err.message || "desconocido"})`,
-          });
-        }
-      } finally {
-        onReportHandled?.();
+        fetchErr = err;
+        if (attempt === 0) await new Promise((r) => setTimeout(r, 900));
       }
-    })();
+    }
+    if (isCancelled()) return;
+    if (fetchErr) {
+      setReportStatus({ stage: "error", type: pending.type, retryable: true, message: `No hemos podido verificar el pago (fallo de red). ${CONTACT} (detalle técnico: ${fetchErr.message || "desconocido"})` });
+      return;
+    }
 
-    return () => { cancelled = true; };
+    if (!sessionData.paid || !sessionData.clientReferenceId) {
+      setReportStatus({ stage: "error", type: pending.type, retryable: true, message: `No hemos podido confirmar el pago. Si el cargo se realizó, ${CONTACT.toLowerCase()}` });
+      return;
+    }
+
+    setReportStatus({ stage: "loading", type: pending.type, message: "Pago confirmado. Cargando la parcela…" });
+    let result;
+    try {
+      result = await handleSearch(null, sessionData.clientReferenceId, true);
+    } catch {
+      result = null;
+    }
+    if (isCancelled()) return;
+    if (!result || !result.parcelaData) {
+      setReportStatus({ stage: "error", type: pending.type, retryable: true, message: `Pago confirmado, pero no hemos podido recargar la parcela (RC ${sessionData.clientReferenceId}). ${CONTACT}` });
+      return;
+    }
+
+    setReportStatus({ stage: "generating", type: pending.type, message: "Generando tu informe en PDF…" });
+    try {
+      const { generateReportBlob, downloadBlob } = await import("./visorReports");
+      const marketRef = { precioM2: priceByProvince(result.parcelaData.provincia), ...MARKET_REF_META };
+      const blob = await generateReportBlob(pending.type, {
+        parcela: result.parcelaData,
+        residual: result.residualData,
+        risk: result.riskData,
+        boeAlerts: result.boeData,
+        matches: result.matchesData,
+        params: result.params,
+        marketRef,
+      });
+      if (isCancelled()) return;
+      const label = pending.type === "informe" ? "informe-investigado" : "teaser";
+      downloadBlob(blob, `zrc-${label}-${result.parcelaData.rc}.pdf`);
+      setReportStatus({ stage: "done", type: pending.type, message: "Informe descargado. Revisa tu carpeta de descargas." });
+    } catch (err) {
+      if (!isCancelled()) {
+        setReportStatus({
+          stage: "error", type: pending.type, retryable: true,
+          message: `Pago confirmado (RC ${result.parcelaData.rc}), pero hubo un fallo generando el PDF. ${CONTACT} (detalle técnico: ${err.message || "desconocido"})`,
+        });
+      }
+    }
+  };
+
+  const retryPendingReport = () => {
+    if (!pendingReportCacheRef.current) return;
+    runPendingReportFlow(pendingReportCacheRef.current);
+  };
+
+  useEffect(() => {
+    if (!pendingReport?.sessionId || !pendingReport?.type) return;
+    pendingReportCacheRef.current = pendingReport;
+    runPendingReportFlow(pendingReport).finally(() => onReportHandled?.());
+    return () => { pendingCancelRef.current = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pendingReport]);
 
@@ -346,7 +365,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
           .zrc-visor-tabs-wrap { margin: 20px 0 14px; }
         }
       `}</style>
-      {reportStatus && <ReportStatusBanner status={reportStatus} onDismiss={() => setReportStatus(null)} />}
+      {reportStatus && <ReportStatusBanner status={reportStatus} onDismiss={() => setReportStatus(null)} onRetry={retryPendingReport} />}
       {/* HEADER */}
       <div className="zrc-visor-header">
         <div className="zrc-visor-header-row">
@@ -742,7 +761,7 @@ const Slider = ({ label, min, max, step, value, onChange }) => (
   </div>
 );
 
-const ReportStatusBanner = ({ status, onDismiss }) => {
+const ReportStatusBanner = ({ status, onDismiss, onRetry }) => {
   const colors = { verifying: C.gold, loading: C.gold, generating: C.gold, done: C.green, error: C.red };
   const color = colors[status.stage] || C.gold;
   const title = status.type === "informe" ? "Informe Investigado" : "Teaser PDF";
@@ -757,6 +776,18 @@ const ReportStatusBanner = ({ status, onDismiss }) => {
         <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.14em", color, textTransform: "uppercase", marginBottom: 3 }}>{title}</div>
         <div style={{ fontSize: 12, color: C.text }}>{status.message}</div>
       </div>
+      {status.stage === "error" && status.retryable && (
+        <button
+          onClick={onRetry}
+          style={{
+            padding: "6px 12px", background: "none", border: `1px solid ${color}`, color,
+            fontFamily: F.mono, fontSize: 10, fontWeight: 600, letterSpacing: "0.06em",
+            textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap",
+          }}
+        >
+          Reintentar
+        </button>
+      )}
       {(status.stage === "done" || status.stage === "error") && (
         <button onClick={onDismiss} style={{ background: "none", border: "none", color: C.textMuted, cursor: "pointer", fontSize: 16, lineHeight: 1 }}>×</button>
       )}
