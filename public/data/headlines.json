@@ -3,8 +3,8 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1414",
-      "change": "-0.14%",
+      "value": "1.1432",
+      "change": "-0.13%",
       "up": false
     },
     {
@@ -27,14 +27,14 @@
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4,113.70",
-      "change": "-0.65%",
+      "value": "4,120.67",
+      "change": "-0.10%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "64,390.94",
-      "change": "+2.67%",
+      "value": "64,132.35",
+      "change": "+1.51%",
       "up": true
     },
     {
@@ -45,9 +45,9 @@
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "4.568%",
-      "change": "+0.46%",
-      "up": true
+      "value": "4.56%",
+      "change": "-0.04%",
+      "up": false
     },
     {
       "symbol": "S&P 500",
@@ -63,8 +63,8 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8517",
-      "change": "-0.11%",
+      "value": "0.8512",
+      "change": "-0.12%",
       "up": false
     },
     {
@@ -75,7 +75,7 @@
     },
     {
       "symbol": "Natural Gas",
-      "value": "2.94",
+      "value": "2.940",
       "change": "-2.39%",
       "up": false
     },
@@ -87,8 +87,8 @@
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7811",
-      "change": "-0.20%",
+      "value": "6.7775",
+      "change": "-0.11%",
       "up": false
     }
   ],
@@ -364,5 +364,5 @@
       "time": "2h"
     }
   ],
-  "market_updated_at": "2026-07-11T18:40:26.216Z"
+  "market_updated_at": "2026-07-11T22:34:40.190Z"
 }
