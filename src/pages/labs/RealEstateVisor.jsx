@@ -191,27 +191,53 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
     if (!pendingReport?.sessionId || !pendingReport?.type) return;
     let cancelled = false;
 
+    const CONTACT = "Escríbenos a labs@zenithrisecapital.com con tu referencia catastral y te lo enviamos manualmente.";
+
     (async () => {
+      // Guarda contra el placeholder {CHECKOUT_SESSION_ID} sin sustituir —
+      // pasaría si el redirect "After payment" del Payment Link no está bien
+      // configurado en Stripe, y evita lanzar un fetch a una URL rota.
+      if (!/^cs_/.test(pendingReport.sessionId)) {
+        setReportStatus({ stage: "error", type: pendingReport.type, message: `No hemos podido leer el ID de sesión de Stripe. ${CONTACT}` });
+        onReportHandled?.();
+        return;
+      }
+
       setReportStatus({ stage: "verifying", type: pendingReport.type, message: "Verificando el pago…" });
+
+      let sessionData;
       try {
         const resp = await fetch(`/api/checkout-session?session_id=${encodeURIComponent(pendingReport.sessionId)}`);
-        const data = await resp.json();
-        if (cancelled) return;
+        sessionData = await resp.json();
+      } catch {
+        if (!cancelled) setReportStatus({ stage: "error", type: pendingReport.type, message: `No hemos podido verificar el pago (fallo de red). ${CONTACT}` });
+        onReportHandled?.();
+        return;
+      }
+      if (cancelled) return;
 
-        if (!data.paid || !data.clientReferenceId) {
-          setReportStatus({ stage: "error", type: pendingReport.type, message: "No hemos podido confirmar el pago. Si el cargo se realizó, escríbenos a labs@zenithrisecapital.com con tu referencia catastral." });
-          return;
-        }
+      if (!sessionData.paid || !sessionData.clientReferenceId) {
+        setReportStatus({ stage: "error", type: pendingReport.type, message: `No hemos podido confirmar el pago. Si el cargo se realizó, ${CONTACT.toLowerCase()}` });
+        onReportHandled?.();
+        return;
+      }
 
-        setReportStatus({ stage: "loading", type: pendingReport.type, message: "Pago confirmado. Cargando la parcela…" });
-        const result = await handleSearch(null, data.clientReferenceId, true);
-        if (cancelled) return;
-        if (!result || !result.parcelaData) {
-          setReportStatus({ stage: "error", type: pendingReport.type, message: "El pago se confirmó pero no hemos podido recargar la parcela. Escríbenos a labs@zenithrisecapital.com." });
-          return;
-        }
+      setReportStatus({ stage: "loading", type: pendingReport.type, message: "Pago confirmado. Cargando la parcela…" });
+      let result;
+      try {
+        result = await handleSearch(null, sessionData.clientReferenceId, true);
+      } catch {
+        result = null;
+      }
+      if (cancelled) return;
+      if (!result || !result.parcelaData) {
+        setReportStatus({ stage: "error", type: pendingReport.type, message: `Pago confirmado, pero no hemos podido recargar la parcela (RC ${sessionData.clientReferenceId}). ${CONTACT}` });
+        onReportHandled?.();
+        return;
+      }
 
-        setReportStatus({ stage: "generating", type: pendingReport.type, message: "Generando tu informe en PDF…" });
+      setReportStatus({ stage: "generating", type: pendingReport.type, message: "Generando tu informe en PDF…" });
+      try {
         const { generateReportBlob, downloadBlob } = await import("./visorReports");
         const marketRef = { precioM2: priceByProvince(result.parcelaData.provincia), ...MARKET_REF_META };
         const blob = await generateReportBlob(pendingReport.type, {
@@ -228,7 +254,12 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
         downloadBlob(blob, `zrc-${label}-${result.parcelaData.rc}.pdf`);
         setReportStatus({ stage: "done", type: pendingReport.type, message: "Informe descargado. Revisa tu carpeta de descargas." });
       } catch (err) {
-        if (!cancelled) setReportStatus({ stage: "error", type: pendingReport.type, message: err.message || "Error inesperado al generar el informe." });
+        if (!cancelled) {
+          setReportStatus({
+            stage: "error", type: pendingReport.type,
+            message: `Pago confirmado (RC ${result.parcelaData.rc}), pero hubo un fallo generando el PDF. ${CONTACT} (detalle técnico: ${err.message || "desconocido"})`,
+          });
+        }
       } finally {
         onReportHandled?.();
       }

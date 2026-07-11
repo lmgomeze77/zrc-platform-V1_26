@@ -360,15 +360,17 @@ function buildScenarios(parcela, params) {
 // Se degrada a "sin mapa" en cualquier fallo — nunca bloquea la generación
 // del PDF por un problema de red o de token.
 async function fetchStaticMapDataUrl(coords) {
-  const token = import.meta.env.VITE_MAPBOX_TOKEN;
-  if (!token || !coords) return null;
-  const [lat, lng] = coords;
-  if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
-
-  const marker = `pin-s+D4A853(${lng},${lat})`;
-  const url = `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/${marker}/${lng},${lat},15,0/1100x260@2x?access_token=${encodeURIComponent(token)}`;
-
   try {
+    const token = import.meta.env.VITE_MAPBOX_TOKEN;
+    if (!token || !coords) return null;
+    const [lat, lng] = coords;
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+
+    // Sin overlay de pin: "pin-s+COLOR(lon,lat)" lleva paréntesis/"+" sin
+    // codificar en el path, que Safari/WebKit rechaza en fetch() con
+    // "The string did not match the expected pattern".
+    const url = `https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/${lng},${lat},15,0/1100x260@2x?access_token=${encodeURIComponent(token)}`;
+
     const resp = await fetch(url);
     if (!resp.ok) return null;
     const blob = await resp.blob();
@@ -379,6 +381,8 @@ async function fetchStaticMapDataUrl(coords) {
       reader.readAsDataURL(blob);
     });
   } catch {
+    // Cualquier fallo (token, red, URL) nunca debe bloquear la generación
+    // del PDF que el cliente ya ha pagado — se sirve sin mapa.
     return null;
   }
 }
@@ -387,7 +391,12 @@ async function fetchStaticMapDataUrl(coords) {
 // Helpers de generación/descarga
 // ============================================================
 export async function generateReportBlob(type, data) {
-  const mapDataUrl = await fetchStaticMapDataUrl(data.parcela?.coords);
+  let mapDataUrl = null;
+  try {
+    mapDataUrl = await fetchStaticMapDataUrl(data.parcela?.coords);
+  } catch {
+    mapDataUrl = null;
+  }
   const Doc = type === "informe" ? InformeDocument : TeaserDocument;
   const instance = pdf(<Doc {...data} mapDataUrl={mapDataUrl} />);
   return instance.toBlob();
