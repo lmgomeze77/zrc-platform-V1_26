@@ -192,6 +192,8 @@ const T = {
       mlBadge: "MACHINE LEARNING · MODELOS PROPIETARIOS",
       mlText: "Nuestros protocolos de screening y forecasting están potenciados por modelos de machine learning propietarios en desarrollo continuo.",
       locked: "Acceso exclusivo para miembros registrados",
+      soonLabel: "PRÓXIMAMENTE",
+      soonSub: "En desarrollo activo. Disponibles próximamente.",
     },
     brok: {
       label: "04 — BROKERAGE",
@@ -282,6 +284,8 @@ const T = {
       mlBadge: "MACHINE LEARNING · PROPRIETARY MODELS",
       mlText: "Our screening and forecasting protocols are powered by proprietary machine learning models under continuous development.",
       locked: "Exclusive access for registered members",
+      soonLabel: "COMING SOON",
+      soonSub: "In active development. Available soon.",
     },
     brok: {
       label: "04 — BROKERAGE",
@@ -617,11 +621,6 @@ const TOOLS = [
     icon: "◈", status: "LIVE", ml: true, requiredTier: "intelligence",
   },
   {
-    name: "Real Estate Visor",
-    desc: { es: "Visor inmobiliario con catastro, capas de riesgo, planeamiento y matching de mandatos ZRC.", en: "Real estate visor with cadastre, risk layers, planning and ZRC mandate matching." },
-    icon: "◇", status: "BETA", ml: false, requiredTier: null,
-  },
-  {
     name: "Financial Intelligence System",
     desc: {
       es: "Motor de inteligencia financiera para PYMEs familiares: cash flow 13 semanas, capital circulante, motor de riesgos e informe semanal generado por IA.",
@@ -630,19 +629,28 @@ const TOOLS = [
     icon: "◆", status: "LIVE", ml: true, requiredTier: "intelligence",
   },
   {
+    name: "Macro Pulse",
+    desc: { es: "Tracker de señales de bancos centrales con NLP. Ciclos de tipos, divergencia Fed–BCE, señales de cartera.", en: "Central bank signal tracker with NLP. Rate cycles, Fed–ECB divergence, portfolio signals." },
+    icon: "○", status: "BETA", ml: true, requiredTier: "intelligence",
+  },
+  {
+    name: "Real Estate Visor",
+    desc: { es: "Visor inmobiliario con catastro, capas de riesgo, planeamiento y matching de mandatos ZRC.", en: "Real estate visor with cadastre, risk layers, planning and ZRC mandate matching." },
+    icon: "◇", status: "BETA", ml: false, requiredTier: null,
+  },
+];
+
+// Apps sin funcionalidad activa todavia: se muestran aparte como "próximamente".
+const TOOLS_SOON = [
+  {
     name: "Valuation Engine",
     desc: { es: "DCF automatizado, múltiplos y valoración normalizada para PYMEs.", en: "Automated DCF, multiples, and normalized valuation for SMEs." },
-    icon: "◇", status: "BETA", ml: true, requiredTier: "intelligence",
+    icon: "◇", status: "SOON", ml: true, requiredTier: "intelligence",
   },
   {
     name: "Deal Flow Radar",
     desc: { es: "Pipeline ML-enhanced identificando empresas sub-optimizadas en Europa del Sur.", en: "ML-enhanced pipeline identifying sub-optimized companies across Southern Europe." },
-    icon: "◆", status: "LIVE", ml: true, requiredTier: "intelligence",
-  },
-  {
-    name: "Macro Pulse",
-    desc: { es: "Tracker de señales de bancos centrales con NLP. Ciclos de tipos, divergencia Fed–BCE, señales de cartera.", en: "Central bank signal tracker with NLP. Rate cycles, Fed–ECB divergence, portfolio signals." },
-    icon: "○", status: "BETA", ml: true, requiredTier: "intelligence",
+    icon: "◆", status: "SOON", ml: true, requiredTier: "intelligence",
   },
 ];
 
@@ -710,6 +718,7 @@ const Badge = ({ label, variant }) => {
     live:      { bg: "rgba(34,197,94,0.12)",    c: C.green, b: "rgba(34,197,94,0.25)" },
     beta:      { bg: "rgba(245,158,11,0.12)",   c: C.amber, b: "rgba(245,158,11,0.25)" },
     ml:        { bg: "rgba(139,92,246,0.12)",   c: "#A78BFA", b: "rgba(139,92,246,0.25)" },
+    soon:      { bg: "rgba(148,163,184,0.10)",  c: C.textMuted, b: "rgba(148,163,184,0.22)" },
   };
   const s = m[(variant || label || "").toLowerCase()] || m.strategic;
   return (
@@ -1313,6 +1322,37 @@ const Intelligence = ({ lang }) => {
         })}
       </div>
 
+      <FadeIn delay={(TOOLS.length + 1) * 0.08}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "48px 0 20px" }}>
+          <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.15em", color: C.textMuted }}>{t.soonLabel}</span>
+          <div style={{ flex: 1, height: 1, background: C.border }} />
+        </div>
+        <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textMuted, lineHeight: 1.6, fontWeight: 300, margin: "0 0 20px" }}>{t.soonSub}</p>
+      </FadeIn>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1, opacity: 0.7 }}>
+        {TOOLS_SOON.map((tool, i) => (
+          <FadeIn key={tool.name} delay={(TOOLS.length + 2 + i) * 0.08}>
+            <div style={{ padding: 28, background: C.surface, border: `1px dashed ${C.border}`, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
+                  <span style={{ fontSize: 22, color: C.textMuted, opacity: 0.4 }}>{tool.icon}</span>
+                  <div style={{ display: "flex", gap: 4 }}>
+                    {tool.ml && <Badge label="ML" variant="ml" />}
+                    <Badge label={t.soonLabel} variant="soon" />
+                  </div>
+                </div>
+                <h3 style={{ fontFamily: F.display, fontSize: 19, fontWeight: 400, color: C.textSec, margin: "0 0 10px" }}>{tool.name}</h3>
+                <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textMuted, lineHeight: 1.6, fontWeight: 300 }}>{tool.desc[lang]}</p>
+              </div>
+              <div style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", color: C.textMuted, border: `1px solid ${C.border}`, alignSelf: "flex-start" }}>
+                {t.soonLabel}
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+
       {!user && <FadeIn delay={0.3}><LockedOverlay message={t.locked} lang={lang} /></FadeIn>}
 
       {/* Upgrade CTA for free members */}
@@ -1322,7 +1362,7 @@ const Intelligence = ({ lang }) => {
             <div>
               <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.12em", marginBottom: 4 }}>INTELLIGENCE · €99/MO</div>
               <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, margin: 0, fontWeight: 300 }}>
-                {lang === "es" ? "Desbloquea el Financial Intelligence System, Valuation Engine, Deal Flow Radar y Macro Pulse." : "Unlock the Financial Intelligence System, Valuation Engine, Deal Flow Radar and Macro Pulse."}
+                {lang === "es" ? "Desbloquea el Financial Intelligence System y Macro Pulse, además de acceso anticipado a Valuation Engine y Deal Flow Radar (próximamente)." : "Unlock the Financial Intelligence System and Macro Pulse, plus early access to Valuation Engine and Deal Flow Radar (coming soon)."}
               </p>
             </div>
             <button
