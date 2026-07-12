@@ -143,7 +143,7 @@ export default function GeoRiskIndex({ lang = "es", FadeIn, Sec, SH, GoldDivider
   return (
     <Sec id="georisk-index">
       <SH
-        label={lang === "es" ? "04 — ZRC GEORISK INDEX" : "04 — ZRC GEORISK INDEX"}
+        label={lang === "es" ? "03 — ZRC GEORISK INDEX" : "03 — ZRC GEORISK INDEX"}
         title={lang === "es" ? "El Índice de Riesgo Geopolítico de ZRC" : "The ZRC Geopolitical Risk Index"}
         sub={lang === "es"
           ? "Score compuesto semanal (0–100) construido con el mismo motor cuantitativo que GeoRisk Dashboard. Publicado como referencia pública del riesgo geopolítico, con niveles concretos de impacto estimado en precios de activos."

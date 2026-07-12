@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 import Observatory from "./pages/intelligence/Observatory";
-import Opportunities from "./pages/intelligence/Opportunities";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
 import FinancialIntelligenceSystem from "./pages/labs/FinancialIntelligenceSystem";
 import Community from "./pages/community/Community";
@@ -167,7 +166,7 @@ const LEGAL_TEXT = {
 
 const T = {
   es: {
-    nav: ["Observatorio", "Oportunidades", "Intelligence", "GeoRisk Index", "Brokerage", "Advisory", "Academia", "Inner Circle"],
+    nav: ["Observatorio", "Intelligence", "GeoRisk Index", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "INTELIGENCIA ESTRATÉGICA · INVERSIÓN · EJECUCIÓN",
       h1: "Donde la Inteligencia",
@@ -186,13 +185,8 @@ const T = {
       share: "COMPARTIR",
       locked: "Registrate para acceder al análisis completo",
     },
-    opp: {
-      label: "02 — OPORTUNIDADES GLOBALES",
-      title: "Progreso Internacional con Ángulo de Inversión",
-      sub: "Acuerdos, hitos y avances verificados que conectan con nuestras señales geopolíticas — la contraparte constructiva del Observatorio.",
-    },
     intel: {
-      label: "03 — INVESTOR INTELLIGENCE",
+      label: "02 — INVESTOR INTELLIGENCE",
       title: "Aplicaciones Analíticas Propietarias",
       sub: "Herramientas que transforman inteligencia bruta en señales de inversión accionables.",
       mlBadge: "MACHINE LEARNING · MODELOS PROPIETARIOS",
@@ -202,23 +196,23 @@ const T = {
       soonSub: "En desarrollo activo. Disponibles próximamente.",
     },
     brok: {
-      label: "05 — BROKERAGE",
+      label: "04 — BROKERAGE",
       title: "Singular Opportunities",
       sub: "Oportunidades off-market curadas. Due diligence de grado institucional.",
       req: "SOLICITAR TEASER →",
     },
     adv: {
-      label: "06 — ADVISORY",
+      label: "05 — ADVISORY",
       title: "M&A & Growth Strategy",
       sub: "Advisory institucional para empresas navegando complejidad.",
     },
     acad: {
-      label: "07 — ZENITH ACADEMIA",
+      label: "06 — ZENITH ACADEMIA",
       title: "Educación Impulsada por Inteligencia",
       sub: "Programas de nivel postgraduado impartidos por practitioners.",
     },
     comm: {
-      label: "08 — THE INNER CIRCLE",
+      label: "07 — THE INNER CIRCLE",
       title: "Comunidad de Inteligencia",
       sub: "Red privada de inversores, operadores y estrategas.",
       applyTitle: "Solicitar Membresía",
@@ -264,7 +258,7 @@ const T = {
     live: "EN VIVO",
   },
   en: {
-    nav: ["Observatory", "Opportunities", "Intelligence", "GeoRisk Index", "Brokerage", "Advisory", "Academia", "Inner Circle"],
+    nav: ["Observatory", "Intelligence", "GeoRisk Index", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "STRATEGIC INTELLIGENCE · INVESTMENT · EXECUTION",
       h1: "Where Geopolitical",
@@ -283,13 +277,8 @@ const T = {
       share: "SHARE",
       locked: "Register to access full analysis",
     },
-    opp: {
-      label: "02 — GLOBAL OPPORTUNITIES",
-      title: "International Progress with an Investment Angle",
-      sub: "Verified agreements, milestones and breakthroughs that connect with our geopolitical signals — the Observatory's constructive counterpart.",
-    },
     intel: {
-      label: "03 — INVESTOR INTELLIGENCE",
+      label: "02 — INVESTOR INTELLIGENCE",
       title: "Proprietary Analytical Applications",
       sub: "Tools that transform raw intelligence into actionable investment signals.",
       mlBadge: "MACHINE LEARNING · PROPRIETARY MODELS",
@@ -299,23 +288,23 @@ const T = {
       soonSub: "In active development. Available soon.",
     },
     brok: {
-      label: "05 — BROKERAGE",
+      label: "04 — BROKERAGE",
       title: "Singular Opportunities",
       sub: "Curated off-market opportunities. Institutional-grade due diligence.",
       req: "REQUEST TEASER →",
     },
     adv: {
-      label: "06 — ADVISORY",
+      label: "05 — ADVISORY",
       title: "M&A & Growth Strategy",
       sub: "Institutional advisory for companies navigating complexity.",
     },
     acad: {
-      label: "07 — ZENITH ACADEMIA",
+      label: "06 — ZENITH ACADEMIA",
       title: "Intelligence-Driven Education",
       sub: "Postgraduate programs taught by practitioners.",
     },
     comm: {
-      label: "08 — THE INNER CIRCLE",
+      label: "07 — THE INNER CIRCLE",
       title: "Intelligence Community",
       sub: "Private network of investors, operators, and strategists.",
       applyTitle: "Apply for Membership",
@@ -960,7 +949,7 @@ const Nav = ({ lang, setLang, onNav }) => {
   const { user, openLogin, logout, openPricing } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const ids = ["observatory", "opportunities", "intelligence", "georisk-index", "brokerage", "advisory", "academia", "inner-circle"];
+  const ids = ["observatory", "intelligence", "georisk-index", "brokerage", "advisory", "academia", "inner-circle"];
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
@@ -1717,9 +1706,7 @@ const ZRCPlatform = () => {
       <MarketTicker lang={lang} />
       <Hero lang={lang} onNav={onNav} />
       <GoldDivider />
-      <Observatory lang={lang} useAuth={useAuth} useHeadlines={useHeadlines} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} T={T} />
-      <GoldDivider />
-      <Opportunities lang={lang} useOpportunities={useOpportunities} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} T={T} />
+      <Observatory lang={lang} useAuth={useAuth} useHeadlines={useHeadlines} useOpportunities={useOpportunities} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} T={T} />
       <GoldDivider />
       <Intelligence lang={lang} />
       <GoldDivider />

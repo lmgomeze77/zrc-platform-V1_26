@@ -1,8 +1,9 @@
-// Opportunities.jsx — ZRC Platform "Oportunidades" Feed
-// Positive-progress counterpart to Observatory: agreements, breakthroughs and
-// development stories with a genuine thematic-investment angle. Public feed,
-// no member gate — self-contained component: FEED data + category filter.
-// Import in App.jsx: import Opportunities from "./pages/intelligence/Opportunities";
+// Opportunities.jsx — "Oportunidades" sub-section, embedded inside Observatory
+// Positive-progress counterpart to the Observatory feed: agreements,
+// breakthroughs and development stories with a genuine thematic-investment
+// angle. Rendered as a sub-block within Observatory.jsx (same convention as
+// its "International Agenda" block) — no own nav entry, no own Sec/SH.
+// Import in Observatory.jsx: import Opportunities from "./Opportunities";
 
 import { useState } from "react";
 
@@ -98,8 +99,10 @@ const TAG_COLORS = {
 };
 
 // ── MAIN COMPONENT ───────────────────────────────────────────
-export default function Opportunities({ lang, useOpportunities, FadeIn, Sec, SH, GoldDivider, T }) {
-  const t = T[lang].opp;
+// Embedded sub-block (mirrors the AGENDA block further down in
+// Observatory.jsx): its own eyebrow header + description, no Sec/SH wrapper,
+// no trailing GoldDivider (Observatory renders one once, after everything).
+export default function Opportunities({ lang, useOpportunities, FadeIn }) {
   const [expanded, setExpanded] = useState(null);
   const [filter, setFilter] = useState("ALL");
 
@@ -122,12 +125,22 @@ export default function Opportunities({ lang, useOpportunities, FadeIn, Sec, SH,
   const txt = (v) => (v == null ? "" : typeof v === "object" ? (v[lang] ?? v.es ?? v.en ?? "") : v);
 
   return (
-    <Sec id="opportunities">
-      <SH label={t.label} title={t.title} sub={t.sub} extra={
+    <div style={{ marginTop:40 }}>
+      <div style={{ marginBottom:16, display:"flex", alignItems:"baseline", gap:12, flexWrap:"wrap" }}>
+        <div>
+          <p style={{ fontFamily:F.mono, fontSize:10, letterSpacing:"0.1em", color:C.green, textTransform:"uppercase", margin:"0 0 4px" }}>
+            {lang==="es" ? "Oportunidades Globales" : "Global Opportunities"}
+          </p>
+          <p style={{ fontFamily:F.body, fontSize:12, color:C.textMuted, margin:0 }}>
+            {lang==="es"
+              ? "Acuerdos, hitos y avances internacionales verificados con ángulo de inversión — la contraparte constructiva de las señales anteriores."
+              : "Verified international agreements, milestones and breakthroughs with an investment angle — the constructive counterpart to the signals above."}
+          </p>
+        </div>
         <span style={{ fontFamily:F.mono, fontSize:10, color:"#71717A" }}>
           ({feed.length} {lang==="es" ? "señales" : "signals"})
         </span>
-      } />
+      </div>
 
       {/* CATEGORY FILTER */}
       <FadeIn delay={0.1}>
@@ -247,8 +260,6 @@ export default function Opportunities({ lang, useOpportunities, FadeIn, Sec, SH,
           );
         })}
       </div>
-
-      <GoldDivider />
-    </Sec>
+    </div>
   );
 }

@@ -3,6 +3,7 @@
 // Import in App.jsx: import Observatory from "./pages/intelligence/Observatory";
 
 import { useState } from "react";
+import Opportunities from "./Opportunities";
 
 // ── DESIGN TOKENS (mirrors App.jsx) ─────────────────────────
 const C = {
@@ -201,7 +202,7 @@ function LockedOverlay({ lang, openRegister, openLogin }) {
 }
 
 // ── MAIN COMPONENT ───────────────────────────────────────────
-export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, SH, GoldDivider, T }) {
+export default function Observatory({ lang, useAuth, useHeadlines, useOpportunities, FadeIn, Sec, SH, GoldDivider, T }) {
   const t = T[lang].obs;
   const { user, openRegister, openLogin } = useAuth();
   const [expanded, setExpanded] = useState(null);
@@ -490,6 +491,9 @@ export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, 
           );
         })}
       </div>
+
+      {/* ── OPPORTUNITIES SUB-SECTION ─────────────────────── */}
+      <Opportunities lang={lang} useOpportunities={useOpportunities} FadeIn={FadeIn} />
 
       {/* ── INTERNATIONAL AGENDA ──────────────────────────── */}
       <FadeIn delay={0.15}>
