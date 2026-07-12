@@ -3,8 +3,8 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1411",
-      "change": "-0.14%",
+      "value": "1.1416",
+      "change": "-0.12%",
       "up": false
     },
     {
@@ -15,9 +15,9 @@
     },
     {
       "symbol": "BRENT Crude",
-      "value": "76.56",
-      "change": "+0.69%",
-      "up": true
+      "value": "76.01",
+      "change": "-0.38%",
+      "up": false
     },
     {
       "symbol": "WTI Crude",
@@ -27,8 +27,8 @@
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4,119.93",
-      "change": "-0.09%",
+      "value": "4,121.08",
+      "change": "-0.07%",
       "up": false
     },
     {
@@ -64,7 +64,7 @@
     {
       "symbol": "EUR/GBP",
       "value": "0.8536",
-      "change": "-0.10%",
+      "change": "-0.07%",
       "up": false
     },
     {
@@ -75,19 +75,19 @@
     },
     {
       "symbol": "Natural Gas",
-      "value": "2.976",
-      "change": "-1.20%",
+      "value": "3.016",
+      "change": "-3.28%",
       "up": false
     },
     {
       "symbol": "Copper",
       "value": "6.26",
-      "change": "+0.64%",
+      "change": "+0.96%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.78",
+      "value": "6.7935",
       "change": "-0.11%",
       "up": false
     }
@@ -364,5 +364,5 @@
       "time": "8h"
     }
   ],
-  "market_updated_at": "2026-07-12T11:04:25.122Z"
+  "market_updated_at": "2026-07-12T14:45:19.841Z"
 }
