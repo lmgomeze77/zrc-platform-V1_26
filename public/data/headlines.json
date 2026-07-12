@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-07-11T07:49:32.924Z",
+  "generated_at": "2026-07-12T08:11:20.044Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1411",
-      "change": "-0.14%",
+      "value": "1.1414",
+      "change": "-0.13",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,373.20",
-      "change": "+0.26%",
+      "value": "19380.90",
+      "change": "+0.30",
       "up": true
     },
     {
       "symbol": "BRENT",
-      "value": "76.15",
-      "change": "+0.69%",
-      "up": true
-    },
-    {
-      "symbol": "WTI",
-      "value": "71.41",
-      "change": "-0.93%",
+      "value": "76.01",
+      "change": "-0.38",
       "up": false
     },
     {
-      "symbol": "XAU/USD",
-      "value": "4,120.08",
-      "change": "-0.09%",
+      "symbol": "GOLD",
+      "value": "4113.70",
+      "change": "-0.65",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "64,156.90",
-      "change": "+0.86%",
+      "symbol": "BTC",
+      "value": "64156.90",
+      "change": "+0.86",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "15.22",
-      "change": "-3.91%",
+      "value": "15.03",
+      "change": "-5.11",
       "up": false
     },
     {
       "symbol": "US 10Y",
-      "value": "4.5610%",
-      "change": "+0.48%",
+      "value": "4.5690",
+      "change": "+0.66",
       "up": true
     },
     {
+      "symbol": "EUR/GBP",
+      "value": "0.8517",
+      "change": "-0.11",
+      "up": false
+    },
+    {
       "symbol": "S&P 500",
-      "value": "7,563.38",
-      "change": "+0.26%",
+      "value": "7575.39",
+      "change": "+0.42",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25,067.09",
-      "change": "-0.20%",
+      "value": "25067.09",
+      "change": "-0.20",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8536",
-      "change": "-0.07%",
-      "up": false
-    },
-    {
-      "symbol": "DXY",
-      "value": "100.84",
-      "change": "-0.06%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "3.07",
-      "change": "-3.28%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.26",
-      "change": "+0.48%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7770",
-      "change": "+0.01%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Trump dice que las negociaciones con Irán continuarán mientras EE.UU. intensifica los ataques",
-        "en": "Trump Says Negotiations With Iran Will Continue as U.S. Ramps Up Strikes"
+        "es": "EEUU e Irán intercambian ataques mientras Teherán vuelve a declarar cerrado el estrecho de Ormuz",
+        "en": "US and Iran exchange strikes as Tehran again says Strait of Hormuz is closed"
       },
       "summary": {
-        "es": "Las fuerzas estadounidenses atacaron más de 170 objetivos iraníes, incluyendo sistemas de defensa aérea, almacenes de drones y misiles, y lanchas militares. Trump señala que el cese al fuego ha terminado pero mantiene abierta la vía diplomática, creando una postura de 'guerra con negociación' de alto riesgo. La escalada amenaza directamente las rutas del Golfo Pérsico y los flujos de petróleo regional.",
-        "en": "U.S. forces struck over 170 Iranian targets including air defense systems, drone and missile storage sites, and military speedboats. Trump signals the ceasefire is over while keeping diplomatic channels open, creating a high-risk 'war-with-negotiation' posture. The escalation directly threatens Persian Gulf shipping lanes and regional oil flows."
+        "es": "Irán y EEUU protagonizaron nuevos intercambios de ataques tras el golpe de un buque en el estrecho de Ormuz, con Teherán reiterando el cierre de la vía marítima clave para el transporte de hidrocarburos globales. El cierre efectivo del estrecho amenaza con cortar hasta el 20% del suministro mundial de petróleo, con implicaciones sistémicas para mercados de energía y activos de riesgo. La escalada marca el mayor ciclo de represalias mutuas desde el inicio del conflicto.",
+        "en": "Iran and the US exchanged fresh strikes after a container vessel was hit in the Strait of Hormuz, with Tehran reiterating closure of the waterway critical to global hydrocarbon flows. An effective closure threatens to disrupt up to 20% of global oil supply, with systemic implications for energy markets and risk assets. The escalation marks the largest tit-for-tat exchange since hostilities began."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +82,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de cierre del Estrecho de Ormuz impulsa prima de riesgo",
-            "en": "Strait of Hormuz closure risk drives war premium"
+            "es": "Cierre de Ormuz amenaza suministro global de crudo",
+            "en": "Hormuz closure threatens global crude supply disruption"
           }
         },
         {
@@ -121,173 +91,65 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Demanda de refugio seguro ante escalada militar directa EE.UU.-Irán",
-            "en": "Safe-haven demand on direct U.S.-Iran military escalation"
+            "es": "Búsqueda de refugio ante escalada militar EEUU-Irán",
+            "en": "Safe-haven demand surges on US-Iran military escalation"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Aversión al riesgo castiga divisas emergentes importadoras de energía",
+            "en": "Risk-off crushes energy-importing EM currencies"
           }
         },
         {
           "asset": "US 10Y Treasury",
-          "direction": "down",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Fuga hacia la calidad comprime rendimientos",
-            "en": "Flight-to-quality compresses yields"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aversión al riesgo global presiona divisas emergentes",
-            "en": "Global risk-off pressures emerging market currencies"
+            "es": "Flujo hacia refugio seguro eleva bonos del Tesoro",
+            "en": "Safe-haven flows support Treasury prices"
           }
         }
       ],
-      "confidence": 92,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/07/10/us/politics/iran-war-escalation.html",
-      "published_at": "2026-07-11",
-      "time": "4h"
+      "confidence": 95,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jul/12/us-and-iran-exchange-strikes-as-tehran-again-says-strait-of-hormuz-is-closed",
+      "published_at": "2026-07-12",
+      "time": "2h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "EURASIA",
       "title": {
-        "es": "Trump señala apoyo a la producción de misiles Patriot en Ucrania",
-        "en": "Trump signals support for Patriot production in Ukraine"
+        "es": "Rusia ataca Kyiv y Odesa en nuevas ofensivas",
+        "en": "Russia hits Ukraine's Kyiv, Odesa in fresh attacks"
       },
       "summary": {
-        "es": "Trump podría autorizar a Ucrania a producir misiles Patriot internamente, una señal potencialmente transformadora para la guerra de defensa aérea de Kiev contra Rusia. Los analistas advierten que la producción tardaría años en materializarse, pero el valor de señalización política es inmediato. El movimiento indica un giro en la postura de Trump hacia Ucrania, con implicaciones para los contratistas de defensa occidentales.",
-        "en": "Trump may allow Ukraine to produce Patriot air defense missiles domestically, a potentially transformative signal for Kyiv's air defense war against Russia. Analysts caution production could take years to materialize, but the political signaling value is immediate. The move signals a shift in Trump's stance toward Ukraine with implications for Western defense contractors."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Licencias de producción Patriot benefician a Raytheon y cadena de suministro",
-            "en": "Patriot production licensing benefits Raytheon and supply chain"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Señal de apoyo a Ucrania reduce prima de riesgo en Europa del Este",
-            "en": "Ukraine support signal reduces eastern Europe risk premium"
-          }
-        }
-      ],
-      "confidence": 78,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/trump-signals-support-for-patriot-production-in-ukraine/a-77909681?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-07-10",
-      "time": "15h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "LATAM",
-      "title": {
-        "es": "El número de muertos por el terremoto en Venezuela supera los 4.000 mientras se avecina un enorme esfuerzo de recuperación",
-        "en": "Venezuela quake death toll passes 4,000 as scale of recovery effort looms large"
-      },
-      "summary": {
-        "es": "Los terremotos dobles en Venezuela han matado a más de 4.118 personas e hirieron a casi 17.000, con miles más desaparecidos. La presidenta Delcy Rodríguez y la ONU piden ayuda financiera internacional en un país ya bajo sanciones y con una economía devastada, lo que complica la respuesta humanitaria. El desastre podría desestabilizar aún más al régimen de Maduro y afectar la producción petrolera venezolana, con implicaciones para los mercados de crudo.",
-        "en": "Venezuela's twin earthquakes have killed over 4,118 people and injured nearly 17,000, with thousands more missing. President Delcy Rodríguez and the UN are calling for international financial aid in a country already under sanctions with a devastated economy, complicating the humanitarian response. The disaster could further destabilize the Maduro regime and affect Venezuelan oil output with crude market implications."
+        "es": "Rusia lanzó nuevos ataques contra Kyiv y Odesa mientras Ucrania reporta escasez crítica de municiones antiaéreas para interceptar misiles balísticos. El presidente Zelensky apeló a los aliados de la OTAN para que cumplan los compromisos de la cumbre de Ankara, señalando una brecha creciente entre promesas y entrega real de armamento. La presión sobre las rutas de exportación del Mar Negro y la infraestructura ucraniana mantiene la prima de riesgo en cereales y energía.",
+        "en": "Russia launched fresh strikes on Kyiv and Odesa as Ukraine reports critical shortages of air defense munitions needed to intercept ballistic missiles. President Zelensky appealed to NATO allies to fulfill commitments made at the Ankara summit, signaling a growing gap between pledges and actual weapons deliveries. Pressure on Black Sea export routes and Ukrainian infrastructure sustains risk premiums in grains and energy."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
+          "asset": "European natural gas (TTF)",
           "direction": "up",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Posible disrupción de producción venezolana apoya precio del crudo",
-            "en": "Potential Venezuelan output disruption supports crude price"
+            "es": "Ataques a infraestructura ucraniana presionan suministro energético europeo",
+            "en": "Strikes on Ukrainian infrastructure pressure European energy supply"
           }
         },
         {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo político y humanitario en Venezuela presiona activos latinoamericanos",
-            "en": "Venezuela political and humanitarian risk pressures LatAm assets"
-          }
-        }
-      ],
-      "confidence": 75,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jul/11/venezuela-quake-deaths-passes-4000-recovery-effort",
-      "published_at": "2026-07-11",
-      "time": "7h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "US",
-      "title": {
-        "es": "Apple demanda a OpenAI alegando robo de secretos comerciales",
-        "en": "Apple sues OpenAI, its employees claiming theft of trade secrets"
-      },
-      "summary": {
-        "es": "Apple ha presentado una demanda contra OpenAI alegando que su incipiente negocio de hardware está construido sobre secretos comerciales robados. El litigio entre dos de las empresas tecnológicas más relevantes del mundo tiene implicaciones significativas para la soberanía tecnológica, la propiedad intelectual de IA y la competencia en el sector de hardware de inteligencia artificial. El resultado podría reconfigurar alianzas y acuerdos en el ecosistema de IA global.",
-        "en": "Apple has filed a lawsuit against OpenAI alleging its nascent hardware business is built on stolen trade secrets. The litigation between two of the world's most prominent tech companies has significant implications for tech sovereignty, AI intellectual property, and competition in the AI hardware sector. The outcome could reshape partnerships and deals across the global AI ecosystem."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Apple (AAPL)",
-          "direction": "mixed",
+          "asset": "Wheat futures",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Litigio crea incertidumbre pero refuerza control IP de Apple",
-            "en": "Litigation creates uncertainty but reinforces Apple's IP control"
-          }
-        },
-        {
-          "asset": "AI sector equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo legal sobre IP de IA genera cautela en el sector",
-            "en": "AI IP legal risk generates sector-wide caution"
-          }
-        }
-      ],
-      "confidence": 68,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cy8w379e091o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-07-10",
-      "time": "8h"
-    },
-    {
-      "id": 5,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Notas desde la Cumbre de la OTAN: Una perspectiva estonia",
-        "en": "Notes from a NATO Summit: An Estonian Perspective"
-      },
-      "summary": {
-        "es": "Informes del WSJ y The Times of Israel revelan conversaciones entre bastidores en la cumbre de la OTAN en Ankara con implicaciones significativas para la política hacia Irán e Israel. La perspectiva estonia sugiere preocupaciones del flanco oriental que permanecieron en segundo plano ante las prioridades de Trump. El realineamiento de la OTAN en torno a las prioridades de Washington redefine los compromisos de seguridad colectiva europeos.",
-        "en": "Reports from the WSJ and Times of Israel reveal significant behind-closed-doors discussions at the Ankara NATO summit with implications for Iran and Israel policy. The Estonian perspective signals eastern flank concerns that remained subordinate to Trump's priorities. NATO's realignment around Washington's agenda redefines European collective security commitments."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre sobre compromisos de defensa afecta sectores defensivos europeos",
-            "en": "Defense commitment uncertainty affects European defense sectors"
+            "es": "Ataques a Odesa amenazan exportaciones de grano del Mar Negro",
+            "en": "Odesa strikes threaten Black Sea grain export corridor"
           }
         },
         {
@@ -295,74 +157,181 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Ambigüedad estratégica de la OTAN pesa sobre el euro",
-            "en": "NATO strategic ambiguity weighs on euro"
-          }
-        },
-        {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Presión para aumentar gasto en defensa europeo acelera",
-            "en": "Pressure for increased European defense spending accelerates"
+            "es": "Escalada en Europa del Este pesa sobre el euro",
+            "en": "Eastern European escalation weighs on the euro"
           }
         }
       ],
-      "confidence": 82,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/tv-shows/spotlight/20260710-notes-from-a-nato-summit-an-estonian-perspective",
-      "published_at": "2026-07-10",
-      "time": "12h"
+      "confidence": 90,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/russia-hits-ukraine-s-kyiv-odesa-in-fresh-attacks/a-77915808?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-07-11",
+      "time": "20h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Anatomía de una pregunta a Mark Rutte",
+        "en": "Anatomy of a question to Mark Rutte"
+      },
+      "summary": {
+        "es": "El análisis aborda la incapacidad de Europa para reconocerse como actor geopolítico autónomo capaz de asumir el coste brutal de su propia defensa, en el contexto de la cumbre de la OTAN en Ankara. La columna refleja el debate estratégico central en la UE sobre autonomía defensiva y financiamiento de la seguridad colectiva, con implicaciones directas para el gasto en defensa europeo y los mercados de deuda soberana. La postura de Rutte como secretario general de la OTAN es clave para las negociaciones sobre compromisos de gasto del 2% y más allá.",
+        "en": "The analysis addresses Europe's inability to recognize itself as an autonomous geopolitical actor capable of bearing the immense cost of its own defense, in the context of the NATO Ankara summit. The piece reflects the central strategic debate in the EU over defense autonomy and collective security financing, with direct implications for European defense spending and sovereign debt markets. Rutte's position as NATO Secretary General is key to negotiations over spending commitments beyond 2% of GDP."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Debate sobre autonomía defensiva europea impulsa sector defensa",
+            "en": "European defense autonomy debate supports defense sector equities"
+          }
+        },
+        {
+          "asset": "EU sovereign bonds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor gasto en defensa presiona rendimientos de deuda soberana europea",
+            "en": "Higher defense spending pressures European sovereign bond yields"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "El País",
+      "source_url": "https://elpais.com/opinion/2026-07-12/anatomia-de-una-pregunta-a-mark-rutte.html",
+      "published_at": "2026-07-12",
+      "time": "4h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "China evacúa a casi dos millones de personas al llegar un poderoso tifón",
+        "en": "China evacuates nearly two million people as powerful typhoon makes landfall"
+      },
+      "summary": {
+        "es": "El tifón Bavi tocó tierra en la provincia de Zhejiang, uno de los centros industriales y de manufactura más importantes de China, forzando la evacuación de casi dos millones de personas y la suspensión de actividades comerciales y transporte. Las interrupciones en cadenas de suministro procedentes de la región podrían afectar sectores tecnológicos y de manufactura globales dado el peso industrial de Zhejiang. Los daños en infraestructura portuaria en la zona afectaría el comercio marítimo transpacífico.",
+        "en": "Typhoon Bavi made landfall in Zhejiang province, one of China's most important industrial and manufacturing hubs, forcing evacuation of nearly two million people and suspension of commercial activities and transport. Supply chain disruptions from the region could affect global tech and manufacturing sectors given Zhejiang's industrial weight. Infrastructure damage to ports in the area would impact transpacific maritime trade."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Asian shipping equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Cierre de puertos en Zhejiang interrumpe tráfico marítimo regional",
+            "en": "Zhejiang port closures disrupt regional maritime traffic"
+          }
+        },
+        {
+          "asset": "CNY/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Daños económicos en zona industrial presionan yuan",
+            "en": "Economic damage in industrial zone pressures yuan"
+          }
+        }
+      ],
+      "confidence": 70,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cdxd3wkp2rzo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-07-12",
+      "time": "<1h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Primeros pacientes inscritos en un ensayo histórico de tratamiento contra el ébola en RDC",
+        "en": "First patients enrolled in record-breaking Ebola treatment trial in DRC"
+      },
+      "summary": {
+        "es": "Se inicia un ensayo clínico de dos fármacos contra el ébola en la región de Ituri (RDC), puesto en marcha apenas seis semanas después de declarado el brote, en ausencia de tratamiento aprobado. El brote activo en una región ya fragilizada por conflictos armados y actividad minera intensiva plantea riesgos para la continuidad operativa en sectores de minerales críticos de la RDC. La respuesta sanitaria internacional y su eficacia determinarán si el brote se contiene o se convierte en un factor desestabilizador de mayor alcance regional.",
+        "en": "A two-drug clinical trial against Ebola has been launched in DRC's Ituri region just six weeks after the outbreak was declared, with no approved treatment currently available. An active outbreak in a region already fragile due to armed conflict and intensive mining activity poses risks to operational continuity in DRC's critical minerals sectors. The effectiveness of the international health response will determine whether the outbreak is contained or becomes a broader regional destabilizing factor."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "DRC-linked mining equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Brote de ébola en Ituri amenaza operaciones mineras en la región",
+            "en": "Ebola outbreak in Ituri threatens regional mining operations"
+          }
+        },
+        {
+          "asset": "Cobalt futures",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de disrupciones en oferta de cobalto desde RDC",
+            "en": "Supply disruption risk for DRC cobalt output"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/global-development/2026/jul/12/record-breaking-ebola-treatment-trial-drc",
+      "published_at": "2026-07-12",
+      "time": "<1h"
     },
     {
       "id": 6,
-      "tag": "ALERT",
-      "region": "EURASIA",
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "es": "Polonia podría recortar la ayuda armamentística a Ucrania por disputa sobre la Segunda Guerra Mundial",
-        "en": "Poland could cut arms aid to Ukraine as WWII spat continues"
+        "es": "Guerra con Irán en directo: Teherán ataca Jordania y estados del Golfo tras bombardeo estadounidense",
+        "en": "Iran war live: Tehran attacks Jordan, Gulf states after US bombardment"
       },
       "summary": {
-        "es": "Polonia considera suspender la ayuda militar a Ucrania en medio de una disputa histórica por las acciones de unidades nacionalistas ucranianas durante la Segunda Guerra Mundial. Si se concreta, el recorte de ayuda polaca representaría una pérdida logística crítica dado el rol de Polonia como principal corredor de tránsito de armas hacia Ucrania. La fractura expone la fragilidad de la coalición de apoyo a Kiev cuando se mezclan sensibilidades históricas con cálculos políticos internos.",
-        "en": "Poland is considering suspending military aid to Ukraine amid a historical dispute over Ukrainian nationalist units' actions in WWII. If implemented, cutting Polish aid would be a critical logistical blow given Poland's role as the primary arms transit corridor to Ukraine. The fracture exposes the fragility of Kyiv's support coalition when historical sensitivities intersect with domestic political calculations."
+        "es": "Irán lanzó ataques con misiles contra instalaciones militares de EEUU en Bahréin, Kuwait, Jordania y Qatar, marcando una peligrosa regionalización del conflicto. Los ataques contra bases en múltiples países del Golfo elevan el riesgo de una respuesta militar coordinada occidental y de disrupciones en infraestructura energética regional. La declaración del CGRI sobre el cierre del estrecho de Ormuz añade una dimensión de guerra económica al conflicto.",
+        "en": "Iran launched missile strikes on US military sites in Bahrain, Kuwait, Jordan, and Qatar, marking a dangerous regionalization of the conflict. Attacks on bases across multiple Gulf states raise the risk of a coordinated Western military response and disruptions to regional energy infrastructure. The IRGC's Strait of Hormuz closure declaration adds an economic warfare dimension to the conflict."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Ukrainian hryvnia",
-          "direction": "down",
-          "magnitude": "medium",
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
           "note": {
-            "es": "Reducción de apoyo aliado debilita posición de Kiev",
-            "en": "Reduced allied support weakens Kyiv's position"
+            "es": "Regionalización del conflicto amplifica prima de riesgo energético",
+            "en": "Regional conflict spread amplifies energy risk premium"
           }
         },
         {
           "asset": "European equities",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "high",
           "note": {
-            "es": "Fragmentación de la coalición pro-Ucrania eleva incertidumbre regional",
-            "en": "Pro-Ukraine coalition fragmentation raises regional uncertainty"
+            "es": "Exposición europea a costes energéticos y riesgo geopolítico",
+            "en": "European exposure to energy costs and geopolitical risk"
           }
         },
         {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "USD/JPY",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Mayor incertidumbre bélica en Europa del Este apoya precio del petróleo",
-            "en": "Greater war uncertainty in eastern Europe supports oil price"
+            "es": "Yen se fortalece como refugio ante escalada regional",
+            "en": "Yen strengthens as regional escalation drives safe-haven flows"
           }
         }
       ],
-      "confidence": 80,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/poland-could-cut-arms-aid-to-ukraine-as-wwii-spat-continues/a-77893170?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-07-11",
-      "time": "2h"
+      "confidence": 93,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/liveblog/2026/7/12/iran-war-live-irgc-declares-strait-of-hormuz-closed-over-us-interference?traffic_source=rss",
+      "published_at": "2026-07-12",
+      "time": "8h"
     }
-  ],
-  "market_updated_at": "2026-07-12T07:53:18.527Z"
+  ]
 }
