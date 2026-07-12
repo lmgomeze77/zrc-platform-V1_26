@@ -11,7 +11,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "wrangler deploy",
-    "generate": "node scripts/generate-headlines.js"
+    "generate": "node scripts/generate-headlines.js",
+    "generate:opportunities": "node scripts/generate-opportunities.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",
