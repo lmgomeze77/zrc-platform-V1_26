@@ -6,18 +6,19 @@ import { useState, useMemo } from "react";
 // ═══════════════════════════════════════════════════════════════
 
 const C = {
-  bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
-  border: "#27272A", borderHover: "#3F3F46",
-  text: "#FAFAFA", textSec: "#A1A1AA", textMuted: "#71717A",
-  gold: "#D4A853", goldDim: "rgba(212,168,83,0.12)", goldBorder: "rgba(212,168,83,0.25)",
-  red: "#EF4444", green: "#22C55E", blue: "#3B82F6", amber: "#F59E0B",
-  purple: "#8B5CF6",
+  bg: "#0A0C10", surface: "#12141A", surface2: "#181B22", surface3: "#20232C",
+  border: "#252932", borderHover: "#39404C",
+  text: "#F1EFE8", textSec: "#98A0AC", textMuted: "#5B6270",
+  gold: "#BFA06A", goldDim: "rgba(191,160,106,0.10)", goldBorder: "rgba(191,160,106,0.28)",
+  red: "#C05B4F", green: "#4E9B76", blue: "#5C82AD", amber: "#C99A4C",
+  purple: "#8A7EBF",
 };
 const F = {
-  display: "'Cormorant Garamond','Georgia',serif",
-  body: "'Outfit','Helvetica Neue',sans-serif",
+  display: "'Fraunces','Georgia',serif",
+  body: "'Inter','Helvetica Neue',sans-serif",
   mono: "'IBM Plex Mono','Fira Code',monospace",
 };
+const FONT_IMPORT = "@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');";
 
 // ── Data ────────────────────────────────────────────────────────
 
@@ -115,14 +116,14 @@ const PORTFOLIO_SIGNALS = [
 ];
 
 const SIGNAL_LABELS = { "-2": "VENDER", "-1": "INFRAPONDERAR", "0": "NEUTRAL", "1": "SOBREPONDERAR", "2": "COMPRAR" };
-const SIGNAL_COLORS = { "-2": C.red, "-1": "#F97316", "0": C.textMuted, "1": C.green, "2": "#10B981" };
+const SIGNAL_COLORS = { "-2": C.red, "-1": "#B97848", "0": C.textMuted, "1": C.green, "2": "#5FAE86" };
 
 const STANCE_META = {
-  hawkish:  { label: "HAWKISH",  color: C.red,    bg: "rgba(239,68,68,0.12)",   border: "rgba(239,68,68,0.25)" },
-  hold:     { label: "HOLD",     color: C.amber,  bg: "rgba(245,158,11,0.12)",  border: "rgba(245,158,11,0.25)" },
-  cautious: { label: "CAUTIOUS", color: C.amber,  bg: "rgba(245,158,11,0.12)",  border: "rgba(245,158,11,0.25)" },
-  dovish:   { label: "DOVISH",   color: C.green,  bg: "rgba(34,197,94,0.12)",   border: "rgba(34,197,94,0.25)" },
-  neutral:  { label: "NEUTRAL",  color: C.textMuted, bg: "rgba(113,113,122,0.12)", border: "rgba(113,113,122,0.25)" },
+  hawkish:  { label: "HAWKISH",  color: C.red,    bg: "rgba(192,91,79,0.12)",   border: "rgba(192,91,79,0.28)" },
+  hold:     { label: "HOLD",     color: C.amber,  bg: "rgba(201,154,76,0.12)",  border: "rgba(201,154,76,0.28)" },
+  cautious: { label: "CAUTIOUS", color: C.amber,  bg: "rgba(201,154,76,0.12)",  border: "rgba(201,154,76,0.28)" },
+  dovish:   { label: "DOVISH",   color: C.green,  bg: "rgba(78,155,118,0.12)",  border: "rgba(78,155,118,0.28)" },
+  neutral:  { label: "NEUTRAL",  color: C.textMuted, bg: "rgba(91,98,112,0.12)", border: "rgba(91,98,112,0.28)" },
 };
 
 const CYCLE_COLORS = {
@@ -145,9 +146,9 @@ function analyseNLP(text) {
   const netScore = (hawkScore - dovScore) / total; // -1 = pure dovish, +1 = pure hawkish
   let stance, color;
   if (netScore > 0.3)       { stance = "HAWKISH";   color = C.red; }
-  else if (netScore > 0.05) { stance = "LEAN HAWKISH"; color = "#F97316"; }
+  else if (netScore > 0.05) { stance = "LEAN HAWKISH"; color = "#B97848"; }
   else if (netScore < -0.3) { stance = "DOVISH";    color = C.green; }
-  else if (netScore < -0.05){ stance = "LEAN DOVISH"; color = "#34D399"; }
+  else if (netScore < -0.05){ stance = "LEAN DOVISH"; color = "#5FAE86"; }
   else                       { stance = "NEUTRAL";   color = C.textMuted; }
   return { hawkScore, dovScore, netScore, stance, color, hawkHits, dovHits };
 }
@@ -283,44 +284,49 @@ export default function MacroPulse({ onClose }) {
   return (
     <div style={{ minHeight: "100vh", background: C.bg, fontFamily: F.body }}>
       <style>{`
+        ${FONT_IMPORT}
         * { box-sizing: border-box; }
         textarea:focus { border-color: ${C.goldBorder} !important; }
         @keyframes zrc-pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+        .zrc-close-btn { background: transparent; border: 1px solid ${C.goldBorder}; color: ${C.gold}; transition: background 0.25s ease, color 0.25s ease; }
+        .zrc-close-btn:hover { background: ${C.gold}; color: ${C.bg}; }
+        .zrc-tab-btn:hover { color: ${C.text} !important; }
+        .zrc-bank-btn:hover { border-color: ${C.borderHover} !important; background: ${C.surface2} !important; }
       `}</style>
 
       {/* Header */}
-      <div style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(9,9,11,0.95)", backdropFilter: "blur(12px)", borderBottom: `1px solid ${C.border}`, padding: "0 clamp(16px,3vw,40px)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 60 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+      <div style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(10,12,16,0.92)", backdropFilter: "blur(14px)", borderBottom: `1px solid ${C.border}`, padding: "0 clamp(16px,3vw,40px)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 68 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
             <div>
-              <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.18em" }}>ZRC · MACRO PULSE</span>
-              <div style={{ fontFamily: F.display, fontSize: 18, color: C.text, fontWeight: 400 }}>Central Bank Signal Tracker</div>
+              <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.22em", fontWeight: 500 }}>ZRC · MACRO PULSE</span>
+              <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, fontWeight: 400, letterSpacing: "0.01em", marginTop: 2 }}>Central Bank Signal Tracker</div>
             </div>
-            <div style={{ display: "flex", gap: 10, marginLeft: 20 }}>
-              <span style={{ fontFamily: F.mono, fontSize: 9, color: C.green, background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.25)", padding: "2px 8px" }}>{dovishCount} DOVISH</span>
-              <span style={{ fontFamily: F.mono, fontSize: 9, color: C.amber, background: "rgba(245,158,11,0.1)", border: "1px solid rgba(245,158,11,0.25)", padding: "2px 8px" }}>{holdCount} HOLD</span>
-              <span style={{ fontFamily: F.mono, fontSize: 9, color: C.red, background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.25)", padding: "2px 8px" }}>{hawkishCount} HAWKISH</span>
+            <div style={{ display: "flex", gap: 8, marginLeft: 4, paddingLeft: 20, borderLeft: `1px solid ${C.border}` }}>
+              <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.06em", color: C.green, background: "rgba(78,155,118,0.10)", border: "1px solid rgba(78,155,118,0.25)", padding: "3px 9px" }}>{dovishCount} DOVISH</span>
+              <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.06em", color: C.amber, background: "rgba(201,154,76,0.10)", border: "1px solid rgba(201,154,76,0.25)", padding: "3px 9px" }}>{holdCount} HOLD</span>
+              <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.06em", color: C.red, background: "rgba(192,91,79,0.10)", border: "1px solid rgba(192,91,79,0.25)", padding: "3px 9px" }}>{hawkishCount} HAWKISH</span>
             </div>
           </div>
           {onClose && (
-            <button onClick={onClose} style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", padding: "7px 18px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
+            <button onClick={onClose} className="zrc-close-btn" style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", padding: "8px 20px", cursor: "pointer", fontWeight: 500 }}>
               ✕ CLOSE
             </button>
           )}
         </div>
       </div>
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "28px clamp(16px,3vw,40px)" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "32px clamp(16px,3vw,40px) 60px" }}>
 
         {/* Tabs */}
-        <div style={{ display: "flex", gap: 0, marginBottom: 28, borderBottom: `1px solid ${C.border}` }}>
+        <div style={{ display: "flex", gap: 4, marginBottom: 32, borderBottom: `1px solid ${C.border}` }}>
           {TABS.map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} style={{
-              fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em",
-              padding: "10px 20px", background: "none", border: "none",
+            <button key={t.id} className="zrc-tab-btn" onClick={() => setTab(t.id)} style={{
+              fontFamily: F.mono, fontSize: 10, letterSpacing: "0.14em",
+              padding: "12px 22px", background: "none", border: "none",
               borderBottom: tab === t.id ? `2px solid ${C.gold}` : "2px solid transparent",
               color: tab === t.id ? C.gold : C.textMuted, cursor: "pointer",
-              marginBottom: -1, transition: "color 0.2s",
+              marginBottom: -1, transition: "color 0.2s", fontWeight: 500,
             }}>
               {t.label}
             </button>
@@ -329,22 +335,22 @@ export default function MacroPulse({ onClose }) {
 
         {/* ── TAB: RATE DASHBOARD ── */}
         {tab === "dashboard" && (
-          <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 20 }}>
 
             {/* Bank list */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               {BANKS.map(b => (
-                <button key={b.id} onClick={() => setActiveBank(b.id)} style={{
-                  padding: "14px 16px", background: activeBank === b.id ? C.surface2 : C.surface,
+                <button key={b.id} className="zrc-bank-btn" onClick={() => setActiveBank(b.id)} style={{
+                  padding: "16px 18px", background: activeBank === b.id ? C.surface2 : "transparent",
                   border: `1px solid ${activeBank === b.id ? C.goldBorder : C.border}`,
-                  cursor: "pointer", textAlign: "left", transition: "all 0.2s",
+                  cursor: "pointer", textAlign: "left", transition: "border-color 0.2s, background 0.2s",
                 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                    <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>{b.flag} {b.short}</span>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+                    <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.04em" }}>{b.flag} {b.short}</span>
                     <StanceBadge stance={b.stance} />
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                    <span style={{ fontFamily: F.display, fontSize: 22, color: activeBank === b.id ? C.gold : C.text }}>{b.rate.toFixed(2)}%</span>
+                    <span style={{ fontFamily: F.display, fontSize: 24, fontWeight: 400, color: activeBank === b.id ? C.gold : C.text }}>{b.rate.toFixed(2)}%</span>
                     <span style={{ fontFamily: F.mono, fontSize: 8, color: CYCLE_COLORS[b.cycle] || C.textMuted, letterSpacing: "0.1em" }}>{b.cycle.toUpperCase()}</span>
                   </div>
                   <RateBar rate={b.rate} prev={b.prev} target={b.target} />
@@ -353,64 +359,64 @@ export default function MacroPulse({ onClose }) {
             </div>
 
             {/* Bank detail */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
 
               {/* Header card */}
-              <div style={{ padding: "24px 28px", background: C.surface, border: `1px solid ${C.border}` }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
+              <div style={{ padding: "30px 32px", background: C.surface, border: `1px solid ${C.border}` }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24, flexWrap: "wrap", gap: 12 }}>
                   <div>
-                    <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 4 }}>{selected.flag} {selected.short}</div>
-                    <div style={{ fontFamily: F.display, fontSize: 28, color: C.text, fontWeight: 400 }}>{selected.name}</div>
-                    <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginTop: 2 }}>{selected.governor}</div>
+                    <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.12em", marginBottom: 6 }}>{selected.flag} {selected.short}</div>
+                    <div style={{ fontFamily: F.display, fontSize: 30, color: C.text, fontWeight: 400, letterSpacing: "0.01em" }}>{selected.name}</div>
+                    <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginTop: 4 }}>{selected.governor}</div>
                   </div>
                   <div style={{ textAlign: "right" }}>
-                    <div style={{ fontFamily: F.display, fontSize: 48, color: C.gold, lineHeight: 1 }}>{selected.rate.toFixed(2)}<span style={{ fontSize: 18, color: C.textMuted }}>%</span></div>
-                    <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, marginTop: 4 }}>
+                    <div style={{ fontFamily: F.display, fontSize: 48, fontWeight: 300, color: C.gold, lineHeight: 1 }}>{selected.rate.toFixed(2)}<span style={{ fontSize: 18, color: C.textMuted }}>%</span></div>
+                    <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, marginTop: 6 }}>
                       Peak {selected.prev}% · Target {selected.target}%
                     </div>
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12, marginBottom: 20 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, marginBottom: 24, background: C.border }}>
                   {[
                     ["LAST MEETING", selected.lastMeeting],
                     ["NEXT MEETING", selected.nextMeeting],
                     ["LAST MOVE", `${selected.lastMove.dir === "cut" ? "▼" : "▲"} ${selected.lastMove.bps}bp · ${selected.lastMove.date}`],
                   ].map(([k, v]) => (
-                    <div key={k} style={{ padding: "12px 14px", background: C.surface2, border: `1px solid ${C.border}` }}>
-                      <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 4 }}>{k}</div>
+                    <div key={k} style={{ padding: "14px 16px", background: C.surface2 }}>
+                      <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 5 }}>{k}</div>
                       <div style={{ fontFamily: F.mono, fontSize: 11, color: C.text }}>{v}</div>
                     </div>
                   ))}
                 </div>
 
-                <div style={{ padding: "14px 16px", background: C.surface2, border: `1px solid ${C.goldBorder}`, borderLeft: `3px solid ${C.gold}` }}>
-                  <div style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, letterSpacing: "0.12em", marginBottom: 6 }}>KEY PHRASE · {selected.short}</div>
-                  <div style={{ fontFamily: F.display, fontSize: 17, color: C.text, fontStyle: "italic", marginBottom: 8 }}>"{selected.keyPhrase}"</div>
-                  <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.65, margin: 0, fontWeight: 300 }}>{selected.statement}</p>
+                <div style={{ padding: "4px 0 4px 20px", borderLeft: `2px solid ${C.gold}` }}>
+                  <div style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, letterSpacing: "0.14em", marginBottom: 8 }}>KEY PHRASE · {selected.short}</div>
+                  <div style={{ fontFamily: F.display, fontSize: 19, color: C.text, fontStyle: "italic", fontWeight: 400, marginBottom: 10 }}>"{selected.keyPhrase}"</div>
+                  <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>{selected.statement}</p>
                 </div>
               </div>
 
               {/* Divergence vs Fed */}
               {selected.id !== "fed" && (
-                <div style={{ padding: "18px 22px", background: C.surface, border: `1px solid ${C.border}` }}>
-                  <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.12em", marginBottom: 14 }}>
+                <div style={{ padding: "22px 26px", background: C.surface, border: `1px solid ${C.border}` }}>
+                  <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.14em", marginBottom: 16 }}>
                     DIVERGENCIA · {selected.short} vs FED
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginBottom: 4 }}>FED</div>
-                      <div style={{ fontFamily: F.display, fontSize: 28, color: C.text }}>4.50%</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginBottom: 6 }}>FED</div>
+                      <div style={{ fontFamily: F.display, fontSize: 28, fontWeight: 400, color: C.text }}>4.50%</div>
                     </div>
                     <div style={{ flex: 1, textAlign: "center" }}>
-                      <div style={{ fontFamily: F.display, fontSize: 22, color: Math.abs(selected.rate - 4.50) > 1 ? C.gold : C.textSec }}>
+                      <div style={{ fontFamily: F.display, fontSize: 22, fontWeight: 400, color: Math.abs(selected.rate - 4.50) > 1 ? C.gold : C.textSec }}>
                         {selected.rate > 4.50 ? "+" : ""}{(selected.rate - 4.50).toFixed(2)}%
                       </div>
-                      <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.1em", marginTop: 2 }}>SPREAD</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.1em", marginTop: 3 }}>SPREAD</div>
                     </div>
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginBottom: 4 }}>{selected.short}</div>
-                      <div style={{ fontFamily: F.display, fontSize: 28, color: C.gold }}>{selected.rate.toFixed(2)}%</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginBottom: 6 }}>{selected.short}</div>
+                      <div style={{ fontFamily: F.display, fontSize: 28, fontWeight: 400, color: C.gold }}>{selected.rate.toFixed(2)}%</div>
                     </div>
                   </div>
                 </div>
@@ -484,10 +490,10 @@ export default function MacroPulse({ onClose }) {
               </div>
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
-                  <tr style={{ background: C.surface2 }}>
-                    <th style={{ padding: "10px 16px", fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", textAlign: "left", border: `1px solid ${C.border}` }}>BANCO</th>
+                  <tr>
+                    <th style={{ padding: "12px 20px", fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", textAlign: "left", borderBottom: `1px solid ${C.border}`, fontWeight: 500 }}>BANCO</th>
                     {PORTFOLIO_SIGNALS.map(ps => (
-                      <th key={ps.key} style={{ padding: "10px 14px", fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.08em", textAlign: "center", border: `1px solid ${C.border}`, whiteSpace: "nowrap" }}>
+                      <th key={ps.key} style={{ padding: "12px 16px", fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.08em", textAlign: "center", borderBottom: `1px solid ${C.border}`, whiteSpace: "nowrap", fontWeight: 500 }}>
                         {ps.asset.split("(")[0].trim().toUpperCase()}
                       </th>
                     ))}
@@ -495,26 +501,26 @@ export default function MacroPulse({ onClose }) {
                 </thead>
                 <tbody>
                   {BANKS.map((b, i) => (
-                    <tr key={b.id} style={{ background: i % 2 === 0 ? C.surface : C.surface2 }}>
-                      <td style={{ padding: "12px 16px", border: `1px solid ${C.border}` }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <tr key={b.id}>
+                      <td style={{ padding: "14px 20px", borderBottom: `1px solid ${C.border}` }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                           <span style={{ fontFamily: F.mono, fontSize: 11, color: C.text }}>{b.flag} {b.short}</span>
                           <StanceBadge stance={b.stance} />
                         </div>
                       </td>
                       {PORTFOLIO_SIGNALS.map(ps => (
-                        <td key={ps.key} style={{ padding: "12px 14px", border: `1px solid ${C.border}`, textAlign: "center" }}>
+                        <td key={ps.key} style={{ padding: "14px 16px", borderBottom: `1px solid ${C.border}`, textAlign: "center" }}>
                           <SignalCell value={b.signals[ps.key]} />
                         </td>
                       ))}
                     </tr>
                   ))}
-                  <tr style={{ background: C.surface3, borderTop: `2px solid ${C.goldBorder}` }}>
-                    <td style={{ padding: "12px 16px", border: `1px solid ${C.border}` }}>
+                  <tr style={{ background: C.surface2 }}>
+                    <td style={{ padding: "14px 20px", borderTop: `1px solid ${C.goldBorder}` }}>
                       <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.1em" }}>AGREGADO</span>
                     </td>
                     {PORTFOLIO_SIGNALS.map(ps => (
-                      <td key={ps.key} style={{ padding: "12px 14px", border: `1px solid ${C.border}`, textAlign: "center" }}>
+                      <td key={ps.key} style={{ padding: "14px 16px", borderTop: `1px solid ${C.goldBorder}`, textAlign: "center" }}>
                         <SignalCell value={aggregate[ps.key]} />
                       </td>
                     ))}
