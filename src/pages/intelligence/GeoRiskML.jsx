@@ -124,6 +124,33 @@ function estimatePriceImpact(asset, impactVector, region = "eu") {
   return total;
 }
 
+// Mezcla de probabilidad de escenario ZRC (sin ajustar por el usuario) — es la
+// misma que usa el Decision Engine por defecto (sector Global, sin overrides).
+export const DEFAULT_WEIGHTS = Object.fromEntries(Object.entries(SCENARIOS).map(([k, v]) => [k, v.prob]));
+
+// Overlay de riesgo soberano — reutiliza el mismo motor cuantitativo del
+// Decision Engine (mix de escenarios ZRC, sector Global) para que Macro Pulse
+// pueda reconciliar su señal de "recorte de tipos = bullish" con el riesgo de
+// yield/spread prospectivo, en vez de tener dos vistas desconectadas para el
+// mismo activo. Determinista — no depende de la llamada en vivo a Claude.
+export function computeSovereignBondRiskImpact(region) {
+  const vars = ECONOMIC_VARIABLES_BY_REGION[region] || ECONOMIC_VARIABLES_BY_REGION.eu;
+  const impacts = {};
+  Object.keys(vars).forEach(varKey => {
+    let total = 0;
+    Object.entries(SCENARIOS).forEach(([sk, sv]) => {
+      total += (DEFAULT_WEIGHTS[sk] || 0) * (sv.impactByRegion[region]?.[varKey] || 0);
+    });
+    impacts[varKey] = total;
+  });
+  return estimatePriceImpact("Deuda soberana core", impacts, region);
+}
+
+export const SOVEREIGN_BOND_RISK_OVERLAY = {
+  eu:  computeSovereignBondRiskImpact("eu"),
+  usa: computeSovereignBondRiskImpact("usa"),
+};
+
 function riskLabel(v) {
   return v < 40 ? "BAJO" : v < 65 ? "MODERADO" : v < 80 ? "ELEVADO" : "CRÍTICO";
 }
@@ -427,8 +454,6 @@ Responde con este JSON exacto:
 }
 
 // ── Main Component ────────────────────────────────────────────────
-
-const DEFAULT_WEIGHTS = Object.fromEntries(Object.entries(SCENARIOS).map(([k, v]) => [k, v.prob]));
 
 export default function GeoRiskML() {
   const [sector, setSector] = useState("global");

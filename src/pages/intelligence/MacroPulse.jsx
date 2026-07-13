@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { SOVEREIGN_BOND_RISK_OVERLAY } from "./GeoRiskML";
 
 // ═══════════════════════════════════════════════════════════════
 // MACRO PULSE — Central Bank Signal Tracker · Zenith Rise Capital
@@ -163,6 +164,35 @@ function aggregateSignals(banks) {
   return totals;
 }
 
+// Convierte el impacto de precio estimado por el Decision Engine de GeoRisk ML
+// (%, mismo modelo cuantitativo que produce el -7.2% de "Deuda soberana core")
+// a la escala discreta -2..+2 que usa Macro Pulse.
+function riskPctToScore(pct) {
+  if (pct <= -4) return -2;
+  if (pct <= -1.5) return -1;
+  if (pct < 1.5) return 0;
+  if (pct < 4) return 1;
+  return 2;
+}
+
+// Reconcilia la señal de bonos soberanos core (Bund/UST) entre las dos
+// aplicaciones: en vez de promediar sólo el ciclo de tipos (política
+// monetaria = ¿sube o baja el banco central?), la mezcla con el overlay de
+// riesgo prospectivo de GeoRisk ML (yield/spread bajo el mix de escenarios
+// ZRC) para el mismo instrumento. Se trunca hacia cero en los empates para no
+// sesgar el resultado hacia ningún lado cuando ambas señales se cancelan.
+function reconcileSovereignBondSignal(banks) {
+  const fed = banks.find(b => b.id === "fed");
+  const ecb = banks.find(b => b.id === "ecb");
+  const rateAvg = ((fed?.signals.bonds || 0) + (ecb?.signals.bonds || 0)) / 2;
+  const riskEu = riskPctToScore(SOVEREIGN_BOND_RISK_OVERLAY.eu);
+  const riskUsa = riskPctToScore(SOVEREIGN_BOND_RISK_OVERLAY.usa);
+  const riskAvg = (riskEu + riskUsa) / 2;
+  const blended = (rateAvg + riskAvg) / 2;
+  const score = Math.trunc(blended);
+  return { score, rateAvg, riskAvg, pctEu: SOVEREIGN_BOND_RISK_OVERLAY.eu, pctUsa: SOVEREIGN_BOND_RISK_OVERLAY.usa };
+}
+
 // ── Sub-components ───────────────────────────────────────────────
 
 function StanceBadge({ stance }) {
@@ -270,6 +300,7 @@ export default function MacroPulse({ onClose }) {
   const [tab, setTab] = useState("dashboard"); // dashboard | analyser | signals
   const selected = BANKS.find(b => b.id === activeBank) || BANKS[0];
   const aggregate = useMemo(() => aggregateSignals(BANKS), []);
+  const bondReconciled = useMemo(() => reconcileSovereignBondSignal(BANKS), []);
 
   const dovishCount = BANKS.filter(b => b.stance === "dovish" || b.stance === "cautious").length;
   const hawkishCount = BANKS.filter(b => b.stance === "hawkish").length;
@@ -468,7 +499,8 @@ export default function MacroPulse({ onClose }) {
             {/* Aggregate signal summary */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 1 }}>
               {PORTFOLIO_SIGNALS.map(ps => {
-                const v = aggregate[ps.key];
+                const isBonds = ps.key === "bonds";
+                const v = isBonds ? bondReconciled.score : aggregate[ps.key];
                 const rounded = Math.round(v);
                 const key = String(Math.max(-2, Math.min(2, rounded)));
                 return (
@@ -477,10 +509,24 @@ export default function MacroPulse({ onClose }) {
                     <div style={{ fontFamily: F.display, fontSize: 24, color: SIGNAL_COLORS[key] || C.textMuted, marginBottom: 4 }}>
                       {SIGNAL_LABELS[key] || "—"}
                     </div>
-                    <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>Score agregado: {v > 0 ? "+" : ""}{v.toFixed(1)}</div>
+                    {isBonds ? (
+                      <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, lineHeight: 1.6 }}>
+                        Ciclo tipos (Fed+BCE): {bondReconciled.rateAvg > 0 ? "+" : ""}{bondReconciled.rateAvg.toFixed(1)} · Overlay riesgo GeoRisk ML: {bondReconciled.riskAvg > 0 ? "+" : ""}{bondReconciled.riskAvg.toFixed(1)}
+                      </div>
+                    ) : (
+                      <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>Score agregado: {v > 0 ? "+" : ""}{v.toFixed(1)}</div>
+                    )}
                   </div>
                 );
               })}
+            </div>
+
+            {/* Sovereign bond reconciliation note */}
+            <div style={{ padding: "16px 20px", background: C.goldDim, border: `1px solid ${C.goldBorder}` }}>
+              <div style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, letterSpacing: "0.12em", marginBottom: 8 }}>RECONCILIACIÓN · BONOS SOBERANOS CORE</div>
+              <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.65, margin: 0, fontWeight: 300 }}>
+                La señal de tipos por sí sola (Fed en hold, BCE recortando) apuntaría a {SIGNAL_LABELS[String(Math.max(-2, Math.min(2, Math.round(bondReconciled.rateAvg))))]}. GeoRisk ML valora el mismo instrumento bajo el mix de escenarios ZRC (Escalada Arancelaria 42% dominante) y ve presión al alza en yield/spread — Bund {bondReconciled.pctEu > 0 ? "+" : ""}{bondReconciled.pctEu.toFixed(1)}% a 12M, UST {bondReconciled.pctUsa > 0 ? "+" : ""}{bondReconciled.pctUsa.toFixed(1)}% a 12M. Macro Pulse pondera ambas señales para el mismo activo en vez de mostrar dos llamadas contradictorias.
+              </p>
             </div>
 
             {/* Per-bank signal matrix */}
@@ -527,6 +573,11 @@ export default function MacroPulse({ onClose }) {
                   </tr>
                 </tbody>
               </table>
+              <div style={{ padding: "10px 20px", borderTop: `1px solid ${C.border}` }}>
+                <span style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.04em" }}>
+                  Fila AGREGADO = sólo ciclo de tipos por banco central, sin overlay de riesgo. Ver "RECONCILIACIÓN" arriba para la señal de bonos soberanos ajustada por riesgo.
+                </span>
+              </div>
             </div>
 
             {/* ZRC interpretation */}
@@ -534,7 +585,7 @@ export default function MacroPulse({ onClose }) {
               <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.15em", marginBottom: 14 }}>ZRC MACRO INTERPRETATION · MAY 2026</div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 20 }}>
                 {[
-                  { title: "Bonos soberanos", body: "BCE en ciclo de recortes activo con 2–3 bajadas adicionales en precio. Sobreponderar Bund 2–5Y y BTP italiano 3Y (spread 165bp vs Bund ofrece carry atractivo)." },
+                  { title: "Bonos soberanos", body: "BCE en ciclo de recortes activo, pero el overlay de riesgo de GeoRisk ML (escalada arancelaria + fragmentación europea) presiona yield y spread al alza en Bund y, en menor medida, en UST. Postura neutral en duración core hasta que se disipe el riesgo de escenario; BTP italiano 3Y (spread 165bp vs Bund) sigue ofreciendo carry táctico si la fragmentación no escala." },
                   { title: "EUR/USD", body: "Divergencia Fed–BCE favorece USD en el corto plazo. Rango esperado 1.06–1.09. BoJ en modo hawkish añade complejidad: posible rotación hacia JPY en risk-off." },
                   { title: "Renta variable", body: "Entorno mixto. Europa sensible a tipos (utilities, REITs) se beneficia de recortes BCE. Cuidado con financieras europeas: compresión de NIM si los recortes se aceleran." },
                 ].map(({ title, body }) => (
