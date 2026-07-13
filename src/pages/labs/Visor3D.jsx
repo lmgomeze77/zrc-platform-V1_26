@@ -231,6 +231,7 @@ function LayerToggle({ label, active, onClick }) {
 
 function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLayer }) {
   const fmt = (n) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
+  const [showResidualInfo, setShowResidualInfo] = useState(false);
 
   return (
     <div className="zrc-parcela-card" style={{
@@ -259,8 +260,22 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLaye
 
       {activeLayer === "value" && residual && (
         <div style={{ padding: "12px 20px 16px", borderTop: `1px solid ${C.border}`, background: C.goldDim }}>
-          <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 4 }}>
-            VALOR RESIDUAL
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 4 }}>
+              VALOR RESIDUAL
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowResidualInfo((v) => !v)}
+              aria-label="¿Cómo se calcula el valor residual?"
+              style={{
+                width: 16, height: 16, borderRadius: "50%", border: `1px solid ${C.goldBorder}`,
+                background: "none", color: C.gold, fontFamily: F.mono, fontSize: 10, lineHeight: 1,
+                cursor: "pointer", padding: 0, display: "flex", alignItems: "center", justifyContent: "center",
+              }}
+            >
+              i
+            </button>
           </div>
           <div style={{ fontFamily: F.display, fontSize: 24, color: C.gold, fontWeight: 500 }}>
             {fmt(residual.valor || residual.valorResidualSuelo)}
@@ -268,6 +283,17 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLaye
           {residual.valorResidualPorM2 && (
             <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textSec, marginTop: 2 }}>
               {fmt(residual.valorResidualPorM2)}/m²
+            </div>
+          )}
+          {showResidualInfo && (
+            <div style={{ marginTop: 8, padding: "8px 10px", background: "rgba(0,0,0,0.25)", border: `1px solid ${C.border}` }}>
+              <p style={{ margin: 0, fontSize: 10, color: C.textSec, lineHeight: 1.5 }}>
+                <strong style={{ color: C.text }}>Método residual estático:</strong> lo que quedaría para el suelo tras
+                vender lo construible y restar el coste de construcción y el beneficio del promotor.
+                Ingresos (m² construibles × precio de venta) − costes de construcción − beneficio del promotor = valor residual del suelo.
+                No es la referencia de mercado (precio de venta del m² construido) — es lo que sobra para pagar el suelo una vez cubiertos obra y margen.
+                Ajusta los supuestos en la pestaña "Residual" del visor 2D.
+              </p>
             </div>
           )}
           {marketRef && (

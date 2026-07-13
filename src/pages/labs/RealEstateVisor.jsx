@@ -520,6 +520,36 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                   <PanelTitle dot>Residual Snapshot</PanelTitle>
                   <PanelLead>Sensibiliza el cálculo moviendo los parámetros.</PanelLead>
 
+                  <details style={{ marginBottom: 14, background: C.surface2, border: `1px solid ${C.border}` }}>
+                    <summary style={{
+                      cursor: "pointer", padding: "10px 12px", fontFamily: F.mono, fontSize: 10,
+                      letterSpacing: "0.08em", textTransform: "uppercase", color: C.gold,
+                    }}>
+                      ¿Cómo se calcula el valor residual?
+                    </summary>
+                    <div style={{ padding: "0 12px 12px" }}>
+                      <p style={{ margin: "0 0 8px", fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>
+                        Se usa el <strong style={{ color: C.text }}>método residual estático</strong>, el estándar de
+                        tasación para suelo (base de la metodología de la Orden ECO/805/2003): parte de los ingresos
+                        que generaría vender lo construible al precio de mercado asumido, y resta lo que cuesta
+                        construirlo y el beneficio que exige un promotor por asumir el riesgo. Lo que sobra es lo
+                        máximo que se podría pagar por el suelo.
+                      </p>
+                      <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted, lineHeight: 1.9, padding: "8px 10px", background: "rgba(0,0,0,0.25)" }}>
+                        m² construibles = superficie × edificabilidad<br />
+                        ingresos = m² construibles × precio de venta/m²<br />
+                        costes totales = (m² construibles × coste construcción/m²) × (1 + costes indirectos)<br />
+                        beneficio promotor = ingresos × margen promotor<br />
+                        <strong style={{ color: C.gold }}>valor residual del suelo = ingresos − costes totales − beneficio promotor</strong>
+                      </div>
+                      <p style={{ margin: "8px 0 0", fontSize: 11, color: C.textMuted, lineHeight: 1.6, fontStyle: "italic" }}>
+                        Por eso puede estar muy por debajo de la "Ref. mercado zona": esa cifra es el precio de venta
+                        del m² ya construido, no lo que queda disponible para pagar el suelo. Es una estimación
+                        sensible a los supuestos de los sliders, no una tasación certificada.
+                      </p>
+                    </div>
+                  </details>
+
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, padding: "10px 12px", marginBottom: 14, background: C.surface2, border: `1px solid ${C.border}` }}>
                     <div>
                       <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.12em", color: C.textMuted, textTransform: "uppercase" }}>Ref. mercado zona · {parcela.provincia}</div>
