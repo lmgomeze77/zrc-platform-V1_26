@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-07-12T08:11:20.044Z",
+  "generated_at": "2026-07-13T09:19:00.013Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1395",
-      "change": "-0.18%",
+      "value": "1.1404",
+      "change": "-0.09%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,373.20",
-      "change": "+0.26%",
+      "value": "19428",
+      "change": "+0.23%",
       "up": true
     },
     {
-      "symbol": "BRENT Crude",
-      "value": "79.12",
-      "change": "+4.09%",
+      "symbol": "BRENT",
+      "value": "79.46",
+      "change": "+4.54%",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "74.53",
-      "change": "+4.37%",
-      "up": true
-    },
-    {
-      "symbol": "XAU/USD",
-      "value": "4,092.10",
-      "change": "-0.53%",
+      "symbol": "GOLD",
+      "value": "4064",
+      "change": "-0.97%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "63,342.00",
-      "change": "-1.16%",
-      "up": false
+      "symbol": "BTC",
+      "value": "63019",
+      "change": "+1.40%",
+      "up": true
     },
     {
       "symbol": "VIX",
-      "value": "15.34",
-      "change": "-3.16%",
+      "value": "15.03",
+      "change": "-5.11%",
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.58%",
-      "change": "+0.88%",
+      "symbol": "US 10Y",
+      "value": "4.57",
+      "change": "+0.15%",
       "up": true
     },
     {
+      "symbol": "EUR/GBP",
+      "value": "0.8540",
+      "change": "-0.12%",
+      "up": false
+    },
+    {
       "symbol": "S&P 500",
-      "value": "7,575.39",
+      "value": "7575",
       "change": "+0.42%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25,067.09",
+      "value": "25067",
       "change": "-0.20%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8513",
-      "change": "-0.15%",
-      "up": false
-    },
-    {
-      "symbol": "DXY",
-      "value": "101.13",
-      "change": "+0.18%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.903",
-      "change": "-1.26%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.2150",
-      "change": "+0.26%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "7.2680",
-      "change": "-0.11%",
       "up": false
     }
   ],
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EEUU e Irán intercambian ataques mientras Teherán vuelve a declarar cerrado el estrecho de Ormuz",
-        "en": "US and Iran exchange strikes as Tehran again says Strait of Hormuz is closed"
+        "es": "EE.UU. lanza nueva oleada de ataques contra Irán mientras Teherán dice que la diplomacia ha resultado 'inútil'",
+        "en": "US launches new wave of strikes against Iran as Tehran says diplomacy has proven 'futile'"
       },
       "summary": {
-        "es": "Irán y EEUU protagonizaron nuevos intercambios de ataques tras el golpe de un buque en el estrecho de Ormuz, con Teherán reiterando el cierre de la vía marítima clave para el transporte de hidrocarburos globales. El cierre efectivo del estrecho amenaza con cortar hasta el 20% del suministro mundial de petróleo, con implicaciones sistémicas para mercados de energía y activos de riesgo. La escalada marca el mayor ciclo de represalias mutuas desde el inicio del conflicto.",
-        "en": "Iran and the US exchanged fresh strikes after a container vessel was hit in the Strait of Hormuz, with Tehran reiterating closure of the waterway critical to global hydrocarbon flows. An effective closure threatens to disrupt up to 20% of global oil supply, with systemic implications for energy markets and risk assets. The escalation marks the largest tit-for-tat exchange since hostilities began."
+        "es": "Las fuerzas estadounidenses e iraníes intercambian ataques pesados con misiles y drones por el control del estrecho de Ormuz, poniendo en riesgo una tregua frágil. Teherán declara que la diplomacia ha resultado inútil, señalando una posible escalada sostenida. El riesgo de cierre del estrecho de Ormuz —por donde transita ~20% del petróleo mundial— es el principal factor de riesgo para los mercados de energía globales.",
+        "en": "US and Iranian forces exchange heavy missile and drone attacks over control of the Strait of Hormuz, placing a fragile truce under severe pressure. Tehran's declaration that diplomacy is 'futile' signals a potential for sustained escalation. The risk of Hormuz closure — through which ~20% of global oil flows — is the dominant near-term energy market risk factor."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +82,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Cierre de Ormuz amenaza suministro global de crudo",
-            "en": "Hormuz closure threatens global crude supply disruption"
+            "es": "Riesgo de cierre de Ormuz dispara prima de riesgo energética",
+            "en": "Hormuz closure risk sharply elevates energy risk premium"
           }
         },
         {
@@ -121,8 +91,17 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Búsqueda de refugio ante escalada militar EEUU-Irán",
-            "en": "Safe-haven demand surges on US-Iran military escalation"
+            "es": "Escalada bélica impulsa demanda de refugio seguro",
+            "en": "Wartime escalation drives safe-haven demand"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Fuga hacia calidad presiona rendimientos a la baja",
+            "en": "Flight-to-quality pushes yields lower"
           }
         },
         {
@@ -130,85 +109,76 @@
           "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "Aversión al riesgo castiga divisas emergentes importadoras de energía",
-            "en": "Risk-off crushes energy-importing EM currencies"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Flujo hacia refugio seguro eleva bonos del Tesoro",
-            "en": "Safe-haven flows support Treasury prices"
+            "es": "Shock energético y aversión al riesgo golpean divisas emergentes",
+            "en": "Energy shock and risk-off sentiment pressure EM currencies"
           }
         }
       ],
       "confidence": 95,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jul/12/us-and-iran-exchange-strikes-as-tehran-again-says-strait-of-hormuz-is-closed",
-      "published_at": "2026-07-12",
-      "time": "2h"
+      "source_url": "https://www.theguardian.com/world/2026/jul/13/us-iran-war-missile-strikes-news-attacks-strait-of-hormuz",
+      "published_at": "2026-07-13",
+      "time": "6h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "EURASIA",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "Rusia ataca Kyiv y Odesa en nuevas ofensivas",
-        "en": "Russia hits Ukraine's Kyiv, Odesa in fresh attacks"
+        "es": "Macron recibe a Zelensky, Starmer y Merz para conversaciones sobre Ucrania",
+        "en": "Macron hosts Zelenskyy, Starmer and Merz for Ukraine talks"
       },
       "summary": {
-        "es": "Rusia lanzó nuevos ataques contra Kyiv y Odesa mientras Ucrania reporta escasez crítica de municiones antiaéreas para interceptar misiles balísticos. El presidente Zelensky apeló a los aliados de la OTAN para que cumplan los compromisos de la cumbre de Ankara, señalando una brecha creciente entre promesas y entrega real de armamento. La presión sobre las rutas de exportación del Mar Negro y la infraestructura ucraniana mantiene la prima de riesgo en cereales y energía.",
-        "en": "Russia launched fresh strikes on Kyiv and Odesa as Ukraine reports critical shortages of air defense munitions needed to intercept ballistic missiles. President Zelensky appealed to NATO allies to fulfill commitments made at the Ankara summit, signaling a growing gap between pledges and actual weapons deliveries. Pressure on Black Sea export routes and Ukrainian infrastructure sustains risk premiums in grains and energy."
+        "es": "La 'coalición de los dispuestos' se reúne en París para coordinar apoyo militar continuado a Ucrania, en medio de avances recientes de Kiev que podrían presionar a Putin hacia negociaciones. El Reino Unido actualizó su régimen de sanciones, agregando 24 entidades vinculadas a operaciones híbridas rusas en Europa. La evolución del conflicto y las sanciones adicionales tendrán implicaciones directas para el euro y los activos europeos.",
+        "en": "The 'coalition of the willing' meets in Paris to coordinate continued military support for Ukraine amid recent Kyiv advances that could pressure Putin toward negotiations. The UK updated sanctions, listing 24 entities behind Russian hybrid operations in Europe. The trajectory of the conflict and additional sanctions carries direct implications for the euro and European assets."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Ataques a infraestructura ucraniana presionan suministro energético europeo",
-            "en": "Strikes on Ukrainian infrastructure pressure European energy supply"
-          }
-        },
-        {
-          "asset": "Wheat futures",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Ataques a Odesa amenazan exportaciones de grano del Mar Negro",
-            "en": "Odesa strikes threaten Black Sea grain export corridor"
-          }
-        },
-        {
           "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
+          "direction": "mixed",
+          "magnitude": "medium",
           "note": {
-            "es": "Escalada en Europa del Este pesa sobre el euro",
-            "en": "Eastern European escalation weighs on the euro"
+            "es": "Señales de unidad europea apoyan el euro frente a incertidumbre bélica",
+            "en": "European unity signals support euro against war uncertainty"
+          }
+        },
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Compromisos de gasto militar continúan impulsando el sector defensa",
+            "en": "Continued military spending commitments support defense sector"
+          }
+        },
+        {
+          "asset": "Russian Ruble",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Nuevas sanciones del Reino Unido presionan al rublo",
+            "en": "New UK sanctions add downward pressure on the ruble"
           }
         }
       ],
-      "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/russia-hits-ukraine-s-kyiv-odesa-in-fresh-attacks/a-77915808?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-07-11",
-      "time": "20h"
+      "confidence": 85,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/jul/13/emmanuel-macron-keir-starmer-friedrich-merz-volodymyr-zelenskyy-coalition-of-the-willing-ukraine-russia-latest-news-updates",
+      "published_at": "2026-07-13",
+      "time": "<1h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
+      "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "Anatomía de una pregunta a Mark Rutte",
-        "en": "Anatomy of a question to Mark Rutte"
+        "es": "La defensa de la UE sigue siendo muy dependiente de Estados Unidos",
+        "en": "EU defense remains heavily reliant on the United States"
       },
       "summary": {
-        "es": "El análisis aborda la incapacidad de Europa para reconocerse como actor geopolítico autónomo capaz de asumir el coste brutal de su propia defensa, en el contexto de la cumbre de la OTAN en Ankara. La columna refleja el debate estratégico central en la UE sobre autonomía defensiva y financiamiento de la seguridad colectiva, con implicaciones directas para el gasto en defensa europeo y los mercados de deuda soberana. La postura de Rutte como secretario general de la OTAN es clave para las negociaciones sobre compromisos de gasto del 2% y más allá.",
-        "en": "The analysis addresses Europe's inability to recognize itself as an autonomous geopolitical actor capable of bearing the immense cost of its own defense, in the context of the NATO Ankara summit. The piece reflects the central strategic debate in the EU over defense autonomy and collective security financing, with direct implications for European defense spending and sovereign debt markets. Rutte's position as NATO Secretary General is key to negotiations over spending commitments beyond 2% of GDP."
+        "es": "Un análisis de DW documenta los obstáculos estructurales que enfrenta la UE para sustituir capacidades clave de EE.UU., incluyendo misiles Patriot y Tomahawk, cazas F-35 y comunicaciones Starlink. La dependencia persistente limita la autonomía estratégica europea precisamente cuando Washington está comprometido en operaciones contra Irán. Esto refuerza el argumento de largo plazo para la inversión en defensa e industria aeroespacial europeas.",
+        "en": "A DW analysis documents structural obstacles facing the EU in replacing key US capabilities including Patriot and Tomahawk missiles, F-35 jets, and Starlink communications. Persistent dependence constrains European strategic autonomy precisely as Washington is engaged in Iranian operations. This reinforces the long-term investment case for European defense and aerospace industries."
       },
       "impact": "medium",
       "market_impact": [
@@ -217,115 +187,115 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Debate sobre autonomía defensiva europea impulsa sector defensa",
-            "en": "European defense autonomy debate supports defense sector equities"
+            "es": "Dependencia documentada refuerza caso para inversión en defensa europea",
+            "en": "Documented dependency strengthens European defense investment case"
           }
         },
         {
-          "asset": "EU sovereign bonds",
+          "asset": "EUR/USD",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Mayor gasto en defensa presiona rendimientos de deuda soberana europea",
-            "en": "Higher defense spending pressures European sovereign bond yields"
+            "es": "Vulnerabilidad estratégica pesa sobre la confianza en el euro",
+            "en": "Strategic vulnerability weighs on euro confidence"
           }
         }
       ],
-      "confidence": 72,
-      "source": "El País",
-      "source_url": "https://elpais.com/opinion/2026-07-12/anatomia-de-una-pregunta-a-mark-rutte.html",
+      "confidence": 75,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/eu-defense-remains-heavily-reliant-on-the-united-states/a-77917972?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-07-12",
-      "time": "4h"
+      "time": "20h"
     },
     {
       "id": 4,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "AFRICA",
       "title": {
-        "es": "China evacúa a casi dos millones de personas al llegar un poderoso tifón",
-        "en": "China evacuates nearly two million people as powerful typhoon makes landfall"
+        "es": "¿Puede la industria de drones de Nigeria entregar soberanía de defensa a África?",
+        "en": "Can Nigeria's drone industry deliver Africa's defence sovereignty?"
       },
       "summary": {
-        "es": "El tifón Bavi tocó tierra en la provincia de Zhejiang, uno de los centros industriales y de manufactura más importantes de China, forzando la evacuación de casi dos millones de personas y la suspensión de actividades comerciales y transporte. Las interrupciones en cadenas de suministro procedentes de la región podrían afectar sectores tecnológicos y de manufactura globales dado el peso industrial de Zhejiang. Los daños en infraestructura portuaria en la zona afectaría el comercio marítimo transpacífico.",
-        "en": "Typhoon Bavi made landfall in Zhejiang province, one of China's most important industrial and manufacturing hubs, forcing evacuation of nearly two million people and suspension of commercial activities and transport. Supply chain disruptions from the region could affect global tech and manufacturing sectors given Zhejiang's industrial weight. Infrastructure damage to ports in the area would impact transpacific maritime trade."
+        "es": "Nigeria está desarrollando capacidades de fabricación de drones militares en un contexto de creciente demanda de soberanía de defensa en el continente africano. El artículo advierte que la soberanía de defensa requiere mucho más que producción local. El desarrollo de una industria de defensa africana tiene implicaciones para los flujos de inversión en manufactura, minerales críticos y geopolítica de transferencia de tecnología entre África, China y Occidente.",
+        "en": "Nigeria is developing military drone manufacturing capabilities amid growing demand for defense sovereignty across Africa. The piece cautions that defense sovereignty requires far more than local production capacity. The development of an African defense industry has implications for manufacturing investment flows, critical minerals, and technology transfer geopolitics between Africa, China, and the West."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Asian shipping equities",
-          "direction": "down",
-          "magnitude": "medium",
+          "asset": "African frontier market equities",
+          "direction": "up",
+          "magnitude": "low",
           "note": {
-            "es": "Cierre de puertos en Zhejiang interrumpe tráfico marítimo regional",
-            "en": "Zhejiang port closures disrupt regional maritime traffic"
+            "es": "Inversión en manufactura de defensa crea nuevas oportunidades sectoriales",
+            "en": "Defense manufacturing investment creates new sectoral opportunities"
           }
         },
         {
-          "asset": "CNY/USD",
-          "direction": "down",
+          "asset": "Critical minerals (coltan, lithium)",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Daños económicos en zona industrial presionan yuan",
-            "en": "Economic damage in industrial zone pressures yuan"
+            "es": "Soberanía de defensa refuerza demanda interna de minerales estratégicos",
+            "en": "Defense sovereignty drive reinforces domestic strategic mineral demand"
           }
         }
       ],
-      "confidence": 70,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cdxd3wkp2rzo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-07-12",
-      "time": "<1h"
+      "confidence": 65,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/7/13/can-nigerias-drone-industry-deliver-africas-defence-sovereignty?traffic_source=rss",
+      "published_at": "2026-07-13",
+      "time": "8h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "AFRICA",
+      "region": "EU",
       "title": {
-        "es": "Primeros pacientes inscritos en un ensayo histórico de tratamiento contra el ébola en RDC",
-        "en": "First patients enrolled in record-breaking Ebola treatment trial in DRC"
+        "es": "Cientos evacuados en suburbio de París tras hallazgo de armas cerca de una sinagoga",
+        "en": "Hundreds evacuated from Paris suburb after weapons found near synagogue"
       },
       "summary": {
-        "es": "Se inicia un ensayo clínico de dos fármacos contra el ébola en la región de Ituri (RDC), puesto en marcha apenas seis semanas después de declarado el brote, en ausencia de tratamiento aprobado. El brote activo en una región ya fragilizada por conflictos armados y actividad minera intensiva plantea riesgos para la continuidad operativa en sectores de minerales críticos de la RDC. La respuesta sanitaria internacional y su eficacia determinarán si el brote se contiene o se convierte en un factor desestabilizador de mayor alcance regional.",
-        "en": "A two-drug clinical trial against Ebola has been launched in DRC's Ituri region just six weeks after the outbreak was declared, with no approved treatment currently available. An active outbreak in a region already fragile due to armed conflict and intensive mining activity poses risks to operational continuity in DRC's critical minerals sectors. The effectiveness of the international health response will determine whether the outbreak is contained or becomes a broader regional destabilizing factor."
+        "es": "Trescientas personas fueron evacuadas en Sarcelles, al norte de París, tras el hallazgo de armas —incluida un arma de grado militar— en un vehículo sospechoso cerca de una sinagoga. Se ha abierto una investigación. El incidente ocurre en un contexto de elevada tensión en Oriente Medio y refleja el riesgo de desbordamiento de conflictos externos hacia la seguridad interna europea, con implicaciones para el sentimiento de riesgo político en Francia.",
+        "en": "Three hundred people were evacuated in Sarcelles, north of Paris, after a suspicious vehicle was found containing guns including a military-grade weapon near a synagogue. An investigation has been launched. The incident occurs amid heightened Middle East tensions and reflects the risk of external conflict spillover into European domestic security, with implications for political risk sentiment in France."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "DRC-linked mining equities",
+          "asset": "French OATs (sovereign bonds)",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Brote de ébola en Ituri amenaza operaciones mineras en la región",
-            "en": "Ebola outbreak in Ituri threatens regional mining operations"
+            "es": "Incidente de seguridad doméstica añade prima de riesgo político menor",
+            "en": "Domestic security incident adds minor political risk premium"
           }
         },
         {
-          "asset": "Cobalt futures",
-          "direction": "up",
+          "asset": "EUR/USD",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo de disrupciones en oferta de cobalto desde RDC",
-            "en": "Supply disruption risk for DRC cobalt output"
+            "es": "Tensión de seguridad interna en Francia pesa levemente sobre el euro",
+            "en": "French domestic security tension weighs mildly on the euro"
           }
         }
       ],
       "confidence": 68,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/global-development/2026/jul/12/record-breaking-ebola-treatment-trial-drc",
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/france/20260712-hundreds-evacuated-from-paris-suburb-after-weapons-found-near-synagogue",
       "published_at": "2026-07-12",
-      "time": "<1h"
+      "time": "14h"
     },
     {
       "id": 6,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Guerra con Irán en directo: Teherán ataca Jordania y estados del Golfo tras bombardeo estadounidense",
-        "en": "Iran war live: Tehran attacks Jordan, Gulf states after US bombardment"
+        "es": "Conversaciones entre EE.UU. e Irán para poner fin a la guerra en jaque en medio de nuevos ataques",
+        "en": "US-Iran talks to end war on the line amid renewed strikes"
       },
       "summary": {
-        "es": "Irán lanzó ataques con misiles contra instalaciones militares de EEUU en Bahréin, Kuwait, Jordania y Qatar, marcando una peligrosa regionalización del conflicto. Los ataques contra bases en múltiples países del Golfo elevan el riesgo de una respuesta militar coordinada occidental y de disrupciones en infraestructura energética regional. La declaración del CGRI sobre el cierre del estrecho de Ormuz añade una dimensión de guerra económica al conflicto.",
-        "en": "Iran launched missile strikes on US military sites in Bahrain, Kuwait, Jordan, and Qatar, marking a dangerous regionalization of the conflict. Attacks on bases across multiple Gulf states raise the risk of a coordinated Western military response and disruptions to regional energy infrastructure. The IRGC's Strait of Hormuz closure declaration adds an economic warfare dimension to the conflict."
+        "es": "EE.UU. lanzó su tercer ataque mayor contra Irán entre el 12 y el 13 de julio, pocas horas después de que Trump declarara el fin del alto el fuego. Irán inició su contraofensiva con drones contra bases militares estadounidenses en la región. La ruptura diplomática eleva el riesgo de una guerra prolongada con consecuencias sistémicas para el suministro energético global.",
+        "en": "The US launched its third major attack on Iran between July 12-13, hours after Trump declared the ceasefire over. Iran began its drone counteroffensive against US military sites in the region. The diplomatic breakdown raises the risk of a protracted war with systemic consequences for global energy supply."
       },
       "impact": "high",
       "market_impact": [
@@ -334,35 +304,34 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Regionalización del conflicto amplifica prima de riesgo energético",
-            "en": "Regional conflict spread amplifies energy risk premium"
+            "es": "Tercera oleada de ataques consolida prima de guerra en el crudo",
+            "en": "Third strike wave cements war premium in crude pricing"
+          }
+        },
+        {
+          "asset": "Shipping/tanker rates",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Ruta de Ormuz en riesgo eleva fletes de petroleros",
+            "en": "Hormuz route risk drives tanker freight rates sharply higher"
           }
         },
         {
           "asset": "European equities",
           "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Exposición europea a costes energéticos y riesgo geopolítico",
-            "en": "European exposure to energy costs and geopolitical risk"
-          }
-        },
-        {
-          "asset": "USD/JPY",
-          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Yen se fortalece como refugio ante escalada regional",
-            "en": "Yen strengthens as regional escalation drives safe-haven flows"
+            "es": "Mayor dependencia energética europea amplifica impacto negativo",
+            "en": "Europe's energy import dependence amplifies negative equity impact"
           }
         }
       ],
       "confidence": 93,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/liveblog/2026/7/12/iran-war-live-irgc-declares-strait-of-hormuz-closed-over-us-interference?traffic_source=rss",
-      "published_at": "2026-07-12",
-      "time": "8h"
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/us-iran-talks-to-end-war-on-the-line-amid-renewed-strikes",
+      "published_at": "2026-07-13",
+      "time": "<1h"
     }
-  ],
-  "market_updated_at": "2026-07-13T08:39:54.870Z"
+  ]
 }
