@@ -9,8 +9,8 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,384.70",
-      "change": "+0.32%",
+      "value": "19,373.20",
+      "change": "+0.26%",
       "up": true
     },
     {
@@ -26,9 +26,9 @@
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,063.91",
-      "change": "-1.39%",
+      "symbol": "Gold (XAU/USD)",
+      "value": "4,020.00",
+      "change": "-2.07%",
       "up": false
     },
     {
@@ -45,26 +45,26 @@
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "4.591%",
-      "change": "+0.48%",
+      "value": "4.58%",
+      "change": "+0.02%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,552",
-      "change": "-0.31%",
+      "value": "7,524.98",
+      "change": "-0.67%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "25,067.09",
-      "change": "-0.20%",
-      "up": false
+      "value": "25,099.80",
+      "change": "+0.13%",
+      "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8528",
-      "change": "-0.19%",
+      "value": "0.8517",
+      "change": "-0.11%",
       "up": false
     },
     {
@@ -81,14 +81,14 @@
     },
     {
       "symbol": "Copper",
-      "value": "6.2425",
-      "change": "+1.19%",
+      "value": "6.2150",
+      "change": "+0.26%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7667",
-      "change": "-0.37%",
+      "value": "6.7823",
+      "change": "0.00%",
       "up": false
     }
   ],
@@ -364,5 +364,5 @@
       "time": "<1h"
     }
   ],
-  "market_updated_at": "2026-07-13T16:17:39.622Z"
+  "market_updated_at": "2026-07-13T19:07:41.313Z"
 }
