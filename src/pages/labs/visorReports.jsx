@@ -143,6 +143,10 @@ function ValorBox({ residual, marketRef }) {
         <Text style={s.label}>VALOR RESIDUAL DEL SUELO (ESTIMADO)</Text>
         <Text style={s.bigValue}>{fmt(residual.valorResidualSuelo)}</Text>
         <Text style={{ ...s.value, color: MUTED, marginTop: 2 }}>{fmt(residual.valorResidualPorM2)}/m²</Text>
+        <Text style={{ fontSize: 8, color: MUTED, marginTop: 6, lineHeight: 1.4 }}>
+          Método residual estático: ingresos por venta de lo construible − costes de construcción − beneficio del
+          promotor. No es el precio de venta de mercado — es lo que sobra para pagar el suelo.
+        </Text>
         {marketRef && (
           <Text style={{ fontSize: 8, color: MUTED, marginTop: 8 }}>
             Ref. mercado zona: {fmt(marketRef.precioM2)}/m² · {marketRef.fuente} · {marketRef.periodo}
