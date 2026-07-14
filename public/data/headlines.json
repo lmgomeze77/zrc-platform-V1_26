@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-07-13T09:19:00.013Z",
+  "generated_at": "2026-07-14T07:56:39.996Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1390",
-      "change": "+0.12%",
+      "value": "1.1425",
+      "change": "+0.05%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,373.20",
-      "change": "+0.21%",
+      "value": "19336.00",
+      "change": "-0.25%",
+      "up": false
+    },
+    {
+      "symbol": "BRENT",
+      "value": "79.19",
+      "change": "+4.18%",
       "up": true
     },
     {
-      "symbol": "BRENT Crude",
-      "value": "83.72",
-      "change": "+10.14%",
-      "up": true
+      "symbol": "GOLD",
+      "value": "4073.85",
+      "change": "-0.97%",
+      "up": false
     },
     {
-      "symbol": "WTI Crude",
-      "value": "78.42",
-      "change": "+9.82%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,008.40",
-      "change": "+0.07%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "62,392.50",
-      "change": "-1.48%",
+      "symbol": "BTC",
+      "value": "62667.00",
+      "change": "-0.57%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "17.16",
-      "change": "+14.17%",
+      "value": "16.37",
+      "change": "+8.92%",
       "up": true
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.609%",
-      "change": "+0.88%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7,515.34",
-      "change": "-0.79%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "25,114.25",
-      "change": "+0.19%",
+      "symbol": "US 10Y",
+      "value": "4.585",
+      "change": "+0.35%",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8525",
-      "change": "+0.10%",
+      "value": "0.8527",
+      "change": "+0.12%",
       "up": true
     },
     {
-      "symbol": "DXY",
-      "value": "101.17",
-      "change": "-0.10%",
-      "up": false
+      "symbol": "S&P 500",
+      "value": "7575.39",
+      "change": "+0.42%",
+      "up": true
     },
     {
-      "symbol": "Natural Gas",
-      "value": "2.903",
-      "change": "-1.26%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.272",
-      "change": "-0.16%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7850",
-      "change": "-0.08%",
+      "symbol": "DAX 40",
+      "value": "25033.67",
+      "change": "-0.13%",
       "up": false
     }
   ],
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EE.UU. lanza nueva oleada de ataques contra Irán mientras Teherán dice que la diplomacia ha resultado 'inútil'",
-        "en": "US launches new wave of strikes against Iran as Tehran says diplomacy has proven 'futile'"
+        "es": "Trump renueva el bloqueo naval a Irán y amenaza con tomar control del estrecho de Ormuz",
+        "en": "Trump renews Iran blockade and again threatens to take control of the Strait of Hormuz"
       },
       "summary": {
-        "es": "Las fuerzas estadounidenses e iraníes intercambian ataques pesados con misiles y drones por el control del estrecho de Ormuz, poniendo en riesgo una tregua frágil. Teherán declara que la diplomacia ha resultado inútil, señalando una posible escalada sostenida. El riesgo de cierre del estrecho de Ormuz —por donde transita ~20% del petróleo mundial— es el principal factor de riesgo para los mercados de energía globales.",
-        "en": "US and Iranian forces exchange heavy missile and drone attacks over control of the Strait of Hormuz, placing a fragile truce under severe pressure. Tehran's declaration that diplomacy is 'futile' signals a potential for sustained escalation. The risk of Hormuz closure — through which ~20% of global oil flows — is the dominant near-term energy market risk factor."
+        "es": "Trump ha reimplantado el bloqueo naval a Irán mientras ambas partes intensifican intercambios de drones y misiles. La amenaza sobre el estrecho de Ormuz —por el que transita el 20% del petróleo mundial— representa un riesgo sistémico para los mercados energéticos globales. La escalada eleva la prima de riesgo geopolítico en activos de renta fija y materias primas.",
+        "en": "Trump has reinstated a naval blockade on Iran as both sides intensify drone and missile exchanges. The threat to the Strait of Hormuz — through which roughly 20% of global oil flows — represents a systemic risk to global energy markets. The escalation raises geopolitical risk premiums across fixed income and commodities."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +82,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de cierre de Ormuz dispara prima de riesgo energética",
-            "en": "Hormuz closure risk sharply elevates energy risk premium"
+            "es": "Riesgo de cierre del estrecho de Ormuz impulsa prima de riesgo",
+            "en": "Hormuz closure risk drives sharp energy supply premium"
           }
         },
         {
@@ -121,8 +91,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Escalada bélica impulsa demanda de refugio seguro",
-            "en": "Wartime escalation drives safe-haven demand"
+            "es": "Demanda refugio ante escalada bélica en Oriente Medio",
+            "en": "Safe-haven demand surges amid Middle East war escalation"
           }
         },
         {
@@ -130,8 +100,8 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Fuga hacia calidad presiona rendimientos a la baja",
-            "en": "Flight-to-quality pushes yields lower"
+            "es": "Flujos hacia activos refugio presionan rendimientos a la baja",
+            "en": "Flight-to-safety flows pressure Treasury yields lower"
           }
         },
         {
@@ -139,8 +109,8 @@
           "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "Shock energético y aversión al riesgo golpean divisas emergentes",
-            "en": "Energy shock and risk-off sentiment pressure EM currencies"
+            "es": "Países importadores de petróleo emergentes sufren presión cambiaria",
+            "en": "Oil-importing EM economies face currency and current account stress"
           }
         }
       ],
@@ -148,184 +118,145 @@
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/world/2026/jul/13/us-iran-war-missile-strikes-news-attacks-strait-of-hormuz",
       "published_at": "2026-07-13",
-      "time": "6h"
+      "time": "13h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "Macron recibe a Zelensky, Starmer y Merz para conversaciones sobre Ucrania",
-        "en": "Macron hosts Zelenskyy, Starmer and Merz for Ukraine talks"
+        "es": "Líderes dan rueda de prensa tras reunión de la 'coalición de los dispuestos' en París",
+        "en": "Leaders give press conference after 'coalition of the willing' meeting in Paris"
       },
       "summary": {
-        "es": "La 'coalición de los dispuestos' se reúne en París para coordinar apoyo militar continuado a Ucrania, en medio de avances recientes de Kiev que podrían presionar a Putin hacia negociaciones. El Reino Unido actualizó su régimen de sanciones, agregando 24 entidades vinculadas a operaciones híbridas rusas en Europa. La evolución del conflicto y las sanciones adicionales tendrán implicaciones directas para el euro y los activos europeos.",
-        "en": "The 'coalition of the willing' meets in Paris to coordinate continued military support for Ukraine amid recent Kyiv advances that could pressure Putin toward negotiations. The UK updated sanctions, listing 24 entities behind Russian hybrid operations in Europe. The trajectory of the conflict and additional sanctions carries direct implications for the euro and European assets."
+        "es": "La coalición europea, reunida sin Estados Unidos en París, ha subrayado los avances recientes de Ucrania y la posibilidad de empujar a Putin hacia negociaciones. Rusia ha suspendido el tráfico marítimo en el Mar de Azov tras ataques de drones ucranianos a 90 buques en menos de una semana, señal de una escalada operacional significativa. La reunión redefine la arquitectura de seguridad europea con implicaciones para el gasto de defensa y los eurobonos.",
+        "en": "The European coalition, meeting without the US in Paris, highlighted Ukraine's recent battlefield advances and the prospect of pushing Putin toward negotiations. Russia has suspended Sea of Azov shipping after Ukrainian drones targeted 90 vessels in under a week, signaling significant operational escalation. The summit reshapes European security architecture with implications for defense spending and EU bond issuance."
       },
       "impact": "high",
       "market_impact": [
         {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Coalición autónoma refuerza gasto en defensa europeo",
+            "en": "Autonomous coalition reinforces European defense spending commitment"
+          }
+        },
+        {
           "asset": "EUR/USD",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Cohesión europea sin EEUU fortalece percepción del euro",
+            "en": "European cohesion without US boosts euro credibility"
+          }
+        },
+        {
+          "asset": "EU sovereign bonds",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Señales de unidad europea apoyan el euro frente a incertidumbre bélica",
-            "en": "European unity signals support euro against war uncertainty"
-          }
-        },
-        {
-          "asset": "European defense equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Compromisos de gasto militar continúan impulsando el sector defensa",
-            "en": "Continued military spending commitments support defense sector"
-          }
-        },
-        {
-          "asset": "Russian Ruble",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Nuevas sanciones del Reino Unido presionan al rublo",
-            "en": "New UK sanctions add downward pressure on the ruble"
+            "es": "Posibles eurobonos de defensa presionan diferenciales periféricos",
+            "en": "Potential defense eurobonds affect peripheral spread dynamics"
           }
         }
       ],
-      "confidence": 85,
+      "confidence": 88,
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/world/live/2026/jul/13/emmanuel-macron-keir-starmer-friedrich-merz-volodymyr-zelenskyy-coalition-of-the-willing-ukraine-russia-latest-news-updates",
       "published_at": "2026-07-13",
-      "time": "<1h"
+      "time": "12h"
     },
     {
       "id": 3,
-      "tag": "WATCH",
-      "region": "EU",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "La defensa de la UE sigue siendo muy dependiente de Estados Unidos",
-        "en": "EU defense remains heavily reliant on the United States"
+        "es": "El jeque Hamad bin Khalifa, el gobernante que transformó Catar, muere a los 74 años",
+        "en": "Sheikh Hamad bin Khalifa, Ruler Who Transformed Qatar, Dies at 74"
       },
       "summary": {
-        "es": "Un análisis de DW documenta los obstáculos estructurales que enfrenta la UE para sustituir capacidades clave de EE.UU., incluyendo misiles Patriot y Tomahawk, cazas F-35 y comunicaciones Starlink. La dependencia persistente limita la autonomía estratégica europea precisamente cuando Washington está comprometido en operaciones contra Irán. Esto refuerza el argumento de largo plazo para la inversión en defensa e industria aeroespacial europeas.",
-        "en": "A DW analysis documents structural obstacles facing the EU in replacing key US capabilities including Patriot and Tomahawk missiles, F-35 jets, and Starlink communications. Persistent dependence constrains European strategic autonomy precisely as Washington is engaged in Iranian operations. This reinforces the long-term investment case for European defense and aerospace industries."
+        "es": "El jeque Hamad bin Khalifa, artífice de la transformación de Catar en una potencia global de gas natural y diplomacia regional, ha fallecido. Aunque abdicó en 2013, su influencia en la política exterior catarí fue persistente. Su muerte ocurre en un momento de máxima tensión en el Golfo Pérsico, cuando Catar —sede de la base aérea Al Udeid— juega un papel crítico como intermediario y plataforma logística en el conflicto EEUU-Irán.",
+        "en": "Sheikh Hamad bin Khalifa, architect of Qatar's transformation into a global LNG power and regional diplomatic hub, has died. Though he abdicated in 2013, his influence on Qatari foreign policy remained persistent. His death comes amid peak Gulf tensions, as Qatar — host of Al Udeid Air Base — plays a critical role as mediator and logistics platform in the US-Iran conflict."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "European defense equities",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "LNG spot prices",
+          "direction": "mixed",
+          "magnitude": "low",
           "note": {
-            "es": "Dependencia documentada refuerza caso para inversión en defensa europea",
-            "en": "Documented dependency strengthens European defense investment case"
+            "es": "Incertidumbre sobre política exterior catarí en contexto de guerra del Golfo",
+            "en": "Qatar foreign policy uncertainty amid active Gulf conflict"
           }
         },
         {
-          "asset": "EUR/USD",
-          "direction": "down",
+          "asset": "Qatar sovereign assets (QIA)",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Vulnerabilidad estratégica pesa sobre la confianza en el euro",
-            "en": "Strategic vulnerability weighs on euro confidence"
+            "es": "Posible revisión de posicionamiento estratégico del fondo soberano",
+            "en": "Potential repositioning of Qatar sovereign wealth fund strategy"
           }
         }
       ],
-      "confidence": 75,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/eu-defense-remains-heavily-reliant-on-the-united-states/a-77917972?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-07-12",
-      "time": "20h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "¿Puede la industria de drones de Nigeria entregar soberanía de defensa a África?",
-        "en": "Can Nigeria's drone industry deliver Africa's defence sovereignty?"
-      },
-      "summary": {
-        "es": "Nigeria está desarrollando capacidades de fabricación de drones militares en un contexto de creciente demanda de soberanía de defensa en el continente africano. El artículo advierte que la soberanía de defensa requiere mucho más que producción local. El desarrollo de una industria de defensa africana tiene implicaciones para los flujos de inversión en manufactura, minerales críticos y geopolítica de transferencia de tecnología entre África, China y Occidente.",
-        "en": "Nigeria is developing military drone manufacturing capabilities amid growing demand for defense sovereignty across Africa. The piece cautions that defense sovereignty requires far more than local production capacity. The development of an African defense industry has implications for manufacturing investment flows, critical minerals, and technology transfer geopolitics between Africa, China, and the West."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "African frontier market equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Inversión en manufactura de defensa crea nuevas oportunidades sectoriales",
-            "en": "Defense manufacturing investment creates new sectoral opportunities"
-          }
-        },
-        {
-          "asset": "Critical minerals (coltan, lithium)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Soberanía de defensa refuerza demanda interna de minerales estratégicos",
-            "en": "Defense sovereignty drive reinforces domestic strategic mineral demand"
-          }
-        }
-      ],
-      "confidence": 65,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/7/13/can-nigerias-drone-industry-deliver-africas-defence-sovereignty?traffic_source=rss",
+      "confidence": 72,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/07/12/world/middleeast/sheikh-hamad-bin-khalifa-qatar-dead.html",
       "published_at": "2026-07-13",
-      "time": "8h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Cientos evacuados en suburbio de París tras hallazgo de armas cerca de una sinagoga",
-        "en": "Hundreds evacuated from Paris suburb after weapons found near synagogue"
-      },
-      "summary": {
-        "es": "Trescientas personas fueron evacuadas en Sarcelles, al norte de París, tras el hallazgo de armas —incluida un arma de grado militar— en un vehículo sospechoso cerca de una sinagoga. Se ha abierto una investigación. El incidente ocurre en un contexto de elevada tensión en Oriente Medio y refleja el riesgo de desbordamiento de conflictos externos hacia la seguridad interna europea, con implicaciones para el sentimiento de riesgo político en Francia.",
-        "en": "Three hundred people were evacuated in Sarcelles, north of Paris, after a suspicious vehicle was found containing guns including a military-grade weapon near a synagogue. An investigation has been launched. The incident occurs amid heightened Middle East tensions and reflects the risk of external conflict spillover into European domestic security, with implications for political risk sentiment in France."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "French OATs (sovereign bonds)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Incidente de seguridad doméstica añade prima de riesgo político menor",
-            "en": "Domestic security incident adds minor political risk premium"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión de seguridad interna en Francia pesa levemente sobre el euro",
-            "en": "French domestic security tension weighs mildly on the euro"
-          }
-        }
-      ],
-      "confidence": 68,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/france/20260712-hundreds-evacuated-from-paris-suburb-after-weapons-found-near-synagogue",
-      "published_at": "2026-07-12",
       "time": "14h"
     },
     {
-      "id": 6,
+      "id": 4,
+      "tag": "ALERT",
+      "region": "AFRICA",
+      "title": {
+        "es": "El jefe paramilitar RSF de Sudán condenado a muerte por crímenes de guerra",
+        "en": "Sudan's paramilitary RSF chief sentenced to death over war crimes"
+      },
+      "summary": {
+        "es": "Mohamed Hamdan Dagalo (Hemedti) ha sido condenado a muerte in absentia junto a 15 comandantes de las RSF por crímenes de guerra. La condena —aun sin mecanismo de ejecución inmediata— altera el marco jurídico para una eventual resolución del conflicto y complica los acuerdos de control de recursos minerales en Darfur. El conflicto en Sudán tiene implicaciones directas para el acceso a oro y otros minerales críticos de la región.",
+        "en": "Mohamed Hamdan Dagalo (Hemedti) has been sentenced to death in absentia alongside 15 RSF commanders for war crimes. The ruling — without an immediate enforcement mechanism — reshapes the legal framework for any eventual conflict resolution and complicates agreements over mineral resource control in Darfur. The Sudan conflict has direct implications for access to gold and other critical minerals in the region."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Gold (artisanal/African supply)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Prolongación del conflicto restringe producción aurífera sudanesa",
+            "en": "Prolonged conflict constrains Sudanese artisanal gold output"
+          }
+        },
+        {
+          "asset": "African frontier sovereign bonds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad regional presiona a bonos frontera del este africano",
+            "en": "Regional instability pressures East African frontier bond spreads"
+          }
+        }
+      ],
+      "confidence": 70,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cn4dk3kl0l4o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-07-13",
+      "time": "19h"
+    },
+    {
+      "id": 5,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Conversaciones entre EE.UU. e Irán para poner fin a la guerra en jaque en medio de nuevos ataques",
-        "en": "US-Iran talks to end war on the line amid renewed strikes"
+        "es": "Guerra con Irán en vivo: EEUU lanza más ataques; un muerto en ataque iraní a un barco",
+        "en": "Iran war live: US launches more attacks; 1 killed in Iranian strike on ship"
       },
       "summary": {
-        "es": "EE.UU. lanzó su tercer ataque mayor contra Irán entre el 12 y el 13 de julio, pocas horas después de que Trump declarara el fin del alto el fuego. Irán inició su contraofensiva con drones contra bases militares estadounidenses en la región. La ruptura diplomática eleva el riesgo de una guerra prolongada con consecuencias sistémicas para el suministro energético global.",
-        "en": "The US launched its third major attack on Iran between July 12-13, hours after Trump declared the ceasefire over. Iran began its drone counteroffensive against US military sites in the region. The diplomatic breakdown raises the risk of a protracted war with systemic consequences for global energy supply."
+        "es": "Irán ha ejecutado ataques de represalia sobre Kuwait, Baréin y Jordania, y ha golpeado dos petroleros en el estrecho de Ormuz, matando a un marinero. La extensión del conflicto a aliados del Golfo y a buques cisterna eleva el riesgo de cierre efectivo de la vía marítima más crítica para el suministro global de energía. El mercado de seguros marítimos y los fletes experimentarán presión extrema.",
+        "en": "Iran has carried out retaliatory strikes on Kuwait, Bahrain and Jordan, and hit two oil tankers in the Strait of Hormuz, killing one sailor. The spread of the conflict to Gulf allies and tanker traffic raises the risk of an effective closure of the world's most critical energy chokepoint. Marine insurance markets and freight rates face extreme pressure."
       },
       "impact": "high",
       "market_impact": [
@@ -334,35 +265,82 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Tercera oleada de ataques consolida prima de guerra en el crudo",
-            "en": "Third strike wave cements war premium in crude pricing"
+            "es": "Ataques a petroleros restringen oferta física y elevan prima de escasez",
+            "en": "Tanker attacks restrict physical supply and amplify scarcity premium"
           }
         },
         {
-          "asset": "Shipping/tanker rates",
+          "asset": "Shipping/freight indices",
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Ruta de Ormuz en riesgo eleva fletes de petroleros",
-            "en": "Hormuz route risk drives tanker freight rates sharply higher"
+            "es": "Cierre parcial de Ormuz dispara fletes y seguros marítimos",
+            "en": "Partial Hormuz closure spikes freight rates and marine insurance"
           }
         },
         {
-          "asset": "European equities",
+          "asset": "Gulf sovereign bonds",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor dependencia energética europea amplifica impacto negativo",
-            "en": "Europe's energy import dependence amplifies negative equity impact"
+            "es": "Ataques a Kuwait y Baréin elevan riesgo soberano regional",
+            "en": "Strikes on Kuwait and Bahrain raise regional sovereign risk"
           }
         }
       ],
       "confidence": 93,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/us-iran-talks-to-end-war-on-the-line-amid-renewed-strikes",
-      "published_at": "2026-07-13",
-      "time": "<1h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/liveblog/2026/7/14/iran-war-live-us-launches-more-attacks-trump-orders-blockade-in-hormuz?traffic_source=rss",
+      "published_at": "2026-07-14",
+      "time": "7h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "GLOBAL",
+      "title": {
+        "es": "Un El Niño récord amenaza con desencadenar inundaciones en África Oriental y Asia",
+        "en": "Record El Niño threatens to unleash floods across East Africa and Asia"
+      },
+      "summary": {
+        "es": "Grupos de ayuda humanitaria alertan de que un El Niño de intensidad récord podría desencadenar inundaciones devastadoras desde Somalia hasta Pakistán. El evento climático extremo tiene el potencial de disrumpir cadenas de suministro agrícolas, elevar los precios de materias primas blandas y agravar crisis de seguridad alimentaria en mercados emergentes frágiles. Los mercados de seguros de catástrofes y los bonos soberanos de las regiones afectadas son los activos más expuestos.",
+        "en": "Aid groups warn a record-strength El Niño could unleash devastating flooding from Somalia to Pakistan. The extreme weather event has the potential to disrupt agricultural supply chains, drive up soft commodity prices, and worsen food security crises in fragile emerging markets. Catastrophe insurance markets and sovereign bonds of affected regions are the most exposed assets."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Soft commodities (wheat, corn, rice)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Inundaciones en regiones agrícolas clave elevan precios de alimentos",
+            "en": "Flooding in key agricultural regions lifts food commodity prices"
+          }
+        },
+        {
+          "asset": "EM sovereign bonds (East Africa/South Asia)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Presión fiscal por desastres naturales eleva diferenciales soberanos",
+            "en": "Fiscal pressure from natural disasters widens sovereign spreads"
+          }
+        },
+        {
+          "asset": "Catastrophe reinsurance",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Evento climático extremo dispara pérdidas aseguradas globales",
+            "en": "Extreme climate event drives global insured loss expectations higher"
+          }
+        }
+      ],
+      "confidence": 75,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/7/14/record-el-nino-threatens-to-unleash-floods-across-east-africa-and-asia?traffic_source=rss",
+      "published_at": "2026-07-14",
+      "time": "6h"
     }
-  ],
-  "market_updated_at": "2026-07-14T07:41:43.698Z"
+  ]
 }
