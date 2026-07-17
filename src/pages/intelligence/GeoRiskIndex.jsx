@@ -67,8 +67,25 @@ const riskLabel = (v) => (v < 40 ? "BAJO" : v < 65 ? "MODERADO" : v < 80 ? "ELEV
 const riskColor = (v) => (v < 40 ? C.green : v < 65 ? C.amber : v < 80 ? "#F97316" : C.red);
 const fmt = (v, d = 1) => Number(v).toFixed(d);
 
+// Genera ~targetCount gridlines "redondas" (múltiplos de 1/2/5/10 según la
+// escala) dentro de [min, max] — a diferencia de una lista fija de ticks,
+// esto siempre produce una escala legible sea cual sea el rango real de
+// valores del índice (evita quedarse con un único tick, como pasaba antes
+// cuando el rango de la serie era estrecho).
+function niceTicks(min, max, targetCount = 4) {
+  const span = Math.max(max - min, 1e-6);
+  const rough = span / targetCount;
+  const mag = Math.pow(10, Math.floor(Math.log10(rough)));
+  const norm = rough / mag;
+  const step = (norm > 5 ? 10 : norm > 2 ? 5 : norm > 1 ? 2 : 1) * mag;
+  const start = Math.ceil(min / step) * step;
+  const ticks = [];
+  for (let t = start; t <= max + 1e-9; t += step) ticks.push(Math.round(t * 100) / 100);
+  return ticks;
+}
+
 function IndexChart({ history, color }) {
-  const W = 720, H = 220, PAD = { l: 40, r: 16, t: 16, b: 28 };
+  const W = 720, H = 220, PAD = { l: 40, r: 16, t: 28, b: 28 };
   const iW = W - PAD.l - PAD.r, iH = H - PAD.t - PAD.b;
   const vals = history.map((p) => p.index_value);
   const minV = Math.max(0, Math.min(...vals) - 8);
@@ -77,7 +94,7 @@ function IndexChart({ history, color }) {
   const xOf = (i) => (history.length <= 1 ? PAD.l + iW / 2 : PAD.l + (i / (history.length - 1)) * iW);
   const yOf = (v) => PAD.t + iH - ((v - minV) / range) * iH;
   const linePath = history.map((p, i) => `${i === 0 ? "M" : "L"}${xOf(i)},${yOf(p.index_value)}`).join(" ");
-  const yTicks = [20, 40, 60, 80].filter((t) => t >= minV && t <= maxV);
+  const yTicks = niceTicks(minV, maxV, 4);
   const firstLabel = history[0]?.week_start;
   const lastLabel = history[history.length - 1]?.week_start;
 
@@ -86,15 +103,29 @@ function IndexChart({ history, color }) {
       {yTicks.map((t) => (
         <g key={t}>
           <line x1={PAD.l} y1={yOf(t)} x2={W - PAD.r} y2={yOf(t)} stroke={C.border} strokeWidth={0.5} />
-          <text x={PAD.l - 6} y={yOf(t) + 4} textAnchor="end" fill={C.textMuted} fontSize={9} fontFamily={F.mono}>{t}</text>
+          <text x={PAD.l - 6} y={yOf(t) + 4} textAnchor="end" fill={C.textMuted} fontSize={9} fontFamily={F.mono}>{fmt(t, t % 1 === 0 ? 0 : 1)}</text>
         </g>
       ))}
       <path d={linePath} fill="none" stroke={color} strokeWidth={2} strokeLinejoin="round" />
-      {history.map((p, i) => (
-        <circle key={p.week_start} cx={xOf(i)} cy={yOf(p.index_value)} r={3} fill={color}>
-          <title>{`${p.week_start} — ${fmt(p.index_value)} (${p.risk_label || riskLabel(p.index_value)})`}</title>
-        </circle>
-      ))}
+      {history.map((p, i) => {
+        const isEndpoint = i === 0 || i === history.length - 1;
+        const cx = xOf(i), cy = yOf(p.index_value);
+        return (
+          <g key={p.week_start}>
+            <circle cx={cx} cy={cy} r={3} fill={color}>
+              <title>{`${p.week_start} — ${fmt(p.index_value)} (${p.risk_label || riskLabel(p.index_value)})`}</title>
+            </circle>
+            {/* Solo se etiqueta el primer y el último punto (valor inicial vs.
+                actual) — si se etiquetara cada punto, la serie se volvería
+                ilegible según crezca el histórico semana a semana. */}
+            {isEndpoint && (
+              <text x={cx} y={cy - 9} textAnchor={i === 0 ? "start" : "end"} fill={color} fontSize={11} fontWeight={600} fontFamily={F.mono}>
+                {fmt(p.index_value)}
+              </text>
+            )}
+          </g>
+        );
+      })}
       {firstLabel && (
         <text x={PAD.l} y={H - 8} textAnchor="start" fill={C.textMuted} fontSize={9} fontFamily={F.mono}>{firstLabel}</text>
       )}
