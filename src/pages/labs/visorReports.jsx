@@ -5,6 +5,7 @@
 // RealEstateVisor — no hay lógica de negocio duplicada en el servidor.
 
 import { Document, Page, View, Text, StyleSheet, pdf, Svg, Rect, Circle, Image } from "@react-pdf/renderer";
+import { t } from "./visorI18n";
 
 const GOLD = "#B8863E"; // versión oscurecida del gold de marca para que se lea bien en fondo blanco/impreso
 const INK = "#18181B";
@@ -12,9 +13,23 @@ const MUTED = "#71717A";
 const BORDER = "#E4E4E7";
 const SOFT = "#FAFAF9";
 
-const fmt = (n) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
-const RISK_LABEL = { low: "Bajo", mid: "Medio", high: "Alto" };
+const fmtCurrency = (lang) => (n) => new Intl.NumberFormat(lang === "en" ? "en-GB" : "es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
+const RISK_LABEL_KEY = { low: "riskLow", mid: "riskMid", high: "riskHigh" };
 const RISK_COLOR = { low: "#16A34A", mid: "#D97706", high: "#DC2626" };
+
+// Copias locales de los mismos resolutores de RealEstateVisor.jsx — se
+// duplican (en vez de importarlas) para no acoplar este chunk lazy-loaded
+// al de leaflet/mapa 2D, igual que ya se hace con formatLocalizacionInterior.
+function boeTitle(lang, a) {
+  return a.id === 1 ? t(lang, "boe_1_title", { municipio: a.municipio }) : t(lang, `boe_${a.id}_title`);
+}
+function boeSource(lang, a) {
+  return a.id === 1 ? t(lang, a.isMadrid ? "boe_1_source_madrid" : "boe_1_source_default") : t(lang, `boe_${a.id}_source`);
+}
+function investabilityLabel(lang, tier) {
+  const key = { high: "investLabelHigh", mid: "investLabelMid", low: "investLabelLow", reject: "investLabelReject" }[tier] || "investLabelReject";
+  return t(lang, key);
+}
 
 const s = StyleSheet.create({
   page: { padding: 36, fontSize: 10, color: INK, fontFamily: "Helvetica" },
@@ -41,27 +56,25 @@ const s = StyleSheet.create({
   ctaBody: { fontSize: 9, color: "#D6D3D1", lineHeight: 1.4 },
 });
 
-function Header({ parcela, tag }) {
+function Header({ parcela, tag, lang }) {
   return (
     <View style={s.header}>
       <View>
         <Text style={s.title}>{parcela.direccion}</Text>
-        <Text style={s.subtitle}>{parcela.municipio}{parcela.provincia ? `, ${parcela.provincia}` : ""} · RC {parcela.rc}</Text>
+        <Text style={s.subtitle}>{parcela.municipio}{parcela.provincia ? `, ${parcela.provincia}` : ""} · {t(lang, "fieldRC")} {parcela.rc}</Text>
       </View>
       <View style={{ alignItems: "flex-end" }}>
         <Text style={s.brand}>ZRC LABS</Text>
-        <Text style={s.docTag}>{tag} · {new Date().toLocaleDateString("es-ES")}</Text>
+        <Text style={s.docTag}>{tag} · {new Date().toLocaleDateString(lang === "en" ? "en-GB" : "es-ES")}</Text>
       </View>
     </View>
   );
 }
 
-function Footer() {
+function Footer({ lang }) {
   return (
     <Text style={s.footer} fixed>
-      Generado automáticamente por el Visor Inmobiliario Georreferenciado de ZRC Labs (Zenith Rise Capital). Estimación
-      orientativa a partir de datos catastrales públicos y precios de referencia provinciales — no sustituye una tasación
-      oficial ni constituye asesoramiento de inversión.
+      {t(lang, "pdfFooter")}
     </Text>
   );
 }
@@ -70,32 +83,32 @@ function Footer() {
 // unidad dentro de un edificio (piso), no un inmueble completo o suelo.
 // Copia local de la misma función en RealEstateVisor.jsx: se duplica (en vez
 // de importarla) para no acoplar este chunk lazy-loaded al de leaflet/mapa 2D.
-function formatLocalizacionInterior(parcela) {
+function formatLocalizacionInterior(parcela, lang) {
   const parts = [];
-  if (parcela?.bloque) parts.push(`Bloque ${parcela.bloque}`);
-  if (parcela?.escalera) parts.push(`Esc. ${parcela.escalera}`);
-  if (parcela?.planta) parts.push(`Planta ${parcela.planta}`);
-  if (parcela?.puerta) parts.push(`Puerta ${parcela.puerta}`);
+  if (parcela?.bloque) parts.push(`${t(lang, "bloque")} ${parcela.bloque}`);
+  if (parcela?.escalera) parts.push(`${t(lang, "escalera")} ${parcela.escalera}`);
+  if (parcela?.planta) parts.push(`${t(lang, "planta")} ${parcela.planta}`);
+  if (parcela?.puerta) parts.push(`${t(lang, "puerta")} ${parcela.puerta}`);
   return parts.length ? parts.join(" · ") : null;
 }
 
-function FichaBox({ parcela }) {
-  const loint = formatLocalizacionInterior(parcela);
+function FichaBox({ parcela, lang }) {
+  const loint = formatLocalizacionInterior(parcela, lang);
   return (
     <View style={s.section}>
-      <Text style={s.sectionTitle}>Datos catastrales</Text>
+      <Text style={s.sectionTitle}>{t(lang, "pdfDatosCatastrales")}</Text>
       <View style={s.row}>
-        <View style={s.col}><Text style={s.label}>SUPERFICIE</Text><Text style={s.value}>{parcela.superficie ? `${parcela.superficie.toLocaleString("es-ES")} m²` : "—"}</Text></View>
-        <View style={s.col}><Text style={s.label}>USO</Text><Text style={s.value}>{parcela.uso || "—"}</Text></View>
+        <View style={s.col}><Text style={s.label}>{t(lang, "pdfSuperficie")}</Text><Text style={s.value}>{parcela.superficie ? `${parcela.superficie.toLocaleString(lang === "en" ? "en-GB" : "es-ES")} m²` : "—"}</Text></View>
+        <View style={s.col}><Text style={s.label}>{t(lang, "pdfUso")}</Text><Text style={s.value}>{parcela.uso || "—"}</Text></View>
       </View>
       <View style={s.row}>
-        <View style={s.col}><Text style={s.label}>ANTIGÜEDAD</Text><Text style={s.value}>{parcela.antiguedad || "—"}</Text></View>
-        <View style={s.col}><Text style={s.label}>REFERENCIA CATASTRAL</Text><Text style={{ ...s.value, fontSize: 9 }}>{parcela.rc}</Text></View>
+        <View style={s.col}><Text style={s.label}>{t(lang, "pdfAntiguedad")}</Text><Text style={s.value}>{parcela.antiguedad || "—"}</Text></View>
+        <View style={s.col}><Text style={s.label}>{t(lang, "pdfRefCatastral")}</Text><Text style={{ ...s.value, fontSize: 9 }}>{parcela.rc}</Text></View>
       </View>
       {(loint || parcela.coefParticipacion) && (
         <View style={s.row}>
-          <View style={s.col}><Text style={s.label}>LOCALIZACIÓN INTERIOR</Text><Text style={s.value}>{loint || "—"}</Text></View>
-          <View style={s.col}><Text style={s.label}>COEF. PARTICIPACIÓN</Text><Text style={s.value}>{parcela.coefParticipacion || "—"}</Text></View>
+          <View style={s.col}><Text style={s.label}>{t(lang, "pdfLocInterior")}</Text><Text style={s.value}>{loint || "—"}</Text></View>
+          <View style={s.col}><Text style={s.label}>{t(lang, "pdfCoefPart")}</Text><Text style={s.value}>{parcela.coefParticipacion || "—"}</Text></View>
         </View>
       )}
     </View>
@@ -135,21 +148,21 @@ function RiskDots({ level }) {
   );
 }
 
-function ValorBox({ residual, marketRef }) {
+function ValorBox({ residual, marketRef, lang }) {
+  const fmt = fmtCurrency(lang);
   return (
     <View style={s.section}>
-      <Text style={s.sectionTitle}>Valoración residual</Text>
+      <Text style={s.sectionTitle}>{t(lang, "pdfValoracionResidual")}</Text>
       <View style={s.box}>
-        <Text style={s.label}>VALOR RESIDUAL DEL SUELO (ESTIMADO)</Text>
+        <Text style={s.label}>{t(lang, "pdfValorResidualSueloEstimado")}</Text>
         <Text style={s.bigValue}>{fmt(residual.valorResidualSuelo)}</Text>
         <Text style={{ ...s.value, color: MUTED, marginTop: 2 }}>{fmt(residual.valorResidualPorM2)}/m²</Text>
         <Text style={{ fontSize: 8, color: MUTED, marginTop: 6, lineHeight: 1.4 }}>
-          Método residual estático: ingresos por venta de lo construible − costes de construcción − beneficio del
-          promotor. No es el precio de venta de mercado — es lo que sobra para pagar el suelo.
+          {t(lang, "pdfMetodoResidualNote")}
         </Text>
         {marketRef && (
           <Text style={{ fontSize: 8, color: MUTED, marginTop: 8 }}>
-            Ref. mercado zona: {fmt(marketRef.precioM2)}/m² · {marketRef.fuente} · {marketRef.periodo}
+            {t(lang, "pdfRefMercadoZona", { precioM2: fmt(marketRef.precioM2), fuente: marketRef.fuente, periodo: marketRef.periodo })}
           </Text>
         )}
       </View>
@@ -157,14 +170,14 @@ function ValorBox({ residual, marketRef }) {
   );
 }
 
-function InvestabilityBox({ residual }) {
+function InvestabilityBox({ residual, lang }) {
   const color = { high: "#16A34A", mid: GOLD, low: "#D97706", reject: "#DC2626" }[residual.investabilityTier] || GOLD;
   return (
     <View style={{ ...s.box, borderLeft: `4 solid ${color}` }}>
-      <Text style={s.label}>INVESTABILITY SCORE</Text>
+      <Text style={s.label}>{t(lang, "pdfInvestabilityScore")}</Text>
       <Text style={{ fontSize: 18, fontFamily: "Helvetica-Bold", color }}>{residual.investabilityScore}/100</Text>
       <ScoreGauge score={residual.investabilityScore} color={color} />
-      <Text style={{ fontSize: 9, color: INK, marginTop: 2 }}>{residual.investabilityLabel}</Text>
+      <Text style={{ fontSize: 9, color: INK, marginTop: 2 }}>{investabilityLabel(lang, residual.investabilityTier)}</Text>
     </View>
   );
 }
@@ -172,45 +185,43 @@ function InvestabilityBox({ residual }) {
 // ============================================================
 // TEASER · 1 página
 // ============================================================
-export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef, mapDataUrl }) {
+export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef, mapDataUrl, lang }) {
   const topAlert = boeAlerts?.[0];
   return (
-    <Document title={`Teaser · ${parcela.direccion}`}>
+    <Document title={t(lang, "pdfTeaserTitle", { direccion: parcela.direccion })}>
       <Page size="A4" style={s.page}>
-        <Header parcela={parcela} tag="TEASER" />
+        <Header parcela={parcela} tag={t(lang, "pdfTagTeaser")} lang={lang} />
         <LocationMap mapDataUrl={mapDataUrl} />
-        <FichaBox parcela={parcela} />
-        {residual && <ValorBox residual={residual} marketRef={marketRef} />}
-        {residual && <InvestabilityBox residual={residual} />}
+        <FichaBox parcela={parcela} lang={lang} />
+        {residual && <ValorBox residual={residual} marketRef={marketRef} lang={lang} />}
+        {residual && <InvestabilityBox residual={residual} lang={lang} />}
         {topAlert && (
           <View style={s.section}>
-            <Text style={s.sectionTitle}>Alerta regulatoria destacada</Text>
+            <Text style={s.sectionTitle}>{t(lang, "pdfAlertaDestacada")}</Text>
             <View style={s.box}>
-              <Text style={{ fontSize: 10, fontFamily: "Helvetica-Bold", marginBottom: 4 }}>{topAlert.title}</Text>
-              <Text style={{ fontSize: 9, color: MUTED, lineHeight: 1.4 }}>{topAlert.summary}</Text>
+              <Text style={{ fontSize: 10, fontFamily: "Helvetica-Bold", marginBottom: 4 }}>{boeTitle(lang, topAlert)}</Text>
+              <Text style={{ fontSize: 9, color: MUTED, lineHeight: 1.4 }}>{t(lang, `boe_${topAlert.id}_summary`)}</Text>
             </View>
           </View>
         )}
         {risk?.overall && (
           <View style={s.section}>
-            <Text style={s.sectionTitle}>Capa de riesgo</Text>
+            <Text style={s.sectionTitle}>{t(lang, "pdfCapaRiesgo")}</Text>
             <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
               <RiskDots level={risk.overall} />
               <Text style={{ fontSize: 10 }}>
-                Nivel de riesgo global: <Text style={{ color: RISK_COLOR[risk.overall], fontFamily: "Helvetica-Bold" }}>{RISK_LABEL[risk.overall]}</Text> — desglose completo de los 6 factores en el Informe Investigado.
+                {t(lang, "pdfNivelRiesgoGlobalPrefix")}<Text style={{ color: RISK_COLOR[risk.overall], fontFamily: "Helvetica-Bold" }}>{t(lang, RISK_LABEL_KEY[risk.overall])}</Text>{t(lang, "pdfNivelRiesgoGlobalSuffix")}
               </Text>
             </View>
           </View>
         )}
         <View style={s.cta}>
-          <Text style={s.ctaTitle}>¿Quieres el análisis completo?</Text>
+          <Text style={s.ctaTitle}>{t(lang, "pdfCtaTitle")}</Text>
           <Text style={s.ctaBody}>
-            El Informe Investigado (30€) incluye el desglose completo de las 6 capas de riesgo, todas las alertas
-            regulatorias del radio de 1km, el cálculo residual con 3 escenarios de sensibilidad y el matching completo
-            con mandatos activos de inversión ZRC.
+            {t(lang, "pdfCtaBody")}
           </Text>
         </View>
-        <Footer />
+        <Footer lang={lang} />
       </Page>
     </Document>
   );
@@ -219,51 +230,57 @@ export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef, 
 // ============================================================
 // INFORME INVESTIGADO · multi-página
 // ============================================================
-export function InformeDocument({ parcela, residual, risk, boeAlerts, matches, params, marketRef, mapDataUrl }) {
+export function InformeDocument({ parcela, residual, risk, boeAlerts, matches, params, marketRef, mapDataUrl, lang }) {
   const escenarios = residual ? buildScenarios(parcela, params) : [];
+  const fmt = fmtCurrency(lang);
   return (
-    <Document title={`Informe Investigado · ${parcela.direccion}`}>
+    <Document title={t(lang, "pdfInformeTitle", { direccion: parcela.direccion })}>
       <Page size="A4" style={s.page}>
-        <Header parcela={parcela} tag="INFORME INVESTIGADO" />
+        <Header parcela={parcela} tag={t(lang, "pdfTagInforme")} lang={lang} />
         <LocationMap mapDataUrl={mapDataUrl} />
 
         <View style={s.section}>
-          <Text style={s.sectionTitle}>Resumen ejecutivo</Text>
+          <Text style={s.sectionTitle}>{t(lang, "pdfResumenEjecutivo")}</Text>
           <View style={s.box}>
             <Text style={{ fontSize: 9, lineHeight: 1.6 }}>
               {residual ? (
                 <>
-                  Valor residual estimado de <Text style={{ fontFamily: "Helvetica-Bold" }}>{fmt(residual.valorResidualSuelo)}</Text> ({fmt(residual.valorResidualPorM2)}/m²)
-                  con una TIR estimada a 24 meses del {residual.tirEstimada.toFixed(1)}%. Veredicto: <Text style={{ fontFamily: "Helvetica-Bold", color: GOLD }}>{residual.investabilityLabel}</Text> (score {residual.investabilityScore}/100).
-                  {risk?.overall && <> Riesgo global: <Text style={{ fontFamily: "Helvetica-Bold" }}>{RISK_LABEL[risk.overall]}</Text>.</>}
-                  {boeAlerts?.length > 0 && <> Se han detectado {boeAlerts.length} alertas regulatorias en el radio de 1km.</>}
+                  {t(lang, "pdfResumenConResidual", {
+                    valor: fmt(residual.valorResidualSuelo),
+                    valorM2: fmt(residual.valorResidualPorM2),
+                    tir: residual.tirEstimada.toFixed(1),
+                    label: investabilityLabel(lang, residual.investabilityTier),
+                    score: residual.investabilityScore,
+                  })}
+                  {risk?.overall && t(lang, "pdfResumenRiesgoGlobal", { label: t(lang, RISK_LABEL_KEY[risk.overall]) })}
+                  {boeAlerts?.length > 0 && t(lang, "pdfResumenAlertas", { count: boeAlerts.length })}
                 </>
-              ) : "Sin datos de superficie suficientes para calcular el valor residual."}
+              ) : t(lang, "pdfResumenSinDatos")}
             </Text>
             {risk?.overall && <View style={{ marginTop: 8 }}><RiskDots level={risk.overall} /></View>}
           </View>
         </View>
 
-        <FichaBox parcela={parcela} />
-        {residual && <ValorBox residual={residual} marketRef={marketRef} />}
-        {residual && <InvestabilityBox residual={residual} />}
-        <Footer />
+        <FichaBox parcela={parcela} lang={lang} />
+        {residual && <ValorBox residual={residual} marketRef={marketRef} lang={lang} />}
+        {residual && <InvestabilityBox residual={residual} lang={lang} />}
+        <Footer lang={lang} />
       </Page>
 
       {residual && (
         <Page size="A4" style={s.page}>
-          <Header parcela={parcela} tag="INFORME INVESTIGADO" />
+          <Header parcela={parcela} tag={t(lang, "pdfTagInforme")} lang={lang} />
           <View style={s.section}>
-            <Text style={s.sectionTitle}>Cálculo residual — parámetros y sensibilidad</Text>
+            <Text style={s.sectionTitle}>{t(lang, "pdfCalculoResidualSensibilidad")}</Text>
             <View style={s.tableRow}>
-              <Text style={s.tableCellLabel}>Escenario</Text>
-              <Text style={s.tableCellValue}>Precio venta/m²</Text>
-              <Text style={s.tableCellValue}>Coste obra/m²</Text>
-              <Text style={s.tableCellValue}>Valor residual</Text>
+              <Text style={s.tableCellLabel}>{t(lang, "pdfEscenario")}</Text>
+              <Text style={s.tableCellValue}>{t(lang, "pdfPrecioVentaM2")}</Text>
+              <Text style={s.tableCellValue}>{t(lang, "pdfCosteObraM2")}</Text>
+              <Text style={s.tableCellValue}>{t(lang, "pdfValorResidual")}</Text>
             </View>
             {escenarios.map((e) => (
-              <View key={e.nombre} style={s.tableRow}>
-                <Text style={{ ...s.tableCellLabel, fontFamily: e.nombre === "Base" ? "Helvetica-Bold" : "Helvetica" }}>{e.nombre}</Text>
+              <View key={e.nombreKey} style={s.tableRow}>
+                <Text style={{ ...s.tableCellLabel, fontFamily: e.nombreKey === "pdfEscenarioBase" ? "Helvetica-Bold" : "Helvetica" }}>{t(lang, e.nombreKey)}</Text>
                 <Text style={s.tableCellValue}>{fmt(e.precioVenta)}</Text>
                 <Text style={s.tableCellValue}>{fmt(e.costeConstruccion)}</Text>
                 <Text style={{ ...s.tableCellValue, fontFamily: "Helvetica-Bold" }}>{fmt(e.valorResidualSuelo)}</Text>
@@ -273,68 +290,64 @@ export function InformeDocument({ parcela, residual, risk, boeAlerts, matches, p
 
           {risk?.factors && (
             <View style={s.section}>
-              <Text style={s.sectionTitle}>Capas de riesgo — detalle completo</Text>
+              <Text style={s.sectionTitle}>{t(lang, "pdfCapasRiesgoDetalle")}</Text>
               {risk.factors.map((f) => (
                 <View key={f.key} style={{ ...s.tableRow, alignItems: "flex-start" }}>
-                  <Text style={{ ...s.tableCellLabel, flex: 2, fontFamily: "Helvetica-Bold" }}>{f.label}</Text>
-                  <Text style={{ ...s.tableCellValue, flex: 1, textAlign: "left", color: RISK_COLOR[f.level], fontFamily: "Helvetica-Bold" }}>{RISK_LABEL[f.level]}</Text>
-                  <Text style={{ ...s.tableCellValue, flex: 4, textAlign: "left" }}>{f.detail}</Text>
+                  <Text style={{ ...s.tableCellLabel, flex: 2, fontFamily: "Helvetica-Bold" }}>{t(lang, `risk_${f.key}_label`)}</Text>
+                  <Text style={{ ...s.tableCellValue, flex: 1, textAlign: "left", color: RISK_COLOR[f.level], fontFamily: "Helvetica-Bold" }}>{t(lang, RISK_LABEL_KEY[f.level])}</Text>
+                  <Text style={{ ...s.tableCellValue, flex: 4, textAlign: "left" }}>{t(lang, `risk_${f.key}_detail`)}</Text>
                 </View>
               ))}
             </View>
           )}
-          <Footer />
+          <Footer lang={lang} />
         </Page>
       )}
 
       <Page size="A4" style={s.page}>
-        <Header parcela={parcela} tag="INFORME INVESTIGADO" />
+        <Header parcela={parcela} tag={t(lang, "pdfTagInforme")} lang={lang} />
         <View style={s.section}>
-          <Text style={s.sectionTitle}>Alertas regulatorias (radio 1km)</Text>
+          <Text style={s.sectionTitle}>{t(lang, "pdfAlertasRegulatorias1km")}</Text>
           {boeAlerts && boeAlerts.length > 0 ? boeAlerts.map((a) => (
             <View key={a.id} style={s.box}>
               <View style={{ flexDirection: "row", marginBottom: 4 }}>
                 <Text style={{ fontSize: 8, color: MUTED, marginRight: 8 }}>{a.date}</Text>
-                <Text style={{ fontSize: 8, color: MUTED }}>{a.source} · {a.impactLabel}</Text>
+                <Text style={{ fontSize: 8, color: MUTED }}>{boeSource(lang, a)} · {t(lang, `boe_${a.id}_impactLabel`)}</Text>
               </View>
-              <Text style={{ fontSize: 10, fontFamily: "Helvetica-Bold", marginBottom: 4 }}>{a.title}</Text>
-              <Text style={{ fontSize: 9, color: MUTED, lineHeight: 1.4 }}>{a.summary}</Text>
+              <Text style={{ fontSize: 10, fontFamily: "Helvetica-Bold", marginBottom: 4 }}>{boeTitle(lang, a)}</Text>
+              <Text style={{ fontSize: 9, color: MUTED, lineHeight: 1.4 }}>{t(lang, `boe_${a.id}_summary`)}</Text>
             </View>
           )) : (
-            <Text style={{ fontSize: 9, color: MUTED, fontStyle: "italic" }}>Sin alertas regulatorias activas en el municipio.</Text>
+            <Text style={{ fontSize: 9, color: MUTED, fontStyle: "italic" }}>{t(lang, "pdfSinAlertasMunicipio")}</Text>
           )}
         </View>
 
         <View style={s.section}>
-          <Text style={s.sectionTitle}>Matching con mandatos ZRC</Text>
+          <Text style={s.sectionTitle}>{t(lang, "pdfMatchingMandatosZRC")}</Text>
           {matches && matches.length > 0 ? matches.map((m) => (
             <View key={m.id} style={{ ...s.tableRow, alignItems: "flex-start" }}>
               <Text style={{ ...s.tableCellValue, flex: 1, textAlign: "left", fontFamily: "Helvetica-Bold", color: GOLD }}>{m.fit}%</Text>
               <View style={{ flex: 5 }}>
-                <Text style={{ fontSize: 10, fontFamily: "Helvetica-Bold" }}>{m.label}</Text>
-                <Text style={{ fontSize: 8, color: MUTED, marginTop: 2 }}>{m.tipologia} · ticket {m.ticket}</Text>
-                <Text style={{ fontSize: 9, color: INK, marginTop: 3, lineHeight: 1.4 }}>{m.thesis}</Text>
+                <Text style={{ fontSize: 10, fontFamily: "Helvetica-Bold" }}>{t(lang, `mandate_${m.id}_label`)}</Text>
+                <Text style={{ fontSize: 8, color: MUTED, marginTop: 2 }}>{t(lang, `mandate_${m.id}_tipologia`)} · {t(lang, "pdfTicket")} {m.ticket}</Text>
+                <Text style={{ fontSize: 9, color: INK, marginTop: 3, lineHeight: 1.4 }}>{t(lang, `mandate_${m.id}_thesis`)}</Text>
               </View>
             </View>
           )) : (
-            <Text style={{ fontSize: 9, color: MUTED, fontStyle: "italic" }}>Sin coincidencias por tipología o ticket con los mandatos activos.</Text>
+            <Text style={{ fontSize: 9, color: MUTED, fontStyle: "italic" }}>{t(lang, "pdfSinCoincidencias")}</Text>
           )}
         </View>
 
         <View style={s.section}>
-          <Text style={s.sectionTitle}>Metodología y fuentes</Text>
+          <Text style={s.sectionTitle}>{t(lang, "pdfMetodologiaFuentes")}</Text>
           <Text style={{ fontSize: 8, color: MUTED, lineHeight: 1.6 }}>
-            Datos catastrales: Dirección General del Catastro (Sede Electrónica). Precio de referencia de zona:{" "}
-            {marketRef?.fuente || "Ministerio de Vivienda y Agenda Urbana / Idealista Data"} · {marketRef?.periodo || "T1 2026"}.
-            Valor residual calculado mediante el método residual estático (ingresos por venta menos costes de
-            construcción e indirectos menos beneficio exigido al promotor) sobre la edificabilidad y parámetros
-            indicados; no incorpora el planeamiento urbanístico específico de la parcela ni cargas registrales.
-            Capas de riesgo y alertas regulatorias son una primera lectura automatizada orientada a due diligence
-            preliminar. Este informe no sustituye una tasación oficial, un informe de arquitecto/aparejador ni
-            asesoramiento legal o de inversión.
+            {t(lang, "pdfMetodologiaBody", {
+              fuente: marketRef?.fuente || "Ministerio de Vivienda y Agenda Urbana / Idealista Data",
+              periodo: marketRef?.periodo || "T1 2026",
+            })}
           </Text>
         </View>
-        <Footer />
+        <Footer lang={lang} />
       </Page>
     </Document>
   );
@@ -342,9 +355,9 @@ export function InformeDocument({ parcela, residual, risk, boeAlerts, matches, p
 
 function buildScenarios(parcela, params) {
   const variants = [
-    { nombre: "Conservador", precioVenta: params.precioVenta * 0.9, costeConstruccion: params.costeConstruccion * 1.1 },
-    { nombre: "Base", precioVenta: params.precioVenta, costeConstruccion: params.costeConstruccion },
-    { nombre: "Optimista", precioVenta: params.precioVenta * 1.1, costeConstruccion: params.costeConstruccion * 0.95 },
+    { nombreKey: "pdfEscenarioConservador", precioVenta: params.precioVenta * 0.9, costeConstruccion: params.costeConstruccion * 1.1 },
+    { nombreKey: "pdfEscenarioBase", precioVenta: params.precioVenta, costeConstruccion: params.costeConstruccion },
+    { nombreKey: "pdfEscenarioOptimista", precioVenta: params.precioVenta * 1.1, costeConstruccion: params.costeConstruccion * 0.95 },
   ];
   return variants.map((v) => {
     const p = { ...params, precioVenta: v.precioVenta, costeConstruccion: v.costeConstruccion };
@@ -402,7 +415,7 @@ export async function generateReportBlob(type, data) {
     mapDataUrl = null;
   }
   const Doc = type === "informe" ? InformeDocument : TeaserDocument;
-  const instance = pdf(<Doc {...data} mapDataUrl={mapDataUrl} />);
+  const instance = pdf(<Doc {...data} mapDataUrl={mapDataUrl} lang={data.lang || "es"} />);
   return instance.toBlob();
 }
 

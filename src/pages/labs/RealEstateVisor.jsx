@@ -9,6 +9,7 @@ import { MapContainer, TileLayer, WMSTileLayer, Marker, Popup, Circle, useMap, L
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useSubscription } from "../../hooks/useSubscription";
+import { useVisorLang, t } from "./visorI18n";
 // @react-pdf/renderer (~700kb) solo se carga bajo demanda al generar un
 // informe pagado, para no engordar el bundle principal del sitio.
 
@@ -72,6 +73,7 @@ function FlyTo({ position, zoom = 18 }) {
 
 // ============================================================
 export default function RealEstateVisor({ pendingReport, onReportHandled, useAuth } = {}) {
+  const [lang, setLang] = useVisorLang();
   const auth = useAuth?.();
   const { tier } = useSubscription(auth?.user?.email);
   const hasUnlimitedSearch = tier === "visor_standard" || tier === "visor_earlybird" || tier === "institutional";
@@ -106,7 +108,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
     e?.preventDefault?.();
     const targetRc = rcOverride ?? rc;
     if (!targetRc || targetRc.length < 14) {
-      setError("Introduce una referencia catastral válida (14 o 20 caracteres).");
+      setError(t(lang, "errorInvalidRC"));
       return null;
     }
     if (!skipGate && !hasUnlimitedSearch && searchCount >= 3) {
@@ -121,14 +123,14 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
       const dnpData = await dnpResp.json();
       const consulta = dnpData?.consulta_dnprcResult;
       if (consulta?.control?.cuerr > 0) {
-        throw new Error(consulta.lerr?.[0]?.des || "Referencia no encontrada en Catastro.");
+        throw new Error(consulta.lerr?.[0]?.des || t(lang, "errorNotFound"));
       }
       const bi = consulta?.bico?.bi || consulta?.lrcdnp?.rcdnp?.[0];
       const dt = bi?.dt || consulta?.bico?.bi?.dt;
       const debi = bi?.debi || {};
       const direccion = dt?.locs?.lous?.lourb?.dir
         ? `${dt.locs.lous.lourb.dir.tv || ""} ${dt.locs.lous.lourb.dir.nv || ""} ${dt.locs.lous.lourb.dir.pnp || ""}`.trim()
-        : "Dirección no disponible";
+        : t(lang, "addressUnavailable");
       const municipio = dt?.nm || "";
       const provincia = dt?.np || "";
       const superficie = parseFloat(debi?.sfc) || null;
@@ -164,7 +166,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
       const residualData = superficie ? calcResidual(parcelaData, newParams) : null;
       if (residualData) setResidual(residualData);
       const riskData = buildRiskLayers(coords);
-      const boeData = buildBOEAlerts(municipio, provincia);
+      const boeData = buildBOEAlerts(municipio, provincia, lang);
       const matchesData = matchAgainstZRCMandates(parcelaData);
       setRisk(riskData);
       setBoeAlerts(boeData);
@@ -172,7 +174,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
       setActiveTab("ficha");
       return { parcelaData, residualData, riskData, boeData, matchesData, params: newParams };
     } catch (err) {
-      setError(err.message || "Error al consultar Catastro.");
+      setError(err.message || t(lang, "errorGeneric"));
       return null;
     } finally {
       setLoading(false);
@@ -196,17 +198,17 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
   const runPendingReportFlow = async (pending) => {
     pendingCancelRef.current = false;
     const isCancelled = () => pendingCancelRef.current;
-    const CONTACT = "Escríbenos a labs@zenithrisecapital.com con tu referencia catastral y te lo enviamos manualmente.";
+    const CONTACT = t(lang, "reportContact");
 
     // Guarda contra el placeholder {CHECKOUT_SESSION_ID} sin sustituir —
     // pasaría si el redirect "After payment" del Payment Link no está bien
     // configurado en Stripe, y evita lanzar un fetch a una URL rota.
     if (!/^cs_/.test(pending.sessionId)) {
-      setReportStatus({ stage: "error", type: pending.type, retryable: false, message: `No hemos podido leer el ID de sesión de Stripe. ${CONTACT}` });
+      setReportStatus({ stage: "error", type: pending.type, retryable: false, message: t(lang, "reportBadSessionId", { contact: CONTACT }) });
       return;
     }
 
-    setReportStatus({ stage: "verifying", type: pending.type, message: "Verificando el pago…" });
+    setReportStatus({ stage: "verifying", type: pending.type, message: t(lang, "reportVerifying") });
 
     // Reintenta una vez la verificación: justo tras volver de un checkout
     // externo (Stripe), la primera petición fetch() en Safari/iOS puede
@@ -226,16 +228,16 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
     }
     if (isCancelled()) return;
     if (fetchErr) {
-      setReportStatus({ stage: "error", type: pending.type, retryable: true, message: `No hemos podido verificar el pago (fallo de red). ${CONTACT} (detalle técnico: ${fetchErr.message || "desconocido"})` });
+      setReportStatus({ stage: "error", type: pending.type, retryable: true, message: t(lang, "reportNetworkError", { contact: CONTACT, detail: fetchErr.message || t(lang, "unknown") }) });
       return;
     }
 
     if (!sessionData.paid || !sessionData.clientReferenceId) {
-      setReportStatus({ stage: "error", type: pending.type, retryable: true, message: `No hemos podido confirmar el pago. Si el cargo se realizó, ${CONTACT.toLowerCase()}` });
+      setReportStatus({ stage: "error", type: pending.type, retryable: true, message: t(lang, "reportNotPaid", { contactLower: t(lang, "reportContactLower") }) });
       return;
     }
 
-    setReportStatus({ stage: "loading", type: pending.type, message: "Pago confirmado. Cargando la parcela…" });
+    setReportStatus({ stage: "loading", type: pending.type, message: t(lang, "reportLoadingParcela") });
     let result;
     try {
       result = await handleSearch(null, sessionData.clientReferenceId, true);
@@ -244,11 +246,11 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
     }
     if (isCancelled()) return;
     if (!result || !result.parcelaData) {
-      setReportStatus({ stage: "error", type: pending.type, retryable: true, message: `Pago confirmado, pero no hemos podido recargar la parcela (RC ${sessionData.clientReferenceId}). ${CONTACT}` });
+      setReportStatus({ stage: "error", type: pending.type, retryable: true, message: t(lang, "reportReloadFailed", { rc: sessionData.clientReferenceId, contact: CONTACT }) });
       return;
     }
 
-    setReportStatus({ stage: "generating", type: pending.type, message: "Generando tu informe en PDF…" });
+    setReportStatus({ stage: "generating", type: pending.type, message: t(lang, "reportGenerating") });
     try {
       const { generateReportBlob, downloadBlob } = await import("./visorReports");
       const marketRef = { precioM2: priceByProvince(result.parcelaData.provincia), ...MARKET_REF_META };
@@ -260,16 +262,17 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
         matches: result.matchesData,
         params: result.params,
         marketRef,
+        lang,
       });
       if (isCancelled()) return;
       const label = pending.type === "informe" ? "informe-investigado" : "teaser";
       downloadBlob(blob, `zrc-${label}-${result.parcelaData.rc}.pdf`);
-      setReportStatus({ stage: "done", type: pending.type, message: "Informe descargado. Revisa tu carpeta de descargas." });
+      setReportStatus({ stage: "done", type: pending.type, message: t(lang, "reportDone") });
     } catch (err) {
       if (!isCancelled()) {
         setReportStatus({
           stage: "error", type: pending.type, retryable: true,
-          message: `Pago confirmado (RC ${result.parcelaData.rc}), pero hubo un fallo generando el PDF. ${CONTACT} (detalle técnico: ${err.message || "desconocido"})`,
+          message: t(lang, "reportPdfFailed", { rc: result.parcelaData.rc, contact: CONTACT, detail: err.message || t(lang, "unknown") }),
         });
       }
     }
@@ -309,7 +312,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
     else open();
   };
 
-  const fmt = (n) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
+  const fmt = (n) => new Intl.NumberFormat(lang === "en" ? "en-GB" : "es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
 
   // ─── Modo 3D — render alternativo ───
   if (viewMode === "3D") {
@@ -323,7 +326,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                 height: "100%", color: C.gold, fontFamily: F.mono, fontSize: 11,
                 letterSpacing: "0.18em", textTransform: "uppercase",
               }}>
-                Cargando vista 3D…
+                {t(lang, "loading3D")}
               </div>
             }
           >
@@ -334,6 +337,8 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               boeAlerts={boeAlerts}
               marketRef={parcela ? { precioM2: priceByProvince(parcela.provincia), ...MARKET_REF_META } : null}
               onClose={() => setViewMode("2D")}
+              lang={lang}
+              onToggleLang={() => setLang(lang === "en" ? "es" : "en")}
             />
           </Suspense>
         </div>
@@ -365,27 +370,40 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
           .zrc-visor-tabs-wrap { margin: 20px 0 14px; }
         }
       `}</style>
-      {reportStatus && <ReportStatusBanner status={reportStatus} onDismiss={() => setReportStatus(null)} onRetry={retryPendingReport} />}
+      {reportStatus && <ReportStatusBanner status={reportStatus} lang={lang} onDismiss={() => setReportStatus(null)} onRetry={retryPendingReport} />}
       {/* HEADER */}
       <div className="zrc-visor-header">
         <div className="zrc-visor-header-row">
           <div>
             <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 10 }}>
-              ZRC LABS · MÓDULO 01
+              {t(lang, "modulo")}
             </div>
             <h1 className="zrc-visor-title">
-              Visor Inmobiliario Georreferenciado
+              {t(lang, "title")}
             </h1>
             <p style={{ margin: 0, color: C.textSec, fontSize: 14, fontWeight: 300, lineHeight: 1.55, maxWidth: 720 }}>
-              Catastro · Riesgos · Planeamiento · Underwriting express · Matching con mandatos ZRC
+              {t(lang, "subtitle")}
             </p>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0, flexWrap: "wrap" }}>
+            {/* Toggle idioma */}
+            <button
+              onClick={() => setLang(lang === "en" ? "es" : "en")}
+              title="Español / English"
+              style={{
+                fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em",
+                padding: "12px 16px", background: "none", color: C.textSec,
+                border: `1px solid ${C.border}`, cursor: "pointer",
+                textTransform: "uppercase", fontWeight: 600, whiteSpace: "nowrap",
+              }}
+            >
+              {t(lang, "langToggle")}
+            </button>
             {/* Toggle 3D */}
             <button
               onClick={() => setViewMode("3D")}
               disabled={!parcela}
-              title={parcela ? "Ver en 3D" : "Busca una parcela primero"}
+              title={parcela ? t(lang, "view3dTitleReady") : t(lang, "view3dTitleDisabled")}
               style={{
                 fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em",
                 padding: "12px 20px",
@@ -398,10 +416,10 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                 transition: "all 0.15s ease",
               }}
             >
-              ▲ Vista 3D
+              {t(lang, "view3d")}
             </button>
             <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.2em", color: C.gold, border: `1px solid ${C.goldBorder}`, padding: "6px 14px" }}>
-              BETA
+              {t(lang, "beta")}
             </div>
           </div>
         </div>
@@ -414,14 +432,14 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
           {/* Buscador */}
           <form onSubmit={handleSearch}>
             <label style={{ display: "block", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", color: C.textMuted, marginBottom: 8 }}>
-              Referencia catastral
+              {t(lang, "rcLabel")}
             </label>
             <input
               ref={rcInputRef}
               type="text"
               value={rc}
               onChange={(e) => setRc(e.target.value.toUpperCase().replace(/\s/g, ""))}
-              placeholder="9872023VH5797S0001WX"
+              placeholder={t(lang, "rcPlaceholder")}
               maxLength={20}
               autoComplete="off"
               style={{
@@ -439,7 +457,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                 opacity: loading ? 0.6 : 1,
               }}
             >
-              {loading ? "Analizando…" : "Analizar activo"}
+              {loading ? t(lang, "analyzing") : t(lang, "analyze")}
             </button>
           </form>
 
@@ -455,35 +473,35 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               <div className="zrc-visor-tabs-wrap">
               <nav className="zrc-visor-tabs">
                 {[
-                  { k: "ficha", label: "Ficha" },
-                  { k: "residual", label: "Residual" },
-                  { k: "comparables", label: "Comparables", locked: !hasComparables },
-                  { k: "riesgos", label: "Riesgos", badge: risk?.overall },
-                  { k: "boe", label: "Alertas", count: boeAlerts.length },
-                  { k: "match", label: "Matching", count: matches.length, gold: true },
-                  { k: "premercado", label: "Pre-mercado", locked: !hasPreMercado },
-                ].map((t) => (
+                  { k: "ficha", label: t(lang, "tabFicha") },
+                  { k: "residual", label: t(lang, "tabResidual") },
+                  { k: "comparables", label: t(lang, "tabComparables"), locked: !hasComparables },
+                  { k: "riesgos", label: t(lang, "tabRiesgos"), badge: risk?.overall },
+                  { k: "boe", label: t(lang, "tabAlertas"), count: boeAlerts.length },
+                  { k: "match", label: t(lang, "tabMatching"), count: matches.length, gold: true },
+                  { k: "premercado", label: t(lang, "tabPremercado"), locked: !hasPreMercado },
+                ].map((tab) => (
                   <button
-                    key={t.k}
-                    onClick={() => setActiveTab(t.k)}
+                    key={tab.k}
+                    onClick={() => setActiveTab(tab.k)}
                     style={{
                       background: "none", border: "none", padding: "10px 12px",
                       fontFamily: F.mono, fontSize: 10, fontWeight: 500,
                       letterSpacing: "0.08em", textTransform: "uppercase",
-                      color: activeTab === t.k ? C.gold : C.textMuted,
-                      borderBottom: activeTab === t.k ? `2px solid ${C.gold}` : "2px solid transparent",
+                      color: activeTab === tab.k ? C.gold : C.textMuted,
+                      borderBottom: activeTab === tab.k ? `2px solid ${C.gold}` : "2px solid transparent",
                       cursor: "pointer", whiteSpace: "nowrap",
                       display: "flex", alignItems: "center", gap: 6,
                     }}
                   >
-                    {t.label}
-                    {t.locked && <span style={{ fontSize: 10 }}>🔒</span>}
-                    {t.badge && <RiskPill level={t.badge} />}
-                    {t.count > 0 && (
+                    {tab.label}
+                    {tab.locked && <span style={{ fontSize: 10 }}>🔒</span>}
+                    {tab.badge && <RiskPill level={tab.badge} lang={lang} />}
+                    {tab.count > 0 && (
                       <span style={{
-                        fontSize: 9, background: t.gold ? C.gold : C.surface3, color: t.gold ? C.bg : C.text,
+                        fontSize: 9, background: tab.gold ? C.gold : C.surface3, color: tab.gold ? C.bg : C.text,
                         padding: "1px 6px", borderRadius: 8, fontFamily: F.mono,
-                      }}>{t.count}</span>
+                      }}>{tab.count}</span>
                     )}
                   </button>
                 ))}
@@ -495,21 +513,21 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               {/* FICHA */}
               {activeTab === "ficha" && (
                 <Panel>
-                  <PanelTitle>Datos catastrales</PanelTitle>
+                  <PanelTitle>{t(lang, "panelFicha")}</PanelTitle>
                   <DataList rows={[
-                    ["Dirección", parcela.direccion],
-                    ["Municipio", `${parcela.municipio}, ${parcela.provincia}`],
-                    ["Uso principal", parcela.uso],
-                    ["Superficie", parcela.superficie ? `${parcela.superficie.toLocaleString("es-ES")} m²` : "—"],
-                    ["Antigüedad", parcela.antiguedad],
-                    ...(formatLocalizacionInterior(parcela) ? [["Localización interior", formatLocalizacionInterior(parcela)]] : []),
-                    ...(parcela.coefParticipacion ? [["Coef. participación", parcela.coefParticipacion]] : []),
-                    ["RC", <span style={{ fontFamily: F.mono, fontSize: 11 }}>{parcela.rc}</span>],
+                    [t(lang, "fieldDireccion"), parcela.direccion],
+                    [t(lang, "fieldMunicipio"), `${parcela.municipio}, ${parcela.provincia}`],
+                    [t(lang, "fieldUso"), parcela.uso],
+                    [t(lang, "fieldSuperficie"), parcela.superficie ? `${parcela.superficie.toLocaleString(lang === "en" ? "en-GB" : "es-ES")} m²` : "—"],
+                    [t(lang, "fieldAntiguedad"), parcela.antiguedad],
+                    ...(formatLocalizacionInterior(parcela, lang) ? [[t(lang, "fieldLocInterior"), formatLocalizacionInterior(parcela, lang)]] : []),
+                    ...(parcela.coefParticipacion ? [[t(lang, "fieldCoefPart"), parcela.coefParticipacion]] : []),
+                    [t(lang, "fieldRC"), <span style={{ fontFamily: F.mono, fontSize: 11 }}>{parcela.rc}</span>],
                   ]} />
                   <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 8 }}>
-                    <GhostBtn onClick={() => goToCheckout("teaser")}>📄 Generar teaser PDF · 9€</GhostBtn>
-                    <GhostBtn emphasis onClick={() => goToCheckout("informe")}>🔎 Informe Investigado · 30€</GhostBtn>
-                    <GhostBtn disabled>📊 Exportar Excel · incl. Pro</GhostBtn>
+                    <GhostBtn onClick={() => goToCheckout("teaser")}>{t(lang, "btnTeaser")}</GhostBtn>
+                    <GhostBtn emphasis onClick={() => goToCheckout("informe")}>{t(lang, "btnInforme")}</GhostBtn>
+                    <GhostBtn disabled>{t(lang, "btnExcel")}</GhostBtn>
                   </div>
                 </Panel>
               )}
@@ -517,42 +535,33 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               {/* RESIDUAL */}
               {activeTab === "residual" && residual && (
                 <Panel>
-                  <PanelTitle dot>Residual Snapshot</PanelTitle>
-                  <PanelLead>Sensibiliza el cálculo moviendo los parámetros.</PanelLead>
+                  <PanelTitle dot>{t(lang, "panelResidualTitle")}</PanelTitle>
+                  <PanelLead>{t(lang, "panelResidualLead")}</PanelLead>
 
                   <details style={{ marginBottom: 14, background: C.surface2, border: `1px solid ${C.border}` }}>
                     <summary style={{
                       cursor: "pointer", padding: "10px 12px", fontFamily: F.mono, fontSize: 10,
                       letterSpacing: "0.08em", textTransform: "uppercase", color: C.gold,
                     }}>
-                      ¿Cómo se calcula el valor residual?
+                      {t(lang, "residualHowTitle")}
                     </summary>
                     <div style={{ padding: "0 12px 12px" }}>
                       <p style={{ margin: "0 0 8px", fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>
-                        Se usa el <strong style={{ color: C.text }}>método residual estático</strong>, el estándar de
-                        tasación para suelo (base de la metodología de la Orden ECO/805/2003): parte de los ingresos
-                        que generaría vender lo construible al precio de mercado asumido, y resta lo que cuesta
-                        construirlo y el beneficio que exige un promotor por asumir el riesgo. Lo que sobra es lo
-                        máximo que se podría pagar por el suelo.
+                        {t(lang, "residualHowP1")}
                       </p>
-                      <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted, lineHeight: 1.9, padding: "8px 10px", background: "rgba(0,0,0,0.25)" }}>
-                        m² construibles = superficie × edificabilidad<br />
-                        ingresos = m² construibles × precio de venta/m²<br />
-                        costes totales = (m² construibles × coste construcción/m²) × (1 + costes indirectos)<br />
-                        beneficio promotor = ingresos × margen promotor<br />
-                        <strong style={{ color: C.gold }}>valor residual del suelo = ingresos − costes totales − beneficio promotor</strong>
+                      <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted, lineHeight: 1.9, padding: "8px 10px", background: "rgba(0,0,0,0.25)", whiteSpace: "pre-line" }}>
+                        {t(lang, "residualFormula")}<br />
+                        <strong style={{ color: C.gold }}>{t(lang, "residualFormulaResult")}</strong>
                       </div>
                       <p style={{ margin: "8px 0 0", fontSize: 11, color: C.textMuted, lineHeight: 1.6, fontStyle: "italic" }}>
-                        Por eso puede estar muy por debajo de la "Ref. mercado zona": esa cifra es el precio de venta
-                        del m² ya construido, no lo que queda disponible para pagar el suelo. Es una estimación
-                        sensible a los supuestos de los sliders, no una tasación certificada.
+                        {t(lang, "residualHowP2")}
                       </p>
                     </div>
                   </details>
 
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, padding: "10px 12px", marginBottom: 14, background: C.surface2, border: `1px solid ${C.border}` }}>
                     <div>
-                      <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.12em", color: C.textMuted, textTransform: "uppercase" }}>Ref. mercado zona · {parcela.provincia}</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.12em", color: C.textMuted, textTransform: "uppercase" }}>{t(lang, "marketRefZone", { provincia: parcela.provincia })}</div>
                       <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginTop: 2 }}>{fmt(priceByProvince(parcela.provincia))}/m²</div>
                     </div>
                     <button
@@ -560,32 +569,32 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                       onClick={() => setParams({ ...params, precioVenta: priceByProvince(parcela.provincia) })}
                       style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.08em", textTransform: "uppercase", padding: "6px 10px", background: "none", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", whiteSpace: "nowrap" }}
                     >
-                      Usar ref.
+                      {t(lang, "useRef")}
                     </button>
                   </div>
 
-                  <Slider label={`Precio venta ${fmt(params.precioVenta)}/m²`} min={1000} max={8000} step={100} value={params.precioVenta} onChange={(v) => setParams({ ...params, precioVenta: v })} />
-                  <Slider label={`Edificabilidad ${params.edificabilidad.toFixed(2)} m²t/m²s`} min={0.3} max={3.5} step={0.05} value={params.edificabilidad} onChange={(v) => setParams({ ...params, edificabilidad: v })} />
-                  <Slider label={`Coste construcción ${fmt(params.costeConstruccion)}/m²`} min={900} max={2400} step={50} value={params.costeConstruccion} onChange={(v) => setParams({ ...params, costeConstruccion: v })} />
-                  <Slider label={`Margen promotor ${(params.margenPromotor * 100).toFixed(0)}%`} min={0.10} max={0.30} step={0.01} value={params.margenPromotor} onChange={(v) => setParams({ ...params, margenPromotor: v })} />
+                  <Slider label={t(lang, "sliderPrecioVenta", { value: fmt(params.precioVenta) })} min={1000} max={8000} step={100} value={params.precioVenta} onChange={(v) => setParams({ ...params, precioVenta: v })} />
+                  <Slider label={t(lang, "sliderEdificabilidad", { value: params.edificabilidad.toFixed(2) })} min={0.3} max={3.5} step={0.05} value={params.edificabilidad} onChange={(v) => setParams({ ...params, edificabilidad: v })} />
+                  <Slider label={t(lang, "sliderCosteConstruccion", { value: fmt(params.costeConstruccion) })} min={900} max={2400} step={50} value={params.costeConstruccion} onChange={(v) => setParams({ ...params, costeConstruccion: v })} />
+                  <Slider label={t(lang, "sliderMargenPromotor", { value: (params.margenPromotor * 100).toFixed(0) })} min={0.10} max={0.30} step={0.01} value={params.margenPromotor} onChange={(v) => setParams({ ...params, margenPromotor: v })} />
 
                   <div style={{ marginTop: 18, paddingTop: 14, borderTop: `1px dashed ${C.border}` }}>
                     <DataList rows={[
-                      ["Ingresos brutos", fmt(residual.ingresos)],
-                      ["Costes totales", fmt(residual.costesTotales)],
-                      ["Beneficio promotor", fmt(residual.beneficioPromotor)],
+                      [t(lang, "ingresosBrutos"), fmt(residual.ingresos)],
+                      [t(lang, "costesTotales"), fmt(residual.costesTotales)],
+                      [t(lang, "beneficioPromotor"), fmt(residual.beneficioPromotor)],
                     ]} />
                     <div style={{ marginTop: 10, paddingTop: 10, borderTop: `1px dashed ${C.border}` }}>
                       <DataList rows={[
-                        [<strong style={{ color: C.gold }}>Valor residual suelo</strong>, <strong style={{ color: C.gold, fontSize: 14 }}>{fmt(residual.valorResidualSuelo)}</strong>],
-                        ["€/m² suelo", fmt(residual.valorResidualPorM2)],
-                        ["TIR estimada (24m)", <span style={{ color: C.gold, fontFamily: F.mono }}>{residual.tirEstimada.toFixed(1)}%</span>],
+                        [<strong style={{ color: C.gold }}>{t(lang, "valorResidualSuelo")}</strong>, <strong style={{ color: C.gold, fontSize: 14 }}>{fmt(residual.valorResidualSuelo)}</strong>],
+                        [t(lang, "m2Suelo"), fmt(residual.valorResidualPorM2)],
+                        [t(lang, "tirEstimada"), <span style={{ color: C.gold, fontFamily: F.mono }}>{residual.tirEstimada.toFixed(1)}%</span>],
                       ]} />
                     </div>
                   </div>
-                  <InvestabilityBar score={residual.investabilityScore} tier={residual.investabilityTier} label={residual.investabilityLabel} />
+                  <InvestabilityBar score={residual.investabilityScore} tier={residual.investabilityTier} label={investabilityLabel(lang, residual.investabilityTier)} lang={lang} />
                   <p style={{ margin: "12px 0 0", fontSize: 10, color: C.textMuted, lineHeight: 1.5, fontStyle: "italic" }}>
-                    Ref. de mercado: {MARKET_REF_META.fuente} · {MARKET_REF_META.periodo}. {MARKET_REF_META.nota}
+                    {t(lang, "marketRefFooter", { fuente: MARKET_REF_META.fuente, periodo: MARKET_REF_META.periodo })}
                   </p>
                 </Panel>
               )}
@@ -600,15 +609,16 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                         precioRefM2={priceByProvince(parcela.provincia)}
                         precioVenta={params.precioVenta}
                         fmt={fmt}
+                        lang={lang}
                       />
                     ) : (
-                      <Empty>Sin superficie catastral suficiente para posicionar el activo frente al mercado.</Empty>
+                      <Empty>{t(lang, "comparablesEmpty")}</Empty>
                     )
                   ) : (
                     <PaywallCard
-                      title="Comparables de mercado"
-                      body="Posiciona tu precio de venta asumido frente a la banda de mercado de la provincia (P25 · mediana · P75) y compáralo con perfiles sintéticos de referencia."
-                      cta="Desbloquear con Standard · 89€/mes"
+                      title={t(lang, "comparablesLocked")}
+                      body={t(lang, "comparablesLockedBody")}
+                      cta={t(lang, "comparablesLockedCta")}
                       onClick={() => goToSubscription("standard")}
                     />
                   )}
@@ -618,10 +628,10 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               {/* RIESGOS */}
               {activeTab === "riesgos" && risk && (
                 <Panel>
-                  <PanelTitle>Capa de riesgos</PanelTitle>
-                  <PanelLead>Factores que típicamente matan deals en Due Diligence.</PanelLead>
+                  <PanelTitle>{t(lang, "panelRiesgosTitle")}</PanelTitle>
+                  <PanelLead>{t(lang, "panelRiesgosLead")}</PanelLead>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 8 }}>
-                    {risk.factors.map((f) => <RiskItem key={f.key} f={f} />)}
+                    {risk.factors.map((f) => <RiskItem key={f.key} f={f} lang={lang} />)}
                   </ul>
                 </Panel>
               )}
@@ -629,11 +639,11 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               {/* BOE */}
               {activeTab === "boe" && (
                 <Panel>
-                  <PanelTitle>Alertas regulatorias</PanelTitle>
-                  <PanelLead>Lectura automática BOE / autonómicos · radio 1 km.</PanelLead>
-                  {boeAlerts.length === 0 ? <Empty>Sin alertas en los últimos 90 días.</Empty> : (
+                  <PanelTitle>{t(lang, "panelAlertasTitle")}</PanelTitle>
+                  <PanelLead>{t(lang, "panelAlertasLead")}</PanelLead>
+                  {boeAlerts.length === 0 ? <Empty>{t(lang, "alertasEmpty")}</Empty> : (
                     <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-                      {boeAlerts.map((a) => <BOEItem key={a.id} a={a} />)}
+                      {boeAlerts.map((a) => <BOEItem key={a.id} a={a} lang={lang} />)}
                     </ul>
                   )}
                 </Panel>
@@ -642,11 +652,11 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               {/* MATCHING */}
               {activeTab === "match" && (
                 <Panel>
-                  <PanelTitle>Matching con mandatos ZRC</PanelTitle>
-                  <PanelLead>Inversores activos en deal-flow ZRC cuyo mandato encaja.</PanelLead>
-                  {matches.length === 0 ? <Empty>Sin coincidencias por tipología o ticket.</Empty> : (
+                  <PanelTitle>{t(lang, "panelMatchingTitle")}</PanelTitle>
+                  <PanelLead>{t(lang, "panelMatchingLead")}</PanelLead>
+                  {matches.length === 0 ? <Empty>{t(lang, "matchingEmpty")}</Empty> : (
                     <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-                      {matches.map((m) => <MatchItem key={m.id} m={m} />)}
+                      {matches.map((m) => <MatchItem key={m.id} m={m} lang={lang} />)}
                     </ul>
                   )}
                   <button style={{
@@ -654,7 +664,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                     border: "none", fontFamily: F.mono, fontSize: 11, fontWeight: 600,
                     letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer",
                   }}>
-                    Solicitar introducción ZRC
+                    {t(lang, "solicitarIntroduccion")}
                   </button>
                 </Panel>
               )}
@@ -663,12 +673,12 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               {activeTab === "premercado" && (
                 <Panel>
                   {hasPreMercado ? (
-                    <PreMercadoPanel parcela={parcela} />
+                    <PreMercadoPanel parcela={parcela} lang={lang} />
                   ) : (
                     <PaywallCard
-                      title="Acceso pre-mercado"
-                      body="Visibilidad completa de los mandatos de inversión activos en ZRC — tipología, ticket y tesis de cada Family Office/fondo — antes de que el activo llegue a mercado público."
-                      cta="Desbloquear con Early Bird · 950€/año"
+                      title={t(lang, "premercadoLockedTitle")}
+                      body={t(lang, "premercadoLockedBody")}
+                      cta={t(lang, "premercadoLockedCta")}
                       onClick={() => goToSubscription("earlybird")}
                     />
                   )}
@@ -679,20 +689,21 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
 
           {!parcela && !error && (
             <div style={{ marginTop: 24, padding: 18, background: C.surface2, border: `1px solid ${C.border}`, borderLeft: `3px solid ${C.gold}` }}>
-              <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginBottom: 12 }}>Más profundidad</div>
+              <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginBottom: 12 }}>{t(lang, "masInfoTitle")}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <PlanRow
-                  name="Standard" price="89€/mes" desc="Búsquedas ilimitadas · comparables de mercado"
-                  active={tier === "visor_standard"}
+                  name={t(lang, "planStandardName")} price={t(lang, "planStandardPrice")} desc={t(lang, "planStandardDesc")}
+                  active={tier === "visor_standard"} lang={lang}
                   onClick={() => goToSubscription("standard")}
                 />
                 <PlanRow
-                  name="Análisis Pro" price="30€/informe" desc="Riesgos certificados — busca una parcela primero"
+                  name={t(lang, "planProName")} price={t(lang, "planProPrice")} desc={t(lang, "planProDesc")}
+                  lang={lang}
                   onClick={() => rcInputRef.current?.focus()}
                 />
                 <PlanRow
-                  name="Early Bird" price="950€/año" desc="Todo Standard · acceso pre-mercado (mandatos ZRC)"
-                  active={tier === "visor_earlybird"}
+                  name={t(lang, "planEarlyName")} price={t(lang, "planEarlyPrice")} desc={t(lang, "planEarlyDesc")}
+                  active={tier === "visor_earlybird"} lang={lang}
                   onClick={() => goToSubscription("earlybird")}
                 />
               </div>
@@ -704,25 +715,25 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
         <main className="zrc-visor-map-wrap">
           <MapContainer center={[40.4168, -3.7038]} zoom={6} scrollWheelZoom style={{ width: "100%", height: "100%", background: C.surface }}>
             <LayersControl position="topright">
-              <BaseLayer checked name="Carto Dark">
+              <BaseLayer checked name={t(lang, "mapCartoDark")}>
                 <TileLayer attribution='&copy; CARTO' url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
               </BaseLayer>
-              <BaseLayer name="OpenStreetMap">
+              <BaseLayer name={t(lang, "mapOSM")}>
                 <TileLayer attribution='&copy; OSM' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               </BaseLayer>
-              <BaseLayer name="Satélite">
+              <BaseLayer name={t(lang, "mapSatelite")}>
                 <TileLayer attribution='&copy; Esri' url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
               </BaseLayer>
-              <Overlay checked name="Catastro (parcelas)">
+              <Overlay checked name={t(lang, "mapCatastro")}>
                 <WMSTileLayer url={WMS.catastro} layers="Catastro" format="image/png" transparent version="1.1.1" opacity={0.7} />
               </Overlay>
-              <Overlay name="Inundaciones T=500">
+              <Overlay name={t(lang, "mapInundaciones")}>
                 <WMSTileLayer url={WMS.inundacion} layers="NZ.FloodPronePoint" format="image/png" transparent version="1.3.0" opacity={0.6} />
               </Overlay>
-              <Overlay name="Planeamiento (SIU)">
+              <Overlay name={t(lang, "mapPlaneamiento")}>
                 <WMSTileLayer url={WMS.planeamiento} layers="SIU:planeamiento" format="image/png" transparent version="1.3.0" opacity={0.5} />
               </Overlay>
-              <Overlay name="Patrimonio / BIC">
+              <Overlay name={t(lang, "mapPatrimonio")}>
                 <WMSTileLayer url={WMS.patrimonio} layers="patrimonio:bic" format="image/png" transparent version="1.3.0" opacity={0.6} />
               </Overlay>
             </LayersControl>
@@ -741,13 +752,14 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
             )}
           </MapContainer>
           <div style={{ position: "absolute", bottom: 14, left: 14, background: "rgba(9,9,11,0.92)", color: C.text, padding: "6px 12px", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.08em", zIndex: 1000, pointerEvents: "none", border: `1px solid ${C.goldBorder}` }}>
-            WMS CATASTRO · MITECO · SIU · INSPIRE
+            {t(lang, "mapWmsBadge")}
           </div>
         </main>
       </div>
       {showLeadModal && (
         <LeadModal
           parcela={parcela}
+          lang={lang}
           onClose={() => setShowLeadModal(false)}
           onSubmit={() => { setSearchCount(0); setShowLeadModal(false); }}
         />
@@ -791,10 +803,10 @@ const Slider = ({ label, min, max, step, value, onChange }) => (
   </div>
 );
 
-const ReportStatusBanner = ({ status, onDismiss, onRetry }) => {
+const ReportStatusBanner = ({ status, onDismiss, onRetry, lang }) => {
   const colors = { verifying: C.gold, loading: C.gold, generating: C.gold, done: C.green, error: C.red };
   const color = colors[status.stage] || C.gold;
-  const title = status.type === "informe" ? "Informe Investigado" : "Teaser PDF";
+  const title = status.type === "informe" ? t(lang, "reportInforme") : t(lang, "reportTeaser");
   return (
     <div style={{
       position: "fixed", top: 16, left: "50%", transform: "translateX(-50%)", zIndex: 400,
@@ -815,7 +827,7 @@ const ReportStatusBanner = ({ status, onDismiss, onRetry }) => {
             textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap",
           }}
         >
-          Reintentar
+          {t(lang, "retry")}
         </button>
       )}
       {(status.stage === "done" || status.stage === "error") && (
@@ -845,13 +857,13 @@ const PaywallCard = ({ title, body, cta, onClick }) => (
 
 // Banda de mercado: min ── P25 ── mediana ── P75 ── max, con marcador de
 // posición del precio de venta asumido en el cálculo residual.
-const ComparablesPanel = ({ provincia, precioRefM2, precioVenta, fmt }) => {
-  const { band, percentile, posicion, comps } = buildComparables(precioRefM2, precioVenta);
+const ComparablesPanel = ({ provincia, precioRefM2, precioVenta, fmt, lang }) => {
+  const { band, percentile, posicionKey, comps } = buildComparables(precioRefM2, precioVenta);
   const markerPct = Math.max(2, Math.min(98, percentile));
   return (
     <>
-      <PanelTitle dot>Comparables de mercado</PanelTitle>
-      <PanelLead>Banda de precio/m² modelada a partir del precio de referencia de {provincia}, comparada con tu precio de venta asumido.</PanelLead>
+      <PanelTitle dot>{t(lang, "comparablesTitle")}</PanelTitle>
+      <PanelLead>{t(lang, "comparablesLead", { provincia })}</PanelLead>
 
       <div style={{ marginBottom: 18 }}>
         <div style={{ position: "relative", height: 8, background: C.surface3, borderRadius: 4, marginTop: 28 }}>
@@ -869,28 +881,27 @@ const ComparablesPanel = ({ provincia, precioRefM2, precioVenta, fmt }) => {
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 6 }}>
           <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>{fmt(band.min)}</span>
           <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>P25</span>
-          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>Mediana</span>
+          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>{lang === "en" ? "Median" : "Mediana"}</span>
           <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>P75</span>
           <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>{fmt(band.max)}</span>
         </div>
       </div>
 
       <div style={{ padding: "10px 14px", background: C.surface2, border: `1px solid ${C.border}`, marginBottom: 16, fontSize: 12, color: C.textSec, lineHeight: 1.5 }}>
-        Percentil <strong style={{ color: C.gold }}>{percentile}</strong> de la banda estimada — {posicion}.
+        {t(lang, "comparablesPercentilePrefix")} <strong style={{ color: C.gold }}>{percentile}</strong>{t(lang, "comparablesPercentileSuffix", { posicion: t(lang, posicionKey) })}
       </div>
 
-      <PanelTitle>Perfiles comparables</PanelTitle>
+      <PanelTitle>{t(lang, "perfilesComparables")}</PanelTitle>
       <ul style={{ listStyle: "none", padding: 0, margin: "0 0 12px", display: "flex", flexDirection: "column", gap: 8 }}>
         {comps.map((c) => (
-          <li key={c.label} style={{ display: "flex", justifyContent: "space-between", padding: "10px 12px", background: C.surface2, borderLeft: `3px solid ${C.goldBorder}`, fontSize: 12 }}>
-            <span style={{ color: C.textSec }}>{c.label}</span>
+          <li key={c.labelKey} style={{ display: "flex", justifyContent: "space-between", padding: "10px 12px", background: C.surface2, borderLeft: `3px solid ${C.goldBorder}`, fontSize: 12 }}>
+            <span style={{ color: C.textSec }}>{t(lang, c.labelKey)}</span>
             <strong style={{ color: C.text }}>{fmt(c.pricePerM2)}/m²</strong>
           </li>
         ))}
       </ul>
       <p style={{ margin: 0, fontSize: 10, color: C.textMuted, lineHeight: 1.5, fontStyle: "italic" }}>
-        Banda modelada a partir del precio medio provincial ({MARKET_REF_META.fuente} · {MARKET_REF_META.periodo}), no de transacciones
-        individuales verificadas — úsala para contrastar el rango realista de la zona, no como tasación de comparables exactos.
+        {t(lang, "comparablesFooter", { fuente: MARKET_REF_META.fuente, periodo: MARKET_REF_META.periodo })}
       </p>
     </>
   );
@@ -899,20 +910,20 @@ const ComparablesPanel = ({ provincia, precioRefM2, precioVenta, fmt }) => {
 // Lista completa de mandatos activos ZRC (no solo los que superan el fit
 // mínimo) — el valor de "pre-mercado" es ver toda la demanda institucional
 // activa, no solo la que ya encaja con la parcela buscada.
-const PreMercadoPanel = ({ parcela }) => {
+const PreMercadoPanel = ({ parcela, lang }) => {
   const withFit = ZRC_MANDATOS.map((m) => ({ ...m, fit: m.fitFn(parcela) })).sort((a, b) => b.fit - a.fit);
   return (
     <>
-      <PanelTitle dot>Mandatos activos ZRC</PanelTitle>
-      <PanelLead>Toda la demanda institucional activa en deal-flow ZRC ahora mismo — tipología, ticket y tesis — para sourcear antes de que el activo llegue a mercado.</PanelLead>
+      <PanelTitle dot>{t(lang, "panelPremercadoTitle")}</PanelTitle>
+      <PanelLead>{t(lang, "panelPremercadoLead")}</PanelLead>
       <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-        {withFit.map((m) => <MatchItem key={m.id} m={m} />)}
+        {withFit.map((m) => <MatchItem key={m.id} m={m} lang={lang} />)}
       </ul>
     </>
   );
 };
 
-const PlanRow = ({ name, price, desc, active, onClick }) => (
+const PlanRow = ({ name, price, desc, active, onClick, lang }) => (
   <button
     onClick={active ? undefined : onClick}
     style={{
@@ -932,7 +943,7 @@ const PlanRow = ({ name, price, desc, active, onClick }) => (
       flexShrink: 0, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.08em", textTransform: "uppercase",
       padding: "4px 8px", color: active ? C.green : C.gold, border: `1px solid ${active ? C.green : C.goldBorder}`,
     }}>
-      {active ? "Activo" : "Elegir"}
+      {active ? t(lang, "planActive") : t(lang, "planElegir")}
     </span>
   </button>
 );
@@ -959,40 +970,40 @@ const RiskPill = ({ level }) => {
   return <span style={{ fontSize: 9, padding: "1px 5px", background: `${colors[level]}22`, color: colors[level], borderRadius: 6, fontFamily: F.mono }}>{labels[level]}</span>;
 };
 
-const RiskItem = ({ f }) => {
+const RiskItem = ({ f, lang }) => {
   const colors = { low: C.green, mid: C.amber, high: C.red };
-  const labels = { low: "Bajo", mid: "Medio", high: "Alto" };
+  const labelKeys = { low: "riskLow", mid: "riskMid", high: "riskHigh" };
   return (
     <li style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 12, alignItems: "center", padding: "12px 14px", background: C.surface2, borderLeft: `3px solid ${colors[f.level]}` }}>
       <span style={{ fontSize: 18 }}>{f.icon}</span>
       <div>
-        <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 2 }}>{f.label}</strong>
-        <span style={{ fontSize: 11, color: C.textMuted, lineHeight: 1.4 }}>{f.detail}</span>
+        <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 2 }}>{t(lang, `risk_${f.key}_label`)}</strong>
+        <span style={{ fontSize: 11, color: C.textMuted, lineHeight: 1.4 }}>{t(lang, `risk_${f.key}_detail`)}</span>
       </div>
       <span style={{ fontFamily: F.mono, fontSize: 10, padding: "3px 8px", background: `${colors[f.level]}22`, color: colors[f.level], letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>
-        {labels[f.level]}
+        {t(lang, labelKeys[f.level])}
       </span>
     </li>
   );
 };
 
-const BOEItem = ({ a }) => {
+const BOEItem = ({ a, lang }) => {
   const colors = { high: C.red, mid: C.amber, low: C.textMuted };
   return (
     <li style={{ padding: 14, background: C.surface2, borderLeft: `3px solid ${C.gold}` }}>
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 6, flexWrap: "wrap" }}>
-        <span style={{ fontFamily: F.mono, fontSize: 9, padding: "2px 6px", background: `${colors[a.impact]}22`, color: colors[a.impact], letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>{a.impactLabel}</span>
+        <span style={{ fontFamily: F.mono, fontSize: 9, padding: "2px 6px", background: `${colors[a.impact]}22`, color: colors[a.impact], letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>{t(lang, `boe_${a.id}_impactLabel`)}</span>
         <span style={{ fontSize: 10, color: C.textMuted, fontFamily: F.mono }}>{a.date}</span>
-        <span style={{ fontSize: 10, color: C.textMuted, fontFamily: F.mono }}>· {a.source}</span>
+        <span style={{ fontSize: 10, color: C.textMuted, fontFamily: F.mono }}>· {boeSource(lang, a)}</span>
       </div>
-      <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 6, lineHeight: 1.35 }}>{a.title}</strong>
-      <p style={{ margin: "0 0 8px", fontSize: 12, color: C.textSec, lineHeight: 1.5 }}>{a.summary}</p>
-      <a href={a.url} target="_blank" rel="noreferrer" style={{ fontSize: 11, color: C.gold, textDecoration: "none", fontWeight: 500 }}>Ver publicación →</a>
+      <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 6, lineHeight: 1.35 }}>{boeTitle(lang, a)}</strong>
+      <p style={{ margin: "0 0 8px", fontSize: 12, color: C.textSec, lineHeight: 1.5 }}>{t(lang, `boe_${a.id}_summary`)}</p>
+      <a href={a.url} target="_blank" rel="noreferrer" style={{ fontSize: 11, color: C.gold, textDecoration: "none", fontWeight: 500 }}>{t(lang, "verPublicacion")}</a>
     </li>
   );
 };
 
-const MatchItem = ({ m }) => (
+const MatchItem = ({ m, lang }) => (
   <li style={{ display: "grid", gridTemplateColumns: "60px 1fr", gap: 14, padding: 14, background: C.surface2, borderLeft: `3px solid ${C.gold}`, alignItems: "center" }}>
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div style={{
@@ -1005,9 +1016,9 @@ const MatchItem = ({ m }) => (
       </div>
     </div>
     <div>
-      <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 2 }}>{m.label}</strong>
-      <span style={{ display: "block", fontSize: 10, color: C.textMuted, fontFamily: F.mono, marginBottom: 6 }}>{m.tipologia} · ticket {m.ticket}</span>
-      <p style={{ margin: 0, fontSize: 11, color: C.textSec, lineHeight: 1.45 }}>{m.thesis}</p>
+      <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 2 }}>{t(lang, `mandate_${m.id}_label`)}</strong>
+      <span style={{ display: "block", fontSize: 10, color: C.textMuted, fontFamily: F.mono, marginBottom: 6 }}>{t(lang, `mandate_${m.id}_tipologia`)} · {t(lang, "ticketLabel")} {m.ticket}</span>
+      <p style={{ margin: 0, fontSize: 11, color: C.textSec, lineHeight: 1.45 }}>{t(lang, `mandate_${m.id}_thesis`)}</p>
     </div>
   </li>
 );
@@ -1016,7 +1027,7 @@ const Empty = ({ children }) => (
   <p style={{ fontSize: 12, color: C.textMuted, fontStyle: "italic", padding: 14, textAlign: "center", background: C.surface2 }}>{children}</p>
 );
 
-const InvestabilityBar = ({ score, tier, label }) => {
+const InvestabilityBar = ({ score, tier, label, lang }) => {
   const colorMap = { high: C.green, mid: C.gold, low: C.amber, reject: C.red };
   const color = colorMap[tier] || C.gold;
   return (
@@ -1024,7 +1035,7 @@ const InvestabilityBar = ({ score, tier, label }) => {
       marginTop: 16, padding: 14, borderLeft: `4px solid ${color}`,
       background: `${color}10`, display: "grid", gridTemplateColumns: "1fr auto", gap: "4px 14px", alignItems: "center",
     }}>
-      <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textMuted }}>Investability Score</span>
+      <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textMuted }}>{t(lang, "investabilityScore")}</span>
       <strong style={{ fontSize: 24, fontFamily: F.display, fontWeight: 500, color }}>{score}/100</strong>
       <small style={{ gridColumn: "1 / -1", fontSize: 11, color: C.textSec, marginTop: 4 }}>{label}</small>
     </div>
@@ -1042,7 +1053,6 @@ const InvestabilityBar = ({ score, tier, label }) => {
 export const MARKET_REF_META = {
   fuente: "Ministerio de Vivienda y Agenda Urbana / Idealista Data",
   periodo: "T1 2026",
-  nota: "Precio medio provincial orientativo — no sustituye una tasación oficial.",
 };
 
 const PRICE_BY_PROVINCE = {
@@ -1120,12 +1130,12 @@ function priceByProvince(prov) {
 
 // Bloque/escalera/planta/puerta — solo presentes cuando el RC identifica una
 // unidad dentro de un edificio (piso), no un inmueble completo o suelo.
-export function formatLocalizacionInterior(parcela) {
+export function formatLocalizacionInterior(parcela, lang = "es") {
   const parts = [];
-  if (parcela?.bloque) parts.push(`Bloque ${parcela.bloque}`);
-  if (parcela?.escalera) parts.push(`Esc. ${parcela.escalera}`);
-  if (parcela?.planta) parts.push(`Planta ${parcela.planta}`);
-  if (parcela?.puerta) parts.push(`Puerta ${parcela.puerta}`);
+  if (parcela?.bloque) parts.push(`${t(lang, "bloque")} ${parcela.bloque}`);
+  if (parcela?.escalera) parts.push(`${t(lang, "escalera")} ${parcela.escalera}`);
+  if (parcela?.planta) parts.push(`${t(lang, "planta")} ${parcela.planta}`);
+  if (parcela?.puerta) parts.push(`${t(lang, "puerta")} ${parcela.puerta}`);
   return parts.length ? parts.join(" · ") : null;
 }
 
@@ -1151,23 +1161,34 @@ function calcResidual(parcela, p) {
   if (ratioMargen > 0.35) score += 10;
   score = Math.max(0, Math.min(100, score));
 
-  let tier = "reject", label = "No invertible al precio actual";
-  if (score >= 70) { tier = "high"; label = "Invertible — encaja con tesis PE"; }
-  else if (score >= 45) { tier = "mid"; label = "Atractivo con condiciones"; }
-  else if (score >= 25) { tier = "low"; label = "Marginal — sensibilizar entrada"; }
+  let tier = "reject";
+  if (score >= 70) tier = "high";
+  else if (score >= 45) tier = "mid";
+  else if (score >= 25) tier = "low";
 
   return { ingresos, costesTotales, beneficioPromotor, valorResidualSuelo, valorResidualPorM2,
-    tirEstimada, investabilityScore: score, investabilityTier: tier, investabilityLabel: label };
+    tirEstimada, investabilityScore: score, investabilityTier: tier };
 }
 
+// investabilityTier se resuelve a texto en el idioma activo en el momento de
+// renderizar (en vez de guardar el label ya traducido en el estado), para que
+// cambiar de idioma no requiera repetir la búsqueda.
+function investabilityLabel(lang, tier) {
+  const key = { high: "investLabelHigh", mid: "investLabelMid", low: "investLabelLow", reject: "investLabelReject" }[tier] || "investLabelReject";
+  return t(lang, key);
+}
+
+// label/detail se resuelven en el idioma activo en el momento de renderizar
+// (t(lang, `risk_${key}_label|detail`)) en vez de guardarse ya traducidos aquí,
+// para que cambiar de idioma no requiera repetir la búsqueda.
 function buildRiskLayers(coords) {
   const factors = [
-    { key: "flood", icon: "💧", label: "Inundabilidad", level: pick(coords, 1, ["low","mid","low","low"]), detail: "Zonas inundables T=500 · SNCZI / MITECO." },
-    { key: "noise", icon: "🔊", label: "Ruido ambiental", level: pick(coords, 2, ["mid","low","mid","high"]), detail: "Mapas estratégicos de ruido municipales." },
-    { key: "bic",   icon: "🏛️", label: "Patrimonio histórico", level: pick(coords, 3, ["low","low","mid","low"]), detail: "Verificar entorno de protección municipal." },
-    { key: "soil",  icon: "🧪", label: "Contaminación suelo", level: pick(coords, 4, ["low","low","low","mid"]), detail: "Inventario autonómico de suelos contaminados." },
-    { key: "plan",  icon: "📐", label: "Cambio urbanístico", level: pick(coords, 5, ["mid","high","mid","low"]), detail: "Modificaciones puntuales PGOU detectadas." },
-    { key: "lau",   icon: "🔑", label: "Riesgo LAU", level: pick(coords, 6, ["low","mid","low","low"]), detail: "Edificios pre-1985 — riesgos de renta antigua." },
+    { key: "flood", icon: "💧", level: pick(coords, 1, ["low","mid","low","low"]) },
+    { key: "noise", icon: "🔊", level: pick(coords, 2, ["mid","low","mid","high"]) },
+    { key: "bic",   icon: "🏛️", level: pick(coords, 3, ["low","low","mid","low"]) },
+    { key: "soil",  icon: "🧪", level: pick(coords, 4, ["low","low","low","mid"]) },
+    { key: "plan",  icon: "📐", level: pick(coords, 5, ["mid","high","mid","low"]) },
+    { key: "lau",   icon: "🔑", level: pick(coords, 6, ["low","mid","low","low"]) },
   ];
   const high = factors.filter((f) => f.level === "high").length;
   const mid = factors.filter((f) => f.level === "mid").length;
@@ -1181,47 +1202,42 @@ function pick(coords, seed, options) {
   return options[idx];
 }
 
-function buildBOEAlerts(municipio, provincia) {
+// title/summary/source/impactLabel se resuelven vía boeTitle()/boeSource()/t()
+// en el idioma activo — solo se guardan aquí los datos no traducibles.
+function buildBOEAlerts(municipio, provincia, lang) {
   const today = new Date();
-  const fmt = (d) => d.toLocaleDateString("es-ES");
+  const fmt = (d) => d.toLocaleDateString(lang === "en" ? "en-GB" : "es-ES");
   return [
-    { id: 1, title: `Aprobación inicial Modificación Puntual PGOU de ${municipio}`,
-      summary: "Reclasificación de suelo urbanizable sectorizado en ámbito noreste. Posible incremento de edificabilidad residencial.",
-      source: provincia === "Madrid" ? "BOCM" : "Boletín autonómico",
+    { id: 1, municipio, isMadrid: provincia === "Madrid",
       date: fmt(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 18)),
-      impact: "high", impactLabel: "Alto impacto", url: "https://boe.es" },
-    { id: 2, title: "Convenio urbanístico zona dotacional adyacente",
-      summary: "Permuta de aprovechamientos entre ayuntamiento y propietario. Incidencia indirecta en valoración del entorno.",
-      source: "BOE",
+      impact: "high", url: "https://boe.es" },
+    { id: 2,
       date: fmt(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 42)),
-      impact: "mid", impactLabel: "Impacto medio", url: "https://boe.es" },
-    { id: 3, title: "Licencia de obra mayor en parcela contigua",
-      summary: "Promoción de 38 viviendas libres + comercial. Referencia de mercado relevante para valoración.",
-      source: "Tablón edictal municipal",
+      impact: "mid", url: "https://boe.es" },
+    { id: 3,
       date: fmt(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 65)),
-      impact: "low", impactLabel: "Informativo", url: "#" },
+      impact: "low", url: "#" },
   ];
+}
+
+function boeTitle(lang, a) {
+  return a.id === 1 ? t(lang, "boe_1_title", { municipio: a.municipio }) : t(lang, `boe_${a.id}_title`);
+}
+function boeSource(lang, a) {
+  return a.id === 1 ? t(lang, a.isMadrid ? "boe_1_source_madrid" : "boe_1_source_default") : t(lang, `boe_${a.id}_source`);
 }
 
 // Mandatos activos de inversión ZRC — módulo compartido entre el matching
 // reactivo (por parcela buscada) y el panel "Pre-mercado" de Early Bird,
 // que muestra la lista completa independientemente del fit.
+// label/tipologia/thesis se resuelven vía t(lang, `mandate_${id}_...`) al
+// renderizar, no se guardan ya traducidos aquí.
 const ZRC_MANDATOS = [
-  { id: "M1", label: "Family Office Levante", tipologia: "Residencial premium Madrid/Barcelona", ticket: "8-25M€",
-    fitFn: (p) => p.provincia === "Madrid" || p.provincia === "Barcelona" ? 88 : 35,
-    thesis: "Activos prime con plusvalía a 5-7 años en zonas consolidadas." },
-  { id: "M2", label: "Hospitality Costa del Sol", tipologia: "Hotelero / branded residences", ticket: "15-60M€",
-    fitFn: (p) => p.provincia === "Málaga" ? 92 : 20,
-    thesis: "Reposicionamiento 4★+ con OpCo/PropCo split." },
-  { id: "M3", label: "Fondo agroindustrial", tipologia: "Suelo rústico productivo", ticket: "20-80M€",
-    fitFn: (p) => /agra|olivo|olivar|secano/i.test(p.uso || "") ? 95 : 10,
-    thesis: "Olivar superintensivo y leñosos tecnificados." },
-  { id: "M4", label: "Promotor mid-cap nacional", tipologia: "Suelo finalista urbano", ticket: "5-20M€",
-    fitFn: (p) => p.superficie > 800 ? 75 : 40,
-    thesis: "Suelo urbano consolidado para residencial libre." },
-  { id: "M5", label: "FO industrial logística", tipologia: "Naves last-mile <50km capital", ticket: "3-15M€",
-    fitFn: (p) => /industrial|almac|nave/i.test(p.uso || "") ? 90 : 15,
-    thesis: "Last-mile rentado a operador tier-1." },
+  { id: "M1", ticket: "8-25M€", fitFn: (p) => p.provincia === "Madrid" || p.provincia === "Barcelona" ? 88 : 35 },
+  { id: "M2", ticket: "15-60M€", fitFn: (p) => p.provincia === "Málaga" ? 92 : 20 },
+  { id: "M3", ticket: "20-80M€", fitFn: (p) => /agra|olivo|olivar|secano/i.test(p.uso || "") ? 95 : 10 },
+  { id: "M4", ticket: "5-20M€", fitFn: (p) => p.superficie > 800 ? 75 : 40 },
+  { id: "M5", ticket: "3-15M€", fitFn: (p) => /industrial|almac|nave/i.test(p.uso || "") ? 90 : 15 },
 ];
 
 function matchAgainstZRCMandates(parcela) {
@@ -1245,23 +1261,23 @@ function buildComparables(precioRefM2, precioVentaAsumido) {
   };
   const clamped = Math.max(band.min, Math.min(band.max, precioVentaAsumido));
   const percentile = Math.round(((clamped - band.min) / (band.max - band.min)) * 100);
-  const posicion = precioVentaAsumido < band.p25 ? "por debajo del rango típico (P25)"
-    : precioVentaAsumido < band.median ? "entre el mínimo típico y la mediana"
-    : precioVentaAsumido < band.p75 ? "entre la mediana y el rango prime (P75)"
-    : "en el rango prime de la zona (P75+)";
+  const posicionKey = precioVentaAsumido < band.p25 ? "posBelowP25"
+    : precioVentaAsumido < band.median ? "posBetweenMinMedian"
+    : precioVentaAsumido < band.p75 ? "posBetweenMedianP75"
+    : "posAboveP75";
   const comps = [
-    { label: "Comparable conservador (P25)", pricePerM2: band.p25 },
-    { label: "Mediana de la zona", pricePerM2: band.median },
-    { label: "Comparable prime (P75)", pricePerM2: band.p75 },
+    { labelKey: "compConservador", pricePerM2: band.p25 },
+    { labelKey: "compMediana", pricePerM2: band.median },
+    { labelKey: "compPrime", pricePerM2: band.p75 },
   ];
-  return { band, percentile, posicion, comps };
+  return { band, percentile, posicionKey, comps };
 }
 
 
 // ============================================================
 // LEAD MODAL
 // ============================================================
-function LeadModal({ parcela, onClose, onSubmit }) {
+function LeadModal({ parcela, onClose, onSubmit, lang }) {
   const [email, setEmail] = useState("");
   const [sector, setSector] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -1289,10 +1305,10 @@ function LeadModal({ parcela, onClose, onSubmit }) {
         }),
       });
       const data = await resp.json();
-      if (!resp.ok) throw new Error(data.error || "Error al enviar");
+      if (!resp.ok) throw new Error(data.error || t(lang, "leadErrorSend"));
       onSubmit();
     } catch (err) {
-      setErrorMsg(err.message || "Error de red");
+      setErrorMsg(err.message || t(lang, "leadErrorNetwork"));
     } finally {
       setSubmitting(false);
     }
@@ -1310,13 +1326,13 @@ function LeadModal({ parcela, onClose, onSubmit }) {
         border: `1px solid ${C.border}`,
       }}>
         <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 12 }}>
-          ZRC LABS - ACCESO COMPLETO
+          {t(lang, "leadBadge")}
         </div>
         <h3 style={{ fontFamily: F.display, fontSize: 24, fontWeight: 400, margin: "0 0 12px", color: C.text }}>
-          Continua explorando
+          {t(lang, "leadTitle")}
         </h3>
         <p style={{ color: C.textSec, fontSize: 13, lineHeight: 1.6, margin: "0 0 20px" }}>
-          Dejanos tu email y desbloquea busquedas ilimitadas + el informe mensual <em>Zenrise State</em>.
+          {t(lang, "leadBody")}
         </p>
         {errorMsg && (
           <div style={{ marginBottom: 12, padding: "10px 12px", background: "rgba(239,68,68,0.1)", borderLeft: `3px solid ${C.red}`, color: C.red, fontSize: 12 }}>
@@ -1325,7 +1341,7 @@ function LeadModal({ parcela, onClose, onSubmit }) {
         )}
         <form onSubmit={handleSubmit}>
           <input
-            type="email" required placeholder="email@empresa.com"
+            type="email" required placeholder={t(lang, "leadEmailPlaceholder")}
             value={email} onChange={(e) => setEmail(e.target.value)}
             style={{
               width: "100%", padding: "12px 14px", background: C.surface2, color: C.text,
@@ -1339,14 +1355,14 @@ function LeadModal({ parcela, onClose, onSubmit }) {
               border: `1px solid ${C.border}`, marginBottom: 14, fontSize: 13, fontFamily: F.body,
               boxSizing: "border-box", outline: "none", appearance: "none",
             }}>
-            <option value="">Sector / actividad</option>
-            <option>Promotor inmobiliario</option>
-            <option>Family office</option>
-            <option>Asesoria / despacho</option>
-            <option>Agencia / API</option>
-            <option>Inversor particular</option>
-            <option>Fondo / Private Equity</option>
-            <option>Otro</option>
+            <option value="">{t(lang, "leadSectorPlaceholder")}</option>
+            <option>{t(lang, "leadSectorPromotor")}</option>
+            <option>{t(lang, "leadSectorFamilyOffice")}</option>
+            <option>{t(lang, "leadSectorAsesoria")}</option>
+            <option>{t(lang, "leadSectorAgencia")}</option>
+            <option>{t(lang, "leadSectorInversor")}</option>
+            <option>{t(lang, "leadSectorFondo")}</option>
+            <option>{t(lang, "leadSectorOtro")}</option>
           </select>
           <button type="submit" disabled={submitting} style={{
             width: "100%", padding: 12, background: C.gold, color: C.bg, border: "none",
@@ -1354,7 +1370,7 @@ function LeadModal({ parcela, onClose, onSubmit }) {
             textTransform: "uppercase", cursor: submitting ? "wait" : "pointer",
             opacity: submitting ? 0.6 : 1,
           }}>
-            {submitting ? "Enviando..." : "Desbloquear acceso"}
+            {submitting ? t(lang, "leadSubmitting") : t(lang, "leadSubmit")}
           </button>
         </form>
         <button onClick={onClose} style={{
