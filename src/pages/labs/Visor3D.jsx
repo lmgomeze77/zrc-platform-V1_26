@@ -5,6 +5,14 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { t } from "./visorI18n";
+
+// Copia local de los mismos resolutores de RealEstateVisor.jsx — se
+// duplican (en vez de importarlos) para no acoplar este chunk lazy-loaded
+// de Mapbox GL al de leaflet/mapa 2D.
+function boeTitle(lang, a) {
+  return a.id === 1 ? t(lang, "boe_1_title", { municipio: a.municipio }) : t(lang, `boe_${a.id}_title`);
+}
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -28,7 +36,7 @@ const DEFAULT_VIEW = {
   bearing: -25,
 };
 
-export default function Visor3D({ parcela, risk, residual, boeAlerts, marketRef, onClose }) {
+export default function Visor3D({ parcela, risk, residual, boeAlerts, marketRef, onClose, lang = "es", onToggleLang }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const parcelaMarker = useRef(null);
@@ -188,29 +196,38 @@ export default function Visor3D({ parcela, risk, residual, boeAlerts, marketRef,
             padding: "10px 14px", background: C.surface, color: C.gold,
             border: `1px solid ${C.goldBorder}`, cursor: "pointer",
             textTransform: "uppercase", fontWeight: 600, whiteSpace: "nowrap",
-          }}>← 2D View</button>
+          }}>{t(lang, "back2D")}</button>
+
+          {onToggleLang && (
+            <button onClick={onToggleLang} title="Español / English" style={{
+              fontFamily: F.mono, fontSize: 10, letterSpacing: "0.16em",
+              padding: "10px 14px", background: C.surface, color: C.textSec,
+              border: `1px solid ${C.border}`, cursor: "pointer",
+              textTransform: "uppercase", fontWeight: 600, whiteSpace: "nowrap",
+            }}>{t(lang, "langToggle")}</button>
+          )}
 
           <div className="zrc-v3d-badge" style={{
             padding: "8px 12px", background: C.surface, border: `1px solid ${C.border}`,
             fontFamily: F.mono, fontSize: 10, letterSpacing: "0.14em",
             color: C.textSec, textTransform: "uppercase", whiteSpace: "nowrap",
           }}>
-            ZRC LABS · 3D VISOR <span style={{ color: C.gold, marginLeft: 8 }}>● LIVE</span>
+            {t(lang, "liveBadge")} <span style={{ color: C.gold, marginLeft: 8 }}>{t(lang, "live")}</span>
           </div>
         </div>
 
         <div className="zrc-v3d-layers">
-          <LayerToggle label="Riesgo" active={activeLayer === "risk"} onClick={() => setActiveLayer(activeLayer === "risk" ? null : "risk")} />
-          <LayerToggle label="Valor" active={activeLayer === "value"} onClick={() => setActiveLayer(activeLayer === "value" ? null : "value")} />
-          <LayerToggle label="Regulación" active={activeLayer === "regulation"} onClick={() => setActiveLayer(activeLayer === "regulation" ? null : "regulation")} />
+          <LayerToggle label={t(lang, "layerRisk")} active={activeLayer === "risk"} onClick={() => setActiveLayer(activeLayer === "risk" ? null : "risk")} />
+          <LayerToggle label={t(lang, "layerValue")} active={activeLayer === "value"} onClick={() => setActiveLayer(activeLayer === "value" ? null : "value")} />
+          <LayerToggle label={t(lang, "layerRegulation")} active={activeLayer === "regulation"} onClick={() => setActiveLayer(activeLayer === "regulation" ? null : "regulation")} />
         </div>
       </div>
 
       {parcela && (
-        <ParcelaCard parcela={parcela} residual={residual} risk={risk} boeAlerts={boeAlerts} marketRef={marketRef} activeLayer={activeLayer} />
+        <ParcelaCard parcela={parcela} residual={residual} risk={risk} boeAlerts={boeAlerts} marketRef={marketRef} activeLayer={activeLayer} lang={lang} />
       )}
 
-      {activeLayer && <Legend layer={activeLayer} />}
+      {activeLayer && <Legend layer={activeLayer} lang={lang} />}
     </div>
   );
 }
@@ -229,8 +246,8 @@ function LayerToggle({ label, active, onClick }) {
   );
 }
 
-function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLayer }) {
-  const fmt = (n) => new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
+function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLayer, lang }) {
+  const fmt = (n) => new Intl.NumberFormat(lang === "en" ? "en-GB" : "es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n || 0);
   const [showResidualInfo, setShowResidualInfo] = useState(false);
 
   return (
@@ -241,7 +258,7 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLaye
     }}>
       <div style={{ padding: "16px 20px 12px", borderBottom: `1px solid ${C.border}` }}>
         <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 6 }}>
-          PARCELA ACTIVA · RC {parcela.rc?.substring(0, 14)}
+          {t(lang, "parcelaActiva", { rc: parcela.rc?.substring(0, 14) })}
         </div>
         <div style={{ fontFamily: F.display, fontSize: 22, fontWeight: 400, color: C.text, lineHeight: 1.2 }}>
           {parcela.direccion}
@@ -252,22 +269,22 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLaye
       </div>
 
       <div style={{ padding: "14px 20px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-        <Metric label="Superficie" value={parcela.superficie ? `${parcela.superficie.toLocaleString("es-ES")} m²` : "—"} />
-        <Metric label="Uso" value={parcela.uso || "—"} />
-        <Metric label="Antigüedad" value={parcela.antiguedad ? `${parcela.antiguedad}` : "—"} />
-        <Metric label="Localización" value={parcela.planta ? `Planta ${parcela.planta}${parcela.puerta ? ` · Puerta ${parcela.puerta}` : ""}` : "—"} hint={parcela.planta ? null : "Catastro pendiente"} />
+        <Metric label={t(lang, "metricSuperficie")} value={parcela.superficie ? `${parcela.superficie.toLocaleString(lang === "en" ? "en-GB" : "es-ES")} m²` : "—"} />
+        <Metric label={t(lang, "metricUso")} value={parcela.uso || "—"} />
+        <Metric label={t(lang, "metricAntiguedad")} value={parcela.antiguedad ? `${parcela.antiguedad}` : "—"} />
+        <Metric label={t(lang, "metricLocalizacion")} value={parcela.planta ? `${t(lang, "planta")} ${parcela.planta}${parcela.puerta ? ` · ${t(lang, "puerta")} ${parcela.puerta}` : ""}` : "—"} hint={parcela.planta ? null : t(lang, "catastroPendiente")} />
       </div>
 
       {activeLayer === "value" && residual && (
         <div style={{ padding: "12px 20px 16px", borderTop: `1px solid ${C.border}`, background: C.goldDim }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 4 }}>
-              VALOR RESIDUAL
+              {t(lang, "valorResidualLabel")}
             </div>
             <button
               type="button"
               onClick={() => setShowResidualInfo((v) => !v)}
-              aria-label="¿Cómo se calcula el valor residual?"
+              aria-label={t(lang, "residualInfoAria")}
               style={{
                 width: 16, height: 16, borderRadius: "50%", border: `1px solid ${C.goldBorder}`,
                 background: "none", color: C.gold, fontFamily: F.mono, fontSize: 10, lineHeight: 1,
@@ -288,18 +305,14 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLaye
           {showResidualInfo && (
             <div style={{ marginTop: 8, padding: "8px 10px", background: "rgba(0,0,0,0.25)", border: `1px solid ${C.border}` }}>
               <p style={{ margin: 0, fontSize: 10, color: C.textSec, lineHeight: 1.5 }}>
-                <strong style={{ color: C.text }}>Método residual estático:</strong> lo que quedaría para el suelo tras
-                vender lo construible y restar el coste de construcción y el beneficio del promotor.
-                Ingresos (m² construibles × precio de venta) − costes de construcción − beneficio del promotor = valor residual del suelo.
-                No es la referencia de mercado (precio de venta del m² construido) — es lo que sobra para pagar el suelo una vez cubiertos obra y margen.
-                Ajusta los supuestos en la pestaña "Residual" del visor 2D.
+                <strong style={{ color: C.text }}>{t(lang, "residualInfoStrong")}</strong> {t(lang, "residualInfoBody")}
               </p>
             </div>
           )}
           {marketRef && (
             <div style={{ marginTop: 8, paddingTop: 8, borderTop: `1px dashed ${C.goldBorder}` }}>
               <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textSec }}>
-                Ref. mercado zona: <strong style={{ color: C.text }}>{fmt(marketRef.precioM2)}/m²</strong>
+                {t(lang, "refMercadoZonaShort")} <strong style={{ color: C.text }}>{fmt(marketRef.precioM2)}/m²</strong>
               </div>
               <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, marginTop: 2 }}>
                 {marketRef.fuente} · {marketRef.periodo}
@@ -312,7 +325,7 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLaye
       {activeLayer === "risk" && risk && (
         <div style={{ padding: "12px 20px 16px", borderTop: `1px solid ${C.border}` }}>
           <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.18em", color: C.amber, textTransform: "uppercase", marginBottom: 6 }}>
-            CAPA DE RIESGO
+            {t(lang, "capaRiesgo")}
           </div>
           {risk.factors ? (
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -323,12 +336,12 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLaye
                   border: `1px solid ${f.level === "high" ? C.red : f.level === "mid" ? C.amber : C.green}33`,
                   color: f.level === "high" ? C.red : f.level === "mid" ? C.amber : C.green,
                   textTransform: "uppercase",
-                }}>{f.label}: {f.level}</div>
+                }}>{t(lang, `risk_${f.key}_label`)}: {f.level}</div>
               ))}
             </div>
           ) : (
             <div style={{ fontSize: 11, color: C.textMuted, fontStyle: "italic" }}>
-              Cargando capas de riesgo…
+              {t(lang, "cargandoRiesgo")}
             </div>
           )}
         </div>
@@ -337,17 +350,17 @@ function ParcelaCard({ parcela, residual, risk, boeAlerts, marketRef, activeLaye
       {activeLayer === "regulation" && (
         <div style={{ padding: "12px 20px 16px", borderTop: `1px solid ${C.border}` }}>
           <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 6 }}>
-            ALERTAS BOE
+            {t(lang, "alertasBOE")}
           </div>
           {boeAlerts && boeAlerts.length > 0 ? (
             boeAlerts.slice(0, 3).map((a, i) => (
               <div key={i} style={{ fontSize: 11, color: C.textSec, padding: "4px 0", borderTop: i > 0 ? `1px solid ${C.border}` : "none" }}>
-                {a.title || a.summary?.substring(0, 80)}
+                {boeTitle(lang, a)}
               </div>
             ))
           ) : (
             <div style={{ fontSize: 11, color: C.textMuted, fontStyle: "italic" }}>
-              Sin alertas regulatorias activas en el municipio.
+              {t(lang, "sinAlertasMunicipio")}
             </div>
           )}
         </div>
@@ -374,16 +387,16 @@ function Metric({ label, value, hint }) {
   );
 }
 
-function Legend({ layer }) {
+function Legend({ layer, lang }) {
   const configs = {
-    risk: { title: "Riesgo (mock)", stops: [
-      { color: "#22C55E", label: "Bajo" }, { color: "#F59E0B", label: "Medio" }, { color: "#EF4444", label: "Alto" },
+    risk: { title: t(lang, "legendRiskTitle"), stops: [
+      { color: "#22C55E", label: t(lang, "legendBajo") }, { color: "#F59E0B", label: t(lang, "legendMedio") }, { color: "#EF4444", label: t(lang, "legendAlto") },
     ]},
-    value: { title: "Valor €/m² (ref. mercado)", stops: [
+    value: { title: t(lang, "legendValueTitle"), stops: [
       { color: "#312E81", label: "1500" }, { color: "#7C3AED", label: "3000" }, { color: "#D4A853", label: "5000+" },
     ]},
-    regulation: { title: "Regulación (mock)", stops: [
-      { color: "#22C55E", label: "Sin alertas" }, { color: "#D4A853", label: "Vigentes" }, { color: "#EF4444", label: "Restrictivas" },
+    regulation: { title: t(lang, "legendRegulationTitle"), stops: [
+      { color: "#22C55E", label: t(lang, "legendSinAlertas") }, { color: "#D4A853", label: t(lang, "legendVigentes") }, { color: "#EF4444", label: t(lang, "legendRestrictivas") },
     ]},
   };
   const cfg = configs[layer];
