@@ -284,7 +284,14 @@ async function handleClaude(request, env) {
 // mensaje estático. Devuelve { text, provider }.
 // ============================================================
 const ASSISTANT_CLAUDE_MODEL = "claude-haiku-4-5";
-const ASSISTANT_FREE_MODEL = "@cf/meta/llama-3.1-8b-instruct";
+// Modelos de Workers AI en orden de preferencia. Cloudflare depreca modelos
+// periódicamente (los Llama base murieron el 2026-05-30), así que se intentan
+// en cadena hasta que uno responda.
+const ASSISTANT_FREE_MODELS = [
+  "@cf/zai-org/glm-4.7-flash",
+  "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "@cf/google/gemma-4-26b-a4b-it",
+];
 const ASSISTANT_MAX_TOKENS = 250;
 
 async function handleAssistant(request, env) {
@@ -333,20 +340,24 @@ async function handleAssistant(request, env) {
   }
 
   // 2) Workers AI (gratis) — requiere binding [ai] en wrangler.toml
+  let lastError = "";
   if (env.AI) {
-    try {
-      const result = await env.AI.run(ASSISTANT_FREE_MODEL, {
-        messages: [{ role: "system", content: system }, ...trimmed],
-        max_tokens: ASSISTANT_MAX_TOKENS,
-      });
-      const text = (result?.response || "").trim();
-      if (text) return jsonResponse({ text, provider: "workers-ai" });
-    } catch (err) {
-      console.error("Assistant: Workers AI failed:", err.message);
+    for (const model of ASSISTANT_FREE_MODELS) {
+      try {
+        const result = await env.AI.run(model, {
+          messages: [{ role: "system", content: system }, ...trimmed],
+          max_tokens: ASSISTANT_MAX_TOKENS,
+        });
+        const text = (result?.response || "").trim();
+        if (text) return jsonResponse({ text, provider: "workers-ai", model });
+      } catch (err) {
+        lastError = err.message;
+        console.error(`Assistant: Workers AI ${model} failed:`, err.message);
+      }
     }
   }
 
-  return jsonResponse({ error: "No AI provider available" }, 503);
+  return jsonResponse({ error: "No AI provider available", detail: lastError.slice(0, 120) }, 503);
 }
 
 // ============================================================
