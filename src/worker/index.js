@@ -27,7 +27,9 @@ export default {
     }
   },
 
-  // Cloudflare Cron Trigger — see [triggers] in wrangler.toml (Mondays 06:00 UTC)
+  // Cloudflare Cron Trigger — see [triggers] in wrangler.toml (daily 06:00 UTC;
+  // idempotent upsert on week_start means this just re-confirms the current
+  // week's print, giving redundancy against a missed/failed Monday firing)
   async scheduled(event, env, ctx) {
     ctx.waitUntil(computeAndStoreWeeklySnapshot(env, "zrc_weekly_cron"));
   },
@@ -522,7 +524,32 @@ async function handleGeoRiskIndexGet(request, env) {
       }
     );
     if (!resp.ok) return jsonResponse({ history: [], live });
-    const history = await resp.json();
+    let history = await resp.json();
+
+    // Self-healing catch-up: the weekly print is normally written by the
+    // Cron Trigger (see scheduled() below), but cron firings can be missed
+    // or fail silently server-side with no visible alert. Rather than
+    // staying stale until someone notices, check on every read whether the
+    // current ISO week already has a row — if not, compute + upsert it here
+    // so the very next page load repairs the series.
+    const currentWeekStart = isoWeekMonday(new Date());
+    const hasCurrentWeek = history.some((h) => h.week_start === currentWeekStart);
+    if (!hasCurrentWeek) {
+      const snap = await computeAndStoreWeeklySnapshot(env, "auto_catchup");
+      if (snap.ok) {
+        history = [
+          ...history.filter((h) => h.week_start !== snap.weekStart),
+          {
+            week_start: snap.weekStart,
+            index_value: snap.value,
+            dominant_scenario: snap.dominantScenario,
+            risk_label: snap.riskLabel,
+            source: "auto_catchup",
+          },
+        ];
+      }
+    }
+
     return jsonResponse({ history, live });
   } catch (err) {
     console.error("GeoRisk Index fetch error:", err);

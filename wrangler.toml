@@ -18,6 +18,9 @@ binding = "DB"
 database_name = "zrc-leads"
 database_id = "b5f9835f-93db-4cbc-94e3-1c615cf4c36d"
 
-# GeoRisk Index — snapshot semanal (lunes 06:00 UTC)
+# GeoRisk Index — snapshot semanal. Corre a diario (no solo lunes) como
+# redundancia: el upsert es idempotente por semana ISO (unique week_start +
+# merge-duplicates), así que una ejecución de más no duplica datos, pero
+# cubre el hueco si un lunes concreto falla o Cloudflare no dispara el cron.
 [triggers]
-crons = ["0 6 * * 1"]
+crons = ["0 6 * * *"]
