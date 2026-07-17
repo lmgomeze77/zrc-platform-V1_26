@@ -448,11 +448,18 @@ async function upsertSubscriptionByCustomer(env, { stripeCustomerId, tier, statu
 // Mirrors the default ZRC scenario mix used by GeoRisk Dashboard / GeoRisk ML
 // (sector = Global, multiplier x1.00) so the public index tracks the same
 // methodology as the paid tools.
+// Pesos base actualizados 2026-07-17 dado el riesgo reflejado en el feed del
+// Observatorio: EEUU reinstaura bloqueo naval a Irán y amenaza con tomar el
+// control del estrecho de Ormuz (escalada MENA severa, desplaza a la
+// escalada arancelaria como escenario dominante); la coalición europea
+// respalda gasto de defensa/eurobonos ante la escalada Rusia-Ucrania
+// (leve alza en fragmentación europea vía prima de riesgo soberano);
+// sin señales de desescalada diplomática comparables esta semana.
 const GEORISK_INDEX_SCENARIOS = [
-  { key: "tariff_escalation", label: "Escalada Arancelaria", prob: 0.42, risk: 78 },
-  { key: "mena_instability", label: "Inestabilidad MENA", prob: 0.28, risk: 85 },
-  { key: "eu_fragmentation", label: "Fragmentación Europea", prob: 0.18, risk: 72 },
-  { key: "detente", label: "Distensión Geopolítica", prob: 0.12, risk: 28 },
+  { key: "tariff_escalation", label: "Escalada Arancelaria", prob: 0.34, risk: 78 },
+  { key: "mena_instability", label: "Inestabilidad MENA", prob: 0.38, risk: 85 },
+  { key: "eu_fragmentation", label: "Fragmentación Europea", prob: 0.20, risk: 72 },
+  { key: "detente", label: "Distensión Geopolítica", prob: 0.08, risk: 28 },
 ];
 
 function computeGeoRiskIndexValue() {

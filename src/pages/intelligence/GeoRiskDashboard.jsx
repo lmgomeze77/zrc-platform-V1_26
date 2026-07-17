@@ -50,7 +50,7 @@ const SCENARIOS = {
   tariff_escalation: {
     label: "Escalada Arancelaria",
     desc: "Tensiones comerciales EE.UU.–China–UE",
-    prob: 0.42, risk: 78, color: "#F59E0B",
+    prob: 0.34, risk: 78, color: "#F59E0B",
     impactByRegion: {
       eu:   { interest_rates: 0.35,  inflation_cpi: 0.55, fx: -0.08, commodities: 0.45, sovereign_yield: 0.40,  capital_flows: -0.60 },
       usa:  { interest_rates: 0.15,  inflation_cpi: 0.65, fx: 0.30,  commodities: 0.45, sovereign_yield: 0.25,  capital_flows: 0.35 },
@@ -60,7 +60,7 @@ const SCENARIOS = {
   mena_instability: {
     label: "Inestabilidad MENA",
     desc: "Conflicto Oriente Medio · Disrupción energética",
-    prob: 0.28, risk: 85, color: "#EF4444",
+    prob: 0.38, risk: 85, color: "#EF4444",
     impactByRegion: {
       eu:   { interest_rates: 0.20, inflation_cpi: 0.75, fx: -0.12, commodities: 0.90, sovereign_yield: 0.30,  capital_flows: -0.45 },
       usa:  { interest_rates: 0.10, inflation_cpi: 0.55, fx: 0.25,  commodities: 0.90, sovereign_yield: 0.15,  capital_flows: 0.30 },
@@ -70,7 +70,7 @@ const SCENARIOS = {
   eu_fragmentation: {
     label: "Fragmentación Europea",
     desc: "Tensiones soberanas · Spreads periféricos",
-    prob: 0.18, risk: 72, color: "#8B5CF6",
+    prob: 0.20, risk: 72, color: "#8B5CF6",
     impactByRegion: {
       eu:   { interest_rates: 0.45, inflation_cpi: 0.30, fx: -0.20, commodities: 0.15, sovereign_yield: 0.85,  capital_flows: -0.70 },
       usa:  { interest_rates: 0.05, inflation_cpi: 0.10, fx: 0.35,  commodities: 0.10, sovereign_yield: -0.10, capital_flows: 0.55 },
@@ -80,7 +80,7 @@ const SCENARIOS = {
   detente: {
     label: "Distensión Geopolítica",
     desc: "Acuerdos diplomáticos · Reducción primas riesgo",
-    prob: 0.12, risk: 28, color: "#10B981",
+    prob: 0.08, risk: 28, color: "#10B981",
     impactByRegion: {
       eu:   { interest_rates: -0.20, inflation_cpi: -0.30, fx: 0.08,  commodities: -0.35, sovereign_yield: -0.40, capital_flows: 0.50 },
       usa:  { interest_rates: -0.10, inflation_cpi: -0.20, fx: -0.15, commodities: -0.35, sovereign_yield: -0.15, capital_flows: -0.10 },
