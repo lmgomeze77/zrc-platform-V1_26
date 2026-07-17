@@ -36,7 +36,16 @@ const css = `
 .ic-tb-brand{font-family:'Cormorant SC',serif;font-size:10px;letter-spacing:.38em;color:rgba(232,224,204,.42);}
 .ic-tb-right{font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.3em;color:rgba(184,152,42,.45);}
 .ic-middle{position:relative;z-index:5;flex:1;display:flex;align-items:center;justify-content:center;padding:20px 40px;min-height:0;overflow:hidden;}
-.ic-center{text-align:center;width:100%;max-width:640px;}
+.ic-orbit{position:absolute;top:50%;left:50%;width:min(58vh,620px);height:min(58vh,620px);transform:translate(-50%,-50%);pointer-events:none;z-index:0;opacity:0;animation:ic-appear 2.2s ease forwards 2.0s;}
+.ic-orbit-ring{position:absolute;inset:0;border:1px solid rgba(184,152,42,.13);border-radius:50%;animation:ic-orbit-spin 90s linear infinite;}
+.ic-orbit-ring::before{content:"";position:absolute;top:-3px;left:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:rgba(212,176,80,.75);box-shadow:0 0 12px rgba(212,176,80,.5);}
+.ic-orbit-inner{position:absolute;inset:9%;border:1px dashed rgba(184,152,42,.08);border-radius:50%;animation:ic-orbit-spin 140s linear infinite reverse;}
+@keyframes ic-orbit-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.ic-center{position:relative;z-index:1;text-align:center;width:100%;max-width:640px;}
+.ic-pillars{display:flex;justify-content:center;gap:clamp(20px,4vw,44px);margin-top:20px;opacity:0;animation:ic-appear 1.4s ease forwards 3.0s;}
+.ic-pillar{max-width:150px;}
+.ic-pillar-title{font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.4em;color:rgba(184,152,42,.6);margin-bottom:5px;white-space:nowrap;}
+.ic-pillar-text{font-family:'Cormorant',serif;font-size:12px;font-style:italic;color:rgba(232,224,204,.35);line-height:1.5;}
 .ic-eyebrow{display:block;font-family:'Cormorant SC',serif;font-size:10px;letter-spacing:.55em;color:#B8982A;opacity:0;animation:ic-appear 1.4s ease forwards .5s;margin-bottom:18px;}
 .ic-title{display:block;font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,118px);font-weight:400;font-style:italic;line-height:1;letter-spacing:-.025em;color:#E8E0CC;}
 .ic-tw{display:block;opacity:0;transform:translateY(30px);}
@@ -68,7 +77,16 @@ const css = `
 .ic-back:hover{color:rgba(212,176,80,.9);}
 @keyframes ic-appear{from{opacity:0}to{opacity:1}}
 @keyframes ic-riseIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@media (max-height:760px){
+  .ic-pillars{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .ic-grain,.ic-orbit-ring,.ic-orbit-inner{animation-duration:0.01s;animation-iteration-count:1;}
+}
 @media (max-width:768px){
+  .ic-orbit{display:none;}
+  .ic-pillars{flex-direction:column;align-items:center;gap:14px;margin-top:16px;}
+  .ic-pillar{max-width:240px;}
   .ic-root{height:auto;min-height:0;}
   .ic-top{padding:12px 18px;}
   .ic-tb-right{display:none;}
@@ -286,6 +304,8 @@ export default function Community({ lang = "es", onAccess }) {
   const [notFound, setNotFound] = useState(false);
   const [showApply, setShowApply]   = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [cursorOn, setCursorOn] = useState(false);
+  const hasFinePointer = typeof window !== "undefined" && window.matchMedia?.("(pointer: fine)").matches;
   const cursorRef = useRef(null);
   const ringRef   = useRef(null);
   const rxRef = useRef(0), ryRef = useRef(0);
@@ -295,18 +315,28 @@ export default function Community({ lang = "es", onAccess }) {
   const t = {
     es:{
       eyebrow:"ZRC Confidencial",the:"The",inner:"Inner",circle:"Circle",
-      tagline:"Una nota de inteligencia privada para quienes han ganado una lectura mas cercana.",
+      tagline:"Una nota de inteligencia privada para quienes han ganado una lectura más cercana.",
+      pillars:[
+        { title:"La Nota", text:"Inteligencia mensual, escrita para decidir." },
+        { title:"El Círculo", text:"Inversores, operadores y estrategas seleccionados." },
+        { title:"El Acceso", text:"Solo por invitación. Admisión manual." },
+      ],
       gateLabel:"Acceso exclusivo",gatePlaceholder:"Su email...",passwordPlaceholder:"Contraseña...",gateBtn:"Acceder",
-      pendingMsg:"Su solicitud esta pendiente de aprobacion.",
+      pendingMsg:"Su solicitud está pendiente de aprobación.",
       noneMsg:"Credenciales incorrectas.",
       applyLink:"Solicitar membresía →",
       welcomeLabel:"Bienvenido de nuevo",readEdition:"Leer Edition Zero ->",
-      bottomLeft:"Distribuido el primer martes de cada mes.",
+      bottomLeft:"Distribuida el primer martes de cada mes.",
       directLabel:"Directo",brand:"Zenith Rise Capital",location:"Madrid - Est. 2024",backLabel:"<- Volver",
     },
     en:{
       eyebrow:"ZRC Confidential",the:"The",inner:"Inner",circle:"Circle",
       tagline:"A private intelligence brief for those who have earned a closer read.",
+      pillars:[
+        { title:"The Note", text:"Monthly intelligence, written to decide." },
+        { title:"The Circle", text:"Selected investors, operators and strategists." },
+        { title:"The Access", text:"Invitation-only. Manual admissions." },
+      ],
       gateLabel:"Exclusive access",gatePlaceholder:"Your email...",passwordPlaceholder:"Password...",gateBtn:"Enter",
       pendingMsg:"Your application is pending approval.",
       noneMsg:"Incorrect credentials.",
@@ -319,7 +349,7 @@ export default function Community({ lang = "es", onAccess }) {
   const tx = t[lang] || t.es;
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || !hasFinePointer) return;
     mxRef.current = window.innerWidth/2; myRef.current = window.innerHeight/2;
     rxRef.current = window.innerWidth/2; ryRef.current = window.innerHeight/2;
     const onMove = (e) => {
@@ -384,15 +414,24 @@ export default function Community({ lang = "es", onAccess }) {
       {showSuccess && (
         <SuccessModal lang={lang} onClose={() => setShowSuccess(false)} />
       )}
-      <div ref={cursorRef} style={{position:"fixed",width:5,height:5,background:"#B8982A",borderRadius:"50%",pointerEvents:"none",zIndex:9999,transform:"translate(-50%,-50%)",mixBlendMode:"difference"}} />
-      <div ref={ringRef}   style={{position:"fixed",width:28,height:28,border:"1px solid rgba(184,152,42,0.35)",borderRadius:"50%",pointerEvents:"none",zIndex:9998,transform:"translate(-50%,-50%)",opacity:.65}} />
-      <div className="ic-root" style={{cursor:"none"}}>
+      {hasFinePointer && (
+        <>
+          <div ref={cursorRef} style={{position:"fixed",width:5,height:5,background:"#B8982A",borderRadius:"50%",pointerEvents:"none",zIndex:9999,transform:"translate(-50%,-50%)",mixBlendMode:"difference",display:cursorOn?"block":"none"}} />
+          <div ref={ringRef}   style={{position:"fixed",width:28,height:28,border:"1px solid rgba(184,152,42,0.35)",borderRadius:"50%",pointerEvents:"none",zIndex:9998,transform:"translate(-50%,-50%)",opacity:.65,display:cursorOn?"block":"none"}} />
+        </>
+      )}
+      <div className="ic-root" style={{cursor:hasFinePointer?"none":"auto"}}
+        onMouseEnter={() => setCursorOn(true)} onMouseLeave={() => setCursorOn(false)}>
         <div className="ic-grain"/><div className="ic-vig"/><div className="ic-light"/>
         <div className="ic-top">
           <div className="ic-tb-brand">{tx.brand}</div>
           <div className="ic-tb-right">{tx.location}</div>
         </div>
         <div className="ic-middle">
+          <div className="ic-orbit" aria-hidden="true">
+            <div className="ic-orbit-ring"/>
+            <div className="ic-orbit-inner"/>
+          </div>
           <div className="ic-center">
             <span className="ic-eyebrow">{tx.eyebrow}</span>
             <span className="ic-title">
@@ -402,6 +441,14 @@ export default function Community({ lang = "es", onAccess }) {
             </span>
             <div className="ic-rule"/>
             <p className="ic-tagline">{tx.tagline}</p>
+            <div className="ic-pillars">
+              {tx.pillars.map((p) => (
+                <div className="ic-pillar" key={p.title}>
+                  <div className="ic-pillar-title">{p.title}</div>
+                  <div className="ic-pillar-text">{p.text}</div>
+                </div>
+              ))}
+            </div>
             {view === "gate" && (
               <div className="ic-gate">
                 <div className="ic-access-label">{tx.gateLabel}</div>

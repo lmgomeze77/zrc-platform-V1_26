@@ -59,6 +59,9 @@ async function handleRequest(request, env, ctx) {
     if (url.pathname === "/api/claude" && request.method === "POST")
       return handleClaude(request, env);
 
+    if (url.pathname === "/api/assistant" && request.method === "POST")
+      return handleAssistant(request, env);
+
     if (url.pathname === "/api/inner-circle/check" && request.method === "GET")
       return handleInnerCircleCheck(request, env);
 
@@ -272,6 +275,78 @@ async function handleClaude(request, env) {
     return jsonResponse({ error: `Anthropic non-JSON (${resp.status}): ${text.slice(0, 300)}` }, 502);
   }
   return jsonResponse(data, resp.status);
+}
+
+// ============================================================
+// /api/assistant  (chat del asistente de la web, con cascada de proveedores)
+// 1º Claude Haiku (de pago, barato) → 2º Workers AI de Cloudflare (asignación
+// diaria gratuita, sin API key). Si ambos fallan, el frontend muestra su
+// mensaje estático. Devuelve { text, provider }.
+// ============================================================
+const ASSISTANT_CLAUDE_MODEL = "claude-haiku-4-5";
+const ASSISTANT_FREE_MODEL = "@cf/meta/llama-3.1-8b-instruct";
+const ASSISTANT_MAX_TOKENS = 250;
+
+async function handleAssistant(request, env) {
+  let body;
+  try { body = await request.json(); } catch {
+    return jsonResponse({ error: "Invalid JSON" }, 400);
+  }
+
+  const { system, messages } = body || {};
+  if (typeof system !== "string" || !Array.isArray(messages) || messages.length === 0)
+    return jsonResponse({ error: "system and messages required" }, 400);
+
+  // Límites duros de consumo, independientes de lo que envíe el cliente.
+  const trimmed = messages.slice(-6).map((m) => ({
+    role: m.role === "assistant" ? "assistant" : "user",
+    content: String(m.content || "").slice(0, 1000),
+  }));
+
+  // 1) Claude Haiku
+  if (env.ANTHROPIC_API_KEY) {
+    try {
+      const resp = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": env.ANTHROPIC_API_KEY,
+          "anthropic-version": "2023-06-01",
+        },
+        body: JSON.stringify({
+          model: ASSISTANT_CLAUDE_MODEL,
+          max_tokens: ASSISTANT_MAX_TOKENS,
+          system,
+          messages: trimmed,
+        }),
+      });
+      if (resp.ok) {
+        const data = await resp.json();
+        const text = data?.content?.find((b) => b.type === "text")?.text;
+        if (text) return jsonResponse({ text, provider: "claude" });
+      } else {
+        console.error("Assistant: Anthropic error", resp.status, (await resp.text()).slice(0, 200));
+      }
+    } catch (err) {
+      console.error("Assistant: Anthropic fetch failed:", err.message);
+    }
+  }
+
+  // 2) Workers AI (gratis) — requiere binding [ai] en wrangler.toml
+  if (env.AI) {
+    try {
+      const result = await env.AI.run(ASSISTANT_FREE_MODEL, {
+        messages: [{ role: "system", content: system }, ...trimmed],
+        max_tokens: ASSISTANT_MAX_TOKENS,
+      });
+      const text = (result?.response || "").trim();
+      if (text) return jsonResponse({ text, provider: "workers-ai" });
+    } catch (err) {
+      console.error("Assistant: Workers AI failed:", err.message);
+    }
+  }
+
+  return jsonResponse({ error: "No AI provider available" }, 503);
 }
 
 // ============================================================

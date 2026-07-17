@@ -10,6 +10,7 @@ import PricingPage from "./pages/PricingPage";
 import MacroPulse from "./pages/intelligence/MacroPulse";
 import GeoRiskML from "./pages/intelligence/GeoRiskML";
 import GeoRiskIndex from "./pages/intelligence/GeoRiskIndex";
+import ZenithAssistant from "./components/assistant/ZenithAssistant";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.4
@@ -1248,6 +1249,19 @@ const Intelligence = ({ lang }) => {
     if (tool.name === "Macro Pulse") setShowMacroPulse(true);
   };
 
+  // Peticiones del asistente IA para abrir una herramienta.
+  // Aplica el mismo gating que los botones del grid: registro y tier.
+  useEffect(() => {
+    const onAssistantOpenTool = (e) => {
+      const tool = TOOLS.find((tl) => tl.name === e.detail?.tool);
+      if (!tool) return;
+      if (!user) { setShowAuth(true); return; }
+      handleLaunch(tool);
+    };
+    window.addEventListener("zrc-open-tool", onAssistantOpenTool);
+    return () => window.removeEventListener("zrc-open-tool", onAssistantOpenTool);
+  }, [user, tier, tierLoading]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <Sec id="intelligence">
       <SH label={t.label} title={t.title} sub={t.sub} />
@@ -1703,6 +1717,7 @@ const ZRCPlatform = () => {
 
       <Community lang={lang} onAccess={() => setIcPage("inner-circle-private")} />
       <Footer lang={lang} />
+      <ZenithAssistant lang={lang} onNav={onNav} hidden={!!icPage} />
     </AuthProvider>
   );
 };

@@ -12,6 +12,10 @@ not_found_handling = "single-page-application"
 binding = "ASSETS"
 run_worker_first = true
 
+# Workers AI - fallback gratuito del asistente de la web (/api/assistant)
+[ai]
+binding = "AI"
+
 # D1 - base de datos de leads
 [[d1_databases]]
 binding = "DB"
