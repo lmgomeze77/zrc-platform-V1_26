@@ -989,6 +989,73 @@ const Nav = ({ lang, setLang, onNav }) => {
 const Hero = ({ lang, onNav }) => {
   const t = T[lang].hero;
   const [loaded, setLoaded] = useState(false);
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const COLS = 9, ROWS = 7, MISS_C = 6, MISS_R = 1;
+    const G = "212,168,83";
+    const jit = (c, r, ax) => {
+      const s = c * 13.71 + r * 7.33 + ax * 17.19;
+      return Math.sin(s) * 0.58 + Math.sin(s * 2.37) * 0.27;
+    };
+    const vnt = (c, r) => (Math.sin(c * 5.17 + r * 9.73) + 1) * 0.5;
+    let pts = [], quads = [], W = 0, H = 0;
+    function build(w, h) {
+      W = w; H = h;
+      const cW = w / (COLS - 1), cH = h / (ROWS - 1);
+      pts = [];
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+        const e = c === 0 || c === COLS - 1 || r === 0 || r === ROWS - 1;
+        pts.push({ x: c * cW + (e ? 0 : jit(c, r, 0) * cW * 0.33), y: r * cH + (e ? 0 : jit(c, r, 1) * cH * 0.33) });
+      }
+      quads = [];
+      for (let r = 0; r < ROWS - 1; r++) for (let c = 0; c < COLS - 1; c++)
+        quads.push({ tl: pts[r * COLS + c], tr: pts[r * COLS + c + 1], br: pts[(r + 1) * COLS + c + 1], bl: pts[(r + 1) * COLS + c], missing: r === MISS_R && c === MISS_C, v: vnt(c, r) });
+    }
+    function dp(q) { ctx.beginPath(); ctx.moveTo(q.tl.x, q.tl.y); ctx.lineTo(q.tr.x, q.tr.y); ctx.lineTo(q.br.x, q.br.y); ctx.lineTo(q.bl.x, q.bl.y); ctx.closePath(); }
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+      const cx = W * 0.5, cy = H * 0.48, maxD = Math.hypot(W * 0.55, H * 0.52);
+      for (const q of quads) {
+        const qcx = (q.tl.x + q.tr.x + q.br.x + q.bl.x) * 0.25;
+        const qcy = (q.tl.y + q.tr.y + q.br.y + q.bl.y) * 0.25;
+        const dist = Math.min(1, Math.hypot(qcx - cx, qcy - cy) / maxD);
+        dp(q);
+        if (q.missing) {
+          const pulse = 0.5 + 0.5 * Math.sin(t * 0.0011);
+          const gr = ctx.createRadialGradient(qcx, qcy, 0, qcx, qcy, W * 0.09);
+          gr.addColorStop(0, `rgba(${G},${(0.09 * pulse).toFixed(3)})`);
+          gr.addColorStop(1, `rgba(${G},0)`);
+          ctx.fillStyle = gr; ctx.fill();
+          ctx.save();
+          ctx.shadowColor = `rgb(${G})`; ctx.shadowBlur = 20 + 12 * pulse;
+          ctx.strokeStyle = `rgba(${G},${(0.5 + 0.38 * pulse).toFixed(3)})`; ctx.lineWidth = 1.4;
+          dp(q); ctx.stroke(); ctx.restore();
+          dp(q); ctx.strokeStyle = `rgba(${G},${(0.35 + 0.28 * pulse).toFixed(3)})`; ctx.lineWidth = 0.7; ctx.stroke();
+        } else {
+          const rv = 6 + Math.round(q.v * 5), gv = 8 + Math.round(q.v * 3), bv = 13 + Math.round(q.v * 9);
+          ctx.fillStyle = `rgba(${rv},${gv},${bv},${(0.05 + dist * 0.60).toFixed(3)})`; ctx.fill();
+          ctx.strokeStyle = `rgba(${G},${(0.018 + dist * 0.075).toFixed(3)})`; ctx.lineWidth = 0.5; ctx.stroke();
+        }
+      }
+    }
+    let raf;
+    function resize() {
+      const dpr = devicePixelRatio || 1;
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return;
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); build(w, h);
+    }
+    function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
+    const ro = new ResizeObserver(() => { cancelAnimationFrame(raf); resize(); raf = requestAnimationFrame(loop); });
+    ro.observe(canvas.parentElement);
+    resize(); raf = requestAnimationFrame(loop);
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 150);
@@ -1010,112 +1077,8 @@ const Hero = ({ lang, onNav }) => {
         background: "#09090B",
       }}
     >
-      <div style={{
-        position: "absolute", inset: 0,
-        background: `
-          radial-gradient(ellipse 80% 60% at 12% 72%, rgba(11,31,63,0.9) 0%, transparent 58%),
-          radial-gradient(ellipse 55% 50% at 82% 78%, rgba(11,31,63,0.95) 0%, transparent 52%),
-          radial-gradient(ellipse 40% 35% at 50% 92%, rgba(11,31,63,0.8) 0%, transparent 48%),
-          radial-gradient(ellipse 100% 45% at 50% 115%, rgba(6,9,18,1) 0%, transparent 55%)
-        `,
-      }} />
-      <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.07 }} viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-        <g fill="#D4A853">
-          <circle cx="780" cy="260" r="2"/><circle cx="800" cy="255" r="2"/><circle cx="820" cy="260" r="2"/>
-          <circle cx="840" cy="265" r="2"/><circle cx="830" cy="275" r="2"/><circle cx="810" cy="280" r="2"/>
-          <circle cx="790" cy="278" r="2"/><circle cx="770" cy="270" r="2"/><circle cx="760" cy="260" r="2"/>
-          <circle cx="850" cy="258" r="2"/><circle cx="860" cy="268" r="2"/><circle cx="855" cy="280" r="2"/>
-          <circle cx="760" cy="288" r="2"/><circle cx="775" cy="295" r="2"/><circle cx="795" cy="290" r="2"/>
-          <circle cx="760" cy="310" r="2"/><circle cx="780" cy="308" r="2"/><circle cx="800" cy="306" r="2"/>
-          <circle cx="820" cy="308" r="2"/><circle cx="840" cy="310" r="2"/><circle cx="860" cy="312" r="2"/>
-          <circle cx="880" cy="315" r="2"/><circle cx="770" cy="325" r="2"/><circle cx="790" cy="320" r="2"/>
-          <circle cx="810" cy="318" r="2"/><circle cx="830" cy="322" r="2"/><circle cx="850" cy="326" r="2"/>
-          <circle cx="900" cy="318" r="2"/><circle cx="920" cy="322" r="2"/><circle cx="940" cy="328" r="2"/>
-          <circle cx="900" cy="255" r="2"/><circle cx="920" cy="250" r="2"/><circle cx="940" cy="248" r="2"/>
-          <circle cx="960" cy="252" r="2"/><circle cx="980" cy="258" r="2"/><circle cx="1000" cy="260" r="2"/>
-          <circle cx="910" cy="268" r="2"/><circle cx="930" cy="265" r="2"/><circle cx="950" cy="262" r="2"/>
-          <circle cx="970" cy="268" r="2"/><circle cx="990" cy="272" r="2"/><circle cx="1010" cy="270" r="2"/>
-          <circle cx="1020" cy="258" r="2"/><circle cx="1030" cy="265" r="2"/><circle cx="1040" cy="272" r="2"/>
-          <circle cx="1050" cy="260" r="2"/><circle cx="1060" cy="268" r="2"/>
-          <circle cx="380" cy="240" r="2"/><circle cx="400" cy="245" r="2"/><circle cx="420" cy="248" r="2"/>
-          <circle cx="440" cy="242" r="2"/><circle cx="460" cy="248" r="2"/><circle cx="390" cy="260" r="2"/>
-          <circle cx="410" cy="258" r="2"/><circle cx="430" cy="262" r="2"/><circle cx="450" cy="265" r="2"/>
-          <circle cx="420" cy="278" r="2"/><circle cx="440" cy="275" r="2"/><circle cx="460" cy="278" r="2"/>
-          <circle cx="480" cy="270" r="2"/><circle cx="500" cy="262" r="2"/>
-          <circle cx="440" cy="360" r="2"/><circle cx="460" cy="355" r="2"/><circle cx="480" cy="360" r="2"/>
-          <circle cx="450" cy="375" r="2"/><circle cx="470" cy="370" r="2"/><circle cx="490" cy="365" r="2"/>
-          <circle cx="455" cy="390" r="2"/><circle cx="475" cy="385" r="2"/><circle cx="460" cy="405" r="2"/>
-          <circle cx="470" cy="420" r="2"/><circle cx="455" cy="435" r="2"/>
-        </g>
-      </svg>
-      <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: 0.1 }} viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-        <g fill="none" stroke="#D4A853" strokeWidth="0.8">
-          <circle cx="800" cy="430" r="180"/><circle cx="800" cy="430" r="290"/>
-          <circle cx="800" cy="430" r="410"/><circle cx="800" cy="430" r="550"/>
-        </g>
-        <g fill="none" stroke="#D4A853" strokeWidth="0.4" opacity="0.5">
-          <line x1="800" y1="60" x2="800" y2="870"/>
-          <line x1="180" y1="430" x2="1420" y2="430"/>
-        </g>
-        <g transform="translate(155,155)">
-          <circle cx="0" cy="0" r="30" fill="none" stroke="#D4A853" strokeWidth="0.8"/>
-          <polygon points="0,-24 4,-8 0,-4 -4,-8" fill="#D4A853" opacity="0.7"/>
-          <polygon points="0,24 4,8 0,4 -4,8" fill="#D4A853" opacity="0.3"/>
-          <line x1="-24" y1="0" x2="24" y2="0" stroke="#D4A853" strokeWidth="0.8"/>
-          <text x="0" y="-34" textAnchor="middle" fontFamily="serif" fontSize="10" fill="#D4A853" opacity="0.7">N</text>
-          <text x="0"  y="44"  textAnchor="middle" fontFamily="serif" fontSize="10" fill="#D4A853" opacity="0.4">S</text>
-          <text x="-38" y="4"  textAnchor="middle" fontFamily="serif" fontSize="10" fill="#D4A853" opacity="0.4">W</text>
-          <text x="38"  y="4"  textAnchor="middle" fontFamily="serif" fontSize="10" fill="#D4A853" opacity="0.4">E</text>
-        </g>
-      </svg>
-      <svg style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "65%", opacity: 0.5 }} viewBox="0 0 1600 580" preserveAspectRatio="xMidYMax slice">
-        <defs>
-          <linearGradient id="mtnA" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#1a2d52" stopOpacity="0.85"/>
-            <stop offset="100%" stopColor="#0B1F3F" stopOpacity="0.5"/>
-          </linearGradient>
-          <linearGradient id="mtnB" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#0d1a30" stopOpacity="0.95"/>
-            <stop offset="100%" stopColor="#060912" stopOpacity="0.8"/>
-          </linearGradient>
-        </defs>
-        <path d="M -50 580 Q 0 400 100 420 Q 200 440 280 380 Q 350 320 420 360 Q 490 400 550 580 Z" fill="url(#mtnA)"/>
-        <path d="M 1050 580 Q 1150 480 1250 510 Q 1350 540 1450 470 Q 1530 410 1650 580 Z" fill="url(#mtnA)"/>
-        <path d="M -50 580 Q 50 500 150 520 Q 250 540 350 480 Q 430 420 480 440 Q 540 460 600 580 Z" fill="url(#mtnB)"/>
-        <path d="M 1000 580 Q 1100 520 1200 540 Q 1300 560 1400 500 Q 1480 450 1650 580 Z" fill="url(#mtnB)"/>
-        <path d="M -20 580 Q 80 540 130 558 L 162 538 Q 202 518 242 533 Q 282 550 320 580 Z" fill="#0B1F3F" opacity="0.9"/>
-        <path d="M 1280 580 Q 1360 552 1402 563 Q 1442 543 1484 554 L 1524 580 Z" fill="#0B1F3F" opacity="0.9"/>
-      </svg>
-      <svg style={{ position: "absolute", right: 0, top: 0, width: "44%", height: "100%", opacity: 0.5 }} viewBox="0 0 700 900" preserveAspectRatio="xMaxYMid meet">
-        <defs>
-          <radialGradient id="nd">
-            <stop offset="0%"   stopColor="#D4A853" stopOpacity="0.45"/>
-            <stop offset="100%" stopColor="#D4A853" stopOpacity="0"/>
-          </radialGradient>
-        </defs>
-        <g stroke="#D4A853" strokeWidth="0.8" fill="none" opacity="0.45">
-          <line x1="580" y1="275" x2="478" y2="418"/>
-          <line x1="478" y1="418" x2="582" y2="558"/>
-          <line x1="580" y1="275" x2="622" y2="418"/>
-          <line x1="622" y1="418" x2="582" y2="558"/>
-          <line x1="478" y1="418" x2="622" y2="418"/>
-          <line x1="582" y1="558" x2="500" y2="678"/>
-          <line x1="580" y1="275" x2="502" y2="178"/>
-          <line x1="382" y1="338" x2="478" y2="418"/>
-          <line x1="382" y1="498" x2="478" y2="418"/>
-          <line x1="382" y1="338" x2="382" y2="498"/>
-        </g>
-        <circle cx="580" cy="275" r="14" fill="url(#nd)"/><circle cx="580" cy="275" r="4.5" fill="#D4A853" opacity="0.9"/>
-        <circle cx="478" cy="418" r="14" fill="url(#nd)"/><circle cx="478" cy="418" r="4.5" fill="#D4A853" opacity="0.9"/>
-        <circle cx="622" cy="418" r="11" fill="url(#nd)"/><circle cx="622" cy="418" r="3.5" fill="#D4A853" opacity="0.8"/>
-        <circle cx="582" cy="558" r="16" fill="url(#nd)"/><circle cx="582" cy="558" r="5"   fill="#D4A853"/>
-        <circle cx="500" cy="678" r="11" fill="url(#nd)"/><circle cx="500" cy="678" r="3.5" fill="#D4A853" opacity="0.7"/>
-        <circle cx="502" cy="178" r="10" fill="url(#nd)"/><circle cx="502" cy="178" r="3"   fill="#D4A853" opacity="0.6"/>
-        <circle cx="382" cy="338" r="10" fill="url(#nd)"/><circle cx="382" cy="338" r="3"   fill="#D4A853" opacity="0.65"/>
-        <circle cx="382" cy="498" r="10" fill="url(#nd)"/><circle cx="382" cy="498" r="3"   fill="#D4A853" opacity="0.65"/>
-      </svg>
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(6,9,18,0.78) 0%, rgba(6,9,18,0.65) 45%, rgba(6,9,18,0.82) 100%)" }} />
-      <div style={{ position: "absolute", inset: 0, opacity: 0.04, mixBlendMode: "overlay", pointerEvents: "none", backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")` }} />
+      <canvas ref={canvasRef} style={{ position:"absolute", inset:0, width:"100%", height:"100%", display:"block" }} />
+      <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse 58% 52% at 50% 50%,rgba(5,7,12,0.80) 0%,rgba(5,7,12,0.42) 46%,transparent 68%)", pointerEvents:"none" }} />
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 860, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(30px)", transition: "all 1.2s cubic-bezier(0.16,1,0.3,1)" }}>
         <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.35em", marginBottom: 40, fontWeight: 400, opacity: 0.9 }}>{t.tag}</div>
         <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px,5.5vw,68px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.08, letterSpacing: "-0.02em" }}>
