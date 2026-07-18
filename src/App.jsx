@@ -989,73 +989,6 @@ const Nav = ({ lang, setLang, onNav }) => {
 const Hero = ({ lang, onNav }) => {
   const t = T[lang].hero;
   const [loaded, setLoaded] = useState(false);
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    const COLS = 9, ROWS = 7, MISS_C = 6, MISS_R = 1;
-    const G = "212,168,83";
-    const jit = (c, r, ax) => {
-      const s = c * 13.71 + r * 7.33 + ax * 17.19;
-      return Math.sin(s) * 0.58 + Math.sin(s * 2.37) * 0.27;
-    };
-    const vnt = (c, r) => (Math.sin(c * 5.17 + r * 9.73) + 1) * 0.5;
-    let pts = [], quads = [], W = 0, H = 0;
-    function build(w, h) {
-      W = w; H = h;
-      const cW = w / (COLS - 1), cH = h / (ROWS - 1);
-      pts = [];
-      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
-        const e = c === 0 || c === COLS - 1 || r === 0 || r === ROWS - 1;
-        pts.push({ x: c * cW + (e ? 0 : jit(c, r, 0) * cW * 0.33), y: r * cH + (e ? 0 : jit(c, r, 1) * cH * 0.33) });
-      }
-      quads = [];
-      for (let r = 0; r < ROWS - 1; r++) for (let c = 0; c < COLS - 1; c++)
-        quads.push({ tl: pts[r * COLS + c], tr: pts[r * COLS + c + 1], br: pts[(r + 1) * COLS + c + 1], bl: pts[(r + 1) * COLS + c], missing: r === MISS_R && c === MISS_C, v: vnt(c, r) });
-    }
-    function dp(q) { ctx.beginPath(); ctx.moveTo(q.tl.x, q.tl.y); ctx.lineTo(q.tr.x, q.tr.y); ctx.lineTo(q.br.x, q.br.y); ctx.lineTo(q.bl.x, q.bl.y); ctx.closePath(); }
-    function draw(t) {
-      ctx.clearRect(0, 0, W, H);
-      const cx = W * 0.5, cy = H * 0.48, maxD = Math.hypot(W * 0.55, H * 0.52);
-      for (const q of quads) {
-        const qcx = (q.tl.x + q.tr.x + q.br.x + q.bl.x) * 0.25;
-        const qcy = (q.tl.y + q.tr.y + q.br.y + q.bl.y) * 0.25;
-        const dist = Math.min(1, Math.hypot(qcx - cx, qcy - cy) / maxD);
-        dp(q);
-        if (q.missing) {
-          const pulse = 0.5 + 0.5 * Math.sin(t * 0.0011);
-          const gr = ctx.createRadialGradient(qcx, qcy, 0, qcx, qcy, W * 0.09);
-          gr.addColorStop(0, `rgba(${G},${(0.09 * pulse).toFixed(3)})`);
-          gr.addColorStop(1, `rgba(${G},0)`);
-          ctx.fillStyle = gr; ctx.fill();
-          ctx.save();
-          ctx.shadowColor = `rgb(${G})`; ctx.shadowBlur = 20 + 12 * pulse;
-          ctx.strokeStyle = `rgba(${G},${(0.5 + 0.38 * pulse).toFixed(3)})`; ctx.lineWidth = 1.4;
-          dp(q); ctx.stroke(); ctx.restore();
-          dp(q); ctx.strokeStyle = `rgba(${G},${(0.35 + 0.28 * pulse).toFixed(3)})`; ctx.lineWidth = 0.7; ctx.stroke();
-        } else {
-          const rv = 6 + Math.round(q.v * 5), gv = 8 + Math.round(q.v * 3), bv = 13 + Math.round(q.v * 9);
-          ctx.fillStyle = `rgba(${rv},${gv},${bv},${(0.05 + dist * 0.60).toFixed(3)})`; ctx.fill();
-          ctx.strokeStyle = `rgba(${G},${(0.018 + dist * 0.075).toFixed(3)})`; ctx.lineWidth = 0.5; ctx.stroke();
-        }
-      }
-    }
-    let raf;
-    function resize() {
-      const dpr = devicePixelRatio || 1;
-      const w = canvas.clientWidth, h = canvas.clientHeight;
-      if (!w || !h) return;
-      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); build(w, h);
-    }
-    function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
-    const ro = new ResizeObserver(() => { cancelAnimationFrame(raf); resize(); raf = requestAnimationFrame(loop); });
-    ro.observe(canvas.parentElement);
-    resize(); raf = requestAnimationFrame(loop);
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 150);
@@ -1074,11 +1007,15 @@ const Hero = ({ lang, onNav }) => {
         position: "relative",
         overflow: "hidden",
         padding: "132px clamp(16px,4vw,48px) 60px",
-        background: "#09090B",
+        background: "#050C16",
       }}
     >
-      <canvas ref={canvasRef} style={{ position:"absolute", inset:0, width:"100%", height:"100%", display:"block" }} />
-      <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse 58% 52% at 50% 50%,rgba(5,7,12,0.80) 0%,rgba(5,7,12,0.42) 46%,transparent 68%)", pointerEvents:"none" }} />
+      <img
+        src="/globe-bg.png"
+        aria-hidden="true"
+        style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", objectPosition:"center", display:"block", userSelect:"none", pointerEvents:"none" }}
+      />
+      <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse 80% 80% at 50% 50%, transparent 28%, rgba(4,10,18,0.48) 100%), linear-gradient(to bottom, rgba(4,10,18,0.32) 0%, transparent 18%, transparent 74%, rgba(4,10,18,0.60) 100%)", pointerEvents:"none" }} />
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 860, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(30px)", transition: "all 1.2s cubic-bezier(0.16,1,0.3,1)" }}>
         <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.35em", marginBottom: 40, fontWeight: 400, opacity: 0.9 }}>{t.tag}</div>
         <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px,5.5vw,68px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.08, letterSpacing: "-0.02em" }}>
