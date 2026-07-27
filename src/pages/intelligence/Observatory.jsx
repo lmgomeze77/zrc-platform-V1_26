@@ -180,17 +180,31 @@ const AGENDA = [
   },
 ];
 // ── LOCKED OVERLAY ───────────────────────────────────────────
-function LockedOverlay({ lang, openRegister, openLogin }) {
+function LockedOverlay({ lang, openRegister, openLogin, expired, openPricing }) {
+  if (expired) {
+    return (
+      <div style={{ padding:"24px 20px", textAlign:"center", background:C.surface, borderRadius:6, border:"1px solid rgba(239,68,68,0.3)" }}>
+        <p style={{ fontFamily:F.body, fontSize:13, color:C.textSec, marginBottom:16 }}>
+          {lang==="es"
+            ? "Tu prueba gratuita de 7 dias ha terminado. Anade un metodo de pago para seguir con acceso al analisis completo."
+            : "Your 7-day free trial has ended. Add a payment method to keep access to the full analysis."}
+        </p>
+        <button onClick={openPricing} style={{ background:C.gold, border:"none", color:"#000", padding:"10px 24px", fontFamily:F.mono, fontSize:11, letterSpacing:"0.08em", cursor:"pointer", borderRadius:4, fontWeight:600 }}>
+          {lang==="es" ? "AÑADIR MÉTODO DE PAGO" : "ADD PAYMENT METHOD"}
+        </button>
+      </div>
+    );
+  }
   return (
     <div style={{ padding:"24px 20px", textAlign:"center", background:C.surface, borderRadius:6, border:`1px solid ${C.border}` }}>
       <p style={{ fontFamily:F.body, fontSize:13, color:C.textSec, marginBottom:16 }}>
         {lang==="es"
-          ? "El analisis de inversion completo — situacion, exposicion de activos y senal ZRC — esta disponible para miembros registrados."
-          : "The complete investment analysis — situation, asset exposure and ZRC signal — is available to registered members."}
+          ? "El analisis de inversion completo — situacion, exposicion de activos y senal ZRC — esta disponible con una prueba gratuita de 7 dias."
+          : "The complete investment analysis — situation, asset exposure and ZRC signal — is available with a 7-day free trial."}
       </p>
       <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:8 }}>
         <button onClick={openRegister} style={{ background:C.gold, border:"none", color:"#000", padding:"10px 24px", fontFamily:F.mono, fontSize:11, letterSpacing:"0.08em", cursor:"pointer", borderRadius:4, fontWeight:600 }}>
-          {lang==="es" ? "CREAR CUENTA GRATUITA" : "CREATE FREE ACCOUNT"}
+          {lang==="es" ? "EMPEZAR PRUEBA GRATUITA" : "START FREE TRIAL"}
         </button>
         <button onClick={openLogin} style={{ background:"transparent", border:`1px solid ${C.border}`, color:C.textSec, padding:"8px 24px", fontFamily:F.mono, fontSize:11, letterSpacing:"0.08em", cursor:"pointer", borderRadius:4 }}>
           {lang==="es" ? "INICIAR SESION" : "SIGN IN"}
@@ -201,9 +215,12 @@ function LockedOverlay({ lang, openRegister, openLogin }) {
 }
 
 // ── MAIN COMPONENT ───────────────────────────────────────────
-export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, SH, GoldDivider, T }) {
+export default function Observatory({ lang, useAuth, useSubscription, useHeadlines, FadeIn, Sec, SH, GoldDivider, T }) {
   const t = T[lang].obs;
-  const { user, openRegister, openLogin } = useAuth();
+  const { user, openRegister, openLogin, openPricing } = useAuth();
+  const { status: subStatus } = useSubscription(user?.email);
+  const trialExpired = subStatus === "expired";
+  const hasAccess = user && !trialExpired;
   const [expanded, setExpanded] = useState(null);
   const [filter, setFilter]     = useState("ALL");
   const regions = ["ALL","MENA","EU","LATAM","APAC","AFRICA","EURASIA"];
@@ -269,7 +286,7 @@ export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, 
           <span style={{ fontFamily:F.mono, fontSize:10, color:"#71717A" }}>
             ({feed.length} {lang==="es" ? "señales" : "signals"})
           </span>
-          {!user && directionalCount > 0 && (
+          {!hasAccess && directionalCount > 0 && (
             <span style={{ fontFamily:F.mono, fontSize:9, color:C.gold, letterSpacing:"0.05em" }}>
               {directionalCount} {lang==="es"
                 ? "con posición direccional ZRC — regístrate para ver"
@@ -415,7 +432,7 @@ export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, 
                 {/* EXPANDED: MEMBER ANALYSIS */}
                 {isOpen && (
                   <div style={{ padding:"0 18px 18px", borderTop:`1px solid ${C.border}` }}>
-                    {user ? (
+                    {hasAccess ? (
                       <div style={{ paddingTop:16 }}>
 
                         {/* SITUATION */}
@@ -507,7 +524,7 @@ export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, 
                       </div>
                     ) : (
                       <div style={{ paddingTop:16 }}>
-                        <LockedOverlay lang={lang} openRegister={openRegister} openLogin={openLogin} />
+                        <LockedOverlay lang={lang} openRegister={openRegister} openLogin={openLogin} expired={trialExpired} openPricing={openPricing} />
                       </div>
                     )}
                   </div>
