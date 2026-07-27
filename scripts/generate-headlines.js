@@ -280,6 +280,56 @@ function diversifyByCluster(rankedEntries, targetCount) {
   return kept.slice(0, targetCount);
 }
 
+// ─── PARSEO TOLERANTE DEL ARRAY DEVUELTO ──────────────────────
+// El parseo original hacia slice(indexOf("["), lastIndexOf("]")) + JSON.parse.
+// Si la respuesta venia cortada, ese ultimo "]" era el cierre de un
+// market_impact interno, el slice producia JSON invalido y se perdia la tanda
+// completa. Ahora, si el parse directo falla, se rescatan los objetos de nivel
+// superior que si estan completos: solo se publican 6 de los 10 pedidos, asi
+// que una cola truncada es irrelevante.
+function salvageTopLevelObjects(text) {
+  const out = [];
+  let depth = 0, start = -1, inStr = false, esc = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inStr) {
+      if (esc) esc = false;
+      else if (ch === "\\") esc = true;
+      else if (ch === '"') inStr = false;
+      continue;
+    }
+    if (ch === '"') { inStr = true; continue; }
+    else if (ch === "{") { if (depth === 0) start = i; depth++; }
+    else if (ch === "}") {
+      depth--;
+      if (depth === 0 && start !== -1) {
+        try { out.push(JSON.parse(text.slice(start, i + 1))); } catch (_) {}
+        start = -1;
+      }
+    }
+  }
+  return out;
+}
+
+function parseRankedArray(jsonText) {
+  const cleaned = jsonText.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
+  const start = cleaned.indexOf("[");
+  if (start === -1) throw new Error("El modelo no devolvio un array JSON");
+
+  const end = cleaned.lastIndexOf("]");
+  if (end > start) {
+    try {
+      const arr = JSON.parse(cleaned.slice(start, end + 1));
+      if (Array.isArray(arr) && arr.length > 0) return arr;
+    } catch (_) { /* cae al rescate */ }
+  }
+
+  const salvaged = salvageTopLevelObjects(cleaned.slice(start));
+  if (salvaged.length === 0) throw new Error("JSON invalido y sin ningun item recuperable");
+  console.warn(`   ⚠️  JSON truncado o mal formado — recuperados ${salvaged.length} items completos`);
+  return salvaged;
+}
+
 // ─── HAIKU ENRICHMENT ─────────────────────────────────────────
 async function enrichWithHaiku(candidates) {
   if (candidates.length === 0) throw new Error("No candidates to enrich");
@@ -328,15 +378,22 @@ Return ONLY the JSON array of up to 10 ranked items (best first).`;
 
   console.log(`🤖 Calling Sonnet to rank+enrich up to 10 from ${candidates.length} candidates...`);
 
+  // 10 items bilingues (titulo + resumen de 2-3 frases + 2-4 market_impact con
+  // nota en es/en) rondan los 5-7k tokens: con 4500 la respuesta se cortaba a
+  // media cadena y el JSON.parse reventaba la tanda entera.
   const response = await callAnthropic(
     {
       model: "claude-sonnet-4-6",
-      max_tokens: 4500,
+      max_tokens: 16000,
       system: systemPrompt,
       messages: [{ role: "user", content: userPrompt }],
     },
     { label: "ranking de titulares" }
   );
+
+  if (response.stop_reason === "max_tokens") {
+    console.warn("   ⚠️  Respuesta cortada por max_tokens — se recuperan los items completos");
+  }
 
   // Concatenate all text blocks
   const jsonText = response.content
@@ -344,20 +401,15 @@ Return ONLY the JSON array of up to 10 ranked items (best first).`;
     .map((b) => b.text)
     .join("\n");
 
-  // Extract JSON
-  const cleaned = jsonText.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
-  const start = cleaned.indexOf("[");
-  const end = cleaned.lastIndexOf("]");
-  if (start === -1 || end === -1) {
-    throw new Error("Haiku did not return a JSON array");
-  }
-  const ranked = JSON.parse(cleaned.slice(start, end + 1));
+  const ranked = parseRankedArray(jsonText);
 
   // Re-attach source_url, source, published_at, cluster from candidates by index
   const enriched = ranked
     .map((e) => {
       const candidate = candidates[e.index];
       if (!candidate) return null;
+      // Un item recuperado de una respuesta truncada puede venir a medias.
+      if (!e.title?.es || !e.title?.en || !e.summary?.es || !e.summary?.en) return null;
       return {
         id: 0, // assigned below
         tag: e.tag,
