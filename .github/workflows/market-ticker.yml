@@ -29,10 +29,21 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/update-market.js
 
+      # Este job y daily-headlines.yml escriben el mismo fichero y comparten la
+      # franja de las 06:00 UTC: sin rebase, el segundo en llegar es rechazado.
       - name: Commit and push
         run: |
           git config user.name "ZRC Market Bot"
           git config user.email "bot@zenithrisecapital.com"
           git add public/data/headlines.json
-          git diff --cached --quiet || git commit -m "📈 Market update — $(date -u +'%H:%M UTC')"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "📈 Market update — $(date -u +'%H:%M UTC')"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            echo "Push attempt $i failed, retrying..."
+            sleep 5
+          done
+          exit 1

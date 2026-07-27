@@ -436,8 +436,11 @@ const useTickerData = () => {
   return { data, lastUpdate };
 };
 
+// Devuelve { headlines, generatedAt }. `generatedAt` permite al Observatorio
+// avisar cuando el pipeline diario lleva días sin refrescar — sin él, un feed
+// congelado se ve exactamente igual que uno fresco.
 const useHeadlines = (fallback) => {
-  const [data, setData] = useState(fallback);
+  const [data, setData] = useState({ headlines: fallback, generatedAt: null });
 
   useEffect(() => {
     let mounted = true;
@@ -445,7 +448,7 @@ const useHeadlines = (fallback) => {
       .then((res) => (res.ok ? res.json() : null))
       .then((json) => {
         if (mounted && json && Array.isArray(json.headlines) && json.headlines.length > 0) {
-          setData(json.headlines);
+          setData({ headlines: json.headlines, generatedAt: json.generated_at || null });
         }
       })
       .catch((err) => console.warn("Headlines fetch failed:", err.message));

@@ -209,12 +209,21 @@ export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, 
   const regions = ["ALL","MENA","EU","LATAM","APAC","AFRICA","EURASIA"];
 
   // Live data from daily pipeline. Static FEED only when API has nothing.
-  const liveData = useHeadlines(null);
-  const feed = (liveData && liveData.length > 0)
+  const { headlines: liveData, generatedAt } = useHeadlines(null);
+  const isLive = Array.isArray(liveData) && liveData.length > 0;
+  const feed = isLive
     ? liveData
     : FEED.map(f => ({ ...f, _static: true }));
 
   const filtered = filter === "ALL" ? feed : feed.filter(f => f.region === filter);
+
+  // El pipeline corre a diario. Si lleva más de 48h sin refrescar, algo se ha
+  // roto aguas arriba (créditos de API, cron, RSS) y el feed queda congelado
+  // mostrando titulares viejos como si fueran de hoy. Se avisa explícitamente.
+  const staleDays = (isLive && generatedAt)
+    ? Math.floor((Date.now() - new Date(generatedAt)) / 86400000)
+    : null;
+  const isStale = staleDays !== null && staleDays >= 2;
 
   // ── FRESHNESS ─────────────────────────────────────────────
   const getFreshness = (d) => {
@@ -269,6 +278,24 @@ export default function Observatory({ lang, useAuth, useHeadlines, FadeIn, Sec, 
           )}
         </div>
       } />
+
+      {/* STALE FEED NOTICE — pipeline diario sin refrescar */}
+      {isStale && (
+        <FadeIn delay={0.05}>
+          <div style={{
+            display:"flex", alignItems:"flex-start", gap:10, marginBottom:20,
+            padding:"10px 14px", borderRadius:6,
+            background:"rgba(245,158,11,0.08)", border:`1px solid rgba(245,158,11,0.25)`
+          }}>
+            <span style={{ color:C.amber, fontFamily:F.mono, fontSize:11, lineHeight:1.5, flexShrink:0 }}>⚠</span>
+            <p style={{ fontFamily:F.body, fontSize:12, color:C.textSec, lineHeight:1.6, margin:0, fontWeight:300 }}>
+              {lang==="es"
+                ? `Última actualización del feed hace ${staleDays} días. Las señales mostradas no reflejan la actualidad de hoy.`
+                : `Feed last updated ${staleDays} days ago. The signals below do not reflect today's developments.`}
+            </p>
+          </div>
+        </FadeIn>
+      )}
 
       {/* REGION FILTER */}
       <FadeIn delay={0.1}>

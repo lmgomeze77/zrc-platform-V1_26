@@ -1,4 +1,4 @@
-﻿name: Daily Headlines Generator
+name: Daily Headlines Generator
 
 on:
   schedule:
@@ -11,6 +11,7 @@ permissions:
 jobs:
   generate-headlines:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -19,19 +20,33 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
+      # npm ci instala todo package.json (el script necesita rss-parser además
+      # del SDK) y es reproducible frente al lockfile.
       - name: Install dependencies
-        run: npm install @anthropic-ai/sdk
+        run: npm ci
 
       - name: Generate headlines
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-headlines.js
 
+      # Este job y market-ticker.yml escriben el mismo fichero y comparten la
+      # franja de las 06:00 UTC: sin rebase, el segundo en llegar es rechazado.
       - name: Commit and push
         run: |
           git config user.name "ZRC Headlines Bot"
           git config user.email "bot@zenithrisecapital.com"
           git add public/data/headlines.json
-          git diff --cached --quiet || git commit -m "Daily headlines update 2026-04-12 23:25 UTC"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Daily headlines update — $(date -u +'%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            echo "Push attempt $i failed, retrying..."
+            sleep 5
+          done
+          exit 1
