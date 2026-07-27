@@ -4,12 +4,13 @@
 -- Safe to re-run: all statements use IF NOT EXISTS / ON CONFLICT
 -- ============================================================
 
--- ── 1. SUBSCRIPTIONS TABLE (Stripe-linked tiers) ─────────────
+-- ── 1. SUBSCRIPTIONS TABLE (Stripe-linked tiers + free trial) ─
 CREATE TABLE IF NOT EXISTS subscriptions (
   id                     uuid        DEFAULT gen_random_uuid() PRIMARY KEY,
   email                  text        NOT NULL UNIQUE,
   tier                   text        NOT NULL DEFAULT 'free',    -- 'free' | 'intelligence' | 'institutional'
-  status                 text        NOT NULL DEFAULT 'active',  -- 'active' | 'inactive' | 'past_due' | 'cancelled'
+  status                 text        NOT NULL DEFAULT 'active',  -- 'active' | 'trialing' | 'inactive' | 'past_due' | 'cancelled'
+  trial_end              timestamptz,                            -- set when status = 'trialing'; 7-day free trial on registration
   stripe_customer_id     text,
   stripe_subscription_id text,
   created_at             timestamptz DEFAULT now(),
@@ -22,11 +23,22 @@ CREATE INDEX IF NOT EXISTS idx_subscriptions_stripe_customer
 ALTER TABLE subscriptions ENABLE ROW LEVEL SECURITY;
 -- Service role bypasses RLS automatically — no policy needed for the Worker.
 
+-- Add trial_end to an existing table (safe if already present):
+ALTER TABLE subscriptions
+  ADD COLUMN IF NOT EXISTS trial_end timestamptz;
+
 -- To grant free access to a founding member (no Stripe payment required):
 -- INSERT INTO subscriptions (email, tier, status)
 -- VALUES ('member@example.com', 'intelligence', 'active')
 -- ON CONFLICT (email) DO UPDATE
 --   SET tier = excluded.tier, status = excluded.status, updated_at = now();
+
+-- NOTE ON THE FREE TRIAL / LEGACY USERS:
+-- Only accounts that go through the registration flow AFTER this schema
+-- change get a row here with status='trialing'. Accounts with NO row at
+-- all (everyone who registered before this change) are treated by the
+-- Worker as legacy/grandfathered — they keep the old always-free access
+-- to Observatory and Real Estate Visor, unaffected by trial expiry.
 
 
 -- ── 2. INNER CIRCLE MEMBERS TABLE ───────────────────────────

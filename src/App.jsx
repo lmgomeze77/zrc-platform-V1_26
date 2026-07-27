@@ -460,17 +460,24 @@ const useHeadlines = (fallback) => {
 
 const useSubscription = (email) => {
   const [tier, setTier] = useState("free");
+  const [status, setStatus] = useState("none");
+  const [trialEnd, setTrialEnd] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    if (!email) { setTier("free"); setLoading(false); return; }
+    if (!email) { setTier("free"); setStatus("none"); setTrialEnd(null); setLoading(false); return; }
     setLoading(true);
     const normalised = email.trim().toLowerCase();
     fetch(`${API_BASE}/api/subscription?email=${encodeURIComponent(normalised)}`)
-      .then((r) => (r.ok ? r.json() : { tier: "free" }))
-      .then((d) => { setTier(d.tier || "free"); setLoading(false); })
-      .catch(() => { setTier("free"); setLoading(false); });
+      .then((r) => (r.ok ? r.json() : { tier: "free", status: "none", trialEnd: null }))
+      .then((d) => {
+        setTier(d.tier || "free");
+        setStatus(d.status || "none");
+        setTrialEnd(d.trialEnd || null);
+        setLoading(false);
+      })
+      .catch(() => { setTier("free"); setStatus("none"); setTrialEnd(null); setLoading(false); });
   }, [email]);
-  return { tier, loading };
+  return { tier, status, trialEnd, loading };
 };
 
 const FEED = [
@@ -844,14 +851,24 @@ const AuthModal = () => {
 
   const handleSubmit = async () => {
     if (!form.email || !form.password) return;
-    login({ name: form.name || form.email.split("@")[0], email: form.email, tier: "member" });
-    try {
-      await fetch("https://zrc-api.onrender.com/api/register", {
+    if (authMode === "register") {
+      // Start the trial before flipping `user` on, so the first
+      // useSubscription fetch (triggered the instant login() sets user)
+      // already sees the trialing row instead of racing it.
+      try {
+        await fetch(`${API_BASE}/api/trial/start`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: form.email }),
+        });
+      } catch (err) { console.error("Trial start error:", err); }
+      fetch("https://zrc-api.onrender.com/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: form.name, email: form.email, company: form.company, role: form.role, interest: form.interest }),
-      });
-    } catch (err) { console.error("Reg error:", err); }
+      }).catch((err) => console.error("Reg error:", err));
+    }
+    login({ name: form.name || form.email.split("@")[0], email: form.email, tier: "member" });
   };
 
   return (
@@ -1112,7 +1129,7 @@ const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => {
 const Intelligence = ({ lang }) => {
   const t = T[lang].intel;
   const { user, openPricing, setShowAuth } = useAuth();
-  const { tier, loading: tierLoading } = useSubscription(user?.email);
+  const { tier, status: subStatus, trialEnd, loading: tierLoading } = useSubscription(user?.email);
   const [showGeoRisk, setShowGeoRisk] = useState(false);
   const [showGeoRiskML, setShowGeoRiskML] = useState(false);
   const [showVisor, setShowVisor] = useState(false);
@@ -1137,7 +1154,13 @@ const Intelligence = ({ lang }) => {
     }
   }, []);
 
+  // status === "expired": the 7-day free trial ran out with no payment
+  // method added — locks out everything, even tools that were previously
+  // always-free (requiredTier: null). status === "none" (legacy accounts
+  // with no subscription row, registered before the trial system existed)
+  // keeps the old always-free behavior.
   const canAccess = (tool) => {
+    if (subStatus === "expired") return false;
     if (!tool.requiredTier) return true;
     if (tier === "institutional") return true;
     return tier === tool.requiredTier;
@@ -1180,6 +1203,54 @@ const Intelligence = ({ lang }) => {
           </div>
         </div>
       </FadeIn>
+
+      {user && !tierLoading && subStatus === "trialing" && (
+        <FadeIn delay={0.15}>
+          {(() => {
+            const daysLeft = trialEnd ? Math.max(0, Math.ceil((new Date(trialEnd) - Date.now()) / 86400000)) : null;
+            const urgent = daysLeft !== null && daysLeft <= 2;
+            return (
+              <div style={{
+                marginBottom: 24, padding: "14px 20px",
+                background: urgent ? "rgba(239,68,68,0.08)" : C.goldDim,
+                border: `1px solid ${urgent ? "rgba(239,68,68,0.3)" : C.goldBorder}`,
+                display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12,
+              }}>
+                <span style={{ fontFamily: F.mono, fontSize: 11, color: urgent ? C.red : C.gold, letterSpacing: "0.06em" }}>
+                  {lang === "es"
+                    ? `PRUEBA GRATUITA · ${daysLeft != null ? `quedan ${daysLeft} día${daysLeft === 1 ? "" : "s"}` : "activa"}`
+                    : `FREE TRIAL · ${daysLeft != null ? `${daysLeft} day${daysLeft === 1 ? "" : "s"} left` : "active"}`}
+                </span>
+                <button
+                  onClick={openPricing}
+                  style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", padding: "8px 18px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600, whiteSpace: "nowrap" }}
+                >
+                  {lang === "es" ? "AÑADIR MÉTODO DE PAGO →" : "ADD PAYMENT METHOD →"}
+                </button>
+              </div>
+            );
+          })()}
+        </FadeIn>
+      )}
+
+      {user && !tierLoading && subStatus === "expired" && (
+        <FadeIn delay={0.15}>
+          <div style={{
+            marginBottom: 24, padding: "14px 20px", background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.3)",
+            display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12,
+          }}>
+            <span style={{ fontFamily: F.mono, fontSize: 11, color: C.red, letterSpacing: "0.06em" }}>
+              {lang === "es" ? "TU PRUEBA GRATUITA DE 7 DÍAS HA TERMINADO" : "YOUR 7-DAY FREE TRIAL HAS ENDED"}
+            </span>
+            <button
+              onClick={openPricing}
+              style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", padding: "8px 18px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600, whiteSpace: "nowrap" }}
+            >
+              {lang === "es" ? "SEGUIR CON ACCESO →" : "CONTINUE ACCESS →"}
+            </button>
+          </div>
+        </FadeIn>
+      )}
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1 }}>
         {TOOLS.map((tool, i) => {
@@ -1272,8 +1343,8 @@ const Intelligence = ({ lang }) => {
 
       {!user && <FadeIn delay={0.3}><LockedOverlay message={t.locked} lang={lang} /></FadeIn>}
 
-      {/* Upgrade CTA for free members */}
-      {user && !tierLoading && tier === "free" && (
+      {/* Upgrade CTA for legacy free members (no subscription row — pre-trial accounts) */}
+      {user && !tierLoading && tier === "free" && subStatus === "none" && (
         <FadeIn delay={0.3}>
           <div style={{ marginTop: 28, padding: "20px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
             <div>
@@ -1604,7 +1675,7 @@ const ZRCPlatform = () => {
       <MarketTicker lang={lang} />
       <Hero lang={lang} onNav={onNav} />
       <GoldDivider />
-      <Observatory lang={lang} useAuth={useAuth} useHeadlines={useHeadlines} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} T={T} />
+      <Observatory lang={lang} useAuth={useAuth} useSubscription={useSubscription} useHeadlines={useHeadlines} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} T={T} />
       <GoldDivider />
       <Intelligence lang={lang} />
       <GoldDivider />

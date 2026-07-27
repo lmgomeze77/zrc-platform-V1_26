@@ -55,6 +55,9 @@ async function handleRequest(request, env, ctx) {
     if (url.pathname === "/api/checkout-session" && request.method === "GET")
       return handleCheckoutSessionCheck(request, env);
 
+    if (url.pathname === "/api/trial/start" && request.method === "POST")
+      return handleTrialStart(request, env);
+
 
     if (url.pathname === "/api/claude" && request.method === "POST")
       return handleClaude(request, env);
@@ -144,7 +147,7 @@ async function handleStripeWebhook(request, env) {
         await upsertSubscriptionByCustomer(env, {
           stripeCustomerId: sub.customer,
           tier,
-          status: sub.status === "active" ? "active" : "inactive",
+          status: ["active", "trialing"].includes(sub.status) ? "active" : "inactive",
         });
         break;
       }
@@ -176,20 +179,28 @@ async function handleStripeWebhook(request, env) {
 
 // ============================================================
 // /api/subscription?email=
+// Response shape: { tier, status, trialEnd }
+//   status: "none"     — no subscription row at all (legacy/grandfathered
+//                         user, or never registered) — NOT trial-expired,
+//                         keeps old always-free access to Observatory/Visor.
+//           "trialing"  — within the 7-day free trial window.
+//           "expired"   — trial ran out with no payment method added.
+//           "active"    — paying subscriber.
+//           other       — past_due / cancelled / inactive.
 // ============================================================
 async function handleSubscriptionCheck(request, env) {
   const url = new URL(request.url);
   const email = url.searchParams.get("email");
 
   if (!email || !isValidEmail(email))
-    return jsonResponse({ tier: "free" });
+    return jsonResponse({ tier: "free", status: "none", trialEnd: null });
 
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
-    return jsonResponse({ tier: "free" });
+    return jsonResponse({ tier: "free", status: "none", trialEnd: null });
 
   try {
     const resp = await fetch(
-      `${env.SUPABASE_URL}/rest/v1/subscriptions?email=eq.${encodeURIComponent(email)}&status=eq.active&select=tier&limit=1`,
+      `${env.SUPABASE_URL}/rest/v1/subscriptions?email=eq.${encodeURIComponent(email)}&select=tier,status,trial_end&limit=1`,
       {
         headers: {
           apikey: env.SUPABASE_SERVICE_KEY,
@@ -197,12 +208,27 @@ async function handleSubscriptionCheck(request, env) {
         },
       }
     );
-    if (!resp.ok) return jsonResponse({ tier: "free" });
+    if (!resp.ok) return jsonResponse({ tier: "free", status: "none", trialEnd: null });
     const data = await resp.json();
-    return jsonResponse({ tier: data?.[0]?.tier || "free" });
+    const row = data?.[0];
+
+    if (!row)
+      return jsonResponse({ tier: "free", status: "none", trialEnd: null });
+
+    if (row.status === "trialing") {
+      const trialEndMs = row.trial_end ? new Date(row.trial_end).getTime() : 0;
+      if (trialEndMs > Date.now())
+        return jsonResponse({ tier: row.tier || "intelligence", status: "trialing", trialEnd: row.trial_end });
+      return jsonResponse({ tier: "free", status: "expired", trialEnd: row.trial_end });
+    }
+
+    if (row.status === "active")
+      return jsonResponse({ tier: row.tier || "free", status: "active", trialEnd: null });
+
+    return jsonResponse({ tier: "free", status: row.status || "inactive", trialEnd: null });
   } catch (err) {
     console.error("Subscription check error:", err);
-    return jsonResponse({ tier: "free" });
+    return jsonResponse({ tier: "free", status: "none", trialEnd: null });
   }
 }
 
@@ -240,6 +266,66 @@ async function handleCheckoutSessionCheck(request, env) {
     console.error("Checkout session check error:", err);
     return jsonResponse({ paid: false, error: "Error al verificar el pago" }, 502);
   }
+}
+
+// ============================================================
+// /api/trial/start  (POST) — creates a 7-day free trial on registration.
+// Only inserts if no subscription row exists yet for this email, so
+// re-registering with the same email can't reset an already-used trial.
+// ============================================================
+async function handleTrialStart(request, env) {
+  let payload;
+  try { payload = await request.json(); } catch {
+    return jsonResponse({ error: "Invalid JSON" }, 400);
+  }
+
+  const email = (payload.email || "").trim().toLowerCase();
+  if (!email || !isValidEmail(email))
+    return jsonResponse({ error: "Email inválido" }, 400);
+
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
+    return jsonResponse({ error: "Service unavailable" }, 503);
+
+  try {
+    const checkResp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/subscriptions?email=eq.${encodeURIComponent(email)}&select=id&limit=1`,
+      { headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` } }
+    );
+    if (checkResp.ok) {
+      const existing = await checkResp.json();
+      if (existing?.[0]) return jsonResponse({ ok: true, alreadyExists: true });
+    }
+  } catch { /* proceed to insert */ }
+
+  const trialEnd = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+
+  try {
+    const insertResp = await fetch(`${env.SUPABASE_URL}/rest/v1/subscriptions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: env.SUPABASE_SERVICE_KEY,
+        Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+        Prefer: "return=minimal,resolution=ignore-duplicates",
+      },
+      body: JSON.stringify({
+        email,
+        tier: "intelligence",
+        status: "trialing",
+        trial_end: trialEnd,
+      }),
+    });
+    if (!insertResp.ok && insertResp.status !== 201) {
+      const txt = await insertResp.text();
+      console.error("Trial start insert error:", insertResp.status, txt);
+      return jsonResponse({ error: "No se pudo iniciar el trial" }, 500);
+    }
+  } catch (err) {
+    console.error("Trial start error:", err);
+    return jsonResponse({ error: "Error de conexión" }, 500);
+  }
+
+  return jsonResponse({ ok: true, trialEnd });
 }
 
 // ============================================================
