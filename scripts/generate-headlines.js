@@ -21,7 +21,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import Parser from "rss-parser";
-import { writeFileSync, mkdirSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
@@ -31,6 +31,54 @@ const OUTPUT_FILE = join(OUTPUT_DIR, "headlines.json");
 
 const client = new Anthropic();
 const parser = new Parser({ timeout: 3000, headers: { "User-Agent": "ZRCBot/1.0" } });
+
+// ─── LLAMADA A LA API CON REINTENTOS ──────────────────────────
+// Un fallo de la API dejaba el feed congelado sin señal visible: el pipeline
+// hacía exit(1) y headlines.json conservaba la ultima tanda buena, que en el
+// front se ve igual que una tanda fresca. Ahora se reintentan los errores
+// transitorios y se distinguen los que no tienen arreglo automatico (saldo
+// agotado, API key invalida) con un mensaje accionable.
+const RETRYABLE_STATUS = [408, 409, 429, 500, 502, 503, 504, 529];
+
+function classifyApiError(err) {
+  const status = err?.status;
+  const msg = err?.message || String(err);
+  if (/credit balance/i.test(msg)) {
+    return {
+      retryable: false,
+      hint: "SALDO AGOTADO — recarga creditos en console.anthropic.com → Plans & Billing",
+    };
+  }
+  if (status === 401 || status === 403) {
+    return {
+      retryable: false,
+      hint: "API key rechazada — revisa el secret ANTHROPIC_API_KEY del repositorio",
+    };
+  }
+  // Sin status = fallo de red/timeout: merece reintento.
+  return { retryable: status === undefined || RETRYABLE_STATUS.includes(status), hint: null };
+}
+
+async function callAnthropic(params, { label, attempts = 3 } = {}) {
+  let lastErr;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return await client.messages.create(params);
+    } catch (err) {
+      lastErr = err;
+      const { retryable, hint } = classifyApiError(err);
+      if (hint) {
+        console.error(`   ❌ ${label}: ${hint}`);
+        throw new Error(hint);
+      }
+      if (!retryable || attempt === attempts) break;
+      const waitMs = 2000 * 2 ** (attempt - 1); // 2s, 4s
+      console.warn(`   ⚠️  ${label} intento ${attempt}/${attempts} fallo (${err.message}) — reintento en ${waitMs / 1000}s`);
+      await new Promise((r) => setTimeout(r, waitMs));
+    }
+  }
+  throw lastErr;
+}
 
 // ─── RSS FEEDS ────────────────────────────────────────────────
 const FEEDS = [
@@ -278,14 +326,17 @@ ${candidateList}
 
 Return ONLY the JSON array of up to 10 ranked items (best first).`;
 
-  console.log(`🤖 Calling Haiku to rank+enrich up to 10 from ${candidates.length} candidates...`);
+  console.log(`🤖 Calling Sonnet to rank+enrich up to 10 from ${candidates.length} candidates...`);
 
-  const response = await client.messages.create({
-    model: "claude-sonnet-4-6",
-    max_tokens: 4500,
-    system: systemPrompt,
-    messages: [{ role: "user", content: userPrompt }],
-  });
+  const response = await callAnthropic(
+    {
+      model: "claude-sonnet-4-6",
+      max_tokens: 4500,
+      system: systemPrompt,
+      messages: [{ role: "user", content: userPrompt }],
+    },
+    { label: "ranking de titulares" }
+  );
 
   // Concatenate all text blocks
   const jsonText = response.content
@@ -346,19 +397,22 @@ async function generateMarketData() {
   console.log("📊 Fetching live market data via Haiku + web_search...");
 
   const today = new Date().toISOString().split("T")[0];
-  const response = await client.messages.create({
-    model: "claude-haiku-4-5-20251001",
-    max_tokens: 1500,
-    tools: [{ type: "web_search_20250305", name: "web_search" }],
-    system: `You are a market data feed. Return ONLY a raw JSON array, no preamble, no markdown.
+  const response = await callAnthropic(
+    {
+      model: "claude-haiku-4-5-20251001",
+      max_tokens: 1500,
+      tools: [{ type: "web_search_20250305", name: "web_search" }],
+      system: `You are a market data feed. Return ONLY a raw JSON array, no preamble, no markdown.
 
 Each object: { "symbol": string, "value": string, "change": string with + or -, "up": boolean }
 
 10 instruments in this exact order:
 1. EUR/USD  2. IBEX 35  3. BRENT  4. GOLD  5. BTC
 6. VIX  7. US 10Y  8. EUR/GBP  9. S&P 500  10. DAX 40`,
-    messages: [{ role: "user", content: `Today is ${today}. Fetch latest prices. Return JSON array only.` }],
-  });
+      messages: [{ role: "user", content: `Today is ${today}. Fetch latest prices. Return JSON array only.` }],
+    },
+    { label: "datos de mercado" }
+  );
 
   const jsonText = response.content
     .filter((b) => b.type === "text")
@@ -376,8 +430,15 @@ async function main() {
   const today = new Date().toISOString().split("T")[0];
   console.log(`\n🏛️  ZRC Intelligence Generator v6 (RSS) — ${today}\n`);
 
+  // Estado previo: nunca se sobrescribe con vacio. Si una de las dos mitades
+  // falla, la otra se publica y la que falla conserva su ultimo valor bueno.
+  let previous = {};
+  if (existsSync(OUTPUT_FILE)) {
+    try { previous = JSON.parse(readFileSync(OUTPUT_FILE, "utf-8")); } catch (_) {}
+  }
+
   let headlines = null;
-  let marketTicker = [];
+  let marketTicker = null;
 
   // Headlines pipeline (hard fail if it breaks — better keep yesterday's data)
   try {
@@ -404,23 +465,30 @@ async function main() {
     console.log(`   ℹ️  Source diversity: ${sources.length} outlets (${sources.join(", ")})`);
   } catch (err) {
     console.error(`   ❌ Headlines pipeline failed: ${err.message}`);
+    const staleDays = previous.generated_at
+      ? Math.floor((Date.now() - new Date(previous.generated_at)) / 86400000)
+      : null;
+    if (staleDays !== null) {
+      console.error(`   ⚠️  El Observatorio seguira mostrando los titulares del ${previous.generated_at.split("T")[0]} (${staleDays}d de antiguedad).`);
+    }
     process.exit(1);
   }
 
-  // Market data (soft fail — keep going with empty array)
+  // Market data (soft fail — se conserva el ticker anterior, nunca se vacia)
   try {
     marketTicker = await generateMarketData();
     console.log(`   ✅ Market instruments: ${marketTicker.length}`);
   } catch (err) {
-    console.warn(`   ⚠️  Market data failed: ${err.message} — using empty array`);
-    marketTicker = [];
+    console.warn(`   ⚠️  Market data failed: ${err.message} — se conserva el ticker anterior`);
   }
 
   const output = {
+    ...previous,
     generated_at: new Date().toISOString(),
-    market_ticker: marketTicker,
+    market_ticker: marketTicker ?? previous.market_ticker ?? [],
     headlines: headlines,
   };
+  if (marketTicker) output.market_updated_at = new Date().toISOString();
 
   if (!existsSync(OUTPUT_DIR)) mkdirSync(OUTPUT_DIR, { recursive: true });
   writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2), "utf-8");
