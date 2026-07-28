@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-07-27T09:43:41.946Z",
+  "generated_at": "2026-07-28T08:27:55.832Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1370",
-      "change": "+0.01%",
-      "up": true
+      "value": "1.1366",
+      "change": "-0.0044",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,213.47",
-      "change": "-0.05%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "87.90",
-      "change": "-0.52%",
-      "up": false
-    },
-    {
-      "symbol": "WTI Crude",
-      "value": "82.16",
-      "change": "-0.54%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,045.00",
-      "change": "-0.73%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "63,448.40",
-      "change": "-0.37%",
-      "up": false
-    },
-    {
-      "symbol": "VIX",
-      "value": "18.77",
-      "change": "+12.19%",
+      "value": "17654.9",
+      "change": "+82.1",
       "up": true
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.62%",
-      "change": "-1.07%",
+      "symbol": "BRENT",
+      "value": "91.68",
+      "change": "-3.91",
       "up": false
     },
     {
-      "symbol": "S&P 500",
-      "value": "7,457.69",
-      "change": "-1.01%",
+      "symbol": "GOLD",
+      "value": "4070.80",
+      "change": "+20.60",
+      "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "69549",
+      "change": "+3243",
+      "up": true
+    },
+    {
+      "symbol": "VIX",
+      "value": "18.68",
+      "change": "-0.12",
       "up": false
     },
     {
-      "symbol": "DAX 40",
-      "value": "24,830.98",
-      "change": "-0.34%",
+      "symbol": "US 10Y",
+      "value": "4.624",
+      "change": "-0.017",
       "up": false
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8543",
-      "change": "+0.18%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "101.53",
-      "change": "-0.01%",
+      "value": "0.8400",
+      "change": "-0.0009",
       "up": false
     },
     {
-      "symbol": "Natural Gas",
-      "value": "2.795",
-      "change": "-3.22%",
+      "symbol": "S&P 500",
+      "value": "7411.95",
+      "change": "-0.50",
       "up": false
     },
     {
-      "symbol": "Copper",
-      "value": "6.30",
-      "change": "-0.70%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7696",
-      "change": "+0.08%",
+      "symbol": "DAX 40",
+      "value": "25099.00",
+      "change": "+356.62",
       "up": true
     }
   ],
@@ -98,271 +68,184 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los precios del petróleo caen ante la pausa en los ataques de EE UU a Irán para dar 'espacio' a la diplomacia",
-        "en": "Oil prices fall amid pause in US strikes on Iran to give 'space' for diplomacy"
+        "es": "Asia 'raspando el fondo del barril' mientras el bloqueo petrolero en el Mar Rojo agrava la crisis energética",
+        "en": "Asia 'scraping the bottom of the barrel' as Red Sea oil blockade worsens energy crisis"
       },
       "summary": {
-        "es": "El crudo baja más del 7% y cae por debajo de los 90 dólares ante la pausa de dos días consecutivos en los ataques entre EE UU e Irán, que aviva esperanzas de un alto al fuego y reapertura del Estrecho de Ormuz. Esta distensión temporal alivia las presiones inflacionarias globales justo antes de la reunión de la Fed, con implicaciones directas para la política monetaria y los mercados de renta fija. La resolución duradera sigue siendo incierta dado el frágil estado de las negociaciones.",
-        "en": "Crude oil drops more than 7% below $90/bbl as a second consecutive day of mutual US-Iran strike pauses raises hopes for a ceasefire and potential reopening of the Strait of Hormuz. The temporary de-escalation relieves global inflationary pressure ahead of the Federal Reserve meeting, with direct implications for monetary policy and fixed income markets. A durable resolution remains uncertain given the fragile state of negotiations."
+        "es": "El bloqueo houthi a las exportaciones petroleras saudíes se suma al cierre del Estrecho de Ormuz, dejando a Japón, Corea del Sur y Filipinas ante su segunda gran crisis energética en seis meses. La convergencia de dos cuellos de botella marítimos críticos representa el mayor riesgo de disrupción energética global desde 2022. Los mercados de energía y fletes en Asia afrontan presiones de oferta severas con implicaciones directas para la inflación regional.",
+        "en": "The Houthi blockade on Saudi oil exports compounds the Hormuz strait closure, leaving Japan, South Korea and the Philippines facing their second major energy crisis in six months. The convergence of two critical maritime chokepoints represents the largest global energy disruption risk since 2022. Asian energy and freight markets face severe supply-side pressures with direct inflationary implications."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
-          "direction": "down",
+          "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Alivio de prima de riesgo por pausa en hostilidades",
-            "en": "Risk premium relief on hostilities pause"
+            "es": "Doble bloqueo marítimo reduce oferta disponible para Asia",
+            "en": "Dual maritime blockade severely reduces supply to Asia"
           }
         },
         {
-          "asset": "US 10Y Treasury",
+          "asset": "Asian LNG spot prices",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Menor inflación esperada reduce presión sobre rendimientos",
-            "en": "Lower expected inflation eases yield pressure"
+            "es": "Asia diversifica urgentemente lejos del Golfo Pérsico",
+            "en": "Asia urgently diversifies away from Persian Gulf supply"
           }
         },
         {
-          "asset": "Gold",
+          "asset": "JPY",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Reducción de refugio ante menor tensión geopolítica",
-            "en": "Safe-haven demand retreats on lower geopolitical tension"
+            "es": "Japón importador neto de energía bajo presión inflacionaria",
+            "en": "Japan as net energy importer faces inflation pressure"
           }
         },
         {
-          "asset": "European equities",
+          "asset": "Shipping/freight indices (Baltic Exchange)",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Menores costes energéticos impulsan renta variable europea",
-            "en": "Lower energy costs boost European equity valuations"
+            "es": "Redireccionamiento de rutas eleva costes de flete globales",
+            "en": "Route diversions drive global freight cost surge"
           }
         }
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260727-oil-prices-fall-amid-pause-in-iran-war-to-give-space-for-diplomacy",
-      "published_at": "2026-07-27",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jul/28/asia-energy-oil-crisis-red-sea-blockade-houthis",
+      "published_at": "2026-07-28",
       "time": "6h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
-      "region": "MENA",
+      "tag": "CRITICAL",
+      "region": "EURASIA",
       "title": {
-        "es": "Trump asegura que EE UU dispone de suficientes municiones pese a inquietudes sobre reservas de interceptores Patriot",
-        "en": "Trump asserts US has sufficient ammunition amid concerns over Patriot interceptor stockpiles"
+        "es": "Zelenskyy se reunirá con Trump mientras convergen las guerras de Irán y Ucrania",
+        "en": "Ukraine's Zelenskyy set to meet Trump as Iran and Ukraine wars converge"
       },
       "summary": {
-        "es": "En una entrevista al Wall Street Journal, Trump negó cualquier escasez de municiones mientras el CSIS estima que al menos 1.500 interceptores Patriot han sido consumidos en el conflicto con Irán. La posible insuficiencia de arsenales de defensa antimisil tiene implicaciones críticas para la sostenibilidad del esfuerzo bélico y para la industria de defensa occidental. Esto también plantea interrogantes sobre la capacidad de EE UU para defender simultáneamente a aliados en Europa y Asia.",
-        "en": "In a Wall Street Journal interview, Trump denied any ammunition shortage while CSIS estimates at least 1,500 Patriot interceptors have been consumed in the Iran conflict. A potential shortfall in missile defense arsenals carries critical implications for the sustainability of the military campaign and for Western defense industry supply chains. It also raises questions about US capacity to simultaneously defend allies in Europe and Asia."
+        "es": "El Senado de EE.UU. votará el martes sobre sanciones a Rusia, en un momento en que el ataque ucraniano a un buque iraní en el Mar Caspio crea un nexo geopolítico sin precedentes entre los conflictos de Ucrania e Irán. La reunión Zelenskyy-Trump podría redefinir el apoyo militar estadounidense y el proceso de paz. La vinculación de ambos teatros de guerra eleva el riesgo de escalada y amplía el alcance potencial de las sanciones.",
+        "en": "The U.S. Senate votes Tuesday on Russia sanctions as Ukraine's strike on an Iranian vessel in the Caspian Sea creates an unprecedented geopolitical nexus linking the Ukraine and Iran conflicts. The Zelenskyy-Trump meeting could redefine U.S. military support and the peace process. The linkage of both war theaters raises escalation risk and broadens the potential scope of sanctions."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Escasez de inventario acelera pedidos de reposición",
-            "en": "Inventory shortfall accelerates replenishment orders"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor gasto en defensa amplía déficit fiscal",
-            "en": "Higher defense spending widens fiscal deficit"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Dudas sobre capacidad disuasoria de EE UU en Europa",
-            "en": "Doubts over US deterrence capacity in Europe"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/live/2026/07/27/en-direct-guerre-au-moyen-orient-le-chef-de-la-diplomatie-iranienne-accuse-l-ukraine-d-avoir-attaque-un-navire-commercial-iranien_6725301_3210.html",
-      "published_at": "2026-07-27",
-      "time": "5h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "El Ibex toca máximos históricos impulsado por la caída del precio del petróleo",
-        "en": "Spain's Ibex hits all-time highs driven by oil price correction"
-      },
-      "summary": {
-        "es": "El índice bursátil español alcanza máximos históricos mientras el Brent cae más del 7% por debajo de los 90 dólares, aliviando las presiones inflacionarias en Europa antes de la reunión de la Reserva Federal. La disminución del coste energético reduce la prima de riesgo para los mercados europeos de renta variable y puede permitir a los bancos centrales una postura más acomodaticia. Los inversores deberán monitorear si la pausa en las hostilidades es sostenida para valorar la durabilidad de este repunte.",
-        "en": "Spain's benchmark index reaches all-time highs as Brent drops over 7% below $90/bbl, alleviating inflationary pressures across Europe ahead of the Federal Reserve meeting. The fall in energy costs reduces the risk premium for European equity markets and may allow central banks a more accommodative stance. Investors should monitor whether the hostilities pause is sustained to assess the durability of this rally."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "European equities",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Máximos históricos reflejan alivio energético e inflacionario",
-            "en": "All-time highs reflect energy and inflation relief"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Menor inflación energética reduce presión sobre el euro",
-            "en": "Lower energy inflation reduces pressure on the euro"
-          }
-        },
-        {
-          "asset": "Brent crude",
+          "asset": "Russian ruble",
           "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "Caída del crudo es el catalizador directo del rally",
-            "en": "Crude decline is the direct catalyst for the rally"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "El País",
-      "source_url": "https://cincodias.elpais.com/mercados-financieros/2026-07-27/la-bolsa-y-el-ibex-35.html",
-      "published_at": "2026-07-27",
-      "time": "<1h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "Por qué el conflicto en el norte de Malí ha entrado en una peligrosa nueva fase",
-        "en": "Why Mali's northern conflict has entered a dangerous new phase"
-      },
-      "summary": {
-        "es": "Una alianza entre separatistas tuareg y al-Qaeda ha alterado el equilibrio de poder en el norte de Malí, complicando los esfuerzos de paz y reforzando la presencia yihadista en el Sahel. Esto amenaza las rutas de tránsito de minerales críticos y puede aumentar los flujos migratorios hacia Europa, con implicaciones para la estabilidad política europea. La retirada francesa y la creciente influencia rusa-Wagner en la región hacen este desarrollo especialmente significativo para el posicionamiento occidental.",
-        "en": "A separatist–al-Qaeda alliance has shifted the balance of power in northern Mali, complicating peace efforts and strengthening jihadist presence across the Sahel. This threatens critical mineral transit routes and may increase migration flows toward Europe, with implications for European political stability. The French withdrawal and growing Russian-Wagner influence in the region make this development especially significant for Western strategic positioning."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad en Sahel aumenta riesgos migratorios para Europa",
-            "en": "Sahel instability raises migration risk for Europe"
-          }
-        },
-        {
-          "asset": "Critical minerals (uranium, gold)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Conflicto amenaza rutas de extracción y exportación",
-            "en": "Conflict threatens extraction and export routes"
-          }
-        },
-        {
-          "asset": "French defense equities",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada puede reabrir debate sobre reenganche francés",
-            "en": "Escalation may reopen debate on French re-engagement"
-          }
-        }
-      ],
-      "confidence": 75,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/7/27/why-malis-northern-conflict-has-entered-a-dangerous-new-phase?traffic_source=rss",
-      "published_at": "2026-07-27",
-      "time": "6h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Un buque vietnamita se hunde en el Mar de China Meridional con 17 desaparecidos",
-        "en": "Vietnamese vessel sinks in South China Sea, 17 missing"
-      },
-      "summary": {
-        "es": "Un carguero de bandera vietnamita con 62 tripulantes se hundió cerca del Arrecife Yongshu, disputada estructura controlada por China en el Mar de China Meridional, uno de los espacios marítimos más estratégicos del mundo. El incidente se produce en un contexto de creciente tensión territorial entre China y los reclamantes del ASEAN, con implicaciones para la libertad de navegación y las cadenas de suministro regionales. La proximidad a instalaciones militares chinas añade potencial de escalada diplomática.",
-        "en": "A Vietnamese-registered cargo ship with 62 crew sank near Yongshu Reef, a disputed China-controlled structure in the South China Sea, one of the world's most strategically important maritime spaces. The incident occurs amid rising territorial tensions between China and ASEAN claimants, with implications for freedom of navigation and regional supply chains. Proximity to Chinese military installations adds potential for diplomatic escalation."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Asian shipping equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Incidente eleva percepción de riesgo en rutas del Mar del Sur",
-            "en": "Incident raises risk perception on South Sea routes"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión territorial pesa sobre divisas del ASEAN",
-            "en": "Territorial tension weighs on ASEAN currencies"
+            "es": "Nuevas sanciones del Senado presionan la divisa rusa",
+            "en": "Senate sanctions vote adds pressure on Russian currency"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada multi-teatro impulsa demanda de refugio seguro",
+            "en": "Multi-theater escalation boosts safe-haven demand"
+          }
+        },
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Perspectiva de mayor apoyo militar eleva sector defensa",
+            "en": "Prospect of increased military support lifts defense sector"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo geopolítico adicional en Indo-Pacífico apoya oro",
-            "en": "Additional Indo-Pacific geopolitical risk supports gold"
+            "es": "Incertidumbre sobre resultado diplomático mantiene volatilidad",
+            "en": "Diplomatic outcome uncertainty sustains volatility"
           }
         }
       ],
-      "confidence": 70,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/vietnamese-vessel-sinks-in-south-china-sea-17-missing/a-78118211?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-07-26",
-      "time": "1d"
+      "confidence": 91,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/7/28/ukraines-zelenskyy-set-to-meet-trump-as-iran-and-ukraine-wars-converge?traffic_source=rss",
+      "published_at": "2026-07-28",
+      "time": "5h"
     },
     {
-      "id": 6,
+      "id": 3,
       "tag": "WATCH",
-      "region": "EURASIA",
+      "region": "AFRICA",
       "title": {
-        "es": "Los ataques ucranianos en Crimea privan a ciudades de luz y agua",
-        "en": "Ukrainian attacks in Crimea deprive towns of power and water"
+        "es": "El gobierno de Chad anuncia su retirada de la CPI",
+        "en": "Chad's government says it's withdrawing from the ICC"
       },
       "summary": {
-        "es": "Ucrania intensifica su campaña de drones contra infraestructuras en Crimea, privando de electricidad y agua a poblaciones civiles para presionar al Kremlin a negociar. Moscú ha respondido con indiferencia pública, sugiriendo que la estrategia ucraniana de presión sobre la población rusa tiene un efecto político limitado a corto plazo. La escalada en Crimea, junto con ataques nocturnos a Rostov del Don, subraya la continuidad del conflicto en paralelo a las conversaciones sobre Irán.",
-        "en": "Ukraine intensifies its drone campaign against Crimean infrastructure, depriving civilian towns of power and water to pressure the Kremlin toward negotiations. Moscow has responded with public indifference, suggesting Ukraine's strategy of pressuring Russian civilians has limited near-term political effect. The escalation in Crimea, alongside overnight strikes on Rostov-on-Don, underscores conflict continuity in parallel to Iran-focused diplomacy."
+        "es": "El Ministerio de Exteriores de Chad anunció su intención de abandonar la Corte Penal Internacional, alegando eficacia 'limitada y desigual', en un contexto donde el líder militar del país enfrenta acusaciones de represión de la oposición. La medida se enmarca en una tendencia sahelo-africana de alejamiento de marcos legales occidentales y podría señalar mayor alineación con socios alternativos como Rusia o China. Tiene implicaciones para la estabilidad regional del Sahel y los intereses de inversión en el sector de recursos naturales.",
+        "en": "Chad's Foreign Ministry announced plans to leave the ICC, citing 'limited and uneven' effectiveness, as the country's military leader faces accusations of repressing the opposition. The move fits a broader Sahel-African trend of distancing from Western legal frameworks and may signal closer alignment with alternative partners such as Russia or China. It carries implications for Sahel regional stability and natural resource investment interests."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
+          "asset": "African frontier market bonds",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Persistencia del conflicto mantiene prima de riesgo energético",
-            "en": "Conflict persistence sustains energy risk premium"
+            "es": "Menor accountability institucional eleva riesgo soberano",
+            "en": "Reduced institutional accountability raises sovereign risk"
+          }
+        },
+        {
+          "asset": "Oil & gas equities (Chad basin exposure)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad política eleva riesgo para inversión extractiva",
+            "en": "Political instability raises risk for extractive investment"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/chad-s-government-says-it-s-withdrawing-from-the-icc/a-78132322?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-07-27",
+      "time": "16h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Bomberos aceleran esfuerzos para contener grandes incendios en Francia y España antes de la ola de calor",
+        "en": "Firefighters hasten efforts to contain massive wildfires in France and Spain ahead of heatwave"
+      },
+      "summary": {
+        "es": "Francia y España se apresuran a contener enormes incendios forestales mientras una nueva ola de calor se aproxima, con Macron advirtiendo que 'hay que aguantar' y el premier español alertando de 'horas difíciles'. El evento subraya la creciente presión sobre las economías europeas por riesgos climáticos físicos, con potencial impacto sobre el turismo de verano, la producción agrícola y los costes de seguros. La reactivación de este tipo de eventos extremos tiene implicaciones para las primas de riesgo de activos europeos y el debate sobre política climática.",
+        "en": "France and Spain race to contain massive wildfires as a fresh heatwave approaches, with Macron warning 'we have to hold out' and Spain's PM alerting of 'difficult hours ahead.' The event underscores growing pressure on European economies from physical climate risks, with potential impact on summer tourism, agricultural output, and insurance costs. The recurrence of such extreme events carries implications for European asset risk premia and climate policy debate."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European insurance equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Grandes incendios elevan siniestralidad del sector asegurador",
+            "en": "Major wildfires raise insurance sector claims exposure"
+          }
+        },
+        {
+          "asset": "European equities (tourism/travel)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Incendios y calor extremo dañan temporada turística europea",
+            "en": "Wildfires and extreme heat damage European tourism season"
           }
         },
         {
@@ -370,26 +253,113 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Continuación bélica pesa sobre sentimiento europeo",
-            "en": "War continuation weighs on European sentiment"
-          }
-        },
-        {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Demanda sostenida de sistemas de defensa europeos",
-            "en": "Sustained demand for European defense systems"
+            "es": "Impacto económico acumulado de crisis climáticas pesa sobre euro",
+            "en": "Accumulated economic impact of climate crises weighs on euro"
           }
         }
       ],
-      "confidence": 72,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/07/27/world/europe/ukraine-drones-crimea-blackouts.html",
-      "published_at": "2026-07-27",
+      "confidence": 68,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/jul/28/europe-wildfires-fires-heatwave-bordeaux-france-spain-latest-news-updates",
+      "published_at": "2026-07-28",
       "time": "<1h"
+    },
+    {
+      "id": 5,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Ucrania descarta amenazas iraníes mientras el ataque en el Mar Caspio vincula directamente ambas guerras",
+        "en": "Ukraine dismisses Iranian threats as Caspian Sea strike directly links wars"
+      },
+      "summary": {
+        "es": "Irán reaccionó con furia ante el ataque ucraniano a un buque en el Mar Caspio, con el canciller iraní advirtiendo que 'no puede quedar sin respuesta'. La apertura de un frente iraní-ucraniano directo introduce un vector de escalada nuevo que podría tensionar las relaciones entre Irán y Rusia y complicar los esfuerzos diplomáticos en curso. Para los mercados, el riesgo de represalias iraníes amplía la zona de inestabilidad más allá del Golfo Pérsico.",
+        "en": "Iran reacted with fury to Ukraine's strike on a Caspian Sea vessel, with Tehran's foreign minister warning it 'cannot go unanswered.' The emergence of a direct Iran-Ukraine front introduces a new escalation vector that could strain Iran-Russia relations and complicate ongoing diplomatic efforts. For markets, the risk of Iranian retaliation extends instability beyond the Persian Gulf."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de represalia iraní añade prima de guerra al petróleo",
+            "en": "Iranian retaliation risk adds war premium to oil"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada geopolítica multi-frente refuerza activos refugio",
+            "en": "Multi-front geopolitical escalation reinforces safe havens"
+          }
+        },
+        {
+          "asset": "EM currencies (MENA exposure)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor incertidumbre regional presiona divisas emergentes",
+            "en": "Heightened regional uncertainty pressures EM currencies"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cwyj7yl0xndo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-07-27",
+      "time": "15h"
+    },
+    {
+      "id": 6,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Los houthis quieren replicar el control iraní de Ormuz en el Mar Rojo: canciller yemení",
+        "en": "Houthis want to copy Iran's Hormuz control in the Red Sea: Yemeni FM"
+      },
+      "summary": {
+        "es": "El gobierno yemení internacionalmente reconocido advierte desde Riad que la complacencia global ha envalentonado a los houthis para aspirar al control estratégico del Mar Rojo, emulando el modelo iraní en el Estrecho de Ormuz. De materializarse esta ambición, implicaría el control efectivo de dos de los principales cuellos de botella energéticos del mundo por actores del Eje de Resistencia. El impacto sobre las primas de seguro marítimo y las rutas de suministro globales sería estructural.",
+        "en": "Yemen's internationally recognised government warns from Riyadh that global complacency has emboldened Houthis to seek strategic control of the Red Sea, mirroring Iran's Hormuz model. If realized, this would mean effective control of two of the world's primary energy chokepoints by Axis of Resistance actors. The impact on maritime insurance premiums and global supply routes would be structural."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Shipping/freight indices (Baltic Exchange)",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Control houthi del Mar Rojo dispararía costes de flete",
+            "en": "Houthi Red Sea control would structurally lift freight costs"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Segundo chokepoint bajo presión elevaría precios del crudo",
+            "en": "Second chokepoint under pressure would lift crude prices"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Europa altamente dependiente de rutas del Mar Rojo",
+            "en": "Europe highly dependent on Red Sea trade routes"
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/7/28/houthis-want-to-copy-irans-hormuz-control-in-the-red-sea-yemeni-fm?traffic_source=rss",
+      "published_at": "2026-07-28",
+      "time": "7h"
     }
   ],
-  "market_updated_at": "2026-07-28T08:09:26.467Z"
+  "market_updated_at": "2026-07-28T08:27:55.832Z"
 }
