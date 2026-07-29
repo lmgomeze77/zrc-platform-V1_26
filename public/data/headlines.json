@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-07-28T08:27:55.832Z",
+  "generated_at": "2026-07-29T08:33:56.244Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1366",
-      "change": "-0.01%",
+      "value": "1.1386",
+      "change": "-0.08",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,384.70",
-      "change": "+0.32%",
+      "value": "19671.80",
+      "change": "+1.37",
       "up": true
     },
     {
       "symbol": "BRENT",
-      "value": "87.45",
-      "change": "+4.00%",
+      "value": "84.68",
+      "change": "+3.66",
       "up": true
     },
     {
-      "symbol": "WTI",
-      "value": "82.03",
-      "change": "+3.49%",
+      "symbol": "GOLD",
+      "value": "4043.25",
+      "change": "+0.37",
       "up": true
     },
     {
-      "symbol": "XAU/USD",
-      "value": "4,043.25",
-      "change": "+0.37%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "63,800.00",
-      "change": "+1.00%",
-      "up": true
+      "symbol": "BTC",
+      "value": "63918.39",
+      "change": "-2.20",
+      "up": false
     },
     {
       "symbol": "VIX",
       "value": "18.21",
-      "change": "-2.46%",
+      "change": "-2.46",
       "up": false
     },
     {
       "symbol": "US 10Y",
-      "value": "4.587%",
-      "change": "-1.16%",
+      "value": "4.63",
+      "change": "-0.03",
       "up": false
     },
     {
+      "symbol": "EUR/GBP",
+      "value": "0.8570",
+      "change": "+0.21",
+      "up": true
+    },
+    {
       "symbol": "S&P 500",
-      "value": "7,428.78",
-      "change": "+0.21%",
+      "value": "7413.18",
+      "change": "+0.02",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25,464.01",
-      "change": "+0.41%",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8568",
-      "change": "-0.00%",
+      "value": "25322.72",
+      "change": "-0.15",
       "up": false
-    },
-    {
-      "symbol": "DXY",
-      "value": "101.29",
-      "change": "-0.12%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.683",
-      "change": "-3.77%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.3652",
-      "change": "-0.22%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7614",
-      "change": "+0.01%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Asia 'raspando el fondo del barril' mientras el bloqueo petrolero en el Mar Rojo agrava la crisis energética",
-        "en": "Asia 'scraping the bottom of the barrel' as Red Sea oil blockade worsens energy crisis"
+        "en": "US thwarts 'surprise' Iran missile attack, and joins forces with Saudis to hit targets in Iraq",
+        "es": "EE.UU. frustra ataque 'sorpresa' de misiles iraníes y se une a Arabia Saudita para golpear objetivos en Irak"
       },
       "summary": {
-        "es": "El bloqueo houthi a las exportaciones petroleras saudíes se suma al cierre del Estrecho de Ormuz, dejando a Japón, Corea del Sur y Filipinas ante su segunda gran crisis energética en seis meses. La convergencia de dos cuellos de botella marítimos críticos representa el mayor riesgo de disrupción energética global desde 2022. Los mercados de energía y fletes en Asia afrontan presiones de oferta severas con implicaciones directas para la inflación regional.",
-        "en": "The Houthi blockade on Saudi oil exports compounds the Hormuz strait closure, leaving Japan, South Korea and the Philippines facing their second major energy crisis in six months. The convergence of two critical maritime chokepoints represents the largest global energy disruption risk since 2022. Asian energy and freight markets face severe supply-side pressures with direct inflationary implications."
+        "en": "The US military intercepted an Iranian missile barrage and conducted joint strikes with Saudi Arabia against Iran-backed militia positions in Iraq, while Iran's Revolutionary Guards claimed attacks on three oil tankers in the Strait of Hormuz. Oil prices spiked immediately on the escalation. This represents a significant broadening of the US-Iran conflict, pulling Riyadh directly into the military coalition and threatening the world's most critical energy chokepoint.",
+        "es": "Las fuerzas militares de EE.UU. interceptaron una andanada de misiles iraníes y llevaron a cabo ataques conjuntos con Arabia Saudita contra posiciones de milicias respaldadas por Irán en Irak, mientras que los Guardias Revolucionarios de Irán afirmaron haber atacado tres petroleros en el Estrecho de Ormuz. Los precios del petróleo se dispararon de inmediato. Esto representa una ampliación significativa del conflicto EE.UU.-Irán, incorporando a Riad en la coalición militar y amenazando el paso energético más crítico del mundo."
       },
       "impact": "high",
       "market_impact": [
@@ -112,284 +82,275 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Doble bloqueo marítimo reduce oferta disponible para Asia",
-            "en": "Dual maritime blockade severely reduces supply to Asia"
-          }
-        },
-        {
-          "asset": "Asian LNG spot prices",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Asia diversifica urgentemente lejos del Golfo Pérsico",
-            "en": "Asia urgently diversifies away from Persian Gulf supply"
-          }
-        },
-        {
-          "asset": "JPY",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Japón importador neto de energía bajo presión inflacionaria",
-            "en": "Japan as net energy importer faces inflation pressure"
-          }
-        },
-        {
-          "asset": "Shipping/freight indices (Baltic Exchange)",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Redireccionamiento de rutas eleva costes de flete globales",
-            "en": "Route diversions drive global freight cost surge"
-          }
-        }
-      ],
-      "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jul/28/asia-energy-oil-crisis-red-sea-blockade-houthis",
-      "published_at": "2026-07-28",
-      "time": "6h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "EURASIA",
-      "title": {
-        "es": "Zelenskyy se reunirá con Trump mientras convergen las guerras de Irán y Ucrania",
-        "en": "Ukraine's Zelenskyy set to meet Trump as Iran and Ukraine wars converge"
-      },
-      "summary": {
-        "es": "El Senado de EE.UU. votará el martes sobre sanciones a Rusia, en un momento en que el ataque ucraniano a un buque iraní en el Mar Caspio crea un nexo geopolítico sin precedentes entre los conflictos de Ucrania e Irán. La reunión Zelenskyy-Trump podría redefinir el apoyo militar estadounidense y el proceso de paz. La vinculación de ambos teatros de guerra eleva el riesgo de escalada y amplía el alcance potencial de las sanciones.",
-        "en": "The U.S. Senate votes Tuesday on Russia sanctions as Ukraine's strike on an Iranian vessel in the Caspian Sea creates an unprecedented geopolitical nexus linking the Ukraine and Iran conflicts. The Zelenskyy-Trump meeting could redefine U.S. military support and the peace process. The linkage of both war theaters raises escalation risk and broadens the potential scope of sanctions."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Russian ruble",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Nuevas sanciones del Senado presionan la divisa rusa",
-            "en": "Senate sanctions vote adds pressure on Russian currency"
+            "en": "Hormuz tanker attacks threaten ~20% of global oil supply",
+            "es": "Ataques en Ormuz amenazan ~20% del suministro global de petróleo"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Escalada multi-teatro impulsa demanda de refugio seguro",
-            "en": "Multi-theater escalation boosts safe-haven demand"
+            "en": "Risk-off surge as US-Iran conflict broadens to regional war",
+            "es": "Refugio seguro ante ampliación del conflicto EE.UU.-Irán"
           }
         },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "en": "Flight to safety demand supports Treasury prices",
+            "es": "Demanda de refugio apoya precios de bonos del Tesoro"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "en": "Energy import shock pressures oil-dependent EM economies",
+            "es": "Choque energético presiona economías emergentes importadoras"
+          }
+        }
+      ],
+      "confidence": 95,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/jul/29/iran-missile-attack-us-base-forces",
+      "published_at": "2026-07-29",
+      "time": "4h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "APAC",
+      "title": {
+        "en": "China puts the 'squeeze' on Taiwan with new maritime patrols",
+        "es": "China presiona a Taiwán con nuevas patrullas marítimas"
+      },
+      "summary": {
+        "en": "China has launched new law enforcement maritime patrol operations around Taiwan that analysts warn could rapidly escalate into a de facto naval blockade. The maneuver adds a second major chokepoint risk to global markets already rattled by Hormuz tensions. Tech supply chains, semiconductor exports, and regional shipping lanes face material disruption risk if operations intensify.",
+        "es": "China ha iniciado nuevas operaciones de patrulla marítima en torno a Taiwán que analistas advierten podrían escalar rápidamente hacia un bloqueo naval de facto. La maniobra añade un segundo riesgo de chokepoint crítico a mercados ya sacudidos por las tensiones en el Estrecho de Ormuz. Las cadenas de suministro tecnológicas, las exportaciones de semiconductores y las rutas marítimas regionales enfrentan riesgo material si las operaciones se intensifican."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Taiwan equities (TWSE)",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "en": "Blockade risk directly threatens TSMC and export economy",
+            "es": "Riesgo de bloqueo amenaza directamente a TSMC y exportaciones"
+          }
+        },
+        {
+          "asset": "Semiconductor sector ETFs",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "en": "Supply disruption fears hit global chip equities",
+            "es": "Temores de disrupciones golpean acciones globales de chips"
+          }
+        },
+        {
+          "asset": "USD/TWD",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "en": "Dollar strengthens as Taiwan risk premium rises",
+            "es": "Dólar se fortalece ante mayor prima de riesgo taiwanesa"
+          }
+        },
+        {
+          "asset": "Asian shipping stocks",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "en": "Regional sea lane disruption risk weighs on carriers",
+            "es": "Riesgo en rutas marítimas regionales pesa sobre navieras"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/7/29/china-puts-squeeze-on-taiwan-with-new-maritime-patrols?traffic_source=rss",
+      "published_at": "2026-07-29",
+      "time": "3h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "EURASIA",
+      "title": {
+        "en": "Zelensky and Netanyahu meet Trump as wars in Ukraine and Iran drag on",
+        "es": "Zelenski y Netanyahu se reúnen con Trump mientras las guerras en Ucrania e Irán continúan"
+      },
+      "summary": {
+        "en": "Both Zelensky and Netanyahu held back-to-back bilateral meetings with Trump at the White House, with both leaders emerging encouraged. The simultaneous diplomatic engagements signal Washington is managing two active war theaters at once, creating fiscal and strategic bandwidth pressures. Outcomes will determine near-term weapons supply flows to Ukraine and the diplomatic framework around the Iran conflict.",
+        "es": "Zelenski y Netanyahu mantuvieron reuniones bilaterales consecutivas con Trump en la Casa Blanca, con ambos líderes mostrándose alentados. Los compromisos diplomáticos simultáneos señalan que Washington gestiona dos teatros de guerra activos a la vez, generando presiones sobre el ancho de banda fiscal y estratégico. Los resultados determinarán los flujos de suministro de armas a Ucrania y el marco diplomático en torno al conflicto con Irán."
+      },
+      "impact": "high",
+      "market_impact": [
         {
           "asset": "European defense equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Perspectiva de mayor apoyo militar eleva sector defensa",
-            "en": "Prospect of increased military support lifts defense sector"
+            "en": "US dual-war burden accelerates European rearmament push",
+            "es": "Carga de doble guerra de EE.UU. acelera rearme europeo"
           }
         },
         {
-          "asset": "EUR/USD",
+          "asset": "USD",
           "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "en": "Dual theater military spending raises US fiscal pressure",
+            "es": "Gasto militar en dos frentes aumenta presión fiscal de EE.UU."
+          }
+        },
+        {
+          "asset": "Ukrainian sovereign bonds",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Incertidumbre sobre resultado diplomático mantiene volatilidad",
-            "en": "Diplomatic outcome uncertainty sustains volatility"
+            "en": "Positive Trump signals reduce near-term default risk",
+            "es": "Señales positivas de Trump reducen riesgo de impago inmediato"
           }
         }
       ],
-      "confidence": 91,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/7/28/ukraines-zelenskyy-set-to-meet-trump-as-iran-and-ukraine-wars-converge?traffic_source=rss",
-      "published_at": "2026-07-28",
-      "time": "5h"
+      "confidence": 82,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cj4k2z8z45ro?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-07-29",
+      "time": "6h"
     },
     {
-      "id": 3,
+      "id": 4,
+      "tag": "WATCH",
+      "region": "MENA",
+      "title": {
+        "en": "Some Jordanians Demand that American Troops Leave the Kingdom",
+        "es": "Algunos jordanos exigen que las tropas estadounidenses abandonen el reino"
+      },
+      "summary": {
+        "en": "Hundreds of prominent Jordanian political, legal, and civil figures signed a public letter warning that Jordan's close US alliance poses a sovereign risk as the US-Iran conflict intensifies. Jordan serves as a critical transit and basing hub for US regional operations; political pressure on the monarchy could constrain US force projection across the Levant and complicate supply routes to Israel. This is an early-stage but structurally significant indicator of Arab alliance fragility under war conditions.",
+        "es": "Cientos de figuras políticas, jurídicas y civiles jordanas prominentes firmaron una carta pública advirtiendo que la estrecha alianza de Jordania con EE.UU. representa un riesgo soberano mientras el conflicto EE.UU.-Irán se intensifica. Jordania sirve como eje crítico de tránsito y basing para las operaciones regionales de EE.UU.; la presión política sobre la monarquía podría restringir la proyección de fuerza estadounidense en el Levante y complicar las rutas de suministro a Israel."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Jordanian sovereign bonds",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "en": "Political instability risk rises if US basing is challenged",
+            "es": "Riesgo de inestabilidad sube si se cuestiona presencia de EE.UU."
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "en": "Jordan base loss would complicate US regional logistics",
+            "es": "Perder base en Jordania complicaría logística regional de EE.UU."
+          }
+        }
+      ],
+      "confidence": 75,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/07/29/world/middleeast/jordan-us-military-iran-war.html",
+      "published_at": "2026-07-29",
+      "time": "4h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "LATAM",
+      "title": {
+        "en": "Venezuela: Pro-government and opposition militants demonstrate ahead of political transition talks",
+        "es": "Venezuela: militantes del gobierno y la oposición se manifiestan antes de las negociaciones sobre la transición política"
+      },
+      "summary": {
+        "en": "Rival factions are mobilizing in Venezuela ahead of US-brokered political transition negotiations scheduled for August 1, with both sides expressing concern over American interference in the process. The talks represent a potential inflection point for the Maduro regime's future and could have significant implications for Venezuelan oil output and sanctions relief. Failure could trigger renewed instability with regional spillovers.",
+        "es": "Facciones rivales se movilizan en Venezuela antes de las negociaciones de transición política mediadas por EE.UU. programadas para el 1 de agosto, con ambas partes expresando preocupación por la interferencia estadounidense. Las conversaciones representan un posible punto de inflexión para el futuro del régimen Maduro y podrían tener implicaciones significativas para la producción petrolera venezolana y la reducción de sanciones. Un fracaso podría desencadenar nueva inestabilidad con derrames regionales."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Venezuelan sovereign bonds",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "en": "Talks outcome determines debt restructuring trajectory",
+            "es": "Resultado de negociaciones define trayectoria de reestructuración"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "en": "Successful transition could unlock Venezuelan oil supply",
+            "es": "Transición exitosa podría desbloquear suministro petrolero venezolano"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "en": "Regional spillover risk if talks collapse into instability",
+            "es": "Riesgo de contagio regional si colapsan las negociaciones"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/07/29/venezuela-militants-pro-pouvoir-et-de-l-opposition-manifestent-avant-les-pourparlers-sur-la-transition-politique_6735973_3210.html",
+      "published_at": "2026-07-29",
+      "time": "4h"
+    },
+    {
+      "id": 6,
       "tag": "WATCH",
       "region": "AFRICA",
       "title": {
-        "es": "El gobierno de Chad anuncia su retirada de la CPI",
-        "en": "Chad's government says it's withdrawing from the ICC"
+        "en": "'No safe options' for thousands sheltering in key Sudan city as RSF fighters advance",
+        "es": "'Sin opciones seguras' para miles de refugiados en ciudad clave de Sudán mientras avanzan los combatientes de las RSF"
       },
       "summary": {
-        "es": "El Ministerio de Exteriores de Chad anunció su intención de abandonar la Corte Penal Internacional, alegando eficacia 'limitada y desigual', en un contexto donde el líder militar del país enfrenta acusaciones de represión de la oposición. La medida se enmarca en una tendencia sahelo-africana de alejamiento de marcos legales occidentales y podría señalar mayor alineación con socios alternativos como Rusia o China. Tiene implicaciones para la estabilidad regional del Sahel y los intereses de inversión en el sector de recursos naturales.",
-        "en": "Chad's Foreign Ministry announced plans to leave the ICC, citing 'limited and uneven' effectiveness, as the country's military leader faces accusations of repressing the opposition. The move fits a broader Sahel-African trend of distancing from Western legal frameworks and may signal closer alignment with alternative partners such as Russia or China. It carries implications for Sahel regional stability and natural resource investment interests."
+        "en": "Rapid Support Forces are advancing on a strategically significant Sudanese city, prompting international warnings of imminent atrocities. The deepening Sudan conflict has critical implications for Red Sea security, regional migration flows into Egypt and Chad, and control over mineral-rich corridors. Prolonged RSF advances could further destabilize the Sahel security architecture and attract external power competition for influence.",
+        "es": "Las Fuerzas de Apoyo Rápido avanzan sobre una ciudad sudanesa estratégicamente significativa, provocando advertencias internacionales sobre atrocidades inminentes. El profundizamiento del conflicto en Sudán tiene implicaciones críticas para la seguridad en el Mar Rojo, los flujos migratorios regionales hacia Egipto y Chad, y el control sobre corredores ricos en minerales. Los avances prolongados de las RSF podrían desestabilizar aún más la arquitectura de seguridad del Sahel y atraer competencia de potencias externas."
       },
       "impact": "medium",
       "market_impact": [
         {
           "asset": "African frontier market bonds",
           "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Menor accountability institucional eleva riesgo soberano",
-            "en": "Reduced institutional accountability raises sovereign risk"
-          }
-        },
-        {
-          "asset": "Oil & gas equities (Chad basin exposure)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad política eleva riesgo para inversión extractiva",
-            "en": "Political instability raises risk for extractive investment"
-          }
-        }
-      ],
-      "confidence": 72,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/chad-s-government-says-it-s-withdrawing-from-the-icc/a-78132322?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-07-27",
-      "time": "16h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Bomberos aceleran esfuerzos para contener grandes incendios en Francia y España antes de la ola de calor",
-        "en": "Firefighters hasten efforts to contain massive wildfires in France and Spain ahead of heatwave"
-      },
-      "summary": {
-        "es": "Francia y España se apresuran a contener enormes incendios forestales mientras una nueva ola de calor se aproxima, con Macron advirtiendo que 'hay que aguantar' y el premier español alertando de 'horas difíciles'. El evento subraya la creciente presión sobre las economías europeas por riesgos climáticos físicos, con potencial impacto sobre el turismo de verano, la producción agrícola y los costes de seguros. La reactivación de este tipo de eventos extremos tiene implicaciones para las primas de riesgo de activos europeos y el debate sobre política climática.",
-        "en": "France and Spain race to contain massive wildfires as a fresh heatwave approaches, with Macron warning 'we have to hold out' and Spain's PM alerting of 'difficult hours ahead.' The event underscores growing pressure on European economies from physical climate risks, with potential impact on summer tourism, agricultural output, and insurance costs. The recurrence of such extreme events carries implications for European asset risk premia and climate policy debate."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "European insurance equities",
-          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Grandes incendios elevan siniestralidad del sector asegurador",
-            "en": "Major wildfires raise insurance sector claims exposure"
-          }
-        },
-        {
-          "asset": "European equities (tourism/travel)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Incendios y calor extremo dañan temporada turística europea",
-            "en": "Wildfires and extreme heat damage European tourism season"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Impacto económico acumulado de crisis climáticas pesa sobre euro",
-            "en": "Accumulated economic impact of climate crises weighs on euro"
-          }
-        }
-      ],
-      "confidence": 68,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/jul/28/europe-wildfires-fires-heatwave-bordeaux-france-spain-latest-news-updates",
-      "published_at": "2026-07-28",
-      "time": "<1h"
-    },
-    {
-      "id": 5,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Ucrania descarta amenazas iraníes mientras el ataque en el Mar Caspio vincula directamente ambas guerras",
-        "en": "Ukraine dismisses Iranian threats as Caspian Sea strike directly links wars"
-      },
-      "summary": {
-        "es": "Irán reaccionó con furia ante el ataque ucraniano a un buque en el Mar Caspio, con el canciller iraní advirtiendo que 'no puede quedar sin respuesta'. La apertura de un frente iraní-ucraniano directo introduce un vector de escalada nuevo que podría tensionar las relaciones entre Irán y Rusia y complicar los esfuerzos diplomáticos en curso. Para los mercados, el riesgo de represalias iraníes amplía la zona de inestabilidad más allá del Golfo Pérsico.",
-        "en": "Iran reacted with fury to Ukraine's strike on a Caspian Sea vessel, with Tehran's foreign minister warning it 'cannot go unanswered.' The emergence of a direct Iran-Ukraine front introduces a new escalation vector that could strain Iran-Russia relations and complicate ongoing diplomatic efforts. For markets, the risk of Iranian retaliation extends instability beyond the Persian Gulf."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de represalia iraní añade prima de guerra al petróleo",
-            "en": "Iranian retaliation risk adds war premium to oil"
+            "en": "Regional instability contagion risk to neighboring sovereigns",
+            "es": "Riesgo de contagio de inestabilidad regional a soberanos vecinos"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Escalada geopolítica multi-frente refuerza activos refugio",
-            "en": "Multi-front geopolitical escalation reinforces safe havens"
-          }
-        },
-        {
-          "asset": "EM currencies (MENA exposure)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor incertidumbre regional presiona divisas emergentes",
-            "en": "Heightened regional uncertainty pressures EM currencies"
+            "en": "Sudan conflict disrupts artisanal gold mining output",
+            "es": "Conflicto en Sudán interrumpe producción artesanal de oro"
           }
         }
       ],
-      "confidence": 88,
+      "confidence": 70,
       "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cwyj7yl0xndo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-07-27",
-      "time": "15h"
-    },
-    {
-      "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "Los houthis quieren replicar el control iraní de Ormuz en el Mar Rojo: canciller yemení",
-        "en": "Houthis want to copy Iran's Hormuz control in the Red Sea: Yemeni FM"
-      },
-      "summary": {
-        "es": "El gobierno yemení internacionalmente reconocido advierte desde Riad que la complacencia global ha envalentonado a los houthis para aspirar al control estratégico del Mar Rojo, emulando el modelo iraní en el Estrecho de Ormuz. De materializarse esta ambición, implicaría el control efectivo de dos de los principales cuellos de botella energéticos del mundo por actores del Eje de Resistencia. El impacto sobre las primas de seguro marítimo y las rutas de suministro globales sería estructural.",
-        "en": "Yemen's internationally recognised government warns from Riyadh that global complacency has emboldened Houthis to seek strategic control of the Red Sea, mirroring Iran's Hormuz model. If realized, this would mean effective control of two of the world's primary energy chokepoints by Axis of Resistance actors. The impact on maritime insurance premiums and global supply routes would be structural."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Shipping/freight indices (Baltic Exchange)",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Control houthi del Mar Rojo dispararía costes de flete",
-            "en": "Houthi Red Sea control would structurally lift freight costs"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Segundo chokepoint bajo presión elevaría precios del crudo",
-            "en": "Second chokepoint under pressure would lift crude prices"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Europa altamente dependiente de rutas del Mar Rojo",
-            "en": "Europe highly dependent on Red Sea trade routes"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/7/28/houthis-want-to-copy-irans-hormuz-control-in-the-red-sea-yemeni-fm?traffic_source=rss",
-      "published_at": "2026-07-28",
-      "time": "7h"
+      "source_url": "https://www.bbc.co.uk/news/articles/c4gx399l0wyo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-07-29",
+      "time": "3h"
     }
   ],
-  "market_updated_at": "2026-07-29T08:13:19.459Z"
+  "market_updated_at": "2026-07-29T08:33:56.244Z"
 }
