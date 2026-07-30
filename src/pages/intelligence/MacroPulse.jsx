@@ -7,19 +7,19 @@ import { SOVEREIGN_BOND_RISK_OVERLAY } from "./GeoRiskML";
 // ═══════════════════════════════════════════════════════════════
 
 const C = {
-  bg: "#0A0C10", surface: "#12141A", surface2: "#181B22", surface3: "#20232C",
-  border: "#252932", borderHover: "#39404C",
-  text: "#F1EFE8", textSec: "#98A0AC", textMuted: "#5B6270",
-  gold: "#BFA06A", goldDim: "rgba(191,160,106,0.10)", goldBorder: "rgba(191,160,106,0.28)",
+  bg: "#0e0b16", surface: "#161220", surface2: "#1c1729", surface3: "#241d34",
+  border: "#332a47", borderHover: "#493c66",
+  text: "#F1EFE8", textSec: "#A79CC2", textMuted: "#6E6285",
+  gold: "#8A7EBF", goldDim: "rgba(138,126,191,0.12)", goldBorder: "rgba(138,126,191,0.30)",
   red: "#C05B4F", green: "#4E9B76", blue: "#5C82AD", amber: "#C99A4C",
   purple: "#8A7EBF",
 };
 const F = {
-  display: "'Fraunces','Georgia',serif",
-  body: "'Inter','Helvetica Neue',sans-serif",
-  mono: "'IBM Plex Mono','Fira Code',monospace",
+  display: "'JetBrains Mono', monospace",
+  body: "'DM Sans', sans-serif",
+  mono: "'JetBrains Mono', monospace",
 };
-const FONT_IMPORT = "@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');";
+const FONT_IMPORT = "";
 
 // ── Data ────────────────────────────────────────────────────────
 
@@ -198,7 +198,7 @@ function reconcileSovereignBondSignal(banks) {
 function StanceBadge({ stance }) {
   const m = STANCE_META[stance] || STANCE_META.neutral;
   return (
-    <span style={{ display: "inline-flex", alignItems: "center", padding: "2px 8px", fontSize: 9, fontFamily: F.mono, fontWeight: 600, letterSpacing: "0.12em", color: m.color, background: m.bg, border: `1px solid ${m.border}` }}>
+    <span style={{ display: "inline-flex", alignItems: "center", padding: "2px 8px", fontSize: 10, fontFamily: F.mono, fontWeight: 600, letterSpacing: "0.12em", color: m.color, background: m.bg, border: `1px solid ${m.border}` }}>
       {m.label}
     </span>
   );
@@ -220,7 +220,7 @@ function SignalCell({ value }) {
   const v = Math.round(value);
   const key = String(Math.max(-2, Math.min(2, v)));
   return (
-    <span style={{ fontFamily: F.mono, fontSize: 9, fontWeight: 600, color: SIGNAL_COLORS[key] || C.textMuted, letterSpacing: "0.08em" }}>
+    <span style={{ fontFamily: F.mono, fontSize: 10, fontWeight: 600, color: SIGNAL_COLORS[key] || C.textMuted, letterSpacing: "0.08em" }}>
       {SIGNAL_LABELS[key] || "—"}
     </span>
   );
@@ -232,7 +232,7 @@ function NLPAnalyser() {
 
   return (
     <div style={{ background: C.surface, border: `1px solid ${C.border}`, padding: 24 }}>
-      <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.15em", marginBottom: 16 }}>
+      <div style={{ fontFamily: F.mono, fontSize: 11, color: C.gold, letterSpacing: "0.15em", marginBottom: 16 }}>
         NLP · STATEMENT ANALYSER
       </div>
       <textarea
@@ -242,35 +242,35 @@ function NLPAnalyser() {
         rows={5}
         style={{
           width: "100%", background: C.surface2, border: `1px solid ${C.border}`,
-          color: C.text, fontFamily: F.body, fontSize: 13, padding: "12px 14px",
+          color: C.text, fontFamily: F.body, fontSize: 14, padding: "12px 14px",
           resize: "vertical", outline: "none", lineHeight: 1.6, boxSizing: "border-box",
         }}
       />
       {result && text.trim() && (
         <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
           <div style={{ padding: "16px 18px", background: C.surface2, border: `1px solid ${C.border}` }}>
-            <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>DIAGNÓSTICO</div>
-            <div style={{ fontFamily: F.display, fontSize: 26, color: result.color, marginBottom: 4 }}>{result.stance}</div>
-            <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>
+            <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>DIAGNÓSTICO</div>
+            <div style={{ fontFamily: F.display, fontSize: 27, color: result.color, marginBottom: 4 }}>{result.stance}</div>
+            <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>
               {result.hawkScore} hawkish · {result.dovScore} dovish signals
             </div>
           </div>
           <div style={{ padding: "16px 18px", background: C.surface2, border: `1px solid ${C.border}` }}>
-            <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>SEÑALES DETECTADAS</div>
+            <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>SEÑALES DETECTADAS</div>
             {result.hawkHits.length > 0 && (
               <div style={{ marginBottom: 6 }}>
-                <span style={{ fontFamily: F.mono, fontSize: 8, color: C.red, letterSpacing: "0.1em" }}>HAWK: </span>
-                <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textSec }}>{result.hawkHits.slice(0, 4).join(", ")}</span>
+                <span style={{ fontFamily: F.mono, fontSize: 9, color: C.red, letterSpacing: "0.1em" }}>HAWK: </span>
+                <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textSec }}>{result.hawkHits.slice(0, 4).join(", ")}</span>
               </div>
             )}
             {result.dovHits.length > 0 && (
               <div>
-                <span style={{ fontFamily: F.mono, fontSize: 8, color: C.green, letterSpacing: "0.1em" }}>DOVE: </span>
-                <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textSec }}>{result.dovHits.slice(0, 4).join(", ")}</span>
+                <span style={{ fontFamily: F.mono, fontSize: 9, color: C.green, letterSpacing: "0.1em" }}>DOVE: </span>
+                <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textSec }}>{result.dovHits.slice(0, 4).join(", ")}</span>
               </div>
             )}
             {result.hawkHits.length === 0 && result.dovHits.length === 0 && (
-              <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>No keywords matched</span>
+              <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>No keywords matched</span>
             )}
           </div>
           <div style={{ gridColumn: "1/-1", height: 8, background: C.surface3, borderRadius: 4, position: "relative", overflow: "hidden" }}>
@@ -283,9 +283,9 @@ function NLPAnalyser() {
             <div style={{ position: "absolute", left: "50%", top: 0, width: 1, height: "100%", background: C.border }} />
           </div>
           <div style={{ gridColumn: "1/-1", display: "flex", justifyContent: "space-between" }}>
-            <span style={{ fontFamily: F.mono, fontSize: 8, color: C.green }}>◄ DOVISH</span>
-            <span style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted }}>NEUTRAL</span>
-            <span style={{ fontFamily: F.mono, fontSize: 8, color: C.red }}>HAWKISH ►</span>
+            <span style={{ fontFamily: F.mono, fontSize: 9, color: C.green }}>◄ DOVISH</span>
+            <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>NEUTRAL</span>
+            <span style={{ fontFamily: F.mono, fontSize: 9, color: C.red }}>HAWKISH ►</span>
           </div>
         </div>
       )}
@@ -323,24 +323,34 @@ export default function MacroPulse({ onClose }) {
         .zrc-close-btn:hover { background: ${C.gold}; color: ${C.bg}; }
         .zrc-tab-btn:hover { color: ${C.text} !important; }
         .zrc-bank-btn:hover { border-color: ${C.borderHover} !important; background: ${C.surface2} !important; }
+        .zrc-header-row { display: flex; justify-content: space-between; align-items: center; min-height: 68px; flex-wrap: wrap; gap: 12px; padding: 12px 0; }
+        .zrc-header-badges { display: flex; gap: 8px; margin-left: 4px; padding-left: 20px; border-left: 1px solid ${C.border}; }
+        .zrc-dashboard-grid { display: grid; grid-template-columns: 280px 1fr; gap: 20px; }
+        .zrc-signals-grid { display: grid; grid-template-columns: 1fr 340px; gap: 16px; align-items: start; }
+        @media (max-width: 780px) {
+          .zrc-header-row { height: auto; }
+          .zrc-header-badges { margin-left: 0; padding-left: 0; border-left: none; }
+          .zrc-dashboard-grid { grid-template-columns: 1fr; }
+          .zrc-signals-grid { grid-template-columns: 1fr; }
+        }
       `}</style>
 
       {/* Header */}
       <div style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(10,12,16,0.92)", backdropFilter: "blur(14px)", borderBottom: `1px solid ${C.border}`, padding: "0 clamp(16px,3vw,40px)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 68 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
+        <div className="zrc-header-row" style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 22, flexWrap: "wrap" }}>
             <div>
-              <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.22em", fontWeight: 500 }}>ZRC · MACRO PULSE</span>
-              <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, fontWeight: 400, letterSpacing: "0.01em", marginTop: 2 }}>Central Bank Signal Tracker</div>
+              <span style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.22em", fontWeight: 500 }}>ZRC · MACRO PULSE</span>
+              <div style={{ fontFamily: F.display, fontSize: 21, color: C.text, fontWeight: 400, letterSpacing: "0.01em", marginTop: 2 }}>Central Bank Signal Tracker</div>
             </div>
-            <div style={{ display: "flex", gap: 8, marginLeft: 4, paddingLeft: 20, borderLeft: `1px solid ${C.border}` }}>
-              <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.06em", color: C.green, background: "rgba(78,155,118,0.10)", border: "1px solid rgba(78,155,118,0.25)", padding: "3px 9px" }}>{dovishCount} DOVISH</span>
-              <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.06em", color: C.amber, background: "rgba(201,154,76,0.10)", border: "1px solid rgba(201,154,76,0.25)", padding: "3px 9px" }}>{holdCount} HOLD</span>
-              <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.06em", color: C.red, background: "rgba(192,91,79,0.10)", border: "1px solid rgba(192,91,79,0.25)", padding: "3px 9px" }}>{hawkishCount} HAWKISH</span>
+            <div className="zrc-header-badges">
+              <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.06em", color: C.green, background: "rgba(78,155,118,0.10)", border: "1px solid rgba(78,155,118,0.25)", padding: "3px 9px" }}>{dovishCount} DOVISH</span>
+              <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.06em", color: C.amber, background: "rgba(201,154,76,0.10)", border: "1px solid rgba(201,154,76,0.25)", padding: "3px 9px" }}>{holdCount} HOLD</span>
+              <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.06em", color: C.red, background: "rgba(192,91,79,0.10)", border: "1px solid rgba(192,91,79,0.25)", padding: "3px 9px" }}>{hawkishCount} HAWKISH</span>
             </div>
           </div>
           {onClose && (
-            <button onClick={onClose} className="zrc-close-btn" style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", padding: "8px 20px", cursor: "pointer", fontWeight: 500 }}>
+            <button onClick={onClose} className="zrc-close-btn" style={{ fontFamily: F.mono, fontSize: 11, letterSpacing: "0.12em", padding: "8px 20px", cursor: "pointer", fontWeight: 500 }}>
               ✕ CLOSE
             </button>
           )}
@@ -353,7 +363,7 @@ export default function MacroPulse({ onClose }) {
         <div style={{ display: "flex", gap: 4, marginBottom: 32, borderBottom: `1px solid ${C.border}` }}>
           {TABS.map(t => (
             <button key={t.id} className="zrc-tab-btn" onClick={() => setTab(t.id)} style={{
-              fontFamily: F.mono, fontSize: 10, letterSpacing: "0.14em",
+              fontFamily: F.mono, fontSize: 11, letterSpacing: "0.14em",
               padding: "12px 22px", background: "none", border: "none",
               borderBottom: tab === t.id ? `2px solid ${C.gold}` : "2px solid transparent",
               color: tab === t.id ? C.gold : C.textMuted, cursor: "pointer",
@@ -366,7 +376,7 @@ export default function MacroPulse({ onClose }) {
 
         {/* ── TAB: RATE DASHBOARD ── */}
         {tab === "dashboard" && (
-          <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 20 }}>
+          <div className="zrc-dashboard-grid">
 
             {/* Bank list */}
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -377,12 +387,12 @@ export default function MacroPulse({ onClose }) {
                   cursor: "pointer", textAlign: "left", transition: "border-color 0.2s, background 0.2s",
                 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-                    <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.04em" }}>{b.flag} {b.short}</span>
+                    <span style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted, letterSpacing: "0.04em" }}>{b.flag} {b.short}</span>
                     <StanceBadge stance={b.stance} />
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                    <span style={{ fontFamily: F.display, fontSize: 24, fontWeight: 400, color: activeBank === b.id ? C.gold : C.text }}>{b.rate.toFixed(2)}%</span>
-                    <span style={{ fontFamily: F.mono, fontSize: 8, color: CYCLE_COLORS[b.cycle] || C.textMuted, letterSpacing: "0.1em" }}>{b.cycle.toUpperCase()}</span>
+                    <span style={{ fontFamily: F.display, fontSize: 25, fontWeight: 400, color: activeBank === b.id ? C.gold : C.text }}>{b.rate.toFixed(2)}%</span>
+                    <span style={{ fontFamily: F.mono, fontSize: 9, color: CYCLE_COLORS[b.cycle] || C.textMuted, letterSpacing: "0.1em" }}>{b.cycle.toUpperCase()}</span>
                   </div>
                   <RateBar rate={b.rate} prev={b.prev} target={b.target} />
                 </button>
@@ -396,13 +406,13 @@ export default function MacroPulse({ onClose }) {
               <div style={{ padding: "30px 32px", background: C.surface, border: `1px solid ${C.border}` }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24, flexWrap: "wrap", gap: 12 }}>
                   <div>
-                    <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.12em", marginBottom: 6 }}>{selected.flag} {selected.short}</div>
-                    <div style={{ fontFamily: F.display, fontSize: 30, color: C.text, fontWeight: 400, letterSpacing: "0.01em" }}>{selected.name}</div>
-                    <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginTop: 4 }}>{selected.governor}</div>
+                    <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.12em", marginBottom: 6 }}>{selected.flag} {selected.short}</div>
+                    <div style={{ fontFamily: F.display, fontSize: 31, color: C.text, fontWeight: 400, letterSpacing: "0.01em" }}>{selected.name}</div>
+                    <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted, marginTop: 4 }}>{selected.governor}</div>
                   </div>
                   <div style={{ textAlign: "right" }}>
-                    <div style={{ fontFamily: F.display, fontSize: 48, fontWeight: 300, color: C.gold, lineHeight: 1 }}>{selected.rate.toFixed(2)}<span style={{ fontSize: 18, color: C.textMuted }}>%</span></div>
-                    <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, marginTop: 6 }}>
+                    <div style={{ fontFamily: F.display, fontSize: 49, fontWeight: 300, color: C.gold, lineHeight: 1 }}>{selected.rate.toFixed(2)}<span style={{ fontSize: 19, color: C.textMuted }}>%</span></div>
+                    <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginTop: 6 }}>
                       Peak {selected.prev}% · Target {selected.target}%
                     </div>
                   </div>
@@ -415,39 +425,39 @@ export default function MacroPulse({ onClose }) {
                     ["LAST MOVE", `${selected.lastMove.dir === "cut" ? "▼" : "▲"} ${selected.lastMove.bps}bp · ${selected.lastMove.date}`],
                   ].map(([k, v]) => (
                     <div key={k} style={{ padding: "14px 16px", background: C.surface2 }}>
-                      <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 5 }}>{k}</div>
-                      <div style={{ fontFamily: F.mono, fontSize: 11, color: C.text }}>{v}</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 5 }}>{k}</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 12, color: C.text }}>{v}</div>
                     </div>
                   ))}
                 </div>
 
                 <div style={{ padding: "4px 0 4px 20px", borderLeft: `2px solid ${C.gold}` }}>
-                  <div style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, letterSpacing: "0.14em", marginBottom: 8 }}>KEY PHRASE · {selected.short}</div>
-                  <div style={{ fontFamily: F.display, fontSize: 19, color: C.text, fontStyle: "italic", fontWeight: 400, marginBottom: 10 }}>"{selected.keyPhrase}"</div>
-                  <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>{selected.statement}</p>
+                  <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.14em", marginBottom: 8 }}>KEY PHRASE · {selected.short}</div>
+                  <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, fontStyle: "italic", fontWeight: 400, marginBottom: 10 }}>"{selected.keyPhrase}"</div>
+                  <p style={{ fontFamily: F.body, fontSize: 14, color: C.textSec, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>{selected.statement}</p>
                 </div>
               </div>
 
               {/* Divergence vs Fed */}
               {selected.id !== "fed" && (
                 <div style={{ padding: "22px 26px", background: C.surface, border: `1px solid ${C.border}` }}>
-                  <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.14em", marginBottom: 16 }}>
+                  <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.14em", marginBottom: 16 }}>
                     DIVERGENCIA · {selected.short} vs FED
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginBottom: 6 }}>FED</div>
-                      <div style={{ fontFamily: F.display, fontSize: 28, fontWeight: 400, color: C.text }}>4.50%</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted, marginBottom: 6 }}>FED</div>
+                      <div style={{ fontFamily: F.display, fontSize: 29, fontWeight: 400, color: C.text }}>4.50%</div>
                     </div>
                     <div style={{ flex: 1, textAlign: "center" }}>
-                      <div style={{ fontFamily: F.display, fontSize: 22, fontWeight: 400, color: Math.abs(selected.rate - 4.50) > 1 ? C.gold : C.textSec }}>
+                      <div style={{ fontFamily: F.display, fontSize: 23, fontWeight: 400, color: Math.abs(selected.rate - 4.50) > 1 ? C.gold : C.textSec }}>
                         {selected.rate > 4.50 ? "+" : ""}{(selected.rate - 4.50).toFixed(2)}%
                       </div>
-                      <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.1em", marginTop: 3 }}>SPREAD</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginTop: 3 }}>SPREAD</div>
                     </div>
                     <div style={{ textAlign: "center" }}>
-                      <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginBottom: 6 }}>{selected.short}</div>
-                      <div style={{ fontFamily: F.display, fontSize: 28, fontWeight: 400, color: C.gold }}>{selected.rate.toFixed(2)}%</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted, marginBottom: 6 }}>{selected.short}</div>
+                      <div style={{ fontFamily: F.display, fontSize: 29, fontWeight: 400, color: C.gold }}>{selected.rate.toFixed(2)}%</div>
                     </div>
                   </div>
                 </div>
@@ -458,14 +468,14 @@ export default function MacroPulse({ onClose }) {
 
         {/* ── TAB: NLP ANALYSER ── */}
         {tab === "analyser" && (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 16, alignItems: "start" }}>
+          <div className="zrc-signals-grid">
             <div>
               <NLPAnalyser />
               <div style={{ marginTop: 12, padding: "14px 18px", background: C.surface, border: `1px solid ${C.border}` }}>
-                <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 10 }}>EJEMPLOS DE USO</div>
+                <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 10 }}>EJEMPLOS DE USO</div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                   {BANKS.slice(0, 3).map(b => (
-                    <div key={b.id} style={{ fontFamily: F.mono, fontSize: 10, color: C.textSec, cursor: "pointer", padding: "4px 0", borderBottom: `1px solid ${C.border}` }}>
+                    <div key={b.id} style={{ fontFamily: F.mono, fontSize: 11, color: C.textSec, cursor: "pointer", padding: "4px 0", borderBottom: `1px solid ${C.border}` }}>
                       {b.flag} {b.short} — <span style={{ color: C.textMuted }}>"{b.keyPhrase}"</span>
                     </div>
                   ))}
@@ -474,17 +484,17 @@ export default function MacroPulse({ onClose }) {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               <div style={{ padding: "18px 20px", background: C.surface, border: `1px solid ${C.border}` }}>
-                <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.15em", marginBottom: 14 }}>STANCES ACTUALES</div>
+                <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.15em", marginBottom: 14 }}>STANCES ACTUALES</div>
                 {BANKS.map(b => (
                   <div key={b.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0", borderBottom: `1px solid ${C.border}` }}>
-                    <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textSec }}>{b.flag} {b.short}</span>
+                    <span style={{ fontFamily: F.mono, fontSize: 11, color: C.textSec }}>{b.flag} {b.short}</span>
                     <StanceBadge stance={b.stance} />
                   </div>
                 ))}
               </div>
               <div style={{ padding: "14px 18px", background: C.goldDim, border: `1px solid ${C.goldBorder}` }}>
-                <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.1em", marginBottom: 8 }}>ZRC SIGNAL</div>
-                <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, margin: 0, fontWeight: 300 }}>
+                <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", marginBottom: 8 }}>ZRC SIGNAL</div>
+                <p style={{ fontFamily: F.body, fontSize: 13.5, color: C.textSec, lineHeight: 1.6, margin: 0, fontWeight: 300 }}>
                   Ciclo global en divergencia. BCE y PBoC en modo dovish vs BoJ hawkish. Ventana abierta para posicionamiento en spreads FED–ECB.
                 </p>
               </div>
@@ -505,16 +515,16 @@ export default function MacroPulse({ onClose }) {
                 const key = String(Math.max(-2, Math.min(2, rounded)));
                 return (
                   <div key={ps.key} style={{ padding: "20px 22px", background: C.surface, border: `1px solid ${C.border}` }}>
-                    <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>{ps.asset.toUpperCase()}</div>
-                    <div style={{ fontFamily: F.display, fontSize: 24, color: SIGNAL_COLORS[key] || C.textMuted, marginBottom: 4 }}>
+                    <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>{ps.asset.toUpperCase()}</div>
+                    <div style={{ fontFamily: F.display, fontSize: 25, color: SIGNAL_COLORS[key] || C.textMuted, marginBottom: 4 }}>
                       {SIGNAL_LABELS[key] || "—"}
                     </div>
                     {isBonds ? (
-                      <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, lineHeight: 1.6 }}>
+                      <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, lineHeight: 1.6 }}>
                         Ciclo tipos (Fed+BCE): {bondReconciled.rateAvg > 0 ? "+" : ""}{bondReconciled.rateAvg.toFixed(1)} · Overlay riesgo GeoRisk ML: {bondReconciled.riskAvg > 0 ? "+" : ""}{bondReconciled.riskAvg.toFixed(1)}
                       </div>
                     ) : (
-                      <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>Score agregado: {v > 0 ? "+" : ""}{v.toFixed(1)}</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>Score agregado: {v > 0 ? "+" : ""}{v.toFixed(1)}</div>
                     )}
                   </div>
                 );
@@ -523,8 +533,8 @@ export default function MacroPulse({ onClose }) {
 
             {/* Sovereign bond reconciliation note */}
             <div style={{ padding: "16px 20px", background: C.goldDim, border: `1px solid ${C.goldBorder}` }}>
-              <div style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, letterSpacing: "0.12em", marginBottom: 8 }}>RECONCILIACIÓN · BONOS SOBERANOS CORE</div>
-              <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.65, margin: 0, fontWeight: 300 }}>
+              <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.12em", marginBottom: 8 }}>RECONCILIACIÓN · BONOS SOBERANOS CORE</div>
+              <p style={{ fontFamily: F.body, fontSize: 13.5, color: C.textSec, lineHeight: 1.65, margin: 0, fontWeight: 300 }}>
                 La señal de tipos por sí sola (Fed en hold, BCE recortando) apuntaría a {SIGNAL_LABELS[String(Math.max(-2, Math.min(2, Math.round(bondReconciled.rateAvg))))]}. GeoRisk ML valora el mismo instrumento bajo el mix de escenarios ZRC (Escalada Arancelaria 42% dominante) y ve presión al alza en yield/spread — Bund {bondReconciled.pctEu > 0 ? "+" : ""}{bondReconciled.pctEu.toFixed(1)}% a 12M, UST {bondReconciled.pctUsa > 0 ? "+" : ""}{bondReconciled.pctUsa.toFixed(1)}% a 12M. Macro Pulse pondera ambas señales para el mismo activo en vez de mostrar dos llamadas contradictorias.
               </p>
             </div>
@@ -532,14 +542,14 @@ export default function MacroPulse({ onClose }) {
             {/* Per-bank signal matrix */}
             <div style={{ background: C.surface, border: `1px solid ${C.border}`, overflow: "auto" }}>
               <div style={{ padding: "16px 20px", borderBottom: `1px solid ${C.border}` }}>
-                <span style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.15em" }}>MATRIX DE SEÑALES POR BANCO CENTRAL</span>
+                <span style={{ fontFamily: F.mono, fontSize: 11, color: C.gold, letterSpacing: "0.15em" }}>MATRIX DE SEÑALES POR BANCO CENTRAL</span>
               </div>
-              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <table style={{ width: "100%", minWidth: 560, borderCollapse: "collapse" }}>
                 <thead>
                   <tr>
-                    <th style={{ padding: "12px 20px", fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", textAlign: "left", borderBottom: `1px solid ${C.border}`, fontWeight: 500 }}>BANCO</th>
+                    <th style={{ padding: "12px 20px", fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", textAlign: "left", borderBottom: `1px solid ${C.border}`, fontWeight: 500 }}>BANCO</th>
                     {PORTFOLIO_SIGNALS.map(ps => (
-                      <th key={ps.key} style={{ padding: "12px 16px", fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.08em", textAlign: "center", borderBottom: `1px solid ${C.border}`, whiteSpace: "nowrap", fontWeight: 500 }}>
+                      <th key={ps.key} style={{ padding: "12px 16px", fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.08em", textAlign: "center", borderBottom: `1px solid ${C.border}`, whiteSpace: "nowrap", fontWeight: 500 }}>
                         {ps.asset.split("(")[0].trim().toUpperCase()}
                       </th>
                     ))}
@@ -550,7 +560,7 @@ export default function MacroPulse({ onClose }) {
                     <tr key={b.id}>
                       <td style={{ padding: "14px 20px", borderBottom: `1px solid ${C.border}` }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                          <span style={{ fontFamily: F.mono, fontSize: 11, color: C.text }}>{b.flag} {b.short}</span>
+                          <span style={{ fontFamily: F.mono, fontSize: 12, color: C.text }}>{b.flag} {b.short}</span>
                           <StanceBadge stance={b.stance} />
                         </div>
                       </td>
@@ -563,7 +573,7 @@ export default function MacroPulse({ onClose }) {
                   ))}
                   <tr style={{ background: C.surface2 }}>
                     <td style={{ padding: "14px 20px", borderTop: `1px solid ${C.goldBorder}` }}>
-                      <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.1em" }}>AGREGADO</span>
+                      <span style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em" }}>AGREGADO</span>
                     </td>
                     {PORTFOLIO_SIGNALS.map(ps => (
                       <td key={ps.key} style={{ padding: "14px 16px", borderTop: `1px solid ${C.goldBorder}`, textAlign: "center" }}>
@@ -574,7 +584,7 @@ export default function MacroPulse({ onClose }) {
                 </tbody>
               </table>
               <div style={{ padding: "10px 20px", borderTop: `1px solid ${C.border}` }}>
-                <span style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.04em" }}>
+                <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.04em" }}>
                   Fila AGREGADO = sólo ciclo de tipos por banco central, sin overlay de riesgo. Ver "RECONCILIACIÓN" arriba para la señal de bonos soberanos ajustada por riesgo.
                 </span>
               </div>
@@ -582,7 +592,7 @@ export default function MacroPulse({ onClose }) {
 
             {/* ZRC interpretation */}
             <div style={{ padding: "22px 26px", background: C.surface, border: `1px solid ${C.goldBorder}` }}>
-              <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.15em", marginBottom: 14 }}>ZRC MACRO INTERPRETATION · MAY 2026</div>
+              <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.15em", marginBottom: 14 }}>ZRC MACRO INTERPRETATION · MAY 2026</div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 20 }}>
                 {[
                   { title: "Bonos soberanos", body: "BCE en ciclo de recortes activo, pero el overlay de riesgo de GeoRisk ML (escalada arancelaria + fragmentación europea) presiona yield y spread al alza en Bund y, en menor medida, en UST. Postura neutral en duración core hasta que se disipe el riesgo de escenario; BTP italiano 3Y (spread 165bp vs Bund) sigue ofreciendo carry táctico si la fragmentación no escala." },
@@ -590,8 +600,8 @@ export default function MacroPulse({ onClose }) {
                   { title: "Renta variable", body: "Entorno mixto. Europa sensible a tipos (utilities, REITs) se beneficia de recortes BCE. Cuidado con financieras europeas: compresión de NIM si los recortes se aceleran." },
                 ].map(({ title, body }) => (
                   <div key={title}>
-                    <div style={{ fontFamily: F.display, fontSize: 16, color: C.text, marginBottom: 6 }}>{title}</div>
-                    <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.65, margin: 0, fontWeight: 300 }}>{body}</p>
+                    <div style={{ fontFamily: F.display, fontSize: 17, color: C.text, marginBottom: 6 }}>{title}</div>
+                    <p style={{ fontFamily: F.body, fontSize: 13.5, color: C.textSec, lineHeight: 1.65, margin: 0, fontWeight: 300 }}>{body}</p>
                   </div>
                 ))}
               </div>
