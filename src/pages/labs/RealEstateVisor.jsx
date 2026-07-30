@@ -20,16 +20,16 @@ const { BaseLayer, Overlay } = LayersControl;
 
 // Tokens locales — espejo del sistema de App.jsx (importables si se externalizan en futuro)
 const C = {
-  bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
-  border: "#27272A", borderHover: "#3F3F46",
-  text: "#FAFAFA", textSec: "#A1A1AA", textMuted: "#71717A",
-  gold: "#D4A853", goldDim: "rgba(212,168,83,0.12)", goldBorder: "rgba(212,168,83,0.25)",
-  red: "#EF4444", green: "#22C55E", amber: "#F59E0B",
+  bg: "#FAF6ED", surface: "#F3ECDC", surface2: "#EDE3CE", surface3: "#E6D9BC",
+  border: "#DBC9A0", borderHover: "#C7B182",
+  text: "#2B2418", textSec: "#5C513C", textMuted: "#8A7B5C",
+  gold: "#93712F", goldDim: "rgba(147,113,47,0.10)", goldBorder: "rgba(147,113,47,0.32)",
+  red: "#C0362C", green: "#15803D", amber: "#B45309",
 };
 const F = {
-  display: "'Cormorant Garamond', 'Georgia', serif",
-  body: "'Outfit', 'Helvetica Neue', sans-serif",
-  mono: "'IBM Plex Mono', 'Fira Code', monospace",
+  display: "'JetBrains Mono', monospace",
+  body: "'DM Sans', sans-serif",
+  mono: "'JetBrains Mono', monospace",
 };
 
 // Fix iconos Leaflet
@@ -323,7 +323,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
             fallback={
               <div style={{
                 display: "flex", alignItems: "center", justifyContent: "center",
-                height: "100%", color: C.gold, fontFamily: F.mono, fontSize: 11,
+                height: "100%", color: C.gold, fontFamily: F.mono, fontSize: 12,
                 letterSpacing: "0.18em", textTransform: "uppercase",
               }}>
                 {t(lang, "loading3D")}
@@ -375,13 +375,13 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
       <div className="zrc-visor-header">
         <div className="zrc-visor-header-row">
           <div>
-            <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 10 }}>
+            <div style={{ fontFamily: F.mono, fontSize: 11, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 10 }}>
               {t(lang, "modulo")}
             </div>
             <h1 className="zrc-visor-title">
               {t(lang, "title")}
             </h1>
-            <p style={{ margin: 0, color: C.textSec, fontSize: 14, fontWeight: 300, lineHeight: 1.55, maxWidth: 720 }}>
+            <p style={{ margin: 0, color: C.textSec, fontSize: 15, fontWeight: 300, lineHeight: 1.55, maxWidth: 720 }}>
               {t(lang, "subtitle")}
             </p>
           </div>
@@ -391,7 +391,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               onClick={() => setLang(lang === "en" ? "es" : "en")}
               title="Español / English"
               style={{
-                fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em",
+                fontFamily: F.mono, fontSize: 11, letterSpacing: "0.18em",
                 padding: "12px 16px", background: "none", color: C.textSec,
                 border: `1px solid ${C.border}`, cursor: "pointer",
                 textTransform: "uppercase", fontWeight: 600, whiteSpace: "nowrap",
@@ -405,7 +405,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               disabled={!parcela}
               title={parcela ? t(lang, "view3dTitleReady") : t(lang, "view3dTitleDisabled")}
               style={{
-                fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em",
+                fontFamily: F.mono, fontSize: 11, letterSpacing: "0.18em",
                 padding: "12px 20px",
                 background: parcela ? C.gold : C.surface3,
                 color: parcela ? C.bg : C.textMuted,
@@ -418,7 +418,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
             >
               {t(lang, "view3d")}
             </button>
-            <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.2em", color: C.gold, border: `1px solid ${C.goldBorder}`, padding: "6px 14px" }}>
+            <div style={{ fontFamily: F.mono, fontSize: 11, letterSpacing: "0.2em", color: C.gold, border: `1px solid ${C.goldBorder}`, padding: "6px 14px" }}>
               {t(lang, "beta")}
             </div>
           </div>
@@ -431,7 +431,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
         <aside className="zrc-visor-sidebar">
           {/* Buscador */}
           <form onSubmit={handleSearch}>
-            <label style={{ display: "block", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", color: C.textMuted, marginBottom: 8 }}>
+            <label style={{ display: "block", fontFamily: F.mono, fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase", color: C.textMuted, marginBottom: 8 }}>
               {t(lang, "rcLabel")}
             </label>
             <input
@@ -443,7 +443,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               maxLength={20}
               autoComplete="off"
               style={{
-                width: "100%", padding: "12px 14px", fontFamily: F.mono, fontSize: 13,
+                width: "100%", padding: "12px 14px", fontFamily: F.mono, fontSize: 14,
                 background: C.surface2, color: C.text, border: `1px solid ${C.border}`,
                 marginBottom: 10, letterSpacing: "0.02em", boxSizing: "border-box", outline: "none",
               }}
@@ -452,7 +452,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               type="submit" disabled={loading}
               style={{
                 width: "100%", padding: "12px", background: C.gold, color: C.bg,
-                border: "none", fontFamily: F.mono, fontSize: 11, fontWeight: 600,
+                border: "none", fontFamily: F.mono, fontSize: 12, fontWeight: 600,
                 letterSpacing: "0.1em", textTransform: "uppercase", cursor: loading ? "wait" : "pointer",
                 opacity: loading ? 0.6 : 1,
               }}
@@ -462,7 +462,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
           </form>
 
           {error && (
-            <div style={{ marginTop: 14, padding: "10px 14px", background: "rgba(239,68,68,0.1)", borderLeft: `3px solid ${C.red}`, color: C.red, fontSize: 13 }}>
+            <div style={{ marginTop: 14, padding: "10px 14px", background: "rgba(239,68,68,0.1)", borderLeft: `3px solid ${C.red}`, color: C.red, fontSize: 14 }}>
               {error}
             </div>
           )}
@@ -486,7 +486,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                     onClick={() => setActiveTab(tab.k)}
                     style={{
                       background: "none", border: "none", padding: "10px 12px",
-                      fontFamily: F.mono, fontSize: 10, fontWeight: 500,
+                      fontFamily: F.mono, fontSize: 11, fontWeight: 500,
                       letterSpacing: "0.08em", textTransform: "uppercase",
                       color: activeTab === tab.k ? C.gold : C.textMuted,
                       borderBottom: activeTab === tab.k ? `2px solid ${C.gold}` : "2px solid transparent",
@@ -495,11 +495,11 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                     }}
                   >
                     {tab.label}
-                    {tab.locked && <span style={{ fontSize: 10 }}>🔒</span>}
+                    {tab.locked && <span style={{ fontSize: 11 }}>🔒</span>}
                     {tab.badge && <RiskPill level={tab.badge} lang={lang} />}
                     {tab.count > 0 && (
                       <span style={{
-                        fontSize: 9, background: tab.gold ? C.gold : C.surface3, color: tab.gold ? C.bg : C.text,
+                        fontSize: 10, background: tab.gold ? C.gold : C.surface3, color: tab.gold ? C.bg : C.text,
                         padding: "1px 6px", borderRadius: 8, fontFamily: F.mono,
                       }}>{tab.count}</span>
                     )}
@@ -522,7 +522,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                     [t(lang, "fieldAntiguedad"), parcela.antiguedad],
                     ...(formatLocalizacionInterior(parcela, lang) ? [[t(lang, "fieldLocInterior"), formatLocalizacionInterior(parcela, lang)]] : []),
                     ...(parcela.coefParticipacion ? [[t(lang, "fieldCoefPart"), parcela.coefParticipacion]] : []),
-                    [t(lang, "fieldRC"), <span style={{ fontFamily: F.mono, fontSize: 11 }}>{parcela.rc}</span>],
+                    [t(lang, "fieldRC"), <span style={{ fontFamily: F.mono, fontSize: 12 }}>{parcela.rc}</span>],
                   ]} />
                   <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 8 }}>
                     <GhostBtn onClick={() => goToCheckout("teaser")}>{t(lang, "btnTeaser")}</GhostBtn>
@@ -540,20 +540,20 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
 
                   <details style={{ marginBottom: 14, background: C.surface2, border: `1px solid ${C.border}` }}>
                     <summary style={{
-                      cursor: "pointer", padding: "10px 12px", fontFamily: F.mono, fontSize: 10,
+                      cursor: "pointer", padding: "10px 12px", fontFamily: F.mono, fontSize: 11,
                       letterSpacing: "0.08em", textTransform: "uppercase", color: C.gold,
                     }}>
                       {t(lang, "residualHowTitle")}
                     </summary>
                     <div style={{ padding: "0 12px 12px" }}>
-                      <p style={{ margin: "0 0 8px", fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>
+                      <p style={{ margin: "0 0 8px", fontSize: 13, color: C.textSec, lineHeight: 1.6 }}>
                         {t(lang, "residualHowP1")}
                       </p>
-                      <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted, lineHeight: 1.9, padding: "8px 10px", background: "rgba(0,0,0,0.25)", whiteSpace: "pre-line" }}>
+                      <div style={{ fontFamily: F.mono, fontSize: 12, color: C.textMuted, lineHeight: 1.9, padding: "8px 10px", background: "rgba(43,36,24,0.06)", whiteSpace: "pre-line" }}>
                         {t(lang, "residualFormula")}<br />
                         <strong style={{ color: C.gold }}>{t(lang, "residualFormulaResult")}</strong>
                       </div>
-                      <p style={{ margin: "8px 0 0", fontSize: 11, color: C.textMuted, lineHeight: 1.6, fontStyle: "italic" }}>
+                      <p style={{ margin: "8px 0 0", fontSize: 12, color: C.textMuted, lineHeight: 1.6, fontStyle: "italic" }}>
                         {t(lang, "residualHowP2")}
                       </p>
                     </div>
@@ -561,13 +561,13 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
 
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, padding: "10px 12px", marginBottom: 14, background: C.surface2, border: `1px solid ${C.border}` }}>
                     <div>
-                      <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.12em", color: C.textMuted, textTransform: "uppercase" }}>{t(lang, "marketRefZone", { provincia: parcela.provincia })}</div>
-                      <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginTop: 2 }}>{fmt(priceByProvince(parcela.provincia))}/m²</div>
+                      <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", color: C.textMuted, textTransform: "uppercase" }}>{t(lang, "marketRefZone", { provincia: parcela.provincia })}</div>
+                      <div style={{ fontFamily: F.display, fontSize: 19, color: C.gold, marginTop: 2 }}>{fmt(priceByProvince(parcela.provincia))}/m²</div>
                     </div>
                     <button
                       type="button"
                       onClick={() => setParams({ ...params, precioVenta: priceByProvince(parcela.provincia) })}
-                      style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.08em", textTransform: "uppercase", padding: "6px 10px", background: "none", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", whiteSpace: "nowrap" }}
+                      style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", padding: "6px 10px", background: "none", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", whiteSpace: "nowrap" }}
                     >
                       {t(lang, "useRef")}
                     </button>
@@ -586,14 +586,14 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                     ]} />
                     <div style={{ marginTop: 10, paddingTop: 10, borderTop: `1px dashed ${C.border}` }}>
                       <DataList rows={[
-                        [<strong style={{ color: C.gold }}>{t(lang, "valorResidualSuelo")}</strong>, <strong style={{ color: C.gold, fontSize: 14 }}>{fmt(residual.valorResidualSuelo)}</strong>],
+                        [<strong style={{ color: C.gold }}>{t(lang, "valorResidualSuelo")}</strong>, <strong style={{ color: C.gold, fontSize: 15 }}>{fmt(residual.valorResidualSuelo)}</strong>],
                         [t(lang, "m2Suelo"), fmt(residual.valorResidualPorM2)],
                         [t(lang, "tirEstimada"), <span style={{ color: C.gold, fontFamily: F.mono }}>{residual.tirEstimada.toFixed(1)}%</span>],
                       ]} />
                     </div>
                   </div>
                   <InvestabilityBar score={residual.investabilityScore} tier={residual.investabilityTier} label={investabilityLabel(lang, residual.investabilityTier)} lang={lang} />
-                  <p style={{ margin: "12px 0 0", fontSize: 10, color: C.textMuted, lineHeight: 1.5, fontStyle: "italic" }}>
+                  <p style={{ margin: "12px 0 0", fontSize: 11, color: C.textMuted, lineHeight: 1.5, fontStyle: "italic" }}>
                     {t(lang, "marketRefFooter", { fuente: MARKET_REF_META.fuente, periodo: MARKET_REF_META.periodo })}
                   </p>
                 </Panel>
@@ -661,7 +661,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                   )}
                   <button style={{
                     width: "100%", marginTop: 16, padding: 12, background: C.gold, color: C.bg,
-                    border: "none", fontFamily: F.mono, fontSize: 11, fontWeight: 600,
+                    border: "none", fontFamily: F.mono, fontSize: 12, fontWeight: 600,
                     letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer",
                   }}>
                     {t(lang, "solicitarIntroduccion")}
@@ -689,7 +689,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
 
           {!parcela && !error && (
             <div style={{ marginTop: 24, padding: 18, background: C.surface2, border: `1px solid ${C.border}`, borderLeft: `3px solid ${C.gold}` }}>
-              <div style={{ fontFamily: F.display, fontSize: 18, color: C.gold, marginBottom: 12 }}>{t(lang, "masInfoTitle")}</div>
+              <div style={{ fontFamily: F.display, fontSize: 19, color: C.gold, marginBottom: 12 }}>{t(lang, "masInfoTitle")}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <PlanRow
                   name={t(lang, "planStandardName")} price={t(lang, "planStandardPrice")} desc={t(lang, "planStandardDesc")}
@@ -751,7 +751,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
               </>
             )}
           </MapContainer>
-          <div style={{ position: "absolute", bottom: 14, left: 14, background: "rgba(9,9,11,0.92)", color: C.text, padding: "6px 12px", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.08em", zIndex: 1000, pointerEvents: "none", border: `1px solid ${C.goldBorder}` }}>
+          <div style={{ position: "absolute", bottom: 14, left: 14, background: "rgba(9,9,11,0.92)", color: C.text, padding: "6px 12px", fontFamily: F.mono, fontSize: 11, letterSpacing: "0.08em", zIndex: 1000, pointerEvents: "none", border: `1px solid ${C.goldBorder}` }}>
             {t(lang, "mapWmsBadge")}
           </div>
         </main>
@@ -774,15 +774,15 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
 const Panel = ({ children }) => <div style={{ animation: "fadeIn 0.3s ease" }}>{children}</div>;
 
 const PanelTitle = ({ children, dot }) => (
-  <h3 style={{ fontFamily: F.display, fontWeight: 400, fontSize: 22, margin: "0 0 6px", color: C.text, display: "flex", alignItems: "center", gap: 8 }}>
+  <h3 style={{ fontFamily: F.display, fontWeight: 400, fontSize: 23, margin: "0 0 6px", color: C.text, display: "flex", alignItems: "center", gap: 8 }}>
     {dot && <span style={{ width: 8, height: 8, background: C.gold, borderRadius: "50%" }} />}
     {children}
   </h3>
 );
-const PanelLead = ({ children }) => <p style={{ fontSize: 12, color: C.textMuted, margin: "0 0 16px", lineHeight: 1.5 }}>{children}</p>;
+const PanelLead = ({ children }) => <p style={{ fontSize: 13, color: C.textMuted, margin: "0 0 16px", lineHeight: 1.5 }}>{children}</p>;
 
 const DataList = ({ rows }) => (
-  <dl style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "8px 16px", margin: 0, fontSize: 13 }}>
+  <dl style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "8px 16px", margin: 0, fontSize: 14 }}>
     {rows.map(([k, v], i) => (
       <div key={i} style={{ display: "contents" }}>
         <dt style={{ color: C.textMuted, fontWeight: 400 }}>{k}</dt>
@@ -794,7 +794,7 @@ const DataList = ({ rows }) => (
 
 const Slider = ({ label, min, max, step, value, onChange }) => (
   <div style={{ marginBottom: 14 }}>
-    <label style={{ display: "block", fontSize: 12, color: C.text, marginBottom: 6, fontWeight: 500 }}>{label}</label>
+    <label style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 6, fontWeight: 500 }}>{label}</label>
     <input
       type="range" min={min} max={max} step={step} value={value}
       onChange={(e) => onChange(+e.target.value)}
@@ -815,15 +815,15 @@ const ReportStatusBanner = ({ status, onDismiss, onRetry, lang }) => {
       maxWidth: "calc(100vw - 32px)", boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
     }}>
       <div>
-        <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.14em", color, textTransform: "uppercase", marginBottom: 3 }}>{title}</div>
-        <div style={{ fontSize: 12, color: C.text }}>{status.message}</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.14em", color, textTransform: "uppercase", marginBottom: 3 }}>{title}</div>
+        <div style={{ fontSize: 13, color: C.text }}>{status.message}</div>
       </div>
       {status.stage === "error" && status.retryable && (
         <button
           onClick={onRetry}
           style={{
             padding: "6px 12px", background: "none", border: `1px solid ${color}`, color,
-            fontFamily: F.mono, fontSize: 10, fontWeight: 600, letterSpacing: "0.06em",
+            fontFamily: F.mono, fontSize: 11, fontWeight: 600, letterSpacing: "0.06em",
             textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap",
           }}
         >
@@ -831,7 +831,7 @@ const ReportStatusBanner = ({ status, onDismiss, onRetry, lang }) => {
         </button>
       )}
       {(status.stage === "done" || status.stage === "error") && (
-        <button onClick={onDismiss} style={{ background: "none", border: "none", color: C.textMuted, cursor: "pointer", fontSize: 16, lineHeight: 1 }}>×</button>
+        <button onClick={onDismiss} style={{ background: "none", border: "none", color: C.textMuted, cursor: "pointer", fontSize: 17, lineHeight: 1 }}>×</button>
       )}
     </div>
   );
@@ -839,14 +839,14 @@ const ReportStatusBanner = ({ status, onDismiss, onRetry, lang }) => {
 
 const PaywallCard = ({ title, body, cta, onClick }) => (
   <div style={{ padding: 20, background: C.surface2, border: `1px dashed ${C.goldBorder}`, textAlign: "center" }}>
-    <div style={{ fontSize: 22, marginBottom: 10 }}>🔒</div>
-    <div style={{ fontFamily: F.display, fontSize: 18, color: C.text, marginBottom: 8 }}>{title}</div>
-    <p style={{ fontSize: 12, color: C.textSec, lineHeight: 1.6, margin: "0 0 16px" }}>{body}</p>
+    <div style={{ fontSize: 23, marginBottom: 10 }}>🔒</div>
+    <div style={{ fontFamily: F.display, fontSize: 19, color: C.text, marginBottom: 8 }}>{title}</div>
+    <p style={{ fontSize: 13, color: C.textSec, lineHeight: 1.6, margin: "0 0 16px" }}>{body}</p>
     <button
       onClick={onClick}
       style={{
         padding: "10px 20px", background: C.gold, color: C.bg, border: "none",
-        fontFamily: F.mono, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em",
+        fontFamily: F.mono, fontSize: 12, fontWeight: 600, letterSpacing: "0.08em",
         textTransform: "uppercase", cursor: "pointer",
       }}
     >
@@ -869,7 +869,7 @@ const ComparablesPanel = ({ provincia, precioRefM2, precioVenta, fmt, lang }) =>
         <div style={{ position: "relative", height: 8, background: C.surface3, borderRadius: 4, marginTop: 28 }}>
           <div style={{
             position: "absolute", left: `${markerPct}%`, top: -22, transform: "translateX(-50%)",
-            fontFamily: F.mono, fontSize: 10, color: C.gold, whiteSpace: "nowrap", fontWeight: 600,
+            fontFamily: F.mono, fontSize: 11, color: C.gold, whiteSpace: "nowrap", fontWeight: 600,
           }}>
             {fmt(precioVenta)}
           </div>
@@ -879,28 +879,28 @@ const ComparablesPanel = ({ provincia, precioRefM2, precioVenta, fmt, lang }) =>
           }} />
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 6 }}>
-          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>{fmt(band.min)}</span>
-          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>P25</span>
-          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>{lang === "en" ? "Median" : "Mediana"}</span>
-          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>P75</span>
-          <span style={{ fontSize: 9, fontFamily: F.mono, color: C.textMuted }}>{fmt(band.max)}</span>
+          <span style={{ fontSize: 10, fontFamily: F.mono, color: C.textMuted }}>{fmt(band.min)}</span>
+          <span style={{ fontSize: 10, fontFamily: F.mono, color: C.textMuted }}>P25</span>
+          <span style={{ fontSize: 10, fontFamily: F.mono, color: C.textMuted }}>{lang === "en" ? "Median" : "Mediana"}</span>
+          <span style={{ fontSize: 10, fontFamily: F.mono, color: C.textMuted }}>P75</span>
+          <span style={{ fontSize: 10, fontFamily: F.mono, color: C.textMuted }}>{fmt(band.max)}</span>
         </div>
       </div>
 
-      <div style={{ padding: "10px 14px", background: C.surface2, border: `1px solid ${C.border}`, marginBottom: 16, fontSize: 12, color: C.textSec, lineHeight: 1.5 }}>
+      <div style={{ padding: "10px 14px", background: C.surface2, border: `1px solid ${C.border}`, marginBottom: 16, fontSize: 13, color: C.textSec, lineHeight: 1.5 }}>
         {t(lang, "comparablesPercentilePrefix")} <strong style={{ color: C.gold }}>{percentile}</strong>{t(lang, "comparablesPercentileSuffix", { posicion: t(lang, posicionKey) })}
       </div>
 
       <PanelTitle>{t(lang, "perfilesComparables")}</PanelTitle>
       <ul style={{ listStyle: "none", padding: 0, margin: "0 0 12px", display: "flex", flexDirection: "column", gap: 8 }}>
         {comps.map((c) => (
-          <li key={c.labelKey} style={{ display: "flex", justifyContent: "space-between", padding: "10px 12px", background: C.surface2, borderLeft: `3px solid ${C.goldBorder}`, fontSize: 12 }}>
+          <li key={c.labelKey} style={{ display: "flex", justifyContent: "space-between", padding: "10px 12px", background: C.surface2, borderLeft: `3px solid ${C.goldBorder}`, fontSize: 13 }}>
             <span style={{ color: C.textSec }}>{t(lang, c.labelKey)}</span>
             <strong style={{ color: C.text }}>{fmt(c.pricePerM2)}/m²</strong>
           </li>
         ))}
       </ul>
-      <p style={{ margin: 0, fontSize: 10, color: C.textMuted, lineHeight: 1.5, fontStyle: "italic" }}>
+      <p style={{ margin: 0, fontSize: 11, color: C.textMuted, lineHeight: 1.5, fontStyle: "italic" }}>
         {t(lang, "comparablesFooter", { fuente: MARKET_REF_META.fuente, periodo: MARKET_REF_META.periodo })}
       </p>
     </>
@@ -934,13 +934,13 @@ const PlanRow = ({ name, price, desc, active, onClick, lang }) => (
     }}
   >
     <div>
-      <div style={{ fontSize: 12, color: C.textSec }}>
+      <div style={{ fontSize: 13, color: C.textSec }}>
         <span style={{ color: C.gold, fontWeight: 600 }}>{name}</span> · {price}
       </div>
-      <div style={{ fontSize: 11, color: C.textMuted, marginTop: 2 }}>{desc}</div>
+      <div style={{ fontSize: 12, color: C.textMuted, marginTop: 2 }}>{desc}</div>
     </div>
     <span style={{
-      flexShrink: 0, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.08em", textTransform: "uppercase",
+      flexShrink: 0, fontFamily: F.mono, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase",
       padding: "4px 8px", color: active ? C.green : C.gold, border: `1px solid ${active ? C.green : C.goldBorder}`,
     }}>
       {active ? t(lang, "planActive") : t(lang, "planElegir")}
@@ -955,7 +955,7 @@ const GhostBtn = ({ children, onClick, disabled, emphasis }) => (
     style={{
       background: emphasis ? C.goldDim : C.surface2, color: emphasis ? C.gold : C.text,
       border: `1px solid ${emphasis ? C.goldBorder : C.border}`,
-      padding: "10px 14px", fontSize: 12, fontFamily: F.body,
+      padding: "10px 14px", fontSize: 13, fontFamily: F.body,
       cursor: disabled ? "wait" : "pointer", textAlign: "left",
       opacity: disabled ? 0.6 : 1,
     }}
@@ -967,7 +967,7 @@ const GhostBtn = ({ children, onClick, disabled, emphasis }) => (
 const RiskPill = ({ level }) => {
   const colors = { low: C.green, mid: C.amber, high: C.red };
   const labels = { low: "OK", mid: "!", high: "⚠" };
-  return <span style={{ fontSize: 9, padding: "1px 5px", background: `${colors[level]}22`, color: colors[level], borderRadius: 6, fontFamily: F.mono }}>{labels[level]}</span>;
+  return <span style={{ fontSize: 10, padding: "1px 5px", background: `${colors[level]}22`, color: colors[level], borderRadius: 6, fontFamily: F.mono }}>{labels[level]}</span>;
 };
 
 const RiskItem = ({ f, lang }) => {
@@ -975,12 +975,12 @@ const RiskItem = ({ f, lang }) => {
   const labelKeys = { low: "riskLow", mid: "riskMid", high: "riskHigh" };
   return (
     <li style={{ display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 12, alignItems: "center", padding: "12px 14px", background: C.surface2, borderLeft: `3px solid ${colors[f.level]}` }}>
-      <span style={{ fontSize: 18 }}>{f.icon}</span>
+      <span style={{ fontSize: 19 }}>{f.icon}</span>
       <div>
-        <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 2 }}>{t(lang, `risk_${f.key}_label`)}</strong>
-        <span style={{ fontSize: 11, color: C.textMuted, lineHeight: 1.4 }}>{t(lang, `risk_${f.key}_detail`)}</span>
+        <strong style={{ display: "block", fontSize: 14, color: C.text, marginBottom: 2 }}>{t(lang, `risk_${f.key}_label`)}</strong>
+        <span style={{ fontSize: 12, color: C.textMuted, lineHeight: 1.4 }}>{t(lang, `risk_${f.key}_detail`)}</span>
       </div>
-      <span style={{ fontFamily: F.mono, fontSize: 10, padding: "3px 8px", background: `${colors[f.level]}22`, color: colors[f.level], letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>
+      <span style={{ fontFamily: F.mono, fontSize: 11, padding: "3px 8px", background: `${colors[f.level]}22`, color: colors[f.level], letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>
         {t(lang, labelKeys[f.level])}
       </span>
     </li>
@@ -992,13 +992,13 @@ const BOEItem = ({ a, lang }) => {
   return (
     <li style={{ padding: 14, background: C.surface2, borderLeft: `3px solid ${C.gold}` }}>
       <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 6, flexWrap: "wrap" }}>
-        <span style={{ fontFamily: F.mono, fontSize: 9, padding: "2px 6px", background: `${colors[a.impact]}22`, color: colors[a.impact], letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>{t(lang, `boe_${a.id}_impactLabel`)}</span>
-        <span style={{ fontSize: 10, color: C.textMuted, fontFamily: F.mono }}>{a.date}</span>
-        <span style={{ fontSize: 10, color: C.textMuted, fontFamily: F.mono }}>· {boeSource(lang, a)}</span>
+        <span style={{ fontFamily: F.mono, fontSize: 10, padding: "2px 6px", background: `${colors[a.impact]}22`, color: colors[a.impact], letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>{t(lang, `boe_${a.id}_impactLabel`)}</span>
+        <span style={{ fontSize: 11, color: C.textMuted, fontFamily: F.mono }}>{a.date}</span>
+        <span style={{ fontSize: 11, color: C.textMuted, fontFamily: F.mono }}>· {boeSource(lang, a)}</span>
       </div>
-      <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 6, lineHeight: 1.35 }}>{boeTitle(lang, a)}</strong>
-      <p style={{ margin: "0 0 8px", fontSize: 12, color: C.textSec, lineHeight: 1.5 }}>{t(lang, `boe_${a.id}_summary`)}</p>
-      <a href={a.url} target="_blank" rel="noreferrer" style={{ fontSize: 11, color: C.gold, textDecoration: "none", fontWeight: 500 }}>{t(lang, "verPublicacion")}</a>
+      <strong style={{ display: "block", fontSize: 14, color: C.text, marginBottom: 6, lineHeight: 1.35 }}>{boeTitle(lang, a)}</strong>
+      <p style={{ margin: "0 0 8px", fontSize: 13, color: C.textSec, lineHeight: 1.5 }}>{t(lang, `boe_${a.id}_summary`)}</p>
+      <a href={a.url} target="_blank" rel="noreferrer" style={{ fontSize: 12, color: C.gold, textDecoration: "none", fontWeight: 500 }}>{t(lang, "verPublicacion")}</a>
     </li>
   );
 };
@@ -1012,19 +1012,19 @@ const MatchItem = ({ m, lang }) => (
         display: "flex", alignItems: "center", justifyContent: "center", position: "relative",
       }}>
         <div style={{ position: "absolute", inset: 4, background: C.surface, borderRadius: "50%" }} />
-        <span style={{ position: "relative", zIndex: 1, fontFamily: F.mono, fontSize: 11, fontWeight: 600, color: C.gold }}>{m.fit}%</span>
+        <span style={{ position: "relative", zIndex: 1, fontFamily: F.mono, fontSize: 12, fontWeight: 600, color: C.gold }}>{m.fit}%</span>
       </div>
     </div>
     <div>
-      <strong style={{ display: "block", fontSize: 13, color: C.text, marginBottom: 2 }}>{t(lang, `mandate_${m.id}_label`)}</strong>
-      <span style={{ display: "block", fontSize: 10, color: C.textMuted, fontFamily: F.mono, marginBottom: 6 }}>{t(lang, `mandate_${m.id}_tipologia`)} · {t(lang, "ticketLabel")} {m.ticket}</span>
-      <p style={{ margin: 0, fontSize: 11, color: C.textSec, lineHeight: 1.45 }}>{t(lang, `mandate_${m.id}_thesis`)}</p>
+      <strong style={{ display: "block", fontSize: 14, color: C.text, marginBottom: 2 }}>{t(lang, `mandate_${m.id}_label`)}</strong>
+      <span style={{ display: "block", fontSize: 11, color: C.textMuted, fontFamily: F.mono, marginBottom: 6 }}>{t(lang, `mandate_${m.id}_tipologia`)} · {t(lang, "ticketLabel")} {m.ticket}</span>
+      <p style={{ margin: 0, fontSize: 12, color: C.textSec, lineHeight: 1.45 }}>{t(lang, `mandate_${m.id}_thesis`)}</p>
     </div>
   </li>
 );
 
 const Empty = ({ children }) => (
-  <p style={{ fontSize: 12, color: C.textMuted, fontStyle: "italic", padding: 14, textAlign: "center", background: C.surface2 }}>{children}</p>
+  <p style={{ fontSize: 13, color: C.textMuted, fontStyle: "italic", padding: 14, textAlign: "center", background: C.surface2 }}>{children}</p>
 );
 
 const InvestabilityBar = ({ score, tier, label, lang }) => {
@@ -1035,9 +1035,9 @@ const InvestabilityBar = ({ score, tier, label, lang }) => {
       marginTop: 16, padding: 14, borderLeft: `4px solid ${color}`,
       background: `${color}10`, display: "grid", gridTemplateColumns: "1fr auto", gap: "4px 14px", alignItems: "center",
     }}>
-      <span style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textMuted }}>{t(lang, "investabilityScore")}</span>
-      <strong style={{ fontSize: 24, fontFamily: F.display, fontWeight: 500, color }}>{score}/100</strong>
-      <small style={{ gridColumn: "1 / -1", fontSize: 11, color: C.textSec, marginTop: 4 }}>{label}</small>
+      <span style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textMuted }}>{t(lang, "investabilityScore")}</span>
+      <strong style={{ fontSize: 25, fontFamily: F.display, fontWeight: 500, color }}>{score}/100</strong>
+      <small style={{ gridColumn: "1 / -1", fontSize: 12, color: C.textSec, marginTop: 4 }}>{label}</small>
     </div>
   );
 };
@@ -1325,17 +1325,17 @@ function LeadModal({ parcela, onClose, onSubmit, lang }) {
         borderTop: `3px solid ${C.gold}`, position: "relative",
         border: `1px solid ${C.border}`,
       }}>
-        <div style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 12 }}>
+        <div style={{ fontFamily: F.mono, fontSize: 11, letterSpacing: "0.18em", color: C.gold, textTransform: "uppercase", marginBottom: 12 }}>
           {t(lang, "leadBadge")}
         </div>
-        <h3 style={{ fontFamily: F.display, fontSize: 24, fontWeight: 400, margin: "0 0 12px", color: C.text }}>
+        <h3 style={{ fontFamily: F.display, fontSize: 25, fontWeight: 400, margin: "0 0 12px", color: C.text }}>
           {t(lang, "leadTitle")}
         </h3>
-        <p style={{ color: C.textSec, fontSize: 13, lineHeight: 1.6, margin: "0 0 20px" }}>
+        <p style={{ color: C.textSec, fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
           {t(lang, "leadBody")}
         </p>
         {errorMsg && (
-          <div style={{ marginBottom: 12, padding: "10px 12px", background: "rgba(239,68,68,0.1)", borderLeft: `3px solid ${C.red}`, color: C.red, fontSize: 12 }}>
+          <div style={{ marginBottom: 12, padding: "10px 12px", background: "rgba(239,68,68,0.1)", borderLeft: `3px solid ${C.red}`, color: C.red, fontSize: 13 }}>
             {errorMsg}
           </div>
         )}
@@ -1345,14 +1345,14 @@ function LeadModal({ parcela, onClose, onSubmit, lang }) {
             value={email} onChange={(e) => setEmail(e.target.value)}
             style={{
               width: "100%", padding: "12px 14px", background: C.surface2, color: C.text,
-              border: `1px solid ${C.border}`, marginBottom: 10, fontSize: 13, fontFamily: F.body,
+              border: `1px solid ${C.border}`, marginBottom: 10, fontSize: 14, fontFamily: F.body,
               boxSizing: "border-box", outline: "none",
             }}
           />
           <select required value={sector} onChange={(e) => setSector(e.target.value)}
             style={{
               width: "100%", padding: "12px 14px", background: C.surface2, color: C.text,
-              border: `1px solid ${C.border}`, marginBottom: 14, fontSize: 13, fontFamily: F.body,
+              border: `1px solid ${C.border}`, marginBottom: 14, fontSize: 14, fontFamily: F.body,
               boxSizing: "border-box", outline: "none", appearance: "none",
             }}>
             <option value="">{t(lang, "leadSectorPlaceholder")}</option>
@@ -1366,7 +1366,7 @@ function LeadModal({ parcela, onClose, onSubmit, lang }) {
           </select>
           <button type="submit" disabled={submitting} style={{
             width: "100%", padding: 12, background: C.gold, color: C.bg, border: "none",
-            fontFamily: F.mono, fontSize: 11, fontWeight: 600, letterSpacing: "0.1em",
+            fontFamily: F.mono, fontSize: 12, fontWeight: 600, letterSpacing: "0.1em",
             textTransform: "uppercase", cursor: submitting ? "wait" : "pointer",
             opacity: submitting ? 0.6 : 1,
           }}>
@@ -1375,7 +1375,7 @@ function LeadModal({ parcela, onClose, onSubmit, lang }) {
         </form>
         <button onClick={onClose} style={{
           position: "absolute", top: 12, right: 16, background: "none", border: "none",
-          fontSize: 22, color: C.textMuted, cursor: "pointer", lineHeight: 1, fontFamily: F.body,
+          fontSize: 23, color: C.textMuted, cursor: "pointer", lineHeight: 1, fontFamily: F.body,
         }}>x</button>
       </div>
     </div>
