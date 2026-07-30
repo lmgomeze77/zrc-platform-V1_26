@@ -189,7 +189,7 @@ function RiskGauge({ value, size = 120, label }) {
           {Math.round(value)}
         </text>
       </svg>
-      {label && <div style={{ fontSize: 10, color: "#64748B", marginTop: -4, letterSpacing: 1, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace" }}>{label}</div>}
+      {label && <div style={{ fontSize: 11, color: "#64748B", marginTop: -4, letterSpacing: 1, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace" }}>{label}</div>}
     </div>
   );
 }
@@ -199,7 +199,7 @@ function MiniBar({ value, max = 1, color, width = 80 }) {
   const isNeg = value < 0;
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: width + 50 }}>
-      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: isNeg ? "#EF4444" : "#10B981", minWidth: 42, textAlign: "right" }}>
+      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: isNeg ? "#EF4444" : "#10B981", minWidth: 42, textAlign: "right" }}>
         {isNeg ? "" : "+"}{fmt(value)}
       </span>
       <div style={{ width, height: 6, background: "#0d1626", borderRadius: 3, overflow: "hidden" }}>
@@ -223,7 +223,7 @@ function DataTicker({ items }) {
     }}>
       <div style={{ display: "flex", gap: 28, overflow: "hidden", animation: "zrc-ticker 30s linear infinite", whiteSpace: "nowrap" }}>
         {[...items, ...items].map((item, i) => (
-          <span key={i} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#94A3B8", letterSpacing: 0.5 }}>
+          <span key={i} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#94A3B8", letterSpacing: 0.5 }}>
             <span style={{ color: "#5B9BFF" }}>{item.label}</span>
             {" "}
             <span style={{ color: item.delta > 0 ? "#10B981" : item.delta < 0 ? "#EF4444" : "#94A3B8" }}>
@@ -390,7 +390,7 @@ export default function GeoRiskDashboard() {
         @keyframes zrc-gridPulse { 0%,100% { opacity:0.025 } 50% { opacity:0.05 } }
         .zrc-georisk input[type=range] { -webkit-appearance: none; height: 3px; background: #1a2744; border-radius: 2px; outline: none }
         .zrc-georisk input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: #3B82F6; cursor: pointer; box-shadow: 0 0 8px #3B82F680; border: 2px solid #0a1322 }
-        .zrc-georisk ::-webkit-scrollbar { width: 4px }
+        .zrc-georisk ::-webkit-scrollbar { width: 4px; height: 4px }
         .zrc-georisk ::-webkit-scrollbar-track { background: #0a1628 }
         .zrc-georisk ::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 2px }
         .zrc-card {
@@ -409,6 +409,18 @@ export default function GeoRiskDashboard() {
         .zrc-tab:hover { color: #CBD5E1 !important; background: #ffffff06; }
         .zrc-row:hover { background: #101d33 !important; }
         .zrc-reset:hover { border-color: #3B82F6 !important; color: #93C5FD !important; }
+        .zrc-control-row { display: grid; grid-template-columns: auto 1fr auto; }
+        .zrc-tabbar { flex-wrap: wrap; }
+        .zrc-tabbar .zrc-tab { flex: 1 1 auto; }
+        .zrc-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .zrc-table-inner { min-width: 640px; }
+        @media (max-width: 720px) {
+          .zrc-control-row { grid-template-columns: 1fr; justify-items: center; }
+          .zrc-region-sector { width: 100%; text-align: center; }
+          .zrc-region-sector > div { justify-content: center; }
+          .zrc-mult-block { text-align: center !important; }
+          .zrc-tabbar .zrc-tab { flex: 1 1 45%; }
+        }
       `}</style>
 
       <div className="zrc-georisk">
@@ -444,31 +456,31 @@ export default function GeoRiskDashboard() {
                     width: 32, height: 32, borderRadius: 8,
                     background: "linear-gradient(135deg, #1e3a5f, #3B82F6)",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 12, fontWeight: 700, letterSpacing: 1, color: "#fff",
+                    fontSize: 13, fontWeight: 700, letterSpacing: 1, color: "#fff",
                     fontFamily: "'JetBrains Mono', monospace",
                     boxShadow: "0 4px 16px -4px #3B82F660",
                   }}>ZR</div>
-                  <span style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "#64748B", fontFamily: "'JetBrains Mono', monospace" }}>
+                  <span style={{ fontSize: 12, letterSpacing: 3, textTransform: "uppercase", color: "#64748B", fontFamily: "'JetBrains Mono', monospace" }}>
                     ZENITH RISE CAPITAL
                   </span>
                 </div>
-                <h1 style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 24, fontWeight: 700, margin: 0, letterSpacing: -0.5, color: "#F8FAFC" }}>
+                <h1 style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 25, fontWeight: 700, margin: 0, letterSpacing: -0.5, color: "#F8FAFC" }}>
                   <Radar size={22} color="#5B9BFF" strokeWidth={2} />
                   GeoRisk Intelligence System
                 </h1>
-                <div style={{ fontSize: 11, color: "#4B5A72", marginTop: 4, fontFamily: "'JetBrains Mono', monospace" }}>
+                <div style={{ fontSize: 12, color: "#4B5A72", marginTop: 4, fontFamily: "'JetBrains Mono', monospace" }}>
                   Calesius Global SL · Modelo propietario de análisis geopolítico cuantitativo
                 </div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, justifyContent: "flex-end" }}>
                   <Pulse color="#10B981" />
-                  <span style={{ fontSize: 11, color: "#10B981", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>LIVE</span>
+                  <span style={{ fontSize: 12, color: "#10B981", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>LIVE</span>
                 </div>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 19, fontWeight: 600, color: "#E2E8F0", marginTop: 4, fontVariantNumeric: "tabular-nums" }}>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20, fontWeight: 600, color: "#E2E8F0", marginTop: 4, fontVariantNumeric: "tabular-nums" }}>
                   {time.toLocaleTimeString("es-ES", { hour12: false })}
                 </div>
-                <div style={{ fontSize: 10, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace" }}>
+                <div style={{ fontSize: 11, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace" }}>
                   {time.toLocaleDateString("es-ES", { weekday: "short", day: "2-digit", month: "short", year: "numeric" }).toUpperCase()} · CET
                 </div>
               </div>
@@ -477,59 +489,58 @@ export default function GeoRiskDashboard() {
 
           <DataTicker items={tickerItems} />
 
-          <div className="zrc-card" style={{
-            display: "grid", gridTemplateColumns: "auto 1fr auto", gap: 24,
-            padding: "20px 24px", margin: "20px 0", alignItems: "center"
+          <div className="zrc-card zrc-control-row" style={{
+            gap: 24, padding: "20px 24px", margin: "20px 0", alignItems: "center"
           }}>
             <div style={{ textAlign: "center" }}>
               <RiskGauge value={compositeRisk} size={110} label="Riesgo Compuesto" />
               <div style={{
-                fontSize: 9, fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginTop: 2,
+                fontSize: 10, fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginTop: 2,
                 color: isCustomized ? "#F59E0B" : "#10B981",
               }}>
                 {isCustomized ? "▲ ESCENARIO PERSONALIZADO" : "● BASE ZRC RESEARCH"}
               </div>
             </div>
-            <div>
+            <div className="zrc-region-sector">
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", marginBottom: 10 }}>
-                <span style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginRight: 4 }}>REGIÓN:</span>
+                <span style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginRight: 4 }}>REGIÓN:</span>
                 {Object.entries(REGIONS).map(([k, v]) => (
                   <button key={k} className="zrc-pill" onClick={() => setRegion(k)} style={{
                     padding: "5px 12px", borderRadius: 6, border: "1px solid",
                     borderColor: region === k ? "#A78BFA" : "#1e2d47",
                     background: region === k ? "#A78BFA18" : "transparent",
                     color: region === k ? "#C4B5FD" : "#64748B",
-                    fontSize: 11, cursor: "pointer", fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 12, cursor: "pointer", fontFamily: "'JetBrains Mono', monospace",
                     letterSpacing: 0.5,
                   }}>{v.label}</button>
                 ))}
               </div>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-                <span style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginRight: 4 }}>SECTOR:</span>
+                <span style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginRight: 4 }}>SECTOR:</span>
                 {Object.entries(SECTORS).map(([k, v]) => (
                   <button key={k} className="zrc-pill" onClick={() => setSector(k)} style={{
                     padding: "5px 12px", borderRadius: 6, border: "1px solid",
                     borderColor: sector === k ? "#3B82F6" : "#1e2d47",
                     background: sector === k ? "#3B82F618" : "transparent",
                     color: sector === k ? "#60A5FA" : "#64748B",
-                    fontSize: 11, cursor: "pointer", fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 12, cursor: "pointer", fontFamily: "'JetBrains Mono', monospace",
                     letterSpacing: 0.5,
                   }}>{v.label}</button>
                 ))}
               </div>
-              <div style={{ fontSize: 9, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace", marginTop: 10 }}>
+              <div style={{ fontSize: 10, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace", marginTop: 10 }}>
                 Las variables, fuentes y niveles se leen sobre {REGIONS[region].label} · el riesgo compuesto del escenario es global
               </div>
             </div>
-            <div style={{ textAlign: "right", fontFamily: "'JetBrains Mono', monospace" }}>
-              <div style={{ fontSize: 10, color: "#64748B", letterSpacing: 1 }}>MULTIPLICADOR</div>
-              <div style={{ fontSize: 20, fontWeight: 600, color: sectorMult > 1 ? "#F59E0B" : "#10B981" }}>
+            <div className="zrc-mult-block" style={{ textAlign: "right", fontFamily: "'JetBrains Mono', monospace" }}>
+              <div style={{ fontSize: 11, color: "#64748B", letterSpacing: 1 }}>MULTIPLICADOR</div>
+              <div style={{ fontSize: 21, fontWeight: 600, color: sectorMult > 1 ? "#F59E0B" : "#10B981" }}>
                 ×{sectorMult.toFixed(2)}
               </div>
             </div>
           </div>
 
-          <div className="zrc-card" style={{ display: "flex", gap: 2, padding: 5, marginBottom: 20 }}>
+          <div className="zrc-card zrc-tabbar" style={{ display: "flex", gap: 2, padding: 5, marginBottom: 20 }}>
             {[
               { id: "scenarios", label: "Escenarios", icon: Radar },
               { id: "variables", label: "Variables", icon: Activity },
@@ -537,12 +548,12 @@ export default function GeoRiskDashboard() {
               { id: "allocation", label: "Asignación", icon: PieChart },
             ].map(t2 => (
               <button key={t2.id} className="zrc-tab" onClick={() => setTab(t2.id)} style={{
-                display: "flex", alignItems: "center", gap: 7,
+                display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
                 padding: "9px 18px", border: "none", borderRadius: 7,
                 background: tab === t2.id ? "linear-gradient(135deg, #1e3a5f, #24466f)" : "transparent",
                 boxShadow: tab === t2.id ? "0 4px 14px -6px #3B82F660, 0 0 0 1px #3B82F640 inset" : "none",
                 color: tab === t2.id ? "#F1F5F9" : "#64748B",
-                fontSize: 12, fontWeight: 600, cursor: "pointer",
+                fontSize: 13, fontWeight: 600, cursor: "pointer",
                 fontFamily: "'JetBrains Mono', monospace", letterSpacing: 0.5,
               }}>
                 <t2.icon size={13} strokeWidth={2.2} />
@@ -562,17 +573,17 @@ export default function GeoRiskDashboard() {
                 display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap",
               }}>
                 <div>
-                  <div style={{ fontSize: 10, fontFamily: "'JetBrains Mono', monospace", color: "#5B9BFF", letterSpacing: 1, marginBottom: 6 }}>
+                  <div style={{ fontSize: 11, fontFamily: "'JetBrains Mono', monospace", color: "#5B9BFF", letterSpacing: 1, marginBottom: 6 }}>
                     METODOLOGÍA · SCORE COMPUESTO
                   </div>
-                  <div style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.7, maxWidth: 680 }}>
+                  <div style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.7, maxWidth: 680 }}>
                     El score es el promedio ponderado por probabilidad del riesgo intrínseco de cada escenario, ajustado por multiplicador sectorial.
                     {" "}<span style={{ color: "#CBD5E1" }}>El círculo de cada slider aparece por defecto en la probabilidad estimada por los algoritmos de ZRC Research.</span>
                     {" "}Puedes deslizarlo para explorar escenarios propios — el score se recalcula en tiempo real y queda marcado como "AJUSTADO", indicando el valor ZRC original.
                     {" "}<span style={{ color: "#F59E0B" }}>Las modificaciones no reflejan el análisis oficial de ZRC.</span>
                     {" "}Usa el botón ↺ (por escenario o global) para devolver el círculo a su posición ZRC.
                   </div>
-                  <div style={{ fontSize: 11, color: "#4B5A72", lineHeight: 1.7, maxWidth: 680, marginTop: 10, borderTop: "1px solid #1a274460", paddingTop: 10 }}>
+                  <div style={{ fontSize: 12, color: "#4B5A72", lineHeight: 1.7, maxWidth: 680, marginTop: 10, borderTop: "1px solid #1a274460", paddingTop: 10 }}>
                     ¿Necesitas forecast a 12 meses, NLP en tiempo real y un decision engine institucional sobre estos mismos escenarios?
                     {" "}<span style={{ color: "#A78BFA" }}>GeoRisk Predictive ML</span> es la evolución con IA de este dashboard.
                   </div>
@@ -582,7 +593,7 @@ export default function GeoRiskDashboard() {
                     flexShrink: 0, display: "flex", alignItems: "center", gap: 6,
                     padding: "7px 14px",
                     background: "#3B82F612", border: "1px solid #3B82F660",
-                    color: "#60A5FA", fontSize: 10, fontFamily: "'JetBrains Mono', monospace",
+                    color: "#60A5FA", fontSize: 11, fontFamily: "'JetBrains Mono', monospace",
                     letterSpacing: 1, cursor: "pointer", borderRadius: 6, whiteSpace: "nowrap",
                     transition: "all 0.2s",
                   }}>
@@ -601,10 +612,10 @@ export default function GeoRiskDashboard() {
                     borderLeft: "3px solid #F59E0B",
                     padding: "16px 20px", marginBottom: 20,
                   }}>
-                    <div style={{ fontSize: 10, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", letterSpacing: 1, marginBottom: 10 }}>
+                    <div style={{ fontSize: 11, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", letterSpacing: 1, marginBottom: 10 }}>
                       RESUMEN PARA COMITÉ DE INVERSIÓN
                     </div>
-                    <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, color: "#CBD5E1", lineHeight: 1.9 }}>
+                    <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: "#CBD5E1", lineHeight: 1.9 }}>
                       <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "base ZRC Research"}.</li>
                       <li>Riesgo a vigilar: <b>{worstScenario.label}</b> (riesgo intrínseco {worstScenario.risk}/100).</li>
                       {top && (
@@ -628,15 +639,15 @@ export default function GeoRiskDashboard() {
                       {activeScenario === sk && <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${sv.color}, transparent)` }} />}
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
                         <div>
-                          <div style={{ fontSize: 13, fontWeight: 600, color: sv.color, marginBottom: 2 }}>{sv.label}</div>
-                          <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace" }}>{sv.desc}</div>
+                          <div style={{ fontSize: 14, fontWeight: 600, color: sv.color, marginBottom: 2 }}>{sv.label}</div>
+                          <div style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace" }}>{sv.desc}</div>
                         </div>
                         <RiskGauge value={sv.risk} size={56} />
                       </div>
                       <div style={{ marginTop: 8 }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                            <span style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>
+                            <span style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>
                               PROB. ESCENARIO
                             </span>
                             <button
@@ -653,18 +664,18 @@ export default function GeoRiskDashboard() {
                               }}
                             ><RotateCcw size={11} /></button>
                           </div>
-                          <span style={{ fontSize: 14, fontWeight: 700, color: isModified ? "#F59E0B" : sv.color, fontFamily: "'JetBrains Mono', monospace" }}>
+                          <span style={{ fontSize: 15, fontWeight: 700, color: isModified ? "#F59E0B" : sv.color, fontFamily: "'JetBrains Mono', monospace" }}>
                             {(scenarioWeights[sk] * 100).toFixed(0)}%
                           </span>
                         </div>
                         {isModified && (
                           <div style={{ marginBottom: 4 }}>
-                            <span style={{ fontSize: 9, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", background: "#F59E0B15", border: "1px solid #F59E0B30", borderRadius: 2, padding: "1px 5px" }}>
+                            <span style={{ fontSize: 10, fontFamily: "'JetBrains Mono', monospace", color: "#F59E0B", background: "#F59E0B15", border: "1px solid #F59E0B30", borderRadius: 2, padding: "1px 5px" }}>
                               AJUSTADO · ZRC: {(DEFAULT_WEIGHTS[sk] * 100).toFixed(0)}%
                             </span>
                           </div>
                         )}
-                        <div style={{ fontSize: 9, color: "#475569", fontFamily: "'JetBrains Mono', monospace", marginBottom: 6 }}>
+                        <div style={{ fontSize: 10, color: "#475569", fontFamily: "'JetBrains Mono', monospace", marginBottom: 6 }}>
                           Desliza el círculo, o pulsa ↺ — el círculo en sombra marca el nivel estimado por ZRC
                         </div>
                         <div style={{ position: "relative", height: 12, display: "flex", alignItems: "center" }}>
@@ -687,7 +698,7 @@ export default function GeoRiskDashboard() {
                       </div>
                       {activeScenario === sk && (
                         <div style={{ marginTop: 12, paddingTop: 10, borderTop: `1px solid ${sv.color}20` }}>
-                          <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>
+                          <div style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>
                             VECTORES DE IMPACTO · FUENTE Y NIVEL ACTUAL POR VARIABLE
                           </div>
                           {Object.entries(sv.impactByRegion[region]).map(([vk, vi]) => {
@@ -695,8 +706,8 @@ export default function GeoRiskDashboard() {
                             return (
                               <div key={vk} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "4px 0" }}>
                                 <div>
-                                  <div style={{ fontSize: 11, color: "#94A3B8" }}>{ev?.label}</div>
-                                  <div style={{ fontSize: 9, color: "#475569", fontFamily: "'JetBrains Mono', monospace" }}>
+                                  <div style={{ fontSize: 12, color: "#94A3B8" }}>{ev?.label}</div>
+                                  <div style={{ fontSize: 10, color: "#475569", fontFamily: "'JetBrains Mono', monospace" }}>
                                     {ev?.source} · actual: {fmt(ev?.base, ev?.decimals ?? 2)}{ev?.unit}
                                   </div>
                                 </div>
@@ -707,7 +718,7 @@ export default function GeoRiskDashboard() {
                               </div>
                             );
                           })}
-                          <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, margin: "10px 0 6px" }}>
+                          <div style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, margin: "10px 0 6px" }}>
                             EJEMPLO · IMPACTO ESTIMADO EN PRECIOS (12M, si se materializa este escenario) · {REGIONS[region].label}
                           </div>
                           {ASSETS.map(a => {
@@ -715,8 +726,8 @@ export default function GeoRiskDashboard() {
                             const c = pct > 0.5 ? "#EF4444" : pct < -0.5 ? "#10B981" : "#64748B";
                             return (
                               <div key={a} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "3px 0" }}>
-                                <span style={{ fontSize: 11, color: "#94A3B8" }}>{a}</span>
-                                <span style={{ fontSize: 11, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, color: c }}>
+                                <span style={{ fontSize: 12, color: "#94A3B8" }}>{a}</span>
+                                <span style={{ fontSize: 12, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, color: c }}>
                                   {pct >= 0 ? "+" : ""}{fmt(pct, 1)}%
                                 </span>
                               </div>
@@ -734,42 +745,44 @@ export default function GeoRiskDashboard() {
           {/* VARIABLES */}
           {tab === "variables" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
-              <div className="zrc-card" style={{ overflow: "hidden" }}>
-                <div style={{
-                  display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.2fr 1.5fr",
-                  padding: "12px 20px", background: "#0d1829", borderBottom: "1px solid #1a2744",
-                  fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1
-                }}>
-                  <span>VARIABLE</span><span>BASE</span><span>IMPACTO</span><span>PROYECCIÓN</span><span>TENDENCIA</span>
-                </div>
-                {Object.entries(ECONOMIC_VARIABLES).map(([k, v], i) => {
-                  const imp = computeImpact(k);
-                  const proj = v.base + imp * v.volatility * 5;
-                  return (
-                    <div key={k} className="zrc-row" style={{
-                      display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.2fr 1.5fr",
-                      padding: "13px 20px", borderBottom: "1px solid #1a274430",
-                      alignItems: "center", background: i % 2 ? "#0a1322" : "#0c1526",
-                      transition: "background 0.2s"
-                    }}>
-                      <div>
-                        <div style={{ fontSize: 12, fontWeight: 500, color: "#CBD5E1" }}>{v.label}</div>
-                        <div style={{ fontSize: 9, color: "#475569", fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.04em", marginTop: 2 }}>{v.source}</div>
-                      </div>
-                      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#94A3B8" }}>
-                        {fmt(v.base, v.decimals ?? 2)}{v.unit}
-                      </span>
-                      <MiniBar value={imp} max={0.8} width={50} />
-                      <span style={{
-                        fontFamily: "'JetBrains Mono', monospace", fontSize: 13, fontWeight: 600,
-                        color: imp > 0.1 ? "#F59E0B" : imp < -0.1 ? "#10B981" : "#94A3B8"
+              <div className="zrc-card zrc-table-scroll">
+                <div className="zrc-table-inner">
+                  <div style={{
+                    display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.2fr 1.5fr",
+                    padding: "12px 20px", background: "#0d1829", borderBottom: "1px solid #1a2744",
+                    fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1
+                  }}>
+                    <span>VARIABLE</span><span>BASE</span><span>IMPACTO</span><span>PROYECCIÓN</span><span>TENDENCIA</span>
+                  </div>
+                  {Object.entries(ECONOMIC_VARIABLES).map(([k, v], i) => {
+                    const imp = computeImpact(k);
+                    const proj = v.base + imp * v.volatility * 5;
+                    return (
+                      <div key={k} className="zrc-row" style={{
+                        display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.2fr 1.5fr",
+                        padding: "13px 20px", borderBottom: "1px solid #1a274430",
+                        alignItems: "center", background: i % 2 ? "#0a1322" : "#0c1526",
+                        transition: "background 0.2s"
                       }}>
-                        {fmt(proj, v.decimals ?? 2)}{v.unit}
-                      </span>
-                      <SparkLine data={sparkData[k]} color={imp > 0.1 ? "#F59E0B" : imp < -0.1 ? "#10B981" : "#3B82F6"} w={90} h={24} />
-                    </div>
-                  );
-                })}
+                        <div>
+                          <div style={{ fontSize: 13, fontWeight: 500, color: "#CBD5E1" }}>{v.label}</div>
+                          <div style={{ fontSize: 10, color: "#475569", fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.04em", marginTop: 2 }}>{v.source}</div>
+                        </div>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#94A3B8" }}>
+                          {fmt(v.base, v.decimals ?? 2)}{v.unit}
+                        </span>
+                        <MiniBar value={imp} max={0.8} width={50} />
+                        <span style={{
+                          fontFamily: "'JetBrains Mono', monospace", fontSize: 14, fontWeight: 600,
+                          color: imp > 0.1 ? "#F59E0B" : imp < -0.1 ? "#10B981" : "#94A3B8"
+                        }}>
+                          {fmt(proj, v.decimals ?? 2)}{v.unit}
+                        </span>
+                        <SparkLine data={sparkData[k]} color={imp > 0.1 ? "#F59E0B" : imp < -0.1 ? "#10B981" : "#3B82F6"} w={90} h={24} />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           )}
@@ -778,7 +791,7 @@ export default function GeoRiskDashboard() {
           {tab === "nlp" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
               <div className="zrc-card" style={{ padding: 24 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 12 }}>
                   <MessageSquare size={13} color="#5B9BFF" />
                   ANÁLISIS NLP DE RIESGO GEOPOLÍTICO · Introduzca texto de noticias o briefings
                 </div>
@@ -788,14 +801,14 @@ export default function GeoRiskDashboard() {
                   placeholder="Pegue aquí un titular, noticia o briefing geopolítico para análisis de riesgo..."
                   style={{
                     width: "100%", height: 140, background: "#080e1a", border: "1px solid #1a2744",
-                    borderRadius: 8, padding: 14, color: "#CBD5E1", fontSize: 13,
+                    borderRadius: 8, padding: 14, color: "#CBD5E1", fontSize: 14,
                     fontFamily: "'JetBrains Mono', monospace", resize: "vertical",
                     outline: "none", lineHeight: 1.6, boxSizing: "border-box"
                   }}
                 />
                 <button onClick={handleNlp} style={{
                   marginTop: 12, padding: "9px 24px", background: "linear-gradient(135deg, #1e3a5f, #3B82F6)",
-                  border: "none", borderRadius: 7, color: "#fff", fontSize: 12, fontWeight: 600,
+                  border: "none", borderRadius: 7, color: "#fff", fontSize: 13, fontWeight: 600,
                   fontFamily: "'JetBrains Mono', monospace", cursor: "pointer", letterSpacing: 1,
                   boxShadow: "0 6px 18px -8px #3B82F680",
                 }}>
@@ -806,10 +819,10 @@ export default function GeoRiskDashboard() {
                   <div style={{ marginTop: 22, padding: 20, background: "#0d1829", borderRadius: 8, border: "1px solid #1a2744" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 18 }}>
                       <div style={{ textAlign: "center" }}>
-                        <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>SCORE RIESGO</div>
+                        <div style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>SCORE RIESGO</div>
                         <div style={{
                           display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
-                          fontSize: 30, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace",
+                          fontSize: 31, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace",
                           color: nlpResult.score > 0.3 ? "#EF4444" : nlpResult.score > 0 ? "#F59E0B" : "#10B981"
                         }}>
                           {nlpResult.score > 0.05 ? <TrendingUp size={20} /> : nlpResult.score < -0.05 ? <TrendingDown size={20} /> : <Minus size={20} />}
@@ -817,25 +830,25 @@ export default function GeoRiskDashboard() {
                         </div>
                       </div>
                       <div style={{ textAlign: "center" }}>
-                        <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>SCORE BRUTO</div>
-                        <div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", color: "#CBD5E1" }}>
+                        <div style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>SCORE BRUTO</div>
+                        <div style={{ fontSize: 31, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", color: "#CBD5E1" }}>
                           {fmt(nlpResult.rawScore)}
                         </div>
                       </div>
                       <div style={{ textAlign: "center" }}>
-                        <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>KEYWORDS</div>
-                        <div style={{ fontSize: 30, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", color: "#5B9BFF" }}>
+                        <div style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>KEYWORDS</div>
+                        <div style={{ fontSize: 31, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", color: "#5B9BFF" }}>
                           {nlpResult.hits.length}
                         </div>
                       </div>
                     </div>
                     {nlpResult.hits.length > 0 && (
                       <div>
-                        <div style={{ fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 8 }}>KEYWORDS DETECTADAS</div>
+                        <div style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 8 }}>KEYWORDS DETECTADAS</div>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                           {nlpResult.hits.map((h, i) => (
                             <span key={i} style={{
-                              padding: "3px 8px", borderRadius: 5, fontSize: 11,
+                              padding: "3px 8px", borderRadius: 5, fontSize: 12,
                               fontFamily: "'JetBrains Mono', monospace",
                               background: h.weight > 0 ? "#EF444420" : "#10B98120",
                               color: h.weight > 0 ? "#FCA5A5" : "#6EE7B7",
@@ -856,57 +869,59 @@ export default function GeoRiskDashboard() {
           {/* ALLOCATION */}
           {tab === "allocation" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
-              <div className="zrc-card" style={{ overflow: "hidden" }}>
-                <div style={{
-                  display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr 1.3fr 2.6fr",
-                  padding: "12px 20px", background: "#0d1829", borderBottom: "1px solid #1a2744",
-                  fontSize: 10, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1
-                }}>
-                  <span>CLASE DE ACTIVO</span><span>SEÑAL</span><span>IMPACTO PRECIO EST. (12M)</span><span>RECOMENDACIÓN</span><span>RACIONAL</span>
-                </div>
-                {allocationSignals.map((a, i) => {
-                  const priceImpact = estimatePriceImpact(a.asset, Object.fromEntries(Object.keys(ECONOMIC_VARIABLES).map(k => [k, computeImpact(k)])), region);
-                  const pCol = priceImpact > 0.5 ? "#EF4444" : priceImpact < -0.5 ? "#10B981" : "#64748B";
-                  const DirIcon = a.dir === "SOBREPONDERAR" ? TrendingUp : a.dir === "INFRAPONDERAR" ? TrendingDown : Minus;
-                  return (
-                    <div key={i} className="zrc-row" style={{
-                      display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr 1.3fr 2.6fr",
-                      padding: "15px 20px", borderBottom: "1px solid #1a274430",
-                      alignItems: "center", background: i % 2 ? "#0a1322" : "#0c1526",
-                      transition: "background 0.2s"
-                    }}>
-                      <span style={{ fontSize: 12, fontWeight: 500, color: "#CBD5E1" }}>{a.asset}</span>
-                      <div style={{
-                        fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 600,
-                        color: a.col, display: "flex", alignItems: "center", gap: 4
+              <div className="zrc-card zrc-table-scroll">
+                <div className="zrc-table-inner">
+                  <div style={{
+                    display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr 1.3fr 2.6fr",
+                    padding: "12px 20px", background: "#0d1829", borderBottom: "1px solid #1a2744",
+                    fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1
+                  }}>
+                    <span>CLASE DE ACTIVO</span><span>SEÑAL</span><span>IMPACTO PRECIO EST. (12M)</span><span>RECOMENDACIÓN</span><span>RACIONAL</span>
+                  </div>
+                  {allocationSignals.map((a, i) => {
+                    const priceImpact = estimatePriceImpact(a.asset, Object.fromEntries(Object.keys(ECONOMIC_VARIABLES).map(k => [k, computeImpact(k)])), region);
+                    const pCol = priceImpact > 0.5 ? "#EF4444" : priceImpact < -0.5 ? "#10B981" : "#64748B";
+                    const DirIcon = a.dir === "SOBREPONDERAR" ? TrendingUp : a.dir === "INFRAPONDERAR" ? TrendingDown : Minus;
+                    return (
+                      <div key={i} className="zrc-row" style={{
+                        display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr 1.3fr 2.6fr",
+                        padding: "15px 20px", borderBottom: "1px solid #1a274430",
+                        alignItems: "center", background: i % 2 ? "#0a1322" : "#0c1526",
+                        transition: "background 0.2s"
                       }}>
+                        <span style={{ fontSize: 13, fontWeight: 500, color: "#CBD5E1" }}>{a.asset}</span>
+                        <div style={{
+                          fontFamily: "'JetBrains Mono', monospace", fontSize: 13, fontWeight: 600,
+                          color: a.col, display: "flex", alignItems: "center", gap: 4
+                        }}>
+                          <span style={{
+                            width: 6, height: 6, borderRadius: "50%", background: a.col,
+                            boxShadow: `0 0 4px ${a.col}80`, display: "inline-block"
+                          }} />
+                          {a.signal > 0 ? "+" : ""}{fmt(a.signal, 0)}
+                        </div>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, fontWeight: 700, color: pCol }}>
+                          {priceImpact >= 0 ? "+" : ""}{fmt(priceImpact, 1)}%
+                        </span>
                         <span style={{
-                          width: 6, height: 6, borderRadius: "50%", background: a.col,
-                          boxShadow: `0 0 4px ${a.col}80`, display: "inline-block"
-                        }} />
-                        {a.signal > 0 ? "+" : ""}{fmt(a.signal, 0)}
+                          display: "inline-flex", alignItems: "center", gap: 4,
+                          fontFamily: "'JetBrains Mono', monospace", fontSize: 11, fontWeight: 700,
+                          letterSpacing: 1, color: a.col,
+                          padding: "3px 9px", borderRadius: 5,
+                          background: `${a.col}15`, border: `1px solid ${a.col}30`,
+                          width: "fit-content",
+                        }}>
+                          <DirIcon size={11} /> {a.dir}
+                        </span>
+                        <span style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.4 }}>{a.rationale}</span>
                       </div>
-                      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 700, color: pCol }}>
-                        {priceImpact >= 0 ? "+" : ""}{fmt(priceImpact, 1)}%
-                      </span>
-                      <span style={{
-                        display: "inline-flex", alignItems: "center", gap: 4,
-                        fontFamily: "'JetBrains Mono', monospace", fontSize: 10, fontWeight: 700,
-                        letterSpacing: 1, color: a.col,
-                        padding: "3px 9px", borderRadius: 5,
-                        background: `${a.col}15`, border: `1px solid ${a.col}30`,
-                        width: "fit-content",
-                      }}>
-                        <DirIcon size={11} /> {a.dir}
-                      </span>
-                      <span style={{ fontSize: 11, color: "#94A3B8", lineHeight: 1.4 }}>{a.rationale}</span>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
               <div style={{
                 marginTop: 14, padding: "14px 16px", background: "#0d182960", borderRadius: 8,
-                border: "1px dashed #1a274480", fontSize: 10, color: "#64748B",
+                border: "1px dashed #1a274480", fontSize: 11, color: "#64748B",
                 fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.7,
                 display: "flex", gap: 10, alignItems: "flex-start",
               }}>
@@ -922,15 +937,15 @@ export default function GeoRiskDashboard() {
             padding: "22px 0", marginTop: 32, borderTop: "1px solid #16233d",
             display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8
           }}>
-            <div style={{ fontSize: 10, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.7 }}>
+            <div style={{ fontSize: 11, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.7 }}>
               © 2026 Zenith Rise Capital · Calesius Global SL · Madrid, España
               <br />Modelo GeoRisk v2.1 · Horizonte: 12 meses · Recalibración: continua
             </div>
             <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-              <span style={{ fontSize: 10, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace" }}>www.zenithrisecapital.com</span>
+              <span style={{ fontSize: 11, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace" }}>www.zenithrisecapital.com</span>
               <div style={{
                 display: "flex", alignItems: "center", gap: 5,
-                padding: "4px 9px", borderRadius: 5, fontSize: 9,
+                padding: "4px 9px", borderRadius: 5, fontSize: 10,
                 fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1,
                 background: "#10B98115", color: "#10B981", border: "1px solid #10B98130"
               }}><Radio size={10} /> OPERATIONAL</div>
