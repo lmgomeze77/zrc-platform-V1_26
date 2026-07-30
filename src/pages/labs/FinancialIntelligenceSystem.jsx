@@ -20,10 +20,10 @@ import { useState, useEffect, useCallback, useRef } from "react";
 // ══════════════════════════════════════════════════════════════════════════
 
 const C = {
-  bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
-  border: "#27272A", borderHover: "#3F3F46",
-  text: "#FAFAFA", textSec: "#A1A1AA", textMuted: "#71717A",
-  gold: "#D4A853", goldDim: "rgba(212,168,83,0.10)", goldBorder: "rgba(212,168,83,0.25)",
+  bg: "#0a121c", surface: "#101a26", surface2: "#15212f", surface3: "#1b2938",
+  border: "#293a4c", borderHover: "#3d5269",
+  text: "#F1F5F9", textSec: "#9DAEC2", textMuted: "#6B7F94",
+  gold: "#2E6FE0", goldDim: "rgba(46,111,224,0.10)", goldBorder: "rgba(46,111,224,0.28)",
   red: "#EF4444", redDim: "rgba(239,68,68,0.12)",
   green: "#22C55E", greenDim: "rgba(34,197,94,0.12)",
   amber: "#F59E0B", amberDim: "rgba(245,158,11,0.12)",
@@ -31,9 +31,9 @@ const C = {
 };
 
 const F = {
-  display: "'Cormorant Garamond', 'Georgia', serif",
-  body: "'Outfit', 'Helvetica Neue', sans-serif",
-  mono: "'IBM Plex Mono', 'Fira Code', monospace",
+  display: "'JetBrains Mono', monospace",
+  body: "'DM Sans', sans-serif",
+  mono: "'JetBrains Mono', monospace",
 };
 
 // ── Default inputs ────────────────────────────────────────────────────────
@@ -192,40 +192,40 @@ const fmt = (n, decimals = 0) => {
 
 // ── UI Atoms ─────────────────────────────────────────────────────────────
 const Badge = ({ color, children }) => (
-  <span style={{ display: "inline-block", padding: "2px 10px", borderRadius: 3, fontSize: 11, fontFamily: F.body, fontWeight: 700, letterSpacing: "0.06em", color: C.bg, background: color }}>
+  <span style={{ display: "inline-block", padding: "2px 10px", borderRadius: 3, fontSize: 12, fontFamily: F.body, fontWeight: 700, letterSpacing: "0.06em", color: C.bg, background: color }}>
     {children}
   </span>
 );
 
 const KPICard = ({ label, value, sub, color = C.gold, warn }) => (
   <div style={{ background: C.surface2, border: `1px solid ${warn ? "rgba(239,68,68,0.4)" : C.goldBorder}`, padding: "16px 18px", borderRadius: 6 }}>
-    <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, letterSpacing: "0.07em", textTransform: "uppercase", marginBottom: 6 }}>{label}</div>
-    <div style={{ fontFamily: F.display, fontSize: 26, color, lineHeight: 1, marginBottom: 4 }}>{value}</div>
-    {sub && <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted }}>{sub}</div>}
+    <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, letterSpacing: "0.07em", textTransform: "uppercase", marginBottom: 6 }}>{label}</div>
+    <div style={{ fontFamily: F.display, fontSize: 27, color, lineHeight: 1, marginBottom: 4 }}>{value}</div>
+    {sub && <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted }}>{sub}</div>}
   </div>
 );
 
 const SectionHeader = ({ title, subtitle }) => (
   <div style={{ marginBottom: 24 }}>
-    <h3 style={{ fontFamily: F.display, fontSize: 22, color: C.gold, margin: 0, fontWeight: 400 }}>{title}</h3>
-    {subtitle && <p style={{ fontFamily: F.body, fontSize: 13, color: C.textMuted, marginTop: 4, marginBottom: 0 }}>{subtitle}</p>}
+    <h3 style={{ fontFamily: F.display, fontSize: 23, color: C.gold, margin: 0, fontWeight: 400 }}>{title}</h3>
+    {subtitle && <p style={{ fontFamily: F.body, fontSize: 14, color: C.textMuted, marginTop: 4, marginBottom: 0 }}>{subtitle}</p>}
   </div>
 );
 
 const InputField = ({ label, value, onChange, type = "number", unit, hint }) => (
   <div style={{ marginBottom: 14 }}>
-    <label style={{ display: "block", fontFamily: F.body, fontSize: 12, color: C.textSec, marginBottom: 5, letterSpacing: "0.04em" }}>
+    <label style={{ display: "block", fontFamily: F.body, fontSize: 13, color: C.textSec, marginBottom: 5, letterSpacing: "0.04em" }}>
       {label}{unit && <span style={{ color: C.textMuted }}> ({unit})</span>}
     </label>
     <input
       type={type}
       value={value}
       onChange={e => onChange(type === "number" ? parseFloat(e.target.value) || 0 : e.target.value)}
-      style={{ width: "100%", boxSizing: "border-box", background: C.surface3, border: `1px solid ${C.border}`, borderRadius: 4, padding: "8px 12px", fontFamily: F.mono, fontSize: 13, color: C.text, outline: "none", transition: "border-color 0.2s" }}
+      style={{ width: "100%", boxSizing: "border-box", background: C.surface3, border: `1px solid ${C.border}`, borderRadius: 4, padding: "8px 12px", fontFamily: F.mono, fontSize: 14, color: C.text, outline: "none", transition: "border-color 0.2s" }}
       onFocus={e => e.target.style.borderColor = C.gold}
       onBlur={e => e.target.style.borderColor = C.border}
     />
-    {hint && <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 3 }}>{hint}</div>}
+    {hint && <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginTop: 3 }}>{hint}</div>}
   </div>
 );
 
@@ -256,7 +256,7 @@ function InputsPanel({ inputs, setInputs }) {
 
       {/* Model logic banner */}
       <div style={{ padding: "14px 18px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 6, marginBottom: 28 }}>
-        <div style={{ fontFamily: F.mono, fontSize: 11, color: C.gold, fontWeight: 700, marginBottom: 8 }}>Cash flow timing — how the model works</div>
+        <div style={{ fontFamily: F.mono, fontSize: 12, color: C.gold, fontWeight: 700, marginBottom: 8 }}>Cash flow timing — how the model works</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "6px 24px" }}>
           {[
             ["✓ Cash sales (IN)",        `Collected same week as invoice`],
@@ -267,8 +267,8 @@ function InputsPanel({ inputs, setInputs }) {
             [`✓ VAT/Tax (OUT)`,          `Hits bank on day ${inputs.vatDayOfMonth} of each month`],
           ].map(([k, v]) => (
             <div key={k} style={{ display: "flex", gap: 6 }}>
-              <span style={{ fontFamily: F.mono, fontSize: 11, color: C.gold, flexShrink: 0 }}>{k}:</span>
-              <span style={{ fontFamily: F.body, fontSize: 11, color: C.textSec }}>{v}</span>
+              <span style={{ fontFamily: F.mono, fontSize: 12, color: C.gold, flexShrink: 0 }}>{k}:</span>
+              <span style={{ fontFamily: F.body, fontSize: 12, color: C.textSec }}>{v}</span>
             </div>
           ))}
         </div>
@@ -277,14 +277,14 @@ function InputsPanel({ inputs, setInputs }) {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "0 40px" }}>
         {/* LEFT */}
         <div>
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>1 — Company & Revenue</div>
+          <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>1 — Company & Revenue</div>
           <InputField label="Company name"      value={inputs.companyName}       onChange={set("companyName")}       type="text" />
           <InputField label="Starting cash"     value={inputs.startingCash}      onChange={set("startingCash")}      unit="EUR"     hint="Bank balance on day 1 of the projection" />
           <InputField label="Monthly revenue"   value={inputs.monthlyRevenue}    onChange={set("monthlyRevenue")}    unit="EUR/month" />
           <InputField label="Monthly growth"    value={inputs.monthlyGrowthRate} onChange={set("monthlyGrowthRate")} unit="decimal" hint="e.g. 0.025 = 2.5% per month" />
 
           <Divider />
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>2 — Collection Timing (Cash IN)</div>
+          <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>2 — Collection Timing (Cash IN)</div>
           <InputField
             label="Cash sales %"
             value={inputs.cashSalesPct}
@@ -301,7 +301,7 @@ function InputsPanel({ inputs, setInputs }) {
           />
 
           <Divider />
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>3 — Variable Cost Payments (Cash OUT)</div>
+          <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>3 — Variable Cost Payments (Cash OUT)</div>
           <InputField
             label="Variable cost %"
             value={inputs.variableCostPct}
@@ -318,7 +318,7 @@ function InputsPanel({ inputs, setInputs }) {
           />
 
           <Divider />
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>4 — Fixed Monthly Outflows</div>
+          <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>4 — Fixed Monthly Outflows</div>
           <InputField label="Payroll"        value={inputs.payroll}         onChange={set("payroll")}         unit="EUR/month" hint="Incl. social charges" />
           <InputField label="Fixed costs"    value={inputs.fixedCosts}      onChange={set("fixedCosts")}      unit="EUR/month" hint="Rent, utilities, admin" />
           <InputField label="VAT / tax"      value={inputs.vatTaxPayments}  onChange={set("vatTaxPayments")}  unit="EUR/month equiv." hint="Monthly equivalent of periodic tax obligations" />
@@ -326,15 +326,15 @@ function InputsPanel({ inputs, setInputs }) {
           <InputField label="Debt service"   value={inputs.debtService}     onChange={set("debtService")}     unit="EUR/month" hint="Principal + interest per loan schedule" />
 
           <Divider />
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>5 — Risk Threshold</div>
+          <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>5 — Risk Threshold</div>
           <InputField label="Minimum cash buffer" value={inputs.minimumCashBuffer} onChange={set("minimumCashBuffer")} unit="EUR" hint="Breach triggers risk flag in the engine" />
         </div>
 
         {/* RIGHT */}
         <div>
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>6 — Payment Day of Month</div>
+          <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>6 — Payment Day of Month</div>
           <div style={{ padding: "16px 18px", background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, marginBottom: 20 }}>
-            <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginBottom: 16, lineHeight: 1.6 }}>
+            <div style={{ fontFamily: F.body, fontSize: 13, color: C.textMuted, marginBottom: 16, lineHeight: 1.6 }}>
               Enter the day of the month (1–28) when each fixed outflow hits the bank account. The model converts this to the correct week in the 91-day horizon automatically.
             </div>
             <InputField label="Payroll — day of month"     value={inputs.payrollDayOfMonth} onChange={set("payrollDayOfMonth")} hint="Typical: day 28 (last working day)" />
@@ -346,7 +346,7 @@ function InputsPanel({ inputs, setInputs }) {
 
           {/* Live timing summary */}
           <div style={{ padding: "14px 16px", background: C.surface3, border: `1px solid ${C.border}`, borderRadius: 6, marginBottom: 20 }}>
-            <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginBottom: 10, letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>Live timing summary</div>
+            <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginBottom: 10, letterSpacing: "0.06em", textTransform: "uppercase", fontWeight: 600 }}>Live timing summary</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
               {[
                 ["Credit collections arrive",  `${inputs.collectionDelayDays}d → from week ${arLag}`,           C.green],
@@ -358,22 +358,22 @@ function InputsPanel({ inputs, setInputs }) {
                 ["Debt service hits bank",     `Day ${inputs.debtDayOfMonth} each month`,                      C.red],
               ].map(([k, v, col]) => (
                 <div key={k} style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center" }}>
-                  <span style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted }}>{k}</span>
-                  <span style={{ fontFamily: F.mono, fontSize: 11, color: col, background: `${col}15`, padding: "1px 8px", borderRadius: 3, whiteSpace: "nowrap" }}>{v}</span>
+                  <span style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted }}>{k}</span>
+                  <span style={{ fontFamily: F.mono, fontSize: 12, color: col, background: `${col}15`, padding: "1px 8px", borderRadius: 3, whiteSpace: "nowrap" }}>{v}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <Divider />
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>7 — Working Capital Anchors</div>
+          <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>7 — Working Capital Anchors</div>
           <InputField label="Opening accounts receivable" value={inputs.openingAR}    onChange={set("openingAR")}    unit="EUR" hint={`Current AR balance — drains over ${arLag} weeks as collections clear`} />
           <InputField label="Opening accounts payable"    value={inputs.openingAP}    onChange={set("openingAP")}    unit="EUR" hint={`Current AP balance — drains over ${apLag} weeks as payments clear`} />
           <InputField label="Annual COGS"                 value={inputs.annualCOGS}   onChange={set("annualCOGS")}   unit="EUR/year" hint="Used for DPO ratio calculation only" />
 
           <div style={{ marginTop: 20, padding: "14px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 6 }}>
-            <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, fontWeight: 700, marginBottom: 6 }}>ZRC Guardrails Active</div>
-            <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>
+            <div style={{ fontFamily: F.body, fontSize: 13, color: C.gold, fontWeight: 700, marginBottom: 6 }}>ZRC Guardrails Active</div>
+            <div style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6 }}>
               Raw client files are never sent to the AI layer. Only structured KPI outputs reach the model. Every recommendation is tied to a named financial metric.
             </div>
           </div>
@@ -406,7 +406,7 @@ function CashFlowPanel({ model, inputs }) {
 
       {/* Timing legend */}
       <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, padding: "12px 16px", marginBottom: 20 }}>
-        <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginBottom: 10, letterSpacing: "0.06em", textTransform: "uppercase" }}>Cash flow timing active</div>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginBottom: 10, letterSpacing: "0.06em", textTransform: "uppercase" }}>Cash flow timing active</div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
           {[
             [`Cash sales`,          `same week`,                            C.green],
@@ -418,8 +418,8 @@ function CashFlowPanel({ model, inputs }) {
           ].map(([k, v, col]) => (
             <div key={k} style={{ display: "flex", gap: 5, alignItems: "center" }}>
               <div style={{ width: 7, height: 7, borderRadius: "50%", background: col, flexShrink: 0 }} />
-              <span style={{ fontFamily: F.body, fontSize: 11, color: C.textSec }}>{k}</span>
-              <span style={{ fontFamily: F.mono, fontSize: 10, color: col, background: `${col}15`, padding: "1px 6px", borderRadius: 3 }}>{v}</span>
+              <span style={{ fontFamily: F.body, fontSize: 12, color: C.textSec }}>{k}</span>
+              <span style={{ fontFamily: F.mono, fontSize: 11, color: col, background: `${col}15`, padding: "1px 6px", borderRadius: 3 }}>{v}</span>
             </div>
           ))}
         </div>
@@ -427,7 +427,7 @@ function CashFlowPanel({ model, inputs }) {
 
       {/* Sparkline */}
       <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, padding: "16px 20px", marginBottom: 20 }}>
-        <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginBottom: 12, letterSpacing: "0.06em", textTransform: "uppercase" }}>Cash position — weeks 1–13</div>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginBottom: 12, letterSpacing: "0.06em", textTransform: "uppercase" }}>Cash position — weeks 1–13</div>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 3, height: 64 }}>
           {cashFlow.map((row) => {
             const range = maxCash - minCash || 1;
@@ -438,7 +438,7 @@ function CashFlowPanel({ model, inputs }) {
                   style={{ width: "100%", height: h, background: row.belowBuffer ? C.red : row.payroll > 0 ? C.amber : C.gold, opacity: row.belowBuffer ? 0.95 : 0.72, borderRadius: "2px 2px 0 0", transition: "height 0.4s" }}
                   title={`W${row.week}: €${fmt(row.closingCash)}\nIn: €${fmt(row.totalCashIn)} | Out: €${fmt(row.totalCashOut)}`}
                 />
-                <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{row.week}</div>
+                <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>{row.week}</div>
               </div>
             );
           })}
@@ -447,7 +447,7 @@ function CashFlowPanel({ model, inputs }) {
           {[[C.gold, "Normal"], [C.amber, "Payroll week"], [C.red, "Below buffer"]].map(([col, label]) => (
             <div key={label} style={{ display: "flex", alignItems: "center", gap: 5 }}>
               <div style={{ width: 10, height: 10, background: col, borderRadius: 2 }} />
-              <span style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted }}>{label}</span>
+              <span style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted }}>{label}</span>
             </div>
           ))}
         </div>
@@ -455,27 +455,27 @@ function CashFlowPanel({ model, inputs }) {
 
       {/* Detail table */}
       <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 12, minWidth: 720 }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 13, minWidth: 720 }}>
           <thead>
             <tr>
               {["Wk", "Mo·W", "Cash In", "Var.Cost", "Payroll", "Fixed", "VAT", "Cap+Debt", "Total Out", "Closing", ""].map(h => (
-                <th key={h} style={{ padding: "8px 9px", textAlign: ["Wk","Mo·W",""].includes(h) ? "center" : "right", background: C.surface2, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>{h}</th>
+                <th key={h} style={{ padding: "8px 9px", textAlign: ["Wk","Mo·W",""].includes(h) ? "center" : "right", background: C.surface2, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {cashFlow.map((row) => (
               <tr key={row.week} style={{ background: row.belowBuffer ? C.redDim : "transparent", borderBottom: `1px solid ${C.border}` }}>
-                <td style={{ padding: "7px 9px", textAlign: "center", fontFamily: F.mono, color: C.textMuted, fontSize: 11 }}>{row.week}</td>
-                <td style={{ padding: "7px 9px", textAlign: "center", fontFamily: F.mono, color: C.textMuted, fontSize: 10 }}>M{row.monthIdx}·W{row.weekOfMonth}</td>
-                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: C.green,  fontSize: 11 }}>€{fmt(row.totalCashIn)}</td>
-                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.variablePayment > 0 ? C.red : C.textMuted, fontSize: 11 }}>{row.variablePayment > 0 ? `€${fmt(row.variablePayment)}` : "—"}</td>
-                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.payroll > 0 ? C.amber : C.textMuted, fontSize: 11 }}>{row.payroll > 0 ? `€${fmt(row.payroll)}` : "—"}</td>
-                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.fixed > 0 ? C.red : C.textMuted, fontSize: 11 }}>{row.fixed > 0 ? `€${fmt(row.fixed)}` : "—"}</td>
-                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.vat > 0 ? C.red : C.textMuted, fontSize: 11 }}>{row.vat > 0 ? `€${fmt(row.vat)}` : "—"}</td>
-                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: (row.capex + row.debt) > 0 ? C.red : C.textMuted, fontSize: 11 }}>{(row.capex + row.debt) > 0 ? `€${fmt(row.capex + row.debt)}` : "—"}</td>
-                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: C.red, fontSize: 11, fontWeight: 600 }}>€{fmt(row.totalCashOut)}</td>
-                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, fontWeight: 700, color: row.belowBuffer ? C.red : C.gold, fontSize: 12 }}>€{fmt(row.closingCash)}</td>
+                <td style={{ padding: "7px 9px", textAlign: "center", fontFamily: F.mono, color: C.textMuted, fontSize: 12 }}>{row.week}</td>
+                <td style={{ padding: "7px 9px", textAlign: "center", fontFamily: F.mono, color: C.textMuted, fontSize: 11 }}>M{row.monthIdx}·W{row.weekOfMonth}</td>
+                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: C.green,  fontSize: 12 }}>€{fmt(row.totalCashIn)}</td>
+                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.variablePayment > 0 ? C.red : C.textMuted, fontSize: 12 }}>{row.variablePayment > 0 ? `€${fmt(row.variablePayment)}` : "—"}</td>
+                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.payroll > 0 ? C.amber : C.textMuted, fontSize: 12 }}>{row.payroll > 0 ? `€${fmt(row.payroll)}` : "—"}</td>
+                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.fixed > 0 ? C.red : C.textMuted, fontSize: 12 }}>{row.fixed > 0 ? `€${fmt(row.fixed)}` : "—"}</td>
+                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.vat > 0 ? C.red : C.textMuted, fontSize: 12 }}>{row.vat > 0 ? `€${fmt(row.vat)}` : "—"}</td>
+                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: (row.capex + row.debt) > 0 ? C.red : C.textMuted, fontSize: 12 }}>{(row.capex + row.debt) > 0 ? `€${fmt(row.capex + row.debt)}` : "—"}</td>
+                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: C.red, fontSize: 12, fontWeight: 600 }}>€{fmt(row.totalCashOut)}</td>
+                <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, fontWeight: 700, color: row.belowBuffer ? C.red : C.gold, fontSize: 13 }}>€{fmt(row.closingCash)}</td>
                 <td style={{ padding: "7px 9px", textAlign: "center" }}>{row.belowBuffer ? <Badge color={C.red}>⚠</Badge> : <Badge color={C.green}>✓</Badge>}</td>
               </tr>
             ))}
@@ -513,9 +513,9 @@ function WorkingCapitalPanel({ model }) {
       </div>
       <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, overflow: "hidden", marginBottom: 28 }}>
         <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 12, minWidth: 560 }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 13, minWidth: 560 }}>
             <thead>
-              <tr>{["Metric","Formula","Current","Benchmark","Gap","Suggested Action","Priority"].map(h => <th key={h} style={{ padding: "10px 14px", textAlign: "left", background: C.surface3, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 11, letterSpacing: "0.04em", textTransform: "uppercase" }}>{h}</th>)}</tr>
+              <tr>{["Metric","Formula","Current","Benchmark","Gap","Suggested Action","Priority"].map(h => <th key={h} style={{ padding: "10px 14px", textAlign: "left", background: C.surface3, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 12, letterSpacing: "0.04em", textTransform: "uppercase" }}>{h}</th>)}</tr>
             </thead>
             <tbody>
               {metrics.map((m, i) => {
@@ -523,11 +523,11 @@ function WorkingCapitalPanel({ model }) {
                 return (
                   <tr key={m.label} style={{ borderBottom: i < metrics.length - 1 ? `1px solid ${C.border}` : "none" }}>
                     <td style={{ padding: "10px 14px", fontFamily: F.mono, fontWeight: 700, color: C.gold }}>{m.label}</td>
-                    <td style={{ padding: "10px 14px", color: C.textMuted, fontFamily: F.mono, fontSize: 11 }}>{m.formula}</td>
+                    <td style={{ padding: "10px 14px", color: C.textMuted, fontFamily: F.mono, fontSize: 12 }}>{m.formula}</td>
                     <td style={{ padding: "10px 14px", fontFamily: F.mono, fontWeight: 700, color: C.text }}>{fmt(m.value, 1)} d</td>
                     <td style={{ padding: "10px 14px", fontFamily: F.mono, color: C.textSec }}>{m.benchmark} d</td>
                     <td style={{ padding: "10px 14px", fontFamily: F.mono, color: gap > 0 ? C.amber : C.green, fontWeight: 700 }}>{gap > 0 ? "+" : ""}{fmt(gap, 1)} d</td>
-                    <td style={{ padding: "10px 14px", color: C.textSec, fontSize: 11 }}>{m.action}</td>
+                    <td style={{ padding: "10px 14px", color: C.textSec, fontSize: 12 }}>{m.action}</td>
                     <td style={{ padding: "10px 14px" }}><Badge color={m.priority === "High" ? C.amber : C.blue}>{m.priority}</Badge></td>
                   </tr>
                 );
@@ -537,17 +537,17 @@ function WorkingCapitalPanel({ model }) {
         </div>
       </div>
       <div style={{ background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 6, padding: "20px 24px" }}>
-        <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>Liquidity Release — DSO Reduction</div>
+        <div style={{ fontFamily: F.body, fontSize: 13, color: C.gold, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>Liquidity Release — DSO Reduction</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
           {simulations.map(s => (
             <div key={s.label} style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 4, padding: "14px 18px" }}>
-              <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginBottom: 6 }}>{s.label}</div>
-              <div style={{ fontFamily: F.display, fontSize: 22, color: C.gold }}>€{fmt(s.released)}</div>
-              <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 4 }}>cash unlocked</div>
+              <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginBottom: 6 }}>{s.label}</div>
+              <div style={{ fontFamily: F.display, fontSize: 23, color: C.gold }}>€{fmt(s.released)}</div>
+              <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginTop: 4 }}>cash unlocked</div>
             </div>
           ))}
         </div>
-        <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 14 }}>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginTop: 14 }}>
           Formula: Annual revenue ÷ 365 × days reduced · Based on €{fmt(annualRevenue)} annual revenue
         </div>
       </div>
@@ -564,24 +564,24 @@ function RiskPanel({ model, inputs }) {
     <div>
       <SectionHeader title="ZRC Decision Rule Engine" subtitle="Rule-based risk scoring. Every flag is tied to a named financial metric." />
       <div style={{ display: "flex", alignItems: "center", gap: 20, padding: "20px 24px", background: C.surface2, border: `1px solid ${riskColor}40`, borderRadius: 8, marginBottom: 24 }}>
-        <div style={{ width: 52, height: 52, borderRadius: "50%", background: `${riskColor}20`, border: `2px solid ${riskColor}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
+        <div style={{ width: 52, height: 52, borderRadius: "50%", background: `${riskColor}20`, border: `2px solid ${riskColor}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 23 }}>
           {riskLevel === "HIGH" ? "⚠" : riskLevel === "MEDIUM" ? "⚡" : "✓"}
         </div>
         <div>
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>Overall Risk Level</div>
-          <div style={{ fontFamily: F.display, fontSize: 30, color: riskColor, lineHeight: 1 }}>{riskLevel}</div>
+          <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>Overall Risk Level</div>
+          <div style={{ fontFamily: F.display, fontSize: 31, color: riskColor, lineHeight: 1 }}>{riskLevel}</div>
         </div>
         <div style={{ flex: 1 }} />
         <div style={{ textAlign: "right" }}>
-          <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted }}>Risk score</div>
-          <div style={{ fontFamily: F.display, fontSize: 30, color: riskColor }}>{totalScore} / 10</div>
+          <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted }}>Risk score</div>
+          <div style={{ fontFamily: F.display, fontSize: 31, color: riskColor }}>{totalScore} / 10</div>
         </div>
       </div>
       <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, overflow: "hidden", marginBottom: 24 }}>
         <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 12, minWidth: 560 }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 13, minWidth: 560 }}>
             <thead>
-              <tr>{["Rule","Threshold","Current","Score","Status","ZRC Recommendation"].map(h => <th key={h} style={{ padding: "10px 14px", textAlign: "left", background: C.surface3, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 11, letterSpacing: "0.04em", textTransform: "uppercase" }}>{h}</th>)}</tr>
+              <tr>{["Rule","Threshold","Current","Score","Status","ZRC Recommendation"].map(h => <th key={h} style={{ padding: "10px 14px", textAlign: "left", background: C.surface3, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 12, letterSpacing: "0.04em", textTransform: "uppercase" }}>{h}</th>)}</tr>
             </thead>
             <tbody>
               {[
@@ -593,11 +593,11 @@ function RiskPanel({ model, inputs }) {
               ].map((rule, i) => (
                 <tr key={i} style={{ borderBottom: i < 4 ? `1px solid ${C.border}` : "none", background: !rule.pass ? C.redDim : "transparent" }}>
                   <td style={{ padding: "10px 14px", fontWeight: 600, color: C.text }}>{rule.name}</td>
-                  <td style={{ padding: "10px 14px", fontFamily: F.mono, fontSize: 11, color: C.textMuted }}>{rule.threshold}</td>
+                  <td style={{ padding: "10px 14px", fontFamily: F.mono, fontSize: 12, color: C.textMuted }}>{rule.threshold}</td>
                   <td style={{ padding: "10px 14px", fontFamily: F.mono, fontWeight: 700, color: rule.pass ? C.green : C.red }}>{rule.displayVal}</td>
                   <td style={{ padding: "10px 14px", fontFamily: F.mono, fontWeight: 700, color: rule.score > 0 ? C.red : C.green }}>{rule.score}</td>
                   <td style={{ padding: "10px 14px" }}><Badge color={rule.pass ? C.green : C.red}>{rule.pass ? "LOW" : "RISK"}</Badge></td>
-                  <td style={{ padding: "10px 14px", color: C.textSec, fontSize: 11 }}>{rule.rec}</td>
+                  <td style={{ padding: "10px 14px", color: C.textSec, fontSize: 12 }}>{rule.rec}</td>
                 </tr>
               ))}
             </tbody>
@@ -605,7 +605,7 @@ function RiskPanel({ model, inputs }) {
         </div>
       </div>
       <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, padding: "18px 20px" }}>
-        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 14, fontWeight: 600 }}>Scenario Stress Table</div>
+        <div style={{ fontFamily: F.body, fontSize: 13, color: C.textMuted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 14, fontWeight: 600 }}>Scenario Stress Table</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
           {[
             { label: "Base",   color: C.green, desc: "Management case",                   cash: model.week13Cash },
@@ -615,11 +615,11 @@ function RiskPanel({ model, inputs }) {
             <div key={s.label} style={{ background: C.surface3, border: `1px solid ${s.color}30`, borderRadius: 4, padding: "14px 16px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
                 <Badge color={s.color}>{s.label}</Badge>
-                <span style={{ fontFamily: F.body, fontSize: 10, color: C.textMuted }}>{s.desc}</span>
+                <span style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted }}>{s.desc}</span>
               </div>
-              <div style={{ fontFamily: F.display, fontSize: 20, color: s.cash < inputs.minimumCashBuffer ? C.red : C.gold }}>€{fmt(s.cash)}</div>
-              <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 2 }}>W13 cash</div>
-              {s.cash < inputs.minimumCashBuffer && <div style={{ fontFamily: F.mono, fontSize: 11, color: C.red, marginTop: 6 }}>Gap: €{fmt(Math.abs(s.cash - inputs.minimumCashBuffer))}</div>}
+              <div style={{ fontFamily: F.display, fontSize: 21, color: s.cash < inputs.minimumCashBuffer ? C.red : C.gold }}>€{fmt(s.cash)}</div>
+              <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginTop: 2 }}>W13 cash</div>
+              {s.cash < inputs.minimumCashBuffer && <div style={{ fontFamily: F.mono, fontSize: 12, color: C.red, marginTop: 6 }}>Gap: €{fmt(Math.abs(s.cash - inputs.minimumCashBuffer))}</div>}
             </div>
           ))}
         </div>
@@ -697,7 +697,7 @@ Return ONLY valid JSON, no markdown fences, no preamble:
     <div>
       <SectionHeader title="AI Report Generator" subtitle="Structured KPI payload — collection lag and supplier payment lag included in model context for the AI." />
       <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, padding: "16px 20px", marginBottom: 20 }}>
-        <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12, fontWeight: 600 }}>KPI Payload — sent to model</div>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12, fontWeight: 600 }}>KPI Payload — sent to model</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 8 }}>
           {[
             ["Client",            inputs.companyName],
@@ -714,57 +714,57 @@ Return ONLY valid JSON, no markdown fences, no preamble:
             ["Risk score",        `${model.totalScore} / 10`],
           ].map(([k, v]) => (
             <div key={k} style={{ display: "flex", justifyContent: "space-between", gap: 6, padding: "5px 9px", background: C.surface3, borderRadius: 3 }}>
-              <span style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted }}>{k}</span>
-              <span style={{ fontFamily: F.mono, fontSize: 11, color: C.gold }}>{v}</span>
+              <span style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted }}>{k}</span>
+              <span style={{ fontFamily: F.mono, fontSize: 12, color: C.gold }}>{v}</span>
             </div>
           ))}
         </div>
-        <div style={{ marginTop: 12, padding: "10px 14px", background: C.goldDim, borderRadius: 4, fontFamily: F.body, fontSize: 11, color: C.textSec }}>
+        <div style={{ marginTop: 12, padding: "10px 14px", background: C.goldDim, borderRadius: 4, fontFamily: F.body, fontSize: 12, color: C.textSec }}>
           ✓ Guardrail: raw client files never sent. Only structured KPIs reach the model.
         </div>
       </div>
-      <button onClick={generateReport} disabled={loading} style={{ padding: "12px 28px", background: loading ? C.surface3 : C.gold, color: C.bg, border: "none", borderRadius: 4, fontFamily: F.body, fontWeight: 700, fontSize: 14, cursor: loading ? "not-allowed" : "pointer", opacity: loading ? 0.6 : 1, marginBottom: 24 }}>
+      <button onClick={generateReport} disabled={loading} style={{ padding: "12px 28px", background: loading ? C.surface3 : C.gold, color: C.bg, border: "none", borderRadius: 4, fontFamily: F.body, fontWeight: 700, fontSize: 15, cursor: loading ? "not-allowed" : "pointer", opacity: loading ? 0.6 : 1, marginBottom: 24 }}>
         {loading ? "⏳ Generating report…" : "⚡ Generate AI Report"}
       </button>
-      {error && <div style={{ padding: "14px 18px", background: C.redDim, border: `1px solid ${C.red}40`, borderRadius: 6, fontFamily: F.body, fontSize: 13, color: C.red, marginBottom: 20 }}>{error}</div>}
+      {error && <div style={{ padding: "14px 18px", background: C.redDim, border: `1px solid ${C.red}40`, borderRadius: 6, fontFamily: F.body, fontSize: 14, color: C.red, marginBottom: 20 }}>{error}</div>}
       {report && (
         <div>
           <div style={{ background: C.surface2, border: `1px solid ${C.goldBorder}`, borderRadius: 8, overflow: "hidden" }}>
             <div style={{ background: "#0B1220", padding: "20px 28px", borderBottom: `2px solid ${C.gold}` }}>
-              <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>Zenith Rise Capital</div>
-              <div style={{ fontFamily: F.display, fontSize: 24, color: C.text, margin: "6px 0 4px" }}>ZRC Financial Intelligence Report</div>
-              <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted }}>{inputs.companyName} · {new Date().toLocaleDateString("en-GB")} · EUR · v2.0</div>
+              <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>Zenith Rise Capital</div>
+              <div style={{ fontFamily: F.display, fontSize: 25, color: C.text, margin: "6px 0 4px" }}>ZRC Financial Intelligence Report</div>
+              <div style={{ fontFamily: F.body, fontSize: 13, color: C.textMuted }}>{inputs.companyName} · {new Date().toLocaleDateString("en-GB")} · EUR · v2.0</div>
             </div>
             <div style={{ padding: "24px 28px" }}>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: 10, marginBottom: 24 }}>
                 {[["Cash runway",`${fmt(model.runwayWeeks,1)} wks`],["Risk",model.riskLevel],["Gap",model.fundingGap<0?`€${fmt(Math.abs(model.fundingGap))}`:"None"],["DSO",`${fmt(model.dso,1)} d`],["CCC",`${fmt(model.ccc,1)} d`],["DSO −10d",`€${fmt(model.liquidityDSO10)}`]].map(([l,v])=>(
                   <div key={l} style={{ background:"#0B1220",border:`1px solid ${C.gold}`,padding:"12px 14px" }}>
-                    <div style={{ fontFamily:F.body,fontSize:9,color:"#CBD5E1",textTransform:"uppercase" }}>{l}</div>
-                    <div style={{ fontFamily:F.display,fontSize:20,color:C.gold,marginTop:4 }}>{v}</div>
+                    <div style={{ fontFamily:F.body,fontSize:10,color:"#CBD5E1",textTransform:"uppercase" }}>{l}</div>
+                    <div style={{ fontFamily:F.display,fontSize:21,color:C.gold,marginTop:4 }}>{v}</div>
                   </div>
                 ))}
               </div>
-              {[["1. Executive Summary",<p style={{fontFamily:F.body,fontSize:14,color:C.textSec,lineHeight:1.6}}>{report.executive_summary}</p>],["2. Key Risks",<ul style={{margin:0,paddingLeft:20}}>{report.key_risks.map((r,i)=><li key={i} style={{fontFamily:F.body,fontSize:14,color:C.textSec,marginBottom:6,lineHeight:1.55}}>{r}</li>)}</ul>],["4. Strategic View",<p style={{fontFamily:F.body,fontSize:14,color:C.textSec,lineHeight:1.6}}>{report.strategic_view}</p>],["5. Forward View",<p style={{fontFamily:F.body,fontSize:14,color:C.textSec,lineHeight:1.6}}>{report.forward_view}</p>]].map(([title,content])=>(
+              {[["1. Executive Summary",<p style={{fontFamily:F.body,fontSize:15,color:C.textSec,lineHeight:1.6}}>{report.executive_summary}</p>],["2. Key Risks",<ul style={{margin:0,paddingLeft:20}}>{report.key_risks.map((r,i)=><li key={i} style={{fontFamily:F.body,fontSize:15,color:C.textSec,marginBottom:6,lineHeight:1.55}}>{r}</li>)}</ul>],["4. Strategic View",<p style={{fontFamily:F.body,fontSize:15,color:C.textSec,lineHeight:1.6}}>{report.strategic_view}</p>],["5. Forward View",<p style={{fontFamily:F.body,fontSize:15,color:C.textSec,lineHeight:1.6}}>{report.forward_view}</p>]].map(([title,content])=>(
                 <div key={title} style={{marginBottom:20}}>
-                  <h4 style={{fontFamily:F.display,fontSize:18,color:C.gold,borderBottom:`2px solid ${C.gold}`,paddingBottom:6,marginTop:0}}>{title}</h4>
+                  <h4 style={{fontFamily:F.display,fontSize:19,color:C.gold,borderBottom:`2px solid ${C.gold}`,paddingBottom:6,marginTop:0}}>{title}</h4>
                   {content}
                 </div>
               ))}
               <div style={{marginBottom:20}}>
-                <h4 style={{fontFamily:F.display,fontSize:18,color:C.gold,borderBottom:`2px solid ${C.gold}`,paddingBottom:6,marginTop:0}}>3. Recommended Actions</h4>
+                <h4 style={{fontFamily:F.display,fontSize:19,color:C.gold,borderBottom:`2px solid ${C.gold}`,paddingBottom:6,marginTop:0}}>3. Recommended Actions</h4>
                 <div style={{overflowX:"auto"}}>
-                  <table style={{width:"100%",borderCollapse:"collapse",fontFamily:F.body,fontSize:13,minWidth:480}}>
-                    <thead><tr>{["Priority","Action","Impact","Timing","Owner"].map(h=><th key={h} style={{padding:"8px 10px",background:"#0B1220",color:C.text,textAlign:"left",fontSize:11,textTransform:"uppercase"}}>{h}</th>)}</tr></thead>
-                    <tbody>{report.recommended_actions.map((a,i)=><tr key={i} style={{borderBottom:`1px solid ${C.border}`}}><td style={{padding:"8px 10px"}}><Badge color={a.priority==="High"?C.red:C.amber}>{a.priority}</Badge></td><td style={{padding:"8px 10px",color:C.textSec}}>{a.action}</td><td style={{padding:"8px 10px",color:C.textMuted,fontSize:12}}>{a.impact}</td><td style={{padding:"8px 10px",fontFamily:F.mono,fontSize:11,color:C.textMuted}}>{a.timing}</td><td style={{padding:"8px 10px",fontFamily:F.mono,fontSize:11,color:C.textMuted}}>{a.owner}</td></tr>)}</tbody>
+                  <table style={{width:"100%",borderCollapse:"collapse",fontFamily:F.body,fontSize:14,minWidth:480}}>
+                    <thead><tr>{["Priority","Action","Impact","Timing","Owner"].map(h=><th key={h} style={{padding:"8px 10px",background:"#0B1220",color:C.text,textAlign:"left",fontSize:12,textTransform:"uppercase"}}>{h}</th>)}</tr></thead>
+                    <tbody>{report.recommended_actions.map((a,i)=><tr key={i} style={{borderBottom:`1px solid ${C.border}`}}><td style={{padding:"8px 10px"}}><Badge color={a.priority==="High"?C.red:C.amber}>{a.priority}</Badge></td><td style={{padding:"8px 10px",color:C.textSec}}>{a.action}</td><td style={{padding:"8px 10px",color:C.textMuted,fontSize:13}}>{a.impact}</td><td style={{padding:"8px 10px",fontFamily:F.mono,fontSize:12,color:C.textMuted}}>{a.timing}</td><td style={{padding:"8px 10px",fontFamily:F.mono,fontSize:12,color:C.textMuted}}>{a.owner}</td></tr>)}</tbody>
                   </table>
                 </div>
               </div>
-              <div style={{marginTop:24,textAlign:"center",fontFamily:F.body,fontSize:11,color:C.textMuted}}>Zenith Rise Capital · Confidential · ZRC FIS v2.0</div>
+              <div style={{marginTop:24,textAlign:"center",fontFamily:F.body,fontSize:12,color:C.textMuted}}>Zenith Rise Capital · Confidential · ZRC FIS v2.0</div>
             </div>
           </div>
           <div style={{display:"flex",gap:12,marginTop:16}}>
-            <button onClick={exportHTML} style={{padding:"10px 22px",background:C.surface2,color:C.gold,border:`1px solid ${C.goldBorder}`,borderRadius:4,fontFamily:F.body,fontSize:13,cursor:"pointer",fontWeight:600}}>↓ Export HTML</button>
-            <button onClick={generateReport} style={{padding:"10px 22px",background:C.surface3,color:C.textSec,border:`1px solid ${C.border}`,borderRadius:4,fontFamily:F.body,fontSize:13,cursor:"pointer"}}>↻ Regenerate</button>
+            <button onClick={exportHTML} style={{padding:"10px 22px",background:C.surface2,color:C.gold,border:`1px solid ${C.goldBorder}`,borderRadius:4,fontFamily:F.body,fontSize:14,cursor:"pointer",fontWeight:600}}>↓ Export HTML</button>
+            <button onClick={generateReport} style={{padding:"10px 22px",background:C.surface3,color:C.textSec,border:`1px solid ${C.border}`,borderRadius:4,fontFamily:F.body,fontSize:14,cursor:"pointer"}}>↻ Regenerate</button>
           </div>
         </div>
       )}
@@ -786,21 +786,21 @@ export default function FinancialIntelligenceSystem({ onClose }) {
       <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, padding: "0 clamp(16px,4vw,32px)", position: "sticky", top: 0, zIndex: 10 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 0 0", gap: 12 }}>
           <div style={{ minWidth: 0 }}>
-            <div style={{ fontFamily: F.body, fontSize: 10, color: C.gold, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>Zenith Rise Capital</div>
-            <div style={{ fontFamily: F.display, fontSize: "clamp(14px,3vw,20px)", color: C.text, marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>Financial Intelligence System</div>
+            <div style={{ fontFamily: F.body, fontSize: 11, color: C.gold, letterSpacing: "0.12em", textTransform: "uppercase", fontWeight: 700 }}>Zenith Rise Capital</div>
+            <div style={{ fontFamily: F.display, fontSize: "clamp(15px,3vw,21px)", color: C.text, marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>Financial Intelligence System</div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "5px 10px", background: `${model.riskColor}15`, border: `1px solid ${model.riskColor}40`, borderRadius: 20 }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: model.riskColor, flexShrink: 0 }} />
-              <span style={{ fontFamily: F.mono, fontSize: 10, color: model.riskColor, fontWeight: 700 }}>{model.riskLevel}</span>
+              <span style={{ fontFamily: F.mono, fontSize: 11, color: model.riskColor, fontWeight: 700 }}>{model.riskLevel}</span>
             </div>
-            {onClose && <button onClick={onClose} style={{ background: "none", border: "none", color: C.textMuted, cursor: "pointer", fontSize: 18, padding: "4px 8px" }}>✕</button>}
+            {onClose && <button onClick={onClose} style={{ background: "none", border: "none", color: C.textMuted, cursor: "pointer", fontSize: 19, padding: "4px 8px" }}>✕</button>}
           </div>
         </div>
         {/* Tab bar */}
         <div style={{ display: "flex", gap: 0, marginTop: 8, overflowX: "auto", WebkitOverflowScrolling: "touch", scrollbarWidth: "none", msOverflowStyle: "none" }}>
           {TABS.map(tab => (
-            <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{ padding: "10px clamp(10px,2.5vw,20px)", background: "none", border: "none", borderBottom: activeTab === tab.id ? `2px solid ${C.gold}` : "2px solid transparent", color: activeTab === tab.id ? C.gold : C.textMuted, fontFamily: F.body, fontSize: "clamp(11px,2vw,13px)", cursor: "pointer", fontWeight: activeTab === tab.id ? 700 : 400, transition: "all 0.2s", whiteSpace: "nowrap", flexShrink: 0 }}>
+            <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{ padding: "10px clamp(10px,2.5vw,20px)", background: "none", border: "none", borderBottom: activeTab === tab.id ? `2px solid ${C.gold}` : "2px solid transparent", color: activeTab === tab.id ? C.gold : C.textMuted, fontFamily: F.body, fontSize: "clamp(12px,2vw,14px)", cursor: "pointer", fontWeight: activeTab === tab.id ? 700 : 400, transition: "all 0.2s", whiteSpace: "nowrap", flexShrink: 0 }}>
               {tab.icon} {tab.label}
             </button>
           ))}
@@ -819,8 +819,8 @@ export default function FinancialIntelligenceSystem({ onClose }) {
             ["DSO −10d Release", `€${fmt(model.liquidityDSO10)}`,                                                             C.gold],
           ].map(([label, value, color]) => (
             <div key={label} style={{ textAlign: "center" }}>
-              <div style={{ fontFamily: F.body, fontSize: 9, color: C.textMuted, letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: 3, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</div>
-              <div style={{ fontFamily: F.display, fontSize: "clamp(13px,3vw,16px)", color, fontWeight: 400 }}>{value}</div>
+              <div style={{ fontFamily: F.body, fontSize: 10, color: C.textMuted, letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: 3, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</div>
+              <div style={{ fontFamily: F.display, fontSize: "clamp(14px,3vw,17px)", color, fontWeight: 400 }}>{value}</div>
             </div>
           ))}
         </div>
