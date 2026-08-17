@@ -1,39 +1,33 @@
 {
-  "generated_at": "2026-08-01T08:14:25.347Z",
+  "generated_at": "2026-08-17T06:44:58.668Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1600",
-      "change": "+0.30%",
+      "value": "1.1571",
+      "change": "+0.35%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,342.00",
-      "change": "+0.68%",
+      "value": "20124.55",
+      "change": "+0.18%",
       "up": true
     },
     {
-      "symbol": "BRENT Crude",
-      "value": "88.52",
-      "change": "+1.67%",
+      "symbol": "BRENT",
+      "value": "88.68",
+      "change": "+0.18%",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "82.40",
-      "change": "+1.42%",
+      "symbol": "GOLD",
+      "value": "4396.00",
+      "change": "+0.44%",
       "up": true
     },
     {
-      "symbol": "Gold (XAU/USD)",
-      "value": "4,394.47",
-      "change": "+0.38%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "63,445.00",
+      "symbol": "BTC",
+      "value": "63445.00",
       "change": "+0.68%",
       "up": true
     },
@@ -44,66 +38,99 @@
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.69%",
-      "change": "-0.21%",
+      "symbol": "US 10Y",
+      "value": "4.69",
+      "change": "-0.01%",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8538",
+      "change": "-0.10%",
       "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7,785.76",
+      "value": "7785.76",
       "change": "-0.17%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "26,440.31",
+      "value": "26440.31",
       "change": "+0.53%",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8548",
-      "change": "+0.01%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.65",
-      "change": "-0.31%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.67",
-      "change": "-2.46%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.60",
-      "change": "+0.11%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7322",
-      "change": "-0.06%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "EURASIA",
       "title": {
-        "es": "Irán ataca petroleros bajo escolta de EE.UU. en el estrecho de Ormuz mientras Trump convoca a su gabinete para discutir la guerra",
-        "en": "Iran strikes tankers under US escort in Hormuz strait as Trump gathers cabinet to discuss war"
+        "es": "Ucrania lanza uno de sus mayores ataques de la guerra",
+        "en": "Ukraine launches one of its largest attacks of war"
       },
       "summary": {
-        "es": "Irán atacó dos petroleros que intentaban cruzar el estrecho de Ormuz bajo escolta militar estadounidense, dos semanas después de la reanudación del conflicto entre EE.UU. e Irán. Los precios energéticos han vuelto a dispararse mientras el conflicto se extiende por Oriente Medio y Trump convoca a su gabinete para deliberar sobre la escalada. El cierre o la perturbación prolongada del estrecho de Ormuz —por el que transita cerca del 20% del petróleo mundial— representa el principal riesgo de cola para los mercados energéticos globales.",
-        "en": "Iran struck two tankers attempting to transit the Strait of Hormuz under US military escort, two weeks into resumed US-Iran hostilities. Energy prices have surged again as the conflict broadens across the Middle East and Trump convenes his cabinet to deliberate on escalation options. Sustained disruption of the Strait of Hormuz — through which roughly 20% of global oil flows — represents the principal tail risk for global energy markets."
+        "es": "Ucrania lanzó un ataque masivo de drones contra Moscú, con cientos de aeronaves reportadas y seis muertos en la capital rusa y la región de Rostov. La escalada sostenida en los ataques de largo alcance intensifica los riesgos geopolíticos y la presión sobre los mercados energéticos europeos. Los inversores deben monitorear el impacto en los corredores de exportación de energía y los activos de refugio.",
+        "en": "Ukraine launched a massive drone assault on Moscow, with hundreds of aircraft reported and six fatalities in the Russian capital and Rostov region. The sustained escalation in long-range strikes heightens geopolitical risk and pressure on European energy corridors. Investors should monitor impacts on energy export routes and safe-haven assets."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada amenaza rutas de exportación energética rusas",
+            "en": "Escalation threatens Russian energy export routes"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor riesgo geopolítico impulsa activos refugio",
+            "en": "Heightened geopolitical risk drives safe-haven demand"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Conflicto prolongado pesa sobre la zona euro",
+            "en": "Prolonged conflict weighs on eurozone sentiment"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Escalada eleva prima de riesgo en mercados europeos",
+            "en": "Escalation raises risk premium on European markets"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ukraine-launches-one-of-its-largest-attacks-of-war/a-78386779?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-08-16",
+      "time": "19h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Irán ofrece recompensa de 30.000 dólares por matar o capturar soldados estadounidenses",
+        "en": "Iran offers $30,000 bounty for killing or capturing US soldiers"
+      },
+      "summary": {
+        "es": "El ejército iraní anunció una recompensa formal de 30.000 dólares por matar o capturar soldados estadounidenses, duplicada si la acción es realizada por una mujer. Esta medida señala una escalada significativa en la postura hostil de Irán hacia EE.UU. en el contexto de la guerra en curso, con implicaciones directas para la estabilidad regional y los precios del petróleo. Los activos de defensa y los mercados de crudo reaccionarán con atención a posibles represalias.",
+        "en": "The Iranian military formally announced a $30,000 reward for killing or capturing US soldiers, doubled if carried out by a woman. This signals a significant escalation in Iran's hostile posture toward the US amid the ongoing war, with direct implications for regional stability and oil prices. Defense assets and crude markets will react closely to potential reprisals."
       },
       "impact": "high",
       "market_impact": [
@@ -112,103 +139,151 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de cierre del principal corredor petrolero mundial",
-            "en": "Closure risk to the world's primary oil chokepoint"
+            "es": "Riesgo de escalada en el Golfo amenaza suministro petrolero",
+            "en": "Gulf escalation risk threatens oil supply"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "high",
+          "magnitude": "medium",
           "note": {
-            "es": "Demanda de refugio seguro ante escalada militar directa EE.UU.-Irán",
-            "en": "Safe-haven demand on direct US-Iran military escalation"
+            "es": "Tensión MENA eleva demanda de activos refugio",
+            "en": "MENA tension lifts safe-haven demand"
+          }
+        },
+        {
+          "asset": "US defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada favorece gasto en defensa estadounidense",
+            "en": "Escalation supports US defense spending"
           }
         },
         {
           "asset": "EM currencies",
           "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Fuga de capitales desde mercados emergentes importadores de energía",
-            "en": "Capital flight from energy-importing emerging markets"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Flujos de refugio compensados por expectativas inflacionarias del petróleo",
-            "en": "Flight-to-safety flows offset by oil-driven inflation expectations"
+            "es": "Aversión al riesgo presiona divisas emergentes",
+            "en": "Risk aversion pressures emerging market currencies"
           }
         }
       ],
-      "confidence": 95,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/jul/31/iran-strikes-tankers-us-escort-hormuz-strait-trump-gathers-cabinet",
-      "published_at": "2026-07-31",
-      "time": "17h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "EURASIA",
-      "title": {
-        "es": "Ataques rusos sobre Kiev matan al menos nueve personas, según autoridades ucranianas",
-        "en": "Russian strikes on Kyiv kill at least nine, Ukraine officials say"
-      },
-      "summary": {
-        "es": "Rusia intensificó sus ataques balísticos de largo alcance sobre Kiev, matando al menos nueve civiles, en lo que las autoridades ucranianas describen como una escalada deliberada en las semanas recientes. La escalada simultánea en los frentes de Ucrania e Irán presiona a Washington a gestionar dos crisis militares activas, complicando las deliberaciones sobre apoyo a Ucrania y posibles negociaciones de paz. El aumento de los ataques sobre infraestructura ucraniana refuerza el argumento de gasto en defensa europeo.",
-        "en": "Russia intensified long-range ballistic missile strikes on Kyiv, killing at least nine civilians, in what Ukrainian authorities describe as a deliberate escalation in recent weeks. Simultaneous escalation on the Ukraine and Iran fronts pressures Washington to manage two active military crises, complicating deliberations on Ukraine support and potential peace talks. Increased strikes on Ukrainian infrastructure reinforce the European defense spending argument."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada amenaza infraestructura energética ucraniana y confianza de suministro",
-            "en": "Escalation threatens Ukrainian energy infrastructure and supply confidence"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de seguridad europeo pesa sobre el euro",
-            "en": "European security risk weighs on the euro"
-          }
-        },
-        {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada rusa refuerza caso para mayor gasto de defensa europeo",
-            "en": "Russian escalation reinforces case for higher European defense spending"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/ce973yvk7pko?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-08-01",
-      "time": "<1h"
+      "confidence": 90,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260816-iran-offers-30-000-bounty-for-killing-or-capturing-us-soldiers",
+      "published_at": "2026-08-16",
+      "time": "15h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "AFRICA",
+      "region": "APAC",
       "title": {
-        "es": "El brote de ébola en la RDC es el de crecimiento más rápido en la historia del virus",
-        "en": "Ebola outbreak in DRC the fastest growing in the history of the virus"
+        "es": "Trump dice que EE.UU. reducirá 'sustancialmente' los ejercicios militares con Corea del Sur",
+        "en": "Trump says US to 'substantially reduce' military drills with South Korea"
       },
       "summary": {
-        "es": "El brote de ébola de cepa Bundibugyo en la República Democrática del Congo ha superado casi 1.500 muertos y no dispone de vacuna aprobada disponible, convirtiéndose en el de mayor expansión registrada. La RDC es un actor crítico en la cadena global de suministro de minerales estratégicos (cobalto, coltán), y una crisis sanitaria de esta magnitud podría perturbar la producción minera y la logística de exportación. El riesgo de contagio regional añade presión sobre los corredores de tránsito del este africano.",
-        "en": "The Bundibugyo strain Ebola outbreak in the Democratic Republic of Congo has surpassed nearly 1,500 deaths with no approved vaccine available, making it the fastest-expanding on record. The DRC is a critical node in the global critical minerals supply chain (cobalt, coltan), and a health crisis of this magnitude could disrupt mining output and export logistics. Regional contagion risk adds pressure on East African transit corridors."
+        "es": "El presidente Trump anunció una reducción sustancial de los ejercicios militares conjuntos con Corea del Sur, citando su 'muy buena relación' con Kim Jong Un. La medida debilita la arquitectura de seguridad aliada en el Indo-Pacífico en un momento en que Corea del Norte despliega tropas en Ucrania. Esto genera riesgos para los activos surcoreanos y abre interrogantes sobre el compromiso de defensa de EE.UU. en la región.",
+        "en": "President Trump announced a substantial reduction in joint military drills with South Korea, citing his 'very good relationship' with Kim Jong Un. The move weakens allied security architecture in the Indo-Pacific at a time when North Korea is deploying troops to Ukraine. This creates risks for South Korean assets and raises questions about US defense commitments in the region."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Korean Won (KRW)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Reducción de garantías de seguridad pesa sobre el won",
+            "en": "Reduced security guarantees weigh on the won"
+          }
+        },
+        {
+          "asset": "KOSPI",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre geopolítica presiona renta variable coreana",
+            "en": "Geopolitical uncertainty pressures Korean equities"
+          }
+        },
+        {
+          "asset": "Japanese Yen (JPY)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión regional eleva demanda del yen como refugio",
+            "en": "Regional tension lifts yen safe-haven demand"
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/8/17/trump-says-us-to-substantially-reduce-military-drills-with-south-korea?traffic_source=rss",
+      "published_at": "2026-08-17",
+      "time": "6h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "APAC",
+      "title": {
+        "es": "China quiere que sus datos impulsen la IA mundial",
+        "en": "China Wants Its Data to Power the World's A.I."
+      },
+      "summary": {
+        "es": "China está exportando no solo modelos de inteligencia artificial, sino también los datos que los alimentan, lo que genera temores de que las narrativas de Pekín se difundan globalmente a través de chatbots de uso masivo. Esta estrategia de influencia de datos representa una nueva dimensión de la rivalidad tecnológica entre EE.UU. y China, con implicaciones para regulaciones de soberanía digital y cadenas de suministro de IA. Los inversores en semiconductores, nube y plataformas tecnológicas deben monitorear respuestas regulatorias occidentales.",
+        "en": "China is exporting not just AI models but the data that feeds them, raising fears that Beijing's narratives will spread globally through widely used chatbots. This data-influence strategy represents a new dimension of US-China tech rivalry, with implications for digital sovereignty regulations and AI supply chains. Investors in semiconductors, cloud, and tech platforms should monitor Western regulatory responses."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "US tech equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Competencia de datos china presiona valoraciones de plataformas IA",
+            "en": "Chinese data competition pressures AI platform valuations"
+          }
+        },
+        {
+          "asset": "Chinese ADRs",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor escrutinio occidental amenaza acceso de empresas chinas",
+            "en": "Increased Western scrutiny threatens Chinese firm access"
+          }
+        },
+        {
+          "asset": "Semiconductor ETFs",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión tecnológica genera oportunidades y riesgos en chips",
+            "en": "Tech tension creates chip sector opportunities and risks"
+          }
+        }
+      ],
+      "confidence": 78,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/08/17/world/asia/china-ai-data-chatbots.html",
+      "published_at": "2026-08-17",
+      "time": "2h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "El brote de ébola en la República Democrática del Congo es ahora el más mortal en la historia del país",
+        "en": "Ebola outbreak in Democratic Republic of Congo now deadliest in country's history"
+      },
+      "summary": {
+        "es": "El brote de ébola en la RDC ha superado las 2.325 muertes, convirtiéndose en el más letal de la historia del país y superando el brote de 2018-2020. La crisis sanitaria en un contexto de guerra civil activa amenaza la estabilidad operativa del sector minero en el este del país, vital para las cadenas de suministro de minerales críticos como el cobalto y el coltán. Los inversores en baterías, vehículos eléctricos y tecnologías de transición energética deben seguir esta situación de cerca.",
+        "en": "The DRC Ebola outbreak has surpassed 2,325 deaths, becoming the deadliest in the country's history and exceeding the 2018-2020 outbreak. The health crisis amid active civil war threatens the operational stability of the eastern mining sector, critical to cobalt and coltan supply chains. Investors in batteries, EVs, and energy transition technologies should monitor this situation closely."
       },
       "impact": "medium",
       "market_impact": [
@@ -217,170 +292,74 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Posible interrupción de producción minera en la RDC por crisis sanitaria",
-            "en": "Potential DRC mining disruption from health crisis"
+            "es": "Crisis DRC amenaza suministro global de cobalto",
+            "en": "DRC crisis threatens global cobalt supply"
           }
         },
         {
-          "asset": "EM currencies (Central Africa)",
+          "asset": "EV supply chain equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de suministro de minerales críticos presiona cadenas EV",
+            "en": "Critical mineral supply risk pressures EV supply chains"
+          }
+        },
+        {
+          "asset": "African sovereign bonds (DRC)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Fuga de inversión extranjera ante riesgo sanitario y operativo",
-            "en": "Foreign investment flight on health and operational risk"
-          }
-        },
-        {
-          "asset": "Pharma/biotech equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Urgencia de desarrollo de vacuna impulsa interés en sector salud",
-            "en": "Vaccine development urgency drives health sector interest"
+            "es": "Doble crisis sanitaria y militar eleva riesgo soberano",
+            "en": "Dual health and military crisis raises sovereign risk"
           }
         }
       ],
-      "confidence": 78,
+      "confidence": 75,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/global-development/2026/jul/31/ebola-outbreak-in-drc-the-fastest-growing-in-the-history-of-the-virus",
-      "published_at": "2026-07-31",
-      "time": "1d"
+      "source_url": "https://www.theguardian.com/world/2026/aug/17/ebola-outbreak-drc-democratic-republic-of-congo-deadliest-in-history",
+      "published_at": "2026-08-17",
+      "time": "6h"
     },
     {
-      "id": 4,
+      "id": 6,
       "tag": "WATCH",
-      "region": "EURASIA",
+      "region": "APAC",
       "title": {
-        "es": "El programa de robots asesinos de Ucrania no se desviará por la turbulencia política, dice el ministro destituido",
-        "en": "Political Turmoil Will Not Derail Killer Robot Program, Ousted Minister Says"
+        "es": "Brote de cólera enferma a más de 90 personas en la ciudad más grande de Myanmar",
+        "en": "Cholera Outbreak Sickens Over 90 in Myanmar's Biggest City"
       },
       "summary": {
-        "es": "El exministro de defensa ucraniano Mykhailo Fedorov asegura que la estrategia de guerra tecnológica de Ucrania —centrada en drones y robots autónomos— continuará a pesar de los cambios políticos internos. Esta postura tiene implicaciones directas para los fabricantes de sistemas de defensa no tripulados europeos y estadounidenses, así como para el debate sobre armamento autónomo en la OTAN. La persistencia de la doctrina tecnológica ucraniana señala una demanda estructural de inversión en defensa de alta tecnología.",
-        "en": "Former Ukrainian Defense Minister Mykhailo Fedorov asserts that Ukraine's tech-heavy warfare strategy — centered on drones and autonomous robots — will continue despite internal political changes. This stance has direct implications for European and US unmanned defense system manufacturers and for the NATO debate on autonomous weapons. The persistence of Ukraine's technology doctrine signals a structural demand for high-tech defense investment."
+        "es": "Un brote de cólera ha afectado a más de 90 personas en Yangón, la ciudad más grande de Myanmar, agravado por la guerra civil, el gobierno militar y las intensas lluvias monzónicas. El colapso del sistema sanitario en Myanmar añade presión humanitaria y de estabilidad a una región que ya enfrenta sanciones internacionales. Las implicaciones para inversores se centran en el riesgo operacional para empresas con exposición en la cadena de suministro del Sudeste Asiático.",
+        "en": "A cholera outbreak has sickened over 90 people in Yangon, Myanmar's largest city, compounded by civil war, military rule, and heavy monsoon rains. The collapse of Myanmar's healthcare system adds humanitarian and stability pressure to a region already facing international sanctions. Investor implications center on operational risk for companies with Southeast Asian supply chain exposure."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Defense tech equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Demanda sostenida de sistemas autónomos y drones de combate",
-            "en": "Sustained demand for autonomous systems and combat drones"
-          }
-        },
-        {
-          "asset": "European equities (defense sector)",
-          "direction": "up",
+          "asset": "Southeast Asia frontier equities",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Señal positiva para proveedores europeos de tecnología de defensa",
-            "en": "Positive signal for European defense technology suppliers"
+            "es": "Inestabilidad Myanmar pesa sobre exposición regional",
+            "en": "Myanmar instability weighs on regional exposure"
+          }
+        },
+        {
+          "asset": "EM sovereign bonds (Myanmar)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Crisis humanitaria agrava riesgo soberano de Myanmar",
+            "en": "Humanitarian crisis worsens Myanmar sovereign risk"
           }
         }
       ],
-      "confidence": 72,
+      "confidence": 65,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/07/31/world/europe/federov-ukraine-killer-robots.html",
-      "published_at": "2026-07-31",
+      "source_url": "https://www.nytimes.com/2026/08/16/world/asia/cholera-outbreak-yangon-myanmar.html",
+      "published_at": "2026-08-16",
       "time": "22h"
-    },
-    {
-      "id": 5,
-      "tag": "CRITICAL",
-      "region": "EURASIA",
-      "title": {
-        "es": "El ataque de Ucrania a un buque iraní muestra cómo dos guerras podrían confluir",
-        "en": "Ukraine's Strike on Iranian Ship Shows How Two Wars Could Spiral"
-      },
-      "summary": {
-        "es": "Ucrania atacó un buque iraní que transportaba ayuda militar a Rusia, generando un nexo operativo entre el frente del Indo-Pacífico y la guerra en Europa del Este. La convergencia entre el conflicto ruso-ucraniano y la confrontación EE.UU.-Irán amplía el riesgo sistémico global, con implicaciones directas para las cadenas de suministro de defensa y las sanciones secundarias. Los inversores deben vigilar posibles represalias iraníes contra activos vinculados a Occidente fuera del estrecho de Ormuz.",
-        "en": "Ukraine struck an Iranian vessel carrying military aid to Russia, creating an operational nexus between the Indo-Pacific front and the Eastern European war. The convergence of the Russia-Ukraine conflict and the US-Iran confrontation amplifies systemic global risk, with direct implications for defense supply chains and secondary sanctions. Investors should monitor potential Iranian retaliation against Western-linked assets outside the Strait of Hormuz."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de escalada sistémica multi-frente presiona a mercados europeos",
-            "en": "Multi-front systemic escalation risk pressures European markets"
-          }
-        },
-        {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Demanda acelerada de sistemas de defensa ante conflictos entrelazados",
-            "en": "Accelerated defense procurement demand from interlocked conflicts"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Ampliación del conflicto eleva prima de riesgo geopolítico del petróleo",
-            "en": "Conflict broadening lifts oil geopolitical risk premium"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/07/31/us/politics/iran-ukraine-war.html",
-      "published_at": "2026-07-31",
-      "time": "15h"
-    },
-    {
-      "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "Brote militar entre hutíes y Arabia Saudí desafía la calma relativa en Yemen",
-        "en": "Military flare-up between Houthis and Saudi Arabia challenges relative calm in Yemen"
-      },
-      "summary": {
-        "es": "Arabia Saudí y los rebeldes hutíes respaldados por Irán están al borde de un conflicto renovado, lo que podría arrastrar a Yemen hacia una guerra regional más amplia justo cuando el conflicto EE.UU.-Irán se recrudece. Una reanudación de las hostilidades hutíes contra Arabia Saudí implicaría riesgos directos para la infraestructura petrolera saudí y para los compromisos de producción de la OPEP+. Este vector subadicional del conflicto iraní amplifica la prima de riesgo sobre los activos energéticos y del Golfo.",
-        "en": "Saudi Arabia and Iran-backed Houthi rebels are on the brink of renewed conflict, potentially drawing war-ravaged Yemen into a wider Middle East war just as the US-Iran conflict intensifies. A resumption of Houthi hostilities against Saudi Arabia would create direct risks to Saudi oil infrastructure and OPEC+ production commitments. This sub-vector of the Iran conflict amplifies the risk premium on energy and Gulf assets."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo para infraestructura petrolera saudí si escalan ataques hutíes",
-            "en": "Risk to Saudi oil infrastructure if Houthi attacks escalate"
-          }
-        },
-        {
-          "asset": "Saudi Arabian equities (Tadawul)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Amenaza directa de seguridad sobre activos saudíes",
-            "en": "Direct security threat over Saudi assets"
-          }
-        },
-        {
-          "asset": "Shipping freight rates",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Posibles ataques hutíes al tráfico marítimo en el Mar Rojo",
-            "en": "Potential Houthi attacks on Red Sea maritime traffic"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/military-flare-up-between-houthis-and-saudi-arabia-challenges-relative-calm-in-yemen/a-78186262?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-07-31",
-      "time": "20h"
     }
   ],
-  "market_updated_at": "2026-08-17T06:25:47.122Z"
+  "market_updated_at": "2026-08-17T06:44:58.668Z"
 }
