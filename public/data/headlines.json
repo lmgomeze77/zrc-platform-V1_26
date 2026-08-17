@@ -9,8 +9,8 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,127.20",
-      "change": "-0.15%",
+      "value": "20,126.00",
+      "change": "-0.02%",
       "up": false
     },
     {
@@ -22,7 +22,7 @@
     {
       "symbol": "WTI Crude",
       "value": "81.67",
-      "change": "-0.35%",
+      "change": "-0.20%",
       "up": false
     },
     {
@@ -33,33 +33,33 @@
     },
     {
       "symbol": "BTC/USD",
-      "value": "63,355.19",
-      "change": "+0.56%",
+      "value": "63,812.02",
+      "change": "+1.23%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "14.45",
-      "change": "-1.23%",
-      "up": false
+      "value": "14.98",
+      "change": "+5.12%",
+      "up": true
     },
     {
       "symbol": "US 10Y Yield",
       "value": "4.69%",
-      "change": "+0.64%",
+      "change": "+0.05%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,775.35",
-      "change": "-0.13%",
+      "value": "7,772.59",
+      "change": "-0.17%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "26,434.50",
-      "change": "+0.00%",
-      "up": true
+      "value": "26,401.40",
+      "change": "-0.15%",
+      "up": false
     },
     {
       "symbol": "EUR/GBP",
@@ -69,13 +69,13 @@
     },
     {
       "symbol": "DXY",
-      "value": "99.54",
-      "change": "-0.32%",
+      "value": "99.636",
+      "change": "-0.31%",
       "up": false
     },
     {
       "symbol": "Natural Gas",
-      "value": "2.67",
+      "value": "2.773",
       "change": "-2.46%",
       "up": false
     },
@@ -391,5 +391,5 @@
       "time": "22h"
     }
   ],
-  "market_updated_at": "2026-08-17T14:15:21.982Z"
+  "market_updated_at": "2026-08-17T18:18:38.718Z"
 }
