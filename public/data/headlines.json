@@ -4,13 +4,13 @@
     {
       "symbol": "EUR/USD",
       "value": "1.1573",
-      "change": "+0.28%",
+      "change": "+0.18%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
       "value": "20,126.00",
-      "change": "-0.02%",
+      "change": "-0.15%",
       "up": false
     },
     {
@@ -21,9 +21,9 @@
     },
     {
       "symbol": "WTI Crude",
-      "value": "81.67",
-      "change": "-0.20%",
-      "up": false
+      "value": "82.77",
+      "change": "+0.55%",
+      "up": true
     },
     {
       "symbol": "GOLD (XAU/USD)",
@@ -63,14 +63,14 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8548",
-      "change": "+0.01%",
+      "value": "0.8549",
+      "change": "+0.02%",
       "up": true
     },
     {
       "symbol": "DXY",
-      "value": "99.636",
-      "change": "-0.31%",
+      "value": "99.57",
+      "change": "-0.09%",
       "up": false
     },
     {
@@ -87,9 +87,9 @@
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7322",
-      "change": "-0.06%",
-      "up": false
+      "value": "6.7394",
+      "change": "+0.11%",
+      "up": true
     }
   ],
   "headlines": [
@@ -391,5 +391,5 @@
       "time": "22h"
     }
   ],
-  "market_updated_at": "2026-08-17T18:18:38.718Z"
+  "market_updated_at": "2026-08-17T22:10:28.893Z"
 }
