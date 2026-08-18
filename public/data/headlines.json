@@ -1,119 +1,98 @@
 {
-  "generated_at": "2026-08-17T06:44:58.668Z",
+  "generated_at": "2026-08-18T06:36:17.265Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1573",
-      "change": "-0.06%",
-      "up": false
+      "value": "1.1589",
+      "change": "+0.16",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,126.00",
-      "change": "+0.32%",
+      "value": "20129.50",
+      "change": "+88.50",
       "up": true
     },
     {
-      "symbol": "BRENT Crude",
-      "value": "88.66",
-      "change": "-0.24%",
+      "symbol": "BRENT",
+      "value": "88.31",
+      "change": "-0.24",
       "up": false
     },
     {
-      "symbol": "WTI Crude",
-      "value": "81.56",
-      "change": "+0.11%",
+      "symbol": "GOLD",
+      "value": "4401.18",
+      "change": "+16.95",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,475.80",
-      "change": "+0.87%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "64,282.07",
-      "change": "+1.89%",
+      "symbol": "BTC",
+      "value": "64215.00",
+      "change": "+577.35",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "15.35",
-      "change": "+7.72%",
+      "value": "14.98",
+      "change": "+0.78",
       "up": true
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.73%",
-      "change": "+0.01%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7,785.76",
-      "change": "-0.17%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "26,445.99",
-      "change": "+0.53%",
+      "symbol": "US 10Y",
+      "value": "4.73",
+      "change": "+0.01",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8545",
-      "change": "+0.09%",
+      "value": "0.8554",
+      "change": "+0.0006",
       "up": true
     },
     {
-      "symbol": "DXY Dollar Index",
-      "value": "99.54",
-      "change": "-0.09%",
+      "symbol": "S&P 500",
+      "value": "7790.68",
+      "change": "-40.70",
       "up": false
     },
     {
-      "symbol": "Natural Gas",
-      "value": "2.704",
-      "change": "-1.06%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.6130",
-      "change": "-0.59%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7432",
-      "change": "0.00%",
-      "up": false
+      "symbol": "DAX 40",
+      "value": "26467.50",
+      "change": "+27.19",
+      "up": true
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EURASIA",
+      "region": "APAC",
       "title": {
-        "es": "Ucrania lanza uno de sus mayores ataques de la guerra",
-        "en": "Ukraine launches one of its largest attacks of war"
+        "es": "El acercamiento de Trump a Corea del Norte tensiona la alianza con Corea del Sur",
+        "en": "Trump's Overture to North Korea Strains Alliance With the South"
       },
       "summary": {
-        "es": "Ucrania lanzó un ataque masivo de drones contra Moscú, con cientos de aeronaves reportadas y seis muertos en la capital rusa y la región de Rostov. La escalada sostenida en los ataques de largo alcance intensifica los riesgos geopolíticos y la presión sobre los mercados energéticos europeos. Los inversores deben monitorear el impacto en los corredores de exportación de energía y los activos de refugio.",
-        "en": "Ukraine launched a massive drone assault on Moscow, with hundreds of aircraft reported and six fatalities in the Russian capital and Rostov region. The sustained escalation in long-range strikes heightens geopolitical risk and pressure on European energy corridors. Investors should monitor impacts on energy export routes and safe-haven assets."
+        "es": "Trump ha ordenado recortar los ejercicios militares conjuntos con Corea del Sur en un gesto hacia Kim Jong-un, a pesar de que Pyongyang ha adoptado una postura crecientemente beligerante. La decisión debilita la credibilidad del compromiso de defensa de EE.UU. en el Indo-Pacífico y genera inquietud entre los aliados regionales sobre la fiabilidad de las garantías de seguridad estadounidenses. Para los mercados, el movimiento incrementa el riesgo geopolítico en el noreste asiático, afectando a activos surcoreanos y a la confianza en el paraguas de seguridad de Washington.",
+        "en": "Trump has ordered a scaling back of joint military exercises with South Korea as a gesture toward Kim Jong-un, even as Pyongyang has grown increasingly belligerent. The decision undermines the credibility of U.S. defense commitments in the Indo-Pacific and raises alarm among regional allies about the reliability of American security guarantees. For markets, the move raises geopolitical risk in Northeast Asia, weighing on South Korean assets and confidence in Washington's security umbrella."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "South Korean Won (KRW/USD)",
+          "direction": "down",
+          "magnitude": "high",
           "note": {
-            "es": "Escalada amenaza rutas de exportación energética rusas",
-            "en": "Escalation threatens Russian energy export routes"
+            "es": "Incremento del riesgo geopolítico presiona la divisa surcoreana",
+            "en": "Rising geopolitical risk pressures South Korean currency"
+          }
+        },
+        {
+          "asset": "KOSPI (South Korean equities)",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Alianza debilitada eleva prima de riesgo en bolsa surcoreana",
+            "en": "Weakened alliance raises risk premium on South Korean equities"
           }
         },
         {
@@ -121,33 +100,24 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor riesgo geopolítico impulsa activos refugio",
-            "en": "Heightened geopolitical risk drives safe-haven demand"
+            "es": "Mayor incertidumbre en Asia impulsa refugio en oro",
+            "en": "Greater Asian uncertainty drives safe-haven demand for gold"
           }
         },
         {
-          "asset": "EUR/USD",
-          "direction": "down",
+          "asset": "US Defense equities",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Conflicto prolongado pesa sobre la zona euro",
-            "en": "Prolonged conflict weighs on eurozone sentiment"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada eleva prima de riesgo en mercados europeos",
-            "en": "Escalation raises risk premium on European markets"
+            "es": "Recorte de ejercicios reduce contratos a corto plazo",
+            "en": "Exercise cuts reduce near-term contract activity"
           }
         }
       ],
       "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ukraine-launches-one-of-its-largest-attacks-of-war/a-78386779?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-08-16",
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/08/17/world/asia/trump-korea-military-kim-jong-un.html",
+      "published_at": "2026-08-17",
       "time": "19h"
     },
     {
@@ -155,12 +125,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Irán ofrece recompensa de 30.000 dólares por matar o capturar soldados estadounidenses",
-        "en": "Iran offers $30,000 bounty for killing or capturing US soldiers"
+        "es": "Los hutíes reivindican un ataque a un buque saudí mientras escala la violencia en el Mar Rojo",
+        "en": "Houthis Claim Strike on Saudi Vessel as Red Sea Violence Escalates"
       },
       "summary": {
-        "es": "El ejército iraní anunció una recompensa formal de 30.000 dólares por matar o capturar soldados estadounidenses, duplicada si la acción es realizada por una mujer. Esta medida señala una escalada significativa en la postura hostil de Irán hacia EE.UU. en el contexto de la guerra en curso, con implicaciones directas para la estabilidad regional y los precios del petróleo. Los activos de defensa y los mercados de crudo reaccionarán con atención a posibles represalias.",
-        "en": "The Iranian military formally announced a $30,000 reward for killing or capturing US soldiers, doubled if carried out by a woman. This signals a significant escalation in Iran's hostile posture toward the US amid the ongoing war, with direct implications for regional stability and oil prices. Defense assets and crude markets will react closely to potential reprisals."
+        "es": "Los hutíes, respaldados por Irán, han reivindicado el ataque con misiles a un buque saudí en el Mar Rojo, una ruta marítima crítica para el comercio global. La escalada continua amenaza las rutas de suministro energético y eleva los costes de seguro y flete, con implicaciones directas para los precios del petróleo y los flujos de mercancías globales. La falta de señales de desescalada apunta a una prima de riesgo persistente en el crudo.",
+        "en": "Iran-backed Houthis have claimed a missile attack on a Saudi vessel in the Red Sea, a critical global trade route. Continued escalation threatens energy supply routes and raises insurance and freight costs, with direct implications for oil prices and global goods flows. The absence of any de-escalation signal points to a persistent risk premium in crude."
       },
       "impact": "high",
       "market_impact": [
@@ -169,8 +139,17 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de escalada en el Golfo amenaza suministro petrolero",
-            "en": "Gulf escalation risk threatens oil supply"
+            "es": "Ataques en ruta energética clave elevan prima de riesgo del crudo",
+            "en": "Attacks on key energy route lift crude risk premium"
+          }
+        },
+        {
+          "asset": "Shipping/freight rates",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Escalada fuerza desvíos costosos y eleva fletes globales",
+            "en": "Escalation forces costly diversions, lifting global freight rates"
           }
         },
         {
@@ -178,218 +157,218 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Tensión MENA eleva demanda de activos refugio",
-            "en": "MENA tension lifts safe-haven demand"
+            "es": "Tensión regional impulsa flujos hacia activos refugio",
+            "en": "Regional tension drives flows into safe-haven assets"
           }
         },
         {
-          "asset": "US defense equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada favorece gasto en defensa estadounidense",
-            "en": "Escalation supports US defense spending"
-          }
-        },
-        {
-          "asset": "EM currencies",
+          "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Aversión al riesgo presiona divisas emergentes",
-            "en": "Risk aversion pressures emerging market currencies"
+            "es": "Europa más expuesta al encarecimiento energético por Red Sea",
+            "en": "Europe more exposed to Red Sea energy cost pass-through"
           }
         }
       ],
-      "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260816-iran-offers-30-000-bounty-for-killing-or-capturing-us-soldiers",
-      "published_at": "2026-08-16",
+      "confidence": 91,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/08/17/world/middleeast/houthis-saudi-strike.html",
+      "published_at": "2026-08-17",
       "time": "15h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "EURASIA",
       "title": {
-        "es": "Trump dice que EE.UU. reducirá 'sustancialmente' los ejercicios militares con Corea del Sur",
-        "en": "Trump says US to 'substantially reduce' military drills with South Korea"
+        "es": "Rusia advierte al Reino Unido por el suministro de drones a Ucrania",
+        "en": "Russia warns UK over supplying drones to Ukraine"
       },
       "summary": {
-        "es": "El presidente Trump anunció una reducción sustancial de los ejercicios militares conjuntos con Corea del Sur, citando su 'muy buena relación' con Kim Jong Un. La medida debilita la arquitectura de seguridad aliada en el Indo-Pacífico en un momento en que Corea del Norte despliega tropas en Ucrania. Esto genera riesgos para los activos surcoreanos y abre interrogantes sobre el compromiso de defensa de EE.UU. en la región.",
-        "en": "President Trump announced a substantial reduction in joint military drills with South Korea, citing his 'very good relationship' with Kim Jong Un. The move weakens allied security architecture in the Indo-Pacific at a time when North Korea is deploying troops to Ukraine. This creates risks for South Korean assets and raises questions about US defense commitments in the region."
+        "es": "Moscú ha lanzado una advertencia formal al Reino Unido por el suministro de drones a Ucrania, a lo que el Ministerio de Defensa británico respondió reafirmando su solidaridad con Kiev. La escalada retórica entre Rusia y un miembro de la OTAN aumenta el riesgo de ampliación del conflicto y puede tener implicaciones para los mercados energéticos y de defensa europeos. El episodio refuerza la tendencia de mayor inversión en defensa en Europa y presiona al alza los precios del gas.",
+        "en": "Moscow has issued a formal warning to the UK over drone supplies to Ukraine, with the British MoD reaffirming its solidarity with Kyiv. The rhetorical escalation between Russia and a NATO member raises the risk of conflict broadening and carries implications for European energy and defense markets. The episode reinforces the trend toward higher European defense spending and puts upward pressure on gas prices."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Korean Won (KRW)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Reducción de garantías de seguridad pesa sobre el won",
-            "en": "Reduced security guarantees weigh on the won"
-          }
-        },
-        {
-          "asset": "KOSPI",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre geopolítica presiona renta variable coreana",
-            "en": "Geopolitical uncertainty pressures Korean equities"
-          }
-        },
-        {
-          "asset": "Japanese Yen (JPY)",
+          "asset": "European natural gas (TTF)",
           "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada Rusia-OTAN amplifica riesgo de suministro energético",
+            "en": "Russia-NATO escalation amplifies energy supply risk"
+          }
+        },
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor tensión impulsa expectativas de gasto en defensa europeo",
+            "en": "Higher tension boosts European defense spending expectations"
+          }
+        },
+        {
+          "asset": "GBP/USD",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Tensión regional eleva demanda del yen como refugio",
-            "en": "Regional tension lifts yen safe-haven demand"
+            "es": "Posición de riesgo del Reino Unido pesa sobre la libra",
+            "en": "UK risk posture weighs on sterling"
           }
         }
       ],
-      "confidence": 85,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/8/17/trump-says-us-to-substantially-reduce-military-drills-with-south-korea?traffic_source=rss",
-      "published_at": "2026-08-17",
-      "time": "6h"
+      "confidence": 82,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cy5dz0kkn0wo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-08-18",
+      "time": "1h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
+      "tag": "WATCH",
       "region": "APAC",
       "title": {
-        "es": "China quiere que sus datos impulsen la IA mundial",
-        "en": "China Wants Its Data to Power the World's A.I."
+        "es": "La neutralidad de Indonesia se pone a prueba con ejercicios navales conjuntos con China",
+        "en": "Indonesia neutrality tested by joint naval drill with China"
       },
       "summary": {
-        "es": "China está exportando no solo modelos de inteligencia artificial, sino también los datos que los alimentan, lo que genera temores de que las narrativas de Pekín se difundan globalmente a través de chatbots de uso masivo. Esta estrategia de influencia de datos representa una nueva dimensión de la rivalidad tecnológica entre EE.UU. y China, con implicaciones para regulaciones de soberanía digital y cadenas de suministro de IA. Los inversores en semiconductores, nube y plataformas tecnológicas deben monitorear respuestas regulatorias occidentales.",
-        "en": "China is exporting not just AI models but the data that feeds them, raising fears that Beijing's narratives will spread globally through widely used chatbots. This data-influence strategy represents a new dimension of US-China tech rivalry, with implications for digital sovereignty regulations and AI supply chains. Investors in semiconductors, cloud, and tech platforms should monitor Western regulatory responses."
+        "es": "La participación de Indonesia en un ejercicio naval con la armada china, cerca de Taiwán, ha generado preocupación sobre la erosión de la tradicional política de no alineamiento de Yakarta. Para los inversores, el movimiento señala una posible reconfiguración de alianzas en el sudeste asiático en un contexto de creciente rivalidad entre EE.UU. y China. Indonesia, como mayor economía del ASEAN y actor clave en corredores de minerales críticos, tiene implicaciones directas para cadenas de suministro globales.",
+        "en": "Indonesia's participation in a naval exercise with the Chinese navy near Taiwan has raised concerns about the erosion of Jakarta's traditional non-alignment policy. For investors, the move signals a potential realignment in Southeast Asia amid intensifying U.S.-China rivalry. Indonesia, as ASEAN's largest economy and a key actor in critical mineral corridors, carries direct implications for global supply chains."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "US tech equities",
+          "asset": "Indonesian equities (IDX)",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Competencia de datos china presiona valoraciones de plataformas IA",
-            "en": "Chinese data competition pressures AI platform valuations"
+            "es": "Reconfiguración de alianzas genera incertidumbre para inversores occidentales",
+            "en": "Alliance reconfiguration creates uncertainty for Western investors"
           }
         },
         {
-          "asset": "Chinese ADRs",
+          "asset": "Indonesian Rupiah (IDR/USD)",
           "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor escrutinio occidental amenaza acceso de empresas chinas",
-            "en": "Increased Western scrutiny threatens Chinese firm access"
-          }
-        },
-        {
-          "asset": "Semiconductor ETFs",
-          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Tensión tecnológica genera oportunidades y riesgos en chips",
-            "en": "Tech tension creates chip sector opportunities and risks"
+            "es": "Riesgo político eleva prima en divisa indonesia",
+            "en": "Political risk lifts premium on Indonesian currency"
+          }
+        },
+        {
+          "asset": "Critical minerals ETFs",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Acercamiento a China puede redirigir flujos de minerales críticos",
+            "en": "China alignment may redirect critical mineral supply flows"
           }
         }
       ],
-      "confidence": 78,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/17/world/asia/china-ai-data-chatbots.html",
+      "confidence": 76,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/indonesia-neutrality-tested-by-joint-naval-drill-with-china/a-78400288?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-08-17",
-      "time": "2h"
+      "time": "16h"
     },
     {
       "id": 5,
       "tag": "WATCH",
       "region": "AFRICA",
       "title": {
-        "es": "El brote de ébola en la República Democrática del Congo es ahora el más mortal en la historia del país",
-        "en": "Ebola outbreak in Democratic Republic of Congo now deadliest in country's history"
+        "es": "El brote de Ébola en la RDC se convierte en el más mortal de la historia del país",
+        "en": "DR Congo Ebola outbreak becomes country's deadliest"
       },
       "summary": {
-        "es": "El brote de ébola en la RDC ha superado las 2.325 muertes, convirtiéndose en el más letal de la historia del país y superando el brote de 2018-2020. La crisis sanitaria en un contexto de guerra civil activa amenaza la estabilidad operativa del sector minero en el este del país, vital para las cadenas de suministro de minerales críticos como el cobalto y el coltán. Los inversores en baterías, vehículos eléctricos y tecnologías de transición energética deben seguir esta situación de cerca.",
-        "en": "The DRC Ebola outbreak has surpassed 2,325 deaths, becoming the deadliest in the country's history and exceeding the 2018-2020 outbreak. The health crisis amid active civil war threatens the operational stability of the eastern mining sector, critical to cobalt and coltan supply chains. Investors in batteries, EVs, and energy transition technologies should monitor this situation closely."
+        "es": "El último brote de Ébola en la República Democrática del Congo ha causado 2.325 muertes y cerca de 5.000 casos confirmados, extendiéndose a una sexta provincia. La magnitud del brote eleva el riesgo de disrupción económica en una nación central para el suministro global de cobalto y coltán, materiales críticos para la transición energética. La crisis sanitaria puede agravar la inestabilidad política preexistente y dificultar la operación de empresas mineras en la región.",
+        "en": "The latest Ebola outbreak in the DRC has killed 2,325 people with nearly 5,000 confirmed cases, spreading to a sixth province. The scale of the outbreak raises the risk of economic disruption in a nation central to global supplies of cobalt and coltan, critical materials for the energy transition. The health crisis may compound pre-existing political instability and hinder mining operations in the region."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Cobalt futures",
+          "asset": "Cobalt (spot price)",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Crisis DRC amenaza suministro global de cobalto",
-            "en": "DRC crisis threatens global cobalt supply"
+            "es": "Brote puede interrumpir minería de cobalto en RDC",
+            "en": "Outbreak may disrupt DRC cobalt mining operations"
           }
         },
         {
-          "asset": "EV supply chain equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de suministro de minerales críticos presiona cadenas EV",
-            "en": "Critical mineral supply risk pressures EV supply chains"
-          }
-        },
-        {
-          "asset": "African sovereign bonds (DRC)",
+          "asset": "EM sovereign bonds (DRC)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Doble crisis sanitaria y militar eleva riesgo soberano",
-            "en": "Dual health and military crisis raises sovereign risk"
+            "es": "Crisis sanitaria agrava presión fiscal y riesgo soberano",
+            "en": "Health crisis aggravates fiscal pressure and sovereign risk"
+          }
+        },
+        {
+          "asset": "Battery metals ETFs",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de oferta en DRC eleva precios de metales para baterías",
+            "en": "DRC supply risk lifts battery metals pricing"
           }
         }
       ],
-      "confidence": 75,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/aug/17/ebola-outbreak-drc-democratic-republic-of-congo-deadliest-in-history",
+      "confidence": 72,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/dr-congo-ebola-outbreak-becomes-country-s-deadliest",
       "published_at": "2026-08-17",
-      "time": "6h"
+      "time": "15h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "APAC",
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "Brote de cólera enferma a más de 90 personas en la ciudad más grande de Myanmar",
-        "en": "Cholera Outbreak Sickens Over 90 in Myanmar's Biggest City"
+        "es": "Irán dice que está finalizando un acuerdo con Omán sobre el Estrecho de Ormuz",
+        "en": "Iran says it is finalizing a deal with Oman on the Strait of Hormuz"
       },
       "summary": {
-        "es": "Un brote de cólera ha afectado a más de 90 personas en Yangón, la ciudad más grande de Myanmar, agravado por la guerra civil, el gobierno militar y las intensas lluvias monzónicas. El colapso del sistema sanitario en Myanmar añade presión humanitaria y de estabilidad a una región que ya enfrenta sanciones internacionales. Las implicaciones para inversores se centran en el riesgo operacional para empresas con exposición en la cadena de suministro del Sudeste Asiático.",
-        "en": "A cholera outbreak has sickened over 90 people in Yangon, Myanmar's largest city, compounded by civil war, military rule, and heavy monsoon rains. The collapse of Myanmar's healthcare system adds humanitarian and stability pressure to a region already facing international sanctions. Investor implications center on operational risk for companies with Southeast Asian supply chain exposure."
+        "es": "Irán ha declarado estar ultimando un acuerdo con Omán en relación al Estrecho de Ormuz, el paso por el que transita aproximadamente el 20% del petróleo mundial, en paralelo a las negociaciones posguerra sobre Gaza. Un acuerdo de esta naturaleza podría alterar significativamente los equilibrios de poder en el Golfo y las garantías de libre navegación para el transporte energético global. El movimiento también señala la capacidad de Irán para utilizar el Estrecho como palanca diplomática y de presión.",
+        "en": "Iran has declared it is finalizing a deal with Oman regarding the Strait of Hormuz, through which approximately 20% of the world's oil transits, alongside post-war Gaza negotiations. An agreement of this nature could significantly alter power balances in the Gulf and free-navigation guarantees for global energy transport. The move also signals Iran's capacity to use the Strait as a diplomatic and pressure lever."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Southeast Asia frontier equities",
-          "direction": "down",
-          "magnitude": "low",
+          "asset": "Brent crude",
+          "direction": "mixed",
+          "magnitude": "high",
           "note": {
-            "es": "Inestabilidad Myanmar pesa sobre exposición regional",
-            "en": "Myanmar instability weighs on regional exposure"
+            "es": "Acuerdo sobre Ormuz puede reducir o amplificar riesgo según términos",
+            "en": "Hormuz deal may reduce or amplify supply risk depending on terms"
           }
         },
         {
-          "asset": "EM sovereign bonds (Myanmar)",
-          "direction": "down",
+          "asset": "Gold",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Crisis humanitaria agrava riesgo soberano de Myanmar",
-            "en": "Humanitarian crisis worsens Myanmar sovereign risk"
+            "es": "Incertidumbre sobre acceso a Ormuz sostiene refugio en oro",
+            "en": "Uncertainty over Hormuz access sustains gold safe-haven demand"
+          }
+        },
+        {
+          "asset": "EM currencies (Gulf)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Impacto en divisas del Golfo depende de términos del acuerdo",
+            "en": "Gulf currency impact depends on deal terms and enforcement"
           }
         }
       ],
-      "confidence": 65,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/16/world/asia/cholera-outbreak-yangon-myanmar.html",
-      "published_at": "2026-08-16",
-      "time": "22h"
+      "confidence": 85,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/middle-east-updates-kushner-meets-netanyahu-in-jerusalem/live-78396539?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-08-17",
+      "time": "18h"
     }
   ],
-  "market_updated_at": "2026-08-18T06:19:43.150Z"
+  "market_updated_at": "2026-08-18T06:36:17.265Z"
 }
