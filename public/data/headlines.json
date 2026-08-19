@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-08-18T06:36:17.265Z",
+  "generated_at": "2026-08-19T06:37:44.878Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1600",
-      "change": "+0.11%",
-      "up": true
+      "value": "1.1578",
+      "change": "-0.02%",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,127.20",
-      "change": "-0.15%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "91.32",
-      "change": "+0.39%",
-      "up": true
-    },
-    {
-      "symbol": "WTI Crude",
-      "value": "84.71",
-      "change": "+0.28%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,354.73",
-      "change": "+0.10%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "64,203.13",
-      "change": "+1.17%",
-      "up": true
-    },
-    {
-      "symbol": "VIX",
-      "value": "15.81",
-      "change": "+4.08%",
-      "up": true
-    },
-    {
-      "symbol": "US 10Y Yield",
-      "value": "4.70%",
-      "change": "-0.21%",
-      "up": false
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7,785.76",
-      "change": "-0.17%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "26,128.36",
-      "change": "-0.80%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8553",
+      "value": "10726.68",
       "change": "+0.06%",
       "up": true
     },
     {
-      "symbol": "DXY",
-      "value": "99.65",
-      "change": "+0.04%",
+      "symbol": "BRENT",
+      "value": "91.03",
+      "change": "+0.18%",
       "up": true
     },
     {
-      "symbol": "Natural Gas",
-      "value": "2.704",
-      "change": "-1.06%",
+      "symbol": "GOLD",
+      "value": "4455.05",
+      "change": "-0.42%",
       "up": false
     },
     {
-      "symbol": "Copper",
-      "value": "6.47",
-      "change": "+0.30%",
+      "symbol": "BTC",
+      "value": "64000",
+      "change": "+0.00%",
+      "up": false
+    },
+    {
+      "symbol": "VIX",
+      "value": "15.89",
+      "change": "+4.61%",
       "up": true
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.7342",
-      "change": "-0.08%",
+      "symbol": "US 10Y",
+      "value": "4.742",
+      "change": "+0.38%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8559",
+      "change": "+0.14%",
+      "up": true
+    },
+    {
+      "symbol": "S&P 500",
+      "value": "7745.06",
+      "change": "-0.52%",
+      "up": false
+    },
+    {
+      "symbol": "DAX 40",
+      "value": "26263.47",
+      "change": "-0.29%",
       "up": false
     }
   ],
@@ -96,71 +66,14 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "APAC",
-      "title": {
-        "es": "El acercamiento de Trump a Corea del Norte tensiona la alianza con Corea del Sur",
-        "en": "Trump's Overture to North Korea Strains Alliance With the South"
-      },
-      "summary": {
-        "es": "Trump ha ordenado recortar los ejercicios militares conjuntos con Corea del Sur en un gesto hacia Kim Jong-un, a pesar de que Pyongyang ha adoptado una postura crecientemente beligerante. La decisión debilita la credibilidad del compromiso de defensa de EE.UU. en el Indo-Pacífico y genera inquietud entre los aliados regionales sobre la fiabilidad de las garantías de seguridad estadounidenses. Para los mercados, el movimiento incrementa el riesgo geopolítico en el noreste asiático, afectando a activos surcoreanos y a la confianza en el paraguas de seguridad de Washington.",
-        "en": "Trump has ordered a scaling back of joint military exercises with South Korea as a gesture toward Kim Jong-un, even as Pyongyang has grown increasingly belligerent. The decision undermines the credibility of U.S. defense commitments in the Indo-Pacific and raises alarm among regional allies about the reliability of American security guarantees. For markets, the move raises geopolitical risk in Northeast Asia, weighing on South Korean assets and confidence in Washington's security umbrella."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "South Korean Won (KRW/USD)",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Incremento del riesgo geopolítico presiona la divisa surcoreana",
-            "en": "Rising geopolitical risk pressures South Korean currency"
-          }
-        },
-        {
-          "asset": "KOSPI (South Korean equities)",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Alianza debilitada eleva prima de riesgo en bolsa surcoreana",
-            "en": "Weakened alliance raises risk premium on South Korean equities"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor incertidumbre en Asia impulsa refugio en oro",
-            "en": "Greater Asian uncertainty drives safe-haven demand for gold"
-          }
-        },
-        {
-          "asset": "US Defense equities",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Recorte de ejercicios reduce contratos a corto plazo",
-            "en": "Exercise cuts reduce near-term contract activity"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/17/world/asia/trump-korea-military-kim-jong-un.html",
-      "published_at": "2026-08-17",
-      "time": "19h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los hutíes reivindican un ataque a un buque saudí mientras escala la violencia en el Mar Rojo",
-        "en": "Houthis Claim Strike on Saudi Vessel as Red Sea Violence Escalates"
+        "es": "EAU impone embargo comercial indefinido a Irán por presuntos ataques con misiles",
+        "en": "UAE imposes indefinite trade embargo on Iran over alleged missile attacks"
       },
       "summary": {
-        "es": "Los hutíes, respaldados por Irán, han reivindicado el ataque con misiles a un buque saudí en el Mar Rojo, una ruta marítima crítica para el comercio global. La escalada continua amenaza las rutas de suministro energético y eleva los costes de seguro y flete, con implicaciones directas para los precios del petróleo y los flujos de mercancías globales. La falta de señales de desescalada apunta a una prima de riesgo persistente en el crudo.",
-        "en": "Iran-backed Houthis have claimed a missile attack on a Saudi vessel in the Red Sea, a critical global trade route. Continued escalation threatens energy supply routes and raises insurance and freight costs, with direct implications for oil prices and global goods flows. The absence of any de-escalation signal points to a persistent risk premium in crude."
+        "es": "Los Emiratos Árabes Unidos han impuesto un embargo comercial indefinido a Irán tras acusarle de lanzar ataques con misiles, mientras Teherán niega su responsabilidad y sugiere una operación de bandera falsa. La medida agrava significativamente las tensiones en el Golfo Pérsico y se produce en un contexto de crisis más amplia entre Irán e Israel. El impacto en las rutas energéticas del Golfo y en el comercio regional podría presionar los precios del crudo y los activos de mercados emergentes.",
+        "en": "The UAE has imposed an indefinite trade embargo on Iran following accusations of missile attacks, while Tehran denies involvement and alleges a false flag operation. The move significantly escalates Gulf tensions amid the broader Iran-Israel crisis. Disruption to Gulf energy routes and regional trade flows could pressure crude prices and EM assets."
       },
       "impact": "high",
       "market_impact": [
@@ -169,17 +82,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Ataques en ruta energética clave elevan prima de riesgo del crudo",
-            "en": "Attacks on key energy route lift crude risk premium"
-          }
-        },
-        {
-          "asset": "Shipping/freight rates",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Escalada fuerza desvíos costosos y eleva fletes globales",
-            "en": "Escalation forces costly diversions, lifting global freight rates"
+            "es": "Escalada en el Golfo amenaza rutas de exportación de crudo",
+            "en": "Gulf escalation threatens crude export routes"
           }
         },
         {
@@ -187,8 +91,65 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Tensión regional impulsa flujos hacia activos refugio",
-            "en": "Regional tension drives flows into safe-haven assets"
+            "es": "Demanda de refugio seguro por tensiones geopolíticas en MENA",
+            "en": "Safe-haven demand on MENA geopolitical tensions"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo regional presiona divisas de economías emergentes dependientes del Golfo",
+            "en": "Regional risk pressures Gulf-linked EM currencies"
+          }
+        },
+        {
+          "asset": "USD/Iranian Rial",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Presión adicional sobre el rial por aislamiento comercial",
+            "en": "Added pressure on rial from trade isolation"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/8/19/uae-imposes-indefinite-trade-embargo-on-iran-over-alleged-missile-attacks?traffic_source=rss",
+      "published_at": "2026-08-19",
+      "time": "3h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
+      "title": {
+        "es": "Ucrania y Rusia intercambian ataques; Rusia advierte al Reino Unido sobre suministro de drones",
+        "en": "Ukraine, Russia trade strikes; Russia warns UK on drone supplies"
+      },
+      "summary": {
+        "es": "Un ataque con misiles en Járkov dejó 10 muertos, mientras Rusia reportó más de 600 drones ucranianos aproximándose a Moscú. Rusia emitió una advertencia directa al Reino Unido por el suministro de drones a Kiev, elevando la tensión OTAN-Rusia. La escalada en el frente de ataque a infraestructura y la amenaza a un miembro de la OTAN refuerza la presión sobre los activos europeos de riesgo.",
+        "en": "A missile strike in Kharkiv killed 10, while Russia reported over 600 Ukrainian drones approaching Moscow. Russia issued a direct warning to the UK over drone supplies to Kyiv, raising NATO-Russia tensions. Escalating infrastructure attacks and threats against a NATO member reinforce pressure on European risk assets."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada OTAN-Rusia pesa sobre acciones europeas",
+            "en": "NATO-Russia escalation weighs on European equities"
+          }
+        },
+        {
+          "asset": "Natural gas (TTF)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de infraestructura energética eleva el gas europeo",
+            "en": "Energy infrastructure risk lifts European gas prices"
           }
         },
         {
@@ -196,209 +157,182 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Europa más expuesta al encarecimiento energético por Red Sea",
-            "en": "Europe more exposed to Red Sea energy cost pass-through"
+            "es": "Tensión geopolítica en Europa continental presiona el euro",
+            "en": "Continental geopolitical tension pressures the euro"
           }
         }
       ],
-      "confidence": 91,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/17/world/middleeast/houthis-saudi-strike.html",
-      "published_at": "2026-08-17",
-      "time": "15h"
+      "confidence": 87,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ukraine-russia-trade-strikes-wildberries-site-hit-again/a-78408178?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-08-18",
+      "time": "21h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "EURASIA",
+      "region": "APAC",
       "title": {
-        "es": "Rusia advierte al Reino Unido por el suministro de drones a Ucrania",
-        "en": "Russia warns UK over supplying drones to Ukraine"
+        "es": "El presidente de Corea del Sur pide independencia militar tras la decisión de Trump de recortar ejercicios conjuntos",
+        "en": "South Korea president calls for military independence in wake of Trump call to cut joint drills"
       },
       "summary": {
-        "es": "Moscú ha lanzado una advertencia formal al Reino Unido por el suministro de drones a Ucrania, a lo que el Ministerio de Defensa británico respondió reafirmando su solidaridad con Kiev. La escalada retórica entre Rusia y un miembro de la OTAN aumenta el riesgo de ampliación del conflicto y puede tener implicaciones para los mercados energéticos y de defensa europeos. El episodio refuerza la tendencia de mayor inversión en defensa en Europa y presiona al alza los precios del gas.",
-        "en": "Moscow has issued a formal warning to the UK over drone supplies to Ukraine, with the British MoD reaffirming its solidarity with Kyiv. The rhetorical escalation between Russia and a NATO member raises the risk of conflict broadening and carries implications for European energy and defense markets. The episode reinforces the trend toward higher European defense spending and puts upward pressure on gas prices."
+        "es": "El presidente surcoreano Lee Jae-myung ha reiterado su intención de recuperar el mando operativo independiente tras la decisión de Trump de reducir los ejercicios militares conjuntos, argumentando una relación cálida con Kim Jong-un. Esta decisión debilita visiblemente la postura disuasoria de la alianza EE.UU.-Corea del Sur frente a Corea del Norte y podría desencadenar un aumento del gasto en defensa de Seúl y reposicionamiento estratégico en el Indo-Pacífico. Los fabricantes de defensa surcoreanos y la posible reacción de China son factores clave a vigilar.",
+        "en": "South Korean President Lee Jae-myung has renewed his push for operational command independence following Trump's decision to curtail joint drills, citing warm US-North Korea ties. The move visibly weakens the US-South Korea alliance's deterrent posture against the North and could trigger a surge in Seoul's defense spending and Indo-Pacific strategic realignment. South Korean defense contractors and China's potential reaction are key variables."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
+          "asset": "Korean Won (KRW)",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada Rusia-OTAN amplifica riesgo de suministro energético",
-            "en": "Russia-NATO escalation amplifies energy supply risk"
+            "es": "Incertidumbre de alianza eleva el riesgo-país para el won",
+            "en": "Alliance uncertainty raises country risk for the won"
           }
         },
         {
-          "asset": "European defense equities",
+          "asset": "South Korean defense equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor tensión impulsa expectativas de gasto en defensa europeo",
-            "en": "Higher tension boosts European defense spending expectations"
+            "es": "Presión por independencia militar impulsa gasto en defensa",
+            "en": "Military independence push boosts defense spending outlook"
           }
         },
         {
-          "asset": "GBP/USD",
+          "asset": "KOSPI",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Posición de riesgo del Reino Unido pesa sobre la libra",
-            "en": "UK risk posture weighs on sterling"
+            "es": "Riesgo geopolítico pesa sobre el mercado de valores surcoreano",
+            "en": "Geopolitical risk weighs on South Korean equity market"
           }
         }
       ],
       "confidence": 82,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cy5dz0kkn0wo?at_medium=RSS&at_campaign=rss",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/aug/18/south-korea-president-trump-military-drills-control-opcon-kim-jong-un",
       "published_at": "2026-08-18",
-      "time": "1h"
+      "time": "1d"
     },
     {
       "id": 4,
-      "tag": "WATCH",
-      "region": "APAC",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "La neutralidad de Indonesia se pone a prueba con ejercicios navales conjuntos con China",
-        "en": "Indonesia neutrality tested by joint naval drill with China"
+        "es": "Hackeo del sitio de impuestos en Francia: el ministerio presenta disculpas pero no contiene la crisis",
+        "en": "French tax authority hacked: ministry apologizes but struggles to contain crisis"
       },
       "summary": {
-        "es": "La participación de Indonesia en un ejercicio naval con la armada china, cerca de Taiwán, ha generado preocupación sobre la erosión de la tradicional política de no alineamiento de Yakarta. Para los inversores, el movimiento señala una posible reconfiguración de alianzas en el sudeste asiático en un contexto de creciente rivalidad entre EE.UU. y China. Indonesia, como mayor economía del ASEAN y actor clave en corredores de minerales críticos, tiene implicaciones directas para cadenas de suministro globales.",
-        "en": "Indonesia's participation in a naval exercise with the Chinese navy near Taiwan has raised concerns about the erosion of Jakarta's traditional non-alignment policy. For investors, the move signals a potential realignment in Southeast Asia amid intensifying U.S.-China rivalry. Indonesia, as ASEAN's largest economy and a key actor in critical mineral corridors, carries direct implications for global supply chains."
+        "es": "Francia reveló una segunda brecha en los sistemas de la administración tributaria tras un ataque informático masivo, mientras el Ministerio de Cuentas Públicas presentó disculpas y anunció medidas de emergencia. El incidente pone de relieve la vulnerabilidad de la infraestructura digital del Estado francés y podría escalar hacia un debate de soberanía tecnológica en la UE. Los activos de ciberseguridad europeos y la deuda soberana francesa podrían reflejar el impacto reputacional y operativo.",
+        "en": "France revealed a second breach in the tax administration's systems following a large-scale cyberattack, as the Ministry of Public Accounts apologized and announced emergency measures. The incident highlights the vulnerability of France's state digital infrastructure and could escalate into an EU tech-sovereignty debate. European cybersecurity assets and French sovereign debt may reflect reputational and operational fallout."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Indonesian equities (IDX)",
+          "asset": "French OATs (10Y)",
           "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Reconfiguración de alianzas genera incertidumbre para inversores occidentales",
-            "en": "Alliance reconfiguration creates uncertainty for Western investors"
-          }
-        },
-        {
-          "asset": "Indonesian Rupiah (IDR/USD)",
-          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo político eleva prima en divisa indonesia",
-            "en": "Political risk lifts premium on Indonesian currency"
+            "es": "Crisis institucional añade ruido al riesgo soberano francés",
+            "en": "Institutional crisis adds noise to French sovereign risk"
           }
         },
         {
-          "asset": "Critical minerals ETFs",
-          "direction": "mixed",
+          "asset": "European cybersecurity equities",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Acercamiento a China puede redirigir flujos de minerales críticos",
-            "en": "China alignment may redirect critical mineral supply flows"
+            "es": "Ataque estatal impulsa demanda de ciberseguridad europea",
+            "en": "State-level attack boosts European cybersecurity demand"
           }
         }
       ],
-      "confidence": 76,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/indonesia-neutrality-tested-by-joint-naval-drill-with-china/a-78400288?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-08-17",
-      "time": "16h"
+      "confidence": 70,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/politique/article/2026/08/18/piratage-du-fisc-bercy-presente-ses-excuses-mais-peine-a-contenir-la-crise_6749090_823448.html",
+      "published_at": "2026-08-18",
+      "time": "11h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "AFRICA",
+      "region": "APAC",
       "title": {
-        "es": "El brote de Ébola en la RDC se convierte en el más mortal de la historia del país",
-        "en": "DR Congo Ebola outbreak becomes country's deadliest"
+        "es": "Corea del Sur acorta ejercicios militares con EE.UU. por solicitud de Washington",
+        "en": "South Korea shortens war games with US, citing Washington request"
       },
       "summary": {
-        "es": "El último brote de Ébola en la República Democrática del Congo ha causado 2.325 muertes y cerca de 5.000 casos confirmados, extendiéndose a una sexta provincia. La magnitud del brote eleva el riesgo de disrupción económica en una nación central para el suministro global de cobalto y coltán, materiales críticos para la transición energética. La crisis sanitaria puede agravar la inestabilidad política preexistente y dificultar la operación de empresas mineras en la región.",
-        "en": "The latest Ebola outbreak in the DRC has killed 2,325 people with nearly 5,000 confirmed cases, spreading to a sixth province. The scale of the outbreak raises the risk of economic disruption in a nation central to global supplies of cobalt and coltan, critical materials for the energy transition. The health crisis may compound pre-existing political instability and hinder mining operations in the region."
+        "es": "Seúl confirmó que acortó los ejercicios militares conjuntos con EE.UU. a petición de Washington, vinculada a la voluntad de Trump de mantener el diálogo con Kim Jong-un. La reducción de la postura disuasoria aliada abre interrogantes sobre el compromiso de seguridad de EE.UU. en el Indo-Pacífico y podría acelerar la proliferación de capacidades defensivas autónomas en la región. Este ítem complementa el análisis del índice 7 desde la perspectiva operativa.",
+        "en": "Seoul confirmed it shortened joint military exercises with the US at Washington's request, linked to Trump's desire to maintain dialogue with Kim Jong-un. The reduced allied deterrent posture raises questions about the US security commitment in the Indo-Pacific and could accelerate autonomous defense capability proliferation in the region. This item complements index 7 from the operational perspective."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Cobalt (spot price)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Brote puede interrumpir minería de cobalto en RDC",
-            "en": "Outbreak may disrupt DRC cobalt mining operations"
-          }
-        },
-        {
-          "asset": "EM sovereign bonds (DRC)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Crisis sanitaria agrava presión fiscal y riesgo soberano",
-            "en": "Health crisis aggravates fiscal pressure and sovereign risk"
-          }
-        },
-        {
-          "asset": "Battery metals ETFs",
+          "asset": "Japanese Yen (JPY)",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo de oferta en DRC eleva precios de metales para baterías",
-            "en": "DRC supply risk lifts battery metals pricing"
-          }
-        }
-      ],
-      "confidence": 72,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/dr-congo-ebola-outbreak-becomes-country-s-deadliest",
-      "published_at": "2026-08-17",
-      "time": "15h"
-    },
-    {
-      "id": 6,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "Irán dice que está finalizando un acuerdo con Omán sobre el Estrecho de Ormuz",
-        "en": "Iran says it is finalizing a deal with Oman on the Strait of Hormuz"
-      },
-      "summary": {
-        "es": "Irán ha declarado estar ultimando un acuerdo con Omán en relación al Estrecho de Ormuz, el paso por el que transita aproximadamente el 20% del petróleo mundial, en paralelo a las negociaciones posguerra sobre Gaza. Un acuerdo de esta naturaleza podría alterar significativamente los equilibrios de poder en el Golfo y las garantías de libre navegación para el transporte energético global. El movimiento también señala la capacidad de Irán para utilizar el Estrecho como palanca diplomática y de presión.",
-        "en": "Iran has declared it is finalizing a deal with Oman regarding the Strait of Hormuz, through which approximately 20% of the world's oil transits, alongside post-war Gaza negotiations. An agreement of this nature could significantly alter power balances in the Gulf and free-navigation guarantees for global energy transport. The move also signals Iran's capacity to use the Strait as a diplomatic and pressure lever."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "mixed",
-          "magnitude": "high",
-          "note": {
-            "es": "Acuerdo sobre Ormuz puede reducir o amplificar riesgo según términos",
-            "en": "Hormuz deal may reduce or amplify supply risk depending on terms"
+            "es": "Riesgo de seguridad regional impulsa el yen como refugio",
+            "en": "Regional security risk supports yen as safe haven"
           }
         },
         {
-          "asset": "Gold",
+          "asset": "South Korean defense equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre sobre acceso a Ormuz sostiene refugio en oro",
-            "en": "Uncertainty over Hormuz access sustains gold safe-haven demand"
-          }
-        },
-        {
-          "asset": "EM currencies (Gulf)",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Impacto en divisas del Golfo depende de términos del acuerdo",
-            "en": "Gulf currency impact depends on deal terms and enforcement"
+            "es": "Reducción de ejercicios conjuntos acelera gasto autónomo en defensa",
+            "en": "Reduced joint drills accelerate autonomous defense spending"
           }
         }
       ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/middle-east-updates-kushner-meets-netanyahu-in-jerusalem/live-78396539?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-08-17",
-      "time": "18h"
+      "confidence": 78,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cnvn0j31qj8o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-08-19",
+      "time": "<1h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "En el funeral de Zhu Rongji, el pasado de China ensombrece su presente",
+        "en": "At Ex-Premier Zhu Rongji's Funeral, China's Past Shadows Its Present"
+      },
+      "summary": {
+        "es": "El funeral del exprimer ministro Zhu Rongji pone de relieve la nostalgia por la era de alto crecimiento y apertura económica de China, contrastada con el estancamiento actual bajo Xi Jinping. Las autoridades censuraron el duelo público ante el temor de que se convierta en crítica al régimen, señal de tensión política interna. Para los inversores, la narrativa refleja el debate estructural sobre la trayectoria económica de China y sus implicaciones para los activos asiáticos.",
+        "en": "The funeral of former Premier Zhu Rongji highlights nostalgia for China's era of high growth and economic openness, contrasted with current stagnation under Xi Jinping. Authorities censored public mourning fearing it could become a critique of the regime, signaling internal political tension. For investors, the narrative reflects the structural debate over China's economic trajectory and its implications for Asian assets."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Chinese equities (CSI 300)",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión política interna añade incertidumbre al mercado chino",
+            "en": "Internal political tension adds uncertainty to Chinese markets"
+          }
+        },
+        {
+          "asset": "Chinese Yuan (CNY)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Percepción de estancamiento económico presiona al yuan",
+            "en": "Stagnation perception pressures the yuan"
+          }
+        }
+      ],
+      "confidence": 65,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/08/18/world/asia/zhu-rongji-funeral-china.html",
+      "published_at": "2026-08-18",
+      "time": "14h"
     }
   ],
-  "market_updated_at": "2026-08-19T06:20:40.344Z"
+  "market_updated_at": "2026-08-19T06:37:44.878Z"
 }
