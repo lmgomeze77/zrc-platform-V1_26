@@ -17,8 +17,8 @@ const PLANS = [
     id: "intelligence",
     name: "Intelligence",
     tagline: { es: "Para inversores y analistas", en: "For investors & analysts" },
-    monthly: { price: "€99", period: "/mo", url: "https://buy.stripe.com/4gM5kE1mI4sAbIQdv42Nq00" },
-    annual:  { price: "€948", period: "/yr", url: "https://buy.stripe.com/7sYfZi5CY5wE28g8aK2Nq01", saving: { es: "Ahorra €240", en: "Save €240" } },
+    monthly: { price: "€99", period: "/mo", url: "https://buy.stripe.com/dRm3cwd5q5wEaEM1Mm2Nq0d" },
+    annual:  { price: "€948", period: "/yr", url: "https://buy.stripe.com/7sYbJ22qMaQY5ksfDc2Nq0e", saving: { es: "Ahorra €240", en: "Save €240" } },
     highlight: false,
     features: {
       es: [
