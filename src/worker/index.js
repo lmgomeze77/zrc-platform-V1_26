@@ -83,6 +83,9 @@ async function handleRequest(request, env, ctx) {
     if (url.pathname === "/api/georisk-index/snapshot" && request.method === "POST")
       return handleGeoRiskIndexSnapshot(request, env);
 
+    if (url.pathname === "/api/admin/mrr" && request.method === "GET")
+      return handleAdminMRR(request, env);
+
     if (url.pathname.startsWith("/api/"))
       return jsonResponse({ error: "Not found" }, 404);
 
@@ -1043,6 +1046,155 @@ async function handleInnerCircleApply(request, env) {
   }
 
   return jsonResponse({ ok: true });
+}
+
+// ============================================================
+// /api/admin/mrr?token=  — panel interno de MRR estimado (Phase 0 del plan
+// de monetización: sin esto, cualquier decisión de crecimiento se toma a
+// ciegas). Reutiliza INNER_CIRCLE_ADMIN_TOKEN como secreto de admin en vez
+// de crear uno nuevo — mismo patrón que /api/inner-circle/approve.
+// ============================================================
+// Precio mensual de lista por tier, usado solo para estimar MRR. La tabla
+// subscriptions no guarda price_id/intervalo de facturación por fila (ver
+// supabase-schema.sql), así que un suscriptor anual de Early Bird se cuenta
+// aquí a su equivalente mensual (950/12) — es una aproximación, no el MRR
+// exacto de Stripe. Mantener sincronizado con PricingPage.jsx / STRIPE_LINKS.
+const TIER_MONTHLY_PRICE = {
+  intelligence: 99,
+  institutional: 299,
+  visor_standard: 89,
+  visor_earlybird: 950 / 12,
+  free: 0,
+};
+const TIER_LABELS = {
+  intelligence: "Intelligence",
+  institutional: "Institutional",
+  visor_standard: "Visor Standard",
+  visor_earlybird: "Visor Early Bird",
+  free: "Free",
+};
+
+async function handleAdminMRR(request, env) {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("token");
+
+  const adminToken = env.INNER_CIRCLE_ADMIN_TOKEN;
+  if (!adminToken || token !== adminToken)
+    return new Response("Unauthorized", { status: 403 });
+
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
+    return new Response("Service unavailable", { status: 503 });
+
+  let rows = [];
+  try {
+    const resp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/subscriptions?select=tier,status,created_at,updated_at&order=created_at.desc&limit=5000`,
+      { headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` } }
+    );
+    if (resp.ok) rows = await resp.json();
+  } catch (err) {
+    console.error("Admin MRR fetch error:", err);
+  }
+
+  return htmlResponse(adminMRRHTML(summarizeSubscriptions(rows)));
+}
+
+function summarizeSubscriptions(rows) {
+  const now = new Date();
+  const thisMonthKey = `${now.getUTCFullYear()}-${now.getUTCMonth()}`;
+  const lastMonthDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 1, 1));
+  const lastMonthKey = `${lastMonthDate.getUTCFullYear()}-${lastMonthDate.getUTCMonth()}`;
+  const monthKey = (d) => { const dt = new Date(d); return `${dt.getUTCFullYear()}-${dt.getUTCMonth()}`; };
+
+  const byTier = {};
+  let newThisMonth = 0, newLastMonth = 0, cancelledThisMonth = 0;
+
+  for (const r of rows) {
+    if (r.status === "active") {
+      byTier[r.tier] = (byTier[r.tier] || 0) + 1;
+      // "New this/last month" tracks paid signups only — a free-tier row
+      // going active isn't a conversion worth counting here.
+      if (r.tier !== "free") {
+        const k = monthKey(r.created_at);
+        if (k === thisMonthKey) newThisMonth++;
+        else if (k === lastMonthKey) newLastMonth++;
+      }
+    }
+    if (r.status === "cancelled" && r.updated_at && monthKey(r.updated_at) === thisMonthKey) {
+      cancelledThisMonth++;
+    }
+  }
+
+  const tiers = Object.keys(TIER_MONTHLY_PRICE)
+    .filter((t) => t !== "free")
+    .map((tier) => ({
+      tier,
+      label: TIER_LABELS[tier] || tier,
+      count: byTier[tier] || 0,
+      mrr: (byTier[tier] || 0) * TIER_MONTHLY_PRICE[tier],
+    }));
+
+  const totalMrr = tiers.reduce((sum, t) => sum + t.mrr, 0);
+  const totalActive = tiers.reduce((sum, t) => sum + t.count, 0);
+
+  return { tiers, totalMrr, totalActive, newThisMonth, newLastMonth, cancelledThisMonth };
+}
+
+function adminMRRHTML({ tiers, totalMrr, totalActive, newThisMonth, newLastMonth, cancelledThisMonth }) {
+  const bg = "#06080C", surface = "#111318", border = "#23262E", gold = "#D4A853", text = "#E8E0CC", muted = "rgba(232,224,204,0.5)";
+  const fmt = (n) => `€${n.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+  const delta = newThisMonth - newLastMonth;
+  const deltaColor = delta > 0 ? "#4ADE80" : delta < 0 ? "#F0665E" : muted;
+  const deltaSign = delta > 0 ? "+" : "";
+
+  const rowsHTML = tiers.map((t) => `
+    <tr>
+      <td style="padding:12px 16px;border-bottom:1px solid ${border};color:${text};font-weight:500;">${escapeHTML(t.label)}</td>
+      <td style="padding:12px 16px;border-bottom:1px solid ${border};color:${muted};font-family:'IBM Plex Mono',monospace;text-align:right;">${t.count}</td>
+      <td style="padding:12px 16px;border-bottom:1px solid ${border};color:${text};font-family:'IBM Plex Mono',monospace;text-align:right;">${fmt(t.mrr)}</td>
+    </tr>`).join("");
+
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>ZRC · MRR</title></head>
+  <body style="margin:0;background:${bg};color:${text};font-family:'Helvetica Neue',sans-serif;min-height:100vh;padding:48px 24px;box-sizing:border-box;">
+    <div style="max-width:760px;margin:0 auto;">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.3em;color:rgba(212,168,83,0.6);margin-bottom:8px;">ZRC · INTERNAL</p>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:38px;color:${text};margin:0 0 32px;">MRR snapshot</h1>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:${border};margin-bottom:32px;">
+        <div style="background:${surface};padding:20px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Estimated MRR</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${gold};">${fmt(totalMrr)}</div>
+        </div>
+        <div style="background:${surface};padding:20px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Active paid subs</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${totalActive}</div>
+        </div>
+        <div style="background:${surface};padding:20px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">New this month</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${newThisMonth} <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:${deltaColor};">${deltaSign}${delta} vs last</span></div>
+        </div>
+        <div style="background:${surface};padding:20px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Cancelled this month</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${cancelledThisMonth}</div>
+        </div>
+      </div>
+
+      <table style="width:100%;border-collapse:collapse;background:${surface};">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Tier</th>
+            <th style="text-align:right;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Active</th>
+            <th style="text-align:right;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Est. MRR</th>
+          </tr>
+        </thead>
+        <tbody>${rowsHTML}</tbody>
+      </table>
+
+      <p style="font-size:11px;color:rgba(232,224,204,0.35);line-height:1.6;margin-top:24px;font-style:italic;">
+        Estimated MRR uses each tier's list price — annual subscribers (Visor Early Bird) are counted at their monthly-equivalent value since billing interval isn't stored per-row today. Treat this as directional, cross-check against Stripe for exact figures.
+      </p>
+    </div>
+  </body></html>`;
 }
 
 // ============================================================
