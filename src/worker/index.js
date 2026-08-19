@@ -1,17 +1,15 @@
 // src/worker/index.js
 // ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
 
-// Fill these with real Stripe Price IDs from your dashboard
-// Dashboard → Products → select plan → copy "Price ID" (starts with price_)
 const PRICE_TIERS = {
-  // Intelligence Monthly  (price_XXXX)
-  "price_intelligence_monthly": "intelligence",
-  // Intelligence Annual   (price_XXXX)
-  "price_intelligence_annual": "intelligence",
-  // Institutional Monthly (price_XXXX)
-  "price_institutional_monthly": "institutional",
-  // Institutional Annual  (price_XXXX)
-  "price_institutional_annual": "institutional",
+  // Intelligence Monthly (99€/mes)
+  "price_1TiH08JXE9tayTtonVosuAze": "intelligence",
+  // Intelligence Annual (948€/año)
+  "price_1TiFcZJXE9tayTtoUKBizLcK": "intelligence",
+  // Institutional Monthly (299€/mes)
+  "price_1TUmUxJXE9tayTto9eYJWfrB": "institutional",
+  // Institutional Annual (2,868€/año)
+  "price_1TUmX4JXE9tayTtomgpKiVHI": "institutional",
   // Visor Inmobiliario · Standard (89€/mes)
   "price_1TrGJVJXE9tayTtoA0b4UWUB": "visor_standard",
   // Visor Inmobiliario · Early Bird (950€/año)
