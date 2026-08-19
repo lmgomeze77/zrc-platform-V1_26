@@ -29,7 +29,10 @@ export default {
   // idempotent upsert on week_start means this just re-confirms the current
   // week's print, giving redundancy against a missed/failed Monday firing)
   async scheduled(event, env, ctx) {
-    ctx.waitUntil(computeAndStoreWeeklySnapshot(env, "zrc_weekly_cron"));
+    ctx.waitUntil((async () => {
+      const snap = await computeAndStoreWeeklySnapshot(env, "zrc_weekly_cron");
+      await sendWeeklyDigestEmails(env, snap);
+    })());
   },
 };
 
@@ -83,6 +86,9 @@ async function handleRequest(request, env, ctx) {
 
     if (url.pathname === "/api/admin/mrr" && request.method === "GET")
       return handleAdminMRR(request, env);
+
+    if (url.pathname === "/api/track-search" && request.method === "POST")
+      return handleTrackSearch(request, env);
 
     if (url.pathname.startsWith("/api/"))
       return jsonResponse({ error: "Not found" }, 404);
@@ -448,7 +454,12 @@ async function handleAssistant(request, env) {
 }
 
 // ============================================================
-// /api/lead  (unchanged)
+// /api/lead — captura genérica de leads. La mayoría de formularios del
+// sitio (modal del Visor, contacto, registro) siguen apuntando al backend
+// externo en zrc-api.onrender.com; este endpoint del Worker lo usa por
+// ahora la captura de email del GeoRisk Index (source="georisk-index"),
+// que sí necesita que este pipeline envíe el email de verdad — ver
+// sendWeeklyDigestEmails() para el envío semanal real.
 // ============================================================
 async function handleLead(request, env) {
   let payload;
@@ -487,23 +498,70 @@ async function handleLead(request, env) {
     return jsonResponse({ error: "Storage error" }, 500);
   }
 
+  const isGeoRiskDigest = sourceClean === "georisk-index";
+
   if (env.RESEND_API_KEY) {
     try {
       await sendResendEmail(env, {
         from: "ZRC Labs <labs@zenithrisecapital.com>",
         to: env.NOTIFY_EMAIL || "luis@zenithrisecapital.com",
-        subject: `🔔 Nuevo lead Visor — ${sector}`,
+        subject: `🔔 Nuevo lead ${isGeoRiskDigest ? "GeoRisk Index" : "Visor"} — ${sector}`,
         html: notifyEmailHTML({ email, sector, source: sourceClean, rc: rcClean, country }),
       });
       await sendResendEmail(env, {
         from: "Zenith Rise Capital <noreply@zenithrisecapital.com>",
         to: email,
-        subject: "Acceso al Visor Inmobiliario · ZRC Labs",
-        html: welcomeEmailHTML({ email, sector }),
+        subject: isGeoRiskDigest ? "Suscrito al ZRC GeoRisk Index semanal" : "Acceso al Visor Inmobiliario · ZRC Labs",
+        html: isGeoRiskDigest ? georiskOptInEmailHTML({ email }) : welcomeEmailHTML({ email, sector }),
       });
     } catch (err) {
       console.error("Resend error:", err);
     }
+  }
+
+  return jsonResponse({ ok: true });
+}
+
+// ============================================================
+// /api/track-search  (Fase 1 del plan de monetización: visibilidad de
+// volumen de búsquedas — la tabla `searches` existía en el schema desde
+// antes pero nunca se escribía en ella, así que hoy no hay ningún dato de
+// cuánta gente busca en el Visor gratis, solo de quién deja el email al
+// tope de 3 búsquedas. Fire-and-forget desde el cliente: un fallo aquí
+// nunca debe bloquear ni ensuciar la experiencia de búsqueda real.)
+// ============================================================
+async function handleTrackSearch(request, env) {
+  let payload;
+  try {
+    payload = await request.json();
+  } catch {
+    return jsonResponse({ ok: false }, 400);
+  }
+
+  const { rc, municipio, provincia, uso, superficie, lat, lng, email } = payload || {};
+  if (!rc || typeof rc !== "string" || rc.length > 20)
+    return jsonResponse({ ok: false }, 400);
+
+  const num = (n) => (typeof n === "number" && Number.isFinite(n) ? n : null);
+
+  try {
+    await env.DB.prepare(
+      `INSERT INTO searches (rc, municipio, provincia, uso, superficie, lat, lng, email, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(
+      rc.substring(0, 20),
+      (municipio || "").toString().substring(0, 120),
+      (provincia || "").toString().substring(0, 120),
+      (uso || "").toString().substring(0, 120),
+      num(superficie),
+      num(lat),
+      num(lng),
+      email && isValidEmail(email) ? email : null,
+      new Date().toISOString()
+    ).run();
+  } catch (err) {
+    // No bloquear ni fallar la búsqueda real por esto — solo loguear.
+    console.error("track-search insert error:", err);
   }
 
   return jsonResponse({ ok: true });
@@ -687,6 +745,69 @@ async function computeAndStoreWeeklySnapshot(env, source) {
   }
 }
 
+// Envío real del email semanal a quien se suscribió desde la captura del
+// GeoRisk Index (source="georisk-index" en /api/lead) — cierra el círculo
+// de la promesa "te lo mandamos cada lunes". El cron corre a diario como
+// redundancia del snapshot, así que esto debe ser idempotente por semana:
+// solo manda a un lead si digest_last_sent_week no coincide ya con la
+// semana actual, y lo actualiza justo después de mandarlo.
+async function sendWeeklyDigestEmails(env, snap) {
+  if (!snap?.ok || !env.RESEND_API_KEY || !env.DB) return;
+
+  let leads;
+  try {
+    const { results } = await env.DB.prepare(
+      `SELECT id, email FROM leads
+       WHERE source = 'georisk-index'
+         AND (digest_last_sent_week IS NULL OR digest_last_sent_week != ?)`
+    ).bind(snap.weekStart).all();
+    leads = results || [];
+  } catch (err) {
+    // Lo más probable si esto falla es que la migración de
+    // digest_last_sent_week (ver schema.sql) todavía no se haya corrido en
+    // producción — no debe tumbar el resto del cron por eso.
+    console.error("sendWeeklyDigestEmails: leads query failed:", err);
+    return;
+  }
+  if (!leads.length) return;
+
+  const weeklyChange = await computeWeeklyChange(env, snap.weekStart, snap.value);
+  const html = weeklyDigestEmailHTML({
+    weekStart: snap.weekStart, value: snap.value,
+    riskLabel: snap.riskLabel, dominantScenario: snap.dominantScenario, weeklyChange,
+  });
+
+  for (const lead of leads) {
+    try {
+      await sendResendEmail(env, {
+        from: "Zenith Rise Capital <noreply@zenithrisecapital.com>",
+        to: lead.email,
+        subject: `ZRC-GRI semana del ${snap.weekStart}: ${snap.value.toFixed(1)} (${snap.riskLabel})`,
+        html,
+      });
+      await env.DB.prepare(`UPDATE leads SET digest_last_sent_week = ? WHERE id = ?`)
+        .bind(snap.weekStart, lead.id).run();
+    } catch (err) {
+      console.error(`Weekly digest send failed for lead ${lead.id}:`, err);
+    }
+  }
+}
+
+async function computeWeeklyChange(env, currentWeekStart, currentValue) {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return null;
+  try {
+    const resp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/georisk_index_weekly?select=week_start,index_value&week_start=lt.${currentWeekStart}&order=week_start.desc&limit=1`,
+      { headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` } }
+    );
+    if (!resp.ok) return null;
+    const rows = await resp.json();
+    return rows.length ? currentValue - rows[0].index_value : null;
+  } catch {
+    return null;
+  }
+}
+
 async function handleGeoRiskIndexGet(request, env) {
   const live = computeGeoRiskIndexValue();
 
@@ -845,6 +966,60 @@ function welcomeEmailHTML({ email, sector }) {
     </p>
     <a href="https://www.zenithrisecapital.com" style="display:inline-block;padding:12px 28px;background:#0B1F3F;color:#FFFFFF;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">
       Volver al Visor
+    </a>
+    <div style="margin-top:32px;padding-top:20px;border-top:1px solid #E8E5DC;font-size:12px;color:#71717A;line-height:1.6;">
+      Zenith Rise Capital · Calesius Global S.L.<br>
+      Madrid · zenithrisecapital.com
+    </div>
+  </div>
+</body></html>`;
+}
+
+function georiskOptInEmailHTML({ email }) {
+  return `<!DOCTYPE html>
+<html><body style="font-family:'Helvetica Neue',sans-serif;background:#F5F3EE;color:#1A1A1A;padding:32px;">
+  <div style="max-width:560px;margin:0 auto;background:#FFFFFF;padding:40px;border-top:3px solid #D4A853;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D4A853;text-transform:uppercase;margin-bottom:16px;">
+      ZRC · GEORISK INDEX
+    </div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:28px;margin:0 0 16px;color:#0B1F3F;">
+      Suscrito al índice semanal
+    </h1>
+    <p style="font-size:15px;line-height:1.7;color:#404040;margin:0 0 16px;">
+      Cada lunes recibirás el ZRC-GRI de la semana — el score compuesto (0–100),
+      el escenario geopolítico dominante y el cambio frente a la semana anterior.
+    </p>
+    <a href="https://www.zenithrisecapital.com/#georisk-index" style="display:inline-block;padding:12px 28px;background:#0B1F3F;color:#FFFFFF;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">
+      Ver el índice ahora
+    </a>
+    <div style="margin-top:32px;padding-top:20px;border-top:1px solid #E8E5DC;font-size:12px;color:#71717A;line-height:1.6;">
+      Zenith Rise Capital · Calesius Global S.L.<br>
+      Madrid · zenithrisecapital.com
+    </div>
+  </div>
+</body></html>`;
+}
+
+function weeklyDigestEmailHTML({ weekStart, value, riskLabel, dominantScenario, weeklyChange }) {
+  const changeArrow = weeklyChange == null ? "" : weeklyChange >= 0 ? "▲" : "▼";
+  const changeColor = weeklyChange == null ? "#71717A" : weeklyChange >= 0 ? "#DC2626" : "#16A34A";
+  const changeText = weeklyChange == null ? "" : `${changeArrow} ${Math.abs(weeklyChange).toFixed(1)} pts vs. semana anterior`;
+  return `<!DOCTYPE html>
+<html><body style="font-family:'Helvetica Neue',sans-serif;background:#F5F3EE;color:#1A1A1A;padding:32px;">
+  <div style="max-width:560px;margin:0 auto;background:#FFFFFF;padding:40px;border-top:3px solid #D4A853;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#D4A853;text-transform:uppercase;margin-bottom:16px;">
+      ZRC-GRI · SEMANA DEL ${escapeHTML(weekStart)}
+    </div>
+    <div style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:56px;color:#0B1F3F;line-height:1;margin-bottom:6px;">
+      ${value.toFixed(1)}
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#71717A;margin-bottom:8px;">
+      ${escapeHTML(riskLabel || "")}
+    </div>
+    ${changeText ? `<div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:${changeColor};margin-bottom:20px;">${changeText}</div>` : ""}
+    ${dominantScenario ? `<p style="font-size:14px;line-height:1.6;color:#404040;margin:0 0 24px;"><strong>Escenario dominante:</strong> ${escapeHTML(dominantScenario)}</p>` : ""}
+    <a href="https://www.zenithrisecapital.com/#georisk-index" style="display:inline-block;padding:12px 28px;background:#0B1F3F;color:#FFFFFF;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">
+      Ver el histórico completo
     </a>
     <div style="margin-top:32px;padding-top:20px;border-top:1px solid #E8E5DC;font-size:12px;color:#71717A;line-height:1.6;">
       Zenith Rise Capital · Calesius Global S.L.<br>
@@ -1094,7 +1269,40 @@ async function handleAdminMRR(request, env) {
     console.error("Admin MRR fetch error:", err);
   }
 
-  return htmlResponse(adminMRRHTML(summarizeSubscriptions(rows)));
+  const searches = await summarizeSearches(env);
+
+  return htmlResponse(adminMRRHTML(summarizeSubscriptions(rows), searches));
+}
+
+// Volumen de búsquedas gratuitas del Visor — el escalón de más arriba del
+// embudo (búsquedas → leads del gate de 3 → subs). No falla nunca: si D1 no
+// responde o la tabla aún no existe en producción, degrada a ceros en vez
+// de tirar abajo el resto del panel.
+async function summarizeSearches(env) {
+  const empty = { last7d: 0, last30d: 0, topProvincias: [] };
+  if (!env.DB) return empty;
+  try {
+    const since7 = new Date(Date.now() - 7 * 86400000).toISOString();
+    const since30 = new Date(Date.now() - 30 * 86400000).toISOString();
+
+    const [c7, c30, top] = await Promise.all([
+      env.DB.prepare(`SELECT COUNT(*) AS n FROM searches WHERE created_at >= ?`).bind(since7).first(),
+      env.DB.prepare(`SELECT COUNT(*) AS n FROM searches WHERE created_at >= ?`).bind(since30).first(),
+      env.DB.prepare(
+        `SELECT provincia, COUNT(*) AS n FROM searches WHERE created_at >= ? AND provincia != ''
+         GROUP BY provincia ORDER BY n DESC LIMIT 5`
+      ).bind(since30).all(),
+    ]);
+
+    return {
+      last7d: c7?.n || 0,
+      last30d: c30?.n || 0,
+      topProvincias: (top?.results || []).map((r) => ({ provincia: r.provincia, count: r.n })),
+    };
+  } catch (err) {
+    console.error("Admin searches summary error:", err);
+    return empty;
+  }
 }
 
 function summarizeSubscriptions(rows) {
@@ -1138,7 +1346,7 @@ function summarizeSubscriptions(rows) {
   return { tiers, totalMrr, totalActive, newThisMonth, newLastMonth, cancelledThisMonth };
 }
 
-function adminMRRHTML({ tiers, totalMrr, totalActive, newThisMonth, newLastMonth, cancelledThisMonth }) {
+function adminMRRHTML({ tiers, totalMrr, totalActive, newThisMonth, newLastMonth, cancelledThisMonth }, searches) {
   const bg = "#06080C", surface = "#111318", border = "#23262E", gold = "#D4A853", text = "#E8E0CC", muted = "rgba(232,224,204,0.5)";
   const fmt = (n) => `€${n.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
   const delta = newThisMonth - newLastMonth;
@@ -1151,6 +1359,14 @@ function adminMRRHTML({ tiers, totalMrr, totalActive, newThisMonth, newLastMonth
       <td style="padding:12px 16px;border-bottom:1px solid ${border};color:${muted};font-family:'IBM Plex Mono',monospace;text-align:right;">${t.count}</td>
       <td style="padding:12px 16px;border-bottom:1px solid ${border};color:${text};font-family:'IBM Plex Mono',monospace;text-align:right;">${fmt(t.mrr)}</td>
     </tr>`).join("");
+
+  const topProvinciasHTML = searches.topProvincias.length
+    ? searches.topProvincias.map((p) => `
+      <tr>
+        <td style="padding:10px 16px;border-bottom:1px solid ${border};color:${text};">${escapeHTML(p.provincia)}</td>
+        <td style="padding:10px 16px;border-bottom:1px solid ${border};color:${muted};font-family:'IBM Plex Mono',monospace;text-align:right;">${p.count}</td>
+      </tr>`).join("")
+    : `<tr><td colspan="2" style="padding:14px 16px;color:${muted};font-style:italic;">No searches tracked yet.</td></tr>`;
 
   return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>ZRC · MRR</title></head>
   <body style="margin:0;background:${bg};color:${text};font-family:'Helvetica Neue',sans-serif;min-height:100vh;padding:48px 24px;box-sizing:border-box;">
@@ -1177,7 +1393,7 @@ function adminMRRHTML({ tiers, totalMrr, totalActive, newThisMonth, newLastMonth
         </div>
       </div>
 
-      <table style="width:100%;border-collapse:collapse;background:${surface};">
+      <table style="width:100%;border-collapse:collapse;background:${surface};margin-bottom:32px;">
         <thead>
           <tr>
             <th style="text-align:left;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Tier</th>
@@ -1188,8 +1404,30 @@ function adminMRRHTML({ tiers, totalMrr, totalActive, newThisMonth, newLastMonth
         <tbody>${rowsHTML}</tbody>
       </table>
 
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;color:${text};margin:0 0 16px;">Top of funnel — free Visor searches</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:${border};margin-bottom:24px;">
+        <div style="background:${surface};padding:20px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Searches, last 7 days</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${searches.last7d}</div>
+        </div>
+        <div style="background:${surface};padding:20px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Searches, last 30 days</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${searches.last30d}</div>
+        </div>
+      </div>
+
+      <table style="width:100%;border-collapse:collapse;background:${surface};">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Top provinces, last 30d</th>
+            <th style="text-align:right;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Searches</th>
+          </tr>
+        </thead>
+        <tbody>${topProvinciasHTML}</tbody>
+      </table>
+
       <p style="font-size:11px;color:rgba(232,224,204,0.35);line-height:1.6;margin-top:24px;font-style:italic;">
-        Estimated MRR uses each tier's list price — annual subscribers (Visor Early Bird) are counted at their monthly-equivalent value since billing interval isn't stored per-row today. Treat this as directional, cross-check against Stripe for exact figures.
+        Estimated MRR uses each tier's list price — annual subscribers (Visor Early Bird) are counted at their monthly-equivalent value since billing interval isn't stored per-row today. Treat this as directional, cross-check against Stripe for exact figures. Search tracking only started recently, so early counts will look low until it's been running a full week/month.
       </p>
     </div>
   </body></html>`;

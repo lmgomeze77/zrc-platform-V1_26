@@ -4,6 +4,21 @@
 // Import in App.jsx: import GeoRiskIndex from "./pages/intelligence/GeoRiskIndex";
 
 import { useState, useEffect, useMemo } from "react";
+import { t as tVisor } from "../labs/visorI18n";
+
+// A diferencia del modal de leads del Visor (que sigue apuntando a
+// zrc-api.onrender.com, el backend de leads en producción), esta captura
+// apunta al propio Worker (mismo origen): la promesa aquí es "te mandamos
+// el índice cada lunes", y eso requiere controlar el envío — el Worker ya
+// tiene D1 + Resend montado y el cron semanal lo extiende para mandar el
+// email real (ver sendWeeklyDigestEmails en src/worker/index.js). Los
+// textos de sector se reutilizan del mismo diccionario (visorI18n) para no
+// duplicar la lista.
+const LEAD_API_URL = "/api/lead";
+const LEAD_SECTOR_KEYS = [
+  "leadSectorPromotor", "leadSectorFamilyOffice", "leadSectorAsesoria",
+  "leadSectorAgencia", "leadSectorInversor", "leadSectorFondo", "leadSectorOtro",
+];
 
 const C = {
   bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
@@ -133,6 +148,90 @@ function IndexChart({ history, color }) {
         <text x={W - PAD.r} y={H - 8} textAnchor="end" fill={C.textMuted} fontSize={9} fontFamily={F.mono}>{lastLabel}</text>
       )}
     </svg>
+  );
+}
+
+// Captura de email para el envío semanal del índice — la serie histórica ya
+// es pública y gratuita (sin esto no se perdía ningún dato), así que esto
+// añade un imán de leads sin restringir nada que ya funcionaba.
+function WeeklyDigestCapture({ lang }) {
+  const [email, setEmail] = useState("");
+  const [sector, setSector] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | submitting | done | error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      const resp = await fetch(LEAD_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, sector, source: "georisk-index", rc: null, parcela: null }),
+      });
+      if (!resp.ok) throw new Error("request failed");
+      setStatus("done");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  if (status === "done") {
+    return (
+      <div style={{ padding: "20px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, fontFamily: F.body, fontSize: 13, color: C.text }}>
+        {lang === "es"
+          ? "Listo — recibirás el ZRC-GRI cada lunes en tu email."
+          : "Done — you'll get the ZRC-GRI in your inbox every Monday."}
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ padding: "24px 28px", background: C.surface, border: `1px solid ${C.border}`, borderLeft: `3px solid ${C.gold}` }}>
+      <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginBottom: 6 }}>
+        {lang === "es" ? "Recibe el índice cada lunes" : "Get the index every Monday"}
+      </div>
+      <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, margin: "0 0 18px", maxWidth: 480 }}>
+        {lang === "es"
+          ? "El mismo print semanal que ves arriba, directo a tu email, con el escenario dominante y el cambio semana a semana."
+          : "The same weekly print you see above, straight to your inbox, with the dominant scenario and week-over-week change."}
+      </p>
+      <form onSubmit={handleSubmit} style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+        <input
+          type="email" required placeholder={lang === "es" ? "email@empresa.com" : "email@company.com"}
+          value={email} onChange={(e) => setEmail(e.target.value)}
+          style={{
+            flex: "1 1 220px", padding: "11px 14px", background: C.surface2, color: C.text,
+            border: `1px solid ${C.border}`, fontSize: 13, fontFamily: F.body, outline: "none",
+          }}
+        />
+        <select
+          required value={sector} onChange={(e) => setSector(e.target.value)}
+          style={{
+            flex: "1 1 180px", padding: "11px 14px", background: C.surface2, color: C.text,
+            border: `1px solid ${C.border}`, fontSize: 13, fontFamily: F.body, outline: "none", appearance: "none",
+          }}
+        >
+          <option value="">{lang === "es" ? "Sector / actividad" : "Sector / role"}</option>
+          {LEAD_SECTOR_KEYS.map((k) => <option key={k}>{tVisor(lang, k)}</option>)}
+        </select>
+        <button
+          type="submit" disabled={status === "submitting"}
+          style={{
+            padding: "11px 22px", background: C.gold, color: C.bg, border: "none",
+            fontFamily: F.mono, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em",
+            textTransform: "uppercase", cursor: status === "submitting" ? "wait" : "pointer",
+            opacity: status === "submitting" ? 0.6 : 1, whiteSpace: "nowrap",
+          }}
+        >
+          {status === "submitting" ? (lang === "es" ? "Enviando…" : "Sending…") : (lang === "es" ? "Suscribirme" : "Subscribe")}
+        </button>
+      </form>
+      {status === "error" && (
+        <p style={{ marginTop: 12, fontSize: 12, color: C.red }}>
+          {lang === "es" ? "Error al enviar — inténtalo de nuevo." : "Something went wrong — please try again."}
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -282,6 +381,12 @@ export default function GeoRiskIndex({ lang = "es", FadeIn, Sec, SH, GoldDivider
           {lang === "es"
             ? "Metodología: el ZRC-GRI es el promedio ponderado por probabilidad del riesgo intrínseco de los cuatro escenarios geopolíticos base de ZRC Research (sector Global, multiplicador ×1.00), recalculado cada lunes. Los niveles de referencia de impacto en activos usan un perfil de shock representativo (forma del escenario de mayor probabilidad) escalado por nivel de índice — son ilustrativos, no una proyección de mercado, y no constituyen asesoramiento de inversión. Para el análisis interactivo con escenarios propios, ver GeoRisk Dashboard y GeoRisk Predictive ML."
             : "Methodology: the ZRC-GRI is the probability-weighted average of the intrinsic risk of ZRC Research's four base geopolitical scenarios (Global sector, ×1.00 multiplier), recalculated every Monday. Asset-impact reference levels use a representative shock profile (shaped by the highest-probability scenario) scaled by index level — illustrative only, not a market projection, and not investment advice. For interactive analysis with your own scenarios, see GeoRisk Dashboard and GeoRisk Predictive ML."}
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={0.35}>
+        <div style={{ marginTop: 20 }}>
+          <WeeklyDigestCapture lang={lang} />
         </div>
       </FadeIn>
     </Sec>
