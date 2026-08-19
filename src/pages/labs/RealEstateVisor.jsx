@@ -76,8 +76,13 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
   const [lang, setLang] = useVisorLang();
   const auth = useAuth?.();
   const { tier } = useSubscription(auth?.user?.email);
-  const hasUnlimitedSearch = tier === "visor_standard" || tier === "visor_earlybird" || tier === "institutional";
-  const hasComparables = tier === "visor_standard" || tier === "visor_earlybird" || tier === "institutional";
+  // "intelligence" y "institutional" son los tiers de la plataforma principal
+  // (PricingPage.jsx) — Intelligence anuncia "Real Estate Visor · referencias
+  // ilimitadas" como feature propia, así que debe desbloquear lo mismo que
+  // visor_standard. Institutional anuncia además "Matching con mandatos ZRC",
+  // equivalente al pre-mercado de Early Bird.
+  const hasUnlimitedSearch = tier === "visor_standard" || tier === "visor_earlybird" || tier === "intelligence" || tier === "institutional";
+  const hasComparables = tier === "visor_standard" || tier === "visor_earlybird" || tier === "intelligence" || tier === "institutional";
   const hasPreMercado = tier === "visor_earlybird" || tier === "institutional";
   const rcInputRef = useRef(null);
   const [rc, setRc] = useState("");
