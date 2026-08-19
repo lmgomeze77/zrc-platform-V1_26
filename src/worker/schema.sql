@@ -37,3 +37,14 @@ CREATE TABLE IF NOT EXISTS searches (
 CREATE INDEX IF NOT EXISTS idx_searches_rc ON searches(rc);
 CREATE INDEX IF NOT EXISTS idx_searches_provincia ON searches(provincia);
 CREATE INDEX IF NOT EXISTS idx_searches_created_at ON searches(created_at);
+
+-- ============================================================
+-- MIGRATION — GeoRisk Index weekly email digest (Fase 1 del plan de
+-- monetización). CREATE TABLE IF NOT EXISTS no añade columnas a una tabla
+-- que ya existe en producción, así que esto necesita correrse aparte:
+--   npx wrangler d1 execute zrc-leads --remote --command \
+--     "ALTER TABLE leads ADD COLUMN digest_last_sent_week TEXT;"
+-- Idempotente por semana ISO: sendWeeklyDigestEmails() en index.js solo
+-- envía a un lead si esta columna no coincide con la semana actual.
+-- ============================================================
+ALTER TABLE leads ADD COLUMN digest_last_sent_week TEXT;

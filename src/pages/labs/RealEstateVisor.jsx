@@ -165,6 +165,18 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
       setPosition(coords);
       setSearchCount((c) => c + 1);
 
+      // Fire-and-forget: solo visibilidad de volumen de búsquedas para el
+      // panel interno de MRR (Fase 1 del plan de monetización) — nunca debe
+      // bloquear ni afectar a la búsqueda real si falla.
+      fetch("/api/track-search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          rc: targetRc, municipio, provincia, uso, superficie,
+          lat: coords?.[0] ?? null, lng: coords?.[1] ?? null,
+        }),
+      }).catch(() => {});
+
       const precioBase = priceByProvince(provincia);
       const newParams = { ...params, precioVenta: precioBase };
       setParams(newParams);
