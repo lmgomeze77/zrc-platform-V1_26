@@ -81,7 +81,7 @@ async function handleRequest(request, env, ctx) {
     if (url.pathname === "/api/georisk-index" && request.method === "GET")
       return handleGeoRiskIndexGet(request, env);
 
-    if (url.pathname === "/api/georisk-index/snapshot" && request.method === "POST")
+    if (url.pathname === "/api/georisk-index/snapshot" && (request.method === "POST" || request.method === "GET"))
       return handleGeoRiskIndexSnapshot(request, env);
 
     if (url.pathname === "/api/admin/mrr" && request.method === "GET")
@@ -875,8 +875,11 @@ async function handleGeoRiskIndexGet(request, env) {
 // Manual trigger to seed/force this week's print — e.g. right after deploy,
 // or to re-run editorially. Gated behind the same admin token as Inner Circle.
 async function handleGeoRiskIndexSnapshot(request, env) {
+  const url = new URL(request.url);
   const auth = request.headers.get("Authorization") || "";
-  const token = auth.replace(/^Bearer\s+/i, "");
+  const headerToken = auth.replace(/^Bearer\s+/i, "");
+  const queryToken = url.searchParams.get("token") || "";
+  const token = headerToken || queryToken;
   if (!env.INNER_CIRCLE_ADMIN_TOKEN || token !== env.INNER_CIRCLE_ADMIN_TOKEN)
     return jsonResponse({ error: "Unauthorized" }, 403);
 
