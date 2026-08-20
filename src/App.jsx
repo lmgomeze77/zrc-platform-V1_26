@@ -1679,7 +1679,7 @@ const ZRCPlatform = () => {
       <GoldDivider />
       <Intelligence lang={lang} />
       <GoldDivider />
-      <GeoRiskIndex lang={lang} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} />
+      <GeoRiskIndex lang={lang} useAuth={useAuth} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} />
       <GoldDivider />
       <Brokerage lang={lang} />
       <GoldDivider />
