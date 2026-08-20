@@ -151,6 +151,43 @@ function IndexChart({ history, color }) {
   );
 }
 
+// Este índice es el único número público — el motor interactivo detrás
+// (escenarios propios, forecast IA, decision engine) vive en GeoRisk
+// Dashboard / Predictive ML, ambos exclusivos de Intelligence. A diferencia
+// de Observatory (que ya tiene su propio flujo de prueba gratuita +
+// paywall por historia), aquí no hay nada que gatear — el índice sigue
+// siendo gratis — así que esto es una promoción directa, no una restricción.
+function IntelligenceUpsell({ lang, openPricing }) {
+  if (!openPricing) return null;
+  return (
+    <div style={{
+      padding: "24px 28px", background: C.goldDim, border: `1px solid ${C.goldBorder}`,
+      display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap",
+    }}>
+      <div style={{ maxWidth: 460 }}>
+        <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginBottom: 6 }}>
+          {lang === "es" ? "Este es solo el número público" : "This is just the public number"}
+        </div>
+        <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, margin: 0 }}>
+          {lang === "es"
+            ? "GeoRisk Dashboard te deja correr tus propios escenarios con sliders en tiempo real, y GeoRisk Predictive ML añade forecast a 12 meses, NLP analyzer y decision engine institucional — ambos incluidos en Intelligence."
+            : "GeoRisk Dashboard lets you run your own scenarios with real-time sliders, and GeoRisk Predictive ML adds a 12-month forecast, NLP analyzer and institutional decision engine — both included in Intelligence."}
+        </p>
+      </div>
+      <button
+        onClick={openPricing}
+        style={{
+          padding: "12px 26px", background: C.gold, color: C.bg, border: "none",
+          fontFamily: F.mono, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em",
+          textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
+        }}
+      >
+        {lang === "es" ? "Ver Intelligence →" : "See Intelligence →"}
+      </button>
+    </div>
+  );
+}
+
 // Captura de email para el envío semanal del índice — la serie histórica ya
 // es pública y gratuita (sin esto no se perdía ningún dato), así que esto
 // añade un imán de leads sin restringir nada que ya funcionaba.
@@ -235,7 +272,8 @@ function WeeklyDigestCapture({ lang }) {
   );
 }
 
-export default function GeoRiskIndex({ lang = "es", FadeIn, Sec, SH, GoldDivider }) {
+export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, GoldDivider }) {
+  const { openPricing } = useAuth();
   const [history, setHistory] = useState([]);
   const [live, setLive] = useState(null);
   const [status, setStatus] = useState("loading"); // loading | ok | error
@@ -381,6 +419,12 @@ export default function GeoRiskIndex({ lang = "es", FadeIn, Sec, SH, GoldDivider
           {lang === "es"
             ? "Metodología: el ZRC-GRI es el promedio ponderado por probabilidad del riesgo intrínseco de los cuatro escenarios geopolíticos base de ZRC Research (sector Global, multiplicador ×1.00), recalculado cada lunes. Los niveles de referencia de impacto en activos usan un perfil de shock representativo (forma del escenario de mayor probabilidad) escalado por nivel de índice — son ilustrativos, no una proyección de mercado, y no constituyen asesoramiento de inversión. Para el análisis interactivo con escenarios propios, ver GeoRisk Dashboard y GeoRisk Predictive ML."
             : "Methodology: the ZRC-GRI is the probability-weighted average of the intrinsic risk of ZRC Research's four base geopolitical scenarios (Global sector, ×1.00 multiplier), recalculated every Monday. Asset-impact reference levels use a representative shock profile (shaped by the highest-probability scenario) scaled by index level — illustrative only, not a market projection, and not investment advice. For interactive analysis with your own scenarios, see GeoRisk Dashboard and GeoRisk Predictive ML."}
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={0.3}>
+        <div style={{ marginTop: 20 }}>
+          <IntelligenceUpsell lang={lang} openPricing={openPricing} />
         </div>
       </FadeIn>
 
