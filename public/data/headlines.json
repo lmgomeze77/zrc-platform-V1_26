@@ -9,51 +9,51 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,127.20",
-      "change": "-0.15%",
+      "value": "20,142.50",
+      "change": "-0.07%",
       "up": false
     },
     {
       "symbol": "BRENT Crude",
-      "value": "91.98",
-      "change": "+0.39%",
+      "value": "93.01",
+      "change": "+1.52%",
       "up": true
     },
     {
       "symbol": "WTI Crude",
-      "value": "84.62",
-      "change": "+0.27%",
+      "value": "86.16",
+      "change": "+2.09%",
       "up": true
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4,481.29",
-      "change": "-0.81%",
+      "value": "4,518.02",
+      "change": "-0.11%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "72,537.06",
-      "change": "+6.43%",
+      "value": "72,684.24",
+      "change": "+12.00%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "14.93",
-      "change": "-5.24%",
-      "up": false
+      "value": "15.68",
+      "change": "+5.31%",
+      "up": true
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "4.657%",
-      "change": "-1.04%",
-      "up": false
+      "value": "4.71%",
+      "change": "+0.06pp",
+      "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,718.24",
-      "change": "+0.34%",
-      "up": true
+      "value": "7,684.30",
+      "change": "-0.31%",
+      "up": false
     },
     {
       "symbol": "DAX 40",
@@ -63,21 +63,21 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8582",
-      "change": "+0.95%",
-      "up": true
+      "value": "0.8566",
+      "change": "-0.20%",
+      "up": false
     },
     {
       "symbol": "DXY",
-      "value": "98.74",
-      "change": "+0.01%",
+      "value": "98.84",
+      "change": "+0.11%",
       "up": true
     },
     {
       "symbol": "Natural Gas",
-      "value": "2.794",
-      "change": "+0.36%",
-      "up": true
+      "value": "2.75",
+      "change": "-2.11%",
+      "up": false
     },
     {
       "symbol": "Copper",
@@ -382,5 +382,5 @@
       "time": "6h"
     }
   ],
-  "market_updated_at": "2026-08-20T18:18:55.127Z"
+  "market_updated_at": "2026-08-20T22:13:28.886Z"
 }
