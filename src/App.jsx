@@ -1668,6 +1668,7 @@ const ZRCPlatform = () => {
           <ProtectedInnerCircle
             onBack={() => setIcPage(null)}
             onUnauthorized={() => setIcPage("inner-circle")}
+            useAuth={useAuth}
           />
         </div>
       )}

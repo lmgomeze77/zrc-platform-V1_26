@@ -555,6 +555,52 @@ function MembershipSection() {
   );
 }
 
+// Inner Circle es una membresía gratuita, vetada por aplicación — algo
+// distinto de Institutional (suscripción de pago en Stripe). Este bloque
+// solo aparece a miembros ya aprobados: es la audiencia con más intención
+// de compra que existe hoy para el tier institucional, y hasta ahora no
+// tenía ningún puente hacia él. Solo menciona herramientas que ya están
+// LIVE (GeoRisk Dashboard/ML, Financial Intelligence System, matching de
+// mandatos vía el Visor) — Valuation Engine y Deal Flow Radar siguen sin
+// construir, así que no se venden aquí todavía.
+function InstitutionalUpsellSection({ openPricing }) {
+  if (!openPricing) return null;
+  return (
+    <section style={{ borderTop: "1px solid rgba(255,255,255,0.1)", background: "#000" }} className="ic-section-pad">
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <SectionLabel
+          eyebrow="For members"
+          title="Institutional access, beyond the briefing."
+          text="Institutional includes the full platform behind ZRC's deal flow — GeoRisk Dashboard, GeoRisk Predictive ML, the Financial Intelligence System and mandate matching — plus 5 seats and a direct line to the team."
+        />
+        <div style={{
+          border: "1px solid rgba(212,168,83,0.5)", background: "rgba(212,168,83,0.055)",
+          padding: 32, display: "flex", justifyContent: "space-between", alignItems: "center",
+          gap: 24, flexWrap: "wrap",
+        }}>
+          <div style={{ maxWidth: 560 }}>
+            <div style={{ ...S.goldLabel, marginBottom: 12 }}>Institutional · €299/mo</div>
+            <p style={{ fontSize: "clamp(14px,3.5vw,15px)", lineHeight: 1.7, color: "rgba(255,255,255,0.68)", margin: 0 }}>
+              Everything in Intelligence, plus ZRC mandate matching, priority access to opportunities,
+              and this briefing delivered as part of a working platform — not a standalone read.
+            </p>
+          </div>
+          <button
+            onClick={openPricing}
+            style={{
+              padding: "14px 32px", background: G, color: "#000", border: "none",
+              fontFamily: "'Outfit','Helvetica Neue',sans-serif", fontSize: 11, fontWeight: 600,
+              letterSpacing: "0.12em", textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap",
+            }}
+          >
+            See Institutional →
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function AccessSection() {
   return (
     <section id="access" style={{ borderTop:"1px solid rgba(255,255,255,0.1)", background:"#000", position:"relative", overflow:"hidden" }} className="ic-section-pad">
@@ -612,7 +658,8 @@ function ICFooter() {
   );
 }
 
-export default function InnerCircle({ onBack }) {
+export default function InnerCircle({ onBack, useAuth }) {
+  const { openPricing } = useAuth();
   return (
     <main style={S.page}>
       <style>{CSS}</style>
@@ -628,6 +675,7 @@ export default function InnerCircle({ onBack }) {
       <RadarSection />
       <DeliverablesSection />
       <MembershipSection />
+      <InstitutionalUpsellSection openPricing={openPricing} />
       <AccessSection />
       <ICFooter />
     </main>

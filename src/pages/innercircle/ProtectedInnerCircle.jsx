@@ -4,7 +4,7 @@ import InnerCircle from "./InnerCircle";
 const IC_API = "https://zenith-risecapital.lmgomeze77.workers.dev";
 const IC_EMAIL_KEY = "zrc-ic-email";
 
-export default function ProtectedInnerCircle({ onBack, onUnauthorized }) {
+export default function ProtectedInnerCircle({ onBack, onUnauthorized, useAuth }) {
   const [allowed, setAllowed] = useState(null);
 
   useEffect(() => {
@@ -40,5 +40,5 @@ export default function ProtectedInnerCircle({ onBack, onUnauthorized }) {
     return null;
   }
 
-  return <InnerCircle onBack={onBack} />;
+  return <InnerCircle onBack={onBack} useAuth={useAuth} />;
 }
