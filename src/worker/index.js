@@ -1222,16 +1222,21 @@ async function handleInnerCircleApply(request, env) {
 }
 
 // ============================================================
-// /api/admin/mrr?token=  — panel interno de MRR estimado (Phase 0 del plan
-// de monetización: sin esto, cualquier decisión de crecimiento se toma a
-// ciegas). Reutiliza INNER_CIRCLE_ADMIN_TOKEN como secreto de admin en vez
-// de crear uno nuevo — mismo patrón que /api/inner-circle/approve.
+// /api/admin/mrr?token=  — panel interno OKR/KPI de crecimiento. Sin esto,
+// cualquier decisión de crecimiento se toma a ciegas. Reutiliza
+// INNER_CIRCLE_ADMIN_TOKEN como secreto de admin en vez de crear uno nuevo
+// — mismo patrón que /api/inner-circle/approve.
 // ============================================================
-// Precio mensual de lista por tier, usado solo para estimar MRR. La tabla
-// subscriptions no guarda price_id/intervalo de facturación por fila (ver
+// Objetivo (OKR): €100.000/mes de MRR. Los Key Results son los 4 streams de
+// ingreso recurrente que realmente se están persiguiendo hoy — el quinto
+// stream del plan original (datos licenciados a terceros vía GeoRisk
+// Index/Macro Pulse) se aparcó, así que no tiene KR aquí. Precio mensual de
+// lista por tier, usado solo para estimar MRR — la tabla subscriptions no
+// guarda price_id/intervalo de facturación por fila (ver
 // supabase-schema.sql), así que un suscriptor anual de Early Bird se cuenta
-// aquí a su equivalente mensual (950/12) — es una aproximación, no el MRR
-// exacto de Stripe. Mantener sincronizado con PricingPage.jsx / STRIPE_LINKS.
+// a su equivalente mensual (950/12): aproximación, no el MRR exacto de
+// Stripe. Mantener sincronizado con PricingPage.jsx / STRIPE_LINKS.
+const OBJECTIVE_TARGET_MRR = 100000;
 const TIER_MONTHLY_PRICE = {
   intelligence: 99,
   institutional: 299,
@@ -1245,6 +1250,14 @@ const TIER_LABELS = {
   visor_standard: "Visor Standard",
   visor_earlybird: "Visor Early Bird",
   free: "Free",
+};
+// KR targets del blend ilustrativo del plan de crecimiento (~1,150 cuentas
+// de pago, la mayoría en Intelligence como motor de volumen).
+const KR_TARGETS = {
+  intelligence: 49500,   // 500 × €99
+  institutional: 17940,  // 60 × €299
+  visor_standard: 13350, // 150 × €89
+  visor_earlybird: 3167, // 40 × (950/12)
 };
 
 async function handleAdminMRR(request, env) {
@@ -1269,9 +1282,9 @@ async function handleAdminMRR(request, env) {
     console.error("Admin MRR fetch error:", err);
   }
 
-  const searches = await summarizeSearches(env);
+  const [searches, leads] = await Promise.all([summarizeSearches(env), summarizeLeads(env)]);
 
-  return htmlResponse(adminMRRHTML(summarizeSubscriptions(rows), searches));
+  return htmlResponse(adminDashboardHTML(summarizeSubscriptions(rows), searches, leads));
 }
 
 // Volumen de búsquedas gratuitas del Visor — el escalón de más arriba del
@@ -1279,14 +1292,16 @@ async function handleAdminMRR(request, env) {
 // responde o la tabla aún no existe en producción, degrada a ceros en vez
 // de tirar abajo el resto del panel.
 async function summarizeSearches(env) {
-  const empty = { last7d: 0, last30d: 0, topProvincias: [] };
+  const empty = { last7d: 0, prev7d: 0, last30d: 0, topProvincias: [] };
   if (!env.DB) return empty;
   try {
     const since7 = new Date(Date.now() - 7 * 86400000).toISOString();
+    const since14 = new Date(Date.now() - 14 * 86400000).toISOString();
     const since30 = new Date(Date.now() - 30 * 86400000).toISOString();
 
-    const [c7, c30, top] = await Promise.all([
+    const [c7, cPrev7, c30, top] = await Promise.all([
       env.DB.prepare(`SELECT COUNT(*) AS n FROM searches WHERE created_at >= ?`).bind(since7).first(),
+      env.DB.prepare(`SELECT COUNT(*) AS n FROM searches WHERE created_at >= ? AND created_at < ?`).bind(since14, since7).first(),
       env.DB.prepare(`SELECT COUNT(*) AS n FROM searches WHERE created_at >= ?`).bind(since30).first(),
       env.DB.prepare(
         `SELECT provincia, COUNT(*) AS n FROM searches WHERE created_at >= ? AND provincia != ''
@@ -1296,11 +1311,32 @@ async function summarizeSearches(env) {
 
     return {
       last7d: c7?.n || 0,
+      prev7d: cPrev7?.n || 0,
       last30d: c30?.n || 0,
       topProvincias: (top?.results || []).map((r) => ({ provincia: r.provincia, count: r.n })),
     };
   } catch (err) {
     console.error("Admin searches summary error:", err);
+    return empty;
+  }
+}
+
+// Opt-ins al digest semanal del GeoRisk Index — el único lead magnet cuyo
+// origen es 100% visible aquí (el modal de leads del Visor y los
+// formularios de contacto/registro van al backend externo en
+// zrc-api.onrender.com y no son consultables desde este Worker).
+async function summarizeLeads(env) {
+  const empty = { georiskOptins: 0, georiskOptinsLast30d: 0 };
+  if (!env.DB) return empty;
+  try {
+    const since30 = new Date(Date.now() - 30 * 86400000).toISOString();
+    const [total, last30] = await Promise.all([
+      env.DB.prepare(`SELECT COUNT(*) AS n FROM leads WHERE source = 'georisk-index'`).first(),
+      env.DB.prepare(`SELECT COUNT(*) AS n FROM leads WHERE source = 'georisk-index' AND created_at >= ?`).bind(since30).first(),
+    ]);
+    return { georiskOptins: total?.n || 0, georiskOptinsLast30d: last30?.n || 0 };
+  } catch (err) {
+    console.error("Admin leads summary error:", err);
     return empty;
   }
 }
@@ -1313,6 +1349,8 @@ function summarizeSubscriptions(rows) {
   const monthKey = (d) => { const dt = new Date(d); return `${dt.getUTCFullYear()}-${dt.getUTCMonth()}`; };
 
   const byTier = {};
+  const newThisMonthByTier = {};
+  const cancelledThisMonthByTier = {};
   let newThisMonth = 0, newLastMonth = 0, cancelledThisMonth = 0;
 
   for (const r of rows) {
@@ -1322,43 +1360,109 @@ function summarizeSubscriptions(rows) {
       // going active isn't a conversion worth counting here.
       if (r.tier !== "free") {
         const k = monthKey(r.created_at);
-        if (k === thisMonthKey) newThisMonth++;
-        else if (k === lastMonthKey) newLastMonth++;
+        if (k === thisMonthKey) {
+          newThisMonth++;
+          newThisMonthByTier[r.tier] = (newThisMonthByTier[r.tier] || 0) + 1;
+        } else if (k === lastMonthKey) {
+          newLastMonth++;
+        }
       }
     }
     if (r.status === "cancelled" && r.updated_at && monthKey(r.updated_at) === thisMonthKey) {
       cancelledThisMonth++;
+      cancelledThisMonthByTier[r.tier] = (cancelledThisMonthByTier[r.tier] || 0) + 1;
     }
   }
 
   const tiers = Object.keys(TIER_MONTHLY_PRICE)
     .filter((t) => t !== "free")
-    .map((tier) => ({
-      tier,
-      label: TIER_LABELS[tier] || tier,
-      count: byTier[tier] || 0,
-      mrr: (byTier[tier] || 0) * TIER_MONTHLY_PRICE[tier],
-    }));
+    .map((tier) => {
+      const count = byTier[tier] || 0;
+      const price = TIER_MONTHLY_PRICE[tier];
+      const mrr = count * price;
+      // Proxy para "activos hace un mes": el conteo de hoy, menos las altas
+      // de este mes (aún no existían) más las bajas de este mes (seguían
+      // activos entonces). No reconstruye antigüedad más allá de un mes,
+      // pero da una tendencia MoM sin necesitar guardar un histórico de MRR.
+      const countLastMonth = Math.max(0, count - (newThisMonthByTier[tier] || 0) + (cancelledThisMonthByTier[tier] || 0));
+      return {
+        tier, label: TIER_LABELS[tier] || tier, count, mrr,
+        target: KR_TARGETS[tier] || 0,
+        mrrLastMonth: countLastMonth * price,
+        newThisMonth: newThisMonthByTier[tier] || 0,
+        cancelledThisMonth: cancelledThisMonthByTier[tier] || 0,
+      };
+    });
 
   const totalMrr = tiers.reduce((sum, t) => sum + t.mrr, 0);
+  const totalMrrLastMonth = tiers.reduce((sum, t) => sum + t.mrrLastMonth, 0);
   const totalActive = tiers.reduce((sum, t) => sum + t.count, 0);
 
-  return { tiers, totalMrr, totalActive, newThisMonth, newLastMonth, cancelledThisMonth };
+  return { tiers, totalMrr, totalMrrLastMonth, totalActive, newThisMonth, newLastMonth, cancelledThisMonth };
 }
 
-function adminMRRHTML({ tiers, totalMrr, totalActive, newThisMonth, newLastMonth, cancelledThisMonth }, searches) {
+function adminDashboardHTML(subs, searches, leads) {
+  const { tiers, totalMrr, totalMrrLastMonth, totalActive, newThisMonth, newLastMonth, cancelledThisMonth } = subs;
   const bg = "#06080C", surface = "#111318", border = "#23262E", gold = "#D4A853", text = "#E8E0CC", muted = "rgba(232,224,204,0.5)";
-  const fmt = (n) => `€${n.toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
-  const delta = newThisMonth - newLastMonth;
-  const deltaColor = delta > 0 ? "#4ADE80" : delta < 0 ? "#F0665E" : muted;
-  const deltaSign = delta > 0 ? "+" : "";
+  const green = "#4ADE80", red = "#F0665E";
 
-  const rowsHTML = tiers.map((t) => `
-    <tr>
-      <td style="padding:12px 16px;border-bottom:1px solid ${border};color:${text};font-weight:500;">${escapeHTML(t.label)}</td>
-      <td style="padding:12px 16px;border-bottom:1px solid ${border};color:${muted};font-family:'IBM Plex Mono',monospace;text-align:right;">${t.count}</td>
-      <td style="padding:12px 16px;border-bottom:1px solid ${border};color:${text};font-family:'IBM Plex Mono',monospace;text-align:right;">${fmt(t.mrr)}</td>
-    </tr>`).join("");
+  const fmt = (n) => `€${Math.round(n).toLocaleString("en-US")}`;
+  const pct = (n) => `${Math.round(n)}%`;
+  const clampPct = (n) => Math.max(0, Math.min(100, n));
+  const deltaFmt = (delta, unit = "") => {
+    if (delta === 0) return `<span style="color:${muted};">±0${unit}</span>`;
+    const color = delta > 0 ? green : red;
+    const sign = delta > 0 ? "+" : "";
+    return `<span style="color:${color};">${sign}${typeof delta === "number" && unit === "€" ? Math.round(delta).toLocaleString("en-US") : delta}${unit}</span>`;
+  };
+  const bar = (pctVal, color = gold) => `
+    <div style="height:6px;background:${border};border-radius:3px;overflow:hidden;margin-top:12px;">
+      <div style="height:100%;width:${clampPct(pctVal)}%;background:${color};"></div>
+    </div>`;
+
+  // ── Objective ──
+  const objPct = OBJECTIVE_TARGET_MRR > 0 ? (totalMrr / OBJECTIVE_TARGET_MRR) * 100 : 0;
+  const mrrDelta = totalMrr - totalMrrLastMonth;
+  const mrrDeltaPct = totalMrrLastMonth > 0 ? (mrrDelta / totalMrrLastMonth) * 100 : (totalMrr > 0 ? 100 : 0);
+
+  const objectiveHTML = `
+    <div style="border:1px solid ${border};border-top:3px solid ${gold};background:${surface};padding:32px;margin-bottom:36px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.14em;color:${gold};text-transform:uppercase;margin-bottom:6px;">Objective</div>
+      <div style="font-family:'Outfit',sans-serif;font-size:14px;color:${text};margin-bottom:20px;">Reach €100,000/month in recurring revenue</div>
+      <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:56px;color:${gold};line-height:1;">${fmt(totalMrr)}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:${muted};">of ${fmt(OBJECTIVE_TARGET_MRR)} target · ${pct(objPct)}</div>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;margin-top:8px;">
+        ${deltaFmt(mrrDelta, "€")} MoM &nbsp;(${deltaFmt(Math.round(mrrDeltaPct), "%")})
+      </div>
+      ${bar(objPct)}
+    </div>`;
+
+  // ── Key Results (one per revenue stream being pursued) ──
+  const krCardsHTML = tiers.map((t) => {
+    const krPct = t.target > 0 ? (t.mrr / t.target) * 100 : 0;
+    const delta = t.mrr - t.mrrLastMonth;
+    return `
+    <div style="background:${surface};padding:22px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">${escapeHTML(t.label)}</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:${text};">${fmt(t.mrr)}</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:${muted};margin-top:2px;">of ${fmt(t.target)} target · ${pct(krPct)}</div>
+      ${bar(krPct)}
+      <div style="display:flex;justify-content:space-between;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:${muted};">
+        <span>${t.count} active</span>
+        <span>${deltaFmt(delta, "€")} MoM</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:${muted};">
+        <span>+${t.newThisMonth} new</span>
+        <span>-${t.cancelledThisMonth} cancelled</span>
+      </div>
+    </div>`;
+  }).join("");
+
+  // ── KPIs (leading indicators — no revenue target, just trend) ──
+  const searchDelta = searches.last7d - searches.prev7d;
+  const netNewSubsDelta = newThisMonth - newLastMonth;
 
   const topProvinciasHTML = searches.topProvincias.length
     ? searches.topProvincias.map((p) => `
@@ -1368,55 +1472,46 @@ function adminMRRHTML({ tiers, totalMrr, totalActive, newThisMonth, newLastMonth
       </tr>`).join("")
     : `<tr><td colspan="2" style="padding:14px 16px;color:${muted};font-style:italic;">No searches tracked yet.</td></tr>`;
 
-  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>ZRC · MRR</title></head>
+  const kpiCard = (label, value, deltaHTML) => `
+    <div style="background:${surface};padding:20px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">${label}</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:30px;color:${text};">${value}</div>
+      ${deltaHTML ? `<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:4px;">${deltaHTML}</div>` : ""}
+    </div>`;
+
+  const kpiHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:${border};margin-bottom:24px;">
+      ${kpiCard("Searches, last 7d", searches.last7d, `${deltaFmt(searchDelta)} vs prior 7d`)}
+      ${kpiCard("Searches, last 30d", searches.last30d)}
+      ${kpiCard("GeoRisk digest opt-ins", leads.georiskOptins, `+${leads.georiskOptinsLast30d} in last 30d`)}
+      ${kpiCard("New paid subs this month", newThisMonth, `${deltaFmt(netNewSubsDelta)} vs last month`)}
+      ${kpiCard("Cancelled this month", cancelledThisMonth)}
+      ${kpiCard("Active paid subs", totalActive)}
+    </div>`;
+
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>ZRC · Growth Dashboard</title></head>
   <body style="margin:0;background:${bg};color:${text};font-family:'Helvetica Neue',sans-serif;min-height:100vh;padding:48px 24px;box-sizing:border-box;">
-    <div style="max-width:760px;margin:0 auto;">
+    <div style="max-width:820px;margin:0 auto;">
       <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.3em;color:rgba(212,168,83,0.6);margin-bottom:8px;">ZRC · INTERNAL</p>
-      <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:38px;color:${text};margin:0 0 32px;">MRR snapshot</h1>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:38px;color:${text};margin:0 0 32px;">Growth dashboard</h1>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:${border};margin-bottom:32px;">
-        <div style="background:${surface};padding:20px;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Estimated MRR</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${gold};">${fmt(totalMrr)}</div>
-        </div>
-        <div style="background:${surface};padding:20px;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Active paid subs</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${totalActive}</div>
-        </div>
-        <div style="background:${surface};padding:20px;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">New this month</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${newThisMonth} <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:${deltaColor};">${deltaSign}${delta} vs last</span></div>
-        </div>
-        <div style="background:${surface};padding:20px;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Cancelled this month</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${cancelledThisMonth}</div>
-        </div>
+      ${objectiveHTML}
+
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:${text};margin:0 0 6px;">Key results</h2>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:${muted};letter-spacing:0.05em;margin:0 0 16px;">
+        The four revenue streams currently being pursued toward the objective above.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:${border};margin-bottom:36px;">
+        ${krCardsHTML}
       </div>
 
-      <table style="width:100%;border-collapse:collapse;background:${surface};margin-bottom:32px;">
-        <thead>
-          <tr>
-            <th style="text-align:left;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Tier</th>
-            <th style="text-align:right;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Active</th>
-            <th style="text-align:right;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Est. MRR</th>
-          </tr>
-        </thead>
-        <tbody>${rowsHTML}</tbody>
-      </table>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:24px;color:${text};margin:0 0 6px;">KPIs — leading indicators</h2>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:${muted};letter-spacing:0.05em;margin:0 0 16px;">
+        Top-of-funnel signals — these predict the key results above, they aren't revenue themselves.
+      </p>
+      ${kpiHTML}
 
-      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px;color:${text};margin:0 0 16px;">Top of funnel — free Visor searches</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:${border};margin-bottom:24px;">
-        <div style="background:${surface};padding:20px;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Searches, last 7 days</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${searches.last7d}</div>
-        </div>
-        <div style="background:${surface};padding:20px;">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Searches, last 30 days</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;color:${text};">${searches.last30d}</div>
-        </div>
-      </div>
-
-      <table style="width:100%;border-collapse:collapse;background:${surface};">
+      <table style="width:100%;border-collapse:collapse;background:${surface};margin-bottom:24px;">
         <thead>
           <tr>
             <th style="text-align:left;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Top provinces, last 30d</th>
@@ -1426,9 +1521,14 @@ function adminMRRHTML({ tiers, totalMrr, totalActive, newThisMonth, newLastMonth
         <tbody>${topProvinciasHTML}</tbody>
       </table>
 
-      <p style="font-size:11px;color:rgba(232,224,204,0.35);line-height:1.6;margin-top:24px;font-style:italic;">
-        Estimated MRR uses each tier's list price — annual subscribers (Visor Early Bird) are counted at their monthly-equivalent value since billing interval isn't stored per-row today. Treat this as directional, cross-check against Stripe for exact figures. Search tracking only started recently, so early counts will look low until it's been running a full week/month.
-      </p>
+      <div style="padding:16px 18px;border:1px dashed ${border};margin-top:8px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;margin-bottom:8px;">Known blind spots</div>
+        <p style="font-size:11px;color:rgba(232,224,204,0.5);line-height:1.7;margin:0;">
+          Estimated MRR uses each tier's list price — annual subscribers (Visor Early Bird) are counted at their monthly-equivalent value, since billing interval isn't stored per-row today; MoM deltas are a proxy reconstructed from this month's joins/cancellations, not a stored historical snapshot. Treat both as directional and cross-check against Stripe for exact figures.
+          Visor Teaser/Informe one-time PDF purchases aren't tracked here at all — check Stripe directly for that revenue.
+          The Visor's own lead-capture modal and the site's contact/register forms post to an external backend (zrc-api.onrender.com) this dashboard can't see — only the GeoRisk Index digest opt-in is visible here.
+        </p>
+      </div>
     </div>
   </body></html>`;
 }
