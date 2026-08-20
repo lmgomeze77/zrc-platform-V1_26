@@ -682,18 +682,29 @@ async function upsertSubscriptionByCustomer(env, { stripeCustomerId, tier, statu
 // Mirrors the default ZRC scenario mix used by GeoRisk Dashboard / GeoRisk ML
 // (sector = Global, multiplier x1.00) so the public index tracks the same
 // methodology as the paid tools.
-// Pesos base actualizados 2026-07-17 dado el riesgo reflejado en el feed del
-// Observatorio: EEUU reinstaura bloqueo naval a Irán y amenaza con tomar el
-// control del estrecho de Ormuz (escalada MENA severa, desplaza a la
-// escalada arancelaria como escenario dominante); la coalición europea
-// respalda gasto de defensa/eurobonos ante la escalada Rusia-Ucrania
-// (leve alza en fragmentación europea vía prima de riesgo soberano);
-// sin señales de desescalada diplomática comparables esta semana.
+// Pesos base actualizados 2026-08-20 según el Geopolitical Base Case | Q4
+// 2026 Outlook: tensión geopolítica persistente el resto de 2026, pero con
+// mayor diferenciación entre vectores de riesgo en vez de una escalada
+// sincronizada (Reuters, European Commission). MENA sigue siendo el vector
+// más severo — contención frágil, sin acuerdo duradero a la vista, riesgo
+// de cola relevante en Ormuz/sanciones/nuclear. Rusia-Ucrania se separa por
+// primera vez como escenario propio (antes implícito en "Fragmentación
+// Europea"): conflicto de desgaste como caso base, sin convergencia hacia
+// paz o alto el fuego sostenible. Aranceles pasa de "escalada" a
+// "estabilización selectiva" — el marco UE-EEUU y las negociaciones
+// EEUU-Canadá reducen la probabilidad de una espiral arancelaria
+// descontrolada, aunque el riesgo se mantiene estructuralmente elevado.
+// Migración Sur de Europa sustituye a "Fragmentación Europea" como cuarto
+// vector — la crisis de Ceuta y la presión sobre Schengen convierten la
+// migración en variable geopolítica de primer orden, acelerando el giro
+// de España/Italia hacia socios mediterráneos. Sin escenario de
+// normalización: el caso base descarta explícitamente la desescalada
+// generalizada para el resto del año.
 const GEORISK_INDEX_SCENARIOS = [
-  { key: "tariff_escalation", label: "Escalada Arancelaria", prob: 0.34, risk: 78 },
   { key: "mena_instability", label: "Inestabilidad MENA", prob: 0.38, risk: 85 },
-  { key: "eu_fragmentation", label: "Fragmentación Europea", prob: 0.20, risk: 72 },
-  { key: "detente", label: "Distensión Geopolítica", prob: 0.08, risk: 28 },
+  { key: "russia_ukraine_attrition", label: "Guerra de Desgaste Rusia-Ucrania", prob: 0.30, risk: 72 },
+  { key: "trade_stabilization", label: "Aranceles — Estabilización Selectiva", prob: 0.20, risk: 55 },
+  { key: "southern_europe_migration", label: "Migración Sur de Europa", prob: 0.12, risk: 48 },
 ];
 
 function computeGeoRiskIndexValue() {
