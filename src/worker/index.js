@@ -87,6 +87,9 @@ async function handleRequest(request, env, ctx) {
     if (url.pathname === "/api/admin/mrr" && request.method === "GET")
       return handleAdminMRR(request, env);
 
+    if (url.pathname === "/api/admin/subscribers" && request.method === "GET")
+      return handleAdminSubscribers(request, env);
+
     if (url.pathname === "/api/track-search" && request.method === "POST")
       return handleTrackSearch(request, env);
 
@@ -1284,7 +1287,86 @@ async function handleAdminMRR(request, env) {
 
   const [searches, leads] = await Promise.all([summarizeSearches(env), summarizeLeads(env)]);
 
-  return htmlResponse(adminDashboardHTML(summarizeSubscriptions(rows), searches, leads));
+  return htmlResponse(adminDashboardHTML(summarizeSubscriptions(rows), searches, leads, token));
+}
+
+// ============================================================
+// /api/admin/subscribers?token=  — lista individual de suscriptores. El
+// dashboard OKR/KPI solo agrega por tier; esto es para buscar/verificar a
+// una persona concreta sin tener que entrar a Supabase directamente. Mismo
+// secreto de admin, misma tabla que handleAdminMRR, pero seleccionando
+// email también (la vista agregada lo omite a propósito).
+// ============================================================
+async function handleAdminSubscribers(request, env) {
+  const url = new URL(request.url);
+  const token = url.searchParams.get("token");
+
+  const adminToken = env.INNER_CIRCLE_ADMIN_TOKEN;
+  if (!adminToken || token !== adminToken)
+    return new Response("Unauthorized", { status: 403 });
+
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
+    return new Response("Service unavailable", { status: 503 });
+
+  let rows = [];
+  try {
+    const resp = await fetch(
+      `${env.SUPABASE_URL}/rest/v1/subscriptions?select=email,tier,status,created_at,updated_at&order=created_at.desc&limit=500`,
+      { headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` } }
+    );
+    if (resp.ok) rows = await resp.json();
+  } catch (err) {
+    console.error("Admin subscribers fetch error:", err);
+  }
+
+  return htmlResponse(adminSubscribersHTML(rows, token));
+}
+
+function adminSubscribersHTML(rows, token) {
+  const bg = "#06080C", surface = "#111318", border = "#23262E", gold = "#D4A853", text = "#E8E0CC", muted = "rgba(232,224,204,0.5)";
+  const green = "#4ADE80", red = "#F0665E", amber = "#F5A623";
+  const statusColor = { active: green, cancelled: red, past_due: amber, inactive: muted };
+
+  const dateFmt = (d) => { try { return new Date(d).toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" }); } catch { return d || "—"; } };
+
+  const rowsHTML = rows.length
+    ? rows.map((r) => `
+      <tr>
+        <td style="padding:11px 16px;border-bottom:1px solid ${border};color:${text};">${escapeHTML(r.email || "—")}</td>
+        <td style="padding:11px 16px;border-bottom:1px solid ${border};color:${muted};font-family:'IBM Plex Mono',monospace;">${escapeHTML(TIER_LABELS[r.tier] || r.tier || "—")}</td>
+        <td style="padding:11px 16px;border-bottom:1px solid ${border};">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:${statusColor[r.status] || muted};">${escapeHTML(r.status || "—")}</span>
+        </td>
+        <td style="padding:11px 16px;border-bottom:1px solid ${border};color:${muted};font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:right;">${dateFmt(r.created_at)}</td>
+      </tr>`).join("")
+    : `<tr><td colspan="4" style="padding:20px 16px;color:${muted};font-style:italic;">No subscribers yet.</td></tr>`;
+
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><title>ZRC · Subscribers</title></head>
+  <body style="margin:0;background:${bg};color:${text};font-family:'Helvetica Neue',sans-serif;min-height:100vh;padding:48px 24px;box-sizing:border-box;">
+    <div style="max-width:820px;margin:0 auto;">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.3em;color:rgba(212,168,83,0.6);margin-bottom:8px;">ZRC · INTERNAL</p>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:28px;">
+        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:38px;color:${text};margin:0;">Subscribers <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:${muted};">(${rows.length})</span></h1>
+        <a href="/api/admin/mrr?token=${encodeURIComponent(token)}" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:${gold};text-decoration:none;">← Growth dashboard</a>
+      </div>
+
+      <table style="width:100%;border-collapse:collapse;background:${surface};">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Email</th>
+            <th style="text-align:left;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Tier</th>
+            <th style="text-align:left;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Status</th>
+            <th style="text-align:right;padding:10px 16px;border-bottom:1px solid ${border};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;color:${muted};text-transform:uppercase;">Since</th>
+          </tr>
+        </thead>
+        <tbody>${rowsHTML}</tbody>
+      </table>
+
+      <p style="font-size:11px;color:rgba(232,224,204,0.35);line-height:1.6;margin-top:20px;font-style:italic;">
+        Shows up to the 500 most recent subscription records, most recent first — includes free-tier and cancelled rows, not just active paid ones. This is the raw Supabase "subscriptions" table; it won't include Visor Teaser/Informe one-time buyers or Inner Circle members, who live in separate tables.
+      </p>
+    </div>
+  </body></html>`;
 }
 
 // Volumen de búsquedas gratuitas del Visor — el escalón de más arriba del
@@ -1401,7 +1483,7 @@ function summarizeSubscriptions(rows) {
   return { tiers, totalMrr, totalMrrLastMonth, totalActive, newThisMonth, newLastMonth, cancelledThisMonth };
 }
 
-function adminDashboardHTML(subs, searches, leads) {
+function adminDashboardHTML(subs, searches, leads, token) {
   const { tiers, totalMrr, totalMrrLastMonth, totalActive, newThisMonth, newLastMonth, cancelledThisMonth } = subs;
   const bg = "#06080C", surface = "#111318", border = "#23262E", gold = "#D4A853", text = "#E8E0CC", muted = "rgba(232,224,204,0.5)";
   const green = "#4ADE80", red = "#F0665E";
@@ -1493,7 +1575,10 @@ function adminDashboardHTML(subs, searches, leads) {
   <body style="margin:0;background:${bg};color:${text};font-family:'Helvetica Neue',sans-serif;min-height:100vh;padding:48px 24px;box-sizing:border-box;">
     <div style="max-width:820px;margin:0 auto;">
       <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.3em;color:rgba(212,168,83,0.6);margin-bottom:8px;">ZRC · INTERNAL</p>
-      <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:38px;color:${text};margin:0 0 32px;">Growth dashboard</h1>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+        <h1 style="font-family:'Cormorant Garamond',serif;font-weight:400;font-size:38px;color:${text};margin:0;">Growth dashboard</h1>
+        <a href="/api/admin/subscribers?token=${encodeURIComponent(token)}" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:${gold};text-decoration:none;">Subscribers →</a>
+      </div>
 
       ${objectiveHTML}
 
