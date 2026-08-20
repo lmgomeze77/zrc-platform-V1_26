@@ -1608,6 +1608,18 @@ const ZRCPlatform = () => {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  // Deep links (e.g. shared on LinkedIn as /#georisk-index) load the page
+  // fresh — the browser tries to jump to the hash before React has
+  // rendered that section, so the native jump silently fails and nothing
+  // retries it afterward. Do it ourselves once the page has painted.
+  useEffect(() => {
+    const hash = window.location.hash.replace(/^#/, "");
+    if (!hash) return;
+    const t = setTimeout(() => onNav(hash), 150);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <AuthProvider lang={lang}>
       <style>{`
