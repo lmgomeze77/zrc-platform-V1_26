@@ -555,23 +555,22 @@ function MembershipSection() {
   );
 }
 
-// Inner Circle es una membresía gratuita, vetada por aplicación — algo
-// distinto de Institutional (suscripción de pago en Stripe). Este bloque
-// solo aparece a miembros ya aprobados: es la audiencia con más intención
-// de compra que existe hoy para el tier institucional, y hasta ahora no
-// tenía ningún puente hacia él. Solo menciona herramientas que ya están
-// LIVE (GeoRisk Dashboard/ML, Financial Intelligence System, matching de
-// mandatos vía el Visor) — Valuation Engine y Deal Flow Radar siguen sin
-// construir, así que no se venden aquí todavía.
-function InstitutionalUpsellSection({ openPricing }) {
+// Inner Circle es una membresía gratuita, vetada por aplicación, y se
+// mantiene deliberadamente como un club/comunidad — no como un listado de
+// herramientas. Este bloque solo aparece a miembros ya aprobados y da un
+// paso hacia Institutional (suscripción de pago), pero en tono de standing
+// dentro del club, no como pitch de producto: sin nombrar herramientas
+// concretas (GeoRisk Dashboard, Predictive ML, etc. son ya core del plan de
+// pago y se venden en su propio contexto, no aquí).
+function ExpandedStandingSection({ openPricing }) {
   if (!openPricing) return null;
   return (
     <section style={{ borderTop: "1px solid rgba(255,255,255,0.1)", background: "#000" }} className="ic-section-pad">
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <SectionLabel
           eyebrow="For members"
-          title="Institutional access, beyond the briefing."
-          text="Institutional includes the full platform behind ZRC's deal flow — GeoRisk Dashboard, GeoRisk Predictive ML, the Financial Intelligence System and mandate matching — plus 5 seats and a direct line to the team."
+          title="Some members hold an expanded seat."
+          text="Institutional standing carries priority on opportunities, a direct line to the team, and room at the table for the rest of your desk."
         />
         <div style={{
           border: "1px solid rgba(212,168,83,0.5)", background: "rgba(212,168,83,0.055)",
@@ -579,10 +578,9 @@ function InstitutionalUpsellSection({ openPricing }) {
           gap: 24, flexWrap: "wrap",
         }}>
           <div style={{ maxWidth: 560 }}>
-            <div style={{ ...S.goldLabel, marginBottom: 12 }}>Institutional · €299/mo</div>
+            <div style={{ ...S.goldLabel, marginBottom: 12 }}>Institutional</div>
             <p style={{ fontSize: "clamp(14px,3.5vw,15px)", lineHeight: 1.7, color: "rgba(255,255,255,0.68)", margin: 0 }}>
-              Everything in Intelligence, plus ZRC mandate matching, priority access to opportunities,
-              and this briefing delivered as part of a working platform — not a standalone read.
+              For members who want their standing here to extend across the rest of the platform.
             </p>
           </div>
           <button
@@ -593,7 +591,7 @@ function InstitutionalUpsellSection({ openPricing }) {
               letterSpacing: "0.12em", textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap",
             }}
           >
-            See Institutional →
+            Inquire →
           </button>
         </div>
       </div>
@@ -675,7 +673,7 @@ export default function InnerCircle({ onBack, useAuth }) {
       <RadarSection />
       <DeliverablesSection />
       <MembershipSection />
-      <InstitutionalUpsellSection openPricing={openPricing} />
+      <ExpandedStandingSection openPricing={openPricing} />
       <AccessSection />
       <ICFooter />
     </main>
