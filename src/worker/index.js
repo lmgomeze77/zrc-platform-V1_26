@@ -732,7 +732,7 @@ async function computeAndStoreWeeklySnapshot(env, source) {
   const weekStart = isoWeekMonday(new Date());
 
   try {
-    const resp = await fetch(`${env.SUPABASE_URL}/rest/v1/georisk_index_weekly`, {
+    const resp = await fetch(`${env.SUPABASE_URL}/rest/v1/georisk_index_weekly?on_conflict=week_start`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
