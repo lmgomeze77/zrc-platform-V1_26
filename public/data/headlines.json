@@ -3,8 +3,8 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1704",
-      "change": "+0.22%",
+      "value": "1.1545",
+      "change": "+0.15%",
       "up": true
     },
     {
@@ -14,21 +14,21 @@
       "up": false
     },
     {
-      "symbol": "BRENT CRUDE",
-      "value": "93.14",
-      "change": "+1.53%",
-      "up": true
+      "symbol": "BRENT Crude",
+      "value": "93.38",
+      "change": "-0.43%",
+      "up": false
     },
     {
-      "symbol": "WTI CRUDE",
-      "value": "86.31",
-      "change": "+2.10%",
+      "symbol": "WTI Crude",
+      "value": "86.88",
+      "change": "+0.06%",
       "up": true
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4,554.76",
-      "change": "+0.86%",
+      "value": "4,587.27",
+      "change": "+1.58%",
       "up": true
     },
     {
@@ -39,20 +39,20 @@
     },
     {
       "symbol": "VIX",
-      "value": "14.93",
-      "change": "+4.77%",
+      "value": "16.01",
+      "change": "+7.52%",
       "up": true
     },
     {
-      "symbol": "US 10Y YIELD",
+      "symbol": "US 10Y Yield",
       "value": "4.71%",
-      "change": "+0.01%",
+      "change": "+0.02%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,785.76",
-      "change": "-0.17%",
+      "value": "7,641.16",
+      "change": "-0.87%",
       "up": false
     },
     {
@@ -63,8 +63,8 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8571",
-      "change": "+0.05%",
+      "value": "0.8545",
+      "change": "+0.09%",
       "up": true
     },
     {
@@ -74,15 +74,15 @@
       "up": false
     },
     {
-      "symbol": "NATURAL GAS",
-      "value": "2.778",
-      "change": "+0.13%",
+      "symbol": "Natural Gas",
+      "value": "2.78",
+      "change": "+1.88%",
       "up": true
     },
     {
-      "symbol": "COPPER",
-      "value": "6.48",
-      "change": "-0.44%",
+      "symbol": "Copper",
+      "value": "6.46",
+      "change": "-0.40%",
       "up": false
     },
     {
@@ -391,5 +391,5 @@
       "time": "10h"
     }
   ],
-  "market_updated_at": "2026-08-21T10:17:12.013Z"
+  "market_updated_at": "2026-08-21T14:22:01.633Z"
 }
