@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-08-20T06:39:20.840Z",
+  "generated_at": "2026-08-21T06:39:25.653Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1684",
-      "change": "+0.05%",
+      "value": "1.1680",
+      "change": "+0.89%",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,124.80",
+      "value": "20124.80",
       "change": "-0.16%",
       "up": false
     },
     {
-      "symbol": "BRENT Crude",
-      "value": "93.65",
+      "symbol": "BRENT",
+      "value": "93.01",
       "change": "+1.52%",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "84.58",
-      "change": "+1.05%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,554.76",
+      "symbol": "GOLD",
+      "value": "4554.76",
       "change": "+0.86%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "75,089.78",
-      "change": "+7.84%",
+      "symbol": "BTC",
+      "value": "71980.32",
+      "change": "+7.10%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "16.01",
-      "change": "+7.52%",
+      "value": "14.83",
+      "change": "-6.38%",
+      "up": false
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.688",
+      "change": "+0.75%",
       "up": true
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.71%",
-      "change": "+0.01%",
+      "symbol": "EUR/GBP",
+      "value": "0.8582",
+      "change": "+0.35%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,707.98",
-      "change": "-0.33%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "25,983.04",
-      "change": "-0.42%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8652",
-      "change": "+0.12%",
+      "value": "7707.98",
+      "change": "+0.21%",
       "up": true
     },
     {
-      "symbol": "DXY",
-      "value": "98.76",
-      "change": "-0.07%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.780",
-      "change": "-2.00%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.46",
-      "change": "-0.40%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "7.1580",
-      "change": "-0.10%",
+      "symbol": "DAX 40",
+      "value": "26091.33",
+      "change": "-0.14%",
       "up": false
     }
   ],
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "en": "Trump threatens Iran's trade partners, as military strikes make way for economic pressure",
-        "es": "Trump amenaza a los socios comerciales de Irán mientras los ataques militares ceden paso a la presión económica"
+        "es": "Guerra con Irán en vivo: EE.UU. promete las sanciones más duras contra Irán e insta a China a apoyarlas",
+        "en": "Iran war live: US vows toughest Iran sanctions, urges China support"
       },
       "summary": {
-        "en": "With a 60-day ceasefire expired and no diplomatic off-ramp in sight, Trump is pivoting to a maximum-pressure economic campaign against Iran and any country trading with it. Secondary sanctions of this scale could target Chinese, Indian, and Turkish energy buyers, reshaping oil flows and EM risk premiums. Markets face heightened Strait of Hormuz risk and broad sanctions uncertainty.",
-        "es": "Con el alto el fuego de 60 días vencido y sin salida diplomática visible, Trump lanza una campaña de presión económica máxima contra Irán y cualquier país que comercie con él. Las sanciones secundarias de esta escala podrían afectar a compradores de energía chinos, indios y turcos, remodelando los flujos de petróleo y las primas de riesgo de mercados emergentes."
+        "es": "Tras el vencimiento del alto al fuego de 60 días sin salida diplomática, el secretario del Tesoro Bessent anunció medidas económicas que, según afirma, 'colapsarán' al gobierno iraní. EE.UU. presiona a China para que se sume, lo que convierte esta confrontación en un nodo de tensión geopolítica global con implicaciones directas para el estrecho de Ormuz y los flujos de petróleo. La amenaza de sanciones secundarias a los socios comerciales de Irán añade riesgo sistémico para mercados emergentes.",
+        "en": "Following the expiration of a 60-day ceasefire with no diplomatic off-ramp, Treasury Secretary Bessent announced economic measures he says will 'collapse' the Iranian government. The US is pressing China to join, turning this confrontation into a global geopolitical flashpoint with direct implications for the Strait of Hormuz and oil flows. Threatened secondary sanctions on Iran's trading partners add systemic risk for emerging markets."
       },
       "impact": "high",
       "market_impact": [
@@ -112,65 +82,74 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "en": "Hormuz disruption risk and Iranian supply squeeze",
-            "es": "Riesgo de cierre de Ormuz y reducción de oferta iraní"
-          }
-        },
-        {
-          "asset": "EM currencies (INR, TRY, CNY)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "en": "Secondary sanction threat hits Iran-linked trade partners",
-            "es": "Amenaza de sanciones secundarias golpea socios comerciales vinculados a Irán"
+            "es": "Riesgo de cierre del estrecho de Ormuz eleva prima de riesgo",
+            "en": "Hormuz closure risk raises geopolitical risk premium"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "en": "Safe-haven demand on escalating MENA risk",
-            "es": "Demanda de refugio ante escalada de riesgo en Oriente Medio"
+            "es": "Activo refugio ante escalada de conflicto",
+            "en": "Safe haven demand on conflict escalation"
           }
         },
         {
-          "asset": "US 10Y Treasury",
+          "asset": "EM currencies",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "en": "Flight-to-safety bid on geopolitical escalation",
-            "es": "Búsqueda de refugio ante escalada geopolítica"
+            "es": "Sanciones secundarias amenazan a socios comerciales de Irán",
+            "en": "Secondary sanctions threaten Iran's trading partner currencies"
+          }
+        },
+        {
+          "asset": "Chinese equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Presión de EE.UU. sobre China eleva riesgo de sanciones a empresas chinas",
+            "en": "US pressure on China raises sanctions risk for Chinese firms"
           }
         }
       ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/aug/20/trump-threatens-crush-iran-economy-war-hormuz",
-      "published_at": "2026-08-20",
-      "time": "1h"
+      "confidence": 91,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/liveblog/2026/8/21/iran-war-live-us-vows-toughest-iran-sanctions-urges-china-support?traffic_source=rss",
+      "published_at": "2026-08-21",
+      "time": "6h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "EURASIA",
       "title": {
-        "en": "Russia launches missile strikes on Kyiv and surrounding region, killing at least eight",
-        "es": "Rusia lanza ataques con misiles sobre Kiev y la región circundante, matando al menos a ocho personas"
+        "es": "Más de 16 muertos cuando Kyiv sufre un intenso bombardeo ruso",
+        "en": "More than 16 killed as Kyiv comes under intense Russian bombardment"
       },
       "summary": {
-        "en": "Russia conducted a large-scale missile assault on Kyiv's residential and logistics infrastructure, killing at least eight. Poland activated preventive aviation operations near its border, signaling NATO's heightened alert posture. Persistent strikes on Ukraine's capital sustain European energy and defense spending pressures and weigh on regional risk assets.",
-        "es": "Rusia ejecutó un ataque masivo con misiles sobre infraestructura residencial y logística de Kiev, causando al menos ocho muertos. Polonia activó operaciones de aviación preventivas en su frontera, señalando la elevada alerta de la OTAN. Los ataques sostenidos sobre la capital ucraniana mantienen presiones sobre el gasto energético y de defensa europeo."
+        "es": "Rusia lanzó uno de los ataques aéreos más masivos de la guerra contra Kyiv, con misiles y drones que alcanzaron un hospital infantil y zonas residenciales, matando al menos a 16 personas. El ataque deliberado a infraestructura crítica señala una escalada rusa en un momento de presión diplomática sostenida, con implicaciones para el suministro de energía ucraniana y los compromisos de apoyo occidental. Los mercados de energía europeos y los activos de defensa están expuestos.",
+        "en": "Russia launched one of the war's most massive aerial attacks on Kyiv, with missiles and drones striking a children's hospital and residential areas, killing at least 16. The deliberate targeting of critical infrastructure signals Russian escalation amid sustained diplomatic pressure, with implications for Ukraine's energy supply and Western support commitments. European energy markets and defense assets are exposed."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European equities",
-          "direction": "down",
+          "asset": "European natural gas (TTF)",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "en": "Escalation risk weighs on EU sentiment",
-            "es": "El riesgo de escalada presiona el sentimiento europeo"
+            "es": "Daño a infraestructura ucraniana presiona suministro energético europeo",
+            "en": "Ukraine infrastructure damage pressures European energy supply"
+          }
+        },
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada rusa refuerza gasto en defensa europeo",
+            "en": "Russian escalation reinforces European defense spending"
           }
         },
         {
@@ -178,209 +157,209 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "en": "War proximity risk softens euro demand",
-            "es": "El riesgo de proximidad bélica debilita la demanda del euro"
-          }
-        },
-        {
-          "asset": "Defense sector equities (EU)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "en": "Sustained conflict drives EU defense spending bids",
-            "es": "El conflicto sostenido impulsa el gasto de defensa europeo"
-          }
-        },
-        {
-          "asset": "Natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "en": "Infrastructure targeting raises European supply anxiety",
-            "es": "Los ataques a infraestructura elevan la ansiedad de suministro europeo"
+            "es": "Riesgo de guerra en el flanco este europeo pesa sobre el euro",
+            "en": "Eastern European war risk weighs on euro"
           }
         }
       ],
-      "confidence": 88,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c98vzmden5yo?at_medium=RSS&at_campaign=rss",
+      "confidence": 90,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/aug/20/ukraine-kyiv-deaths-russian-missile-attack",
       "published_at": "2026-08-20",
-      "time": "1h"
+      "time": "8h"
     },
     {
       "id": 3,
       "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "en": "North Korean Official Dismisses Reduced Drills Between US and South Korea",
-        "es": "Funcionaria norcoreana descarta los ejercicios reducidos entre EE.UU. y Corea del Sur"
+        "es": "Corea del Norte lanza misiles, dice Seúl, después de que Trump propuso una reunión con Kim",
+        "en": "North Korea launches missiles, Seoul says, after Trump floats Kim meet"
       },
       "summary": {
-        "en": "Kim Yo-jong publicly contradicted Trump's claim that Kim Jong-un had responded to US outreach, and dismissed reduced US-South Korea military drills as insufficient. The public rebuff signals that US diplomatic concessions on the Korean Peninsula are not yielding reciprocal de-escalation, maintaining latent missile test risk. This complicates US strategic positioning amid simultaneous pressures in the Middle East and Ukraine.",
-        "es": "Kim Yo-jong contradijo públicamente la afirmación de Trump de que Kim Jong-un había respondido al acercamiento estadounidense, y descartó los ejercicios militares reducidos como insuficientes. El rechazo público señala que las concesiones diplomáticas de EE.UU. no están generando reciprocidad, manteniendo el riesgo latente de pruebas de misiles."
+        "es": "Corea del Norte disparó varios misiles balísticos de corto alcance poco después de que Trump sugiriera una posible reunión con Kim Jong Un, en medio de ejercicios militares conjuntos entre EE.UU. y Corea del Sur. El lanzamiento, acompañado de críticas de Pyongyang a Seúl como 'sirviente', señala una escalada deliberada de señalización que complica la dinámica diplomática en la península coreana. El timing coincide con la decisión de Trump de recortar ejercicios militares con Seúl.",
+        "en": "North Korea fired several short-range ballistic missiles shortly after Trump suggested a possible meeting with Kim Jong Un, amid ongoing US-South Korea military exercises. The launches, paired with Pyongyang mocking Seoul as a US 'servant', represent deliberate signaling that complicates diplomatic dynamics on the Korean Peninsula. The timing coincides with Trump's decision to cut military exercises with Seoul."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Korean Won (KRW)",
+          "asset": "South Korean won",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "en": "Diplomatic stalemate sustains peninsula risk premium",
-            "es": "El estancamiento diplomático mantiene la prima de riesgo peninsular"
+            "es": "Tensión geopolítica en la península coreana presiona el won",
+            "en": "Korean Peninsula geopolitical tension pressures KRW"
           }
         },
         {
-          "asset": "KOSPI (South Korean equities)",
-          "direction": "mixed",
+          "asset": "KOSPI",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada norcoreana genera aversión al riesgo en bolsa surcoreana",
+            "en": "North Korean escalation triggers risk-off in South Korean equities"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "en": "Uncertainty caps upside for Korean risk assets",
-            "es": "La incertidumbre limita el alza de activos de riesgo coreanos"
+            "es": "Demanda de refugio ante señales de escalada regional",
+            "en": "Safe haven demand on regional escalation signals"
           }
         }
       ],
-      "confidence": 78,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/19/world/asia/north-korea-trump-military-drills.html",
+      "confidence": 85,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260820-north-korea-launches-missiles-seoul-says-after-trump-floats-kim-meet",
       "published_at": "2026-08-20",
-      "time": "4h"
+      "time": "15h"
     },
     {
       "id": 4,
-      "tag": "WATCH",
+      "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "en": "Is the US actually too chicken to take on China for trade?",
-        "es": "¿Es realmente EE.UU. demasiado cobarde para enfrentarse a China en el comercio?"
+        "es": "La orden de Trump de recortar ejercicios militares con Corea del Sur conlleva riesgos, dicen expertos",
+        "en": "Trump's Order to Cut Military Exercises With South Korea Carries Risks, Experts Say"
       },
       "summary": {
-        "en": "Following the October trade truce, China's persistent yuan weakness is generating a structural trade surplus that effectively nullifies US tariff measures. The analysis suggests the Trump administration is unwilling to re-escalate given rare-earth supply dependency, raising questions about the durability of any US-China trade framework. A weak yuan compresses margins for US importers and keeps inflationary pressure from Chinese goods muted.",
-        "es": "Tras la tregua comercial de octubre, la persistente debilidad del yuan genera un superávit comercial estructural que neutraliza las medidas arancelarias de EE.UU. El análisis sugiere que la administración Trump no está dispuesta a reescalar dada la dependencia en tierras raras, cuestionando la durabilidad del marco comercial bilateral."
+        "es": "La decisión de Trump de reducir los ejercicios militares conjuntos con Corea del Sur llega en un momento en que los aliados cuestionan el compromiso de EE.UU. con sus alianzas de larga data, y simultáneamente con lanzamientos de misiles norcoreanos. Esta señal de debilitamiento de la disuasión extendida americana tiene implicaciones para la arquitectura de seguridad de toda la región Indo-Pacífico, incluyendo Japón y Taiwán. Podría acelerar debates sobre capacidades nucleares independientes en la región.",
+        "en": "Trump's decision to curtail joint military exercises with South Korea comes as allies question US commitment to longstanding alliances, and simultaneously with North Korean missile launches. This signal of weakening American extended deterrence has implications for the security architecture of the entire Indo-Pacific region, including Japan and Taiwan. It could accelerate debates about independent nuclear capabilities in the region."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "CNY (Chinese Yuan)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "en": "Deliberate yuan weakness sustains export competitiveness",
-            "es": "La debilidad deliberada del yuan sostiene la competitividad exportadora"
-          }
-        },
-        {
-          "asset": "US equities (import-sensitive sectors)",
+          "asset": "Japanese yen",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "en": "Tariff ineffectiveness raises structural margin pressure",
-            "es": "La ineficacia arancelaria eleva la presión estructural en márgenes"
+            "es": "Debilidad de garantías de seguridad de EE.UU. eleva incertidumbre regional",
+            "en": "Weakening US security guarantees raise regional uncertainty"
           }
         },
         {
-          "asset": "Rare earth-linked equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "en": "US dependency keeps Chinese leverage intact",
-            "es": "La dependencia de EE.UU. mantiene intacto el apalancamiento chino"
-          }
-        }
-      ],
-      "confidence": 75,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/us-news/2026/aug/19/china-trump-trade-weak-yuan",
-      "published_at": "2026-08-19",
-      "time": "13h"
-    },
-    {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "AFRICA",
-      "title": {
-        "en": "'Ebola is spreading faster than our ability to contain it': outbreak out of control in Congo, according to WHO",
-        "es": "'El ébola se extiende más rápido que nuestra capacidad para contenerlo': el brote está fuera de control en Congo, según la OMS"
-      },
-      "summary": {
-        "en": "The WHO declared the Congo Ebola outbreak the deadliest in history, with over 5,000 infections and 2,420 deaths, spreading among war-displaced communities. Loss of containment in the DRC threatens regional health security and could disrupt mining operations in one of the world's most critical mineral supply corridors. International humanitarian and logistics chains serving cobalt and coltan extraction are at risk.",
-        "es": "La OMS declaró el brote de ébola en Congo el más mortífero de la historia, con más de 5.000 infecciones y 2.420 muertes, extendiéndose entre comunidades desplazadas por la guerra. La pérdida de control amenaza la seguridad sanitaria regional y podría interrumpir operaciones mineras en uno de los corredores de minerales críticos más importantes del mundo."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Cobalt futures",
+          "asset": "Asian defense equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "en": "DRC supply disruption risk from outbreak containment failure",
-            "es": "Riesgo de interrupción del suministro congoleño ante fallo de contención"
+            "es": "Menor paraguas de EE.UU. impulsa gasto autónomo en defensa",
+            "en": "Reduced US umbrella drives autonomous defense spending"
           }
         },
         {
-          "asset": "EV battery supply chain equities",
-          "direction": "down",
+          "asset": "US Treasuries",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "en": "Critical mineral access uncertainty weighs on sector",
-            "es": "La incertidumbre en minerales críticos pesa sobre el sector"
+            "es": "Reconfiguración de alianzas crea incertidumbre sobre rol del dólar",
+            "en": "Alliance reconfiguration creates dollar role uncertainty"
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/08/20/us/politics/trumps-order-military-exercises-risks.html",
+      "published_at": "2026-08-20",
+      "time": "21h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "LATAM",
+      "title": {
+        "es": "Las multinacionales energéticas regresan a Venezuela",
+        "en": "Energy multinationals return to Venezuela"
+      },
+      "summary": {
+        "es": "La tutela estadounidense en Venezuela está facilitando el regreso de grandes capitales internacionales al sector petrolero venezolano, rompiendo años de aislamiento y sanciones. Este giro estratégico podría incrementar significativamente la producción petrolera venezolana, con implicaciones para los precios del crudo y para la influencia geopolítica de EE.UU. en Sudamérica. Representa también un cambio en la estructura de poder energético regional que afecta a otros productores de la OPEP+.",
+        "en": "US oversight in Venezuela is facilitating the return of major international capital to the Venezuelan oil sector, breaking years of isolation and international sanctions. This strategic shift could significantly increase Venezuelan oil production, with implications for crude prices and US geopolitical influence in South America. It also represents a shift in regional energy power dynamics affecting other OPEC+ producers."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor producción venezolana añade oferta al mercado global",
+            "en": "Increased Venezuelan output adds to global supply"
           }
         },
         {
-          "asset": "African sovereign bonds (DRC-region)",
-          "direction": "down",
+          "asset": "Venezuelan sovereign bonds",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Retorno de inversión extranjera mejora perspectiva crediticia",
+            "en": "Return of foreign investment improves credit outlook"
+          }
+        },
+        {
+          "asset": "Latin American energy equities",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "en": "Health crisis compounds existing fiscal and security stress",
-            "es": "La crisis sanitaria agrava el estrés fiscal y de seguridad existente"
+            "es": "Apertura venezolana crea oportunidades para operadores regionales",
+            "en": "Venezuelan opening creates opportunities for regional operators"
           }
         }
       ],
       "confidence": 80,
       "source": "El País",
-      "source_url": "https://elpais.com/planeta-futuro/2026-08-20/el-ebola-se-extiende-a-una-velocidad-mas-rapida-que-nuestra-capacidad-para-contenerlo-el-brote-esta-fuera-de-control-en-congo-segun-la-oms.html",
-      "published_at": "2026-08-20",
-      "time": "3h"
+      "source_url": "https://elpais.com/america/2026-08-21/las-multinacionales-energeticas-regresan-a-venezuela.html",
+      "published_at": "2026-08-21",
+      "time": "2h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "US",
+      "region": "APAC",
       "title": {
-        "en": "Trump and Canada's Carney Seem to Make Progress on a Tariff Deal, but Questions Linger",
-        "es": "Trump y Carney de Canadá parecen avanzar en un acuerdo arancelario, pero persisten dudas"
+        "es": "China condena al fundador de Evergrande a cadena perpetua",
+        "en": "China Sentences Evergrande Founder to Life in Prison"
       },
       "summary": {
-        "en": "US-Canada tariff negotiations appear to be approaching resolution following a deadline extension, though the terms of Canadian concessions remain unclear. A deal would reduce near-term North American trade disruption risk and support Canadian dollar stability, but uncertainty over what Canada surrenders may reignite political friction. The outcome has direct implications for USMCA's structural integrity and continental supply chains.",
-        "es": "Las negociaciones arancelarias entre EE.UU. y Canadá parecen acercarse a una resolución tras una prórroga del plazo, aunque los términos de las concesiones canadienses permanecen poco claros. Un acuerdo reduciría el riesgo de disrupción comercial norteamericana a corto plazo y apoyaría la estabilidad del dólar canadiense."
+        "es": "Hui Ka Yan, fundador de Evergrande, ha sido condenado a cadena perpetua, cerrando el capítulo judicial del mayor colapso inmobiliario de la historia china. La sentencia subraya el papel del Estado chino en la gestión de la crisis del sector inmobiliario y envía una señal de responsabilidad personal a otros promotores. Sin embargo, la prolongada crisis del sector sigue pesando sobre el crecimiento chino y los activos vinculados a la economía real del país.",
+        "en": "Hui Ka Yan, founder of Evergrande, has been sentenced to life in prison, closing the judicial chapter on China's largest property collapse. The verdict underscores the Chinese state's role in managing the property sector crisis and sends a personal accountability signal to other developers. However, the prolonged sector crisis continues to weigh on Chinese growth and assets tied to the country's real economy."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "CAD (Canadian Dollar)",
-          "direction": "up",
+          "asset": "Chinese property equities",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "en": "Deal progress reduces tariff-driven currency headwind",
-            "es": "El avance del acuerdo reduce el viento en contra arancelario"
+            "es": "Señal regulatoria dura pero cierre judicial puede reducir incertidumbre",
+            "en": "Hard regulatory signal but judicial closure may reduce uncertainty"
           }
         },
         {
-          "asset": "Canadian equities (TSX)",
-          "direction": "up",
+          "asset": "Hong Kong Hang Seng",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "en": "Trade certainty supports Canadian export sectors",
-            "es": "La certeza comercial apoya a los sectores exportadores canadienses"
+            "es": "Recuerda fragilidad del sector inmobiliario chino",
+            "en": "Reminds markets of Chinese property sector fragility"
+          }
+        },
+        {
+          "asset": "Chinese high-yield USD bonds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Sentencia reaviva preocupaciones sobre deuda del sector",
+            "en": "Sentence revives concerns about sector debt overhang"
           }
         }
       ],
-      "confidence": 72,
+      "confidence": 75,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/19/world/canada/trump-canada-tariffs-carney-deal-trade.html",
+      "source_url": "https://www.nytimes.com/2026/08/20/business/evergrande-founder-life-prison.html",
       "published_at": "2026-08-20",
-      "time": "6h"
+      "time": "10h"
     }
   ],
-  "market_updated_at": "2026-08-21T06:21:48.188Z"
+  "market_updated_at": "2026-08-21T06:39:25.653Z"
 }
