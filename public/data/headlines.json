@@ -1,109 +1,193 @@
 {
-  "generated_at": "2026-08-22T06:33:31.243Z",
+  "generated_at": "2026-08-23T06:34:26.975Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1678",
-      "change": "+0.01%",
-      "up": true
-    },
-    {
-      "symbol": "IBEX 35",
-      "value": "19,961.50",
-      "change": "+0.32%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "93.90",
-      "change": "+0.26%",
-      "up": true
-    },
-    {
-      "symbol": "WTI Crude",
-      "value": "87.06",
-      "change": "+0.03%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,604.09",
-      "change": "+2.30%",
-      "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "76,976.30",
-      "change": "+0.25%",
-      "up": true
-    },
-    {
-      "symbol": "VIX",
-      "value": "15.16",
-      "change": "-5.31%",
+      "value": "1.1677",
+      "change": "-0.02",
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.738%",
-      "change": "+0.89%",
+      "symbol": "IBEX 35",
+      "value": "19868.20",
+      "change": "-0.74",
+      "up": false
+    },
+    {
+      "symbol": "BRENT",
+      "value": "94.39",
+      "change": "+0.65",
       "up": true
     },
     {
-      "symbol": "S&P 500",
-      "value": "7,674.37",
-      "change": "+0.43%",
+      "symbol": "GOLD",
+      "value": "4616.80",
+      "change": "+0.85",
       "up": true
     },
     {
-      "symbol": "DAX 40",
-      "value": "26,136.56",
-      "change": "+0.59%",
+      "symbol": "BTC",
+      "value": "77147.10",
+      "change": "-0.50",
+      "up": false
+    },
+    {
+      "symbol": "VIX",
+      "value": "15.82",
+      "change": "-5.50",
+      "up": false
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.74",
+      "change": "+0.85",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8562",
-      "change": "+0.13%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "98.82",
-      "change": "-0.08%",
+      "value": "0.8561",
+      "change": "-0.07",
       "up": false
     },
     {
-      "symbol": "Natural Gas",
-      "value": "2.77",
-      "change": "+1.46%",
+      "symbol": "S&P 500",
+      "value": "7674.37",
+      "change": "+0.43",
       "up": true
     },
     {
-      "symbol": "Copper",
-      "value": "6.4491",
-      "change": "-0.34%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7191",
-      "change": "-0.08%",
+      "symbol": "DAX 40",
+      "value": "26091.33",
+      "change": "-0.21",
       "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Francia entregará misiles interceptores a Ucrania tras nueva oleada de ataques rusos",
+        "en": "France to deliver interceptor missiles to Ukraine after fresh wave of Russian strikes"
+      },
+      "summary": {
+        "es": "El presidente Macron anunció el suministro de nuevos misiles interceptores a Ucrania tras los mortales ataques rusos que agotaron las defensas aéreas ucranianas. El movimiento señala una escalada del compromiso militar europeo con Kyiv, con implicaciones para el gasto en defensa y los presupuestos fiscales de la UE. Los mercados de energía y defensa europeos reaccionarán ante el riesgo de una prolongación del conflicto.",
+        "en": "President Macron announced the supply of new interceptor missiles to Ukraine following deadly Russian strikes that have depleted Ukrainian air defenses. The move signals an escalation in European military commitment to Kyiv, with implications for defense spending and EU fiscal budgets. European energy and defense markets will react to the risk of a prolonged conflict."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Mayor demanda de sistemas de defensa europeos",
+            "en": "Increased demand for European defense systems"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada del conflicto presiona precios energéticos",
+            "en": "Conflict escalation pressures energy prices"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor riesgo geopolítico pesa sobre el euro",
+            "en": "Heightened geopolitical risk weighs on euro"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Demanda de refugio seguro ante escalada militar",
+            "en": "Safe-haven demand on military escalation"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/france-to-deliver-interceptor-missiles-to-ukraine-after-fresh-wave-of-russian-strikes",
+      "published_at": "2026-08-22",
+      "time": "17h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Irán advierte a los países contra unirse a la 'guerra económica' de EE.UU.",
+        "en": "Iran warns countries against joining US 'economic war'"
+      },
+      "summary": {
+        "es": "Irán declaró que los países que se unan a las sanciones estadounidenses serán considerados enemigos, tras el anuncio de Trump de la operación económica 'más aplastante' contra Teherán. La amenaza iraní introduce un factor de riesgo geopolítico significativo para los vecinos regionales y socios comerciales de Irán, especialmente en el Golfo Pérsico y Asia Central. Los mercados de crudo y los activos de la región de MENA se verán presionados por la incertidumbre sobre el suministro.",
+        "en": "Iran declared that countries joining US sanctions would be considered enemies, following Trump's announcement of the 'most crushing' economic operation against Tehran. Iran's threat introduces significant geopolitical risk for regional neighbors and trading partners, especially in the Persian Gulf and Central Asia. Oil markets and MENA regional assets will face pressure from supply uncertainty."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo de interrupción del suministro iraní de petróleo",
+            "en": "Risk of Iranian oil supply disruption"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada geopolítica impulsa refugio seguro",
+            "en": "Geopolitical escalation drives safe-haven demand"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Presión sobre divisas de socios comerciales de Irán",
+            "en": "Pressure on currencies of Iran's trading partners"
+          }
+        },
+        {
+          "asset": "Strait of Hormuz shipping rates",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Amenazas iraníes elevan el riesgo de tránsito marítimo",
+            "en": "Iranian threats raise maritime transit risk"
+          }
+        }
+      ],
+      "confidence": 90,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/iran-warns-countries-against-joining-us-economic-war/a-78473222?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-08-23",
+      "time": "5h"
+    },
+    {
+      "id": 3,
       "tag": "CRITICAL",
       "region": "US",
       "title": {
-        "es": "La guerra comercial Canadá-EE.UU. escala tras el colapso de las negociaciones",
+        "es": "La guerra comercial entre Canadá y EE.UU. escala al colapsar las negociaciones",
         "en": "Canada-U.S. Trade War Escalates as Talks Collapse"
       },
       "summary": {
-        "es": "Las negociaciones para evitar nuevos aranceles de la administración Trump terminaron en un impasse, con Mark Carney suspendiendo las conversaciones. Los aranceles estadounidenses sobre Canadá y los aranceles de represalia canadienses entrarán en vigor, marcando una escalada significativa en la relación comercial bilateral. El impacto en cadenas de suministro integradas, el sector energético y los mercados de divisas norteamericanos es inmediato.",
-        "en": "Intense negotiations to stave off new Trump administration tariffs ended in an impasse, with Mark Carney suspending talks. U.S. tariffs on Canada and retaliatory Canadian tariffs will now come into effect, marking a significant escalation in the bilateral trade relationship. The impact on integrated supply chains, the energy sector, and North American currency markets is immediate."
+        "es": "Las negociaciones intensivas para evitar nuevos aranceles de la administración Trump terminaron en un impasse, con el primer ministro Carney suspendiendo las conversaciones. Los aranceles estadounidenses sobre Canadá y los aranceles de represalia canadienses sobre EE.UU. entrarán en vigor, amenazando cadenas de suministro integradas en sectores de energía, automóviles y agricultura. El escalamiento bilateral entre los dos mayores socios comerciales de América del Norte tiene implicaciones macro directas para la inflación en EE.UU. y el crecimiento en Canadá.",
+        "en": "Intensive negotiations to avert new Trump administration tariffs ended in an impasse, with Prime Minister Carney suspending talks. US tariffs on Canada and Canadian retaliatory tariffs on the US will take effect, threatening integrated supply chains in energy, auto, and agriculture sectors. The bilateral escalation between North America's two largest trading partners has direct macro implications for US inflation and Canadian growth."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +196,17 @@
           "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "Presión bajista sobre el CAD ante incertidumbre comercial",
-            "en": "Tariff escalation pressures CAD lower"
+            "es": "Deterioro comercial presiona al dólar canadiense",
+            "en": "Trade deterioration pressures the Canadian dollar"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Aranceles alimentan expectativas inflacionarias en EE.UU.",
+            "en": "Tariffs fuel US inflation expectations"
           }
         },
         {
@@ -121,218 +214,125 @@
           "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "Sectores exportadores canadienses en riesgo directo",
-            "en": "Canadian export sectors directly impaired"
+            "es": "Sectores exportadores canadienses bajo presión arancelaria",
+            "en": "Canadian export sectors under tariff pressure"
           }
         },
         {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Fuga hacia activos seguros ante escalada comercial",
-            "en": "Safe-haven demand on trade war escalation"
-          }
-        },
-        {
-          "asset": "North American auto sector equities",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Cadenas de suministro integradas severamente afectadas",
-            "en": "Integrated supply chains severely disrupted"
-          }
-        }
-      ],
-      "confidence": 91,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/21/world/canada/trump-tariffs-trade-no-deal-carney-canada.html",
-      "published_at": "2026-08-22",
-      "time": "1h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "es": "Ataque al centro comercial de Ucrania que mató a 16 es 'terror por diseño', dice el jefe de política exterior de la UE",
-        "en": "Attack on Ukraine shopping centre that killed 16 is 'terror by design', says EU foreign policy chief"
-      },
-      "summary": {
-        "es": "Drones rusos impactaron un concurrido centro comercial en Kryvyi Rih, ciudad natal de Zelenski, matando a 16 personas. La jefa de diplomacia de la UE, Kaja Kallas, amenazó con las sanciones más duras hasta la fecha contra Rusia. La escalada retórica y la perspectiva de nuevas sanciones energéticas o financieras tienen implicaciones directas para los mercados europeos y los precios energéticos.",
-        "en": "Russian drones struck a busy shopping centre in Kryvyi Rih, Zelensky's hometown, killing 16 people. EU foreign policy chief Kaja Kallas threatened the harshest sanctions yet against Russia. The rhetorical escalation and prospect of new energy or financial sanctions carry direct implications for European markets and energy prices."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de nuevas sanciones energéticas eleva el gas TTF",
-            "en": "New energy sanctions risk pushes TTF gas higher"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada del conflicto debilita el euro",
-            "en": "Conflict escalation weighs on euro"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aversión al riesgo regional ante nueva escalada bélica",
-            "en": "Regional risk-off on renewed war escalation"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Demanda de refugio seguro ante escalada geopolítica",
-            "en": "Safe-haven demand on geopolitical escalation"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/aug/22/ukraine-shopping-centre-attack-deaths-russia-terror-by-design-kaja-kallas-kryvyi-rih",
-      "published_at": "2026-08-22",
-      "time": "5h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "APAC",
-      "title": {
-        "es": "Por qué China cree que puede resistir las amenazas económicas de Trump sobre Irán",
-        "en": "Why China Thinks It Can Resist Trump's Economic Threats on Iran"
-      },
-      "summary": {
-        "es": "Analistas chinos señalan que Beijing puede presionar el suministro de minerales críticos a EE.UU. y tiene reservas suficientes de petróleo para resistir la pérdida del crudo iraní. Esto indica que China está evaluando activamente su capacidad de contramedidas en la guerra económica con Washington, con implicaciones para cadenas de suministro de semiconductores, vehículos eléctricos y tierras raras. El posicionamiento revela una nueva fase de desacoplamiento estratégico.",
-        "en": "Chinese analysts say Beijing can squeeze U.S. critical mineral supplies and has enough oil reserves to withstand losing Iranian crude. This signals China is actively assessing its countermeasure capacity in the economic war with Washington, with implications for semiconductor, EV, and rare earth supply chains. The positioning reveals a new phase of strategic decoupling."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Critical minerals equities (lithium, rare earths)",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Riesgo de restricción china eleva primas de minerales críticos",
-            "en": "China restriction risk lifts critical mineral premiums"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Sanciones a Irán con China resistiendo reducen oferta global",
-            "en": "Iran sanctions with China resisting tighten global supply"
-          }
-        },
-        {
-          "asset": "US semiconductor equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Represalias chinas en minerales amenazan producción de chips",
-            "en": "Chinese mineral retaliation threatens chip production"
-          }
-        },
-        {
-          "asset": "EM currencies",
+          "asset": "WTI crude",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Reconfiguración de alianzas comerciales genera volatilidad EM",
-            "en": "Trade alliance reshuffling drives EM volatility"
+            "es": "Disrupciones en flujos de energía Canada-EE.UU.",
+            "en": "Disruption risk to Canada-US energy flows"
           }
         }
       ],
-      "confidence": 87,
+      "confidence": 92,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/21/world/asia/china-iran-trump-economic-threats.html",
-      "published_at": "2026-08-21",
-      "time": "15h"
+      "source_url": "https://www.nytimes.com/2026/08/21/world/canada/trump-tariffs-trade-no-deal-carney-canada.html",
+      "published_at": "2026-08-22",
+      "time": "14h"
     },
     {
       "id": 4,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "APAC",
       "title": {
-        "es": "El presidente iraní dice que es momento de acabar la guerra con EE.UU. desde una 'posición de fuerza'",
-        "en": "Iranian president says time to end war with US from 'position of strength'"
+        "es": "Ataque aéreo del ejército de Myanmar mata a 14 personas en un monasterio budista",
+        "en": "Myanmar military airstrike kills 14 at Buddhist monastery: reports"
       },
       "summary": {
-        "es": "El presidente iraní afirmó que es el momento de poner fin al conflicto con EE.UU. negociando desde una posición de fortaleza, mientras los cancilleres de Omán e Irán sostienen una llamada en medio de los preparativos de Washington para nuevas sanciones económicas. La señal de apertura iraní, condicionada y confrontacional en su retórica, sugiere una ventana diplomática tensa con implicaciones para el precio del petróleo y la dinámica de sanciones.",
-        "en": "Iran's president stated it is time to end the conflict with the U.S. by negotiating from a position of strength, as Omani and Iranian foreign ministers held a call amid Washington's preparations for new economic sanctions. The conditional and rhetorically confrontational Iranian opening signal suggests a tense diplomatic window with implications for oil prices and sanctions dynamics."
+        "es": "El ejército de Myanmar atacó un monasterio budista en el centro del país mientras unos 100 civiles asistían a un retiro de meditación, matando a 14 personas. El ataque a un lugar religioso protegido subraya la escalada de la violencia de la junta militar contra la población civil y podría intensificar las presiones internacionales de sanciones. El conflicto prolongado en Myanmar tiene implicaciones para la estabilidad regional en el sudeste asiático, el comercio de materias primas y el corredor de inversión ASEAN.",
+        "en": "Myanmar's military struck a Buddhist monastery in central Myanmar while around 100 civilians attended a meditation retreat, killing 14. The attack on a protected religious site underscores the junta's escalating violence against civilians and could intensify international sanctions pressure. The protracted conflict in Myanmar has implications for Southeast Asian regional stability, commodity trade, and ASEAN investment corridors."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "ASEAN equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad regional pesa sobre mercados del sudeste asiático",
+            "en": "Regional instability weighs on Southeast Asian markets"
+          }
+        },
+        {
+          "asset": "Myanmar kyat (MMK)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada del conflicto aumenta riesgo de nuevas sanciones",
+            "en": "Conflict escalation raises new sanctions risk"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/myanmar-military-airstrike-kills-14-at-buddhist-monastery-reports/a-78468290?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-08-22",
+      "time": "18h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Europa, atrapada en sus muros",
+        "en": "Europe, trapped within its walls"
+      },
+      "summary": {
+        "es": "El análisis señala la creciente dependencia de España y la UE de Marruecos para el control migratorio fronterizo, una relación de subcontratación que genera vulnerabilidades geopolíticas. Esta dependencia confiere a Rabat una considerable influencia sobre Bruselas en asuntos como el Sáhara Occidental, las relaciones comerciales y la política energética norteafricana. El equilibrio de poder entre la UE y Marruecos en el corredor mediterráneo occidental es relevante para inversores expuestos a mercados del norte de África y activos energéticos del Magreb.",
+        "en": "The analysis highlights Spain's and the EU's growing dependence on Morocco for border migration control, a subcontracting relationship that generates geopolitical vulnerabilities. This dependency grants Rabat considerable leverage over Brussels on issues including Western Sahara, trade relations, and North African energy policy. The EU-Morocco power balance across the western Mediterranean corridor is relevant for investors exposed to North African markets and Maghreb energy assets."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European equities",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Vulnerabilidad fronteriza afecta cohesión política europea",
+            "en": "Border vulnerability affects European political cohesion"
+          }
+        },
+        {
+          "asset": "North Africa sovereign bonds",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor influencia marroquí puede ajustar condiciones de financiación",
+            "en": "Greater Moroccan leverage may adjust financing conditions"
+          }
+        }
+      ],
+      "confidence": 65,
+      "source": "El País",
+      "source_url": "https://elpais.com/opinion/2026-08-23/europa-atrapada-en-sus-muros.html",
+      "published_at": "2026-08-23",
+      "time": "3h"
+    },
+    {
+      "id": 6,
+      "tag": "CRITICAL",
+      "region": "EU",
+      "title": {
+        "es": "El ataque al centro comercial de Ucrania que mató a 16 personas es 'terror por diseño', dice la jefa de política exterior de la UE",
+        "en": "Attack on Ukraine shopping centre that killed 16 is 'terror by design', says EU foreign policy chief"
+      },
+      "summary": {
+        "es": "Kaja Kallas amenazó con las sanciones más duras hasta ahora contra Rusia tras el ataque de drones en Kryvyi Rih, ciudad natal de Zelensky, que mató a 16 civiles. La retórica de máxima presión de Bruselas sugiere un nuevo paquete de sanciones inminente, con potencial impacto en los flujos de materias primas y la exposición bancaria europea a activos rusos. El ataque deliberado a infraestructura civil eleva el riesgo de fragmentación diplomática más amplia.",
+        "en": "Kaja Kallas threatened the harshest yet sanctions against Russia following the drone strike on Kryvyi Rih, Zelensky's hometown, which killed 16 civilians. Brussels' maximum-pressure rhetoric suggests an imminent new sanctions package, with potential impact on commodity flows and European bank exposure to Russian assets. The deliberate strike on civilian infrastructure raises the risk of broader diplomatic fragmentation."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
-          "direction": "mixed",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Señales diplomáticas mixtas mantienen volatilidad en el petróleo",
-            "en": "Mixed diplomatic signals sustain oil price volatility"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre geopolítica MENA respalda el oro",
-            "en": "MENA geopolitical uncertainty supports gold"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Perspectiva de alivio de sanciones influye en divisas EM",
-            "en": "Potential sanctions relief outlook influences EM currencies"
-          }
-        }
-      ],
-      "confidence": 82,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/8/22/iranian-president-says-time-to-end-war-with-us-from-position-of?traffic_source=rss",
-      "published_at": "2026-08-22",
-      "time": "5h"
-    },
-    {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "GLOBAL",
-      "title": {
-        "es": "El transporte marítimo mundial se atasca entre conflictos y crisis climáticas",
-        "en": "Global maritime shipping congested between conflicts and climate crises"
-      },
-      "summary": {
-        "es": "Los precios de los fletes marítimos han subido un 140% desde febrero, reflejando la acumulación de bloqueos desde el estrecho de Ormuz hasta el Canal de Panamá. La confluencia de tensiones geopolíticas y disrupciones climáticas crea un choque de oferta en el transporte global con efectos inflacionarios directos. Las cadenas de suministro manufactureras y energéticas en Europa y Asia son especialmente vulnerables.",
-        "en": "Global shipping freight prices have risen 140% since February, reflecting accumulated blockages from the Strait of Hormuz to the Panama Canal. The confluence of geopolitical tensions and climate disruptions creates a global shipping supply shock with direct inflationary effects. Manufacturing and energy supply chains in Europe and Asia are especially vulnerable."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Shipping equities (Baltic Dry Index proxies)",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Escasez de capacidad de flete eleva ingresos navieros",
-            "en": "Freight capacity scarcity boosts shipping revenues"
+            "es": "Nuevas sanciones podrían restringir oferta de crudo ruso",
+            "en": "New sanctions could restrict Russian crude supply"
           }
         },
         {
@@ -340,83 +340,26 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Costes de importación más altos comprimen márgenes industriales",
-            "en": "Higher import costs compress industrial margins"
+            "es": "Riesgo de sanciones pesa sobre empresas con exposición rusa",
+            "en": "Sanctions risk weighs on firms with Russian exposure"
           }
         },
         {
-          "asset": "Global inflation expectations",
+          "asset": "Natural gas (TTF)",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Fletes al alza transmiten presión inflacionaria global",
-            "en": "Rising freight costs transmit global inflationary pressure"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Disrupciones en Ormuz encarecen el transporte de crudo",
-            "en": "Hormuz disruptions raise crude shipping costs"
+            "es": "Tensión energética ante posibles nuevas restricciones",
+            "en": "Energy tension on potential new supply restrictions"
           }
         }
       ],
       "confidence": 85,
-      "source": "El País",
-      "source_url": "https://elpais.com/economia/2026-08-22/el-transporte-maritimo-mundial-se-atasca-entre-conflictos-y-crisis-climaticas.html",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/aug/22/ukraine-shopping-centre-attack-deaths-russia-terror-by-design-kaja-kallas-kryvyi-rih",
       "published_at": "2026-08-22",
-      "time": "2h"
-    },
-    {
-      "id": 6,
-      "tag": "CRITICAL",
-      "region": "AFRICA",
-      "title": {
-        "es": "2.500 muertos y en aumento: la ONU dice que el brote de ébola en la RDC crece 'exponencialmente'",
-        "en": "2,500 dead and rising: UN says DR Congo Ebola outbreak 'growing exponentially'"
-      },
-      "summary": {
-        "es": "El brote de ébola en la República Democrática del Congo, ya el mayor en la historia del país, registra más de 2.500 muertes con la mitad ocurridas en los últimos 20 días, según la ONU. La aceleración exponencial amenaza con desbordar la capacidad sanitaria regional y podría impactar la producción minera de minerales críticos en una de las regiones más ricas del mundo en recursos. Las rutas comerciales y la estabilidad del gobierno central son factores de riesgo adicionales.",
-        "en": "The Ebola outbreak in the Democratic Republic of Congo, already the largest in the country's history, has recorded over 2,500 deaths with half occurring in the last 20 days, per the UN. The exponential acceleration risks overwhelming regional health capacity and could impact critical mineral mining production in one of the world's most resource-rich regions. Trade routes and central government stability are additional risk factors."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Cobalt futures",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de disrupción minera en RDC eleva el cobalto",
-            "en": "DRC mining disruption risk lifts cobalt prices"
-          }
-        },
-        {
-          "asset": "Critical minerals equities (lithium, cobalt)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Suministro de minerales DRC en riesgo por crisis sanitaria",
-            "en": "DRC mineral supply at risk from health crisis"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad africana genera aversión al riesgo en divisas EM",
-            "en": "African instability drives EM currency risk-off"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260821-2-500-dead-and-rising-un-says-dr-congo-ebola-outbreak-growing-exponentially",
-      "published_at": "2026-08-21",
-      "time": "16h"
+      "time": "1d"
     }
   ],
-  "market_updated_at": "2026-08-23T06:18:47.870Z"
+  "market_updated_at": "2026-08-23T06:34:26.975Z"
 }
