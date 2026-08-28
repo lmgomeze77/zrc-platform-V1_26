@@ -10,6 +10,7 @@ import PricingPage from "./pages/PricingPage";
 import MacroPulse from "./pages/intelligence/MacroPulse";
 import GeoRiskML from "./pages/intelligence/GeoRiskML";
 import GeoRiskIndex from "./pages/intelligence/GeoRiskIndex";
+import GeoRiskWorldMap from "./pages/intelligence/GeoRiskWorldMap";
 import ZenithAssistant from "./components/assistant/ZenithAssistant";
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -167,7 +168,7 @@ const LEGAL_TEXT = {
 
 const T = {
   es: {
-    nav: ["Observatorio", "Intelligence", "GeoRisk Index", "Brokerage", "Advisory", "Academia", "Inner Circle"],
+    nav: ["Observatorio", "Intelligence", "GeoRisk Index", "World Map", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "INTELIGENCIA ESTRATÉGICA · INVERSIÓN · EJECUCIÓN",
       h1: "Donde la Inteligencia",
@@ -259,7 +260,7 @@ const T = {
     live: "EN VIVO",
   },
   en: {
-    nav: ["Observatory", "Intelligence", "GeoRisk Index", "Brokerage", "Advisory", "Academia", "Inner Circle"],
+    nav: ["Observatory", "Intelligence", "GeoRisk Index", "World Map", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "STRATEGIC INTELLIGENCE · INVESTMENT · EXECUTION",
       h1: "Where Geopolitical",
@@ -951,7 +952,7 @@ const Nav = ({ lang, setLang, onNav }) => {
   const { user, openLogin, logout, openPricing } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const ids = ["observatory", "intelligence", "georisk-index", "brokerage", "advisory", "academia", "inner-circle"];
+  const ids = ["observatory", "intelligence", "georisk-index", "mapa-geopolitico", "brokerage", "advisory", "academia", "inner-circle"];
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
@@ -1597,15 +1598,30 @@ const Footer = ({ lang }) => {
 const ZRCPlatform = () => {
   const [lang, setLang] = useState("es");
   const [icPage, setIcPage] = useState(null);
+  // Público, sin login — el mapa es el imán de tráfico/SEO de la familia
+  // GeoRisk, así que su apertura no pasa por ningún gate de auth/tier
+  // (a diferencia de showGeoRisk/showGeoRiskML, que solo se activan desde
+  // botones ya protegidos dentro de Intelligence).
+  const [showWorldMap, setShowWorldMap] = useState(false);
 
   const onNav = (id) => {
     if (id === "inner-circle") { setIcPage("inner-circle"); return; }
+    if (id === "mapa-geopolitico") { setShowWorldMap(true); return; }
     if (id === "hero") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const openWorldMap = () => {
+    setShowWorldMap(true);
+    window.history.pushState({}, "", "#mapa-geopolitico");
+  };
+  const closeWorldMap = () => {
+    setShowWorldMap(false);
+    window.history.pushState({}, "", window.location.pathname + window.location.search);
   };
 
   // Deep links (e.g. shared on LinkedIn as /#georisk-index) load the page
@@ -1694,6 +1710,41 @@ const ZRCPlatform = () => {
       <GoldDivider />
       <GeoRiskIndex lang={lang} useAuth={useAuth} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} />
       <GoldDivider />
+
+      <Sec id="mapa-geopolitico">
+        <SH
+          label={lang === "es" ? "04 — GEORISK WORLD MAP" : "04 — GEORISK WORLD MAP"}
+          title={lang === "es" ? "El Mapa Geopolítico Interactivo de ZRC" : "The ZRC Interactive Geopolitical Map"}
+          sub={lang === "es"
+            ? "38 economías clave agrupadas por alineamiento geopolítico real: comercio, aranceles, inversión, voto en Naciones Unidas, salud diplomática, dependencias energéticas y tecnológicas, turismo y estrategia de país. Acceso público, sin registro."
+            : "38 key economies clustered by real geopolitical alignment: trade, tariffs, investment, UN voting, diplomatic health, energy and tech dependencies, tourism and country strategy. Public access, no sign-up required."}
+        />
+        <FadeIn delay={0.1}>
+          <div style={{
+            padding: "28px 32px", background: C.surface, border: `1px solid ${C.border}`,
+            display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, flexWrap: "wrap",
+          }}>
+            <div style={{ maxWidth: 560 }}>
+              <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.7, margin: 0 }}>
+                {lang === "es"
+                  ? "Colorea el mapa por bloque geopolítico, alineamiento con EE.UU./China, o riesgo ZRC — y abre cualquier país para ver su ficha completa. Es la capa cualitativa del mismo motor de research que alimenta GeoRisk Dashboard y GeoRisk Predictive ML."
+                  : "Color the map by geopolitical bloc, US/China alignment, or ZRC risk — and open any country for its full profile. It's the qualitative layer of the same research engine behind GeoRisk Dashboard and GeoRisk Predictive ML."}
+              </p>
+            </div>
+            <button
+              onClick={openWorldMap}
+              style={{
+                padding: "14px 30px", background: C.gold, color: C.bg, border: "none",
+                fontFamily: F.mono, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
+                textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
+              }}
+            >
+              {lang === "es" ? "Explorar el mapa →" : "Explore the map →"}
+            </button>
+          </div>
+        </FadeIn>
+      </Sec>
+      <GoldDivider />
       <Brokerage lang={lang} />
       <GoldDivider />
       <Advisory lang={lang} />
@@ -1705,6 +1756,12 @@ const ZRCPlatform = () => {
       <Community lang={lang} onAccess={() => setIcPage("inner-circle-private")} />
       <Footer lang={lang} />
       <ZenithAssistant lang={lang} onNav={onNav} hidden={!!icPage} />
+
+      {showWorldMap && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+          <GeoRiskWorldMap onClose={closeWorldMap} onOpenIntelligence={() => { closeWorldMap(); setTimeout(() => onNav("intelligence"), 50); }} />
+        </div>
+      )}
     </AuthProvider>
   );
 };
