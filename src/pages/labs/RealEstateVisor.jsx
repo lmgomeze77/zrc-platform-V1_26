@@ -733,7 +733,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
           <MapContainer center={[40.4168, -3.7038]} zoom={6} scrollWheelZoom style={{ width: "100%", height: "100%", background: C.surface }}>
             <LayersControl position="topright">
               <BaseLayer checked name={t(lang, "mapCartoDark")}>
-                <TileLayer attribution='&copy; CARTO' url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" />
+                <TileLayer attribution='&copy; Esri' url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}" />
               </BaseLayer>
               <BaseLayer name={t(lang, "mapOSM")}>
                 <TileLayer attribution='&copy; OSM' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
