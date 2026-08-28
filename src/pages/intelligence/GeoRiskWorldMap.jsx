@@ -1,6 +1,6 @@
 // GeoRiskWorldMap.jsx — ZRC GeoRisk World Map
 // Mapa geopolítico interactivo público — sin login, sin muro de pago.
-// Agrupa ~38 economías clave por alineamiento geopolítico (EE.UU. / China /
+// Agrupa ~42 economías clave por alineamiento geopolítico (EE.UU. / China /
 // Rusia), con datos de comercio, inversión, voto en NU, salud diplomática,
 // dependencias energéticas y tecnológicas, turismo y estrategia de país.
 // Es el imán de tráfico/SEO de la familia GeoRisk — desde aquí se empuja a
@@ -50,7 +50,7 @@ function computeBloc(c) {
 const diploLabel = (v) => (v >= 2 ? "Socio estratégico" : v === 1 ? "Cordial" : v === 0 ? "Normal" : v === -1 ? "Tensa" : "Crisis");
 const diploColor = (v) => (v >= 1 ? C.green : v === 0 ? C.textMuted : v === -1 ? C.amber : C.red);
 
-// ── Dataset — ~38 economías clave (G20 + bloques estratégicos) ──────────
+// ── Dataset — ~42 economías clave (G20 + bloques estratégicos) ──────────
 // Estimaciones compuestas de ZRC Research (metodología ilustrativa, misma
 // naturaleza que el resto de la plataforma GeoRisk) — no son series
 // oficiales en vivo de UN Comtrade / UNGA / IMF, sino una lectura editorial
@@ -330,6 +330,24 @@ const COUNTRIES = [
     tourismInbound: 9, tourismOutbound: 4, tourismTopSource: "Zimbabue / Reino Unido",
     sanctions: "Ninguna relevante — bajo escrutinio de EE.UU. por vínculos con Rusia.", riskScore: 57 },
 
+  { id: "ke", name: "Kenia", flag: "🇰🇪", lat: -1.29, lng: 36.82, region: "África Oriental", gdp: 0.12,
+    usAlign: 40, cnAlign: 25, ruAlign: -5, blocs: ["AfCFTA", "EAC"],
+    tariffAvg: 10, tariffNote: "Beneficiaria de AGOA; negocia un TLC bilateral propio con EE.UU. tras el estancamiento UE-EAC.", fdiIn: 2, fdiOut: 0.3, unAlignUS: 42,
+    diploUS: 1, diploEU: 1, diploCN: 0, strategy: "Hub diplomático y tecnológico de África Oriental", strategyNote: "Sede regional de la ONU y centro fintech continental (M-Pesa), con deuda china elevada por infraestructura (ferrocarril SGR).",
+    energyImportShare: 25, energySuppliers: "Crudo de Oriente Medio; fuerte desarrollo geotérmico doméstico",
+    techDependency: "'Silicon Savannah' — ecosistema fintech/startups líder de África y creciente hub de datacenters regionales.",
+    tourismInbound: 2, tourismOutbound: 1, tourismTopSource: "Uganda / Tanzania",
+    sanctions: "Ninguna relevante.", riskScore: 49 },
+
+  { id: "cd", name: "R. D. Congo", flag: "🇨🇩", lat: -4.32, lng: 15.31, region: "África Central", gdp: 0.07,
+    usAlign: 10, cnAlign: 55, ruAlign: 5, blocs: ["SADC", "AfCFTA"],
+    tariffAvg: 11, tariffNote: "Sin TLC relevantes; economía extractiva orientada a exportación de minerales en bruto.", fdiIn: 2, fdiOut: 0.1, unAlignUS: 30,
+    diploUS: 0, diploEU: 0, diploCN: 1, strategy: "Estado minero bajo influencia china", strategyNote: "Renegocia el acuerdo Sicomines con Pekín para capturar más valor local del boom del cobalto/coltán.",
+    energyImportShare: 15, energySuppliers: "Enorme potencial hidroeléctrico (presa de Inga) sin explotar; importa combustibles refinados",
+    techDependency: "Controla ~70% del cobalto mundial, insumo crítico para baterías EV — la mayoría de las minas están en manos de capital chino.",
+    tourismInbound: 0.1, tourismOutbound: 0.1, tourismTopSource: "Ruanda / Uganda",
+    sanctions: "Sanciones selectivas de EE.UU./UE a grupos armados en el este del país (M23).", riskScore: 79 },
+
   { id: "br", name: "Brasil", flag: "🇧🇷", lat: -15.79, lng: -47.88, region: "Sudamérica", gdp: 2.2,
     usAlign: 25, cnAlign: 20, ruAlign: 10, blocs: ["BRICS+", "Mercosur"],
     tariffAvg: 11, tariffNote: "Mercosur negocia TLC con la UE tras 20 años de estancamiento.", fdiIn: 65, fdiOut: 15, unAlignUS: 40,
@@ -356,6 +374,24 @@ const COUNTRIES = [
     techDependency: "Yacimientos de litio clave para baterías globales; baja industria de semis.",
     tourismInbound: 7, tourismOutbound: 5, tourismTopSource: "Brasil / Chile",
     sanctions: "Ninguna relevante.", riskScore: 50 },
+
+  { id: "cl", name: "Chile", flag: "🇨🇱", lat: -33.45, lng: -70.65, region: "Sudamérica", gdp: 0.5,
+    usAlign: 55, cnAlign: 15, ruAlign: -15, blocs: ["Alianza del Pacífico", "CPTPP"],
+    tariffAvg: 5, tariffNote: "Red de TLC más extensa de Latinoamérica (incl. EE.UU., UE, China, CPTPP).", fdiIn: 20, fdiOut: 8, unAlignUS: 55,
+    diploUS: 1, diploEU: 1, diploCN: 0, strategy: "Ancla institucional andina", strategyNote: "Mayor reserva de litio del mundo junto a Argentina/Bolivia; la estabilidad institucional atrae inversión occidental en la transición energética.",
+    energyImportShare: 60, energySuppliers: "Importa GNL y crudo; fuerte desarrollo solar/eólico doméstico",
+    techDependency: "Mayor exportador mundial de cobre y segundo productor de litio — insumos críticos duales para electrificación.",
+    tourismInbound: 4, tourismOutbound: 3, tourismTopSource: "Argentina / Brasil",
+    sanctions: "Ninguna relevante.", riskScore: 33 },
+
+  { id: "co", name: "Colombia", flag: "🇨🇴", lat: 4.71, lng: -74.07, region: "Sudamérica", gdp: 0.4,
+    usAlign: 45, cnAlign: 10, ruAlign: -10, blocs: ["Alianza del Pacífico"],
+    tariffAvg: 7, tariffNote: "TLC vigente con EE.UU. desde 2012; fricción arancelaria puntual con Washington en 2025.", fdiIn: 17, fdiOut: 3, unAlignUS: 50,
+    diploUS: 0, diploEU: 1, diploCN: 0, strategy: "Aliado histórico en reconfiguración", strategyNote: "El giro izquierdista del gobierno introdujo fricciones puntuales con Washington sin romper la alianza de seguridad y comercio de fondo.",
+    energyImportShare: -15, energySuppliers: "Exportador neto de petróleo y carbón, en transición hacia renovables",
+    techDependency: "Hub regional de servicios BPO/nearshoring de software en expansión.",
+    tourismInbound: 5, tourismOutbound: 4, tourismTopSource: "EE.UU. / Venezuela",
+    sanctions: "Ninguna relevante.", riskScore: 51 },
 
   { id: "ca", name: "Canadá", flag: "🇨🇦", lat: 45.42, lng: -75.7, region: "Norteamérica", gdp: 2.2,
     usAlign: 90, cnAlign: -25, ruAlign: -55, blocs: ["USMCA", "OTAN", "G7"],
