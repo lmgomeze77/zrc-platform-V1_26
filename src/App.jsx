@@ -1716,8 +1716,8 @@ const ZRCPlatform = () => {
           label={lang === "es" ? "04 — GEORISK WORLD MAP" : "04 — GEORISK WORLD MAP"}
           title={lang === "es" ? "El Mapa Geopolítico Interactivo de ZRC" : "The ZRC Interactive Geopolitical Map"}
           sub={lang === "es"
-            ? "38 economías clave agrupadas por alineamiento geopolítico real: comercio, aranceles, inversión, voto en Naciones Unidas, salud diplomática, dependencias energéticas y tecnológicas, turismo y estrategia de país. Acceso público, sin registro."
-            : "38 key economies clustered by real geopolitical alignment: trade, tariffs, investment, UN voting, diplomatic health, energy and tech dependencies, tourism and country strategy. Public access, no sign-up required."}
+            ? "42 economías clave agrupadas por alineamiento geopolítico real: comercio, aranceles, inversión, voto en Naciones Unidas, salud diplomática, dependencias energéticas y tecnológicas, turismo y estrategia de país. Acceso público, sin registro."
+            : "42 key economies clustered by real geopolitical alignment: trade, tariffs, investment, UN voting, diplomatic health, energy and tech dependencies, tourism and country strategy. Public access, no sign-up required."}
         />
         <FadeIn delay={0.1}>
           <div style={{
