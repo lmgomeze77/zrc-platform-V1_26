@@ -1,185 +1,164 @@
 {
-  "generated_at": "2026-08-27T17:17:22.048Z",
+  "generated_at": "2026-08-28T18:09:46.432Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1650",
-      "change": "-0.03%",
+      "value": "1.1609",
+      "change": "-0.38%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,025",
-      "change": "+0.70%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "88.22",
-      "change": "-0.34%",
+      "value": "19881.60",
+      "change": "-0.96%",
       "up": false
     },
     {
-      "symbol": "WTI Crude",
-      "value": "82.82",
-      "change": "-0.86%",
+      "symbol": "BRENT",
+      "value": "88.03",
+      "change": "-0.55%",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,603",
-      "change": "-0.15%",
+      "symbol": "GOLD",
+      "value": "4594.00",
+      "change": "-0.28%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "80,376",
-      "change": "+2.43%",
+      "symbol": "BTC",
+      "value": "79933.40",
+      "change": "+3.14%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "14.65",
-      "change": "-3.68%",
+      "value": "14.92",
+      "change": "+0.42%",
+      "up": true
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.66",
+      "change": "-0.09%",
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.68%",
-      "change": "+0.02%",
+      "symbol": "EUR/GBP",
+      "value": "0.8574",
+      "change": "+0.05%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,730.99",
-      "change": "+0.72%",
+      "value": "7730.99",
+      "change": "+0.27%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "26,540.92",
-      "change": "+0.66%",
+      "value": "26354.37",
+      "change": "+0.26%",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8559",
-      "change": "-0.11%",
-      "up": false
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.23",
-      "change": "+0.08%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.90",
-      "change": "-0.33%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.59",
-      "change": "-0.18%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "7.2012",
-      "change": "-0.05%",
-      "up": false
     }
   ],
   "headlines": [
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "US",
       "title": {
-        "es": "Irán y Qatar celebran conversaciones sobre el Estrecho de Ormuz mientras el bloqueo naval de EE.UU. estrangula las exportaciones de petróleo iraní",
-        "en": "Iran, Qatar hold Hormuz talks as US blockade squeezes Iran oil exports"
+        "es": "Warsh resalta su compromiso para reconducir la inflación al 2% y anuncia medidas si es necesario",
+        "en": "Fed's Warsh highlights commitment to return inflation to 2% and announces measures if necessary"
       },
       "summary": {
-        "es": "Funcionarios iraníes y qataríes se reunieron en Teherán para abordar el futuro del Estrecho de Ormuz bajo un bloqueo naval estadounidense que está asfixiando las exportaciones de petróleo de Irán. La reunión se produce tras una semana de intensa diplomacia regional —incluyendo contactos con Omán— y coincide con la visita del primer ministro qatarí a Teherán. El bloqueo plantea un riesgo directo de interrupción del tráfico de hidrocarburos por un corredor que canaliza cerca del 20% del suministro mundial de petróleo.",
-        "en": "Iranian and Qatari officials met in Tehran to address the future of the Strait of Hormuz amid a US naval blockade choking Iran's oil exports. The talks follow a week of intense regional diplomacy including contacts with Oman, and coincide with the Qatari PM's visit to Tehran. The blockade poses a direct risk of disruption to hydrocarbon traffic through a corridor handling roughly 20% of global oil supply."
+        "es": "El nuevo presidente de la Reserva Federal, Kevin Warsh, en su debut en Jackson Hole, ha señalado que la inflación en EE.UU. es 'preocupante' y ha comprometido medidas correctivas, incluyendo posibles subidas de tipos, contradiciendo las preferencias de Trump. Este mensaje dispara las expectativas de endurecimiento monetario y añade tensión político-institucional entre la Casa Blanca y la Fed. El diferencial de política monetaria entre EE.UU. y otras grandes economías se amplía, con implicaciones directas para el dólar y los activos de riesgo global.",
+        "en": "New Federal Reserve Chair Kevin Warsh, in his Jackson Hole debut, flagged U.S. inflation as 'concerning' and pledged corrective action including potential rate hikes, directly contradicting Trump's preferences. This signals renewed monetary tightening risk and heightens political-institutional tension between the White House and the Fed. The widening policy divergence with other major central banks has direct implications for the dollar and global risk assets."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
+          "asset": "US 10Y Treasury",
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de cierre de Ormuz presiona precios al alza",
-            "en": "Hormuz closure risk drives prices higher"
+            "es": "Expectativas de subida de tipos elevan rendimientos",
+            "en": "Rate hike expectations push yields higher"
+          }
+        },
+        {
+          "asset": "USD Index (DXY)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Política monetaria más restrictiva fortalece el dólar",
+            "en": "Hawkish Fed stance strengthens the dollar"
           }
         },
         {
           "asset": "Gold",
-          "direction": "up",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda de refugio seguro ante escalada geopolítica",
-            "en": "Safe-haven demand on geopolitical escalation"
+            "es": "Tipos reales más altos presionan al oro",
+            "en": "Higher real rates pressure gold prices"
           }
         },
         {
           "asset": "EM currencies",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Importadores de petróleo emergentes bajo presión cambiaria",
-            "en": "Oil-importing EM economies face currency pressure"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Flujos de refugio sostienen bonos del Tesoro",
-            "en": "Safe-haven flows support Treasury bonds"
+            "es": "Dólar más fuerte y salidas de capital afectan emergentes",
+            "en": "Stronger dollar and capital outflows hit EM currencies"
           }
         }
       ],
       "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260827-iran-qatar-hold-hormuz-talks-as-us-blockade-chokes-iran-oil-imports",
-      "published_at": "2026-08-27",
-      "time": "5h"
+      "source": "El País",
+      "source_url": "https://elpais.com/economia/2026-08-28/warsh-resalta-su-compromiso-para-reconducir-la-inflacion-al-2-y-anuncia-medidas-si-es-necesario.html",
+      "published_at": "2026-08-28",
+      "time": "1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "Rusia advierte que el Reino Unido 'está jugando con fuego' tras informes de que el jefe de la CIA advirtió al Kremlin no atacar a la OTAN",
+        "es": "Rusia dice que el Reino Unido 'está jugando con fuego' en medio de informes de que el jefe de la CIA advirtió al Kremlin no atacar a la OTAN",
         "en": "Russia says UK 'playing with fire' amid reports CIA chief has warned Kremlin not to attack NATO"
       },
       "summary": {
-        "es": "Moscú amenazó con atacar objetivos militares dentro y fuera de Ucrania en respuesta al anuncio del Reino Unido de ayudar a Kiev a producir misiles de largo alcance. Los informes de que el director de la CIA advirtió personalmente al Kremlin contra atacar a la OTAN elevan el umbral de riesgo de escalada directa OTAN-Rusia. La combinación de declaraciones rusas sobre represalias y el contexto de la advertencia de la CIA sugiere que el riesgo de escalada fuera del teatro ucraniano ha aumentado materialmente.",
-        "en": "Moscow threatened to strike military targets inside and outside Ukraine in response to the UK's announcement of helping Kyiv produce long-range missiles. Reports that the CIA director personally warned the Kremlin against attacking NATO raise the threshold of direct NATO-Russia escalation risk. The combination of Russian retaliation threats and the CIA warning context suggests out-of-theater escalation risk has materially increased."
+        "es": "Moscú amenaza con represalias contra el Reino Unido tras el anuncio de que Londres ayudará a Ucrania a producir misiles de largo alcance, mientras la CIA supuestamente advierte al Kremlin de no atacar territorio de la OTAN. La escalada retórica y operativa eleva el riesgo de extensión del conflicto más allá de Ucrania, con potencial impacto directo en la seguridad europea. Los mercados de energía y defensa europeos, así como el euro, se ven directamente expuestos.",
+        "en": "Moscow threatens retaliation against the UK after London announced it will help Ukraine produce long-range missiles, while the CIA reportedly warned the Kremlin against attacking NATO territory. The rhetorical and operational escalation raises the risk of conflict spillover beyond Ukraine, with direct implications for European security. European energy and defense markets, as well as the euro, are directly exposed."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "high",
           "note": {
-            "es": "Escalada OTAN-Rusia pesa sobre activos europeos",
-            "en": "NATO-Russia escalation weighs on European assets"
+            "es": "Escalada OTAN-Rusia impulsa gasto en defensa",
+            "en": "NATO-Russia escalation drives defense spending expectations"
           }
         },
         {
-          "asset": "GBP/USD",
+          "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Libra bajo presión por exposición directa del Reino Unido",
-            "en": "Sterling pressured by direct UK exposure"
+            "es": "Riesgo geopolítico europeo presiona al euro",
+            "en": "European geopolitical risk weighs on the euro"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Tensiones con Rusia añaden prima de riesgo energético",
+            "en": "Russia tensions add energy risk premium"
           }
         },
         {
@@ -187,17 +166,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada geopolítica refuerza demanda de refugio",
-            "en": "Geopolitical escalation reinforces safe-haven demand"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de conflicto ampliado sostiene prima de riesgo",
-            "en": "Widened conflict risk sustains geopolitical premium"
+            "es": "Demanda de refugio sube ante escalada NATO-Rusia",
+            "en": "Safe-haven demand rises on NATO-Russia escalation"
           }
         }
       ],
@@ -205,182 +175,173 @@
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/world/2026/aug/27/britain-ukraine-war-russia",
       "published_at": "2026-08-27",
-      "time": "<1h"
+      "time": "22h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Los candidatos presidenciales franceses serán interrogados sobre economía en la cumbre empresarial francesa",
-        "en": "Presidential candidates to be grilled on economy at French business summit"
+        "es": "El ejército israelí realiza un raro ataque aéreo en Cisjordania matando a 'tres terroristas'",
+        "en": "Israel army carries out rare West Bank air strike, killing 'three terrorists'"
       },
       "summary": {
-        "es": "Los principales candidatos a las elecciones presidenciales francesas de 2027 comparecieron ante la federación patronal Medef para exponer sus planes sobre fiscalidad, regulación, reindustrialización y la deuda pública que supera el 110% del PIB. El debate llega en un momento de fragilidad fiscal francesa con rendimientos de deuda bajo vigilancia de los mercados. Las posiciones que emerjan sobre consolidación fiscal o expansión del gasto pueden mover los spreads de bonos soberanos franceses y el EUR/USD.",
-        "en": "France's main 2027 presidential candidates appeared before the Medef employers' federation to outline plans on taxation, regulation, reindustrialisation, and public debt exceeding 110% of GDP. The debate comes at a moment of French fiscal fragility with bond yields under market scrutiny. Positions emerging on fiscal consolidation versus spending expansion could move French sovereign bond spreads and EUR/USD."
+        "es": "Israel llevó a cabo un ataque aéreo en la zona de Jenín (Cisjordania), describiendo a los fallecidos como un operativo de Hamás y dos cómplices, en un uso infrecuente de fuerza aérea en territorio ocupado. El incidente ocurre en un contexto de fragilidad del alto el fuego de Gaza, con el enviado de paz advirtiendo de un 'punto de no retorno'. El riesgo de deterioro de la situación en Cisjordania podría amplificar las tensiones regionales y complicar los esfuerzos diplomáticos.",
+        "en": "Israel conducted an air strike in the Jenin area of the West Bank, describing the targets as a Hamas militant operative and two accomplices, in a rare use of aerial force in the occupied territory. The incident coincides with fragility in the Gaza ceasefire, with the peace envoy warning of a 'point of no return.' Deterioration in the West Bank risks amplifying regional tensions and complicating diplomatic efforts."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "French OAT spread vs Bund",
-          "direction": "mixed",
-          "magnitude": "medium",
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "low",
           "note": {
-            "es": "Posturas fiscales impactan spreads soberanos franceses",
-            "en": "Fiscal stances impact French sovereign spreads"
+            "es": "Escalada en Cisjordania añade prima de riesgo regional",
+            "en": "West Bank escalation adds regional risk premium"
           }
         },
         {
-          "asset": "EUR/USD",
-          "direction": "mixed",
+          "asset": "Israeli shekel (ILS)",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Incertidumbre política francesa pesa sobre el euro",
-            "en": "French political uncertainty weighs on euro"
+            "es": "Aumento de tensiones pesa sobre activos israelíes",
+            "en": "Rising tensions weigh on Israeli assets"
           }
         },
         {
-          "asset": "European equities",
-          "direction": "mixed",
+          "asset": "Gold",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Señales sobre regulación y fiscalidad afectan empresas francesas",
-            "en": "Signals on regulation and taxation affect French corporates"
+            "es": "Mayor incertidumbre MENA apoya demanda de refugio",
+            "en": "Heightened MENA uncertainty supports safe-haven demand"
           }
         }
       ],
-      "confidence": 78,
+      "confidence": 75,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260827-presidential-candidates-to-be-grilled-on-economy-at-french-business-summit",
-      "published_at": "2026-08-27",
-      "time": "7h"
+      "source_url": "https://www.france24.com/en/middle-east/20260828-israel-army-carries-out-rare-west-bank-air-strike-killing-three-terrorists",
+      "published_at": "2026-08-28",
+      "time": "<1h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "US",
       "title": {
-        "es": "Cómo perder la guerra comercial de Trump: desafiar la determinación de Canadá con amenazas sobre palos de hockey",
-        "en": "How to lose Trump's trade war: test Canada's resolve with threats to hockey sticks"
+        "es": "Un juez de EE.UU. dictamina que la inclusión de Anthropic en la lista negra del Pentágono es ilegal",
+        "en": "US judge rules Pentagon's blacklisting of Anthropic unlawful"
       },
       "summary": {
-        "es": "Canadá ha respondido con firmeza a las demandas arancelarias de Washington, desafiando las expectativas de la Casa Blanca de una capitulación rápida. La resistencia canadiense —apoyada por altos niveles de cohesión interna— está elevando los costos económicos para ambas partes en un conflicto comercial bilateral de alto perfil. La persistencia del enfrentamiento amenaza cadenas de suministro norteamericanas integradas y puede afectar sectores desde automotriz hasta energía.",
-        "en": "Canada has responded firmly to Washington's tariff demands, defying White House expectations of quick capitulation. Canadian resistance—backed by high domestic cohesion—is raising economic costs for both parties in a high-profile bilateral trade conflict. The sustained standoff threatens integrated North American supply chains and may affect sectors from automotive to energy."
+        "es": "Un juez federal resolvió que el Pentágono actuó ilegalmente al etiquetar a Anthropic como 'riesgo para la cadena de suministro' tras negarse a permitir el uso militar irrestricto de su tecnología de IA. El fallo establece un precedente relevante sobre los límites del poder ejecutivo para coaccionar a empresas tecnológicas en nombre de la seguridad nacional. Las implicaciones afectan a la política de soberanía tecnológica de EE.UU. y al ecosistema de IA de defensa.",
+        "en": "A federal judge ruled the Pentagon unlawfully labeled Anthropic a 'supply chain risk' after the AI firm refused to permit unrestricted military use of its technology. The ruling sets a significant precedent limiting executive power to coerce tech companies under national security justifications. The decision has broad implications for U.S. tech sovereignty policy and the defense AI ecosystem."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "CAD/USD",
-          "direction": "mixed",
+          "asset": "US AI/tech equities",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Resistencia canadiense sostiene el CAD frente a presiones",
-            "en": "Canadian resistance supports CAD against pressure"
+            "es": "Límites al poder del Pentágono reducen riesgo regulatorio para sector IA",
+            "en": "Pentagon power limits reduce regulatory risk for AI sector"
           }
         },
         {
-          "asset": "US equities (industrials/auto)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Disrupciones en cadenas de suministro norteamericanas",
-            "en": "North American supply chain disruptions weigh on sector"
-          }
-        },
-        {
-          "asset": "Brent crude",
+          "asset": "US defense tech equities",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Tensiones afectan flujos de crudo canadiense a EE.UU.",
-            "en": "Tensions affect Canadian crude flows to the US"
+            "es": "Fallo complica acceso del Pentágono a IA privada",
+            "en": "Ruling complicates Pentagon's access to private AI"
           }
         }
       ],
-      "confidence": 75,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/us-news/2026/aug/26/trump-canada-trade-war",
-      "published_at": "2026-08-26",
-      "time": "23h"
+      "confidence": 78,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/us-judge-rules-pentagon-s-blacklisting-of-anthropic-unlawful/a-78542307?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-08-28",
+      "time": "9h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "AFRICA",
       "title": {
-        "es": "TotalEnergies reduce su exposición al gas ruso pero no se desvincula completamente",
-        "en": "TotalEnergies reduces its exposure to Russian gas but does not fully disengage"
+        "es": "Se levanta el toque de queda de dos años en la capital de Sudán",
+        "en": "Two-year curfew lifted in Sudan's capital"
       },
       "summary": {
-        "es": "TotalEnergies cedió su participación en el proyecto Arctic LNG 2 pero mantiene su posición accionarial en Novatek y en la planta de licuefacción Yamal LNG en Siberia. Esta postura a mitad de camino expone a la empresa francesa a riesgos regulatorios y reputacionales en la UE, mientras preserva un acceso estratégico al GNL ruso. Para los inversores, el caso ilustra la tensión persistente entre las presiones geopolíticas de desacoplamiento energético y los intereses comerciales de las grandes petroleras europeas.",
-        "en": "TotalEnergies divested its stake in the Arctic LNG 2 project but retains a shareholding in Novatek and the Yamal LNG liquefaction plant in Siberia. This halfway posture exposes the French major to regulatory and reputational risks in the EU while preserving strategic access to Russian LNG. For investors, the case illustrates the persistent tension between geopolitical energy decoupling pressures and the commercial interests of major European oil companies."
+        "es": "Las autoridades militares sudanesas levantaron el toque de queda en Jartum, 18 meses después de recuperar el control de la ciudad, aunque el conflicto con las Fuerzas de Apoyo Rápido continúa en otras regiones. El desarrollo es relevante para el corredor del Mar Rojo y los flujos de refugiados hacia el norte de África y el Sahel, así como para los intereses de potencias externas con presencia en el país. La estabilización parcial podría reabrir oportunidades en activos vinculados a recursos sudaneses.",
+        "en": "Sudan's military authorities lifted the curfew in Khartoum 18 months after retaking the city, though fighting with the Rapid Support Forces continues elsewhere. The development is relevant for Red Sea corridor stability and refugee flows into North Africa and the Sahel, as well as for external powers with interests in the country. Partial stabilization could reopen opportunities in assets linked to Sudanese resources."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "TotalEnergies (TTE)",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo regulatorio y reputacional por exposición rusa residual",
-            "en": "Regulatory and reputational risk from residual Russian exposure"
-          }
-        },
-        {
-          "asset": "European natural gas (TTF)",
+          "asset": "African frontier market bonds",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Señal sobre continuidad parcial de flujos de GNL ruso",
-            "en": "Signal on partial continuity of Russian LNG flows"
+            "es": "Estabilización parcial mejora marginalmente el perfil de riesgo regional",
+            "en": "Partial stabilization marginally improves regional risk profile"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Sudán es productor de oro; la paz parcial afecta oferta",
+            "en": "Sudan is a gold producer; partial peace affects supply"
           }
         }
       ],
-      "confidence": 74,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/economie/article/2026/08/27/totalenergies-reduit-son-exposition-au-gaz-russe-mais-ne-se-desengage-pas_6758481_3234.html",
-      "published_at": "2026-08-27",
-      "time": "2h"
+      "confidence": 65,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c2076gxr0llo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-08-28",
+      "time": "3h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "AFRICA",
+      "region": "APAC",
       "title": {
-        "es": "'Frente al Ébola, hay que multiplicar las capacidades actuales de respuesta': el llamado del director de la OMS en la lucha contra el virus Bundibugyo en la RDC",
-        "en": "WHO Director calls for multiplied response capacity against Bundibugyo Ebola virus spreading rapidly in DRC"
+        "es": "Temor ante el plan de Malasia de devolver a migrantes rohinyás a Myanmar",
+        "en": "Fear Over Malaysia's Plan to Send Back Rohingya Migrants to Myanmar"
       },
       "summary": {
-        "es": "El director general de la OMS, Tedros Adhanom Ghebreyesus, junto a otros líderes de salud pública internacional, exigió una respuesta urgente y ampliada ante la rápida propagación del virus Ébola Bundibugyo en la República Democrática del Congo. El brote en la RDC —un país ya fragilizado por conflictos armados en el este y tensiones sobre recursos minerales estratégicos— añade una nueva presión humanitaria y logística a una región de alta relevancia para cadenas de suministro de minerales críticos. Una escalada sanitaria podría afectar la producción y exportación de cobalto y coltán.",
-        "en": "WHO Director-General Tedros Adhanom Ghebreyesus and other public health leaders called for an urgent and expanded response to the rapid spread of the Bundibugyo Ebola virus in the Democratic Republic of Congo. The outbreak in DRC—already fragile due to armed conflicts in the east and tensions over strategic mineral resources—adds humanitarian and logistical pressure to a region of high relevance for critical mineral supply chains. A health escalation could affect cobalt and coltan production and exports."
+        "es": "Malaysia ha anunciado planes de repatriación de refugiados rohinyás a Myanmar, un país en guerra civil y con gobierno militar, generando pánico entre la comunidad afectada. La medida podría intensificar las tensiones con organismos internacionales y afectar las relaciones de Malasia con socios occidentales sensibles a los derechos humanos. El episodio refleja la creciente presión migratoria sobre el Sudeste Asiático y podría tener implicaciones para la política exterior y el posicionamiento regional de Malasia.",
+        "en": "Malaysia has announced plans to repatriate Rohingya refugees to Myanmar, a country in civil war under military rule, triggering panic among the affected community. The move could intensify tensions with international bodies and affect Malaysia's relations with human-rights-sensitive Western partners. The episode reflects growing migration pressure on Southeast Asia and may have implications for Malaysia's foreign policy and regional positioning."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Cobalt futures",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de disrupciones en producción minera en la RDC",
-            "en": "Risk of mining production disruptions in DRC"
-          }
-        },
-        {
-          "asset": "EM currencies (Central Africa)",
+          "asset": "Malaysian ringgit (MYR)",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Crisis sanitaria agrava fragilidad económica regional",
-            "en": "Health crisis compounds regional economic fragility"
+            "es": "Tensiones diplomáticas pesan sobre activos malayos",
+            "en": "Diplomatic tensions weigh on Malaysian assets"
+          }
+        },
+        {
+          "asset": "ASEAN equities",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad regional afecta sentimiento inversor en ASEAN",
+            "en": "Regional instability affects investor sentiment in ASEAN"
           }
         }
       ],
-      "confidence": 70,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/idees/article/2026/08/27/face-a-ebola-il-faut-multiplier-les-capacites-actuelles-de-la-riposte-l-appel-du-directeur-de-l-oms-dans-la-lutte-contre-le-virus-bundibugyo-en-rdc_6758044_3232.html",
-      "published_at": "2026-08-27",
-      "time": "11h"
+      "confidence": 65,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/08/28/world/asia/rohingya-refugees-malaysia-myanmar.html",
+      "published_at": "2026-08-28",
+      "time": "9h"
     }
   ],
-  "market_updated_at": "2026-08-28T17:46:30.347Z"
+  "market_updated_at": "2026-08-28T18:09:46.432Z"
 }
