@@ -3,62 +3,92 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1643",
-      "change": "-0.06",
+      "value": "1.1609",
+      "change": "-0.38%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19881.60",
-      "change": "-0.96",
+      "value": "19,881.60",
+      "change": "-0.96%",
       "up": false
     },
     {
-      "symbol": "BRENT",
-      "value": "88.28",
-      "change": "-0.27",
+      "symbol": "BRENT Crude",
+      "value": "88.29",
+      "change": "-0.26%",
       "up": false
     },
     {
-      "symbol": "GOLD",
-      "value": "4590.00",
-      "change": "-2.88",
+      "symbol": "WTI Crude",
+      "value": "83.40",
+      "change": "-0.11%",
       "up": false
     },
     {
-      "symbol": "BTC",
-      "value": "77693.14",
-      "change": "-3.30",
+      "symbol": "GOLD (XAU/USD)",
+      "value": "4,593.45",
+      "change": "+1.64%",
+      "up": true
+    },
+    {
+      "symbol": "BTC/USD",
+      "value": "77,844.01",
+      "change": "-3.13%",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "14.57",
-      "change": "-0.55",
+      "value": "14.43",
+      "change": "-0.55%",
       "up": false
     },
     {
-      "symbol": "US 10Y",
-      "value": "4.73",
-      "change": "+0.05",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8573",
-      "change": "+0.07",
+      "symbol": "US 10Y Yield",
+      "value": "4.73%",
+      "change": "+0.06%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7711.76",
-      "change": "-0.25",
+      "value": "7,711.76",
+      "change": "-0.25%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "26355.97",
-      "change": "+0.77",
+      "value": "26,569.99",
+      "change": "+0.77%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8559",
+      "change": "-0.15%",
+      "up": false
+    },
+    {
+      "symbol": "DXY",
+      "value": "99.23",
+      "change": "+0.08%",
+      "up": true
+    },
+    {
+      "symbol": "Natural Gas",
+      "value": "2.89",
+      "change": "-0.34%",
+      "up": false
+    },
+    {
+      "symbol": "Copper",
+      "value": "6.54",
+      "change": "-0.82%",
+      "up": false
+    },
+    {
+      "symbol": "USD/CNY",
+      "value": "6.7298",
+      "change": "+0.17%",
       "up": true
     }
   ],
@@ -379,5 +409,5 @@
       "time": "2h"
     }
   ],
-  "market_updated_at": "2026-08-29T12:13:03.533Z"
+  "market_updated_at": "2026-08-29T17:25:54.491Z"
 }
