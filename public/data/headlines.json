@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-08-28T18:09:46.432Z",
+  "generated_at": "2026-08-29T12:13:03.533Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1609",
-      "change": "-0.38%",
+      "value": "1.1643",
+      "change": "-0.06",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,041.90",
-      "change": "+0.81%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT CRUDE",
-      "value": "88.29",
-      "change": "-0.26%",
+      "value": "19881.60",
+      "change": "-0.96",
       "up": false
     },
     {
-      "symbol": "WTI CRUDE",
-      "value": "82.82",
-      "change": "-0.86%",
+      "symbol": "BRENT",
+      "value": "88.28",
+      "change": "-0.27",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,599.00",
-      "change": "-0.04%",
+      "symbol": "GOLD",
+      "value": "4590.00",
+      "change": "-2.88",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "77,677.86",
-      "change": "-0.18%",
+      "symbol": "BTC",
+      "value": "77693.14",
+      "change": "-3.30",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "14.43",
-      "change": "-0.55%",
+      "value": "14.57",
+      "change": "-0.55",
       "up": false
     },
     {
-      "symbol": "US 10Y YIELD",
-      "value": "4.72%",
-      "change": "+0.04%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7,711.76",
-      "change": "-0.25%",
-      "up": false
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "26,569.99",
-      "change": "+0.77%",
+      "symbol": "US 10Y",
+      "value": "4.73",
+      "change": "+0.05",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8559",
-      "change": "-0.15%",
+      "value": "0.8573",
+      "change": "+0.07",
+      "up": true
+    },
+    {
+      "symbol": "S&P 500",
+      "value": "7711.76",
+      "change": "-0.25",
       "up": false
     },
     {
-      "symbol": "DXY",
-      "value": "99.10",
-      "change": "-0.02%",
-      "up": false
-    },
-    {
-      "symbol": "NATURAL GAS",
-      "value": "2.90",
-      "change": "-0.33%",
-      "up": false
-    },
-    {
-      "symbol": "COPPER",
-      "value": "6.54",
-      "change": "-0.82%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7217",
-      "change": "+0.03%",
+      "symbol": "DAX 40",
+      "value": "26355.97",
+      "change": "+0.77",
       "up": true
     }
   ],
@@ -96,81 +66,186 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "US",
+      "region": "MENA",
       "title": {
-        "es": "Warsh resalta su compromiso para reconducir la inflación al 2% y anuncia medidas si es necesario",
-        "en": "Fed's Warsh highlights commitment to return inflation to 2% and announces measures if necessary"
+        "es": "Turquía e Israel compiten por la influencia en Medio Oriente mientras las tensiones se disparan",
+        "en": "Turkey and Israel Vie for Middle East Influence as Tensions Spike"
       },
       "summary": {
-        "es": "El nuevo presidente de la Reserva Federal, Kevin Warsh, en su debut en Jackson Hole, ha señalado que la inflación en EE.UU. es 'preocupante' y ha comprometido medidas correctivas, incluyendo posibles subidas de tipos, contradiciendo las preferencias de Trump. Este mensaje dispara las expectativas de endurecimiento monetario y añade tensión político-institucional entre la Casa Blanca y la Fed. El diferencial de política monetaria entre EE.UU. y otras grandes economías se amplía, con implicaciones directas para el dólar y los activos de riesgo global.",
-        "en": "New Federal Reserve Chair Kevin Warsh, in his Jackson Hole debut, flagged U.S. inflation as 'concerning' and pledged corrective action including potential rate hikes, directly contradicting Trump's preferences. This signals renewed monetary tightening risk and heightens political-institutional tension between the White House and the Fed. The widening policy divergence with other major central banks has direct implications for the dollar and global risk assets."
+        "es": "Israel llevó a cabo un ataque aéreo contra una base siria para prevenir el despliegue de fuerzas turcas, marcando una escalada directa en la rivalidad turco-israelí. La competencia entre dos potencias regionales clave —ambas con vínculos complejos con la OTAN y Washington— representa un riesgo sistémico para la estabilidad del Levante. Los mercados energéticos y de activos refugio serán sensibles a cualquier escalada adicional.",
+        "en": "Israel struck a Syrian base to preempt feared Turkish force deployment, marking a direct escalation in the Turkey-Israel rivalry. Competition between two key regional powers — both with complex ties to NATO and Washington — poses systemic risk to Levantine stability. Energy markets and safe-haven assets will be sensitive to further escalation."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo de interrupción regional presiona precios al alza",
+            "en": "Regional disruption risk pushes prices higher"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Demanda de refugio seguro ante escalada geopolítica",
+            "en": "Safe-haven demand on geopolitical escalation"
+          }
+        },
+        {
+          "asset": "Turkish lira",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de confrontación directa pesa sobre la lira",
+            "en": "Direct confrontation risk weighs on lira"
+          }
+        },
+        {
+          "asset": "Israeli shekel",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada militar amplía prima de riesgo del shekel",
+            "en": "Military escalation widens shekel risk premium"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/08/29/world/middleeast/turkey-israel-tensions-region.html",
+      "published_at": "2026-08-29",
+      "time": "3h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
+      "title": {
+        "es": "27 muertos cerca de Kyiv mientras el blitz de drones rusos expone brechas en la defensa aérea",
+        "en": "27 Killed Near Kyiv as Russian Drone Blitz Exposes Air Defense Gap"
+      },
+      "summary": {
+        "es": "Un ataque ruso destruyó un almacén cerca de Kyiv, matando a 27 personas tras días de ataques que han tensado la defensa aérea ucraniana. La exposición de brechas sistémicas en la defensa aérea aumenta la presión sobre los aliados de la OTAN para acelerar suministros de interceptores, con implicaciones directas para los presupuestos de defensa europeos y la energía. Los mercados europeos de gas y los activos de defensa serán los más afectados.",
+        "en": "A Russian strike destroyed a warehouse near Kyiv killing 27 people, following days of attacks that have strained Ukrainian air defenses. The exposure of systemic air defense gaps increases pressure on NATO allies to accelerate interceptor supplies, with direct implications for European defense budgets and energy. European gas markets and defense equities will be most affected."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European natural gas (TTF)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada rusa eleva primas de riesgo energético europeo",
+            "en": "Russian escalation lifts European energy risk premia"
+          }
+        },
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Brechas de defensa aérea aceleran gasto en armamento",
+            "en": "Air defense gaps accelerate armament spending"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Escalada bélica presiona al euro a la baja",
+            "en": "War escalation pressures euro lower"
+          }
+        }
+      ],
+      "confidence": 87,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/08/29/world/europe/russia-ukraine-strike-kyiv-drones.html",
+      "published_at": "2026-08-29",
+      "time": "<1h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "LATAM",
+      "title": {
+        "es": "Trump anuncia control de EE.UU. sobre el petróleo venezolano",
+        "en": "Donald Trump announces US takeover of Venezuelan oil"
+      },
+      "summary": {
+        "es": "Un acuerdo entre Washington y Caracas otorga a EE.UU. control sobre 65.000 millones de barriles de reservas venezolanas para desarrollar '17 campos estratégicos' mediante una inversión de más de 100.000 millones de dólares. Este acuerdo representa el mayor cambio geopolítico en la geopolítica energética del hemisferio occidental en décadas, con implicaciones directas para los precios globales del petróleo, la influencia de PDVSA y el rol de China y Rusia en Venezuela. La oposición interna y la legalidad constitucional son riesgos de ejecución significativos.",
+        "en": "A deal between Washington and Caracas grants the US control over 65 billion barrels of Venezuelan reserves to develop '17 strategic fields' via over $100 billion in investment. This represents the largest geopolitical shift in Western Hemisphere energy politics in decades, with direct implications for global oil prices, PDVSA's leverage, and China and Russia's foothold in Venezuela. Domestic opposition and constitutional legality are significant execution risks."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Perspectiva de aumento de oferta venezolana presiona precios",
+            "en": "Prospect of Venezuelan supply surge pressures prices"
+          }
+        },
+        {
+          "asset": "US energy equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Operadoras estadounidenses serían beneficiarias directas del acuerdo",
+            "en": "US operators stand as direct deal beneficiaries"
+          }
+        },
+        {
+          "asset": "Venezuelan sovereign bonds",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Acuerdo con EE.UU. mejora perspectiva crediticia soberana",
+            "en": "US deal improves sovereign credit outlook"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Impacto diferenciado según exposición a energía latinoamericana",
+            "en": "Differentiated impact by Latin American energy exposure"
+          }
+        }
+      ],
+      "confidence": 90,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/08/29/donald-trump-annonce-la-mainmise-americaine-sur-le-petrole-venezuelien_6759434_3210.html",
+      "published_at": "2026-08-29",
+      "time": "9h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "US",
+      "title": {
+        "es": "La Fed 'tiene trabajo por hacer' si los precios no se moderan para los estadounidenses, dice Warsh",
+        "en": "Fed has 'work to do' if price rises don't ease for Americans, Warsh says"
+      },
+      "summary": {
+        "es": "El gobernador de la Fed Kevin Warsh señaló que las tasas de interés podrían elevarse si los responsables de política consideran que la inflación sigue siendo demasiado alta, en una postura más agresiva que el consenso actual. Combinado con señales de que el Tesoro de EE.UU. empuja en dirección opuesta, emerge una tensión institucional que añade incertidumbre a los mercados de renta fija y divisas. Los inversores deberán monitorear la divergencia entre la Fed y el ejecutivo.",
+        "en": "Fed Governor Kevin Warsh signaled interest rates could be raised if inflation remains too high, adopting a more hawkish stance than current consensus. Combined with signals that the US Treasury is pushing in the opposite direction, an institutional tension emerges that adds uncertainty to fixed income and currency markets. Investors must monitor divergence between the Fed and the executive."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "US 10Y Treasury",
           "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Expectativas de subida de tipos elevan rendimientos",
-            "en": "Rate hike expectations push yields higher"
-          }
-        },
-        {
-          "asset": "USD Index (DXY)",
-          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Política monetaria más restrictiva fortalece el dólar",
-            "en": "Hawkish Fed stance strengthens the dollar"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tipos reales más altos presionan al oro",
-            "en": "Higher real rates pressure gold prices"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Dólar más fuerte y salidas de capital afectan emergentes",
-            "en": "Stronger dollar and capital outflows hit EM currencies"
-          }
-        }
-      ],
-      "confidence": 92,
-      "source": "El País",
-      "source_url": "https://elpais.com/economia/2026-08-28/warsh-resalta-su-compromiso-para-reconducir-la-inflacion-al-2-y-anuncia-medidas-si-es-necesario.html",
-      "published_at": "2026-08-28",
-      "time": "1h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "es": "Rusia dice que el Reino Unido 'está jugando con fuego' en medio de informes de que el jefe de la CIA advirtió al Kremlin no atacar a la OTAN",
-        "en": "Russia says UK 'playing with fire' amid reports CIA chief has warned Kremlin not to attack NATO"
-      },
-      "summary": {
-        "es": "Moscú amenaza con represalias contra el Reino Unido tras el anuncio de que Londres ayudará a Ucrania a producir misiles de largo alcance, mientras la CIA supuestamente advierte al Kremlin de no atacar territorio de la OTAN. La escalada retórica y operativa eleva el riesgo de extensión del conflicto más allá de Ucrania, con potencial impacto directo en la seguridad europea. Los mercados de energía y defensa europeos, así como el euro, se ven directamente expuestos.",
-        "en": "Moscow threatens retaliation against the UK after London announced it will help Ukraine produce long-range missiles, while the CIA reportedly warned the Kremlin against attacking NATO territory. The rhetorical and operational escalation raises the risk of conflict spillover beyond Ukraine, with direct implications for European security. European energy and defense markets, as well as the euro, are directly exposed."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European defense equities",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Escalada OTAN-Rusia impulsa gasto en defensa",
-            "en": "NATO-Russia escalation drives defense spending expectations"
+            "es": "Retórica hawkish de Warsh eleva rendimientos",
+            "en": "Warsh's hawkish rhetoric lifts yields"
           }
         },
         {
@@ -178,200 +253,131 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo geopolítico europeo presiona al euro",
-            "en": "European geopolitical risk weighs on the euro"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tensiones con Rusia añaden prima de riesgo energético",
-            "en": "Russia tensions add energy risk premium"
+            "es": "Dólar se fortalece ante perspectiva de más alzas de tasas",
+            "en": "Dollar strengthens on higher rate hike expectations"
           }
         },
         {
           "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Demanda de refugio sube ante escalada NATO-Rusia",
-            "en": "Safe-haven demand rises on NATO-Russia escalation"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/aug/27/britain-ukraine-war-russia",
-      "published_at": "2026-08-27",
-      "time": "22h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "El ejército israelí realiza un raro ataque aéreo en Cisjordania matando a 'tres terroristas'",
-        "en": "Israel army carries out rare West Bank air strike, killing 'three terrorists'"
-      },
-      "summary": {
-        "es": "Israel llevó a cabo un ataque aéreo en la zona de Jenín (Cisjordania), describiendo a los fallecidos como un operativo de Hamás y dos cómplices, en un uso infrecuente de fuerza aérea en territorio ocupado. El incidente ocurre en un contexto de fragilidad del alto el fuego de Gaza, con el enviado de paz advirtiendo de un 'punto de no retorno'. El riesgo de deterioro de la situación en Cisjordania podría amplificar las tensiones regionales y complicar los esfuerzos diplomáticos.",
-        "en": "Israel conducted an air strike in the Jenin area of the West Bank, describing the targets as a Hamas militant operative and two accomplices, in a rare use of aerial force in the occupied territory. The incident coincides with fragility in the Gaza ceasefire, with the peace envoy warning of a 'point of no return.' Deterioration in the West Bank risks amplifying regional tensions and complicating diplomatic efforts."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada en Cisjordania añade prima de riesgo regional",
-            "en": "West Bank escalation adds regional risk premium"
-          }
-        },
-        {
-          "asset": "Israeli shekel (ILS)",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Aumento de tensiones pesa sobre activos israelíes",
-            "en": "Rising tensions weigh on Israeli assets"
+            "es": "Tasas reales más altas reducen atractivo del oro",
+            "en": "Higher real rates reduce gold's appeal"
           }
         },
         {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Mayor incertidumbre MENA apoya demanda de refugio",
-            "en": "Heightened MENA uncertainty supports safe-haven demand"
+            "es": "Fed más dura amplía presión sobre mercados emergentes",
+            "en": "Hawkish Fed amplifies pressure on emerging markets"
           }
         }
       ],
-      "confidence": 75,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260828-israel-army-carries-out-rare-west-bank-air-strike-killing-three-terrorists",
+      "confidence": 82,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/cy9zjgv9lgdo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-08-28",
-      "time": "<1h"
+      "time": "20h"
     },
     {
-      "id": 4,
+      "id": 5,
       "tag": "ALERT",
-      "region": "US",
+      "region": "AFRICA",
       "title": {
-        "es": "Un juez de EE.UU. dictamina que la inclusión de Anthropic en la lista negra del Pentágono es ilegal",
-        "en": "US judge rules Pentagon's blacklisting of Anthropic unlawful"
+        "es": "Níger: Disparos y explosiones se escuchan en la capital",
+        "en": "Niger: Gunfire and explosions heard in capital"
       },
       "summary": {
-        "es": "Un juez federal resolvió que el Pentágono actuó ilegalmente al etiquetar a Anthropic como 'riesgo para la cadena de suministro' tras negarse a permitir el uso militar irrestricto de su tecnología de IA. El fallo establece un precedente relevante sobre los límites del poder ejecutivo para coaccionar a empresas tecnológicas en nombre de la seguridad nacional. Las implicaciones afectan a la política de soberanía tecnológica de EE.UU. y al ecosistema de IA de defensa.",
-        "en": "A federal judge ruled the Pentagon unlawfully labeled Anthropic a 'supply chain risk' after the AI firm refused to permit unrestricted military use of its technology. The ruling sets a significant precedent limiting executive power to coerce tech companies under national security justifications. The decision has broad implications for U.S. tech sovereignty policy and the defense AI ecosystem."
+        "es": "Se reportan disparos y explosiones en Niamey, la capital de Níger, gobernada por una junta militar, en un contexto de creciente violencia yihadista que afecta a toda la región del Sahel junto a Mali y Burkina Faso. Una nueva ruptura del orden en Níger amenazaría las rutas de exportación de uranio, mineral crítico para el suministro nuclear europeo, y podría precipitar una expansión del vacío de seguridad regional. El evento es un indicador de riesgo adelantado para los mercados de materias primas críticas.",
+        "en": "Gunfire and explosions were reported in Niamey, the capital of junta-ruled Niger, amid growing jihadist violence across the Sahel alongside Mali and Burkina Faso. A new breakdown of order in Niger would threaten uranium export routes, a critical mineral for European nuclear supply, and could precipitate expansion of the regional security vacuum. The event is a leading risk indicator for critical commodities markets."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "US AI/tech equities",
+          "asset": "Uranium futures",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Límites al poder del Pentágono reducen riesgo regulatorio para sector IA",
-            "en": "Pentagon power limits reduce regulatory risk for AI sector"
+            "es": "Niger aporta ~5% del uranio global; inestabilidad eleva precios",
+            "en": "Niger supplies ~5% of global uranium; instability lifts prices"
           }
         },
         {
-          "asset": "US defense tech equities",
+          "asset": "European energy equities",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Fallo complica acceso del Pentágono a IA privada",
-            "en": "Ruling complicates Pentagon's access to private AI"
+            "es": "Riesgo de suministro nuclear europeo depende de evolución",
+            "en": "European nuclear supply risk depends on developments"
+          }
+        },
+        {
+          "asset": "French CAC 40",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Orano (ex-Areva) tiene operaciones de uranio en Níger",
+            "en": "Orano (ex-Areva) has uranium operations in Niger"
           }
         }
       ],
       "confidence": 78,
       "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-judge-rules-pentagon-s-blacklisting-of-anthropic-unlawful/a-78542307?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-08-28",
-      "time": "9h"
+      "source_url": "https://www.dw.com/en/niger-gunfire-and-explosions-heard-in-capital/a-78554001?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-08-29",
+      "time": "8h"
     },
     {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "AFRICA",
+      "id": 6,
+      "tag": "CRITICAL",
+      "region": "MENA",
       "title": {
-        "es": "Se levanta el toque de queda de dos años en la capital de Sudán",
-        "en": "Two-year curfew lifted in Sudan's capital"
+        "es": "Líderes de Irán reconocen el costo económico de la guerra y prometen diplomacia y defensa",
+        "en": "Iran's leaders acknowledge economic toll of war, pledge diplomacy, defence"
       },
       "summary": {
-        "es": "Las autoridades militares sudanesas levantaron el toque de queda en Jartum, 18 meses después de recuperar el control de la ciudad, aunque el conflicto con las Fuerzas de Apoyo Rápido continúa en otras regiones. El desarrollo es relevante para el corredor del Mar Rojo y los flujos de refugiados hacia el norte de África y el Sahel, así como para los intereses de potencias externas con presencia en el país. La estabilización parcial podría reabrir oportunidades en activos vinculados a recursos sudaneses.",
-        "en": "Sudan's military authorities lifted the curfew in Khartoum 18 months after retaking the city, though fighting with the Rapid Support Forces continues elsewhere. The development is relevant for Red Sea corridor stability and refugee flows into North Africa and the Sahel, as well as for external powers with interests in the country. Partial stabilization could reopen opportunities in assets linked to Sudanese resources."
+        "es": "El presidente iraní admitió que las sanciones y el bloqueo naval estadounidense han reducido las exportaciones e importaciones en casi un 35%, la primera admisión pública de daño económico severo. Este reconocimiento señala vulnerabilidad estratégica iraní que podría abrir una ventana para negociaciones, aunque también eleva el riesgo de provocaciones de distracción. Las implicaciones para los mercados de petróleo y el riesgo de crédito de los países vecinos son considerables.",
+        "en": "Iran's president admitted sanctions and the US naval blockade have cut exports and imports by nearly 35%, the first public acknowledgment of severe economic damage. This signals strategic vulnerability that could open a negotiation window, but also raises the risk of diversionary provocations. Implications for oil markets and credit risk across neighboring states are considerable."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "African frontier market bonds",
+          "asset": "Brent crude",
           "direction": "mixed",
-          "magnitude": "low",
+          "magnitude": "high",
           "note": {
-            "es": "Estabilización parcial mejora marginalmente el perfil de riesgo regional",
-            "en": "Partial stabilization marginally improves regional risk profile"
+            "es": "Vulnerabilidad iraní puede bajar primas de riesgo o provocar escalada",
+            "en": "Iranian vulnerability may cut risk premia or trigger escalation"
           }
         },
         {
           "asset": "Gold",
-          "direction": "mixed",
-          "magnitude": "low",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Sudán es productor de oro; la paz parcial afecta oferta",
-            "en": "Sudan is a gold producer; partial peace affects supply"
-          }
-        }
-      ],
-      "confidence": 65,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c2076gxr0llo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-08-28",
-      "time": "3h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Temor ante el plan de Malasia de devolver a migrantes rohinyás a Myanmar",
-        "en": "Fear Over Malaysia's Plan to Send Back Rohingya Migrants to Myanmar"
-      },
-      "summary": {
-        "es": "Malaysia ha anunciado planes de repatriación de refugiados rohinyás a Myanmar, un país en guerra civil y con gobierno militar, generando pánico entre la comunidad afectada. La medida podría intensificar las tensiones con organismos internacionales y afectar las relaciones de Malasia con socios occidentales sensibles a los derechos humanos. El episodio refleja la creciente presión migratoria sobre el Sudeste Asiático y podría tener implicaciones para la política exterior y el posicionamiento regional de Malasia.",
-        "en": "Malaysia has announced plans to repatriate Rohingya refugees to Myanmar, a country in civil war under military rule, triggering panic among the affected community. The move could intensify tensions with international bodies and affect Malaysia's relations with human-rights-sensitive Western partners. The episode reflects growing migration pressure on Southeast Asia and may have implications for Malaysia's foreign policy and regional positioning."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Malaysian ringgit (MYR)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensiones diplomáticas pesan sobre activos malayos",
-            "en": "Diplomatic tensions weigh on Malaysian assets"
+            "es": "Incertidumbre sobre respuesta iraní sostiene refugio seguro",
+            "en": "Uncertainty over Iran's response sustains safe-haven demand"
           }
         },
         {
-          "asset": "ASEAN equities",
-          "direction": "mixed",
+          "asset": "EM currencies",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Inestabilidad regional afecta sentimiento inversor en ASEAN",
-            "en": "Regional instability affects investor sentiment in ASEAN"
+            "es": "Riesgo contagio en economías expuestas a energía regional",
+            "en": "Contagion risk for economies exposed to regional energy"
           }
         }
       ],
-      "confidence": 65,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/28/world/asia/rohingya-refugees-malaysia-myanmar.html",
-      "published_at": "2026-08-28",
-      "time": "9h"
+      "confidence": 85,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/8/29/irans-leaders-acknowledge-economic-toll-of-war-pledge-diplomacy-defence?traffic_source=rss",
+      "published_at": "2026-08-29",
+      "time": "2h"
     }
   ],
-  "market_updated_at": "2026-08-29T11:50:21.275Z"
+  "market_updated_at": "2026-08-29T12:13:03.533Z"
 }
