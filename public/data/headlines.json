@@ -1,40 +1,34 @@
 {
-  "generated_at": "2026-08-29T12:13:03.533Z",
+  "generated_at": "2026-08-30T11:09:39.033Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1583",
-      "change": "-0.57%",
-      "up": false
+      "value": "1.1660",
+      "change": "+0.02%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,881.60",
-      "change": "-0.96%",
+      "value": "19163.10",
+      "change": "+0.32%",
+      "up": true
+    },
+    {
+      "symbol": "BRENT",
+      "value": "87.98",
+      "change": "-1.49%",
       "up": false
     },
     {
-      "symbol": "BRENT Crude",
-      "value": "88.28",
-      "change": "-0.27%",
-      "up": false
-    },
-    {
-      "symbol": "WTI Crude",
-      "value": "83.44",
-      "change": "-0.11%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,529.90",
+      "symbol": "GOLD",
+      "value": "4529.90",
       "change": "-2.88%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "78,070.07",
-      "change": "+0.55%",
+      "symbol": "BTC",
+      "value": "78038.95",
+      "change": "+0.48%",
       "up": true
     },
     {
@@ -44,51 +38,27 @@
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.68%",
-      "change": "+0.02%",
+      "symbol": "US 10Y",
+      "value": "4.73",
+      "change": "+0.058",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8576",
+      "change": "+0.05%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,711.76",
+      "value": "7711.76",
       "change": "-0.25%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "26,569.99",
+      "value": "26569.99",
       "change": "+0.77%",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8572",
-      "change": "-0.00%",
-      "up": false
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.64",
-      "change": "+0.55%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.875",
-      "change": "-1.13%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.54",
-      "change": "-0.04%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7193",
-      "change": "+0.11%",
       "up": true
     }
   ],
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Turquía e Israel compiten por la influencia en Medio Oriente mientras las tensiones se disparan",
-        "en": "Turkey and Israel Vie for Middle East Influence as Tensions Spike"
+        "es": "Mapa de los ataques de la guerra con Irán a la energía del Golfo y su impacto en el futuro del petróleo",
+        "en": "Mapping Iran war's strikes on Gulf energy and its impact on future of oil"
       },
       "summary": {
-        "es": "Israel llevó a cabo un ataque aéreo contra una base siria para prevenir el despliegue de fuerzas turcas, marcando una escalada directa en la rivalidad turco-israelí. La competencia entre dos potencias regionales clave —ambas con vínculos complejos con la OTAN y Washington— representa un riesgo sistémico para la estabilidad del Levante. Los mercados energéticos y de activos refugio serán sensibles a cualquier escalada adicional.",
-        "en": "Israel struck a Syrian base to preempt feared Turkish force deployment, marking a direct escalation in the Turkey-Israel rivalry. Competition between two key regional powers — both with complex ties to NATO and Washington — poses systemic risk to Levantine stability. Energy markets and safe-haven assets will be sensitive to further escalation."
+        "es": "A seis meses del inicio del conflicto entre EE.UU., Israel e Irán, los ataques han perturbado significativamente la infraestructura energética del Golfo, impulsando los precios del crudo y beneficiando a empresas energéticas estadounidenses. Sin embargo, los activos occidentales en la región permanecen en riesgo, generando incertidumbre estructural sobre la oferta global de petróleo. Este análisis es clave para carteras con exposición a energía y materias primas.",
+        "en": "Six months into the US-Israel-Iran conflict, strikes on Gulf energy infrastructure have significantly disrupted regional supply, boosting crude prices and US energy company profits. However, Western assets in the region remain at material risk, creating structural uncertainty over global oil supply. This is essential reading for portfolios with energy and commodities exposure."
       },
       "impact": "high",
       "market_impact": [
@@ -112,113 +82,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de interrupción regional presiona precios al alza",
-            "en": "Regional disruption risk pushes prices higher"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Demanda de refugio seguro ante escalada geopolítica",
-            "en": "Safe-haven demand on geopolitical escalation"
-          }
-        },
-        {
-          "asset": "Turkish lira",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de confrontación directa pesa sobre la lira",
-            "en": "Direct confrontation risk weighs on lira"
-          }
-        },
-        {
-          "asset": "Israeli shekel",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada militar amplía prima de riesgo del shekel",
-            "en": "Military escalation widens shekel risk premium"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/29/world/middleeast/turkey-israel-tensions-region.html",
-      "published_at": "2026-08-29",
-      "time": "3h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "EURASIA",
-      "title": {
-        "es": "27 muertos cerca de Kyiv mientras el blitz de drones rusos expone brechas en la defensa aérea",
-        "en": "27 Killed Near Kyiv as Russian Drone Blitz Exposes Air Defense Gap"
-      },
-      "summary": {
-        "es": "Un ataque ruso destruyó un almacén cerca de Kyiv, matando a 27 personas tras días de ataques que han tensado la defensa aérea ucraniana. La exposición de brechas sistémicas en la defensa aérea aumenta la presión sobre los aliados de la OTAN para acelerar suministros de interceptores, con implicaciones directas para los presupuestos de defensa europeos y la energía. Los mercados europeos de gas y los activos de defensa serán los más afectados.",
-        "en": "A Russian strike destroyed a warehouse near Kyiv killing 27 people, following days of attacks that have strained Ukrainian air defenses. The exposure of systemic air defense gaps increases pressure on NATO allies to accelerate interceptor supplies, with direct implications for European defense budgets and energy. European gas markets and defense equities will be most affected."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada rusa eleva primas de riesgo energético europeo",
-            "en": "Russian escalation lifts European energy risk premia"
-          }
-        },
-        {
-          "asset": "European defense equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Brechas de defensa aérea aceleran gasto en armamento",
-            "en": "Air defense gaps accelerate armament spending"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada bélica presiona al euro a la baja",
-            "en": "War escalation pressures euro lower"
-          }
-        }
-      ],
-      "confidence": 87,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/08/29/world/europe/russia-ukraine-strike-kyiv-drones.html",
-      "published_at": "2026-08-29",
-      "time": "<1h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "LATAM",
-      "title": {
-        "es": "Trump anuncia control de EE.UU. sobre el petróleo venezolano",
-        "en": "Donald Trump announces US takeover of Venezuelan oil"
-      },
-      "summary": {
-        "es": "Un acuerdo entre Washington y Caracas otorga a EE.UU. control sobre 65.000 millones de barriles de reservas venezolanas para desarrollar '17 campos estratégicos' mediante una inversión de más de 100.000 millones de dólares. Este acuerdo representa el mayor cambio geopolítico en la geopolítica energética del hemisferio occidental en décadas, con implicaciones directas para los precios globales del petróleo, la influencia de PDVSA y el rol de China y Rusia en Venezuela. La oposición interna y la legalidad constitucional son riesgos de ejecución significativos.",
-        "en": "A deal between Washington and Caracas grants the US control over 65 billion barrels of Venezuelan reserves to develop '17 strategic fields' via over $100 billion in investment. This represents the largest geopolitical shift in Western Hemisphere energy politics in decades, with direct implications for global oil prices, PDVSA's leverage, and China and Russia's foothold in Venezuela. Domestic opposition and constitutional legality are significant execution risks."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Perspectiva de aumento de oferta venezolana presiona precios",
-            "en": "Prospect of Venezuelan supply surge pressures prices"
+            "es": "Disrupciones en infraestructura del Golfo sostienen prima de riesgo",
+            "en": "Gulf infrastructure disruptions sustain elevated risk premium"
           }
         },
         {
@@ -226,74 +91,17 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Operadoras estadounidenses serían beneficiarias directas del acuerdo",
-            "en": "US operators stand as direct deal beneficiaries"
-          }
-        },
-        {
-          "asset": "Venezuelan sovereign bonds",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Acuerdo con EE.UU. mejora perspectiva crediticia soberana",
-            "en": "US deal improves sovereign credit outlook"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Impacto diferenciado según exposición a energía latinoamericana",
-            "en": "Differentiated impact by Latin American energy exposure"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/08/29/donald-trump-annonce-la-mainmise-americaine-sur-le-petrole-venezuelien_6759434_3210.html",
-      "published_at": "2026-08-29",
-      "time": "9h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "US",
-      "title": {
-        "es": "La Fed 'tiene trabajo por hacer' si los precios no se moderan para los estadounidenses, dice Warsh",
-        "en": "Fed has 'work to do' if price rises don't ease for Americans, Warsh says"
-      },
-      "summary": {
-        "es": "El gobernador de la Fed Kevin Warsh señaló que las tasas de interés podrían elevarse si los responsables de política consideran que la inflación sigue siendo demasiado alta, en una postura más agresiva que el consenso actual. Combinado con señales de que el Tesoro de EE.UU. empuja en dirección opuesta, emerge una tensión institucional que añade incertidumbre a los mercados de renta fija y divisas. Los inversores deberán monitorear la divergencia entre la Fed y el ejecutivo.",
-        "en": "Fed Governor Kevin Warsh signaled interest rates could be raised if inflation remains too high, adopting a more hawkish stance than current consensus. Combined with signals that the US Treasury is pushing in the opposite direction, an institutional tension emerges that adds uncertainty to fixed income and currency markets. Investors must monitor divergence between the Fed and the executive."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Retórica hawkish de Warsh eleva rendimientos",
-            "en": "Warsh's hawkish rhetoric lifts yields"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Dólar se fortalece ante perspectiva de más alzas de tasas",
-            "en": "Dollar strengthens on higher rate hike expectations"
+            "es": "Empresas energéticas estadounidenses se benefician del alza de precios",
+            "en": "US energy firms profit from sustained high oil prices"
           }
         },
         {
           "asset": "Gold",
-          "direction": "down",
-          "magnitude": "low",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Tasas reales más altas reducen atractivo del oro",
-            "en": "Higher real rates reduce gold's appeal"
+            "es": "Conflicto prolongado impulsa demanda de activos refugio",
+            "en": "Prolonged conflict drives safe-haven demand"
           }
         },
         {
@@ -301,113 +109,239 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Fed más dura amplía presión sobre mercados emergentes",
-            "en": "Hawkish Fed amplifies pressure on emerging markets"
+            "es": "Altos precios del petróleo presionan importadores emergentes",
+            "en": "High oil prices pressure emerging market oil importers"
           }
         }
       ],
-      "confidence": 82,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cy9zjgv9lgdo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-08-28",
-      "time": "20h"
+      "confidence": 92,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/8/30/mapping-the-iran-wars-strikes-on-gulf-energy-and-what-comes-next-for-oil?traffic_source=rss",
+      "published_at": "2026-08-30",
+      "time": "6h"
     },
     {
-      "id": 5,
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
+      "title": {
+        "es": "Putin y Xi se reúnen en cumbre de Asia Central junto a Irán e India para contrarrestar la influencia occidental",
+        "en": "Putin, Xi set for Central Asia summit as Russia and China seek to counter Western influence"
+      },
+      "summary": {
+        "es": "El encuentro en Kirguistán de Putin, Xi, junto a los líderes de Irán e India representa una señal formal de coalición multipolar en un momento de conflictos activos en Ucrania e Irán. La participación de India es particularmente relevante, dado su papel como puente entre bloques. Las conclusiones de la cumbre podrían reforzar los mecanismos de elusión de sanciones y los acuerdos comerciales en monedas alternativas al dólar.",
+        "en": "The Kyrgyzstan gathering of Putin, Xi, and the leaders of Iran and India signals a formal multipolar coalition alignment amid active conflicts in Ukraine and Iran. India's participation is particularly significant given its bridging role between blocs. Summit outcomes could reinforce sanctions-evasion mechanisms and trade arrangements in non-dollar currencies."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "USD",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Avances en comercio en monedas alternativas erosionan demanda de dólar",
+            "en": "Non-dollar trade arrangements erode USD demand"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Bancos centrales del bloque acumulan oro frente a reservas en dólares",
+            "en": "Bloc central banks accumulate gold over dollar reserves"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Consolidación del bloque anti-occidental complica exportaciones europeas",
+            "en": "Anti-Western bloc consolidation complicates European exports"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/asia-pacific/20260830-putin-xi-set-for-central-asia-summit-as-russia-china-seek-to-counter-western-influence",
+      "published_at": "2026-08-30",
+      "time": "5h"
+    },
+    {
+      "id": 3,
+      "tag": "CRITICAL",
+      "region": "LATAM",
+      "title": {
+        "es": "Trump celebra acuerdo 'histórico' para que EE.UU. controle 65.000 millones de barriles de petróleo venezolano",
+        "en": "Trump hails 'historic' deal for US to control 65bn barrels of Venezuela's oil"
+      },
+      "summary": {
+        "es": "El acuerdo que otorga a EE.UU. el control mayoritario de las reservas venezolanas —las mayores del mundo— representa un giro geoestratégico de primer orden en América Latina, con profundas implicaciones para los mercados globales de petróleo y la influencia de actores como China y Rusia en la región. La legitimidad interna del acuerdo es cuestionada, lo que eleva el riesgo de inestabilidad política en Venezuela.",
+        "en": "The deal granting the US majority control of Venezuela's reserves — the world's largest — marks a first-order geostrategic shift in Latin America, with deep implications for global oil markets and the regional influence of China and Russia. Domestic legitimacy of the deal is contested, raising political instability risk inside Venezuela."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Potencial aumento de oferta venezolana modera precio a largo plazo",
+            "en": "Potential Venezuelan supply increase moderates long-term prices"
+          }
+        },
+        {
+          "asset": "US energy equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Acceso a reservas estratégicas masivas fortalece perspectivas del sector",
+            "en": "Access to massive strategic reserves strengthens sector outlook"
+          }
+        },
+        {
+          "asset": "Venezuelan sovereign bonds",
+          "direction": "mixed",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo político interno compensa mejora de fundamentos económicos",
+            "en": "Domestic political risk offsets improving economic fundamentals"
+          }
+        }
+      ],
+      "confidence": 89,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cx2zlwe7qj1o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-08-30",
+      "time": "7h"
+    },
+    {
+      "id": 4,
       "tag": "ALERT",
       "region": "AFRICA",
       "title": {
-        "es": "Níger: Disparos y explosiones se escuchan en la capital",
-        "en": "Niger: Gunfire and explosions heard in capital"
+        "es": "En Níger, las fuerzas de la junta retoman una importante base militar a los amotinados con ayuda de Rusia",
+        "en": "In Niger, junta forces retake a key military base from mutineers with Russian help"
       },
       "summary": {
-        "es": "Se reportan disparos y explosiones en Niamey, la capital de Níger, gobernada por una junta militar, en un contexto de creciente violencia yihadista que afecta a toda la región del Sahel junto a Mali y Burkina Faso. Una nueva ruptura del orden en Níger amenazaría las rutas de exportación de uranio, mineral crítico para el suministro nuclear europeo, y podría precipitar una expansión del vacío de seguridad regional. El evento es un indicador de riesgo adelantado para los mercados de materias primas críticas.",
-        "en": "Gunfire and explosions were reported in Niamey, the capital of junta-ruled Niger, amid growing jihadist violence across the Sahel alongside Mali and Burkina Faso. A new breakdown of order in Niger would threaten uranium export routes, a critical mineral for European nuclear supply, and could precipitate expansion of the regional security vacuum. The event is a leading risk indicator for critical commodities markets."
+        "es": "La intervención del Africa Corps ruso para sofocar una sublevación interna en Níger —retomando la base adyacente al aeropuerto de Niamey— confirma la creciente dependencia de las juntas del Sahel de la seguridad rusa como pilar de estabilidad interna. Este patrón consolida la presencia estratégica rusa en la región y desafía los intereses de potencias occidentales en el acceso a minerales críticos y corredores logísticos africanos.",
+        "en": "The Russian Africa Corps' intervention to suppress an internal mutiny in Niger — retaking the base adjacent to Niamey airport — confirms the growing dependence of Sahel juntas on Russian security as a pillar of internal stability. This pattern cements Russia's strategic presence in the region and challenges Western interests in critical mineral access and African logistics corridors."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
           "asset": "Uranium futures",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Niger aporta ~5% del uranio global; inestabilidad eleva precios",
-            "en": "Niger supplies ~5% of global uranium; instability lifts prices"
+            "es": "Riesgo de interrupción de exportaciones de uranio nigerino persiste",
+            "en": "Risk of Niger uranium export disruption persists"
           }
         },
         {
-          "asset": "European energy equities",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de suministro nuclear europeo depende de evolución",
-            "en": "European nuclear supply risk depends on developments"
-          }
-        },
-        {
-          "asset": "French CAC 40",
+          "asset": "French equities (CAC 40)",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Orano (ex-Areva) tiene operaciones de uranio en Níger",
-            "en": "Orano (ex-Areva) has uranium operations in Niger"
-          }
-        }
-      ],
-      "confidence": 78,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/niger-gunfire-and-explosions-heard-in-capital/a-78554001?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-08-29",
-      "time": "8h"
-    },
-    {
-      "id": 6,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Líderes de Irán reconocen el costo económico de la guerra y prometen diplomacia y defensa",
-        "en": "Iran's leaders acknowledge economic toll of war, pledge diplomacy, defence"
-      },
-      "summary": {
-        "es": "El presidente iraní admitió que las sanciones y el bloqueo naval estadounidense han reducido las exportaciones e importaciones en casi un 35%, la primera admisión pública de daño económico severo. Este reconocimiento señala vulnerabilidad estratégica iraní que podría abrir una ventana para negociaciones, aunque también eleva el riesgo de provocaciones de distracción. Las implicaciones para los mercados de petróleo y el riesgo de crédito de los países vecinos son considerables.",
-        "en": "Iran's president admitted sanctions and the US naval blockade have cut exports and imports by nearly 35%, the first public acknowledgment of severe economic damage. This signals strategic vulnerability that could open a negotiation window, but also raises the risk of diversionary provocations. Implications for oil markets and credit risk across neighboring states are considerable."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "mixed",
-          "magnitude": "high",
-          "note": {
-            "es": "Vulnerabilidad iraní puede bajar primas de riesgo o provocar escalada",
-            "en": "Iranian vulnerability may cut risk premia or trigger escalation"
+            "es": "Pérdida de influencia francesa en Sahel afecta intereses corporativos",
+            "en": "Loss of French influence in Sahel affects corporate interests"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre sobre respuesta iraní sostiene refugio seguro",
-            "en": "Uncertainty over Iran's response sustains safe-haven demand"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo contagio en economías expuestas a energía regional",
-            "en": "Contagion risk for economies exposed to regional energy"
+            "es": "Inestabilidad en región minera clave apoya precio del oro",
+            "en": "Instability in key mining region supports gold price"
           }
         }
       ],
-      "confidence": 85,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/8/29/irans-leaders-acknowledge-economic-toll-of-war-pledge-diplomacy-defence?traffic_source=rss",
+      "confidence": 82,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/afrique/article/2026/08/30/au-niger-une-importante-base-militaire-reprise-avec-l-aide-de-la-russie-apres-une-mutinerie_6759501_3213.html",
+      "published_at": "2026-08-30",
+      "time": "7h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EURASIA",
+      "title": {
+        "es": "Un ruso-americano lidera la ruta comercial del Cáucaso planificada por Trump",
+        "en": "Russian-American heads Trump's planned Caucasus trade route"
+      },
+      "summary": {
+        "es": "El 'Trump Route', un corredor comercial planificado a través de Armenia que conectaría Azerbaiyán con Najicheván, está financiado por un fondo de inversión dirigido por un empresario nacido en Rusia, lo que plantea preguntas sobre la transparencia geopolítica del proyecto. El corredor, si se materializa, podría alterar los flujos comerciales entre Asia Central, el Cáucaso Sur y Europa, compitiendo con rutas dominadas por Rusia e Irán.",
+        "en": "The 'Trump Route', a planned trade corridor through Armenia linking Azerbaijan with Nakhchivan, is financed by an investment fund led by a Russian-born businessman, raising questions about the project's geopolitical transparency. If realized, the corridor could reshape trade flows between Central Asia, the South Caucasus, and Europe, competing with Russia- and Iran-dominated routes."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Armenian sovereign bonds",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Corredor comercial elevaría ingresos de tránsito para Armenia",
+            "en": "Trade corridor would boost transit revenues for Armenia"
+          }
+        },
+        {
+          "asset": "EM currencies (TRY, AZN)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Nuevo corredor mejora perspectivas de integración comercial regional",
+            "en": "New corridor improves regional trade integration outlook"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/russian-american-heads-trump-s-planned-caucasus-trade-route/a-78547064?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-08-29",
-      "time": "2h"
+      "time": "18h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "La reunión del Foro de las Islas del Pacífico en Palau en turbulencia tras la retirada de varios líderes",
+        "en": "Pacific Islands Forum meeting in turmoil after several leaders pull out of Palau summit"
+      },
+      "summary": {
+        "es": "La retirada de los primeros ministros de Islas Salomón, Fiyi, Vanuatu y Samoa de la cumbre del Foro de las Islas del Pacífico en Palau señala fracturas internas en un bloque geopolíticamente disputado entre China y EE.UU./Australia. La desintegración del foro debilita la posición negociadora colectiva de los estados insulares y podría facilitar la expansión de la influencia china en el Pacífico sur.",
+        "en": "The withdrawal of leaders from Solomon Islands, Fiji, Vanuatu, and Samoa from the Pacific Islands Forum summit in Palau signals internal fractures in a bloc geopolitically contested between China and the US/Australia. Forum fragmentation weakens island states' collective bargaining position and could facilitate Chinese influence expansion in the South Pacific."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "AUD/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Reducción de influencia australiana en Pacífico es negativa para el AUD",
+            "en": "Reduced Australian influence in Pacific is negative for AUD"
+          }
+        },
+        {
+          "asset": "Chinese strategic assets (South Pacific)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Fragmentación del foro abre espacio a mayor presencia china",
+            "en": "Forum fragmentation opens space for greater Chinese presence"
+          }
+        }
+      ],
+      "confidence": 70,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/aug/30/pacific-islands-forum-meeting-in-turmoil-after-several-leaders-pull-out-of-palau-summit",
+      "published_at": "2026-08-30",
+      "time": "3h"
     }
   ],
-  "market_updated_at": "2026-08-30T10:47:01.197Z"
+  "market_updated_at": "2026-08-30T11:09:39.033Z"
 }
