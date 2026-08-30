@@ -3,38 +3,38 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1591",
-      "change": "-0.57%",
+      "value": "1.1587",
+      "change": "-0.62%",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,961.50",
-      "change": "+0.76%",
+      "value": "19,183.30",
+      "change": "+0.11%",
       "up": true
     },
     {
       "symbol": "BRENT Crude",
-      "value": "88.53",
-      "change": "+0.48%",
+      "value": "88.47",
+      "change": "+1.76%",
       "up": true
     },
     {
       "symbol": "WTI Crude",
-      "value": "83.67",
-      "change": "+0.17%",
-      "up": true
+      "value": "83.44",
+      "change": "-0.11%",
+      "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,458.00",
-      "change": "+3.19%",
+      "symbol": "Gold (XAU/USD)",
+      "value": "4,529.90",
+      "change": "+1.16%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "78,070.07",
-      "change": "+0.55%",
+      "value": "78,231.51",
+      "change": "+0.75%",
       "up": true
     },
     {
@@ -63,32 +63,32 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8572",
-      "change": "-0.00%",
+      "value": "0.8559",
+      "change": "-0.15%",
       "up": false
     },
     {
       "symbol": "DXY Dollar Index",
-      "value": "99.68",
-      "change": "+0.52%",
+      "value": "99.65",
+      "change": "+0.55%",
       "up": true
     },
     {
       "symbol": "Natural Gas",
-      "value": "2.880",
-      "change": "-1.17%",
+      "value": "2.888",
+      "change": "-1.34%",
       "up": false
     },
     {
       "symbol": "Copper",
-      "value": "6.54",
-      "change": "-0.04%",
-      "up": false
+      "value": "6.5915",
+      "change": "+1.09%",
+      "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7267",
-      "change": "+0.10%",
+      "value": "6.7205",
+      "change": "+0.02%",
       "up": true
     }
   ],
@@ -373,5 +373,5 @@
       "time": "3h"
     }
   ],
-  "market_updated_at": "2026-08-30T20:09:13.079Z"
+  "market_updated_at": "2026-08-30T23:58:24.954Z"
 }
