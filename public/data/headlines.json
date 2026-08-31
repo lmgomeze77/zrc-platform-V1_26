@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-08-30T11:09:39.033Z",
+  "generated_at": "2026-08-31T12:34:09.947Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1583",
-      "change": "-0.57%",
+      "value": "1.1609",
+      "change": "-0.69",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,881.60",
-      "change": "-0.96%",
+      "value": "19881.60",
+      "change": "-192.00",
       "up": false
     },
     {
-      "symbol": "BRENT Crude",
-      "value": "90.69",
-      "change": "+2.93%",
+      "symbol": "BRENT",
+      "value": "88.28",
+      "change": "-0.24",
+      "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4611.00",
+      "change": "+21.00",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "85.36",
-      "change": "+2.35%",
+      "symbol": "BTC",
+      "value": "78611.50",
+      "change": "+879.00",
       "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,455.11",
-      "change": "-1.09%",
-      "up": false
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "78,058.73",
-      "change": "-0.22%",
-      "up": false
     },
     {
       "symbol": "VIX",
-      "value": "15.26",
-      "change": "+5.75%",
+      "value": "14.43",
+      "change": "-0.08",
+      "up": false
+    },
+    {
+      "symbol": "US 10Y",
+      "value": "4.73",
+      "change": "+0.06",
       "up": true
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.72%",
-      "change": "+0.04%",
-      "up": true
+      "symbol": "EUR/GBP",
+      "value": "0.8559",
+      "change": "-0.0015",
+      "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7,711.76",
-      "change": "-0.25%",
+      "value": "7711.76",
+      "change": "-19.23",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "26,481.00",
-      "change": "-0.34%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8572",
-      "change": "-0.00%",
-      "up": false
-    },
-    {
-      "symbol": "DXY Dollar Index",
-      "value": "99.573",
-      "change": "-0.09%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.850",
-      "change": "-0.28%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.54",
-      "change": "-0.28%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7193",
-      "change": "+0.11%",
+      "value": "26569.99",
+      "change": "+200.00",
       "up": true
     }
   ],
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Mapa de los ataques de la guerra con Irán a la energía del Golfo y su impacto en el futuro del petróleo",
-        "en": "Mapping Iran war's strikes on Gulf energy and its impact on future of oil"
+        "es": "Los primeros ataques militares de EE.UU. contra Irán en un mes provocan represalias",
+        "en": "First US military attacks on Iran in a month prompt retaliation"
       },
       "summary": {
-        "es": "A seis meses del inicio del conflicto entre EE.UU., Israel e Irán, los ataques han perturbado significativamente la infraestructura energética del Golfo, impulsando los precios del crudo y beneficiando a empresas energéticas estadounidenses. Sin embargo, los activos occidentales en la región permanecen en riesgo, generando incertidumbre estructural sobre la oferta global de petróleo. Este análisis es clave para carteras con exposición a energía y materias primas.",
-        "en": "Six months into the US-Israel-Iran conflict, strikes on Gulf energy infrastructure have significantly disrupted regional supply, boosting crude prices and US energy company profits. However, Western assets in the region remain at material risk, creating structural uncertainty over global oil supply. This is essential reading for portfolios with energy and commodities exposure."
+        "es": "EE.UU. atacó lanzadores de cohetes iraníes en la isla de Larak, en el estrecho de Ormuz, para evitar la colocación de minas marinas; Irán respondió atacando bases estadounidenses en Jordania y los EAU. El estrecho de Ormuz —ruta de aproximadamente el 20% del petróleo mundial— vuelve a estar en el centro del riesgo geopolítico, con implicaciones directas para los precios del crudo y los activos de refugio seguro.",
+        "en": "The US struck Iranian rocket launchers on Larak Island in the Strait of Hormuz to prevent sea-mine placement; Iran retaliated by targeting US bases in Jordan and the UAE. The Strait of Hormuz — through which roughly 20% of global oil transits — is again the focal point of geopolitical risk, with direct implications for crude prices and safe-haven assets."
       },
       "impact": "high",
       "market_impact": [
@@ -112,26 +82,26 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Disrupciones en infraestructura del Golfo sostienen prima de riesgo",
-            "en": "Gulf infrastructure disruptions sustain elevated risk premium"
-          }
-        },
-        {
-          "asset": "US energy equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Empresas energéticas estadounidenses se benefician del alza de precios",
-            "en": "US energy firms profit from sustained high oil prices"
+            "es": "Riesgo de cierre del estrecho de Ormuz impulsa prima de riesgo",
+            "en": "Strait of Hormuz closure risk drives significant risk premium"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Escalada bélica regional alimenta demanda de refugio seguro",
+            "en": "Regional war escalation fuels safe-haven demand"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Conflicto prolongado impulsa demanda de activos refugio",
-            "en": "Prolonged conflict drives safe-haven demand"
+            "es": "Vuelo hacia la calidad presiona rendimientos a la baja",
+            "en": "Flight-to-quality pushes yields lower"
           }
         },
         {
@@ -139,239 +109,230 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Altos precios del petróleo presionan importadores emergentes",
-            "en": "High oil prices pressure emerging market oil importers"
+            "es": "Aversión al riesgo castiga divisas emergentes exportadoras",
+            "en": "Risk-off sentiment pressures emerging market currencies"
           }
         }
       ],
-      "confidence": 92,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/8/30/mapping-the-iran-wars-strikes-on-gulf-energy-and-what-comes-next-for-oil?traffic_source=rss",
-      "published_at": "2026-08-30",
-      "time": "6h"
+      "confidence": 95,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/aug/30/us-strikes-iranian-launchers-on-larak-island-amid-strait-of-hormuz-tensions",
+      "published_at": "2026-08-31",
+      "time": "2h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "EURASIA",
       "title": {
-        "es": "Putin y Xi se reúnen en cumbre de Asia Central junto a Irán e India para contrarrestar la influencia occidental",
-        "en": "Putin, Xi set for Central Asia summit as Russia and China seek to counter Western influence"
+        "es": "Reunión Modi-Putin en la SCO: ¿Pueden sostenerse los lazos India-Rusia?",
+        "en": "Modi-Putin meeting at SCO: Can India-Russia ties hold?"
       },
       "summary": {
-        "es": "El encuentro en Kirguistán de Putin, Xi, junto a los líderes de Irán e India representa una señal formal de coalición multipolar en un momento de conflictos activos en Ucrania e Irán. La participación de India es particularmente relevante, dado su papel como puente entre bloques. Las conclusiones de la cumbre podrían reforzar los mecanismos de elusión de sanciones y los acuerdos comerciales en monedas alternativas al dólar.",
-        "en": "The Kyrgyzstan gathering of Putin, Xi, and the leaders of Iran and India signals a formal multipolar coalition alignment amid active conflicts in Ukraine and Iran. India's participation is particularly significant given its bridging role between blocs. Summit outcomes could reinforce sanctions-evasion mechanisms and trade arrangements in non-dollar currencies."
+        "es": "El primer ministro Modi y el presidente Putin se reúnen en la cumbre de la OCS en Biskek mientras ambos países enfrentan presiones crecientes de Washington —Rusia por las sanciones relacionadas con la guerra y la India por sus compras de energía y decisiones comerciales. El resultado de la reunión tiene implicaciones para la eficacia de las sanciones occidentales, el mercado del petróleo ruso con descuento y el posicionamiento geopolítico de la India.",
+        "en": "PM Modi and President Putin meet at the SCO summit in Bishkek as both nations face rising pressure from Washington — Russia over war sanctions, India over energy purchases and trade choices. The meeting's outcome has implications for Western sanctions effectiveness, the discounted Russian oil market, and India's geopolitical alignment."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "USD",
-          "direction": "down",
+          "asset": "Indian rupee",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Avances en comercio en monedas alternativas erosionan demanda de dólar",
-            "en": "Non-dollar trade arrangements erode USD demand"
+            "es": "Posible presión de EE.UU. sobre India afecta perspectiva de la rupia",
+            "en": "Potential US pressure on India clouds rupee outlook"
           }
         },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Bancos centrales del bloque acumulan oro frente a reservas en dólares",
-            "en": "Bloc central banks accumulate gold over dollar reserves"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Consolidación del bloque anti-occidental complica exportaciones europeas",
-            "en": "Anti-Western bloc consolidation complicates European exports"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/asia-pacific/20260830-putin-xi-set-for-central-asia-summit-as-russia-china-seek-to-counter-western-influence",
-      "published_at": "2026-08-30",
-      "time": "5h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "LATAM",
-      "title": {
-        "es": "Trump celebra acuerdo 'histórico' para que EE.UU. controle 65.000 millones de barriles de petróleo venezolano",
-        "en": "Trump hails 'historic' deal for US to control 65bn barrels of Venezuela's oil"
-      },
-      "summary": {
-        "es": "El acuerdo que otorga a EE.UU. el control mayoritario de las reservas venezolanas —las mayores del mundo— representa un giro geoestratégico de primer orden en América Latina, con profundas implicaciones para los mercados globales de petróleo y la influencia de actores como China y Rusia en la región. La legitimidad interna del acuerdo es cuestionada, lo que eleva el riesgo de inestabilidad política en Venezuela.",
-        "en": "The deal granting the US majority control of Venezuela's reserves — the world's largest — marks a first-order geostrategic shift in Latin America, with deep implications for global oil markets and the regional influence of China and Russia. Domestic legitimacy of the deal is contested, raising political instability risk inside Venezuela."
-      },
-      "impact": "high",
-      "market_impact": [
         {
           "asset": "Brent crude",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Potencial aumento de oferta venezolana modera precio a largo plazo",
-            "en": "Potential Venezuelan supply increase moderates long-term prices"
+            "es": "Continuidad de compras indias de crudo ruso mantiene desvíos de flujos",
+            "en": "Continued Indian purchases of Russian crude sustain flow diversions"
           }
         },
         {
-          "asset": "US energy equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Acceso a reservas estratégicas masivas fortalece perspectivas del sector",
-            "en": "Access to massive strategic reserves strengthens sector outlook"
-          }
-        },
-        {
-          "asset": "Venezuelan sovereign bonds",
+          "asset": "EM currencies",
           "direction": "mixed",
-          "magnitude": "high",
-          "note": {
-            "es": "Riesgo político interno compensa mejora de fundamentos económicos",
-            "en": "Domestic political risk offsets improving economic fundamentals"
-          }
-        }
-      ],
-      "confidence": 89,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cx2zlwe7qj1o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-08-30",
-      "time": "7h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "AFRICA",
-      "title": {
-        "es": "En Níger, las fuerzas de la junta retoman una importante base militar a los amotinados con ayuda de Rusia",
-        "en": "In Niger, junta forces retake a key military base from mutineers with Russian help"
-      },
-      "summary": {
-        "es": "La intervención del Africa Corps ruso para sofocar una sublevación interna en Níger —retomando la base adyacente al aeropuerto de Niamey— confirma la creciente dependencia de las juntas del Sahel de la seguridad rusa como pilar de estabilidad interna. Este patrón consolida la presencia estratégica rusa en la región y desafía los intereses de potencias occidentales en el acceso a minerales críticos y corredores logísticos africanos.",
-        "en": "The Russian Africa Corps' intervention to suppress an internal mutiny in Niger — retaking the base adjacent to Niamey airport — confirms the growing dependence of Sahel juntas on Russian security as a pillar of internal stability. This pattern cements Russia's strategic presence in the region and challenges Western interests in critical mineral access and African logistics corridors."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Uranium futures",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de interrupción de exportaciones de uranio nigerino persiste",
-            "en": "Risk of Niger uranium export disruption persists"
-          }
-        },
-        {
-          "asset": "French equities (CAC 40)",
-          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Pérdida de influencia francesa en Sahel afecta intereses corporativos",
-            "en": "Loss of French influence in Sahel affects corporate interests"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad en región minera clave apoya precio del oro",
-            "en": "Instability in key mining region supports gold price"
+            "es": "Reconfiguración de alianzas en la OCS redefine riesgos de activos emergentes",
+            "en": "SCO alliance reshaping redefines emerging asset risk profiles"
           }
         }
       ],
       "confidence": 82,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/afrique/article/2026/08/30/au-niger-une-importante-base-militaire-reprise-avec-l-aide-de-la-russie-apres-une-mutinerie_6759501_3213.html",
-      "published_at": "2026-08-30",
-      "time": "7h"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/modi-putin-meeting-at-sco-can-india-russia-ties-hold/a-78575121?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-08-31",
+      "time": "<1h"
     },
     {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "EURASIA",
+      "id": 3,
+      "tag": "ALERT",
+      "region": "US",
       "title": {
-        "es": "Un ruso-americano lidera la ruta comercial del Cáucaso planificada por Trump",
-        "en": "Russian-American heads Trump's planned Caucasus trade route"
+        "es": "Cómo se siente la guerra comercial EE.UU.-Canadá en ambos lados de la frontera",
+        "en": "How the US-Canada trade war is being felt on both sides of the border"
       },
       "summary": {
-        "es": "El 'Trump Route', un corredor comercial planificado a través de Armenia que conectaría Azerbaiyán con Najicheván, está financiado por un fondo de inversión dirigido por un empresario nacido en Rusia, lo que plantea preguntas sobre la transparencia geopolítica del proyecto. El corredor, si se materializa, podría alterar los flujos comerciales entre Asia Central, el Cáucaso Sur y Europa, compitiendo con rutas dominadas por Rusia e Irán.",
-        "en": "The 'Trump Route', a planned trade corridor through Armenia linking Azerbaijan with Nakhchivan, is financed by an investment fund led by a Russian-born businessman, raising questions about the project's geopolitical transparency. If realized, the corridor could reshape trade flows between Central Asia, the South Caucasus, and Europe, competing with Russia- and Iran-dominated routes."
+        "es": "La guerra comercial entre EE.UU. y Canadá está generando efectos económicos tangibles en ambos países, afectando cadenas de suministro integradas en sectores clave como automóviles, energía y agricultura. La persistencia del conflicto erosiona la confianza empresarial norteamericana y plantea riesgos para la inflación en EE.UU. y el crecimiento en Canadá.",
+        "en": "The US-Canada trade war is producing tangible economic effects on both sides of the border, disrupting highly integrated supply chains in key sectors including autos, energy, and agriculture. The conflict's persistence erodes North American business confidence and poses risks to US inflation and Canadian growth."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Armenian sovereign bonds",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "Canadian dollar (CAD)",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Corredor comercial elevaría ingresos de tránsito para Armenia",
-            "en": "Trade corridor would boost transit revenues for Armenia"
+            "es": "Tensiones comerciales continuas pesan sobre el CAD",
+            "en": "Ongoing trade tensions weigh on the Canadian dollar"
           }
         },
         {
-          "asset": "EM currencies (TRY, AZN)",
+          "asset": "US 10Y Treasury",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Nuevo corredor mejora perspectivas de integración comercial regional",
-            "en": "New corridor improves regional trade integration outlook"
+            "es": "Presiones inflacionarias por aranceles elevan expectativas de tipos",
+            "en": "Tariff-driven inflation pressures lift rate expectations"
+          }
+        },
+        {
+          "asset": "North American auto equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Disrupciones en cadenas de suministro integradas afectan márgenes",
+            "en": "Integrated supply chain disruptions compress margins"
           }
         }
       ],
-      "confidence": 72,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/russian-american-heads-trump-s-planned-caucasus-trade-route/a-78547064?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-08-29",
-      "time": "18h"
+      "confidence": 80,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c4g4r4lxx25o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-08-31",
+      "time": "12h"
     },
     {
-      "id": 6,
+      "id": 4,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "La reunión del Foro de las Islas del Pacífico en Palau en turbulencia tras la retirada de varios líderes",
-        "en": "Pacific Islands Forum meeting in turmoil after several leaders pull out of Palau summit"
+        "es": "Los servicios secretos ven probables más acciones encubiertas sobre Ceuta y Melilla",
+        "en": "Intelligence services see likely further covert actions over Ceuta and Melilla"
       },
       "summary": {
-        "es": "La retirada de los primeros ministros de Islas Salomón, Fiyi, Vanuatu y Samoa de la cumbre del Foro de las Islas del Pacífico en Palau señala fracturas internas en un bloque geopolíticamente disputado entre China y EE.UU./Australia. La desintegración del foro debilita la posición negociadora colectiva de los estados insulares y podría facilitar la expansión de la influencia china en el Pacífico sur.",
-        "en": "The withdrawal of leaders from Solomon Islands, Fiji, Vanuatu, and Samoa from the Pacific Islands Forum summit in Palau signals internal fractures in a bloc geopolitically contested between China and the US/Australia. Forum fragmentation weakens island states' collective bargaining position and could facilitate Chinese influence expansion in the South Pacific."
+        "es": "Informes de inteligencia españoles alertan sobre un incremento de medidas de presión en la zona gris en torno a los enclaves de Ceuta y Melilla, sin llegar al conflicto abierto. Este escenario de guerra híbrida en el flanco sur de la OTAN tiene implicaciones para la estabilidad político-migratoria del Mediterráneo occidental y las relaciones España-Marruecos.",
+        "en": "Spanish intelligence reports warn of increasing grey-zone pressure measures around the enclaves of Ceuta and Melilla, short of open conflict. This hybrid-warfare scenario on NATO's southern flank has implications for western Mediterranean political-migratory stability and Spain-Morocco relations."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "AUD/USD",
+          "asset": "EUR/USD",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Reducción de influencia australiana en Pacífico es negativa para el AUD",
-            "en": "Reduced Australian influence in Pacific is negative for AUD"
+            "es": "Tensión en flanco sur OTAN añade presión al euro",
+            "en": "NATO southern flank tension adds marginal pressure on euro"
           }
         },
         {
-          "asset": "Chinese strategic assets (South Pacific)",
-          "direction": "up",
+          "asset": "Spanish sovereign bonds",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Fragmentación del foro abre espacio a mayor presencia china",
-            "en": "Forum fragmentation opens space for greater Chinese presence"
+            "es": "Riesgo geopolítico regional amplía levemente el diferencial",
+            "en": "Regional geopolitical risk marginally widens Spanish spread"
           }
         }
       ],
       "confidence": 70,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/aug/30/pacific-islands-forum-meeting-in-turmoil-after-several-leaders-pull-out-of-palau-summit",
-      "published_at": "2026-08-30",
+      "source": "El País",
+      "source_url": "https://elpais.com/espana/2026-08-31/los-servicios-secretos-ven-probables-mas-acciones-encubiertas-sobre-ceuta-y-melilla.html",
+      "published_at": "2026-08-31",
+      "time": "9h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Bruselas incluye a ChatGPT, Reddit y Roblox entre las plataformas más fiscalizadas por la UE",
+        "en": "Brussels includes ChatGPT, Reddit and Roblox among the most closely regulated platforms in the EU"
+      },
+      "summary": {
+        "es": "La Comisión Europea ha designado a ChatGPT, Reddit y Roblox como plataformas de muy gran tamaño bajo la Ley de Servicios Digitales, al superar los 45 millones de usuarios, sometiéndolas a obligaciones de cumplimiento más estrictas. Esta designación intensifica la ofensiva regulatoria digital de la UE, con implicaciones de costes operativos para las empresas tecnológicas estadounidenses con exposición europea.",
+        "en": "The European Commission has designated ChatGPT, Reddit and Roblox as Very Large Online Platforms under the Digital Services Act, triggering stricter compliance obligations. This designation intensifies the EU's digital regulatory offensive, with operational cost implications for US tech companies with European exposure."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "US tech equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayores costes de cumplimiento regulatorio en mercado europeo",
+            "en": "Higher regulatory compliance costs in European market"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Soberanía digital UE refuerza postura pero tensiona relaciones con EE.UU.",
+            "en": "EU digital sovereignty reinforced but strains US-EU tech relations"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "El País",
+      "source_url": "https://elpais.com/tecnologia/2026-08-31/bruselas-incluye-a-chatgpt-reddit-y-roblox-entre-las-plataformas-mas-fiscalizadas-por-la-ue.html",
+      "published_at": "2026-08-31",
+      "time": "<1h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EURASIA",
+      "title": {
+        "es": "Tokayev de Kazajistán nombra a su asesor de larga data como vicepresidente",
+        "en": "Kazakhstan's Tokayev appoints longtime adviser as vice president"
+      },
+      "summary": {
+        "es": "El presidente Tokayev ha nombrado a Erlan Karin, su asesor de confianza desde 2019, como vicepresidente de Kazajistán. El nombramiento consolida el círculo cercano al poder en un Estado pivote de Asia Central, con implicaciones para la continuidad política en un país clave para los corredores energéticos trans-caspianos y la extracción de minerales críticos.",
+        "en": "President Tokayev has appointed his trusted adviser Erlan Karin as Kazakhstan's vice president. The appointment consolidates the inner circle of power in a pivotal Central Asian state, with implications for policy continuity in a country critical to trans-Caspian energy corridors and critical mineral extraction."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Kazakh tenge (KZT)",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Continuidad política puede estabilizar perspectiva de inversión",
+            "en": "Political continuity may stabilize investment outlook"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Política energética de Kazajistán clave para producción OPEP+",
+            "en": "Kazakhstan energy policy key for OPEC+ production dynamics"
+          }
+        }
+      ],
+      "confidence": 65,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/8/31/kazakhstans-president-taps-longtime-adviser-for-vice-president-role?traffic_source=rss",
+      "published_at": "2026-08-31",
       "time": "3h"
     }
   ],
-  "market_updated_at": "2026-08-31T11:56:39.486Z"
+  "market_updated_at": "2026-08-31T12:34:09.948Z"
 }
