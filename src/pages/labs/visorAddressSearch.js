@@ -31,8 +31,7 @@ const COPY = {
 
 function lang() {
   try {
-    const value = localStorage.getItem(LANG_KEY);
-    return value === "en" ? "en" : "es";
+    return localStorage.getItem(LANG_KEY) === "en" ? "en" : "es";
   } catch {
     return "es";
   }
@@ -51,9 +50,7 @@ function parseCatastroXml(xmlText) {
 
   return rows
     .map((node) => {
-      const pc1 = textContent(node, "pc1");
-      const pc2 = textContent(node, "pc2");
-      const rc = `${pc1}${pc2}`.replace(/\s+/g, "");
+      const rc = `${textContent(node, "pc1")}${textContent(node, "pc2")}`.replace(/\s+/g, "");
       if (!rc) return null;
       return {
         rc,
@@ -99,9 +96,7 @@ async function resolveAddress(query) {
 
   for (const place of places) {
     let cadastral = await catastroByCoordinates(place.lon, place.lat, false);
-    if (!cadastral.length) {
-      cadastral = await catastroByCoordinates(place.lon, place.lat, true);
-    }
+    if (!cadastral.length) cadastral = await catastroByCoordinates(place.lon, place.lat, true);
 
     for (const item of cadastral) {
       if (seen.has(item.rc)) continue;
@@ -126,10 +121,10 @@ function setReactInputValue(input, value) {
 
 function findRcForm() {
   return [...document.querySelectorAll("form")].find((form) => {
-    const label = [...form.querySelectorAll("label")]
+    const labels = [...form.querySelectorAll("label")]
       .map((el) => el.textContent?.toLowerCase() || "")
       .join(" ");
-    return label.includes("referencia catastral") || label.includes("cadastral reference");
+    return labels.includes("referencia catastral") || labels.includes("cadastral reference");
   });
 }
 
@@ -152,8 +147,8 @@ function ensureStyles() {
     .zrc-address-search__result{display:flex;justify-content:space-between;gap:14px;align-items:center;width:100%;text-align:left;border:1px solid #DBC9A0;background:#F3ECDC;border-radius:12px;padding:11px 12px;cursor:pointer;color:#2B2418}
     .zrc-address-search__result:hover{background:#EDE3CE}
     .zrc-address-search__meta{min-width:0}
-    .zrc-address-search__rc{font-weight:800;font-size:13px;letter-spacing:.03em}
-    .zrc-address-search__address{margin-top:3px;font-size:12px;color:#8A7B5C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:650px}
+    .zrc-address-search__rc{display:block;font-weight:800;font-size:13px;letter-spacing:.03em}
+    .zrc-address-search__address{display:block;margin-top:3px;font-size:12px;color:#8A7B5C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:650px}
     .zrc-address-search__use{font-size:12px;font-weight:700;color:#93712F;white-space:nowrap}
     @media(max-width:720px){.zrc-address-search__row{flex-direction:column}.zrc-address-search__button{width:100%}.zrc-address-search__result{align-items:flex-start;flex-direction:column}.zrc-address-search__address{white-space:normal}.zrc-address-search__use{align-self:flex-end}}
   `;
@@ -162,7 +157,7 @@ function ensureStyles() {
 
 function renderResults(container, matches, rcForm) {
   const copy = COPY[lang()];
-  container.innerHTML = "";
+  container.replaceChildren();
   if (!matches.length) return;
 
   const title = document.createElement("div");
@@ -174,13 +169,24 @@ function renderResults(container, matches, rcForm) {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "zrc-address-search__result";
-    button.innerHTML = `
-      <span class="zrc-address-search__meta">
-        <span class="zrc-address-search__rc">${match.rc}</span>
-        <span class="zrc-address-search__address">${match.address || match.geocoderAddress || ""}</span>
-      </span>
-      <span class="zrc-address-search__use">${copy.use}</span>
-    `;
+
+    const meta = document.createElement("span");
+    meta.className = "zrc-address-search__meta";
+
+    const rc = document.createElement("span");
+    rc.className = "zrc-address-search__rc";
+    rc.textContent = match.rc;
+
+    const address = document.createElement("span");
+    address.className = "zrc-address-search__address";
+    address.textContent = match.address || match.geocoderAddress || "";
+
+    const use = document.createElement("span");
+    use.className = "zrc-address-search__use";
+    use.textContent = copy.use;
+
+    meta.append(rc, address);
+    button.append(meta, use);
     button.addEventListener("click", () => {
       const rcInput = rcForm.querySelector("input");
       if (!rcInput) return;
@@ -193,7 +199,10 @@ function renderResults(container, matches, rcForm) {
 }
 
 function mountAddressSearch(rcForm) {
-  if (!rcForm || rcForm.previousElementSibling?.hasAttribute(MOUNT_ATTR)) return;
+  if (!rcForm) return;
+  const parent = rcForm.parentElement;
+  if (parent?.querySelector(`[${MOUNT_ATTR}]`)) return;
+
   ensureStyles();
   const copy = COPY[lang()];
   const section = document.createElement("section");
@@ -221,7 +230,7 @@ function mountAddressSearch(rcForm) {
     button.disabled = true;
     button.textContent = COPY[lang()].searching;
     error.hidden = true;
-    results.innerHTML = "";
+    results.replaceChildren();
     try {
       const matches = await resolveAddress(query);
       if (!matches.length) {
