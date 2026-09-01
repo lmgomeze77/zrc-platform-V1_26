@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 
+// A relative "/api/..." path only reaches the Worker when the current host
+// is bound to it directly. On www.zenithrisecapital.com that binding does
+// not cover every route, so a relative fetch here silently 404s (plain
+// text, not JSON) and every paying subscriber reads back as tier "free".
+// The workers.dev subdomain always resolves to this exact Worker.
+const API_BASE = "https://zenith-risecapital.lmgomeze77.workers.dev";
+
 export function useSubscription(email) {
   const [tier, setTier] = useState("free");
   const [status, setStatus] = useState("none");
@@ -9,7 +16,7 @@ export function useSubscription(email) {
   useEffect(() => {
     if (!email) { setTier("free"); setStatus("none"); setTrialEnd(null); return; }
     setLoading(true);
-    fetch(`/api/subscription?email=${encodeURIComponent(email)}`)
+    fetch(`${API_BASE}/api/subscription?email=${encodeURIComponent(email)}`)
       .then((r) => (r.ok ? r.json() : { tier: "free", status: "none", trialEnd: null }))
       .then((d) => {
         setTier(d.tier || "free");

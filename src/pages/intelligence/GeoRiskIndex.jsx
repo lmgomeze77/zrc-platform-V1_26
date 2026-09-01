@@ -8,13 +8,17 @@ import { t as tVisor } from "../labs/visorI18n";
 
 // A diferencia del modal de leads del Visor (que sigue apuntando a
 // zrc-api.onrender.com, el backend de leads en producción), esta captura
-// apunta al propio Worker (mismo origen): la promesa aquí es "te mandamos
-// el índice cada lunes", y eso requiere controlar el envío — el Worker ya
-// tiene D1 + Resend montado y el cron semanal lo extiende para mandar el
-// email real (ver sendWeeklyDigestEmails en src/worker/index.js). Los
-// textos de sector se reutilizan del mismo diccionario (visorI18n) para no
+// apunta al propio Worker: la promesa aquí es "te mandamos el índice cada
+// lunes", y eso requiere controlar el envío — el Worker ya tiene D1 +
+// Resend montado y el cron semanal lo extiende para mandar el email real
+// (ver sendWeeklyDigestEmails en src/worker/index.js). Los textos de
+// sector se reutilizan del mismo diccionario (visorI18n) para no
 // duplicar la lista.
-const LEAD_API_URL = "/api/lead";
+// URL absoluta (no ruta relativa): www.zenithrisecapital.com no está
+// vinculado a todas las rutas del Worker, así que un fetch relativo aquí
+// devuelve 404 en texto plano en vez de llegar al Worker. El subdominio
+// workers.dev sí resuelve siempre a este Worker — mismo patrón que API_URL.
+const LEAD_API_URL = "https://zenith-risecapital.lmgomeze77.workers.dev/api/lead";
 const LEAD_SECTOR_KEYS = [
   "leadSectorPromotor", "leadSectorFamilyOffice", "leadSectorAsesoria",
   "leadSectorAgencia", "leadSectorInversor", "leadSectorFondo", "leadSectorOtro",

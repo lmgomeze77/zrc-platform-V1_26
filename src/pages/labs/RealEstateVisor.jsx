@@ -50,6 +50,13 @@ const WMS = {
 const CATASTRO_DNP = "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejero.svc/json/Consulta_DNPRC";
 const CATASTRO_COORD = "https://ovc.catastro.meh.es/ovcservweb/OVCSWLocalizacionRC/OVCCoordenadas.asmx/Consulta_CPMRC";
 
+// A relative "/api/..." path only reaches the Worker when the current host
+// is bound to it directly. On www.zenithrisecapital.com that binding does
+// not cover every route, so a relative fetch here silently 404s (plain
+// text, not JSON). The workers.dev subdomain always resolves to this
+// exact Worker — same fix as useSubscription.js and App.jsx already use.
+const API_BASE = "https://zenith-risecapital.lmgomeze77.workers.dev";
+
 // Stripe Payment Links — sustituir por los enlaces reales del Dashboard
 // (Payment Links → Create link). En cada Payment Link, configurar el
 // redirect "After payment" a:
@@ -168,7 +175,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
       // Fire-and-forget: solo visibilidad de volumen de búsquedas para el
       // panel interno de MRR (Fase 1 del plan de monetización) — nunca debe
       // bloquear ni afectar a la búsqueda real si falla.
-      fetch("/api/track-search", {
+      fetch(`${API_BASE}/api/track-search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -234,7 +241,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
     let fetchErr = null;
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
-        const resp = await fetch(`/api/checkout-session?session_id=${encodeURIComponent(pending.sessionId)}`);
+        const resp = await fetch(`${API_BASE}/api/checkout-session?session_id=${encodeURIComponent(pending.sessionId)}`);
         // A non-JSON body (e.g. an HTML error/challenge page from an edge
         // proxy in front of the API) makes resp.json() throw an opaque,
         // browser-internal parse error — Safari's message for it ("The
