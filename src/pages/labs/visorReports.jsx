@@ -170,6 +170,47 @@ function ValorBox({ residual, marketRef, lang }) {
   );
 }
 
+// Sustituye a ValorBox+InvestabilityBox cuando la parcela no tiene
+// superficie edificable registrada (suelo en fase de urbanización) — el
+// mismo guard que RealEstateVisor.jsx usa para no calcular el residual
+// (`parcela?.superficie && params.precioVenta`). Antes esta sección
+// simplemente desaparecía del teaser sin explicación.
+function ValuationUnavailableBox({ marketRef, lang }) {
+  const fmt = fmtCurrency(lang);
+  return (
+    <View style={s.section}>
+      <Text style={s.sectionTitle}>{t(lang, "pdfSinValoracionTitulo")}</Text>
+      <View style={s.box}>
+        <Text style={{ fontSize: 9, color: MUTED, lineHeight: 1.4 }}>{t(lang, "pdfSinValoracionNota")}</Text>
+        {marketRef && (
+          <Text style={{ fontSize: 9, color: INK, marginTop: 8 }}>
+            {t(lang, "pdfRefMercadoZona", { precioM2: fmt(marketRef.precioM2), fuente: marketRef.fuente, periodo: marketRef.periodo })}
+          </Text>
+        )}
+      </View>
+    </View>
+  );
+}
+
+// Grid compacto de las 6 capas de riesgo — solo etiqueta + nivel (sin el
+// texto de detalle, que se queda exclusivo del Informe Investigado). Antes
+// el teaser solo mostraba un semáforo agregado de 3 puntos sin desglosar
+// qué factores lo componen.
+function RiskFactorsGrid({ factors, lang }) {
+  return (
+    <View style={{ flexDirection: "row", flexWrap: "wrap", marginTop: 8 }}>
+      {factors.map((f) => (
+        <View key={f.key} style={{ width: "33.33%", flexDirection: "row", alignItems: "center", marginBottom: 6, paddingRight: 4 }}>
+          <Svg width={8} height={8} style={{ marginRight: 5 }}>
+            <Circle cx={4} cy={4} r={4} fill={RISK_COLOR[f.level]} />
+          </Svg>
+          <Text style={{ fontSize: 8, color: INK }}>{t(lang, `risk_${f.key}_label`)}</Text>
+        </View>
+      ))}
+    </View>
+  );
+}
+
 function InvestabilityBox({ residual, lang }) {
   const color = { high: "#16A34A", mid: GOLD, low: "#D97706", reject: "#DC2626" }[residual.investabilityTier] || GOLD;
   return (
@@ -187,14 +228,21 @@ function InvestabilityBox({ residual, lang }) {
 // ============================================================
 export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef, mapDataUrl, lang }) {
   const topAlert = boeAlerts?.[0];
+  const additionalAlerts = boeAlerts && boeAlerts.length > 1 ? boeAlerts.length - 1 : 0;
   return (
     <Document title={t(lang, "pdfTeaserTitle", { direccion: parcela.direccion })}>
       <Page size="A4" style={s.page}>
         <Header parcela={parcela} tag={t(lang, "pdfTagTeaser")} lang={lang} />
         <LocationMap mapDataUrl={mapDataUrl} />
         <FichaBox parcela={parcela} lang={lang} />
-        {residual && <ValorBox residual={residual} marketRef={marketRef} lang={lang} />}
-        {residual && <InvestabilityBox residual={residual} lang={lang} />}
+        {residual ? (
+          <>
+            <ValorBox residual={residual} marketRef={marketRef} lang={lang} />
+            <InvestabilityBox residual={residual} lang={lang} />
+          </>
+        ) : (
+          <ValuationUnavailableBox marketRef={marketRef} lang={lang} />
+        )}
         {topAlert && (
           <View style={s.section}>
             <Text style={s.sectionTitle}>{t(lang, "pdfAlertaDestacada")}</Text>
@@ -202,6 +250,11 @@ export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef, 
               <Text style={{ fontSize: 10, fontFamily: "Helvetica-Bold", marginBottom: 4 }}>{boeTitle(lang, topAlert)}</Text>
               <Text style={{ fontSize: 9, color: MUTED, lineHeight: 1.4 }}>{t(lang, `boe_${topAlert.id}_summary`)}</Text>
             </View>
+            {additionalAlerts > 0 && (
+              <Text style={{ fontSize: 8, color: GOLD, fontFamily: "Helvetica-Bold", marginTop: 6 }}>
+                {t(lang, "pdfAlertasAdicionales", { count: additionalAlerts })}
+              </Text>
+            )}
           </View>
         )}
         {risk?.overall && (
@@ -213,6 +266,7 @@ export function TeaserDocument({ parcela, residual, risk, boeAlerts, marketRef, 
                 {t(lang, "pdfNivelRiesgoGlobalPrefix")}<Text style={{ color: RISK_COLOR[risk.overall], fontFamily: "Helvetica-Bold" }}>{t(lang, RISK_LABEL_KEY[risk.overall])}</Text>{t(lang, "pdfNivelRiesgoGlobalSuffix")}
               </Text>
             </View>
+            {risk.factors && <RiskFactorsGrid factors={risk.factors} lang={lang} />}
           </View>
         )}
         <View style={s.cta}>
