@@ -235,6 +235,15 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         const resp = await fetch(`/api/checkout-session?session_id=${encodeURIComponent(pending.sessionId)}`);
+        // A non-JSON body (e.g. an HTML error/challenge page from an edge
+        // proxy in front of the API) makes resp.json() throw an opaque,
+        // browser-internal parse error — Safari's message for it ("The
+        // string did not match the expected pattern") gives no clue what
+        // actually happened. Check content-type first so the error surfaced
+        // to the user is diagnosable instead of a dead end.
+        const contentType = resp.headers.get("content-type") || "";
+        if (!contentType.includes("application/json"))
+          throw new Error(`HTTP ${resp.status}, respuesta no-JSON (content-type: ${contentType || "ninguno"})`);
         sessionData = await resp.json();
         fetchErr = null;
         break;
@@ -733,7 +742,12 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
           <MapContainer center={[40.4168, -3.7038]} zoom={6} scrollWheelZoom style={{ width: "100%", height: "100%", background: C.surface }}>
             <LayersControl position="topright">
               <BaseLayer checked name={t(lang, "mapCartoDark")}>
-                <TileLayer attribution='&copy; Esri' url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}" />
+                {/* World_Dark_Gray_Base only has tiles cached up to z16 — without
+                    maxNativeZoom, Leaflet requests nonexistent higher-zoom tiles
+                    (e.g. after FlyTo's default zoom=18 on every search) and Esri
+                    returns its "Map data not yet available" placeholder instead.
+                    maxNativeZoom keeps Leaflet on the z16 tile, upscaled. */}
+                <TileLayer attribution='&copy; Esri' url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}" maxNativeZoom={16} maxZoom={19} />
               </BaseLayer>
               <BaseLayer name={t(lang, "mapOSM")}>
                 <TileLayer attribution='&copy; OSM' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
