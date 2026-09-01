@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-08-31T12:34:09.947Z",
+  "generated_at": "2026-09-01T11:01:46.635Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1598",
-      "change": "-0.21%",
-      "up": false
+      "value": "1.1616",
+      "change": "+0.24%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,213.40",
-      "change": "-0.89%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "91.28",
-      "change": "+0.87%",
+      "value": "20101.73",
+      "change": "+0.15%",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "86.57",
-      "change": "+0.94%",
-      "up": true
-    },
-    {
-      "symbol": "Gold (XAU/USD)",
-      "value": "4,445.00",
-      "change": "-0.56%",
+      "symbol": "BRENT",
+      "value": "88.28",
+      "change": "-0.27%",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "78,769.60",
+      "symbol": "GOLD",
+      "value": "4446.83",
+      "change": "-1.01%",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "78769.60",
       "change": "+0.79%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "14.51",
-      "change": "-4.60%",
-      "up": false
+      "value": "15.24",
+      "change": "+5.61%",
+      "up": true
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.70%",
-      "change": "+0.02%",
+      "symbol": "US 10Y",
+      "value": "4.75%",
+      "change": "+0.03%",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8565",
+      "change": "+0.07%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,684.78",
-      "change": "-0.35%",
+      "value": "7689.80",
+      "change": "-0.28%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "26,258.11",
-      "change": "-1.17%",
+      "value": "25959.28",
+      "change": "-0.70%",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8560",
-      "change": "-0.09%",
-      "up": false
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.50",
-      "change": "-0.17%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.772",
-      "change": "-0.79%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.62",
-      "change": "+0.47%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7197",
-      "change": "+0.03%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los primeros ataques militares de EE.UU. contra Irán en un mes provocan represalias",
+        "es": "Primeros ataques militares de EE.UU. contra Irán en un mes provocan represalia",
         "en": "First US military attacks on Iran in a month prompt retaliation"
       },
       "summary": {
-        "es": "EE.UU. atacó lanzadores de cohetes iraníes en la isla de Larak, en el estrecho de Ormuz, para evitar la colocación de minas marinas; Irán respondió atacando bases estadounidenses en Jordania y los EAU. El estrecho de Ormuz —ruta de aproximadamente el 20% del petróleo mundial— vuelve a estar en el centro del riesgo geopolítico, con implicaciones directas para los precios del crudo y los activos de refugio seguro.",
-        "en": "The US struck Iranian rocket launchers on Larak Island in the Strait of Hormuz to prevent sea-mine placement; Iran retaliated by targeting US bases in Jordan and the UAE. The Strait of Hormuz — through which roughly 20% of global oil transits — is again the focal point of geopolitical risk, with direct implications for crude prices and safe-haven assets."
+        "es": "EE.UU. atacó lanzadores de cohetes iraníes en la isla de Larak, en el estrecho de Ormuz, y Teherán respondió atacando bases militares estadounidenses en Jordania y los EAU. La escalada en el estrecho de Ormuz —por donde transita el 20% del petróleo mundial— representa el riesgo de cierre de un chokepoint energético crítico. Los mercados de materias primas, divisas de economías dependientes del petróleo y activos de refugio deberían reaccionar con fuerza.",
+        "en": "The US struck Iranian rocket launchers on Larak Island in the Strait of Hormuz; Tehran retaliated by targeting US military bases in Jordan and the UAE. Escalation at the Strait of Hormuz — through which roughly 20% of global oil transits — raises acute risk of supply disruption at a critical energy chokepoint. Commodity markets, oil-dependent EM currencies, and safe-haven assets face significant repricing pressure."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +82,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de cierre del estrecho de Ormuz impulsa prima de riesgo",
-            "en": "Strait of Hormuz closure risk drives significant risk premium"
+            "es": "Riesgo de cierre del estrecho de Ormuz presiona precios al alza",
+            "en": "Hormuz closure risk drives sharp upside pressure on oil"
           }
         },
         {
@@ -121,8 +91,17 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Escalada bélica regional alimenta demanda de refugio seguro",
-            "en": "Regional war escalation fuels safe-haven demand"
+            "es": "Demanda de refugio seguro ante escalada militar directa EE.UU.-Irán",
+            "en": "Safe-haven demand spikes on direct US-Iran military exchange"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Economías importadoras de petróleo bajo presión por alza de precios",
+            "en": "Oil-importing EM economies pressured by rising energy costs"
           }
         },
         {
@@ -130,239 +109,248 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Vuelo hacia la calidad presiona rendimientos a la baja",
-            "en": "Flight-to-quality pushes yields lower"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aversión al riesgo castiga divisas emergentes exportadoras",
-            "en": "Risk-off sentiment pressures emerging market currencies"
+            "es": "Vuelo a calidad ante riesgo geopolítico agudo",
+            "en": "Flight to quality on acute geopolitical risk"
           }
         }
       ],
-      "confidence": 95,
+      "confidence": 93,
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/world/2026/aug/30/us-strikes-iranian-launchers-on-larak-island-amid-strait-of-hormuz-tensions",
       "published_at": "2026-08-31",
-      "time": "2h"
+      "time": "1d"
     },
     {
       "id": 2,
-      "tag": "ALERT",
-      "region": "EURASIA",
+      "tag": "CRITICAL",
+      "region": "GLOBAL",
       "title": {
-        "es": "Reunión Modi-Putin en la SCO: ¿Pueden sostenerse los lazos India-Rusia?",
-        "en": "Modi-Putin meeting at SCO: Can India-Russia ties hold?"
+        "es": "¿China o EE.UU.? Dos reuniones ofrecen versiones opuestas del poder global",
+        "en": "China or the U.S.? Two Meetings Offer Competing Showcases of Global Power"
       },
       "summary": {
-        "es": "El primer ministro Modi y el presidente Putin se reúnen en la cumbre de la OCS en Biskek mientras ambos países enfrentan presiones crecientes de Washington —Rusia por las sanciones relacionadas con la guerra y la India por sus compras de energía y decisiones comerciales. El resultado de la reunión tiene implicaciones para la eficacia de las sanciones occidentales, el mercado del petróleo ruso con descuento y el posicionamiento geopolítico de la India.",
-        "en": "PM Modi and President Putin meet at the SCO summit in Bishkek as both nations face rising pressure from Washington — Russia over war sanctions, India over energy purchases and trade choices. The meeting's outcome has implications for Western sanctions effectiveness, the discounted Russian oil market, and India's geopolitical alignment."
+        "es": "Mientras Xi Jinping se reunía con Putin e Irán en la OCS, Europa desafiaba a la administración Trump en el G20, ofreciendo una imagen de bifurcación del orden global. La simultaneidad de ambos foros subraya la aceleración del desacoplamiento geopolítico y sus implicaciones para el comercio, las alianzas y los flujos de capital. Los inversores deben monitorear señales de coordinación entre el eje SCO sobre sanciones y comercio en yuan.",
+        "en": "While Xi Jinping convened with Putin and Iran at the SCO, Europe challenged the Trump administration at the G20, illustrating a sharpening bifurcation of the global order. The concurrent forums highlight accelerating geopolitical decoupling with direct implications for trade architecture, alliance structures, and capital flows. Investors should watch for SCO coordination signals on sanctions evasion and yuan-denominated trade expansion."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Indian rupee",
+          "asset": "EUR/USD",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Posible presión de EE.UU. sobre India afecta perspectiva de la rupia",
-            "en": "Potential US pressure on India clouds rupee outlook"
+            "es": "Tensión EE.UU.-Europa en G20 añade incertidumbre sobre el euro",
+            "en": "US-Europe G20 friction adds uncertainty to euro trajectory"
           }
         },
         {
-          "asset": "Brent crude",
-          "direction": "down",
-          "magnitude": "low",
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Continuidad de compras indias de crudo ruso mantiene desvíos de flujos",
-            "en": "Continued Indian purchases of Russian crude sustain flow diversions"
+            "es": "Multipolaridad impulsa diversificación de reservas fuera del dólar",
+            "en": "Multipolarity accelerates reserve diversification away from USD"
           }
         },
         {
           "asset": "EM currencies",
           "direction": "mixed",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Reconfiguración de alianzas en la OCS redefine riesgos de activos emergentes",
-            "en": "SCO alliance reshaping redefines emerging asset risk profiles"
+            "es": "Economías SCO podrían beneficiarse de comercio alternativo en yuan",
+            "en": "SCO economies may benefit from expanded yuan-based trade"
           }
         }
       ],
-      "confidence": 82,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/modi-putin-meeting-at-sco-can-india-russia-ties-hold/a-78575121?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-08-31",
-      "time": "<1h"
+      "confidence": 85,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/01/world/asia/g20-meeting-china-trump-bishkek.html",
+      "published_at": "2026-09-01",
+      "time": "1h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "US",
+      "region": "EURASIA",
       "title": {
-        "es": "Cómo se siente la guerra comercial EE.UU.-Canadá en ambos lados de la frontera",
-        "en": "How the US-Canada trade war is being felt on both sides of the border"
+        "es": "Ataques masivos rusos de misiles y drones contra Kiev",
+        "en": "'Massive' Russian missile and drone attacks on Kyiv"
       },
       "summary": {
-        "es": "La guerra comercial entre EE.UU. y Canadá está generando efectos económicos tangibles en ambos países, afectando cadenas de suministro integradas en sectores clave como automóviles, energía y agricultura. La persistencia del conflicto erosiona la confianza empresarial norteamericana y plantea riesgos para la inflación en EE.UU. y el crecimiento en Canadá.",
-        "en": "The US-Canada trade war is producing tangible economic effects on both sides of the border, disrupting highly integrated supply chains in key sectors including autos, energy, and agriculture. The conflict's persistence erodes North American business confidence and poses risks to US inflation and Canadian growth."
+        "es": "Rusia ejecutó ataques aéreos que mataron al menos 12 personas en Kiev, el sexto día consecutivo de bombardeos sobre la capital ucraniana, mientras ministros de Defensa de la UE se reunían en Irlanda para abordar la escasez de defensa antiaérea. La escalada sostenida sugiere que Moscú está aplicando presión máxima ante las deliberaciones europeas sobre refuerzo de capacidades de defensa. Los mercados europeos de energía y defensa, junto con el euro, permanecen en foco.",
+        "en": "Russia carried out strikes killing at least 12 in Kyiv, the sixth consecutive day of attacks on the Ukrainian capital, as EU defense ministers convened in Ireland to address air defense shortfalls. The sustained escalation signals Moscow is applying maximum pressure ahead of European deliberations on defense capability reinforcement. European energy markets, defense equities, and the euro remain in focus."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Canadian dollar (CAD)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tensiones comerciales continuas pesan sobre el CAD",
-            "en": "Ongoing trade tensions weigh on the Canadian dollar"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
+          "asset": "European defence equities",
           "direction": "up",
-          "magnitude": "low",
+          "magnitude": "high",
           "note": {
-            "es": "Presiones inflacionarias por aranceles elevan expectativas de tipos",
-            "en": "Tariff-driven inflation pressures lift rate expectations"
+            "es": "Escalada rusa impulsa urgencia de gasto en defensa europeo",
+            "en": "Russian escalation accelerates European defence spending urgency"
           }
         },
         {
-          "asset": "North American auto equities",
-          "direction": "down",
+          "asset": "European natural gas (TTF)",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Disrupciones en cadenas de suministro integradas afectan márgenes",
-            "en": "Integrated supply chain disruptions compress margins"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c4g4r4lxx25o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-08-31",
-      "time": "12h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Los servicios secretos ven probables más acciones encubiertas sobre Ceuta y Melilla",
-        "en": "Intelligence services see likely further covert actions over Ceuta and Melilla"
-      },
-      "summary": {
-        "es": "Informes de inteligencia españoles alertan sobre un incremento de medidas de presión en la zona gris en torno a los enclaves de Ceuta y Melilla, sin llegar al conflicto abierto. Este escenario de guerra híbrida en el flanco sur de la OTAN tiene implicaciones para la estabilidad político-migratoria del Mediterráneo occidental y las relaciones España-Marruecos.",
-        "en": "Spanish intelligence reports warn of increasing grey-zone pressure measures around the enclaves of Ceuta and Melilla, short of open conflict. This hybrid-warfare scenario on NATO's southern flank has implications for western Mediterranean political-migratory stability and Spain-Morocco relations."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión en flanco sur OTAN añade presión al euro",
-            "en": "NATO southern flank tension adds marginal pressure on euro"
-          }
-        },
-        {
-          "asset": "Spanish sovereign bonds",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo geopolítico regional amplía levemente el diferencial",
-            "en": "Regional geopolitical risk marginally widens Spanish spread"
-          }
-        }
-      ],
-      "confidence": 70,
-      "source": "El País",
-      "source_url": "https://elpais.com/espana/2026-08-31/los-servicios-secretos-ven-probables-mas-acciones-encubiertas-sobre-ceuta-y-melilla.html",
-      "published_at": "2026-08-31",
-      "time": "9h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Bruselas incluye a ChatGPT, Reddit y Roblox entre las plataformas más fiscalizadas por la UE",
-        "en": "Brussels includes ChatGPT, Reddit and Roblox among the most closely regulated platforms in the EU"
-      },
-      "summary": {
-        "es": "La Comisión Europea ha designado a ChatGPT, Reddit y Roblox como plataformas de muy gran tamaño bajo la Ley de Servicios Digitales, al superar los 45 millones de usuarios, sometiéndolas a obligaciones de cumplimiento más estrictas. Esta designación intensifica la ofensiva regulatoria digital de la UE, con implicaciones de costes operativos para las empresas tecnológicas estadounidenses con exposición europea.",
-        "en": "The European Commission has designated ChatGPT, Reddit and Roblox as Very Large Online Platforms under the Digital Services Act, triggering stricter compliance obligations. This designation intensifies the EU's digital regulatory offensive, with operational cost implications for US tech companies with European exposure."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "US tech equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayores costes de cumplimiento regulatorio en mercado europeo",
-            "en": "Higher regulatory compliance costs in European market"
+            "es": "Riesgo de infraestructura energética ucraniana eleva primas de riesgo",
+            "en": "Ukrainian energy infrastructure risk raises supply premium"
           }
         },
         {
           "asset": "EUR/USD",
-          "direction": "mixed",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Soberanía digital UE refuerza postura pero tensiona relaciones con EE.UU.",
-            "en": "EU digital sovereignty reinforced but strains US-EU tech relations"
+            "es": "Presión de seguridad en Europa pesa sobre el euro",
+            "en": "European security pressure weighs modestly on euro"
           }
         }
       ],
-      "confidence": 68,
-      "source": "El País",
-      "source_url": "https://elpais.com/tecnologia/2026-08-31/bruselas-incluye-a-chatgpt-reddit-y-roblox-entre-las-plataformas-mas-fiscalizadas-por-la-ue.html",
-      "published_at": "2026-08-31",
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260901-massive-russian-missile-drone-attacks-on-kyiv",
+      "published_at": "2026-09-01",
       "time": "<1h"
     },
     {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "EURASIA",
+      "id": 4,
+      "tag": "ALERT",
+      "region": "AFRICA",
       "title": {
-        "es": "Tokayev de Kazajistán nombra a su asesor de larga data como vicepresidente",
-        "en": "Kazakhstan's Tokayev appoints longtime adviser as vice president"
+        "es": "Los piratas de Somalia exhiben su creciente poderío con nuevos secuestros de buques",
+        "en": "Somali pirates display growing power with new ship hijackings"
       },
       "summary": {
-        "es": "El presidente Tokayev ha nombrado a Erlan Karin, su asesor de confianza desde 2019, como vicepresidente de Kazajistán. El nombramiento consolida el círculo cercano al poder en un Estado pivote de Asia Central, con implicaciones para la continuidad política en un país clave para los corredores energéticos trans-caspianos y la extracción de minerales críticos.",
-        "en": "President Tokayev has appointed his trusted adviser Erlan Karin as Kazakhstan's vice president. The appointment consolidates the inner circle of power in a pivotal Central Asian state, with implications for policy continuity in a country critical to trans-Caspian energy corridors and critical mineral extraction."
+        "es": "Grupos somalíes han capturado seis barcos desde abril, el mayor repunte de actividad pirata en años, favorecidos por la convergencia de crisis en Somalia, el mar Rojo y el estrecho de Ormuz. El resurgimiento de la piratería en este corredor estratégico eleva los costos de seguros marítimos y presiona aún más las rutas de abastecimiento global ya tensionadas. Este desarrollo amplifica el riesgo de disrupción para el comercio que fluye entre Asia, el Golfo y Europa.",
+        "en": "Somali groups have seized six vessels since April, the largest piracy surge in years, aided by converging crises in Somalia, the Red Sea, and the Strait of Hormuz. The resurgence across this strategic corridor is driving up marine insurance costs and adding further strain on already-stressed global supply routes. This development amplifies disruption risk for trade flows between Asia, the Gulf, and Europe."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Kazakh tenge (KZT)",
-          "direction": "mixed",
-          "magnitude": "low",
+          "asset": "Shipping/freight rates (Baltic indices)",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Continuidad política puede estabilizar perspectiva de inversión",
-            "en": "Political continuity may stabilize investment outlook"
+            "es": "Riesgo de piratería eleva costos de flete en rutas clave",
+            "en": "Piracy risk pushes freight costs higher on key corridors"
           }
         },
         {
           "asset": "Brent crude",
-          "direction": "mixed",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Política energética de Kazajistán clave para producción OPEP+",
-            "en": "Kazakhstan energy policy key for OPEC+ production dynamics"
+            "es": "Disrupciones adicionales en corredores del Golfo añaden prima de riesgo",
+            "en": "Additional Gulf corridor disruptions add incremental risk premium"
+          }
+        },
+        {
+          "asset": "Marine insurance derivatives",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Primas de seguro marítimo se disparan ante repunte de piratería",
+            "en": "Marine insurance premiums spike amid piracy resurgence"
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-09-01/los-piratas-de-somalia-exhiben-su-creciente-poderio-con-nuevos-secuestros-de-buques.html",
+      "published_at": "2026-09-01",
+      "time": "7h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Polonia inicia investigación de sabotaje tras incendio en fábrica de drones",
+        "en": "Poland launches sabotage probe in drone factory fire"
+      },
+      "summary": {
+        "es": "Las autoridades polacas investigan un incendio deliberado en una fábrica de drones ubicada a 150 km al sur de Varsovia, en el contexto de una serie de actos de sabotaje atribuidos a actores vinculados a Rusia en toda Europa. El ataque a infraestructura de defensa en un país fronterizo con la zona de guerra ucraniana es un indicador de escalada de la guerra híbrida rusa en el flanco este de la OTAN. El incidente refuerza el caso para el aumento del gasto en defensa y ciberseguridad en Europa.",
+        "en": "Polish authorities are investigating a deliberate fire at a drone factory 150 km south of Warsaw, amid a pattern of alleged Russian-linked sabotage acts across Europe. An attack on defense-industrial infrastructure in a country bordering the Ukrainian war zone signals escalation of Russian hybrid warfare against NATO's eastern flank. The incident reinforces the investment thesis for European defense and cybersecurity spending."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European defence equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Sabotaje híbrido ruso acelera inversión en defensa en la OTAN",
+            "en": "Russian hybrid sabotage accelerates NATO defense investment"
+          }
+        },
+        {
+          "asset": "Polish zloty (PLN)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de seguridad interno pesa levemente sobre el zloty",
+            "en": "Domestic security risk weighs modestly on PLN"
+          }
+        },
+        {
+          "asset": "Cybersecurity equities",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Ataques híbridos impulsan demanda de soluciones de ciberseguridad",
+            "en": "Hybrid attacks boost demand for cybersecurity solutions"
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/poland-launches-sabotage-probe-in-drone-factory-fire/a-78580918?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-08-31",
+      "time": "15h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "MENA",
+      "title": {
+        "es": "¿Puede el acuerdo 4+4 unificar a Libia? Un pacto respaldado por la ONU busca unir a los bandos rivales",
+        "en": "Could 4+4 make 1 in Libya? UN-backed agreement looks to unite rival camps"
+      },
+      "summary": {
+        "es": "Tras 15 años de guerra civil, un nuevo acuerdo '4+4' respaldado por la ONU busca reconciliar a las facciones rivales libias. Un proceso de reunificación exitoso tendría implicaciones significativas para la producción y exportación de petróleo libio, actualmente fragmentada, así como para la estabilidad migratoria del Mediterráneo. El fracaso o la manipulación del proceso por actores externos —Turquía, UAE, Wagner/Africa Corps— sigue siendo el escenario base más probable.",
+        "en": "After 15 years of civil war, a new UN-backed '4+4' framework seeks to reconcile Libya's rival factions. A successful reunification process would carry significant implications for fragmented Libyan oil production and exports, as well as Mediterranean migration stability. Failure or manipulation by external actors — Turkey, UAE, and Russia's Africa Corps — remains the most probable base case."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Reunificación libia podría aumentar oferta de crudo en el mercado",
+            "en": "Libyan reunification could unlock additional crude supply"
+          }
+        },
+        {
+          "asset": "Italian sovereign bonds (BTP)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Estabilidad libia reduce presión migratoria y política sobre Italia",
+            "en": "Libyan stability reduces migration and political pressure on Italy"
           }
         }
       ],
       "confidence": 65,
       "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/8/31/kazakhstans-president-taps-longtime-adviser-for-vice-president-role?traffic_source=rss",
-      "published_at": "2026-08-31",
-      "time": "3h"
+      "source_url": "https://www.aljazeera.com/news/2026/9/1/could-44-make-1-in-libya-un-backed-agreement-looks-to-unite-rival-camps?traffic_source=rss",
+      "published_at": "2026-09-01",
+      "time": "2h"
     }
   ],
-  "market_updated_at": "2026-09-01T10:35:52.356Z"
+  "market_updated_at": "2026-09-01T11:01:46.635Z"
 }
