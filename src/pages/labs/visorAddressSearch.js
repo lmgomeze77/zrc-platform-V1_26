@@ -268,6 +268,20 @@ function scan() {
 export function installVisorAddressSearch() {
   if (typeof window === "undefined") return;
   scan();
-  const observer = new MutationObserver(scan);
+  // Coalesce into at most one scan per animation frame. Without this, the
+  // observer (childList+subtree on the whole document, for the app's full
+  // lifetime — the Visor may never even be open) runs scan() synchronously
+  // on every DOM mutation anywhere on the site, including the map's own
+  // tile churn while panning/zooming, which can add up to real jank.
+  let scheduled = false;
+  const scheduleScan = () => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => {
+      scheduled = false;
+      scan();
+    });
+  };
+  const observer = new MutationObserver(scheduleScan);
   observer.observe(document.documentElement, { childList: true, subtree: true });
 }
