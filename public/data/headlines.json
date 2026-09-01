@@ -3,32 +3,32 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1597",
-      "change": "+0.10%",
-      "up": true
+      "value": "1.1583",
+      "change": "-0.60%",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,076.20",
-      "change": "+0.17%",
+      "value": "19,384.70",
+      "change": "+0.32%",
       "up": true
     },
     {
       "symbol": "BRENT Crude",
-      "value": "90.69",
-      "change": "+2.93%",
+      "value": "90.11",
+      "change": "+0.56%",
       "up": true
     },
     {
       "symbol": "WTI Crude",
-      "value": "85.54",
-      "change": "+2.57%",
+      "value": "86.57",
+      "change": "+0.94%",
       "up": true
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4,440.58",
-      "change": "-0.31%",
+      "value": "4,451.48",
+      "change": "-0.08%",
       "up": false
     },
     {
@@ -39,57 +39,57 @@
     },
     {
       "symbol": "VIX",
-      "value": "15.26",
-      "change": "+5.75%",
-      "up": true
+      "value": "15.16",
+      "change": "-5.31%",
+      "up": false
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "4.75%",
-      "change": "+0.04%",
+      "value": "4.70%",
+      "change": "+0.06%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,711.76",
-      "change": "-0.25%",
-      "up": false
+      "value": "7,674.37",
+      "change": "+0.43%",
+      "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "26,481",
-      "change": "-0.34%",
-      "up": false
+      "value": "26,136.56",
+      "change": "+0.59%",
+      "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8573",
-      "change": "+0.17%",
+      "value": "0.8545",
+      "change": "+0.09%",
       "up": true
     },
     {
       "symbol": "DXY Dollar Index",
-      "value": "99.573",
-      "change": "-0.09%",
+      "value": "99.41",
+      "change": "-0.16%",
       "up": false
     },
     {
       "symbol": "Natural Gas",
-      "value": "2.850",
-      "change": "-0.28%",
+      "value": "2.772",
+      "change": "-0.79%",
       "up": false
     },
     {
       "symbol": "Copper",
-      "value": "6.61",
-      "change": "+0.03%",
+      "value": "6.5700",
+      "change": "+0.49%",
       "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.7078",
-      "change": "-0.26%",
-      "up": false
+      "value": "6.7298",
+      "change": "+0.17%",
+      "up": true
     }
   ],
   "headlines": [
@@ -364,5 +364,5 @@
       "time": "3h"
     }
   ],
-  "market_updated_at": "2026-08-31T19:43:30.467Z"
+  "market_updated_at": "2026-09-01T00:50:53.269Z"
 }
