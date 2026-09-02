@@ -128,24 +128,28 @@ export const DICT = {
     verPublicacion: "Ver publicación →",
 
     // ── Matching ──
-    panelMatchingTitle: "Matching con mandatos ZRC",
-    panelMatchingLead: "Inversores activos en deal-flow ZRC cuyo mandato encaja.",
+    // Los mandatos (ZRC_MANDATOS en RealEstateVisor.jsx) son reglas de
+    // ejemplo hardcodeadas (provincia/keyword/superficie), no una lista real
+    // de capital institucional activo — de ahí "ilustrativo" en todo este
+    // bloque hasta que exista un deal room de mandatos real.
+    panelMatchingTitle: "Matching con mandatos ZRC (ejemplos ilustrativos)",
+    panelMatchingLead: "Ejemplos ilustrativos del tipo de mandato que podría encajar con este activo — no son mandatos institucionales activos en este momento.",
     matchingEmpty: "Sin coincidencias por tipología o ticket.",
-    solicitarIntroduccion: "Solicitar introducción ZRC",
+    solicitarIntroduccion: "Contactar con ZRC sobre este activo",
     ticketLabel: "ticket",
 
     // ── Pre-mercado ──
-    panelPremercadoTitle: "Mandatos activos ZRC",
-    panelPremercadoLead: "Toda la demanda institucional activa en deal-flow ZRC ahora mismo — tipología, ticket y tesis — para sourcear antes de que el activo llegue a mercado.",
-    premercadoLockedTitle: "Acceso pre-mercado",
-    premercadoLockedBody: "Visibilidad completa de los mandatos de inversión activos en ZRC — tipología, ticket y tesis de cada Family Office/fondo — antes de que el activo llegue a mercado público.",
+    panelPremercadoTitle: "Mandatos ZRC (ejemplos ilustrativos)",
+    panelPremercadoLead: "Así funciona el matching de mandatos de ZRC — tipología, ticket y tesis. Los ejemplos de abajo son ilustrativos; iremos incorporando mandatos institucionales reales a medida que se activen.",
+    premercadoLockedTitle: "Matching de mandatos (ilustrativo)",
+    premercadoLockedBody: "Cómo funciona el matching de mandatos de ZRC — tipología, ticket y tesis por Family Office/fondo. Actualmente con ejemplos ilustrativos; iremos incorporando mandatos institucionales reales a medida que se activen.",
     premercadoLockedCta: "Desbloquear con Early Bird · 950€/año",
 
     // ── Upsell sidebar (sin parcela) ──
     masInfoTitle: "Más profundidad",
     planStandardName: "Standard", planStandardPrice: "89€/mes", planStandardDesc: "Búsquedas ilimitadas · comparables de mercado",
     planProName: "Análisis Pro", planProPrice: "30€/informe", planProDesc: "Riesgos certificados — busca una parcela primero",
-    planEarlyName: "Early Bird", planEarlyPrice: "950€/año", planEarlyDesc: "Todo Standard · acceso pre-mercado (mandatos ZRC)",
+    planEarlyName: "Early Bird", planEarlyPrice: "950€/año", planEarlyDesc: "Todo Standard · matching de mandatos ZRC (ilustrativo)",
     planActive: "Activo", planElegir: "Elegir",
 
     // ── Mapa ──
@@ -278,7 +282,8 @@ export const DICT = {
     pdfCapasRiesgoDetalle: "Capas de riesgo — detalle completo",
     pdfAlertasRegulatorias1km: "Alertas regulatorias (radio 1km)",
     pdfSinAlertasMunicipio: "Sin alertas regulatorias activas en el municipio.",
-    pdfMatchingMandatosZRC: "Matching con mandatos ZRC",
+    pdfMatchingMandatosZRC: "Matching con mandatos ZRC (ejemplos ilustrativos)",
+    pdfMatchingMandatosNota: "Los mandatos mostrados son ejemplos ilustrativos del tipo de demanda institucional que ZRC podría encajar con este activo — no son mandatos institucionales activos en este momento.",
     pdfSinCoincidencias: "Sin coincidencias por tipología o ticket con los mandatos activos.",
     pdfMetodologiaFuentes: "Metodología y fuentes",
     pdfMetodologiaBody: (v) => `Datos catastrales: Dirección General del Catastro (Sede Electrónica). Precio de referencia de zona: ${v.fuente} · ${v.periodo}. Valor residual calculado mediante el método residual estático (ingresos por venta menos costes de construcción e indirectos menos beneficio exigido al promotor) sobre la edificabilidad y parámetros indicados; no incorpora el planeamiento urbanístico específico de la parcela ni cargas registrales. Capas de riesgo y alertas regulatorias son una primera lectura automatizada orientada a due diligence preliminar. Este informe no sustituye una tasación oficial, un informe de arquitecto/aparejador ni asesoramiento legal o de inversión.`,
@@ -389,24 +394,24 @@ export const DICT = {
     verPublicacion: "View publication →",
 
     // ── Matching ──
-    panelMatchingTitle: "ZRC mandate matching",
-    panelMatchingLead: "Active investors in ZRC deal-flow whose mandate fits.",
+    panelMatchingTitle: "ZRC mandate matching (illustrative examples)",
+    panelMatchingLead: "Illustrative examples of the kind of mandate that could fit this asset — not active institutional mandates at this time.",
     matchingEmpty: "No matches by asset type or ticket size.",
-    solicitarIntroduccion: "Request ZRC introduction",
+    solicitarIntroduccion: "Contact ZRC about this asset",
     ticketLabel: "ticket",
 
     // ── Pre-mercado ──
-    panelPremercadoTitle: "Active ZRC mandates",
-    panelPremercadoLead: "All institutional demand currently active in ZRC deal-flow — asset type, ticket size and thesis — to source before the asset hits the public market.",
-    premercadoLockedTitle: "Pre-market access",
-    premercadoLockedBody: "Full visibility into ZRC's active investment mandates — asset type, ticket size and thesis for each Family Office/fund — before the asset reaches the public market.",
+    panelPremercadoTitle: "ZRC mandates (illustrative examples)",
+    panelPremercadoLead: "How ZRC mandate matching works — asset type, ticket size and thesis. The examples below are illustrative; we'll add real institutional mandates as they become active.",
+    premercadoLockedTitle: "Mandate matching (illustrative)",
+    premercadoLockedBody: "How ZRC's mandate matching works — asset type, ticket size and thesis per Family Office/fund. Currently shown with illustrative examples; we'll add real institutional mandates as they become active.",
     premercadoLockedCta: "Unlock with Early Bird · €950/yr",
 
     // ── Upsell sidebar (sin parcela) ──
     masInfoTitle: "Go deeper",
     planStandardName: "Standard", planStandardPrice: "€89/mo", planStandardDesc: "Unlimited searches · market comparables",
     planProName: "Pro Analysis", planProPrice: "€30/report", planProDesc: "Certified risk data — search a parcel first",
-    planEarlyName: "Early Bird", planEarlyPrice: "€950/yr", planEarlyDesc: "Everything in Standard · pre-market access (ZRC mandates)",
+    planEarlyName: "Early Bird", planEarlyPrice: "€950/yr", planEarlyDesc: "Everything in Standard · ZRC mandate matching (illustrative)",
     planActive: "Active", planElegir: "Choose",
 
     // ── Mapa ──
@@ -539,7 +544,8 @@ export const DICT = {
     pdfCapasRiesgoDetalle: "Risk layers — full detail",
     pdfAlertasRegulatorias1km: "Regulatory alerts (1km radius)",
     pdfSinAlertasMunicipio: "No active regulatory alerts in the municipality.",
-    pdfMatchingMandatosZRC: "ZRC mandate matching",
+    pdfMatchingMandatosZRC: "ZRC mandate matching (illustrative examples)",
+    pdfMatchingMandatosNota: "The mandates shown are illustrative examples of the kind of institutional demand ZRC could match with this asset — they are not active institutional mandates at this time.",
     pdfSinCoincidencias: "No matches by asset type or ticket size against active mandates.",
     pdfMetodologiaFuentes: "Methodology and sources",
     pdfMetodologiaBody: (v) => `Cadastral data: Spanish General Directorate of the Land Registry (Sede Electrónica). Area reference price: ${v.fuente} · ${v.periodo}. Residual value calculated using the static residual method (sale revenue minus construction and indirect costs minus required developer profit) over the buildability ratio and parameters shown; it does not incorporate the parcel's specific zoning plan or registry encumbrances. Risk layers and regulatory alerts are a first automated reading for preliminary due diligence. This report does not replace an official appraisal, an architect/surveyor report, or legal or investment advice.`,
