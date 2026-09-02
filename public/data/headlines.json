@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-09-01T11:01:46.635Z",
+  "generated_at": "2026-09-02T10:31:26.513Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1590",
-      "change": "-0.22%",
+      "value": "1.1579",
+      "change": "-0.12",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,812",
-      "change": "-0.48%",
+      "value": "16345.89",
+      "change": "-1.40",
       "up": false
     },
     {
-      "symbol": "BRENT Crude",
-      "value": "94.86",
-      "change": "+0.23%",
+      "symbol": "BRENT",
+      "value": "92.63",
+      "change": "+4.26",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "90.91",
-      "change": "+2.32%",
-      "up": true
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,352.65",
-      "change": "-1.86%",
+      "symbol": "GOLD",
+      "value": "4302.95",
+      "change": "-2.33",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "77,456",
-      "change": "+0.07%",
-      "up": true
+      "symbol": "BTC",
+      "value": "76945.03",
+      "change": "-2.60",
+      "up": false
     },
     {
       "symbol": "VIX",
       "value": "16.44",
-      "change": "+10.21%",
+      "change": "+10.21",
       "up": true
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.80%",
-      "change": "+0.84%",
+      "symbol": "US 10Y",
+      "value": "4.80",
+      "change": "+0.04",
       "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8569",
+      "change": "-0.06",
+      "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7,631",
-      "change": "-0.71%",
+      "value": "7631.47",
+      "change": "-0.71",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "25,970",
-      "change": "-1.10%",
+      "value": "25959.28",
+      "change": "-1.10",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8566",
-      "change": "-0.13%",
-      "up": false
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.65",
-      "change": "+0.17%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.772",
-      "change": "-0.79%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.45",
-      "change": "-0.79%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7236",
-      "change": "+0.06%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Primeros ataques militares de EE.UU. contra Irán en un mes provocan represalia",
-        "en": "First US military attacks on Iran in a month prompt retaliation"
+        "es": "Guerra con Irán: EE.UU. y Teherán intercambian fuego en nuevo rebrote",
+        "en": "Iran war: US, Tehran trade fire in new flare-up"
       },
       "summary": {
-        "es": "EE.UU. atacó lanzadores de cohetes iraníes en la isla de Larak, en el estrecho de Ormuz, y Teherán respondió atacando bases militares estadounidenses en Jordania y los EAU. La escalada en el estrecho de Ormuz —por donde transita el 20% del petróleo mundial— representa el riesgo de cierre de un chokepoint energético crítico. Los mercados de materias primas, divisas de economías dependientes del petróleo y activos de refugio deberían reaccionar con fuerza.",
-        "en": "The US struck Iranian rocket launchers on Larak Island in the Strait of Hormuz; Tehran retaliated by targeting US military bases in Jordan and the UAE. Escalation at the Strait of Hormuz — through which roughly 20% of global oil transits — raises acute risk of supply disruption at a critical energy chokepoint. Commodity markets, oil-dependent EM currencies, and safe-haven assets face significant repricing pressure."
+        "es": "Se han reportado explosiones en torno al Estrecho de Ormuz, incluyendo un aeropuerto en el sur de Irán. Trump afirmó que los ataques fueron una respuesta a intentos iraníes de minar el estrecho. Una escalada en este chokepoint energético crítico representa un riesgo inmediato para los mercados de energía y el comercio global.",
+        "en": "Explosions have been reported around the Strait of Hormuz, including at an airport in southern Iran. Trump stated the strikes were a response to Iranian attempts to mine the strait. An escalation at this critical energy chokepoint poses immediate risk to energy markets and global trade flows."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +82,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de cierre del estrecho de Ormuz presiona precios al alza",
-            "en": "Hormuz closure risk drives sharp upside pressure on oil"
+            "es": "Amenaza directa al tránsito del Estrecho de Ormuz",
+            "en": "Direct threat to Strait of Hormuz transit"
           }
         },
         {
@@ -121,17 +91,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Demanda de refugio seguro ante escalada militar directa EE.UU.-Irán",
-            "en": "Safe-haven demand spikes on direct US-Iran military exchange"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Economías importadoras de petróleo bajo presión por alza de precios",
-            "en": "Oil-importing EM economies pressured by rising energy costs"
+            "es": "Demanda de refugio seguro ante escalada bélica",
+            "en": "Safe-haven demand on military escalation"
           }
         },
         {
@@ -139,38 +100,56 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Vuelo a calidad ante riesgo geopolítico agudo",
-            "en": "Flight to quality on acute geopolitical risk"
+            "es": "Huida hacia calidad en activos seguros",
+            "en": "Flight to quality into safe assets"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Aversión al riesgo golpea divisas emergentes importadoras de energía",
+            "en": "Risk-off hits energy-importing EM currencies"
           }
         }
       ],
       "confidence": 93,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/aug/30/us-strikes-iranian-launchers-on-larak-island-amid-strait-of-hormuz-tensions",
-      "published_at": "2026-08-31",
-      "time": "1d"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/iran-war-us-tehran-trade-fire-in-new-flare-up/live-78656656?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-02",
+      "time": "9h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
-      "region": "GLOBAL",
+      "region": "EU",
       "title": {
-        "es": "¿China o EE.UU.? Dos reuniones ofrecen versiones opuestas del poder global",
-        "en": "China or the U.S.? Two Meetings Offer Competing Showcases of Global Power"
+        "es": "Kallas califica el ataque fallido con drones en Leipzig de 'terrorismo patrocinado por un Estado'",
+        "en": "Kallas labels failed drone attack in Leipzig 'state-sponsored terrorism'"
       },
       "summary": {
-        "es": "Mientras Xi Jinping se reunía con Putin e Irán en la OCS, Europa desafiaba a la administración Trump en el G20, ofreciendo una imagen de bifurcación del orden global. La simultaneidad de ambos foros subraya la aceleración del desacoplamiento geopolítico y sus implicaciones para el comercio, las alianzas y los flujos de capital. Los inversores deben monitorear señales de coordinación entre el eje SCO sobre sanciones y comercio en yuan.",
-        "en": "While Xi Jinping convened with Putin and Iran at the SCO, Europe challenged the Trump administration at the G20, illustrating a sharpening bifurcation of the global order. The concurrent forums highlight accelerating geopolitical decoupling with direct implications for trade architecture, alliance structures, and capital flows. Investors should watch for SCO coordination signals on sanctions evasion and yuan-denominated trade expansion."
+        "es": "La jefa de la diplomacia de la UE calificó el ataque fallido con drones sobre Leipzig como terrorismo patrocinado por un Estado, señalando implícitamente a Moscú. Alemania y otros países europeos convocaron a los embajadores rusos, y la UE prepara nuevas sanciones. Este incidente escala el conflicto ruso-ucraniano al territorio de la OTAN, con importantes implicaciones para la seguridad europea y los activos de riesgo.",
+        "en": "EU foreign policy chief labeled the failed drone attack on Leipzig state-sponsored terrorism, implicitly pointing to Moscow. Germany and other European countries summoned Russian ambassadors, and the EU is preparing new sanctions. This incident escalates the Russia-Ukraine conflict onto NATO territory, with significant implications for European security and risk assets."
       },
       "impact": "high",
       "market_impact": [
         {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Ataque en suelo de la OTAN aumenta prima de riesgo geopolítica",
+            "en": "NATO-soil attack raises geopolitical risk premium"
+          }
+        },
+        {
           "asset": "EUR/USD",
-          "direction": "mixed",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Tensión EE.UU.-Europa en G20 añade incertidumbre sobre el euro",
-            "en": "US-Europe G20 friction adds uncertainty to euro trajectory"
+            "es": "Escalada de seguridad presiona al euro a la baja",
+            "en": "Security escalation pressures euro lower"
           }
         },
         {
@@ -178,209 +157,218 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Multipolaridad impulsa diversificación de reservas fuera del dólar",
-            "en": "Multipolarity accelerates reserve diversification away from USD"
+            "es": "Búsqueda de refugio ante escalada en Europa",
+            "en": "Safe-haven demand on European escalation"
+          }
+        },
+        {
+          "asset": "Defense sector equities",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Nuevas sanciones y rearmado aceleran gasto en defensa",
+            "en": "New sanctions and rearmament accelerate defense spending"
+          }
+        }
+      ],
+      "confidence": 91,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-09-02/kallas-califica-el-ataque-fallido-con-drones-en-leipzig-de-terrorismo-patrocinado-por-un-estado.html",
+      "published_at": "2026-09-02",
+      "time": "<1h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "LATAM",
+      "title": {
+        "es": "Inusual acuerdo petrolero de EE.UU. desconcierta a analistas y enoja a muchos venezolanos",
+        "en": "Remarkable US oil deal puzzles analysts and angers many Venezuelans"
+      },
+      "summary": {
+        "es": "EE.UU. ha firmado un acuerdo de petróleo con Venezuela que abarca 65.000 millones de barriles de crudo, con el secretario de Energía presente en Caracas para la firma. El acuerdo, descrito por un exembajador como un 'sueño febril colonialista', tiene implicaciones profundas para el suministro global de petróleo, las relaciones hemisféricas y la política de sanciones estadounidense hacia Venezuela.",
+        "en": "The US has signed an oil deal with Venezuela covering 65 billion barrels of crude, with the Energy Secretary present in Caracas for the signing. The deal, labeled by a former envoy as a colonialist fever dream, carries deep implications for global oil supply, hemispheric relations, and US sanctions policy toward Venezuela."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Potencial aumento de oferta venezolana a largo plazo",
+            "en": "Potential long-term Venezuelan supply increase"
+          }
+        },
+        {
+          "asset": "Venezuelan sovereign bonds",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Acuerdo implica normalización parcial de relaciones",
+            "en": "Deal implies partial normalization of relations"
           }
         },
         {
           "asset": "EM currencies",
           "direction": "mixed",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Economías SCO podrían beneficiarse de comercio alternativo en yuan",
-            "en": "SCO economies may benefit from expanded yuan-based trade"
+            "es": "Impacto diferenciado según exposición regional al petróleo",
+            "en": "Differentiated impact by regional oil exposure"
           }
         }
       ],
       "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/01/world/asia/g20-meeting-china-trump-bishkek.html",
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c93vkgk5e1yo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-09-01",
-      "time": "1h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "EURASIA",
-      "title": {
-        "es": "Ataques masivos rusos de misiles y drones contra Kiev",
-        "en": "'Massive' Russian missile and drone attacks on Kyiv"
-      },
-      "summary": {
-        "es": "Rusia ejecutó ataques aéreos que mataron al menos 12 personas en Kiev, el sexto día consecutivo de bombardeos sobre la capital ucraniana, mientras ministros de Defensa de la UE se reunían en Irlanda para abordar la escasez de defensa antiaérea. La escalada sostenida sugiere que Moscú está aplicando presión máxima ante las deliberaciones europeas sobre refuerzo de capacidades de defensa. Los mercados europeos de energía y defensa, junto con el euro, permanecen en foco.",
-        "en": "Russia carried out strikes killing at least 12 in Kyiv, the sixth consecutive day of attacks on the Ukrainian capital, as EU defense ministers convened in Ireland to address air defense shortfalls. The sustained escalation signals Moscow is applying maximum pressure ahead of European deliberations on defense capability reinforcement. European energy markets, defense equities, and the euro remain in focus."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European defence equities",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Escalada rusa impulsa urgencia de gasto en defensa europeo",
-            "en": "Russian escalation accelerates European defence spending urgency"
-          }
-        },
-        {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de infraestructura energética ucraniana eleva primas de riesgo",
-            "en": "Ukrainian energy infrastructure risk raises supply premium"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Presión de seguridad en Europa pesa sobre el euro",
-            "en": "European security pressure weighs modestly on euro"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260901-massive-russian-missile-drone-attacks-on-kyiv",
-      "published_at": "2026-09-01",
-      "time": "<1h"
+      "time": "13h"
     },
     {
       "id": 4,
       "tag": "ALERT",
-      "region": "AFRICA",
+      "region": "GLOBAL",
       "title": {
-        "es": "Los piratas de Somalia exhiben su creciente poderío con nuevos secuestros de buques",
-        "en": "Somali pirates display growing power with new ship hijackings"
+        "es": "¿China o EE.UU.? Dos reuniones ofrecen escaparates rivales del poder global",
+        "en": "China or the U.S.? Two Meetings Offer Competing Showcases of Global Power"
       },
       "summary": {
-        "es": "Grupos somalíes han capturado seis barcos desde abril, el mayor repunte de actividad pirata en años, favorecidos por la convergencia de crisis en Somalia, el mar Rojo y el estrecho de Ormuz. El resurgimiento de la piratería en este corredor estratégico eleva los costos de seguros marítimos y presiona aún más las rutas de abastecimiento global ya tensionadas. Este desarrollo amplifica el riesgo de disrupción para el comercio que fluye entre Asia, el Golfo y Europa.",
-        "en": "Somali groups have seized six vessels since April, the largest piracy surge in years, aided by converging crises in Somalia, the Red Sea, and the Strait of Hormuz. The resurgence across this strategic corridor is driving up marine insurance costs and adding further strain on already-stressed global supply routes. This development amplifies disruption risk for trade flows between Asia, the Gulf, and Europe."
+        "es": "Mientras Xi Jinping se reunía con los líderes de Rusia e Irán en Biskek, Europa desafiaba a la administración Trump en el G20, ofreciendo una visión de bifurcación del orden mundial. La simultaneidad de los dos eventos subraya la aceleración de la fragmentación geopolítica con implicaciones directas para las cadenas de suministro, el comercio y los flujos de capital globales.",
+        "en": "While Xi Jinping met with the leaders of Russia and Iran in Bishkek, Europe challenged the Trump administration at the G20, offering a split-screen view of a fracturing world order. The simultaneity of both events underscores the accelerating geopolitical fragmentation with direct implications for supply chains, trade, and global capital flows."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Shipping/freight rates (Baltic indices)",
-          "direction": "up",
+          "asset": "US dollar index",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de piratería eleva costos de flete en rutas clave",
-            "en": "Piracy risk pushes freight costs higher on key corridors"
+            "es": "Cuestionamiento del liderazgo estadounidense presiona al dólar",
+            "en": "Challenged US leadership creates dollar headwinds"
           }
         },
         {
-          "asset": "Brent crude",
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Fragmentación del orden global impulsa activos alternativos",
+            "en": "Global order fragmentation boosts alternative assets"
+          }
+        },
+        {
+          "asset": "Chinese equities",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Disrupciones adicionales en corredores del Golfo añaden prima de riesgo",
-            "en": "Additional Gulf corridor disruptions add incremental risk premium"
-          }
-        },
-        {
-          "asset": "Marine insurance derivatives",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Primas de seguro marítimo se disparan ante repunte de piratería",
-            "en": "Marine insurance premiums spike amid piracy resurgence"
+            "es": "Xi consolida bloque alternativo al liderazgo de Washington",
+            "en": "Xi consolidates bloc alternative to Washington leadership"
           }
         }
       ],
       "confidence": 82,
-      "source": "El País",
-      "source_url": "https://elpais.com/internacional/2026-09-01/los-piratas-de-somalia-exhiben-su-creciente-poderio-con-nuevos-secuestros-de-buques.html",
-      "published_at": "2026-09-01",
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/01/world/asia/g20-meeting-china-trump-bishkek.html",
+      "published_at": "2026-09-02",
       "time": "7h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "US",
       "title": {
-        "es": "Polonia inicia investigación de sabotaje tras incendio en fábrica de drones",
-        "en": "Poland launches sabotage probe in drone factory fire"
+        "es": "Carney pide a EE.UU. que 'empiece a tomarse en serio' las tensiones comerciales en escalada",
+        "en": "Mark Carney tells US to 'start being serious' amid escalating trade war"
       },
       "summary": {
-        "es": "Las autoridades polacas investigan un incendio deliberado en una fábrica de drones ubicada a 150 km al sur de Varsovia, en el contexto de una serie de actos de sabotaje atribuidos a actores vinculados a Rusia en toda Europa. El ataque a infraestructura de defensa en un país fronterizo con la zona de guerra ucraniana es un indicador de escalada de la guerra híbrida rusa en el flanco este de la OTAN. El incidente refuerza el caso para el aumento del gasto en defensa y ciberseguridad en Europa.",
-        "en": "Polish authorities are investigating a deliberate fire at a drone factory 150 km south of Warsaw, amid a pattern of alleged Russian-linked sabotage acts across Europe. An attack on defense-industrial infrastructure in a country bordering the Ukrainian war zone signals escalation of Russian hybrid warfare against NATO's eastern flank. The incident reinforces the investment thesis for European defense and cybersecurity spending."
+        "es": "El primer ministro canadiense Mark Carney reprendió a la administración Trump y anunció represalias arancelarias ante las nuevas tarifas impuestas por Washington. El endurecimiento del conflicto comercial entre EE.UU. y Canadá amenaza con disrumpir las cadenas de suministro norteamericanas integradas, especialmente en energía, automóviles y agricultura.",
+        "en": "Canadian PM Mark Carney rebuked the Trump administration and announced retaliatory tariffs in response to new US levies. The hardening US-Canada trade conflict threatens to disrupt deeply integrated North American supply chains, particularly in energy, autos, and agriculture."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "European defence equities",
-          "direction": "up",
+          "asset": "Canadian dollar",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Sabotaje híbrido ruso acelera inversión en defensa en la OTAN",
-            "en": "Russian hybrid sabotage accelerates NATO defense investment"
+            "es": "Escalada comercial US-Canadá presiona al CAD",
+            "en": "US-Canada trade escalation pressures CAD"
           }
         },
         {
-          "asset": "Polish zloty (PLN)",
+          "asset": "North American auto sector equities",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Riesgo de seguridad interno pesa levemente sobre el zloty",
-            "en": "Domestic security risk weighs modestly on PLN"
+            "es": "Aranceles disrumpen cadenas de suministro integradas",
+            "en": "Tariffs disrupt integrated supply chains"
           }
         },
         {
-          "asset": "Cybersecurity equities",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "Canadian energy equities",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Ataques híbridos impulsan demanda de soluciones de ciberseguridad",
-            "en": "Hybrid attacks boost demand for cybersecurity solutions"
+            "es": "Riesgo de aranceles sobre exportaciones energéticas canadienses",
+            "en": "Tariff risk on Canadian energy exports"
           }
         }
       ],
-      "confidence": 80,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/poland-launches-sabotage-probe-in-drone-factory-fire/a-78580918?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-08-31",
-      "time": "15h"
+      "confidence": 84,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/us-news/2026/sep/01/trump-mark-carney-trade-war-canada",
+      "published_at": "2026-09-01",
+      "time": "18h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "¿Puede el acuerdo 4+4 unificar a Libia? Un pacto respaldado por la ONU busca unir a los bandos rivales",
-        "en": "Could 4+4 make 1 in Libya? UN-backed agreement looks to unite rival camps"
+        "es": "La red eléctrica europea ante amenazas de sabotaje y ciberataques: 'El peor escenario no es inevitable, pero hay que prepararse'",
+        "en": "European power grid faces sabotage and cyberattack threats: 'The worst-case scenario is not inevitable, but we must prepare'"
       },
       "summary": {
-        "es": "Tras 15 años de guerra civil, un nuevo acuerdo '4+4' respaldado por la ONU busca reconciliar a las facciones rivales libias. Un proceso de reunificación exitoso tendría implicaciones significativas para la producción y exportación de petróleo libio, actualmente fragmentada, así como para la estabilidad migratoria del Mediterráneo. El fracaso o la manipulación del proceso por actores externos —Turquía, UAE, Wagner/Africa Corps— sigue siendo el escenario base más probable.",
-        "en": "After 15 years of civil war, a new UN-backed '4+4' framework seeks to reconcile Libya's rival factions. A successful reunification process would carry significant implications for fragmented Libyan oil production and exports, as well as Mediterranean migration stability. Failure or manipulation by external actors — Turkey, UAE, and Russia's Africa Corps — remains the most probable base case."
+        "es": "En un contexto de creciente conflictividad con Rusia, el riesgo de un apagón masivo en Europa es tomado en serio por los gobiernos. Francia planea organizar un ejercicio de simulación de crisis en 2027. La vulnerabilidad de las infraestructuras energéticas críticas es un riesgo sistémico para los mercados europeos y la estabilidad económica de la región.",
+        "en": "Against a backdrop of growing conflict with Russia, the risk of a major blackout in Europe is being taken seriously by governments. France plans to organize a crisis simulation exercise in 2027. The vulnerability of critical energy infrastructure is a systemic risk for European markets and the region's economic stability."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Brent crude",
+          "asset": "European equities",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Reunificación libia podría aumentar oferta de crudo en el mercado",
-            "en": "Libyan reunification could unlock additional crude supply"
+            "es": "Riesgo sistémico de infraestructura energética penaliza valoraciones",
+            "en": "Energy infrastructure systemic risk penalizes valuations"
           }
         },
         {
-          "asset": "Italian sovereign bonds (BTP)",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "European utilities equities",
+          "direction": "mixed",
+          "magnitude": "medium",
           "note": {
-            "es": "Estabilidad libia reduce presión migratoria y política sobre Italia",
-            "en": "Libyan stability reduces migration and political pressure on Italy"
+            "es": "Inversión en resiliencia impulsada pero riesgo operacional elevado",
+            "en": "Resilience investment boosted but operational risk elevated"
+          }
+        },
+        {
+          "asset": "Cybersecurity sector equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Demanda de soluciones de ciberseguridad para infraestructuras críticas",
+            "en": "Demand for cybersecurity solutions for critical infrastructure"
           }
         }
       ],
-      "confidence": 65,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/1/could-44-make-1-in-libya-un-backed-agreement-looks-to-unite-rival-camps?traffic_source=rss",
-      "published_at": "2026-09-01",
-      "time": "2h"
+      "confidence": 78,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/economie/article/2026/09/02/le-reseau-electrique-europeen-face-aux-menaces-de-sabotage-et-de-cyberattaques-le-scenario-du-pire-n-a-rien-d-ineluctable-mais-il-faut-s-y-preparer_6763909_3234.html",
+      "published_at": "2026-09-02",
+      "time": "6h"
     }
   ],
-  "market_updated_at": "2026-09-02T10:01:56.558Z"
+  "market_updated_at": "2026-09-02T10:31:26.513Z"
 }
