@@ -378,6 +378,7 @@ export function InformeDocument({ parcela, residual, risk, boeAlerts, matches, p
 
         <View style={s.section}>
           <Text style={s.sectionTitle}>{t(lang, "pdfMatchingMandatosZRC")}</Text>
+          <Text style={{ fontSize: 8, color: MUTED, fontStyle: "italic", marginBottom: 8 }}>{t(lang, "pdfMatchingMandatosNota")}</Text>
           {matches && matches.length > 0 ? matches.map((m) => (
             <View key={m.id} style={{ ...s.tableRow, alignItems: "flex-start" }}>
               <Text style={{ ...s.tableCellValue, flex: 1, textAlign: "left", fontFamily: "Helvetica-Bold", color: GOLD }}>{m.fit}%</Text>
