@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-09-03T10:37:13.259Z",
+  "generated_at": "2026-09-07T11:28:06.347Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1628",
-      "change": "+0.06%",
-      "up": true
+      "value": "1.1614",
+      "change": "-0.12",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,050.70",
-      "change": "-0.15%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "96.81",
-      "change": "+1.15%",
+      "value": "20115.75",
+      "change": "+115.55",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "92.09",
-      "change": "+0.67%",
+      "symbol": "BRENT",
+      "value": "95.85",
+      "change": "0.00",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,430.57",
-      "change": "-0.09%",
+      "symbol": "GOLD",
+      "value": "4391.80",
+      "change": "-37.20",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "79,458.00",
-      "change": "-0.66%",
-      "up": false
+      "symbol": "BTC",
+      "value": "79727.40",
+      "change": "+215.40",
+      "up": true
     },
     {
       "symbol": "VIX",
-      "value": "14.53",
-      "change": "+1.47%",
-      "up": true
-    },
-    {
-      "symbol": "US 10Y Yield",
-      "value": "4.784%",
-      "change": "+0.46%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7,718.60",
-      "change": "-0.38%",
+      "value": "14.15",
+      "change": "-0.38",
       "up": false
     },
     {
-      "symbol": "DAX 40",
-      "value": "26,026",
-      "change": "-0.08%",
-      "up": false
+      "symbol": "US 10Y",
+      "value": "4.784",
+      "change": "+0.022",
+      "up": true
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8587",
-      "change": "-0.01%",
+      "value": "0.8589",
+      "change": "-0.0003",
       "up": false
     },
     {
-      "symbol": "DXY",
-      "value": "99.09",
-      "change": "-0.04%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.920",
-      "change": "-0.68%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.60",
-      "change": "+0.04%",
+      "symbol": "S&P 500",
+      "value": "7750.19",
+      "change": "+31.59",
       "up": true
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.7103",
-      "change": "+0.13%",
+      "symbol": "DAX 40",
+      "value": "26046.40",
+      "change": "+60.60",
       "up": true
     }
   ],
@@ -96,309 +66,300 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "EURASIA",
       "title": {
-        "es": "Irán acusa a EE.UU. de 'crimen de guerra' tras misil que mata a cuatro personas en una boda",
-        "en": "Iran accuses US of 'war crime' after missile blast kills four people at wedding"
+        "es": "Los enviados de EEUU Kushner y Witkoff visitan Kiev por primera vez tras las conversaciones con Putin",
+        "en": "US envoys Kushner and Witkoff visit Kyiv for first time after Putin talks"
       },
       "summary": {
-        "es": "Un misil mató al menos a cuatro personas e hirió a 68 en una boda en una ciudad costera del sur de Irán, intensificando las acusaciones de crímenes de guerra contra EE.UU. El incidente eleva el riesgo de escalada en el conflicto EE.UU.-Israel-Irán con implicaciones directas para los precios del petróleo y los activos de refugio. La respuesta iraní, así como la presión internacional, serán cruciales para los mercados de energía.",
-        "en": "A missile killed at least four people and injured 68 at a wedding in a coastal city in southern Iran, intensifying war crime accusations against the US. The incident raises the risk of escalation in the US-Israel-Iran conflict with direct implications for oil prices and safe-haven assets. Iran's response and international pressure will be pivotal for energy markets."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Escalada bélica amenaza suministro del Golfo Pérsico",
-            "en": "Military escalation threatens Persian Gulf supply"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Demanda de refugio seguro ante riesgo geopolítico elevado",
-            "en": "Safe-haven demand surges on elevated geopolitical risk"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aversión al riesgo presiona divisas emergentes importadoras de petróleo",
-            "en": "Risk-off pressures oil-importing EM currencies"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Flujo hacia bonos como refugio ante escalada bélica",
-            "en": "Flight-to-safety flows into bonds on war escalation"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/sep/02/iran-us-missile-blast-wedding",
-      "published_at": "2026-09-02",
-      "time": "19h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "es": "UE y OTAN prometen aumentar la presión sobre Rusia tras 'nueva escalada' en Alemania",
-        "en": "EU and NATO vow to step up pressure on Russia after 'new escalation' in Germany"
-      },
-      "summary": {
-        "es": "Berlín atribuye a Rusia un fallido ataque de drones contra el aeropuerto de Leipzig, provocando una respuesta conjunta de la UE y la OTAN con promesas de mayor presión. Este incidente en suelo alemán representa una escalada significativa que podría derivar en nuevas sanciones o medidas defensivas con impacto en los mercados europeos. El ataque subraya el riesgo de extensión del conflicto fuera de Ucrania.",
-        "en": "Berlin blamed Russia for a failed drone attack on Leipzig airport, prompting a joint EU-NATO pledge to increase pressure on Moscow. This incident on German soil represents a significant escalation that could trigger new sanctions or defensive measures with direct impact on European markets. The attack underscores the risk of the conflict spreading beyond Ukraine."
+        "es": "Los negociadores estadounidenses Kushner y Witkoff se reunieron con Zelensky en Kiev tras conversaciones previas con Putin, con la expectativa de anunciar conversaciones trilaterales 'en breve'. El movimiento señala una posible aceleración diplomática, aunque el análisis del BBC indica que persisten diferencias fundamentales. Los mercados de energía y activos europeos seguirán atentos a cualquier señal de alto el fuego.",
+        "en": "US negotiators Kushner and Witkoff met with Zelenskyy in Kyiv following prior talks with Putin, with hopes of announcing trilateral talks 'in short order'. The move signals a potential diplomatic acceleration, though BBC analysis notes fundamental differences remain. Energy markets and European assets will closely track any ceasefire signals."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "European equities",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Escalada en suelo de la OTAN eleva la prima de riesgo europea",
-            "en": "NATO-soil escalation raises European risk premium"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tensión geopolítica en Europa pesa sobre el euro",
-            "en": "Geopolitical tension in Europe weighs on the euro"
-          }
-        },
-        {
-          "asset": "Natural gas (TTF)",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor riesgo de disrupciones energéticas en Europa",
-            "en": "Heightened risk of energy disruptions in Europe"
+            "es": "Señales de paz reducen prima de riesgo geopolítico europeo",
+            "en": "Peace signals reduce European geopolitical risk premium"
           }
         },
-        {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aumento del gasto en defensa OTAN favorece al sector",
-            "en": "NATO defense spending increase benefits the sector"
-          }
-        }
-      ],
-      "confidence": 92,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/ce9e810pg7ko?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-03",
-      "time": "7h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "En Egipto, Xi desafía la influencia de EE.UU. en Oriente Medio",
-        "en": "In Egypt, Xi Challenges America's Influence in the Middle East"
-      },
-      "summary": {
-        "es": "Xi Jinping visita Egipto para profundizar lazos con un histórico socio de seguridad de EE.UU., buscando proyectar un papel más activo de China en una región convulsionada por la guerra. La visita señala la erosión del liderazgo estadounidense en Oriente Medio y el avance del eje estratégico chino hacia África y el Mediterráneo. Esto tiene implicaciones para los corredores de infraestructura, la influencia sobre la OPEP y el reordenamiento de alianzas.",
-        "en": "Xi Jinping visits Egypt to deepen ties with a longtime US security partner, seeking to project a greater Chinese role in a region shaken by war. The visit signals erosion of US leadership in the Middle East and advances China's strategic axis toward Africa and the Mediterranean. This has implications for infrastructure corridors, OPEC influence, and alliance realignment."
-      },
-      "impact": "high",
-      "market_impact": [
         {
           "asset": "Brent crude",
-          "direction": "mixed",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Reordenamiento de alianzas OPEP podría afectar política de producción",
-            "en": "OPEC alliance realignment may affect production policy"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor influencia china en MENA redefine flujos de capital emergente",
-            "en": "Greater Chinese influence in MENA redefines EM capital flows"
-          }
-        },
-        {
-          "asset": "Egyptian pound (EGP)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Inversión china puede aliviar presiones de financiamiento egipcio",
-            "en": "Chinese investment may ease Egyptian financing pressures"
-          }
-        }
-      ],
-      "confidence": 82,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/02/world/asia/china-egypt-xi-jinping-el-sisi.html",
-      "published_at": "2026-09-02",
-      "time": "17h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Países Bajos traslada miles de millones en oro a Londres en medida de 'preparación para crisis'",
-        "en": "Netherlands moves billions in gold to London in 'crisis preparedness' move"
-      },
-      "summary": {
-        "es": "El banco central neerlandés retiró reservas de oro de EE.UU. y Canadá hacia Londres, citando explícitamente 'creciente agitación geopolítica'. Este movimiento estratégico refleja una creciente desconfianza europea en el paraguas financiero estadounidense y anticipa una posible reconfiguración de las reservas soberanas en la OTAN. Es una señal de primer orden para los mercados de oro y la dinámica del dólar como activo de reserva.",
-        "en": "The Dutch central bank relocated gold reserves from the US and Canada to London, explicitly citing 'increasing geopolitical unrest'. This strategic move reflects growing European distrust in the US financial umbrella and anticipates a possible reconfiguration of NATO sovereign reserves. It is a primary signal for gold markets and the dollar's reserve asset dynamics."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Reasignación soberana refuerza demanda estructural de oro",
-            "en": "Sovereign reallocation reinforces structural gold demand"
+            "es": "Posible reducción de tensión reduce presión alcista en energía",
+            "en": "Potential de-escalation reduces upward energy pressure"
           }
         },
         {
           "asset": "EUR/USD",
-          "direction": "mixed",
-          "magnitude": "low",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Señal de desconfianza transatlántica con impacto limitado en FX",
-            "en": "Transatlantic distrust signal with limited FX impact"
+            "es": "Avance diplomático fortalece sentimiento pro-euro",
+            "en": "Diplomatic progress strengthens pro-euro sentiment"
           }
         },
         {
-          "asset": "US dollar index (DXY)",
+          "asset": "Gold",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Diversificación de reservas aleja activos del dólar",
-            "en": "Reserve diversification moves assets away from the dollar"
+            "es": "Reducción de tensiones modera demanda de activos refugio",
+            "en": "De-escalation moderates safe-haven demand"
           }
         }
       ],
       "confidence": 85,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cvgy51xlz39o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-02",
-      "time": "17h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/sep/06/us-envoys-jared-kushner-steve-witkoff-arrive-kyiv-talks-on-ending-war",
+      "published_at": "2026-09-06",
+      "time": "16h"
     },
     {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "GLOBAL",
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "US",
       "title": {
-        "es": "La ONU advierte: el Niño 'sobredimensionado' podría ser el más fuerte jamás registrado",
-        "en": "'Supersized' El Niño could be strongest on record, UN says"
+        "es": "Los aranceles de represalia de Canadá entran en vigor mientras Trump amenaza con escalar",
+        "en": "Canada's Retaliatory Tariffs Set to Take Effect as Trump Threatens to Escalate"
       },
       "summary": {
-        "es": "La Organización Meteorológica Mundial advierte que el actual fenómeno de El Niño podría convertirse en el más intenso desde que comenzaron los registros hace 40 años, debido a temperaturas excepcionalmente cálidas en el Pacífico tropical. Este evento tendría consecuencias macroeconómicas globales: disrupción de cadenas de suministro agrícolas, presiones inflacionarias en economías emergentes y mayor volatilidad en commodities alimentarios y energéticos. Los países exportadores de materias primas agrícolas en América Latina, África y Asia serán los más afectados.",
-        "en": "The World Meteorological Organization warns that the current El Niño could become the most intense since records began 40 years ago, due to exceptionally warm temperatures in the tropical Pacific. This event would have global macroeconomic consequences: disruption of agricultural supply chains, inflationary pressures in emerging economies, and increased volatility in food and energy commodities. Agricultural commodity-exporting countries in Latin America, Africa, and Asia will be most affected."
+        "es": "Canadá implementará aranceles de hasta el 50% a partir del martes en respuesta a las medidas comerciales de EEUU, mientras Washington amenaza con una nueva ronda de aranceles americanos. La escalada bilateral representa un riesgo significativo para las cadenas de suministro norteamericanas y los sectores manufactureros de ambos países. Los mercados de divisas y los activos sensibles al comercio serán los más afectados.",
+        "en": "Canada will implement tariffs of up to 50% starting Tuesday in response to US trade measures, while Washington threatens a fresh round of American tariffs. The bilateral escalation represents a significant risk to North American supply chains and manufacturing sectors in both countries. Currency markets and trade-sensitive assets will be most affected."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Agricultural commodities (wheat, corn, soybeans)",
-          "direction": "up",
+          "asset": "CAD/USD",
+          "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "El Niño severo reduce cosechas en regiones productoras clave",
-            "en": "Severe El Niño reduces harvests in key producing regions"
+            "es": "Escalada comercial presiona al dólar canadiense a la baja",
+            "en": "Trade escalation pressures Canadian dollar downward"
+          }
+        },
+        {
+          "asset": "US equities (industrials)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Represalias amenazan cadenas de suministro manufactureras",
+            "en": "Retaliation threatens manufacturing supply chains"
           }
         },
         {
           "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Presiones inflacionarias y climáticas pesan sobre divisas emergentes",
-            "en": "Inflationary and climate pressures weigh on EM currencies"
-          }
-        },
-        {
-          "asset": "Brent crude",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Disrupciones energéticas por fenómenos climáticos extremos",
-            "en": "Energy disruptions from extreme weather events"
+            "es": "Incertidumbre comercial global afecta mercados emergentes",
+            "en": "Global trade uncertainty ripples into EM markets"
           }
         }
       ],
-      "confidence": 78,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/supersized-el-nino-could-be-strongest-on-record-un-says/a-78841246?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-03",
-      "time": "<1h"
+      "confidence": 90,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/07/world/canada/tariffs-trade-war-carney-trump.html",
+      "published_at": "2026-09-07",
+      "time": "2h"
+    },
+    {
+      "id": 3,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Fuerzas del gobierno yemení y rebeldes hutíes luchan por el control de la puerta de entrada al Mar Rojo",
+        "en": "Yemen govt forces, Houthi rebels battle for control of Red Sea gateway"
+      },
+      "summary": {
+        "es": "Más de 140 combatientes murieron en enfrentamientos en el suroeste de Yemen por el control de una entrada estratégica al Mar Rojo, marcando los combates más mortíferos en años. El control de esta vía marítima tiene implicaciones directas para el comercio global y los costos de transporte marítimo. Una victoria hutí reforzaría su capacidad de interdicción naval y presionaría al alza los seguros de transporte y el crudo.",
+        "en": "More than 140 combatants were killed in clashes in southwestern Yemen over control of a strategic Red Sea gateway, marking the deadliest fighting in years. Control of this maritime route has direct implications for global trade and shipping costs. A Houthi victory would reinforce their naval interdiction capability, pressuring shipping insurance and crude prices upward."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Control hutí del estrecho elevaría riesgo de suministro",
+            "en": "Houthi control of strait raises supply disruption risk"
+          }
+        },
+        {
+          "asset": "Shipping/freight rates",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Bloqueo potencial del corredor del Mar Rojo infla fletes",
+            "en": "Potential Red Sea corridor blockage inflates freight rates"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Escalada regional alimenta demanda de activos refugio",
+            "en": "Regional escalation feeds safe-haven demand"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260907-yemen-govt-forces-houthi-rebels-battle-for-control-of-red-sea-gateway",
+      "published_at": "2026-09-07",
+      "time": "2h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "APAC",
+      "title": {
+        "es": "Filipinas advierte que China podría reafirmarse ante los recortes en ejercicios EEUU-Corea del Sur",
+        "en": "Philippines warns China may reassert itself amid US-South Korea drill cuts"
+      },
+      "summary": {
+        "es": "Manila advierte que los recortes en ejercicios militares conjuntos entre EEUU y Corea del Sur podrían ser interpretados por Beijing como una señal de debilidad, dando lugar a una mayor asertividad china en el Mar del Sur de China. Washington ofreció garantías a Filipinas, pero la percepción de reducción del compromiso estadounidense en Asia reordena los cálculos de seguridad regional. Esto tiene implicaciones para los activos filipinos y el posicionamiento de defensa en el Indo-Pacífico.",
+        "en": "Manila warns that cuts to US-South Korea joint military exercises could be read by Beijing as a signal of weakness, inviting greater Chinese assertiveness in the South China Sea. Washington offered assurances to the Philippines, but the perceived reduction in US commitment in Asia reshapes regional security calculations. This has implications for Philippine assets and Indo-Pacific defense positioning."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Philippine peso (PHP)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre de seguridad debilita activos filipinos",
+            "en": "Security uncertainty weakens Philippine assets"
+          }
+        },
+        {
+          "asset": "Asian defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Vacío de disuasión impulsa gasto en defensa regional",
+            "en": "Deterrence vacuum drives regional defense spending"
+          }
+        },
+        {
+          "asset": "EM currencies (APAC)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo geopolítico regional pesa sobre divisas emergentes asiáticas",
+            "en": "Regional geopolitical risk weighs on Asian EM currencies"
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/9/7/philippines-warns-china-may-reassert-itself-amid-us-south-korea-drill-cuts?traffic_source=rss",
+      "published_at": "2026-09-07",
+      "time": "7h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Elecciones regionales en Alemania: la AfD gana en Sajonia-Anhalt, Merz debe responder",
+        "en": "German regional elections: AfD wins in Saxony-Anhalt, Chancellor Merz must respond"
+      },
+      "summary": {
+        "es": "La AfD ganó las elecciones regionales en Sajonia-Anhalt y podría convertirse en el primer partido de extrema derecha en gobernar un Land alemán desde 1945, condicionado a la formación de alianzas. El resultado presiona al canciller Merz y a la coalición gobernante, con implicaciones para la política fiscal alemana, la postura sobre Ucrania y la cohesión de la UE. Los mercados monitorearán el impacto sobre la prima de riesgo política alemana y la integridad del bloque europeo.",
+        "en": "The AfD won regional elections in Saxony-Anhalt and could become the first far-right party to govern a German state since 1945, contingent on coalition formation. The result pressures Chancellor Merz and the governing coalition, with implications for German fiscal policy, Ukraine stance, and EU cohesion. Markets will monitor the impact on Germany's political risk premium and European bloc integrity."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Auge populista alemán erosiona confianza en cohesión europea",
+            "en": "German populist surge erodes confidence in European cohesion"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre política alemana pesa sobre bolsas europeas",
+            "en": "German political uncertainty weighs on European equities"
+          }
+        },
+        {
+          "asset": "German Bunds",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Fuga a calidad compensa presión fiscal por incertidumbre",
+            "en": "Flight to quality offsets fiscal uncertainty pressure"
+          }
+        }
+      ],
+      "confidence": 87,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/09/07/en-direct-elections-regionales-en-allemagne-ulrich-siegmund-revendique-un-mandat-tres-clair-pour-gouverner-mais-reconnait-ne-pas-avoir-de-majorite_6767342_3210.html",
+      "published_at": "2026-09-07",
+      "time": "1h"
     },
     {
       "id": 6,
       "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "es": "EE.UU. y Australia refuerzan lazos de defensa ante la creciente influencia de China",
-        "en": "US, Australia to boost defense ties amid China's growing influence"
+        "es": "Corea del Norte despliega buque de guerra 'capaz de aniquilar represalias'",
+        "en": "North Korea deploys warship 'capable of annihilating retaliatory strikes'"
       },
       "summary": {
-        "es": "EE.UU. y Australia acordaron acelerar la cooperación defensiva y aumentar la presencia militar estadounidense en territorio australiano para contrarrestar el incremento sin precedentes del poderío militar chino. La medida consolida el eje AUKUS y refuerza el cerco estratégico sobre China en el Indo-Pacífico, con implicaciones para las cadenas de suministro de materias primas críticas. Los mercados de defensa y los activos australianos serán los más sensibles.",
-        "en": "The US and Australia agreed to accelerate defense cooperation and increase US military presence in Australia to counter China's unprecedented military buildup. The move consolidates the AUKUS axis and tightens the strategic encirclement of China in the Indo-Pacific, with implications for critical raw material supply chains. Defense markets and Australian assets will be most sensitive."
+        "es": "Kim Jong Un anunció el despliegue de un nuevo buque de guerra integrado en el sistema de respuesta nuclear de Pyongyang, señalando una modernización significativa de las capacidades navales norcoreanas. El movimiento eleva la tensión en la península coreana y complica las negociaciones diplomáticas entre EEUU y Corea del Norte en el contexto de los recortes en ejercicios con Seúl. Los activos surcoreanos y los mercados de defensa regional son los más sensibles.",
+        "en": "Kim Jong Un announced the deployment of a new warship integrated into Pyongyang's nuclear response system, signaling a significant modernization of North Korean naval capabilities. The move elevates tension on the Korean peninsula and complicates US-North Korea diplomatic dynamics amid drill cuts with Seoul. South Korean assets and regional defense markets are most sensitive."
       },
-      "impact": "high",
+      "impact": "medium",
       "market_impact": [
         {
-          "asset": "AUD/USD",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor tensión EEUU-China impacta demanda de exportaciones australianas",
-            "en": "Higher US-China tension hits Australian export demand"
-          }
-        },
-        {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor gasto de defensa en Indo-Pacífico beneficia al sector",
-            "en": "Increased Indo-Pacific defense spending benefits the sector"
-          }
-        },
-        {
-          "asset": "Iron ore",
+          "asset": "South Korean won (KRW)",
           "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada norcoreana presiona al won surcoreano",
+            "en": "North Korean escalation pressures South Korean won"
+          }
+        },
+        {
+          "asset": "KOSPI",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Amenaza militar regional pesa sobre bolsa surcoreana",
+            "en": "Regional military threat weighs on South Korean equities"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Tensiones geopolíticas reducen comercio bilateral China-Australia",
-            "en": "Geopolitical tensions reduce China-Australia bilateral trade"
+            "es": "Provocación norcoreana alimenta demanda de refugio",
+            "en": "North Korean provocation feeds safe-haven demand"
           }
         }
       ],
-      "confidence": 80,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-australia-to-boost-defense-ties-amid-china-s-growing-influence/a-78815760?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-03",
-      "time": "3h"
+      "confidence": 78,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/9/7/north-korea-deploys-warship-capable-of-annihilating-retaliatory-strikes?traffic_source=rss",
+      "published_at": "2026-09-07",
+      "time": "11h"
     }
   ],
-  "market_updated_at": "2026-09-07T10:49:43.576Z"
+  "market_updated_at": "2026-09-07T11:28:06.347Z"
 }
