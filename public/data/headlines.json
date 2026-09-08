@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-09-07T11:28:06.347Z",
+  "generated_at": "2026-09-08T10:31:05.868Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1545",
-      "change": "+0.15%",
+      "value": "1.1623",
+      "change": "+0.0009",
       "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "20,021.80",
-      "change": "-0.14%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "97.24",
-      "change": "+0.90%",
+      "value": "20115.75",
+      "change": "+63.35",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "92.37",
-      "change": "-0.17%",
+      "symbol": "BRENT",
+      "value": "97.31",
+      "change": "0.00",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,411.61",
-      "change": "-0.42%",
+      "symbol": "GOLD",
+      "value": "4391.80",
+      "change": "-37.20",
       "up": false
     },
     {
-      "symbol": "BTC/USD",
-      "value": "79,175.68",
-      "change": "-0.21%",
+      "symbol": "BTC",
+      "value": "79190.83",
+      "change": "-748.17",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "15.30",
-      "change": "+5.30%",
+      "value": "15.26",
+      "change": "+0.73",
       "up": true
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.77%",
-      "change": "+0.06%",
+      "symbol": "US 10Y",
+      "value": "4.80",
+      "change": "+0.02",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8589",
+      "change": "+0.0003",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,707.00",
-      "change": "-0.15%",
+      "value": "7718.60",
+      "change": "-29.11",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "26,046.40",
-      "change": "-0.15%",
-      "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8545",
-      "change": "+0.09%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.07",
-      "change": "+0.16%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.97",
-      "change": "-0.24%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.55",
-      "change": "-0.70%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7105",
-      "change": "+0.02%",
+      "value": "26046.40",
+      "change": "+39.90",
       "up": true
     }
   ],
@@ -96,300 +66,300 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EURASIA",
+      "region": "MENA",
       "title": {
-        "es": "Los enviados de EEUU Kushner y Witkoff visitan Kiev por primera vez tras las conversaciones con Putin",
-        "en": "US envoys Kushner and Witkoff visit Kyiv for first time after Putin talks"
+        "es": "Ataques hutíes disrumpen instalaciones petroleras saudíes y dejan más de 70 heridos",
+        "en": "Houthi attacks disrupt Saudi oil facilities and wound more than 70"
       },
       "summary": {
-        "es": "Los negociadores estadounidenses Kushner y Witkoff se reunieron con Zelensky en Kiev tras conversaciones previas con Putin, con la expectativa de anunciar conversaciones trilaterales 'en breve'. El movimiento señala una posible aceleración diplomática, aunque el análisis del BBC indica que persisten diferencias fundamentales. Los mercados de energía y activos europeos seguirán atentos a cualquier señal de alto el fuego.",
-        "en": "US negotiators Kushner and Witkoff met with Zelenskyy in Kyiv following prior talks with Putin, with hopes of announcing trilateral talks 'in short order'. The move signals a potential diplomatic acceleration, though BBC analysis notes fundamental differences remain. Energy markets and European assets will closely track any ceasefire signals."
+        "es": "Los hutíes, respaldados por Irán, atacaron instalaciones petroleras en el sur de Arabia Saudí, causando incendios y más de 70 heridos en una escalada significativa. El ataque representa una amenaza directa a la infraestructura energética de un aliado clave de EE.UU. y podría presionar al alza los precios del crudo si persiste la inestabilidad. Los mercados de energía y los activos refugio responderán ante el riesgo de interrupción del suministro regional.",
+        "en": "Iran-backed Houthis struck oil facilities in southern Saudi Arabia, igniting fires and wounding over 70 people in a major escalation of the renewed conflict. The attack poses a direct threat to energy infrastructure of a key US ally and could push crude prices higher if regional instability persists. Energy markets and safe-haven assets will respond to the risk of supply disruption."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Señales de paz reducen prima de riesgo geopolítico europeo",
-            "en": "Peace signals reduce European geopolitical risk premium"
-          }
-        },
-        {
           "asset": "Brent crude",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Posible reducción de tensión reduce presión alcista en energía",
-            "en": "Potential de-escalation reduces upward energy pressure"
-          }
-        },
-        {
-          "asset": "EUR/USD",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Avance diplomático fortalece sentimiento pro-euro",
-            "en": "Diplomatic progress strengthens pro-euro sentiment"
+            "es": "Riesgo de interrupción de suministro saudí presiona precios al alza",
+            "en": "Saudi supply disruption risk pushes prices higher"
           }
         },
         {
           "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada regional impulsa demanda de activos refugio",
+            "en": "Regional escalation drives safe-haven demand"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor prima de riesgo geopolítico pesa sobre divisas emergentes",
+            "en": "Higher geopolitical risk premium weighs on EM currencies"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Reducción de tensiones modera demanda de activos refugio",
-            "en": "De-escalation moderates safe-haven demand"
+            "es": "Flujo hacia refugio seguro reduce rendimientos levemente",
+            "en": "Safe-haven flow modestly lowers yields"
           }
         }
       ],
-      "confidence": 85,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/sep/06/us-envoys-jared-kushner-steve-witkoff-arrive-kyiv-talks-on-ending-war",
-      "published_at": "2026-09-06",
-      "time": "16h"
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260908-houthi-attacks-disrupt-saudi-oil-facilities-and-wound-more-than-70",
+      "published_at": "2026-09-08",
+      "time": "1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
+      "region": "EURASIA",
+      "title": {
+        "es": "Corea del Norte y Rusia abren el primer puente terrestre que une ambos países",
+        "en": "North Korea and Russia open first road bridge linking both countries"
+      },
+      "summary": {
+        "es": "Rusia y Corea del Norte inauguraron el primer puente terrestre sobre el río Tumen, consolidando una alianza estratégica que se ha profundizado desde el inicio de la guerra en Ucrania. La nueva infraestructura facilita el flujo de suministros militares y bienes entre ambos países, eludiendo sanciones occidentales y reforzando un eje alternativo al orden liderado por Occidente. Para los inversores, esto señala una mayor resiliencia logística rusa frente a las sanciones y una complicación adicional para las presiones de Occidente sobre Pyongyang.",
+        "en": "Russia and North Korea inaugurated the first road bridge across the Tumen River, cementing a strategic alliance that has deepened since the start of the Ukraine war. The new infrastructure facilitates the flow of military supplies and goods between the two countries, circumventing Western sanctions and reinforcing an axis alternative to the Western-led order. For investors, this signals greater Russian logistical resilience against sanctions and an additional complication for Western pressure on Pyongyang."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Russian ruble",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor capacidad logística reduce parcialmente presión de sanciones",
+            "en": "Greater logistics capacity partially reduces sanctions pressure"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Prolongación del conflicto ucraniano pesa sobre sentimiento europeo",
+            "en": "Prolonged Ukraine conflict weighs on European sentiment"
+          }
+        },
+        {
+          "asset": "Defense sector equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Eje Rusia-Corea del Norte refuerza narrativa de rearme occidental",
+            "en": "Russia-North Korea axis reinforces Western rearmament narrative"
+          }
+        }
+      ],
+      "confidence": 87,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cj9xvg1kz0mo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-08",
+      "time": "6h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
       "region": "US",
       "title": {
         "es": "Los aranceles de represalia de Canadá entran en vigor mientras Trump amenaza con escalar",
         "en": "Canada's Retaliatory Tariffs Set to Take Effect as Trump Threatens to Escalate"
       },
       "summary": {
-        "es": "Canadá implementará aranceles de hasta el 50% a partir del martes en respuesta a las medidas comerciales de EEUU, mientras Washington amenaza con una nueva ronda de aranceles americanos. La escalada bilateral representa un riesgo significativo para las cadenas de suministro norteamericanas y los sectores manufactureros de ambos países. Los mercados de divisas y los activos sensibles al comercio serán los más afectados.",
-        "en": "Canada will implement tariffs of up to 50% starting Tuesday in response to US trade measures, while Washington threatens a fresh round of American tariffs. The bilateral escalation represents a significant risk to North American supply chains and manufacturing sectors in both countries. Currency markets and trade-sensitive assets will be most affected."
+        "es": "Canadá implementó aranceles de represalia de hasta el 50% sobre bienes estadounidenses mientras Washington amenaza con una nueva ronda de tarifas propias, acentuando una guerra comercial bilateral que afecta especialmente a la industria automotriz. El conflicto arancelario entre los dos mayores socios comerciales norteamericanos representa un riesgo macroeconómico significativo para las cadenas de suministro integradas y el crecimiento de ambas economías. Los mercados de divisas y renta variable en sectores expuestos al comercio bilateral son los más vulnerables.",
+        "en": "Canada implemented retaliatory tariffs of up to 50% on US goods while Washington threatens a new round of its own tariffs, sharpening a bilateral trade war that particularly impacts the auto industry. The tariff conflict between North America's two largest trading partners represents a significant macroeconomic risk for integrated supply chains and growth in both economies. Currency markets and equities in sectors exposed to bilateral trade are most vulnerable."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "CAD/USD",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Escalada comercial presiona al dólar canadiense a la baja",
-            "en": "Trade escalation pressures Canadian dollar downward"
-          }
-        },
-        {
-          "asset": "US equities (industrials)",
+          "asset": "Canadian dollar (CAD)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Represalias amenazan cadenas de suministro manufactureras",
-            "en": "Retaliation threatens manufacturing supply chains"
+            "es": "Escalada comercial debilita perspectiva económica canadiense",
+            "en": "Trade escalation weakens Canadian economic outlook"
           }
         },
         {
-          "asset": "EM currencies",
+          "asset": "Automotive sector equities",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Disrupciones en cadenas de suministro integradas golpean al sector",
+            "en": "Integrated supply chain disruptions hit the sector hard"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre comercial genera leve vuelo a calidad",
+            "en": "Trade uncertainty generates mild flight to quality"
+          }
+        },
+        {
+          "asset": "EUR/USD",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Incertidumbre comercial global afecta mercados emergentes",
-            "en": "Global trade uncertainty ripples into EM markets"
+            "es": "Contagio comercial global genera volatilidad en divisas G10",
+            "en": "Global trade contagion generates G10 currency volatility"
           }
         }
       ],
       "confidence": 90,
       "source": "New York Times",
       "source_url": "https://www.nytimes.com/2026/09/07/world/canada/tariffs-trade-war-carney-trump.html",
-      "published_at": "2026-09-07",
-      "time": "2h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Fuerzas del gobierno yemení y rebeldes hutíes luchan por el control de la puerta de entrada al Mar Rojo",
-        "en": "Yemen govt forces, Houthi rebels battle for control of Red Sea gateway"
-      },
-      "summary": {
-        "es": "Más de 140 combatientes murieron en enfrentamientos en el suroeste de Yemen por el control de una entrada estratégica al Mar Rojo, marcando los combates más mortíferos en años. El control de esta vía marítima tiene implicaciones directas para el comercio global y los costos de transporte marítimo. Una victoria hutí reforzaría su capacidad de interdicción naval y presionaría al alza los seguros de transporte y el crudo.",
-        "en": "More than 140 combatants were killed in clashes in southwestern Yemen over control of a strategic Red Sea gateway, marking the deadliest fighting in years. Control of this maritime route has direct implications for global trade and shipping costs. A Houthi victory would reinforce their naval interdiction capability, pressuring shipping insurance and crude prices upward."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Control hutí del estrecho elevaría riesgo de suministro",
-            "en": "Houthi control of strait raises supply disruption risk"
-          }
-        },
-        {
-          "asset": "Shipping/freight rates",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Bloqueo potencial del corredor del Mar Rojo infla fletes",
-            "en": "Potential Red Sea corridor blockage inflates freight rates"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada regional alimenta demanda de activos refugio",
-            "en": "Regional escalation feeds safe-haven demand"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260907-yemen-govt-forces-houthi-rebels-battle-for-control-of-red-sea-gateway",
-      "published_at": "2026-09-07",
-      "time": "2h"
+      "published_at": "2026-09-08",
+      "time": "6h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
+      "tag": "WATCH",
       "region": "APAC",
       "title": {
-        "es": "Filipinas advierte que China podría reafirmarse ante los recortes en ejercicios EEUU-Corea del Sur",
-        "en": "Philippines warns China may reassert itself amid US-South Korea drill cuts"
+        "es": "Un barco chino toma el atajo ártico: ¿Negocio inteligente o demostración política?",
+        "en": "Chinese Ship Takes Arctic Shortcut: Smart Business? Or a Political Flex?"
       },
       "summary": {
-        "es": "Manila advierte que los recortes en ejercicios militares conjuntos entre EEUU y Corea del Sur podrían ser interpretados por Beijing como una señal de debilidad, dando lugar a una mayor asertividad china en el Mar del Sur de China. Washington ofreció garantías a Filipinas, pero la percepción de reducción del compromiso estadounidense en Asia reordena los cálculos de seguridad regional. Esto tiene implicaciones para los activos filipinos y el posicionamiento de defensa en el Indo-Pacífico.",
-        "en": "Manila warns that cuts to US-South Korea joint military exercises could be read by Beijing as a signal of weakness, inviting greater Chinese assertiveness in the South China Sea. Washington offered assurances to the Philippines, but the perceived reduction in US commitment in Asia reshapes regional security calculations. This has implications for Philippine assets and Indo-Pacific defense positioning."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Philippine peso (PHP)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre de seguridad debilita activos filipinos",
-            "en": "Security uncertainty weakens Philippine assets"
-          }
-        },
-        {
-          "asset": "Asian defense equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Vacío de disuasión impulsa gasto en defensa regional",
-            "en": "Deterrence vacuum drives regional defense spending"
-          }
-        },
-        {
-          "asset": "EM currencies (APAC)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo geopolítico regional pesa sobre divisas emergentes asiáticas",
-            "en": "Regional geopolitical risk weighs on Asian EM currencies"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/7/philippines-warns-china-may-reassert-itself-amid-us-south-korea-drill-cuts?traffic_source=rss",
-      "published_at": "2026-09-07",
-      "time": "7h"
-    },
-    {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Elecciones regionales en Alemania: la AfD gana en Sajonia-Anhalt, Merz debe responder",
-        "en": "German regional elections: AfD wins in Saxony-Anhalt, Chancellor Merz must respond"
-      },
-      "summary": {
-        "es": "La AfD ganó las elecciones regionales en Sajonia-Anhalt y podría convertirse en el primer partido de extrema derecha en gobernar un Land alemán desde 1945, condicionado a la formación de alianzas. El resultado presiona al canciller Merz y a la coalición gobernante, con implicaciones para la política fiscal alemana, la postura sobre Ucrania y la cohesión de la UE. Los mercados monitorearán el impacto sobre la prima de riesgo política alemana y la integridad del bloque europeo.",
-        "en": "The AfD won regional elections in Saxony-Anhalt and could become the first far-right party to govern a German state since 1945, contingent on coalition formation. The result pressures Chancellor Merz and the governing coalition, with implications for German fiscal policy, Ukraine stance, and EU cohesion. Markets will monitor the impact on Germany's political risk premium and European bloc integrity."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Auge populista alemán erosiona confianza en cohesión europea",
-            "en": "German populist surge erodes confidence in European cohesion"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre política alemana pesa sobre bolsas europeas",
-            "en": "German political uncertainty weighs on European equities"
-          }
-        },
-        {
-          "asset": "German Bunds",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Fuga a calidad compensa presión fiscal por incertidumbre",
-            "en": "Flight to quality offsets fiscal uncertainty pressure"
-          }
-        }
-      ],
-      "confidence": 87,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/live/2026/09/07/en-direct-elections-regionales-en-allemagne-ulrich-siegmund-revendique-un-mandat-tres-clair-pour-gouverner-mais-reconnait-ne-pas-avoir-de-majorite_6767342_3210.html",
-      "published_at": "2026-09-07",
-      "time": "1h"
-    },
-    {
-      "id": 6,
-      "tag": "ALERT",
-      "region": "APAC",
-      "title": {
-        "es": "Corea del Norte despliega buque de guerra 'capaz de aniquilar represalias'",
-        "en": "North Korea deploys warship 'capable of annihilating retaliatory strikes'"
-      },
-      "summary": {
-        "es": "Kim Jong Un anunció el despliegue de un nuevo buque de guerra integrado en el sistema de respuesta nuclear de Pyongyang, señalando una modernización significativa de las capacidades navales norcoreanas. El movimiento eleva la tensión en la península coreana y complica las negociaciones diplomáticas entre EEUU y Corea del Norte en el contexto de los recortes en ejercicios con Seúl. Los activos surcoreanos y los mercados de defensa regional son los más sensibles.",
-        "en": "Kim Jong Un announced the deployment of a new warship integrated into Pyongyang's nuclear response system, signaling a significant modernization of North Korean naval capabilities. The move elevates tension on the Korean peninsula and complicates US-North Korea diplomatic dynamics amid drill cuts with Seoul. South Korean assets and regional defense markets are most sensitive."
+        "es": "China ha iniciado el primer servicio regular a través de la Ruta del Mar del Norte ártico, aprovechando el derretimiento del hielo para abrir una nueva ruta comercial con implicaciones geopolíticas de largo plazo. El movimiento forma parte de las ambiciones polares de Pekín y podría reducir los tiempos de tránsito entre Asia y Europa, desafiando la dependencia actual del Canal de Suez y los estrechos estratégicos controlados por potencias occidentales. Para los inversores, señala una reconfiguración potencial de las rutas de transporte marítimo global y nuevas tensiones por la soberanía ártica.",
+        "en": "China has launched the first regular shipping service through the Arctic Northern Sea Route, leveraging melting ice to open a new trade corridor with long-term geopolitical implications. The move is part of Beijing's polar ambitions and could reduce Asia-Europe transit times, challenging reliance on the Suez Canal and strategic straits controlled by Western powers. For investors, it signals a potential reconfiguration of global shipping routes and new tensions over Arctic sovereignty."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "South Korean won (KRW)",
-          "direction": "down",
+          "asset": "Shipping sector equities",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada norcoreana presiona al won surcoreano",
-            "en": "North Korean escalation pressures South Korean won"
+            "es": "Nueva ruta ártica altera economía de rutas establecidas",
+            "en": "New Arctic route disrupts economics of established shipping lanes"
           }
         },
         {
-          "asset": "KOSPI",
+          "asset": "Brent crude",
           "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Amenaza militar regional pesa sobre bolsa surcoreana",
-            "en": "Regional military threat weighs on South Korean equities"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Provocación norcoreana alimenta demanda de refugio",
-            "en": "North Korean provocation feeds safe-haven demand"
+            "es": "Rutas alternativas reducen marginalmente la prima de riesgo de Suez",
+            "en": "Alternative routes marginally reduce Suez risk premium"
+          }
+        },
+        {
+          "asset": "Arctic/Nordic sovereign bonds",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensiones de soberanía ártica afectan perspectiva nórdica",
+            "en": "Arctic sovereignty tensions affect Nordic outlook"
           }
         }
       ],
-      "confidence": 78,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/7/north-korea-deploys-warship-capable-of-annihilating-retaliatory-strikes?traffic_source=rss",
+      "confidence": 72,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/08/world/europe/china-arctic-shipping-trade-route.html",
+      "published_at": "2026-09-08",
+      "time": "1h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "España afronta el dilema de qué hacer con el oro depositado en la Reserva Federal de EE.UU.",
+        "en": "Spain faces the dilemma of what to do with its gold deposited at the US Federal Reserve"
+      },
+      "summary": {
+        "es": "Varios bancos centrales de la eurozona, incluido el de España, están evaluando repatriar o reubicar reservas de oro almacenadas en la Reserva Federal estadounidense para reforzar la autonomía estratégica en un contexto de volatilidad geopolítica. El movimiento refleja una tendencia más amplia de desconfianza hacia la infraestructura financiera dominada por EE.UU. en el contexto de tensiones comerciales y geopolíticas. Para los mercados, esto es una señal de divergencia estratégica transatlántica con implicaciones para la demanda de oro físico y la credibilidad del dólar como activo de reserva.",
+        "en": "Several eurozone central banks, including Spain's, are evaluating the repatriation or relocation of gold reserves stored at the US Federal Reserve to reinforce strategic autonomy amid geopolitical volatility. The move reflects a broader trend of distrust toward US-dominated financial infrastructure in the context of trade and geopolitical tensions. For markets, this signals transatlantic strategic divergence with implications for physical gold demand and the dollar's credibility as a reserve asset."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Repatriación de reservas europeas respalda demanda física de oro",
+            "en": "European reserve repatriation supports physical gold demand"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor autonomía estratégica europea fortalece levemente al euro",
+            "en": "Greater European strategic autonomy mildly strengthens the euro"
+          }
+        },
+        {
+          "asset": "US dollar index (DXY)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Diversificación de reservas aleja activos del sistema dólar",
+            "en": "Reserve diversification moves assets away from dollar system"
+          }
+        }
+      ],
+      "confidence": 75,
+      "source": "El País",
+      "source_url": "https://elpais.com/economia/2026-09-08/espana-afronta-el-dilema-de-que-hacer-con-el-oro-depositado-en-la-reserva-federal.html",
+      "published_at": "2026-09-08",
+      "time": "6h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "El criminal de guerra Ratko Mladić es enterrado con honores militares en Belgrado, Serbia",
+        "en": "War criminal Ratko Mladic buried with military honors in Belgrade, Serbia"
+      },
+      "summary": {
+        "es": "Serbia enterró al criminal de guerra condenado Ratko Mladić con honores militares en Belgrado, en un acto transmitido en directo por televisión que llega días antes de que el presidente Vučić convoque elecciones. El funeral con honores estatales de facto desafía las normas del derecho internacional y puede complicar las ya tensas relaciones de Serbia con la UE y el proceso de adhesión. Los inversores deben monitorear el impacto en la perspectiva de integración europea de Serbia y la estabilidad regional en los Balcanes occidentales.",
+        "en": "Serbia buried convicted war criminal Ratko Mladić with military honors in Belgrade in a nationally televised ceremony, days before President Vučić is expected to call elections. The de facto state honors funeral challenges international law norms and may complicate Serbia's already strained EU accession process and relations with Brussels. Investors should monitor the impact on Serbia's European integration prospects and regional stability in the Western Balkans."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Serbian dinar",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión con la UE pesa sobre perspectiva de adhesión y divisa",
+            "en": "EU tension weighs on accession prospects and currency"
+          }
+        },
+        {
+          "asset": "Western Balkans sovereign bonds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo político interno y regional eleva prima de riesgo",
+            "en": "Domestic and regional political risk raises risk premium"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/war-criminal-ratko-mladic-buried-with-military-honors-in-belgrade-serbia/a-79148678?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-09-07",
-      "time": "11h"
+      "time": "19h"
     }
   ],
-  "market_updated_at": "2026-09-08T10:09:36.032Z"
+  "market_updated_at": "2026-09-08T10:31:05.868Z"
 }
