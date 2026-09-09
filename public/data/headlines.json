@@ -9,8 +9,8 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,163",
-      "change": "-0.12%",
+      "value": "19,680.80",
+      "change": "-0.57%",
       "up": false
     },
     {
@@ -22,43 +22,43 @@
     {
       "symbol": "WTI Crude",
       "value": "96.24",
-      "change": "+2.32%",
+      "change": "+2.45%",
       "up": true
     },
     {
       "symbol": "GOLD (XAU/USD)",
       "value": "4,389.15",
-      "change": "+0.49%",
-      "up": true
+      "change": "-1.04%",
+      "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "79,263",
-      "change": "+1.67%",
-      "up": true
+      "value": "79,263.00",
+      "change": "-0.38%",
+      "up": false
     },
     {
       "symbol": "VIX",
-      "value": "16.05",
-      "change": "+2.10%",
+      "value": "15.30",
+      "change": "+5.30%",
       "up": true
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "4.788%",
-      "change": "+0.02%",
+      "value": "4.78%",
+      "change": "+0.46%",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,673.52",
-      "change": "-0.58%",
+      "value": "7,718.60",
+      "change": "-0.38%",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "25,599.57",
-      "change": "-1.57%",
+      "value": "25,526.38",
+      "change": "-0.86%",
       "up": false
     },
     {
@@ -69,19 +69,19 @@
     },
     {
       "symbol": "DXY",
-      "value": "98.86",
-      "change": "-0.04%",
+      "value": "98.644",
+      "change": "-0.18%",
       "up": false
     },
     {
       "symbol": "Natural Gas",
       "value": "2.87",
-      "change": "+0.35%",
-      "up": true
+      "change": "-0.79%",
+      "up": false
     },
     {
       "symbol": "Copper",
-      "value": "6.7743",
+      "value": "6.73",
       "change": "+0.55%",
       "up": true
     },
@@ -364,5 +364,5 @@
       "time": "<1h"
     }
   ],
-  "market_updated_at": "2026-09-09T17:22:51.003Z"
+  "market_updated_at": "2026-09-09T20:06:31.143Z"
 }
