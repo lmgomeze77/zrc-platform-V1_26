@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-09-09T10:42:06.800Z",
+  "generated_at": "2026-09-10T10:30:58.152Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1640",
-      "change": "+0.15%",
-      "up": true
+      "value": "1.1605",
+      "change": "-0.0015",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,680.80",
-      "change": "-0.57%",
+      "value": "19945.0",
+      "change": "-124.0",
       "up": false
     },
     {
-      "symbol": "BRENT Crude",
+      "symbol": "BRENT",
       "value": "101.25",
-      "change": "+0.04%",
+      "change": "+0.04",
       "up": true
     },
     {
-      "symbol": "WTI Crude",
-      "value": "97.19",
-      "change": "+2.76%",
+      "symbol": "GOLD",
+      "value": "4444.30",
+      "change": "+5.30",
       "up": true
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,415.97",
-      "change": "+0.18%",
+      "symbol": "BTC",
+      "value": "78098.00",
+      "change": "+1539.00",
       "up": true
-    },
-    {
-      "symbol": "BTC/USD",
-      "value": "78,280.92",
-      "change": "-0.81%",
-      "up": false
     },
     {
       "symbol": "VIX",
-      "value": "16.48",
-      "change": "+0.12%",
+      "value": "16.26",
+      "change": "+0.54",
       "up": true
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.857%",
-      "change": "+0.02%",
+      "symbol": "US 10Y",
+      "value": "4.846",
+      "change": "+0.009",
+      "up": true
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8595",
+      "change": "+0.0007",
       "up": true
     },
     {
       "symbol": "S&P 500",
-      "value": "7,636.36",
-      "change": "-0.48%",
+      "value": "7637.91",
+      "change": "-35.61",
       "up": false
     },
     {
       "symbol": "DAX 40",
-      "value": "25,599.68",
-      "change": "-0.19%",
+      "value": "25599.68",
+      "change": "-401.74",
       "up": false
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8576",
-      "change": "+0.09%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "98.7484",
-      "change": "-0.05%",
-      "up": false
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.883",
-      "change": "-1.13%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.7600",
-      "change": "-0.66%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7110",
-      "change": "+0.08%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Guerra en Medio Oriente: Irán ataca base de EE.UU. en Jordania y 10 buques estadounidenses",
-        "en": "War in the Middle East: Iran attacks US base in Jordan, 10 US vessels"
+        "es": "El petróleo supera los $100 por barril, deprimen las bolsas y avivan los temores de inflación",
+        "en": "Oil spike past $100 dampens stock prices, fans inflation fears"
       },
       "summary": {
-        "es": "Las Guardias Revolucionarias iraníes atacaron una base militar estadounidense en Jordania y 10 buques en represalia por la destrucción de cinco tanqueros iraníes. La escalada marca una participación directa EE.UU.-Irán en combate activo, con el Estrecho de Ormuz bloqueado y el crudo Brent superando los 100 dólares. El riesgo de una guerra regional ampliada presiona severamente a los activos de riesgo globales.",
-        "en": "Iran's Revolutionary Guards struck a US military base in Jordan and 10 vessels in retaliation for the destruction of five Iranian oil tankers. The escalation marks direct US-Iran combat engagement, with the Strait of Hormuz blocked and Brent crude surpassing $100. The risk of a broadened regional war places severe pressure on global risk assets."
+        "es": "Los intercambios de ataques aéreos entre EE.UU. e Irán en el Estrecho de Ormuz y la intensificación de la campaña hutí contra Arabia Saudí han empujado el crudo por encima de los $100/barril, provocando caídas bursátiles en Asia. Los inversores anticipan respuestas de la Fed y otros bancos centrales ante el rebrote inflacionario, con riesgo de endurecimiento monetario en un entorno de alta incertidumbre geopolítica.",
+        "en": "US-Iran air exchanges over the Strait of Hormuz combined with escalating Houthi strikes on Saudi Arabia have pushed oil above $100/barrel, triggering Asian equity sell-offs. Markets are bracing for Federal Reserve and central bank responses to a fresh inflation shock, with monetary tightening risk rising amid acute geopolitical uncertainty."
       },
       "impact": "high",
       "market_impact": [
@@ -112,113 +82,74 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Bloqueo de Ormuz y destrucción de tanqueros disparan precio",
-            "en": "Hormuz blockade and tanker strikes drive prices sharply higher"
+            "es": "Riesgo de cierre del Estrecho de Ormuz impulsa el precio",
+            "en": "Hormuz closure risk drives price sharply higher"
+          }
+        },
+        {
+          "asset": "Global equities",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Shock inflacionario y temor a recesión pesan sobre bolsas",
+            "en": "Inflation shock and recession fears weigh on equities"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "high",
+          "magnitude": "medium",
           "note": {
-            "es": "Vuelo a activos refugio ante escalada bélica directa",
-            "en": "Safe-haven flight amid direct US-Iran military escalation"
+            "es": "Refugio seguro ante escalada geopolítica y temor inflacionario",
+            "en": "Safe haven demand surges on geopolitical and inflation risk"
           }
         },
         {
           "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Demanda refugio baja rendimientos pese a presión inflacionaria",
-            "en": "Safe-haven demand lowers yields despite inflationary oil pressure"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Aversión al riesgo global golpea divisas emergentes importadoras de petróleo",
-            "en": "Global risk-off hits oil-importing EM currencies hard"
-          }
-        }
-      ],
-      "confidence": 95,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20260909-war-in-the-middle-east-iran-attacks-us-base-in-jordan-10-us-vessels",
-      "published_at": "2026-09-09",
-      "time": "<1h"
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
-      "region": "US",
-      "title": {
-        "es": "Trump escala guerra comercial con Canadá con prohibiciones de importación y aranceles del 50%",
-        "en": "Trump escalates trade war with Canada with import bans, 50% tariffs"
-      },
-      "summary": {
-        "es": "EE.UU. impuso prohibiciones de importación y aranceles del 50% a bienes canadienses seleccionados, un día después de que Ottawa aplicara aranceles de represalia sobre casi 20.000 millones de dólares en productos estadounidenses. La escalada entre los dos mayores socios comerciales de América del Norte amenaza cadenas de suministro integradas en sectores de acero, automóviles y agricultura, con implicaciones para el dólar canadiense y los márgenes industriales.",
-        "en": "The US imposed import bans and 50% tariffs on select Canadian goods, one day after Ottawa applied retaliatory tariffs on nearly $20bn in US products. The escalation between North America's two largest trading partners threatens integrated supply chains in steel, autos, and agriculture, with implications for the Canadian dollar and industrial margins."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "CAD/USD",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Aranceles del 50% y prohibiciones presionan al dólar canadiense",
-            "en": "50% tariffs and import bans pressure the Canadian dollar"
-          }
-        },
-        {
-          "asset": "Canadian equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Sectores exportadores golpeados por nuevas barreras arancelarias",
-            "en": "Export-oriented sectors hit by new tariff barriers"
-          }
-        },
-        {
-          "asset": "US Steel/Auto equities",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Protección doméstica vs. costos de insumos importados más altos",
-            "en": "Domestic protection versus higher imported input costs"
+            "es": "Refugio vs. presión inflacionaria generan tensión en bonos",
+            "en": "Flight-to-safety vs. inflation pressure creates bond tension"
           }
         }
       ],
-      "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/trump-escalates-trade-war-with-canada-with-import-bans-50-tariffs/a-79195010?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-09",
+      "confidence": 93,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260910-stock-prices-drop-as-oil-spike-fans-fears-of-worsening-inflation",
+      "published_at": "2026-09-10",
       "time": "7h"
     },
     {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "EU",
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
       "title": {
-        "es": "'La línea del frente de Rusia se mueve hacia el oeste', advierte la presidenta de Moldavia tras ataque en la frontera",
-        "en": "'Russia's frontline moving west,' Moldova's president warns after border checkpoint attack"
+        "es": "Drones rusos matan al menos a nueve personas en ataques contra almacenes y puertos de Ucrania",
+        "en": "Russian drones kill at least nine in strikes targeting warehouses and ports in Ukraine"
       },
       "summary": {
-        "es": "La presidenta moldava Maia Sandu advirtió que el frente ruso se desplaza hacia el oeste tras un ataque de drones rusos que mató a dos personas en el cruce fronterizo de Starokozache. Con 17 drones impactando en territorio moldavo solo en agosto, Chisinau enfrenta presión creciente sobre su seguridad y su camino de adhesión a la UE. La extensión del conflicto hacia Moldavia podría activar cláusulas de defensa europeas y tensar los mercados de deuda soberana de Europa del Este.",
-        "en": "Moldovan President Maia Sandu warned that Russia's frontline is moving westward after a Russian drone strike killed two at the Starokozache border crossing. With 17 drones hitting Moldovan territory in August alone, Chisinau faces growing security pressure and risk to its EU accession path. Conflict spilling into Moldova could trigger European defense clauses and stress Eastern European sovereign debt markets."
+        "es": "Nuevos ataques rusos con drones contra infraestructura portuaria y logística ucraniana elevan la presión sobre las exportaciones de grano y los corredores de suministro europeos. El ministro alemán Wadephul advirtió en su discurso ante embajadores que la amenaza rusa 'ha llegado a nuestra puerta', reforzando el argumento del aumento del gasto en defensa europeo. El intento previo de alcanzar el avión de Zelenskyy sobre Moldova subraya la escalada del conflicto.",
+        "en": "Fresh Russian drone strikes on Ukrainian port and warehouse infrastructure increase pressure on grain export corridors and European supply chains. German FM Wadephul warned ambassadors that the Russian threat 'has reached our doorstep', reinforcing the case for sustained European defense spending increases. The prior near-miss on Zelenskyy's aircraft over Moldova underscores ongoing escalation."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Eastern European sovereign bonds",
-          "direction": "down",
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Escalada refuerza narrativa de mayor gasto en defensa europeo",
+            "en": "Escalation reinforces sustained European defense spending narrative"
+          }
+        },
+        {
+          "asset": "Wheat futures",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada regional eleva prima de riesgo en deuda de flanco este",
-            "en": "Regional escalation raises risk premium on eastern flank debt"
+            "es": "Ataques a puertos ucranianos amenazan exportaciones de grano",
+            "en": "Port strikes threaten Ukrainian grain export capacity"
           }
         },
         {
@@ -226,143 +157,200 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Incertidumbre en flanco este europeo pesa sobre el euro",
-            "en": "Eastern European flank uncertainty weighs on the euro"
-          }
-        },
-        {
-          "asset": "European defense equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Ampliación del conflicto acelera gasto en defensa europeo",
-            "en": "Conflict expansion accelerates European defense spending"
+            "es": "Riesgo de guerra cercana presiona al euro frente al dólar",
+            "en": "Proximity of conflict weighs modestly on the euro"
           }
         }
       ],
-      "confidence": 85,
+      "confidence": 88,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/sep/09/europe-ukraine-russia-zelenskyy-germany-merz-afd-norway-king-harald-v-latest-news-updates",
-      "published_at": "2026-09-09",
+      "source_url": "https://www.theguardian.com/world/live/2026/sep/10/russian-drone-strike-ukraine-zelenskyy-macron-nato-rutte-latest-news-updates",
+      "published_at": "2026-09-10",
       "time": "<1h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "US",
+      "title": {
+        "es": "EE.UU. prohíbe importaciones de alcohol, lácteos y motocicletas canadienses",
+        "en": "US to ban imports of some Canadian alcohol, dairy goods and motorbikes"
+      },
+      "summary": {
+        "es": "Washington escala la guerra comercial con Canadá ampliando las prohibiciones de importación a productos de alto valor simbólico y económico, en respuesta a los aranceles de represalia canadienses. La medida eleva el riesgo de ruptura del marco USMCA y amenaza las cadenas de suministro norteamericanas, con impacto directo en sectores manufactureros y agroalimentarios de ambos países. La escalada bilateral en vísperas de las elecciones de medio término estadounidenses añade un componente político significativo.",
+        "en": "Washington escalates the trade war with Canada by extending import bans to high-value symbolic and economic goods in retaliation for Canadian counter-tariffs. The move raises USMCA framework disruption risk and threatens North American supply chains, with direct impact on manufacturing and agri-food sectors on both sides. Escalation ahead of US midterms adds a significant political dimension."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "CAD/USD",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Deterioro comercial bilateral presiona al dólar canadiense",
+            "en": "Bilateral trade deterioration pressures the Canadian dollar"
+          }
+        },
+        {
+          "asset": "Canadian equities (TSX)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Sectores exportadores canadienses afectados por nuevas barreras",
+            "en": "Canadian export sectors hit by expanded US import bans"
+          }
+        },
+        {
+          "asset": "US consumer prices",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Restricciones al comercio elevan costes para consumidores en EE.UU.",
+            "en": "Trade restrictions raise costs for US consumers modestly"
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/c99dm1000p7o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-09",
+      "time": "1d"
     },
     {
       "id": 4,
       "tag": "WATCH",
-      "region": "US",
+      "region": "LATAM",
       "title": {
-        "es": "Hegseth está remodelando el Pentágono mientras EE.UU. libra una guerra: ¿a qué costo?",
-        "en": "Hegseth is shaking up the Pentagon as the US wages war - but at what cost?"
+        "es": "Rubio dice que EE.UU. trabajará con aliados para frenar el narcotráfico tras tres muertos en ataque a embarcación",
+        "en": "Rubio says US will work with allies to stop drug-trafficking as three killed in latest boat strike"
       },
       "summary": {
-        "es": "La purga y reestructuración del Pentágono bajo el secretario Hegseth ocurre en simultáneo con el compromiso militar activo de EE.UU. en el Golfo. Los inversores deben evaluar si las disrupciones institucionales en la cadena de mando afectan la coherencia estratégica y la capacidad operativa en un momento de escalada directa con Irán. Esto tiene implicaciones para el gasto en defensa, los contratos con el sector privado y la percepción del riesgo geopolítico global.",
-        "en": "Pentagon restructuring under Secretary Hegseth is occurring simultaneously with active US military engagement in the Gulf. Investors must assess whether institutional disruptions in the chain of command affect strategic coherence and operational capacity during direct escalation with Iran. This has implications for defense spending, private sector contracts, and global geopolitical risk perception."
+        "es": "El secretario de Estado Rubio visitó Ecuador para formalizar la cooperación bilateral en el combate al narcotráfico, al tiempo que EE.UU. ha hundido seis embarcaciones pesqueras en las últimas dos semanas acusadas de abastecer a narcos. La campaña de ataques unilaterales abre tensiones con soberanías latinoamericanas y puede reconfigurar las alianzas de seguridad regional, con implicaciones para la estabilidad política en países andinos clave para la inversión en materias primas.",
+        "en": "Secretary of State Rubio visited Ecuador to formalize bilateral counter-narcotics cooperation as the US has sunk six large fishing vessels in two weeks accused of supplying drug fast-boats. The unilateral strike campaign creates friction with Latin American sovereignties and may reshape regional security alignments, with implications for political stability in Andean countries critical to commodity investment."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "US defense equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Restructuración puede reorientar contratos entre contratistas de defensa",
-            "en": "Restructuring may redirect contracts among defense contractors"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre en liderazgo militar suma a la prima de riesgo",
-            "en": "Military leadership uncertainty adds to risk premium"
-          }
-        }
-      ],
-      "confidence": 72,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cd94j8e9n12o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-08",
-      "time": "11h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "Cómo la muerte repentina de un camionero desencadenó pánico por ébola en el Congo",
-        "en": "How a Driver's Sudden Death Triggered Ebola Panic in Congo"
-      },
-      "summary": {
-        "es": "La muerte inesperada de un camionero en una aldea remota del Congo activó protocolos de emergencia por ébola, revelando la fragilidad de los sistemas de salud en zonas de extracción de minerales críticos. Un brote confirmado en la RDC tendría consecuencias directas para las cadenas de suministro de cobalto y coltán, insumos esenciales para baterías de vehículos eléctricos y semiconductores. La vigilancia epidemiológica en corredores mineros sigue siendo un riesgo infraevaluado para los mercados de minerales estratégicos.",
-        "en": "The unexpected death of a truck driver in a remote Congolese village triggered Ebola emergency protocols, revealing the fragility of health systems in critical mineral extraction zones. A confirmed outbreak in the DRC would have direct consequences for cobalt and coltan supply chains, essential inputs for EV batteries and semiconductors. Epidemiological surveillance in mining corridors remains an underpriced risk for strategic mineral markets."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Cobalt futures",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de interrupción en cadenas de suministro mineras congoleñas",
-            "en": "Risk of disruption to Congolese mining supply chains"
-          }
-        },
-        {
-          "asset": "EV battery supply chain equities",
+          "asset": "Andean sovereign bonds (Colombia, Ecuador, Peru)",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Vulnerabilidad de suministro de minerales críticos presiona a fabricantes",
-            "en": "Critical mineral supply vulnerability pressures manufacturers"
+            "es": "Tensiones de soberanía elevan prima de riesgo política andina",
+            "en": "Sovereignty tensions raise political risk premium in Andean bonds"
+          }
+        },
+        {
+          "asset": "EM currencies (COP, PEN)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre política presiona divisas andinas",
+            "en": "Political uncertainty weighs on Andean currency pairs"
           }
         }
       ],
       "confidence": 68,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/09/world/africa/ebola-congo-truck-driver.html",
-      "published_at": "2026-09-09",
-      "time": "1h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/us-news/2026/sep/09/rubio-us-allies-drug-trafficking",
+      "published_at": "2026-09-10",
+      "time": "9h"
     },
     {
-      "id": 6,
+      "id": 5,
       "tag": "WATCH",
-      "region": "GLOBAL",
+      "region": "EU",
       "title": {
-        "es": "Investigador de Anthropic cree que hay más de un 10% de probabilidad de que la IA 'pueda matar a todos los humanos'",
-        "en": "Anthropic researcher believes more than 10% chance AI 'could kill all humans'"
+        "es": "Inteligencia española advirtió sobre planes de cruce masivo en Ceuta antes de la oleada migratoria",
+        "en": "Spanish intelligence warned of Ceuta mass crossing plans before surge"
       },
       "summary": {
-        "es": "Un investigador de Anthropic estimó una probabilidad superior al 10% de que la inteligencia artificial represente un riesgo existencial para la humanidad, sumándose a una serie de advertencias de seguridad crecientes del sector. Declaraciones de esta naturaleza procedentes de empresas líderes en IA intensifican la presión regulatoria global y pueden acelerar legislación de soberanía tecnológica en EE.UU., UE y China. Los inversores deben monitorear el impacto regulatorio sobre valuaciones en el sector de IA y semiconductores.",
-        "en": "An Anthropic researcher estimated a greater than 10% probability that AI poses an existential risk to humanity, adding to a growing series of safety warnings from the sector. Such statements from leading AI firms intensify global regulatory pressure and could accelerate tech sovereignty legislation in the US, EU, and China. Investors should monitor regulatory impact on AI and semiconductor sector valuations."
+        "es": "Documentos desclasificados revelan que las autoridades españolas y marroquíes fueron alertadas con antelación sobre las llamadas en redes sociales para un cruce masivo hacia Ceuta, lo que plantea interrogantes sobre la coordinación diplomática hispano-marroquí y la gestión de fronteras exteriores de la UE. El episodio puede intensificar el debate europeo sobre política migratoria y las relaciones con Marruecos como actor clave en el control de flujos migratorios hacia Europa.",
+        "en": "Declassified documents reveal Spanish and Moroccan authorities received advance warning of social media calls for a mass crossing into Ceuta, raising questions about Spanish-Moroccan diplomatic coordination and EU external border management. The episode may intensify European debate on migration policy and the leverage Morocco holds as a key gatekeeper for migration flows into Europe."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "AI/Tech equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor regulación pesa sobre valuaciones pero eleva barreras de entrada",
-            "en": "Tighter regulation weighs on valuations but raises entry barriers"
-          }
-        },
-        {
-          "asset": "Semiconductor equities",
+          "asset": "EUR/USD",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo regulatorio puede limitar inversión en infraestructura de IA",
-            "en": "Regulatory risk may constrain AI infrastructure investment"
+            "es": "Crisis migratoria aviva tensiones políticas internas en la eurozona",
+            "en": "Migration crisis fuels EU political tensions, mild euro drag"
+          }
+        },
+        {
+          "asset": "Spanish sovereign bonds",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Presión política interna sobre el gobierno de coalición español",
+            "en": "Domestic political pressure on Spanish coalition government"
           }
         }
       ],
       "confidence": 65,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/ckgwy1k42w4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/ced7vj2gv82o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-09-09",
-      "time": "<1h"
+      "time": "13h"
+    },
+    {
+      "id": 6,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Los hutíes de Yemen toman el puerto de Mocha y avanzan hacia el estrecho de Bab al-Mandab",
+        "en": "Yemen's Houthi rebels seize Red Sea port city Mocha, advance toward Bab al-Mandab strait"
+      },
+      "summary": {
+        "es": "Las fuerzas hutíes alineadas con Irán han tomado Mocha, ciudad portuaria estratégica del Mar Rojo, y avanzan hacia el estrecho de Bab al-Mandab, vía marítima crítica que conecta Europa con Asia. El control de este corredor amenaza directamente el comercio global de contenedores y los flujos energéticos, con implicaciones inmediatas para las primas de seguro marítimo y los costes de transporte.",
+        "en": "Iran-aligned Houthi forces have seized the strategic Red Sea port of Mocha and are advancing toward the Bab al-Mandab strait, a critical chokepoint linking European and Asian trade. Control of this corridor poses a direct threat to global container flows and energy shipments, with immediate implications for shipping insurance premiums and freight costs."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Cierre potencial del Bab al-Mandab eleva la prima de riesgo",
+            "en": "Potential Bab al-Mandab closure elevates supply risk premium"
+          }
+        },
+        {
+          "asset": "Shipping/freight rates",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Ruta alternativa vía Cabo de Buena Esperanza encarece fletes",
+            "en": "Cape of Good Hope rerouting sharply lifts freight costs"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Europa más expuesta al shock de suministro vía Mar Rojo",
+            "en": "Europe more exposed to Red Sea supply disruption shock"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Aversión al riesgo presiona divisas de mercados emergentes",
+            "en": "Risk aversion pressures emerging market currencies broadly"
+          }
+        }
+      ],
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260910-middle-east-live-trump-warns-iran-not-to-get-cute-over-activity-at-pickaxe-mountain",
+      "published_at": "2026-09-10",
+      "time": "7h"
     }
   ],
-  "market_updated_at": "2026-09-10T10:07:08.186Z"
+  "market_updated_at": "2026-09-10T10:30:58.152Z"
 }
