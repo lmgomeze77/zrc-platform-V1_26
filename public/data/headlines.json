@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-09-11T10:32:08.586Z",
+  "generated_at": "2026-09-12T10:00:37.256Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1613",
-      "change": "-0.10%",
-      "up": false
+      "value": "1.1610",
+      "change": "+0.01",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,779.00",
-      "change": "+0.32%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "104.26",
-      "change": "-4.24%",
+      "value": "19680.80",
+      "change": "-113.80",
       "up": false
     },
     {
-      "symbol": "WTI Crude",
-      "value": "103.15",
-      "change": "-1.05%",
+      "symbol": "BRENT",
+      "value": "104.61",
+      "change": "-3.02",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,348.70",
-      "change": "+0.74%",
+      "symbol": "GOLD",
+      "value": "4362.28",
+      "change": "+9.13",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "77,335.00",
-      "change": "-0.04%",
+      "symbol": "BTC",
+      "value": "77335.00",
+      "change": "-2.00",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "15.00",
-      "change": "-1.32%",
+      "value": "15.74",
+      "change": "-2.10",
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.92%",
-      "change": "+0.02%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7,656.98",
-      "change": "+0.86%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "25,568.56",
-      "change": "+0.82%",
+      "symbol": "US 10Y",
+      "value": "4.975",
+      "change": "+0.031",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
       "value": "0.8585",
-      "change": "+0.05%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.11",
-      "change": "+0.06%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.772",
-      "change": "-0.79%",
+      "change": "-0.0001",
       "up": false
     },
     {
-      "symbol": "Copper",
-      "value": "6.47",
-      "change": "-0.17%",
-      "up": false
+      "symbol": "S&P 500",
+      "value": "7656.98",
+      "change": "+65.28",
+      "up": true
     },
     {
-      "symbol": "USD/CNY",
-      "value": "6.7103",
-      "change": "+0.15%",
-      "up": true
+      "symbol": "DAX 40",
+      "value": "25361.15",
+      "change": "-215.30",
+      "up": false
     }
   ],
   "headlines": [
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los hutíes toman el control de la costa yemení del Mar Rojo, ruta marítima clave",
-        "en": "Houthis take control of Yemen's Red Sea coast, key shipping route"
+        "es": "Houthis respaldados por Irán toman el control de la vital ruta marítima de Bab el-Mandeb",
+        "en": "Iran-backed Houthis seize near control of vital Bab el-Mandeb shipping lane"
       },
       "summary": {
-        "es": "Las fuerzas hutíes respaldadas por Irán han consolidado el control de la costa yemení del Mar Rojo, incluyendo el puerto estratégico de Mocha, amenazando una ruta alternativa crítica al Estrecho de Ormuz. Esta expansión acerca a Irán y sus aliados al control simultáneo de dos chokepoints marítimos globales. El riesgo de interrupciones en el tráfico de petróleo y mercancías eleva la prima de riesgo en los mercados energéticos y de fletes.",
-        "en": "Iran-backed Houthi forces have consolidated control over Yemen's Red Sea coast, including the strategic port of Mocha, threatening a critical alternative shipping route to the Strait of Hormuz. This expansion brings Iran and its proxies closer to simultaneous control of two global maritime chokepoints. The risk of disruptions to oil and cargo traffic raises risk premiums in energy and freight markets."
+        "es": "Los rebeldes Houthi capturaron la Isla Perim en el Estrecho de Bab el-Mandeb, abriendo un nuevo frente en el conflicto con Irán y amenazando las exportaciones de petróleo saudí. El control de este estrecho estratégico —por el que transita una parte significativa del comercio marítimo global— eleva materialmente el riesgo de interrupción del suministro energético. Las implicaciones para los fletes, las primas de seguro marítimo y los precios del crudo son inmediatas.",
+        "en": "Houthi rebels captured Perim Island in the Bab el-Mandeb Strait, opening a new front in the Iran war and threatening Saudi oil exports through the critical chokepoint. Near-control of this strait — through which a major share of global maritime trade passes — materially raises the risk of energy supply disruption. Implications for shipping freight rates, maritime insurance premiums, and crude oil prices are immediate."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +82,17 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Control de chokepoint eleva riesgo de suministro global",
-            "en": "Chokepoint control raises global supply risk"
+            "es": "Amenaza directa a exportaciones de petróleo saudí vía chokepoint clave",
+            "en": "Direct threat to Saudi oil exports via key chokepoint"
+          }
+        },
+        {
+          "asset": "Shipping/freight rates (Baltic Exchange)",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Cierre potencial del Bab el-Mandeb fuerza desvíos costosos",
+            "en": "Potential Bab el-Mandeb closure forces costly rerouting"
           }
         },
         {
@@ -121,170 +100,65 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada geopolítica impulsa demanda de activos refugio",
-            "en": "Geopolitical escalation drives safe-haven demand"
+            "es": "Escalada regional impulsa demanda de activos refugio",
+            "en": "Regional escalation drives safe-haven demand"
           }
         },
         {
-          "asset": "Shipping/freight ETFs",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Desvío de rutas marítimas incrementa costes de flete",
-            "en": "Route diversions increase freight costs sharply"
-          }
-        },
-        {
-          "asset": "EM currencies",
+          "asset": "EM currencies (Gulf/Asian importers)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Aversión al riesgo presiona divisas de mercados emergentes",
-            "en": "Risk aversion pressures emerging market currencies"
+            "es": "Alza de costes energéticos presiona divisas de importadores netos",
+            "en": "Energy cost surge pressures net energy importer currencies"
           }
         }
       ],
-      "confidence": 90,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/11/houthis-take-control-of-yemens-red-sea-coast-key-shipping-route?traffic_source=rss",
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260911-iran-backed-houthis-seize-near-control-of-vital-bab-el-mandeb-shipping-lane",
       "published_at": "2026-09-11",
-      "time": "<1h"
+      "time": "13h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "EURASIA",
-      "title": {
-        "es": "Rusia acusada de ataques 'en rápido crecimiento' contra infraestructura civil; amenaza nuclear a Lituania",
-        "en": "Russia accused of 'rapidly growing' attacks on civilian infrastructure; nuclear threat to Lithuania"
-      },
-      "summary": {
-        "es": "Rusia intensifica los bombardeos sobre infraestructura civil en Ucrania mientras el portavoz del Kremlin, Peskov, amenaza con que el territorio lituano podría quedar en 'el punto de mira' del arsenal nuclear ruso si Vilnius aloja infraestructura de la OTAN. La amenaza nuclear directa a un estado miembro de la OTAN marca una escalada significativa con implicaciones directas para la arquitectura de seguridad europea. Los mercados de deuda europea y el euro podrían verse presionados.",
-        "en": "Russia intensifies strikes on Ukrainian civilian infrastructure as Kremlin spokesman Peskov threatens that Lithuanian territory could come into the 'sights' of Russia's nuclear arsenal if Vilnius hosts NATO infrastructure. A direct nuclear threat to a NATO member state marks a significant escalation with direct implications for European security architecture. European debt markets and the euro may face pressure."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Amenaza nuclear a la OTAN erosiona confianza en el euro",
-            "en": "NATO nuclear threat erodes euro confidence"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada bélica pesa sobre valoraciones europeas",
-            "en": "War escalation weighs on European valuations"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Retórica nuclear eleva demanda de refugio seguro",
-            "en": "Nuclear rhetoric elevates safe-haven demand"
-          }
-        },
-        {
-          "asset": "European defense stocks",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Amenaza directa acelera gasto en defensa regional",
-            "en": "Direct threat accelerates regional defense spending"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/sep/11/russia-strikes-ukraine-europe-nato-poland-latest-news-updates",
-      "published_at": "2026-09-11",
-      "time": "1h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "¿Cómo terminará la guerra entre Estados Unidos e Irán?",
-        "en": "How will the war between the United States and Iran end?"
-      },
-      "summary": {
-        "es": "El análisis sostiene que cualquier solución estable al conflicto en el Golfo requiere la participación de China y una mayor integración económica regional. La referencia explícita a una guerra activa entre EE.UU. e Irán sitúa el conflicto del Golfo en un nuevo estadio con implicaciones directas para el Estrecho de Ormuz, el precio del petróleo y la arquitectura de seguridad de Oriente Medio. El papel de China como mediador o interlocutor necesario redefine las dinámicas de poder en la región.",
-        "en": "The analysis argues that any stable resolution to the Gulf conflict requires Chinese participation and deeper regional economic integration. The explicit reference to an active US-Iran war places the Gulf conflict at a new stage with direct implications for the Strait of Hormuz, oil prices, and Middle East security architecture. China's role as a necessary mediator or interlocutor redefines regional power dynamics."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Guerra EEUU-Irán mantiene prima de riesgo de suministro elevada",
-            "en": "US-Iran war sustains elevated supply risk premium"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Gasto bélico y refugio compiten en bonos del Tesoro",
-            "en": "War spending and safe-haven flows compete in Treasuries"
-          }
-        },
-        {
-          "asset": "Chinese yuan (CNY)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Rol mediador de China refuerza relevancia del yuan",
-            "en": "China's mediator role reinforces yuan relevance"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "El País",
-      "source_url": "https://elpais.com/ideas/2026-09-11/como-terminara-la-guerra-entre-estados-unidos-e-iran.html",
-      "published_at": "2026-09-11",
-      "time": "7h"
-    },
-    {
-      "id": 4,
       "tag": "ALERT",
       "region": "GLOBAL",
       "title": {
-        "es": "Los tipos de interés podrían volver a subir en todo el mundo: los costes energéticos impulsan la inflación",
+        "es": "Los tipos de interés podrían subir de nuevo en todo el mundo: el motivo",
         "en": "Interest rates could rise again across the world – here's why"
       },
       "summary": {
-        "es": "Los bancos centrales a nivel global se enfrentan a un repunte inflacionario impulsado por los costes energéticos, con decisiones clave sobre tipos de interés previstas para este mes. La convergencia de presiones energéticas derivadas de los conflictos en el Golfo y el Mar Rojo con un ciclo de subidas de tipos simultáneo podría comprimir márgenes corporativos y endurecer las condiciones financieras globales. Los mercados de renta fija y divisas emergentes son los más expuestos.",
-        "en": "Central banks globally face an inflation resurgence driven by energy costs, with key interest rate decisions expected this month. The convergence of energy pressures stemming from Gulf and Red Sea conflicts with a simultaneous rate-hiking cycle could compress corporate margins and tighten global financial conditions. Fixed income and emerging market currencies face the greatest exposure."
+        "es": "Los bancos centrales de todo el mundo afrontan un entorno de inflación persistente impulsada por los costes energéticos, en un contexto de guerras activas en Oriente Medio y Ucrania. Las decisiones de política monetaria de este mes serán determinantes para el ciclo de tipos global. Una reapertura del ciclo alcista sincronizado presionaría los mercados de renta fija, divisas emergentes y múltiplos de renta variable.",
+        "en": "Central banks globally face persistent inflation driven by energy costs, set against active wars in the Middle East and Ukraine. This month's monetary policy decisions will be pivotal for the global rates cycle. A renewed synchronized tightening cycle would pressure fixed income markets, EM currencies, and equity multiples."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "US 10Y Treasury",
           "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Expectativas de tipos más altos elevan rendimientos del bono largo",
+            "en": "Higher rate expectations push long-bond yields up"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Expectativas de subidas elevan rendimientos soberanos",
-            "en": "Rate hike expectations lift sovereign yields"
+            "es": "Divergencia BCE-Fed según ritmos de subida relativos",
+            "en": "ECB-Fed divergence depending on relative hiking pace"
           }
         },
         {
           "asset": "EM currencies",
           "direction": "down",
-          "magnitude": "high",
+          "magnitude": "medium",
           "note": {
-            "es": "Subidas globales de tipos presionan divisas emergentes",
-            "en": "Global rate hikes pressure emerging market currencies"
+            "es": "Subidas globales de tipos drenan capital hacia mercados desarrollados",
+            "en": "Global rate hikes drain capital toward developed markets"
           }
         },
         {
@@ -292,17 +166,8 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Condiciones financieras más duras comprimen múltiplos",
-            "en": "Tighter financial conditions compress equity multiples"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Tipos reales más altos limitan el alza del oro",
-            "en": "Higher real rates cap gold upside"
+            "es": "Compresión de múltiplos ante coste de capital más elevado",
+            "en": "Multiple compression on higher cost of capital"
           }
         }
       ],
@@ -310,86 +175,191 @@
       "source": "BBC Business",
       "source_url": "https://www.bbc.co.uk/news/articles/cew9nkx7v9eo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-09-11",
-      "time": "2h"
+      "time": "20h"
     },
     {
-      "id": 5,
+      "id": 3,
       "tag": "WATCH",
-      "region": "GLOBAL",
+      "region": "APAC",
       "title": {
-        "es": "Anthropic bloquea posible intento de usar IA para fabricar armas biológicas",
-        "en": "Anthropic blocks possible attempt to use AI to make biological weapons"
+        "es": "En la cumbre del BRICS, China e India compiten por la influencia",
+        "en": "At BRICS Summit, China and India Vie for Influence"
       },
       "summary": {
-        "es": "El informe de inteligencia de amenazas de Anthropic revela que se bloqueó un intento potencial de utilizar su IA para desarrollar armas biológicas, lo que subraya los riesgos de bioseguridad derivados de la proliferación de modelos de lenguaje avanzados. Este incidente aumenta la presión regulatoria sobre el sector de IA y podría acelerar legislación de control de exportaciones tecnológicas con dimensión geopolítica. Las implicaciones para la gobernanza global de IA y la competencia estratégica entre EE.UU. y China en este ámbito son significativas.",
-        "en": "Anthropic's threat intelligence report reveals a blocked potential attempt to use its AI to develop biological weapons, highlighting biosecurity risks from the proliferation of advanced language models. This incident increases regulatory pressure on the AI sector and could accelerate technology export control legislation with a geopolitical dimension. Implications for global AI governance and US-China strategic competition in this domain are significant."
+        "es": "China busca que el BRICS sirva como plataforma para desafiar la hegemonía estadounidense, mientras India intenta mantener la amplitud del bloque para no verse forzada a elegir bandos. Esta competencia estratégica dentro del BRICS tiene implicaciones para la arquitectura financiera alternativa al dólar y para la posición de mercados emergentes en la geopolítica de bloques. El resultado de la cumbre marcará el grado de cohesión del Sur Global frente a Occidente.",
+        "en": "China aims to use BRICS as a platform to challenge US hegemony, while India seeks to keep the bloc broad enough to avoid forced alignment. This strategic competition within BRICS has implications for the alternative dollar financial architecture and EM positioning in bloc geopolitics. The summit's outcome will indicate the degree of Global South cohesion vis-à-vis the West."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "AI/Tech equities (US)",
-          "direction": "down",
+          "asset": "Indian equities (Nifty 50)",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo regulatorio pesa sobre valoraciones del sector IA",
-            "en": "Regulatory risk weighs on AI sector valuations"
+            "es": "Posición de India como árbitro del BRICS afecta percepción de riesgo inversor",
+            "en": "India's BRICS broker role affects investor risk perception"
           }
         },
         {
-          "asset": "Defense/biotech equities",
+          "asset": "Chinese yuan (CNY)",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo bioarmas impulsa gasto en defensa biológica",
-            "en": "Bioweapon risk drives biosecurity defense spending"
+            "es": "Mayor internacionalización del yuan si BRICS adopta marco financiero propio",
+            "en": "Yuan gains if BRICS adopts own financial framework"
+          }
+        },
+        {
+          "asset": "USD Index (DXY)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Bloque unido aceleraría tendencia de diversificación de reservas",
+            "en": "Unified bloc would accelerate reserve diversification trend"
           }
         }
       ],
-      "confidence": 72,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cx2zrrpkx20o?at_medium=RSS&at_campaign=rss",
+      "confidence": 78,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/11/world/asia/china-india-brics-summit.html",
       "published_at": "2026-09-11",
-      "time": "2h"
+      "time": "22h"
     },
     {
-      "id": 6,
+      "id": 4,
       "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "Serbia, el candidato a la UE en conflicto",
-        "en": "Serbia, the conflicted EU candidate"
+        "es": "Presupuesto: el gobierno francés aplica nuevos recortes apuntando a la misión ecológica",
+        "en": "Budget: French government applies new spending cuts targeting the ecology mission"
       },
       "summary": {
-        "es": "La adhesión de Serbia a la UE permanece estancada y el recibimiento como héroe al criminal de guerra Mladic ha profundizado el distanciamiento de Belgrado con Europa. Serbia mantiene estrechos lazos con Rusia y China, convirtiéndola en un vector de vulnerabilidad geopolítica en los Balcanes Occidentales. El estancamiento del proceso de adhesión tiene implicaciones para la estabilidad regional y la capacidad de la UE de consolidar su flanco sur frente a influencias rivales.",
-        "en": "Serbia's EU accession remains stalled and the hero's farewell given to war criminal Mladic has deepened Belgrade's estrangement from Europe. Serbia maintains close ties with Russia and China, making it a geopolitical vulnerability vector in the Western Balkans. The stalled accession process has implications for regional stability and the EU's ability to consolidate its southern flank against rival influences."
+        "es": "El gobierno francés anuló 500 millones de euros en créditos y congeló otros 783 millones adicionales para evitar un desvío excesivo del déficit en 2026, con la misión de ecología como la más perjudicada. Esta medida refleja la presión fiscal estructural sobre las finanzas públicas francesas en un entorno de tipos elevados y gasto en defensa creciente. Los recortes a políticas verdes en una economía de la eurozona de primer orden tienen implicaciones para bonos soberanos franceses y activos de transición energética.",
+        "en": "The French government cancelled €500 million in credits and froze an additional €783 million to prevent excessive deficit slippage in 2026, with the ecology mission hardest hit. This reflects structural fiscal pressure on French public finances amid high rates and rising defense spending. Green policy cuts in a major eurozone economy have implications for French sovereign bonds and energy transition assets."
       },
       "impact": "medium",
       "market_impact": [
+        {
+          "asset": "French OATs (10Y sovereign bonds)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Recortes reducen déficit pero señalan tensión fiscal estructural persistente",
+            "en": "Cuts reduce deficit but signal persistent structural fiscal stress"
+          }
+        },
+        {
+          "asset": "European green bonds / ESG assets",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Reducción de financiación ecológica debilita narrativa de transición europea",
+            "en": "Reduced green funding weakens European transition narrative"
+          }
+        },
         {
           "asset": "EUR/USD",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Inestabilidad en los Balcanes debilita la cohesión europea",
-            "en": "Balkans instability weakens European cohesion"
-          }
-        },
-        {
-          "asset": "Serbian dinar (RSD)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Alejamiento de la UE aumenta riesgo político para el dinar",
-            "en": "EU estrangement raises political risk for the dinar"
+            "es": "Debilidad fiscal francesa presiona levemente al euro",
+            "en": "French fiscal weakness mildly pressures the euro"
           }
         }
       ],
-      "confidence": 68,
+      "confidence": 72,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/politique/article/2026/09/11/budget-le-gouvernement-lance-un-nouveau-coup-de-rabot-en-ciblant-une-nouvelle-fois-la-mission-ecologie_6770635_823448.html",
+      "published_at": "2026-09-11",
+      "time": "15h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EURASIA",
+      "title": {
+        "es": "Ucrania: ataque ruso contra una gasolinera de Kiev mata a dos personas",
+        "en": "Ukraine: Russian strike on Kyiv gas station kills 2"
+      },
+      "summary": {
+        "es": "Con el frente de combate mayoritariamente estancado, Rusia intensifica los ataques contra infraestructura civil y energética ucraniana, mientras Ucrania responde con ataques de drones en territorio ruso. Este patrón de guerra de desgaste sobre infraestructura energética mantiene presión sobre los precios del gas europeo y la seguridad energética del continente. Para los mercados, la escalada en ataques civiles también puede afectar la percepción de riesgo político sobre el apoyo occidental a Ucrania.",
+        "en": "With front lines mostly stalled, Russia is intensifying strikes on Ukrainian civilian and energy infrastructure while Ukraine responds with drone attacks on Russian territory. This war-of-attrition pattern on energy infrastructure sustains upward pressure on European gas prices and continental energy security. For markets, escalating civilian attacks may also affect political risk perception around Western support for Ukraine."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European natural gas (TTF)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Ataques a infraestructura energética ucraniana mantienen prima de riesgo sobre el gas",
+            "en": "Strikes on Ukrainian energy infrastructure sustain gas risk premium"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Persistencia del conflicto pesa sobre el sentimiento inversor europeo",
+            "en": "Conflict persistence weighs on European investor sentiment"
+          }
+        }
+      ],
+      "confidence": 78,
       "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/serbia-the-conflicted-eu-candidate/a-79203774?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-10",
-      "time": "1d"
+      "source_url": "https://www.dw.com/en/ukraine-russian-strike-on-kyiv-gas-station-kills-2/a-79238219?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-11",
+      "time": "18h"
+    },
+    {
+      "id": 6,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Guerra de Irán: la escalada saudí-Houthi intensifica el conflicto en Yemen",
+        "en": "Iran war: Saudi-Houthi escalation intensifies Yemen conflict"
+      },
+      "summary": {
+        "es": "Las tomas de control de Mokha, Dhubab y Perim por los Houthi amenazan con arrastrar a Yemen más profundamente a la guerra regional iraní, mientras los avances del grupo presionan tanto al gobierno yemení como a Arabia Saudí. Esta escalada representa un deterioro estructural de la seguridad en el Mar Rojo y el Golfo de Adén. Para los mercados, supone riesgos adicionales sobre rutas de suministro de hidrocarburos y estabilidad regional del Golfo.",
+        "en": "Houthi seizures of Mokha, Dhubab and Perim threaten to draw Yemen deeper into the regional Iran war, pressuring both Yemen's government and Saudi Arabia. This escalation represents a structural deterioration of Red Sea and Gulf of Aden security. For markets, it compounds risks to hydrocarbon supply routes and Gulf regional stability."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo sobre rutas de exportación saudí intensifica prima geopolítica",
+            "en": "Saudi export route risk intensifies geopolitical premium"
+          }
+        },
+        {
+          "asset": "Saudi Aramco / Gulf equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada en frontera saudí pesa sobre valoraciones del sector energético del Golfo",
+            "en": "Escalation on Saudi border weighs on Gulf energy valuations"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Flujo refugio moderado ante nueva escalada militar",
+            "en": "Moderate safe-haven flow on new military escalation"
+          }
+        }
+      ],
+      "confidence": 90,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/iran-war-saudi-houthi-escalation-intensifies-yemen-conflict/a-79226627?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-11",
+      "time": "22h"
     }
   ],
-  "market_updated_at": "2026-09-12T09:40:15.216Z"
+  "market_updated_at": "2026-09-12T10:00:37.256Z"
 }
