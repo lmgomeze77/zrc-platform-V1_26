@@ -1,41 +1,35 @@
 {
-  "generated_at": "2026-09-12T10:00:37.256Z",
+  "generated_at": "2026-09-13T11:01:46.687Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1545",
-      "change": "+0.15%",
-      "up": true
+      "value": "1.1592",
+      "change": "-0.21%",
+      "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,384.70",
-      "change": "+0.32%",
-      "up": true
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "108.95",
-      "change": "+1.21%",
-      "up": true
-    },
-    {
-      "symbol": "WTI Crude",
-      "value": "100.05",
-      "change": "-2.37%",
+      "value": "11450.00",
+      "change": "-0.35%",
       "up": false
     },
     {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,408.90",
-      "change": "+0.04%",
+      "symbol": "BRENT",
+      "value": "104.47",
+      "change": "-2.94%",
+      "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4347.70",
+      "change": "+0.74%",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "77,082.15",
-      "change": "-0.24%",
-      "up": false
+      "symbol": "BTC",
+      "value": "77242.79",
+      "change": "+1.20%",
+      "up": true
     },
     {
       "symbol": "VIX",
@@ -44,52 +38,28 @@
       "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "4.9750",
+      "symbol": "US 10Y",
+      "value": "4.975",
       "change": "+0.63%",
       "up": true
     },
     {
+      "symbol": "EUR/GBP",
+      "value": "0.8581",
+      "change": "-0.12%",
+      "up": false
+    },
+    {
       "symbol": "S&P 500",
-      "value": "7,656.98",
+      "value": "7656.98",
       "change": "+0.86%",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25,568.56",
-      "change": "+0.82%",
+      "value": "19800.00",
+      "change": "+0.42%",
       "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8545",
-      "change": "+0.09%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "99.087",
-      "change": "+0.04%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.772",
-      "change": "-0.79%",
-      "up": false
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.47",
-      "change": "-0.17%",
-      "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.7075",
-      "change": "-0.09%",
-      "up": false
     }
   ],
   "headlines": [
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Houthis respaldados por Irán toman el control de la vital ruta marítima de Bab el-Mandeb",
-        "en": "Iran-backed Houthis seize near control of vital Bab el-Mandeb shipping lane"
+        "es": "Arabia Saudí cierra oleoducto clave tras ataque de drones lanzado desde Irak",
+        "en": "Saudi Arabia shuts key oil pipeline after drone attack launched from Iraq"
       },
       "summary": {
-        "es": "Los rebeldes Houthi capturaron la Isla Perim en el Estrecho de Bab el-Mandeb, abriendo un nuevo frente en el conflicto con Irán y amenazando las exportaciones de petróleo saudí. El control de este estrecho estratégico —por el que transita una parte significativa del comercio marítimo global— eleva materialmente el riesgo de interrupción del suministro energético. Las implicaciones para los fletes, las primas de seguro marítimo y los precios del crudo son inmediatas.",
-        "en": "Houthi rebels captured Perim Island in the Bab el-Mandeb Strait, opening a new front in the Iran war and threatening Saudi oil exports through the critical chokepoint. Near-control of this strait — through which a major share of global maritime trade passes — materially raises the risk of energy supply disruption. Implications for shipping freight rates, maritime insurance premiums, and crude oil prices are immediate."
+        "es": "Arabia Saudí cerró un oleoducto estratégico tras un ataque de drones desde territorio iraquí próximo a la frontera iraní. Irak destituyó a un comandante militar y abrió investigaciones sobre el incidente. El ataque eleva el riesgo de escalada en infraestructura energética regional en un momento de tensión prolongada.",
+        "en": "Saudi Arabia shut a strategic oil pipeline following a drone attack launched from Iraqi territory near the Iranian border. Iraq removed a military commander and opened investigations into the incident. The attack raises escalation risk to regional energy infrastructure at a time of prolonged tensions."
       },
       "impact": "high",
       "market_impact": [
@@ -112,17 +82,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Amenaza directa a exportaciones de petróleo saudí vía chokepoint clave",
-            "en": "Direct threat to Saudi oil exports via key chokepoint"
-          }
-        },
-        {
-          "asset": "Shipping/freight rates (Baltic Exchange)",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Cierre potencial del Bab el-Mandeb fuerza desvíos costosos",
-            "en": "Potential Bab el-Mandeb closure forces costly rerouting"
+            "es": "Interrupción de suministro saudí eleva prima de riesgo geopolítica.",
+            "en": "Saudi supply disruption raises geopolitical risk premium."
           }
         },
         {
@@ -130,56 +91,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada regional impulsa demanda de activos refugio",
-            "en": "Regional escalation drives safe-haven demand"
-          }
-        },
-        {
-          "asset": "EM currencies (Gulf/Asian importers)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Alza de costes energéticos presiona divisas de importadores netos",
-            "en": "Energy cost surge pressures net energy importer currencies"
-          }
-        }
-      ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260911-iran-backed-houthis-seize-near-control-of-vital-bab-el-mandeb-shipping-lane",
-      "published_at": "2026-09-11",
-      "time": "13h"
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
-      "region": "GLOBAL",
-      "title": {
-        "es": "Los tipos de interés podrían subir de nuevo en todo el mundo: el motivo",
-        "en": "Interest rates could rise again across the world – here's why"
-      },
-      "summary": {
-        "es": "Los bancos centrales de todo el mundo afrontan un entorno de inflación persistente impulsada por los costes energéticos, en un contexto de guerras activas en Oriente Medio y Ucrania. Las decisiones de política monetaria de este mes serán determinantes para el ciclo de tipos global. Una reapertura del ciclo alcista sincronizado presionaría los mercados de renta fija, divisas emergentes y múltiplos de renta variable.",
-        "en": "Central banks globally face persistent inflation driven by energy costs, set against active wars in the Middle East and Ukraine. This month's monetary policy decisions will be pivotal for the global rates cycle. A renewed synchronized tightening cycle would pressure fixed income markets, EM currencies, and equity multiples."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Expectativas de tipos más altos elevan rendimientos del bono largo",
-            "en": "Higher rate expectations push long-bond yields up"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Divergencia BCE-Fed según ritmos de subida relativos",
-            "en": "ECB-Fed divergence depending on relative hiking pace"
+            "es": "Activo refugio ante escalada en infraestructura energética clave.",
+            "en": "Safe haven demand on key energy infrastructure escalation."
           }
         },
         {
@@ -187,209 +100,257 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Subidas globales de tipos drenan capital hacia mercados desarrollados",
-            "en": "Global rate hikes drain capital toward developed markets"
+            "es": "Alza del crudo presiona balanzas de importadores emergentes.",
+            "en": "Oil spike pressures emerging market energy importers."
           }
         },
         {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Compresión de múltiplos ante coste de capital más elevado",
-            "en": "Multiple compression on higher cost of capital"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cew9nkx7v9eo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-11",
-      "time": "20h"
-    },
-    {
-      "id": 3,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "En la cumbre del BRICS, China e India compiten por la influencia",
-        "en": "At BRICS Summit, China and India Vie for Influence"
-      },
-      "summary": {
-        "es": "China busca que el BRICS sirva como plataforma para desafiar la hegemonía estadounidense, mientras India intenta mantener la amplitud del bloque para no verse forzada a elegir bandos. Esta competencia estratégica dentro del BRICS tiene implicaciones para la arquitectura financiera alternativa al dólar y para la posición de mercados emergentes en la geopolítica de bloques. El resultado de la cumbre marcará el grado de cohesión del Sur Global frente a Occidente.",
-        "en": "China aims to use BRICS as a platform to challenge US hegemony, while India seeks to keep the bloc broad enough to avoid forced alignment. This strategic competition within BRICS has implications for the alternative dollar financial architecture and EM positioning in bloc geopolitics. The summit's outcome will indicate the degree of Global South cohesion vis-à-vis the West."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Indian equities (Nifty 50)",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Posición de India como árbitro del BRICS afecta percepción de riesgo inversor",
-            "en": "India's BRICS broker role affects investor risk perception"
-          }
-        },
-        {
-          "asset": "Chinese yuan (CNY)",
+          "asset": "Energy equities",
           "direction": "up",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Mayor internacionalización del yuan si BRICS adopta marco financiero propio",
-            "en": "Yuan gains if BRICS adopts own financial framework"
-          }
-        },
-        {
-          "asset": "USD Index (DXY)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Bloque unido aceleraría tendencia de diversificación de reservas",
-            "en": "Unified bloc would accelerate reserve diversification trend"
+            "es": "Productores se benefician de precios más altos por reducción de oferta.",
+            "en": "Producers benefit from higher prices on supply reduction."
           }
         }
       ],
-      "confidence": 78,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/11/world/asia/china-india-brics-summit.html",
-      "published_at": "2026-09-11",
+      "confidence": 90,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c62m933465eo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-12",
       "time": "22h"
     },
     {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "EU",
+      "id": 2,
+      "tag": "ALERT",
+      "region": "APAC",
       "title": {
-        "es": "Presupuesto: el gobierno francés aplica nuevos recortes apuntando a la misión ecológica",
-        "en": "Budget: French government applies new spending cuts targeting the ecology mission"
+        "es": "Xi Jinping recibe alfombra roja en la cumbre BRICS en medio del deshielo entre India y China",
+        "en": "Xi Jinping gets red carpet at BRICS summit amid thaw in India-China relations"
       },
       "summary": {
-        "es": "El gobierno francés anuló 500 millones de euros en créditos y congeló otros 783 millones adicionales para evitar un desvío excesivo del déficit en 2026, con la misión de ecología como la más perjudicada. Esta medida refleja la presión fiscal estructural sobre las finanzas públicas francesas en un entorno de tipos elevados y gasto en defensa creciente. Los recortes a políticas verdes en una economía de la eurozona de primer orden tienen implicaciones para bonos soberanos franceses y activos de transición energética.",
-        "en": "The French government cancelled €500 million in credits and froze an additional €783 million to prevent excessive deficit slippage in 2026, with the ecology mission hardest hit. This reflects structural fiscal pressure on French public finances amid high rates and rising defense spending. Green policy cuts in a major eurozone economy have implications for French sovereign bonds and energy transition assets."
+        "es": "La visita de Xi Jinping a Nueva Delhi para la cumbre BRICS marca un hito diplomático significativo tras el mortal enfrentamiento fronterizo de 2020. La demostración pública de reconciliación entre los dos gigantes asiáticos redefine dinámicas geopolíticas en la región Indo-Pacífico. Una India-China más alineada podría alterar el equilibrio de poder entre bloques y complicar la estrategia occidental de diversificación de cadenas de suministro.",
+        "en": "Xi Jinping's visit to New Delhi for the BRICS summit marks a significant diplomatic milestone following the deadly 2020 border clash. The public display of reconciliation between the two Asian giants redefines geopolitical dynamics in the Indo-Pacific region. A more aligned India-China posture could shift the inter-bloc balance of power and complicate Western supply chain diversification strategies."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "French OATs (10Y sovereign bonds)",
-          "direction": "mixed",
+          "asset": "Indian equities (Nifty 50)",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Recortes reducen déficit pero señalan tensión fiscal estructural persistente",
-            "en": "Cuts reduce deficit but signal persistent structural fiscal stress"
+            "es": "Reducción de riesgo fronterizo mejora sentimiento inversor en India.",
+            "en": "Reduced border risk improves India investor sentiment."
           }
         },
         {
-          "asset": "European green bonds / ESG assets",
+          "asset": "Chinese equities (CSI 300)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Normalización diplomática reduce prima de riesgo regional.",
+            "en": "Diplomatic normalization reduces regional risk premium."
+          }
+        },
+        {
+          "asset": "USD",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Reducción de financiación ecológica debilita narrativa de transición europea",
-            "en": "Reduced green funding weakens European transition narrative"
+            "es": "Cohesión BRICS refuerza narrativa de desdolarización marginal.",
+            "en": "BRICS cohesion reinforces marginal de-dollarization narrative."
           }
-        },
+        }
+      ],
+      "confidence": 82,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/sep/12/xi-jinping-brics-summit-delhi-india-china-relations",
+      "published_at": "2026-09-12",
+      "time": "22h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "En directo, guerra en Ucrania: Rumanía afirma que un dron se estrelló tras cruzar Ucrania y Moldavia",
+        "en": "Live, war in Ukraine: Romania says a drone crashed after crossing Ukraine and Moldova"
+      },
+      "summary": {
+        "es": "Las fuerzas rumanas hallaron los restos de un objeto volador estrellado en un campo de maíz cerca de Botoșenița Mare, tras haber sobrevolado Ucrania y Moldavia. El incidente, sin víctimas, constituye una potencial violación del espacio aéreo de un estado miembro de la OTAN, elevando la presión sobre el artículo 5. Este tipo de incidentes recurrentes acrecientan la tensión de seguridad en el flanco oriental europeo.",
+        "en": "Romanian forces found the remains of a flying object that crashed in a cornfield near Botoșenița Mare after overflying Ukraine and Moldova. The incident, with no casualties, represents a potential violation of NATO member airspace, increasing pressure on Article 5 obligations. Recurring incidents of this type heighten security tension on NATO's eastern flank."
+      },
+      "impact": "high",
+      "market_impact": [
         {
           "asset": "EUR/USD",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Debilidad fiscal francesa presiona levemente al euro",
-            "en": "French fiscal weakness mildly pressures the euro"
-          }
-        }
-      ],
-      "confidence": 72,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/politique/article/2026/09/11/budget-le-gouvernement-lance-un-nouveau-coup-de-rabot-en-ciblant-une-nouvelle-fois-la-mission-ecologie_6770635_823448.html",
-      "published_at": "2026-09-11",
-      "time": "15h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "EURASIA",
-      "title": {
-        "es": "Ucrania: ataque ruso contra una gasolinera de Kiev mata a dos personas",
-        "en": "Ukraine: Russian strike on Kyiv gas station kills 2"
-      },
-      "summary": {
-        "es": "Con el frente de combate mayoritariamente estancado, Rusia intensifica los ataques contra infraestructura civil y energética ucraniana, mientras Ucrania responde con ataques de drones en territorio ruso. Este patrón de guerra de desgaste sobre infraestructura energética mantiene presión sobre los precios del gas europeo y la seguridad energética del continente. Para los mercados, la escalada en ataques civiles también puede afectar la percepción de riesgo político sobre el apoyo occidental a Ucrania.",
-        "en": "With front lines mostly stalled, Russia is intensifying strikes on Ukrainian civilian and energy infrastructure while Ukraine responds with drone attacks on Russian territory. This war-of-attrition pattern on energy infrastructure sustains upward pressure on European gas prices and continental energy security. For markets, escalating civilian attacks may also affect political risk perception around Western support for Ukraine."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Ataques a infraestructura energética ucraniana mantienen prima de riesgo sobre el gas",
-            "en": "Strikes on Ukrainian energy infrastructure sustain gas risk premium"
+            "es": "Tensión en el flanco OTAN pesa levemente sobre el euro.",
+            "en": "NATO flank tension weighs mildly on the euro."
           }
         },
         {
           "asset": "European equities",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Persistencia del conflicto pesa sobre el sentimiento inversor europeo",
-            "en": "Conflict persistence weighs on European investor sentiment"
-          }
-        }
-      ],
-      "confidence": 78,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ukraine-russian-strike-on-kyiv-gas-station-kills-2/a-79238219?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-11",
-      "time": "18h"
-    },
-    {
-      "id": 6,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Guerra de Irán: la escalada saudí-Houthi intensifica el conflicto en Yemen",
-        "en": "Iran war: Saudi-Houthi escalation intensifies Yemen conflict"
-      },
-      "summary": {
-        "es": "Las tomas de control de Mokha, Dhubab y Perim por los Houthi amenazan con arrastrar a Yemen más profundamente a la guerra regional iraní, mientras los avances del grupo presionan tanto al gobierno yemení como a Arabia Saudí. Esta escalada representa un deterioro estructural de la seguridad en el Mar Rojo y el Golfo de Adén. Para los mercados, supone riesgos adicionales sobre rutas de suministro de hidrocarburos y estabilidad regional del Golfo.",
-        "en": "Houthi seizures of Mokha, Dhubab and Perim threaten to draw Yemen deeper into the regional Iran war, pressuring both Yemen's government and Saudi Arabia. This escalation represents a structural deterioration of Red Sea and Gulf of Aden security. For markets, it compounds risks to hydrocarbon supply routes and Gulf regional stability."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Riesgo sobre rutas de exportación saudí intensifica prima geopolítica",
-            "en": "Saudi export route risk intensifies geopolitical premium"
+            "es": "Riesgo de escalada OTAN-Rusia afecta sentimiento en mercados europeos.",
+            "en": "NATO-Russia escalation risk weighs on European market sentiment."
           }
         },
         {
-          "asset": "Saudi Aramco / Gulf equities",
+          "asset": "Defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incidentes aéreos refuerzan el caso para mayor gasto en defensa.",
+            "en": "Airspace incidents reinforce the case for higher defense spending."
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/live/2026/09/13/en-direct-guerre-en-ukraine-la-roumanie-affirme-qu-un-drone-s-est-ecrase-apres-avoir-traverse-l-ukraine-et-la-moldavie_6772184_3210.html",
+      "published_at": "2026-09-13",
+      "time": "2h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "El gobierno militar de Níger reorganiza el mando del ejército semanas después de un mortífero motín",
+        "en": "Niger military government reshuffles army command weeks after deadly mutiny"
+      },
+      "summary": {
+        "es": "La junta militar de Níger nombró un nuevo jefe del Estado Mayor tras el fallido motín que puso a prueba su control del poder. La inestabilidad interna en Níger tiene implicaciones directas para los corredores de minerales críticos del Sahel y para la presencia de milicias y grupos yihadistas en la región. Los inversores en activos de minería y seguridad en África Occidental deben monitorear la consolidación del poder militar.",
+        "en": "Niger's military junta appointed a new chief of staff following a failed mutiny that tested its grip on power. Internal instability in Niger has direct implications for critical mineral corridors in the Sahel and for the presence of militias and jihadist groups in the region. Investors in West African mining and security assets should monitor military power consolidation."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Uranium spot price",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Inestabilidad en el mayor exportador de uranio de África genera prima.",
+            "en": "Instability in Africa's top uranium exporter generates risk premium."
+          }
+        },
+        {
+          "asset": "African frontier EM bonds",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada en frontera saudí pesa sobre valoraciones del sector energético del Golfo",
-            "en": "Escalation on Saudi border weighs on Gulf energy valuations"
+            "es": "Riesgo político en el Sahel eleva spreads de deuda regional.",
+            "en": "Sahel political risk widens regional debt spreads."
           }
         },
         {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
+          "asset": "Gold",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Flujo refugio moderado ante nueva escalada militar",
-            "en": "Moderate safe-haven flow on new military escalation"
+            "es": "Interrupción de extracción minera en zona de conflicto apoya precio.",
+            "en": "Mining disruption in conflict zone provides modest price support."
           }
         }
       ],
-      "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/iran-war-saudi-houthi-escalation-intensifies-yemen-conflict/a-79226627?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-11",
+      "confidence": 75,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/9/13/niger-military-government-reshuffles-army-command-weeks-after-deadly-mutiny?traffic_source=rss",
+      "published_at": "2026-09-13",
+      "time": "2h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "MENA",
+      "title": {
+        "es": "Mohamed VI: un monarca con plenos poderes alejado de la escena pública",
+        "en": "Mohamed VI: A monarch with full powers removed from the public scene"
+      },
+      "summary": {
+        "es": "La figura del rey Mohamed VI es omnipresente en Marruecos pero ha reducido significativamente sus apariciones públicas a pesar de conflictos sociales y migratorios recientes. La incertidumbre sobre la salud y la dirección política del monarca plantea preguntas sobre la estabilidad de gobierno en un estado clave para la seguridad del Mediterráneo y los flujos migratorios hacia Europa. Marruecos es también un nexo estratégico en minerales críticos y energías renovables.",
+        "en": "Morocco's King Mohamed VI remains omnipresent institutionally but has significantly reduced public appearances despite recent social and migratory tensions. Uncertainty about the monarch's health and policy direction raises questions about governance stability in a state central to Mediterranean security and migration flows to Europe. Morocco is also a strategic nexus for critical minerals and renewable energy."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Moroccan government bonds",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre de gobernanza puede presionar spreads soberanos.",
+            "en": "Governance uncertainty may pressure sovereign spreads."
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad marroquí afecta presiones migratorias y relaciones UE.",
+            "en": "Moroccan instability affects EU migration pressures and relations."
+          }
+        },
+        {
+          "asset": "Phosphate/fertilizer futures",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Marruecos controla mayores reservas mundiales de fosfato.",
+            "en": "Morocco controls largest global phosphate reserves."
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "El País",
+      "source_url": "https://elpais.com/espana/2026-09-13/mohamed-vi-un-monarca-con-plenos-poderes-alejado-de-la-escena-publica.html",
+      "published_at": "2026-09-13",
+      "time": "7h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "MENA",
+      "title": {
+        "es": "Por qué Mokha, histórico puerto que dio forma al comercio del café, es un objetivo codiciado en la guerra de Yemen",
+        "en": "Why Mokha, historic port that shaped the coffee trade, is a prize in Yemen's war"
+      },
+      "summary": {
+        "es": "La ciudad de Mokha, en el Mar Rojo, combina valor estratégico como puerto próximo al estrecho de Bab el-Mandeb con su histórica importancia como centro comercial. Su control es un objetivo clave en la ofensiva hutí hacia el estrecho, con implicaciones directas para el comercio marítimo internacional. La eventual captura del puerto ampliaría la capacidad hutí de presionar rutas de suministro globales.",
+        "en": "The city of Mokha, on the Red Sea, combines strategic value as a port near the Bab el-Mandeb Strait with its historic importance as a trade hub. Its control is a key objective in the Houthi offensive toward the strait, with direct implications for international maritime trade. A potential capture of the port would expand Houthi capacity to pressure global supply routes."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Shipping/freight rates",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Control hutí de Mokha ampliaría capacidad de interdicción marítima.",
+            "en": "Houthi control of Mokha would expand maritime interdiction capacity."
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor control del Mar Rojo eleva riesgo en ruta de suministro.",
+            "en": "Greater Red Sea control raises supply route risk premium."
+          }
+        }
+      ],
+      "confidence": 74,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/12/world/middleeast/mokha-yemen-houthis-mocha-coffee.html",
+      "published_at": "2026-09-12",
       "time": "22h"
     }
   ],
-  "market_updated_at": "2026-09-13T10:41:22.817Z"
+  "market_updated_at": "2026-09-13T11:01:46.687Z"
 }
