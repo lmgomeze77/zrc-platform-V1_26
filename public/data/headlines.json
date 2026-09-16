@@ -1,95 +1,65 @@
 {
-  "generated_at": "2026-09-15T10:58:21.666Z",
+  "generated_at": "2026-09-16T10:47:19.988Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
       "value": "1.1540",
-      "change": "-0.03%",
+      "change": "-0.03",
       "up": false
     },
     {
       "symbol": "IBEX 35",
-      "value": "19,677.27",
-      "change": "-0.43%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT Crude",
-      "value": "107.72",
-      "change": "-1.09%",
-      "up": false
-    },
-    {
-      "symbol": "WTI Crude",
-      "value": "104.79",
-      "change": "-1.09%",
-      "up": false
-    },
-    {
-      "symbol": "GOLD (XAU/USD)",
-      "value": "4,340.21",
-      "change": "+1.07%",
+      "value": "19762.40",
+      "change": "+0.00",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "75,961.33",
-      "change": "-1.35%",
+      "symbol": "BRENT",
+      "value": "109.21",
+      "change": "+3.34",
+      "up": true
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4287.35",
+      "change": "-0.50",
+      "up": false
+    },
+    {
+      "symbol": "BTC",
+      "value": "75740.23",
+      "change": "-3.00",
       "up": false
     },
     {
       "symbol": "VIX",
-      "value": "16.71",
-      "change": "+5.49%",
-      "up": true
+      "value": "17.05",
+      "change": "-0.87",
+      "up": false
     },
     {
-      "symbol": "US 10Y Yield",
-      "value": "5.02%",
-      "change": "+0.71%",
-      "up": true
-    },
-    {
-      "symbol": "S&P 500",
-      "value": "7,601.00",
-      "change": "+0.20%",
-      "up": true
-    },
-    {
-      "symbol": "DAX 40",
-      "value": "25,490.00",
-      "change": "+0.30%",
+      "symbol": "US 10Y",
+      "value": "4.998",
+      "change": "+0.023",
       "up": true
     },
     {
       "symbol": "EUR/GBP",
       "value": "0.8564",
-      "change": "+0.13%",
+      "change": "+0.12",
       "up": true
     },
     {
-      "symbol": "DXY",
-      "value": "99.72",
-      "change": "+0.07%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.92",
-      "change": "-0.34%",
+      "symbol": "S&P 500",
+      "value": "7619.98",
+      "change": "-0.48",
       "up": false
     },
     {
-      "symbol": "Copper",
-      "value": "6.3760",
-      "change": "-0.16%",
+      "symbol": "DAX 40",
+      "value": "25250.80",
+      "change": "-0.81",
       "up": false
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.6997",
-      "change": "+0.03%",
-      "up": true
     }
   ],
   "headlines": [
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los hutíes de Yemen atacan a Arabia Saudí y toman islas estratégicas en el Mar Rojo",
-        "en": "Yemen's Houthis attack Saudis, seize crucial Red Sea islands"
+        "es": "Dos marineros desaparecidos tras ataque a petrolero en el Estrecho de Ormuz",
+        "en": "Two sailors missing after tanker attacked in Strait of Hormuz"
       },
       "summary": {
-        "es": "Los rebeldes hutíes respaldados por Irán han capturado dos islas estratégicas en el Mar Rojo, estrechando su control sobre una ruta de transporte marítimo global clave. El cierre potencial de esta ruta representa el último efecto colateral del conflicto entre EE.UU. e Irán, con implicaciones directas para el comercio global y los precios energéticos.",
-        "en": "Iran-backed Houthi rebels have seized two strategic Red Sea islands, tightening their grip on a critical global shipping lane. The potential closure of this route represents the latest spillover from the US-Iran conflict, with direct implications for global trade flows and energy pricing."
+        "es": "Un petrolero fue atacado en el Estrecho de Ormuz, con Irán alegando que el buque chocó con minas y EE.UU. afirmando que fue golpeado por un misil y un dron. El incidente amenaza directamente el tránsito de crudo por uno de los principales cuellos de botella energéticos del mundo. La divergencia en las versiones oficiales eleva el riesgo de escalada geopolítica con implicaciones inmediatas para los precios del petróleo y los seguros marítimos.",
+        "en": "A tanker was attacked in the Strait of Hormuz, with Iran claiming it struck mines and the US asserting it was hit by a missile and drone. The incident directly threatens crude transit through one of the world's most critical energy chokepoints. The conflicting official narratives raise escalation risk with immediate implications for oil prices and maritime insurance premiums."
       },
       "impact": "high",
       "market_impact": [
@@ -112,17 +82,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de cierre de ruta marítima clave eleva prima de riesgo",
-            "en": "Closure risk on key shipping lane raises risk premium"
-          }
-        },
-        {
-          "asset": "Shipping freight rates",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Desvío de rutas encarece el transporte marítimo global",
-            "en": "Route diversions drive up global maritime freight costs"
+            "es": "Ataque en Ormuz amenaza suministro global de crudo",
+            "en": "Hormuz attack threatens global crude supply"
           }
         },
         {
@@ -130,8 +91,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada regional impulsa demanda de activos refugio",
-            "en": "Regional escalation drives safe-haven demand"
+            "es": "Escalada en Golfo Pérsico impulsa refugio seguro",
+            "en": "Persian Gulf escalation drives safe-haven demand"
           }
         },
         {
@@ -139,38 +100,47 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Presión inflacionaria por costes energéticos pesa sobre emergentes",
-            "en": "Energy cost inflation pressures emerging market currencies"
+            "es": "Choque energético presiona divisas importadoras de petróleo",
+            "en": "Energy shock pressures oil-importing EM currencies"
+          }
+        },
+        {
+          "asset": "Shipping/tanker equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Primas de seguro suben; rutas alternativas encarecen fletes",
+            "en": "Insurance premiums rise; alternative routes raise freight costs"
           }
         }
       ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/yemen-s-houthis-attack-saudis-seize-crucial-red-sea-islands/a-79263838?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-14",
-      "time": "19h"
+      "confidence": 92,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c3n07ydqdzlvo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-15",
+      "time": "18h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "EU",
       "title": {
-        "es": "Buque de guerra ruso dispara bengalas a helicóptero danés mientras jets de la OTAN derriban un dron sobre Lituania",
-        "en": "Russian warship fires flares at Danish helicopter as NATO jets shoot down drone over Lithuania"
+        "es": "Analistas piden una respuesta más firme a Rusia tras incidentes en Dinamarca y Lituania",
+        "en": "Analysts call for step-up in response to Russia after Denmark, Lithuania incidents"
       },
       "summary": {
-        "es": "Dos incidentes simultáneos en el flanco oriental de la OTAN —un dron derribado sobre Lituania y bengalas disparadas a un helicóptero danés en el Báltico— intensifican la tensión entre Rusia y la alianza. La primera ministra danesa califica la acción rusa de 'imprudente', mientras la UE y la OTAN debaten el refuerzo del flanco este, con implicaciones para el gasto en defensa europeo.",
-        "en": "Two simultaneous incidents on NATO's eastern flank — a drone downed over Lithuania and flares fired at a Danish helicopter in the Baltic — sharply intensify Russia-NATO tensions. The Danish PM condemned Russia's 'reckless action' while EU and NATO allies discuss reinforcing the eastern flank, with direct implications for European defense spending trajectories."
+        "es": "La UE acusó a Rusia de disparar bengalas de forma 'imprudente' a una fragata danesa, mientras se confirmó el derribo de un dron sobre Lituania, elevando la presión sobre la OTAN para una respuesta más contundente. Estos incidentes representan una escalada del patrón de provocaciones rusas en el flanco norte de la OTAN, con implicaciones directas para el gasto en defensa europeo y los mercados de deuda soberana. La posibilidad de una respuesta formal de la OTAN añade incertidumbre geopolítica a los activos europeos.",
+        "en": "The EU accused Russia of 'recklessly' firing flares at a Danish frigate, while a drone was shot down over Lithuania, intensifying pressure on NATO for a stronger response. These incidents represent an escalation in Russia's pattern of provocations along NATO's northern flank, with direct implications for European defence spending and sovereign debt markets. The prospect of a formal NATO response adds geopolitical uncertainty to European assets."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European defense equities",
+          "asset": "European defence equities",
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Escalada impulsa expectativas de mayor gasto en defensa",
-            "en": "Escalation boosts defense spending expectations"
+            "es": "Presión para aumentar gasto en defensa beneficia sector",
+            "en": "Pressure for increased defence spending benefits sector"
           }
         },
         {
@@ -178,142 +148,151 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Tensión en el flanco este pesa sobre el euro",
-            "en": "Eastern flank tension weighs on the euro"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo geopolítico añade prima marginal al crudo",
-            "en": "Geopolitical risk adds marginal premium to crude"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada OTAN-Rusia refuerza demanda de refugio seguro",
-            "en": "NATO-Russia escalation reinforces safe-haven demand"
-          }
-        }
-      ],
-      "confidence": 91,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/sep/15/nato-jets-shoot-down-drone-violating-lithuania-airspace-kaunas",
-      "published_at": "2026-09-15",
-      "time": "<1h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "GLOBAL",
-      "title": {
-        "es": "EE.UU. confirma que tiene armas en el espacio",
-        "en": "US confirms it has weapons in space"
-      },
-      "summary": {
-        "es": "La Fuerza Espacial de EE.UU. ha confirmado oficialmente el despliegue de armamento en el espacio, citando a Rusia y China como rivales geopolíticos principales. Pekín respondió exigiendo a Washington que 'deje de prepararse para la guerra' en el espacio exterior, marcando una nueva frontera en la competencia estratégica entre grandes potencias con implicaciones para las cadenas de suministro de defensa y el sector aeroespacial.",
-        "en": "The US Space Force officially confirmed weapons deployment in space, citing Russia and China as its two primary geopolitical rivals. Beijing demanded Washington 'stop preparing for war' in outer space, marking a new frontier in great-power competition with significant implications for defense supply chains and the aerospace sector."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "US aerospace & defense equities",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Confirmación de armamento espacial acelera contratos de defensa",
-            "en": "Space weapons confirmation accelerates defense contracts"
-          }
-        },
-        {
-          "asset": "Chinese tech equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada tecnológica aumenta riesgo de nuevas sanciones",
-            "en": "Tech escalation raises risk of further sanctions"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Nueva dimensión de rivalidad estratégica apoya activos refugio",
-            "en": "New strategic rivalry dimension supports safe-haven assets"
-          }
-        }
-      ],
-      "confidence": 84,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-confirms-it-has-weapons-in-space/a-79268894?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-15",
-      "time": "3h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EURASIA",
-      "title": {
-        "es": "Atacada por drones ucranianos, la economía rusa muestra señales crecientes de debilidad",
-        "en": "Targeted by Ukrainian drones, the Russian economy shows increasing signs of weakness"
-      },
-      "summary": {
-        "es": "Los ataques ucranianos sobre refinerías y almacenes comerciales rusos han trasladado la guerra al cotidiano de la población rusa, con inflación creciente y múltiples problemas económicos a vísperas de las elecciones legislativas del 18-20 de septiembre. Aunque la economía rusa mantiene cierta resiliencia, el deterioro acumulado abre interrogantes sobre la sostenibilidad del esfuerzo bélico y la estabilidad política interna.",
-        "en": "Ukrainian drone strikes on Russian refineries and commercial warehouses have brought the war into everyday Russian life, with rising inflation and mounting economic problems ahead of legislative elections on September 18-20. While Russia's economy retains relative resilience, cumulative deterioration raises questions about the sustainability of its war effort and internal political stability."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Russian ruble",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Presiones económicas y electorales debilitan el rublo",
-            "en": "Economic and electoral pressures weaken the ruble"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Daños a refinerías reducen capacidad exportadora rusa",
-            "en": "Refinery damage reduces Russian export capacity"
+            "es": "Escalada en flanco OTAN pesa sobre el euro",
+            "en": "NATO flank escalation weighs on the euro"
           }
         },
         {
           "asset": "European equities",
-          "direction": "mixed",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre geopolítica en Europa presiona índices",
+            "en": "Geopolitical uncertainty in Europe pressures equity indices"
+          }
+        },
+        {
+          "asset": "Natural gas (TTF)",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Debilidad económica rusa sugiere posible presión hacia negociación",
-            "en": "Russian economic weakness may signal pressure toward negotiation"
+            "es": "Tensión con Rusia reaviva inquietud sobre suministro energético",
+            "en": "Russia tensions revive energy supply concerns"
           }
         }
       ],
-      "confidence": 79,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/economie/article/2026/09/15/ciblee-par-les-drones-ukrainiens-l-economie-russe-montre-de-plus-en-plus-de-signes-de-faiblesse_6774285_3234.html",
+      "confidence": 89,
+      "source": "France 24",
+      "source_url": "http://www.france24.com/en/analysts-call-for-step-up-in-response-to-russia-after-denmark-lithuania-incidents",
       "published_at": "2026-09-15",
-      "time": "7h"
+      "time": "15h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "GLOBAL",
+      "title": {
+        "es": "La economía mundial se vuelve desconfiada de EE.UU.",
+        "en": "The World Economy Is Becoming Wary of the U.S."
+      },
+      "summary": {
+        "es": "La acumulación de deuda por parte de la administración Trump y su uso agresivo de sanciones están erosionando la confianza global en Estados Unidos como ancla de estabilidad económica. La desdolarización gradual y el reposicionamiento de socios comerciales hacia bloques alternativos representa un riesgo estructural para los Treasuries y el dólar. Este cambio de percepción puede acelerar la fragmentación del sistema financiero internacional.",
+        "en": "The Trump administration's debt accumulation and aggressive use of sanctions are eroding global confidence in the US as the anchor of economic stability. Gradual de-dollarization and trading partners repositioning toward alternative blocs represents a structural risk for Treasuries and the dollar. This shift in perception may accelerate fragmentation of the international financial system."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "US Dollar Index (DXY)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Pérdida de confianza global presiona demanda de dólares",
+            "en": "Eroding global confidence pressures dollar demand"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Reducción de tenedores extranjeros eleva yields",
+            "en": "Reduced foreign holdings push yields higher"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Alternativa a dólar como reserva de valor",
+            "en": "Alternative to dollar as store of value"
+          }
+        },
+        {
+          "asset": "EM local currency bonds",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Diversificación de reservas puede beneficiar activos EM selectivos",
+            "en": "Reserve diversification may selectively benefit EM assets"
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/16/business/trump-debt-sanctions-global-economy.html",
+      "published_at": "2026-09-16",
+      "time": "1h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Carney dice que Canadá buscará una 'alianza única de seguridad y económica' con la UE en medio de disputa comercial con EE.UU.",
+        "en": "Carney says Canada will pursue 'unique security and economic alliance' with EU amid US trade spat"
+      },
+      "summary": {
+        "es": "El primer ministro canadiense Mark Carney anunció que Canadá buscará una alianza económica y de seguridad singular con Europa, reposicionando al país en el nuevo orden económico global frente a las tensiones comerciales con Washington. Este pivote transatlántico tiene implicaciones para los flujos de inversión, la arquitectura de defensa de la OTAN y el comercio de commodities entre Canadá y la UE. Representa además una señal política de distanciamiento formal de la dependencia económica de EE.UU.",
+        "en": "Canadian PM Mark Carney announced Canada will pursue a unique economic and security alliance with Europe, repositioning the country within the new global economic order amid trade tensions with Washington. This transatlantic pivot has implications for investment flows, NATO's defence architecture, and Canada-EU commodity trade. It also signals a formal political move away from economic dependence on the US."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "CAD/USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Diversificación reduce dependencia de EE.UU., apoya CAD a largo plazo",
+            "en": "Diversification reduces US dependence, supports CAD long-term"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Nuevos flujos comerciales y de inversión benefician Europa",
+            "en": "New trade and investment flows benefit Europe"
+          }
+        },
+        {
+          "asset": "Canadian equities (TSX)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor acceso a mercados europeos es positivo para empresas canadienses",
+            "en": "Greater European market access positive for Canadian firms"
+          }
+        }
+      ],
+      "confidence": 76,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/sep/15/canada-eu-economic-alliance",
+      "published_at": "2026-09-15",
+      "time": "15h"
     },
     {
       "id": 5,
       "tag": "WATCH",
       "region": "AFRICA",
       "title": {
-        "es": "Las conversaciones de Ginebra ponen a prueba el acuerdo de paz entre Ruanda y la RDC",
-        "en": "Geneva talks put Rwanda-DRC peace deal to the test"
+        "es": "RDC-Rwanda: ¿Pueden las conversaciones de Ginebra romper el ciclo de guerra en el este del Congo?",
+        "en": "DRC-Rwanda: Can Geneva talks break the cycle of war in eastern Congo?"
       },
       "summary": {
-        "es": "Las negociaciones en Ginebra entre Ruanda y la República Democrática del Congo llegan en medio de combates continuados y disputas sobre el cumplimiento de compromisos de seguridad clave. El resultado de estas conversaciones tiene implicaciones directas para el acceso a minerales críticos —coltán, cobalto— que son insumos esenciales para cadenas de suministro de baterías y tecnología a nivel global.",
-        "en": "Geneva negotiations between Rwanda and the DRC come amid continued fighting and disputes over key security commitments. The outcome has direct implications for access to critical minerals — coltan, cobalt — that are essential inputs for global battery and technology supply chains."
+        "es": "Las conversaciones de Ginebra buscan resolver el conflicto en el este de la RDC, donde el M23 controla grandes territorios mientras Kinshasa y Kigali siguen divididos sobre seguridad y soberanía. La región es uno de los principales corredores de minerales críticos del mundo, incluyendo coltán y cobalto, esenciales para cadenas de suministro de baterías y tecnología. El resultado de estas negociaciones tendrá implicaciones directas para el acceso occidental a minerales estratégicos frente a la creciente influencia china en la región.",
+        "en": "Geneva talks aim to resolve the conflict in eastern DRC, where M23 controls large territories while Kinshasa and Kigali remain divided over security and sovereignty. The region is one of the world's principal critical minerals corridors, including coltan and cobalt essential for battery and tech supply chains. The outcome of these negotiations will directly affect Western access to strategic minerals amid growing Chinese influence in the region."
       },
       "impact": "medium",
       "market_impact": [
@@ -322,74 +301,83 @@
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Inseguridad en el este del Congo amenaza suministro de cobalto",
-            "en": "Eastern DRC insecurity threatens cobalt supply continuity"
+            "es": "Incertidumbre en RDC afecta suministro global de cobalto",
+            "en": "DRC uncertainty affects global cobalt supply"
           }
         },
         {
-          "asset": "EV battery supply chain equities",
+          "asset": "Battery/EV sector equities",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo de suministro de minerales críticos pesa sobre sector",
+            "es": "Riesgo de suministro de minerales críticos pesa en sector",
             "en": "Critical mineral supply risk weighs on sector"
+          }
+        },
+        {
+          "asset": "EM Africa sovereign bonds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad regional presiona primas de riesgo africanas",
+            "en": "Regional instability pressures African risk premiums"
           }
         }
       ],
       "confidence": 74,
       "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/15/geneva-talks-put-rwanda-drc-peace-deal-to-the-test?traffic_source=rss",
-      "published_at": "2026-09-15",
-      "time": "10h"
+      "source_url": "https://www.aljazeera.com/news/2026/9/16/drc-rwanda-can-geneva-talks-break-the-cycle-of-war-in-eastern-congo?traffic_source=rss",
+      "published_at": "2026-09-16",
+      "time": "9h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "US",
+      "region": "APAC",
       "title": {
-        "es": "Carney apuesta por atraer a los mayores inversores del mundo a Canadá",
-        "en": "Carney gambles on the world's biggest investors betting on Canada"
+        "es": "El jefe de defensa de China advierte contra la coerción, evita mencionar a EE.UU. y Japón",
+        "en": "China's defence chief warns against coercion, avoids US, Japan mention"
       },
       "summary": {
-        "es": "En plena guerra comercial con EE.UU., el primer ministro canadiense Mark Carney ha aprovechado sus conexiones en las altas finanzas globales para atraer a los mayores inversores del mundo hacia Canadá. La estrategia busca diversificar la dependencia económica de EE.UU. y posicionar a Canadá como destino de capital alternativo en un entorno de fragmentación geoeconómica.",
-        "en": "Amid an ongoing trade war with the US, Canadian PM Mark Carney leveraged his global finance connections to attract the world's largest investors to Canada. The strategy aims to diversify away from US economic dependence and position Canada as an alternative capital destination in an era of geoeconomic fragmentation."
+        "es": "El ministro de Defensa chino Dong Jun promovió una gobernanza de seguridad compartida y cooperación militar, advirtiendo contra la coerción sin mencionar explícitamente a EE.UU. o Japón. El lenguaje deliberadamente ambiguo sugiere un intento de China de proyectar liderazgo regional sin provocar una escalada directa. El discurso tiene implicaciones para la arquitectura de seguridad del Indo-Pacífico y las relaciones con socios regionales como Corea del Sur, Australia y los países de ASEAN.",
+        "en": "Chinese Defence Minister Dong Jun promoted shared security governance and military cooperation while warning against coercion without explicitly naming the US or Japan. The deliberately ambiguous language suggests China's attempt to project regional leadership without provoking direct escalation. The speech carries implications for Indo-Pacific security architecture and relations with regional partners including South Korea, Australia, and ASEAN nations."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Canadian dollar (CAD/USD)",
+          "asset": "Asian defence equities",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Entrada de inversión global apoya al dólar canadiense",
-            "en": "Global investment inflows support Canadian dollar"
+            "es": "Retórica de seguridad regional mantiene demanda de defensa elevada",
+            "en": "Regional security rhetoric sustains elevated defence demand"
           }
         },
         {
-          "asset": "Canadian equities (TSX)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Señal de confianza inversora refuerza mercado bursátil canadiense",
-            "en": "Investor confidence signal reinforces Canadian equity market"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
+          "asset": "Taiwan equities (TAIEX)",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Diversificación de flujos reduce marginalmente demanda de Treasuries",
-            "en": "Flow diversification marginally reduces Treasury demand"
+            "es": "Señales ambiguas de Beijing generan incertidumbre en mercados taiwaneses",
+            "en": "Ambiguous Beijing signals create uncertainty in Taiwan markets"
+          }
+        },
+        {
+          "asset": "AUD/USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión en Indo-Pacífico afecta divisas con exposición a China",
+            "en": "Indo-Pacific tension affects currencies with China exposure"
           }
         }
       ],
       "confidence": 70,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/c0m3neyyzm7o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-14",
-      "time": "15h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/9/16/chinas-defence-chief-warns-against-coercion-avoids-us-japan-mention?traffic_source=rss",
+      "published_at": "2026-09-16",
+      "time": "7h"
     }
   ],
-  "market_updated_at": "2026-09-16T10:21:34.857Z"
+  "market_updated_at": "2026-09-16T10:47:19.988Z"
 }
