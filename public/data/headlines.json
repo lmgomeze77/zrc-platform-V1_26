@@ -1,94 +1,64 @@
 {
-  "generated_at": "2026-09-16T10:47:19.988Z",
+  "generated_at": "2026-09-17T10:54:27.430Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1545",
-      "change": "-0.10%",
-      "up": false
-    },
-    {
-      "symbol": "IBEX 35",
-      "value": "19,677.27",
-      "change": "-0.43%",
-      "up": false
-    },
-    {
-      "symbol": "BRENT",
-      "value": "105.78",
-      "change": "-0.05%",
-      "up": false
-    },
-    {
-      "symbol": "WTI",
-      "value": "102.24",
-      "change": "-0.19%",
-      "up": false
-    },
-    {
-      "symbol": "XAU/USD",
-      "value": "4,296.09",
-      "change": "+0.99%",
+      "value": "1.1593",
+      "change": "+0.0001",
       "up": true
     },
     {
-      "symbol": "BTC/USD",
-      "value": "75,986.00",
-      "change": "-0.96%",
+      "symbol": "IBEX 35",
+      "value": "19998.20",
+      "change": "+219.20",
+      "up": true
+    },
+    {
+      "symbol": "BRENT",
+      "value": "105.59",
+      "change": "-3.16",
       "up": false
+    },
+    {
+      "symbol": "GOLD",
+      "value": "4545.70",
+      "change": "+131.10",
+      "up": true
+    },
+    {
+      "symbol": "BTC",
+      "value": "76074.69",
+      "change": "+3498.14",
+      "up": true
     },
     {
       "symbol": "VIX",
       "value": "17.71",
-      "change": "+2.97%",
+      "change": "+0.51",
       "up": true
     },
     {
       "symbol": "US 10Y",
-      "value": "4.996%",
-      "change": "+0.71%",
-      "up": true
+      "value": "4.956",
+      "change": "-0.040",
+      "up": false
+    },
+    {
+      "symbol": "EUR/GBP",
+      "value": "0.8580",
+      "change": "-0.0012",
+      "up": false
     },
     {
       "symbol": "S&P 500",
-      "value": "7,596.00",
-      "change": "+0.59%",
+      "value": "7551.81",
+      "change": "+33.72",
       "up": true
     },
     {
       "symbol": "DAX 40",
-      "value": "25,558.88",
-      "change": "+0.42%",
-      "up": true
-    },
-    {
-      "symbol": "EUR/GBP",
-      "value": "0.8564",
-      "change": "+0.12%",
-      "up": true
-    },
-    {
-      "symbol": "DXY",
-      "value": "100.03",
-      "change": "+0.05%",
-      "up": true
-    },
-    {
-      "symbol": "Natural Gas",
-      "value": "2.943",
-      "change": "+1.93%",
-      "up": true
-    },
-    {
-      "symbol": "Copper",
-      "value": "6.51",
-      "change": "+2.47%",
-      "up": true
-    },
-    {
-      "symbol": "USD/CNY",
-      "value": "6.6997",
-      "change": "+0.03%",
+      "value": "25558.88",
+      "change": "+136.36",
       "up": true
     }
   ],
@@ -98,12 +68,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Dos marineros desaparecidos tras ataque a petrolero en el Estrecho de Ormuz",
-        "en": "Two sailors missing after tanker attacked in Strait of Hormuz"
+        "es": "Bombardeo de escuela en Irán: la ONU concluye que hay motivos para creer que EE.UU. estuvo detrás del ataque",
+        "en": "Iran school bombing: grounds to believe US was behind atrocity, UN finds"
       },
       "summary": {
-        "es": "Un petrolero fue atacado en el Estrecho de Ormuz, con Irán alegando que el buque chocó con minas y EE.UU. afirmando que fue golpeado por un misil y un dron. El incidente amenaza directamente el tránsito de crudo por uno de los principales cuellos de botella energéticos del mundo. La divergencia en las versiones oficiales eleva el riesgo de escalada geopolítica con implicaciones inmediatas para los precios del petróleo y los seguros marítimos.",
-        "en": "A tanker was attacked in the Strait of Hormuz, with Iran claiming it struck mines and the US asserting it was hit by a missile and drone. The incident directly threatens crude transit through one of the world's most critical energy chokepoints. The conflicting official narratives raise escalation risk with immediate implications for oil prices and maritime insurance premiums."
+        "es": "Una misión de investigación de la ONU determinó que hay bases razonables para creer que EE.UU. ejecutó ataques militares en febrero contra una escuela e instalación deportiva en Irán, calificándolos como crímenes de guerra. El hallazgo eleva dramáticamente las tensiones entre Washington y Teherán y aumenta el riesgo de represalias iraníes o de nuevas sanciones multilaterales. Para los mercados, el impacto inmediato recae sobre el petróleo y los activos de refugio.",
+        "en": "A UN fact-finding mission concluded there are reasonable grounds to believe the US carried out military strikes in February against a school and sports facility in Iran, characterizing them as war crimes. The finding sharply escalates Washington-Tehran tensions and raises the probability of Iranian retaliation or multilateral sanction pressure on the US. Immediate market implications center on crude oil and safe-haven assets."
       },
       "impact": "high",
       "market_impact": [
@@ -112,17 +82,26 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Ataque en Ormuz amenaza suministro global de crudo",
-            "en": "Hormuz attack threatens global crude supply"
+            "es": "Riesgo de represalia iraní sobre suministro del Golfo",
+            "en": "Iran retaliation risk threatens Gulf supply"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Escalada geopolítica impulsa demanda de refugio",
+            "en": "Geopolitical escalation drives safe-haven demand"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada en Golfo Pérsico impulsa refugio seguro",
-            "en": "Persian Gulf escalation drives safe-haven demand"
+            "es": "Fuga hacia bonos en escenario de crisis",
+            "en": "Flight to bonds in crisis scenario"
           }
         },
         {
@@ -130,94 +109,181 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Choque energético presiona divisas importadoras de petróleo",
-            "en": "Energy shock pressures oil-importing EM currencies"
-          }
-        },
-        {
-          "asset": "Shipping/tanker equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Primas de seguro suben; rutas alternativas encarecen fletes",
-            "en": "Insurance premiums rise; alternative routes raise freight costs"
+            "es": "Aversión al riesgo presiona divisas emergentes",
+            "en": "Risk-off sentiment pressures emerging market currencies"
           }
         }
       ],
-      "confidence": 92,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c3n07ydqdzlvo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-15",
-      "time": "18h"
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/sep/17/iran-school-bombing-un-mission-us-military-behind-attack",
+      "published_at": "2026-09-17",
+      "time": "1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
-      "region": "EU",
+      "region": "US",
       "title": {
-        "es": "Analistas piden una respuesta más firme a Rusia tras incidentes en Dinamarca y Lituania",
-        "en": "Analysts call for step-up in response to Russia after Denmark, Lithuania incidents"
+        "es": "La Reserva Federal desafía a Trump con una subida de tasas de interés",
+        "en": "US Federal Reserve defies Trump with interest rate hike"
       },
       "summary": {
-        "es": "La UE acusó a Rusia de disparar bengalas de forma 'imprudente' a una fragata danesa, mientras se confirmó el derribo de un dron sobre Lituania, elevando la presión sobre la OTAN para una respuesta más contundente. Estos incidentes representan una escalada del patrón de provocaciones rusas en el flanco norte de la OTAN, con implicaciones directas para el gasto en defensa europeo y los mercados de deuda soberana. La posibilidad de una respuesta formal de la OTAN añade incertidumbre geopolítica a los activos europeos.",
-        "en": "The EU accused Russia of 'recklessly' firing flares at a Danish frigate, while a drone was shot down over Lithuania, intensifying pressure on NATO for a stronger response. These incidents represent an escalation in Russia's pattern of provocations along NATO's northern flank, with direct implications for European defence spending and sovereign debt markets. The prospect of a formal NATO response adds geopolitical uncertainty to European assets."
+        "es": "La Fed subió sus tasas clave por primera vez en tres años, enfrentándose directamente a las presiones del presidente Trump para recortarlas, lo que genera una confrontación institucional sin precedentes recientes. El choque entre el ejecutivo y el banco central amenaza la credibilidad de la independencia de la Fed y añade volatilidad macroeconómica en un entorno ya tenso por aranceles. Los mercados de renta fija y el dólar son los más afectados.",
+        "en": "The Federal Reserve raised its benchmark interest rate for the first time in three years, directly defying President Trump's repeated demands for cuts, triggering an unprecedented institutional confrontation. The executive-central bank clash threatens Fed independence credibility and adds macro volatility on top of existing tariff tensions. Fixed income markets and the dollar face the most immediate repricing."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European defence equities",
+          "asset": "US 10Y Treasury",
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Presión para aumentar gasto en defensa beneficia sector",
-            "en": "Pressure for increased defence spending benefits sector"
+            "es": "Subida de tasas eleva rendimientos en toda la curva",
+            "en": "Rate hike pushes yields higher across the curve"
           }
         },
         {
           "asset": "EUR/USD",
-          "direction": "down",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada en flanco OTAN pesa sobre el euro",
-            "en": "NATO flank escalation weighs on the euro"
+            "es": "Dólar presionado por incertidumbre política vs. diferencial de tasas",
+            "en": "Dollar caught between policy uncertainty and rate differential"
           }
         },
         {
-          "asset": "European equities",
+          "asset": "US equities",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Incertidumbre geopolítica en Europa presiona índices",
-            "en": "Geopolitical uncertainty in Europe pressures equity indices"
+            "es": "Tasas más altas comprimen múltiplos de valoración",
+            "en": "Higher rates compress equity valuation multiples"
           }
         },
         {
-          "asset": "Natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "Gold",
+          "direction": "mixed",
+          "magnitude": "medium",
           "note": {
-            "es": "Tensión con Rusia reaviva inquietud sobre suministro energético",
-            "en": "Russia tensions revive energy supply concerns"
+            "es": "Tasas reales más altas presionan al oro, pero incertidumbre lo sostiene",
+            "en": "Higher real rates pressure gold, uncertainty provides support"
           }
         }
       ],
-      "confidence": 89,
+      "confidence": 93,
       "source": "France 24",
-      "source_url": "http://www.france24.com/en/analysts-call-for-step-up-in-response-to-russia-after-denmark-lithuania-incidents",
-      "published_at": "2026-09-15",
-      "time": "15h"
+      "source_url": "http://www.france24.com/en/us-federal-reserve-defies-trump-with-interest-rate-hike",
+      "published_at": "2026-09-16",
+      "time": "13h"
     },
     {
       "id": 3,
       "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "La jefa de la UE respalda plan para que Canadá sea 'miembro asociado'",
+        "en": "EU chief backs plan for Canada to become 'associate member'"
+      },
+      "summary": {
+        "es": "La presidenta de la Comisión Europea, Ursula von der Leyen, respaldó una propuesta para otorgar a Canadá el estatus de 'miembro asociado' de la UE, provocando una reacción inmediata de Trump con amenazas de cortar el comercio con Europa. La iniciativa señala una reconfiguración geopolítica del bloque occidental, con la UE buscando activamente nuevos socios estratégicos ante el distanciamiento de Washington. Tiene implicaciones significativas para los flujos de inversión transatlánticos y la arquitectura del comercio global.",
+        "en": "European Commission President Ursula von der Leyen backed a proposal granting Canada 'associate member' status in the EU, triggering immediate threats from Trump to cut EU trade. The initiative signals a geopolitical realignment within the Western bloc, with the EU actively seeking new strategic partners as Washington distances itself. It carries significant implications for transatlantic investment flows and global trade architecture."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "EUR/USD",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Nuevas tensiones comerciales EE.UU.-UE crean volatilidad",
+            "en": "New US-EU trade tensions create currency volatility"
+          }
+        },
+        {
+          "asset": "Canadian dollar (CAD)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Acceso preferencial al mercado europeo apoya al CAD",
+            "en": "Preferential EU market access supports CAD"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de aranceles EE.UU. vs. diversificación comercial",
+            "en": "US tariff risk vs. trade diversification benefits"
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/cjwyzrr9d3dko?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-17",
+      "time": "10h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Inteligencia de EE.UU. advierte sobre robo chino de tecnología F-35 mediante venta a Arabia Saudí",
+        "en": "U.S. Intelligence Warns of China Theft Over Sale of F-35 Jets to Saudis"
+      },
+      "summary": {
+        "es": "Informes internos del Pentágono, incluyendo uno de la Agencia de Inteligencia de Defensa, advierten que China podría obtener tecnología de los cazas F-35 mediante espionaje o cooperación con Arabia Saudí si se completa la venta. El caso ilustra la tensión entre las prioridades comerciales de la administración Trump en Oriente Medio y los imperativos de seguridad nacional en materia de soberanía tecnológica. Tiene implicaciones directas para los contratistas de defensa y el debate más amplio sobre transferencias de tecnología a aliados no OTAN.",
+        "en": "Internal Pentagon reports, including one from the Defense Intelligence Agency, warn that China could acquire F-35 jet technology through espionage or cooperation with Saudi Arabia if the proposed sale proceeds. The case illustrates the tension between the Trump administration's commercial priorities in the Middle East and national security imperatives around tech sovereignty. It has direct implications for defense contractors and the broader debate on technology transfers to non-NATO allies."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "US defense sector equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Venta potencial vs. riesgo de bloqueo regulatorio",
+            "en": "Potential sale vs. risk of regulatory block"
+          }
+        },
+        {
+          "asset": "Lockheed Martin (LMT)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre sobre aprobación final del contrato F-35",
+            "en": "Uncertainty over final F-35 contract approval"
+          }
+        },
+        {
+          "asset": "USD/SAR",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión diplomática podría afectar lazos financieros bilaterales",
+            "en": "Diplomatic friction could affect bilateral financial ties"
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/16/us/politics/us-intelligence-china-f35-jets-saudis.html",
+      "published_at": "2026-09-16",
+      "time": "11h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
       "region": "GLOBAL",
       "title": {
-        "es": "La economía mundial se vuelve desconfiada de EE.UU.",
+        "es": "La economía mundial se vuelve cautelosa con EE.UU.",
         "en": "The World Economy Is Becoming Wary of the U.S."
       },
       "summary": {
-        "es": "La acumulación de deuda por parte de la administración Trump y su uso agresivo de sanciones están erosionando la confianza global en Estados Unidos como ancla de estabilidad económica. La desdolarización gradual y el reposicionamiento de socios comerciales hacia bloques alternativos representa un riesgo estructural para los Treasuries y el dólar. Este cambio de percepción puede acelerar la fragmentación del sistema financiero internacional.",
-        "en": "The Trump administration's debt accumulation and aggressive use of sanctions are eroding global confidence in the US as the anchor of economic stability. Gradual de-dollarization and trading partners repositioning toward alternative blocs represents a structural risk for Treasuries and the dollar. This shift in perception may accelerate fragmentation of the international financial system."
+        "es": "La posición de EE.UU. como ancla de estabilidad económica global se debilita a medida que la administración Trump acumula deuda y amplía el uso de sanciones, según un análisis del NYT. El deterioro de la confianza en los activos estadounidenses como refugio seguro podría acelerar la diversificación de reservas hacia el euro, el oro y otros activos, con implicaciones estructurales para el dólar. Este proceso, si se profundiza, representa un riesgo sistémico de largo plazo para la arquitectura financiera global.",
+        "en": "The US position as an anchor of global economic stability is eroding as the Trump administration accumulates debt and expands sanctions use, according to an NYT analysis. Declining confidence in US assets as safe havens could accelerate reserve diversification toward the euro, gold, and other instruments, with structural implications for the dollar. If deepened, this trend represents a long-term systemic risk to global financial architecture."
       },
       "impact": "high",
       "market_impact": [
@@ -226,17 +292,8 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Pérdida de confianza global presiona demanda de dólares",
-            "en": "Eroding global confidence pressures dollar demand"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Reducción de tenedores extranjeros eleva yields",
-            "en": "Reduced foreign holdings push yields higher"
+            "es": "Erosión de confianza en activos de reserva en dólares",
+            "en": "Eroding confidence in dollar-denominated reserve assets"
           }
         },
         {
@@ -244,170 +301,83 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Alternativa a dólar como reserva de valor",
-            "en": "Alternative to dollar as store of value"
+            "es": "Diversificación de reservas impulsa demanda de oro",
+            "en": "Reserve diversification drives gold demand"
           }
         },
         {
-          "asset": "EM local currency bonds",
-          "direction": "mixed",
+          "asset": "US 10Y Treasury",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Menor apetito extranjero por deuda estadounidense",
+            "en": "Reduced foreign appetite for US debt"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Diversificación de reservas puede beneficiar activos EM selectivos",
-            "en": "Reserve diversification may selectively benefit EM assets"
+            "es": "Euro beneficiado como alternativa de reserva",
+            "en": "Euro benefits as reserve alternative"
           }
         }
       ],
-      "confidence": 82,
+      "confidence": 78,
       "source": "New York Times",
       "source_url": "https://www.nytimes.com/2026/09/16/business/trump-debt-sanctions-global-economy.html",
       "published_at": "2026-09-16",
-      "time": "1h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Carney dice que Canadá buscará una 'alianza única de seguridad y económica' con la UE en medio de disputa comercial con EE.UU.",
-        "en": "Carney says Canada will pursue 'unique security and economic alliance' with EU amid US trade spat"
-      },
-      "summary": {
-        "es": "El primer ministro canadiense Mark Carney anunció que Canadá buscará una alianza económica y de seguridad singular con Europa, reposicionando al país en el nuevo orden económico global frente a las tensiones comerciales con Washington. Este pivote transatlántico tiene implicaciones para los flujos de inversión, la arquitectura de defensa de la OTAN y el comercio de commodities entre Canadá y la UE. Representa además una señal política de distanciamiento formal de la dependencia económica de EE.UU.",
-        "en": "Canadian PM Mark Carney announced Canada will pursue a unique economic and security alliance with Europe, repositioning the country within the new global economic order amid trade tensions with Washington. This transatlantic pivot has implications for investment flows, NATO's defence architecture, and Canada-EU commodity trade. It also signals a formal political move away from economic dependence on the US."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "CAD/USD",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Diversificación reduce dependencia de EE.UU., apoya CAD a largo plazo",
-            "en": "Diversification reduces US dependence, supports CAD long-term"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Nuevos flujos comerciales y de inversión benefician Europa",
-            "en": "New trade and investment flows benefit Europe"
-          }
-        },
-        {
-          "asset": "Canadian equities (TSX)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor acceso a mercados europeos es positivo para empresas canadienses",
-            "en": "Greater European market access positive for Canadian firms"
-          }
-        }
-      ],
-      "confidence": 76,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/sep/15/canada-eu-economic-alliance",
-      "published_at": "2026-09-15",
-      "time": "15h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "RDC-Rwanda: ¿Pueden las conversaciones de Ginebra romper el ciclo de guerra en el este del Congo?",
-        "en": "DRC-Rwanda: Can Geneva talks break the cycle of war in eastern Congo?"
-      },
-      "summary": {
-        "es": "Las conversaciones de Ginebra buscan resolver el conflicto en el este de la RDC, donde el M23 controla grandes territorios mientras Kinshasa y Kigali siguen divididos sobre seguridad y soberanía. La región es uno de los principales corredores de minerales críticos del mundo, incluyendo coltán y cobalto, esenciales para cadenas de suministro de baterías y tecnología. El resultado de estas negociaciones tendrá implicaciones directas para el acceso occidental a minerales estratégicos frente a la creciente influencia china en la región.",
-        "en": "Geneva talks aim to resolve the conflict in eastern DRC, where M23 controls large territories while Kinshasa and Kigali remain divided over security and sovereignty. The region is one of the world's principal critical minerals corridors, including coltan and cobalt essential for battery and tech supply chains. The outcome of these negotiations will directly affect Western access to strategic minerals amid growing Chinese influence in the region."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Cobalt futures",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre en RDC afecta suministro global de cobalto",
-            "en": "DRC uncertainty affects global cobalt supply"
-          }
-        },
-        {
-          "asset": "Battery/EV sector equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de suministro de minerales críticos pesa en sector",
-            "en": "Critical mineral supply risk weighs on sector"
-          }
-        },
-        {
-          "asset": "EM Africa sovereign bonds",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad regional presiona primas de riesgo africanas",
-            "en": "Regional instability pressures African risk premiums"
-          }
-        }
-      ],
-      "confidence": 74,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/16/drc-rwanda-can-geneva-talks-break-the-cycle-of-war-in-eastern-congo?traffic_source=rss",
-      "published_at": "2026-09-16",
-      "time": "9h"
+      "time": "16h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "EURASIA",
       "title": {
-        "es": "El jefe de defensa de China advierte contra la coerción, evita mencionar a EE.UU. y Japón",
-        "en": "China's defence chief warns against coercion, avoids US, Japan mention"
+        "es": "Polonia reafirma su apoyo a Ucrania tras ataques de drones rusos",
+        "en": "Poland reaffirms support for Ukraine after drone strikes"
       },
       "summary": {
-        "es": "El ministro de Defensa chino Dong Jun promovió una gobernanza de seguridad compartida y cooperación militar, advirtiendo contra la coerción sin mencionar explícitamente a EE.UU. o Japón. El lenguaje deliberadamente ambiguo sugiere un intento de China de proyectar liderazgo regional sin provocar una escalada directa. El discurso tiene implicaciones para la arquitectura de seguridad del Indo-Pacífico y las relaciones con socios regionales como Corea del Sur, Australia y los países de ASEAN.",
-        "en": "Chinese Defence Minister Dong Jun promoted shared security governance and military cooperation while warning against coercion without explicitly naming the US or Japan. The deliberately ambiguous language suggests China's attempt to project regional leadership without provoking direct escalation. The speech carries implications for Indo-Pacific security architecture and relations with regional partners including South Korea, Australia, and ASEAN nations."
+        "es": "Varsovia reforzó su compromiso con Kiev tras ataques de drones rusos cerca de la frontera polaco-ucraniana, prometiendo una respuesta 'no provocativa pero seria' a Moscú. La proximidad geográfica de los ataques a territorio polaco aumenta el riesgo de una activación del Artículo 5 de la OTAN si hay un incidente transfronterizo. Para los mercados, el factor clave es el potencial de escalada hacia un conflicto OTAN-Rusia directo.",
+        "en": "Warsaw reinforced its commitment to Kyiv after Russian drone strikes near the Poland-Ukraine border, pledging a 'nonprovocative but serious response' to Moscow. The geographic proximity of strikes to Polish territory raises the risk of NATO Article 5 activation in the event of a cross-border incident. For markets, the key factor is the escalation potential toward a direct NATO-Russia conflict."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Asian defence equities",
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada OTAN-Rusia pesa sobre activos europeos",
+            "en": "NATO-Russia escalation risk weighs on European assets"
+          }
+        },
+        {
+          "asset": "Brent crude",
           "direction": "up",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Retórica de seguridad regional mantiene demanda de defensa elevada",
-            "en": "Regional security rhetoric sustains elevated defence demand"
+            "es": "Conflicto ampliado amenaza suministros energéticos europeos",
+            "en": "Widened conflict threatens European energy supplies"
           }
         },
         {
-          "asset": "Taiwan equities (TAIEX)",
-          "direction": "mixed",
-          "magnitude": "low",
+          "asset": "Polish zloty (PLN)",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Señales ambiguas de Beijing generan incertidumbre en mercados taiwaneses",
-            "en": "Ambiguous Beijing signals create uncertainty in Taiwan markets"
-          }
-        },
-        {
-          "asset": "AUD/USD",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión en Indo-Pacífico afecta divisas con exposición a China",
-            "en": "Indo-Pacific tension affects currencies with China exposure"
+            "es": "Riesgo geográfico directo presiona la divisa polaca",
+            "en": "Direct geographic risk pressures Polish currency"
           }
         }
       ],
-      "confidence": 70,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/16/chinas-defence-chief-warns-against-coercion-avoids-us-japan-mention?traffic_source=rss",
+      "confidence": 82,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/poland-reaffirms-support-for-ukraine-after-drone-strikes/a-79291144?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-09-16",
-      "time": "7h"
+      "time": "22h"
     }
   ],
-  "market_updated_at": "2026-09-17T10:31:04.956Z"
+  "market_updated_at": "2026-09-17T10:54:27.430Z"
 }
