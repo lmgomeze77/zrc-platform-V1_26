@@ -24,6 +24,7 @@ import Parser from "rss-parser";
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { assertHeadlinesDocument, assertMarketTicker } from "./headlines-schema.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR = join(__dirname, "..", "public", "data");
@@ -444,39 +445,6 @@ function relativeTime(iso) {
   return `${d}d`;
 }
 
-// ─── MARKET DATA (kept simple, Haiku) ─────────────────────────
-async function generateMarketData() {
-  console.log("📊 Fetching live market data via Haiku + web_search...");
-
-  const today = new Date().toISOString().split("T")[0];
-  const response = await callAnthropic(
-    {
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 1500,
-      tools: [{ type: "web_search_20250305", name: "web_search" }],
-      system: `You are a market data feed. Return ONLY a raw JSON array, no preamble, no markdown.
-
-Each object: { "symbol": string, "value": string, "change": string with + or -, "up": boolean }
-
-10 instruments in this exact order:
-1. EUR/USD  2. IBEX 35  3. BRENT  4. GOLD  5. BTC
-6. VIX  7. US 10Y  8. EUR/GBP  9. S&P 500  10. DAX 40`,
-      messages: [{ role: "user", content: `Today is ${today}. Fetch latest prices. Return JSON array only.` }],
-    },
-    { label: "datos de mercado" }
-  );
-
-  const jsonText = response.content
-    .filter((b) => b.type === "text")
-    .map((b) => b.text)
-    .join("\n");
-  const cleaned = jsonText.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
-  const start = cleaned.indexOf("[");
-  const end = cleaned.lastIndexOf("]");
-  if (start === -1) throw new Error("Market data: no JSON array");
-  return JSON.parse(cleaned.slice(start, end + 1));
-}
-
 // ─── MAIN ─────────────────────────────────────────────────────
 async function main() {
   const today = new Date().toISOString().split("T")[0];
@@ -489,8 +457,9 @@ async function main() {
     try { previous = JSON.parse(readFileSync(OUTPUT_FILE, "utf-8")); } catch (_) {}
   }
 
+  const preservedMarketTicker = assertMarketTicker(previous.market_ticker, "existing market_ticker");
+  const preservedMarketUpdatedAt = previous.market_updated_at;
   let headlines = null;
-  let marketTicker = null;
 
   // Headlines pipeline (hard fail if it breaks — better keep yesterday's data)
   try {
@@ -526,21 +495,14 @@ async function main() {
     process.exit(1);
   }
 
-  // Market data (soft fail — se conserva el ticker anterior, nunca se vacia)
-  try {
-    marketTicker = await generateMarketData();
-    console.log(`   ✅ Market instruments: ${marketTicker.length}`);
-  } catch (err) {
-    console.warn(`   ⚠️  Market data failed: ${err.message} — se conserva el ticker anterior`);
-  }
-
   const output = {
     ...previous,
     generated_at: new Date().toISOString(),
-    market_ticker: marketTicker ?? previous.market_ticker ?? [],
+    market_ticker: preservedMarketTicker,
+    market_updated_at: preservedMarketUpdatedAt,
     headlines: headlines,
   };
-  if (marketTicker) output.market_updated_at = new Date().toISOString();
+  assertHeadlinesDocument(output);
 
   if (!existsSync(OUTPUT_DIR)) mkdirSync(OUTPUT_DIR, { recursive: true });
   writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2), "utf-8");
