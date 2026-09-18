@@ -8,6 +8,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { assertHeadlinesDocument, assertMarketTicker } from "./headlines-schema.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR = join(__dirname, "..", "public", "data");
@@ -53,12 +54,13 @@ async function fetchMarketData() {
       role: "user",
       content: `Search for today's current market prices (${today}) for these 15 instruments and return ONLY a JSON array.
 
-Each object: { "symbol": "...", "value": "...", "change": "...%", "up": true/false }
+Each object: { "symbol": "...", "value": "...", "change": "...%", "up": true/false }.
+Use the symbol labels below exactly, including capitalization and punctuation. `change` must be a signed percentage.
 
 Instruments in order:
-1. EUR/USD  2. IBEX 35  3. BRENT crude  4. WTI crude  5. GOLD (XAU/USD)
-6. BTC/USD  7. VIX  8. US 10Y yield  9. S&P 500  10. DAX 40
-11. EUR/GBP  12. DXY dollar index  13. Natural Gas  14. Copper  15. USD/CNY
+1. EUR/USD  2. IBEX 35  3. BRENT Crude  4. WTI Crude  5. GOLD (XAU/USD)
+6. BTC/USD  7. VIX  8. US 10Y Yield  9. S&P 500  10. DAX 40
+11. EUR/GBP  12. DXY Dollar Index  13. Natural Gas  14. Copper  15. USD/CNY
 
 IMPORTANT: After searching, your complete response must be ONLY the JSON array. Start your response with [ and end with ]. No other text.`
     }]
@@ -112,7 +114,7 @@ async function main() {
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     try {
       console.log(`   Attempt ${attempt}/${MAX_RETRIES}...`);
-      marketTicker = await fetchMarketData();
+      marketTicker = assertMarketTicker(await fetchMarketData(), "fetched market_ticker");
       break;
     } catch (err) {
       console.error(`   ❌ Attempt ${attempt} failed: ${err.message}`);
@@ -139,6 +141,7 @@ async function main() {
     generated_at: existing.generated_at || new Date().toISOString(),
     headlines: existing.headlines || [],
   };
+  assertHeadlinesDocument(output);
 
   if (!existsSync(OUTPUT_DIR)) mkdirSync(OUTPUT_DIR, { recursive: true });
   writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2), "utf-8");
