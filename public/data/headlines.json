@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T10:29:12.380Z",
+  "generated_at": "2026-09-19T10:15:09.348Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,14 +96,14 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "EURASIA",
       "title": {
-        "es": "Arabia Saudita y hutíes intercambian golpes mientras el conflicto escala",
-        "en": "Saudi Arabia, Houthis exchange blows as conflict escalates"
+        "es": "Trump firma amplio proyecto de ley de sanciones contra Rusia",
+        "en": "Trump signs sweeping Russia sanctions bill"
       },
       "summary": {
-        "es": "La escalada entre Arabia Saudita y los hutíes continúa intensificándose, con ataques de drones reportados cerca de La Meca y cinco muertos confirmados. Esta dinámica amenaza directamente la estabilidad energética regional y las rutas de exportación del Golfo, con implicaciones inmediatas para los precios del petróleo.",
-        "en": "The escalation between Saudi Arabia and the Houthis continues to intensify, with drone attacks reported near Mecca and five confirmed deaths. This dynamic directly threatens regional energy stability and Gulf export routes, with immediate implications for oil prices."
+        "es": "Trump ha firmado el proyecto de ley de sanciones contra Rusia nombrado en honor al fallecido senador Lindsey Graham, un firme defensor de la ayuda a Ucrania. Esta acción representa un giro significativo en la política exterior de Trump respecto a Moscú y tendrá implicaciones directas para los flujos de energía rusos, el rublo y los mercados de deuda soberana. Los inversores en activos europeos y mercados emergentes con exposición a Rusia deberán recalibrar el riesgo geopolítico.",
+        "en": "Trump has signed the sweeping Russia sanctions bill named after the late Senator Lindsey Graham, a staunch advocate of Ukrainian aid. This marks a significant pivot in Trump's Russia policy and carries direct implications for Russian energy flows, the ruble, and sovereign debt markets. Investors with exposure to European assets and Russia-linked EM instruments will need to reprice geopolitical risk."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +112,26 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de interrupción de suministro desde el Golfo",
-            "en": "Supply disruption risk from Gulf region escalation"
+            "es": "Sanciones amenazan oferta de crudo ruso al mercado global",
+            "en": "Sanctions threaten Russian crude supply to global market"
+          }
+        },
+        {
+          "asset": "Russian ruble",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Presión sobre el rublo ante nuevas restricciones financieras",
+            "en": "Ruble pressured by fresh financial restrictions"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Sectores industriales afectados por riesgo energético elevado",
+            "en": "Industrial sectors hit by elevated energy risk"
           }
         },
         {
@@ -121,8 +139,56 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Huida hacia activos refugio ante escalada geopolítica",
-            "en": "Safe haven demand rising on geopolitical escalation"
+            "es": "Demanda de refugio seguro ante escalada geopolítica",
+            "en": "Safe-haven demand rises on geopolitical escalation"
+          }
+        }
+      ],
+      "confidence": 92,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cqvgy34ndj4eo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-18",
+      "time": "12h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Arabia Saudita llama a aliados en busca de apoyo militar mientras los hutíes controlan el estrecho de Bab el Mandeb",
+        "en": "Saudi Arabia turns to allies for military support as Houthis tighten grip on Bab el Mandeb chokepoint"
+      },
+      "summary": {
+        "es": "Arabia Saudita ha solicitado apoyo militar a sus aliados ante el avance de los rebeldes hutíes apoyados por Irán en la costa del Mar Rojo y el estrecho de Bab el Mandeb, mientras ataques con drones golpean la infraestructura petrolera del reino. El control hutí del corredor marítimo representa una amenaza directa al tráfico de energía global y puede provocar disrupciones en el comercio internacional. La crisis energética emergente tiene implicaciones inmediatas para los precios del crudo y las cadenas de suministro.",
+        "en": "Saudi Arabia has sought military support from allies as Iran-backed Houthi rebels tighten their hold on Yemen's Red Sea coast and the Bab el Mandeb chokepoint, while drone strikes hit the kingdom's oil infrastructure. Houthi control of this maritime corridor poses a direct threat to global energy traffic and could trigger supply chain disruptions. The emerging energy crisis carries immediate implications for crude prices and global logistics."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Chokepoint del Mar Rojo en riesgo; infraestructura saudí atacada",
+            "en": "Red Sea chokepoint at risk; Saudi oil infrastructure struck"
+          }
+        },
+        {
+          "asset": "Shipping/freight rates",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Desvíos de rutas marítimas elevan costes de flete",
+            "en": "Maritime route diversions drive freight costs higher"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada regional impulsa refugio seguro",
+            "en": "Regional escalation boosts safe-haven demand"
           }
         },
         {
@@ -130,265 +196,199 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Presión sobre economías importadoras de petróleo emergentes",
-            "en": "Pressure on oil-importing emerging market economies"
+            "es": "Energía más cara presiona divisas importadoras de petróleo",
+            "en": "Costlier energy pressures oil-importing EM currencies"
           }
         }
       ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/saudi-arabia-houthis-exchange-blows-as-conflict-escalates/a-79313776?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-17",
-      "time": "18h"
+      "confidence": 91,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/tv-shows/the-world-this-week/20260918-time-to-stop-suggesting-ai-is-conscious-riyadh-calling-saudi-s-hour-of-news-russian-elections",
+      "published_at": "2026-09-18",
+      "time": "14h"
     },
     {
-      "id": 2,
+      "id": 3,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "EU",
       "title": {
-        "es": "Italia desplegará buques de guerra para proteger el tráfico marítimo en Bab al-Mandeb",
-        "en": "Italy to deploy warships to protect shipping through Bab al-Mandeb"
+        "es": "¿Podría EE.UU. retirar un tercio de sus tropas de Europa? Lo que eso significaría",
+        "en": "Could US pull one-third of troops from Europe? What that would mean"
       },
       "summary": {
-        "es": "El ministro de Defensa italiano advierte sobre un grave impacto económico si Bab al-Mandeb se vuelve intransitable, y anuncia despliegue naval unilateral ante los retrasos de la UE. El estrecho es un corredor crítico para el comercio global de energía y contenedores, y su bloqueo sostenido elevaría los costos de transporte y presionaría la inflación europea.",
-        "en": "Italy's defence minister warns of severe economic fallout if Bab al-Mandeb becomes impassable and announces unilateral naval deployment amid EU delays. The strait is a critical corridor for global energy and container trade; sustained blockage would raise shipping costs and pressure European inflation."
+        "es": "El Pentágono estaría evaluando propuestas para reducir significativamente su presencia militar en Europa, lo que supondría un reajuste estratégico sin precedentes para la OTAN en medio de conflictos activos en Ucrania y Oriente Medio. Una reducción de tal magnitud presionaría a los países europeos a acelerar sus gastos en defensa y podría debilitar la credibilidad disuasoria de la alianza frente a Rusia. Los mercados de defensa europeos y los bonos soberanos de los países del flanco este serían los activos más afectados.",
+        "en": "The Pentagon is reportedly considering proposals to substantially reduce its military footprint across the Atlantic, which would represent an unprecedented strategic realignment for NATO amid active conflicts in Ukraine and the Middle East. Such a reduction would pressure European nations to rapidly accelerate defence spending and could undermine NATO's deterrence credibility vis-à-vis Russia. European defence equities and sovereign bonds of eastern flank countries would be among the most affected assets."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
+          "asset": "European defence equities",
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Chokepoint energético crítico en riesgo de cierre",
-            "en": "Critical energy chokepoint at risk of closure"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Costos de importación más altos afectan márgenes corporativos",
-            "en": "Higher import costs compress corporate margins"
-          }
-        },
-        {
-          "asset": "Shipping sector ETFs",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Rutas alternativas encarecen fletes globales",
-            "en": "Alternative routing drives up global freight rates"
+            "es": "Reducción de tropas de EE.UU. obliga a Europa a rearmar",
+            "en": "US troop reduction forces European rearmament spending"
           }
         },
         {
           "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Presión inflacionaria importada debilita perspectiva europea",
-            "en": "Imported inflation pressure weakens European outlook"
-          }
-        }
-      ],
-      "confidence": 87,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/9/18/italy-to-deploy-warships-to-protect-shipping-through-bab-al-mandeb?traffic_source=rss",
-      "published_at": "2026-09-18",
-      "time": "7h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "Trump avanza con la venta de cazas F-35 a Arabia Saudita a pesar de alertas de inteligencia",
-        "en": "Trump Moves Ahead With F-35 Jet Sales to Saudi Arabia Despite Intelligence Concerns"
-      },
-      "summary": {
-        "es": "Agencias de inteligencia estadounidenses han advertido internamente que China podría adquirir o robar tecnología de los F-35 si los aviones son vendidos a Arabia Saudita. La decisión de Trump de avanzar de todos modos redefine el equilibrio tecnológico-militar en el Golfo y eleva el riesgo de proliferación de tecnología sensible hacia Beijing.",
-        "en": "U.S. intelligence agencies have internally warned that China could acquire or steal F-35 technology if the jets are sold to Saudi Arabia. Trump's decision to proceed redefines the military-technological balance in the Gulf and raises the risk of sensitive technology proliferation toward Beijing."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Lockheed Martin (LMT)",
-          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Contrato de exportación significativo para el fabricante",
-            "en": "Significant export contract for the manufacturer"
+            "es": "Mayor riesgo de seguridad europea pesa sobre el euro",
+            "en": "Elevated European security risk weighs on the euro"
           }
         },
         {
-          "asset": "US Defense sector equities",
-          "direction": "up",
+          "asset": "Eastern EU sovereign bonds",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Señal expansiva para exportaciones de defensa estadounidenses",
-            "en": "Expansive signal for US defense exports"
+            "es": "Primas de riesgo suben en países del flanco oriental de la OTAN",
+            "en": "Risk premiums rise for NATO eastern flank countries"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Escalada tecnológica en la competencia EEUU-China",
-            "en": "Tech escalation in US-China strategic competition"
+            "es": "Incertidumbre sobre defensa occidental impulsa refugio",
+            "en": "Uncertainty over western defence drives safe-haven flows"
           }
         }
       ],
-      "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/17/us/politics/trump-f35-jet-saudi-arabia.html",
-      "published_at": "2026-09-18",
-      "time": "7h"
+      "confidence": 88,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/9/19/could-us-pull-one-third-of-troops-from-europe-what-that-would-mean?traffic_source=rss",
+      "published_at": "2026-09-19",
+      "time": "3h"
     },
     {
       "id": 4,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "LATAM",
       "title": {
-        "es": "Trump dice que se ha logrado un 'gran progreso' hacia una base militar estadounidense en Polonia",
-        "en": "Trump says 'major progress' made towards US military base in Poland"
+        "es": "Delcy Rodríguez se reunirá con Trump en Nueva York en un gesto inédito de acercamiento",
+        "en": "Delcy Rodríguez to meet Trump in New York in unprecedented rapprochement gesture"
       },
       "summary": {
-        "es": "Washington y Varsovia avanzan hacia el establecimiento de una base militar permanente de EEUU en Polonia, reforzando el flanco oriental de la OTAN en un contexto en que la administración Trump revisa su presencia en Europa. Este desarrollo tiene implicaciones directas para el gasto en defensa europeo y la arquitectura de seguridad continental.",
-        "en": "Washington and Warsaw are advancing toward a permanent U.S. military base in Poland, reinforcing NATO's eastern flank even as the Trump administration reviews its broader European troop presence. This development has direct implications for European defense spending and the continent's security architecture."
+        "es": "La vicepresidenta venezolana Delcy Rodríguez se reunirá con el presidente Trump en Nueva York en la primera visita de un alto cargo venezolano a la ONU desde el discurso de Maduro en 2018, marcando un acercamiento diplomático sin precedentes. Este movimiento tiene implicaciones directas para las sanciones petroleras sobre Venezuela, los flujos de crudo venezolano y la disputa territorial con Guyana. Un posible alivio de sanciones podría pesar sobre los precios del crudo y afectar la estrategia de Exxon en la región.",
+        "en": "Venezuelan Vice President Delcy Rodríguez will meet President Trump in New York in the first visit by a senior Venezuelan official to the UN since Maduro's 2018 speech, marking an unprecedented diplomatic rapprochement. This move has direct implications for oil sanctions on Venezuela, Venezuelan crude flows, and the territorial dispute with Guyana. A potential sanctions relief scenario could weigh on crude prices and affect Exxon's regional strategy."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "European defense equities",
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Posible alivio de sanciones aumentaría oferta venezolana de crudo",
+            "en": "Potential sanctions relief would boost Venezuelan crude supply"
+          }
+        },
+        {
+          "asset": "Venezuelan sovereign bonds",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor compromiso de EEUU impulsa gasto de defensa europeo",
-            "en": "Greater US commitment drives European defense spending"
+            "es": "Acercamiento diplomático mejora perspectivas de deuda venezolana",
+            "en": "Diplomatic rapprochement improves Venezuelan debt outlook"
           }
         },
         {
-          "asset": "Polish Zloty (PLN)",
-          "direction": "up",
+          "asset": "Exxon Mobil equity",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Seguridad reforzada mejora percepción de riesgo en Polonia",
-            "en": "Enhanced security improves Poland risk perception"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Gasto de defensa adicional suma a presión fiscal en EEUU",
-            "en": "Additional defense spending adds to US fiscal pressure"
+            "es": "Tensión Venezuela-Guyana afecta activos de Exxon en la región",
+            "en": "Venezuela-Guyana tension affects Exxon's regional assets"
           }
         }
       ],
-      "confidence": 78,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260918-trump-says-major-progress-made-toward-us-military-base-in-poland",
+      "confidence": 82,
+      "source": "El País",
+      "source_url": "https://elpais.com/america/2026-09-18/delcy-rodriguez-se-reunira-con-trump-en-nueva-york-en-un-gesto-inedito-de-acercamiento.html",
       "published_at": "2026-09-18",
-      "time": "9h"
+      "time": "11h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "EURASIA",
+      "region": "LATAM",
       "title": {
-        "es": "Rusia vota por un nuevo parlamento en elecciones controladas",
-        "en": "Russia votes for new parliament in controlled elections"
+        "es": "El Congreso de Bolivia aprueba un préstamo del FMI de 1.900 millones de dólares en medio de amenazas de protesta",
+        "en": "Bolivia's Congress approves $1.9bn IMF loan amid protest threats"
       },
       "summary": {
-        "es": "Rusia celebra elecciones para la Duma del Estado por primera vez desde la invasión de Ucrania en 2022, en un proceso altamente controlado en el que se espera que el partido de Putin obtenga la mayoría. El proceso se produce simultáneamente a ataques de drones rusos en la región de Kiev, consolidando el marco político interno que sostiene la guerra.",
-        "en": "Russia holds State Duma elections for the first time since the 2022 invasion of Ukraine in a tightly controlled process where Putin's party is expected to win decisively. The vote coincides with Russian drone strikes on the Kyiv region, consolidating the domestic political framework supporting the war effort."
+        "es": "El Congreso boliviano ha aprobado un préstamo del FMI de 1.900 millones de dólares, aunque los sindicatos advierten que los recortes a los subsidios de combustible incluidos en el acuerdo podrían desencadenar protestas generalizadas y elevar los costes de vida. Bolivia, que atraviesa una crisis de divisas y escasez de dólares, enfrenta un delicado equilibrio entre la estabilización macroeconómica y la estabilidad social. El riesgo de protesta y posible reversión política representa un factor de incertidumbre para inversores en deuda soberana regional.",
+        "en": "Bolivia's Congress has approved a $1.9bn IMF loan, but unions warn that fuel subsidy cuts embedded in the deal could trigger widespread protests and rising living costs. Bolivia, facing a currency crisis and dollar shortages, confronts a delicate balance between macroeconomic stabilisation and social stability. Protest risk and potential policy reversal represent uncertainty factors for investors in regional sovereign debt."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Russian Ruble (RUB)",
+          "asset": "Bolivian sovereign bonds",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Apoyo del FMI positivo pero riesgo político interno persiste",
+            "en": "IMF backing positive but domestic political risk persists"
+          }
+        },
+        {
+          "asset": "EM Latin American sovereign debt",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Resultado predecible limita volatilidad de corto plazo",
-            "en": "Predictable outcome limits short-term volatility"
-          }
-        },
-        {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Continuidad política refuerza perspectiva de conflicto prolongado",
-            "en": "Policy continuity reinforces prolonged conflict outlook"
-          }
-        },
-        {
-          "asset": "EM bonds",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Señal de consolidación autoritaria pesa sobre activos de riesgo",
-            "en": "Authoritarian consolidation signal weighs on risk assets"
+            "es": "Precedente de ajuste fiscal bajo presión social en la región",
+            "en": "Fiscal adjustment under social pressure sets regional precedent"
           }
         }
       ],
-      "confidence": 70,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/russia-votes-for-new-parliament-in-controlled-elections/a-79318392?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-18",
-      "time": "3h"
+      "confidence": 74,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/9/19/bolivias-congress-approves-1-9bn-imf-loan-amid-protest-threats?traffic_source=rss",
+      "published_at": "2026-09-19",
+      "time": "5h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "AFRICA",
       "title": {
-        "es": "Healey pedirá a ministros de finanzas de la UE que permitan al Reino Unido integrarse al programa 'Fabricado en Europa'",
-        "en": "Healey to ask EU finance ministers to let UK into Made in Europe scheme"
+        "es": "Ébola: MSF advierte que el brote en la RDC no está disminuyendo",
+        "en": "Ebola: DR Congo outbreak not slowing, MSF warns"
       },
       "summary": {
-        "es": "El canciller británico buscará que el programa 'Made in Europe' incluya al Reino Unido para profundizar vínculos económicos post-Brexit en lugar de crear nuevas barreras. El movimiento refleja un reposicionamiento estratégico de Londres hacia Bruselas en un contexto de tensiones comerciales con Washington.",
-        "en": "The UK Chancellor will seek inclusion in the 'Made in Europe' programme to deepen post-Brexit economic ties rather than erect new barriers. The move reflects a strategic repositioning of London toward Brussels amid trade tensions with Washington."
+        "es": "Médicos Sin Fronteras ha advertido contra el optimismo prematuro ante el mayor brote de ébola registrado en la historia de la RDC, señalando que el brote 'no se está reduciendo, sino expandiéndose' hacia nuevas regiones menos preparadas. La propagación amenaza la estabilidad operativa en un país que concentra vastas reservas de minerales críticos esenciales para las cadenas de suministro globales de tecnología y energía. Inversores con exposición a activos mineros en la RDC deben monitorizar el riesgo de disrupciones logísticas y de producción.",
+        "en": "Doctors Without Borders has warned against premature optimism over the DRC's largest-ever Ebola outbreak, stating the outbreak is 'not shrinking but moving' into new and less-prepared regions. The spread threatens operational stability in a country holding vast reserves of critical minerals essential to global technology and energy supply chains. Investors with exposure to DRC mining assets should monitor the risk of logistical and production disruptions."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "GBP/USD",
+          "asset": "Cobalt futures",
           "direction": "up",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Mayor integración UE-UK reduce prima de riesgo comercial",
-            "en": "Greater EU-UK integration reduces trade risk premium"
+            "es": "Riesgo de disrupción minera en RDC eleva precio del cobalto",
+            "en": "DRC mining disruption risk lifts cobalt prices"
           }
         },
         {
-          "asset": "UK equities (FTSE 100)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Acceso potencial a mercado europeo amplía perspectiva corporativa",
-            "en": "Potential EU market access broadens corporate outlook"
-          }
-        },
-        {
-          "asset": "EUR/GBP",
+          "asset": "DRC-exposed mining equities",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Convergencia UK-UE fortalece libra frente al euro",
-            "en": "UK-EU convergence strengthens pound against euro"
+            "es": "Crisis sanitaria amenaza operaciones mineras en la región",
+            "en": "Health crisis threatens mining operations in the region"
           }
         }
       ],
-      "confidence": 68,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cr6240ej07ejo?at_medium=RSS&at_campaign=rss",
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ebola-dr-congo-outbreak-not-slowing-msf-warns/a-79333719?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-09-18",
-      "time": "3h"
+      "time": "15h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
