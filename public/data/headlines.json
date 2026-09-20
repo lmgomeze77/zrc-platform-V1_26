@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-19T10:15:09.348Z",
+  "generated_at": "2026-09-20T10:33:04.614Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,71 +96,14 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EURASIA",
-      "title": {
-        "es": "Trump firma amplio proyecto de ley de sanciones contra Rusia",
-        "en": "Trump signs sweeping Russia sanctions bill"
-      },
-      "summary": {
-        "es": "Trump ha firmado el proyecto de ley de sanciones contra Rusia nombrado en honor al fallecido senador Lindsey Graham, un firme defensor de la ayuda a Ucrania. Esta acción representa un giro significativo en la política exterior de Trump respecto a Moscú y tendrá implicaciones directas para los flujos de energía rusos, el rublo y los mercados de deuda soberana. Los inversores en activos europeos y mercados emergentes con exposición a Rusia deberán recalibrar el riesgo geopolítico.",
-        "en": "Trump has signed the sweeping Russia sanctions bill named after the late Senator Lindsey Graham, a staunch advocate of Ukrainian aid. This marks a significant pivot in Trump's Russia policy and carries direct implications for Russian energy flows, the ruble, and sovereign debt markets. Investors with exposure to European assets and Russia-linked EM instruments will need to reprice geopolitical risk."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Sanciones amenazan oferta de crudo ruso al mercado global",
-            "en": "Sanctions threaten Russian crude supply to global market"
-          }
-        },
-        {
-          "asset": "Russian ruble",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Presión sobre el rublo ante nuevas restricciones financieras",
-            "en": "Ruble pressured by fresh financial restrictions"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Sectores industriales afectados por riesgo energético elevado",
-            "en": "Industrial sectors hit by elevated energy risk"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Demanda de refugio seguro ante escalada geopolítica",
-            "en": "Safe-haven demand rises on geopolitical escalation"
-          }
-        }
-      ],
-      "confidence": 92,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cqvgy34ndj4eo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-18",
-      "time": "12h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Arabia Saudita llama a aliados en busca de apoyo militar mientras los hutíes controlan el estrecho de Bab el Mandeb",
-        "en": "Saudi Arabia turns to allies for military support as Houthis tighten grip on Bab el Mandeb chokepoint"
+        "es": "En significativa escalada, los hutíes atacan la capital saudí",
+        "en": "In Significant Escalation, Houthis Attack Saudi Capital"
       },
       "summary": {
-        "es": "Arabia Saudita ha solicitado apoyo militar a sus aliados ante el avance de los rebeldes hutíes apoyados por Irán en la costa del Mar Rojo y el estrecho de Bab el Mandeb, mientras ataques con drones golpean la infraestructura petrolera del reino. El control hutí del corredor marítimo representa una amenaza directa al tráfico de energía global y puede provocar disrupciones en el comercio internacional. La crisis energética emergente tiene implicaciones inmediatas para los precios del crudo y las cadenas de suministro.",
-        "en": "Saudi Arabia has sought military support from allies as Iran-backed Houthi rebels tighten their hold on Yemen's Red Sea coast and the Bab el Mandeb chokepoint, while drone strikes hit the kingdom's oil infrastructure. Houthi control of this maritime corridor poses a direct threat to global energy traffic and could trigger supply chain disruptions. The emerging energy crisis carries immediate implications for crude prices and global logistics."
+        "es": "Los hutíes, respaldados por Irán, lanzaron una oleada de misiles y drones contra Riad y las instalaciones petroleras saudíes en lo que representa la primera vez que la capital saudí es atacada desde que el conflicto se intensificó en julio. Esta escalada amenaza directamente la infraestructura energética de uno de los principales exportadores mundiales de crudo, con implicaciones inmediatas para los precios del petróleo y la estabilidad regional. La participación de activos iraníes subraya el riesgo de una ampliación del conflicto que involucre a potencias regionales y globales.",
+        "en": "The Iran-backed Houthis fired a wave of missiles and drones at Riyadh and Saudi oil facilities, marking the first time the Saudi capital has been struck since fighting escalated in July. This escalation directly threatens the energy infrastructure of one of the world's top crude exporters, with immediate implications for oil prices and regional stability. Iranian proxy involvement raises the risk of broader conflict drawing in regional and global powers."
       },
       "impact": "high",
       "market_impact": [
@@ -169,17 +112,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Chokepoint del Mar Rojo en riesgo; infraestructura saudí atacada",
-            "en": "Red Sea chokepoint at risk; Saudi oil infrastructure struck"
-          }
-        },
-        {
-          "asset": "Shipping/freight rates",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Desvíos de rutas marítimas elevan costes de flete",
-            "en": "Maritime route diversions drive freight costs higher"
+            "es": "Ataques a instalaciones saudíes generan prima de riesgo geopolítico.",
+            "en": "Attacks on Saudi facilities trigger geopolitical risk premium."
           }
         },
         {
@@ -187,8 +121,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada regional impulsa refugio seguro",
-            "en": "Regional escalation boosts safe-haven demand"
+            "es": "Aversión al riesgo impulsa activos refugio.",
+            "en": "Risk-off sentiment drives safe-haven demand."
           }
         },
         {
@@ -196,199 +130,265 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Energía más cara presiona divisas importadoras de petróleo",
-            "en": "Costlier energy pressures oil-importing EM currencies"
+            "es": "Alza del petróleo presiona economías importadoras emergentes.",
+            "en": "Oil spike pressures oil-importing emerging market currencies."
+          }
+        },
+        {
+          "asset": "Saudi Tadawul equities",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo de seguridad directa sobre activos saudíes.",
+            "en": "Direct security risk weighs on Saudi equities."
           }
         }
       ],
-      "confidence": 91,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/tv-shows/the-world-this-week/20260918-time-to-stop-suggesting-ai-is-conscious-riyadh-calling-saudi-s-hour-of-news-russian-elections",
-      "published_at": "2026-09-18",
-      "time": "14h"
+      "confidence": 92,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/19/world/middleeast/saudi-arabia-riyadh-houthis.html",
+      "published_at": "2026-09-20",
+      "time": "3h"
     },
     {
-      "id": 3,
+      "id": 2,
       "tag": "CRITICAL",
-      "region": "EU",
+      "region": "EURASIA",
       "title": {
-        "es": "¿Podría EE.UU. retirar un tercio de sus tropas de Europa? Lo que eso significaría",
-        "en": "Could US pull one-third of troops from Europe? What that would mean"
+        "es": "Cientos de drohnes atacan Moscú en el último día de las elecciones rusas",
+        "en": "Hundreds of Drones Target Moscow on Final Day of Russian Elections"
       },
       "summary": {
-        "es": "El Pentágono estaría evaluando propuestas para reducir significativamente su presencia militar en Europa, lo que supondría un reajuste estratégico sin precedentes para la OTAN en medio de conflictos activos en Ucrania y Oriente Medio. Una reducción de tal magnitud presionaría a los países europeos a acelerar sus gastos en defensa y podría debilitar la credibilidad disuasoria de la alianza frente a Rusia. Los mercados de defensa europeos y los bonos soberanos de los países del flanco este serían los activos más afectados.",
-        "en": "The Pentagon is reportedly considering proposals to substantially reduce its military footprint across the Atlantic, which would represent an unprecedented strategic realignment for NATO amid active conflicts in Ukraine and the Middle East. Such a reduction would pressure European nations to rapidly accelerate defence spending and could undermine NATO's deterrence credibility vis-à-vis Russia. European defence equities and sovereign bonds of eastern flank countries would be among the most affected assets."
+        "es": "Ucrania lanzó uno de sus mayores ataques con drones sobre Moscú, coincidiendo con el último día de las elecciones parlamentarias rusas, y afirmó haber utilizado por primera vez un misil balístico de nuevo desarrollo. El ataque a una refinería de petróleo en Moscú representa una escalada cualitativa significativa en alcance y capacidad de fuego ucraniana. La sincronización electoral aumenta la presión política interna sobre Putin y puede catalizar una respuesta rusa más severa.",
+        "en": "Ukraine launched one of its largest drone strikes on Moscow, coinciding with the final day of Russian parliamentary elections, and claims to have deployed a newly developed ballistic missile for the first time. The strike on a Moscow oil refinery represents a qualitative escalation in Ukrainian range and firepower. The electoral timing increases domestic political pressure on Putin and may catalyze a more severe Russian response."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European defence equities",
+          "asset": "European natural gas (TTF)",
           "direction": "up",
-          "magnitude": "high",
+          "magnitude": "medium",
           "note": {
-            "es": "Reducción de tropas de EE.UU. obliga a Europa a rearmar",
-            "en": "US troop reduction forces European rearmament spending"
+            "es": "Escalada eleva riesgo de interrupción energética en Europa.",
+            "en": "Escalation raises energy disruption risk for Europe."
           }
         },
         {
-          "asset": "EUR/USD",
+          "asset": "Russian Ruble",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor riesgo de seguridad europea pesa sobre el euro",
-            "en": "Elevated European security risk weighs on the euro"
+            "es": "Presión sobre la divisa por inestabilidad política y militar.",
+            "en": "Currency pressured by political and military instability."
           }
         },
         {
-          "asset": "Eastern EU sovereign bonds",
-          "direction": "down",
+          "asset": "European defense equities",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Primas de riesgo suben en países del flanco oriental de la OTAN",
-            "en": "Risk premiums rise for NATO eastern flank countries"
+            "es": "Escalada sostiene demanda de gasto en defensa europeo.",
+            "en": "Escalation sustains European defense spending demand."
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Incertidumbre sobre defensa occidental impulsa refugio",
-            "en": "Uncertainty over western defence drives safe-haven flows"
+            "es": "Mayor incertidumbre geopolítica apoya al oro como refugio.",
+            "en": "Heightened geopolitical uncertainty supports gold as haven."
           }
         }
       ],
-      "confidence": 88,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/19/could-us-pull-one-third-of-troops-from-europe-what-that-would-mean?traffic_source=rss",
-      "published_at": "2026-09-19",
-      "time": "3h"
+      "confidence": 90,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/20/world/europe/moscow-russia-ukraine.html",
+      "published_at": "2026-09-20",
+      "time": "<1h"
     },
     {
-      "id": 4,
+      "id": 3,
       "tag": "ALERT",
-      "region": "LATAM",
+      "region": "EU",
       "title": {
-        "es": "Delcy Rodríguez se reunirá con Trump en Nueva York en un gesto inédito de acercamiento",
-        "en": "Delcy Rodríguez to meet Trump in New York in unprecedented rapprochement gesture"
+        "es": "La OTAN celebra el acuerdo sobre Groenlandia mientras Trump dice que dará a EE.UU. 'control de seguridad permanente'",
+        "en": "NATO welcomes Greenland deal as Trump says it will give US 'permanent security control'"
       },
       "summary": {
-        "es": "La vicepresidenta venezolana Delcy Rodríguez se reunirá con el presidente Trump en Nueva York en la primera visita de un alto cargo venezolano a la ONU desde el discurso de Maduro en 2018, marcando un acercamiento diplomático sin precedentes. Este movimiento tiene implicaciones directas para las sanciones petroleras sobre Venezuela, los flujos de crudo venezolano y la disputa territorial con Guyana. Un posible alivio de sanciones podría pesar sobre los precios del crudo y afectar la estrategia de Exxon en la región.",
-        "en": "Venezuelan Vice President Delcy Rodríguez will meet President Trump in New York in the first visit by a senior Venezuelan official to the UN since Maduro's 2018 speech, marking an unprecedented diplomatic rapprochement. This move has direct implications for oil sanctions on Venezuela, Venezuelan crude flows, and the territorial dispute with Guyana. A potential sanctions relief scenario could weigh on crude prices and affect Exxon's regional strategy."
+        "es": "Dinamarca y Estados Unidos han alcanzado un acuerdo sobre Groenlandia tras meses de amenazas de Trump de anexionar el territorio, con la OTAN respaldando el resultado. Trump describe el acuerdo como una garantía de 'control de seguridad permanente' de EE.UU. sobre el Ártico, lo que altera el equilibrio estratégico en el norte del Atlántico y redefine las relaciones transatlánticas. El acuerdo tiene implicaciones para las rutas del Ártico, los recursos minerales críticos y la arquitectura de defensa europea.",
+        "en": "Denmark and the US have reached an agreement on Greenland after months of annexation threats from Trump, with NATO endorsing the outcome. Trump frames the deal as securing 'permanent security control' over the Arctic, reshaping strategic balance in the North Atlantic and redefining transatlantic relations. The agreement carries implications for Arctic shipping routes, critical mineral access, and European defense architecture."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
-          "direction": "down",
+          "asset": "Danish Krone / DKK assets",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Posible alivio de sanciones aumentaría oferta venezolana de crudo",
-            "en": "Potential sanctions relief would boost Venezuelan crude supply"
+            "es": "Resolución reduce incertidumbre pero con cesión de soberanía.",
+            "en": "Resolution reduces uncertainty but involves sovereignty concessions."
           }
         },
         {
-          "asset": "Venezuelan sovereign bonds",
+          "asset": "Critical minerals equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Acercamiento diplomático mejora perspectivas de deuda venezolana",
-            "en": "Diplomatic rapprochement improves Venezuelan debt outlook"
+            "es": "Control de Groenlandia refuerza acceso a minerales raros.",
+            "en": "Greenland control enhances access to rare earth resources."
           }
         },
         {
-          "asset": "Exxon Mobil equity",
-          "direction": "mixed",
+          "asset": "European defense equities",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Tensión Venezuela-Guyana afecta activos de Exxon en la región",
-            "en": "Venezuela-Guyana tension affects Exxon's regional assets"
+            "es": "Nuevo marco de seguridad ártica impulsa gasto de defensa.",
+            "en": "New Arctic security framework drives defense spending."
           }
         }
       ],
-      "confidence": 82,
-      "source": "El País",
-      "source_url": "https://elpais.com/america/2026-09-18/delcy-rodriguez-se-reunira-con-trump-en-nueva-york-en-un-gesto-inedito-de-acercamiento.html",
-      "published_at": "2026-09-18",
+      "confidence": 88,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c63d7lexyym1o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-19",
       "time": "11h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "APAC",
+      "title": {
+        "es": "Corea del Norte realiza un segundo disparo tras rechazar una resolución del OIEA",
+        "en": "North Korea conducts a second launch after rejecting an IAEA resolution"
+      },
+      "summary": {
+        "es": "Corea del Norte lanzó un misil balístico después de que los Estados miembros del OIEA condenaran su programa nuclear mediante una resolución formal. Pyongyang rechazó explícitamente la resolución, y el segundo lanzamiento en corto plazo señala una intensificación deliberada de las provocaciones frente a la presión internacional. Esto eleva el riesgo de tensiones en el noreste de Asia con implicaciones para los activos surcoreanos y japoneses y para la postura de seguridad regional de EE.UU.",
+        "en": "North Korea fired a ballistic missile after IAEA member states formally condemned its nuclear program via resolution. Pyongyang explicitly rejected the resolution, and the second launch in short succession signals a deliberate escalation in provocation amid international pressure. This raises northeast Asian tension risks with implications for South Korean and Japanese assets and US regional security posture."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "South Korean Won (KRW)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada norcoreana pesa sobre activos surcoreanos.",
+            "en": "North Korean escalation weighs on South Korean assets."
+          }
+        },
+        {
+          "asset": "Japanese Yen (JPY)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Demanda de refugio moderada ante tensiones regionales.",
+            "en": "Modest safe-haven demand amid regional tensions."
+          }
+        },
+        {
+          "asset": "KOSPI equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de seguridad regional deprime la renta variable coreana.",
+            "en": "Regional security risk depresses Korean equities."
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/09/20/la-coree-du-nord-tire-un-missile-balistique-apres-avoir-rejete-une-resolution-de-l-aiea_6778332_3210.html",
+      "published_at": "2026-09-20",
+      "time": "<1h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "LATAM",
+      "region": "GLOBAL",
       "title": {
-        "es": "El Congreso de Bolivia aprueba un préstamo del FMI de 1.900 millones de dólares en medio de amenazas de protesta",
-        "en": "Bolivia's Congress approves $1.9bn IMF loan amid protest threats"
+        "es": "Por qué China rechaza las advertencias de EE.UU. sobre el rápido desarrollo de la IA",
+        "en": "Why China is pushing back on US warnings over rapid AI development"
       },
       "summary": {
-        "es": "El Congreso boliviano ha aprobado un préstamo del FMI de 1.900 millones de dólares, aunque los sindicatos advierten que los recortes a los subsidios de combustible incluidos en el acuerdo podrían desencadenar protestas generalizadas y elevar los costes de vida. Bolivia, que atraviesa una crisis de divisas y escasez de dólares, enfrenta un delicado equilibrio entre la estabilización macroeconómica y la estabilidad social. El riesgo de protesta y posible reversión política representa un factor de incertidumbre para inversores en deuda soberana regional.",
-        "en": "Bolivia's Congress has approved a $1.9bn IMF loan, but unions warn that fuel subsidy cuts embedded in the deal could trigger widespread protests and rising living costs. Bolivia, facing a currency crisis and dollar shortages, confronts a delicate balance between macroeconomic stabilisation and social stability. Protest risk and potential policy reversal represent uncertainty factors for investors in regional sovereign debt."
+        "es": "Pekín interpreta los llamamientos de Washington para desacelerar el desarrollo de la IA como una estrategia para consolidar la ventaja tecnológica estadounidense, y está optando por un equilibrio diferente entre seguridad y velocidad de desarrollo. Esta divergencia en la gobernanza de la IA estructura la competencia tecnológica entre las dos mayores economías mundiales y tiene implicaciones para las cadenas de suministro de semiconductores, la regulación tecnológica y las carteras de inversión en IA. El contexto de la cumbre Trump-Xi añade urgencia diplomática a este enfrentamiento.",
+        "en": "Beijing interprets Washington's calls to slow AI development as a strategy to lock in US technological advantage, and is pursuing a different balance between safety and development pace. This AI governance divergence frames the technological competition between the two largest economies and has implications for semiconductor supply chains, tech regulation, and AI investment portfolios. The Trump-Xi summit context adds diplomatic urgency to this confrontation."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Bolivian sovereign bonds",
+          "asset": "US semiconductor equities",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Apoyo del FMI positivo pero riesgo político interno persiste",
-            "en": "IMF backing positive but domestic political risk persists"
+            "es": "Tensión en IA puede intensificar restricciones de exportación.",
+            "en": "AI tension may intensify export control restrictions."
           }
         },
         {
-          "asset": "EM Latin American sovereign debt",
+          "asset": "Chinese tech equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Postura soberana china impulsa valuaciones domésticas de IA.",
+            "en": "China's sovereign AI stance boosts domestic AI valuations."
+          }
+        },
+        {
+          "asset": "EUR/USD",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Precedente de ajuste fiscal bajo presión social en la región",
-            "en": "Fiscal adjustment under social pressure sets regional precedent"
+            "es": "Tensión EE.UU.-China en IA complica posicionamiento global.",
+            "en": "US-China AI tension complicates global macro positioning."
           }
         }
       ],
-      "confidence": 74,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/19/bolivias-congress-approves-1-9bn-imf-loan-amid-protest-threats?traffic_source=rss",
-      "published_at": "2026-09-19",
-      "time": "5h"
+      "confidence": 78,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/sep/20/why-china-is-pushing-back-on-us-warnings-over-rapid-ai-development",
+      "published_at": "2026-09-20",
+      "time": "4h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "AFRICA",
+      "region": "GLOBAL",
       "title": {
-        "es": "Ébola: MSF advierte que el brote en la RDC no está disminuyendo",
-        "en": "Ebola: DR Congo outbreak not slowing, MSF warns"
+        "es": "Un mundo en llamas se da cita en una ONU en ruinas",
+        "en": "A world in flames meets at a ruined UN"
       },
       "summary": {
-        "es": "Médicos Sin Fronteras ha advertido contra el optimismo prematuro ante el mayor brote de ébola registrado en la historia de la RDC, señalando que el brote 'no se está reduciendo, sino expandiéndose' hacia nuevas regiones menos preparadas. La propagación amenaza la estabilidad operativa en un país que concentra vastas reservas de minerales críticos esenciales para las cadenas de suministro globales de tecnología y energía. Inversores con exposición a activos mineros en la RDC deben monitorizar el riesgo de disrupciones logísticas y de producción.",
-        "en": "Doctors Without Borders has warned against premature optimism over the DRC's largest-ever Ebola outbreak, stating the outbreak is 'not shrinking but moving' into new and less-prepared regions. The spread threatens operational stability in a country holding vast reserves of critical minerals essential to global technology and energy supply chains. Investors with exposure to DRC mining assets should monitor the risk of logistical and production disruptions."
+        "es": "La Asamblea General de la ONU se reúne en un contexto de multiplicación de conflictos, riesgos climáticos y tecnológicos, y erosión democrática, con la institución debilitada por la escasez de fondos y los ataques al multilateralismo. El deterioro de la capacidad multilateral para gestionar crisis simultáneas —desde Yemen hasta Ucrania y Corea del Norte— eleva los riesgos sistémicos para los inversores globales. La fragmentación del orden internacional afecta negativamente a los activos de riesgo y a las perspectivas de cooperación en comercio y finanzas globales.",
+        "en": "The UN General Assembly convenes amid multiplying conflicts, climate and technological risks, and democratic erosion, with the institution weakened by funding shortfalls and attacks on multilateralism. The deterioration of multilateral capacity to manage simultaneous crises—from Yemen to Ukraine and North Korea—raises systemic risks for global investors. Fragmentation of the international order weighs negatively on risk assets and prospects for global trade and financial cooperation."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Cobalt futures",
+          "asset": "Gold",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de disrupción minera en RDC eleva precio del cobalto",
-            "en": "DRC mining disruption risk lifts cobalt prices"
+            "es": "Erosión multilateral eleva demanda de activos refugio estructurales.",
+            "en": "Multilateral erosion raises structural safe-haven demand."
           }
         },
         {
-          "asset": "DRC-exposed mining equities",
+          "asset": "EM currencies",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Crisis sanitaria amenaza operaciones mineras en la región",
-            "en": "Health crisis threatens mining operations in the region"
+            "es": "Fragmentación global pesa sobre economías emergentes expuestas.",
+            "en": "Global fragmentation weighs on exposed emerging economies."
           }
         }
       ],
-      "confidence": 72,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ebola-dr-congo-outbreak-not-slowing-msf-warns/a-79333719?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-18",
-      "time": "15h"
+      "confidence": 70,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-09-20/un-mundo-en-llamas-se-da-cita-en-una-onu-en-ruinas.html",
+      "published_at": "2026-09-20",
+      "time": "7h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
