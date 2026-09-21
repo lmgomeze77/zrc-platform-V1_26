@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T10:33:04.614Z",
+  "generated_at": "2026-09-21T11:52:20.729Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,12 +98,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "En significativa escalada, los hutíes atacan la capital saudí",
+        "es": "En una escalada significativa, los hutíes atacan la capital saudí",
         "en": "In Significant Escalation, Houthis Attack Saudi Capital"
       },
       "summary": {
-        "es": "Los hutíes, respaldados por Irán, lanzaron una oleada de misiles y drones contra Riad y las instalaciones petroleras saudíes en lo que representa la primera vez que la capital saudí es atacada desde que el conflicto se intensificó en julio. Esta escalada amenaza directamente la infraestructura energética de uno de los principales exportadores mundiales de crudo, con implicaciones inmediatas para los precios del petróleo y la estabilidad regional. La participación de activos iraníes subraya el riesgo de una ampliación del conflicto que involucre a potencias regionales y globales.",
-        "en": "The Iran-backed Houthis fired a wave of missiles and drones at Riyadh and Saudi oil facilities, marking the first time the Saudi capital has been struck since fighting escalated in July. This escalation directly threatens the energy infrastructure of one of the world's top crude exporters, with immediate implications for oil prices and regional stability. Iranian proxy involvement raises the risk of broader conflict drawing in regional and global powers."
+        "es": "Los hutíes, respaldados por Irán, lanzaron una oleada de misiles y drones contra Riad y las instalaciones petroleras saudíes, marcando una escalada mayor en el conflicto del Mar Rojo. Un ataque directo a la infraestructura energética saudí representa una amenaza inmediata para la producción y las exportaciones de crudo. Los mercados de energía y activos de refugio responderán con alta sensibilidad ante el riesgo de interrupción del suministro regional.",
+        "en": "The Iranian-backed Houthis launched a wave of missiles and drones at Riyadh and Saudi oil facilities, marking a major escalation in the broader Red Sea conflict. A direct strike on Saudi energy infrastructure poses an immediate threat to crude production and exports. Energy markets and safe-haven assets will respond with high sensitivity to the risk of regional supply disruption."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +112,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Ataques a instalaciones saudíes generan prima de riesgo geopolítico.",
-            "en": "Attacks on Saudi facilities trigger geopolitical risk premium."
+            "es": "Riesgo de interrupción de suministro saudí impulsa precio",
+            "en": "Saudi supply disruption risk drives price sharply higher"
           }
         },
         {
@@ -121,8 +121,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Aversión al riesgo impulsa activos refugio.",
-            "en": "Risk-off sentiment drives safe-haven demand."
+            "es": "Demanda de refugio seguro ante escalada regional",
+            "en": "Safe-haven demand rises on regional escalation"
           }
         },
         {
@@ -130,17 +130,17 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Alza del petróleo presiona economías importadoras emergentes.",
-            "en": "Oil spike pressures oil-importing emerging market currencies."
+            "es": "Aversión al riesgo presiona monedas emergentes importadoras de petróleo",
+            "en": "Risk-off pressures oil-importing EM currencies"
           }
         },
         {
-          "asset": "Saudi Tadawul equities",
-          "direction": "down",
+          "asset": "Saudi Aramco equity",
+          "direction": "mixed",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de seguridad directa sobre activos saudíes.",
-            "en": "Direct security risk weighs on Saudi equities."
+            "es": "Precio del crudo sube pero daño físico a activos genera incertidumbre",
+            "en": "Higher crude offset by physical asset damage uncertainty"
           }
         }
       ],
@@ -148,19 +148,19 @@
       "source": "New York Times",
       "source_url": "https://www.nytimes.com/2026/09/19/world/middleeast/saudi-arabia-riyadh-houthis.html",
       "published_at": "2026-09-20",
-      "time": "3h"
+      "time": "1d"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "EURASIA",
       "title": {
-        "es": "Cientos de drohnes atacan Moscú en el último día de las elecciones rusas",
-        "en": "Hundreds of Drones Target Moscow on Final Day of Russian Elections"
+        "es": "Moscú: Ucrania lanza un enorme ataque con drones mientras concluyen las elecciones",
+        "en": "Moscow: Ukraine launches huge drone attack as election wraps up"
       },
       "summary": {
-        "es": "Ucrania lanzó uno de sus mayores ataques con drones sobre Moscú, coincidiendo con el último día de las elecciones parlamentarias rusas, y afirmó haber utilizado por primera vez un misil balístico de nuevo desarrollo. El ataque a una refinería de petróleo en Moscú representa una escalada cualitativa significativa en alcance y capacidad de fuego ucraniana. La sincronización electoral aumenta la presión política interna sobre Putin y puede catalizar una respuesta rusa más severa.",
-        "en": "Ukraine launched one of its largest drone strikes on Moscow, coinciding with the final day of Russian parliamentary elections, and claims to have deployed a newly developed ballistic missile for the first time. The strike on a Moscow oil refinery represents a qualitative escalation in Ukrainian range and firepower. The electoral timing increases domestic political pressure on Putin and may catalyze a more severe Russian response."
+        "es": "Ucrania lanzó más de 1.000 drones contra Rusia, incluidos cientos sobre Moscú, en el mayor ataque de la guerra hasta la fecha, coincidiendo con el cierre de las elecciones parlamentarias rusas. La escala sin precedentes del ataque sugiere una escalada deliberada destinada a desafiar la legitimidad interna del Kremlin. Los mercados de energía europeos y los activos de riesgo relacionados con Europa responderán a la mayor incertidumbre sobre la intensificación del conflicto.",
+        "en": "Ukraine launched over 1,000 drones at Russia, including hundreds targeting Moscow, in the largest attack of the war to date, timed to coincide with the close of Russian parliamentary elections. The unprecedented scale suggests a deliberate escalation aimed at undermining the Kremlin's domestic legitimacy narrative. European energy markets and risk assets will react to heightened uncertainty over conflict intensification."
       },
       "impact": "high",
       "market_impact": [
@@ -169,226 +169,217 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada eleva riesgo de interrupción energética en Europa.",
-            "en": "Escalation raises energy disruption risk for Europe."
+            "es": "Escalada eleva prima de riesgo energético en Europa",
+            "en": "Escalation raises European energy risk premium"
           }
         },
         {
-          "asset": "Russian Ruble",
+          "asset": "European equities",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Presión sobre la divisa por inestabilidad política y militar.",
-            "en": "Currency pressured by political and military instability."
-          }
-        },
-        {
-          "asset": "European defense equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada sostiene demanda de gasto en defensa europeo.",
-            "en": "Escalation sustains European defense spending demand."
+            "es": "Mayor incertidumbre bélica pesa sobre activos europeos",
+            "en": "Heightened war uncertainty weighs on European assets"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Mayor incertidumbre geopolítica apoya al oro como refugio.",
-            "en": "Heightened geopolitical uncertainty supports gold as haven."
+            "es": "Demanda de refugio seguro ante escalada bélica",
+            "en": "Safe-haven demand on war escalation"
+          }
+        },
+        {
+          "asset": "USD/RUB",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Presión sobre el rublo por escala del conflicto",
+            "en": "Ruble under pressure as conflict scale rises"
           }
         }
       ],
-      "confidence": 90,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/20/world/europe/moscow-russia-ukraine.html",
-      "published_at": "2026-09-20",
+      "confidence": 91,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20260921-moscow-ukraine-launches-huge-drone-attack-as-election-wraps-up",
+      "published_at": "2026-09-21",
       "time": "<1h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "APAC",
       "title": {
-        "es": "La OTAN celebra el acuerdo sobre Groenlandia mientras Trump dice que dará a EE.UU. 'control de seguridad permanente'",
-        "en": "NATO welcomes Greenland deal as Trump says it will give US 'permanent security control'"
+        "es": "Un asunto que podría desestabilizar los frágiles lazos entre EEUU y China: la venta de armas a Taiwán",
+        "en": "One Issue That Could Upend Fragile U.S.-China Ties: Taiwan Arms"
       },
       "summary": {
-        "es": "Dinamarca y Estados Unidos han alcanzado un acuerdo sobre Groenlandia tras meses de amenazas de Trump de anexionar el territorio, con la OTAN respaldando el resultado. Trump describe el acuerdo como una garantía de 'control de seguridad permanente' de EE.UU. sobre el Ártico, lo que altera el equilibrio estratégico en el norte del Atlántico y redefine las relaciones transatlánticas. El acuerdo tiene implicaciones para las rutas del Ártico, los recursos minerales críticos y la arquitectura de defensa europea.",
-        "en": "Denmark and the US have reached an agreement on Greenland after months of annexation threats from Trump, with NATO endorsing the outcome. Trump frames the deal as securing 'permanent security control' over the Arctic, reshaping strategic balance in the North Atlantic and redefining transatlantic relations. The agreement carries implications for Arctic shipping routes, critical mineral access, and European defense architecture."
+        "es": "Beijing presiona a Trump para que congele una propuesta de venta de armas de 14.000 millones de dólares a Taiwán antes de la cumbre Trump-Xi, mientras Taipéi argumenta que su seguridad es de interés estratégico para Washington. Este conflicto amenaza con descarrilar las conversaciones más amplias sobre IA, comercio y estabilidad financiera bilateral. La resolución o fracaso de la venta de armas será un indicador clave de la dirección de las relaciones sino-estadounidenses.",
+        "en": "Beijing is pressing Trump to freeze a proposed $14 billion arms sale to Taiwan ahead of the Trump-Xi summit, while Taipei argues its security is in U.S. strategic interests. This dispute threatens to derail broader talks on AI, trade, and bilateral financial stability. The resolution or failure of the arms sale will be a key indicator of the trajectory of U.S.-China relations."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Danish Krone / DKK assets",
+          "asset": "Taiwan equities (TAIEX)",
+          "direction": "mixed",
+          "magnitude": "high",
+          "note": {
+            "es": "Resultado del debate armamentístico afecta confianza inversora",
+            "en": "Arms debate outcome affects investor confidence directly"
+          }
+        },
+        {
+          "asset": "USD/CNY",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Resolución reduce incertidumbre pero con cesión de soberanía.",
-            "en": "Resolution reduces uncertainty but involves sovereignty concessions."
+            "es": "Tensión diplomática genera volatilidad en el yuan",
+            "en": "Diplomatic tension creates yuan volatility"
           }
         },
         {
-          "asset": "Critical minerals equities",
+          "asset": "US defense equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Control de Groenlandia refuerza acceso a minerales raros.",
-            "en": "Greenland control enhances access to rare earth resources."
-          }
-        },
-        {
-          "asset": "European defense equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Nuevo marco de seguridad ártica impulsa gasto de defensa.",
-            "en": "New Arctic security framework drives defense spending."
+            "es": "Venta de armas impulsa contratistas de defensa estadounidenses",
+            "en": "Arms sale prospect lifts US defense contractors"
           }
         }
       ],
       "confidence": 88,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c63d7lexyym1o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-19",
-      "time": "11h"
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/21/world/asia/china-trump-taiwan-arms-sales.html",
+      "published_at": "2026-09-21",
+      "time": "7h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
-      "region": "APAC",
+      "tag": "WATCH",
+      "region": "EU",
       "title": {
-        "es": "Corea del Norte realiza un segundo disparo tras rechazar una resolución del OIEA",
-        "en": "North Korea conducts a second launch after rejecting an IAEA resolution"
+        "es": "Macron y Carney anuncian lazos más estrechos entre Francia y Canadá ante las tensiones con Trump",
+        "en": "Macron and Carney announce closer France-Canada ties amid Trump tensions"
       },
       "summary": {
-        "es": "Corea del Norte lanzó un misil balístico después de que los Estados miembros del OIEA condenaran su programa nuclear mediante una resolución formal. Pyongyang rechazó explícitamente la resolución, y el segundo lanzamiento en corto plazo señala una intensificación deliberada de las provocaciones frente a la presión internacional. Esto eleva el riesgo de tensiones en el noreste de Asia con implicaciones para los activos surcoreanos y japoneses y para la postura de seguridad regional de EE.UU.",
-        "en": "North Korea fired a ballistic missile after IAEA member states formally condemned its nuclear program via resolution. Pyongyang explicitly rejected the resolution, and the second launch in short succession signals a deliberate escalation in provocation amid international pressure. This raises northeast Asian tension risks with implications for South Korean and Japanese assets and US regional security posture."
+        "es": "Los líderes de Francia y Canadá se reunieron en territorio francés frente a Canadá para impulsar relaciones bilaterales más sólidas con la UE, mientras Ottawa libra una guerra comercial con Washington. El acercamiento refleja un reordenamiento geopolítico entre democracias occidentales que buscan reducir la dependencia de EEUU en comercio y seguridad. Esta dinámica podría acelerar acuerdos comerciales UE-Canadá y reforzar la autonomía estratégica europea.",
+        "en": "The leaders of France and Canada met in French territory off Canada to strengthen bilateral ties and EU-Canada relations, as Ottawa fights a trade war with Washington. The rapprochement reflects a geopolitical realignment among Western democracies seeking to reduce U.S. dependence in trade and security. This dynamic could accelerate EU-Canada trade agreements and reinforce European strategic autonomy."
       },
-      "impact": "high",
+      "impact": "medium",
       "market_impact": [
         {
-          "asset": "South Korean Won (KRW)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada norcoreana pesa sobre activos surcoreanos.",
-            "en": "North Korean escalation weighs on South Korean assets."
-          }
-        },
-        {
-          "asset": "Japanese Yen (JPY)",
+          "asset": "EUR/USD",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Demanda de refugio moderada ante tensiones regionales.",
-            "en": "Modest safe-haven demand amid regional tensions."
+            "es": "Mayor cohesión occidental ex-EEUU apoya al euro",
+            "en": "Greater non-US Western cohesion supports the euro"
           }
         },
         {
-          "asset": "KOSPI equities",
-          "direction": "down",
-          "magnitude": "medium",
+          "asset": "Canadian dollar (CAD)",
+          "direction": "up",
+          "magnitude": "low",
           "note": {
-            "es": "Riesgo de seguridad regional deprime la renta variable coreana.",
-            "en": "Regional security risk depresses Korean equities."
+            "es": "Diversificación comercial reduce vulnerabilidad al dólar",
+            "en": "Trade diversification reduces USD vulnerability"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Nuevas relaciones comerciales benefician exportadores europeos",
+            "en": "New trade ties benefit European exporters"
           }
         }
       ],
-      "confidence": 85,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/09/20/la-coree-du-nord-tire-un-missile-balistique-apres-avoir-rejete-une-resolution-de-l-aiea_6778332_3210.html",
-      "published_at": "2026-09-20",
-      "time": "<1h"
+      "confidence": 74,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/sep/21/france-canada-relations-eu-europe-macron-carney",
+      "published_at": "2026-09-21",
+      "time": "10h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "GLOBAL",
+      "region": "EURASIA",
       "title": {
-        "es": "Por qué China rechaza las advertencias de EE.UU. sobre el rápido desarrollo de la IA",
-        "en": "Why China is pushing back on US warnings over rapid AI development"
+        "es": "Los talibanes denuncian tres muertos en nuevos ataques aéreos de Pakistán en Afganistán",
+        "en": "Taliban says three killed in new Pakistan airstrikes on Afghanistan"
       },
       "summary": {
-        "es": "Pekín interpreta los llamamientos de Washington para desacelerar el desarrollo de la IA como una estrategia para consolidar la ventaja tecnológica estadounidense, y está optando por un equilibrio diferente entre seguridad y velocidad de desarrollo. Esta divergencia en la gobernanza de la IA estructura la competencia tecnológica entre las dos mayores economías mundiales y tiene implicaciones para las cadenas de suministro de semiconductores, la regulación tecnológica y las carteras de inversión en IA. El contexto de la cumbre Trump-Xi añade urgencia diplomática a este enfrentamiento.",
-        "en": "Beijing interprets Washington's calls to slow AI development as a strategy to lock in US technological advantage, and is pursuing a different balance between safety and development pace. This AI governance divergence frames the technological competition between the two largest economies and has implications for semiconductor supply chains, tech regulation, and AI investment portfolios. The Trump-Xi summit context adds diplomatic urgency to this confrontation."
+        "es": "Pakistán llevó a cabo nuevos ataques aéreos en las provincias fronterizas afganas de Kunar y Paktika, según informaron los talibanes, en una escalada de las tensiones bilaterales que ya vio ataques similares en junio. La persistencia de los ataques transfronterizos indica un deterioro sostenido de las relaciones Pakistán-Afganistán con riesgo de regionalización del conflicto. La inestabilidad en la frontera afgano-pakistaní tiene implicaciones para la seguridad energética de Asia Central y los corredores de tránsito regionales.",
+        "en": "Pakistan carried out new airstrikes on Afghan border provinces of Kunar and Paktika, according to Taliban officials, escalating bilateral tensions that already saw similar strikes in June. The persistence of cross-border attacks signals a sustained deterioration in Pakistan-Afghanistan relations with a risk of regional conflict spillover. Instability on the Afghan-Pakistani border has implications for Central Asian energy security and regional transit corridors."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "US semiconductor equities",
-          "direction": "mixed",
+          "asset": "Pakistani equities (KSE-100)",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Tensión en IA puede intensificar restricciones de exportación.",
-            "en": "AI tension may intensify export control restrictions."
+            "es": "Escalada fronteriza eleva riesgo político interno",
+            "en": "Border escalation raises domestic political risk"
           }
         },
         {
-          "asset": "Chinese tech equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Postura soberana china impulsa valuaciones domésticas de IA.",
-            "en": "China's sovereign AI stance boosts domestic AI valuations."
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "mixed",
+          "asset": "Pakistani rupee (PKR)",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Tensión EE.UU.-China en IA complica posicionamiento global.",
-            "en": "US-China AI tension complicates global macro positioning."
+            "es": "Tensiones regionales presionan moneda ya frágil",
+            "en": "Regional tensions pressure already fragile currency"
           }
         }
       ],
-      "confidence": 78,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/sep/20/why-china-is-pushing-back-on-us-warnings-over-rapid-ai-development",
-      "published_at": "2026-09-20",
-      "time": "4h"
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/taliban-says-three-killed-in-new-pakistan-airstrikes-on-afghanistan/a-79350604?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-21",
+      "time": "3h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "GLOBAL",
+      "region": "AFRICA",
       "title": {
-        "es": "Un mundo en llamas se da cita en una ONU en ruinas",
-        "en": "A world in flames meets at a ruined UN"
+        "es": "¿Por qué siguen fracasando las treguas humanitarias en Sudán y quién tiene la culpa?",
+        "en": "Why do Sudan's humanitarian truces keep failing and who is to blame?"
       },
       "summary": {
-        "es": "La Asamblea General de la ONU se reúne en un contexto de multiplicación de conflictos, riesgos climáticos y tecnológicos, y erosión democrática, con la institución debilitada por la escasez de fondos y los ataques al multilateralismo. El deterioro de la capacidad multilateral para gestionar crisis simultáneas —desde Yemen hasta Ucrania y Corea del Norte— eleva los riesgos sistémicos para los inversores globales. La fragmentación del orden internacional afecta negativamente a los activos de riesgo y a las perspectivas de cooperación en comercio y finanzas globales.",
-        "en": "The UN General Assembly convenes amid multiplying conflicts, climate and technological risks, and democratic erosion, with the institution weakened by funding shortfalls and attacks on multilateralism. The deterioration of multilateral capacity to manage simultaneous crises—from Yemen to Ukraine and North Korea—raises systemic risks for global investors. Fragmentation of the international order weighs negatively on risk assets and prospects for global trade and financial cooperation."
+        "es": "Los esfuerzos por establecer treguas humanitarias en Sudán han fracasado repetidamente mientras las facciones beligerantes priorizan victorias militares sobre el alivio civil. La prolongación del conflicto profundiza la crisis humanitaria y amenaza la estabilidad de la región del Sahel y los corredores del Mar Rojo. Para los inversores, el estancamiento del conflicto sudanés deteriora las perspectivas de proyectos de infraestructura y minerales críticos en la región.",
+        "en": "Efforts to establish humanitarian truces in Sudan have repeatedly failed as warring factions prioritize battlefield gains over civilian relief. The prolonged conflict deepens the humanitarian crisis and threatens the stability of the broader Sahel region and Red Sea corridors. For investors, the Sudan conflict stalemate deteriorates the outlook for infrastructure and critical minerals projects in the region."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Erosión multilateral eleva demanda de activos refugio estructurales.",
-            "en": "Multilateral erosion raises structural safe-haven demand."
-          }
-        },
-        {
-          "asset": "EM currencies",
+          "asset": "African frontier market bonds",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Fragmentación global pesa sobre economías emergentes expuestas.",
-            "en": "Global fragmentation weighs on exposed emerging economies."
+            "es": "Conflicto prolongado eleva prima de riesgo regional",
+            "en": "Prolonged conflict raises regional risk premium"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Sudán es productor significativo; inestabilidad afecta oferta",
+            "en": "Sudan is a significant producer; instability affects supply"
           }
         }
       ],
-      "confidence": 70,
-      "source": "El País",
-      "source_url": "https://elpais.com/internacional/2026-09-20/un-mundo-en-llamas-se-da-cita-en-una-onu-en-ruinas.html",
-      "published_at": "2026-09-20",
-      "time": "7h"
+      "confidence": 68,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/9/21/why-do-sudans-humanitarian-truces-keep-failing-and-who-is-to-blame?traffic_source=rss",
+      "published_at": "2026-09-21",
+      "time": "<1h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
