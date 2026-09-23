@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T10:53:32.679Z",
+  "generated_at": "2026-09-23T10:42:05.612Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,306 +98,306 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Por qué los hutíes respaldados por Irán en Yemen y Arabia Saudí están de nuevo en guerra",
-        "en": "Why the Iran-Backed Houthis in Yemen and Saudi Arabia Are Back at War"
+        "es": "Irán relaja condiciones para reabrir el estrecho de Ormuz tras señales de Trump sobre un acuerdo post-midterms",
+        "en": "Iran relaxes preconditions to reopen Strait of Hormuz as Trump signals post-midterm deal"
       },
       "summary": {
-        "es": "El conflicto entre los hutíes y Arabia Saudí ha abierto un segundo frente en Oriente Medio tras los ataques de EE.UU. e Israel contra Irán, generando incertidumbre global y turbulencias en los mercados energéticos. El artículo contextualiza la escalada como consecuencia directa del deterioro del eje iraní y sus ramificaciones sobre las rutas de exportación de petróleo. Los inversores deben monitorizar el impacto en primas de riesgo energético y activos refugio.",
-        "en": "The renewed Houthi-Saudi conflict has opened a second front in the Middle East following US and Israeli strikes on Iran, amplifying global uncertainty and energy market volatility. The article frames the escalation as a direct consequence of the degraded Iranian axis and its implications for oil export routes. Investors should monitor energy risk premiums and safe-haven asset flows."
+        "es": "Irán ha suavizado sus condiciones para reabrir el estrecho de Ormuz, señalando disposición a actuar en siete días si Washington toma medidas recíprocas. Trump indicó en paralelo que Irán firmará un acuerdo tras las elecciones de medio término, lo que sugiere una ventana diplomática con implicaciones directas para los flujos de petróleo global.",
+        "en": "Iran has relaxed its preconditions for reopening the Strait of Hormuz, indicating readiness to act within seven days if the US takes reciprocal steps. Trump simultaneously signaled Iran would make a deal after the midterms, suggesting a diplomatic window with direct implications for global oil flows."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
-          "direction": "up",
+          "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "Segunda frente amenaza rutas de exportación de petróleo del Golfo",
-            "en": "Second front threatens Gulf oil export routes"
+            "es": "Reapertura de Ormuz reduciría prima de riesgo geopolítico sobre el petróleo",
+            "en": "Hormuz reopening would reduce geopolitical risk premium on oil"
           }
         },
         {
           "asset": "Gold",
-          "direction": "up",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada regional eleva demanda de activos refugio",
-            "en": "Regional escalation boosts safe-haven demand"
+            "es": "Reducción de tensión regional presiona activos refugio a la baja",
+            "en": "Easing regional tensions pressures safe-haven assets lower"
           }
         },
         {
           "asset": "EM currencies",
-          "direction": "down",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Aversión al riesgo presiona divisas de mercados emergentes",
-            "en": "Risk-off sentiment pressures emerging market currencies"
+            "es": "Menor riesgo energético favorece divisas de mercados emergentes importadores",
+            "en": "Lower energy risk benefits oil-importing emerging market currencies"
           }
         },
         {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "low",
+          "asset": "European equities",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Flujos refugio sostienen bonos del Tesoro americano",
-            "en": "Safe-haven flows support US Treasuries"
+            "es": "Caída del petróleo alivia presiones inflacionarias sobre empresas europeas",
+            "en": "Oil decline eases inflationary pressure on European corporates"
           }
         }
       ],
-      "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/21/world/middleeast/yemen-houthis-saudi-war.html",
-      "published_at": "2026-09-21",
-      "time": "13h"
+      "confidence": 82,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/sep/22/middle-east-iran-irgc-donald-trump-mahmoud-mahmoud-pezeshkian-abbas-araqchi-unga-latest-news-updates",
+      "published_at": "2026-09-22",
+      "time": "15h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "La UE en punto muerto sobre cambios a sanciones a Rusia antes de conversaciones clave sobre Ucrania y Groenlandia",
-        "en": "EU deadlocked on changes to Russia sanctions ahead of key Ukraine, Greenland talks"
+        "es": "Ucrania indignada por la retirada de oligarcas rusos de la lista de sanciones de la UE",
+        "en": "Ukraine anger as EU removes Russian oligarchs from sanctions list"
       },
       "summary": {
-        "es": "Sin acuerdo, las sanciones sobre casi 3.000 entidades vinculadas a la guerra en Ucrania podrían caducar al final del día, lo que representaría un golpe significativo al régimen de presión económica occidental sobre Moscú. El bloqueo se produce en un contexto de creciente preocupación por la postura agresiva de Rusia en Europa oriental, según líderes europeos en la Asamblea General de la ONU. El resultado tiene implicaciones directas para los mercados de renta fija europeos y el EUR.",
-        "en": "Without agreement, sanctions on nearly 3,000 entities linked to the Ukraine war risk lapsing by end of day, potentially undermining the Western economic pressure regime on Moscow. The deadlock occurs as European leaders in New York express growing alarm over Russia's aggressive posture in Eastern Europe. The outcome carries direct implications for European fixed income markets and the EUR."
+        "es": "La UE ha eliminado a Alisher Usmanov y Mikhail Fridman —ambos con vínculos estrechos con Putin— de su lista de sanciones, en lo que Irlanda calificó como 'un difícil compromiso'. Kyiv advirtió que la medida envía señales equivocadas a Moscú, poniendo en riesgo la coherencia del régimen de sanciones y la unidad del bloque en torno a la guerra.",
+        "en": "The EU removed Alisher Usmanov and Mikhail Fridman — both closely tied to Putin — from its sanctions list in what Ireland called 'a difficult compromise'. Kyiv warned the move sends the wrong signals to Moscow, threatening the coherence of the sanctions regime and bloc unity on the war."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Fractura en unidad europea debilita el euro",
-            "en": "EU cohesion fracture weakens euro"
+            "es": "Fracturas en la unidad de la UE sobre sanciones generan incertidumbre política",
+            "en": "EU sanctions unity cracks generate political uncertainty for euro"
+          }
+        },
+        {
+          "asset": "Russian sovereign assets",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Erosión del régimen de sanciones favorece marginalmente activos rusos",
+            "en": "Sanctions erosion marginally benefits Russian assets"
           }
         },
         {
           "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre regulatoria y geopolítica pesa sobre bolsas europeas",
-            "en": "Regulatory and geopolitical uncertainty weighs on European stocks"
-          }
-        },
-        {
-          "asset": "Russian sovereign bonds",
-          "direction": "up",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Caducidad de sanciones aliviaría presión sobre activos rusos",
-            "en": "Sanctions lapse would ease pressure on Russian assets"
-          }
-        },
-        {
-          "asset": "Natural gas (EU TTF)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de escalada rusa eleva prima en gas europeo",
-            "en": "Russian escalation risk lifts European gas risk premium"
+            "es": "Señal de fatiga ante sanciones puede indicar presión hacia negociaciones",
+            "en": "Sanctions fatigue signal may indicate pressure toward negotiations"
           }
         }
       ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/sep/22/eu-trump-russia-putin-sanctions-ukraine-greenland-denmark-zelenskyy-latest-news-updates",
+      "confidence": 80,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c6dj4k98107do?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-09-22",
-      "time": "<1h"
+      "time": "15h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "GLOBAL",
       "title": {
-        "es": "El líder chino Xi busca extender la tregua con Trump durante la cumbre en EE.UU.",
-        "en": "China's Leader Xi Seeks to Extend Truce with Trump During U.S. Summit"
+        "es": "Líderes de IA advierten de catástrofe mientras EE.UU. y China rechazan llamadas a desacelerar",
+        "en": "As AI leaders warn of catastrophe, US and China shun slowdown calls"
       },
       "summary": {
-        "es": "Xi Jinping viaja a Washington buscando consolidar un alto el fuego táctico con Trump, quien enfrenta presiones internas derivadas de conflictos en curso y un ciclo político complejo. China buscaría estabilizar sus relaciones comerciales mientras apuntala una economía doméstica frágil. El resultado de la cumbre determinará la dirección de aranceles, exportaciones tecnológicas y flujos de capital entre las dos mayores economías.",
-        "en": "Xi Jinping travels to Washington seeking to lock in a tactical truce with Trump, who faces domestic pressures from ongoing conflicts and a complex political cycle. China aims to stabilize trade relations while shoring up a fragile domestic economy. Summit outcomes will determine the direction of tariffs, tech exports, and capital flows between the world's two largest economies."
+        "es": "Trump y Xi Jinping se preparan para acordar solo una cooperación limitada en seguridad de IA en la cumbre, ignorando las advertencias de líderes del sector sobre riesgos catastróficos. La ausencia de un marco regulatorio conjunto profundiza la fragmentación tecnológica global y acelera la carrera armamentística digital entre las dos superpotencias.",
+        "en": "Trump and Xi Jinping are set to agree only limited cooperation on AI safety at their summit, dismissing industry warnings of catastrophic risks. The absence of a joint regulatory framework deepens global tech fragmentation and accelerates the digital arms race between the two superpowers."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Chinese equities (CSI 300)",
+          "asset": "US tech equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Reducción de tensiones comerciales impulsa bolsas chinas",
-            "en": "Trade tension reduction boosts Chinese equities"
+            "es": "Ausencia de regulación sostenida favorece inversión sin restricciones en IA",
+            "en": "Lack of sustained regulation favors unconstrained AI investment"
           }
         },
         {
-          "asset": "USD/CNY",
-          "direction": "down",
-          "magnitude": "medium",
+          "asset": "Semiconductor equities",
+          "direction": "up",
+          "magnitude": "high",
           "note": {
-            "es": "Tregua comercial reduce presión depreciadora sobre el yuan",
-            "en": "Trade truce reduces depreciation pressure on yuan"
+            "es": "Carrera de IA sin freno impulsa demanda de chips avanzados",
+            "en": "Unchecked AI race drives demand for advanced semiconductors"
           }
         },
         {
-          "asset": "US tech equities",
+          "asset": "Chinese tech equities",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Acuerdo en IA y chips podría reconfigurar cadenas de valor",
-            "en": "AI and chip deal could reshape supply chain dynamics"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Menor tensión sino-americana mejora sentimiento emergente",
-            "en": "Lower US-China tension improves EM sentiment"
+            "es": "Cooperación limitada mantiene riesgo de nuevas restricciones a exportación de chips",
+            "en": "Limited cooperation keeps risk of further chip export restrictions"
           }
         }
       ],
-      "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/21/world/asia/xi-trump-meeting-china-summit.html",
-      "published_at": "2026-09-22",
-      "time": "8h"
+      "confidence": 80,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/2026/9/23/as-ai-leaders-warn-of-catastrophe-us-and-china-shun-slowdown-calls?traffic_source=rss",
+      "published_at": "2026-09-23",
+      "time": "<1h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "¿Tendrá Alemania suficiente gas este invierno?",
-        "en": "Will Germany have enough gas this winter?"
-      },
-      "summary": {
-        "es": "Los niveles de almacenamiento de gas en Alemania están significativamente por debajo de los de años anteriores, y los analistas advierten que un invierno frío o interrupciones en las importaciones podrían provocar una fuerte subida de precios. El cierre por Ineos de tres plantas químicas en el Reino Unido —citando el casi doble del precio mayorista del gas desde julio— ilustra el daño industrial ya en curso. La situación amplifica los riesgos de recesión en la industria manufacturera alemana y europea.",
-        "en": "Germany's gas storage levels are significantly below those of recent years, with analysts warning that a cold winter or import disruptions could trigger sharp price increases. Ineos's mothballing of three UK chemical sites — citing near-doubling of wholesale gas prices since July — illustrates the industrial damage already underway. The situation amplifies recession risks for German and European manufacturing."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Natural gas (EU TTF)",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Bajos niveles de almacenamiento aumentan riesgo de picos de precio",
-            "en": "Low storage levels increase price spike risk"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Costes energéticos altos comprimen márgenes industriales",
-            "en": "High energy costs compress industrial margins"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de recesión industrial alemana debilita el euro",
-            "en": "German industrial recession risk weakens euro"
-          }
-        },
-        {
-          "asset": "European chemicals sector",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Energía cara fuerza cierres de plantas en el sector químico",
-            "en": "Costly energy forces chemical plant closures"
-          }
-        }
-      ],
-      "confidence": 84,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/will-germany-have-enough-gas-this-winter/a-79360317?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-22",
-      "time": "2h"
-    },
-    {
-      "id": 5,
       "tag": "WATCH",
-      "region": "AFRICA",
+      "region": "LATAM",
       "title": {
-        "es": "Detrás del derrumbe de una mina de oro en Sudán: desesperación en tiempos de guerra",
-        "en": "Behind Sudan gold mine collapse, a wartime desperation"
+        "es": "Trump se reúne por primera vez con la presidenta venezolana apoyada por EE.UU. tras el arresto de Maduro",
+        "en": "Trump meets US-backed Venezuelan president for first time since Maduro seized"
       },
       "summary": {
-        "es": "Casi 100 personas han muerto recientemente en la lucha por extraer oro en Sudán, cuyo valor ha disparado ante el colapso económico provocado por el conflicto armado. El episodio refleja la desintegración del Estado sudanés y la creciente competencia por recursos minerales estratégicos en el Sahel, con implicaciones para cadenas de suministro de oro artesanal y la influencia de actores externos como Rusia (Wagner) y los Emiratos Árabes. La situación es un indicador de inestabilidad sistémica con potencial efecto contagio regional.",
-        "en": "Nearly 100 people have died in recent days scrambling for gold in Sudan, whose value has surged amid economic collapse driven by the armed conflict. The episode reflects the disintegration of the Sudanese state and growing competition for strategic mineral resources in the Sahel, with implications for artisanal gold supply chains and the influence of external actors such as Russia and the UAE. The situation is an indicator of systemic instability with potential regional contagion."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad en producción artesanal de oro apoya precio al alza",
-            "en": "Artisanal gold supply disruption provides marginal upside support"
-          }
-        },
-        {
-          "asset": "African frontier market bonds",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Contagio de inestabilidad saheliana presiona deuda de frontera africana",
-            "en": "Sahel instability contagion pressures African frontier debt"
-          }
-        }
-      ],
-      "confidence": 70,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/22/deadly-hazards-behind-sudan-gold-mine-collapse-a-wartime-desperation?traffic_source=rss",
-      "published_at": "2026-09-22",
-      "time": "1h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "MENA",
-      "title": {
-        "es": "Más de 10.000 refugiados de Yemen podrían llegar a Yibuti, advierte la ONU",
-        "en": "More than 10,000 refugees from Yemen could reach Djibouti, UN says"
-      },
-      "summary": {
-        "es": "La agencia de refugiados de la ONU advierte que el número de personas que huyen de Yemen a través del Mar Rojo hacia Yibuti podría triplicarse hasta 10.000 en los próximos meses. La crisis humanitaria agrava la inestabilidad en el corredor del Cuerno de África, una ruta estratégica clave para el comercio global. La sobrecarga de Yibuti —sede de bases militares de EE.UU., Francia y China— tiene implicaciones para la logística regional y la proyección de poder.",
-        "en": "The UN refugee agency warns that the number of people fleeing Yemen across the Red Sea to Djibouti could triple to 10,000 in coming months. The humanitarian crisis worsens instability across the Horn of Africa corridor, a key strategic route for global trade. Djibouti's strain — home to US, French, and Chinese military bases — has implications for regional logistics and power projection."
+        "es": "Trump se reunió con Delcy Rodríguez, designada líder de Venezuela con respaldo estadounidense tras el arresto y extradición de Maduro, en lo que marca un deshielo significativo entre Caracas y Washington. El encuentro tiene implicaciones para el acceso de EE.UU. a las reservas petroleras venezolanas y el reequilibrio geopolítico en América Latina.",
+        "en": "Trump met with Delcy Rodríguez, the US-backed leader installed following Maduro's arrest and extradition, marking a significant thaw between Caracas and Washington. The meeting has implications for US access to Venezuelan oil reserves and geopolitical rebalancing in Latin America."
       },
       "impact": "medium",
       "market_impact": [
         {
           "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Ruta del Mar Rojo bajo mayor presión humanitaria y militar",
-            "en": "Red Sea route under increased humanitarian and military pressure"
+            "es": "Normalización venezolana podría añadir barriles al mercado global",
+            "en": "Venezuelan normalization could add barrels to global supply"
           }
         },
         {
-          "asset": "Shipping/freight rates",
+          "asset": "Venezuelan sovereign bonds",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Apertura diplomática eleva probabilidad de reestructuración de deuda",
+            "en": "Diplomatic opening raises probability of debt restructuring"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Reequilibrio regional en LATAM genera movimientos diferenciados en divisas EM",
+            "en": "Regional rebalancing in LATAM generates differentiated EM currency moves"
+          }
+        }
+      ],
+      "confidence": 75,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cj207y30wp0lo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-23",
+      "time": "<1h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "GLOBAL",
+      "title": {
+        "es": "El FMI advierte a Reino Unido y EE.UU. de que deben actuar ante el crecimiento descontrolado de los costes de la deuda",
+        "en": "UK and US warned to take action on spiralling debt costs by IMF"
+      },
+      "summary": {
+        "es": "La directora gerente del FMI, Kristalina Georgieva, alertó a Reino Unido y EE.UU. de que los costes de la deuda han escalado 'como una escalera' tras sucesivos choques económicos. La advertencia llega en un contexto de altos tipos de interés sostenidos y presiones de gasto en defensa, añadiendo riesgo fiscal soberano a los mercados de bonos occidentales.",
+        "en": "IMF Managing Director Kristalina Georgieva warned the UK and US that debt costs have escalated 'like a staircase' following successive economic shocks. The warning comes amid sustained high interest rates and defense spending pressures, adding sovereign fiscal risk to Western bond markets."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "US 10Y Treasury",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Inestabilidad en corredor del Mar Rojo encarece fletes",
-            "en": "Red Sea corridor instability raises freight rates"
+            "es": "Advertencia del FMI sobre deuda presiona los rendimientos de los bonos al alza",
+            "en": "IMF debt warning pressures Treasury yields higher"
+          }
+        },
+        {
+          "asset": "UK Gilts",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Costes de deuda espirales en UK generan presión sobre yields de Gilts",
+            "en": "Spiralling UK debt costs put upward pressure on Gilt yields"
+          }
+        },
+        {
+          "asset": "GBP/USD",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo fiscal soberano en UK deprecia la libra esterlina",
+            "en": "UK sovereign fiscal risk weighs on sterling"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Preocupaciones por deuda soberana sostienen activos refugio alternativos",
+            "en": "Sovereign debt concerns support alternative safe-haven assets"
+          }
+        }
+      ],
+      "confidence": 83,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/cx305ymq4ldqo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-23",
+      "time": "2h"
+    },
+    {
+      "id": 6,
+      "tag": "DATA",
+      "region": "GLOBAL",
+      "title": {
+        "es": "La OCDE dice que el crecimiento es 'resiliente' en 2026 pese a la guerra en Oriente Medio",
+        "en": "OECD says growth 'resilient' in 2026 despite Middle East war"
+      },
+      "summary": {
+        "es": "La OCDE mantuvo su previsión de crecimiento global en el 2,9% para 2026, señalando que la inversión en IA está compensando parcialmente los efectos negativos de la guerra en Oriente Medio. Sin embargo, advirtió que el conflicto está alimentando presiones inflacionarias, lo que complica el ciclo de bajadas de tipos de los bancos centrales.",
+        "en": "The OECD held its 2026 global growth forecast at 2.9%, noting that AI investment is partially offsetting the negative effects of the Middle East war. It warned, however, that the conflict is fueling inflationary pressures, complicating the rate-cutting cycle for major central banks."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Resiliencia del crecimiento es positiva, pero inflación limita alivio monetario",
+            "en": "Growth resilience is positive but inflation limits monetary relief"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Inflación persistente por guerra retrasa expectativas de recortes de la Fed",
+            "en": "War-driven persistent inflation delays Fed rate cut expectations"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Guerra en MENA como factor estructural de inflación energética reconocido por OCDE",
+            "en": "MENA war as structural energy inflation factor acknowledged by OECD"
           }
         }
       ],
       "confidence": 72,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260922-middle-east-live-yemen-fighting-escalates-as-trump-heads-to-un",
-      "published_at": "2026-09-22",
-      "time": "7h"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/oecd-says-growth-resilient-in-2026-despite-middle-east-war/a-79386625?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-23",
+      "time": "<1h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
