@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T10:42:05.612Z",
+  "generated_at": "2026-09-24T11:02:27.594Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,234 +96,273 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "APAC",
       "title": {
-        "es": "Irán relaja condiciones para reabrir el estrecho de Ormuz tras señales de Trump sobre un acuerdo post-midterms",
-        "en": "Iran relaxes preconditions to reopen Strait of Hormuz as Trump signals post-midterm deal"
+        "es": "Trump recibe a Xi Jinping en gesto inusual mientras se extiende la tregua comercial entre EEUU y China",
+        "en": "Trump greets Xi Jinping on arrival in rare move as US-China trade truce extended"
       },
       "summary": {
-        "es": "Irán ha suavizado sus condiciones para reabrir el estrecho de Ormuz, señalando disposición a actuar en siete días si Washington toma medidas recíprocas. Trump indicó en paralelo que Irán firmará un acuerdo tras las elecciones de medio término, lo que sugiere una ventana diplomática con implicaciones directas para los flujos de petróleo global.",
-        "en": "Iran has relaxed its preconditions for reopening the Strait of Hormuz, indicating readiness to act within seven days if the US takes reciprocal steps. Trump simultaneously signaled Iran would make a deal after the midterms, suggesting a diplomatic window with direct implications for global oil flows."
+        "es": "Trump recibió personalmente a Xi Jinping en la base conjunta Andrews, mientras el secretario del Tesoro anunció la extensión del 'Acuerdo de Busan' que pausa las hostilidades comerciales. La cumbre de tres días abordará comercio, IA, Taiwán e Irán, con implicaciones directas para activos de riesgo globales y cadenas de suministro. La distensión comercial podría sostener al yuan, los mercados de renta variable chinos y las materias primas industriales.",
+        "en": "Trump personally greeted Xi Jinping at Joint Base Andrews as the Treasury Secretary announced an extension of the 'Busan Agreement' pausing trade war hostilities. The three-day summit will cover trade, AI, Taiwan and Iran, with direct implications for global risk assets and supply chains. The trade détente could support the yuan, Chinese equities, and industrial commodities."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
-          "direction": "down",
+          "asset": "Chinese equities (CSI 300)",
+          "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Reapertura de Ormuz reduciría prima de riesgo geopolítico sobre el petróleo",
-            "en": "Hormuz reopening would reduce geopolitical risk premium on oil"
+            "es": "Distensión comercial reduce prima de riesgo geopolítico",
+            "en": "Trade truce reduces geopolitical risk premium"
           }
         },
         {
-          "asset": "Gold",
+          "asset": "USD/CNY",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Reducción de tensión regional presiona activos refugio a la baja",
-            "en": "Easing regional tensions pressures safe-haven assets lower"
+            "es": "Yuan se fortalece ante reducción de tensiones arancelarias",
+            "en": "Yuan strengthens on reduced tariff tension"
           }
         },
         {
-          "asset": "EM currencies",
+          "asset": "Copper",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Menor riesgo energético favorece divisas de mercados emergentes importadores",
-            "en": "Lower energy risk benefits oil-importing emerging market currencies"
+            "es": "Demanda industrial china impulsada por mayor certidumbre",
+            "en": "Chinese industrial demand boosted by greater certainty"
           }
         },
         {
-          "asset": "European equities",
+          "asset": "US Tech equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Caída del petróleo alivia presiones inflacionarias sobre empresas europeas",
-            "en": "Oil decline eases inflationary pressure on European corporates"
+            "es": "Agenda de IA bilateral abre acceso a mercados chinos",
+            "en": "Bilateral AI agenda opens Chinese market access"
           }
         }
       ],
-      "confidence": 82,
+      "confidence": 90,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/sep/22/middle-east-iran-irgc-donald-trump-mahmoud-mahmoud-pezeshkian-abbas-araqchi-unga-latest-news-updates",
-      "published_at": "2026-09-22",
-      "time": "15h"
+      "source_url": "https://www.theguardian.com/us-news/2026/sep/23/trump-xi-jinping-china-us-state-visit",
+      "published_at": "2026-09-23",
+      "time": "11h"
     },
     {
       "id": 2,
-      "tag": "ALERT",
-      "region": "EU",
+      "tag": "CRITICAL",
+      "region": "EURASIA",
       "title": {
-        "es": "Ucrania indignada por la retirada de oligarcas rusos de la lista de sanciones de la UE",
-        "en": "Ukraine anger as EU removes Russian oligarchs from sanctions list"
+        "es": "Rusia bombardea Kiev con misiles balísticos mientras ucranianos se preparan para un duro invierno",
+        "en": "Russia slams Kyiv with ballistic missiles as Ukrainians brace for harsh winter"
       },
       "summary": {
-        "es": "La UE ha eliminado a Alisher Usmanov y Mikhail Fridman —ambos con vínculos estrechos con Putin— de su lista de sanciones, en lo que Irlanda calificó como 'un difícil compromiso'. Kyiv advirtió que la medida envía señales equivocadas a Moscú, poniendo en riesgo la coherencia del régimen de sanciones y la unidad del bloque en torno a la guerra.",
-        "en": "The EU removed Alisher Usmanov and Mikhail Fridman — both closely tied to Putin — from its sanctions list in what Ireland called 'a difficult compromise'. Kyiv warned the move sends the wrong signals to Moscow, threatening the coherence of the sanctions regime and bloc unity on the war."
+        "es": "Rusia intensificó sus ataques con misiles balísticos y drones sobre Kiev, matando al menos dos personas, mientras un ataque sobre una granja en Járkov causó seis muertos. Con el invierno aproximándose, la infraestructura energética ucraniana vuelve a ser el principal objetivo estratégico de Moscú. El riesgo de interrupciones en el suministro energético europeo presiona al alza los precios del gas natural y los activos de defensa.",
+        "en": "Russia intensified ballistic missile and drone strikes on Kyiv, killing at least two people, while a strike on a Kharkiv farm killed six. As winter approaches, Ukraine's energy infrastructure is again Moscow's primary strategic target. Risk of European energy supply disruptions pressures natural gas prices and defense assets higher."
       },
       "impact": "high",
       "market_impact": [
+        {
+          "asset": "European Natural Gas (TTF)",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Ataques a infraestructura energética elevan prima de riesgo invernal",
+            "en": "Energy infrastructure strikes raise winter risk premium"
+          }
+        },
+        {
+          "asset": "European Defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada sostenida refuerza gasto en defensa europeo",
+            "en": "Sustained escalation reinforces European defense spending"
+          }
+        },
         {
           "asset": "EUR/USD",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Fracturas en la unidad de la UE sobre sanciones generan incertidumbre política",
-            "en": "EU sanctions unity cracks generate political uncertainty for euro"
-          }
-        },
-        {
-          "asset": "Russian sovereign assets",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Erosión del régimen de sanciones favorece marginalmente activos rusos",
-            "en": "Sanctions erosion marginally benefits Russian assets"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Señal de fatiga ante sanciones puede indicar presión hacia negociaciones",
-            "en": "Sanctions fatigue signal may indicate pressure toward negotiations"
+            "es": "Presión sobre economía europea por costes energéticos",
+            "en": "Pressure on European economy from energy costs"
           }
         }
       ],
-      "confidence": 80,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c6dj4k98107do?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-22",
-      "time": "15h"
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20260924-as-moscow-steps-up-attacks-kyiv-residents-brace-for-harsh-winter",
+      "published_at": "2026-09-24",
+      "time": "5h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "MENA",
       "title": {
-        "es": "Líderes de IA advierten de catástrofe mientras EE.UU. y China rechazan llamadas a desacelerar",
-        "en": "As AI leaders warn of catastrophe, US and China shun slowdown calls"
+        "es": "El presidente de Irán dice a Trump que nunca 'se rendirá'",
+        "en": "Iran's president tells Trump it will never 'bend the knee'"
       },
       "summary": {
-        "es": "Trump y Xi Jinping se preparan para acordar solo una cooperación limitada en seguridad de IA en la cumbre, ignorando las advertencias de líderes del sector sobre riesgos catastróficos. La ausencia de un marco regulatorio conjunto profundiza la fragmentación tecnológica global y acelera la carrera armamentística digital entre las dos superpotencias.",
-        "en": "Trump and Xi Jinping are set to agree only limited cooperation on AI safety at their summit, dismissing industry warnings of catastrophic risks. The absence of a joint regulatory framework deepens global tech fragmentation and accelerates the digital arms race between the two superpowers."
+        "es": "El presidente iraní Pezeshkian respondió desafiante desde la ONU a las amenazas de Trump de 'aniquilar' a Irán si no se alcanza un acuerdo de paz, aunque señales paralelas apuntan a voluntad de negociación. La dualidad del mensaje iraní —firmeza pública, apertura diplomática privada— mantiene elevada la incertidumbre sobre el programa nuclear y el precio del crudo. La agenda Trump-Xi también incluye Irán como variable crítica.",
+        "en": "Iranian President Pezeshkian delivered a defiant UN speech in response to Trump's threats to 'annihilate' Iran absent a peace deal, while parallel signals indicate willingness to talk. The dual Iranian message—public firmness, private diplomatic openness—keeps uncertainty elevated over the nuclear program and oil prices. The Trump-Xi agenda also includes Iran as a critical variable."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "US tech equities",
+          "asset": "Brent crude",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Ausencia de regulación sostenida favorece inversión sin restricciones en IA",
-            "en": "Lack of sustained regulation favors unconstrained AI investment"
+            "es": "Tensión nuclear iraní mantiene prima de riesgo geopolítica",
+            "en": "Iranian nuclear tension maintains geopolitical risk premium"
           }
         },
         {
-          "asset": "Semiconductor equities",
+          "asset": "Gold",
           "direction": "up",
-          "magnitude": "high",
+          "magnitude": "medium",
           "note": {
-            "es": "Carrera de IA sin freno impulsa demanda de chips avanzados",
-            "en": "Unchecked AI race drives demand for advanced semiconductors"
+            "es": "Escalada retórica eleva demanda de refugio seguro",
+            "en": "Rhetorical escalation lifts safe-haven demand"
           }
         },
         {
-          "asset": "Chinese tech equities",
+          "asset": "EM currencies (Gulf)",
           "direction": "mixed",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Cooperación limitada mantiene riesgo de nuevas restricciones a exportación de chips",
-            "en": "Limited cooperation keeps risk of further chip export restrictions"
+            "es": "Riesgo regional contenido mientras persista apertura diplomática",
+            "en": "Regional risk contained while diplomatic opening persists"
           }
         }
       ],
-      "confidence": 80,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/9/23/as-ai-leaders-warn-of-catastrophe-us-and-china-shun-slowdown-calls?traffic_source=rss",
+      "confidence": 82,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cqvgyjy23ggjo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-09-23",
-      "time": "<1h"
+      "time": "16h"
     },
     {
       "id": 4,
-      "tag": "WATCH",
-      "region": "LATAM",
+      "tag": "ALERT",
+      "region": "AFRICA",
       "title": {
-        "es": "Trump se reúne por primera vez con la presidenta venezolana apoyada por EE.UU. tras el arresto de Maduro",
-        "en": "Trump meets US-backed Venezuelan president for first time since Maduro seized"
+        "es": "Etiopía y Tigray se acusan mutuamente de lanzar ofensivas, avivando temores de nueva guerra",
+        "en": "Ethiopia and Tigray accuse each other of launching offensives, fuelling fears of new war"
       },
       "summary": {
-        "es": "Trump se reunió con Delcy Rodríguez, designada líder de Venezuela con respaldo estadounidense tras el arresto y extradición de Maduro, en lo que marca un deshielo significativo entre Caracas y Washington. El encuentro tiene implicaciones para el acceso de EE.UU. a las reservas petroleras venezolanas y el reequilibrio geopolítico en América Latina.",
-        "en": "Trump met with Delcy Rodríguez, the US-backed leader installed following Maduro's arrest and extradition, marking a significant thaw between Caracas and Washington. The meeting has implications for US access to Venezuelan oil reserves and geopolitical rebalancing in Latin America."
+        "es": "El frágil acuerdo de paz de 2022 entre Etiopía y Tigray está siendo puesto a prueba por nuevos enfrentamientos armados y la captura de aeropuertos regionales, con viejos enemigos formando nuevas alianzas. Un retorno al conflicto pleno amenazaría la estabilidad del Cuerno de África, una región crítica para rutas marítimas del Mar Rojo. Las implicaciones van desde flujos de ayuda humanitaria hasta la seguridad de corredores energéticos y logísticos regionales.",
+        "en": "Ethiopia's fragile 2022 peace deal with Tigray is being tested by new armed clashes and seizure of regional airports, with old enemies forming new alliances. A return to full conflict would threaten stability across the Horn of Africa, a region critical for Red Sea maritime routes. Implications span humanitarian aid flows to the security of regional energy and logistics corridors."
       },
       "impact": "medium",
       "market_impact": [
         {
           "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad en el Cuerno de África presiona rutas del Mar Rojo",
+            "en": "Horn of Africa instability pressures Red Sea routes"
+          }
+        },
+        {
+          "asset": "African sovereign bonds (Ethiopia)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Normalización venezolana podría añadir barriles al mercado global",
-            "en": "Venezuelan normalization could add barrels to global supply"
+            "es": "Riesgo de reescalada deteriora perfil crediticio soberano",
+            "en": "Re-escalation risk deteriorates sovereign credit profile"
           }
         },
         {
-          "asset": "Venezuelan sovereign bonds",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Apertura diplomática eleva probabilidad de reestructuración de deuda",
-            "en": "Diplomatic opening raises probability of debt restructuring"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "mixed",
+          "asset": "EM equities (Sub-Saharan Africa)",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Reequilibrio regional en LATAM genera movimientos diferenciados en divisas EM",
-            "en": "Regional rebalancing in LATAM generates differentiated EM currency moves"
+            "es": "Contagio regional reduce apetito inversor en el sector",
+            "en": "Regional contagion reduces investor appetite in sector"
           }
         }
       ],
       "confidence": 75,
       "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cj207y30wp0lo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-23",
-      "time": "<1h"
+      "source_url": "https://www.bbc.co.uk/news/articles/cry8zwwq21pxo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-24",
+      "time": "1h"
     },
     {
       "id": 5,
-      "tag": "ALERT",
-      "region": "GLOBAL",
+      "tag": "WATCH",
+      "region": "LATAM",
       "title": {
-        "es": "El FMI advierte a Reino Unido y EE.UU. de que deben actuar ante el crecimiento descontrolado de los costes de la deuda",
-        "en": "UK and US warned to take action on spiralling debt costs by IMF"
+        "es": "Tras cálido encuentro con Trump, la líder de Venezuela se dispone a hablar ante la ONU",
+        "en": "After Warm Meeting With Trump, Venezuela's Leader Is Set to Address U.N."
       },
       "summary": {
-        "es": "La directora gerente del FMI, Kristalina Georgieva, alertó a Reino Unido y EE.UU. de que los costes de la deuda han escalado 'como una escalera' tras sucesivos choques económicos. La advertencia llega en un contexto de altos tipos de interés sostenidos y presiones de gasto en defensa, añadiendo riesgo fiscal soberano a los mercados de bonos occidentales.",
-        "en": "IMF Managing Director Kristalina Georgieva warned the UK and US that debt costs have escalated 'like a staircase' following successive economic shocks. The warning comes amid sustained high interest rates and defense spending pressures, adding sovereign fiscal risk to Western bond markets."
+        "es": "Delcy Rodríguez, presidenta encargada de Venezuela, se convirtió en la primera dirigente venezolana en ocho años en dirigirse en persona a la ONU, tras un encuentro aparentemente cordial con Trump en Nueva York. El acercamiento entre Washington y Caracas —impensable bajo el chavismo tradicional— podría señalar un deshielo con implicaciones sobre sanciones petroleras y el acceso de Venezuela a mercados de capitales. Los activos venezolanos y el mercado de crudo pesado merecen seguimiento estrecho.",
+        "en": "Acting President Delcy Rodríguez became the first Venezuelan leader in eight years to address the UN in person, following an apparently warm meeting with Trump in New York. The Washington-Caracas rapprochement—unthinkable under traditional Chavismo—could signal a thaw with implications for oil sanctions and Venezuela's access to capital markets. Venezuelan assets and the heavy crude market warrant close monitoring."
       },
-      "impact": "high",
+      "impact": "medium",
       "market_impact": [
         {
-          "asset": "US 10Y Treasury",
+          "asset": "Venezuelan sovereign bonds",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Advertencia del FMI sobre deuda presiona los rendimientos de los bonos al alza",
-            "en": "IMF debt warning pressures Treasury yields higher"
+            "es": "Normalización diplomática mejora expectativas de restructuración",
+            "en": "Diplomatic normalization improves restructuring expectations"
           }
         },
         {
-          "asset": "UK Gilts",
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Potencial retorno de crudo venezolano al mercado global",
+            "en": "Potential return of Venezuelan crude to global market"
+          }
+        },
+        {
+          "asset": "EM currencies (Latin America)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Reducción de riesgo geopolítico regional mejora sentimiento",
+            "en": "Reduced regional geopolitical risk improves sentiment"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/23/world/americas/trump-venezuela-delcy-rodriguez.html",
+      "published_at": "2026-09-23",
+      "time": "12h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Reino Unido advertido sobre el aumento de los costes de la deuda y menor crecimiento antes del Presupuesto",
+        "en": "UK warned over ballooning debt costs and slower growth ahead of Budget"
+      },
+      "summary": {
+        "es": "El Reino Unido enfrenta advertencias sobre el incremento de los costes de financiación de su deuda y una desaceleración del crecimiento, exacerbada por los altos precios de la energía vinculados al conflicto en Oriente Medio. Con el Presupuesto en el horizonte, la presión fiscal y la prima de riesgo soberana del Gilt son focos de atención para los mercados de renta fija. El contexto geopolítico —energía cara y tensiones comerciales— complica el margen de maniobra fiscal del gobierno.",
+        "en": "The UK faces warnings over rising debt financing costs and slowing growth, compounded by high energy prices linked to the Middle East conflict. With the Budget approaching, fiscal pressure and the Gilt sovereign risk premium are key fixed income market focal points. The geopolitical context—expensive energy and trade tensions—constrains the government's fiscal room."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "UK Gilts (10Y)",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Costes de deuda espirales en UK generan presión sobre yields de Gilts",
-            "en": "Spiralling UK debt costs put upward pressure on Gilt yields"
+            "es": "Costes de deuda crecientes elevan rendimientos soberanos",
+            "en": "Rising debt costs push sovereign yields higher"
           }
         },
         {
@@ -331,73 +370,25 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo fiscal soberano en UK deprecia la libra esterlina",
-            "en": "UK sovereign fiscal risk weighs on sterling"
+            "es": "Deterioro fiscal y menor crecimiento presionan la libra",
+            "en": "Fiscal deterioration and slower growth pressure sterling"
           }
         },
         {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Preocupaciones por deuda soberana sostienen activos refugio alternativos",
-            "en": "Sovereign debt concerns support alternative safe-haven assets"
-          }
-        }
-      ],
-      "confidence": 83,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cx305ymq4ldqo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-23",
-      "time": "2h"
-    },
-    {
-      "id": 6,
-      "tag": "DATA",
-      "region": "GLOBAL",
-      "title": {
-        "es": "La OCDE dice que el crecimiento es 'resiliente' en 2026 pese a la guerra en Oriente Medio",
-        "en": "OECD says growth 'resilient' in 2026 despite Middle East war"
-      },
-      "summary": {
-        "es": "La OCDE mantuvo su previsión de crecimiento global en el 2,9% para 2026, señalando que la inversión en IA está compensando parcialmente los efectos negativos de la guerra en Oriente Medio. Sin embargo, advirtió que el conflicto está alimentando presiones inflacionarias, lo que complica el ciclo de bajadas de tipos de los bancos centrales.",
-        "en": "The OECD held its 2026 global growth forecast at 2.9%, noting that AI investment is partially offsetting the negative effects of the Middle East war. It warned, however, that the conflict is fueling inflationary pressures, complicating the rate-cutting cycle for major central banks."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "European equities",
+          "asset": "UK equities (FTSE 100)",
           "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Resiliencia del crecimiento es positiva, pero inflación limita alivio monetario",
-            "en": "Growth resilience is positive but inflation limits monetary relief"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Inflación persistente por guerra retrasa expectativas de recortes de la Fed",
-            "en": "War-driven persistent inflation delays Fed rate cut expectations"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Guerra en MENA como factor estructural de inflación energética reconocido por OCDE",
-            "en": "MENA war as structural energy inflation factor acknowledged by OECD"
+            "es": "Libra débil beneficia exportadores, pero daña domésticos",
+            "en": "Weak pound benefits exporters but hurts domestics"
           }
         }
       ],
-      "confidence": 72,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/oecd-says-growth-resilient-in-2026-despite-middle-east-war/a-79386625?maca=en-rss-en-all-1573-rdf",
+      "confidence": 70,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/c607ly09y7rlo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-09-23",
-      "time": "<1h"
+      "time": "21h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
