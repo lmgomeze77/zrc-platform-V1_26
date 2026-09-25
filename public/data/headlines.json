@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T11:02:27.594Z",
+  "generated_at": "2026-09-25T11:02:31.396Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,297 +98,306 @@
       "tag": "CRITICAL",
       "region": "APAC",
       "title": {
-        "es": "Trump recibe a Xi Jinping en gesto inusual mientras se extiende la tregua comercial entre EEUU y China",
-        "en": "Trump greets Xi Jinping on arrival in rare move as US-China trade truce extended"
+        "es": "En reunión con Trump, Xi Jinping expone condiciones para evitar conflicto militar EE.UU.-China",
+        "en": "At Trump meeting, Xi Jinping lays out terms to avoid US-China military conflict"
       },
       "summary": {
-        "es": "Trump recibió personalmente a Xi Jinping en la base conjunta Andrews, mientras el secretario del Tesoro anunció la extensión del 'Acuerdo de Busan' que pausa las hostilidades comerciales. La cumbre de tres días abordará comercio, IA, Taiwán e Irán, con implicaciones directas para activos de riesgo globales y cadenas de suministro. La distensión comercial podría sostener al yuan, los mercados de renta variable chinos y las materias primas industriales.",
-        "en": "Trump personally greeted Xi Jinping at Joint Base Andrews as the Treasury Secretary announced an extension of the 'Busan Agreement' pausing trade war hostilities. The three-day summit will cover trade, AI, Taiwan and Iran, with direct implications for global risk assets and supply chains. The trade détente could support the yuan, Chinese equities, and industrial commodities."
+        "es": "Xi Jinping propuso un marco de cooperación amplia con Washington para evitar la 'trampa de Tucídides', en un contexto de intensa competencia en IA y comercio. El encuentro señala una pausa táctica en la rivalidad estratégica, aunque Pekín no obtuvo concesiones clave en comercio, tecnología ni Taiwán. Los mercados interpretarán la cima como un alivio de tensión a corto plazo, con implicaciones para semiconductores y activos de riesgo.",
+        "en": "Xi Jinping proposed a broad cooperation framework with Washington to avoid the 'Thucydides trap', against a backdrop of intense competition in AI and trade. The summit signals a tactical pause in strategic rivalry, though Beijing secured no major concessions on trade, tech or Taiwan. Markets will likely read the summit as short-term tension relief with implications for semiconductors and risk assets."
       },
       "impact": "high",
       "market_impact": [
         {
+          "asset": "US Tech equities (semiconductors)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Reducción de riesgo de escalada en restricciones tecnológicas",
+            "en": "Reduced risk of escalating tech export restrictions"
+          }
+        },
+        {
           "asset": "Chinese equities (CSI 300)",
           "direction": "up",
-          "magnitude": "high",
+          "magnitude": "medium",
           "note": {
-            "es": "Distensión comercial reduce prima de riesgo geopolítico",
-            "en": "Trade truce reduces geopolitical risk premium"
+            "es": "Señal de distensión bilateral mejora apetito inversor en activos chinos",
+            "en": "Bilateral détente signal improves investor appetite for Chinese assets"
           }
         },
         {
           "asset": "USD/CNY",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Yuan se fortalece ante reducción de tensiones arancelarias",
-            "en": "Yuan strengthens on reduced tariff tension"
+            "es": "Menor presión sobre yuan ante pausa en guerra comercial",
+            "en": "Reduced pressure on yuan amid trade war pause"
           }
         },
         {
-          "asset": "Copper",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "Gold",
+          "direction": "down",
+          "magnitude": "low",
           "note": {
-            "es": "Demanda industrial china impulsada por mayor certidumbre",
-            "en": "Chinese industrial demand boosted by greater certainty"
-          }
-        },
-        {
-          "asset": "US Tech equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Agenda de IA bilateral abre acceso a mercados chinos",
-            "en": "Bilateral AI agenda opens Chinese market access"
+            "es": "Reducción de demanda de refugio seguro ante distensión geopolítica",
+            "en": "Safe-haven demand softens on geopolitical de-escalation"
           }
         }
       ],
-      "confidence": 90,
+      "confidence": 88,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/us-news/2026/sep/23/trump-xi-jinping-china-us-state-visit",
-      "published_at": "2026-09-23",
+      "source_url": "https://www.theguardian.com/us-news/2026/sep/24/xi-jinping-trump-china-cooperation-thucydides-trap",
+      "published_at": "2026-09-24",
       "time": "11h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
-      "region": "EURASIA",
+      "region": "MENA",
       "title": {
-        "es": "Rusia bombardea Kiev con misiles balísticos mientras ucranianos se preparan para un duro invierno",
-        "en": "Russia slams Kyiv with ballistic missiles as Ukrainians brace for harsh winter"
+        "es": "Arabia Saudita intercepta oleada de misiles hutíes mientras el petróleo sube a máximo de una semana",
+        "en": "Saudi Arabia intercepts wave of Houthi missiles as oil climbs to one-week high"
       },
       "summary": {
-        "es": "Rusia intensificó sus ataques con misiles balísticos y drones sobre Kiev, matando al menos dos personas, mientras un ataque sobre una granja en Járkov causó seis muertos. Con el invierno aproximándose, la infraestructura energética ucraniana vuelve a ser el principal objetivo estratégico de Moscú. El riesgo de interrupciones en el suministro energético europeo presiona al alza los precios del gas natural y los activos de defensa.",
-        "en": "Russia intensified ballistic missile and drone strikes on Kyiv, killing at least two people, while a strike on a Kharkiv farm killed six. As winter approaches, Ukraine's energy infrastructure is again Moscow's primary strategic target. Risk of European energy supply disruptions pressures natural gas prices and defense assets higher."
+        "es": "Arabia Saudita interceptó seis misiles balísticos hutíes dirigidos a Taif y la zona de Yanbu, el principal corredor alternativo para las exportaciones de petróleo saudí en el Mar Rojo. El ataque empujó los precios del crudo a máximos de una semana, con Francia comprometiendo activos militares para proteger el terminal petrolero de Yanbu. La amenaza persistente a infraestructura energética crítica mantiene una prima de riesgo geopolítica sobre el Brent.",
+        "en": "Saudi Arabia intercepted six Houthi ballistic missiles aimed at Taif and the Yanbu area, the main alternative route for Saudi oil exports on the Red Sea. The attack pushed crude prices to a one-week high, with France pledging military assets to protect the Yanbu oil terminal. The persistent threat to critical energy infrastructure sustains a geopolitical risk premium on Brent."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European Natural Gas (TTF)",
+          "asset": "Brent crude",
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Ataques a infraestructura energética elevan prima de riesgo invernal",
-            "en": "Energy infrastructure strikes raise winter risk premium"
+            "es": "Riesgo directo a infraestructura exportadora de petróleo saudí",
+            "en": "Direct risk to Saudi oil export infrastructure"
           }
         },
         {
-          "asset": "European Defense equities",
+          "asset": "WTI crude",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada sostenida refuerza gasto en defensa europeo",
-            "en": "Sustained escalation reinforces European defense spending"
+            "es": "Correlación con Brent por amenaza a suministro del Golfo",
+            "en": "Correlates with Brent on Gulf supply threat"
           }
         },
         {
-          "asset": "EUR/USD",
-          "direction": "down",
+          "asset": "Defense sector equities (EU)",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Presión sobre economía europea por costes energéticos",
-            "en": "Pressure on European economy from energy costs"
+            "es": "Despliegue francés refuerza narrativa de gasto en defensa europea",
+            "en": "French deployment reinforces European defense spending narrative"
+          }
+        },
+        {
+          "asset": "EM currencies (oil importers)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Alza del crudo presiona divisas de economías importadoras emergentes",
+            "en": "Oil price rise pressures currencies of emerging market oil importers"
           }
         }
       ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260924-as-moscow-steps-up-attacks-kyiv-residents-brace-for-harsh-winter",
-      "published_at": "2026-09-24",
-      "time": "5h"
+      "confidence": 90,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/sep/25/saudi-arabia-intercepts-houthi-missiles-oil-prices-climbs",
+      "published_at": "2026-09-25",
+      "time": "8h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "MENA",
+      "region": "EURASIA",
       "title": {
-        "es": "El presidente de Irán dice a Trump que nunca 'se rendirá'",
-        "en": "Iran's president tells Trump it will never 'bend the knee'"
+        "es": "Atascada en el campo de batalla, Rusia libra una 'guerra total' contra la economía de Ucrania",
+        "en": "Stuck on the Battlefield, Russia Wages 'Total War' on Ukraine's Economy"
       },
       "summary": {
-        "es": "El presidente iraní Pezeshkian respondió desafiante desde la ONU a las amenazas de Trump de 'aniquilar' a Irán si no se alcanza un acuerdo de paz, aunque señales paralelas apuntan a voluntad de negociación. La dualidad del mensaje iraní —firmeza pública, apertura diplomática privada— mantiene elevada la incertidumbre sobre el programa nuclear y el precio del crudo. La agenda Trump-Xi también incluye Irán como variable crítica.",
-        "en": "Iranian President Pezeshkian delivered a defiant UN speech in response to Trump's threats to 'annihilate' Iran absent a peace deal, while parallel signals indicate willingness to talk. The dual Iranian message—public firmness, private diplomatic openness—keeps uncertainty elevated over the nuclear program and oil prices. The Trump-Xi agenda also includes Iran as a critical variable."
+        "es": "Los ataques rusos contra infraestructura económica ucraniana generan daños en miles de millones de dólares en ventas perdidas, jornadas laborales interrumpidas y cuellos de botella logísticos. Esta estrategia de desgaste económico apunta a erosionar la capacidad de resistencia de Ucrania a largo plazo, con implicaciones para el financiamiento occidental y la reconstrucción. Los mercados de deuda soberana ucraniana y los fondos de reconstrucción europeos son los activos más expuestos.",
+        "en": "Russian strikes on Ukrainian economic infrastructure are generating billions in damages through lost sales, disrupted workdays and logistical bottlenecks. This economic attrition strategy aims to erode Ukraine's long-term resistance capacity, with implications for Western financing and reconstruction. Ukrainian sovereign debt markets and European reconstruction funds are the most exposed assets."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
-          "direction": "up",
+          "asset": "Ukrainian sovereign bonds",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Tensión nuclear iraní mantiene prima de riesgo geopolítica",
-            "en": "Iranian nuclear tension maintains geopolitical risk premium"
+            "es": "Deterioro económico sostenido aumenta riesgo de restructuración",
+            "en": "Sustained economic deterioration raises restructuring risk"
           }
         },
         {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada retórica eleva demanda de refugio seguro",
-            "en": "Rhetorical escalation lifts safe-haven demand"
-          }
-        },
-        {
-          "asset": "EM currencies (Gulf)",
+          "asset": "European equities (reconstruction-linked)",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo regional contenido mientras persista apertura diplomática",
-            "en": "Regional risk contained while diplomatic opening persists"
+            "es": "Daños prolongados retrasan pero eventualmente amplifican demanda de reconstrucción",
+            "en": "Prolonged damage delays but eventually amplifies reconstruction demand"
+          }
+        },
+        {
+          "asset": "Natural gas (European TTF)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Ataques a infraestructura mantienen presión sobre seguridad energética europea",
+            "en": "Infrastructure strikes maintain pressure on European energy security"
           }
         }
       ],
       "confidence": 82,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cqvgyjy23ggjo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-23",
-      "time": "16h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "AFRICA",
-      "title": {
-        "es": "Etiopía y Tigray se acusan mutuamente de lanzar ofensivas, avivando temores de nueva guerra",
-        "en": "Ethiopia and Tigray accuse each other of launching offensives, fuelling fears of new war"
-      },
-      "summary": {
-        "es": "El frágil acuerdo de paz de 2022 entre Etiopía y Tigray está siendo puesto a prueba por nuevos enfrentamientos armados y la captura de aeropuertos regionales, con viejos enemigos formando nuevas alianzas. Un retorno al conflicto pleno amenazaría la estabilidad del Cuerno de África, una región crítica para rutas marítimas del Mar Rojo. Las implicaciones van desde flujos de ayuda humanitaria hasta la seguridad de corredores energéticos y logísticos regionales.",
-        "en": "Ethiopia's fragile 2022 peace deal with Tigray is being tested by new armed clashes and seizure of regional airports, with old enemies forming new alliances. A return to full conflict would threaten stability across the Horn of Africa, a region critical for Red Sea maritime routes. Implications span humanitarian aid flows to the security of regional energy and logistics corridors."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad en el Cuerno de África presiona rutas del Mar Rojo",
-            "en": "Horn of Africa instability pressures Red Sea routes"
-          }
-        },
-        {
-          "asset": "African sovereign bonds (Ethiopia)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de reescalada deteriora perfil crediticio soberano",
-            "en": "Re-escalation risk deteriorates sovereign credit profile"
-          }
-        },
-        {
-          "asset": "EM equities (Sub-Saharan Africa)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Contagio regional reduce apetito inversor en el sector",
-            "en": "Regional contagion reduces investor appetite in sector"
-          }
-        }
-      ],
-      "confidence": 75,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cry8zwwq21pxo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-24",
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/25/world/europe/ukraine-russia-economy.html",
+      "published_at": "2026-09-25",
       "time": "1h"
     },
     {
-      "id": 5,
+      "id": 4,
       "tag": "WATCH",
-      "region": "LATAM",
+      "region": "AFRICA",
       "title": {
-        "es": "Tras cálido encuentro con Trump, la líder de Venezuela se dispone a hablar ante la ONU",
-        "en": "After Warm Meeting With Trump, Venezuela's Leader Is Set to Address U.N."
+        "es": "El ejército de Etiopía dice haber matado a cientos de rebeldes del TPLF",
+        "en": "Ethiopia's military says it killed hundreds of TPLF rebels"
       },
       "summary": {
-        "es": "Delcy Rodríguez, presidenta encargada de Venezuela, se convirtió en la primera dirigente venezolana en ocho años en dirigirse en persona a la ONU, tras un encuentro aparentemente cordial con Trump en Nueva York. El acercamiento entre Washington y Caracas —impensable bajo el chavismo tradicional— podría señalar un deshielo con implicaciones sobre sanciones petroleras y el acceso de Venezuela a mercados de capitales. Los activos venezolanos y el mercado de crudo pesado merecen seguimiento estrecho.",
-        "en": "Acting President Delcy Rodríguez became the first Venezuelan leader in eight years to address the UN in person, following an apparently warm meeting with Trump in New York. The Washington-Caracas rapprochement—unthinkable under traditional Chavismo—could signal a thaw with implications for oil sanctions and Venezuela's access to capital markets. Venezuelan assets and the heavy crude market warrant close monitoring."
+        "es": "La reanudación de hostilidades entre el ejército etíope y el TPLF genera temores de un retorno a la guerra que causó cientos de miles de víctimas civiles entre 2020 y 2022. Un nuevo conflicto abierto desestabilizaría el Cuerno de África, amenazando corredores logísticos críticos y flujos de inversión hacia la región. Los mercados de deuda soberana etíope y las posiciones en materias primas vinculadas al Cuerno de África son los más vulnerables.",
+        "en": "The resumption of hostilities between the Ethiopian military and the TPLF raises fears of a return to a war that killed hundreds of thousands of civilians between 2020 and 2022. A new open conflict would destabilize the Horn of Africa, threatening critical logistics corridors and investment flows to the region. Ethiopian sovereign debt markets and commodity positions linked to the Horn of Africa are most vulnerable."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Venezuelan sovereign bonds",
-          "direction": "up",
+          "asset": "Ethiopian sovereign bonds (Eurobonds)",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Normalización diplomática mejora expectativas de restructuración",
-            "en": "Diplomatic normalization improves restructuring expectations"
+            "es": "Riesgo de conflicto renovado deteriora perspectiva de deuda soberana",
+            "en": "Renewed conflict risk deteriorates sovereign debt outlook"
           }
         },
         {
-          "asset": "Brent crude",
+          "asset": "EM Africa equities",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Potencial retorno de crudo venezolano al mercado global",
-            "en": "Potential return of Venezuelan crude to global market"
+            "es": "Contagio de riesgo regional afecta apetito por activos africanos",
+            "en": "Regional risk contagion dampens appetite for African assets"
           }
         },
         {
-          "asset": "EM currencies (Latin America)",
+          "asset": "Coffee futures (Arabica)",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Reducción de riesgo geopolítico regional mejora sentimiento",
-            "en": "Reduced regional geopolitical risk improves sentiment"
+            "es": "Etiopía es exportador clave de café; el conflicto amenaza el suministro",
+            "en": "Ethiopia is a key coffee exporter; conflict threatens supply"
           }
         }
       ],
       "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ethiopia-s-military-says-it-killed-hundreds-of-tplf-rebels/a-79419173?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-24",
+      "time": "16h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "US",
+      "title": {
+        "es": "Carney dice que consideraría un segundo mandato dependiendo del estado de las relaciones EE.UU.-Canadá",
+        "en": "Carney Says He Would Consider a Second Term, Depending on State of U.S.-Canada Relations"
+      },
+      "summary": {
+        "es": "El primer ministro canadiense Mark Carney reconoció que los canadienses sentirán el dolor de la guerra comercial con EE.UU. mientras trabaja para reducir la dependencia económica de Washington. La declaración subraya la profundidad de la ruptura comercial entre los dos mayores socios comerciales de América del Norte, con implicaciones para el dólar canadiense, las cadenas de suministro automotrices y las exportaciones de energía. La duración del conflicto comercial es ahora un factor político interno en Canadá.",
+        "en": "Canadian Prime Minister Mark Carney acknowledged that Canadians will feel pain from the trade war with the US as he works to reduce economic dependence on Washington. The statement underscores the depth of the trade rupture between North America's two largest trading partners, with implications for the Canadian dollar, automotive supply chains and energy exports. The duration of the trade conflict is now a domestic political factor in Canada."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "CAD/USD",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Prolongación de guerra comercial pesa sobre el dólar canadiense",
+            "en": "Prolonged trade war weighs on the Canadian dollar"
+          }
+        },
+        {
+          "asset": "Canadian equities (TSX)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre comercial con EE.UU. deprime valoraciones canadienses",
+            "en": "US trade uncertainty depresses Canadian valuations"
+          }
+        },
+        {
+          "asset": "Canadian energy equities",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Diversificación de exportaciones puede beneficiar a largo plazo pero genera costos a corto",
+            "en": "Export diversification may benefit long-term but creates short-term costs"
+          }
+        }
+      ],
+      "confidence": 75,
       "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/23/world/americas/trump-venezuela-delcy-rodriguez.html",
-      "published_at": "2026-09-23",
-      "time": "12h"
+      "source_url": "https://www.nytimes.com/2026/09/24/world/canada/carney-economy-trade-war.html",
+      "published_at": "2026-09-24",
+      "time": "17h"
     },
     {
       "id": 6,
       "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "Reino Unido advertido sobre el aumento de los costes de la deuda y menor crecimiento antes del Presupuesto",
-        "en": "UK warned over ballooning debt costs and slower growth ahead of Budget"
+        "es": "Los fabricantes de automóviles europeos están en crisis. ¿Los rescatará la amenaza de guerra?",
+        "en": "Europe's car makers are in crisis. Will the threat of war rescue them?"
       },
       "summary": {
-        "es": "El Reino Unido enfrenta advertencias sobre el incremento de los costes de financiación de su deuda y una desaceleración del crecimiento, exacerbada por los altos precios de la energía vinculados al conflicto en Oriente Medio. Con el Presupuesto en el horizonte, la presión fiscal y la prima de riesgo soberana del Gilt son focos de atención para los mercados de renta fija. El contexto geopolítico —energía cara y tensiones comerciales— complica el margen de maniobra fiscal del gobierno.",
-        "en": "The UK faces warnings over rising debt financing costs and slowing growth, compounded by high energy prices linked to the Middle East conflict. With the Budget approaching, fiscal pressure and the Gilt sovereign risk premium are key fixed income market focal points. The geopolitical context—expensive energy and trade tensions—constrains the government's fiscal room."
+        "es": "Los ejecutivos del sector automotriz europeo esperan que el rearme continental les permita reconvertir capacidad industrial y recuperar relevancia estratégica. La convergencia entre la crisis del automóvil europeo y el aumento del gasto en defensa crea oportunidades de reconversión industrial con implicaciones para subsidios estatales y valoraciones sectoriales. Este proceso podría redefinir la asignación de capital industrial en Alemania y Francia.",
+        "en": "European auto executives hope continental rearmament will allow industrial capacity reconversion and strategic relevance recovery. The convergence of Europe's auto crisis and rising defense spending creates industrial reconversion opportunities with implications for state subsidies and sector valuations. This process could redefine industrial capital allocation in Germany and France."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "UK Gilts (10Y)",
+          "asset": "European auto equities (Volkswagen, Stellantis)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Reconversión industrial hacia defensa podría sostener valoraciones deprimidas",
+            "en": "Defense reconversion could support depressed valuations"
+          }
+        },
+        {
+          "asset": "European defense equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Costes de deuda crecientes elevan rendimientos soberanos",
-            "en": "Rising debt costs push sovereign yields higher"
+            "es": "Mayor capacidad industrial disponible acelera expansión del sector defensa",
+            "en": "Available industrial capacity accelerates defense sector expansion"
           }
         },
         {
-          "asset": "GBP/USD",
+          "asset": "German Bunds",
           "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Deterioro fiscal y menor crecimiento presionan la libra",
-            "en": "Fiscal deterioration and slower growth pressure sterling"
-          }
-        },
-        {
-          "asset": "UK equities (FTSE 100)",
-          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Libra débil beneficia exportadores, pero daña domésticos",
-            "en": "Weak pound benefits exporters but hurts domestics"
+            "es": "Gasto en reconversión industrial amplía déficit fiscal alemán",
+            "en": "Industrial reconversion spending widens German fiscal deficit"
           }
         }
       ],
-      "confidence": 70,
+      "confidence": 68,
       "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/c607ly09y7rlo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-23",
-      "time": "21h"
+      "source_url": "https://www.bbc.co.uk/news/articles/c6vgyq598k9po?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-25",
+      "time": "2h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
