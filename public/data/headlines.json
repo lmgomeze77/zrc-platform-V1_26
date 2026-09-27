@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T10:45:34.773Z",
+  "generated_at": "2026-09-27T11:18:19.183Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,12 +98,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Trump rechazaría el acuerdo de paz de siete días de Irán para reabrir el estrecho de Ormuz",
-        "en": "Trump reportedly rejects Iran's seven-day peace deal to reopen strait of Hormuz"
+        "es": "Trump rechaza la propuesta de paz de Irán para reabrir el estrecho de Ormuz",
+        "en": "Trump rejects Iran's seven-day peace deal to reopen strait of Hormuz"
       },
       "summary": {
-        "es": "Trump habría rechazado la propuesta iraní de reabrir el estrecho de Ormuz en siete días, con expectativas de reanudar ataques tras las elecciones de mitad de mandato. Irán espera una respuesta oficial mientras persiste la tensión en una de las rutas energéticas más críticas del mundo. El bloqueo del estrecho supone un riesgo severo para los mercados de energía globales y el comercio marítimo.",
-        "en": "Trump reportedly rejected Iran's proposal to reopen the Strait of Hormuz within seven days, with expectations of renewed strikes after the midterms. Iran awaits an official response while tensions persist over one of the world's most critical energy chokepoints. A continued Hormuz blockade poses severe risks to global energy markets and maritime trade."
+        "es": "Trump ha rechazado la propuesta iraní de reabrir el estrecho de Ormuz en una semana a cambio del levantamiento del bloqueo naval estadounidense y la reanudación de las conversaciones nucleares. El rechazo mantiene el bloqueo activo y señala posibles nuevos ataques militares tras las elecciones de mitad de mandato, manteniendo la presión sobre los flujos de energía global. El estrecho de Ormuz canaliza aproximadamente el 20% del comercio mundial de petróleo, convirtiendo esta parálisis en un riesgo sistémico para los mercados energéticos.",
+        "en": "Trump has rejected Iran's proposal to reopen the Strait of Hormuz within a week in exchange for lifting the US naval blockade and resuming nuclear talks. The rejection keeps the blockade active and signals potential renewed military strikes after the midterm elections, sustaining pressure on global energy flows. The Strait of Hormuz channels roughly 20% of global oil trade, making this standoff a systemic risk for energy markets."
       },
       "impact": "high",
       "market_impact": [
@@ -112,131 +112,140 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Bloqueo de Ormuz mantiene presión alcista severa sobre el petróleo",
-            "en": "Hormuz blockade sustains severe upward pressure on oil prices"
+            "es": "Bloqueo continuo restringe suministro del Golfo Pérsico",
+            "en": "Ongoing blockade restricts Persian Gulf supply"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Escalada geopolítica impulsa demanda de activo refugio",
-            "en": "Geopolitical escalation drives safe-haven demand"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Fuga hacia refugios seguros presiona rendimientos a la baja",
-            "en": "Flight to safety pushes yields lower"
+            "es": "Aversión al riesgo por escalada geopolítica en MENA",
+            "en": "Risk aversion amid MENA geopolitical escalation"
           }
         },
         {
           "asset": "EM currencies",
           "direction": "down",
-          "magnitude": "high",
+          "magnitude": "medium",
           "note": {
-            "es": "Shock energético golpea divisas de mercados emergentes importadores",
-            "en": "Energy shock hits oil-importing EM currencies"
+            "es": "Choque de términos de intercambio para importadores de petróleo",
+            "en": "Terms-of-trade shock for oil-importing EMs"
+          }
+        },
+        {
+          "asset": "US Defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Perspectiva de reanudación de operaciones militares tras elecciones",
+            "en": "Prospect of resumed military operations post-midterms"
           }
         }
       ],
-      "confidence": 90,
+      "confidence": 92,
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/world/2026/sep/26/trump-dismiss-iran-seven-day-peace-deal-hormuz",
-      "published_at": "2026-09-26",
-      "time": "1h"
+      "published_at": "2026-09-27",
+      "time": "4h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "APAC",
       "title": {
-        "es": "En la cumbre, Xi buscó inclinar la postura de Trump sobre el papel de EE.UU. en Asia",
+        "es": "En la cumbre, Xi buscó inclinar la postura de Trump sobre el lugar de EE.UU. en Asia",
         "en": "At Summit, Xi Sought to Tilt Trump's Stance on America's Place in Asia"
       },
       "summary": {
-        "es": "Xi Jinping utilizó elogios, advertencias y referencias históricas bélicas para cuestionar el apoyo estadounidense a Taiwán y Japón durante las conversaciones con Trump. Aunque el tono fue cordial, la falta de avances sustanciales refleja una competencia estratégica persistente en el Indo-Pacífico. Los mercados de activos taiwaneses y japoneses son los más expuestos a cualquier señal de reducción del paraguas de seguridad estadounidense.",
-        "en": "Xi Jinping used praise, warnings, and wartime history to challenge U.S. support for Taiwan and Japan during talks with Trump. Despite a cordial atmosphere, the absence of substantive progress reflects persistent strategic competition in the Indo-Pacific. Taiwanese and Japanese assets are most exposed to any signal of reduced U.S. security commitment."
+        "es": "En la cumbre Trump-Xi, el líder chino empleó elogios, advertencias y referencias históricas bélicas para cuestionar el apoyo estadounidense a Taiwán y Japón. Cualquier señal de distanciamiento de Washington respecto a sus aliados regionales alteraría profundamente el marco de seguridad del Indo-Pacífico. Los mercados de activos taiwaneses y japoneses son especialmente sensibles a los cambios en la percepción del compromiso de seguridad estadounidense.",
+        "en": "At the Trump-Xi summit, the Chinese leader used praise, warnings, and wartime history to challenge US support for Taiwan and Japan. Any signal of Washington distancing from regional allies would profoundly alter the Indo-Pacific security framework. Taiwanese and Japanese asset markets are particularly sensitive to shifts in perceived US security commitment."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Taiwan equities (TWSE)",
+          "asset": "Taiwan equities (TAIEX)",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Ambigüedad sobre garantías de seguridad de EE.UU. pesa sobre bolsa taiwanesa",
-            "en": "Ambiguity over U.S. security guarantees weighs on Taiwan equities"
+            "es": "Riesgo de reducción del paraguas de seguridad de EE.UU.",
+            "en": "Risk of reduced US security umbrella"
           }
         },
         {
-          "asset": "USD/CNY",
+          "asset": "USD/JPY",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Cumbre sin resultados claros deja incertidumbre sobre política comercial",
-            "en": "Summit without clear outcomes leaves trade policy uncertainty"
+            "es": "Incertidumbre sobre la alianza EE.UU.-Japón pesa sobre activos de riesgo",
+            "en": "US-Japan alliance uncertainty weighs on risk assets"
           }
         },
         {
-          "asset": "Japanese yen",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "TSMC (semiconductor sector)",
+          "direction": "down",
+          "magnitude": "high",
           "note": {
-            "es": "Incertidumbre geopolítica regional apoya demanda de yen como refugio",
-            "en": "Regional geopolitical uncertainty supports yen safe-haven demand"
+            "es": "Exposición geopolítica elevada ante señales de ambigüedad estratégica",
+            "en": "Elevated geopolitical exposure on strategic ambiguity signals"
           }
         },
         {
-          "asset": "Defense equities (Asia)",
+          "asset": "Gold",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Presión china incentiva mayor gasto en defensa regional",
-            "en": "Chinese pressure incentivizes higher regional defense spending"
+            "es": "Demanda de refugio por reordenamiento geopolítico en Asia",
+            "en": "Safe-haven demand on Asia geopolitical realignment"
           }
         }
       ],
-      "confidence": 88,
+      "confidence": 90,
       "source": "New York Times",
       "source_url": "https://www.nytimes.com/2026/09/26/world/asia/summit-xi-trump-taiwan-japan.html",
       "published_at": "2026-09-26",
-      "time": "6h"
+      "time": "13h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "EURASIA",
+      "region": "EU",
       "title": {
-        "es": "Atascada en el campo de batalla, Rusia libra una 'guerra total' contra la economía de Ucrania",
-        "en": "Stuck on the Battlefield, Russia Wages 'Total War' on Ukraine's Economy"
+        "es": "Se espera que Rusia intensifique su guerra híbrida contra Europa",
+        "en": "Russia expected to intensify hybrid war on Europe"
       },
       "summary": {
-        "es": "Rusia ha intensificado ataques económicos contra Ucrania, causando pérdidas de miles de millones de dólares por disrupciones logísticas, cierres de negocios y daños a infraestructura crítica. La estrategia apunta a erosionar la capacidad de resistencia ucraniana más allá del frente militar. Los mercados de bonos soberanos ucranianos y el apoyo financiero occidental continúan siendo las variables clave de inversión a seguir.",
-        "en": "Russia has intensified economic warfare against Ukraine, causing billions in losses through logistics disruptions, business closures, and damage to critical infrastructure. The strategy aims to erode Ukrainian resilience beyond the military front. Ukrainian sovereign bonds and Western financial support remain the key investment variables to monitor."
+        "es": "Polonia, Rumanía y Moldavia reportan explosiones de drones, violaciones del espacio aéreo e incendios provocados como parte de una campaña híbrida rusa que se extiende más allá de Ucrania. Varios gobiernos europeos califican estos actos como agresión deliberada, lo que aumenta la presión sobre el gasto en defensa de la OTAN y la prima de riesgo de los activos de Europa del Este. Esta dinámica refuerza la tesis de inversión en defensa europea y presiona al alza los spreads soberanos de los países fronterizos.",
+        "en": "Poland, Romania, and Moldova report drone explosions, airspace violations, and arson attacks as part of a Russian hybrid campaign extending beyond Ukraine. Multiple European governments classify these acts as deliberate aggression, increasing pressure on NATO defense spending and raising risk premiums for Eastern European assets. This dynamic reinforces the European defense investment thesis and puts upward pressure on sovereign spreads of border countries."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Ukrainian sovereign bonds",
-          "direction": "down",
+          "asset": "European defense equities",
+          "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Destrucción económica acumulada eleva riesgo de insolvencia soberana",
-            "en": "Cumulative economic destruction raises sovereign insolvency risk"
+            "es": "Escalada híbrida acelera compromisos de gasto en defensa",
+            "en": "Hybrid escalation accelerates defense spending commitments"
           }
         },
         {
-          "asset": "European equities",
+          "asset": "Polish PLN",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Prolongación del conflicto mantiene presión sobre economías europeas adyacentes",
-            "en": "Prolonged conflict sustains pressure on adjacent European economies"
+            "es": "Prima de riesgo geopolítico eleva presión sobre la divisa",
+            "en": "Geopolitical risk premium pressures currency"
+          }
+        },
+        {
+          "asset": "Eastern EU sovereign bonds",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Ampliación de spreads por mayor percepción de riesgo de seguridad",
+            "en": "Spread widening on heightened security risk perception"
           }
         },
         {
@@ -244,151 +253,151 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Ataques a infraestructura energética ucraniana elevan prima de riesgo del gas europeo",
-            "en": "Attacks on Ukrainian energy infrastructure raise European gas risk premium"
+            "es": "Ataques a infraestructura energética elevan prima de riesgo",
+            "en": "Infrastructure attacks raise energy risk premium"
           }
         }
       ],
-      "confidence": 82,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/25/world/europe/ukraine-russia-economy.html",
-      "published_at": "2026-09-25",
-      "time": "1d"
+      "confidence": 85,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/russia-expected-to-intensify-hybrid-war-on-europe/a-79444596?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-26",
+      "time": "19h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
-      "region": "GLOBAL",
+      "tag": "WATCH",
+      "region": "EU",
       "title": {
-        "es": "Cómo la geopolítica está propiciando un regreso a la mina",
-        "en": "How geopolitics is driving a return to mining"
+        "es": "Elecciones senatoriales 2026 en Francia: resultados en directo y en detalle",
+        "en": "France 2026 Senate elections: live and detailed results"
       },
       "summary": {
-        "es": "La competencia geopolítica por cobalto, cobre, níquel, wolframio, tierras raras y litio se ha intensificado ante la demanda de la transición energética y la industria de defensa. Europa intenta revitalizar su minería continental para reducir dependencias estratégicas, aunque enfrenta barreras regulatorias y de aceptación social. Esta dinámica abre oportunidades de inversión en minería europea y revaloriza los corredores de materias primas críticas a nivel global.",
-        "en": "Geopolitical competition over cobalt, copper, nickel, tungsten, rare earths, and lithium has intensified amid demand from the energy transition and the defense industry. Europe is attempting to revive continental mining to reduce strategic dependencies, facing regulatory and social acceptance barriers. This dynamic opens investment opportunities in European mining and revalues critical raw material corridors globally."
+        "es": "Este domingo se renuevan más de la mitad de los escaños del Senado francés mediante sufragio indirecto. La composición resultante del Senado determinará la capacidad del gobierno para avanzar en legislación presupuestaria y de defensa en un contexto de presiones fiscales crecientes. Un Senado más fragmentado o de oposición podría complicar la consolidación fiscal francesa y ampliar el spread OAT-Bund.",
+        "en": "More than half of France's Senate seats are being renewed today via indirect suffrage. The resulting Senate composition will determine the government's ability to advance budgetary and defense legislation amid growing fiscal pressures. A more fragmented or opposition-controlled Senate could complicate French fiscal consolidation and widen the OAT-Bund spread."
       },
-      "impact": "high",
+      "impact": "medium",
       "market_impact": [
         {
-          "asset": "Copper futures",
-          "direction": "up",
+          "asset": "French OAT (10Y)",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda estructural de cobre para defensa y transición energética sostiene precios",
-            "en": "Structural copper demand for defense and energy transition supports prices"
+            "es": "Resultado electoral condiciona margen fiscal del gobierno",
+            "en": "Election outcome conditions government's fiscal space"
           }
         },
         {
-          "asset": "Lithium miners (equities)",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "EUR/USD",
+          "direction": "mixed",
+          "magnitude": "low",
           "note": {
-            "es": "Relocalización minera europea beneficia a productores locales y aliados",
-            "en": "European mining reshoring benefits local and allied producers"
+            "es": "Incertidumbre política francesa añade presión marginal al euro",
+            "en": "French political uncertainty adds marginal pressure on euro"
           }
         },
         {
-          "asset": "Rare earth ETFs",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "European equities",
+          "direction": "mixed",
+          "magnitude": "low",
           "note": {
-            "es": "Competencia geopolítica por tierras raras presiona primas al alza",
-            "en": "Geopolitical competition for rare earths pushes premiums higher"
+            "es": "Fragmentación legislativa puede retrasar estímulos fiscales",
+            "en": "Legislative fragmentation may delay fiscal stimulus"
           }
         }
       ],
-      "confidence": 80,
-      "source": "El País",
-      "source_url": "https://elpais.com/eps/2026-09-26/como-la-geopolitica-esta-propiciando-un-regreso-a-la-mina.html",
-      "published_at": "2026-09-26",
-      "time": "7h"
+      "confidence": 70,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/les-decodeurs/article/2026/09/27/senatoriales-2026-les-resultats-des-elections-en-direct-et-en-detail_6784134_4355770.html",
+      "published_at": "2026-09-27",
+      "time": "<1h"
     },
     {
       "id": 5,
       "tag": "WATCH",
       "region": "AFRICA",
       "title": {
-        "es": "El hombre más rico de África cofinancia un oleoducto de 660 millones de dólares entre Etiopía y Yibuti",
-        "en": "Africa's richest man helps fund $660m fuel pipeline between Ethiopia and Djibouti"
+        "es": "Se estrella un avión con una delegación militar de la República Democrática del Congo",
+        "en": "Plane carrying DR Congo military delegation crashes"
       },
       "summary": {
-        "es": "Un consorcio liderado por Aliko Dangote cofinancia un oleoducto de combustible que conectará Etiopía, país sin litoral, con el puerto de Yibuti, un nodo estratégico en el cuerno de África y el Mar Rojo. El proyecto refuerza la seguridad energética etíope y consolida la posición logística de Yibuti en un corredor marítimo de creciente relevancia geopolítica. La inversión privada africana en infraestructura energética estratégica reduce dependencias externas y abre exposición a renta fija y capital privado regional.",
-        "en": "A consortium led by Aliko Dangote is co-financing a fuel pipeline connecting landlocked Ethiopia to the port of Djibouti, a strategic node in the Horn of Africa and Red Sea corridor. The project strengthens Ethiopian energy security and consolidates Djibouti's logistical position on a maritimeroute of growing geopolitical relevance. African private investment in strategic energy infrastructure reduces external dependencies and opens exposure to regional private capital and fixed income."
+        "es": "Un avión que transportaba una delegación militar congoleña se estrelló en la RDC, causando 17 muertos incluidos cuatro civiles. El incidente ocurre en un contexto de frágil estabilidad institucional y tensiones persistentes en el este del país, zona clave para la extracción de minerales críticos. La pérdida de mandos militares podría afectar la capacidad operativa del ejército en regiones con presencia de grupos armados ligados a disputas por recursos estratégicos.",
+        "en": "A plane carrying a Congolese military delegation crashed in DRC, killing 17 people including four civilians. The incident occurs amid fragile institutional stability and persistent tensions in the country's east, a key zone for critical mineral extraction. The loss of military leadership could affect operational capacity in regions with armed groups linked to strategic resource disputes."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "African infrastructure bonds",
+          "asset": "Cobalt (spot)",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Inversión privada reduce riesgo soberano en infraestructura regional",
-            "en": "Private investment reduces sovereign risk in regional infrastructure"
+            "es": "Inestabilidad en RDC genera incertidumbre en oferta de cobalto",
+            "en": "DRC instability creates uncertainty over cobalt supply"
           }
         },
         {
-          "asset": "Djibouti port assets",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor tráfico energético refuerza valor estratégico del puerto de Yibuti",
-            "en": "Higher energy transit reinforces strategic value of Djibouti port"
-          }
-        },
-        {
-          "asset": "Frontier market equities (East Africa)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Conectividad energética mejora perspectivas de inversión en África oriental",
-            "en": "Energy connectivity improves East Africa investment outlook"
-          }
-        }
-      ],
-      "confidence": 72,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/c6z9z7lv41wgo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-25",
-      "time": "20h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Estudiantes hacen huelga en toda Alemania en protesta contra el servicio militar",
-        "en": "Students strike across Germany in protest against military service"
-      },
-      "summary": {
-        "es": "Miles de estudiantes alemanes se han declarado en huelga contra la ley de servicio militar voluntario vigente desde enero, temiendo que derive en servicio obligatorio. La protesta refleja tensiones sociales internas ante el aumento del gasto en defensa y la reorientación estratégica de Alemania en el contexto de la guerra en Ucrania. La resistencia social a la remilitarización podría complicar los planes de gasto en defensa alemán y europeo, con implicaciones para el sector.",
-        "en": "Thousands of German students have struck against the voluntary military service law in effect since January, fearing it could lead to compulsory conscription. The protest reflects domestic social tensions amid Germany's rising defense spending and strategic reorientation in the context of the Ukraine war. Social resistance to remilitarization could complicate German and European defense spending plans, with implications for the defense sector."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "European defense equities",
+          "asset": "Critical minerals ETFs",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Resistencia social puede frenar ritmo de remilitarización alemana",
-            "en": "Social resistance may slow pace of German remilitarization"
+            "es": "Riesgo operacional en corredor minero del este congoleño",
+            "en": "Operational risk in eastern DRC mining corridor"
+          }
+        }
+      ],
+      "confidence": 65,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/video/newsfeed/2026/9/27/plane-carrying-dr-congo-military-delegation-crashes?traffic_source=rss",
+      "published_at": "2026-09-27",
+      "time": "1h"
+    },
+    {
+      "id": 6,
+      "tag": "ALERT",
+      "region": "APAC",
+      "title": {
+        "es": "China y EE.UU. acuerdan crear un canal de comunicación para incidentes de seguridad en IA",
+        "en": "China, US agree to set up channel for AI safety incidents"
+      },
+      "summary": {
+        "es": "Tras la cumbre Trump-Xi, ambas superpotencias acordaron establecer un canal de comunicación para incidentes de IA y mejorar la coordinación militar. El acuerdo representa un giro pragmático hacia la gestión del riesgo tecnológico bilateral, con implicaciones para el sector de semiconductores y las restricciones de exportación de IA. Los inversores deben evaluar si esto anticipa una relajación de controles de exportación o simplemente una gestión táctica de crisis.",
+        "en": "Following the Trump-Xi summit, both superpowers agreed to establish a communication channel for AI incidents and boost military coordination. The agreement represents a pragmatic shift toward bilateral tech-risk management, with implications for the semiconductor sector and AI export controls. Investors should assess whether this foreshadows relaxed export controls or merely tactical crisis management."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "US semiconductor equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Reducción marginal del riesgo de escalada tecnológica",
+            "en": "Marginal reduction in tech-escalation risk"
+          }
+        },
+        {
+          "asset": "Chinese tech equities (KWEB)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Señal de mayor estabilidad en las relaciones bilaterales de IA",
+            "en": "Signal of greater stability in bilateral AI relations"
           }
         },
         {
           "asset": "EUR/USD",
-          "direction": "down",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Fragmentación política interna debilita cohesión fiscal europea",
-            "en": "Domestic political fragmentation weakens European fiscal cohesion"
+            "es": "Dólar levemente presionado por reducción de tensión global",
+            "en": "Dollar slightly pressured by reduced global tension"
           }
         }
       ],
-      "confidence": 68,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cxnvlnve52qdo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-25",
-      "time": "19h"
+      "confidence": 80,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/china-us-agree-to-set-up-channel-for-ai-safety-incidents/a-79443351?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-26",
+      "time": "18h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
