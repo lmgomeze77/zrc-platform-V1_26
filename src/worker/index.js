@@ -223,7 +223,7 @@ async function handleSubscriptionCheck(request, env) {
     const row = data?.[0];
 
     if (!row)
-      return jsonResponse({ tier: "free", status: "none", trialEnd: null });
+      return jsonResponse({ tier: "free", status: "unregistered", trialEnd: null });
 
     if (row.status === "trialing") {
       const trialEndMs = row.trial_end ? new Date(row.trial_end).getTime() : 0;
