@@ -45,7 +45,11 @@ const AuthProvider = ({ children, lang }) => {
   const [showAuth, setShowAuth] = useState(false);
   const [authMode, setAuthMode] = useState("login");
   const [authCallback, setAuthCallback] = useState(null);
-  const [showPricing, setShowPricing] = useState(false);
+  const [showPricing, setShowPricing] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const params = new URLSearchParams(window.location.search);
+    return params.get("offer") === "founder" || window.location.hash === "#founder";
+  });
 
   const login = (userData) => {
     setUser(userData);
