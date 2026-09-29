@@ -1141,7 +1141,8 @@ const Intelligence = ({ lang }) => {
   const [showFIS, setShowFIS] = useState(false);
   const [showMacroPulse, setShowMacroPulse] = useState(false);
   const [upgradeTool, setUpgradeTool] = useState(null);
-  const [pendingVisorReport, setPendingVisorReport] = useState(null);\n  const [showToolkitGuide, setShowToolkitGuide] = useState(false);
+  const [pendingVisorReport, setPendingVisorReport] = useState(null);
+  const [showToolkitGuide, setShowToolkitGuide] = useState(false);
 
   // Vuelta desde el Payment Link de Stripe tras comprar el Teaser/Informe
   // Investigado del Visor Inmobiliario: ?visor_report=teaser|informe&session_id=...
