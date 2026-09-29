@@ -1141,7 +1141,7 @@ const Intelligence = ({ lang }) => {
   const [showFIS, setShowFIS] = useState(false);
   const [showMacroPulse, setShowMacroPulse] = useState(false);
   const [upgradeTool, setUpgradeTool] = useState(null);
-  const [pendingVisorReport, setPendingVisorReport] = useState(null);
+  const [pendingVisorReport, setPendingVisorReport] = useState(null);\n  const [showToolkitGuide, setShowToolkitGuide] = useState(false);
 
   // Vuelta desde el Payment Link de Stripe tras comprar el Teaser/Informe
   // Investigado del Visor Inmobiliario: ?visor_report=teaser|informe&session_id=...
@@ -1196,6 +1196,17 @@ const Intelligence = ({ lang }) => {
   return (
     <Sec id="intelligence">
       <SH label={t.label} title={t.title} sub={t.sub} />
+
+      <FadeIn delay={0.05}>
+        <div style={{ marginBottom: 24, padding: "22px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.16em", marginBottom: 7 }}>ZRC INTELLIGENCE · TOOLKIT GUIDE</div>
+            <div style={{ fontFamily: F.display, fontSize: 23, color: C.text, marginBottom: 5 }}>{lang === "es" ? "De la señal a la decisión" : "From signal to decision"}</div>
+            <div style={{ fontFamily: F.body, fontSize: 13, color: C.textSec }}>{lang === "es" ? "Detectar → Enmarcar → Stress-test → Traducir → Decidir → Monitorizar." : "Detect → Frame → Stress-test → Translate → Decide → Monitor."}</div>
+          </div>
+          <button onClick={() => setShowToolkitGuide(true)} style={{ fontFamily: F.mono, fontSize: 10, padding: "11px 18px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>{lang === "es" ? "ABRIR GUÍA →" : "OPEN GUIDE →"}</button>
+        </div>
+      </FadeIn>
 
       <FadeIn delay={0.1}>
         <div style={{ padding: "20px 24px", background: "rgba(139,92,246,0.06)", border: "1px solid rgba(139,92,246,0.18)", marginBottom: 32, display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
@@ -1375,6 +1386,32 @@ const Intelligence = ({ lang }) => {
           onClose={() => setUpgradeTool(null)}
           onOpenPricing={openPricing}
         />
+      )}
+
+      {showToolkitGuide && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 305, background: C.bg, overflowY: "auto", padding: "70px clamp(18px,5vw,64px)" }}>
+          <button onClick={() => setShowToolkitGuide(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 306, fontFamily: F.mono, fontSize: 10, padding: "8px 18px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>✕ CLOSE GUIDE</button>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.18em", marginBottom: 10 }}>ZRC INTELLIGENCE · OPERATING GUIDE</div>
+            <h2 style={{ fontFamily: F.display, fontSize: "clamp(34px,5vw,54px)", fontWeight: 300, color: C.text, margin: "0 0 12px" }}>{lang === "es" ? "De la señal a una hipótesis de decisión" : "From signal to a decision hypothesis"}</h2>
+            <p style={{ fontFamily: F.body, fontSize: 15, color: C.textSec, lineHeight: 1.7 }}>{lang === "es" ? "Usa las herramientas como un flujo analítico. Separa hechos, supuestos, outputs de modelo y juicio." : "Use the tools as an analytical workflow. Separate facts, assumptions, model outputs and judgement."}</p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 1, margin: "34px 0" }}>
+              {[
+                ["01 · DETECT","Observatory",lang === "es" ? "Identifica una señal material y formula una hipótesis de riesgo." : "Identify a material signal and formulate a risk hypothesis.",null],
+                ["02 · FRAME","GeoRisk Index",lang === "es" ? "Sitúa el evento en el régimen general de riesgo." : "Place the event within the broader risk regime.",null],
+                ["03 · STRESS-TEST","GeoRisk Dashboard",lang === "es" ? "Construye Base / Adverse / Relief; cambia un supuesto principal cada vez." : "Build Base / Adverse / Relief; change one major assumption at a time.","GeoRisk Dashboard"],
+                ["04 · CHALLENGE","GeoRisk Predictive ML",lang === "es" ? "Contrasta la hipótesis con forecast IA/NLP y correlaciones." : "Challenge the hypothesis with AI/NLP forecasts and correlations.","GeoRisk Predictive ML"],
+                ["05 · TRANSLATE","Macro Pulse",lang === "es" ? "Traduce el shock a inflación, tipos, liquidez, FX y bancos centrales." : "Translate the shock into inflation, rates, liquidity, FX and central banks.","Macro Pulse"],
+                ["06 · CORPORATE","Financial Intelligence System",lang === "es" ? "Lleva el escenario a ingresos, márgenes, circulante, financiación y caja." : "Carry the scenario into revenue, margins, working capital, financing and cash flow.","Financial Intelligence System"],
+              ].map(([step,name,desc,toolName]) => <div key={step} style={{ padding: 22, background: C.surface, border: `1px solid ${C.border}` }}>
+                <div style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, letterSpacing: "0.14em", marginBottom: 8 }}>{step}</div><div style={{ fontFamily: F.display, fontSize: 20, color: C.text }}>{name}</div><p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, minHeight: 60 }}>{desc}</p>
+                {toolName && <button onClick={() => { const tool=TOOLS.find(tl=>tl.name===toolName); if(!user){setShowToolkitGuide(false);setShowAuth(true);} else if(tool){setShowToolkitGuide(false);handleLaunch(tool);} }} style={{ fontFamily:F.mono,fontSize:9,color:C.gold,background:"transparent",border:`1px solid ${C.goldBorder}`,padding:"7px 12px",cursor:"pointer" }}>{lang==="es"?"ABRIR HERRAMIENTA →":"OPEN TOOL →"}</button>}
+              </div>)}
+            </div>
+            <div style={{ padding: 24, background: C.surface2, border: `1px solid ${C.border}`, marginBottom: 20 }}><div style={{ fontFamily:F.mono,fontSize:9,color:C.gold,letterSpacing:"0.14em",marginBottom:10 }}>10-MINUTE INTELLIGENCE ROUTINE</div><div style={{fontFamily:F.body,fontSize:13,color:C.textSec,lineHeight:1.8}}>0–2 Observatory · 2–3 GeoRisk Index · 3–6 GeoRisk Dashboard · 6–8 GeoRisk ML / Macro Pulse · 8–10 Decision note.</div></div>
+            <div style={{ padding:24,border:`1px solid ${C.goldBorder}`,background:C.goldDim,fontFamily:F.body,fontSize:13,color:C.textSec,lineHeight:1.9 }}><strong>1. Signal</strong> — What changed?<br/><strong>2. Transmission</strong> — Through which economic channels?<br/><strong>3. Scenario</strong> — Base / Adverse / Relief.<br/><strong>4. Exposure</strong> — Which assets, sectors or corporate variables?<br/><strong>5. Trigger</strong> — What confirms or invalidates the view?</div>
+          </div>
+        </div>
       )}
 
       {/* Tool overlays */}
