@@ -79,6 +79,33 @@ ON CONFLICT (email) DO UPDATE
   SET status = 'approved', approved_at = now(), welcome_email_sent = true;
 
 
+-- ── 4A. GEORISK INDEX — VERSIONED WEEKLY INPUTS ───────────────
+-- Evidence/scenario layer separated from deterministic index calculation.
+-- One record per effective date. The Worker validates 4 scenarios and
+-- probabilities summing to 1.00 before using a record.
+CREATE TABLE IF NOT EXISTS georisk_index_inputs (
+  id             uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  effective_date date NOT NULL UNIQUE,
+  scenarios      jsonb NOT NULL,
+  summary        text,
+  evidence       jsonb,
+  methodology_version text NOT NULL DEFAULT '2.0',
+  created_at     timestamptz DEFAULT now()
+);
+
+ALTER TABLE georisk_index_inputs ENABLE ROW LEVEL SECURITY;
+
+-- Initial anchor preserves the last editorial assumptions explicitly.
+INSERT INTO georisk_index_inputs (effective_date, scenarios, summary, methodology_version)
+VALUES (
+  '2026-08-20',
+  '[{"key":"mena_instability","label":"Inestabilidad MENA","prob":0.38,"risk":85},{"key":"russia_ukraine_attrition","label":"Guerra de Desgaste Rusia-Ucrania","prob":0.30,"risk":72},{"key":"trade_stabilization","label":"Aranceles — Estabilización Selectiva","prob":0.20,"risk":55},{"key":"southern_europe_migration","label":"Migración Sur de Europa","prob":0.12,"risk":48}]'::jsonb,
+  'Último ancla editorial previa al sistema de inputs semanales versionados.',
+  '2.0'
+)
+ON CONFLICT (effective_date) DO NOTHING;
+
+
 -- ── 4. GEORISK INDEX — WEEKLY SNAPSHOTS ─────────────────────
 -- Public-facing weekly print of the ZRC GeoRisk composite score.
 -- Written by the Worker's Monday cron (or the manual snapshot endpoint);

@@ -304,7 +304,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
   const displayValue = current ? current.index_value : live?.value ?? null;
   const displayLabel = current ? (current.risk_label || riskLabel(current.index_value)) : (live ? live.riskLabel : null);
   const displayScenario = current ? current.dominant_scenario : live?.dominantScenario;
-  const weeklyChange = current && previous ? current.index_value - previous.index_value : null;
+  const weeklyChange = current && previous ? current.index_value - previous.index_value : null;\n  const inputStatus = live?.inputStatus || null;\n  const inputDate = live?.inputDate || null;
 
   const bands = useMemo(() => BANDS.map((b) => ({ ...b, impacts: bandImpact(b.mid) })), []);
 
@@ -352,6 +352,8 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
             )}
           </div>
           <div>
+            {inputStatus === "fallback_static" && <div style={{ marginBottom: 10, padding: "8px 10px", border: `1px solid ${C.amber}`, fontFamily: F.mono, fontSize: 9, color: C.amber }}>{lang === "es" ? `INPUTS SIN REFRESCAR · base: ${inputDate || "—"}` : `INPUTS NOT REFRESHED · basis: ${inputDate || "—"}`}</div>}
+            {inputStatus === "evidence_driven" && inputDate && <div style={{ marginBottom: 10, fontFamily: F.mono, fontSize: 9, color: C.green }}>{lang === "es" ? `RECALCULADO CON INPUTS: ${inputDate}` : `RECALCULATED WITH INPUTS: ${inputDate}`}</div>}
             <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
               <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em" }}>
                 ZRC-GRI · {lang === "es" ? "HISTÓRICO SEMANAL" : "WEEKLY HISTORY"}

@@ -711,11 +711,31 @@ const GEORISK_INDEX_SCENARIOS = [
   { key: "southern_europe_migration", label: "Migración Sur de Europa", prob: 0.12, risk: 48 },
 ];
 
-function computeGeoRiskIndexValue() {
-  const value = GEORISK_INDEX_SCENARIOS.reduce((sum, s) => sum + s.prob * s.risk, 0);
-  const dominant = GEORISK_INDEX_SCENARIOS.reduce((a, b) => (b.prob > a.prob ? b : a));
+function computeGeoRiskIndexValue(scenarios = GEORISK_INDEX_SCENARIOS) {
+  const value = scenarios.reduce((sum, s) => sum + s.prob * s.risk, 0);
+  const dominant = scenarios.reduce((a, b) => (b.prob > a.prob ? b : a));
   const label = value < 40 ? "BAJO" : value < 65 ? "MODERADO" : value < 80 ? "ELEVADO" : "CRÍTICO";
   return { value: Math.round(value * 100) / 100, dominantScenario: dominant.label, riskLabel: label };
+}
+
+async function loadGeoRiskInputs(env) {
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return { scenarios: GEORISK_INDEX_SCENARIOS, inputDate: "2026-08-20", status: "fallback_static" };
+  try {
+    const resp = await fetch(`${env.SUPABASE_URL}/rest/v1/georisk_index_inputs?select=effective_date,scenarios,summary&order=effective_date.desc&limit=1`, {
+      headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` },
+    });
+    if (!resp.ok) throw new Error("inputs unavailable");
+    const rows = await resp.json();
+    const row = rows?.[0];
+    if (!row || !Array.isArray(row.scenarios) || row.scenarios.length !== 4) throw new Error("no valid inputs");
+    const scenarios = row.scenarios.map(s => ({ key: s.key, label: s.label, prob: Number(s.prob), risk: Number(s.risk) }));
+    const probTotal = scenarios.reduce((n,s) => n + s.prob, 0);
+    if (Math.abs(probTotal - 1) > 0.005 || scenarios.some(s => !Number.isFinite(s.risk) || s.risk < 0 || s.risk > 100)) throw new Error("invalid inputs");
+    return { scenarios, inputDate: row.effective_date, summary: row.summary || null, status: "evidence_driven" };
+  } catch (err) {
+    console.error("GeoRisk inputs fallback:", err);
+    return { scenarios: GEORISK_INDEX_SCENARIOS, inputDate: "2026-08-20", status: "fallback_static" };
+  }
 }
 
 // Monday (UTC) of the ISO week containing `date`
@@ -732,7 +752,7 @@ async function computeAndStoreWeeklySnapshot(env, source) {
     return { ok: false, error: "Service unavailable" };
   }
 
-  const { value, dominantScenario, riskLabel } = computeGeoRiskIndexValue();
+  const inputs = await loadGeoRiskInputs(env);\n  const { value, dominantScenario, riskLabel } = computeGeoRiskIndexValue(inputs.scenarios);
   const weekStart = isoWeekMonday(new Date());
 
   try {
@@ -749,7 +769,7 @@ async function computeAndStoreWeeklySnapshot(env, source) {
         index_value: value,
         dominant_scenario: dominantScenario,
         risk_label: riskLabel,
-        source: source || "manual_snapshot",
+        source: inputs.status === "evidence_driven" ? (source || "weekly_evidence") : "fallback_static",\n        notes: inputs.summary || `Inputs effective ${inputs.inputDate} · ${inputs.status}`,
       }),
     });
     if (!resp.ok) {
@@ -827,7 +847,7 @@ async function computeWeeklyChange(env, currentWeekStart, currentValue) {
 }
 
 async function handleGeoRiskIndexGet(request, env) {
-  const live = computeGeoRiskIndexValue();
+  const liveInputs = await loadGeoRiskInputs(env);\n  const live = { ...computeGeoRiskIndexValue(liveInputs.scenarios), inputDate: liveInputs.inputDate, inputStatus: liveInputs.status, summary: liveInputs.summary || null };
 
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
     return jsonResponse({ history: [], live });
