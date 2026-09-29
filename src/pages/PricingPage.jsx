@@ -77,6 +77,21 @@ const PLANS = [
   },
 ];
 
+const FOUNDING = {
+  monthly: {
+    price: "€29",
+    period: "/mo",
+    url: "https://buy.stripe.com/00waEYd5q3ow8wEgHg2Nq0h",
+    priceId: "price_1UL8c0JXE9tayTtoodrqRvr9",
+  },
+  annual: {
+    price: "€299",
+    period: "/yr",
+    url: "https://buy.stripe.com/eVq6oI7L6cZ6fZ60Ii2Nq0g",
+    priceId: "price_1UL8d8JXE9tayTtoiDOKOT6T",
+  },
+};
+
 export default function PricingPage({ onClose, lang = "es", onRegister }) {
   const [billing, setBilling] = useState("annual");
 
@@ -91,6 +106,31 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
       }}
     >
       <div onClick={(e) => e.stopPropagation()} style={{ width: "100%", maxWidth: 900 }}>
+        <div style={{ marginBottom: 28, padding: "18px 22px", border: `1px solid ${C.goldBorder}`, background: C.goldDim }}>
+          <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.16em", marginBottom: 7 }}>
+            {lang === "es" ? "FOUNDING INTELLIGENCE · PRIMEROS 100 MIEMBROS" : "FOUNDING INTELLIGENCE · FIRST 100 MEMBERS"}
+          </div>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
+            <span style={{ fontFamily: F.display, fontSize: 32, color: C.text }}>{billing === "annual" ? FOUNDING.annual.price : FOUNDING.monthly.price}</span>
+            <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>{billing === "annual" ? FOUNDING.annual.period : FOUNDING.monthly.period}</span>
+            <span style={{ fontFamily: F.body, fontSize: 13, color: C.textSec }}>
+              {lang === "es" ? "· tarifa bloqueada mientras mantengas la suscripción" : "· rate locked while your subscription remains active"}
+            </span>
+          </div>
+          <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.55, margin: "8px 0 14px" }}>
+            {lang === "es"
+              ? "Oferta fundadora limitada a los primeros 100 miembros. Acceso completo a ZRC Intelligence a una tarifa preferente bloqueada mientras mantengas activa la suscripción."
+              : "Founding offer limited to the first 100 members. Full ZRC Intelligence access at a preferential rate locked while your subscription remains active."}
+          </p>
+          <a
+            href={billing === "annual" ? FOUNDING.annual.url : FOUNDING.monthly.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "inline-block", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", fontWeight: 600, padding: "11px 18px", cursor: "pointer", background: C.gold, color: C.bg, border: `1px solid ${C.gold}`, textDecoration: "none" }}
+          >
+            {lang === "es" ? "UNIRME COMO FOUNDER →" : "JOIN AS A FOUNDER →"}
+          </a>
+        </div>
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 48 }}>
           <div>

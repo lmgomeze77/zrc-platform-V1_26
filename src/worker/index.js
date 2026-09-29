@@ -2,6 +2,10 @@
 // ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
 
 const PRICE_TIERS = {
+  // Intelligence Founder Monthly (29€/mes)
+  "price_1UL8c0JXE9tayTtoodrqRvr9": "intelligence",
+  // Intelligence Founder Annual (299€/año)
+  "price_1UL8d8JXE9tayTtoiDOKOT6T": "intelligence",
   // Intelligence Monthly (99€/mes)
   "price_1TiH08JXE9tayTtonVosuAze": "intelligence",
   // Intelligence Annual (948€/año)
@@ -223,7 +227,7 @@ async function handleSubscriptionCheck(request, env) {
     const row = data?.[0];
 
     if (!row)
-      return jsonResponse({ tier: "free", status: "none", trialEnd: null });
+      return jsonResponse({ tier: "free", status: "unregistered", trialEnd: null });
 
     if (row.status === "trialing") {
       const trialEndMs = row.trial_end ? new Date(row.trial_end).getTime() : 0;
