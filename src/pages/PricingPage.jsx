@@ -78,8 +78,18 @@ const PLANS = [
 ];
 
 const FOUNDING = {
-  monthly: { price: "€49", period: "/mo" },
-  annual: { price: "€490", period: "/yr" },
+  monthly: {
+    price: "€29",
+    period: "/mo",
+    url: "https://buy.stripe.com/00waEYd5q3ow8wEgHg2Nq0h",
+    priceId: "price_1UL8c0JXE9tayTtoodrqRvr9",
+  },
+  annual: {
+    price: "€299",
+    period: "/yr",
+    url: "https://buy.stripe.com/eVq6oI7L6cZ6fZ60Ii2Nq0g",
+    priceId: "price_1UL8d8JXE9tayTtoiDOKOT6T",
+  },
 };
 
 export default function PricingPage({ onClose, lang = "es", onRegister }) {
@@ -109,13 +119,17 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
           </div>
           <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.55, margin: "8px 0 14px" }}>
             {lang === "es"
-              ? "Acceso completo a Intelligence durante 7 días. Únete a la cohorte fundadora y ayúdanos a construir la capa de inteligencia que conecta geopolítica, macro, mercados y decisiones de capital."
-              : "Full Intelligence access for 7 days. Join the founding cohort and help shape the intelligence layer connecting geopolitics, macro, markets and capital decisions."}
+              ? "Oferta fundadora limitada a los primeros 100 miembros. Acceso completo a ZRC Intelligence a una tarifa preferente bloqueada mientras mantengas activa la suscripción."
+              : "Founding offer limited to the first 100 members. Full ZRC Intelligence access at a preferential rate locked while your subscription remains active."}
           </p>
-          <button onClick={() => { if (onRegister) { onClose(); onRegister(); } }}
-            style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", fontWeight: 600, padding: "11px 18px", cursor: "pointer", background: C.gold, color: C.bg, border: `1px solid ${C.gold}` }}>
-            {lang === "es" ? "EMPEZAR PRUEBA DE 7 DÍAS →" : "START 7-DAY TRIAL →"}
-          </button>
+          <a
+            href={billing === "annual" ? FOUNDING.annual.url : FOUNDING.monthly.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "inline-block", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", fontWeight: 600, padding: "11px 18px", cursor: "pointer", background: C.gold, color: C.bg, border: `1px solid ${C.gold}`, textDecoration: "none" }}
+          >
+            {lang === "es" ? "UNIRME COMO FOUNDER →" : "JOIN AS A FOUNDER →"}
+          </a>
         </div>
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 48 }}>
