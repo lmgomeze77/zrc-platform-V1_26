@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T12:46:44.797Z",
+  "generated_at": "2026-09-29T12:02:48.668Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,22 +98,97 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los precios del petróleo se disparan tras el rechazo de Trump al plan de Irán para reabrir el Estrecho de Ormuz",
-        "en": "Oil prices surge after Trump rejects Iran's plan to reopen Strait of Hormuz"
+        "es": "Irán espera respuesta de EE.UU. el martes sobre plan para reabrir el Estrecho de Ormuz",
+        "en": "Iran says it expects US response Tuesday on plan to reopen Strait of Hormuz"
       },
       "summary": {
-        "es": "El Brent superó los 107 dólares por barril, con una subida de más del 3%, después de que Washington rechazara la propuesta iraní para poner fin a la guerra. El cierre continuado del Estrecho de Ormuz representa una amenaza directa a los flujos globales de crudo, con implicaciones inflacionarias de amplio alcance. Esta escalada refuerza los argumentos alcistas sobre materias primas energéticas y presiona a los bancos centrales que intentan controlar la inflación.",
-        "en": "Brent crude topped $107 a barrel, rising over 3%, after Washington dismissed Tehran's proposal to end the war. The continued closure of the Strait of Hormuz poses a direct threat to global crude flows with broad inflationary implications. The escalation strengthens the bullish case for energy commodities and pressures central banks attempting to contain inflation."
+        "es": "El canciller iraní Araghchi indicó que Teherán aguarda la respuesta de Washington a su propuesta de reabrir el Estrecho de Ormuz a cambio de un alto al fuego regional, el levantamiento de sanciones petroleras y otras garantías. La resolución o fracaso de esta negociación tendrá consecuencias directas sobre los precios globales del petróleo y las cadenas de suministro energético. Un acuerdo reduciría la prima de riesgo geopolítica en los mercados; su colapso podría generar nueva escalada.",
+        "en": "Iranian FM Araghchi indicated Tehran awaits Washington's response to its proposal to reopen the Strait of Hormuz in exchange for a regional ceasefire, lifting of oil sanctions, and other guarantees. The outcome of this negotiation carries direct consequences for global oil prices and energy supply chains. A deal would reduce geopolitical risk premiums; a collapse could trigger further escalation."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent Crude",
-          "direction": "up",
+          "asset": "Brent crude",
+          "direction": "mixed",
           "magnitude": "high",
           "note": {
-            "es": "Estrecho de Ormuz cerrado, oferta global de crudo restringida",
-            "en": "Strait of Hormuz closed, global crude supply constrained"
+            "es": "Reapertura reduciría precios; fracaso los elevaría",
+            "en": "Reopening would lower prices; failure would spike them"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Activo refugio sensible al riesgo de escalada",
+            "en": "Safe-haven demand tied to escalation risk"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Economías importadoras de petróleo muy expuestas",
+            "en": "Oil-importing EMs highly exposed to price swings"
+          }
+        },
+        {
+          "asset": "Energy equities",
+          "direction": "mixed",
+          "magnitude": "high",
+          "note": {
+            "es": "Volátil según resultado de negociación",
+            "en": "Volatile depending on negotiation outcome"
+          }
+        }
+      ],
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20260929-iran-says-expects-us-response-tuesday-plan-reopen-strait-of-hormuz",
+      "published_at": "2026-09-29",
+      "time": "5h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "APAC",
+      "title": {
+        "es": "Trump ofreció vender armas a China mientras Taiwan advierte de amenaza militar 'severa'",
+        "en": "Trump asked Xi Jinping if China would like to buy US weapons, American ambassador says"
+      },
+      "summary": {
+        "es": "El embajador estadounidense David Perdue reveló que Trump ofreció vender armas a China durante la reciente cumbre con Xi, mientras un ministro taiwanés calificaba la amenaza militar de Beijing como 'severa'. La declaración socava la credibilidad de los compromisos de defensa de EE.UU. hacia Taiwán y aliados del Indo-Pacífico, con implicaciones de primer orden para la estabilidad regional y los mercados de defensa.",
+        "en": "US Ambassador David Perdue disclosed that Trump offered to sell weapons to China during the recent summit with Xi, while a Taiwanese minister described Beijing's military threat as 'severe.' The revelation undermines the credibility of US defense commitments to Taiwan and Indo-Pacific allies, with first-order implications for regional stability and defense markets."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Taiwan equities (TWSE)",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Incertidumbre sobre garantías de seguridad de EE.UU.",
+            "en": "Uncertainty over US security guarantees"
+          }
+        },
+        {
+          "asset": "USD/TWD",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Presión sobre TWD ante riesgo geopolítico elevado",
+            "en": "TWD under pressure amid elevated geopolitical risk"
+          }
+        },
+        {
+          "asset": "Defense equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Aliados Indo-Pacífico podrían buscar armamento alternativo",
+            "en": "Indo-Pacific allies may seek alternative arms suppliers"
           }
         },
         {
@@ -121,104 +196,38 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda de refugio seguro por escalada geopolítica en MENA",
-            "en": "Safe-haven demand driven by MENA geopolitical escalation"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Presión inflacionaria por choque energético eleva rendimientos",
-            "en": "Energy shock inflationary pressure pushes yields higher"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Europa muy expuesta al alza de costes energéticos importados",
-            "en": "Europe highly exposed to rising imported energy costs"
+            "es": "Mayor incertidumbre geopolítica impulsa refugio",
+            "en": "Heightened geopolitical uncertainty supports safe haven"
           }
         }
       ],
-      "confidence": 92,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/9/28/oil-prices-surge-after-trump-rejects-irans-plan-to-reopen-strait-of-hormuz?traffic_source=rss",
-      "published_at": "2026-09-28",
-      "time": "3h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "APAC",
-      "title": {
-        "es": "Trump preguntó a Xi Jinping si China quería comprar armas estadounidenses, según el embajador americano",
-        "en": "Trump asked Xi Jinping if China would like to buy US weapons, American ambassador says"
-      },
-      "summary": {
-        "es": "El embajador de EE.UU. en China, David Perdue, reveló que Trump ofreció vender armas a Beijing durante la cumbre Xi-Trump de la semana pasada, en un momento en que Taiwán describe como 'severa' la amenaza militar china. Este gesto inusual podría señalar una reconfiguración de la política de seguridad de EE.UU. en el Indo-Pacífico, con consecuencias directas para los compromisos de defensa de Taiwán y los aliados regionales. Los mercados de defensa y las divisas de la región seguirán de cerca cualquier cambio en la postura de Washington.",
-        "en": "U.S. Ambassador to China David Perdue revealed Trump offered to sell weapons to Beijing during last week's Xi-Trump summit, as Taiwan describes China's military threat as 'severe.' This unusual gesture could signal a reconfiguration of U.S. security policy in the Indo-Pacific, with direct consequences for Taiwan's defense commitments and regional allies. Defense markets and regional currencies will closely track any shift in Washington's posture."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Taiwan Dollar",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Señales de ambigüedad estratégica de EE.UU. debilitan la confianza",
-            "en": "U.S. strategic ambiguity signals weaken investor confidence"
-          }
-        },
-        {
-          "asset": "US Defense equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Posible reorientación de exportaciones de defensa genera incertidumbre",
-            "en": "Potential defense export reorientation creates uncertainty"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre geopolítica presiona activos de riesgo regionales",
-            "en": "Geopolitical uncertainty pressures regional risk assets"
-          }
-        }
-      ],
-      "confidence": 88,
+      "confidence": 90,
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/world/2026/sep/28/trump-xi-jinping-china-buy-weapons",
       "published_at": "2026-09-28",
-      "time": "2h"
+      "time": "1d"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "EURASIA",
+      "region": "EU",
       "title": {
-        "es": "Ataques rusos matan a ocho personas en Ucrania tras vow de Moscú de continuar la guerra",
-        "en": "Russian attacks kill eight in Ukraine after Moscow vows to continue war"
+        "es": "Estonia atribuye el ataque incendiario a Rusia; la OTAN alerta sobre escalada en el flanco oriental",
+        "en": "'We will not be intimidated,' says Estonian PM after attributing recent arson attack to Russia"
       },
       "summary": {
-        "es": "Rusia lanzó cerca de 3.900 drones, bombas aéreas y misiles sobre Ucrania en la última semana, según Zelenski, mientras Moscú confirma su intención de prolongar el conflicto. La intensificación del bombardeo mantiene la presión sobre el suministro de energía europeo e impide cualquier distensión en los mercados de materias primas. Los mercados de renta fija y divisas europeos permanecen vulnerables a nuevas escaladas.",
-        "en": "Russia launched nearly 4,000 drones, aerial bombs and missiles at Ukraine over the past week, according to Zelensky, as Moscow confirms its intent to prolong the conflict. The intensified bombardment maintains pressure on European energy supply and prevents any easing in commodity markets. European fixed income and currency markets remain vulnerable to further escalation."
+        "es": "La primera ministra estonia Kristen Michal atribuyó el ataque incendiario contra Milrem Robotics a los servicios especiales rusos, mientras el secretario general de la OTAN Rutte recordó incidentes de drones en el espacio aéreo de la Alianza. La combinación de ataques a infraestructura de defensa y violaciones del espacio aéreo sugiere una campaña de presión rusa sistemática sobre el flanco oriental de la OTAN con potencial de escalada.",
+        "en": "Estonian PM Kristen Michal attributed the arson attack on Milrem Robotics to Russian special services, while NATO SG Rutte cited recent drone incidents in Alliance airspace. The combination of attacks on defense infrastructure and airspace violations suggests a systematic Russian pressure campaign on NATO's eastern flank with escalation potential."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European natural gas (TTF)",
+          "asset": "European defense equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo continuado de infraestructura energética ucraniana",
-            "en": "Continued risk to Ukrainian energy infrastructure"
+            "es": "Amenaza persistente impulsa gasto en defensa europeo",
+            "en": "Persistent threat drives European defense spending"
           }
         },
         {
@@ -226,142 +235,160 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Escalada sostenida pesa sobre el sentimiento europeo",
-            "en": "Sustained escalation weighs on European sentiment"
+            "es": "Riesgo de seguridad en flanco oriental presiona al euro",
+            "en": "Eastern flank security risk weighs on euro"
           }
         },
         {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "Baltic sovereign bonds",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Conflicto prolongado sostiene demanda de activos refugio",
-            "en": "Prolonged conflict sustains safe-haven asset demand"
+            "es": "Prima de riesgo sube ante tensión con Rusia",
+            "en": "Risk premium rises on Russia tension"
           }
         }
       ],
       "confidence": 85,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20260927-russian-strikes-kill-eight-ukraine-war-moscow",
-      "published_at": "2026-09-27",
-      "time": "14h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/sep/29/ukraine-russia-war-odesa-overnight-lithuania-mark-rutte-europe-latest-news-updates",
+      "published_at": "2026-09-29",
+      "time": "<1h"
     },
     {
       "id": 4,
       "tag": "ALERT",
-      "region": "AFRICA",
+      "region": "MENA",
       "title": {
-        "es": "Etiopía acusa a Eritrea y Sudán de apoyar a los rebeldes de Tigray en medio de enfrentamientos",
-        "en": "Ethiopia accuses Eritrea, Sudan of backing Tigray rebels amid clashes"
+        "es": "EE.UU. retira sus tropas de Iraq tras 12 años de la misión contra el ISIS ante demoras en el desarme de milicias",
+        "en": "Iraq: US troops withdraw from Operation Inherent Resolve against ISIS after 12 years as Baghdad delays militia disarmament"
       },
       "summary": {
-        "es": "El jefe del ejército etíope acusó a Eritrea y Sudán de respaldar a grupos armados que combaten a las fuerzas federales, mientras el TPLF afirma librar una 'guerra defensiva' y captura aeropuertos estratégicos, incluyendo la región de Afar. Una reanudación del conflicto de Tigray desestabilizaría uno de los corredores logísticos más importantes del Cuerno de África, con implicaciones para las rutas comerciales del Mar Rojo ya perturbadas. Los flujos de inversión hacia África Oriental y las posiciones en materias primas agrícolas de la región merecen seguimiento.",
-        "en": "Ethiopia's army chief accused Eritrea and Sudan of backing armed groups fighting federal forces, while the TPLF claims to be waging a 'defensive war' and has seized airports including in the Afar region. A resumption of the Tigray conflict would destabilize one of the Horn of Africa's key logistics corridors, with implications for already-disrupted Red Sea trade routes. Investment flows into East Africa and regional agricultural commodity positions warrant monitoring."
+        "es": "La retirada estadounidense de Iraq cierra formalmente la misión de la coalición contra el ISIS, pero deja un vacío de seguridad con milicias pro-iraníes sin desarmar y fuerzas extranjeras aún presentes. El repliegue remodela el equilibrio de poder en Iraq a favor de Irán, con implicaciones para la estabilidad del suministro energético regional y la posición estratégica de EE.UU. en Medio Oriente.",
+        "en": "The US withdrawal from Iraq formally closes the anti-ISIS coalition mission, but leaves a security vacuum with pro-Iranian militias undisarmed and foreign forces still present. The pullback reshapes Iraq's power balance in Iran's favor, with implications for regional energy supply stability and US strategic positioning in the Middle East."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "EM sovereign bonds (East Africa)",
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de inestabilidad en productor clave de OPEP+",
+            "en": "Instability risk in key OPEC+ producer"
+          }
+        },
+        {
+          "asset": "Iraqi sovereign debt",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo político y humanitario eleva primas de riesgo regionales",
-            "en": "Political and humanitarian risk raises regional risk premiums"
+            "es": "Incertidumbre de seguridad eleva primas de riesgo",
+            "en": "Security uncertainty raises risk premiums"
           }
         },
         {
-          "asset": "Brent Crude",
-          "direction": "up",
+          "asset": "Energy equities",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Inestabilidad adicional en el Cuerno de África presiona rutas del Mar Rojo",
-            "en": "Additional Horn of Africa instability pressures Red Sea routes"
+            "es": "Contratos de energía en Iraq bajo mayor riesgo operacional",
+            "en": "Iraq energy contracts face higher operational risk"
           }
         }
       ],
-      "confidence": 78,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/africa/20260927-ethiopia-accuses-eritrea-sudan-backing-tigray-rebels",
-      "published_at": "2026-09-27",
-      "time": "13h"
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/iraq-us-troops-withdraw-from-their-iraqi-us-led-operation-inherent-resolve-mission-against-isis-after-12-years-as-baghdad-delays-militia-disarmament/a-79462926?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-29",
+      "time": "<1h"
     },
     {
       "id": 5,
-      "tag": "WATCH",
-      "region": "LATAM",
+      "tag": "ALERT",
+      "region": "US",
       "title": {
-        "es": "Trump llevó oro venezolano a EE.UU., pero las refinerías no lo quieren tocar",
-        "en": "Trump Brought Venezuelan Gold to the U.S., but Refiners Won't Touch It"
+        "es": "EE.UU. prohíbe alcohol y lácteos canadienses mientras la guerra comercial con Canadá se prolonga",
+        "en": "US ban on Canadian alcohol and dairy comes into effect as trade war drags on"
       },
       "summary": {
-        "es": "La administración Trump estaría mediando acuerdos en la industria aurífera venezolana, incluyendo uno con una empresa que el propio gobierno estadounidense considera una amenaza a la seguridad nacional. La negativa de las refinerías a procesar el oro venezolano expone las contradicciones en la política de sanciones de EE.UU. hacia Caracas y sugiere riesgo de cumplimiento para actores financieros involucrados en cadenas de suministro de metales preciosos. Los inversores en commodities y en exposición latinoamericana deben monitorear los desarrollos regulatorios.",
-        "en": "The Trump administration is reportedly brokering deals in Venezuela's gold industry, including with a company the U.S. itself deems a security threat. Refiners' refusal to process Venezuelan gold exposes contradictions in U.S. sanctions policy toward Caracas and suggests compliance risk for financial actors involved in precious metals supply chains. Commodity investors and those with Latin American exposure should monitor regulatory developments."
+        "es": "La prohibición de importaciones de alcohol y lácteos canadienses entró en vigor tras el colapso de las negociaciones en agosto, sin fecha prevista para su reanudación. La escalada comercial entre los dos mayores socios del T-MEC plantea riesgos para las cadenas de suministro norteamericanas y eleva la presión inflacionaria en EE.UU., con implicaciones para la política monetaria de la Fed.",
+        "en": "The ban on Canadian alcohol and dairy imports took effect following the collapse of negotiations in August, with no resumption date in sight. The trade escalation between the two largest USMCA partners poses risks to North American supply chains and raises inflationary pressure in the US, with implications for Fed monetary policy."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Gold",
-          "direction": "mixed",
-          "magnitude": "low",
+          "asset": "USD/CAD",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre sobre oferta de oro venezolano en mercados globales",
-            "en": "Uncertainty over Venezuelan gold supply entering global markets"
+            "es": "CAD bajo presión por deterioro del acceso comercial",
+            "en": "CAD under pressure from eroding trade access"
           }
         },
         {
-          "asset": "Venezuelan sovereign assets",
-          "direction": "mixed",
+          "asset": "Canadian equities (TSX)",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Política de sanciones ambigua crea riesgo regulatorio y de cumplimiento",
-            "en": "Ambiguous sanctions policy creates regulatory and compliance risk"
+            "es": "Sectores agroindustriales y de bebidas afectados",
+            "en": "Agri-food and beverage sectors directly hit"
+          }
+        },
+        {
+          "asset": "US CPI expectations",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Restricciones de importación añaden presión inflacionaria",
+            "en": "Import restrictions add inflationary pressure"
           }
         }
       ],
-      "confidence": 70,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/28/world/americas/venezuela-gold-trump.html",
-      "published_at": "2026-09-28",
-      "time": "1h"
+      "confidence": 82,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cm1j43y146d2o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-29",
+      "time": "7h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "AFRICA",
       "title": {
-        "es": "Las relaciones entre Ucrania y Corea del Sur se enfrían por los prisioneros de guerra norcoreanos",
-        "en": "Ukraine, South Korea relations sour over North Korean POWs"
+        "es": "Mali: Amnistía Internacional acusa al ejército y al Grupo Wagner de 'crímenes de guerra'",
+        "en": "Mali: Amnesty International accuses the army and Wagner Group of 'war crimes'"
       },
       "summary": {
-        "es": "Seúl acusa a Ucrania de violar un acuerdo de confidencialidad sobre la transferencia de prisioneros de guerra norcoreanos y de negar la existencia del acuerdo, exigiendo una disculpa formal. La disputa amenaza con debilitar la coalición de apoyo a Ucrania en el Indo-Pacífico en un momento crítico, y complica la gestión diplomática de la presencia militar norcoreana en el conflicto. Para los inversores, el deterioro de esta relación podría afectar los flujos de ayuda militar surcoreana y la estabilidad de los mercados de defensa de la región.",
-        "en": "Seoul accuses Ukraine of breaching a confidentiality agreement on the transfer of North Korean POWs and of denying the deal's existence, demanding a formal apology. The dispute threatens to weaken the Indo-Pacific support coalition for Ukraine at a critical moment, and complicates diplomatic management of North Korea's military presence in the conflict. For investors, the deteriorating relationship could affect South Korean military aid flows and regional defense market stability."
+        "es": "Amnistía Internacional acusa a las fuerzas armadas malienses y a los paramilitares rusos del Grupo Wagner de haber cometido crímenes de guerra durante operaciones recientes. Las acusaciones aumentan la presión internacional sobre la junta de Bamako y sobre la presencia rusa en el Sahel, con posibles implicaciones para la estabilidad de los corredores de minerales críticos en la región y la posición estratégica de las potencias occidentales.",
+        "en": "Amnesty International accuses Malian armed forces and Russian Wagner Group paramilitaries of committing war crimes during recent operations. The accusations increase international pressure on the Bamako junta and on Russian presence in the Sahel, with potential implications for critical mineral corridor stability and Western strategic positioning in the region."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Korean Won",
-          "direction": "down",
+          "asset": "Gold (Sahel mining exposure)",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Tensión diplomática añade incertidumbre geopolítica regional",
-            "en": "Diplomatic tension adds regional geopolitical uncertainty"
+            "es": "Riesgo operacional en zonas mineras malienses",
+            "en": "Operational risk in Malian mining zones"
           }
         },
         {
-          "asset": "South Korean defense equities",
-          "direction": "mixed",
+          "asset": "European equities (mining/resources)",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Posible revisión de acuerdos de exportación de defensa a Ucrania",
-            "en": "Possible review of defense export agreements to Ukraine"
+            "es": "Incertidumbre sobre acceso a recursos del Sahel",
+            "en": "Uncertainty over Sahel resource access"
           }
         }
       ],
       "confidence": 72,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ukraine-south-korea-relations-sour-over-north-korean-pows/a-79451515?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-28",
-      "time": "10h"
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/afrique/article/2026/09/29/mali-amnesty-international-accuse-l-armee-et-le-groupe-wagner-de-crimes-de-guerre_6785575_3212.html",
+      "published_at": "2026-09-29",
+      "time": "3h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
