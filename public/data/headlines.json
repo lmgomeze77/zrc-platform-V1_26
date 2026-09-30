@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T12:02:48.668Z",
+  "generated_at": "2026-09-30T11:51:26.899Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,176 +96,71 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Irán espera respuesta de EE.UU. el martes sobre plan para reabrir el Estrecho de Ormuz",
-        "en": "Iran says it expects US response Tuesday on plan to reopen Strait of Hormuz"
-      },
-      "summary": {
-        "es": "El canciller iraní Araghchi indicó que Teherán aguarda la respuesta de Washington a su propuesta de reabrir el Estrecho de Ormuz a cambio de un alto al fuego regional, el levantamiento de sanciones petroleras y otras garantías. La resolución o fracaso de esta negociación tendrá consecuencias directas sobre los precios globales del petróleo y las cadenas de suministro energético. Un acuerdo reduciría la prima de riesgo geopolítica en los mercados; su colapso podría generar nueva escalada.",
-        "en": "Iranian FM Araghchi indicated Tehran awaits Washington's response to its proposal to reopen the Strait of Hormuz in exchange for a regional ceasefire, lifting of oil sanctions, and other guarantees. The outcome of this negotiation carries direct consequences for global oil prices and energy supply chains. A deal would reduce geopolitical risk premiums; a collapse could trigger further escalation."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "mixed",
-          "magnitude": "high",
-          "note": {
-            "es": "Reapertura reduciría precios; fracaso los elevaría",
-            "en": "Reopening would lower prices; failure would spike them"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Activo refugio sensible al riesgo de escalada",
-            "en": "Safe-haven demand tied to escalation risk"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Economías importadoras de petróleo muy expuestas",
-            "en": "Oil-importing EMs highly exposed to price swings"
-          }
-        },
-        {
-          "asset": "Energy equities",
-          "direction": "mixed",
-          "magnitude": "high",
-          "note": {
-            "es": "Volátil según resultado de negociación",
-            "en": "Volatile depending on negotiation outcome"
-          }
-        }
-      ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20260929-iran-says-expects-us-response-tuesday-plan-reopen-strait-of-hormuz",
-      "published_at": "2026-09-29",
-      "time": "5h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "APAC",
-      "title": {
-        "es": "Trump ofreció vender armas a China mientras Taiwan advierte de amenaza militar 'severa'",
-        "en": "Trump asked Xi Jinping if China would like to buy US weapons, American ambassador says"
-      },
-      "summary": {
-        "es": "El embajador estadounidense David Perdue reveló que Trump ofreció vender armas a China durante la reciente cumbre con Xi, mientras un ministro taiwanés calificaba la amenaza militar de Beijing como 'severa'. La declaración socava la credibilidad de los compromisos de defensa de EE.UU. hacia Taiwán y aliados del Indo-Pacífico, con implicaciones de primer orden para la estabilidad regional y los mercados de defensa.",
-        "en": "US Ambassador David Perdue disclosed that Trump offered to sell weapons to China during the recent summit with Xi, while a Taiwanese minister described Beijing's military threat as 'severe.' The revelation undermines the credibility of US defense commitments to Taiwan and Indo-Pacific allies, with first-order implications for regional stability and defense markets."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Taiwan equities (TWSE)",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Incertidumbre sobre garantías de seguridad de EE.UU.",
-            "en": "Uncertainty over US security guarantees"
-          }
-        },
-        {
-          "asset": "USD/TWD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Presión sobre TWD ante riesgo geopolítico elevado",
-            "en": "TWD under pressure amid elevated geopolitical risk"
-          }
-        },
-        {
-          "asset": "Defense equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aliados Indo-Pacífico podrían buscar armamento alternativo",
-            "en": "Indo-Pacific allies may seek alternative arms suppliers"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor incertidumbre geopolítica impulsa refugio",
-            "en": "Heightened geopolitical uncertainty supports safe haven"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/sep/28/trump-xi-jinping-china-buy-weapons",
-      "published_at": "2026-09-28",
-      "time": "1d"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Estonia atribuye el ataque incendiario a Rusia; la OTAN alerta sobre escalada en el flanco oriental",
-        "en": "'We will not be intimidated,' says Estonian PM after attributing recent arson attack to Russia"
+        "es": "Ministro de Defensa belga advierte de un 'oscuro invierno para Europa' con más 'guerra híbrida' rusa",
+        "en": "Belgium's defence minister warns of 'dark winter for Europe' with more 'hybrid warfare' from Russia"
       },
       "summary": {
-        "es": "La primera ministra estonia Kristen Michal atribuyó el ataque incendiario contra Milrem Robotics a los servicios especiales rusos, mientras el secretario general de la OTAN Rutte recordó incidentes de drones en el espacio aéreo de la Alianza. La combinación de ataques a infraestructura de defensa y violaciones del espacio aéreo sugiere una campaña de presión rusa sistemática sobre el flanco oriental de la OTAN con potencial de escalada.",
-        "en": "Estonian PM Kristen Michal attributed the arson attack on Milrem Robotics to Russian special services, while NATO SG Rutte cited recent drone incidents in Alliance airspace. The combination of attacks on defense infrastructure and airspace violations suggests a systematic Russian pressure campaign on NATO's eastern flank with escalation potential."
+        "es": "El ministro de Defensa belga advirtió sobre una intensificación de la guerra híbrida rusa este invierno, mientras que el jefe de Defensa holandés alertó de una 'ventana de vulnerabilidad hasta 2030'. Ucrania enfrenta un déficit de financiación de 27.000 millones de dólares para sostener operaciones de combate, con costes de guerra totales que alcanzarán 155.000 millones este año. Estos factores combinados presionan al alza el gasto de defensa europeo y aumentan la prima de riesgo sobre activos europeos.",
+        "en": "Belgium's defence minister warned of intensifying Russian hybrid warfare this winter, while the Dutch defence chief flagged a 'window of vulnerability until 2030.' Ukraine faces a $27bn funding gap to sustain combat operations, with total war costs reaching $155bn this year. These combined factors put upward pressure on European defence spending and elevate risk premiums on European assets."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European defense equities",
+          "asset": "European defence equities",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Amenaza persistente impulsa gasto en defensa europeo",
-            "en": "Persistent threat drives European defense spending"
+            "es": "Escalada híbrida impulsa gasto en defensa europeo",
+            "en": "Hybrid escalation drives higher European defence spending"
           }
         },
         {
           "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Riesgo de seguridad en flanco oriental presiona al euro",
-            "en": "Eastern flank security risk weighs on euro"
+            "es": "Riesgo de guerra híbrida pesa sobre el euro",
+            "en": "Hybrid war risk weighs on euro sentiment"
           }
         },
         {
-          "asset": "Baltic sovereign bonds",
+          "asset": "European equities",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Prima de riesgo sube ante tensión con Rusia",
-            "en": "Risk premium rises on Russia tension"
+            "es": "Prima de riesgo geopolítico eleva la volatilidad",
+            "en": "Geopolitical risk premium raises volatility"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Activo refugio ante incertidumbre invernal europea",
+            "en": "Safe haven demand amid European winter uncertainty"
           }
         }
       ],
       "confidence": 85,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/sep/29/ukraine-russia-war-odesa-overnight-lithuania-mark-rutte-europe-latest-news-updates",
-      "published_at": "2026-09-29",
+      "source_url": "https://www.theguardian.com/world/live/2026/sep/30/russia-ukraine-war-strikes-zelenskyy-putin-poland-romania-macron-sanchez-spain-europe-latest-news-updates",
+      "published_at": "2026-09-30",
       "time": "<1h"
     },
     {
-      "id": 4,
-      "tag": "ALERT",
+      "id": 2,
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EE.UU. retira sus tropas de Iraq tras 12 años de la misión contra el ISIS ante demoras en el desarme de milicias",
-        "en": "Iraq: US troops withdraw from Operation Inherent Resolve against ISIS after 12 years as Baghdad delays militia disarmament"
+        "es": "Las tropas estadounidenses salen de Irak tras más de una década",
+        "en": "US troops exit Iraq after more than a decade"
       },
       "summary": {
-        "es": "La retirada estadounidense de Iraq cierra formalmente la misión de la coalición contra el ISIS, pero deja un vacío de seguridad con milicias pro-iraníes sin desarmar y fuerzas extranjeras aún presentes. El repliegue remodela el equilibrio de poder en Iraq a favor de Irán, con implicaciones para la estabilidad del suministro energético regional y la posición estratégica de EE.UU. en Medio Oriente.",
-        "en": "The US withdrawal from Iraq formally closes the anti-ISIS coalition mission, but leaves a security vacuum with pro-Iranian militias undisarmed and foreign forces still present. The pullback reshapes Iraq's power balance in Iran's favor, with implications for regional energy supply stability and US strategic positioning in the Middle East."
+        "es": "Estados Unidos completó la retirada de todas sus tropas de Irak, poniendo fin a la misión de 12 años contra el Estado Islámico. Irán, que ha buscado durante mucho tiempo la salida militar estadounidense de Oriente Medio, celebró la retirada. El vacío estratégico resultante refuerza la influencia regional iraní y eleva los riesgos de seguridad en la región del Golfo y sus corredores energéticos.",
+        "en": "The US completed the withdrawal of all troops from Iraq, ending its 12-year counter-ISIS mission. Iran, which long sought a full US military exit from the Middle East, celebrated the withdrawal. The resulting strategic vacuum strengthens Iranian regional influence and raises security risks across Gulf energy corridors."
       },
       "impact": "high",
       "market_impact": [
@@ -274,56 +169,56 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de inestabilidad en productor clave de OPEP+",
-            "en": "Instability risk in key OPEC+ producer"
+            "es": "Mayor influencia iraní eleva la prima de riesgo del Golfo",
+            "en": "Greater Iranian influence raises Gulf risk premium"
           }
         },
         {
-          "asset": "Iraqi sovereign debt",
-          "direction": "down",
+          "asset": "Gold",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre de seguridad eleva primas de riesgo",
-            "en": "Security uncertainty raises risk premiums"
+            "es": "Vacío de seguridad en Oriente Medio impulsa refugios",
+            "en": "Middle East security vacuum boosts safe havens"
           }
         },
         {
-          "asset": "Energy equities",
+          "asset": "EM currencies",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Contratos de energía en Iraq bajo mayor riesgo operacional",
-            "en": "Iraq energy contracts face higher operational risk"
+            "es": "Reconfiguración regional genera incertidumbre en divisas emergentes",
+            "en": "Regional realignment creates EM currency uncertainty"
           }
         }
       ],
       "confidence": 88,
       "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/iraq-us-troops-withdraw-from-their-iraqi-us-led-operation-inherent-resolve-mission-against-isis-after-12-years-as-baghdad-delays-militia-disarmament/a-79462926?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-29",
-      "time": "<1h"
+      "source_url": "https://www.dw.com/en/us-troops-exit-iraq-after-more-than-a-decade/a-79481523?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-09-30",
+      "time": "5h"
     },
     {
-      "id": 5,
+      "id": 3,
       "tag": "ALERT",
       "region": "US",
       "title": {
-        "es": "EE.UU. prohíbe alcohol y lácteos canadienses mientras la guerra comercial con Canadá se prolonga",
-        "en": "US ban on Canadian alcohol and dairy comes into effect as trade war drags on"
+        "es": "Entra en vigor la prohibición de alcohol y lácteos canadienses en EE.UU. mientras la guerra comercial continúa",
+        "en": "US ban on Canadian alcohol and dairy takes effect as trade war drags on"
       },
       "summary": {
-        "es": "La prohibición de importaciones de alcohol y lácteos canadienses entró en vigor tras el colapso de las negociaciones en agosto, sin fecha prevista para su reanudación. La escalada comercial entre los dos mayores socios del T-MEC plantea riesgos para las cadenas de suministro norteamericanas y eleva la presión inflacionaria en EE.UU., con implicaciones para la política monetaria de la Fed.",
-        "en": "The ban on Canadian alcohol and dairy imports took effect following the collapse of negotiations in August, with no resumption date in sight. The trade escalation between the two largest USMCA partners poses risks to North American supply chains and raises inflationary pressure in the US, with implications for Fed monetary policy."
+        "es": "La última escalada en la guerra comercial entre EE.UU. y Canadá entró en vigor tras el colapso de las negociaciones en agosto, sin fecha prevista para la reanudación de conversaciones. Las restricciones afectan sectores agrícolas clave y pueden provocar represalias adicionales de Ottawa sobre exportaciones estadounidenses. La prolongación del conflicto comercial bilateral pesa sobre el dólar canadiense y los sectores industriales y agrícolas transfronterizos.",
+        "en": "The latest escalation in the US-Canada trade war took effect after negotiations collapsed in late August, with no resumption date in sight. Restrictions target key agricultural sectors and may trigger further Ottawa retaliation against US exports. The prolonged bilateral trade conflict weighs on the Canadian dollar and cross-border industrial and agricultural sectors."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "USD/CAD",
-          "direction": "up",
+          "asset": "CAD/USD",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "CAD bajo presión por deterioro del acceso comercial",
-            "en": "CAD under pressure from eroding trade access"
+            "es": "Escalada comercial presiona al dólar canadiense",
+            "en": "Trade escalation pressures the Canadian dollar"
           }
         },
         {
@@ -331,64 +226,151 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Sectores agroindustriales y de bebidas afectados",
-            "en": "Agri-food and beverage sectors directly hit"
+            "es": "Sectores agrícola e industrial afectados por aranceles",
+            "en": "Agricultural and industrial sectors hit by tariffs"
           }
         },
         {
-          "asset": "US CPI expectations",
-          "direction": "up",
+          "asset": "US agricultural commodities",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Restricciones de importación añaden presión inflacionaria",
-            "en": "Import restrictions add inflationary pressure"
+            "es": "Posibles represalias canadienses sobre exportaciones agrícolas",
+            "en": "Potential Canadian retaliation on US farm exports"
           }
         }
       ],
       "confidence": 82,
-      "source": "BBC News",
+      "source": "BBC Business",
       "source_url": "https://www.bbc.co.uk/news/articles/cm1j43y146d2o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-09-29",
-      "time": "7h"
+      "time": "22h"
     },
     {
-      "id": 6,
+      "id": 4,
       "tag": "WATCH",
       "region": "AFRICA",
       "title": {
-        "es": "Mali: Amnistía Internacional acusa al ejército y al Grupo Wagner de 'crímenes de guerra'",
-        "en": "Mali: Amnesty International accuses the army and Wagner Group of 'war crimes'"
+        "es": "Piratas somalíes mataron a tripulantes de un petrolero antes del rescate, según funcionario",
+        "en": "Somali pirates killed oil tanker crew before rescue, official tells BBC"
       },
       "summary": {
-        "es": "Amnistía Internacional acusa a las fuerzas armadas malienses y a los paramilitares rusos del Grupo Wagner de haber cometido crímenes de guerra durante operaciones recientes. Las acusaciones aumentan la presión internacional sobre la junta de Bamako y sobre la presencia rusa en el Sahel, con posibles implicaciones para la estabilidad de los corredores de minerales críticos en la región y la posición estratégica de las potencias occidentales.",
-        "en": "Amnesty International accuses Malian armed forces and Russian Wagner Group paramilitaries of committing war crimes during recent operations. The accusations increase international pressure on the Bamako junta and on Russian presence in the Sahel, with potential implications for critical mineral corridor stability and Western strategic positioning in the region."
+        "es": "La piratería frente a la costa somalí ha aumentado en los últimos años, revirtiendo los avances logrados por las operaciones navales internacionales iniciadas en 2011. El ataque letal a la tripulación de un petrolero señala una escalada en la gravedad de los incidentes y puede presionar al alza las primas de seguro marítimo en el corredor del Océano Índico. Los gestores de activos expuestos a cadenas de suministro marítimas y energía deberían vigilar el impacto en los costes de transporte.",
+        "en": "Somali piracy has resurged in recent years, reversing gains made by international naval operations begun in 2011. The lethal attack on an oil tanker crew signals an escalation in incident severity and may push up maritime insurance premiums on the Indian Ocean corridor. Portfolio managers exposed to maritime supply chains and energy should monitor the impact on shipping costs."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Gold (Sahel mining exposure)",
+          "asset": "Brent crude",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo operacional en zonas mineras malienses",
-            "en": "Operational risk in Malian mining zones"
+            "es": "Piratería eleva costes de transporte marítimo energético",
+            "en": "Piracy raises energy maritime shipping costs"
           }
         },
         {
-          "asset": "European equities (mining/resources)",
+          "asset": "Shipping & logistics equities",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Incertidumbre sobre acceso a recursos del Sahel",
-            "en": "Uncertainty over Sahel resource access"
+            "es": "Mayores primas de seguro reducen márgenes navieros",
+            "en": "Higher insurance premiums compress shipping margins"
           }
         }
       ],
       "confidence": 72,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/afrique/article/2026/09/29/mali-amnesty-international-accuse-l-armee-et-le-groupe-wagner-de-crimes-de-guerre_6785575_3212.html",
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/crjw5jp2de7go?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-09-30",
+      "time": "5h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "Decenas de muertos en un bombardeo militar de Myanmar",
+        "en": "Dozens Killed in Myanmar Military Bombing"
+      },
+      "summary": {
+        "es": "Un ataque aéreo del ejército birmano sobre un mercado en territorio rebelde dejó al menos 50 muertos, uno de los ataques más mortíferos contra civiles en meses. La intensificación del conflicto en Myanmar agudiza la crisis humanitaria y presiona a los países vecinos como Tailandia, India y China a gestionar flujos de refugiados y riesgos de desbordamiento. La inestabilidad persistente afecta a las inversiones en infraestructura regional y a los corredores de recursos en el sudeste asiático.",
+        "en": "A Myanmar military airstrike on a market in rebel territory killed at least 50 people, one of the deadliest attacks on civilians in months. Escalating conflict sharpens the humanitarian crisis and pressures neighboring states including Thailand, India, and China to manage refugee flows and spillover risks. Persistent instability affects regional infrastructure investment and resource corridors in Southeast Asia."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Thai baht (THB)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de desbordamiento fronterizo pesa sobre el baht",
+            "en": "Border spillover risk weighs on Thai baht"
+          }
+        },
+        {
+          "asset": "ASEAN equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad regional frena flujos de inversión en ASEAN",
+            "en": "Regional instability dampens ASEAN investment flows"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/09/29/world/asia/myanmar-airstrike-rakhine-market.html",
       "published_at": "2026-09-29",
-      "time": "3h"
+      "time": "16h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "¿Qué hay detrás de las protestas estudiantiles francesas que se tornaron violentas?",
+        "en": "What's behind French student protests that turned violent?"
+      },
+      "summary": {
+        "es": "Las protestas estudiantiles en Francia coinciden con huelgas del sector público por los recortes presupuestarios planificados, reflejando una creciente resistencia social a la austeridad fiscal en un contexto de presión europea sobre los déficits. La combinación de agitación social y presión presupuestaria puede complicar la capacidad del gobierno francés para consolidar sus finanzas públicas, con implicaciones para los diferenciales de deuda soberana francesa frente a los Bunds alemanes.",
+        "en": "French student protests coincide with public sector strikes over planned budget cuts, reflecting mounting social resistance to fiscal austerity amid European pressure on deficits. The combination of social unrest and budget pressure may complicate the French government's ability to consolidate public finances, with implications for French sovereign debt spreads versus German Bunds."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "French OATs (sovereign bonds)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Agitación social complica consolidación fiscal francesa",
+            "en": "Social unrest complicates French fiscal consolidation"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad política francesa pesa sobre el euro",
+            "en": "French political instability weighs on the euro"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de parálisis presupuestaria francesa afecta a mercados",
+            "en": "French budget paralysis risk affects markets"
+          }
+        }
+      ],
+      "confidence": 70,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/9/30/whats-behind-french-student-protests-that-turned-violent?traffic_source=rss",
+      "published_at": "2026-09-30",
+      "time": "<1h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
