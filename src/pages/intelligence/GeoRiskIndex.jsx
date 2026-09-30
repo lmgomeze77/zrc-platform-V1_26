@@ -220,8 +220,8 @@ function WeeklyDigestCapture({ lang }) {
     return (
       <div style={{ padding: "20px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, fontFamily: F.body, fontSize: 13, color: C.text }}>
         {lang === "es"
-          ? "Listo — recibirás el ZRC-GRI cada lunes en tu email."
-          : "Done — you'll get the ZRC-GRI in your inbox every Monday."}
+          ? "Listo — ya formas parte de ZRC Morning Intelligence. Recibirás el briefing y el nuevo ZRC-GRI semanal."
+          : "Done — you're now part of ZRC Morning Intelligence. You'll receive the briefing and the weekly ZRC-GRI."}
       </div>
     );
   }
@@ -229,12 +229,12 @@ function WeeklyDigestCapture({ lang }) {
   return (
     <div style={{ padding: "24px 28px", background: C.surface, border: `1px solid ${C.border}`, borderLeft: `3px solid ${C.gold}` }}>
       <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginBottom: 6 }}>
-        {lang === "es" ? "Recibe el índice cada lunes" : "Get the index every Monday"}
+        {lang === "es" ? "Únete a ZRC Morning Intelligence" : "Join ZRC Morning Intelligence"}
       </div>
       <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, margin: "0 0 18px", maxWidth: 480 }}>
         {lang === "es"
-          ? "El mismo print semanal que ves arriba, directo a tu email, con el escenario dominante y el cambio semana a semana."
-          : "The same weekly print you see above, straight to your inbox, with the dominant scenario and week-over-week change."}
+          ? "Recibe el briefing de inteligencia de ZRC y, cada semana, el nuevo GeoRisk Index con el escenario dominante y el cambio semana a semana."
+          : "Receive ZRC’s intelligence briefing plus the weekly GeoRisk Index, dominant scenario and week-over-week change."}
       </p>
       <form onSubmit={handleSubmit} style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
         <input
@@ -264,7 +264,7 @@ function WeeklyDigestCapture({ lang }) {
             opacity: status === "submitting" ? 0.6 : 1, whiteSpace: "nowrap",
           }}
         >
-          {status === "submitting" ? (lang === "es" ? "Enviando…" : "Sending…") : (lang === "es" ? "Suscribirme" : "Subscribe")}
+          {status === "submitting" ? (lang === "es" ? "Enviando…" : "Sending…") : (lang === "es" ? "Unirme al briefing" : "Join the briefing")}
         </button>
       </form>
       {status === "error" && (
@@ -304,7 +304,9 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
   const displayValue = current ? current.index_value : live?.value ?? null;
   const displayLabel = current ? (current.risk_label || riskLabel(current.index_value)) : (live ? live.riskLabel : null);
   const displayScenario = current ? current.dominant_scenario : live?.dominantScenario;
-  const weeklyChange = current && previous ? current.index_value - previous.index_value : null;\n  const inputStatus = live?.inputStatus || null;\n  const inputDate = live?.inputDate || null;
+  const weeklyChange = current && previous ? current.index_value - previous.index_value : null;
+  const inputStatus = live?.inputStatus || null;
+  const inputDate = live?.inputDate || null;
 
   const bands = useMemo(() => BANDS.map((b) => ({ ...b, impacts: bandImpact(b.mid) })), []);
 
