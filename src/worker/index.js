@@ -507,6 +507,34 @@ async function handleLead(request, env) {
 
   const isGeoRiskDigest = sourceClean === "georisk-index";
 
+  // GeoRisk is an acquisition surface for the single free distribution layer:
+  // ZRC Morning Intelligence. Keep the GeoRisk source/sector in D1 for CRM
+  // attribution, while subscribing the email to the Morning Intelligence
+  // Supabase subscriber list (the source of truth used by the briefing sender).
+  if (isGeoRiskDigest && env.SUPABASE_URL && env.SUPABASE_SERVICE_KEY) {
+    try {
+      const cleanEmail = email.trim().toLowerCase();
+      const subResp = await fetch(
+        `${env.SUPABASE_URL}/rest/v1/subscribers?on_conflict=email`,
+        {
+          method: "POST",
+          headers: {
+            apikey: env.SUPABASE_SERVICE_KEY,
+            Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
+            "Content-Type": "application/json",
+            Prefer: "resolution=merge-duplicates,return=minimal",
+          },
+          body: JSON.stringify({ email: cleanEmail, active: true }),
+        }
+      );
+      if (!subResp.ok) {
+        console.error("Morning Intelligence subscriber sync error:", subResp.status, await subResp.text());
+      }
+    } catch (err) {
+      console.error("Morning Intelligence subscriber sync failed:", err);
+    }
+  }
+
   if (env.RESEND_API_KEY) {
     try {
       await sendResendEmail(env, {
@@ -518,7 +546,7 @@ async function handleLead(request, env) {
       await sendResendEmail(env, {
         from: "Zenith Rise Capital <noreply@zenithrisecapital.com>",
         to: email,
-        subject: isGeoRiskDigest ? "Suscrito al ZRC GeoRisk Index semanal" : "Acceso al Visor Inmobiliario · ZRC Labs",
+        subject: isGeoRiskDigest ? "Bienvenido a ZRC Morning Intelligence" : "Acceso al Visor Inmobiliario · ZRC Labs",
         html: isGeoRiskDigest ? georiskOptInEmailHTML({ email }) : welcomeEmailHTML({ email, sector }),
       });
     } catch (err) {
