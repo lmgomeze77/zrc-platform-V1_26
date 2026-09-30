@@ -780,7 +780,8 @@ async function computeAndStoreWeeklySnapshot(env, source) {
     return { ok: false, error: "Service unavailable" };
   }
 
-  const inputs = await loadGeoRiskInputs(env);\n  const { value, dominantScenario, riskLabel } = computeGeoRiskIndexValue(inputs.scenarios);
+  const inputs = await loadGeoRiskInputs(env);
+  const { value, dominantScenario, riskLabel } = computeGeoRiskIndexValue(inputs.scenarios);
   const weekStart = isoWeekMonday(new Date());
 
   try {
@@ -797,7 +798,8 @@ async function computeAndStoreWeeklySnapshot(env, source) {
         index_value: value,
         dominant_scenario: dominantScenario,
         risk_label: riskLabel,
-        source: inputs.status === "evidence_driven" ? (source || "weekly_evidence") : "fallback_static",\n        notes: inputs.summary || `Inputs effective ${inputs.inputDate} · ${inputs.status}`,
+        source: inputs.status === "evidence_driven" ? (source || "weekly_evidence") : "fallback_static",
+        notes: inputs.summary || `Inputs effective ${inputs.inputDate} · ${inputs.status}`,
       }),
     });
     if (!resp.ok) {
@@ -875,7 +877,8 @@ async function computeWeeklyChange(env, currentWeekStart, currentValue) {
 }
 
 async function handleGeoRiskIndexGet(request, env) {
-  const liveInputs = await loadGeoRiskInputs(env);\n  const live = { ...computeGeoRiskIndexValue(liveInputs.scenarios), inputDate: liveInputs.inputDate, inputStatus: liveInputs.status, summary: liveInputs.summary || null };
+  const liveInputs = await loadGeoRiskInputs(env);
+  const live = { ...computeGeoRiskIndexValue(liveInputs.scenarios), inputDate: liveInputs.inputDate, inputStatus: liveInputs.status, summary: liveInputs.summary || null };
 
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
     return jsonResponse({ history: [], live });
