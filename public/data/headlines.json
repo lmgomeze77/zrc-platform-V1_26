@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T11:51:26.899Z",
+  "generated_at": "2026-10-01T12:20:52.340Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,33 +96,81 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EU",
+      "region": "US",
       "title": {
-        "es": "Ministro de Defensa belga advierte de un 'oscuro invierno para Europa' con más 'guerra híbrida' rusa",
-        "en": "Belgium's defence minister warns of 'dark winter for Europe' with more 'hybrid warfare' from Russia"
+        "es": "Los rendimientos de los bonos de EE.UU. alcanzan su nivel más alto desde 2002",
+        "en": "U.S. Bond Yields Hit Highest Level Since 2002"
       },
       "summary": {
-        "es": "El ministro de Defensa belga advirtió sobre una intensificación de la guerra híbrida rusa este invierno, mientras que el jefe de Defensa holandés alertó de una 'ventana de vulnerabilidad hasta 2030'. Ucrania enfrenta un déficit de financiación de 27.000 millones de dólares para sostener operaciones de combate, con costes de guerra totales que alcanzarán 155.000 millones este año. Estos factores combinados presionan al alza el gasto de defensa europeo y aumentan la prima de riesgo sobre activos europeos.",
-        "en": "Belgium's defence minister warned of intensifying Russian hybrid warfare this winter, while the Dutch defence chief flagged a 'window of vulnerability until 2030.' Ukraine faces a $27bn funding gap to sustain combat operations, with total war costs reaching $155bn this year. These combined factors put upward pressure on European defence spending and elevate risk premiums on European assets."
+        "es": "Los rendimientos de los bonos del Tesoro a 10 años han alcanzado máximos no vistos desde 2002, impulsados por la guerra en Irán y los elevados niveles de deuda pública. Esta combinación de factores geopolíticos y fiscales presiona al alza el coste de financiación global y comprime las valoraciones de activos de riesgo. Las implicaciones para carteras de renta fija, renta variable y divisas emergentes son inmediatas y significativas.",
+        "en": "U.S. 10-year Treasury yields have reached levels not seen since 2002, driven by the ongoing war involving Iran and high government debt levels. The confluence of geopolitical risk and fiscal pressure is raising global financing costs and compressing risk-asset valuations. Portfolio implications across fixed income, equities, and emerging market currencies are immediate and significant."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European defence equities",
+          "asset": "US 10Y Treasury",
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Escalada híbrida impulsa gasto en defensa europeo",
-            "en": "Hybrid escalation drives higher European defence spending"
+            "es": "Rendimientos en máximos de 24 años por guerra e deuda fiscal",
+            "en": "Yields at 24-year highs on war and fiscal debt pressures"
           }
         },
         {
-          "asset": "EUR/USD",
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Demanda de refugio seguro ante tensiones geopolíticas y fiscales",
+            "en": "Safe-haven demand amid geopolitical and fiscal tensions"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Dólar fuerte y yields altos presionan divisas emergentes",
+            "en": "Strong dollar and high yields pressure emerging market currencies"
+          }
+        },
+        {
+          "asset": "US equities",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de guerra híbrida pesa sobre el euro",
-            "en": "Hybrid war risk weighs on euro sentiment"
+            "es": "Mayor coste de capital reduce valoraciones bursátiles",
+            "en": "Higher cost of capital compresses equity valuations"
+          }
+        }
+      ],
+      "confidence": 92,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/01/business/bond-yields-10-year-treasury.html",
+      "published_at": "2026-10-01",
+      "time": "<1h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
+      "title": {
+        "es": "Rusia lanza un ataque masivo contra la red eléctrica de Ucrania, causando cortes de luz",
+        "en": "Russia launches major attack on Ukraine's energy grid, causing power cuts"
+      },
+      "summary": {
+        "es": "Rusia ejecutó su ataque combinado más intenso en meses contra la infraestructura energética ucraniana, causando siete muertos y cortes de emergencia en Kyiv y regiones cercanas. El ataque intensifica la presión sobre Ucrania de cara al invierno, con implicaciones directas para los precios europeos del gas y la seguridad energética continental. Eleva también la probabilidad de nuevos paquetes de ayuda occidental y sanciones adicionales.",
+        "en": "Russia executed its heaviest combined assault in months on Ukrainian energy infrastructure, killing seven and triggering emergency blackouts in Kyiv and surrounding regions. The strike escalates winter-season pressure on Ukraine and has direct implications for European gas prices and continental energy security. It raises the likelihood of new Western aid packages and additional sanctions."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European natural gas (TTF)",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Ataques a infraestructura energética elevan riesgo de suministro invernal",
+            "en": "Energy infrastructure attacks raise winter supply risk"
           }
         },
         {
@@ -130,246 +178,216 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Prima de riesgo geopolítico eleva la volatilidad",
-            "en": "Geopolitical risk premium raises volatility"
+            "es": "Mayor incertidumbre energética pesa sobre industria europea",
+            "en": "Energy uncertainty weighs on European industrial sector"
           }
         },
         {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Activo refugio ante incertidumbre invernal europea",
-            "en": "Safe haven demand amid European winter uncertainty"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/sep/30/russia-ukraine-war-strikes-zelenskyy-putin-poland-romania-macron-sanchez-spain-europe-latest-news-updates",
-      "published_at": "2026-09-30",
-      "time": "<1h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Las tropas estadounidenses salen de Irak tras más de una década",
-        "en": "US troops exit Iraq after more than a decade"
-      },
-      "summary": {
-        "es": "Estados Unidos completó la retirada de todas sus tropas de Irak, poniendo fin a la misión de 12 años contra el Estado Islámico. Irán, que ha buscado durante mucho tiempo la salida militar estadounidense de Oriente Medio, celebró la retirada. El vacío estratégico resultante refuerza la influencia regional iraní y eleva los riesgos de seguridad en la región del Golfo y sus corredores energéticos.",
-        "en": "The US completed the withdrawal of all troops from Iraq, ending its 12-year counter-ISIS mission. Iran, which long sought a full US military exit from the Middle East, celebrated the withdrawal. The resulting strategic vacuum strengthens Iranian regional influence and raises security risks across Gulf energy corridors."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor influencia iraní eleva la prima de riesgo del Golfo",
-            "en": "Greater Iranian influence raises Gulf risk premium"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Vacío de seguridad en Oriente Medio impulsa refugios",
-            "en": "Middle East security vacuum boosts safe havens"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "mixed",
+          "asset": "EUR/USD",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Reconfiguración regional genera incertidumbre en divisas emergentes",
-            "en": "Regional realignment creates EM currency uncertainty"
+            "es": "Escalada bélica presiona al euro frente al dólar",
+            "en": "War escalation pressures euro against the dollar"
+          }
+        },
+        {
+          "asset": "Defense sector equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada impulsa expectativas de mayor gasto en defensa",
+            "en": "Escalation boosts expectations of increased defense spending"
           }
         }
       ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-troops-exit-iraq-after-more-than-a-decade/a-79481523?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-09-30",
-      "time": "5h"
+      "confidence": 91,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20261001-russia-launches-major-attack-on-ukraine-energy-grid-causing-power-cuts",
+      "published_at": "2026-10-01",
+      "time": "9h"
     },
     {
       "id": 3,
       "tag": "ALERT",
       "region": "US",
       "title": {
-        "es": "Entra en vigor la prohibición de alcohol y lácteos canadienses en EE.UU. mientras la guerra comercial continúa",
-        "en": "US ban on Canadian alcohol and dairy takes effect as trade war drags on"
+        "es": "EE.UU. recorta el número de generales y almirantes un 20%, anuncia Hegseth",
+        "en": "US military cuts generals, admirals by 20%, Hegseth says"
       },
       "summary": {
-        "es": "La última escalada en la guerra comercial entre EE.UU. y Canadá entró en vigor tras el colapso de las negociaciones en agosto, sin fecha prevista para la reanudación de conversaciones. Las restricciones afectan sectores agrícolas clave y pueden provocar represalias adicionales de Ottawa sobre exportaciones estadounidenses. La prolongación del conflicto comercial bilateral pesa sobre el dólar canadiense y los sectores industriales y agrícolas transfronterizos.",
-        "en": "The latest escalation in the US-Canada trade war took effect after negotiations collapsed in late August, with no resumption date in sight. Restrictions target key agricultural sectors and may trigger further Ottawa retaliation against US exports. The prolonged bilateral trade conflict weighs on the Canadian dollar and cross-border industrial and agricultural sectors."
+        "es": "El secretario de Defensa Pete Hegseth anunció una reducción del 20% en el número de generales y almirantes, acompañada de la creación de un nuevo mando de drones y un grupo de trabajo liderado por Elon Musk para evaluar el futuro de la guerra. Esta reestructuración señala un pivote estratégico de EE.UU. hacia la guerra autónoma y tecnológica, con implicaciones para los contratos de defensa y las alianzas de la OTAN. Generará incertidumbre sobre la capacidad de mando y coordinación operativa estadounidense.",
+        "en": "Defense Secretary Pete Hegseth announced a 20% cut to general and admiral ranks, alongside creation of a new drone command and an Elon Musk-led task force assessing the future of warfare. This restructuring signals a U.S. strategic pivot toward autonomous and technology-driven warfare, with implications for defense procurement and NATO alliance structures. It raises uncertainty over U.S. command capacity and operational coordination."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "CAD/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada comercial presiona al dólar canadiense",
-            "en": "Trade escalation pressures the Canadian dollar"
-          }
-        },
-        {
-          "asset": "Canadian equities (TSX)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Sectores agrícola e industrial afectados por aranceles",
-            "en": "Agricultural and industrial sectors hit by tariffs"
-          }
-        },
-        {
-          "asset": "US agricultural commodities",
+          "asset": "US defense sector equities",
           "direction": "mixed",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Posibles represalias canadienses sobre exportaciones agrícolas",
-            "en": "Potential Canadian retaliation on US farm exports"
+            "es": "Pivote hacia drones favorece tech-defensa, perjudica contratistas tradicionales",
+            "en": "Drone pivot benefits tech-defense, hurts traditional contractors"
+          }
+        },
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Menor fiabilidad de EE.UU. impulsa gasto autónomo europeo",
+            "en": "Reduced U.S. reliability drives autonomous European defense spending"
+          }
+        },
+        {
+          "asset": "Drone/autonomous systems ETFs",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Nuevo mando de drones señala crecimiento del sector",
+            "en": "New drone command signals sector growth"
           }
         }
       ],
-      "confidence": 82,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cm1j43y146d2o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-29",
-      "time": "22h"
+      "confidence": 85,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/us-military-cuts-generals-admirals-by-20-hegseth-says/a-79495683?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-01",
+      "time": "10h"
     },
     {
       "id": 4,
-      "tag": "WATCH",
-      "region": "AFRICA",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "Piratas somalíes mataron a tripulantes de un petrolero antes del rescate, según funcionario",
-        "en": "Somali pirates killed oil tanker crew before rescue, official tells BBC"
+        "es": "El MI5 advierte a universidades del Reino Unido sobre el 'robo de secretos tecnológicos por una empresa pantalla china'",
+        "en": "MI5 warns UK universities over 'theft of tech secrets by Chinese front company'"
       },
       "summary": {
-        "es": "La piratería frente a la costa somalí ha aumentado en los últimos años, revirtiendo los avances logrados por las operaciones navales internacionales iniciadas en 2011. El ataque letal a la tripulación de un petrolero señala una escalada en la gravedad de los incidentes y puede presionar al alza las primas de seguro marítimo en el corredor del Océano Índico. Los gestores de activos expuestos a cadenas de suministro marítimas y energía deberían vigilar el impacto en los costes de transporte.",
-        "en": "Somali piracy has resurged in recent years, reversing gains made by international naval operations begun in 2011. The lethal attack on an oil tanker crew signals an escalation in incident severity and may push up maritime insurance premiums on the Indian Ocean corridor. Portfolio managers exposed to maritime supply chains and energy should monitor the impact on shipping costs."
+        "es": "El MI5 ha emitido una alerta pública poco habitual advirtiendo a las universidades británicas de que los servicios de inteligencia chinos están utilizando una empresa pantalla para robar investigación estratégica y tecnológica. La advertencia afectará los flujos de financiación hacia universidades con presencia china y acelerará la revisión de colaboraciones académicas y tecnológicas con entidades vinculadas a Pekín. Representa una escalada en la guerra de soberanía tecnológica entre Occidente y China.",
+        "en": "MI5 has issued a rare public warning to UK universities that Chinese intelligence is using a front company to steal strategic research and technology secrets. The alert will impact funding flows to universities with Chinese ties and accelerate the review of academic and technological partnerships with Beijing-linked entities. It marks an escalation in the West-China technology sovereignty conflict."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "UK tech/semiconductor equities",
+          "direction": "mixed",
+          "magnitude": "medium",
           "note": {
-            "es": "Piratería eleva costes de transporte marítimo energético",
-            "en": "Piracy raises energy maritime shipping costs"
+            "es": "Mayor escrutinio de transferencia tecnológica afecta colaboraciones",
+            "en": "Increased tech transfer scrutiny disrupts joint ventures"
           }
         },
         {
-          "asset": "Shipping & logistics equities",
+          "asset": "GBP/CNY",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión diplomática sino-británica puede afectar tipo de cambio",
+            "en": "UK-China diplomatic tension may affect exchange rate"
+          }
+        },
+        {
+          "asset": "Cybersecurity equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Alertas de espionaje elevan demanda de soluciones cibernéticas",
+            "en": "Espionage alerts increase demand for cybersecurity solutions"
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/uk-news/2026/sep/30/mi5-issues-spy-alert-over-body-linked-chinese-state-stealing-vital-uk-research-universities",
+      "published_at": "2026-09-30",
+      "time": "23h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "La batalla por Kordofán: el corredor que une el este y el oeste de Sudán",
+        "en": "The battle for Kordofan: The corridor linking Sudan's east and west"
+      },
+      "summary": {
+        "es": "Kordofán, situado entre Darfur y el centro de Sudán, ha concentrado uno de cada cinco ataques registrados en la guerra sudanesa desde abril de 2023, convirtiéndose en un corredor estratégico clave. El control de esta región determina el flujo de recursos, incluidos minerales críticos, y la capacidad logística de las fuerzas en conflicto. La prolongación del conflicto tiene implicaciones para las cadenas de suministro de materias primas y la estabilidad del Cuerno de África.",
+        "en": "Kordofan, located between Darfur and central Sudan, has concentrated one in five recorded attacks in Sudan's war since April 2023, making it a critical strategic corridor. Control of this region determines resource flows, including critical minerals, and the logistical capacity of warring factions. The prolonged conflict carries implications for raw material supply chains and Horn of Africa stability."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Critical minerals (gold, chromite)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Conflicto en Kordofán interrumpe extracción y exportación mineral",
+            "en": "Kordofan conflict disrupts mineral extraction and export"
+          }
+        },
+        {
+          "asset": "African frontier market bonds",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Mayores primas de seguro reducen márgenes navieros",
-            "en": "Higher insurance premiums compress shipping margins"
+            "es": "Inestabilidad regional eleva percepción de riesgo en mercados africanos",
+            "en": "Regional instability raises risk perception in African markets"
+          }
+        },
+        {
+          "asset": "Humanitarian/food commodity prices",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Bloqueo del corredor agrava crisis alimentaria regional",
+            "en": "Corridor blockage worsens regional food crisis"
+          }
+        }
+      ],
+      "confidence": 74,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/10/1/the-battle-for-kordofan-the-corridor-linking-sudans-east-and-west?traffic_source=rss",
+      "published_at": "2026-10-01",
+      "time": "3h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Se escuchan explosiones en la capital de Etiopía tras la prohibición de vuelos de drones",
+        "en": "Explosions heard in Ethiopia's capital after drone flights banned"
+      },
+      "summary": {
+        "es": "Se registraron explosiones en Addis Abeba una semana después de que estallaran combates al norte de la capital entre el ejército etíope y una nueva alianza de grupos armados. La prohibición de vuelos de drones sugiere operaciones militares activas en o cerca de la capital, señalando una escalada significativa. La inestabilidad en Etiopía, la mayor economía del Cuerno de África, tiene implicaciones para la seguridad regional y las inversiones en infraestructura.",
+        "en": "Explosions were reported in Addis Ababa one week after fighting erupted north of the capital between the Ethiopian army and a new alliance of armed groups. The ban on drone flights suggests active military operations in or near the capital, signaling a significant escalation. Instability in Ethiopia, the Horn of Africa's largest economy, carries implications for regional security and infrastructure investment."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "African frontier market bonds",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada en Etiopía eleva prima de riesgo regional",
+            "en": "Ethiopia escalation raises regional risk premium"
+          }
+        },
+        {
+          "asset": "EM currencies (ETB)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Conflicto interno presiona al birr etíope",
+            "en": "Internal conflict pressures Ethiopian birr"
           }
         }
       ],
       "confidence": 72,
       "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/crjw5jp2de7go?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-09-30",
-      "time": "5h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Decenas de muertos en un bombardeo militar de Myanmar",
-        "en": "Dozens Killed in Myanmar Military Bombing"
-      },
-      "summary": {
-        "es": "Un ataque aéreo del ejército birmano sobre un mercado en territorio rebelde dejó al menos 50 muertos, uno de los ataques más mortíferos contra civiles en meses. La intensificación del conflicto en Myanmar agudiza la crisis humanitaria y presiona a los países vecinos como Tailandia, India y China a gestionar flujos de refugiados y riesgos de desbordamiento. La inestabilidad persistente afecta a las inversiones en infraestructura regional y a los corredores de recursos en el sudeste asiático.",
-        "en": "A Myanmar military airstrike on a market in rebel territory killed at least 50 people, one of the deadliest attacks on civilians in months. Escalating conflict sharpens the humanitarian crisis and pressures neighboring states including Thailand, India, and China to manage refugee flows and spillover risks. Persistent instability affects regional infrastructure investment and resource corridors in Southeast Asia."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Thai baht (THB)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de desbordamiento fronterizo pesa sobre el baht",
-            "en": "Border spillover risk weighs on Thai baht"
-          }
-        },
-        {
-          "asset": "ASEAN equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad regional frena flujos de inversión en ASEAN",
-            "en": "Regional instability dampens ASEAN investment flows"
-          }
-        }
-      ],
-      "confidence": 68,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/09/29/world/asia/myanmar-airstrike-rakhine-market.html",
-      "published_at": "2026-09-29",
-      "time": "16h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "¿Qué hay detrás de las protestas estudiantiles francesas que se tornaron violentas?",
-        "en": "What's behind French student protests that turned violent?"
-      },
-      "summary": {
-        "es": "Las protestas estudiantiles en Francia coinciden con huelgas del sector público por los recortes presupuestarios planificados, reflejando una creciente resistencia social a la austeridad fiscal en un contexto de presión europea sobre los déficits. La combinación de agitación social y presión presupuestaria puede complicar la capacidad del gobierno francés para consolidar sus finanzas públicas, con implicaciones para los diferenciales de deuda soberana francesa frente a los Bunds alemanes.",
-        "en": "French student protests coincide with public sector strikes over planned budget cuts, reflecting mounting social resistance to fiscal austerity amid European pressure on deficits. The combination of social unrest and budget pressure may complicate the French government's ability to consolidate public finances, with implications for French sovereign debt spreads versus German Bunds."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "French OATs (sovereign bonds)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Agitación social complica consolidación fiscal francesa",
-            "en": "Social unrest complicates French fiscal consolidation"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad política francesa pesa sobre el euro",
-            "en": "French political instability weighs on the euro"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de parálisis presupuestaria francesa afecta a mercados",
-            "en": "French budget paralysis risk affects markets"
-          }
-        }
-      ],
-      "confidence": 70,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/9/30/whats-behind-french-student-protests-that-turned-violent?traffic_source=rss",
-      "published_at": "2026-09-30",
+      "source_url": "https://www.bbc.co.uk/news/articles/c3vgygpqky9zo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-01",
       "time": "<1h"
     }
   ],
