@@ -181,7 +181,11 @@ const T = {
       sub: "ZRC opera en la intersección entre inteligencia macro, advisory estratégico y ejecución de operaciones — transformando señales geopolíticas en decisiones de inversión de grado institucional.",
       cta1: "ACCEDER AL OBSERVATORIO",
       cta2: "VER OPORTUNIDADES",
-      fw: ["OBSERVAR", "ANALIZAR", "EJECUTAR", "EDUCAR", "CONECTAR"],
+      paths: [
+        { eyebrow: "01 · INTELLIGENCE", title: "Entender el entorno", text: "Observatorio, GeoRisk Index y análisis macro.", target: "observatory" },
+        { eyebrow: "02 · INVERSIÓN", title: "Explorar oportunidades", text: "Activos y operaciones seleccionadas por ZRC.", target: "brokerage" },
+        { eyebrow: "03 · ADVISORY", title: "Impulsar decisiones", text: "Estrategia, financiación y ejecución corporativa.", target: "advisory" },
+      ],
     },
     obs: {
       label: "01 — OBSERVATORIO GEOPOLÍTICO",
@@ -273,7 +277,11 @@ const T = {
       sub: "ZRC operates at the intersection of macro intelligence, strategic advisory, and deal execution — transforming geopolitical signals into institutional-grade investment decisions.",
       cta1: "ENTER OBSERVATORY",
       cta2: "VIEW OPPORTUNITIES",
-      fw: ["OBSERVE", "ANALYZE", "EXECUTE", "EDUCATE", "CONNECT"],
+      paths: [
+        { eyebrow: "01 · INTELLIGENCE", title: "Understand the landscape", text: "Observatory, GeoRisk Index and macro analysis.", target: "observatory" },
+        { eyebrow: "02 · INVESTMENT", title: "Explore opportunities", text: "Selected assets and transactions from ZRC.", target: "brokerage" },
+        { eyebrow: "03 · ADVISORY", title: "Move decisions forward", text: "Strategy, financing and corporate execution.", target: "advisory" },
+      ],
     },
     obs: {
       label: "01 — GEOPOLITICAL OBSERVATORY",
@@ -956,7 +964,11 @@ const Nav = ({ lang, setLang, onNav }) => {
   const { user, openLogin, logout, openPricing } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const ids = ["observatory", "intelligence", "georisk-index", "mapa-geopolitico", "brokerage", "advisory", "academia", "inner-circle"];
+  const primaryNav = [0, 1, 4, 5];
+  const secondaryNav = [2, 3, 6, 7];
+  const labels = T[lang].nav;
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
@@ -964,47 +976,67 @@ const Nav = ({ lang, setLang, onNav }) => {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  const go = (id) => { onNav(id); setMobileOpen(false); };
+  useEffect(() => {
+    if (!mobileOpen && !moreOpen) return undefined;
+    const closeMenus = (event) => {
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+        setMoreOpen(false);
+      }
+    };
+    window.addEventListener("keydown", closeMenus);
+    return () => window.removeEventListener("keydown", closeMenus);
+  }, [mobileOpen, moreOpen]);
+
+  const go = (id) => { onNav(id); setMobileOpen(false); setMoreOpen(false); };
+  const renderNavItem = (index, extraClass = "") => (
+    <button key={ids[index]} className={`zrc-nav-link ${extraClass}`.trim()} onClick={() => go(ids[index])}>
+      {labels[index]}
+    </button>
+  );
 
   return (
-    <nav style={{ position: "fixed", top: 44, left: 0, right: 0, zIndex: 100, background: scrolled ? "rgba(9,9,11,0.95)" : "rgba(9,9,11,0.7)", backdropFilter: "blur(20px)", borderBottom: `1px solid ${scrolled ? C.border : "rgba(255,255,255,0.06)"}`, transition: "all 0.4s" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 76, padding: "0 clamp(20px,3vw,40px)" }}>
-        <div onClick={() => go("hero")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+    <nav aria-label={lang === "es" ? "Navegación principal" : "Main navigation"} style={{ position: "fixed", top: 44, left: 0, right: 0, zIndex: 100, background: scrolled ? "rgba(9,9,11,0.96)" : "rgba(9,9,11,0.78)", backdropFilter: "blur(20px)", borderBottom: `1px solid ${scrolled ? C.border : "rgba(255,255,255,0.08)"}`, transition: "background 0.25s, border-color 0.25s" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", minHeight: 72, padding: "0 clamp(18px,3vw,40px)" }}>
+        <button className="zrc-brand" onClick={() => go("hero")} aria-label={lang === "es" ? "ZRC — inicio" : "ZRC — home"}>
           <div style={{ width: 24, height: 24, border: `1.5px solid ${C.gold}`, transform: "rotate(45deg)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{ width: 6, height: 6, background: C.gold, transform: "rotate(-45deg)" }} />
           </div>
           <span style={{ fontFamily: F.display, fontSize: 15, color: C.text, fontWeight: 400, letterSpacing: "0.12em" }}>ZRC</span>
-        </div>
+        </button>
 
-        <button className="nav-hamburger" onClick={() => setMobileOpen((o) => !o)} aria-label="Menu"
+        <button className="nav-hamburger" onClick={() => setMobileOpen((o) => !o)} aria-label={lang === "es" ? "Abrir menú" : "Open menu"} aria-expanded={mobileOpen} aria-controls="zrc-main-menu"
           style={{ display: "none", background: "none", border: `1px solid ${C.border}`, color: C.gold, width: 36, height: 36, alignItems: "center", justifyContent: "center", cursor: "pointer", flexShrink: 0 }}>
           <span style={{ fontFamily: F.mono, fontSize: 14 }}>{mobileOpen ? "✕" : "☰"}</span>
         </button>
 
-        <div className={`nav-links${mobileOpen ? " nav-links-open" : ""}`} style={{ display: "flex", gap: 24, alignItems: "center" }}>
-          {T[lang].nav.map((label, i) => (
-            <button key={ids[i]} onClick={() => go(ids[i])}
-              style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.1em", color: C.textMuted, background: "none", border: "none", cursor: "pointer", whiteSpace: "nowrap", padding: "6px 0", transition: "color 0.3s" }}
-              onMouseEnter={(e) => { e.target.style.color = C.gold; }}
-              onMouseLeave={(e) => { e.target.style.color = C.textMuted; }}
-            >
-              {label.toUpperCase()}
-            </button>
-          ))}
-          <button onClick={() => { openPricing(); setMobileOpen(false); }} style={{ fontFamily: F.mono, fontSize: 10, padding: "5px 14px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 600, letterSpacing: "0.08em" }}>
-            PRICING
+        <div id="zrc-main-menu" className={`nav-links${mobileOpen ? " nav-links-open" : ""}`}>
+          <div className="nav-primary-links">
+            {primaryNav.map((index) => renderNavItem(index))}
+            <div className="nav-more-wrap">
+              <button className="zrc-nav-link nav-more-trigger" onClick={() => setMoreOpen((open) => !open)} aria-expanded={moreOpen} aria-haspopup="true">
+                {lang === "es" ? "Más" : "More"}<span aria-hidden="true" className={moreOpen ? "nav-chevron is-open" : "nav-chevron"}>⌄</span>
+              </button>
+              {moreOpen && <div className="nav-more-popover">{secondaryNav.map((index) => renderNavItem(index, "nav-popover-link"))}</div>}
+            </div>
+          </div>
+          <div className="nav-mobile-extra">{secondaryNav.map((index) => renderNavItem(index))}</div>
+          <div className="nav-actions">
+          <button className="nav-action nav-pricing" onClick={() => { openPricing(); setMobileOpen(false); }}>
+            {lang === "es" ? "Planes" : "Plans"}
           </button>
-          <button onClick={() => setLang(lang === "es" ? "en" : "es")} style={{ fontFamily: F.mono, fontSize: 10, padding: "5px 14px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 600 }}>
+          <button className="nav-action nav-language" onClick={() => setLang(lang === "es" ? "en" : "es")} aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}>
             {lang === "es" ? "EN" : "ES"}
           </button>
           {user ? (
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold }}>{user.name}</span>
-              <button onClick={logout} style={{ fontFamily: F.mono, fontSize: 8, padding: "2px 8px", background: "transparent", color: C.textMuted, border: `1px solid ${C.border}`, cursor: "pointer" }}>✕</button>
+              <button onClick={logout} aria-label={lang === "es" ? "Cerrar sesión" : "Sign out"} style={{ fontFamily: F.mono, fontSize: 8, padding: "2px 8px", background: "transparent", color: C.textMuted, border: `1px solid ${C.border}`, cursor: "pointer" }}>✕</button>
             </div>
           ) : (
-            <button onClick={() => { openLogin(); setMobileOpen(false); }} style={{ fontFamily: F.mono, fontSize: 9, padding: "4px 12px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>LOGIN</button>
+            <button className="nav-action nav-login" onClick={() => { openLogin(); setMobileOpen(false); }}>{lang === "es" ? "Acceder" : "Sign in"}</button>
           )}
+          </div>
         </div>
       </div>
     </nav>
@@ -1024,14 +1056,14 @@ const Hero = ({ lang, onNav }) => {
     <section
       id="hero"
       style={{
-        minHeight: "100vh",
+        minHeight: "100svh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
         overflow: "hidden",
-        padding: "132px clamp(16px,4vw,48px) 60px",
+        padding: "152px clamp(18px,4vw,48px) 64px",
         background: "#050C16",
       }}
     >
@@ -1041,26 +1073,25 @@ const Hero = ({ lang, onNav }) => {
         style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", objectPosition:"center", display:"block", userSelect:"none", pointerEvents:"none" }}
       />
       <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse 80% 80% at 50% 50%, transparent 28%, rgba(4,10,18,0.48) 100%), linear-gradient(to bottom, rgba(4,10,18,0.32) 0%, transparent 18%, transparent 74%, rgba(4,10,18,0.60) 100%)", pointerEvents:"none" }} />
-      <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 860, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(30px)", transition: "all 1.2s cubic-bezier(0.16,1,0.3,1)" }}>
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.35em", marginBottom: 40, fontWeight: 400, opacity: 0.9 }}>{t.tag}</div>
+      <div className="zrc-hero-content" style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 920, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(20px)", transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)" }}>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.25em", marginBottom: 28, fontWeight: 400, opacity: 0.96 }}>{t.tag}</div>
         <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px,5.5vw,68px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.08, letterSpacing: "-0.02em" }}>
           {t.h1}<br />{t.h2}<br /><span style={{ color: C.gold, fontStyle: "italic", fontWeight: 400 }}>{t.h3}</span>
         </h1>
-        <p style={{ fontFamily: F.body, fontSize: 16, color: C.textSec, maxWidth: 540, margin: "36px auto 0", lineHeight: 1.7, fontWeight: 300 }}>{t.sub}</p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 48, flexWrap: "wrap" }}>
-          <button onClick={() => onNav("observatory")} style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.12em", padding: "13px 28px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>{t.cta1} {"→"}</button>
-          <button onClick={() => onNav("brokerage")} style={{ fontFamily: F.mono, fontSize: 10.5, letterSpacing: "0.12em", padding: "13px 28px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", fontWeight: 500 }}>{t.cta2}</button>
+        <p style={{ fontFamily: F.body, fontSize: 16, color: C.textSec, maxWidth: 620, margin: "26px auto 0", lineHeight: 1.75, fontWeight: 300 }}>{t.sub}</p>
+        <div className="zrc-hero-actions">
+          <button onClick={() => onNav("observatory")} className="zrc-hero-button zrc-hero-primary">{t.cta1}<span aria-hidden="true">→</span></button>
+          <button onClick={() => onNav("brokerage")} className="zrc-hero-button zrc-hero-secondary">{t.cta2}</button>
         </div>
-        <div style={{ marginTop: 72, display: "flex", justifyContent: "center", gap: 0, flexWrap: "wrap", alignItems: "center" }}>
-          {t.fw.map((step, i) => {
-            const targets = ["observatory", "intelligence", "brokerage", "academia", "community"];
-            return (
-              <div key={step} style={{ display: "flex", alignItems: "center" }}>
-                <button onClick={() => onNav(targets[i])} style={{ padding: "6px 16px", border: `1px solid ${i === 0 ? C.gold : C.border}`, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: i === 0 ? C.gold : C.textMuted, background: i === 0 ? C.goldDim : "transparent", cursor: "pointer" }}>{step}</button>
-                {i < 4 && <span style={{ fontFamily: F.mono, color: C.textMuted, margin: "0 2px", fontSize: 10, opacity: 0.5 }}>{"→"}</span>}
-              </div>
-            );
-          })}
+        <div className="zrc-hero-paths" aria-label={lang === "es" ? "Explora ZRC por necesidad" : "Explore ZRC by need"}>
+          {t.paths.map((path) => (
+            <button key={path.eyebrow} className="zrc-hero-path" onClick={() => onNav(path.target)}>
+              <span className="zrc-hero-path-eyebrow">{path.eyebrow}</span>
+              <span className="zrc-hero-path-title">{path.title}</span>
+              <span className="zrc-hero-path-text">{path.text}</span>
+              <span className="zrc-hero-path-arrow" aria-hidden="true">↗</span>
+            </button>
+          ))}
         </div>
       </div>
     </section>
@@ -1646,6 +1677,10 @@ const ZRCPlatform = () => {
   // botones ya protegidos dentro de Intelligence).
   const [showWorldMap, setShowWorldMap] = useState(false);
 
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const onNav = (id) => {
     if (id === "inner-circle") { setIcPage("inner-circle"); return; }
     if (id === "mapa-geopolitico") { setShowWorldMap(true); return; }
@@ -1685,12 +1720,52 @@ const ZRCPlatform = () => {
         body { margin: 0; background: ${C.bg}; color: ${C.text}; }
         @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-        button { transition: opacity 0.2s; }
-        button:hover { opacity: 0.85; }
-        ::-webkit-scrollbar { width: 4px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 132px; }
+        button { font: inherit; }
+        button:focus-visible { outline: 2px solid ${C.gold}; outline-offset: 3px; }
+        nav button { transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease; }
+        nav button:hover { color: ${C.text}; }
+        section[id] { scroll-margin-top: 132px; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: ${C.bg}; }
+        ::-webkit-scrollbar-thumb { background: ${C.borderHover}; border-radius: 999px; }
         html { overflow-x: hidden; }
         body { overflow-x: hidden; }
+
+        .zrc-brand { display:flex; align-items:center; gap:10px; flex-shrink:0; border:0; padding:8px 4px; background:transparent; cursor:pointer; }
+        .zrc-brand:hover { opacity:1; }
+        .nav-links { display:flex; align-items:center; gap:clamp(12px,1.6vw,24px); }
+        .nav-primary-links,.nav-actions { display:flex; align-items:center; gap:clamp(10px,1.4vw,20px); }
+        .zrc-nav-link { border:0; padding:9px 0; background:transparent; color:${C.textSec}; cursor:pointer; font-family:${F.body}; font-size:12px; font-weight:450; white-space:nowrap; }
+        .zrc-nav-link:hover { color:${C.gold}; }
+        .nav-more-wrap { position:relative; }
+        .nav-more-trigger { display:flex; align-items:center; gap:6px; }
+        .nav-chevron { color:${C.gold}; font-size:15px; transition:transform .18s ease; }
+        .nav-chevron.is-open { transform:rotate(180deg); }
+        .nav-more-popover { position:absolute; top:calc(100% + 14px); right:-20px; display:grid; min-width:205px; padding:8px; background:rgba(17,17,19,.98); border:1px solid ${C.border}; box-shadow:0 18px 50px rgba(0,0,0,.35); }
+        .nav-popover-link { width:100%; padding:11px 12px; text-align:left; }
+        .nav-popover-link:hover { background:${C.surface2}; }
+        .nav-mobile-extra { display:none; }
+        .nav-action { border:1px solid ${C.goldBorder}; border-radius:4px; padding:9px 14px; cursor:pointer; font-family:${F.body}; font-size:12px; font-weight:550; white-space:nowrap; }
+        .nav-pricing { background:transparent; color:${C.gold}; }
+        .nav-pricing:hover,.nav-language:hover { background:${C.goldDim}; }
+        .nav-language { min-width:42px; background:${C.goldDim}; color:${C.gold}; }
+        .nav-login { border-color:${C.gold}; background:${C.gold}; color:${C.bg}; }
+        .nav-login:hover { background:#e0b863; color:${C.bg}; }
+        .zrc-hero-actions { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:34px; }
+        .zrc-hero-button { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:48px; padding:0 22px; border-radius:4px; cursor:pointer; font-family:${F.body}; font-size:13px; font-weight:600; letter-spacing:.025em; transition:transform .2s ease, background .2s ease, border-color .2s ease; }
+        .zrc-hero-button:hover { transform:translateY(-2px); }
+        .zrc-hero-primary { border:1px solid ${C.gold}; background:${C.gold}; color:${C.bg}; }
+        .zrc-hero-primary:hover { background:#e0b863; }
+        .zrc-hero-secondary { border:1px solid rgba(212,168,83,.58); background:rgba(9,9,11,.24); color:${C.text}; }
+        .zrc-hero-secondary:hover { border-color:${C.gold}; background:rgba(212,168,83,.1); }
+        .zrc-hero-paths { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:48px; text-align:left; }
+        .zrc-hero-path { position:relative; display:flex; min-height:118px; flex-direction:column; align-items:flex-start; padding:17px 40px 17px 18px; border:1px solid rgba(255,255,255,.16); border-radius:6px; background:rgba(9,9,11,.48); color:${C.text}; text-align:left; cursor:pointer; backdrop-filter:blur(8px); transition:transform .2s ease, border-color .2s ease, background .2s ease; }
+        .zrc-hero-path:hover { transform:translateY(-3px); border-color:${C.goldBorder}; background:rgba(17,17,19,.78); }
+        .zrc-hero-path-eyebrow { margin-bottom:8px; color:${C.gold}; font-family:${F.mono}; font-size:9px; letter-spacing:.11em; }
+        .zrc-hero-path-title { font-family:${F.display}; font-size:20px; line-height:1.15; }
+        .zrc-hero-path-text { margin-top:6px; color:${C.textSec}; font-family:${F.body}; font-size:11px; line-height:1.45; }
+        .zrc-hero-path-arrow { position:absolute; top:17px; right:16px; color:${C.gold}; font-size:16px; }
 
         @media (max-width: 860px) {
           .nav-hamburger { display: flex !important; }
@@ -1703,22 +1778,44 @@ const ZRCPlatform = () => {
             align-items: stretch;
             gap: 2px;
             position: fixed;
-            top: 120px;
+            top: 116px;
             left: 0;
             right: 0;
-            max-height: calc(100vh - 120px);
+            max-height: calc(100svh - 116px);
             overflow-y: auto;
-            background: rgba(9,9,11,0.98);
+            background: rgba(9,9,11,0.985);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid ${C.border};
-            padding: 8px 20px 20px;
+            padding: 12px 20px max(20px, env(safe-area-inset-bottom));
+            flex-direction:column;
+            align-items:stretch;
+            gap:12px;
           }
-          .nav-links.nav-links-open button {
-            width: 100%;
-            text-align: left;
-            padding: 12px 0 !important;
-            border-bottom: 1px solid ${C.border};
-          }
+          .nav-primary-links,.nav-mobile-extra { display:flex; flex-direction:column; align-items:stretch; gap:0; }
+          .nav-mobile-extra { border-top:1px solid ${C.border}; padding-top:6px; }
+          .nav-links.nav-links-open .zrc-nav-link { width:100%; min-height:44px; padding:11px 4px; text-align:left; border-bottom:1px solid ${C.border}; font-size:14px; }
+          .nav-more-wrap,.nav-more-trigger,.nav-more-popover { display:none; }
+          .nav-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding-top:8px; border-top:1px solid ${C.border}; }
+          .nav-actions > div { grid-column:1 / -1; }
+          .nav-action { min-height:44px; }
+          .nav-login { grid-column:1 / -1; }
+          .zrc-hero-content { width:min(100%, 660px); }
+          .zrc-hero-paths { margin-top:36px; }
+        }
+        @media (max-width: 560px) {
+          .zrc-hero-paths { grid-template-columns:1fr; gap:8px; margin-top:30px; }
+          .zrc-hero-path { min-height:0; padding:14px 40px 14px 16px; }
+          .zrc-hero-path-text { font-size:12px; }
+          .zrc-hero-actions { display:grid; grid-template-columns:1fr; margin-top:28px; }
+          .zrc-hero-button { width:100%; }
+          .zrc-hero-content h1 { font-size:clamp(36px,10vw,52px) !important; }
+          nav > div { min-height:64px !important; }
+          .nav-links.nav-links-open { top:108px; max-height:calc(100svh - 108px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          html { scroll-behavior:auto; }
+          *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+          .zrc-hero-content { opacity:1 !important; transform:none !important; }
         }
       `}</style>
 
