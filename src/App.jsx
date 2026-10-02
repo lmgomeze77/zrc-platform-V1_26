@@ -666,7 +666,7 @@ const TOOLS = [
   {
     name: "Real Estate Visor",
     desc: { es: "Visor inmobiliario con catastro, capas de riesgo, planeamiento y matching de mandatos ZRC.", en: "Real estate visor with cadastre, risk layers, planning and ZRC mandate matching." },
-    icon: "◇", status: "BETA", ml: false, requiredTier: null,
+    icon: "◇", status: "LIVE", ml: false, requiredTier: null,
   },
 ];
 
