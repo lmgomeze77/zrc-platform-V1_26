@@ -174,17 +174,20 @@ const T = {
   es: {
     nav: ["Observatorio", "Intelligence", "GeoRisk Index", "World Map", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
-      tag: "INTELIGENCIA ESTRATÉGICA · INVERSIÓN · EJECUCIÓN",
-      h1: "Donde la Inteligencia",
-      h2: "Geopolítica genera",
-      h3: "Alpha Institucional",
-      sub: "ZRC opera en la intersección entre inteligencia macro, advisory estratégico y ejecución de operaciones — transformando señales geopolíticas en decisiones de inversión de grado institucional.",
-      cta1: "ACCEDER AL OBSERVATORIO",
-      cta2: "VER OPORTUNIDADES",
+      tag: "INTELIGENCIA GEOPOLÍTICA · MACRO · MERCADOS",
+      h1: "De la señal global",
+      h2: "a la decisión",
+      h3: "con inteligencia",
+      sub: "Observatorio, análisis propietario y herramientas interactivas para entender riesgos geopolíticos y anticipar su impacto en mercados y decisiones de inversión.",
+      cta1: "EXPLORAR EL OBSERVATORIO",
+      cta1Target: "observatory",
+      cta2: "VER INTELLIGENCE SUITE",
+      cta2Target: "intelligence",
       paths: [
-        { eyebrow: "01 · INTELLIGENCE", title: "Entender el entorno", text: "Observatorio, GeoRisk Index y análisis macro.", target: "observatory" },
-        { eyebrow: "02 · INVERSIÓN", title: "Explorar oportunidades", text: "Activos y operaciones seleccionadas por ZRC.", target: "brokerage" },
-        { eyebrow: "03 · ADVISORY", title: "Impulsar decisiones", text: "Estrategia, financiación y ejecución corporativa.", target: "advisory" },
+        { eyebrow: "01 · OBSERVATORIO", title: "Señales que importan", text: "Lectura geopolítica y macro con contexto e implicaciones para los mercados.", target: "observatory" },
+        { eyebrow: "02 · INTELLIGENCE SUITE", title: "Analizar escenarios", text: "Herramientas propietarias para convertir señales en análisis accionable.", target: "intelligence" },
+        { eyebrow: "03 · MAPA INTERACTIVO", title: "Explorar conexiones", text: "Relaciones y alineamientos geopolíticos entre 42 economías clave.", target: "mapa-geopolitico" },
+        { eyebrow: "04 · GEORISK INDEX", title: "Medir el riesgo", text: "Un indicador semanal del riesgo geopolítico y su posible impacto en activos.", target: "georisk-index" },
       ],
     },
     obs: {
@@ -270,17 +273,20 @@ const T = {
   en: {
     nav: ["Observatory", "Intelligence", "GeoRisk Index", "World Map", "Brokerage", "Advisory", "Academia", "Inner Circle"],
     hero: {
-      tag: "STRATEGIC INTELLIGENCE · INVESTMENT · EXECUTION",
-      h1: "Where Geopolitical",
-      h2: "Intelligence Generates",
-      h3: "Institutional Alpha",
-      sub: "ZRC operates at the intersection of macro intelligence, strategic advisory, and deal execution — transforming geopolitical signals into institutional-grade investment decisions.",
-      cta1: "ENTER OBSERVATORY",
-      cta2: "VIEW OPPORTUNITIES",
+      tag: "GEOPOLITICAL INTELLIGENCE · MACRO · MARKETS",
+      h1: "From global signals",
+      h2: "to better decisions",
+      h3: "through intelligence",
+      sub: "A geopolitical observatory, proprietary analysis and interactive tools to understand risk and anticipate its impact on markets and investment decisions.",
+      cta1: "EXPLORE THE OBSERVATORY",
+      cta1Target: "observatory",
+      cta2: "VIEW INTELLIGENCE SUITE",
+      cta2Target: "intelligence",
       paths: [
-        { eyebrow: "01 · INTELLIGENCE", title: "Understand the landscape", text: "Observatory, GeoRisk Index and macro analysis.", target: "observatory" },
-        { eyebrow: "02 · INVESTMENT", title: "Explore opportunities", text: "Selected assets and transactions from ZRC.", target: "brokerage" },
-        { eyebrow: "03 · ADVISORY", title: "Move decisions forward", text: "Strategy, financing and corporate execution.", target: "advisory" },
+        { eyebrow: "01 · OBSERVATORY", title: "Signals that matter", text: "Geopolitical and macro analysis with context and market implications.", target: "observatory" },
+        { eyebrow: "02 · INTELLIGENCE SUITE", title: "Analyze scenarios", text: "Proprietary tools that turn signals into actionable analysis.", target: "intelligence" },
+        { eyebrow: "03 · INTERACTIVE MAP", title: "Explore connections", text: "Geopolitical relationships and alignments across 42 key economies.", target: "mapa-geopolitico" },
+        { eyebrow: "04 · GEORISK INDEX", title: "Measure risk", text: "A weekly geopolitical risk indicator and its potential asset impact.", target: "georisk-index" },
       ],
     },
     obs: {
@@ -1072,7 +1078,7 @@ const Hero = ({ lang, onNav }) => {
         aria-hidden="true"
         style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", objectPosition:"center", display:"block", userSelect:"none", pointerEvents:"none" }}
       />
-      <div style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse 80% 80% at 50% 50%, transparent 28%, rgba(4,10,18,0.48) 100%), linear-gradient(to bottom, rgba(4,10,18,0.32) 0%, transparent 18%, transparent 74%, rgba(4,10,18,0.60) 100%)", pointerEvents:"none" }} />
+      <div style={{ position:"absolute", inset:0, background:"linear-gradient(180deg, rgba(4,10,18,.48) 0%, rgba(4,10,18,.22) 38%, rgba(4,10,18,.48) 100%), radial-gradient(ellipse 75% 72% at 50% 48%, rgba(4,10,18,.08) 0%, rgba(4,10,18,.38) 100%)", pointerEvents:"none" }} />
       <div className="zrc-hero-content" style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 920, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(20px)", transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)" }}>
         <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.25em", marginBottom: 28, fontWeight: 400, opacity: 0.96 }}>{t.tag}</div>
         <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px,5.5vw,68px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.08, letterSpacing: "-0.02em" }}>
@@ -1080,16 +1086,15 @@ const Hero = ({ lang, onNav }) => {
         </h1>
         <p style={{ fontFamily: F.body, fontSize: 16, color: C.textSec, maxWidth: 620, margin: "26px auto 0", lineHeight: 1.75, fontWeight: 300 }}>{t.sub}</p>
         <div className="zrc-hero-actions">
-          <button onClick={() => onNav("observatory")} className="zrc-hero-button zrc-hero-primary">{t.cta1}<span aria-hidden="true">→</span></button>
-          <button onClick={() => onNav("brokerage")} className="zrc-hero-button zrc-hero-secondary">{t.cta2}</button>
+          <button onClick={() => onNav(t.cta1Target)} className="zrc-hero-button zrc-hero-primary">{t.cta1}</button>
+          <button onClick={() => onNav(t.cta2Target)} className="zrc-hero-button zrc-hero-secondary">{t.cta2}</button>
         </div>
-        <div className="zrc-hero-paths" aria-label={lang === "es" ? "Explora ZRC por necesidad" : "Explore ZRC by need"}>
+        <div className="zrc-hero-paths" aria-label={lang === "es" ? "Herramientas de inteligencia ZRC" : "ZRC intelligence tools"}>
           {t.paths.map((path) => (
             <button key={path.eyebrow} className="zrc-hero-path" onClick={() => onNav(path.target)}>
               <span className="zrc-hero-path-eyebrow">{path.eyebrow}</span>
               <span className="zrc-hero-path-title">{path.title}</span>
               <span className="zrc-hero-path-text">{path.text}</span>
-              <span className="zrc-hero-path-arrow" aria-hidden="true">↗</span>
             </button>
           ))}
         </div>
@@ -1759,13 +1764,15 @@ const ZRCPlatform = () => {
         .zrc-hero-primary:hover { background:#e0b863; }
         .zrc-hero-secondary { border:1px solid rgba(212,168,83,.58); background:rgba(9,9,11,.24); color:${C.text}; }
         .zrc-hero-secondary:hover { border-color:${C.gold}; background:rgba(212,168,83,.1); }
-        .zrc-hero-paths { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:48px; text-align:left; }
-        .zrc-hero-path { position:relative; display:flex; min-height:118px; flex-direction:column; align-items:flex-start; padding:17px 40px 17px 18px; border:1px solid rgba(255,255,255,.16); border-radius:6px; background:rgba(9,9,11,.48); color:${C.text}; text-align:left; cursor:pointer; backdrop-filter:blur(8px); transition:transform .2s ease, border-color .2s ease, background .2s ease; }
-        .zrc-hero-path:hover { transform:translateY(-3px); border-color:${C.goldBorder}; background:rgba(17,17,19,.78); }
-        .zrc-hero-path-eyebrow { margin-bottom:8px; color:${C.gold}; font-family:${F.mono}; font-size:9px; letter-spacing:.11em; }
-        .zrc-hero-path-title { font-family:${F.display}; font-size:20px; line-height:1.15; }
-        .zrc-hero-path-text { margin-top:6px; color:${C.textSec}; font-family:${F.body}; font-size:11px; line-height:1.45; }
-        .zrc-hero-path-arrow { position:absolute; top:17px; right:16px; color:${C.gold}; font-size:16px; }
+        .zrc-hero-content { width:min(100%,1040px); }
+        .zrc-hero-content > p { max-width:700px !important; font-size:clamp(14px,1.45vw,17px) !important; line-height:1.8 !important; }
+        .zrc-hero-actions { margin-top:30px; }
+        .zrc-hero-paths { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; max-width:860px; margin:38px auto 0; text-align:left; }
+        .zrc-hero-path { display:flex; min-height:142px; flex-direction:column; align-items:flex-start; padding:20px 22px; border:1px solid rgba(212,168,83,.22); border-radius:7px; background:rgba(9,12,18,.82); color:${C.text}; text-align:left; cursor:pointer; backdrop-filter:blur(12px); transition:transform .2s ease, border-color .2s ease, background .2s ease; }
+        .zrc-hero-path:hover { transform:translateY(-2px); border-color:rgba(212,168,83,.62); background:rgba(17,20,27,.94); }
+        .zrc-hero-path-eyebrow { margin-bottom:11px; color:${C.gold}; font-family:${F.mono}; font-size:9px; letter-spacing:.13em; }
+        .zrc-hero-path-title { font-family:${F.display}; font-size:clamp(20px,2vw,24px); line-height:1.15; }
+        .zrc-hero-path-text { margin-top:8px; max-width:360px; color:#C4C4CC; font-family:${F.body}; font-size:12px; line-height:1.55; }
 
         @media (max-width: 860px) {
           .nav-hamburger { display: flex !important; }
@@ -1803,8 +1810,8 @@ const ZRCPlatform = () => {
           .zrc-hero-paths { margin-top:36px; }
         }
         @media (max-width: 560px) {
-          .zrc-hero-paths { grid-template-columns:1fr; gap:8px; margin-top:30px; }
-          .zrc-hero-path { min-height:0; padding:14px 40px 14px 16px; }
+          .zrc-hero-paths { grid-template-columns:1fr; gap:10px; margin-top:26px; }
+          .zrc-hero-path { min-height:0; padding:16px 18px; }
           .zrc-hero-path-text { font-size:12px; }
           .zrc-hero-actions { display:grid; grid-template-columns:1fr; margin-top:28px; }
           .zrc-hero-button { width:100%; }
