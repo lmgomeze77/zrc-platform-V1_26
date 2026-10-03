@@ -262,7 +262,9 @@ function ForecastChart({ curve, color = "#16A34A" }) {
     "Z"
   ].join(" ");
   const linePath = curve.map((p, i) => `${i === 0 ? "M" : "L"}${xOf(i)},${yOf(p.v)}`).join(" ");
-  const monthLabels = ["Ahora", "1M", "2M", "3M", "4M", "5M", "6M", "7M", "8M", "9M", "10M", "11M", "12M"];
+  const monthLabels = Array(13).fill("");
+  monthLabels[0] = "ESCENARIO ACTUAL";
+  monthLabels[12] = "CAMBIO DE SUPUESTOS";
   const yTicks = [20, 40, 60, 80];
 
   return (
@@ -573,7 +575,7 @@ export default function GeoRiskML() {
   const trajectoryColor = { ESCALATING: "#EF4444", STABLE: "#F59E0B", DECLINING: "#10B981" };
 
   const TABS = [
-    { id: "forecast", label: "Predictivo ML", icon: TrendingUp },
+    { id: "forecast", label: "Sensibilidad + IA", icon: TrendingUp },
     { id: "scenarios", label: "Escenarios", icon: Radar },
     { id: "heatmap", label: "Correlaciones", icon: Grid3x3 },
     { id: "nlp", label: "NLP Analyzer", icon: MessageSquare },
@@ -668,9 +670,7 @@ export default function GeoRiskML() {
             POR QUÉ GEORISK ML — Y NO SOLO EL DASHBOARD
           </div>
           <div style={{ fontSize: 13, color: "#CBD5E1", lineHeight: 1.7, maxWidth: 760 }}>
-            El GeoRisk Dashboard modela escenarios con reglas fijas definidas por ZRC Research. <b>GeoRisk ML añade una capa predictiva con IA (Claude Sonnet)</b>:
-            una banda ilustrativa de sensibilidad no calibrada, un <b>analizador de texto</b> para noticias que tú aportas y un <b>asistente IA</b> que propone análisis a partir de los supuestos introducidos. Ninguno consulta una base histórica de resultados ni valida sus probabilidades —
-            el mismo tipo de output que un comité de inversión necesita para pasar de "cuál es el riesgo" a "qué hacemos con la cartera".
+El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML añade herramientas asistidas por IA (Claude Sonnet)</b>: una banda de sensibilidad no calibrada y análisis del texto y los supuestos que aporta el usuario. No consulta noticias externas, no usa un histórico de resultados y no valida probabilidades. Trata sus resultados como hipótesis para revisión, no como recomendaciones de cartera.
           </div>
         </div>
         <div role="note" style={{ margin: "0 0 16px", padding: "12px 16px", border: "1px solid #7C5A1B", borderLeft: "3px solid #F59E0B", borderRadius: 8, background: "#2A2112", color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>
