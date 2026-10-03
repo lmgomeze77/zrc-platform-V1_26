@@ -722,7 +722,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                 {top && (
                   <li>Llamada táctica principal: <b style={{ color: top.col }}>{top.dir}</b> en <b>{top.asset}</b> — impacto estimado {top.pct >= 0 ? "+" : ""}{fmt(top.pct, 1)}% a 12M bajo el mix actual.</li>
                 )}
-                <li>Pulsa <b>ANALIZAR</b> en la pestaña Sensibilidad + IA para una síntesis generada a partir de estos supuestos, o <b>EJECUTAR ENGINE</b> en Decision Engine para recomendaciones tácticas con conviction level.</li>
+                <li>Pulsa <b>ANALIZAR</b> en la pestaña Sensibilidad + IA para una síntesis generada a partir de estos supuestos, o <b>GENERAR BORRADOR</b> en un borrador para ordenar riesgos y oportunidades, siempre con revisión humana.</li>
               </ul>
             </div>
           );
@@ -1084,8 +1084,8 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
             <div className="grml-card" style={{ padding:20 }}>
               <div style={{ marginBottom:14 }}>
-                <div style={{ fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>MATRIZ DE CORRELACIÓN ESCENARIO × VARIABLE</div>
-                <div style={{ fontSize:12, color:"#94A3B8" }}>Impacto ponderado por probabilidad asignada. Actualización en tiempo real.</div>
+                <div style={{ fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>QUÉ CAMBIA CON CADA ESCENARIO</div>
+                <div style={{ fontSize:12, color:"#94A3B8" }}>La cifra muestra el cambio calculado con los pesos que elegiste.</div>
               </div>
               <CorrelationHeatmap scenarios={SCENARIOS} scenarioWeights={weights} economicVariables={ECONOMIC_VARIABLES} region={region} />
             </div>
@@ -1094,7 +1094,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
             <div className="grml-card grml-table-scroll" style={{ marginTop:12 }}>
               <div className="grml-table-inner">
                 <div style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr 1fr", padding:"10px 16px", background:"#0d1f16", borderBottom:"1px solid #16301f", fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
-                  <span>VARIABLE</span><span style={{textAlign:"right"}}>IMPACTO NETO</span><span style={{textAlign:"right"}}>VALOR BASE</span><span style={{textAlign:"right"}}>VALOR PROYECTADO</span>
+                  <span>VARIABLE</span><span style={{textAlign:"right"}}>IMPACTO NETO</span><span style={{textAlign:"right"}}>REFERENCIA*</span><span style={{textAlign:"right"}}>ESTIMACIÓN*</span>
                 </div>
                 {Object.entries(ECONOMIC_VARIABLES).map(([k, v], i) => {
                   const imp = computeImpact(k);
@@ -1119,7 +1119,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
             <div className="grml-card grml-table-scroll" style={{ marginTop:12 }}>
               <div className="grml-table-inner">
                 <div style={{ padding:"10px 16px", background:"#0d1f16", borderBottom:"1px solid #16301f", fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
-                  EJEMPLOS DE IMPACTO EN PRECIOS DE ACTIVOS · 12M · MIX ACTUAL DE PROBABILIDADES
+                  EJEMPLO ILUSTRATIVO DE IMPACTO EN ACTIVOS · HORIZONTE 12 MESES
                 </div>
                 <div style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1.3fr", padding:"10px 16px", background:"#0d1f16", borderBottom:"1px solid #16301f", fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
                   <span>CLASE DE ACTIVO</span><span style={{textAlign:"right"}}>IMPACTO PRECIO EST.</span><span style={{textAlign:"right"}}>RECOMENDACIÓN</span>
@@ -1239,7 +1239,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
             <div className="grml-card" style={{ borderColor:"rgba(139,92,246,0.25)", padding:20, marginBottom:12 }}>
               <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:16 }}>
                 <div>
-                  <div style={{ fontSize:11, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>DECISION ENGINE — CLAUDE ML</div>
+                  <div style={{ fontSize:11, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>BORRADOR DE ANÁLISIS IA</div>
                   <div style={{ fontSize:12, color:"#94A3B8" }}>Recomendaciones tácticas institucionales basadas en el perfil de riesgo actual</div>
                 </div>
                 <button className="grml-btn" onClick={runDecision} disabled={decisionLoading} style={{
@@ -1247,7 +1247,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                   border:"1px solid rgba(16,185,129,0.3)", borderRadius:4, color:"#fff",
                   fontSize:11, fontFamily:"monospace", cursor: decisionLoading ? "not-allowed" : "pointer", letterSpacing:1
                 }}>
-                  {decisionLoading ? "PROCESANDO..." : "⚡ EJECUTAR ENGINE"}
+                  {decisionLoading ? "PROCESANDO..." : "⚡ GENERAR BORRADOR"}
                 </button>
               </div>
 
@@ -1300,7 +1300,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
 
                       {/* Tactical recommendations */}
                       <div style={{ marginBottom:14 }}>
-                        <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:8 }}>RECOMENDACIONES TÁCTICAS</div>
+                        <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:8 }}>SUGERENCIAS PARA REVISAR</div>
                         {decisionResult.tactical_recommendations?.map((rec, i) => {
                           const cc = rec.conviction==="HIGH" ? "#EF4444" : rec.conviction==="MEDIUM" ? "#F59E0B" : "#64748B";
                           return (
