@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T11:49:17.421Z",
+  "generated_at": "2026-10-03T11:02:44.425Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,81 +96,90 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "GLOBAL",
       "title": {
-        "es": "El flujo de petróleo aumenta, pero Irán sigue amenazando el Estrecho de Ormuz",
-        "en": "Oil Flows Are Up, but Iran Is Still Menacing the Strait of Hormuz"
+        "es": "El G7 liberará millones de barriles de petróleo y diésel tras amenaza de Trump",
+        "en": "G7 to release millions of barrels of oil and diesel after Trump threat"
       },
       "summary": {
-        "es": "Irán continúa lanzando drones y misiles contra buques comerciales en el Estrecho de Ormuz semanalmente, aunque con baja tasa de impacto. A pesar de que los flujos de crudo han retornado casi a niveles previos a la guerra, la amenaza persistente mantiene primas de riesgo elevadas en el transporte marítimo y presiona los mercados de productos refinados. La ambigüedad estratégica iraní representa un riesgo de cola significativo para los mercados energéticos globales.",
-        "en": "Iran continues launching drones and missiles at commercial vessels in the Strait of Hormuz weekly, though with low success rates. While crude flows have largely recovered, the persistent threat sustains elevated shipping risk premiums and constrains refined product markets. Iran's strategic ambiguity represents a significant tail risk for global energy markets."
+        "es": "El G7 coordinará una liberación masiva de reservas estratégicas de petróleo y diésel en respuesta a la escalada de precios energéticos derivada de los conflictos en Irán y Ucrania, y ante la amenaza de Trump de prohibir las exportaciones de diésel estadounidense. La medida busca contener la inflación energética antes de las elecciones de noviembre en EE.UU. La efectividad de la intervención sobre los precios globales sigue siendo incierta dado el contexto geopolítico subyacente.",
+        "en": "The G7 will coordinate a major release of strategic oil and diesel reserves in response to energy price surges driven by conflicts in Iran and Ukraine, and under pressure from Trump's threat to ban US diesel exports. The move aims to contain energy inflation ahead of US November elections. The intervention's effectiveness on global prices remains uncertain given the underlying geopolitical context."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Liberación de reservas presiona precios a la baja temporalmente.",
+            "en": "Reserve release exerts temporary downward pressure on prices."
+          }
+        },
+        {
+          "asset": "Diesel futures",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Oferta adicional de diésel reduce prima de escasez.",
+            "en": "Additional diesel supply reduces scarcity premium."
+          }
+        },
+        {
+          "asset": "Energy equities",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Flujos recuperados, pero prima de riesgo geopolítico persiste",
-            "en": "Flows recovered but geopolitical risk premium persists"
+            "es": "Presión sobre márgenes de refino; upstream menos afectado.",
+            "en": "Pressure on refining margins; upstream less affected."
           }
         },
         {
-          "asset": "Diesel/refined products futures",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Flujos de productos refinados aún restringidos por amenaza iraní",
-            "en": "Refined product flows still constrained by Iranian threat"
-          }
-        },
-        {
-          "asset": "Shipping/tanker equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tarifas elevadas sostenidas por riesgo de ruta",
-            "en": "Elevated rates sustained by route risk"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
+          "asset": "USD",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo de escalada sostiene demanda de refugio",
-            "en": "Escalation risk sustains safe-haven demand"
+            "es": "Alivio inflacionario puede moderar expectativas de Fed.",
+            "en": "Inflation relief may temper Fed hawkishness slightly."
           }
         }
       ],
       "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/02/world/middleeast/iran-strait-hormuz-attacks-oil.html",
-      "published_at": "2026-10-02",
-      "time": "7h"
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/ck87zg8jnwngo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-03",
+      "time": "6h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "EURASIA",
       "title": {
-        "es": "Rusia golpea el Puente Sur de Kiev por cuarta vez en 24 horas",
-        "en": "Russia hits Kyiv's Southern Bridge again as Moscow continues to pound capital"
+        "es": "Rusia ataca otro puente importante en Kiev, según el alcalde",
+        "en": "Russia strikes another major bridge in Kyiv, says mayor"
       },
       "summary": {
-        "es": "Drones rusos golpearon el Puente Sur de Kiev por cuarta vez en 24 horas, obligando al cierre del tráfico en una de las arterias principales de la capital. La intensificación de los ataques sobre infraestructura crítica urbana señala una escalada deliberada en la estrategia rusa contra la capacidad logística y civil de Ucrania. Este tipo de ataques sostenidos eleva la presión sobre los aliados occidentales para responder con nuevos sistemas de defensa.",
-        "en": "Russian drones struck Kyiv's Southern Bridge for the fourth time in 24 hours, forcing closure of one of the capital's main arteries. The intensification of attacks on critical urban infrastructure signals a deliberate Russian escalation targeting Ukraine's logistics and civilian capacity. Such sustained strikes raise pressure on Western allies to respond with additional defense systems."
+        "es": "El puente Norte de Kiev sobre el río Dniéper fue alcanzado por un ataque aéreo ruso, siguiendo al ataque del día anterior sobre el puente Sur, en una escalada sistemática de ataques a infraestructuras críticas de la capital ucraniana. La destrucción progresiva de los cruces del Dniéper amenaza la logística militar y civil de Kiev, con implicaciones directas para la sostenibilidad operativa ucraniana. Esto intensifica la presión sobre los aliados occidentales para acelerar el suministro de sistemas de defensa aérea.",
+        "en": "Kyiv's Northern Bridge over the Dnipro river was struck by a Russian air attack, following the previous day's strike on the Southern Bridge, marking a systematic escalation targeting critical infrastructure of the Ukrainian capital. The progressive destruction of Dnipro crossings threatens Kyiv's military and civilian logistics, with direct implications for Ukrainian operational sustainability. This intensifies pressure on Western allies to accelerate air defense system deliveries."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European natural gas (TTF)",
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada bélica pesa sobre sentimiento en mercados europeos.",
+            "en": "War escalation weighs on European market sentiment."
+          }
+        },
+        {
+          "asset": "Gold",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada aumenta riesgos de interrupción energética",
-            "en": "Escalation raises energy disruption risks"
+            "es": "Mayor riesgo geopolítico impulsa demanda de refugio seguro.",
+            "en": "Heightened geopolitical risk drives safe-haven demand."
           }
         },
         {
@@ -178,17 +187,104 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Presión bajista por mayor incertidumbre en Europa del Este",
-            "en": "Downward pressure from heightened Eastern European uncertainty"
+            "es": "Escalada en Europa continental presiona al euro.",
+            "en": "Continental Europe escalation pressures the euro."
           }
         },
         {
-          "asset": "European defense equities",
+          "asset": "Defense sector equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda de sistemas de defensa reforzada por escalada",
-            "en": "Defense system demand reinforced by escalation"
+            "es": "Mayor urgencia de rearme europeo beneficia al sector.",
+            "en": "Greater European rearmament urgency benefits the sector."
+          }
+        }
+      ],
+      "confidence": 91,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/russia-strikes-another-major-bridge-in-kyiv-says-mayor/a-79527753?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-03",
+      "time": "2h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "GLOBAL",
+      "title": {
+        "es": "El G7 liberará 100 millones de barriles de petróleo y diésel, ¿frenará los precios?",
+        "en": "G7 to release 100 billion barrels of oil and diesel, will it curb prices?"
+      },
+      "summary": {
+        "es": "Los precios energéticos globales han escalado como consecuencia directa de la guerra de EE.UU. e Israel contra Irán y del conflicto Rusia-Ucrania. La liberación coordinada de 100 millones de barriles de reservas estratégicas del G7 representa la mayor intervención de este tipo desde la invasión rusa de 2022, pero analistas cuestionan su capacidad para contener precios mientras persistan los conflictos subyacentes. La medida tiene implicaciones directas para la inflación global, los mercados de commodities y las decisiones de política monetaria.",
+        "en": "Global energy prices have soared as a direct consequence of the US-Israel war against Iran and the Russia-Ukraine conflict. The G7's coordinated release of 100 million barrels from strategic reserves represents the largest such intervention since Russia's 2022 invasion, but analysts question its ability to contain prices while underlying conflicts persist. The measure has direct implications for global inflation, commodity markets, and monetary policy decisions."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Oferta adicional modera pero no elimina prima de guerra.",
+            "en": "Additional supply moderates but does not eliminate war premium."
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Menor inflación energética puede reducir yields ligeramente.",
+            "en": "Lower energy inflation may slightly reduce yields."
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Alivio en costes energéticos beneficia economías importadoras.",
+            "en": "Energy cost relief benefits net energy-importing economies."
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/10/3/g7-to-release-100-million-barrels-of-oil-and-diesel-will-it-curb-prices?traffic_source=rss",
+      "published_at": "2026-10-03",
+      "time": "1h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "APAC",
+      "title": {
+        "es": "Corea del Norte lanza un misil balístico tras exigencia de disculpa de Seúl por soldados heridos",
+        "en": "North Korea launches ballistic missile after Seoul demands apology over wounded soldiers"
+      },
+      "summary": {
+        "es": "Corea del Norte lanzó un misil balístico hacia el mar un día después de que Kim Yo-jong rechazara las acusaciones de Seúl sobre que minas norcoreanas hirieron a soldados surcoreanos en la DMZ, elevando significativamente las tensiones en la península. El incidente sugiere una escalada deliberada vinculada a una disputa activa en zona desmilitarizada, lo que representa un nivel de fricción más elevado que los lanzamientos de rutina. Las tensiones en el noreste asiático añaden presión sobre los activos de riesgo regionales y la posición de defensa de EE.UU. en el Pacífico.",
+        "en": "North Korea fired a ballistic missile toward the sea a day after Kim Yo-jong rejected Seoul's accusations that North Korean mines wounded South Korean soldiers in the DMZ, significantly elevating tensions on the peninsula. The incident suggests deliberate escalation linked to an active DMZ dispute, representing a higher friction level than routine launches. Northeast Asian tensions add pressure on regional risk assets and US Pacific defense posture."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "South Korean Won (KRW)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada en DMZ genera salida de capitales de activos coreanos.",
+            "en": "DMZ escalation triggers capital outflows from Korean assets."
+          }
+        },
+        {
+          "asset": "KOSPI",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Tensiones militares activas deprimen renta variable surcoreana.",
+            "en": "Active military tensions depress South Korean equities."
           }
         },
         {
@@ -196,152 +292,38 @@
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Conflicto activo sostiene flujos hacia activos refugio",
-            "en": "Active conflict sustains safe-haven flows"
+            "es": "Demanda de refugio seguro ante nueva provocación norcoreana.",
+            "en": "Safe-haven demand on new North Korean provocation."
           }
         }
       ],
-      "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20261002-live-russia-hits-kyiv-s-southern-bridge-as-moscow-continues-to-pound-capital",
-      "published_at": "2026-10-02",
-      "time": "6h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "APAC",
-      "title": {
-        "es": "EE.UU. entrega cazas F-16V a Taiwán mientras la isla observa la amenaza china",
-        "en": "US delivers F-16V fighter jets to Taiwan as island eyes threat from China"
-      },
-      "summary": {
-        "es": "Estados Unidos entregó los primeros cazas F-16V a Taiwán en el marco de un pedido de 2019, en un momento en que Taipéi expresa preocupación por el compromiso de la administración Trump con su defensa. La entrega es una señal de disuasión significativa pero su impacto estratégico dependerá de la postura operacional que Washington adopte frente a Pekín. Los mercados de semiconductores y tecnología permanecen sensibles a cualquier variación en la tensión del estrecho de Taiwán.",
-        "en": "The US delivered the first F-16V fighters to Taiwan under a 2019 order, at a moment when Taipei is growing concerned about the Trump administration's commitment to its defense. The delivery represents a meaningful deterrence signal, but its strategic impact depends on Washington's operational posture toward Beijing. Semiconductor and technology markets remain highly sensitive to any variation in Taiwan Strait tensions."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Taiwan semiconductor equities (TSMC)",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Señal disuasoria positiva, pero incertidumbre sobre compromiso EE.UU. persiste",
-            "en": "Positive deterrence signal, but US commitment uncertainty persists"
-          }
-        },
-        {
-          "asset": "USD/TWD",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Entrega de armamento apoya TWD moderadamente",
-            "en": "Arms delivery offers moderate TWD support"
-          }
-        },
-        {
-          "asset": "Global tech equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tensión en estrecho impacta cadenas de suministro de chips",
-            "en": "Strait tensions impact semiconductor supply chains"
-          }
-        },
-        {
-          "asset": "Chinese equities (CSI 300)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Entrega de armas a Taiwán incrementa fricciones con Pekín",
-            "en": "Arms delivery to Taiwan heightens friction with Beijing"
-          }
-        }
-      ],
-      "confidence": 87,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/10/2/us-delivers-f-16v-fighter-jets-to-taiwan-as-island-eyes-threat-from-china?traffic_source=rss",
-      "published_at": "2026-10-02",
-      "time": "3h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "AFRICA",
-      "title": {
-        "es": "Cómo el conflicto en Etiopía se extendió más allá de Tigray",
-        "en": "How the fighting in Ethiopia spread beyond Tigray, in maps and charts"
-      },
-      "summary": {
-        "es": "El conflicto en Etiopía se ha expandido más allá de Tigray con nuevas alianzas de grupos armados atacando las proximidades de Addis Abeba, mientras el gobierno prohíbe vuelos de drones y se reportan explosiones en la capital. La inestabilidad en Etiopía, uno de los países más poblados de África y pivote del Cuerno de África, amenaza rutas comerciales regionales y puede afectar la estabilidad del corredor del Mar Rojo. El deterioro puede atraer intervenciones externas y alterar el posicionamiento de potencias como China, los Emiratos y Turquía en la región.",
-        "en": "Ethiopia's conflict has expanded beyond Tigray, with new armed group alliances approaching Addis Ababa, a drone flight ban issued, and explosions reported in the capital. Instability in Ethiopia — one of Africa's most populous countries and a Horn of Africa pivot — threatens regional trade routes and Red Sea corridor stability. Deterioration may attract external interventions and reshape positioning of China, UAE, and Turkey in the region."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "African frontier market bonds (ETB-linked)",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Escalada interna deteriora perspectiva soberana etíope",
-            "en": "Internal escalation worsens Ethiopian sovereign outlook"
-          }
-        },
-        {
-          "asset": "Shipping/Red Sea route premiums",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Inestabilidad del Cuerno de África presiona primas de ruta",
-            "en": "Horn of Africa instability pressures route premiums"
-          }
-        },
-        {
-          "asset": "EM Africa equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Contagio de sentimiento negativo en mercados africanos frontera",
-            "en": "Negative sentiment contagion in African frontier markets"
-          }
-        }
-      ],
-      "confidence": 78,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/10/2/how-the-fighting-in-ethiopia-spread-beyond-tigray-in-maps-and-charts?traffic_source=rss",
-      "published_at": "2026-10-02",
-      "time": "4h"
+      "confidence": 85,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/03/north-korea-launches-ballistic-missile-after-seoul-demands-apology-over-wounded-soldiers",
+      "published_at": "2026-10-03",
+      "time": "5h"
     },
     {
       "id": 5,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "El auge de la IA podría desencadenar shocks de mercado, advierte el gobernador del Banco de Inglaterra",
-        "en": "AI boom could trigger market shocks, Bank of England boss warns"
+        "es": "Conversaciones de unidad libia fracasan por vinculación del hijo del señor de la guerra con ataques con drones a instalaciones energéticas",
+        "en": "Libyan unity talks upended as warlord's son linked to drone attacks on fuel facilities"
       },
       "summary": {
-        "es": "El gobernador del Banco de Inglaterra, Andrew Bailey, advirtió que el banco central está monitoreando de cerca los masivos flujos de inversión hacia la inteligencia artificial por sus posibles implicaciones para la estabilidad financiera. La advertencia sugiere que los reguladores están desarrollando escenarios de riesgo sistémico vinculados a la concentración de capital en el sector tecnológico. Para los inversores, esto anticipa un posible endurecimiento regulatorio que podría impactar las valoraciones del sector y los modelos de riesgo de carteras.",
-        "en": "Bank of England Governor Andrew Bailey warned that the central bank is watching waves of AI investment 'very carefully' due to potential financial stability implications. The warning suggests regulators are developing systemic risk scenarios tied to capital concentration in the tech sector. For investors, this anticipates potential regulatory tightening that could impact sector valuations and portfolio risk models."
+        "es": "Las acusaciones de que Saddam Haftar supervisó una célula terrorista que atacó con drones instalaciones de almacenamiento de combustible y centrales eléctricas en el oeste de Libia han hundido el plan de fusión respaldado por EE.UU. entre las facciones rivales. El Gobierno de Unidad Nacional del oeste de Libia declaró imposible trabajar con Haftar, bloqueando un acuerdo que habría estabilizado la producción petrolera libia. La ruptura incrementa el riesgo de interrupción del suministro de crudo libio —actualmente en torno a 1,2 mb/d— en un momento de tensión energética global.",
+        "en": "Allegations that Saddam Haftar oversaw a terror cell that drone-attacked fuel storage facilities and power stations in western Libya have collapsed the US-backed merger plan between rival factions. The western Libya GNU declared working with Haftar 'impossible,' blocking a deal that would have stabilized Libyan oil production. The breakdown increases the risk of disruption to Libyan crude supply — currently around 1.2 mb/d — at a moment of acute global energy stress."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Global tech equities",
-          "direction": "down",
+          "asset": "Brent crude",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo regulatorio pesa sobre valoraciones del sector IA",
-            "en": "Regulatory risk weighs on AI sector valuations"
-          }
-        },
-        {
-          "asset": "GBP/USD",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Postura vigilante del BoE puede retrasar recortes de tipos",
-            "en": "BoE watchful stance may delay rate cuts"
+            "es": "Riesgo de interrupción de producción libia presiona precios al alza.",
+            "en": "Risk of Libyan output disruption pushes prices higher."
           }
         },
         {
@@ -349,64 +331,73 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Advertencia de regulador refuerza cautela en activos de riesgo",
-            "en": "Regulator warning reinforces caution on risk assets"
+            "es": "Europa importa crudo libio; inestabilidad eleva costes energéticos.",
+            "en": "Europe imports Libyan crude; instability raises energy costs."
+          }
+        },
+        {
+          "asset": "Italian sovereign bonds (BTP)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Italia, principal receptor de crudo libio, más expuesta.",
+            "en": "Italy, primary Libyan crude recipient, most exposed."
           }
         }
       ],
-      "confidence": 75,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cv8e30enrkxyo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-01",
-      "time": "1d"
+      "confidence": 80,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/03/libyan-unity-talks-warlord-son-linked-drone-attack-khalifa-haftar",
+      "published_at": "2026-10-03",
+      "time": "2h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
+      "tag": "ALERT",
+      "region": "AFRICA",
       "title": {
-        "es": "Francia y España buscan 'reforzar sus posiciones' ante el desplazamiento del poder europeo hacia el Este",
-        "en": "As Europe's balance of power shifts eastward, France & Spain seek to 'reinforce their own positions'"
+        "es": "Todo lo que hay que saber sobre los combates entre Etiopía y los rebeldes en Tigray",
+        "en": "What to Know About Fighting Between Ethiopia and Rebels in Tigray"
       },
       "summary": {
-        "es": "El acercamiento franco-español, impulsado por la visita de Macron a Madrid, refleja un reposicionamiento geopolítico ante el creciente peso de los países del flanco oriental de la UE en la agenda de defensa y política exterior. Este eje bilateral busca contrarrestar la influencia de los países bálticos y Polonia y preservar la influencia mediterránea en las instituciones europeas. La reconfiguración del poder en la UE tiene implicaciones para la política fiscal común, el mercado de deuda soberana y la asignación de fondos de defensa.",
-        "en": "The Franco-Spanish rapprochement, driven by Macron's visit to Madrid, reflects a geopolitical repositioning as Eastern flank EU countries gain influence on defense and foreign policy agendas. This bilateral axis seeks to counterbalance Baltic and Polish influence and preserve Mediterranean weight in EU institutions. The EU power realignment has implications for common fiscal policy, sovereign debt markets, and defense spending allocation."
+        "es": "El conflicto renaciente entre el gobierno etíope y los rebeldes de Tigray está generando temores de una guerra regional en el Cuerno de África, con participación de potencias externas como Eritrea, Egipto, los Emiratos Árabes Unidos y Arabia Saudita. La regionalización del conflicto amenaza la estabilidad de una de las zonas de mayor crecimiento económico de África, con implicaciones para el comercio en el Mar Rojo y los corredores de infraestructura del continente. Los intereses de potencias del Golfo en múltiples bandos añaden una dimensión geopolítica de primer orden.",
+        "en": "The re-ignited conflict between the Ethiopian government and Tigray rebels is raising fears of a regional war in the Horn of Africa, drawing in external powers including Eritrea, Egypt, the UAE, and Saudi Arabia. Regionalization of the conflict threatens stability in one of Africa's fastest-growing economic zones, with implications for Red Sea trade and continental infrastructure corridors. Gulf power interests on multiple sides add a first-order geopolitical dimension."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "EUR/USD",
-          "direction": "mixed",
-          "magnitude": "low",
+          "asset": "EM currencies (East Africa)",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Cohesión franco-española puede apuntalar sentimiento europeo",
-            "en": "Franco-Spanish cohesion may underpin European sentiment"
+            "es": "Escalada regional deprime divisas y flujos de inversión.",
+            "en": "Regional escalation depresses currencies and investment flows."
           }
         },
         {
-          "asset": "French OATs",
-          "direction": "mixed",
-          "magnitude": "low",
+          "asset": "Red Sea shipping rates",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Alianza bilateral puede mejorar posición negociadora de Francia en UE",
-            "en": "Bilateral alliance may improve France's EU negotiating position"
+            "es": "Mayor inestabilidad en Cuerno de África eleva prima de riesgo marítimo.",
+            "en": "Greater Horn instability raises maritime risk premium."
           }
         },
         {
-          "asset": "European defense equities",
+          "asset": "Gold",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Reposicionamiento político impulsa narrativa de mayor gasto en defensa",
-            "en": "Political repositioning bolsters higher defense spending narrative"
+            "es": "Conflicto africano con dimensión de grandes potencias amplía riesgo global.",
+            "en": "African conflict with great-power dimension broadens global risk."
           }
         }
       ],
-      "confidence": 70,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261002-as-europe-s-balance-of-power-shifts-eastward-france-spain-seek-to-reinforce-their-own-positions-1",
-      "published_at": "2026-10-02",
-      "time": "1h"
+      "confidence": 78,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/02/world/africa/ethiopia-tigray-conflict.html",
+      "published_at": "2026-10-03",
+      "time": "8h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
