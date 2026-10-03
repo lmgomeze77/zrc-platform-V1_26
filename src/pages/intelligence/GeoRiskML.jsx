@@ -459,12 +459,41 @@ Responde con este JSON exacto:
 
 // ── Main Component ────────────────────────────────────────────────
 
+const SECTION_GUIDES = {
+  forecast: {
+    title: "Explora cómo cambian los resultados al cambiar los supuestos",
+    body: "La franja muestra una variación visual alrededor del nivel de riesgo actual. No indica qué ocurrirá en los próximos meses ni la probabilidad de que ocurra. El texto de IA resume los supuestos que has introducido; no consulta noticias o datos externos.",
+    tip: "Usa esta vista para hacer preguntas y comparar hipótesis, no para tomar una decisión automática."
+  },
+  scenarios: {
+    title: "Construye una mezcla de escenarios",
+    body: "Cada control indica cuánto pesa una situación en el análisis. Los pesos se ajustan a un total de 100% para poder compararlos. Los valores de partida son referencias del modelo, no probabilidades verificadas.",
+    tip: "Cambia un control cada vez y restablece los valores iniciales cuando quieras empezar de nuevo."
+  },
+  heatmap: {
+    title: "Encuentra qué escenario afecta a cada variable",
+    body: "Cada casilla cruza una situación con una variable, como inflación o tipos. El color y la cifra muestran la dirección y la intensidad que supone el modelo; no son correlaciones observadas en datos históricos.",
+    tip: "Busca las casillas más marcadas y revisa qué supuesto las produce."
+  },
+  nlp: {
+    title: "Pide a la IA que lea un texto que tú aportas",
+    body: "Pega un titular o un fragmento. La IA puede resumirlo y sugerir escenarios, pero no verifica la fuente, no busca noticias externas y puede equivocarse. Las sugerencias no cambian tus pesos.",
+    tip: "Verifica la noticia original y decide tú si quieres modificar el escenario."
+  },
+  decision: {
+    title: "Obtén un borrador para debatir",
+    body: "La IA organiza riesgos, oportunidades y posibles acciones según los supuestos actuales. No es una recomendación personalizada ni una instrucción para invertir; revisa cada punto y sus fuentes.",
+    tip: "Úsalo como lista de preguntas para un análisis más completo."
+  }
+};
+
 export default function GeoRiskML() {
   const [sector, setSector] = useState("global");
   const [region, setRegion] = useState("eu");
   const [weights, setWeights] = useState({ ...DEFAULT_WEIGHTS });
   const normalizedWeights = useMemo(() => normalizeWeights(weights), [weights]);
   const [tab, setTab] = useState("forecast");
+  const sectionGuide = SECTION_GUIDES[tab];
   const [time, setTime] = useState(new Date());
   const [forecast, setForecast] = useState(null);
   const [mlForecast, setMlForecast] = useState(null);
@@ -577,9 +606,9 @@ export default function GeoRiskML() {
   const TABS = [
     { id: "forecast", label: "Sensibilidad + IA", icon: TrendingUp },
     { id: "scenarios", label: "Escenarios", icon: Radar },
-    { id: "heatmap", label: "Correlaciones", icon: Grid3x3 },
-    { id: "nlp", label: "NLP Analyzer", icon: MessageSquare },
-    { id: "decision", label: "Decision Engine", icon: Target },
+    { id: "heatmap", label: "Relación escenario-variable", icon: Grid3x3 },
+    { id: "nlp", label: "Analizar texto", icon: MessageSquare },
+    { id: "decision", label: "Borrador de decisión IA", icon: Target },
   ];
 
   return (
@@ -777,7 +806,14 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
           ))}
         </div>
 
-        {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
+        <div role="note" aria-live="polite" style={{ padding: "14px 18px", margin: "0 0 18px", border: "1px solid #28543a", borderLeft: "3px solid #4ADE80", borderRadius: 8, background: "#0d1f16", color: "#CBD5E1" }}>
+          <div style={{ fontSize: 10, color: "#4ADE80", fontFamily: "monospace", letterSpacing: 1, marginBottom: 4 }}>EN SENCILLO</div>
+          <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{sectionGuide.title}</div>
+          <div style={{ fontSize: 12, lineHeight: 1.6, color: "#94A3B8" }}>{sectionGuide.body}</div>
+          <div style={{ fontSize: 12, lineHeight: 1.6, marginTop: 6, color: "#CBD5E1" }}><b>Consejo:</b> {sectionGuide.tip}</div>
+        </div>
+
+        {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */>
         {tab === "forecast" && (
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
             <div className="grml-two-col" style={{ gap:12, marginBottom:16 }}>
