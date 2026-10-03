@@ -509,7 +509,7 @@ export default function GeoRiskML() {
 
   const dominantScenario = useMemo(() => {
     const [key] = Object.entries(weights).reduce(([bk, bv], [k, v]) => v > bv ? [k, v] : [bk, bv], ["", 0]);
-    return { key, ...SCENARIOS[key] };
+    return { key, ...SCENARIOS[key], prob: normalizedWeights[key] || 0 };
   }, [weights]);
 
   const variableImpacts = useMemo(() => {
@@ -898,7 +898,7 @@ export default function GeoRiskML() {
             <div className="grml-card grml-table-scroll">
               <div className="grml-table-inner">
                 <div style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr 1.2fr 1.5fr", padding:"10px 16px", background:"#0d1f16", borderBottom:"1px solid #16301f", fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
-                  <span>VARIABLE</span><span>BASE</span><span>IMPACTO</span><span>PROYECCIÓN</span><span>TENDENCIA 24M</span>
+                  <span>VARIABLE</span><span>REFERENCIA*</span><span>IMPACTO</span><span>ESTIMACIÓN*</span><span>SERIE HISTÓRICA</span>
                 </div>
                 {Object.entries(ECONOMIC_VARIABLES).map(([k, v], i) => {
                   const imp = computeImpact(k);
@@ -1012,7 +1012,7 @@ export default function GeoRiskML() {
                   </div>
                   {activeScenario===sk && (
                     <div style={{ marginTop:12, paddingTop:10, borderTop:`1px solid ${sv.color}20` }}>
-                      <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>VECTORES DE IMPACTO · FUENTE Y NIVEL ACTUAL POR VARIABLE</div>
+                      <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>VECTORES DE IMPACTO · REFERENCIAS CODIFICADAS</div>
                       {Object.entries(sv.impactByRegion[region]).map(([vk, vi]) => {
                         const ev = ECONOMIC_VARIABLES[vk];
                         return (
@@ -1020,7 +1020,7 @@ export default function GeoRiskML() {
                             <div>
                               <div style={{ fontSize:12, color:"#94A3B8" }}>{ev?.label}</div>
                               <div style={{ fontSize:10, color:"#475569", fontFamily:"monospace" }}>
-                                {ev?.source} · actual: {fmt(ev?.base, ev?.decimals ?? 2)}{ev?.unit}
+                                {ev?.source} · referencia: {fmt(ev?.base, ev?.decimals ?? 2)}{ev?.unit}
                               </div>
                             </div>
                             <div style={{ display:"flex", alignItems:"center", gap:8 }}>
@@ -1117,7 +1117,7 @@ export default function GeoRiskML() {
         {tab === "nlp" && (
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
             <div className="grml-card" style={{ borderColor:"rgba(139,92,246,0.25)", padding:20 }}>
-              <div style={{ fontSize:11, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>NLP ANALYZER — CLAUDE ML ENGINE</div>
+              <div style={{ fontSize:11, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>ANÁLISIS DE TEXTO — ASISTENTE IA</div>
               <div style={{ fontSize:12, color:"#94A3B8", marginBottom:14 }}>Análisis IA del texto pegado. Las sugerencias no cambian los pesos; revísalas antes de incorporarlas.</div>
               <textarea value={nlpText} onChange={e => setNlpText(e.target.value)}
                 placeholder="Pegue aquí un titular, noticia o briefing geopolítico para análisis predictivo de riesgo..."
