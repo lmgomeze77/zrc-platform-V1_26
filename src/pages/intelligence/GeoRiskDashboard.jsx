@@ -148,6 +148,11 @@ const NLP_KEYWORDS = {
 };
 
 const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+const normalizeWeights = (weights) => {
+  const total = Object.values(weights).reduce((sum, value) => sum + Math.max(0, Number(value) || 0), 0);
+  if (total <= 0) return Object.fromEntries(Object.entries(SCENARIOS).map(([key, scenario]) => [key, scenario.prob]));
+  return Object.fromEntries(Object.entries(weights).map(([key, value]) => [key, Math.max(0, Number(value) || 0) / total]));
+};
 const fmt = (v, d = 2) => v.toFixed(d);
 
 // ── Micro Components ────────────────────────────────
@@ -290,7 +295,6 @@ export default function GeoRiskDashboard() {
   const [nlpText, setNlpText] = useState("");
   const [nlpResult, setNlpResult] = useState(null);
   const [time, setTime] = useState(new Date());
-  const [sparkData, setSparkData] = useState({});
   const [tab, setTab] = useState("scenarios");
 
   const ECONOMIC_VARIABLES = ECONOMIC_VARIABLES_BY_REGION[region];
@@ -308,23 +312,13 @@ export default function GeoRiskDashboard() {
     return () => clearInterval(t);
   }, []);
 
-  useEffect(() => {
-    const d = {};
-    Object.keys(ECONOMIC_VARIABLES).forEach(k => {
-      const v = ECONOMIC_VARIABLES[k];
-      d[k] = Array.from({ length: 20 }, (_, i) =>
-        v.base + (Math.random() - 0.5) * v.volatility * 4 * Math.sin(i / 3)
-      );
-    });
-    setSparkData(d);
-  }, [region]);
-
   const sectorMult = SECTORS[sector].mult;
 
   const computeImpact = useCallback((varKey) => {
     let total = 0;
+    const normalizedWeights = normalizeWeights(scenarioWeights);
     Object.entries(SCENARIOS).forEach(([sk, sv]) => {
-      const w = scenarioWeights[sk] || 0;
+      const w = normalizedWeights[sk] || 0;
       total += w * (sv.impactByRegion[region]?.[varKey] || 0) * sectorMult;
     });
     return total;
@@ -332,10 +326,11 @@ export default function GeoRiskDashboard() {
 
   const compositeRisk = useMemo(() => {
     let r = 0;
+    const normalizedWeights = normalizeWeights(scenarioWeights);
     Object.entries(SCENARIOS).forEach(([k, v]) => {
-      r += (scenarioWeights[k] || 0) * v.risk;
+      r += (normalizedWeights[k] || 0) * v.risk;
     });
-    return r * sectorMult;
+    return clamp(r * sectorMult, 0, 100);
   }, [scenarioWeights, sectorMult]);
 
   const allocationSignals = useMemo(() => {
@@ -474,8 +469,8 @@ export default function GeoRiskDashboard() {
               </div>
               <div style={{ textAlign: "right" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, justifyContent: "flex-end" }}>
-                  <Pulse color="#10B981" />
-                  <span style={{ fontSize: 12, color: "#10B981", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>LIVE</span>
+                  <Pulse color="#F59E0B" />
+                  <span style={{ fontSize: 12, color: "#F59E0B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1 }}>MODELO</span>
                 </div>
                 <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20, fontWeight: 600, color: "#E2E8F0", marginTop: 4, fontVariantNumeric: "tabular-nums" }}>
                   {time.toLocaleTimeString("es-ES", { hour12: false })}
@@ -488,6 +483,9 @@ export default function GeoRiskDashboard() {
           </header>
 
           <DataTicker items={tickerItems} />
+          <div role="note" style={{ margin: "12px 0 0", padding: "12px 16px", border: "1px solid #7C5A1B", borderLeft: "3px solid #F59E0B", borderRadius: 8, background: "#2A2112", color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>
+            MODO DE ESCENARIO: las cifras base y fuentes mostradas son referencias codificadas, no cotizaciones ni series actualizadas. Los impactos son estimaciones ilustrativas del modelo; no se recalibran automáticamente con datos de mercado.
+          </div>
 
           <div className="zrc-card zrc-control-row" style={{
             gap: 24, padding: "20px 24px", margin: "20px 0", alignItems: "center"
@@ -544,7 +542,7 @@ export default function GeoRiskDashboard() {
             {[
               { id: "scenarios", label: "Escenarios", icon: Radar },
               { id: "variables", label: "Variables", icon: Activity },
-              { id: "nlp", label: "NLP Analyzer", icon: MessageSquare },
+              { id: "nlp", label: "Palabras clave", icon: MessageSquare },
               { id: "allocation", label: "Asignación", icon: PieChart },
             ].map(t2 => (
               <button key={t2.id} className="zrc-tab" onClick={() => setTab(t2.id)} style={{
@@ -578,7 +576,7 @@ export default function GeoRiskDashboard() {
                   </div>
                   <div style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.7, maxWidth: 680 }}>
                     El score es el promedio ponderado por probabilidad del riesgo intrínseco de cada escenario, ajustado por multiplicador sectorial.
-                    {" "}<span style={{ color: "#CBD5E1" }}>El círculo de cada slider aparece por defecto en la probabilidad estimada por los algoritmos de ZRC Research.</span>
+                    {" "}<span style={{ color: "#CBD5E1" }}>Los valores iniciales son pesos de escenario de referencia, no probabilidades calibradas. Al agregarlos, el modelo los normaliza para que sumen 100%.</span>
                     {" "}Puedes deslizarlo para explorar escenarios propios — el score se recalcula en tiempo real y queda marcado como "AJUSTADO", indicando el valor ZRC original.
                     {" "}<span style={{ color: "#F59E0B" }}>Las modificaciones no reflejan el análisis oficial de ZRC.</span>
                     {" "}Usa el botón ↺ (por escenario o global) para devolver el círculo a su posición ZRC.
@@ -699,7 +697,7 @@ export default function GeoRiskDashboard() {
                       {activeScenario === sk && (
                         <div style={{ marginTop: 12, paddingTop: 10, borderTop: `1px solid ${sv.color}20` }}>
                           <div style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 6 }}>
-                            VECTORES DE IMPACTO · FUENTE Y NIVEL ACTUAL POR VARIABLE
+                            VECTORES DE IMPACTO · REFERENCIAS CODIFICADAS (NO DATOS ACTUALES)
                           </div>
                           {Object.entries(sv.impactByRegion[region]).map(([vk, vi]) => {
                             const ev = ECONOMIC_VARIABLES[vk];
@@ -708,11 +706,11 @@ export default function GeoRiskDashboard() {
                                 <div>
                                   <div style={{ fontSize: 12, color: "#94A3B8" }}>{ev?.label}</div>
                                   <div style={{ fontSize: 10, color: "#475569", fontFamily: "'JetBrains Mono', monospace" }}>
-                                    {ev?.source} · actual: {fmt(ev?.base, ev?.decimals ?? 2)}{ev?.unit}
+                                    {ev?.source} · referencia: {fmt(ev?.base, ev?.decimals ?? 2)}{ev?.unit}
                                   </div>
                                 </div>
                                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                  <SparkLine data={sparkData[vk]} color={sv.color} w={36} h={16} />
+                                  <span title="No hay serie histórica conectada" style={{ fontSize: 10, color: "#64748B" }}>sin serie</span>
                                   <MiniBar value={vi} max={1} color={sv.color} width={50} />
                                 </div>
                               </div>
@@ -745,6 +743,7 @@ export default function GeoRiskDashboard() {
           {/* VARIABLES */}
           {tab === "variables" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
+              <div role="note" style={{ marginBottom: 12, padding: "12px 16px", border: "1px solid #7C5A1B", borderRadius: 8, color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>Las series históricas no están conectadas. Esta vista muestra solo referencias estáticas y estimaciones del escenario seleccionado.</div>
               <div className="zrc-card zrc-table-scroll">
                 <div className="zrc-table-inner">
                   <div style={{
@@ -752,7 +751,7 @@ export default function GeoRiskDashboard() {
                     padding: "12px 20px", background: "#0d1829", borderBottom: "1px solid #1a2744",
                     fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1
                   }}>
-                    <span>VARIABLE</span><span>BASE</span><span>IMPACTO</span><span>PROYECCIÓN</span><span>TENDENCIA</span>
+                    <span>VARIABLE</span><span>REFERENCIA*</span><span>IMPACTO</span><span>ESTIMACIÓN*</span><span>SERIE</span>
                   </div>
                   {Object.entries(ECONOMIC_VARIABLES).map(([k, v], i) => {
                     const imp = computeImpact(k);
@@ -778,7 +777,7 @@ export default function GeoRiskDashboard() {
                         }}>
                           {fmt(proj, v.decimals ?? 2)}{v.unit}
                         </span>
-                        <SparkLine data={sparkData[k]} color={imp > 0.1 ? "#F59E0B" : imp < -0.1 ? "#10B981" : "#3B82F6"} w={90} h={24} />
+                        <span style={{ fontSize: 11, color: "#64748B" }}>No conectada</span>
                       </div>
                     );
                   })}
@@ -793,8 +792,9 @@ export default function GeoRiskDashboard() {
               <div className="zrc-card" style={{ padding: 24 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 12 }}>
                   <MessageSquare size={13} color="#5B9BFF" />
-                  ANÁLISIS NLP DE RIESGO GEOPOLÍTICO · Introduzca texto de noticias o briefings
+                  DETECCIÓN DE PALABRAS CLAVE · No interpreta contexto, negación ni fuentes
                 </div>
+                <p style={{ color: "#94A3B8", fontSize: 12, lineHeight: 1.6, margin: "0 0 12px" }}>Este filtro cuenta coincidencias literales con un diccionario bilingüe. Úselo como apoyo exploratorio, no como una medición objetiva del riesgo.</p>
                 <textarea
                   value={nlpText}
                   onChange={e => setNlpText(e.target.value)}
@@ -939,7 +939,7 @@ export default function GeoRiskDashboard() {
           }}>
             <div style={{ fontSize: 11, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.7 }}>
               © 2026 Zenith Rise Capital · Calesius Global SL · Madrid, España
-              <br />Modelo GeoRisk v2.1 · Horizonte: 12 meses · Recalibración: continua
+              <br />Modelo de escenarios ilustrativo · Horizonte indicativo: 12 meses · Sin recalibración automática
             </div>
             <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
               <span style={{ fontSize: 11, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace" }}>www.zenithrisecapital.com</span>
