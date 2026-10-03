@@ -157,6 +157,11 @@ function riskLabel(v) {
 }
 
 const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+const normalizeWeights = (weights) => {
+  const total = Object.values(weights).reduce((sum, value) => sum + Math.max(0, Number(value) || 0), 0);
+  if (total <= 0) return { ...DEFAULT_WEIGHTS };
+  return Object.fromEntries(Object.entries(weights).map(([key, value]) => [key, Math.max(0, Number(value) || 0) / total]));
+};
 const fmt   = (v, d = 2) => Number(v).toFixed(d);
 
 // ── Mini Components ──────────────────────────────────────────────
@@ -234,16 +239,12 @@ function SparkLine({ data, color = "#16A34A", w = 100, h = 28 }) {
 
 // Forecast curve: simple stochastic projection
 function buildForecast(baseRisk, scenarioWeights, steps = 12) {
-  const seed = Object.values(scenarioWeights).reduce((s, v) => s + v, 0);
-  let risk = baseRisk;
-  const curve = [{ t: 0, v: risk, lo: risk - 3, hi: risk + 3 }];
-  for (let i = 1; i <= steps; i++) {
-    const drift = (Math.sin(i * 0.5 + seed) * 4) + (Math.random() - 0.5) * 3;
-    risk = clamp(risk + drift * 0.4, 10, 98);
-    const ci = 3 + i * 0.8;
-    curve.push({ t: i, v: risk, lo: Math.max(10, risk - ci), hi: Math.min(98, risk + ci) });
-  }
-  return curve;
+  // Sensitivity display only: this is not a time-series forecast or statistical interval.
+  const dispersion = 3 + Object.values(scenarioWeights).reduce((sum, weight) => sum + weight * (1 - weight), 0) * 5;
+  return Array.from({ length: steps + 1 }, (_, t) => {
+    const width = dispersion + t * 0.35;
+    return { t, v: clamp(baseRisk, 0, 100), lo: clamp(baseRisk - width, 0, 100), hi: clamp(baseRisk + width, 0, 100) };
+  });
 }
 
 function ForecastChart({ curve, color = "#16A34A" }) {
@@ -462,7 +463,6 @@ export default function GeoRiskML() {
   const [weights, setWeights] = useState({ ...DEFAULT_WEIGHTS });
   const [tab, setTab] = useState("forecast");
   const [time, setTime] = useState(new Date());
-  const [sparkData, setSparkData] = useState({});
   const [forecast, setForecast] = useState(null);
   const [mlForecast, setMlForecast] = useState(null);
   const [mlLoading, setMlLoading] = useState(false);
@@ -482,16 +482,6 @@ export default function GeoRiskML() {
   const ECONOMIC_VARIABLES = ECONOMIC_VARIABLES_BY_REGION[region];
   const fxExporterSign = region === "asia" ? 1 : -1;
 
-  useEffect(() => {
-    const d = {};
-    Object.entries(ECONOMIC_VARIABLES).forEach(([k, v]) => {
-      d[k] = Array.from({ length: 24 }, (_, i) =>
-        v.base + (Math.random() - 0.5) * v.vol * 4 * Math.sin(i / 3)
-      );
-    });
-    setSparkData(d);
-  }, [region]);
-
   const sectorMult = SECTORS[sector].mult;
 
   const isCustomized = useMemo(() =>
@@ -502,16 +492,18 @@ export default function GeoRiskML() {
 
   const computeImpact = useCallback((varKey) => {
     let total = 0;
+    const normalizedWeights = normalizeWeights(weights);
     Object.entries(SCENARIOS).forEach(([sk, sv]) => {
-      total += (weights[sk] || 0) * (sv.impactByRegion[region]?.[varKey] || 0) * sectorMult;
+      total += (normalizedWeights[sk] || 0) * (sv.impactByRegion[region]?.[varKey] || 0) * sectorMult;
     });
     return total;
   }, [weights, sectorMult, region]);
 
   const compositeRisk = useMemo(() => {
     let r = 0;
-    Object.entries(SCENARIOS).forEach(([k, v]) => { r += (weights[k] || 0) * v.risk; });
-    return r * sectorMult;
+    const normalizedWeights = normalizeWeights(weights);
+    Object.entries(SCENARIOS).forEach(([k, v]) => { r += (normalizedWeights[k] || 0) * v.risk; });
+    return clamp(r * sectorMult, 0, 100);
   }, [weights, sectorMult]);
 
   const dominantScenario = useMemo(() => {
@@ -534,7 +526,7 @@ export default function GeoRiskML() {
     });
   }, [variableImpacts, region]);
 
-  // Build stochastic forecast on weight change
+  // Build an illustrative sensitivity band when scenario assumptions change
   useEffect(() => {
     setForecast(buildForecast(compositeRisk, weights));
   }, [compositeRisk, weights]);
@@ -559,15 +551,8 @@ export default function GeoRiskML() {
     setNlpLoading(true); setNlpResult(null);
     try {
       const result = await callClaudeML({ mode: "nlp", userText: nlpText, riskScore: compositeRisk, scenario: dominantScenario, variables: variableImpacts });
+      // Keep model suggestions separate from analyst-controlled scenario weights.
       setNlpResult(result);
-      // Apply scenario probability adjustments
-      if (result.scenario_probability_impact) {
-        const newW = { ...weights };
-        Object.entries(result.scenario_probability_impact).forEach(([k, delta]) => {
-          if (newW[k] !== undefined) newW[k] = clamp(newW[k] + delta * 0.3, 0, 0.9);
-        });
-        setWeights(newW);
-      }
     } catch (e) {
       setNlpResult({ error: `Error NLP: ${e.message}` });
     } finally { setNlpLoading(false); }
@@ -658,7 +643,7 @@ export default function GeoRiskML() {
             <div style={{ textAlign:"right" }}>
               <div style={{ display:"flex", alignItems:"center", gap:6, justifyContent:"flex-end", marginBottom:4 }}>
                 <Pulse color="#A78BFA" />
-                <span style={{ fontSize:11, color:"#A78BFA", fontFamily:"'JetBrains Mono',monospace", letterSpacing:1 }}>ML LIVE</span>
+                <span style={{ fontSize:11, color:"#A78BFA", fontFamily:"'JetBrains Mono',monospace", letterSpacing:1 }}>IA BAJO DEMANDA</span>
                 <span style={{ margin:"0 4px", color:"#16301f" }}>|</span>
                 <Pulse color="#10B981" />
                 <span style={{ fontSize:11, color:"#10B981", fontFamily:"'JetBrains Mono',monospace" }}>OPERATIONAL</span>
@@ -683,8 +668,7 @@ export default function GeoRiskML() {
           </div>
           <div style={{ fontSize: 13, color: "#CBD5E1", lineHeight: 1.7, maxWidth: 760 }}>
             El GeoRisk Dashboard modela escenarios con reglas fijas definidas por ZRC Research. <b>GeoRisk ML añade una capa predictiva con IA (Claude Sonnet)</b>:
-            forecast de riesgo a 12 meses con intervalo de confianza, un <b>NLP Analyzer</b> que lee noticias/briefings en tiempo real y ajusta automáticamente
-            las probabilidades de escenario, y un <b>Decision Engine institucional</b> que traduce el perfil de riesgo en recomendaciones tácticas con nivel de convicción —
+            una banda ilustrativa de sensibilidad no calibrada, un <b>analizador de texto</b> para noticias que tú aportas y un <b>asistente IA</b> que propone análisis a partir de los supuestos introducidos. Ninguno consulta una base histórica de resultados ni valida sus probabilidades —
             el mismo tipo de output que un comité de inversión necesita para pasar de "cuál es el riesgo" a "qué hacemos con la cartera".
           </div>
         </div>
@@ -862,7 +846,7 @@ export default function GeoRiskML() {
                         color: trajectoryColor[mlForecast.risk_trajectory] || "#F59E0B",
                         border: `1px solid ${trajectoryColor[mlForecast.risk_trajectory] || "#F59E0B"}40`
                       }}>{mlForecast.risk_trajectory}</span>
-                      <span style={{ fontSize:11, color:"#64748B", fontFamily:"monospace" }}>Confianza: {mlForecast.confidence}%</span>
+                      <span style={{ fontSize:11, color:"#64748B", fontFamily:"monospace" }}>Autoevaluación del modelo: {mlForecast.confidence}% · no calibrada</span>
                     </div>
 
                     {/* Outlooks */}
@@ -927,7 +911,7 @@ export default function GeoRiskML() {
                       <span style={{ fontFamily:"monospace", fontSize:14, fontWeight:600, color:impCol }}>
                         {fmt(proj, v.decimals ?? 2)}{v.unit}
                       </span>
-                      <SparkLine data={sparkData[k]} color={impCol} w={110} h={24} />
+                      <span style={{ fontSize: 10, color: "#64748B" }}>sin serie conectada</span>
                     </div>
                   );
                 })}
@@ -944,7 +928,7 @@ export default function GeoRiskML() {
               display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:16, flexWrap:"wrap",
             }}>
               <div style={{ fontSize:13, color:"#94A3B8", lineHeight:1.7, maxWidth:680 }}>
-                <span style={{ color:"#CBD5E1" }}>El círculo de cada slider aparece por defecto en la probabilidad estimada por los algoritmos de ZRC.</span>
+                <span style={{ color:"#CBD5E1" }}>Los valores iniciales son pesos de escenario de referencia, no probabilidades calibradas. En los cálculos, se normalizan para sumar 100%.</span>
                 {" "}Deslízalo para explorar tu propio escenario, o deja que el NLP Analyzer lo ajuste automáticamente al leer una noticia.
                 {" "}Queda marcado como "AJUSTADO" con el valor ZRC original visible; usa ↺ para devolver el círculo a su posición.
               </div>
@@ -1036,7 +1020,7 @@ export default function GeoRiskML() {
                               </div>
                             </div>
                             <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                              <SparkLine data={sparkData[vk]} color={sv.color} w={36} h={16} />
+                              <span title="No hay serie histórica conectada" style={{ fontSize: 10, color: "#64748B" }}>sin serie</span>
                               <MiniBar value={vi} max={1} color={sv.color} width={50} />
                             </div>
                           </div>
@@ -1130,7 +1114,7 @@ export default function GeoRiskML() {
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
             <div className="grml-card" style={{ borderColor:"rgba(139,92,246,0.25)", padding:20 }}>
               <div style={{ fontSize:11, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>NLP ANALYZER — CLAUDE ML ENGINE</div>
-              <div style={{ fontSize:12, color:"#94A3B8", marginBottom:14 }}>Extracción automática de señales geopolíticas. Los resultados ajustan las probabilidades de escenario.</div>
+              <div style={{ fontSize:12, color:"#94A3B8", marginBottom:14 }}>Análisis IA del texto pegado. Las sugerencias no cambian los pesos; revísalas antes de incorporarlas.</div>
               <textarea value={nlpText} onChange={e => setNlpText(e.target.value)}
                 placeholder="Pegue aquí un titular, noticia o briefing geopolítico para análisis predictivo de riesgo..."
                 style={{ width:"100%", height:120, background:"#070f0a", border:"1px solid #16301f", borderRadius:4, padding:14, color:"#CBD5E1", fontSize:14, fontFamily:"'JetBrains Mono',monospace", resize:"vertical", outline:"none", lineHeight:1.6, boxSizing:"border-box" }}
@@ -1160,7 +1144,7 @@ export default function GeoRiskML() {
                         {[
                           ["RISK SCORE", nlpResult.risk_score, nlpResult.risk_score > 60 ? "#EF4444" : nlpResult.risk_score > 35 ? "#F59E0B" : "#10B981"],
                           ["SENTIMENT", nlpResult.sentiment, nlpResult.sentiment==="BEARISH" ? "#EF4444" : nlpResult.sentiment==="BULLISH" ? "#10B981" : "#F59E0B"],
-                          ["CONFIANZA", `${nlpResult.confidence}%`, "#A78BFA"]
+                          ["AUTOEVALUACIÓN IA", `${nlpResult.confidence}%`, "#A78BFA"]
                         ].map(([label, val, col]) => (
                           <div key={label} style={{ textAlign:"center", padding:"12px", background:"#0d1f16", borderRadius:4 }}>
                             <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>{label}</div>
@@ -1209,7 +1193,7 @@ export default function GeoRiskML() {
                           <span style={{ fontSize:11, fontFamily:"monospace", color:SCENARIOS[nlpResult.scenario_match]?.color || "#94A3B8", padding:"2px 8px", background:`${SCENARIOS[nlpResult.scenario_match]?.color || "#94A3B8"}15`, border:`1px solid ${SCENARIOS[nlpResult.scenario_match]?.color || "#94A3B8"}30`, borderRadius:3 }}>
                             {SCENARIOS[nlpResult.scenario_match]?.label || nlpResult.scenario_match}
                           </span>
-                          <span style={{ fontSize:10, color:"#475569", fontFamily:"monospace" }}>— probabilidades de escenario actualizadas</span>
+                          <span style={{ fontSize:10, color:"#475569", fontFamily:"monospace" }}>— sugerencia IA; pesos sin cambios</span>
                         </div>
                       )}
                     </>
@@ -1335,7 +1319,7 @@ export default function GeoRiskML() {
           </div>
           <div style={{ display:"flex", gap:10, alignItems:"center" }}>
             <span style={{ fontSize:11, color:"#475569", fontFamily:"monospace" }}>zenithrisecapital.com</span>
-            <span style={{ padding:"3px 8px", borderRadius:3, fontSize:10, fontFamily:"monospace", letterSpacing:1, background:"rgba(139,92,246,0.12)", color:"#A78BFA", border:"1px solid rgba(139,92,246,0.25)" }}>ML ENGINE LIVE</span>
+            <span style={{ padding:"3px 8px", borderRadius:3, fontSize:10, fontFamily:"monospace", letterSpacing:1, background:"rgba(139,92,246,0.12)", color:"#A78BFA", border:"1px solid rgba(139,92,246,0.25)" }}>IA BAJO DEMANDA</span>
           </div>
         </footer>
       </div>
