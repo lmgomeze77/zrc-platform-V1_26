@@ -496,7 +496,7 @@ export default function GeoRiskDashboard() {
                 fontSize: 10, fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginTop: 2,
                 color: isCustomized ? "#F59E0B" : "#10B981",
               }}>
-                {isCustomized ? "▲ ESCENARIO PERSONALIZADO" : "● BASE ZRC RESEARCH"}
+                {isCustomized ? "▲ ESCENARIO PERSONALIZADO" : "● PESOS DE REFERENCIA"}
               </div>
             </div>
             <div className="zrc-region-sector">
@@ -582,7 +582,7 @@ export default function GeoRiskDashboard() {
                     {" "}Usa el botón ↺ (por escenario o global) para devolver el círculo a su posición ZRC.
                   </div>
                   <div style={{ fontSize: 12, color: "#4B5A72", lineHeight: 1.7, maxWidth: 680, marginTop: 10, borderTop: "1px solid #1a274460", paddingTop: 10 }}>
-                    ¿Necesitas forecast a 12 meses, NLP en tiempo real y un decision engine institucional sobre estos mismos escenarios?
+                    ¿Necesitas análisis narrativo asistido por IA y más herramientas para contrastar estos supuestos?
                     {" "}<span style={{ color: "#A78BFA" }}>GeoRisk Predictive ML</span> es la evolución con IA de este dashboard.
                   </div>
                 </div>
@@ -614,7 +614,7 @@ export default function GeoRiskDashboard() {
                       RESUMEN PARA COMITÉ DE INVERSIÓN
                     </div>
                     <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: "#CBD5E1", lineHeight: 1.9 }}>
-                      <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "base ZRC Research"}.</li>
+                      <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "pesos de referencia"}.</li>
                       <li>Riesgo a vigilar: <b>{worstScenario.label}</b> (riesgo intrínseco {worstScenario.risk}/100).</li>
                       {top && (
                         <li>Llamada táctica principal: <b style={{ color: top.col }}>{top.dir}</b> en <b>{top.asset}</b> — impacto estimado {topImpact >= 0 ? "+" : ""}{fmt(topImpact, 1)}% a 12M bajo el mix actual.</li>
