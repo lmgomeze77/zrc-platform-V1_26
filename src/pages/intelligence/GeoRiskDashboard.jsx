@@ -106,6 +106,29 @@ const ASSETS = [
   "Materias primas", "Equity exportador", "Efectivo / Money Market"
 ];
 
+const SECTION_GUIDES = {
+  scenarios: {
+    title: "Prueba distintos escenarios",
+    body: "Elige una región y un sector, y mueve los controles para explorar qué podría ocurrir si cada situación ganara peso. El resultado resume los supuestos que has elegido; no es una probabilidad comprobada ni una predicción.",
+    tip: "Si quieres comparar dos ideas, cambia un control cada vez y observa cómo se mueve el resultado."
+  },
+  variables: {
+    title: "Mira por dónde se transmite el riesgo",
+    body: "Esta tabla traduce los escenarios a tipos de interés, inflación, divisas y otras variables. “Referencia” es un valor fijo del modelo; “estimación” es un ejemplo calculado a partir de tus supuestos, no un dato de mercado.",
+    tip: "Úsala para identificar qué canal importa más. No hay series históricas conectadas."
+  },
+  nlp: {
+    title: "Revisa un titular o una nota",
+    body: "Pega un texto para detectar palabras asociadas a tensión o distensión. La herramienta cuenta términos; no comprueba la noticia ni entiende siempre el contexto, la ironía o una negación.",
+    tip: "Comprueba el texto original y la fuente antes de sacar conclusiones."
+  },
+  allocation: {
+    title: "Consulta señales orientativas por activo",
+    body: "El modelo combina sus supuestos para mostrar una posible dirección del impacto en algunos activos. Es una señal simplificada, no una recomendación personalizada ni una cartera optimizada.",
+    tip: "Mira qué supuesto produce la señal y contrástalo con análisis y datos actuales."
+  }
+};
+
 // Sensibilidad estimada de precio (%) por unidad de vector de impacto [-1,1].
 // Modelo ilustrativo ZRC — no constituye proyección exacta de mercado.
 // "fx" cambia de signo entre regiones porque EUR/USD y DXY suben cuando la
@@ -296,6 +319,7 @@ export default function GeoRiskDashboard() {
   const [nlpResult, setNlpResult] = useState(null);
   const [time, setTime] = useState(new Date());
   const [tab, setTab] = useState("scenarios");
+  const sectionGuide = SECTION_GUIDES[tab];
 
   const ECONOMIC_VARIABLES = ECONOMIC_VARIABLES_BY_REGION[region];
   const fxExporterSign = region === "asia" ? 1 : -1;
@@ -541,9 +565,9 @@ export default function GeoRiskDashboard() {
           <div className="zrc-card zrc-tabbar" style={{ display: "flex", gap: 2, padding: 5, marginBottom: 20 }}>
             {[
               { id: "scenarios", label: "Escenarios", icon: Radar },
-              { id: "variables", label: "Variables", icon: Activity },
+              { id: "variables", label: "Impacto por variable", icon: Activity },
               { id: "nlp", label: "Palabras clave", icon: MessageSquare },
-              { id: "allocation", label: "Asignación", icon: PieChart },
+              { id: "allocation", label: "Señales por activo", icon: PieChart },
             ].map(t2 => (
               <button key={t2.id} className="zrc-tab" onClick={() => setTab(t2.id)} style={{
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
@@ -558,6 +582,13 @@ export default function GeoRiskDashboard() {
                 {t2.label}
               </button>
             ))}
+          </div>
+
+          <div role="note" aria-live="polite" style={{ padding: "14px 18px", margin: "0 0 18px", border: "1px solid #1e3a5f", borderLeft: "3px solid #5B9BFF", borderRadius: 8, background: "#0d1829", color: "#CBD5E1" }}>
+            <div style={{ fontSize: 10, color: "#5B9BFF", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 4 }}>EN SENCILLO</div>
+            <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{sectionGuide.title}</div>
+            <div style={{ fontSize: 12, lineHeight: 1.6, color: "#94A3B8" }}>{sectionGuide.body}</div>
+            <div style={{ fontSize: 12, lineHeight: 1.6, marginTop: 6, color: "#CBD5E1" }}><b>Consejo:</b> {sectionGuide.tip}</div>
           </div>
 
           {/* SCENARIOS */}
