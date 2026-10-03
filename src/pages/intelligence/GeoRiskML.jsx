@@ -461,6 +461,7 @@ export default function GeoRiskML() {
   const [sector, setSector] = useState("global");
   const [region, setRegion] = useState("eu");
   const [weights, setWeights] = useState({ ...DEFAULT_WEIGHTS });
+  const normalizedWeights = useMemo(() => normalizeWeights(weights), [weights]);
   const [tab, setTab] = useState("forecast");
   const [time, setTime] = useState(new Date());
   const [forecast, setForecast] = useState(null);
@@ -637,7 +638,7 @@ export default function GeoRiskML() {
                 GeoRisk Predictive Intelligence
               </h1>
               <div style={{ fontSize:12, color:"#475569", marginTop:2, fontFamily:"'JetBrains Mono',monospace" }}>
-                Análisis geopolítico predictivo · Powered by Claude Sonnet · Calesius Global SL
+                Asistente de análisis geopolítico · Claude Sonnet · Calesius Global SL
               </div>
             </div>
             <div style={{ textAlign:"right" }}>
@@ -646,7 +647,7 @@ export default function GeoRiskML() {
                 <span style={{ fontSize:11, color:"#A78BFA", fontFamily:"'JetBrains Mono',monospace", letterSpacing:1 }}>IA BAJO DEMANDA</span>
                 <span style={{ margin:"0 4px", color:"#16301f" }}>|</span>
                 <Pulse color="#10B981" />
-                <span style={{ fontSize:11, color:"#10B981", fontFamily:"'JetBrains Mono',monospace" }}>OPERATIONAL</span>
+                <span style={{ fontSize:11, color:"#A78BFA", fontFamily:"'JetBrains Mono',monospace" }}>ANÁLISIS BAJO DEMANDA</span>
               </div>
               <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:19, fontWeight:600, color:"#CBD5E1" }}>
                 {time.toLocaleTimeString("es-ES", { hour12:false })}
@@ -672,6 +673,9 @@ export default function GeoRiskML() {
             el mismo tipo de output que un comité de inversión necesita para pasar de "cuál es el riesgo" a "qué hacemos con la cartera".
           </div>
         </div>
+        <div role="note" style={{ margin: "0 0 16px", padding: "12px 16px", border: "1px solid #7C5A1B", borderLeft: "3px solid #F59E0B", borderRadius: 8, background: "#2A2112", color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>
+          TRANSPARENCIA DE DATOS: referencias macro codificadas, sin feed de mercado ni archivo histórico conectado. La banda es una visualización de sensibilidad, no un pronóstico estadístico. El análisis IA no aporta citas de fuentes ni probabilidades calibradas.
+        </div>
 
         {/* ── RESUMEN PARA COMITÉ DE INVERSIÓN ── */}
         {(() => {
@@ -684,8 +688,8 @@ export default function GeoRiskML() {
                 RESUMEN PARA COMITÉ DE INVERSIÓN
               </div>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: "#CBD5E1", lineHeight: 1.9 }}>
-                <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "base ZRC Research"}.</li>
-                <li>Escenario dominante: <b style={{ color: dominantScenario.color }}>{dominantScenario.label}</b> ({(weights[dominantScenario.key] * 100).toFixed(0)}% prob.).</li>
+                <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "pesos de referencia del modelo"}.</li>
+                <li>Escenario dominante: <b style={{ color: dominantScenario.color }}>{dominantScenario.label}</b> ({(normalizedWeights[dominantScenario.key] * 100).toFixed(0)}% del peso normalizado).</li>
                 {top && (
                   <li>Llamada táctica principal: <b style={{ color: top.col }}>{top.dir}</b> en <b>{top.asset}</b> — impacto estimado {top.pct >= 0 ? "+" : ""}{fmt(top.pct, 1)}% a 12M bajo el mix actual.</li>
                 )}
@@ -782,10 +786,10 @@ export default function GeoRiskML() {
               <div className="grml-card" style={{ padding:16 }}>
                 <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
                   <div>
-                    <div style={{ fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:2 }}>PROYECCIÓN ESTOCÁSTICA DE RIESGO</div>
-                    <div style={{ fontSize:12, color:"#94A3B8" }}>Horizonte 12 meses · IC 95%</div>
+                    <div style={{ fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:2 }}>BANDA DE SENSIBILIDAD DEL ESCENARIO</div>
+                    <div style={{ fontSize:12, color:"#94A3B8" }}>Horizonte indicativo · banda no calibrada</div>
                   </div>
-                  <span style={{ padding:"2px 8px", background:"rgba(22,163,74,0.12)", border:"1px solid rgba(22,163,74,0.3)", borderRadius:3, fontSize:10, fontFamily:"monospace", color:"#4ADE80" }}>AUTO-UPDATE</span>
+                  <span style={{ padding:"2px 8px", background:"rgba(22,163,74,0.12)", border:"1px solid rgba(22,163,74,0.3)", borderRadius:3, fontSize:10, fontFamily:"monospace", color:"#4ADE80" }}>RECALCULA AL CAMBIAR PESOS</span>
                 </div>
                 {forecast && <ForecastChart curve={forecast} color={riskColor} />}
                 <div style={{ marginTop:8, display:"flex", gap:16, justifyContent:"flex-end" }}>
@@ -808,8 +812,8 @@ export default function GeoRiskML() {
               <div className="grml-card" style={{ borderColor:"rgba(139,92,246,0.25)", padding:16 }}>
                 <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
                   <div>
-                    <div style={{ fontSize:11, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, marginBottom:2 }}>ANÁLISIS ML — CLAUDE SONNET</div>
-                    <div style={{ fontSize:12, color:"#94A3B8" }}>Forecast + señales institucionales</div>
+                    <div style={{ fontSize:11, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, marginBottom:2 }}>ANÁLISIS ASISTIDO POR IA</div>
+                    <div style={{ fontSize:12, color:"#94A3B8" }}>Síntesis narrativa a partir de los supuestos actuales</div>
                   </div>
                   <button className="grml-btn" onClick={runMLForecast} disabled={mlLoading} style={{
                     padding:"6px 14px", background: mlLoading ? "#16301f" : "linear-gradient(135deg,#4c1d95,#7c3aed)",
@@ -822,7 +826,7 @@ export default function GeoRiskML() {
 
                 {!mlForecast && !mlLoading && !mlError && (
                   <div style={{ padding:"24px 0", textAlign:"center", color:"#475569", fontSize:13, fontFamily:"monospace" }}>
-                    Pulsa ANALIZAR para ejecutar el motor ML sobre el perfil de riesgo actual
+                    Pulsa ANALIZAR para pedir a la IA una síntesis del perfil actual; no usa datos externos ni entrenamiento predictivo propio.
                   </div>
                 )}
 
@@ -1315,7 +1319,7 @@ export default function GeoRiskML() {
         <footer style={{ padding:"20px 0", marginTop:30, borderTop:"1px solid #16301f", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:8 }}>
           <div style={{ fontSize:11, color:"#475569", fontFamily:"monospace", lineHeight:1.6 }}>
             © 2026 Zenith Rise Capital · Calesius Global SL · Madrid, España
-            <br />GeoRisk ML v1.0 · Powered by Claude Sonnet · Horizonte 12M · Recalibración continua
+            <br />GeoRisk ML · Claude Sonnet bajo demanda · Sin serie histórica ni recalibración automática
           </div>
           <div style={{ display:"flex", gap:10, alignItems:"center" }}>
             <span style={{ fontSize:11, color:"#475569", fontFamily:"monospace" }}>zenithrisecapital.com</span>
