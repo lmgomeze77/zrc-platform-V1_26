@@ -529,8 +529,8 @@ export default function GeoRiskML() {
 
   // Build an illustrative sensitivity band when scenario assumptions change
   useEffect(() => {
-    setForecast(buildForecast(compositeRisk, weights));
-  }, [compositeRisk, weights]);
+    setForecast(buildForecast(compositeRisk, normalizedWeights));
+  }, [compositeRisk, normalizedWeights]);
 
   const runMLForecast = async () => {
     setMlLoading(true); setMlError(null); setMlForecast(null);
