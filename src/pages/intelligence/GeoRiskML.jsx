@@ -813,7 +813,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
           <div style={{ fontSize: 12, lineHeight: 1.6, marginTop: 6, color: "#CBD5E1" }}><b>Consejo:</b> {sectionGuide.tip}</div>
         </div>
 
-        {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */>
+        {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
         {tab === "forecast" && (
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
             <div className="grml-two-col" style={{ gap:12, marginBottom:16 }}>
