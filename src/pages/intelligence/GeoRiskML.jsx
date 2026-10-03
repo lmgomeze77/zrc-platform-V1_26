@@ -693,7 +693,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                 {top && (
                   <li>Llamada táctica principal: <b style={{ color: top.col }}>{top.dir}</b> en <b>{top.asset}</b> — impacto estimado {top.pct >= 0 ? "+" : ""}{fmt(top.pct, 1)}% a 12M bajo el mix actual.</li>
                 )}
-                <li>Pulsa <b>ANALIZAR</b> en la pestaña Predictivo ML para un outlook 30D/90D generado por IA, o <b>EJECUTAR ENGINE</b> en Decision Engine para recomendaciones tácticas con conviction level.</li>
+                <li>Pulsa <b>ANALIZAR</b> en la pestaña Sensibilidad + IA para una síntesis generada a partir de estos supuestos, o <b>EJECUTAR ENGINE</b> en Decision Engine para recomendaciones tácticas con conviction level.</li>
               </ul>
             </div>
           );
@@ -792,19 +792,8 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                   <span style={{ padding:"2px 8px", background:"rgba(22,163,74,0.12)", border:"1px solid rgba(22,163,74,0.3)", borderRadius:3, fontSize:10, fontFamily:"monospace", color:"#4ADE80" }}>RECALCULA AL CAMBIAR PESOS</span>
                 </div>
                 {forecast && <ForecastChart curve={forecast} color={riskColor} />}
-                <div style={{ marginTop:8, display:"flex", gap:16, justifyContent:"flex-end" }}>
-                  {["30D","60D","90D"].map((h, i) => {
-                    const pts = forecast ? [forecast[3], forecast[6], forecast[9]] : [];
-                    const v = pts[i]?.v;
-                    const ci = pts[i] ? (pts[i].hi - pts[i].lo) / 2 : 0;
-                    return v ? (
-                      <div key={h} style={{ textAlign:"center" }}>
-                        <div style={{ fontSize:9, color:"#64748B", fontFamily:"monospace" }}>{h}</div>
-                        <div style={{ fontSize:15, fontWeight:700, color:v<40?"#10B981":v<65?"#F59E0B":"#EF4444", fontFamily:"monospace" }}>{v.toFixed(0)}</div>
-                        <div style={{ fontSize:9, color:"#475569", fontFamily:"monospace" }}>±{ci.toFixed(1)}</div>
-                      </div>
-                    ) : null;
-                  })}
+                <div style={{ marginTop:8, fontSize:11, color:"#64748B", lineHeight:1.5 }}>
+                  La banda se ensancha solo como ayuda visual; no representa fechas, probabilidades ni un intervalo estadístico.
                 </div>
               </div>
 
