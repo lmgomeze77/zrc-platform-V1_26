@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { calculateYearOverYearCpi, fetchGeoRiskMacroSeries } from "../src/worker/georisk-macro.js";
+import { ensureGeoRiskMarketSchema } from "../src/worker/georisk-market-schema.js";
 
 test("US CPI inflation compares the same month across years and skips annual rows", () => {
   const rows = [
@@ -39,4 +40,19 @@ test("macro feed keeps official metadata and isolates a failed source", async ()
   assert.equal(result.series.find(s => s.id === "ECB_DEPOSIT_RATE").latest.value, 2);
   assert.ok(calls.find(call => call.options.method === "POST" && call.options.body.includes("CUUR0000SA0")));
   assert.ok(result.series.every(item => item.source_url && item.unit));
+});
+
+
+test("D1 archive bootstrap creates only missing tables and runs once per binding", async () => {
+  let batchCalls = 0;
+  let statements = [];
+  const db = {
+    prepare: sql => sql,
+    batch: async sql => { batchCalls++; statements = sql; return { success: true }; },
+  };
+  await ensureGeoRiskMarketSchema(db);
+  await ensureGeoRiskMarketSchema(db);
+  assert.equal(batchCalls, 1);
+  assert.equal(statements.length, 5);
+  assert.ok(statements.every(sql => sql.includes("IF NOT EXISTS")));
 });
