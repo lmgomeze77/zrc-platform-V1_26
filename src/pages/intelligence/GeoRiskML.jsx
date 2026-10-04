@@ -1,4 +1,4 @@
-import GeoRiskMarketData from "../../components/GeoRiskMarketData";
+import GeoRiskMarketData from "../../components/GeoRiskMarketData";\nimport GeoRiskMacroData from "../../components/GeoRiskMacroData";
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { Sparkles, TrendingUp, Radar, Grid3x3, MessageSquare, Target, RotateCcw } from "lucide-react";
 
@@ -829,7 +829,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
         </div>
 
         {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
-        {tab === "data" && <GeoRiskMarketData region={region} />}
+        {tab === "data" && <GeoRiskMarketData region={region} />\n          <GeoRiskMacroData />}
 
         {tab === "forecast" && (
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
