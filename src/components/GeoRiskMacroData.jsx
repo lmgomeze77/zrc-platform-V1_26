@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const endpoint = "https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-macro-data";
 const historyEndpoint = "https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-macro-data/history";
 const fmt = value => new Intl.NumberFormat("es-ES", { maximumFractionDigits: 2 }).format(value);
-const date = value => value ? new Date(value + "T12:00:00Z").toLocaleDateString("es-ES") : "—";
+const date = value => value ? new Date(value.length === 10 ? value + "T12:00:00Z" : value).toLocaleString("es-ES", { timeZone: "Europe/Madrid" }) : "No disponible";
 const control = { background: "#101f30", color: "#E2E8F0", border: "1px solid #475569", borderRadius: 6, padding: "8px 12px", cursor: "pointer" };
 
 export default function GeoRiskMacroData() {
@@ -43,16 +43,16 @@ export default function GeoRiskMacroData() {
     {error && <div role="alert" style={{ color: "#FBBF24", fontSize: 13 }}>{error} <button style={control} onClick={() => setAttempt(x => x + 1)}>Reintentar</button></div>}
     {data && <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", gap: 12, marginTop: 14 }}>
       {data.series.map(item => <article key={item.id} style={{ background: "#101f30", border: "1px solid #334155", borderRadius: 9, padding: 14 }}>
-        <div style={{ fontSize: 12, color: "#94A3B8" }}>{item.region === "eu" ? "Zona Euro" : "Estados Unidos"} · {item.frequency === "monthly" ? "mensual" : "diario"}</div>
+        <div style={{ fontSize: 12, color: "#94A3B8" }}>{item.derived ? "Dato calculado a partir de observaciones" : "Dato observado"} · {item.region === "eu" ? "Zona Euro" : "Estados Unidos"} · {item.frequency === "monthly" ? "mensual" : "diario"}</div>
         <h3 style={{ fontSize: 15, margin: "6px 0 12px" }}>{item.label}</h3>
-        {item.latest ? <><strong style={{ fontSize: 27 }}>{fmt(item.latest.value)}</strong> <span>{item.unit}</span><div style={{ fontSize: 12, marginTop: 5 }}>Fecha del dato: {date(item.latest.date)}</div></> : <p role="status">Fuente temporalmente no disponible. No se muestran cifras de ejemplo.</p>}
+        {item.latest ? <><strong style={{ fontSize: 27 }}>{fmt(item.latest.value)}</strong> <span>{item.unit}</span><div style={{ fontSize: 12, marginTop: 5 }}>Periodo del dato: {item.frequency === "monthly" ? item.latest.date.slice(0, 7) : item.latest.date}</div></> : <p role="status">Fuente temporalmente no disponible. No se muestran cifras de ejemplo.</p>}
         {(item.collection_stale || item.observation_stale) && <p role="status" style={{ color: "#FBBF24", fontSize: 12 }}>La captura o la publicación tiene retraso. Comprueba la fecha del dato antes de utilizarlo.</p>}
-        {item.source_captured_at && <div style={{ fontSize: 11, marginTop: 5 }}>Fuente comprobada: {date(item.source_captured_at.slice(0, 10))}</div>}
+        {item.source_captured_at && <div style={{ fontSize: 11, marginTop: 5 }}>Última captura de la fuente: {date(item.source_captured_at)}</div>}
         {item.latest && <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginTop: 12 }}>
           <button style={control} onClick={() => download(item)} disabled={downloading === item.id}>{downloading === item.id ? "Preparando…" : "Descargar histórico"}</button>
           <a href={item.source_url} target="_blank" rel="noopener noreferrer" style={{ color: "#93C5FD", fontSize: 12 }}>Ver fuente oficial</a>
         </div>}
-        <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 10 }}>Publicación más reciente · {item.provider}</div>
+        <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 10 }}>Serie: {item.id} · Proveedor: {item.provider}<br />Fecha de publicación: no facilitada por esta conexión.<br />{item.latest ? "Última consulta correcta de esta serie: " + date(data.fetched_at) : "Consulta sin observaciones disponibles."}<br />{error && "La actualización ha fallado; se conserva el último resultado recibido."}</div>
       </article>)}
     </div>}
     <p style={{ fontSize: 11, color: "#94A3B8", marginTop: 14 }}>Inflación de EE. UU.: calculamos cuánto han subido los precios respecto al mismo mes del año anterior. Usamos el IPC oficial de BLS, distribuido gratuitamente por FRED, sin ajuste estacional. BCE: tipo de depósito y rendimiento de deuda a 10 años. La frecuencia de publicación y posibles revisiones dependen de cada fuente.</p>
