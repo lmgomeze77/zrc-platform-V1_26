@@ -44,11 +44,11 @@ async function fetchEcb(item, fetchImpl, start) {
 
 async function fetchBls(item, fetchImpl, now) {
   const end = now.getUTCFullYear(), start = end - YEARS;
-  const response = await fetchImpl(BLS_BASE + item.key + `?startyear=${start}&endyear=${end}`, { signal: AbortSignal.timeout(20000) });
+  const response = await fetchImpl(BLS_BASE, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ seriesid: [item.key], startyear: String(start), endyear: String(end) }), signal: AbortSignal.timeout(20000) });
   if (!response.ok) throw new Error(`BLS HTTP ${response.status}`);
   const body = await response.json();
   if (body.status !== "REQUEST_SUCCEEDED") throw new Error(body.message?.join("; ") || "BLS no pudo devolver CPI");
-  const rows = body.Results?.series?.[0]?.data || [];
+  const rows = body.Results?.series?.[0]?.data || body.Results?.[0]?.series?.[0]?.data || [];
   return calculateYearOverYearCpi(rows);
 }
 
