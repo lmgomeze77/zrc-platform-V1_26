@@ -1,3 +1,4 @@
+import { ensureGeoRiskMarketSchema } from "./georisk-market-schema.js";
 // Free official macro series: ECB SDW, Eurostat HICP and BLS CPI.
 // Keep raw observations separate from GeoRisk scenario assumptions.
 export const MACRO_SERIES = [
@@ -87,6 +88,7 @@ export async function fetchGeoRiskMacroSeries(fetchImpl = fetch, now = new Date(
 
 export async function storeGeoRiskMacroSeries(db, result, now = new Date()) {
   if (!db) throw new Error("D1 archive binding unavailable");
+  await ensureGeoRiskMarketSchema(db);
   const collectedAt = now.toISOString();
   let newObservations = 0, revisions = 0;
   for (const item of result.series) {
