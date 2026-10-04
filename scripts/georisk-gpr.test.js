@@ -91,3 +91,21 @@ test("official macro archive records corrected historical values without losing 
     assert.equal(sql.prepare("SELECT first_collected_at FROM georisk_market_observations").get().first_collected_at, now.toISOString());
   } finally { sql.close(); }
 });
+
+test("CPI provider switch preserves old captures without duplicating the active download", async () => {
+  const { sql, db } = sqliteBinding();
+  try {
+    for (const provider of ["BLS", "FRED"]) await storeGeoRiskMacroSeries(db, { series: [{
+      id: "US_CPI", provider, unit: "% interanual", source_url: provider === "FRED" ? "https://fred.stlouisfed.org/series/CPIAUCNS" : "https://www.bls.gov/cpi/data.htm",
+      derived: true, status: "available", points: [{ date: "2026-08-01", value: 3.4 }],
+    }] }, now);
+    const response = await worker.fetch(new Request("https://example.com/api/georisk-macro-data/history?series=US_CPI"), { DB: db }, {});
+    assert.equal(response.status, 200);
+    const body = await response.json();
+    assert.equal(body.points.length, 1);
+    assert.equal(body.points[0].provider, "FRED");
+    assert.equal(body.points[0].source_url, "https://fred.stlouisfed.org/series/CPIAUCNS");
+    assert.equal(body.points[0].is_derived, 1);
+    assert.equal(sql.prepare("SELECT COUNT(*) AS n FROM georisk_market_observations WHERE series_id='US_CPI'").get().n, 2);
+  } finally { sql.close(); }
+});
