@@ -9,7 +9,9 @@ on:
       - 'src/pages/intelligence/**'
       - 'src/components/GeoRiskMarketData.jsx'
       - 'src/pages/PricingPage.jsx'
-      - 'scripts/georisk-market.test.js'\n      - 'scripts/georisk-macro.test.js'\n      - 'src/components/GeoRiskMacroData.jsx'
+      - 'scripts/georisk-market.test.js'
+      - 'scripts/georisk-macro.test.js'
+      - 'src/components/GeoRiskMacroData.jsx'
       - '.github/workflows/georisk-data-check.yml'
 jobs:
   verify:
