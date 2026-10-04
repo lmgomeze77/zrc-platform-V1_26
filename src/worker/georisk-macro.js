@@ -86,22 +86,35 @@ export function parseFredCpiCsv(csv, seriesKey = "CPIAUCNS", now = new Date()) {
   return calculateYearOverYearCpi(rows).filter(point => point.date >= start);
 }
 
-async function fetchFredCpi(item, fetchImpl, now) {
+async function fetchFredCpi(item, fetchImpl, now, env) {
+  if (env?.ASSETS) {
+    const response = await env.ASSETS.fetch(new Request("https://assets.local/data/georisk-fred-cpi.json"));
+    if (!response.ok) throw new Error("Archivo CPI verificado no disponible");
+    const snapshot = await response.json();
+    const captured = Date.parse(snapshot.source_captured_at);
+    if (snapshot.schema_version !== 1 || snapshot.series !== item.key || snapshot.provider !== "FRED" || snapshot.original_provider !== "BLS" || snapshot.seasonal_adjustment !== "none" || !Array.isArray(snapshot.points) || snapshot.points.length < 13 || !/^[a-f0-9]{64}$/.test(snapshot.source_sha256 || "") || !Number.isFinite(captured) || captured > now.getTime()) throw new Error("Archivo CPI inválido");
+    const csv = "observation_date,CPIAUCNS\n" + snapshot.points.map(point => `${point.date},${point.value}`).join("\n");
+    const points = parseFredCpiCsv(csv, item.key, now);
+    const age = points.length ? (now.getTime() - Date.parse(points.at(-1).date)) / 86400000 : Infinity;
+    return { points, source_captured_at: snapshot.source_captured_at, source_sha256: snapshot.source_sha256,
+      collection_stale: (now.getTime() - captured) / 86400000 > 10, observation_stale: age > 100 };
+  }
   // Download an extra year to calculate ten years of year-over-year rates.
   const params = new URLSearchParams({ id: item.key, cosd: `${now.getUTCFullYear() - YEARS - 1}-01-01` });
   const response = await fetchImpl(FRED_CSV + "?" + params, { headers: { Accept: "text/csv" }, signal: AbortSignal.timeout(20000) });
   if (!response.ok) throw new Error(`FRED HTTP ${response.status}`);
-  return parseFredCpiCsv(await response.text(), item.key, now);
+  return { points: parseFredCpiCsv(await response.text(), item.key, now) };
 }
 
-export async function fetchGeoRiskMacroSeries(fetchImpl = fetch, now = new Date()) {
+export async function fetchGeoRiskMacroSeries(fetchImpl = fetch, now = new Date(), env = {}) {
   const start = `${now.getUTCFullYear() - YEARS}-01-01`;
   const results = await Promise.all(MACRO_SERIES.map(async item => {
     try {
-      const points = item.endpoint === "fred" ? await fetchFredCpi(item, fetchImpl, now) : item.endpoint === "eurostat" ? await fetchEurostatHicp(fetchImpl) : await fetchEcb(item, fetchImpl, start);
+      const fred = item.endpoint === "fred" ? await fetchFredCpi(item, fetchImpl, now, env) : null;
+      const points = fred ? fred.points : item.endpoint === "eurostat" ? await fetchEurostatHicp(fetchImpl) : await fetchEcb(item, fetchImpl, start);
       points.sort((a, b) => a.date.localeCompare(b.date));
       const latest = points.at(-1) || null;
-      return { ...item, points, latest, status: latest ? "available" : "unavailable" };
+      return { ...item, ...fred, points, latest, status: latest ? "available" : "unavailable" };
     } catch (error) {
       return { ...item, points: [], latest: null, status: "unavailable", error: String(error.message || error) };
     }
@@ -154,7 +167,7 @@ export async function storeGeoRiskMacroSeries(db, result, now = new Date()) {
 
 export async function handleGeoRiskMacroData(request, env, fetchImpl = fetch) {
   try {
-    const result = await fetchGeoRiskMacroSeries(fetchImpl);
+    const result = await fetchGeoRiskMacroSeries(fetchImpl, new Date(), env);
     let archive;
     try { archive = await storeGeoRiskMacroSeries(env.DB, result); }
     catch (error) { archive = { status: "unavailable", message: "No se pudo guardar esta consulta en el histórico." }; }

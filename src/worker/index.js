@@ -45,7 +45,7 @@ export default {
     // A market-data failure must never prevent the weekly index or email.
     ctx.waitUntil(collectECBMarketHistory(env.DB));
     ctx.waitUntil(collectGprHistory(env).catch(error => console.error("GPR collection failed:", error.message)));
-    ctx.waitUntil((async () => { const result = await fetchGeoRiskMacroSeries(); await storeGeoRiskMacroSeries(env.DB, result); })().catch(error => console.error("GeoRisk macro archive collection failed:", error.message)));
+    ctx.waitUntil((async () => { const result = await fetchGeoRiskMacroSeries(fetch, new Date(), env); await storeGeoRiskMacroSeries(env.DB, result); })().catch(error => console.error("GeoRisk macro archive collection failed:", error.message)));
   },
 };
 

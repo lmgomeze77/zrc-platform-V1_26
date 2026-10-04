@@ -85,3 +85,25 @@ test("FRED failure is isolated from the three other macro sources", async () => 
   assert.equal(result.series.filter(s => s.status === "available").length, 3);
   assert.equal(result.series.find(s => s.id === "US_CPI").error, "FRED HTTP 429");
 });
+
+test("production CPI uses the verified asset and flags an old capture", async () => {
+  const snapshot = {
+    schema_version: 1, provider: "FRED", original_provider: "BLS", series: "CPIAUCNS", seasonal_adjustment: "none",
+    source_captured_at: "2026-09-01T00:00:00Z", source_sha256: "a".repeat(64),
+    points: [...Array.from({length:12},(_,index)=>({date:`2025-${String(index+1).padStart(2,'0')}-01`,value:100})), {date:"2026-08-01",value:110}],
+  };
+  const fakeFetch = async url => {
+    assert.ok(!String(url).includes("fredgraph"), "production must not call the blocked FRED endpoint");
+    if (String(url).includes("eurostat")) return {ok:true,json:async()=>({dimension:{time:{category:{index:{"2026-08":0}}}},value:[2.2]})};
+    return {ok:true,text:async()=>"TIME_PERIOD,OBS_VALUE\n2026-10-01,2\n"};
+  };
+  const env = {ASSETS:{fetch:async()=>Response.json(snapshot)}};
+  let result = await fetchGeoRiskMacroSeries(fakeFetch,new Date("2026-10-04"),env);
+  const cpi=result.series.find(s=>s.id==="US_CPI");
+  assert.equal(cpi.latest.value,10);
+  assert.equal(cpi.collection_stale,true);
+  assert.equal(cpi.observation_stale,false);
+  snapshot.seasonal_adjustment="adjusted";
+  result = await fetchGeoRiskMacroSeries(fakeFetch,new Date("2026-10-04"),env);
+  assert.equal(result.series.find(s=>s.id==="US_CPI").status,"unavailable");
+});
