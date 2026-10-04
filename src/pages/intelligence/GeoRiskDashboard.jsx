@@ -253,24 +253,33 @@ function MiniBar({ value, max = 1, color, width = 80 }) {
 
 function DataTicker({ items }) {
   return (
-    <div style={{
-      position: "relative", padding: "9px 0",
-      borderTop: "1px solid #16233d", borderBottom: "1px solid #16233d",
-      background: "linear-gradient(180deg, #0a1220 0%, #0a1322 100%)",
+    <div className="zrc-macro-summary" role="region" aria-label="Indicadores del escenario" style={{
+      padding: 12, border: "1px solid #263754", borderRadius: 12,
+      background: "#0D182B",
     }}>
-      <div style={{ display: "flex", gap: 28, overflow: "hidden", animation: "zrc-ticker 30s linear infinite", whiteSpace: "nowrap" }}>
-        {[...items, ...items].map((item, i) => (
-          <span key={i} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "#94A3B8", letterSpacing: 0.5 }}>
-            <span style={{ color: "#5B9BFF" }}>{item.label}</span>
-            {" "}
-            <span style={{ color: item.delta > 0 ? "#10B981" : item.delta < 0 ? "#EF4444" : "#94A3B8" }}>
-              {item.value} {item.delta > 0 ? "▲" : item.delta < 0 ? "▼" : "●"}
+      {items.map((item) => (
+        <div key={item.label} style={{
+          minWidth: 0, padding: "12px 14px", borderRadius: 8,
+          background: "#132139", border: "1px solid #2B3D5B",
+        }}>
+          <div style={{ color: "#CBD5E1", fontSize: 12, lineHeight: 1.5, overflowWrap: "anywhere" }}>
+            {item.label}
+          </div>
+          <div style={{
+            marginTop: 6, color: "#F8FAFC", fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 20, fontWeight: 700, lineHeight: 1.4, fontVariantNumeric: "tabular-nums",
+            overflowWrap: "anywhere",
+          }}>
+            {item.value}
+            <span aria-label={item.delta > 0 ? "Aumento en el escenario" : item.delta < 0 ? "Descenso en el escenario" : "Sin cambio en el escenario"} style={{
+              marginLeft: 8, fontSize: 13,
+              color: item.delta > 0 ? "#34D399" : item.delta < 0 ? "#FDA4AF" : "#CBD5E1",
+            }}>
+              {item.delta > 0 ? "▲" : item.delta < 0 ? "▼" : "●"}
             </span>
-          </span>
-        ))}
-      </div>
-      <div style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: 48, background: "linear-gradient(90deg, #0a1322, transparent)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: 48, background: "linear-gradient(270deg, #0a1322, transparent)", pointerEvents: "none" }} />
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -416,7 +425,9 @@ export default function GeoRiskDashboard() {
       <style>{`
         @keyframes zrc-pulse { 0%,100% { opacity:1 } 50% { opacity:0.4 } }
         @keyframes zrc-fadeIn { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:translateY(0) } }
-        @keyframes zrc-ticker { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+        .zrc-macro-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+        @media (max-width: 720px) { .zrc-macro-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 360px) { .zrc-macro-summary { grid-template-columns: 1fr; } }
         @keyframes zrc-scanline { from { top: -2px } to { top: 100% } }
         @keyframes zrc-gridPulse { 0%,100% { opacity:0.025 } 50% { opacity:0.05 } }
         .zrc-georisk input[type=range] { -webkit-appearance: none; height: 3px; background: #1a2744; border-radius: 2px; outline: none }
