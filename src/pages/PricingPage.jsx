@@ -177,6 +177,10 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
         </div>
 
         {/* Plan cards */}
+        <p style={{ color: C.textMuted, fontSize: 12, lineHeight: 1.7 }}>
+          {lang === "es" ? "Los datos de divisas del BCE incluidos en GeoRisk también se pueden obtener gratuitamente en la web del BCE. La suscripción corresponde a las herramientas y al análisis de ZRC." : "ECB foreign exchange data included in GeoRisk are also freely available on the ECB website. Your subscription covers ZRC tools and analysis."}
+          {" "}<a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html" target="_blank" rel="noopener noreferrer" style={{ color: C.gold }}>BCE / ECB</a>
+        </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 1 }}>
           {PLANS.map((plan) => {
             const billing_ = billing === "annual" ? plan.annual : plan.monthly;
