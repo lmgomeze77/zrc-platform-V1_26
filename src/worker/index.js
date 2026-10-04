@@ -1,4 +1,4 @@
-import { handleGeoRiskMarket } from "./georisk-market.js";
+import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";
 // src/worker/index.js
 // ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
 
@@ -38,6 +38,8 @@ export default {
       const snap = await computeAndStoreWeeklySnapshot(env, "zrc_weekly_cron");
       await sendWeeklyDigestEmails(env, snap);
     })());
+    // A market-data failure must never prevent the weekly index or email.
+    ctx.waitUntil(collectECBMarketHistory(env.DB));
   },
 };
 
@@ -83,8 +85,11 @@ async function handleRequest(request, env, ctx) {
     if (url.pathname === "/api/inner-circle/approve" && request.method === "GET")
       return handleInnerCircleApprove(request, env);
 
+    if (url.pathname === "/api/georisk-market-data/history" && request.method === "GET")
+      return getECBArchiveHistory(env.DB, request);
+
     if (url.pathname === "/api/georisk-market-data" && request.method === "GET")
-      return handleGeoRiskMarket(request, ctx);
+      return handleGeoRiskMarket(request, env, ctx);
 
     if (url.pathname === "/api/georisk-index" && request.method === "GET")
       return handleGeoRiskIndexGet(request, env);
