@@ -252,34 +252,38 @@ function MiniBar({ value, max = 1, color, width = 80 }) {
 }
 
 function DataTicker({ items }) {
+  const renderItems = (duplicate = false) => items.map((item) => (
+    <div
+      key={`${duplicate ? "copy-" : ""}${item.label}`}
+      className="zrc-ticker-item"
+      aria-hidden={duplicate ? "true" : undefined}
+      title={`${item.label}: ${item.value}. Referencia simulada del escenario; no es una cotización en tiempo real.`}
+    >
+      <span className="zrc-ticker-label">{item.label}</span>
+      <strong className="zrc-ticker-value">{item.value}</strong>
+      <span
+        className="zrc-ticker-direction"
+        aria-label={item.delta > 0 ? "Aumento en el escenario" : item.delta < 0 ? "Descenso en el escenario" : "Sin cambio en el escenario"}
+        style={{ color: item.delta > 0 ? "#34D399" : item.delta < 0 ? "#FDA4AF" : "#CBD5E1" }}
+      >
+        {item.delta > 0 ? "▲" : item.delta < 0 ? "▼" : "●"}
+      </span>
+      <span className="zrc-ticker-kind">SIMULACIÓN</span>
+    </div>
+  ));
+
   return (
-    <div className="zrc-macro-summary" role="region" aria-label="Indicadores del escenario" style={{
-      padding: 12, border: "1px solid #263754", borderRadius: 12,
-      background: "#0D182B",
-    }}>
-      {items.map((item) => (
-        <div key={item.label} style={{
-          minWidth: 0, padding: "12px 14px", borderRadius: 8,
-          background: "#132139", border: "1px solid #2B3D5B",
-        }}>
-          <div style={{ color: "#CBD5E1", fontSize: 12, lineHeight: 1.5, overflowWrap: "anywhere" }}>
-            {item.label}
-          </div>
-          <div style={{
-            marginTop: 6, color: "#F8FAFC", fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 20, fontWeight: 700, lineHeight: 1.4, fontVariantNumeric: "tabular-nums",
-            overflowWrap: "anywhere",
-          }}>
-            {item.value}
-            <span aria-label={item.delta > 0 ? "Aumento en el escenario" : item.delta < 0 ? "Descenso en el escenario" : "Sin cambio en el escenario"} style={{
-              marginLeft: 8, fontSize: 13,
-              color: item.delta > 0 ? "#34D399" : item.delta < 0 ? "#FDA4AF" : "#CBD5E1",
-            }}>
-              {item.delta > 0 ? "▲" : item.delta < 0 ? "▼" : "●"}
-            </span>
-          </div>
+    <div className="zrc-ticker-shell" role="region" aria-label="Indicadores simulados del escenario">
+      <div className="zrc-ticker-heading">
+        <span>INDICADORES DEL ESCENARIO</span>
+        <span>Desliza o toca para pausar</span>
+      </div>
+      <div className="zrc-ticker-window" tabIndex={0} aria-label="Cinta desplazable. Todos los valores son referencias simuladas, no cotizaciones en tiempo real.">
+        <div className="zrc-ticker-track">
+          <div className="zrc-ticker-group">{renderItems(false)}</div>
+          <div className="zrc-ticker-group" aria-hidden="true">{renderItems(true)}</div>
         </div>
-      ))}
+      </div>
     </div>
   );
 }
@@ -425,9 +429,33 @@ export default function GeoRiskDashboard() {
       <style>{`
         @keyframes zrc-pulse { 0%,100% { opacity:1 } 50% { opacity:0.4 } }
         @keyframes zrc-fadeIn { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:translateY(0) } }
-        .zrc-macro-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-        @media (max-width: 720px) { .zrc-macro-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (max-width: 360px) { .zrc-macro-summary { grid-template-columns: 1fr; } }
+        @keyframes zrc-ticker-scroll { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+        .zrc-ticker-shell { margin-top: 2px; border: 1px solid #263754; border-radius: 12px; background: #0D182B; overflow: hidden; }
+        .zrc-ticker-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 14px; border-bottom: 1px solid #263754; color: #60A5FA; font: 700 10px/1.4 'JetBrains Mono', monospace; letter-spacing: .09em; }
+        .zrc-ticker-heading span:last-child { color: #64748B; font-weight: 500; letter-spacing: .02em; text-transform: none; }
+        .zrc-ticker-window { overflow-x: auto; overflow-y: hidden; outline: none; touch-action: pan-x; scrollbar-width: none; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(90deg, transparent, #000 18px, #000 calc(100% - 18px), transparent); mask-image: linear-gradient(90deg, transparent, #000 18px, #000 calc(100% - 18px), transparent); }
+        .zrc-ticker-window::-webkit-scrollbar { display: none; }
+        .zrc-ticker-window:focus-visible { box-shadow: 0 0 0 2px #60A5FA inset; }
+        .zrc-ticker-track { display: flex; width: max-content; animation: zrc-ticker-scroll 42s linear infinite; will-change: transform; }
+        .zrc-ticker-window:hover .zrc-ticker-track,
+        .zrc-ticker-window:focus .zrc-ticker-track,
+        .zrc-ticker-window:active .zrc-ticker-track { animation-play-state: paused; }
+        .zrc-ticker-group { display: flex; flex: none; align-items: stretch; }
+        .zrc-ticker-item { display: grid; grid-template-columns: auto auto auto; grid-template-areas: 'label value direction' 'kind kind kind'; align-items: center; column-gap: 8px; row-gap: 4px; min-width: 245px; padding: 12px 18px; border-right: 1px solid #263754; white-space: nowrap; }
+        .zrc-ticker-label { grid-area: label; color: #93C5FD; font: 500 13px/1.35 'JetBrains Mono', monospace; }
+        .zrc-ticker-value { grid-area: value; color: #F8FAFC; font: 700 16px/1.35 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
+        .zrc-ticker-direction { grid-area: direction; font: 700 11px/1 'JetBrains Mono', monospace; }
+        .zrc-ticker-kind { grid-area: kind; color: #64748B; font: 600 9px/1.3 'JetBrains Mono', monospace; letter-spacing: .08em; }
+        @media (max-width: 720px) {
+          .zrc-ticker-heading { padding-inline: 12px; }
+          .zrc-ticker-item { min-width: 220px; padding: 11px 14px; }
+          .zrc-ticker-track { animation-duration: 34s; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .zrc-ticker-window { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+          .zrc-ticker-track { animation: none; }
+          .zrc-ticker-group[aria-hidden="true"] { display: none; }
+        }
         @keyframes zrc-scanline { from { top: -2px } to { top: 100% } }
         @keyframes zrc-gridPulse { 0%,100% { opacity:0.025 } 50% { opacity:0.05 } }
         .zrc-georisk input[type=range] { -webkit-appearance: none; height: 3px; background: #1a2744; border-radius: 2px; outline: none }
