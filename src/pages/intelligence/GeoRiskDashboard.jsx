@@ -1,5 +1,6 @@
 import GeoRiskMarketData from "../../components/GeoRiskMarketData";
 import GeoRiskMacroData from "../../components/GeoRiskMacroData";
+import GeoRiskGovernanceData from "../../components/GeoRiskGovernanceData";
 import { useState, useEffect, useCallback, useMemo, useId } from "react";
 import {
   Radar, Activity, MessageSquare, PieChart, RotateCcw,
@@ -613,6 +614,7 @@ export default function GeoRiskDashboard() {
         {tab === "data" && (<>
           <GeoRiskMarketData region={region} />
           <GeoRiskMacroData />
+          <GeoRiskGovernanceData />
         </>)}
 
           {tab === "scenarios" && (
