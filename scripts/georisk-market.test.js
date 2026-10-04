@@ -42,6 +42,7 @@ test("provider failure returns an explicit error and no example prices", async (
   try {
     const response = await handleGeoRiskMarket(new Request("https://example.com/api/georisk-market-data"), { waitUntil() {} });
     assert.equal(response.status, 502);
+    assert.equal(response.headers.get("Access-Control-Allow-Origin"), "*");
     assert.equal(response.headers.get("Cache-Control"), "no-store");
     const result = await response.json();
     assert.ok(result.error);
