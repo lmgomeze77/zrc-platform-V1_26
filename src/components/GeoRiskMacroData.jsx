@@ -46,6 +46,8 @@ export default function GeoRiskMacroData() {
         <div style={{ fontSize: 12, color: "#94A3B8" }}>{item.region === "eu" ? "Zona Euro" : "Estados Unidos"} · {item.frequency === "monthly" ? "mensual" : "diario"}</div>
         <h3 style={{ fontSize: 15, margin: "6px 0 12px" }}>{item.label}</h3>
         {item.latest ? <><strong style={{ fontSize: 27 }}>{fmt(item.latest.value)}</strong> <span>{item.unit}</span><div style={{ fontSize: 12, marginTop: 5 }}>Fecha del dato: {date(item.latest.date)}</div></> : <p role="status">Fuente temporalmente no disponible. No se muestran cifras de ejemplo.</p>}
+        {(item.collection_stale || item.observation_stale) && <p role="status" style={{ color: "#FBBF24", fontSize: 12 }}>La captura o la publicación tiene retraso. Comprueba la fecha del dato antes de utilizarlo.</p>}
+        {item.source_captured_at && <div style={{ fontSize: 11, marginTop: 5 }}>Fuente comprobada: {date(item.source_captured_at.slice(0, 10))}</div>}
         {item.latest && <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginTop: 12 }}>
           <button style={control} onClick={() => download(item)} disabled={downloading === item.id}>{downloading === item.id ? "Preparando…" : "Descargar histórico"}</button>
           <a href={item.source_url} target="_blank" rel="noopener noreferrer" style={{ color: "#93C5FD", fontSize: 12 }}>Ver fuente oficial</a>

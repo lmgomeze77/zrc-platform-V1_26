@@ -16,6 +16,10 @@ on:
       - 'src/components/GeoRiskMacroData.jsx'
       - 'src/components/GeoRiskGprData.jsx'
       - 'scripts/georisk-gpr.test.js'
+      - 'scripts/collect-georisk-fred.py'
+      - 'scripts/georisk-fred-python.test.py'
+      - 'public/data/georisk-fred-cpi.json'
+      - '.github/workflows/georisk-fred-refresh.yml'
       - 'scripts/collect-georisk-gpr.py'
       - 'scripts/georisk-gpr-python.test.py'
       - 'public/data/georisk-gpr.json'
@@ -38,6 +42,7 @@ jobs:
           python-version: '3.12'
       - run: pip install xlrd==2.0.1
       - run: python scripts/georisk-gpr-python.test.py
+      - run: python scripts/georisk-fred-python.test.py
       - run: node --test scripts/georisk-market.test.js scripts/georisk-macro.test.js scripts/georisk-wgi.test.js scripts/georisk-gpr.test.js
       - run: npx wrangler d1 migrations apply zrc-leads --local
       - run: npm run test:schema

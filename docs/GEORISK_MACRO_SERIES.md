@@ -32,3 +32,9 @@ La inflación estadounidense se descarga del CSV público de FRED (`/graph/fredg
 FRED distribuye el dato; BLS sigue siendo el productor original. La serie está etiquetada por FRED como dominio público con atribución solicitada. Se mantiene el identificador US_CPI para la aplicación y se guarda proveedor FRED y enlace de fuente en D1. Las capturas anteriores BLS se conservan, pero la descarga activa filtra el proveedor vigente para evitar duplicados o atribuciones incorrectas. La fecha de primera captura del nuevo proveedor comienza con su ingestión; no implica que el dato haya sido publicado ese día.
 
 El CSV identifica CPI interanual como calculado. Los valores vacíos del BCE, Eurostat y FRED no se convierten en ceros. Un error de FRED deja solo su indicador no disponible, sin bloquear los otros. La descarga CSV no requiere la clave de la API REST de FRED, pero sigue dependiendo de la disponibilidad del servicio público.
+
+## Captura FRED en producción
+
+FRED respondió HTTP 520 a la consulta directa desde Cloudflare. El Worker de producción lee un snapshot verificado de los índices originales, preparado por `scripts/collect-georisk-fred.py` y publicado con la web. El workflow `georisk-fred-refresh.yml` comprueba el CSV cada día hábil a las 18:00 UTC y despliega la captura validada. No usa clave ni se expone una clave al navegador.
+
+El snapshot conserva índices originales, SHA-256 del CSV, URL y fecha de captura. D1 conserva las tasas derivadas y sus revisiones. Captura de más de diez días o periodo de más de cien días muestra aviso de retraso; las pruebas no dan por hecho que un dato mensual es diario. Un fallo de descarga o validación no sobrescribe el último archivo válido, cuya fecha permanece visible. Para la tesis, este backfill representa lo publicado hoy; no reproduce los vintages originales.
