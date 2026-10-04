@@ -1,0 +1,26 @@
+name: GeoRisk data checks
+on:
+  pull_request:
+    paths:
+      - 'src/worker/**'
+      - 'src/pages/intelligence/**'
+      - 'src/components/GeoRiskMarketData.jsx'
+      - 'src/pages/PricingPage.jsx'
+      - 'scripts/georisk-market.test.js'
+      - '.github/workflows/georisk-data-check.yml'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test scripts/georisk-market.test.js
+      - run: npm run test:schema
+      - run: npm run build
+      - run: npx wrangler deploy --dry-run

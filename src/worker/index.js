@@ -1,3 +1,4 @@
+import { handleGeoRiskMarket } from "./georisk-market.js";
 // src/worker/index.js
 // ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
 
@@ -81,6 +82,9 @@ async function handleRequest(request, env, ctx) {
 
     if (url.pathname === "/api/inner-circle/approve" && request.method === "GET")
       return handleInnerCircleApprove(request, env);
+
+    if (url.pathname === "/api/georisk-market-data" && request.method === "GET")
+      return handleGeoRiskMarket(request, ctx);
 
     if (url.pathname === "/api/georisk-index" && request.method === "GET")
       return handleGeoRiskIndexGet(request, env);

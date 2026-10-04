@@ -1,3 +1,4 @@
+import GeoRiskMarketData from "../../components/GeoRiskMarketData";
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { Sparkles, TrendingUp, Radar, Grid3x3, MessageSquare, Target, RotateCcw } from "lucide-react";
 
@@ -460,6 +461,11 @@ Responde con este JSON exacto:
 // ── Main Component ────────────────────────────────────────────────
 
 const SECTION_GUIDES = {
+  data: {
+    title: "Consulta datos reales y su evolución",
+    body: "Compara divisas con la última referencia diaria del BCE y hasta cinco años de observaciones. Cada dato tiene fuente y fecha. Los gráficos muestran valores publicados, sin generar un histórico artificial.",
+    tip: "Consulta la fecha del dato. Las simulaciones siguen siendo supuestos y todavía no se recalibran con este histórico."
+  },
   forecast: {
     title: "Explora cómo cambian los resultados al cambiar los supuestos",
     body: "La franja muestra una variación visual alrededor del nivel de riesgo actual. No indica qué ocurrirá en los próximos meses ni la probabilidad de que ocurra. El texto de IA resume los supuestos que has introducido; no consulta noticias o datos externos.",
@@ -492,7 +498,7 @@ export default function GeoRiskML() {
   const [region, setRegion] = useState("eu");
   const [weights, setWeights] = useState({ ...DEFAULT_WEIGHTS });
   const normalizedWeights = useMemo(() => normalizeWeights(weights), [weights]);
-  const [tab, setTab] = useState("forecast");
+  const [tab, setTab] = useState("data");
   const sectionGuide = SECTION_GUIDES[tab];
   const [time, setTime] = useState(new Date());
   const [forecast, setForecast] = useState(null);
@@ -531,12 +537,15 @@ export default function GeoRiskML() {
     return total;
   }, [weights, sectorMult, region]);
 
-  const compositeRisk = useMemo(() => {
+  const baseCompositeRisk = useMemo(() => {
     let r = 0;
     const normalizedWeights = normalizeWeights(weights);
     Object.entries(SCENARIOS).forEach(([k, v]) => { r += (normalizedWeights[k] || 0) * v.risk; });
-    return clamp(r * sectorMult, 0, 100);
-  }, [weights, sectorMult]);
+    return r;
+  }, [weights]);
+
+  const compositeRisk = useMemo(() => clamp(baseCompositeRisk * sectorMult, 0, 100), [baseCompositeRisk, sectorMult]);
+  const sectorFactorChangePct = Math.round((sectorMult - 1) * 100);
 
   const dominantScenario = useMemo(() => {
     const [key] = Object.entries(weights).reduce(([bk, bv], [k, v]) => v > bv ? [k, v] : [bk, bv], ["", 0]);
@@ -604,6 +613,7 @@ export default function GeoRiskML() {
   const trajectoryColor = { ESCALATING: "#EF4444", STABLE: "#F59E0B", DECLINING: "#10B981" };
 
   const TABS = [
+    { id: "data", label: "Datos reales", icon: TrendingUp },
     { id: "forecast", label: "Sensibilidad + IA", icon: TrendingUp },
     { id: "scenarios", label: "Escenarios", icon: Radar },
     { id: "heatmap", label: "Relación escenario-variable", icon: Grid3x3 },
@@ -776,9 +786,14 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
             </div>
           </div>
 
-          <div style={{ textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }}>
-            <div style={{ fontSize:10, color:"#64748B", letterSpacing:1, marginBottom:4 }}>MULTIPLICADOR</div>
-            <div style={{ fontSize:21, fontWeight:600, color: sectorMult>1 ? "#F59E0B" : "#10B981" }}>×{sectorMult.toFixed(2)}</div>
+          <div style={{ textAlign:"right", fontFamily:"'JetBrains Mono',monospace", maxWidth:270 }}>
+            <div style={{ fontSize:10, color:"#64748B", letterSpacing:1, marginBottom:4 }}>FACTOR SECTORIAL · SUPUESTO ZRC</div>
+            <div style={{ fontSize:21, fontWeight:600, color: sectorMult>1 ? "#F59E0B" : "#10B981" }}>{sectorMult.toFixed(2)}×</div>
+            <div style={{ fontSize:11, color:"#CBD5E1", marginTop:3 }}>{baseCompositeRisk.toFixed(1)} × {sectorMult.toFixed(2)} = {compositeRisk.toFixed(1)} / 100</div>
+            <div style={{ fontSize:10, color:"#64748B", lineHeight:1.5, marginTop:4 }}>
+              {sectorFactorChangePct === 0 ? "1,00 no ajusta el riesgo base." : `Este factor ${sectorFactorChangePct < 0 ? "reduce" : "aumenta"} el riesgo un ${Math.abs(sectorFactorChangePct)}%.`}
+              {" "}También ajusta el impacto estimado en variables. Es un supuesto fijo, no se obtiene de cotizaciones históricas.
+            </div>
           </div>
 
           <div style={{ textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }}>
@@ -814,6 +829,8 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
         </div>
 
         {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
+        {tab === "data" && <GeoRiskMarketData region={region} />}
+
         {tab === "forecast" && (
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
             <div className="grml-two-col" style={{ gap:12, marginBottom:16 }}>
@@ -1344,7 +1361,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
         <footer style={{ padding:"20px 0", marginTop:30, borderTop:"1px solid #16301f", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:8 }}>
           <div style={{ fontSize:11, color:"#475569", fontFamily:"monospace", lineHeight:1.6 }}>
             © 2026 Zenith Rise Capital · Calesius Global SL · Madrid, España
-            <br />GeoRisk ML · Claude Sonnet bajo demanda · Sin serie histórica ni recalibración automática
+            <br />GeoRisk ML · Claude Sonnet bajo demanda · Divisas BCE con histórico · Simulaciones sin recalibración automática
           </div>
           <div style={{ display:"flex", gap:10, alignItems:"center" }}>
             <span style={{ fontSize:11, color:"#475569", fontFamily:"monospace" }}>zenithrisecapital.com</span>
