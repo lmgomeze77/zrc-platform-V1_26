@@ -1,5 +1,5 @@
 import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";
-import { fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
+import { MACRO_SERIES, fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
 import { ensureGeoRiskMarketSchema } from "./georisk-market-schema.js";
 import { handleGeoRiskWgi } from "./georisk-wgi.js";
 import { collectGprHistory, handleGeoRiskGpr, handleGprHistory } from "./georisk-gpr.js";
@@ -1930,12 +1930,12 @@ function escapeHTML(s) {
 
 async function handleGeoRiskMacroHistory(db, request) {
   const url = new URL(request.url), series = url.searchParams.get("series");
-  const allowed = ["ECB_DEPOSIT_RATE", "ECB_10Y_YIELD", "EU_HICP", "US_CPI"];
-  if (!allowed.includes(series)) return jsonResponse({ error: "Selecciona una serie macro válida." }, 400);
+  const definition = MACRO_SERIES.find(item => item.id === series);
+  if (!definition) return jsonResponse({ error: "Selecciona una serie macro válida." }, 400);
   if (!db) return jsonResponse({ error: "El histórico aún no está disponible." }, 503);
   await ensureGeoRiskMarketSchema(db);
   const limit = Math.min(20000, Math.max(1, Number(url.searchParams.get("limit")) || 10000));
-  const result = await db.prepare("SELECT observation_date AS date,value,unit,is_derived,first_collected_at,last_revised_at FROM georisk_market_observations WHERE series_id=? ORDER BY observation_date ASC LIMIT ?").bind(series, limit).all();
+  const result = await db.prepare("SELECT observation_date AS date,value,unit,provider,source_url,is_derived,first_collected_at,last_revised_at FROM georisk_market_observations WHERE series_id=? AND provider=? ORDER BY observation_date ASC LIMIT ?").bind(series, definition.provider, limit).all();
   const points = result.results || [];
   return jsonResponse({ series, points, oldest: points[0]?.date || null, latest: points.at(-1)?.date || null });
 }

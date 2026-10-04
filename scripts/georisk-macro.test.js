@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { calculateYearOverYearCpi, fetchGeoRiskMacroSeries } from "../src/worker/georisk-macro.js";
+import { calculateYearOverYearCpi, fetchGeoRiskMacroSeries, parseFredCpiCsv } from "../src/worker/georisk-macro.js";
 import { ensureGeoRiskMarketSchema } from "../src/worker/georisk-market-schema.js";
 
 test("US CPI inflation compares the same month across years and skips annual rows", () => {
@@ -25,12 +25,7 @@ test("macro feed keeps official metadata and isolates a failed source", async ()
     if (String(url).includes("data-api.ecb.europa.eu")) return {
       ok: true, text: async () => "TIME_PERIOD,OBS_VALUE\n2026-10-01,2.0\n",
     };
-    return {
-      ok: true, json: async () => ({ status: "REQUEST_SUCCEEDED", Results: { series: [{ data: [
-        { year: "2025", period: "M02", value: "110" },
-        { year: "2024", period: "M02", value: "100" },
-      ] }] } }),
-    };
+    return { ok: true, text: async () => "observation_date,CPIAUCNS\n2024-02-01,100\n2025-02-01,110\n" };
   };
   const result = await fetchGeoRiskMacroSeries(fakeFetch, new Date("2026-10-04T00:00:00Z"));
   assert.equal(result.series.length, 4);
@@ -38,9 +33,10 @@ test("macro feed keeps official metadata and isolates a failed source", async ()
   assert.deepEqual(result.series.find(s => s.id === "EU_HICP").latest, { date: "2026-09-01", value: 2.8 });
   assert.ok(calls.find(call => call.url.includes("coicop18=TOTAL") && call.url.includes("geo=EA")));
   assert.equal(result.series.find(s => s.id === "ECB_DEPOSIT_RATE").latest.value, 2);
-  assert.ok(calls.find(call => call.options.method === "POST" && call.options.body.includes("CUUR0000SA0")));
-  const blsRequest = JSON.parse(calls.find(call => call.options.method === "POST").options.body);
-  assert.equal(Number(blsRequest.endyear) - Number(blsRequest.startyear) + 1, 10);
+  const fredRequest = calls.find(call => call.url.includes("fredgraph.csv"));
+  assert.ok(fredRequest.url.includes("id=CPIAUCNS") && fredRequest.url.includes("cosd=2015-01-01"));
+  assert.equal(fredRequest.options.method, undefined);
+  assert.equal(result.series.find(s => s.id === "US_CPI").original_provider, "BLS");
   assert.ok(result.series.every(item => item.source_url && item.unit));
 });
 
@@ -63,10 +59,29 @@ test("empty official macro values remain gaps while a published zero is retained
   const fakeFetch = async url => {
     if (String(url).includes("data-api.ecb")) return { ok: true, text: async () => "TIME_PERIOD,OBS_VALUE\n2026-10-01,\n2026-10-02,0\n" };
     if (String(url).includes("eurostat")) return { ok: true, json: async () => ({ dimension: { time: { category: { index: { "2026-08": 0, "2026-09": 1 } } } }, value: [null, 2.2] }) };
-    return { ok: true, json: async () => ({ status: "REQUEST_SUCCEEDED", Results: { series: [{ data: [] }] } }) };
+    return { ok: true, text: async () => "observation_date,CPIAUCNS\n" };
   };
   const result = await fetchGeoRiskMacroSeries(fakeFetch, new Date("2026-10-04"));
   assert.deepEqual(result.series.find(item => item.id === "ECB_DEPOSIT_RATE").points, [{ date: "2026-10-02", value: 0 }]);
   assert.deepEqual(result.series.find(item => item.id === "EU_HICP").points, [{ date: "2026-09-01", value: 2.2 }]);
   assert.equal(result.series.find(item => item.id === "US_CPI").derived, true);
+});
+
+
+test("FRED CPI gaps never become inflation and malformed series fail explicitly", () => {
+  const now = new Date("2026-10-04");
+  assert.deepEqual(parseFredCpiCsv("DATE,CPIAUCNS\n2024-02-01,100\n2025-02-01,110\n2024-03-01,.\n2025-03-01,120\n", "CPIAUCNS", now), [{ date: "2025-02-01", value: 10 }]);
+  for (const csv of ["<html>error</html>", "DATE,CPIAUCSL\n", "DATE,CPIAUCNS\n2025-01-01,0", "DATE,CPIAUCNS\n2025-01-01,-1", "DATE,CPIAUCNS\n2025-01-01,abc", "DATE,CPIAUCNS\n2025-01-01,100\n2025-01-01,101", "DATE,CPIAUCNS\n2027-01-01,100"]) {
+    assert.throws(() => parseFredCpiCsv(csv, "CPIAUCNS", now));
+  }
+});
+
+test("FRED failure is isolated from the three other macro sources", async () => {
+  const result = await fetchGeoRiskMacroSeries(async url => {
+    if (String(url).includes("fredgraph")) return { ok: false, status: 429 };
+    if (String(url).includes("eurostat")) return { ok: true, json: async () => ({ dimension: { time: { category: { index: { "2026-08": 0 } } } }, value: [2.2] }) };
+    return { ok: true, text: async () => "TIME_PERIOD,OBS_VALUE\n2026-10-01,2\n" };
+  }, new Date("2026-10-04"));
+  assert.equal(result.series.filter(s => s.status === "available").length, 3);
+  assert.equal(result.series.find(s => s.id === "US_CPI").error, "FRED HTTP 429");
 });

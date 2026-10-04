@@ -1,15 +1,15 @@
 import { ensureGeoRiskMarketSchema } from "./georisk-market-schema.js";
-// Free official macro series: ECB SDW, Eurostat HICP and BLS CPI.
+// Free official macro series: ECB, Eurostat and BLS CPI distributed by FRED.
 // Keep raw observations separate from GeoRisk scenario assumptions.
 export const MACRO_SERIES = [
   { id: "ECB_DEPOSIT_RATE", label: "Tipo de depósito del BCE", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/FM/FM.D.U2.EUR.4F.KR.DFR.LEV", endpoint: "ecb", dataset: "FM", key: "D.U2.EUR.4F.KR.DFR.LEV" },
   { id: "ECB_10Y_YIELD", label: "Deuda pública a 10 años · zona euro", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y", endpoint: "ecb", dataset: "YC", key: "B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y" },
   { id: "EU_HICP", label: "Inflación armonizada · eurozona", region: "eu", provider: "Eurostat", unit: "% interanual", frequency: "monthly", source_url: "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table?lang=en", endpoint: "eurostat" },
-  { id: "US_CPI", label: "Inflación de precios al consumo · EE. UU.", region: "usa", provider: "BLS", unit: "% interanual", frequency: "monthly", source_url: "https://www.bls.gov/cpi/data.htm", endpoint: "bls", derived: true, key: "CUUR0000SA0" },
+  { id: "US_CPI", label: "Inflación de precios al consumo · EE. UU.", region: "usa", provider: "FRED", original_provider: "BLS", unit: "% interanual", frequency: "monthly", source_url: "https://fred.stlouisfed.org/series/CPIAUCNS", endpoint: "fred", derived: true, key: "CPIAUCNS", seasonal_adjustment: "none" },
 ];
 
 const ECB_BASE = "https://data-api.ecb.europa.eu/service/data";
-const BLS_BASE = "https://api.bls.gov/publicAPI/v1/timeseries/data/";
+const FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv";
 const EUROSTAT_BASE = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_minr";
 const YEARS = 10;
 
@@ -63,22 +63,42 @@ async function fetchEurostatHicp(fetchImpl) {
   }).sort((a, b) => a.date.localeCompare(b.date));
 }
 
-async function fetchBls(item, fetchImpl, now) {
-  // BLS v1 allows ten inclusive calendar years per request.
-  const end = now.getUTCFullYear(), start = end - YEARS + 1;
-  const response = await fetchImpl(BLS_BASE, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ seriesid: [item.key], startyear: String(start), endyear: String(end) }), signal: AbortSignal.timeout(20000) });
-  if (!response.ok) throw new Error(`BLS HTTP ${response.status}`);
-  const body = await response.json();
-  if (body.status !== "REQUEST_SUCCEEDED") throw new Error(body.message?.join("; ") || "BLS no pudo devolver CPI");
-  const rows = body.Results?.series?.[0]?.data || body.Results?.[0]?.series?.[0]?.data || [];
-  return calculateYearOverYearCpi(rows);
+export function parseFredCpiCsv(csv, seriesKey = "CPIAUCNS", now = new Date()) {
+  const lines = csv.replace(/^\uFEFF/, "").trim().split(/\r?\n/);
+  const cells = line => line.split(",").map(value => value.trim().replace(/^"|"$/g, ""));
+  const headers = cells(lines.shift());
+  const dateIndex = headers.findIndex(header => ["observation_date", "DATE"].includes(header));
+  const valueIndex = headers.indexOf(seriesKey);
+  if (dateIndex < 0 || valueIndex < 0) throw new Error("Formato CSV inesperado de FRED");
+  const seen = new Set(), lastDate = now.toISOString().slice(0, 10);
+  const rows = lines.flatMap(line => {
+    if (!line.trim()) return [];
+    const fields = cells(line), date = fields[dateIndex], raw = fields[valueIndex];
+    if (!/^\d{4}-(0[1-9]|1[0-2])-01$/.test(date) || date > lastDate) throw new Error("Fecha CPI inválida en FRED");
+    if (seen.has(date)) throw new Error("Periodo CPI duplicado en FRED");
+    seen.add(date);
+    if (raw === "" || raw === ".") return [];
+    const value = Number(raw);
+    if (!Number.isFinite(value) || value <= 0) throw new Error("Valor CPI inválido en FRED");
+    return [{ year: date.slice(0, 4), period: "M" + date.slice(5, 7), value }];
+  });
+  const start = `${now.getUTCFullYear() - YEARS}-01-01`;
+  return calculateYearOverYearCpi(rows).filter(point => point.date >= start);
+}
+
+async function fetchFredCpi(item, fetchImpl, now) {
+  // Download an extra year to calculate ten years of year-over-year rates.
+  const params = new URLSearchParams({ id: item.key, cosd: `${now.getUTCFullYear() - YEARS - 1}-01-01` });
+  const response = await fetchImpl(FRED_CSV + "?" + params, { headers: { Accept: "text/csv" }, signal: AbortSignal.timeout(20000) });
+  if (!response.ok) throw new Error(`FRED HTTP ${response.status}`);
+  return parseFredCpiCsv(await response.text(), item.key, now);
 }
 
 export async function fetchGeoRiskMacroSeries(fetchImpl = fetch, now = new Date()) {
   const start = `${now.getUTCFullYear() - YEARS}-01-01`;
   const results = await Promise.all(MACRO_SERIES.map(async item => {
     try {
-      const points = item.endpoint === "bls" ? await fetchBls(item, fetchImpl, now) : item.endpoint === "eurostat" ? await fetchEurostatHicp(fetchImpl) : await fetchEcb(item, fetchImpl, start);
+      const points = item.endpoint === "fred" ? await fetchFredCpi(item, fetchImpl, now) : item.endpoint === "eurostat" ? await fetchEurostatHicp(fetchImpl) : await fetchEcb(item, fetchImpl, start);
       points.sort((a, b) => a.date.localeCompare(b.date));
       const latest = points.at(-1) || null;
       return { ...item, points, latest, status: latest ? "available" : "unavailable" };
@@ -86,7 +106,7 @@ export async function fetchGeoRiskMacroSeries(fetchImpl = fetch, now = new Date(
       return { ...item, points: [], latest: null, status: "unavailable", error: String(error.message || error) };
     }
   }));
-  return { provider: "BCE, Eurostat y U.S. Bureau of Labor Statistics", fetched_at: now.toISOString(), history_years: YEARS, series: results };
+  return { provider: "BCE, Eurostat y FRED (IPC original de BLS)", fetched_at: now.toISOString(), history_years: YEARS, series: results };
 }
 
 export async function storeGeoRiskMacroSeries(db, result, now = new Date()) {
@@ -127,7 +147,7 @@ export async function storeGeoRiskMacroSeries(db, result, now = new Date()) {
     }
   }
   const detail = { observations_processed: result.series.reduce((sum, item) => sum + item.points.length, 0), new_observations: newObservations, revisions_detected: revisions };
-  await db.prepare("INSERT INTO georisk_market_collection_runs (provider,started_at,completed_at,status,new_observations,revisions_detected,detail_json) VALUES ('BCE+Eurostat+BLS',?,?,'success',?,?,?)")
+  await db.prepare("INSERT INTO georisk_market_collection_runs (provider,started_at,completed_at,status,new_observations,revisions_detected,detail_json) VALUES ('BCE+Eurostat+FRED',?,?,'success',?,?,?)")
     .bind(collectedAt, collectedAt, newObservations, revisions, JSON.stringify(detail)).run();
   return { status: "success", ...detail };
 }

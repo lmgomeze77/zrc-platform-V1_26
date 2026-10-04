@@ -28,7 +28,7 @@ export default function GeoRiskMacroData() {
       if (!response.ok) throw new Error(archived.error || "El histórico aún no está disponible.");
       if (!archived.points?.length) throw new Error("La captura diaria está preparando el histórico.");
       const csv = ["date,value,unit,provider,source_url,is_derived,first_collected_at,last_revised_at",
-        ...archived.points.map(p => [p.date,p.value,p.unit,item.provider,item.source_url,p.is_derived ?? 0,p.first_collected_at || "",p.last_revised_at || ""].join(","))].join("\n");
+        ...archived.points.map(p => [p.date,p.value,p.unit,p.provider || item.provider,p.source_url || item.source_url,p.is_derived ?? 0,p.first_collected_at || "",p.last_revised_at || ""].map(value => '"' + String(value).replaceAll('"', '""') + '"').join(","))].join("\n");
       const link = document.createElement("a");
       link.href = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
       link.download = "georisk-" + item.id.toLowerCase() + "-historico.csv"; link.click();
@@ -53,6 +53,6 @@ export default function GeoRiskMacroData() {
         <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 10 }}>Publicación más reciente · {item.provider}</div>
       </article>)}
     </div>}
-    <p style={{ fontSize: 11, color: "#94A3B8", marginTop: 14 }}>Inflación de EE. UU.: variación interanual calculada con el IPC oficial mensual. BCE: tipo de depósito y rendimiento de deuda a 10 años. La frecuencia de publicación y posibles revisiones dependen de cada fuente.</p>
+    <p style={{ fontSize: 11, color: "#94A3B8", marginTop: 14 }}>Inflación de EE. UU.: calculamos cuánto han subido los precios respecto al mismo mes del año anterior. Usamos el IPC oficial de BLS, distribuido gratuitamente por FRED, sin ajuste estacional. BCE: tipo de depósito y rendimiento de deuda a 10 años. La frecuencia de publicación y posibles revisiones dependen de cada fuente.</p>
   </section>;
 }
