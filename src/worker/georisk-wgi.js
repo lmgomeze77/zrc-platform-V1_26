@@ -19,7 +19,7 @@ export function parseWgiResponse(payload, dimension) {
   if (!Array.isArray(payload) || !Array.isArray(payload[1])) throw new Error("Respuesta JSON inesperada del Banco Mundial");
   return payload[1].flatMap(row => {
     const score=Number(row.value), year=String(row.date || "");
-    if (!/^\\d{4}$/.test(year) || row.value===null || !Number.isFinite(score) || score<0 || score>100) return [];
+    if (!/^\d{4}$/.test(year) || row.value===null || !Number.isFinite(score) || score<0 || score>100) return [];
     return [{year,date:year+"-01-01",value:score,dimension:dimension.id,country_code:row.countryiso3code,country:row.country?.value}];
   }).sort((a,b)=>a.year.localeCompare(b.year));
 }
