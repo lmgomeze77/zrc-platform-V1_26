@@ -830,8 +830,10 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
         </div>
 
         {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
-        {tab === "data" && <GeoRiskMarketData region={region} />
-          <GeoRiskMacroData />}
+        {tab === "data" && (<>
+          <GeoRiskMarketData region={region} />
+          <GeoRiskMacroData />
+        </>)}
 
         {tab === "forecast" && (
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
