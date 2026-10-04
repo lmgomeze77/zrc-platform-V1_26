@@ -36,7 +36,7 @@ export function calculateYearOverYearCpi(monthlyRows) {
 }
 
 async function fetchEcb(item, fetchImpl, start) {
-  const url = `${ECB_BASE}/${item.endpoint === "ecb" ? (item.id === "ECB_DEPOSIT_RATE" ? "FM" : "YC")}/${item.key}?startPeriod=${start}&format=csvdata`;
+  const url = `${ECB_BASE}/${item.dataset}/${item.key}?startPeriod=${start}&format=csvdata`;
   const response = await fetchImpl(url, { headers: { Accept: "text/csv" }, signal: AbortSignal.timeout(20000) });
   if (!response.ok) throw new Error(`ECB HTTP ${response.status} (${item.id})`);
   return rowsFromCsv(await response.text());
