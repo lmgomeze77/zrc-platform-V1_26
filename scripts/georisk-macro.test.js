@@ -33,7 +33,9 @@ test("macro feed keeps official metadata and isolates a failed source", async ()
   };
   const result = await fetchGeoRiskMacroSeries(fakeFetch, new Date("2026-10-04T00:00:00Z"));
   assert.equal(result.series.length, 4);
-  assert.equal(result.series.find(s => s.id === "US_CPI").latest.value, 10);\n  assert.deepEqual(result.series.find(s => s.id === "EU_HICP").latest, { date: "2026-09-01", value: 2.8 });\n  assert.ok(calls.find(call => call.url.includes("coicop18=TOTAL") && call.url.includes("geo=EA")));
+  assert.equal(result.series.find(s => s.id === "US_CPI").latest.value, 10);
+  assert.deepEqual(result.series.find(s => s.id === "EU_HICP").latest, { date: "2026-09-01", value: 2.8 });
+  assert.ok(calls.find(call => call.url.includes("coicop18=TOTAL") && call.url.includes("geo=EA")));
   assert.equal(result.series.find(s => s.id === "ECB_DEPOSIT_RATE").latest.value, 2);
   assert.ok(calls.find(call => call.options.method === "POST" && call.options.body.includes("CUUR0000SA0")));
   assert.ok(result.series.every(item => item.source_url && item.unit));
