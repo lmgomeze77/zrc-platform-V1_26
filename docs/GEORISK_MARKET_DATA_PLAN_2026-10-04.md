@@ -38,3 +38,18 @@ Ejemplo: riesgo base 75 × 0,88 = 66 para Real Estate. El coeficiente no se deri
 - Instrumentos exactos por región. Por ejemplo, S&P GSCI y DXY son índices de proveedor y requieren revisar sus derechos de uso; no deben sustituirse por aproximaciones sin indicarlo.
 
 El conector debe implementarse después de elegir la fuente y disponer de su credencial/condiciones; esta auditoría no añade ni inventa un feed.
+
+
+## Comparación inicial de proveedores (4 de octubre de 2026)
+
+| Proveedor | Cobertura útil para GeoRisk | Precio publicado | Límite/observación |
+|---|---|---:|---|
+| **Financial Modeling Prep (FMP) Enterprise** | Cotizaciones e históricos de divisas, índices y materias primas; también Treasury rates e indicadores económicos. | Precio bajo consulta comercial. | La propia página exige un acuerdo específico de display/licencia para mostrar o redistribuir datos. Es el candidato más coherente como proveedor único, sujeto a cotización y comprobación de instrumentos concretos. |
+| **EOD Historical Data (EODHD) All-in-One** | Series EOD, intradía, divisas, índices, materias primas, Treasury y varios indicadores económicos. | 99,99 USD/mes o 999,90 USD/año (83,33 USD/mes equivalente). | Alternativa de menor coste para un piloto. Su página advierte que algunos precios de divisas/CFD son indicativos, no provienen de bolsas y pueden no coincidir con el precio de mercado. Confirmar derechos B2B de visualización antes de publicar. |
+| **Twelve Data Venture / Enterprise** | API histórica, divisas, materias primas y renta fija; Venture ofrece visualización externa para aplicaciones de clientes. | Venture: 499 USD/mes o 4.990 USD/año (414 USD/mes equivalente). Enterprise: 1.099 USD/mes o 10.992 USD/año (916 USD/mes equivalente). | La página de índices dice que la cobertura de índices aún está por llegar; no cubre por sí sola todos los índices que GeoRisk muestra, como DXY o S&P GSCI. Enterprise añade distribución externa. |
+
+**Recomendación provisional:** pedir primero una cotización a FMP Enterprise para los instrumentos exactos y confirmar por escrito el display en una plataforma SaaS de suscripción. Si el coste no encaja, probar EODHD con precios claramente etiquetados como EOD/indicativos y derechos B2B confirmados. No contratar ni reemplazar índices por proxies sin documentarlo.
+
+Para series macro oficiales, complementar el feed de precios con ECB/Eurostat y fuentes nacionales. ECB y Eurostat publican interfaces estadísticas programáticas; FRED requiere API key. Mantener esas series oficiales separadas de las cotizaciones de mercado.
+
+**Fuentes consultadas:** [FMP Commercial](https://site.financialmodelingprep.com/developer/docs/pricing?planType=commercial), [EODHD Pricing](https://eodhd.com/pricing), [Twelve Data Business Pricing](https://twelvedata.com/pricing-business), [Twelve Data Indices](https://twelvedata.com/indices), [ECB SDMX API](https://data.ecb.europa.eu/help/getting-data-web-services-sdmx-0), [Eurostat API](https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access), [FRED API keys](https://fred.stlouisfed.org/docs/api/api_key.html).
