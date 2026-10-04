@@ -1,3 +1,4 @@
+import { ensureGeoRiskMarketSchema } from "./georisk-market-schema.js";
 // Official ECB daily reference rates. No API key or paid subscription.
 export const ECB_HISTORY_URL = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.xml";
 export const ECB_SOURCE_URL = "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html";
@@ -57,6 +58,7 @@ export function compareECBArchive(series, currentBySeries) {
 
 export async function storeECBHistory(db, series, fetchedAt = new Date()) {
   if (!db) throw new Error("D1 archive binding is unavailable");
+  await ensureGeoRiskMarketSchema(db);
   const collectedAt = fetchedAt.toISOString();
   const currentBySeries = new Map();
   for (const item of series) {
@@ -104,6 +106,7 @@ export async function getECBArchiveHistory(db, request) {
   if (!["EURUSD","EURGBP","EURCNY","USDCNY"].includes(seriesId))
     return archiveJson({ error: "Selecciona una serie válida: EURUSD, EURGBP, EURCNY o USDCNY." }, 400);
   if (!db) return archiveJson({ error: "El archivo histórico aún no está disponible." }, 503);
+  await ensureGeoRiskMarketSchema(db);
   const limit = Math.min(20000, Math.max(1, Number(url.searchParams.get("limit")) || 10000));
   const query = await db.prepare("SELECT observation_date AS date,value,unit,is_derived,first_collected_at FROM georisk_market_observations WHERE provider='ECB' AND series_id=? ORDER BY observation_date ASC LIMIT ?")
     .bind(seriesId, limit).all();
