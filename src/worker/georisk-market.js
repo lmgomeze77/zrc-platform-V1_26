@@ -46,7 +46,12 @@ export async function handleGeoRiskMarket(request, ctx) {
   const cacheKey = new Request(new URL("/api/georisk-market-data", request.url), { method: "GET" });
   const cache = caches.default;
   const cached = await cache.match(cacheKey);
-  if (cached) return cached;
+  if (cached) {
+    // Older cached entries may predate CORS support; deployments do not clear Cache API.
+    const result = new Response(cached.body, cached);
+    result.headers.set("Access-Control-Allow-Origin", "*");
+    return result;
+  }
   try {
     const response = await fetch(ECB_HISTORY_URL, { signal: AbortSignal.timeout(20000) });
     if (!response.ok) throw new Error(`ECB HTTP ${response.status}`);
@@ -56,13 +61,13 @@ export async function handleGeoRiskMarket(request, ctx) {
       provider: "Banco Central Europeo", source_url: ECB_SOURCE_URL,
       frequency: "daily_business_days", fetched_at: fetchedAt.toISOString(),
       history_years: 5, series,
-    }), { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
+    }), { headers: { "Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "Cache-Control": "public, max-age=3600" } });
     ctx.waitUntil(cache.put(cacheKey, result.clone()));
     return result;
   } catch (error) {
     console.error("GeoRisk ECB data unavailable:", error.message);
     return new Response(JSON.stringify({ error: "No se pudo consultar el BCE. Reintenta más tarde; no se han sustituido los datos por cifras de ejemplo." }), {
-      status: 502, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
+      status: 502, headers: { "Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "Cache-Control": "no-store" },
     });
   }
 }

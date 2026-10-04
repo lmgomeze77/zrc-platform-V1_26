@@ -42,6 +42,7 @@ test("provider failure returns an explicit error and no example prices", async (
   try {
     const response = await handleGeoRiskMarket(new Request("https://example.com/api/georisk-market-data"), { waitUntil() {} });
     assert.equal(response.status, 502);
+    assert.equal(response.headers.get("Access-Control-Allow-Origin"), "*");
     assert.equal(response.headers.get("Cache-Control"), "no-store");
     const result = await response.json();
     assert.ok(result.error);
@@ -50,6 +51,16 @@ test("provider failure returns an explicit error and no example prices", async (
 });
 
 // Optional verification of a downloaded official XML, without requiring network in CI.
+test("cached observations created before a deployment remain accessible from the main website", async () => {
+  const originalCaches = globalThis.caches;
+  globalThis.caches = { default: { match: async () => new Response(JSON.stringify({ series: [{ id: "EURUSD" }] }), { headers: { "Content-Type": "application/json" } }) } };
+  try {
+    const response = await handleGeoRiskMarket(new Request("https://example.com/api/georisk-market-data"), { waitUntil() {} });
+    assert.equal(response.headers.get("Access-Control-Allow-Origin"), "*");
+    assert.equal((await response.json()).series[0].id, "EURUSD");
+  } finally { globalThis.caches = originalCaches; }
+});
+
 if (process.env.ECB_HISTORY_FIXTURE) test("downloaded ECB history has a usable daily series", async () => {
   const series = parseECBHistory(await readFile(process.env.ECB_HISTORY_FIXTURE, "utf8"));
   assert.ok(series[0].points.length > 1000);
