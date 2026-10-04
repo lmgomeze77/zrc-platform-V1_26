@@ -1,3 +1,4 @@
+import GeoRiskMarketData from "../../components/GeoRiskMarketData";
 import { useState, useEffect, useCallback, useMemo, useId } from "react";
 import {
   Radar, Activity, MessageSquare, PieChart, RotateCcw,
@@ -107,6 +108,11 @@ const ASSETS = [
 ];
 
 const SECTION_GUIDES = {
+  data: {
+    title: "Consulta datos reales y su evolución",
+    body: "Compara divisas con la última referencia diaria del BCE y hasta cinco años de observaciones. Cada dato tiene fuente y fecha. Los gráficos muestran valores publicados, sin generar un histórico artificial.",
+    tip: "Consulta la fecha del dato. Las simulaciones siguen siendo supuestos y todavía no se recalibran con este histórico."
+  },
   scenarios: {
     title: "Prueba distintos escenarios",
     body: "Elige una región y un sector, y mueve los controles para explorar qué podría ocurrir si cada situación ganara peso. El resultado resume los supuestos que has elegido; no es una probabilidad comprobada ni una predicción.",
@@ -318,7 +324,7 @@ export default function GeoRiskDashboard() {
   const [nlpText, setNlpText] = useState("");
   const [nlpResult, setNlpResult] = useState(null);
   const [time, setTime] = useState(new Date());
-  const [tab, setTab] = useState("scenarios");
+  const [tab, setTab] = useState("data");
   const sectionGuide = SECTION_GUIDES[tab];
 
   const ECONOMIC_VARIABLES = ECONOMIC_VARIABLES_BY_REGION[region];
@@ -574,6 +580,7 @@ export default function GeoRiskDashboard() {
 
           <div className="zrc-card zrc-tabbar" style={{ display: "flex", gap: 2, padding: 5, marginBottom: 20 }}>
             {[
+              { id: "data", label: "Datos reales", icon: TrendingUp },
               { id: "scenarios", label: "Escenarios", icon: Radar },
               { id: "variables", label: "Impacto por variable", icon: Activity },
               { id: "nlp", label: "Palabras clave", icon: MessageSquare },
@@ -602,6 +609,8 @@ export default function GeoRiskDashboard() {
           </div>
 
           {/* SCENARIOS */}
+        {tab === "data" && <GeoRiskMarketData region={region} />}
+
           {tab === "scenarios" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
 
