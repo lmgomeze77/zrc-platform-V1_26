@@ -11,6 +11,8 @@ import { Sparkles, TrendingUp, Radar, Grid3x3, MessageSquare, Target, RotateCcw 
 // Evolución del GeoRisk Dashboard → análisis predictivo con IA
 // ═══════════════════════════════════════════════════════════════════
 
+const MODEL_VERSION = "zrc-scenario-1.1-transparency";
+
 const REGIONS = {
   eu:   { key: "eu",   label: "Zona Euro" },
   usa:  { key: "usa",  label: "Estados Unidos" },
@@ -372,18 +374,18 @@ function CorrelationHeatmap({ scenarios, scenarioWeights, economicVariables, reg
 
 // ── Claude API ML Engine ──────────────────────────────────────────
 
-async function callClaudeML({ scenario, riskScore, variables, mode, userText }) {
+async function callClaudeML({ scenario, riskScore, variables, mode, userText, context }) {
   const systemPrompt = `Eres el motor ML de análisis geopolítico de Zenith Rise Capital (ZRC).
 Tu función es generar análisis predictivo institucional en formato JSON estricto.
 Responde SOLO con JSON válido, sin markdown ni texto adicional.
-Idioma: español. Tono: institucional, conciso, cuantificado.`;
+Idioma: español. Tono: institucional, conciso. Solo recibes supuestos del simulador y texto del usuario, sin consultar fuentes externas. Distingue inputs, supuestos e hipótesis. No inventes noticias, citas, enlaces ni datos observados. Los pesos no son probabilidades y los impactos no son rentabilidades previstas. Describe vulnerabilidades y preguntas para revisión, sin ordenar comprar, vender ni asignar cartera. La confianza y convicción son autoevaluaciones no calibradas.`;
 
   let userPrompt = "";
 
   if (mode === "forecast") {
     userPrompt = `Analiza este perfil de riesgo geopolítico y genera previsiones:
 Score riesgo compuesto: ${riskScore.toFixed(1)}/100
-Escenario dominante: ${scenario.label} (prob: ${(scenario.prob * 100).toFixed(0)}%)
+Escenario dominante: ${scenario.label} (peso: ${(scenario.prob * 100).toFixed(0)}%, no probabilidad)
 Variables económicas impactadas: ${JSON.stringify(variables)}
 
 Responde con este JSON exacto:
@@ -398,7 +400,7 @@ Responde con este JSON exacto:
     "suggested_shifts": {"tariff_escalation": delta, "mena_instability": delta, "eu_fragmentation": delta, "detente": delta}
   },
   "asset_signals": [
-    {"asset": "string", "signal": "SOBREPONDERAR|NEUTRAL|INFRAPONDERAR", "rationale": "string max 10 palabras"}
+    {"asset": "string", "signal": "FAVORABLE|NEUTRAL|VULNERABLE", "rationale": "string max 10 palabras"}
   ]
 }`;
   } else if (mode === "nlp") {
@@ -417,7 +419,7 @@ Responde con este JSON exacto:
   "summary": "string 2 frases max"
 }`;
   } else if (mode === "decision") {
-    userPrompt = `Genera señales de decisión de inversión institucional basadas en:
+    userPrompt = `Genera hipótesis y preguntas de revisión basadas exclusivamente en:
 Score riesgo: ${riskScore.toFixed(1)}/100
 Variables: ${JSON.stringify(variables)}
 
@@ -443,7 +445,7 @@ Responde con este JSON exacto:
       model: "claude-sonnet-4-6",
       max_tokens: 2048,
       system: systemPrompt,
-      messages: [{ role: "user", content: userPrompt }]
+      messages: [{ role: "user", content: userPrompt + "\nContexto de simulación: " + JSON.stringify(context) }]
     })
   });
 
@@ -458,7 +460,29 @@ Responde con este JSON exacto:
   const start = clean.indexOf("{");
   const end = clean.lastIndexOf("}");
   if (start === -1 || end === -1) throw new Error(`No JSON in Claude response: ${clean.slice(0, 120)}`);
-  return JSON.parse(clean.slice(start, end + 1));
+  return { ...JSON.parse(clean.slice(start, end + 1)), _audit: { generated_at: new Date().toISOString(), model: data.model || "claude-sonnet-4-6", model_version: MODEL_VERSION, mode, external_sources: [], inputs: { scenario, riskScore, variables, userText: userText || null, context }, system_prompt: systemPrompt, user_prompt: userPrompt + "\nContexto de simulación: " + JSON.stringify(context) } };
+}
+
+
+function downloadAudit(value, name) {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2)], { type: "application/json" }));
+  const link = document.createElement("a");
+  link.href = url; link.download = "georisk-" + name + ".json"; link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function AnalysisAudit({ result, context, userText }) {
+  const audit = result?._audit;
+  if (!audit) return null;
+  const outdated = JSON.stringify(audit.inputs.context) !== JSON.stringify(context) ||
+    (audit.mode === "nlp" && audit.inputs.userText !== userText);
+  return <details style={{ margin: "12px 0", padding: 12, border: "1px solid #64748B", borderRadius: 6, color: "#CBD5E1", fontSize: 12 }}>
+    <summary style={{ cursor: "pointer" }}>Interpretación IA · Ver procedencia y ejecución{outdated ? " · Inputs modificados: regenerar" : ""}</summary>
+    <p>Generado: {new Date(audit.generated_at).toLocaleString("es-ES")} · Modelo: {audit.model} · Versión: {audit.model_version}</p>
+    <p>Fuentes externas consultadas: ninguna. Evidencia recibida: {audit.mode === "nlp" ? "texto aportado por el usuario, sin verificación independiente" : "inputs del simulador"}. Las conclusiones son hipótesis de IA sin precisión ni probabilidades validadas.</p>
+    {outdated && <p role="status" style={{ color: "#FDE68A" }}>Este análisis corresponde a otros inputs. Genera uno nuevo para interpretar la configuración actual.</p>}
+    <button onClick={() => downloadAudit({ audit, result }, "analisis-ia")} style={{ padding: "8px 12px", border: "1px solid #64748B", background: "#0d1f16", color: "#E2E8F0", borderRadius: 5, cursor: "pointer" }}>Descargar ejecución, inputs y respuesta (JSON)</button>
+  </details>;
 }
 
 // ── Main Component ────────────────────────────────────────────────
@@ -551,9 +575,9 @@ export default function GeoRiskML() {
   const sectorFactorChangePct = Math.round((sectorMult - 1) * 100);
 
   const dominantScenario = useMemo(() => {
-    const [key] = Object.entries(weights).reduce(([bk, bv], [k, v]) => v > bv ? [k, v] : [bk, bv], ["", 0]);
+    const [key] = Object.entries(normalizedWeights).reduce(([bk, bv], [k, v]) => v > bv ? [k, v] : [bk, bv], ["tariff_escalation", -1]);
     return { key, ...SCENARIOS[key], prob: normalizedWeights[key] || 0 };
-  }, [weights]);
+  }, [normalizedWeights]);
 
   const variableImpacts = useMemo(() => {
     return Object.fromEntries(
@@ -564,7 +588,7 @@ export default function GeoRiskML() {
   const assetImpacts = useMemo(() => {
     return ASSETS.map(asset => {
       const pct = estimatePriceImpact(asset, variableImpacts, region);
-      const dir = pct > 1.5 ? "SOBREPONDERAR" : pct < -1.5 ? "INFRAPONDERAR" : "NEUTRAL";
+      const dir = pct > 1.5 ? "FAVORABLE" : pct < -1.5 ? "VULNERABLE" : "NEUTRAL";
       const col = pct > 1.5 ? "#10B981" : pct < -1.5 ? "#EF4444" : "#F59E0B";
       return { asset, pct, dir, col };
     });
@@ -575,6 +599,14 @@ export default function GeoRiskML() {
     setForecast(buildForecast(compositeRisk, normalizedWeights));
   }, [compositeRisk, normalizedWeights]);
 
+  const analysisContext = {
+    model_version: MODEL_VERSION, region, sector, sector_multiplier: sectorMult, weights: normalizedWeights,
+    risk_assumptions: Object.fromEntries(Object.entries(SCENARIOS).map(([key, value]) => [key, value.risk])),
+    transmission_assumptions: Object.fromEntries(Object.entries(SCENARIOS).map(([key, value]) => [key, value.impactByRegion[region]])),
+    asset_sensitivities: ASSET_SENSITIVITY_BY_REGION[region], macro_reference_assumptions: ECONOMIC_VARIABLES,
+    observed_data_used_in_score: false,
+  };
+
   const runMLForecast = async () => {
     setMlLoading(true); setMlError(null); setMlForecast(null);
     try {
@@ -582,7 +614,7 @@ export default function GeoRiskML() {
         scenario: dominantScenario,
         riskScore: compositeRisk,
         variables: variableImpacts,
-        mode: "forecast"
+        mode: "forecast", context: analysisContext
       });
       setMlForecast(result);
     } catch (e) {
@@ -594,7 +626,7 @@ export default function GeoRiskML() {
     if (!nlpText.trim()) return;
     setNlpLoading(true); setNlpResult(null);
     try {
-      const result = await callClaudeML({ mode: "nlp", userText: nlpText, riskScore: compositeRisk, scenario: dominantScenario, variables: variableImpacts });
+      const result = await callClaudeML({ mode: "nlp", context: analysisContext, userText: nlpText, riskScore: compositeRisk, scenario: dominantScenario, variables: variableImpacts });
       // Keep model suggestions separate from analyst-controlled scenario weights.
       setNlpResult(result);
     } catch (e) {
@@ -605,7 +637,7 @@ export default function GeoRiskML() {
   const runDecision = async () => {
     setDecisionLoading(true); setDecisionResult(null);
     try {
-      const result = await callClaudeML({ mode: "decision", riskScore: compositeRisk, variables: variableImpacts, scenario: dominantScenario });
+      const result = await callClaudeML({ mode: "decision", context: analysisContext, riskScore: compositeRisk, variables: variableImpacts, scenario: dominantScenario });
       setDecisionResult(result);
     } catch (e) {
       setDecisionResult({ error: `Error en motor de decisión: ${e.message}` });
@@ -679,7 +711,7 @@ export default function GeoRiskML() {
               </div>
               <h1 style={{ display:"flex", alignItems:"center", gap:10, fontSize:23, fontWeight:700, margin:0, letterSpacing:-0.5, color:"#F8FAFC" }}>
                 <Sparkles size={21} color="#4ADE80" strokeWidth={2} />
-                GeoRisk Predictive Intelligence
+                GeoRisk · Escenarios + IA
               </h1>
               <div style={{ fontSize:12, color:"#475569", marginTop:2, fontFamily:"'JetBrains Mono',monospace" }}>
                 Asistente de análisis geopolítico · Claude Sonnet · Calesius Global SL
@@ -716,7 +748,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
           </div>
         </div>
         <div role="note" style={{ margin: "0 0 16px", padding: "12px 16px", border: "1px solid #7C5A1B", borderLeft: "3px solid #F59E0B", borderRadius: 8, background: "#2A2112", color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>
-          TRANSPARENCIA DE DATOS: referencias macro codificadas, sin feed de mercado ni archivo histórico conectado. La banda es una visualización de sensibilidad, no un pronóstico estadístico. El análisis IA no aporta citas de fuentes ni probabilidades calibradas.
+          <b>Datos y supuestos identificados.</b> La pestaña Datos observados consulta fuentes externas y muestra disponibilidad, fechas e histórico cuando existen. Esas series todavía no alimentan este score. Los escenarios y coeficientes son supuestos ZRC; la IA interpreta esos supuestos o el texto que aportas. <button onClick={() => setTab("data")} style={{ background: "transparent", border: "1px solid #FDE68A", color: "#FDE68A", padding: "6px 10px", borderRadius: 5, cursor: "pointer" }}>Consultar fuentes y fechas</button>
         </div>
 
         {/* ── RESUMEN PARA COMITÉ DE INVERSIÓN ── */}
@@ -733,13 +765,39 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                 <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "pesos de referencia del modelo"}.</li>
                 <li>Escenario dominante: <b style={{ color: dominantScenario.color }}>{dominantScenario.label}</b> ({(normalizedWeights[dominantScenario.key] * 100).toFixed(0)}% del peso normalizado).</li>
                 {top && (
-                  <li>Llamada táctica principal: <b style={{ color: top.col }}>{top.dir}</b> en <b>{top.asset}</b> — impacto estimado {top.pct >= 0 ? "+" : ""}{fmt(top.pct, 1)}% a 12M bajo el mix actual.</li>
+                  <li>Mayor sensibilidad simulada: <b>{top.asset}</b> · <b style={{ color: top.col }}>{top.dir}</b> — impacto bajo estos supuestos: {top.pct >= 0 ? "+" : ""}{fmt(top.pct, 1)}%. Sin horizonte temporal validado.</li>
                 )}
                 <li>Pulsa <b>ANALIZAR</b> en la pestaña Sensibilidad + IA para una síntesis generada a partir de estos supuestos, o <b>GENERAR BORRADOR</b> en un borrador para ordenar riesgos y oportunidades, siempre con revisión humana.</li>
               </ul>
             </div>
           );
         })()}
+
+        <details className="grml-card" style={{ padding: "16px 20px", marginBottom: 20, color: "#CBD5E1" }}>
+          <summary style={{ cursor: "pointer", fontWeight: 700 }}>¿Cómo se calcula este resultado? · Resultado del modelo</summary>
+          <p style={{ fontSize: 13, lineHeight: 1.7 }}>Score = suma de (peso normalizado × riesgo supuesto de cada escenario) × factor sectorial, limitado entre 0 y 100. Los pesos no indican probabilidades. Este score del simulador es distinto del índice GeoRisk alimentado por inputs.</p>
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", minWidth: 430, borderCollapse: "collapse", fontSize: 13 }}>
+              <thead><tr>{["Escenario", "Origen del peso", "Peso", "Riesgo supuesto", "Contribución base"].map(label => <th key={label} scope="col" style={{ textAlign: "left", padding: 8, borderBottom: "1px solid #334155" }}>{label}</th>)}</tr></thead>
+              <tbody>{Object.entries(SCENARIOS).map(([key, value]) => <tr key={key}>
+                <td style={{ padding: 8 }}>{value.label}</td>
+                <td style={{ padding: 8 }}>{weights[key] !== DEFAULT_WEIGHTS[key] ? "Entrada del usuario" : "Supuesto ZRC"}</td>
+                <td style={{ padding: 8 }}>{fmt(normalizedWeights[key] * 100, 1)}%</td>
+                <td style={{ padding: 8 }}>{value.risk}/100</td>
+                <td style={{ padding: 8 }}>{fmt(normalizedWeights[key] * value.risk, 2)} puntos</td>
+              </tr>)}</tbody>
+            </table>
+          </div>
+          <p style={{ fontSize: 13 }}>Base {fmt(baseCompositeRisk, 2)} × factor {fmt(sectorMult, 2)} = {fmt(compositeRisk, 2)}/100 después del límite.</p>
+          <p style={{ fontSize: 12 }}>Impacto por variable = suma de (peso × impacto supuesto regional) × factor sectorial. Impacto por activo = suma de (impacto por variable × sensibilidad supuesta del activo). Los coeficientes no se han estimado con un histórico de mercado.</p>
+          <details><summary style={{ cursor: "pointer", fontSize: 13 }}>Ver inputs, referencias y coeficientes</summary>
+            <p style={{ fontSize: 12 }}>Las referencias macro codificadas son supuestos ilustrativos: no tienen periodo observado ni fecha de publicación verificable. Los proveedores indican la referencia conceptual, no una consulta realizada.</p>
+            <pre style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontSize: 11 }}>{JSON.stringify(analysisContext, null, 2)}</pre>
+          </details>
+          <p style={{ fontSize: 12 }}>Banda visual: amplitud = 3 + 5 × suma de peso × (1 − peso), más 0,35 por paso gráfico. Es una regla ilustrativa sin cobertura estadística ni fechas de pronóstico.</p>
+          <p style={{ fontSize: 12, color: "#94A3B8" }}>Versión: {MODEL_VERSION} · Fecha de revisión y calibración de los parámetros originales: no documentada. El reloj de la cabecera no indica actualización de datos.</p>
+          <button onClick={() => downloadAudit({ inputs: analysisContext, computed: { baseCompositeRisk, compositeRisk, variableImpacts, assetImpacts } }, "simulacion")} style={{ padding: "8px 12px", border: "1px solid #64748B", background: "#0d1f16", color: "#E2E8F0", borderRadius: 5, cursor: "pointer" }}>Descargar cálculo e inputs (JSON)</button>
+        </details>
 
         {/* ── SCORE BAR ── */}
         <div className="grml-card grml-score-row" style={{ gap:20, padding:"20px 24px", margin:"0 0 20px", alignItems:"center" }}>
@@ -802,7 +860,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
           <div style={{ textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }}>
             <div style={{ fontSize:10, color:"#64748B", letterSpacing:1, marginBottom:4 }}>ESCENARIO DOMINANTE</div>
             <div style={{ fontSize:13, fontWeight:600, color: dominantScenario.color }}>{dominantScenario.label}</div>
-            <div style={{ fontSize:11, color:"#475569" }}>{(weights[dominantScenario.key]*100).toFixed(0)}% prob.</div>
+            <div style={{ fontSize:11, color:"#475569" }}>{(normalizedWeights[dominantScenario.key]*100).toFixed(0)}% del peso · no probabilidad</div>
           </div>
         </div>
 
@@ -890,6 +948,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
 
                 {mlError && <div style={{ color:"#EF4444", fontSize:13, fontFamily:"monospace", padding:"12px 0" }}>{mlError}</div>}
 
+                {mlForecast && !mlLoading && <AnalysisAudit result={mlForecast} context={analysisContext} />}
                 {mlForecast && !mlLoading && (
                   <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
                     {/* Trajectory badge */}
@@ -900,7 +959,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                         color: trajectoryColor[mlForecast.risk_trajectory] || "#F59E0B",
                         border: `1px solid ${trajectoryColor[mlForecast.risk_trajectory] || "#F59E0B"}40`
                       }}>{mlForecast.risk_trajectory}</span>
-                      <span style={{ fontSize:11, color:"#64748B", fontFamily:"monospace" }}>Autoevaluación del modelo: {mlForecast.confidence}% · no calibrada</span>
+                      <span style={{ fontSize:11, color:"#64748B", fontFamily:"monospace" }}>Interpretación IA · sin precisión validada</span>
                     </div>
 
                     {/* Outlooks */}
@@ -929,7 +988,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                       <div style={{ marginTop:10 }}>
                         <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>SEÑALES DE ACTIVOS</div>
                         {mlForecast.asset_signals.slice(0, 4).map((s, i) => {
-                          const sc = s.signal==="SOBREPONDERAR" ? "#10B981" : s.signal==="INFRAPONDERAR" ? "#EF4444" : "#F59E0B";
+                          const sc = s.signal==="FAVORABLE" ? "#10B981" : s.signal==="VULNERABLE" ? "#EF4444" : "#F59E0B";
                           return (
                             <div key={i} style={{ display:"grid", gridTemplateColumns:"1fr auto", gap:8, alignItems:"center", padding:"4px 0", borderBottom:"1px solid #16301f30" }}>
                               <span style={{ fontSize:12, color:"#94A3B8" }}>{s.asset}</span>
@@ -958,7 +1017,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                     <div key={k} style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr 1.2fr 1.5fr", padding:"12px 16px", borderBottom:"1px solid #16301f30", alignItems:"center", background:i%2 ? "#0a1810" : "#0c1a12" }}>
                       <div>
                         <div style={{ fontSize:13, fontWeight:500, color:"#CBD5E1" }}>{v.label}</div>
-                        <div style={{ fontSize:10, color:"#475569", fontFamily:"monospace", letterSpacing:"0.04em", marginTop:2 }}>{v.source}</div>
+                        <div style={{ fontSize:10, color:"#475569", fontFamily:"monospace", letterSpacing:"0.04em", marginTop:2 }}>Supuesto ZRC · referencia conceptual: {v.source} · fecha no documentada</div>
                       </div>
                       <span style={{ fontFamily:"monospace", fontSize:13, color:"#94A3B8" }}>{fmt(v.base, v.decimals ?? 2)}{v.unit}</span>
                       <MiniBar value={imp} max={0.8} width={50} />
@@ -1081,7 +1140,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                         );
                       })}
                       <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, margin:"10px 0 6px" }}>
-                        EJEMPLO · IMPACTO ESTIMADO EN PRECIOS (12M, si se materializa este escenario) · {REGIONS[region].label}
+                        SUPUESTO ZRC · IMPACTO SIMULADO EN PRECIOS (sin horizonte validado) · {REGIONS[region].label}
                       </div>
                       {ASSETS.map(a => {
                         const pct = estimatePriceImpact(a, sv.impactByRegion[region], region);
@@ -1112,7 +1171,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                 <div style={{ fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>QUÉ CAMBIA CON CADA ESCENARIO</div>
                 <div style={{ fontSize:12, color:"#94A3B8" }}>La cifra muestra el cambio calculado con los pesos que elegiste.</div>
               </div>
-              <CorrelationHeatmap scenarios={SCENARIOS} scenarioWeights={weights} economicVariables={ECONOMIC_VARIABLES} region={region} />
+              <CorrelationHeatmap scenarios={SCENARIOS} scenarioWeights={normalizedWeights} economicVariables={ECONOMIC_VARIABLES} region={region} />
             </div>
 
             {/* Weighted impacts table */}
@@ -1129,7 +1188,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                     <div key={k} style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr 1fr", padding:"12px 16px", borderBottom:"1px solid #16301f30", alignItems:"center", background:i%2?"#0a1810":"#0c1a12" }}>
                       <div>
                         <div style={{ fontSize:13, color:"#CBD5E1" }}>{v.label}</div>
-                        <div style={{ fontSize:10, color:"#475569", fontFamily:"monospace", letterSpacing:"0.04em", marginTop:2 }}>{v.source}</div>
+                        <div style={{ fontSize:10, color:"#475569", fontFamily:"monospace", letterSpacing:"0.04em", marginTop:2 }}>Supuesto ZRC · referencia conceptual: {v.source} · fecha no documentada</div>
                       </div>
                       <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:13, fontWeight:600, color:c }}>{imp>=0?"+":""}{fmt(imp,3)}</span>
                       <span style={{ textAlign:"right", fontFamily:"monospace", fontSize:13, color:"#64748B" }}>{fmt(v.base, v.decimals ?? 2)}{v.unit}</span>
@@ -1144,10 +1203,10 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
             <div className="grml-card grml-table-scroll" style={{ marginTop:12 }}>
               <div className="grml-table-inner">
                 <div style={{ padding:"10px 16px", background:"#0d1f16", borderBottom:"1px solid #16301f", fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
-                  EJEMPLO ILUSTRATIVO DE IMPACTO EN ACTIVOS · HORIZONTE 12 MESES
+                  RESULTADO DEL MODELO · IMPACTO SIMULADO EN ACTIVOS
                 </div>
                 <div style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1.3fr", padding:"10px 16px", background:"#0d1f16", borderBottom:"1px solid #16301f", fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
-                  <span>CLASE DE ACTIVO</span><span style={{textAlign:"right"}}>IMPACTO PRECIO EST.</span><span style={{textAlign:"right"}}>RECOMENDACIÓN</span>
+                  <span>CLASE DE ACTIVO</span><span style={{textAlign:"right"}}>IMPACTO PRECIO EST.</span><span style={{textAlign:"right"}}>EXPOSICIÓN SIMULADA</span>
                 </div>
                 {assetImpacts.map((a, i) => (
                   <div key={a.asset} style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1.3fr", padding:"12px 16px", borderBottom:"1px solid #16301f30", alignItems:"center", background:i%2?"#0a1810":"#0c1a12" }}>
@@ -1187,7 +1246,8 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                 </div>
               )}
 
-              {nlpResult && !nlpLoading && (
+              {nlpResult && !nlpLoading && <AnalysisAudit result={nlpResult} context={analysisContext} userText={nlpText} />}
+                {nlpResult && !nlpLoading && (
                 <div style={{ marginTop:20, animation:"grml-fadeIn 0.4s ease" }}>
                   {nlpResult.error ? (
                     <div style={{ color:"#EF4444", fontFamily:"monospace", fontSize:13 }}>{nlpResult.error}</div>
@@ -1198,7 +1258,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                         {[
                           ["RISK SCORE", nlpResult.risk_score, nlpResult.risk_score > 60 ? "#EF4444" : nlpResult.risk_score > 35 ? "#F59E0B" : "#10B981"],
                           ["SENTIMENT", nlpResult.sentiment, nlpResult.sentiment==="BEARISH" ? "#EF4444" : nlpResult.sentiment==="BULLISH" ? "#10B981" : "#F59E0B"],
-                          ["AUTOEVALUACIÓN IA", `${nlpResult.confidence}%`, "#A78BFA"]
+                          ["VALIDACIÓN", "No calibrada", "#A78BFA"]
                         ].map(([label, val, col]) => (
                           <div key={label} style={{ textAlign:"center", padding:"12px", background:"#0d1f16", borderRadius:4 }}>
                             <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>{label}</div>
@@ -1265,7 +1325,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
               <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:16 }}>
                 <div>
                   <div style={{ fontSize:11, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, marginBottom:4 }}>BORRADOR DE ANÁLISIS IA</div>
-                  <div style={{ fontSize:12, color:"#94A3B8" }}>Recomendaciones tácticas institucionales basadas en el perfil de riesgo actual</div>
+                  <div style={{ fontSize:12, color:"#94A3B8" }}>Hipótesis de exposición basadas en los supuestos del simulador</div>
                 </div>
                 <button className="grml-btn" onClick={runDecision} disabled={decisionLoading} style={{
                   padding:"8px 18px", background: decisionLoading ? "#16301f" : "linear-gradient(135deg,#134e4a,#059669)",
@@ -1293,7 +1353,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
 
               {!decisionResult && !decisionLoading && (
                 <div style={{ padding:"24px 0", textAlign:"center", color:"#475569", fontSize:13, fontFamily:"monospace" }}>
-                  El motor generará recomendaciones de asignación táctica basadas en el perfil geopolítico actual
+                  La IA organizará vulnerabilidades y preguntas para revisar a partir de los supuestos seleccionados
                 </div>
               )}
 
@@ -1303,7 +1363,8 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                 </div>
               )}
 
-              {decisionResult && !decisionLoading && (
+              {decisionResult && !decisionLoading && <AnalysisAudit result={decisionResult} context={analysisContext} />}
+                {decisionResult && !decisionLoading && (
                 <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
                   {decisionResult.error ? (
                     <div style={{ color:"#EF4444", fontFamily:"monospace", fontSize:13 }}>{decisionResult.error}</div>
