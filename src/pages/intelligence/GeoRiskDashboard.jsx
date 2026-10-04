@@ -610,8 +610,10 @@ export default function GeoRiskDashboard() {
           </div>
 
           {/* SCENARIOS */}
-        {tab === "data" && <GeoRiskMarketData region={region} />
-          <GeoRiskMacroData />}
+        {tab === "data" && (<>
+          <GeoRiskMarketData region={region} />
+          <GeoRiskMacroData />
+        </>)}
 
           {tab === "scenarios" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
