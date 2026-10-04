@@ -1,8 +1,8 @@
 // Free official macro series: ECB SDW (euro area) and BLS Public Data API (US CPI).
 // Keep raw observations separate from GeoRisk scenario assumptions.
 export const MACRO_SERIES = [
-  { id: "ECB_DEPOSIT_RATE", label: "Tipo de depósito del BCE", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/FM/FM.D.U2.EUR.4F.KR.DFR.LEV", endpoint: "ecb", key: "FM.D.U2.EUR.4F.KR.DFR.LEV" },
-  { id: "ECB_10Y_YIELD", label: "Deuda pública a 10 años · zona euro", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y", endpoint: "ecb", key: "YC.B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y" },
+  { id: "ECB_DEPOSIT_RATE", label: "Tipo de depósito del BCE", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/FM/FM.D.U2.EUR.4F.KR.DFR.LEV", endpoint: "ecb", dataset: "FM", key: "D.U2.EUR.4F.KR.DFR.LEV" },
+  { id: "ECB_10Y_YIELD", label: "Deuda pública a 10 años · zona euro", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y", endpoint: "ecb", dataset: "YC", key: "B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y" },
   { id: "US_CPI", label: "Inflación de precios al consumo · EE. UU.", region: "usa", provider: "BLS", unit: "% interanual", frequency: "monthly", source_url: "https://www.bls.gov/cpi/data.htm", endpoint: "bls", key: "CUUR0000SA0" },
 ];
 
