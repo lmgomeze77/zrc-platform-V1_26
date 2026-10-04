@@ -1911,7 +1911,7 @@ function escapeHTML(s) {
 
 async function handleGeoRiskMacroHistory(db, request) {
   const url = new URL(request.url), series = url.searchParams.get("series");
-  const allowed = ["ECB_DEPOSIT_RATE", "ECB_10Y_YIELD", "US_CPI"];
+  const allowed = ["ECB_DEPOSIT_RATE", "ECB_10Y_YIELD", "EU_HICP", "US_CPI"];
   if (!allowed.includes(series)) return jsonResponse({ error: "Selecciona una serie macro válida." }, 400);
   if (!db) return jsonResponse({ error: "El histórico aún no está disponible." }, 503);
   const limit = Math.min(20000, Math.max(1, Number(url.searchParams.get("limit")) || 10000));
