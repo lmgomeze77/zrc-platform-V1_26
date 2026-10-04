@@ -82,7 +82,7 @@ export async function storeECBHistory(db, series, fetchedAt = new Date()) {
     const statements = [];
     if (revised.length) statements.push(db.prepare(
       "INSERT INTO georisk_market_revisions (provider,series_id,observation_date,previous_value,revised_value,detected_at,source_url) " +
-      "SELECT json_extract(value,'$.provider'),json_extract(value,'$.series_id'),json_extract(value,'$.observation_date'),json_extract(value,'$.previous_value'),json_extract(value,'$.revised_value'),json_extract(value,'$.detected_at'),json_extract(value,'$.source_url') FROM json_each(?)"
+      "SELECT json_extract(incoming.value,'$.provider'),json_extract(incoming.value,'$.series_id'),json_extract(incoming.value,'$.observation_date'),json_extract(incoming.value,'$.previous_value'),json_extract(incoming.value,'$.revised_value'),json_extract(incoming.value,'$.detected_at'),json_extract(incoming.value,'$.source_url') FROM json_each(?) AS incoming WHERE EXISTS (SELECT 1 FROM georisk_market_observations AS current WHERE current.provider=json_extract(incoming.value,'$.provider') AND current.series_id=json_extract(incoming.value,'$.series_id') AND current.observation_date=json_extract(incoming.value,'$.observation_date') AND current.value=json_extract(incoming.value,'$.previous_value'))"
     ).bind(JSON.stringify(revised)));
     statements.push(db.prepare(
       "INSERT INTO georisk_market_observations (provider,series_id,observation_date,value,unit,source_url,is_derived,first_collected_at) " +
