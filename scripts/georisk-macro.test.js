@@ -18,6 +18,9 @@ test("macro feed keeps official metadata and isolates a failed source", async ()
   const calls = [];
   const fakeFetch = async (url, options = {}) => {
     calls.push({ url: String(url), options });
+    if (String(url).includes("eurostat/api/dissemination")) return { ok: true, json: async () => ({
+      dimension: { time: { category: { index: { "2026-08": 0, "2026-09": 1 } } } }, value: [2.4, 2.8],
+    }) };
     if (String(url).includes("data-api.ecb.europa.eu")) return {
       ok: true, text: async () => "TIME_PERIOD,OBS_VALUE\n2026-10-01,2.0\n",
     };
@@ -29,8 +32,8 @@ test("macro feed keeps official metadata and isolates a failed source", async ()
     };
   };
   const result = await fetchGeoRiskMacroSeries(fakeFetch, new Date("2026-10-04T00:00:00Z"));
-  assert.equal(result.series.length, 3);
-  assert.equal(result.series.find(s => s.id === "US_CPI").latest.value, 10);
+  assert.equal(result.series.length, 4);
+  assert.equal(result.series.find(s => s.id === "US_CPI").latest.value, 10);\n  assert.deepEqual(result.series.find(s => s.id === "EU_HICP").latest, { date: "2026-09-01", value: 2.8 });\n  assert.ok(calls.find(call => call.url.includes("coicop18=TOTAL") && call.url.includes("geo=EA")));
   assert.equal(result.series.find(s => s.id === "ECB_DEPOSIT_RATE").latest.value, 2);
   assert.ok(calls.find(call => call.options.method === "POST" && call.options.body.includes("CUUR0000SA0")));
   assert.ok(result.series.every(item => item.source_url && item.unit));
