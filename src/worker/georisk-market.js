@@ -56,13 +56,13 @@ export async function handleGeoRiskMarket(request, ctx) {
       provider: "Banco Central Europeo", source_url: ECB_SOURCE_URL,
       frequency: "daily_business_days", fetched_at: fetchedAt.toISOString(),
       history_years: 5, series,
-    }), { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
+    }), { headers: { "Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "Cache-Control": "public, max-age=3600" } });
     ctx.waitUntil(cache.put(cacheKey, result.clone()));
     return result;
   } catch (error) {
     console.error("GeoRisk ECB data unavailable:", error.message);
     return new Response(JSON.stringify({ error: "No se pudo consultar el BCE. Reintenta más tarde; no se han sustituido los datos por cifras de ejemplo." }), {
-      status: 502, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
+      status: 502, headers: { "Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "Cache-Control": "no-store" },
     });
   }
 }
