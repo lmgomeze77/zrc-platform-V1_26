@@ -22,7 +22,7 @@ El PR #65 incorpora series gratuitas del BCE y BLS y amplía divisas de referenc
 Cobertura en esta fase:
 
 - Tipo de depósito del BCE y rendimiento soberano a 10 años de la zona euro.
-- CPI-U mensual de EE. UU.; el panel deriva la variación interanual comparando el mismo mes.
+- HICP mensual de Eurostat para la eurozona, junto con CPI-U mensual de EE. UU.; se mantienen como indicadores distintos.
 - Tipos de referencia EUR/USD, EUR/GBP, EUR/CNY, EUR/MXN, EUR/BRL, EUR/TRY, EUR/ILS, EUR/ZAR; USD/CNY es un cruce calculado y debe identificarse como tal.
 - GPR, WGI, commodities, flujos internacionales y fuentes macro chinas siguen fuera de este primer PR.
 
@@ -38,5 +38,5 @@ Cobertura en esta fase:
 ## Dependencias y límites
 
 - El despliegue de series archivadas requiere que D1 esté disponible en el Worker de producción y que el proceso de migración pueda ejecutarse. La última ejecución de producción quedó bloqueada por permisos del token de Cloudflare; las pruebas locales no acreditan el estado de la base remota.
-- La integración del GPR original debe conservar la atribución solicitada por los autores, registrar la fecha de descarga y tener en cuenta que el dato diario más reciente es preliminar y puede revisarse. Antes de automatizarla hay que verificar el formato y la licencia del fichero descargable.
+- El índice GPR original ofrece ficheros diarios en Excel con actualización semanal, datos mensuales y vintages; los autores indican licencia Creative Commons Attribution y advierten que los datos recientes pueden revisarse. La descarga debe conservar fecha de captura y versión del fichero; como el formato diario es XLS, la integración debe probar primero la conversión y el registro de revisiones.
 - El archivo histórico sirve para construir vintages desde la primera captura propia. No implica que existan vintages anteriores ni fechas históricas de publicación que la fuente no haya suministrado.
