@@ -31,7 +31,7 @@ export function calculateYearOverYearCpi(monthlyRows) {
     const previous = byPeriod.get((Number(row.year) - 1) + "-" + row.period);
     const current = Number(row.value);
     if (!Number.isFinite(previous) || !Number.isFinite(current) || previous === 0) return [];
-    return [{ date: row.year + "-" + month + "-01", value: (current / previous - 1) * 100 }];
+    return [{ date: row.year + "-" + month + "-01", value: Math.round((current / previous - 1) * 100 * 1e6) / 1e6 }];
   }).sort((a, b) => a.date.localeCompare(b.date));
 }
 
