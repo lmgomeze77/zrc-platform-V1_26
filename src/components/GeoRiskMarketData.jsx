@@ -3,6 +3,7 @@ import { useEffect, useId, useMemo, useState } from "react";
 const number = value => new Intl.NumberFormat("es-ES", { maximumFractionDigits: 4 }).format(value);
 const dateLabel = value => new Date(`${value}T12:00:00Z`).toLocaleDateString("es-ES");
 const source = "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html";
+const worker = "https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-market-data";
 const controlStyle = { background: "#101f30", color: "#E2E8F0", border: "1px solid #475569", borderRadius: 6, padding: "8px 12px", cursor: "pointer" };
 
 export default function GeoRiskMarketData({ region }) {
@@ -10,6 +11,8 @@ export default function GeoRiskMarketData({ region }) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [attempt, setAttempt] = useState(0);
+  const [archiveError, setArchiveError] = useState(null);
+  const [archiveLoading, setArchiveLoading] = useState(false);
   const [selected, setSelected] = useState(region === "asia" ? "USDCNY" : "EURUSD");
   const [months, setMonths] = useState(12);
   const chartId = useId();
@@ -20,7 +23,7 @@ export default function GeoRiskMarketData({ region }) {
     let active = true;
     setLoading(true);
     setError(null);
-    fetch("https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-market-data", { signal: controller.signal })
+    fetch(worker, { signal: controller.signal })
       .then(async response => {
         const result = await response.json();
         if (!response.ok) throw new Error(result.error || "La fuente no está disponible.");
@@ -45,12 +48,24 @@ export default function GeoRiskMarketData({ region }) {
   const lastTime = points.length ? Date.parse(points.at(-1).date) : 0;
   const path = points.map(point => `${50 + (Date.parse(point.date) - firstTime) / (lastTime - firstTime || 1) * 800},${190 - (point.value - min) / (max - min || 1) * 160}`).join(" ");
   const change = points.length > 1 ? (points.at(-1).value / points[0].value - 1) * 100 : null;
-  const download = () => {
-    const rows = ["date,value,pair,unit,source,derived", ...points.map(point => `${point.date},${point.value},${series.id},${series.unit},ECB,${series.derived}`)];
+  const download = (dataPoints, filename, seriesId, unit, derived, fetchedAt = "") => {
+    const rows = ["date,value,pair,unit,provider,is_derived,first_collected_at,source_url",
+      ...dataPoints.map(point => `${point.date},${point.value},${seriesId},${unit},ECB,${derived},${point.first_collected_at || fetchedAt},${source}`)];
     const url = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv;charset=utf-8" }));
     const link = document.createElement("a");
-    link.href = url; link.download = `georisk-${selected}-${months}m.csv`; link.click();
+    link.href = url; link.download = filename; link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+  const downloadAccumulatedHistory = async () => {
+    setArchiveLoading(true); setArchiveError(null);
+    try {
+      const response = await fetch(`${worker}/history?series=${encodeURIComponent(selected)}&limit=20000`);
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "No se pudo descargar el histórico guardado.");
+      if (!result.points?.length) throw new Error("La captura diaria aún no ha guardado esta serie.");
+      download(result.points, `georisk-zrc-${selected}-historico.csv`, selected, result.points[0].unit, result.points[0].is_derived === 1);
+    } catch (err) { setArchiveError(err.message); }
+    finally { setArchiveLoading(false); }
   };
   return (
     <section style={{ background: "#0d1826", border: "1px solid #334155", borderRadius: 12, padding: 20, color: "#CBD5E1" }} aria-label="Datos reales de divisas">
@@ -63,10 +78,20 @@ export default function GeoRiskMarketData({ region }) {
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center", margin: "16px 0" }}>
           <label>Par de monedas <select value={selected} onChange={event => setSelected(event.target.value)} style={controlStyle}>{data.series.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
           <label>Periodo <select value={months} onChange={event => setMonths(Number(event.target.value))} style={controlStyle}><option value={1}>1 mes</option><option value={3}>3 meses</option><option value={12}>1 año</option><option value={60}>5 años</option></select></label>
-          <button type="button" style={controlStyle} onClick={download} disabled={!points.length}>Descargar datos CSV</button>
+          <button type="button" style={controlStyle} onClick={() => download(points, `georisk-${selected}-${months}m.csv`, selected, series.unit, series.derived, data.fetched_at)} disabled={!points.length}>Descargar últimos datos CSV</button>
+          <button type="button" style={controlStyle} onClick={downloadAccumulatedHistory} disabled={archiveLoading || !data.archive?.series?.find(item => item.series_id === selected)?.count}>
+            {archiveLoading ? "Preparando histórico…" : "Descargar histórico acumulado ZRC"}
+          </button>
           <button type="button" style={controlStyle} onClick={() => setAttempt(value => value + 1)}>Consultar de nuevo</button>
         </div>
         {series?.latest ? <>
+          <div style={{ margin: "12px 0", padding: "12px 14px", borderLeft: "2px solid #60A5FA", background: "#101f30", fontSize: 12, lineHeight: 1.7 }}>
+            {data.archive?.status === "unavailable" ? data.archive.message : data.archive?.series?.find(item => item.series_id === selected)
+              ? <>En la base ZRC hay {number(data.archive.series.find(item => item.series_id === selected).count)} observaciones BCE entre {dateLabel(data.archive.series.find(item => item.series_id === selected).first_date)} y {dateLabel(data.archive.series.find(item => item.series_id === selected).latest_date)}. Las capturas diarias ampliarán el histórico; las revisiones se guardan.</>
+              : "La captura inicial del histórico está preparándose."}
+          </div>
+          {archiveError && <p role="alert" style={{ color: "#FBBF24", fontSize: 12 }}>{archiveError}</p>}
+
           <div style={{ display: "flex", flexWrap: "wrap", gap: 24, margin: "20px 0" }}>
             <div><div style={{ fontSize: 12 }}>Último dato publicado</div><strong style={{ fontSize: 28 }}>{number(series.latest.value)}</strong> <span>{series.unit}</span><div style={{ fontSize: 12 }}>Fecha del dato: {dateLabel(series.latest.date)}</div></div>
             <div><div style={{ fontSize: 12 }}>Cambio en el periodo</div><strong style={{ fontSize: 24 }}>{change == null ? "—" : `${change >= 0 ? "+" : ""}${number(change)}%`}</strong><div style={{ fontSize: 12 }}>{points.length} observaciones diarias</div></div>
