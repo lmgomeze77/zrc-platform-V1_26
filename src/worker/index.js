@@ -1,4 +1,4 @@
-import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";
+import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";\nimport { fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
 // src/worker/index.js
 // ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
 
@@ -39,7 +39,7 @@ export default {
       await sendWeeklyDigestEmails(env, snap);
     })());
     // A market-data failure must never prevent the weekly index or email.
-    ctx.waitUntil(collectECBMarketHistory(env.DB));
+    ctx.waitUntil(collectECBMarketHistory(env.DB));\n    ctx.waitUntil((async () => { const result = await fetchGeoRiskMacroSeries(); await storeGeoRiskMacroSeries(env.DB, result); })().catch(error => console.error("GeoRisk macro archive collection failed:", error.message)));
   },
 };
 
@@ -1904,4 +1904,16 @@ function escapeHTML(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
   })[c]);
+}
+
+
+async function handleGeoRiskMacroHistory(db, request) {
+  const url = new URL(request.url), series = url.searchParams.get("series");
+  const allowed = ["ECB_DEPOSIT_RATE", "ECB_10Y_YIELD", "US_CPI"];
+  if (!allowed.includes(series)) return jsonResponse({ error: "Selecciona una serie macro válida." }, 400);
+  if (!db) return jsonResponse({ error: "El histórico aún no está disponible." }, 503);
+  const limit = Math.min(20000, Math.max(1, Number(url.searchParams.get("limit")) || 10000));
+  const result = await db.prepare("SELECT observation_date AS date,value,unit,first_collected_at,last_revised_at FROM georisk_market_observations WHERE series_id=? ORDER BY observation_date ASC LIMIT ?").bind(series, limit).all();
+  const points = result.results || [];
+  return jsonResponse({ series, points, oldest: points[0]?.date || null, latest: points.at(-1)?.date || null });
 }
