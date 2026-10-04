@@ -1,3 +1,30 @@
+# Implementación gratuita inicial — 4 de octubre de 2026
+
+La decisión vigente es empezar con fuentes oficiales gratuitas. La comparación comercial que aparece más abajo queda como referencia para una fase posterior, sin contratación ni dependencia de un proveedor de pago.
+
+## Entrega implementada
+
+- BCE: EUR/USD, EUR/GBP y EUR/CNY diarios; USD/CNY calculado dividiendo EUR/CNY por EUR/USD de la misma fecha, expresamente identificado como cruce derivado.
+- Hasta cinco años de observaciones publicadas, selección de periodo, gráfico, últimas observaciones y descarga CSV en «Datos reales», en Dashboard y ML.
+- Endpoint `/api/georisk-market-data`, sin claves, consulta con tiempo máximo y caché de una hora. Fecha de publicación separada de fecha de consulta. Más de siete días sin observaciones genera aviso de retraso.
+- Sin interpolación de festivos ni datos fabricados cuando falla el proveedor. El ticker editorial existente permanece independiente.
+- Atribución y aviso de disponibilidad gratuita en cada acceso y antes de suscribir en Pricing, conforme a las condiciones del BCE.
+- El factor sectorial, los pesos y los impactos continúan siendo supuestos. Esta entrega construye la capa de observaciones; no afirma calibración empírica ni modifica los niveles del simulador sin un contraste previo.
+
+Fuentes oficiales: [divisas y descargas BCE](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html), [XML histórico](https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.xml), [condiciones de reutilización](https://www.ecb.europa.eu/services/using-our-site/disclaimer/html/index.en.html).
+
+## Cobertura pendiente
+
+Tipos, inflación, deuda, materias primas y flujos todavía no están conectados. Se probaron ECB Data Portal (tipos) y Eurostat (inflación): el primero devolvió un error 504 y la consulta de HICP utilizada terminó en diciembre de 2025. Esas respuestas no se presentan como datos actuales. Hay que verificar el conjunto vigente y la continuidad antes de incorporarlos.
+
+La siguiente fase debe ampliar fuentes oficiales por variable y región, versionar las observaciones y diseñar una validación temporal del modelo. EUR/USD no sustituye a DXY; el cruce USD/CNY no es el fixing del PBOC; no se sustituye S&P GSCI por un índice distinto sin cambiar expresamente la definición.
+
+## Verificación
+
+Build Vite y empaquetado Worker en modo dry-run correctos. Tests del parser: orden, ventana histórica, fechas futuras, valores ausentes, duplicados, cruces de la misma fecha y fallo del proveedor. Descarga oficial contrastada el 4/10/2026: 1.281 puntos por serie, última publicación 2/10/2026. EUR/USD 1,1225; EUR/GBP 0,85033; EUR/CNY 7,5259; USD/CNY derivado 6,7045879733. Comprobaciones del esquema editorial existentes también correctas.
+
+---
+
 # GeoRisk: factor sectorial y datos de mercado
 
 **Fecha:** 4 de octubre de 2026  
