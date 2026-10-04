@@ -20,7 +20,7 @@ export default function GeoRiskMarketData({ region }) {
     let active = true;
     setLoading(true);
     setError(null);
-    fetch("/api/georisk-market-data", { signal: controller.signal })
+    fetch("https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-market-data", { signal: controller.signal })
       .then(async response => {
         const result = await response.json();
         if (!response.ok) throw new Error(result.error || "La fuente no está disponible.");
