@@ -13,8 +13,7 @@ const EUROSTAT_BASE = "https://ec.europa.eu/eurostat/api/dissemination/statistic
 const YEARS = 10;
 
 function rowsFromCsv(csv) {
-  const lines = csv.trim().split(/\r?
-/);
+  const lines = csv.trim().split(/\r?\n/);
   const headers = lines.shift().split(",").map(value => value.replace(/^"|"$/g, ""));
   const dateIndex = headers.indexOf("TIME_PERIOD"), valueIndex = headers.indexOf("OBS_VALUE");
   if (dateIndex < 0 || valueIndex < 0) throw new Error("Formato CSV inesperado del BCE");
