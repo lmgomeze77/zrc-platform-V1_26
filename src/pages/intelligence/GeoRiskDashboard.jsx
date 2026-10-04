@@ -114,8 +114,8 @@ const SECTION_GUIDES = {
   },
   variables: {
     title: "Mira por dónde se transmite el riesgo",
-    body: "Esta tabla traduce los escenarios a tipos de interés, inflación, divisas y otras variables. “Referencia” es un valor fijo del modelo; “estimación” es un ejemplo calculado a partir de tus supuestos, no un dato de mercado.",
-    tip: "Úsala para identificar qué canal importa más. No hay series históricas conectadas."
+    body: "Esta tabla traduce tus escenarios a tipos, inflación, divisas y otras variables. Los niveles actuales son referencias fijas del modelo: todavía no son cotizaciones ni tienen una serie histórica conectada.",
+    tip: "Separa siempre el dato observado del impacto estimado por el escenario."
   },
   nlp: {
     title: "Revisa un titular o una nota",
@@ -348,14 +348,17 @@ export default function GeoRiskDashboard() {
     return total;
   }, [scenarioWeights, sectorMult, region]);
 
-  const compositeRisk = useMemo(() => {
+  const baseCompositeRisk = useMemo(() => {
     let r = 0;
     const normalizedWeights = normalizeWeights(scenarioWeights);
     Object.entries(SCENARIOS).forEach(([k, v]) => {
       r += (normalizedWeights[k] || 0) * v.risk;
     });
-    return clamp(r * sectorMult, 0, 100);
-  }, [scenarioWeights, sectorMult]);
+    return r;
+  }, [scenarioWeights]);
+
+  const compositeRisk = useMemo(() => clamp(baseCompositeRisk * sectorMult, 0, 100), [baseCompositeRisk, sectorMult]);
+  const sectorFactorChangePct = Math.round((sectorMult - 1) * 100);
 
   const allocationSignals = useMemo(() => {
     const imp = {};
@@ -554,10 +557,17 @@ export default function GeoRiskDashboard() {
                 Las variables, fuentes y niveles se leen sobre {REGIONS[region].label} · el riesgo compuesto del escenario es global
               </div>
             </div>
-            <div className="zrc-mult-block" style={{ textAlign: "right", fontFamily: "'JetBrains Mono', monospace" }}>
-              <div style={{ fontSize: 11, color: "#64748B", letterSpacing: 1 }}>MULTIPLICADOR</div>
+            <div className="zrc-mult-block" style={{ textAlign: "right", fontFamily: "'JetBrains Mono', monospace", maxWidth: 270 }}>
+              <div style={{ fontSize: 11, color: "#64748B", letterSpacing: 1 }}>FACTOR SECTORIAL · SUPUESTO ZRC</div>
               <div style={{ fontSize: 21, fontWeight: 600, color: sectorMult > 1 ? "#F59E0B" : "#10B981" }}>
-                ×{sectorMult.toFixed(2)}
+                {sectorMult.toFixed(2)}×
+              </div>
+              <div style={{ fontSize: 11, color: "#CBD5E1", marginTop: 3 }}>
+                {baseCompositeRisk.toFixed(1)} × {sectorMult.toFixed(2)} = {compositeRisk.toFixed(1)} / 100
+              </div>
+              <div style={{ fontSize: 10, color: "#64748B", lineHeight: 1.5, marginTop: 4 }}>
+                {sectorFactorChangePct === 0 ? "1,00 no ajusta el riesgo base." : `Este factor ${sectorFactorChangePct < 0 ? "reduce" : "aumenta"} el riesgo un ${Math.abs(sectorFactorChangePct)}%.`}
+                {" "}También ajusta el impacto estimado en variables. Es un supuesto fijo, no se obtiene de cotizaciones históricas.
               </div>
             </div>
           </div>
