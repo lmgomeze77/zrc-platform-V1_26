@@ -1,17 +1,20 @@
-// Free official macro series: ECB SDW (euro area) and BLS Public Data API (US CPI).
+// Free official macro series: ECB SDW, Eurostat HICP and BLS CPI.
 // Keep raw observations separate from GeoRisk scenario assumptions.
 export const MACRO_SERIES = [
   { id: "ECB_DEPOSIT_RATE", label: "Tipo de depósito del BCE", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/FM/FM.D.U2.EUR.4F.KR.DFR.LEV", endpoint: "ecb", dataset: "FM", key: "D.U2.EUR.4F.KR.DFR.LEV" },
   { id: "ECB_10Y_YIELD", label: "Deuda pública a 10 años · zona euro", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y", endpoint: "ecb", dataset: "YC", key: "B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y" },
+  { id: "EU_HICP", label: "Inflación armonizada · eurozona", region: "eu", provider: "Eurostat", unit: "% interanual", frequency: "monthly", source_url: "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table?lang=en", endpoint: "eurostat" },
   { id: "US_CPI", label: "Inflación de precios al consumo · EE. UU.", region: "usa", provider: "BLS", unit: "% interanual", frequency: "monthly", source_url: "https://www.bls.gov/cpi/data.htm", endpoint: "bls", key: "CUUR0000SA0" },
 ];
 
 const ECB_BASE = "https://data-api.ecb.europa.eu/service/data";
 const BLS_BASE = "https://api.bls.gov/publicAPI/v1/timeseries/data/";
+const EUROSTAT_BASE = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_minr";
 const YEARS = 10;
 
 function rowsFromCsv(csv) {
-  const lines = csv.trim().split(/\r?\n/);
+  const lines = csv.trim().split(/\r?
+/);
   const headers = lines.shift().split(",").map(value => value.replace(/^"|"$/g, ""));
   const dateIndex = headers.indexOf("TIME_PERIOD"), valueIndex = headers.indexOf("OBS_VALUE");
   if (dateIndex < 0 || valueIndex < 0) throw new Error("Formato CSV inesperado del BCE");
@@ -42,6 +45,22 @@ async function fetchEcb(item, fetchImpl, start) {
   return rowsFromCsv(await response.text());
 }
 
+async function fetchEurostatHicp(fetchImpl) {
+  const params = new URLSearchParams({ lang: "en", format: "JSON", freq: "M", unit: "RCH_A",
+    coicop18: "TOTAL", geo: "EA", lastTimePeriod: "120" });
+  const response = await fetchImpl(EUROSTAT_BASE + "?" + params.toString(), { signal: AbortSignal.timeout(20000) });
+  if (!response.ok) throw new Error(`Eurostat HTTP ${response.status}`);
+  const body = await response.json();
+  const timeIndex = body.dimension?.time?.category?.index;
+  if (!timeIndex || !body.value) throw new Error("Formato JSON-stat inesperado de Eurostat");
+  return Object.entries(timeIndex).flatMap(([period, position]) => {
+    const raw = Array.isArray(body.value) ? body.value[position] : body.value[position];
+    const value = Number(raw);
+    return /^\d{4}-\d{2}$/.test(period) && Number.isFinite(value)
+      ? [{ date: period + "-01", value }] : [];
+  }).sort((a, b) => a.date.localeCompare(b.date));
+}
+
 async function fetchBls(item, fetchImpl, now) {
   const end = now.getUTCFullYear(), start = end - YEARS;
   const response = await fetchImpl(BLS_BASE, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ seriesid: [item.key], startyear: String(start), endyear: String(end) }), signal: AbortSignal.timeout(20000) });
@@ -56,7 +75,7 @@ export async function fetchGeoRiskMacroSeries(fetchImpl = fetch, now = new Date(
   const start = `${now.getUTCFullYear() - YEARS}-01-01`;
   const results = await Promise.all(MACRO_SERIES.map(async item => {
     try {
-      const points = item.endpoint === "bls" ? await fetchBls(item, fetchImpl, now) : await fetchEcb(item, fetchImpl, start);
+      const points = item.endpoint === "bls" ? await fetchBls(item, fetchImpl, now) : item.endpoint === "eurostat" ? await fetchEurostatHicp(fetchImpl) : await fetchEcb(item, fetchImpl, start);
       points.sort((a, b) => a.date.localeCompare(b.date));
       const latest = points.at(-1) || null;
       return { ...item, points, latest, status: latest ? "available" : "unavailable" };
@@ -64,7 +83,7 @@ export async function fetchGeoRiskMacroSeries(fetchImpl = fetch, now = new Date(
       return { ...item, points: [], latest: null, status: "unavailable", error: String(error.message || error) };
     }
   }));
-  return { provider: "BCE y U.S. Bureau of Labor Statistics", fetched_at: now.toISOString(), history_years: YEARS, series: results };
+  return { provider: "BCE, Eurostat y U.S. Bureau of Labor Statistics", fetched_at: now.toISOString(), history_years: YEARS, series: results };
 }
 
 export async function storeGeoRiskMacroSeries(db, result, now = new Date()) {
