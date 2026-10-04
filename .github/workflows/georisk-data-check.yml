@@ -11,6 +11,8 @@ on:
       - 'src/pages/PricingPage.jsx'
       - 'scripts/georisk-market.test.js'
       - 'scripts/georisk-macro.test.js'
+      - 'scripts/georisk-wgi.test.js'
+      - 'src/components/GeoRiskGovernanceData.jsx'
       - 'src/components/GeoRiskMacroData.jsx'
       - '.github/workflows/georisk-data-check.yml'
 jobs:
@@ -25,7 +27,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
-      - run: node --test scripts/georisk-market.test.js scripts/georisk-macro.test.js
+      - run: node --test scripts/georisk-market.test.js scripts/georisk-macro.test.js scripts/georisk-wgi.test.js
       - run: npx wrangler d1 migrations apply zrc-leads --local
       - run: npm run test:schema
       - run: npm run build
