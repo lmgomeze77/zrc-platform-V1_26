@@ -1,4 +1,5 @@
-import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";\nimport { fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
+import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";
+import { fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
 // src/worker/index.js
 // ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
 
@@ -39,7 +40,8 @@ export default {
       await sendWeeklyDigestEmails(env, snap);
     })());
     // A market-data failure must never prevent the weekly index or email.
-    ctx.waitUntil(collectECBMarketHistory(env.DB));\n    ctx.waitUntil((async () => { const result = await fetchGeoRiskMacroSeries(); await storeGeoRiskMacroSeries(env.DB, result); })().catch(error => console.error("GeoRisk macro archive collection failed:", error.message)));
+    ctx.waitUntil(collectECBMarketHistory(env.DB));
+    ctx.waitUntil((async () => { const result = await fetchGeoRiskMacroSeries(); await storeGeoRiskMacroSeries(env.DB, result); })().catch(error => console.error("GeoRisk macro archive collection failed:", error.message)));
   },
 };
 
