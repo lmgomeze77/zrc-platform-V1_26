@@ -1,5 +1,6 @@
 import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";
 import { fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
+import { ensureGeoRiskMarketSchema } from "./georisk-market-schema.js";
 // src/worker/index.js
 // ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
 
@@ -1914,6 +1915,7 @@ async function handleGeoRiskMacroHistory(db, request) {
   const allowed = ["ECB_DEPOSIT_RATE", "ECB_10Y_YIELD", "EU_HICP", "US_CPI"];
   if (!allowed.includes(series)) return jsonResponse({ error: "Selecciona una serie macro válida." }, 400);
   if (!db) return jsonResponse({ error: "El histórico aún no está disponible." }, 503);
+  await ensureGeoRiskMarketSchema(db);
   const limit = Math.min(20000, Math.max(1, Number(url.searchParams.get("limit")) || 10000));
   const result = await db.prepare("SELECT observation_date AS date,value,unit,first_collected_at,last_revised_at FROM georisk_market_observations WHERE series_id=? ORDER BY observation_date ASC LIMIT ?").bind(series, limit).all();
   const points = result.results || [];
