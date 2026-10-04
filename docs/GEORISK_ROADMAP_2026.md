@@ -15,7 +15,7 @@ Convertir GeoRisk en una herramienta de decisión auditable: mostrar datos obser
 | 4. Validación del modelo | Backtests temporales, ventanas fuera de muestra, métricas y registro de versiones | Comparación con línea base, resultados reproducibles y aprobación analítica; la IA no modifica pesos |
 | 5. Producto y distribución | Alertas, exportación para comité, mapa con drill-down, límites de acceso por plan | Rendimiento móvil, accesibilidad, CORS/rate limits y costes/licencias revisados |
 
-## Primera entrega en curso
+## Entregas de datos
 
 El PR #65 ya incorpora series gratuitas del BCE, Eurostat y BLS, amplía divisas a MXN, BRL, TRY, ILS y ZAR y deja un archivo de observaciones propio en D1. El panel explica en lenguaje sencillo que estas referencias son observaciones independientes de los supuestos y pesos del simulador. El PR #66 añade la primera capa WGI para fichas país, con sus límites visibles. La simulación puede reaccionar al instante a los controles, mientras que el índice público tiene periodicidad semanal.
 
@@ -24,9 +24,16 @@ Cobertura en esta fase:
 - Tipo de depósito del BCE y rendimiento soberano a 10 años de la zona euro.
 - HICP mensual de Eurostat para la eurozona, junto con CPI-U mensual de EE. UU.; se mantienen como indicadores distintos.
 - Tipos de referencia EUR/USD, EUR/GBP, EUR/CNY, EUR/MXN, EUR/BRL, EUR/TRY, EUR/ILS, EUR/ZAR; USD/CNY es un cruce calculado y debe identificarse como tal.
-- GPR, commodities, flujos internacionales, GDELT y fuentes macro chinas siguen como siguientes entregas.
+- GPR: referencias globales mensuales y diarias, amenazas, actos y once series país. Hasta diez años mensuales y cinco diarios, con gráficos, tabla y CSV; véase `GEORISK_GPR.md`.
+- Commodities, flujos internacionales, GDELT y fuentes macro chinas siguen como siguientes entregas.
 
-## Capa estructural WGI (PR #66)\n\nLa interfaz consulta por país las seis dimensiones del Worldwide Governance Indicators del Banco Mundial y muestra el último año disponible y el dato anterior. El archivo D1 registra la serie y sus revisiones desde la primera consulta de ZRC. La visualización no construye un promedio ni cambia el índice semanal.\n\nEl WGI combina encuestas y valoraciones expertas, expresa percepciones con incertidumbre y puede revisarse. El Banco Mundial indica que no debe emplearse como criterio definitivo de riesgo de inversión o calificación crediticia; ese límite debe acompañar siempre al dato. Fuente atribuida bajo CC BY 4.0.\n\n## Decisiones de rigor
+## Capa estructural WGI (PR #66)
+
+La interfaz consulta por país las seis dimensiones del Worldwide Governance Indicators del Banco Mundial y muestra el último año disponible y el dato anterior. El archivo D1 registra la serie y sus revisiones desde la primera consulta de ZRC. La visualización no construye un promedio ni cambia el índice semanal.
+
+El WGI combina encuestas y valoraciones expertas, expresa percepciones con incertidumbre y puede revisarse. El Banco Mundial indica que no debe emplearse como criterio definitivo de riesgo de inversión o calificación crediticia; ese límite debe acompañar siempre al dato. Fuente atribuida bajo CC BY 4.0.
+
+## Decisiones de rigor
 
 1. Cada observación conserva proveedor, serie, unidad, fecha observada, fecha de primera captura, enlace y revisiones detectadas.
 2. La fecha de captura propia no se presenta como fecha original de publicación si la fuente no la proporciona.
@@ -37,6 +44,6 @@ Cobertura en esta fase:
 
 ## Dependencias y límites
 
-- El despliegue de series archivadas requiere que D1 esté disponible en el Worker de producción y que el proceso de migración pueda ejecutarse. La última ejecución de producción quedó bloqueada por permisos del token de Cloudflare; las pruebas locales no acreditan el estado de la base remota.
-- El índice GPR original ofrece ficheros diarios en Excel con actualización semanal, datos mensuales y vintages; los autores indican licencia Creative Commons Attribution y advierten que los datos recientes pueden revisarse. La descarga debe conservar fecha de captura y versión del fichero; como el formato diario es XLS, la integración debe probar primero la conversión y el registro de revisiones.
+- Las tablas D1 se inicializan de forma idempotente mediante el binding del Worker. Se ha verificado en producción la captura WGI de España: 156 observaciones y seis dimensiones; la API del Banco Mundial devuelve 2024 como último año disponible en esa consulta.
+- El índice GPR original se convierte desde los XLS oficiales en un pipeline versionado, con URLs y SHA-256. La conversión de ambos libros y el backfill local de 7.152 observaciones están verificados; la actualización programada solo despliega cuando cambian los ficheros fuente.
 - El archivo histórico sirve para construir vintages desde la primera captura propia. No implica que existan vintages anteriores ni fechas históricas de publicación que la fuente no haya suministrado.

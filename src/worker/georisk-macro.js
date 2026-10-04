@@ -5,7 +5,7 @@ export const MACRO_SERIES = [
   { id: "ECB_DEPOSIT_RATE", label: "Tipo de depósito del BCE", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/FM/FM.D.U2.EUR.4F.KR.DFR.LEV", endpoint: "ecb", dataset: "FM", key: "D.U2.EUR.4F.KR.DFR.LEV" },
   { id: "ECB_10Y_YIELD", label: "Deuda pública a 10 años · zona euro", region: "eu", provider: "ECB", unit: "% anual", frequency: "daily", source_url: "https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y", endpoint: "ecb", dataset: "YC", key: "B.U2.EUR.4F.G_N_C.SV_C_YM.PY_10Y" },
   { id: "EU_HICP", label: "Inflación armonizada · eurozona", region: "eu", provider: "Eurostat", unit: "% interanual", frequency: "monthly", source_url: "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table?lang=en", endpoint: "eurostat" },
-  { id: "US_CPI", label: "Inflación de precios al consumo · EE. UU.", region: "usa", provider: "BLS", unit: "% interanual", frequency: "monthly", source_url: "https://www.bls.gov/cpi/data.htm", endpoint: "bls", key: "CUUR0000SA0" },
+  { id: "US_CPI", label: "Inflación de precios al consumo · EE. UU.", region: "usa", provider: "BLS", unit: "% interanual", frequency: "monthly", source_url: "https://www.bls.gov/cpi/data.htm", endpoint: "bls", derived: true, key: "CUUR0000SA0" },
 ];
 
 const ECB_BASE = "https://data-api.ecb.europa.eu/service/data";
@@ -20,6 +20,7 @@ function rowsFromCsv(csv) {
   if (dateIndex < 0 || valueIndex < 0) throw new Error("Formato CSV inesperado del BCE");
   return lines.flatMap(line => {
     const cells = line.split(",").map(value => value.replace(/^"|"$/g, ""));
+    if (!cells[valueIndex]?.trim()) return [];
     const value = Number(cells[valueIndex]);
     return /^\d{4}-\d{2}-\d{2}$/.test(cells[dateIndex]) && Number.isFinite(value)
       ? [{ date: cells[dateIndex], value }] : [];
@@ -55,6 +56,7 @@ async function fetchEurostatHicp(fetchImpl) {
   if (!timeIndex || !body.value) throw new Error("Formato JSON-stat inesperado de Eurostat");
   return Object.entries(timeIndex).flatMap(([period, position]) => {
     const raw = Array.isArray(body.value) ? body.value[position] : body.value[position];
+    if (raw === null || raw === undefined || raw === "") return [];
     const value = Number(raw);
     return /^\d{4}-\d{2}$/.test(period) && Number.isFinite(value)
       ? [{ date: period + "-01", value }] : [];
@@ -62,7 +64,8 @@ async function fetchEurostatHicp(fetchImpl) {
 }
 
 async function fetchBls(item, fetchImpl, now) {
-  const end = now.getUTCFullYear(), start = end - YEARS;
+  // BLS v1 allows ten inclusive calendar years per request.
+  const end = now.getUTCFullYear(), start = end - YEARS + 1;
   const response = await fetchImpl(BLS_BASE, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ seriesid: [item.key], startyear: String(start), endyear: String(end) }), signal: AbortSignal.timeout(20000) });
   if (!response.ok) throw new Error(`BLS HTTP ${response.status}`);
   const body = await response.json();
@@ -103,28 +106,28 @@ export async function storeGeoRiskMacroSeries(db, result, now = new Date()) {
       else if (old !== point.value) updates.push({ provider: item.provider, series_id: item.id, observation_date: point.date,
         previous_value: old, revised_value: point.value, detected_at: collectedAt, source_url: item.source_url });
       inserts.push({ provider: item.provider, series_id: item.id, observation_date: point.date, value: point.value,
-        unit: item.unit, source_url: item.source_url, is_derived: 0, first_collected_at: collectedAt });
+        unit: item.unit, source_url: item.source_url, is_derived: item.derived ? 1 : 0, first_collected_at: collectedAt });
     }
     revisions += updates.length;
-    for (let offset = 0; offset < inserts.length; offset += 100) {
-      const obs = inserts.slice(offset, offset + 100);
-      const rev = updates.slice(offset, offset + 100);
+    for (let offset = 0; offset < inserts.length; offset += 500) {
+      const obs = inserts.slice(offset, offset + 500);
+      const rev = updates.slice(offset, offset + 500);
       const statements = [];
       if (rev.length) statements.push(db.prepare(
         "INSERT INTO georisk_market_revisions (provider,series_id,observation_date,previous_value,revised_value,detected_at,source_url) " +
-        "SELECT json_extract(value,'$.provider'),json_extract(value,'$.series_id'),json_extract(value,'$.observation_date'),json_extract(value,'$.previous_value'),json_extract(value,'$.revised_value'),json_extract(value,'$.detected_at'),json_extract(value,'$.source_url') FROM json_each(?) " +
-        "WHERE EXISTS (SELECT 1 FROM georisk_market_observations current WHERE current.provider=json_extract(value,'$.provider') AND current.series_id=json_extract(value,'$.series_id') AND current.observation_date=json_extract(value,'$.observation_date') AND current.value=json_extract(value,'$.previous_value'))"
+        "SELECT json_extract(incoming.value,'$.provider'),json_extract(incoming.value,'$.series_id'),json_extract(incoming.value,'$.observation_date'),json_extract(incoming.value,'$.previous_value'),json_extract(incoming.value,'$.revised_value'),json_extract(incoming.value,'$.detected_at'),json_extract(incoming.value,'$.source_url') FROM json_each(?) AS incoming " +
+        "WHERE EXISTS (SELECT 1 FROM georisk_market_observations current WHERE current.provider=json_extract(incoming.value,'$.provider') AND current.series_id=json_extract(incoming.value,'$.series_id') AND current.observation_date=json_extract(incoming.value,'$.observation_date') AND current.value=json_extract(incoming.value,'$.previous_value'))"
       ).bind(JSON.stringify(rev)));
       statements.push(db.prepare(
         "INSERT INTO georisk_market_observations (provider,series_id,observation_date,value,unit,source_url,is_derived,first_collected_at) " +
-        "SELECT json_extract(value,'$.provider'),json_extract(value,'$.series_id'),json_extract(value,'$.observation_date'),json_extract(value,'$.value'),json_extract(value,'$.unit'),json_extract(value,'$.source_url'),json_extract(value,'$.is_derived'),json_extract(value,'$.first_collected_at') FROM json_each(?) WHERE true " +
-        "ON CONFLICT(provider,series_id,observation_date) DO UPDATE SET value=excluded.value,unit=excluded.unit,last_revised_at=excluded.first_collected_at WHERE georisk_market_observations.value<>excluded.value"
+        "SELECT json_extract(incoming.value,'$.provider'),json_extract(incoming.value,'$.series_id'),json_extract(incoming.value,'$.observation_date'),json_extract(incoming.value,'$.value'),json_extract(incoming.value,'$.unit'),json_extract(incoming.value,'$.source_url'),json_extract(incoming.value,'$.is_derived'),json_extract(incoming.value,'$.first_collected_at') FROM json_each(?) AS incoming WHERE true " +
+        "ON CONFLICT(provider,series_id,observation_date) DO UPDATE SET value=excluded.value,unit=excluded.unit,is_derived=excluded.is_derived,last_revised_at=CASE WHEN georisk_market_observations.value<>excluded.value THEN excluded.first_collected_at ELSE georisk_market_observations.last_revised_at END WHERE georisk_market_observations.value<>excluded.value OR georisk_market_observations.unit<>excluded.unit OR georisk_market_observations.is_derived<>excluded.is_derived"
       ).bind(JSON.stringify(obs)));
       await db.batch(statements);
     }
   }
   const detail = { observations_processed: result.series.reduce((sum, item) => sum + item.points.length, 0), new_observations: newObservations, revisions_detected: revisions };
-  await db.prepare("INSERT INTO georisk_market_collection_runs (provider,started_at,completed_at,status,new_observations,revisions_detected,detail_json) VALUES ('ECB+BLS',?,?,'success',?,?,?)")
+  await db.prepare("INSERT INTO georisk_market_collection_runs (provider,started_at,completed_at,status,new_observations,revisions_detected,detail_json) VALUES ('BCE+Eurostat+BLS',?,?,'success',?,?,?)")
     .bind(collectedAt, collectedAt, newObservations, revisions, JSON.stringify(detail)).run();
   return { status: "success", ...detail };
 }

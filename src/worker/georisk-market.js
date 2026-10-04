@@ -13,6 +13,11 @@ export function parseECBHistory(xml, now = new Date()) {
     ["EURGBP", "EUR/GBP", "GBP por 1 EUR", false],
     ["EURCNY", "EUR/CNY", "CNY por 1 EUR", false],
     ["USDCNY", "USD/CNY", "CNY por 1 USD", true],
+    ["EURMXN", "EUR/MXN", "MXN por 1 EUR", false],
+    ["EURBRL", "EUR/BRL", "BRL por 1 EUR", false],
+    ["EURTRY", "EUR/TRY", "TRY por 1 EUR", false],
+    ["EURILS", "EUR/ILS", "ILS por 1 EUR", false],
+    ["EURZAR", "EUR/ZAR", "ZAR por 1 EUR", false],
   ];
   const series = definitions.map(([id, label, unit, derived]) => ({ id, label, unit, derived, points: [] }));
   const seen = new Set();
@@ -27,7 +32,8 @@ export function parseECBHistory(xml, now = new Date()) {
       const value = Number(raw);
       if (currency && raw && Number.isFinite(value) && value > 0) rates[currency] = value;
     }
-    const values = [rates.USD, rates.GBP, rates.CNY, rates.USD && rates.CNY ? rates.CNY / rates.USD : undefined];
+    const values = [rates.USD, rates.GBP, rates.CNY, rates.USD && rates.CNY ? rates.CNY / rates.USD : undefined,
+      rates.MXN, rates.BRL, rates.TRY, rates.ILS, rates.ZAR];
     values.forEach((value, i) => {
       if (Number.isFinite(value) && value > 0) series[i].points.push({ date, value });
     });
@@ -70,8 +76,8 @@ export async function storeECBHistory(db, series, fetchedAt = new Date()) {
   const changes = [...observations, ...revisions];
   // D1 limits bound parameters per statement. JSON1 lets each bulk insert use
   // one parameter while keeping the backfill to a small number of queries.
-  for (let offset = 0; offset < changes.length; offset += 100) {
-    const chunk = changes.slice(offset, offset + 100);
+  for (let offset = 0; offset < changes.length; offset += 500) {
+    const chunk = changes.slice(offset, offset + 500);
     const revised = chunk.filter(record => Object.hasOwn(record, "oldValue")).map(({ series: item, point, oldValue }) => ({
       provider: "ECB", series_id: item.id, observation_date: point.date, previous_value: oldValue,
       revised_value: point.value, detected_at: collectedAt, source_url: ECB_SOURCE_URL,
@@ -103,8 +109,8 @@ export async function storeECBHistory(db, series, fetchedAt = new Date()) {
 
 export async function getECBArchiveHistory(db, request) {
   const url = new URL(request.url), seriesId = url.searchParams.get("series");
-  if (!["EURUSD","EURGBP","EURCNY","USDCNY"].includes(seriesId))
-    return archiveJson({ error: "Selecciona una serie válida: EURUSD, EURGBP, EURCNY o USDCNY." }, 400);
+  if (!["EURUSD","EURGBP","EURCNY","USDCNY","EURMXN","EURBRL","EURTRY","EURILS","EURZAR"].includes(seriesId))
+    return archiveJson({ error: "Selecciona una serie de divisas válida." }, 400);
   if (!db) return archiveJson({ error: "El archivo histórico aún no está disponible." }, 503);
   await ensureGeoRiskMarketSchema(db);
   const limit = Math.min(20000, Math.max(1, Number(url.searchParams.get("limit")) || 10000));
@@ -140,7 +146,7 @@ function archiveJson(body, status = 200, extraHeaders = {}) {
 
 export async function handleGeoRiskMarket(request, env, ctx) {
   // Canonical cache key avoids cache fragmentation from arbitrary query strings.
-  const cacheKey = new Request(new URL("/api/georisk-market-data?archive-v=1", request.url), { method: "GET" });
+  const cacheKey = new Request(new URL("/api/georisk-market-data?archive-v=2", request.url), { method: "GET" });
   const cache = caches.default;
   const cached = await cache.match(cacheKey);
   if (cached) {

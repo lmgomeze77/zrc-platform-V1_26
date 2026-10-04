@@ -25,3 +25,6 @@ Fuentes:
 - ECB API: https://data-api.ecb.europa.eu/service/data/
 - BLS API: https://www.bls.gov/developers/api_signature.htm
 - CPI-U: https://www.bls.gov/cpi/data.htm
+
+
+La API BLS v1 admite diez años naturales inclusivos por solicitud; el cálculo interanual necesita el año previo y ofrece hasta nueve años de tasas derivadas. El CSV identifica CPI interanual como calculado. Los valores vacíos del BCE y Eurostat no se convierten en ceros.

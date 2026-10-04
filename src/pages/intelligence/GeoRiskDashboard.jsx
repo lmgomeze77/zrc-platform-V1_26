@@ -1,3 +1,4 @@
+import GeoRiskGprData from "../../components/GeoRiskGprData";
 import GeoRiskMarketData from "../../components/GeoRiskMarketData";
 import GeoRiskMacroData from "../../components/GeoRiskMacroData";
 import GeoRiskGovernanceData from "../../components/GeoRiskGovernanceData";
@@ -615,6 +616,7 @@ export default function GeoRiskDashboard() {
           <GeoRiskMarketData region={region} />
           <GeoRiskMacroData />
           <GeoRiskGovernanceData />
+          <GeoRiskGprData />
         </>)}
 
           {tab === "scenarios" && (

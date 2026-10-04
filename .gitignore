@@ -14,3 +14,7 @@ dev-server-error.log
 .env.development.local
 .env.production.local
 
+
+# Python data ingestion intermediates
+__pycache__/
+*.pyc

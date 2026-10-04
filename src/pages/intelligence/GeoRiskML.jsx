@@ -1,3 +1,4 @@
+import GeoRiskGprData from "../../components/GeoRiskGprData";
 import GeoRiskMarketData from "../../components/GeoRiskMarketData";
 import GeoRiskMacroData from "../../components/GeoRiskMacroData";
 import GeoRiskGovernanceData from "../../components/GeoRiskGovernanceData";
@@ -835,6 +836,7 @@ El GeoRisk Dashboard organiza escenarios con par√°metros fijos. <b>GeoRisk ML a√
           <GeoRiskMarketData region={region} />
           <GeoRiskMacroData />
           <GeoRiskGovernanceData />
+          <GeoRiskGprData />
         </>)}
 
         {tab === "forecast" && (

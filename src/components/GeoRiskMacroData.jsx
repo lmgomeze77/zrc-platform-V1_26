@@ -27,8 +27,8 @@ export default function GeoRiskMacroData() {
       const archived = await response.json();
       if (!response.ok) throw new Error(archived.error || "El histórico aún no está disponible.");
       if (!archived.points?.length) throw new Error("La captura diaria está preparando el histórico.");
-      const csv = ["date,value,unit,provider,source_url,first_collected_at,last_revised_at",
-        ...archived.points.map(p => [p.date,p.value,p.unit,item.provider,item.source_url,p.first_collected_at || "",p.last_revised_at || ""].join(","))].join("\n");
+      const csv = ["date,value,unit,provider,source_url,is_derived,first_collected_at,last_revised_at",
+        ...archived.points.map(p => [p.date,p.value,p.unit,item.provider,item.source_url,p.is_derived ?? 0,p.first_collected_at || "",p.last_revised_at || ""].join(","))].join("\n");
       const link = document.createElement("a");
       link.href = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
       link.download = "georisk-" + item.id.toLowerCase() + "-historico.csv"; link.click();
