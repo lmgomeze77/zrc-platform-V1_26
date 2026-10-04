@@ -1877,16 +1877,28 @@ const ZRCPlatform = () => {
                   : "Color the map by geopolitical bloc, US/China alignment, or ZRC risk — and open any country for its full profile. It's the qualitative layer of the same research engine behind GeoRisk Dashboard and GeoRisk Predictive ML."}
               </p>
             </div>
-            <button
-              onClick={openWorldMap}
-              style={{
-                padding: "14px 30px", background: C.gold, color: C.bg, border: "none",
-                fontFamily: F.mono, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
-                textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
-              }}
-            >
-              {lang === "es" ? "Explorar el mapa →" : "Explore the map →"}
-            </button>
+            <div style={{ display:"flex", gap:10, flexWrap:"wrap" }}>
+              <a
+                href="/inteligencia/paises/"
+                style={{
+                  padding: "14px 22px", color: C.gold, border: `1px solid ${C.gold}`,
+                  fontFamily: F.mono, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
+                  textTransform: "uppercase", textDecoration:"none", whiteSpace: "nowrap",
+                }}
+              >
+                {lang === "es" ? "Fichas país →" : "Country risk profiles →"}
+              </a>
+              <button
+                onClick={openWorldMap}
+                style={{
+                  padding: "14px 30px", background: C.gold, color: C.bg, border: "none",
+                  fontFamily: F.mono, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
+                  textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
+                }}
+              >
+                {lang === "es" ? "Explorar el mapa →" : "Explore the map →"}
+              </button>
+            </div>
           </div>
         </FadeIn>
       </Sec>

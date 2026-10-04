@@ -8,11 +8,12 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender-country-profiles.js",
     "preview": "vite preview",
     "deploy": "wrangler deploy",
     "generate": "node scripts/generate-headlines.js",
-    "test:schema": "node --test scripts/headlines-schema.test.js"
+    "test:schema": "node --test scripts/headlines-schema.test.js",
+    "test:country-profiles": "node --test scripts/country-profiles.test.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",
