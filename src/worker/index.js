@@ -1,6 +1,7 @@
 import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";
 import { fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
 import { ensureGeoRiskMarketSchema } from "./georisk-market-schema.js";
+import { handleGeoRiskWgi } from "./georisk-wgi.js";
 // src/worker/index.js
 // ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
 
@@ -87,6 +88,9 @@ async function handleRequest(request, env, ctx) {
 
     if (url.pathname === "/api/inner-circle/approve" && request.method === "GET")
       return handleInnerCircleApprove(request, env);
+
+    if (url.pathname === "/api/georisk-wgi-data" && request.method === "GET")
+      return handleGeoRiskWgi(request, env);
 
     if (url.pathname === "/api/georisk-market-data/history" && request.method === "GET")
       return getECBArchiveHistory(env.DB, request);
