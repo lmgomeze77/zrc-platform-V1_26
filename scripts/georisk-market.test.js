@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseECBHistory, compareECBArchive } from "../src/worker/georisk-market.js";
+import { parseECBHistory, compareECBArchive, getECBArchiveHistory } from "../src/worker/georisk-market.js";
 const now = new Date("2026-10-04T10:00:00Z");
 const xml = `<Envelope><Cube>
 <Cube time="2026-10-02"><Cube rate="1.1225" currency="USD"/><Cube currency='GBP' rate='0.85033'/><Cube currency="CNY" rate="7.5259"/></Cube>
@@ -22,4 +22,12 @@ test("missing, invalid, duplicate and delayed inputs are handled explicitly", ()
  const s=parseECBHistory(`<Cube time="2026-09-01"><Cube currency="USD" rate="1.1"/><Cube currency="CNY" rate="0"/><Cube currency="GBP" rate="oops"/></Cube>`,now);
  assert.equal(s[0].status,"stale"); assert.equal(s[1].status,"unavailable"); assert.equal(s[3].latest,null);
  assert.throws(()=>parseECBHistory("<error/>",now)); assert.equal(parseECBHistory(xml+xml,now)[0].points.length,2);
+});
+test("BCE mandate currencies are parsed and accepted by the history endpoint", async () => {
+ const extra = `<Cube time="2026-10-02"><Cube currency="MXN" rate="20.5806"/><Cube currency="BRL" rate="5.8610"/><Cube currency="TRY" rate="55.1650"/><Cube currency="ILS" rate="3.4408"/><Cube currency="ZAR" rate="18.7839"/></Cube>`;
+ const data=parseECBHistory(extra,now);
+ for(const id of ["EURMXN","EURBRL","EURTRY","EURILS","EURZAR"]){
+  assert.ok(data.find(item=>item.id===id).latest?.value>0);
+  assert.equal((await getECBArchiveHistory(null,new Request("https://example.com/history?series="+id))).status,503);
+ }
 });

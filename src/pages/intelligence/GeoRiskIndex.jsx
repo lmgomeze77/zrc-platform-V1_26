@@ -1,3 +1,4 @@
+import GeoRiskGprData from "../../components/GeoRiskGprData";
 // GeoRiskIndex.jsx — ZRC GeoRisk Index (public weekly benchmark)
 // Self-contained component: fetches weekly history from the Worker,
 // renders the chart + concrete asset-impact reference table.
@@ -429,6 +430,8 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
             : "Methodology: the ZRC-GRI is the probability-weighted average of the intrinsic risk of ZRC Research's four base geopolitical scenarios (Global sector, ×1.00 multiplier), recalculated every Monday. Asset-impact reference levels use a representative shock profile (shaped by the highest-probability scenario) scaled by index level — illustrative only, not a market projection, and not investment advice. For interactive analysis with your own scenarios, see GeoRisk Dashboard and GeoRisk Predictive ML."}
         </div>
       </FadeIn>
+
+      <GeoRiskGprData lang={lang} />
 
       <FadeIn delay={0.3}>
         <div style={{ marginTop: 20 }}>

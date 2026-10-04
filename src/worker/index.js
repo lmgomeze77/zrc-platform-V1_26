@@ -2,6 +2,7 @@ import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } fr
 import { fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
 import { ensureGeoRiskMarketSchema } from "./georisk-market-schema.js";
 import { handleGeoRiskWgi } from "./georisk-wgi.js";
+import { collectGprHistory, handleGeoRiskGpr, handleGprHistory } from "./georisk-gpr.js";
 // src/worker/index.js
 // ZRC Backend Worker — /api/lead · /api/stripe-webhook · /api/subscription · /api/claude
 
@@ -43,6 +44,7 @@ export default {
     })());
     // A market-data failure must never prevent the weekly index or email.
     ctx.waitUntil(collectECBMarketHistory(env.DB));
+    ctx.waitUntil(collectGprHistory(env).catch(error => console.error("GPR collection failed:", error.message)));
     ctx.waitUntil((async () => { const result = await fetchGeoRiskMacroSeries(); await storeGeoRiskMacroSeries(env.DB, result); })().catch(error => console.error("GeoRisk macro archive collection failed:", error.message)));
   },
 };
@@ -91,6 +93,18 @@ async function handleRequest(request, env, ctx) {
 
     if (url.pathname === "/api/georisk-wgi-data" && request.method === "GET")
       return handleGeoRiskWgi(request, env);
+
+    if (url.pathname === "/api/georisk-gpr-data/history" && request.method === "GET")
+      return handleGprHistory(request, env);
+
+    if (url.pathname === "/api/georisk-gpr-data" && request.method === "GET")
+      return handleGeoRiskGpr(request, env, ctx);
+
+    if (url.pathname === "/api/georisk-macro-data/history" && request.method === "GET")
+      return handleGeoRiskMacroHistory(env.DB, request);
+
+    if (url.pathname === "/api/georisk-macro-data" && request.method === "GET")
+      return handleGeoRiskMacroData(request, env);
 
     if (url.pathname === "/api/georisk-market-data/history" && request.method === "GET")
       return getECBArchiveHistory(env.DB, request);
@@ -1921,7 +1935,7 @@ async function handleGeoRiskMacroHistory(db, request) {
   if (!db) return jsonResponse({ error: "El histórico aún no está disponible." }, 503);
   await ensureGeoRiskMarketSchema(db);
   const limit = Math.min(20000, Math.max(1, Number(url.searchParams.get("limit")) || 10000));
-  const result = await db.prepare("SELECT observation_date AS date,value,unit,first_collected_at,last_revised_at FROM georisk_market_observations WHERE series_id=? ORDER BY observation_date ASC LIMIT ?").bind(series, limit).all();
+  const result = await db.prepare("SELECT observation_date AS date,value,unit,is_derived,first_collected_at,last_revised_at FROM georisk_market_observations WHERE series_id=? ORDER BY observation_date ASC LIMIT ?").bind(series, limit).all();
   const points = result.results || [];
   return jsonResponse({ series, points, oldest: points[0]?.date || null, latest: points.at(-1)?.date || null });
 }

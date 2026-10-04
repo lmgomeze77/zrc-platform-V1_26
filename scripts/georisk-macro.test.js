@@ -39,6 +39,8 @@ test("macro feed keeps official metadata and isolates a failed source", async ()
   assert.ok(calls.find(call => call.url.includes("coicop18=TOTAL") && call.url.includes("geo=EA")));
   assert.equal(result.series.find(s => s.id === "ECB_DEPOSIT_RATE").latest.value, 2);
   assert.ok(calls.find(call => call.options.method === "POST" && call.options.body.includes("CUUR0000SA0")));
+  const blsRequest = JSON.parse(calls.find(call => call.options.method === "POST").options.body);
+  assert.equal(Number(blsRequest.endyear) - Number(blsRequest.startyear) + 1, 10);
   assert.ok(result.series.every(item => item.source_url && item.unit));
 });
 
@@ -55,4 +57,16 @@ test("D1 archive bootstrap creates only missing tables and runs once per binding
   assert.equal(batchCalls, 1);
   assert.equal(statements.length, 5);
   assert.ok(statements.every(sql => sql.includes("IF NOT EXISTS")));
+});
+
+test("empty official macro values remain gaps while a published zero is retained", async () => {
+  const fakeFetch = async url => {
+    if (String(url).includes("data-api.ecb")) return { ok: true, text: async () => "TIME_PERIOD,OBS_VALUE\n2026-10-01,\n2026-10-02,0\n" };
+    if (String(url).includes("eurostat")) return { ok: true, json: async () => ({ dimension: { time: { category: { index: { "2026-08": 0, "2026-09": 1 } } } }, value: [null, 2.2] }) };
+    return { ok: true, json: async () => ({ status: "REQUEST_SUCCEEDED", Results: { series: [{ data: [] }] } }) };
+  };
+  const result = await fetchGeoRiskMacroSeries(fakeFetch, new Date("2026-10-04"));
+  assert.deepEqual(result.series.find(item => item.id === "ECB_DEPOSIT_RATE").points, [{ date: "2026-10-02", value: 0 }]);
+  assert.deepEqual(result.series.find(item => item.id === "EU_HICP").points, [{ date: "2026-09-01", value: 2.2 }]);
+  assert.equal(result.series.find(item => item.id === "US_CPI").derived, true);
 });
