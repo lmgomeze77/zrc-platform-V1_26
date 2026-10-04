@@ -46,7 +46,12 @@ export async function handleGeoRiskMarket(request, ctx) {
   const cacheKey = new Request(new URL("/api/georisk-market-data", request.url), { method: "GET" });
   const cache = caches.default;
   const cached = await cache.match(cacheKey);
-  if (cached) return cached;
+  if (cached) {
+    // Older cached entries may predate CORS support; deployments do not clear Cache API.
+    const result = new Response(cached.body, cached);
+    result.headers.set("Access-Control-Allow-Origin", "*");
+    return result;
+  }
   try {
     const response = await fetch(ECB_HISTORY_URL, { signal: AbortSignal.timeout(20000) });
     if (!response.ok) throw new Error(`ECB HTTP ${response.status}`);
