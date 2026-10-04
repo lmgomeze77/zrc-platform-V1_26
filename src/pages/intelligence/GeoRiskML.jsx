@@ -531,12 +531,15 @@ export default function GeoRiskML() {
     return total;
   }, [weights, sectorMult, region]);
 
-  const compositeRisk = useMemo(() => {
+  const baseCompositeRisk = useMemo(() => {
     let r = 0;
     const normalizedWeights = normalizeWeights(weights);
     Object.entries(SCENARIOS).forEach(([k, v]) => { r += (normalizedWeights[k] || 0) * v.risk; });
-    return clamp(r * sectorMult, 0, 100);
-  }, [weights, sectorMult]);
+    return r;
+  }, [weights]);
+
+  const compositeRisk = useMemo(() => clamp(baseCompositeRisk * sectorMult, 0, 100), [baseCompositeRisk, sectorMult]);
+  const sectorFactorChangePct = Math.round((sectorMult - 1) * 100);
 
   const dominantScenario = useMemo(() => {
     const [key] = Object.entries(weights).reduce(([bk, bv], [k, v]) => v > bv ? [k, v] : [bk, bv], ["", 0]);
@@ -776,9 +779,14 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
             </div>
           </div>
 
-          <div style={{ textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }}>
-            <div style={{ fontSize:10, color:"#64748B", letterSpacing:1, marginBottom:4 }}>MULTIPLICADOR</div>
-            <div style={{ fontSize:21, fontWeight:600, color: sectorMult>1 ? "#F59E0B" : "#10B981" }}>×{sectorMult.toFixed(2)}</div>
+          <div style={{ textAlign:"right", fontFamily:"'JetBrains Mono',monospace", maxWidth:270 }}>
+            <div style={{ fontSize:10, color:"#64748B", letterSpacing:1, marginBottom:4 }}>FACTOR SECTORIAL · SUPUESTO ZRC</div>
+            <div style={{ fontSize:21, fontWeight:600, color: sectorMult>1 ? "#F59E0B" : "#10B981" }}>{sectorMult.toFixed(2)}×</div>
+            <div style={{ fontSize:11, color:"#CBD5E1", marginTop:3 }}>{baseCompositeRisk.toFixed(1)} × {sectorMult.toFixed(2)} = {compositeRisk.toFixed(1)} / 100</div>
+            <div style={{ fontSize:10, color:"#64748B", lineHeight:1.5, marginTop:4 }}>
+              {sectorFactorChangePct === 0 ? "1,00 no ajusta el riesgo base." : `Este factor ${sectorFactorChangePct < 0 ? "reduce" : "aumenta"} el riesgo un ${Math.abs(sectorFactorChangePct)}%.`}
+              {" "}También ajusta el impacto estimado en variables. Es un supuesto fijo, no se obtiene de cotizaciones históricas.
+            </div>
           </div>
 
           <div style={{ textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }}>
