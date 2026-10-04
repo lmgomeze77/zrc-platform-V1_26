@@ -6,6 +6,7 @@ El panel **Datos económicos observados** presenta información publicada por fu
 | --- | --- | --- | --- |
 | Tipo de depósito del BCE | Banco Central Europeo, Data Portal | % anual, diaria en días hábiles | Tipo oficial de la facilidad de depósito |
 | Deuda pública a 10 años de la zona euro | Banco Central Europeo, Data Portal | % anual, diaria en días hábiles | Curva de rendimiento par del área del euro |
+| Inflación armonizada de la eurozona | Eurostat, HICP mensual | % interanual, mensual | Tasa anual publicada por Eurostat para el agregado de la eurozona |
 | Inflación de EE. UU. | U.S. Bureau of Labor Statistics, API pública | % interanual, mensual | Variación calculada del CPI-U no ajustado estacionalmente, comparando el mismo mes del año anterior |
 
 ## Cómo interpretar los datos
