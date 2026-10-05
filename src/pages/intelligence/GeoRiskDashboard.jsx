@@ -98,7 +98,7 @@ const SCENARIOS = {
 };
 
 const SECTORS = {
-  global:      { label: "Global",      mult: 1.00 },
+  global:      { label: "Multisectorial",      mult: 1.00 },
   real_estate: { label: "Real Estate", mult: 0.88 },
   financial:   { label: "Financiero",  mult: 1.15 },
   industrial:  { label: "Industrial",  mult: 0.92 },
@@ -566,7 +566,8 @@ export default function GeoRiskDashboard() {
             gap: 24, padding: "20px 24px", margin: "20px 0", alignItems: "center"
           }}>
             <div style={{ textAlign: "center" }}>
-              <RiskGauge value={compositeRisk} size={110} label="Riesgo Compuesto" />
+              <RiskGauge value={compositeRisk} size={110} label="Riesgo del escenario" />
+              <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 6 }}>ÁMBITO MUNDIAL</div>
               <div style={{
                 fontSize: 10, fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginTop: 2,
                 color: isCustomized ? "#F59E0B" : "#10B981",
@@ -576,7 +577,7 @@ export default function GeoRiskDashboard() {
             </div>
             <div className="zrc-region-sector">
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", marginBottom: 10 }}>
-                <span style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginRight: 4 }}>REGIÓN:</span>
+                <span style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginRight: 4 }}>REGIÓN DE IMPACTO:</span>
                 {Object.entries(REGIONS).map(([k, v]) => (
                   <button key={k} className="zrc-pill" onClick={() => setRegion(k)} style={{
                     padding: "5px 12px", borderRadius: 6, border: "1px solid",
@@ -589,7 +590,7 @@ export default function GeoRiskDashboard() {
                 ))}
               </div>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-                <span style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginRight: 4 }}>SECTOR:</span>
+                <span style={{ fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginRight: 4 }}>EXPOSICIÓN SECTORIAL:</span>
                 {Object.entries(SECTORS).map(([k, v]) => (
                   <button key={k} className="zrc-pill" onClick={() => setSector(k)} style={{
                     padding: "5px 12px", borderRadius: 6, border: "1px solid",
@@ -601,8 +602,8 @@ export default function GeoRiskDashboard() {
                   }}>{v.label}</button>
                 ))}
               </div>
-              <div style={{ fontSize: 10, color: "#4B5A72", fontFamily: "'JetBrains Mono', monospace", marginTop: 10 }}>
-                Las variables, fuentes y niveles se leen sobre {REGIONS[region].label} · el riesgo compuesto del escenario es global
+              <div style={{ fontSize: 12, lineHeight: 1.6, color: "#94A3B8", fontFamily: "'JetBrains Mono', monospace", marginTop: 10 }}>
+                <strong style={{ color: "#CBD5E1" }}>Impactos: {REGIONS[region].label} · {SECTORS[sector].label}.</strong><br />La región cambia las variables y señales de activos. El score mide el escenario mundial con la exposición sectorial elegida; se mantiene al cambiar de región.
               </div>
             </div>
             <div className="zrc-mult-block" style={{ textAlign: "right", fontFamily: "'JetBrains Mono', monospace", maxWidth: 270 }}>
@@ -711,7 +712,7 @@ export default function GeoRiskDashboard() {
                       RESUMEN PARA COMITÉ DE INVERSIÓN
                     </div>
                     <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: "#CBD5E1", lineHeight: 1.9 }}>
-                      <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "pesos de referencia"}.</li>
+                      <li>Riesgo del escenario mundial <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "pesos de referencia"}.</li>
                       <li>Riesgo a vigilar: <b>{worstScenario.label}</b> (riesgo intrínseco {worstScenario.risk}/100).</li>
                       {top && (
                         <li>Llamada táctica principal: <b style={{ color: top.col }}>{top.dir}</b> en <b>{top.asset}</b> — impacto estimado {topImpact >= 0 ? "+" : ""}{fmt(topImpact, 1)}% a 12M bajo el mix actual.</li>
