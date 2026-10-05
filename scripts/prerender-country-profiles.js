@@ -71,7 +71,7 @@ for (const country of COUNTRY_PROFILES) {
   }));
 }
 
-const sitemapUrls = ["/", `${basePath}/`, ...COUNTRY_PROFILES.map(country => `${basePath}/${country.slug}/`)];
+const sitemapUrls = ["/", `${basePath}/`, "/inteligencia/deuda-paises/", ...COUNTRY_PROFILES.map(country => `${basePath}/${country.slug}/`)];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(url => `  <url><loc>${origin}${url}</loc><lastmod>${COUNTRY_PROFILE_UPDATED_AT}</lastmod></url>`).join("\n")}\n</urlset>\n`;
 await writeFile(path.join(dist, "sitemap.xml"), sitemap);
 await writeFile(path.join(dist, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
