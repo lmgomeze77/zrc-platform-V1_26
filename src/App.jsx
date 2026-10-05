@@ -1888,6 +1888,16 @@ const ZRCPlatform = () => {
               >
                 {lang === "es" ? "Fichas país →" : "Country risk profiles →"}
               </a>
+              <a
+                href="/inteligencia/deuda-paises/"
+                style={{
+                  padding: "14px 22px", color: C.gold, border: `1px solid ${C.gold}`,
+                  fontFamily: F.mono, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
+                  textTransform: "uppercase", textDecoration: "none", whiteSpace: "nowrap",
+                }}
+              >
+                {lang === "es" ? "Deuda por país →" : "Debt by country →"}
+              </a>
               <button
                 onClick={openWorldMap}
                 style={{
