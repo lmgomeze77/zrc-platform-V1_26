@@ -1,3 +1,4 @@
+import { handleGeoRiskForecast } from "./georisk-forecast.js";
 import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";
 import { MACRO_SERIES, fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
 import { ensureGeoRiskMarketSchema } from "./georisk-market-schema.js";
@@ -78,6 +79,9 @@ async function handleRequest(request, env, ctx) {
 
     if (url.pathname === "/api/georisk-ml" && request.method === "POST")
       return handleGeoRiskML(request, env);
+
+    if (url.pathname === "/api/georisk-forecast" && request.method === "GET")
+      return handleGeoRiskForecast(request, env);
 
     if (url.pathname === "/api/assistant" && request.method === "POST")
       return handleAssistant(request, env);

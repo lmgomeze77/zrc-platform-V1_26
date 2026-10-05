@@ -1,7 +1,4 @@
-import GeoRiskGprData from "../../components/GeoRiskGprData";
-import GeoRiskMarketData from "../../components/GeoRiskMarketData";
-import GeoRiskMacroData from "../../components/GeoRiskMacroData";
-import GeoRiskGovernanceData from "../../components/GeoRiskGovernanceData";
+import GeoRiskPredictiveOutlook from '../../components/GeoRiskPredictiveOutlook.jsx';
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { Sparkles, TrendingUp, Radar, Grid3x3, MessageSquare, Target, RotateCcw } from "lucide-react";
 
@@ -244,64 +241,6 @@ function SparkLine({ data, color = "#16A34A", w = 100, h = 28 }) {
   );
 }
 
-// Forecast curve: simple stochastic projection
-function buildForecast(baseRisk, scenarioWeights, steps = 12) {
-  // Sensitivity display only: this is not a time-series forecast or statistical interval.
-  const dispersion = 3 + Object.values(scenarioWeights).reduce((sum, weight) => sum + weight * (1 - weight), 0) * 5;
-  return Array.from({ length: steps + 1 }, (_, t) => {
-    const width = dispersion + t * 0.35;
-    return { t, v: clamp(baseRisk, 0, 100), lo: clamp(baseRisk - width, 0, 100), hi: clamp(baseRisk + width, 0, 100) };
-  });
-}
-
-function ForecastChart({ curve, color = "#16A34A" }) {
-  const W = 500, H = 120, PAD = { l: 36, r: 12, t: 12, b: 28 };
-  const iW = W - PAD.l - PAD.r, iH = H - PAD.t - PAD.b;
-  const allVals = curve.flatMap(p => [p.lo, p.hi]);
-  const minV = Math.max(0, Math.min(...allVals) - 5);
-  const maxV = Math.min(100, Math.max(...allVals) + 5);
-  const range = maxV - minV;
-  const xOf = i => PAD.l + (i / (curve.length - 1)) * iW;
-  const yOf = v => PAD.t + iH - ((v - minV) / range) * iH;
-  const ciPath = [
-    ...curve.map((p, i) => `${i === 0 ? "M" : "L"}${xOf(i)},${yOf(p.hi)}`),
-    ...curve.slice().reverse().map((p, i) => `L${xOf(curve.length - 1 - i)},${yOf(p.lo)}`),
-    "Z"
-  ].join(" ");
-  const linePath = curve.map((p, i) => `${i === 0 ? "M" : "L"}${xOf(i)},${yOf(p.v)}`).join(" ");
-  const monthLabels = Array(13).fill("");
-  monthLabels[0] = "ESCENARIO ACTUAL";
-  monthLabels[12] = "CAMBIO DE SUPUESTOS";
-  const yTicks = [20, 40, 60, 80];
-
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", height: "auto", display: "block" }}>
-      {/* Grid */}
-      {yTicks.map(t => (
-        <g key={t}>
-          <line x1={PAD.l} y1={yOf(t)} x2={W - PAD.r} y2={yOf(t)} stroke="#16301f" strokeWidth={0.5} />
-          <text x={PAD.l - 4} y={yOf(t) + 4} textAnchor="end" fill="#475569" fontSize={8} fontFamily="monospace">{t}</text>
-        </g>
-      ))}
-      {/* CI band */}
-      <path d={ciPath} fill={color} fillOpacity={0.08} />
-      {/* Line */}
-      <path d={linePath} fill="none" stroke={color} strokeWidth={2} strokeLinejoin="round"
-        style={{ filter: `drop-shadow(0 0 3px ${color}80)` }} />
-      {/* Now divider */}
-      <line x1={xOf(0)} y1={PAD.t} x2={xOf(0)} y2={H - PAD.b} stroke={color} strokeWidth={1} strokeDasharray="3,3" />
-      {/* Month labels */}
-      {[0, 3, 6, 9, 12].map(i => (
-        <text key={i} x={xOf(i)} y={H - 6} textAnchor="middle" fill="#475569" fontSize={8} fontFamily="monospace">
-          {monthLabels[i]}
-        </text>
-      ))}
-      {/* Last value dot */}
-      <circle cx={xOf(curve.length - 1)} cy={yOf(curve[curve.length - 1].v)} r={3} fill={color} />
-    </svg>
-  );
-}
-
 // Heatmap correlación escenario × variable
 function CorrelationHeatmap({ scenarios, scenarioWeights, economicVariables, region }) {
   const vars = Object.entries(economicVariables);
@@ -417,9 +356,9 @@ const SECTION_GUIDES = {
     tip: "Consulta la fecha del dato. Las simulaciones siguen siendo supuestos y todavía no se recalibran con este histórico."
   },
   forecast: {
-    title: "Explora cómo cambian los resultados al cambiar los supuestos",
-    body: "La franja muestra una variación visual alrededor del nivel de riesgo actual. No indica qué ocurrirá en los próximos meses ni la probabilidad de que ocurra. El texto de IA resume los supuestos que has introducido; no consulta noticias o datos externos.",
-    tip: "Usa esta vista para hacer preguntas y comparar hipótesis, no para tomar una decisión automática."
+    title: "Del nivel observado al pronóstico de parámetros",
+    body: "Consulta referencias fechadas y proyecciones a 30 y 90 días, con bandas de error histórico, cobertura por región y señales que conviene vigilar.",
+    tip: "Comprueba la fecha de la referencia, el error histórico y los acontecimientos que pueden invalidar el pronóstico."
   },
   scenarios: {
     title: "Construye una mezcla de escenarios",
@@ -448,13 +387,9 @@ export default function GeoRiskML() {
   const [region, setRegion] = useState("eu");
   const [weights, setWeights] = useState({ ...DEFAULT_WEIGHTS });
   const normalizedWeights = useMemo(() => normalizeWeights(weights), [weights]);
-  const [tab, setTab] = useState("data");
+  const [tab, setTab] = useState("forecast");
   const sectionGuide = SECTION_GUIDES[tab];
   const [time, setTime] = useState(new Date());
-  const [forecast, setForecast] = useState(null);
-  const [mlForecast, setMlForecast] = useState(null);
-  const [mlLoading, setMlLoading] = useState(false);
-  const [mlError, setMlError] = useState(null);
   const [nlpText, setNlpText] = useState("");
   const [nlpResult, setNlpResult] = useState(null);
   const [nlpLoading, setNlpLoading] = useState(false);
@@ -515,26 +450,6 @@ export default function GeoRiskML() {
     });
   }, [variableImpacts, region]);
 
-  // Build an illustrative sensitivity band when scenario assumptions change
-  useEffect(() => {
-    setForecast(buildForecast(compositeRisk, normalizedWeights));
-  }, [compositeRisk, normalizedWeights]);
-
-  const runMLForecast = async () => {
-    setMlLoading(true); setMlError(null); setMlForecast(null);
-    try {
-      const result = await callClaudeML({
-        scenario: dominantScenario,
-        riskScore: compositeRisk,
-        variables: variableImpacts,
-        mode: "forecast"
-      });
-      setMlForecast(result);
-    } catch (e) {
-      setMlError(`Error al conectar con el motor ML: ${e.message}`);
-    } finally { setMlLoading(false); }
-  };
-
   const runNLP = async () => {
     if (!nlpText.trim()) return;
     setNlpLoading(true); setNlpResult(null);
@@ -561,9 +476,9 @@ export default function GeoRiskML() {
   const trajectoryColor = { ESCALATING: "#EF4444", STABLE: "#F59E0B", DECLINING: "#10B981" };
 
   const TABS = [
-    { id: "data", label: "Datos reales", icon: TrendingUp },
-    { id: "forecast", label: "Sensibilidad + IA", icon: TrendingUp },
-    { id: "scenarios", label: "Escenarios", icon: Radar },
+    
+    { id: "forecast", label: "Pronóstico 30 / 90 días", icon: TrendingUp },
+    { id: "scenarios", label: "Supuestos de escenario", icon: Radar },
     { id: "heatmap", label: "Relación escenario-variable", icon: Grid3x3 },
     { id: "nlp", label: "Analizar texto", icon: MessageSquare },
     { id: "decision", label: "Borrador de decisión IA", icon: Target },
@@ -627,7 +542,7 @@ export default function GeoRiskML() {
                 GeoRisk · Escenarios + IA
               </h1>
               <div style={{ fontSize:12, color:"#475569", marginTop:2, fontFamily:"'JetBrains Mono',monospace" }}>
-                Asistente de análisis geopolítico · ZRC AI Engine · Calesius Global SL
+                Perspectiva predictiva y análisis geopolítico · Calesius Global SL
               </div>
             </div>
             <div style={{ textAlign:"right" }}>
@@ -657,13 +572,14 @@ export default function GeoRiskML() {
             POR QUÉ GEORISK ML — Y NO SOLO EL DASHBOARD
           </div>
           <div style={{ fontSize: 13, color: "#CBD5E1", lineHeight: 1.7, maxWidth: 760 }}>
-El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML añade herramientas asistidas por el motor de IA de ZRC</b>: una banda de sensibilidad no calibrada y análisis del texto y los supuestos que aporta el usuario. No consulta noticias externas, no usa un histórico de resultados y no valida probabilidades. Trata sus resultados como hipótesis para revisión, no como recomendaciones de cartera.
+El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML añade pronósticos de parámetros a 30 y 90 días</b>, anclados en referencias oficiales fechadas y contrastados con errores históricos. Además permite explorar hipótesis y analizar texto con IA. Cada previsión indica su cobertura, fundamento y señales que podrían invalidarla.
           </div>
         </div>
         <div role="note" style={{ margin: "0 0 16px", padding: "12px 16px", border: "1px solid #7C5A1B", borderLeft: "3px solid #F59E0B", borderRadius: 8, background: "#2A2112", color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>
-          <b>Datos y supuestos identificados.</b> La pestaña Datos observados consulta fuentes externas y muestra disponibilidad, fechas e histórico cuando existen. Esas series todavía no alimentan este score. Los escenarios y coeficientes son supuestos ZRC; la IA interpreta esos supuestos o el texto que aportas. <button onClick={() => setTab("data")} style={{ background: "transparent", border: "1px solid #FDE68A", color: "#FDE68A", padding: "6px 10px", borderRadius: 5, cursor: "pointer" }}>Consultar fuentes y fechas</button>
+          <b>Observaciones, pronósticos y supuestos.</b> Los pronósticos usan las series oficiales disponibles. La puntuación y las simulaciones de escenarios conservan su metodología propia: no son probabilidades ni sustituyen la previsión de cada parámetro. Las conexiones sin cobertura se identifican expresamente.
         </div>
 
+        {tab !== "forecast" && <>
         {/* ── RESUMEN PARA COMITÉ DE INVERSIÓN ── */}
         {(() => {
           const top = [...assetImpacts].sort((a, b) => Math.abs(b.pct) - Math.abs(a.pct))[0];
@@ -680,7 +596,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                 {top && (
                   <li>Mayor sensibilidad simulada: <b>{top.asset}</b> · <b style={{ color: top.col }}>{top.dir}</b>. Magnitud y reglas internas no publicadas.</li>
                 )}
-                <li>Pulsa <b>ANALIZAR</b> en la pestaña Sensibilidad + IA para una síntesis generada a partir de estos supuestos, o <b>GENERAR BORRADOR</b> en un borrador para ordenar riesgos y oportunidades, siempre con revisión humana.</li>
+                <li>Consulta <b>Pronóstico 30 / 90 días</b> para previsiones fundadas en observaciones, o <b>GENERAR BORRADOR</b> en un borrador para ordenar riesgos y oportunidades, siempre con revisión humana.</li>
               </ul>
             </div>
           );
@@ -757,6 +673,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
           </div>
         </div>
 
+        </>}
         {/* ── TABS ── */}
         <div className="grml-card" style={{ display:"flex", flexWrap:"wrap", gap:2, padding:5, marginBottom:20 }}>
           {TABS.map(t => (
@@ -783,150 +700,8 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
         </div>
 
         {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
-        {tab === "data" && (<>
-          <GeoRiskMarketData region={region} />
-          <GeoRiskMacroData />
-          <GeoRiskGovernanceData />
-          <GeoRiskGprData />
-        </>)}
+        {tab === "forecast" && <GeoRiskPredictiveOutlook region={region} onRegionChange={setRegion} />}
 
-        {tab === "forecast" && (
-          <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
-            <div className="grml-two-col" style={{ gap:12, marginBottom:16 }}>
-
-              {/* Forecast curve */}
-              <div className="grml-card" style={{ padding:16 }}>
-                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
-                  <div>
-                    <div style={{ fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:2 }}>BANDA DE SENSIBILIDAD DEL ESCENARIO</div>
-                    <div style={{ fontSize:12, color:"#94A3B8" }}>Horizonte indicativo · banda no calibrada</div>
-                  </div>
-                  <span style={{ padding:"2px 8px", background:"rgba(22,163,74,0.12)", border:"1px solid rgba(22,163,74,0.3)", borderRadius:3, fontSize:10, fontFamily:"monospace", color:"#4ADE80" }}>RECALCULA AL CAMBIAR PESOS</span>
-                </div>
-                {forecast && <ForecastChart curve={forecast} color={riskColor} />}
-                <div style={{ marginTop:8, fontSize:11, color:"#64748B", lineHeight:1.5 }}>
-                  La banda se ensancha solo como ayuda visual; no representa fechas, probabilidades ni un intervalo estadístico.
-                </div>
-              </div>
-
-              {/* ML Forecast panel */}
-              <div className="grml-card" style={{ borderColor:"rgba(139,92,246,0.25)", padding:16 }}>
-                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
-                  <div>
-                    <div style={{ fontSize:11, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, marginBottom:2 }}>ANÁLISIS ASISTIDO POR IA</div>
-                    <div style={{ fontSize:12, color:"#94A3B8" }}>Síntesis narrativa a partir de los supuestos actuales</div>
-                  </div>
-                  <button className="grml-btn" onClick={runMLForecast} disabled={mlLoading} style={{
-                    padding:"6px 14px", background: mlLoading ? "#16301f" : "linear-gradient(135deg,#4c1d95,#7c3aed)",
-                    border:"1px solid rgba(139,92,246,0.4)", borderRadius:4, color:"#E2E8F0",
-                    fontSize:11, fontFamily:"monospace", cursor: mlLoading ? "not-allowed" : "pointer", letterSpacing:1
-                  }}>
-                    {mlLoading ? "PROCESANDO..." : "⚡ ANALIZAR"}
-                  </button>
-                </div>
-
-                {!mlForecast && !mlLoading && !mlError && (
-                  <div style={{ padding:"24px 0", textAlign:"center", color:"#475569", fontSize:13, fontFamily:"monospace" }}>
-                    Pulsa ANALIZAR para pedir a la IA una síntesis del perfil actual; no usa datos externos ni entrenamiento predictivo propio.
-                  </div>
-                )}
-
-                {mlLoading && (
-                  <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
-                    {[80, 60, 90, 50, 70].map((w, i) => (
-                      <div key={i} className="grml-loading" style={{ height:14, width:`${w}%` }} />
-                    ))}
-                  </div>
-                )}
-
-                {mlError && <div style={{ color:"#EF4444", fontSize:13, fontFamily:"monospace", padding:"12px 0" }}>{mlError}</div>}
-
-                {mlForecast && !mlLoading && <AnalysisStamp result={mlForecast} />}
-                {mlForecast && !mlLoading && (
-                  <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
-                    {/* Trajectory badge */}
-                    <div style={{ display:"flex", gap:8, alignItems:"center", marginBottom:12 }}>
-                      <span style={{
-                        padding:"3px 10px", borderRadius:3, fontSize:11, fontFamily:"monospace", fontWeight:700, letterSpacing:1,
-                        background: `${trajectoryColor[mlForecast.risk_trajectory] || "#F59E0B"}20`,
-                        color: trajectoryColor[mlForecast.risk_trajectory] || "#F59E0B",
-                        border: `1px solid ${trajectoryColor[mlForecast.risk_trajectory] || "#F59E0B"}40`
-                      }}>{mlForecast.risk_trajectory}</span>
-                      <span style={{ fontSize:11, color:"#64748B", fontFamily:"monospace" }}>Interpretación IA · sin precisión validada</span>
-                    </div>
-
-                    {/* Outlooks */}
-                    {[["30D", mlForecast.outlook_30d], ["90D", mlForecast.outlook_90d]].map(([h, text]) => (
-                      <div key={h} style={{ padding:"8px 10px", background:"#0d1f16", borderRadius:4, marginBottom:6, borderLeft:"2px solid #A78BFA40" }}>
-                        <span style={{ fontSize:9, color:"#A78BFA", fontFamily:"monospace", letterSpacing:1, display:"block", marginBottom:3 }}>OUTLOOK {h}</span>
-                        <span style={{ fontSize:12, color:"#CBD5E1", lineHeight:1.5 }}>{text}</span>
-                      </div>
-                    ))}
-
-                    {/* Key triggers */}
-                    {mlForecast.key_triggers?.length > 0 && (
-                      <div style={{ marginTop:10 }}>
-                        <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>TRIGGERS CLAVE</div>
-                        {mlForecast.key_triggers.map((t, i) => (
-                          <div key={i} style={{ display:"flex", alignItems:"center", gap:6, fontSize:12, color:"#94A3B8", marginBottom:4 }}>
-                            <span style={{ width:4, height:4, borderRadius:"50%", background:"#F59E0B", display:"inline-block", flexShrink:0 }} />
-                            {t}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Asset signals */}
-                    {mlForecast.asset_signals?.length > 0 && (
-                      <div style={{ marginTop:10 }}>
-                        <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>SEÑALES DE ACTIVOS</div>
-                        {mlForecast.asset_signals.slice(0, 4).map((s, i) => {
-                          const sc = s.signal==="FAVORABLE" ? "#10B981" : s.signal==="VULNERABLE" ? "#EF4444" : "#F59E0B";
-                          return (
-                            <div key={i} style={{ display:"grid", gridTemplateColumns:"1fr auto", gap:8, alignItems:"center", padding:"4px 0", borderBottom:"1px solid #16301f30" }}>
-                              <span style={{ fontSize:12, color:"#94A3B8" }}>{s.asset}</span>
-                              <span style={{ fontSize:10, fontFamily:"monospace", color:sc, background:`${sc}15`, padding:"2px 6px", borderRadius:2, border:`1px solid ${sc}30` }}>{s.signal}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Variables grid */}
-            <div className="grml-card grml-table-scroll">
-              <div className="grml-table-inner">
-                <div style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr 1.2fr 1.5fr", padding:"10px 16px", background:"#0d1f16", borderBottom:"1px solid #16301f", fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
-                  <span>VARIABLE</span><span>NIVEL BASE</span><span>SEÑAL</span><span>NIVEL SIMULADO*</span><span>VIGENCIA</span>
-                </div>
-                {Object.entries(ECONOMIC_VARIABLES).map(([k, v], i) => {
-                  const imp = computeImpact(k);
-                  const proj = v.base + imp * v.vol * 5;
-                  const impCol = imp > 0.1 ? "#F59E0B" : imp < -0.1 ? "#10B981" : "#94A3B8";
-                  return (
-                    <div key={k} style={{ display:"grid", gridTemplateColumns:"2fr 1fr 1fr 1.2fr 1.5fr", padding:"12px 16px", borderBottom:"1px solid #16301f30", alignItems:"center", background:i%2 ? "#0a1810" : "#0c1a12" }}>
-                      <div>
-                        <div style={{ fontSize:13, fontWeight:500, color:"#CBD5E1" }}>{v.label}</div>
-                        <div style={{ fontSize:10, color:"#475569", fontFamily:"monospace", letterSpacing:"0.04em", marginTop:2 }}>Referencia interna ZRC · metodología propietaria</div>
-                      </div>
-                      <span style={{ fontFamily:"monospace", fontSize:13, color:"#94A3B8" }}>{fmt(v.base, v.decimals ?? 2)}{v.unit}</span>
-                      <span style={{ fontFamily:"monospace", fontSize:11, fontWeight:700, color:impCol }}>{imp > 0.1 ? "ALCISTA" : imp < -0.1 ? "BAJISTA" : "NEUTRA"}</span>
-                      <span style={{ fontFamily:"monospace", fontSize:14, fontWeight:600, color:impCol }}>
-                        {fmt(proj, v.decimals ?? 2)}{v.unit}
-                      </span>
-                      <span style={{ fontSize: 10, color: "#64748B" }}>parámetro revisado {MODEL_REVIEW_DATE}<br />sin serie conectada</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ═══════════════ TAB: ESCENARIOS ═══════════════ */}
         {tab === "scenarios" && (
           <div style={{ animation:"grml-fadeIn 0.4s ease" }}>
             <div className="grml-card" style={{
@@ -1320,7 +1095,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
         <footer style={{ padding:"20px 0", marginTop:30, borderTop:"1px solid #16301f", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:8 }}>
           <div style={{ fontSize:11, color:"#475569", fontFamily:"monospace", lineHeight:1.6 }}>
             © 2026 Zenith Rise Capital · Calesius Global SL · Madrid, España
-            <br />GeoRisk ML · ZRC AI Engine bajo demanda · Divisas BCE con histórico · Simulaciones sin recalibración automática
+            <br />GeoRisk ML · Pronósticos 30 / 90 días · Referencias oficiales fechadas · IA de escenarios bajo demanda
           </div>
           <div style={{ display:"flex", gap:10, alignItems:"center" }}>
             <span style={{ fontSize:11, color:"#475569", fontFamily:"monospace" }}>zenithrisecapital.com</span>
