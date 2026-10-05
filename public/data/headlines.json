@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T11:43:56.938Z",
+  "generated_at": "2026-10-05T13:28:09.643Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,69 +98,69 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los hutíes afirman haber atacado Aramco mientras el conflicto de Yemen escala",
-        "en": "Houthis Claim Attack on Aramco as Yemen Conflict Escalates"
+        "es": "Yemen y Arabia Saudí lanzan nuevos ataques contra los hutíes para recuperar territorio perdido",
+        "en": "Yemen, Saudi Arabia launch new strikes against Houthis in bid to retake lost territory"
       },
       "summary": {
-        "es": "La milicia respaldada por Irán afirma haber atacado una instalación de Aramco en Riad, mientras nuevos ataques aéreos golpean la capital yemení. El ataque directo a infraestructura petrolera saudí elevaría los riesgos de prima de riesgo en el crudo y podría escalar la confrontación regional más allá de Yemen.",
-        "en": "The Iran-backed militia claims to have targeted an Aramco facility in Riyadh as fresh airstrikes hit the Yemeni capital, raising fears of a widening war. A direct strike on Saudi oil infrastructure amplifies geopolitical risk premiums on crude and risks broadening the regional confrontation."
+        "es": "Las fuerzas yemeníes respaldadas por jets saudíes iniciaron una amplia campaña de ataques contra objetivos hutíes respaldados por Irán, tras una ofensiva hutí en septiembre que dejó cientos de bajas. La escalada reaviva riesgos sobre rutas marítimas del Mar Rojo y presión sobre los precios del crudo. Arabia Saudí involucrada directamente sugiere una posible reactivación de la guerra regional con implicaciones para Aramco y el presupuesto saudí.",
+        "en": "Yemeni forces backed by Saudi jets launched a broad campaign of strikes against Iran-backed Houthi targets, following a September Houthi offensive that killed hundreds. The escalation revives risks to Red Sea shipping lanes and upward pressure on crude prices. Direct Saudi involvement signals a potential re-escalation of the regional conflict with implications for Aramco and Saudi fiscal planning."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
           "direction": "up",
-          "magnitude": "high",
+          "magnitude": "medium",
           "note": {
-            "es": "Riesgo directo a infraestructura petrolera saudí",
-            "en": "Direct risk to Saudi oil infrastructure"
+            "es": "Riesgo de perturbación en rutas del Mar Rojo",
+            "en": "Risk of disruption to Red Sea shipping routes"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Huida hacia activos refugio por escalada regional",
-            "en": "Safe-haven demand on regional escalation fears"
+            "es": "Demanda de refugio seguro ante escalada regional",
+            "en": "Safe-haven demand on regional escalation"
           }
         },
         {
-          "asset": "EM currencies",
-          "direction": "down",
+          "asset": "Shipping/freight indices",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Aversión al riesgo presiona divisas emergentes",
-            "en": "Risk-off sentiment pressures emerging market currencies"
+            "es": "Desvíos de rutas elevan costes de flete",
+            "en": "Route diversions push freight costs higher"
           }
         },
         {
-          "asset": "European equities",
-          "direction": "down",
+          "asset": "Saudi equities (Tadawul)",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Costes energéticos más altos pesan sobre mercados europeos",
-            "en": "Higher energy costs weigh on European markets"
+            "es": "Riesgo fiscal saudí vs. beneficio de precio del crudo",
+            "en": "Saudi fiscal risk offset by crude price benefit"
           }
         }
       ],
-      "confidence": 90,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/04/world/middleeast/houthis-oil-attack-saudi-arabia-yemen.html",
-      "published_at": "2026-10-04",
-      "time": "<1h"
+      "confidence": 82,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/middle-east/20261005-yemen-military-announces-broad-range-of-strikes-against-houthis-in-bid-to-retake-lost-territory",
+      "published_at": "2026-10-05",
+      "time": "5h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "EU",
+      "tag": "ALERT",
+      "region": "EURASIA",
       "title": {
-        "es": "Friedrich Merz comienza visita no anunciada a Kyiv mientras Rusia continúa ataques sobre la capital ucraniana",
-        "en": "Friedrich Merz begins unannounced Kyiv visit as Russia continues strikes on Ukraine's capital"
+        "es": "Merz visita Kiev mientras Rusia ataca un puente",
+        "en": "Germany's Merz visits Kyiv as Russia strikes bridge"
       },
       "summary": {
-        "es": "El canciller alemán visitó Kyiv mientras Rusia atacaba un puente de la ciudad, en una demostración simbólica de apoyo occidental. Alemania, el mayor donante europeo de Ucrania con más de €43 mil millones aportados, planea anunciar nuevas medidas incluyendo producción de drones, lo que señala un compromiso militar sostenido con implicaciones para el gasto en defensa europeo.",
-        "en": "The German chancellor visited Kyiv as Russia struck a city bridge in a symbolic test of Western resolve. Germany, Ukraine's largest European donor at over €43 billion committed, is set to announce new support measures including drone production, signaling sustained military commitment with implications for European defense spending."
+        "es": "El canciller alemán Merz visitó Kiev mientras sonaban las sirenas antiaéreas, anunciando nuevas medidas de apoyo a Ucrania, incluida la producción conjunta de drones germano-ucraniana. El ataque ruso al puente Pivnichny subraya la continuada presión militar sobre infraestructuras críticas ucranianas. El anuncio de coproducción de drones refuerza la tendencia de la UE hacia la soberanía en defensa y tiene implicaciones para las acciones europeas de defensa.",
+        "en": "German Chancellor Merz visited Kyiv amid air raid sirens, announcing new support measures including joint Ukrainian-German drone production. Russia's strike on the Pivnichny bridge underscores continued pressure on Ukrainian critical infrastructure. The co-production announcement reinforces the EU's defense sovereignty trend with implications for European defense equities."
       },
       "impact": "high",
       "market_impact": [
@@ -169,8 +169,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Nuevo paquete de ayuda militar alemán impulsa sector defensa",
-            "en": "New German military aid package boosts defense sector"
+            "es": "Acuerdo de drones impulsa sector defensa europeo",
+            "en": "Drone deal boosts European defense sector"
           }
         },
         {
@@ -178,182 +178,143 @@
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Señal de unidad europea pero riesgo de conflicto persiste",
-            "en": "European unity signal offset by persistent conflict risk"
+            "es": "Mayor gasto alemán en defensa presiona finanzas fiscales",
+            "en": "Increased German defense spending pressures fiscal balance"
           }
         },
         {
           "asset": "Natural gas (TTF)",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Escalada rusa mantiene presión sobre suministro energético europeo",
-            "en": "Russian escalation sustains pressure on European energy supply"
+            "es": "Escalada eleva prima de riesgo energético europeo",
+            "en": "Escalation lifts European energy risk premium"
           }
         }
       ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/oct/04/friedrich-merz-german-chancellor-ukraine-kyiv-russia-strikes-war-zelenskyy-putin-europe-latest-news-updates",
+      "confidence": 80,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/germany-s-merz-visits-kyiv-as-russia-strikes-bridge/a-79534734?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-10-04",
-      "time": "<1h"
+      "time": "23h"
     },
     {
       "id": 3,
-      "tag": "CRITICAL",
-      "region": "AFRICA",
+      "tag": "ALERT",
+      "region": "APAC",
       "title": {
-        "es": "Las fuerzas gubernamentales etíopes toman la capital de Tigray, Mekelle, mientras el TPLF se retira",
-        "en": "Ethiopian government forces seize Tigray capital Mekelle as TPLF withdraws"
+        "es": "Mujer de California arrestada y acusada de espiar al hijo del presidente de Taiwán para China",
+        "en": "California woman arrested and accused of spying on Taiwan president's son for China"
       },
       "summary": {
-        "es": "Las tropas federales etíopes y sus aliados han tomado el control de Mekelle, incluido el aeropuerto regional, marcando un giro significativo en el conflicto de Tigray. Este desarrollo tiene implicaciones para la estabilidad del Cuerno de África, los flujos de ayuda humanitaria y la posición geopolítica de Etiopía en las negociaciones con acreedores internacionales y socios de seguridad.",
-        "en": "Ethiopian federal troops and allied fighters have seized control of Mekelle including the main regional airport, marking a significant turning point in the Tigray conflict. This development carries implications for Horn of Africa stability, humanitarian aid flows, and Ethiopia's geopolitical standing in negotiations with international creditors and security partners."
+        "es": "El FBI arrestó a Wanying Zhang en el aeropuerto de Los Ángeles acusándola de espiar al hijo del presidente de Taiwán por cuenta de funcionarios chinos. El caso evidencia operaciones de inteligencia chinas en suelo estadounidense dirigidas a activos taiwaneses, intensificando las tensiones bilaterales. Esto añade presión al ya frágil equilibrio en el estrecho de Taiwán con potenciales implicaciones para las cadenas de suministro de semiconductores.",
+        "en": "The FBI arrested Wanying Zhang at LAX, accusing her of spying on Taiwan's president's son at the behest of Chinese officials. The case reveals Chinese intelligence operations on U.S. soil targeting Taiwanese assets, heightening bilateral tensions. This adds pressure to the already fragile Taiwan Strait equilibrium with potential semiconductor supply chain implications."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Ethiopian sovereign bonds",
-          "direction": "mixed",
-          "magnitude": "medium",
+          "asset": "Taiwan semiconductor equities (TSMC)",
+          "direction": "down",
+          "magnitude": "low",
           "note": {
-            "es": "Mayor control estatal puede facilitar renegociación de deuda",
-            "en": "Greater state control may facilitate debt renegotiation"
+            "es": "Tensión geopolítica eleva riesgo sobre activos taiwaneses",
+            "en": "Geopolitical tension raises risk premium on Taiwanese assets"
           }
         },
         {
-          "asset": "African frontier market equities",
+          "asset": "USD/CNY",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Incertidumbre regional pesa sobre mercados de frontera africanos",
-            "en": "Regional uncertainty weighs on African frontier markets"
+            "es": "Fricción diplomática EE.UU.-China añade incertidumbre",
+            "en": "US-China diplomatic friction adds uncertainty"
           }
         },
         {
-          "asset": "Brent crude",
-          "direction": "up",
+          "asset": "US-listed China tech equities",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Inestabilidad en el Cuerno de África eleva riesgo en rutas marítimas",
-            "en": "Horn of Africa instability raises maritime route risk"
-          }
-        }
-      ],
-      "confidence": 82,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/10/4/government-forces-seize-capital-of-ethiopias-tigray-region-from-rebels?traffic_source=rss",
-      "published_at": "2026-10-04",
-      "time": "<1h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "¿Está el ejército sudanés ganando impulso contra las RSF?",
-        "en": "Is the Sudanese army gaining momentum against the RSF?"
-      },
-      "summary": {
-        "es": "Las Fuerzas Armadas de Sudán afirman haber tomado una ciudad clave en North Kordofan, debilitando el acceso de las Fuerzas de Apoyo Rápido a combatientes y rutas de suministro. Un cambio en el equilibrio militar sudanés tendría implicaciones para el control de corredores de minerales críticos y para los intereses de potencias externas como los Emiratos Árabes Unidos y Rusia.",
-        "en": "Sudan's Armed Forces claim victory in a key North Kordofan town, weakening RSF access to fighters and supply routes. A shift in Sudan's military balance carries implications for control of critical mineral corridors and for the interests of external powers including the UAE and Russia."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Gold",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Control de zonas auríferas sudanesas cambia de manos potencialmente",
-            "en": "Control of Sudanese gold-producing zones potentially shifting"
-          }
-        },
-        {
-          "asset": "African frontier market equities",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Reconfiguración del conflicto crea incertidumbre regional",
-            "en": "Conflict reconfiguration creates regional uncertainty"
+            "es": "Escrutinio de inteligencia refuerza presión regulatoria",
+            "en": "Intelligence scrutiny reinforces regulatory pressure"
           }
         }
       ],
       "confidence": 75,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/10/4/is-the-sudanese-army-gaining-momentum-against-the-rsf?traffic_source=rss",
-      "published_at": "2026-10-04",
-      "time": "<1h"
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/05/california-woman-arrested-and-accused-of-spying-on-taiwan-presidents-son-for-china",
+      "published_at": "2026-10-05",
+      "time": "7h"
     },
     {
-      "id": 5,
+      "id": 4,
       "tag": "WATCH",
-      "region": "US",
+      "region": "GLOBAL",
       "title": {
-        "es": "Por qué Canadá se prepara para una (improbable) invasión de EE.UU.",
-        "en": "Why Canada is preparing for a (long shot) US invasion"
+        "es": "Metales críticos: cómo apostar por la carrera por los recursos estratégicos",
+        "en": "Critical metals: How to invest in the race for strategic resources"
       },
       "summary": {
-        "es": "El primer ministro Mark Carney ha revelado que las fuerzas armadas canadienses están elaborando escenarios ante una eventual invasión estadounidense, señal de la profunda deterioración de las relaciones bilaterales. Aunque el escenario sigue siendo improbable, la postura defensiva de Canadá frente a su principal socio comercial tiene implicaciones significativas para el comercio norteamericano, los acuerdos de defensa y los flujos de inversión transfronterizos.",
-        "en": "Prime Minister Mark Carney has disclosed that Canada's military is running invasion scenarios involving the U.S., signaling a deep deterioration in bilateral relations. While the scenario remains unlikely, Canada's defensive posture toward its primary trade partner carries significant implications for North American trade, defense arrangements, and cross-border investment flows."
+        "es": "La demanda de cobre, litio y otros metales críticos para la transición energética y nuevas tecnologías se acelera mientras la oferta no logra seguir el ritmo, según un análisis de Le Monde. La competencia geopolítica por estos recursos, especialmente en África y América Latina, convierte su control en un vector de poder estratégico. Los inversores deben considerar tanto el potencial alcista estructural como los riesgos de concentración geográfica y tensiones de suministro.",
+        "en": "Demand for copper, lithium and other critical metals essential for the energy transition and new technologies is accelerating while supply struggles to keep pace. Geopolitical competition for these resources, especially in Africa and Latin America, makes their control a strategic power vector. Investors must weigh structural upside potential against geographic concentration risks and supply disruption threats."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "CAD/USD",
-          "direction": "down",
+          "asset": "Copper futures",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Deterioro de relaciones bilaterales presiona el dólar canadiense",
-            "en": "Bilateral relationship deterioration pressures Canadian dollar"
+            "es": "Déficit estructural de oferta impulsa precio del cobre",
+            "en": "Structural supply deficit drives copper price upward"
           }
         },
         {
-          "asset": "Canadian equities (TSX)",
-          "direction": "down",
-          "magnitude": "low",
+          "asset": "Lithium miners equities",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre en relaciones EE.UU.-Canadá pesa sobre bolsa canadiense",
-            "en": "US-Canada relations uncertainty weighs on Canadian equities"
+            "es": "Aceleración de demanda de VE favorece productores de litio",
+            "en": "Accelerating EV demand favors lithium producers"
           }
         },
         {
-          "asset": "US 10Y Treasury",
-          "direction": "mixed",
+          "asset": "EM currencies (Chile, DRC, Indonesia)",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Tensión geopolítica norte-americana impulsa demanda refugio marginal",
-            "en": "North American geopolitical tension drives marginal safe-haven demand"
+            "es": "Exportadores de minerales beneficiados por precios altos",
+            "en": "Mineral exporters benefit from elevated commodity prices"
           }
         }
       ],
       "confidence": 72,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c9m2mjj3yvg4o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-03",
-      "time": "12h"
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/argent/article/2026/10/05/metaux-critiques-miser-sur-la-course-aux-ressources-strategiques_6788493_1657007.html",
+      "published_at": "2026-10-05",
+      "time": "6h"
     },
     {
-      "id": 6,
+      "id": 5,
       "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "Bosnia y Herzegovina sigue marcada por la guerra, el separatismo y las ambiciones europeas",
-        "en": "Bosnia and Herzegovina is still shaped by war, separatism, EU ambitions"
+        "es": "España abre en Europa un ciclo electoral que decidirá el futuro de la UE",
+        "en": "Spain opens an electoral cycle in Europe that will decide the future of the EU"
       },
       "summary": {
-        "es": "Bosnia y Herzegovina continúa operando bajo el sistema de gobierno establecido tras la guerra bosnia hace más de 30 años, con divisiones étnicas persistentes y un proceso de integración europea estancado. La tensión latente entre entidades y las ambiciones separatistas de Republika Srpska representan un riesgo de desestabilización en los Balcanes Occidentales con implicaciones para la ampliación de la UE y la seguridad del flanco sur de la OTAN.",
-        "en": "Bosnia and Herzegovina continues to operate under its post-war governance framework over 30 years on, with persistent ethnic divisions and a stalled EU integration process. Latent tensions between entities and Republika Srpska's separatist ambitions represent a destabilization risk in the Western Balkans with implications for EU enlargement and NATO's southern flank security."
+        "es": "España inicia un ciclo electoral europeo que incluirá comicios en Francia, Italia y Polonia en los próximos meses, con partidos de ultraderecha en ascenso y riesgo de interferencias externas. Un giro político hacia la derecha radical en varios grandes países de la UE podría reconfigurar la política fiscal, de defensa y migratoria del bloque. Los mercados europeos deberán descontar creciente incertidumbre institucional y riesgo de fragmentación política.",
+        "en": "Spain opens a European electoral cycle that will include elections in France, Italy, and Poland in the coming months, with far-right parties rising and risks of foreign interference. A political shift toward the radical right in several major EU countries could reshape the bloc's fiscal, defense, and migration policies. European markets will need to price in growing institutional uncertainty and political fragmentation risk."
       },
       "impact": "medium",
       "market_impact": [
         {
           "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Riesgo de desestabilización balcánica pesa marginalmente sobre el euro",
-            "en": "Balkan destabilization risk marginally weighs on the euro"
+            "es": "Fragmentación política europea presiona al euro",
+            "en": "European political fragmentation pressures the euro"
           }
         },
         {
@@ -361,16 +322,73 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Incertidumbre en el flanco sur europeo afecta sentimiento de mercado",
-            "en": "European southern flank uncertainty affects market sentiment"
+            "es": "Incertidumbre política eleva prima de riesgo",
+            "en": "Political uncertainty raises equity risk premium"
+          }
+        },
+        {
+          "asset": "Italian BTP spreads",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo político italiano eleva diferencial de deuda",
+            "en": "Italian political risk widens sovereign spread"
           }
         }
       ],
-      "confidence": 65,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/bosnia-and-herzegovina-is-still-shaped-by-war-separatism-eu-ambitions/a-79523557?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-03",
-      "time": "1d"
+      "confidence": 70,
+      "source": "El País",
+      "source_url": "https://elpais.com/videos/2026-10-05/espana-abre-en-europa-un-ciclo-electoral-que-decidira-el-futuro-de-la-ue.html",
+      "published_at": "2026-10-05",
+      "time": "2h"
+    },
+    {
+      "id": 6,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "El máximo responsable de seguridad de Irán advierte de una grave crisis económica",
+        "en": "Iran's Top Security Official Warns of Dire Economic Crisis"
+      },
+      "summary": {
+        "es": "Mohsen Rezaei, jefe de seguridad iraní, reconoció públicamente una severa crisis económica semanas después de que EE.UU. endureciera sanciones y su bloqueo naval. La admisión pública de un funcionario de alto rango de seguridad sugiere presión interna creciente que podría alterar el cálculo estratégico de Teherán. Esto tiene implicaciones directas para la estabilidad del suministro de petróleo iraní y la dinámica de poder regional.",
+        "en": "Iran's security chief Mohsen Rezaei publicly acknowledged a severe economic crisis weeks after the U.S. tightened sanctions and its naval blockade. A rare admission from a senior security official signals growing internal pressure that could alter Tehran's strategic calculus. This has direct implications for Iranian oil supply stability and regional power dynamics."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Restricciones al petróleo iraní refuerzan presión alcista",
+            "en": "Iranian oil restrictions reinforce upward price pressure"
+          }
+        },
+        {
+          "asset": "Iranian rial / EM currencies",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Crisis de divisa iraní agudizada por sanciones",
+            "en": "Iranian currency crisis deepened by sanctions"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión geopolítica sostiene demanda de refugio",
+            "en": "Geopolitical tension sustains safe-haven demand"
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/04/world/middleeast/iran-economy-rial.html",
+      "published_at": "2026-10-05",
+      "time": "13h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
