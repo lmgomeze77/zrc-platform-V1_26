@@ -95,7 +95,7 @@ const SCENARIOS = {
 };
 
 const SECTORS = {
-  global:      { label: "Global",      mult: 1.00 },
+  global:      { label: "Multisectorial",      mult: 1.00 },
   real_estate: { label: "Real Estate", mult: 0.88 },
   financial:   { label: "Financiero",  mult: 1.15 },
   industrial:  { label: "Industrial",  mult: 0.92 },
@@ -675,7 +675,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
                 RESUMEN PARA COMITÉ DE INVERSIÓN
               </div>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: "#CBD5E1", lineHeight: 1.9 }}>
-                <li>Riesgo compuesto <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "pesos de referencia del modelo"}.</li>
+                <li>Riesgo del escenario mundial <b>{riskLabel(compositeRisk)}</b> ({fmt(compositeRisk, 1)}/100), mix {isCustomized ? "personalizado por el analista" : "pesos de referencia del modelo"}.</li>
                 <li>Escenario dominante: <b style={{ color: dominantScenario.color }}>{dominantScenario.label}</b> ({(normalizedWeights[dominantScenario.key] * 100).toFixed(0)}% del peso normalizado).</li>
                 {top && (
                   <li>Mayor sensibilidad simulada: <b>{top.asset}</b> · <b style={{ color: top.col }}>{top.dir}</b>. Magnitud y reglas internas no publicadas.</li>
@@ -688,18 +688,21 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
 
         <details className="grml-card" style={{ padding: "16px 20px", marginBottom: 20, color: "#CBD5E1" }}>
           <summary style={{ cursor: "pointer", fontWeight: 700 }}>Metodología, versión y vigencia</summary>
-          <p style={{ fontSize: 13, lineHeight: 1.7 }}>El resultado combina la mezcla de escenarios seleccionada, la región, el sector y reglas internas de transmisión de riesgo. Es un indicador propietario para comparar escenarios, no una probabilidad ni una previsión de rentabilidad.</p>
+          <p style={{ fontSize: 13, lineHeight: 1.7 }}>El score resume la mezcla de escenarios mundiales y la exposición sectorial seleccionada. La región determina la transmisión a variables económicas y señales de activos; no modifica el score. Es un indicador de escenario, no una puntuación de riesgo regional ni una probabilidad.</p>
           <p style={{ fontSize: 12, lineHeight: 1.7 }}>Las ponderaciones internas, sensibilidades, transformaciones y reglas de decisión forman parte de la metodología propietaria de ZRC y no se publican. Los niveles base son anclas internas del modelo; los datos observados, con fecha y fuente, se consultan separadamente en <b>Datos observados</b>.</p>
           <p style={{ fontSize: 12, color: "#94A3B8" }}>Versión pública: {MODEL_VERSION} · revisión metodológica: {MODEL_REVIEW_DATE}. El reloj de cabecera no indica actualización de datos.</p>
         </details>
 
         {/* ── SCORE BAR ── */}
         <div className="grml-card grml-score-row" style={{ gap:20, padding:"20px 24px", margin:"0 0 20px", alignItems:"center" }}>
-          <RiskGauge value={compositeRisk} size={110} label="Riesgo Compuesto" />
+          <div style={{ textAlign: "center" }}>
+            <RiskGauge value={compositeRisk} size={110} label="Riesgo del escenario" />
+            <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 6 }}>ÁMBITO MUNDIAL</div>
+          </div>
 
           <div style={{ display:"flex", flexDirection:"column", gap:12 }}>
             <div style={{ display:"flex", gap:6, flexWrap:"wrap", alignItems:"center" }}>
-              <span style={{ fontSize:11, color:"#64748B", fontFamily:"'JetBrains Mono',monospace", letterSpacing:1, marginRight:4 }}>REGIÓN:</span>
+              <span style={{ fontSize:11, color:"#64748B", fontFamily:"'JetBrains Mono',monospace", letterSpacing:1, marginRight:4 }}>REGIÓN DE IMPACTO:</span>
               {Object.entries(REGIONS).map(([k, v]) => (
                 <button key={k} className="grml-btn" onClick={() => setRegion(k)} style={{
                   padding:"4px 10px", borderRadius:3, border:"1px solid",
@@ -711,7 +714,7 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
               ))}
             </div>
             <div style={{ display:"flex", gap:6, flexWrap:"wrap", alignItems:"center" }}>
-              <span style={{ fontSize:11, color:"#64748B", fontFamily:"'JetBrains Mono',monospace", letterSpacing:1, marginRight:4 }}>SECTOR:</span>
+              <span style={{ fontSize:11, color:"#64748B", fontFamily:"'JetBrains Mono',monospace", letterSpacing:1, marginRight:4 }}>EXPOSICIÓN SECTORIAL:</span>
               {Object.entries(SECTORS).map(([k, v]) => (
                 <button key={k} className="grml-btn" onClick={() => setSector(k)} style={{
                   padding:"4px 10px", borderRadius:3, border:"1px solid",
@@ -723,13 +726,13 @@ El GeoRisk Dashboard organiza escenarios con parámetros fijos. <b>GeoRisk ML a�
               ))}
             </div>
             <div style={{ fontSize:10, color:"#475569", fontFamily:"'JetBrains Mono',monospace" }}>
-              Las variables, fuentes y niveles se leen sobre {REGIONS[region].label} · el riesgo compuesto del escenario es global
+              <strong style={{ color: "#CBD5E1" }}>Impactos: {REGIONS[region].label} · {SECTORS[sector].label}.</strong><br />La región cambia las variables y señales de activos. El score mide el escenario mundial con la exposición sectorial elegida; se mantiene al cambiar de región.
             </div>
 
             {/* Risk bar */}
             <div>
               <div style={{ display:"flex", justifyContent:"space-between", marginBottom:4 }}>
-                <span style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>ÍNDICE DE RIESGO COMPUESTO</span>
+                <span style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>RIESGO DEL ESCENARIO · ÁMBITO MUNDIAL</span>
                 <span style={{ fontSize:10, color:riskColor, fontFamily:"monospace" }}>{compositeRisk.toFixed(1)}/100</span>
               </div>
               <div style={{ height:6, background:"#0f1f14", borderRadius:3, overflow:"hidden" }}>
