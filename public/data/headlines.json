@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T13:28:09.643Z",
+  "generated_at": "2026-10-06T12:41:09.298Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,299 +96,299 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Yemen y Arabia Saudí lanzan nuevos ataques contra los hutíes para recuperar territorio perdido",
-        "en": "Yemen, Saudi Arabia launch new strikes against Houthis in bid to retake lost territory"
-      },
-      "summary": {
-        "es": "Las fuerzas yemeníes respaldadas por jets saudíes iniciaron una amplia campaña de ataques contra objetivos hutíes respaldados por Irán, tras una ofensiva hutí en septiembre que dejó cientos de bajas. La escalada reaviva riesgos sobre rutas marítimas del Mar Rojo y presión sobre los precios del crudo. Arabia Saudí involucrada directamente sugiere una posible reactivación de la guerra regional con implicaciones para Aramco y el presupuesto saudí.",
-        "en": "Yemeni forces backed by Saudi jets launched a broad campaign of strikes against Iran-backed Houthi targets, following a September Houthi offensive that killed hundreds. The escalation revives risks to Red Sea shipping lanes and upward pressure on crude prices. Direct Saudi involvement signals a potential re-escalation of the regional conflict with implications for Aramco and Saudi fiscal planning."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de perturbación en rutas del Mar Rojo",
-            "en": "Risk of disruption to Red Sea shipping routes"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Demanda de refugio seguro ante escalada regional",
-            "en": "Safe-haven demand on regional escalation"
-          }
-        },
-        {
-          "asset": "Shipping/freight indices",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Desvíos de rutas elevan costes de flete",
-            "en": "Route diversions push freight costs higher"
-          }
-        },
-        {
-          "asset": "Saudi equities (Tadawul)",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo fiscal saudí vs. beneficio de precio del crudo",
-            "en": "Saudi fiscal risk offset by crude price benefit"
-          }
-        }
-      ],
-      "confidence": 82,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20261005-yemen-military-announces-broad-range-of-strikes-against-houthis-in-bid-to-retake-lost-territory",
-      "published_at": "2026-10-05",
-      "time": "5h"
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
       "region": "EURASIA",
       "title": {
-        "es": "Merz visita Kiev mientras Rusia ataca un puente",
-        "en": "Germany's Merz visits Kyiv as Russia strikes bridge"
+        "es": "Bulgaria busca tripulación desaparecida tras ataques de drones a dos barcos en el Mar Negro",
+        "en": "Bulgaria searches for missing crew as drones hit two Black Sea ships"
       },
       "summary": {
-        "es": "El canciller alemán Merz visitó Kiev mientras sonaban las sirenas antiaéreas, anunciando nuevas medidas de apoyo a Ucrania, incluida la producción conjunta de drones germano-ucraniana. El ataque ruso al puente Pivnichny subraya la continuada presión militar sobre infraestructuras críticas ucranianas. El anuncio de coproducción de drones refuerza la tendencia de la UE hacia la soberanía en defensa y tiene implicaciones para las acciones europeas de defensa.",
-        "en": "German Chancellor Merz visited Kyiv amid air raid sirens, announcing new support measures including joint Ukrainian-German drone production. Russia's strike on the Pivnichny bridge underscores continued pressure on Ukrainian critical infrastructure. The co-production announcement reinforces the EU's defense sovereignty trend with implications for European defense equities."
+        "es": "Drones atacaron dos buques mercantes en el Mar Negro, hundiendo uno dentro de la zona económica búlgara con tripulantes desaparecidos. El incidente escala la amenaza a la navegación comercial internacional en una ruta crítica para el comercio de cereales y energía. Esto podría elevar las primas de seguro marítimo y presionar los precios de los commodities.",
+        "en": "Drones struck two merchant vessels in the Black Sea, sinking one inside Bulgaria's economic zone with crew members missing. The incident escalates the threat to international commercial shipping on a critical corridor for grain and energy trade. This is likely to push maritime insurance premiums higher and exert upward pressure on commodity prices."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European defense equities",
+          "asset": "Wheat futures",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Acuerdo de drones impulsa sector defensa europeo",
-            "en": "Drone deal boosts European defense sector"
+            "es": "Riesgo de interrupción en corredor exportador del Mar Negro",
+            "en": "Disruption risk to Black Sea grain export corridor"
           }
         },
-        {
-          "asset": "EUR/USD",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor gasto alemán en defensa presiona finanzas fiscales",
-            "en": "Increased German defense spending pressures fiscal balance"
-          }
-        },
-        {
-          "asset": "Natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada eleva prima de riesgo energético europeo",
-            "en": "Escalation lifts European energy risk premium"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/germany-s-merz-visits-kyiv-as-russia-strikes-bridge/a-79534734?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-04",
-      "time": "23h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "APAC",
-      "title": {
-        "es": "Mujer de California arrestada y acusada de espiar al hijo del presidente de Taiwán para China",
-        "en": "California woman arrested and accused of spying on Taiwan president's son for China"
-      },
-      "summary": {
-        "es": "El FBI arrestó a Wanying Zhang en el aeropuerto de Los Ángeles acusándola de espiar al hijo del presidente de Taiwán por cuenta de funcionarios chinos. El caso evidencia operaciones de inteligencia chinas en suelo estadounidense dirigidas a activos taiwaneses, intensificando las tensiones bilaterales. Esto añade presión al ya frágil equilibrio en el estrecho de Taiwán con potenciales implicaciones para las cadenas de suministro de semiconductores.",
-        "en": "The FBI arrested Wanying Zhang at LAX, accusing her of spying on Taiwan's president's son at the behest of Chinese officials. The case reveals Chinese intelligence operations on U.S. soil targeting Taiwanese assets, heightening bilateral tensions. This adds pressure to the already fragile Taiwan Strait equilibrium with potential semiconductor supply chain implications."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Taiwan semiconductor equities (TSMC)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión geopolítica eleva riesgo sobre activos taiwaneses",
-            "en": "Geopolitical tension raises risk premium on Taiwanese assets"
-          }
-        },
-        {
-          "asset": "USD/CNY",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Fricción diplomática EE.UU.-China añade incertidumbre",
-            "en": "US-China diplomatic friction adds uncertainty"
-          }
-        },
-        {
-          "asset": "US-listed China tech equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Escrutinio de inteligencia refuerza presión regulatoria",
-            "en": "Intelligence scrutiny reinforces regulatory pressure"
-          }
-        }
-      ],
-      "confidence": 75,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/05/california-woman-arrested-and-accused-of-spying-on-taiwan-presidents-son-for-china",
-      "published_at": "2026-10-05",
-      "time": "7h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "GLOBAL",
-      "title": {
-        "es": "Metales críticos: cómo apostar por la carrera por los recursos estratégicos",
-        "en": "Critical metals: How to invest in the race for strategic resources"
-      },
-      "summary": {
-        "es": "La demanda de cobre, litio y otros metales críticos para la transición energética y nuevas tecnologías se acelera mientras la oferta no logra seguir el ritmo, según un análisis de Le Monde. La competencia geopolítica por estos recursos, especialmente en África y América Latina, convierte su control en un vector de poder estratégico. Los inversores deben considerar tanto el potencial alcista estructural como los riesgos de concentración geográfica y tensiones de suministro.",
-        "en": "Demand for copper, lithium and other critical metals essential for the energy transition and new technologies is accelerating while supply struggles to keep pace. Geopolitical competition for these resources, especially in Africa and Latin America, makes their control a strategic power vector. Investors must weigh structural upside potential against geographic concentration risks and supply disruption threats."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Copper futures",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Déficit estructural de oferta impulsa precio del cobre",
-            "en": "Structural supply deficit drives copper price upward"
-          }
-        },
-        {
-          "asset": "Lithium miners equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aceleración de demanda de VE favorece productores de litio",
-            "en": "Accelerating EV demand favors lithium producers"
-          }
-        },
-        {
-          "asset": "EM currencies (Chile, DRC, Indonesia)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Exportadores de minerales beneficiados por precios altos",
-            "en": "Mineral exporters benefit from elevated commodity prices"
-          }
-        }
-      ],
-      "confidence": 72,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/argent/article/2026/10/05/metaux-critiques-miser-sur-la-course-aux-ressources-strategiques_6788493_1657007.html",
-      "published_at": "2026-10-05",
-      "time": "6h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "España abre en Europa un ciclo electoral que decidirá el futuro de la UE",
-        "en": "Spain opens an electoral cycle in Europe that will decide the future of the EU"
-      },
-      "summary": {
-        "es": "España inicia un ciclo electoral europeo que incluirá comicios en Francia, Italia y Polonia en los próximos meses, con partidos de ultraderecha en ascenso y riesgo de interferencias externas. Un giro político hacia la derecha radical en varios grandes países de la UE podría reconfigurar la política fiscal, de defensa y migratoria del bloque. Los mercados europeos deberán descontar creciente incertidumbre institucional y riesgo de fragmentación política.",
-        "en": "Spain opens a European electoral cycle that will include elections in France, Italy, and Poland in the coming months, with far-right parties rising and risks of foreign interference. A political shift toward the radical right in several major EU countries could reshape the bloc's fiscal, defense, and migration policies. European markets will need to price in growing institutional uncertainty and political fragmentation risk."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Fragmentación política europea presiona al euro",
-            "en": "European political fragmentation pressures the euro"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre política eleva prima de riesgo",
-            "en": "Political uncertainty raises equity risk premium"
-          }
-        },
-        {
-          "asset": "Italian BTP spreads",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo político italiano eleva diferencial de deuda",
-            "en": "Italian political risk widens sovereign spread"
-          }
-        }
-      ],
-      "confidence": 70,
-      "source": "El País",
-      "source_url": "https://elpais.com/videos/2026-10-05/espana-abre-en-europa-un-ciclo-electoral-que-decidira-el-futuro-de-la-ue.html",
-      "published_at": "2026-10-05",
-      "time": "2h"
-    },
-    {
-      "id": 6,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "El máximo responsable de seguridad de Irán advierte de una grave crisis económica",
-        "en": "Iran's Top Security Official Warns of Dire Economic Crisis"
-      },
-      "summary": {
-        "es": "Mohsen Rezaei, jefe de seguridad iraní, reconoció públicamente una severa crisis económica semanas después de que EE.UU. endureciera sanciones y su bloqueo naval. La admisión pública de un funcionario de alto rango de seguridad sugiere presión interna creciente que podría alterar el cálculo estratégico de Teherán. Esto tiene implicaciones directas para la estabilidad del suministro de petróleo iraní y la dinámica de poder regional.",
-        "en": "Iran's security chief Mohsen Rezaei publicly acknowledged a severe economic crisis weeks after the U.S. tightened sanctions and its naval blockade. A rare admission from a senior security official signals growing internal pressure that could alter Tehran's strategic calculus. This has direct implications for Iranian oil supply stability and regional power dynamics."
-      },
-      "impact": "high",
-      "market_impact": [
         {
           "asset": "Brent crude",
           "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Restricciones al petróleo iraní refuerzan presión alcista",
-            "en": "Iranian oil restrictions reinforce upward price pressure"
-          }
-        },
-        {
-          "asset": "Iranian rial / EM currencies",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Crisis de divisa iraní agudizada por sanciones",
-            "en": "Iranian currency crisis deepened by sanctions"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Tensión geopolítica sostiene demanda de refugio",
-            "en": "Geopolitical tension sustains safe-haven demand"
+            "es": "Amenaza marginal a rutas energéticas del Mar Negro",
+            "en": "Marginal threat to Black Sea energy transit routes"
+          }
+        },
+        {
+          "asset": "Shipping/marine insurance",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Primas de war risk se elevan por ataques directos a mercantes",
+            "en": "War risk premiums surge on direct strikes against merchant vessels"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Escalada en flanco oriental europeo pesa sobre el euro",
+            "en": "Escalation on Europe's eastern flank weighs on euro"
           }
         }
       ],
       "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/04/world/middleeast/iran-economy-rial.html",
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20261006-bulgaria-searches-for-missing-crew-as-drones-hit-two-more-black-sea-ships",
+      "published_at": "2026-10-06",
+      "time": "2h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Yemen lanza una importante operación militar contra los hutíes",
+        "en": "Yemen launches major military operation against Houthis"
+      },
+      "summary": {
+        "es": "El gobierno yemení reconocido internacionalmente ha lanzado una nueva ofensiva para recuperar territorio controlado por los hutíes respaldados por Irán, mientras el grupo afirma nuevos ataques en Arabia Saudí. La operación implica riesgo de escalada regional que podría involucrar a Riad y Teherán, con implicaciones directas para el tránsito del Mar Rojo y los precios del petróleo.",
+        "en": "Yemen's internationally recognized government launched a new military offensive to retake Houthi-held territory, as the Iran-backed rebel group claims fresh attacks on Saudi Arabia. The operation risks broader regional escalation involving Riyadh and Tehran, with direct implications for Red Sea transit and oil prices."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de escalada en el Mar Rojo eleva prima geopolítica",
+            "en": "Red Sea escalation risk lifts geopolitical risk premium"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Demanda de refugio seguro ante escalada en Oriente Medio",
+            "en": "Safe-haven demand on Middle East escalation"
+          }
+        },
+        {
+          "asset": "Shipping rates",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Nueva amenaza hutí al corredor Bab-el-Mandeb",
+            "en": "Renewed Houthi threat to Bab-el-Mandeb chokepoint"
+          }
+        },
+        {
+          "asset": "Saudi Tadawul (TASI)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Ataques en Arabia Saudí presionan mercado de renta variable local",
+            "en": "Attacks on Saudi territory pressure domestic equity market"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/yemen-launches-major-military-operation-against-houthis/a-79542723?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-10-05",
-      "time": "13h"
+      "time": "18h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "US",
+      "title": {
+        "es": "El Pentágono deja de usar herramientas de IA de Anthropic tras calificarla de 'riesgo en la cadena de suministro'",
+        "en": "Pentagon stops using Anthropic AI tools after blacklisting company"
+      },
+      "summary": {
+        "es": "El Pentágono ha dejado de usar las herramientas de inteligencia artificial de Anthropic después de clasificar a la compañía como un 'riesgo en la cadena de suministro' en febrero, tras negarse a eliminar las salvaguardas de seguridad de sus productos. Esta ruptura señala una creciente tensión entre las exigencias militares de IA sin restricciones y las políticas de seguridad del sector privado, con implicaciones para la cadena de valor tecnológica de defensa.",
+        "en": "The Pentagon has stopped using Anthropic's AI tools after labeling the company a 'supply chain risk' in February, following its refusal to remove safety guardrails. This break signals growing tension between military demands for unrestricted AI and private-sector safety policies, with implications for the defense-tech value chain."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "AI/defense tech equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Reorientación del contrato DoD beneficia a rivales de Anthropic",
+            "en": "DoD contract reorientation benefits Anthropic rivals"
+          }
+        },
+        {
+          "asset": "Anthropic (private valuation)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Pérdida de contrato federal daña perspectivas de valoración",
+            "en": "Federal contract loss damages valuation outlook"
+          }
+        },
+        {
+          "asset": "US Tech sector",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Precedente de soberanía tecnológica redefine riesgo regulatorio",
+            "en": "Tech sovereignty precedent redefines regulatory risk"
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/c5j9x9pr0240o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-05",
+      "time": "20h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "LATAM",
+      "title": {
+        "es": "EE.UU. envía drones Reaper a Colombia y Ecuador para combatir cárteles",
+        "en": "U.S. Sends Reaper Drones to Colombia and Ecuador to Hunt Cartels"
+      },
+      "summary": {
+        "es": "Washington ha reasignado drones MQ-9 Reaper desde África a Colombia y Ecuador, marcando una reorientación significativa de las prioridades de seguridad regional estadounidense hacia el crimen organizado transnacional en América Latina. El despliegue eleva la presencia militar directa de EE.UU. en la región y podría generar fricciones diplomáticas, al tiempo que señala preocupaciones crecientes sobre la estabilidad andina.",
+        "en": "Washington has redeployed MQ-9 Reaper drones from Africa to Colombia and Ecuador, marking a significant reorientation of U.S. regional security priorities toward transnational organized crime in Latin America. The deployment raises direct U.S. military presence and could generate diplomatic friction while signaling growing concerns about Andean stability."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Colombian peso (COP)",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor presencia de EE.UU. puede estabilizar o crear tensión política",
+            "en": "Increased U.S. presence may stabilize or create political tension"
+          }
+        },
+        {
+          "asset": "EM currencies (Andean)",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Señal de inestabilidad regional pesa sobre activos andinos",
+            "en": "Regional instability signal weighs on Andean assets"
+          }
+        },
+        {
+          "asset": "Defense contractors",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Expansión operativa de drones militares fuera de zona de conflicto",
+            "en": "Military drone operational expansion outside conflict zones"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/06/world/americas/us-reaper-drones-colombia-ecuador-cartels.html",
+      "published_at": "2026-10-06",
+      "time": "3h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "Corea del Sur considera medidas para exigir disculpa a Corea del Norte por explosión de minas en la DMZ",
+        "en": "South Korea considers steps to force North Korea apology for DMZ mine blast"
+      },
+      "summary": {
+        "es": "Seúl ha instado a Pyongyang a retirar las minas plantadas en el lado sur de la línea de demarcación militar tras una explosión en la DMZ, y estudia medidas de presión formales. El incidente añade tensión a una península coreana ya volátil, con riesgo de escalada que podría afectar a los activos surcoreanos y a la percepción regional de riesgo.",
+        "en": "Seoul urged Pyongyang to remove mines planted on the southern side of the DMZ following a blast, and is weighing formal pressure steps. The incident adds tension to an already volatile Korean Peninsula, with escalation risk that could affect South Korean assets and regional risk perception."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Korean won (KRW)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión en la DMZ pesa sobre el won como activo de riesgo regional",
+            "en": "DMZ tension weighs on won as regional risk asset"
+          }
+        },
+        {
+          "asset": "KOSPI",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Escalada peninsular genera aversión al riesgo en renta variable coreana",
+            "en": "Peninsula escalation triggers risk-off in Korean equities"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión geopolítica en Asia-Pacífico apoya demanda de refugio",
+            "en": "Geopolitical tension in Asia-Pacific supports safe-haven demand"
+          }
+        }
+      ],
+      "confidence": 70,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/global-development/2026/oct/06/ethiopia-tigray-conflict-tplf-rebels-forcibly-recruit-boys-war-crimes",
+      "published_at": "2026-10-06",
+      "time": "7h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "Anwar de Malasia recibirá al líder de Myanmar mientras las repatriaciones superan los 10.000",
+        "en": "Malaysia's Anwar to host Myanmar leader as repatriations near 10,000"
+      },
+      "summary": {
+        "es": "El presidente de Myanmar Min Aung Hlaing visitará Kuala Lumpur en los próximos días, en una señal de que el régimen militar birmano busca legitimación diplomática regional a través de la ASEAN. El avance en repatriaciones supera los 10.000 casos, lo que podría alterar la postura de la ASEAN sobre el reconocimiento de la junta y tiene implicaciones para la estabilidad de la cadena de suministro regional.",
+        "en": "Myanmar's President Min Aung Hlaing will visit Kuala Lumpur imminently, signaling that the military junta is seeking regional diplomatic legitimation through ASEAN. Progress on repatriations exceeding 10,000 could shift ASEAN's posture on junta recognition, with implications for regional supply chain stability."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "ASEAN equities",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Normalización diplomática regional reduce prima de riesgo político",
+            "en": "Regional diplomatic normalization reduces political risk premium"
+          }
+        },
+        {
+          "asset": "Malaysian ringgit (MYR)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Liderazgo diplomático de Kuala Lumpur apoya al ringgit",
+            "en": "Kuala Lumpur's diplomatic leadership supports ringgit"
+          }
+        }
+      ],
+      "confidence": 65,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/10/6/south-korea-considers-steps-to-force-north-korea-apology-for-dmz-mine-blast?traffic_source=rss",
+      "published_at": "2026-10-06",
+      "time": "3h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
