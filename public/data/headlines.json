@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T12:41:09.298Z",
+  "generated_at": "2026-10-07T12:35:01.140Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,79 +98,31 @@
       "tag": "CRITICAL",
       "region": "EURASIA",
       "title": {
-        "es": "Bulgaria busca tripulación desaparecida tras ataques de drones a dos barcos en el Mar Negro",
-        "en": "Bulgaria searches for missing crew as drones hit two Black Sea ships"
+        "es": "Rusia lanza uno de sus mayores ataques contra Ucrania, matando al menos a 21 civiles",
+        "en": "Russia launches one of its biggest strikes on Ukraine, killing at least 21 civilians"
       },
       "summary": {
-        "es": "Drones atacaron dos buques mercantes en el Mar Negro, hundiendo uno dentro de la zona económica búlgara con tripulantes desaparecidos. El incidente escala la amenaza a la navegación comercial internacional en una ruta crítica para el comercio de cereales y energía. Esto podría elevar las primas de seguro marítimo y presionar los precios de los commodities.",
-        "en": "Drones struck two merchant vessels in the Black Sea, sinking one inside Bulgaria's economic zone with crew members missing. The incident escalates the threat to international commercial shipping on a critical corridor for grain and energy trade. This is likely to push maritime insurance premiums higher and exert upward pressure on commodity prices."
+        "es": "Rusia ejecutó un ataque masivo con misiles y drones sobre Ucrania, dejando al menos 21 civiles muertos incluyendo cuatro niños. Los ataques se han intensificado en semanas recientes apuntando a infraestructura energética y de transporte. La escalada eleva la presión sobre los aliados occidentales para responder con mayor apoyo militar y podría afectar los mercados de energía europeos.",
+        "en": "Russia carried out a massive missile and drone strike on Ukraine, killing at least 21 civilians including four children. Attacks have intensified in recent weeks targeting energy infrastructure and transport links. The escalation raises pressure on Western allies for increased military support and threatens European energy market stability."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Wheat futures",
+          "asset": "European natural gas (TTF)",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de interrupción en corredor exportador del Mar Negro",
-            "en": "Disruption risk to Black Sea grain export corridor"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Amenaza marginal a rutas energéticas del Mar Negro",
-            "en": "Marginal threat to Black Sea energy transit routes"
-          }
-        },
-        {
-          "asset": "Shipping/marine insurance",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Primas de war risk se elevan por ataques directos a mercantes",
-            "en": "War risk premiums surge on direct strikes against merchant vessels"
+            "es": "Ataques a infraestructura energética elevan prima de riesgo",
+            "en": "Energy infrastructure strikes raise risk premium"
           }
         },
         {
           "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada en flanco oriental europeo pesa sobre el euro",
-            "en": "Escalation on Europe's eastern flank weighs on euro"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20261006-bulgaria-searches-for-missing-crew-as-drones-hit-two-more-black-sea-ships",
-      "published_at": "2026-10-06",
-      "time": "2h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Yemen lanza una importante operación militar contra los hutíes",
-        "en": "Yemen launches major military operation against Houthis"
-      },
-      "summary": {
-        "es": "El gobierno yemení reconocido internacionalmente ha lanzado una nueva ofensiva para recuperar territorio controlado por los hutíes respaldados por Irán, mientras el grupo afirma nuevos ataques en Arabia Saudí. La operación implica riesgo de escalada regional que podría involucrar a Riad y Teherán, con implicaciones directas para el tránsito del Mar Rojo y los precios del petróleo.",
-        "en": "Yemen's internationally recognized government launched a new military offensive to retake Houthi-held territory, as the Iran-backed rebel group claims fresh attacks on Saudi Arabia. The operation risks broader regional escalation involving Riyadh and Tehran, with direct implications for Red Sea transit and oil prices."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de escalada en el Mar Rojo eleva prima geopolítica",
-            "en": "Red Sea escalation risk lifts geopolitical risk premium"
+            "es": "Escalada bélica pesa sobre el euro",
+            "en": "War escalation weighs on the euro"
           }
         },
         {
@@ -178,94 +130,238 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda de refugio seguro ante escalada en Oriente Medio",
-            "en": "Safe-haven demand on Middle East escalation"
+            "es": "Demanda de refugio seguro aumenta con escalada",
+            "en": "Safe-haven demand rises with escalation"
           }
         },
         {
-          "asset": "Shipping rates",
+          "asset": "European defence equities",
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Nueva amenaza hutí al corredor Bab-el-Mandeb",
-            "en": "Renewed Houthi threat to Bab-el-Mandeb chokepoint"
-          }
-        },
-        {
-          "asset": "Saudi Tadawul (TASI)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Ataques en Arabia Saudí presionan mercado de renta variable local",
-            "en": "Attacks on Saudi territory pressure domestic equity market"
+            "es": "Presión por mayor gasto en defensa se intensifica",
+            "en": "Pressure for increased defence spending intensifies"
           }
         }
       ],
-      "confidence": 88,
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20261007-at-least-two-killed-in-fire-caused-by-massive-strikes-on-kyiv",
+      "published_at": "2026-10-07",
+      "time": "6h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Los hutíes de Yemen reivindican ataques a los aeropuertos de Adén y Riad",
+        "en": "Yemen's Houthis claim strikes on Aden and Riyadh airports"
+      },
+      "summary": {
+        "es": "Los hutíes atacaron con misiles balísticos y drones el aeropuerto internacional de Adén y afirman haber alcanzado también el aeropuerto de Riad, en una significativa escalada contra infraestructuras críticas de transporte en el Golfo. La extensión del conflicto a Arabia Saudí representa un riesgo directo para la producción y exportación de petróleo en la región.",
+        "en": "The Houthis attacked Aden International Airport with ballistic missiles and drones and claimed a strike on Riyadh's airport, marking a significant escalation against critical transport hubs in the Gulf. The extension of hostilities toward Saudi Arabia poses direct risks to regional oil production and export capacity."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Amenaza a infraestructura saudí eleva prima de riesgo del petróleo",
+            "en": "Saudi infrastructure threat lifts oil risk premium"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada regional impulsa activos refugio",
+            "en": "Regional escalation drives safe-haven assets"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre en MENA presiona divisas emergentes",
+            "en": "MENA uncertainty pressures emerging market currencies"
+          }
+        },
+        {
+          "asset": "Airline equities (Gulf carriers)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Ataques a aeropuertos afectan operaciones aéreas regionales",
+            "en": "Airport strikes disrupt regional aviation operations"
+          }
+        }
+      ],
+      "confidence": 90,
       "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/yemen-launches-major-military-operation-against-houthis/a-79542723?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-05",
-      "time": "18h"
+      "source_url": "https://www.dw.com/en/yemen-s-houthis-claim-strikes-on-aden-riyadh-airports/a-79571321?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-07",
+      "time": "5h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "US",
+      "region": "AFRICA",
       "title": {
-        "es": "El Pentágono deja de usar herramientas de IA de Anthropic tras calificarla de 'riesgo en la cadena de suministro'",
-        "en": "Pentagon stops using Anthropic AI tools after blacklisting company"
+        "es": "Mali: Las fuerzas de la junta retoman la estratégica ciudad de Kidal a los separatistas",
+        "en": "Mali: Junta forces retake strategic town of Kidal from separatists"
       },
       "summary": {
-        "es": "El Pentágono ha dejado de usar las herramientas de inteligencia artificial de Anthropic después de clasificar a la compañía como un 'riesgo en la cadena de suministro' en febrero, tras negarse a eliminar las salvaguardas de seguridad de sus productos. Esta ruptura señala una creciente tensión entre las exigencias militares de IA sin restricciones y las políticas de seguridad del sector privado, con implicaciones para la cadena de valor tecnológica de defensa.",
-        "en": "The Pentagon has stopped using Anthropic's AI tools after labeling the company a 'supply chain risk' in February, following its refusal to remove safety guardrails. This break signals growing tension between military demands for unrestricted AI and private-sector safety policies, with implications for the defense-tech value chain."
+        "es": "Las fuerzas militares de Mali, respaldadas por el Africa Corps ruso, retomaron Kidal, un enclave estratégico en el norte del país históricamente controlado por separatistas tuareg y grupos yihadistas vinculados a Al Qaeda. El avance consolida la influencia rusa en el Sahel y plantea interrogantes sobre el control de corredores de minerales críticos en la región.",
+        "en": "Mali's junta forces, backed by Russia's Africa Corps, retook Kidal, a strategically critical northern enclave historically held by Tuareg separatists and al-Qaeda-linked jihadists. The advance solidifies Russian influence in the Sahel and raises questions over control of critical mineral corridors in the region."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Gold (West African miners)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Kidal clave para rutas de minerales en el Sahel",
+            "en": "Kidal critical for Sahel mineral transit routes"
+          }
+        },
+        {
+          "asset": "French equities (Africa-exposed)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor influencia rusa reduce presencia francesa en la región",
+            "en": "Growing Russian influence erodes French regional presence"
+          }
+        },
+        {
+          "asset": "Uranium futures",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad en el Sahel afecta suministros de uranio",
+            "en": "Sahel instability affects uranium supply chains"
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/mali-junta-forces-retake-strategic-town-of-kidal-from-separatists/a-79570617?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-07",
+      "time": "9h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Tras el ataque frustrado en Fairford, las bases aéreas francesas se preparan para la 'guerra híbrida'",
+        "en": "After the foiled Fairford attack in the UK, French air bases prepare for 'hybrid warfare'"
+      },
+      "summary": {
+        "es": "Todas las bases aéreas francesas realizaron ejercicios del 28 de septiembre al 2 de octubre para reducir su vulnerabilidad ante ataques de drones, intrusiones y ciberataques, en el contexto del ataque frustrado a la base de Fairford en el Reino Unido. La escalada de la guerra híbrida contra infraestructuras militares europeas señala un nuevo frente de riesgo geopolítico para los mercados de defensa y seguros.",
+        "en": "All French air bases conducted drills from September 28 to October 2 to limit vulnerability to drone attacks, intrusions, and cyberattacks, following the foiled attack on RAF Fairford in the UK. The escalation of hybrid warfare against European military infrastructure signals a new geopolitical risk frontier for defence and insurance markets."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European defence equities",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Guerra híbrida impulsa inversión en sistemas de defensa",
+            "en": "Hybrid warfare drives defence systems investment"
+          }
+        },
+        {
+          "asset": "Cybersecurity equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Amenazas cibernéticas a infraestructura militar aumentan demanda",
+            "en": "Cyber threats to military infrastructure boost demand"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensiones de seguridad en Europa pesan sobre el euro",
+            "en": "European security tensions weigh on the euro"
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/10/07/apres-l-attaque-dejouee-de-fairford-au-royaume-uni-les-bases-aeriennes-francaises-se-preparent-a-la-guerre-hybride_6789556_3210.html",
+      "published_at": "2026-10-07",
+      "time": "5h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Bulgaria concluye la búsqueda de la tripulación desaparecida tras el hundimiento de un carguero por un ataque de drones",
+        "en": "Bulgaria ends search for missing crew after drone strike sinks cargo ship"
+      },
+      "summary": {
+        "es": "Bulgaria ha concluido sin supervivientes la búsqueda de la tripulación de un carguero hundido por un ataque de drones en las costas del Mar Negro. El incidente subraya la creciente vulnerabilidad de las rutas de transporte marítimo comercial en el Mar Negro, con implicaciones directas para los seguros marítimos y el comercio de granos en la región.",
+        "en": "Bulgaria halted search operations with no survivors found after a cargo ship was sunk by a drone strike in the Black Sea. The incident underscores the growing vulnerability of commercial shipping lanes in the Black Sea, with direct implications for maritime insurance premiums and regional grain trade flows."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "AI/defense tech equities",
-          "direction": "mixed",
+          "asset": "Baltic Dry Index / Shipping rates",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Reorientación del contrato DoD beneficia a rivales de Anthropic",
-            "en": "DoD contract reorientation benefits Anthropic rivals"
+            "es": "Riesgo de ataques eleva primas de seguros marítimos",
+            "en": "Attack risk lifts maritime insurance premiums"
           }
         },
         {
-          "asset": "Anthropic (private valuation)",
+          "asset": "Wheat futures",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Disrupciones en rutas del Mar Negro afectan exportaciones de granos",
+            "en": "Black Sea route disruptions hit grain export flows"
+          }
+        },
+        {
+          "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Pérdida de contrato federal daña perspectivas de valoración",
-            "en": "Federal contract loss damages valuation outlook"
-          }
-        },
-        {
-          "asset": "US Tech sector",
-          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Precedente de soberanía tecnológica redefine riesgo regulatorio",
-            "en": "Tech sovereignty precedent redefines regulatory risk"
+            "es": "Escalada en el Mar Negro añade presión a activos europeos",
+            "en": "Black Sea escalation adds pressure to European assets"
           }
         }
       ],
       "confidence": 80,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/c5j9x9pr0240o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-05",
-      "time": "20h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/10/7/bulgaria-ends-search-for-missing-crew-after-drone-strike-sinks-cargo-ship?traffic_source=rss",
+      "published_at": "2026-10-07",
+      "time": "2h"
     },
     {
-      "id": 4,
+      "id": 6,
       "tag": "WATCH",
       "region": "LATAM",
       "title": {
-        "es": "EE.UU. envía drones Reaper a Colombia y Ecuador para combatir cárteles",
+        "es": "EE.UU. envía drones Reaper a Colombia y Ecuador para combatir a los cárteles",
         "en": "U.S. Sends Reaper Drones to Colombia and Ecuador to Hunt Cartels"
       },
       "summary": {
-        "es": "Washington ha reasignado drones MQ-9 Reaper desde África a Colombia y Ecuador, marcando una reorientación significativa de las prioridades de seguridad regional estadounidense hacia el crimen organizado transnacional en América Latina. El despliegue eleva la presencia militar directa de EE.UU. en la región y podría generar fricciones diplomáticas, al tiempo que señala preocupaciones crecientes sobre la estabilidad andina.",
-        "en": "Washington has redeployed MQ-9 Reaper drones from Africa to Colombia and Ecuador, marking a significant reorientation of U.S. regional security priorities toward transnational organized crime in Latin America. The deployment raises direct U.S. military presence and could generate diplomatic friction while signaling growing concerns about Andean stability."
+        "es": "Estados Unidos ha reubicado drones MQ-9 Reaper, reconocidos por su capacidad letal, desde África hasta Colombia y Ecuador para operaciones contra narcotraficantes, según funcionarios estadounidenses. El despliegue señala un reenfoque estratégico de EE.UU. en América Latina y podría tensionar las relaciones con los gobiernos locales, con implicaciones para la estabilidad política regional y los mercados emergentes de la zona.",
+        "en": "The U.S. has redeployed MQ-9 Reaper drones from Africa to Colombia and Ecuador for counter-cartel operations, according to U.S. officials. The deployment signals a strategic U.S. refocus on Latin America and could strain relations with local governments, with implications for regional political stability and EM market sentiment."
       },
       "impact": "medium",
       "market_impact": [
@@ -274,121 +370,34 @@
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Mayor presencia de EE.UU. puede estabilizar o crear tensión política",
-            "en": "Increased U.S. presence may stabilize or create political tension"
+            "es": "Operaciones militares pueden tensionar relaciones bilaterales",
+            "en": "Military ops may strain bilateral relations"
           }
         },
         {
-          "asset": "EM currencies (Andean)",
+          "asset": "EM currencies (LATAM)",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Señal de inestabilidad regional pesa sobre activos andinos",
-            "en": "Regional instability signal weighs on Andean assets"
+            "es": "Mayor presencia militar EE.UU. genera incertidumbre política",
+            "en": "Increased U.S. military presence raises political uncertainty"
           }
         },
         {
-          "asset": "Defense contractors",
+          "asset": "Defence equities (US drone manufacturers)",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Expansión operativa de drones militares fuera de zona de conflicto",
-            "en": "Military drone operational expansion outside conflict zones"
+            "es": "Despliegue de activos militares impulsa contratistas de defensa",
+            "en": "Military asset deployment supports defence contractors"
           }
         }
       ],
-      "confidence": 72,
+      "confidence": 75,
       "source": "New York Times",
       "source_url": "https://www.nytimes.com/2026/10/06/world/americas/us-reaper-drones-colombia-ecuador-cartels.html",
       "published_at": "2026-10-06",
-      "time": "3h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Corea del Sur considera medidas para exigir disculpa a Corea del Norte por explosión de minas en la DMZ",
-        "en": "South Korea considers steps to force North Korea apology for DMZ mine blast"
-      },
-      "summary": {
-        "es": "Seúl ha instado a Pyongyang a retirar las minas plantadas en el lado sur de la línea de demarcación militar tras una explosión en la DMZ, y estudia medidas de presión formales. El incidente añade tensión a una península coreana ya volátil, con riesgo de escalada que podría afectar a los activos surcoreanos y a la percepción regional de riesgo.",
-        "en": "Seoul urged Pyongyang to remove mines planted on the southern side of the DMZ following a blast, and is weighing formal pressure steps. The incident adds tension to an already volatile Korean Peninsula, with escalation risk that could affect South Korean assets and regional risk perception."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Korean won (KRW)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión en la DMZ pesa sobre el won como activo de riesgo regional",
-            "en": "DMZ tension weighs on won as regional risk asset"
-          }
-        },
-        {
-          "asset": "KOSPI",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada peninsular genera aversión al riesgo en renta variable coreana",
-            "en": "Peninsula escalation triggers risk-off in Korean equities"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión geopolítica en Asia-Pacífico apoya demanda de refugio",
-            "en": "Geopolitical tension in Asia-Pacific supports safe-haven demand"
-          }
-        }
-      ],
-      "confidence": 70,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/global-development/2026/oct/06/ethiopia-tigray-conflict-tplf-rebels-forcibly-recruit-boys-war-crimes",
-      "published_at": "2026-10-06",
-      "time": "7h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Anwar de Malasia recibirá al líder de Myanmar mientras las repatriaciones superan los 10.000",
-        "en": "Malaysia's Anwar to host Myanmar leader as repatriations near 10,000"
-      },
-      "summary": {
-        "es": "El presidente de Myanmar Min Aung Hlaing visitará Kuala Lumpur en los próximos días, en una señal de que el régimen militar birmano busca legitimación diplomática regional a través de la ASEAN. El avance en repatriaciones supera los 10.000 casos, lo que podría alterar la postura de la ASEAN sobre el reconocimiento de la junta y tiene implicaciones para la estabilidad de la cadena de suministro regional.",
-        "en": "Myanmar's President Min Aung Hlaing will visit Kuala Lumpur imminently, signaling that the military junta is seeking regional diplomatic legitimation through ASEAN. Progress on repatriations exceeding 10,000 could shift ASEAN's posture on junta recognition, with implications for regional supply chain stability."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "ASEAN equities",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Normalización diplomática regional reduce prima de riesgo político",
-            "en": "Regional diplomatic normalization reduces political risk premium"
-          }
-        },
-        {
-          "asset": "Malaysian ringgit (MYR)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Liderazgo diplomático de Kuala Lumpur apoya al ringgit",
-            "en": "Kuala Lumpur's diplomatic leadership supports ringgit"
-          }
-        }
-      ],
-      "confidence": 65,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/10/6/south-korea-considers-steps-to-force-north-korea-apology-for-dmz-mine-blast?traffic_source=rss",
-      "published_at": "2026-10-06",
-      "time": "3h"
+      "time": "21h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
