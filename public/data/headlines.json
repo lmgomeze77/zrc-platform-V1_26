@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T12:35:01.140Z",
+  "generated_at": "2026-10-08T12:44:18.752Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,12 +98,12 @@
       "tag": "CRITICAL",
       "region": "EURASIA",
       "title": {
-        "es": "Rusia lanza uno de sus mayores ataques contra Ucrania, matando al menos a 21 civiles",
-        "en": "Russia launches one of its biggest strikes on Ukraine, killing at least 21 civilians"
+        "es": "Ataque ruso contra autobús mata al menos a 30 personas cerca del frente en Ucrania",
+        "en": "Russian attack on bus kills at least 30 people near Ukraine frontline"
       },
       "summary": {
-        "es": "Rusia ejecutó un ataque masivo con misiles y drones sobre Ucrania, dejando al menos 21 civiles muertos incluyendo cuatro niños. Los ataques se han intensificado en semanas recientes apuntando a infraestructura energética y de transporte. La escalada eleva la presión sobre los aliados occidentales para responder con mayor apoyo militar y podría afectar los mercados de energía europeos.",
-        "en": "Russia carried out a massive missile and drone strike on Ukraine, killing at least 21 civilians including four children. Attacks have intensified in recent weeks targeting energy infrastructure and transport links. The escalation raises pressure on Western allies for increased military support and threatens European energy market stability."
+        "es": "Un misil ruso impactó autobuses en Kramatorsk, matando al menos 30 civiles, en uno de los ataques más letales de los últimos meses. El gobernador acusa al Kremlin de apuntar deliberadamente a civiles, lo que aumenta la presión sobre los aliados occidentales para intensificar el apoyo militar y mantener las sanciones. La escalada eleva el riesgo de una respuesta OTAN y refuerza la prima de riesgo geopolítico en los mercados energéticos europeos.",
+        "en": "A Russian missile strike on buses in Kramatorsk killed at least 30 civilians, marking one of the deadliest single attacks in recent months. The governor's accusation of deliberate civilian targeting intensifies pressure on Western allies to escalate military support and sustain sanctions. The strike raises NATO response risk and reinforces the geopolitical risk premium in European energy markets."
       },
       "impact": "high",
       "market_impact": [
@@ -112,17 +112,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Ataques a infraestructura energética elevan prima de riesgo",
-            "en": "Energy infrastructure strikes raise risk premium"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada bélica pesa sobre el euro",
-            "en": "War escalation weighs on the euro"
+            "es": "Escalada eleva prima de riesgo energético europeo",
+            "en": "Escalation lifts European energy risk premium"
           }
         },
         {
@@ -130,37 +121,46 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda de refugio seguro aumenta con escalada",
-            "en": "Safe-haven demand rises with escalation"
+            "es": "Activo refugio ante mayor incertidumbre geopolítica",
+            "en": "Safe-haven demand on heightened geopolitical uncertainty"
           }
         },
         {
-          "asset": "European defence equities",
-          "direction": "up",
-          "magnitude": "high",
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
           "note": {
-            "es": "Presión por mayor gasto en defensa se intensifica",
-            "en": "Pressure for increased defence spending intensifies"
+            "es": "Riesgo de conflicto prolongado pesa sobre el euro",
+            "en": "Prolonged conflict risk weighs on the euro"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Aversión al riesgo presiona bolsas europeas",
+            "en": "Risk-off sentiment pressures European equities"
           }
         }
       ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20261007-at-least-two-killed-in-fire-caused-by-massive-strikes-on-kyiv",
-      "published_at": "2026-10-07",
-      "time": "6h"
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/08/russian-attack-buses-ukraine-frontline-kramatorsk",
+      "published_at": "2026-10-08",
+      "time": "1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los hutíes de Yemen reivindican ataques a los aeropuertos de Adén y Riad",
-        "en": "Yemen's Houthis claim strikes on Aden and Riyadh airports"
+        "es": "Tres personas muertas en ataques hutíes contra aeropuertos de Arabia Saudí",
+        "en": "Three people killed in Houthi attacks on Saudi Arabia airports, officials say"
       },
       "summary": {
-        "es": "Los hutíes atacaron con misiles balísticos y drones el aeropuerto internacional de Adén y afirman haber alcanzado también el aeropuerto de Riad, en una significativa escalada contra infraestructuras críticas de transporte en el Golfo. La extensión del conflicto a Arabia Saudí representa un riesgo directo para la producción y exportación de petróleo en la región.",
-        "en": "The Houthis attacked Aden International Airport with ballistic missiles and drones and claimed a strike on Riyadh's airport, marking a significant escalation against critical transport hubs in the Gulf. The extension of hostilities toward Saudi Arabia poses direct risks to regional oil production and export capacity."
+        "es": "Los hutíes reivindicaron ataques contra aeropuertos saudíes que causaron tres muertos, marcando una escalada significativa del conflicto regional en el contexto del conflicto Irán-Israel. Los ataques contra infraestructura civil de un socio clave de la OPEP+ elevan el riesgo de interrupción del suministro petrolero y pueden presionar a Riad a endurecer su postura de seguridad. Las implicaciones para los precios del crudo y la estabilidad del Golfo son inmediatas.",
+        "en": "Houthis claimed attacks on Saudi airports killing three people, marking a significant escalation in the regional conflict amid the Iran-Israel confrontation. Strikes on civilian infrastructure of a key OPEC+ partner raise supply disruption risks and may pressure Riyadh to harden its security posture. Implications for crude prices and Gulf stability are immediate."
       },
       "impact": "high",
       "market_impact": [
@@ -169,8 +169,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Amenaza a infraestructura saudí eleva prima de riesgo del petróleo",
-            "en": "Saudi infrastructure threat lifts oil risk premium"
+            "es": "Ataques a infraestructura saudí elevan prima de riesgo del crudo",
+            "en": "Attacks on Saudi infrastructure lift crude risk premium"
           }
         },
         {
@@ -178,226 +178,208 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada regional impulsa activos refugio",
-            "en": "Regional escalation drives safe-haven assets"
+            "es": "Escalada MENA impulsa demanda de refugio seguro",
+            "en": "MENA escalation boosts safe-haven demand"
           }
         },
         {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre en MENA presiona divisas emergentes",
-            "en": "MENA uncertainty pressures emerging market currencies"
-          }
-        },
-        {
-          "asset": "Airline equities (Gulf carriers)",
+          "asset": "Saudi equities (Tadawul)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Ataques a aeropuertos afectan operaciones aéreas regionales",
-            "en": "Airport strikes disrupt regional aviation operations"
+            "es": "Riesgo de seguridad presiona mercado bursátil saudí",
+            "en": "Security risk pressures Saudi equity market"
           }
         }
       ],
       "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/yemen-s-houthis-claim-strikes-on-aden-riyadh-airports/a-79571321?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-07",
-      "time": "5h"
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cwn8d5rx22rdo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-08",
+      "time": "9h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "AFRICA",
+      "region": "APAC",
       "title": {
-        "es": "Mali: Las fuerzas de la junta retoman la estratégica ciudad de Kidal a los separatistas",
-        "en": "Mali: Junta forces retake strategic town of Kidal from separatists"
+        "es": "China amplía su alcance militar construyendo una base en Laos",
+        "en": "China Expands Its Military Reach by Building a Base in Laos"
       },
       "summary": {
-        "es": "Las fuerzas militares de Mali, respaldadas por el Africa Corps ruso, retomaron Kidal, un enclave estratégico en el norte del país históricamente controlado por separatistas tuareg y grupos yihadistas vinculados a Al Qaeda. El avance consolida la influencia rusa en el Sahel y plantea interrogantes sobre el control de corredores de minerales críticos en la región.",
-        "en": "Mali's junta forces, backed by Russia's Africa Corps, retook Kidal, a strategically critical northern enclave historically held by Tuareg separatists and al-Qaeda-linked jihadists. The advance solidifies Russian influence in the Sahel and raises questions over control of critical mineral corridors in the region."
+        "es": "China ha construido una nueva pista en Ban Keun, Laos, actualmente utilizada por aviones pequeños, pero que los países vecinos vigilan de cerca ante una posible expansión para aeronaves mayores. El movimiento refuerza la proyección de poder de Beijing en el Sudeste Asiático, añade presión estratégica sobre Tailandia, Vietnam y la postura de EE.UU. en la región, y complica la geometría de seguridad del Indo-Pacífico. Tiene implicaciones directas para la planificación de defensa de aliados como Japón, Australia y Filipinas.",
+        "en": "China has constructed a new runway in Ban Keun, Laos, currently used by small jets, but neighboring nations are watching warily for potential expansion to larger aircraft. The move reinforces Beijing's power projection into Southeast Asia, adds strategic pressure on Thailand, Vietnam, and US posture in the region, and complicates Indo-Pacific security geometry. It carries direct implications for allied defense planning in Japan, Australia, and the Philippines."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Gold (West African miners)",
-          "direction": "mixed",
+          "asset": "Asian defense equities",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Kidal clave para rutas de minerales en el Sahel",
-            "en": "Kidal critical for Sahel mineral transit routes"
+            "es": "Expansión militar china impulsa gasto en defensa regional",
+            "en": "Chinese military expansion drives regional defense spending"
           }
         },
         {
-          "asset": "French equities (Africa-exposed)",
+          "asset": "USD/CNH",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensiones geopolíticas generan volatilidad en yuan offshore",
+            "en": "Geopolitical tensions create offshore yuan volatility"
+          }
+        },
+        {
+          "asset": "ASEAN equities",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Mayor influencia rusa reduce presencia francesa en la región",
-            "en": "Growing Russian influence erodes French regional presence"
-          }
-        },
-        {
-          "asset": "Uranium futures",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad en el Sahel afecta suministros de uranio",
-            "en": "Sahel instability affects uranium supply chains"
+            "es": "Riesgo regional presiona valoraciones de bolsas ASEAN",
+            "en": "Regional risk weighs on ASEAN equity valuations"
           }
         }
       ],
       "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/mali-junta-forces-retake-strategic-town-of-kidal-from-separatists/a-79570617?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-07",
-      "time": "9h"
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/08/world/asia/china-military-base-laos.html",
+      "published_at": "2026-10-08",
+      "time": "2h"
     },
     {
       "id": 4,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "GLOBAL",
       "title": {
-        "es": "Tras el ataque frustrado en Fairford, las bases aéreas francesas se preparan para la 'guerra híbrida'",
-        "en": "After the foiled Fairford attack in the UK, French air bases prepare for 'hybrid warfare'"
+        "es": "¿Pueden las reservas de emergencia aliviar la crisis del diésel?",
+        "en": "Can emergency reserves ease the diesel crisis?"
       },
       "summary": {
-        "es": "Todas las bases aéreas francesas realizaron ejercicios del 28 de septiembre al 2 de octubre para reducir su vulnerabilidad ante ataques de drones, intrusiones y ciberataques, en el contexto del ataque frustrado a la base de Fairford en el Reino Unido. La escalada de la guerra híbrida contra infraestructuras militares europeas señala un nuevo frente de riesgo geopolítico para los mercados de defensa y seguros.",
-        "en": "All French air bases conducted drills from September 28 to October 2 to limit vulnerability to drone attacks, intrusions, and cyberattacks, following the foiled attack on RAF Fairford in the UK. The escalation of hybrid warfare against European military infrastructure signals a new geopolitical risk frontier for defence and insurance markets."
+        "es": "El G7 planea liberar reservas estratégicas de combustible ante la escasez de diésel que está elevando los costes de transporte y comprimiendo los presupuestos domésticos a nivel global. La crisis refleja tensiones estructurales en el suministro energético global agravadas por los conflictos en Ucrania y Oriente Medio. La liberación coordinada de reservas tendría efectos inmediatos sobre los precios del diésel y los márgenes de refino, con implicaciones para la inflación en economías importadoras.",
+        "en": "The G7 plans to release emergency fuel stocks as diesel shortages push up transport costs and squeeze household budgets globally. The crisis reflects structural tensions in global energy supply compounded by conflicts in Ukraine and the Middle East. A coordinated reserve release would have immediate effects on diesel prices and refining margins, with inflation implications for import-dependent economies."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European defence equities",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Guerra híbrida impulsa inversión en sistemas de defensa",
-            "en": "Hybrid warfare drives defence systems investment"
-          }
-        },
-        {
-          "asset": "Cybersecurity equities",
-          "direction": "up",
+          "asset": "Brent crude",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Amenazas cibernéticas a infraestructura militar aumentan demanda",
-            "en": "Cyber threats to military infrastructure boost demand"
+            "es": "Liberación de reservas G7 presiona precios del crudo a la baja",
+            "en": "G7 reserve release pressures crude prices lower"
           }
         },
         {
-          "asset": "EUR/USD",
+          "asset": "Refining margin spreads",
           "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor oferta de diésel comprime márgenes de refino",
+            "en": "Increased diesel supply compresses refining margins"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Tensiones de seguridad en Europa pesan sobre el euro",
-            "en": "European security tensions weigh on the euro"
+            "es": "Menores precios del diésel alivian presión inflacionaria en emergentes",
+            "en": "Lower diesel prices ease inflationary pressure in EM"
           }
         }
       ],
-      "confidence": 82,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/10/07/apres-l-attaque-dejouee-de-fairford-au-royaume-uni-les-bases-aeriennes-francaises-se-preparent-a-la-guerre-hybride_6789556_3210.html",
-      "published_at": "2026-10-07",
-      "time": "5h"
+      "confidence": 78,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/video/counting-the-cost/2026/10/8/can-emergency-reserves-ease-the-diesel-crisis?traffic_source=rss",
+      "published_at": "2026-10-08",
+      "time": "<1h"
     },
     {
       "id": 5,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Bulgaria concluye la búsqueda de la tripulación desaparecida tras el hundimiento de un carguero por un ataque de drones",
-        "en": "Bulgaria ends search for missing crew after drone strike sinks cargo ship"
-      },
-      "summary": {
-        "es": "Bulgaria ha concluido sin supervivientes la búsqueda de la tripulación de un carguero hundido por un ataque de drones en las costas del Mar Negro. El incidente subraya la creciente vulnerabilidad de las rutas de transporte marítimo comercial en el Mar Negro, con implicaciones directas para los seguros marítimos y el comercio de granos en la región.",
-        "en": "Bulgaria halted search operations with no survivors found after a cargo ship was sunk by a drone strike in the Black Sea. The incident underscores the growing vulnerability of commercial shipping lanes in the Black Sea, with direct implications for maritime insurance premiums and regional grain trade flows."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Baltic Dry Index / Shipping rates",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de ataques eleva primas de seguros marítimos",
-            "en": "Attack risk lifts maritime insurance premiums"
-          }
-        },
-        {
-          "asset": "Wheat futures",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Disrupciones en rutas del Mar Negro afectan exportaciones de granos",
-            "en": "Black Sea route disruptions hit grain export flows"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada en el Mar Negro añade presión a activos europeos",
-            "en": "Black Sea escalation adds pressure to European assets"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/10/7/bulgaria-ends-search-for-missing-crew-after-drone-strike-sinks-cargo-ship?traffic_source=rss",
-      "published_at": "2026-10-07",
-      "time": "2h"
-    },
-    {
-      "id": 6,
       "tag": "WATCH",
       "region": "LATAM",
       "title": {
-        "es": "EE.UU. envía drones Reaper a Colombia y Ecuador para combatir a los cárteles",
-        "en": "U.S. Sends Reaper Drones to Colombia and Ecuador to Hunt Cartels"
+        "es": "Se espera que el expresidente venezolano Nicolás Maduro enfrente más cargos esta semana",
+        "en": "Former Venezuelan President Nicolás Maduro expected to face more charges this week"
       },
       "summary": {
-        "es": "Estados Unidos ha reubicado drones MQ-9 Reaper, reconocidos por su capacidad letal, desde África hasta Colombia y Ecuador para operaciones contra narcotraficantes, según funcionarios estadounidenses. El despliegue señala un reenfoque estratégico de EE.UU. en América Latina y podría tensionar las relaciones con los gobiernos locales, con implicaciones para la estabilidad política regional y los mercados emergentes de la zona.",
-        "en": "The U.S. has redeployed MQ-9 Reaper drones from Africa to Colombia and Ecuador for counter-cartel operations, according to U.S. officials. The deployment signals a strategic U.S. refocus on Latin America and could strain relations with local governments, with implications for regional political stability and EM market sentiment."
+        "es": "Se espera que EE.UU. presente nuevos cargos contra Maduro y su esposa relacionados con la tortura de ciudadanos estadounidenses en prisiones venezolanas. La escalada judicial estadounidense intensifica la presión sobre el régimen de Caracas y puede derivar en nuevas sanciones que afecten las exportaciones de petróleo venezolano, un factor relevante para los mercados de crudo del hemisferio occidental. La estabilidad política interna y las relaciones Venezuela-Colombia-Brasil también están en juego.",
+        "en": "The US is expected to file new charges against Maduro and his wife related to the torture of American citizens in Venezuelan prisons. The escalating US judicial pressure intensifies the squeeze on Caracas and may trigger additional sanctions affecting Venezuelan oil exports, a relevant factor for Western Hemisphere crude markets. Internal political stability and Venezuela's relations with Colombia and Brazil are also at stake."
       },
       "impact": "medium",
       "market_impact": [
+        {
+          "asset": "Venezuelan sovereign bonds",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Nuevos cargos elevan riesgo de sanciones adicionales",
+            "en": "New charges raise risk of additional sanctions"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Sanciones al petróleo venezolano reducirían oferta global",
+            "en": "Sanctions on Venezuelan oil would tighten global supply"
+          }
+        },
         {
           "asset": "Colombian peso (COP)",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Operaciones militares pueden tensionar relaciones bilaterales",
-            "en": "Military ops may strain bilateral relations"
-          }
-        },
-        {
-          "asset": "EM currencies (LATAM)",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor presencia militar EE.UU. genera incertidumbre política",
-            "en": "Increased U.S. military presence raises political uncertainty"
-          }
-        },
-        {
-          "asset": "Defence equities (US drone manufacturers)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Despliegue de activos militares impulsa contratistas de defensa",
-            "en": "Military asset deployment supports defence contractors"
+            "es": "Inestabilidad venezolana tiene spillovers regionales",
+            "en": "Venezuelan instability has regional spillover effects"
           }
         }
       ],
       "confidence": 75,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/06/world/americas/us-reaper-drones-colombia-ecuador-cartels.html",
-      "published_at": "2026-10-06",
-      "time": "21h"
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cx62y37r1p8eo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-07",
+      "time": "13h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "MENA",
+      "title": {
+        "es": "Cierre del consulado británico en Jerusalén Este: Londres mantendrá los 'servicios esenciales'",
+        "en": "Closure of British consulate in East Jerusalem: London will maintain 'essential services'"
+      },
+      "summary": {
+        "es": "Israel cerró el consulado británico en Jerusalén Este como represalia a las sanciones de Londres contra asentamientos israelíes en Cisjordania, y el Reino Unido anuncia que mantendrá servicios esenciales. El episodio marca un deterioro significativo en las relaciones Reino Unido-Israel con implicaciones para la cohesión de la política occidental hacia el conflicto. Podría influir en el posicionamiento diplomático de otros socios europeos respecto a Israel y las negociaciones sobre Cisjordania.",
+        "en": "Israel closed the British consulate in East Jerusalem in retaliation for UK sanctions on Israeli settlements in the West Bank, with London announcing it will maintain essential services. The episode marks a significant deterioration in UK-Israel relations with implications for Western policy cohesion toward the conflict. It may influence the diplomatic positioning of other European partners regarding Israel and West Bank negotiations."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Israeli shekel (ILS)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Aislamiento diplomático israelí pesa sobre el shekel",
+            "en": "Israeli diplomatic isolation weighs on the shekel"
+          }
+        },
+        {
+          "asset": "Israeli equities (TA-35)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión con aliados occidentales genera incertidumbre inversora",
+            "en": "Tension with Western allies creates investor uncertainty"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/10/08/fermeture-du-consulat-britannique-a-jerusalem-est-londres-va-maintenir-les-services-essentiels_6790174_3210.html",
+      "published_at": "2026-10-08",
+      "time": "4h"
     }
   ],
   "market_updated_at": "2026-09-17T23:46:09.102Z"
