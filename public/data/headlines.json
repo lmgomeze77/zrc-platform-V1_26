@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T12:44:18.752Z",
+  "generated_at": "2026-10-09T12:30:45.602Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,71 +96,14 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EURASIA",
-      "title": {
-        "es": "Ataque ruso contra autobús mata al menos a 30 personas cerca del frente en Ucrania",
-        "en": "Russian attack on bus kills at least 30 people near Ukraine frontline"
-      },
-      "summary": {
-        "es": "Un misil ruso impactó autobuses en Kramatorsk, matando al menos 30 civiles, en uno de los ataques más letales de los últimos meses. El gobernador acusa al Kremlin de apuntar deliberadamente a civiles, lo que aumenta la presión sobre los aliados occidentales para intensificar el apoyo militar y mantener las sanciones. La escalada eleva el riesgo de una respuesta OTAN y refuerza la prima de riesgo geopolítico en los mercados energéticos europeos.",
-        "en": "A Russian missile strike on buses in Kramatorsk killed at least 30 civilians, marking one of the deadliest single attacks in recent months. The governor's accusation of deliberate civilian targeting intensifies pressure on Western allies to escalate military support and sustain sanctions. The strike raises NATO response risk and reinforces the geopolitical risk premium in European energy markets."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada eleva prima de riesgo energético europeo",
-            "en": "Escalation lifts European energy risk premium"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Activo refugio ante mayor incertidumbre geopolítica",
-            "en": "Safe-haven demand on heightened geopolitical uncertainty"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de conflicto prolongado pesa sobre el euro",
-            "en": "Prolonged conflict risk weighs on the euro"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Aversión al riesgo presiona bolsas europeas",
-            "en": "Risk-off sentiment pressures European equities"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/08/russian-attack-buses-ukraine-frontline-kramatorsk",
-      "published_at": "2026-10-08",
-      "time": "1h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Tres personas muertas en ataques hutíes contra aeropuertos de Arabia Saudí",
-        "en": "Three people killed in Houthi attacks on Saudi Arabia airports, officials say"
+        "es": "Ataques hutíes al aeropuerto de Riad matan a tres saudíes mientras escala la guerra",
+        "en": "Houthi strikes on Riyadh airport killed three Saudis as war escalates"
       },
       "summary": {
-        "es": "Los hutíes reivindicaron ataques contra aeropuertos saudíes que causaron tres muertos, marcando una escalada significativa del conflicto regional en el contexto del conflicto Irán-Israel. Los ataques contra infraestructura civil de un socio clave de la OPEP+ elevan el riesgo de interrupción del suministro petrolero y pueden presionar a Riad a endurecer su postura de seguridad. Las implicaciones para los precios del crudo y la estabilidad del Golfo son inmediatas.",
-        "en": "Houthis claimed attacks on Saudi airports killing three people, marking a significant escalation in the regional conflict amid the Iran-Israel confrontation. Strikes on civilian infrastructure of a key OPEC+ partner raise supply disruption risks and may pressure Riyadh to harden its security posture. Implications for crude prices and Gulf stability are immediate."
+        "es": "Los hutíes intensifican los ataques con misiles contra Arabia Saudí, incluyendo el aeropuerto de Riad, en el marco de la escalada del conflicto vinculado al enfrentamiento entre EE.UU. e Irán. La amenaza de cierre del espacio aéreo saudí tiene implicaciones directas sobre el tráfico aéreo regional y los flujos de petróleo del Golfo. Los inversores deben monitorear el riesgo de interrupción en la infraestructura energética de la región.",
+        "en": "Houthi forces intensify missile strikes against Saudi Arabia, targeting Riyadh airport in an escalation tied to the broader US-Iran conflict. The attempted disruption of Saudi airspace carries direct implications for regional air traffic and Gulf energy flows. Investors should monitor risks to energy infrastructure and supply continuity."
       },
       "impact": "high",
       "market_impact": [
@@ -169,8 +112,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Ataques a infraestructura saudí elevan prima de riesgo del crudo",
-            "en": "Attacks on Saudi infrastructure lift crude risk premium"
+            "es": "Riesgo de interrupción de infraestructura energética saudí",
+            "en": "Risk of disruption to Saudi energy infrastructure"
           }
         },
         {
@@ -178,143 +121,161 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada MENA impulsa demanda de refugio seguro",
-            "en": "MENA escalation boosts safe-haven demand"
+            "es": "Demanda de refugio seguro por escalada regional",
+            "en": "Safe-haven demand on regional escalation"
           }
         },
         {
-          "asset": "Saudi equities (Tadawul)",
+          "asset": "Aviation sector equities",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de seguridad presiona mercado bursátil saudí",
-            "en": "Security risk pressures Saudi equity market"
+            "es": "Riesgo de cierre de espacio aéreo saudí afecta rutas regionales",
+            "en": "Saudi airspace closure risk disrupts regional routes"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Aversión al riesgo ante escalada en el Golfo",
+            "en": "Risk-off sentiment on Gulf escalation"
           }
         }
       ],
-      "confidence": 90,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cwn8d5rx22rdo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-08",
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261009-houthi-strikes-on-riyadh-airport-killed-three-saudis-as-war-escalates",
+      "published_at": "2026-10-09",
+      "time": "1h"
+    },
+    {
+      "id": 2,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Ucrania, Europa y EE.UU. se reúnen en Miami para negociaciones sobre el fin de la guerra",
+        "en": "Ukraine, Europe, US to meet in Miami for talks on ending war"
+      },
+      "summary": {
+        "es": "Funcionarios de Ucrania, Europa y Estados Unidos se reúnen en Miami para intentar romper el estancamiento del conflicto, en una semana en que los ataques rusos han causado más de 70 muertos. Las conversaciones representan la señal diplomática más significativa en meses y podrían tener un impacto considerable en los activos europeos y en la divisa ucraniana. Un avance podría aliviar la prima de riesgo energético europea y fortalecer el euro.",
+        "en": "Officials from Ukraine, Europe, and the US convene in Miami to seek a breakthrough in the stalled conflict, following a week in which Russian strikes killed over 70 people. The talks represent the most significant diplomatic signal in months and could materially affect European assets and energy risk premiums. A breakthrough would ease European energy security concerns and support the euro."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "EUR/USD",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Señal diplomática reduce prima de riesgo europeo",
+            "en": "Diplomatic signal reduces European risk premium"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Perspectiva de paz alivia incertidumbre macro europea",
+            "en": "Peace prospects ease European macro uncertainty"
+          }
+        },
+        {
+          "asset": "Natural gas (EU TTF)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Reducción del riesgo de suministro energético en Europa",
+            "en": "Reduced energy supply risk in Europe"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Impacto limitado; posible rotación hacia activos de riesgo",
+            "en": "Limited impact; possible rotation toward risk assets"
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ukraine-europe-us-to-meet-in-miami-for-talks-on-ending-war/a-79606735?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-09",
       "time": "9h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "AFRICA",
       "title": {
-        "es": "China amplía su alcance militar construyendo una base en Laos",
-        "en": "China Expands Its Military Reach by Building a Base in Laos"
+        "es": "Etiopía lanza ataque con drones contra tropas eritreas que cruzaron hacia Tigray",
+        "en": "Ethiopia launches drone attack against Eritrean troops who crossed into Tigray"
       },
       "summary": {
-        "es": "China ha construido una nueva pista en Ban Keun, Laos, actualmente utilizada por aviones pequeños, pero que los países vecinos vigilan de cerca ante una posible expansión para aeronaves mayores. El movimiento refuerza la proyección de poder de Beijing en el Sudeste Asiático, añade presión estratégica sobre Tailandia, Vietnam y la postura de EE.UU. en la región, y complica la geometría de seguridad del Indo-Pacífico. Tiene implicaciones directas para la planificación de defensa de aliados como Japón, Australia y Filipinas.",
-        "en": "China has constructed a new runway in Ban Keun, Laos, currently used by small jets, but neighboring nations are watching warily for potential expansion to larger aircraft. The move reinforces Beijing's power projection into Southeast Asia, adds strategic pressure on Thailand, Vietnam, and US posture in the region, and complicates Indo-Pacific security geometry. It carries direct implications for allied defense planning in Japan, Australia, and the Philippines."
+        "es": "Fuerzas etíopes han atacado con drones a tropas eritreas que cruzaron hacia la región de Tigray, reavivando el riesgo de conflicto interno y una guerra regional en el Cuerno de África. El deterioro de la seguridad en Etiopía podría desestabilizar una de las mayores economías africanas y afectar corredores de comercio regional. Los inversores con exposición a mercados frontera en África Oriental deben elevar su vigilancia.",
+        "en": "Ethiopian government forces have struck Eritrean troops who crossed into Tigray with drones, reigniting the risk of internal conflict and a potential regional war in the Horn of Africa. A deterioration in Ethiopian security could destabilize one of Africa's largest economies and disrupt regional trade corridors. Investors with frontier market exposure in East Africa should heighten vigilance."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Asian defense equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Expansión militar china impulsa gasto en defensa regional",
-            "en": "Chinese military expansion drives regional defense spending"
-          }
-        },
-        {
-          "asset": "USD/CNH",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensiones geopolíticas generan volatilidad en yuan offshore",
-            "en": "Geopolitical tensions create offshore yuan volatility"
-          }
-        },
-        {
-          "asset": "ASEAN equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo regional presiona valoraciones de bolsas ASEAN",
-            "en": "Regional risk weighs on ASEAN equity valuations"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/08/world/asia/china-military-base-laos.html",
-      "published_at": "2026-10-08",
-      "time": "2h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "GLOBAL",
-      "title": {
-        "es": "¿Pueden las reservas de emergencia aliviar la crisis del diésel?",
-        "en": "Can emergency reserves ease the diesel crisis?"
-      },
-      "summary": {
-        "es": "El G7 planea liberar reservas estratégicas de combustible ante la escasez de diésel que está elevando los costes de transporte y comprimiendo los presupuestos domésticos a nivel global. La crisis refleja tensiones estructurales en el suministro energético global agravadas por los conflictos en Ucrania y Oriente Medio. La liberación coordinada de reservas tendría efectos inmediatos sobre los precios del diésel y los márgenes de refino, con implicaciones para la inflación en economías importadoras.",
-        "en": "The G7 plans to release emergency fuel stocks as diesel shortages push up transport costs and squeeze household budgets globally. The crisis reflects structural tensions in global energy supply compounded by conflicts in Ukraine and the Middle East. A coordinated reserve release would have immediate effects on diesel prices and refining margins, with inflation implications for import-dependent economies."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
+          "asset": "East Africa frontier equities",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Liberación de reservas G7 presiona precios del crudo a la baja",
-            "en": "G7 reserve release pressures crude prices lower"
+            "es": "Riesgo de conflicto regional reduce apetito inversor",
+            "en": "Regional conflict risk reduces investor appetite"
           }
         },
         {
-          "asset": "Refining margin spreads",
+          "asset": "Ethiopian Birr",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Inestabilidad bélica presiona divisa local",
+            "en": "War instability pressures local currency"
+          }
+        },
+        {
+          "asset": "EM sovereign bonds (Africa)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor oferta de diésel comprime márgenes de refino",
-            "en": "Increased diesel supply compresses refining margins"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Menores precios del diésel alivian presión inflacionaria en emergentes",
-            "en": "Lower diesel prices ease inflationary pressure in EM"
+            "es": "Mayor percepción de riesgo en deuda soberana africana",
+            "en": "Increased risk perception in African sovereign debt"
           }
         }
       ],
       "confidence": 78,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/video/counting-the-cost/2026/10/8/can-emergency-reserves-ease-the-diesel-crisis?traffic_source=rss",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/08/ethiopia-drone-attack-against-eritrean-troops-in-tigray",
       "published_at": "2026-10-08",
-      "time": "<1h"
+      "time": "20h"
     },
     {
-      "id": 5,
-      "tag": "WATCH",
+      "id": 4,
+      "tag": "ALERT",
       "region": "LATAM",
       "title": {
-        "es": "Se espera que el expresidente venezolano Nicolás Maduro enfrente más cargos esta semana",
-        "en": "Former Venezuelan President Nicolás Maduro expected to face more charges this week"
+        "es": "Nicolás Maduro y su esposa son imputados por presunta tortura de ciudadanos estadounidenses",
+        "en": "Nicolás Maduro and his wife indicted for alleged torture of US citizens"
       },
       "summary": {
-        "es": "Se espera que EE.UU. presente nuevos cargos contra Maduro y su esposa relacionados con la tortura de ciudadanos estadounidenses en prisiones venezolanas. La escalada judicial estadounidense intensifica la presión sobre el régimen de Caracas y puede derivar en nuevas sanciones que afecten las exportaciones de petróleo venezolano, un factor relevante para los mercados de crudo del hemisferio occidental. La estabilidad política interna y las relaciones Venezuela-Colombia-Brasil también están en juego.",
-        "en": "The US is expected to file new charges against Maduro and his wife related to the torture of American citizens in Venezuelan prisons. The escalating US judicial pressure intensifies the squeeze on Caracas and may trigger additional sanctions affecting Venezuelan oil exports, a relevant factor for Western Hemisphere crude markets. Internal political stability and Venezuela's relations with Colombia and Brazil are also at stake."
+        "es": "Un tribunal federal de Manhattan ha presentado cargos formales contra el expresidente venezolano Nicolás Maduro y su esposa Cilia Flores por conspiración para cometer tortura contra ciudadanos estadounidenses. Este desarrollo judicial profundiza el aislamiento internacional de Venezuela y podría influir en las negociaciones sobre sanciones petroleras y el futuro de los activos venezolanos en mercados internacionales. La exposición de empresas energéticas con intereses en Venezuela debe monitorearse.",
+        "en": "A Manhattan federal court has unsealed indictment charges against former Venezuelan president Nicolás Maduro and his wife Cilia Flores for conspiracy to commit torture against US citizens. This judicial development deepens Venezuela's international isolation and could influence oil sanctions negotiations and the trajectory of Venezuelan assets in international markets. Energy companies with Venezuelan exposure warrant close monitoring."
       },
       "impact": "medium",
       "market_impact": [
         {
           "asset": "Venezuelan sovereign bonds",
-          "direction": "down",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Nuevos cargos elevan riesgo de sanciones adicionales",
-            "en": "New charges raise risk of additional sanctions"
+            "es": "Incertidumbre sobre transición política afecta deuda",
+            "en": "Political transition uncertainty affects debt pricing"
           }
         },
         {
@@ -322,64 +283,121 @@
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Sanciones al petróleo venezolano reducirían oferta global",
-            "en": "Sanctions on Venezuelan oil would tighten global supply"
+            "es": "Riesgo de mayor restricción a exportaciones venezolanas",
+            "en": "Risk of further restriction on Venezuelan oil exports"
           }
         },
         {
-          "asset": "Colombian peso (COP)",
+          "asset": "Latin American equities",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Inestabilidad venezolana tiene spillovers regionales",
-            "en": "Venezuelan instability has regional spillover effects"
-          }
-        }
-      ],
-      "confidence": 75,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cx62y37r1p8eo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-07",
-      "time": "13h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "MENA",
-      "title": {
-        "es": "Cierre del consulado británico en Jerusalén Este: Londres mantendrá los 'servicios esenciales'",
-        "en": "Closure of British consulate in East Jerusalem: London will maintain 'essential services'"
-      },
-      "summary": {
-        "es": "Israel cerró el consulado británico en Jerusalén Este como represalia a las sanciones de Londres contra asentamientos israelíes en Cisjordania, y el Reino Unido anuncia que mantendrá servicios esenciales. El episodio marca un deterioro significativo en las relaciones Reino Unido-Israel con implicaciones para la cohesión de la política occidental hacia el conflicto. Podría influir en el posicionamiento diplomático de otros socios europeos respecto a Israel y las negociaciones sobre Cisjordania.",
-        "en": "Israel closed the British consulate in East Jerusalem in retaliation for UK sanctions on Israeli settlements in the West Bank, with London announcing it will maintain essential services. The episode marks a significant deterioration in UK-Israel relations with implications for Western policy cohesion toward the conflict. It may influence the diplomatic positioning of other European partners regarding Israel and West Bank negotiations."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Israeli shekel (ILS)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Aislamiento diplomático israelí pesa sobre el shekel",
-            "en": "Israeli diplomatic isolation weighs on the shekel"
-          }
-        },
-        {
-          "asset": "Israeli equities (TA-35)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión con aliados occidentales genera incertidumbre inversora",
-            "en": "Tension with Western allies creates investor uncertainty"
+            "es": "Impacto limitado al contexto venezolano",
+            "en": "Impact largely contained to Venezuelan context"
           }
         }
       ],
       "confidence": 72,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/10/08/fermeture-du-consulat-britannique-a-jerusalem-est-londres-va-maintenir-les-services-essentiels_6790174_3210.html",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/08/cilia-flores-nicolas-maduro-new-york-court",
       "published_at": "2026-10-08",
-      "time": "4h"
+      "time": "18h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "US",
+      "title": {
+        "es": "Exempleados de OpenAI dicen que fueron despedidos por plantear preocupaciones de seguridad",
+        "en": "Ex-OpenAI staff say they were fired for raising safety concerns"
+      },
+      "summary": {
+        "es": "Tres exinvestigadores de OpenAI han publicado una carta abierta alertando sobre un efecto intimidatorio en la cultura de la compañía tras sus despidos por plantear preguntas sobre seguridad de la IA. Este desarrollo alimenta el debate regulatorio sobre la gobernanza de la inteligencia artificial, con implicaciones para las políticas de supervisión tecnológica en EE.UU. y la UE. La narrativa de riesgo podría afectar la valoración y el apetito inversor en el sector de IA.",
+        "en": "Three former OpenAI researchers have published an open letter warning of a chilling effect on company culture following their dismissal for raising AI safety concerns. This development fuels the regulatory debate over AI governance, with implications for tech oversight policy in both the US and EU. The risk narrative could affect valuations and investor appetite across the AI sector."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "US Tech equities (AI sector)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor escrutinio regulatorio pesa sobre valuaciones IA",
+            "en": "Increased regulatory scrutiny weighs on AI valuations"
+          }
+        },
+        {
+          "asset": "Nasdaq 100",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Impacto acotado salvo escalada regulatoria significativa",
+            "en": "Limited impact unless regulatory escalation materializes"
+          }
+        }
+      ],
+      "confidence": 63,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/2026/10/9/ex-openai-staff-say-they-were-fired-for-raising-safety-concerns?traffic_source=rss",
+      "published_at": "2026-10-09",
+      "time": "1h"
+    },
+    {
+      "id": 6,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "¿Está Trump señalando un retorno a la guerra con Irán tras las elecciones de mitad de mandato?",
+        "en": "Is Trump signalling a return to war with Iran after the midterms?"
+      },
+      "summary": {
+        "es": "Informes en medios estadounidenses sugieren que la administración Trump podría estar valorando ataques contra Irán, aunque el presidente ha descartado actuar antes de las elecciones de mitad de mandato. La incertidumbre sobre una posible escalada militar post-electoral introduce una prima de riesgo geopolítico significativa en los activos energéticos y de defensa. Este escenario es el principal factor macro a vigilar en el horizonte de corto plazo.",
+        "en": "US media reports suggest the Trump administration may be weighing strikes against Iran following the midterm elections, though the president has publicly ruled out pre-vote action. The prospect of post-midterm military escalation introduces a significant geopolitical risk premium across energy and defense assets. This represents the dominant near-term macro risk factor for global markets."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Posibles ataques a Irán elevan prima de riesgo energético",
+            "en": "Potential Iran strikes elevate energy risk premium"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Escalada bélica impulsa demanda de activos refugio",
+            "en": "War escalation drives safe-haven asset demand"
+          }
+        },
+        {
+          "asset": "US Defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Expectativa de mayor gasto militar en escenario de conflicto",
+            "en": "Increased military spending expected in conflict scenario"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Dólar se fortalece como refugio ante riesgo geopolítico",
+            "en": "Dollar strengthens as geopolitical risk refuge"
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/10/9/is-trump-signalling-a-return-to-war-with-iran-after-the-midterms?traffic_source=rss",
+      "published_at": "2026-10-09",
+      "time": "1h"
     }
   ],
   "market_updated_at": "2026-10-09T12:09:41.428Z"
