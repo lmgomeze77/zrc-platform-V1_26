@@ -55,7 +55,7 @@ async function fetchMarketData() {
       content: `Search for today's current market prices (${today}) for these 15 instruments and return ONLY a JSON array.
 
 Each object: { "symbol": "...", "value": "...", "change": "...%", "up": true/false }.
-Use the symbol labels below exactly, including capitalization and punctuation. `change` must be a signed percentage.
+Use the symbol labels below exactly, including capitalization and punctuation. "change" must be a signed percentage.
 
 Instruments in order:
 1. EUR/USD  2. IBEX 35  3. BRENT Crude  4. WTI Crude  5. GOLD (XAU/USD)
