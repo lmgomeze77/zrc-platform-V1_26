@@ -15,38 +15,38 @@
     },
     {
       "symbol": "BRENT Crude",
-      "value": "103.53",
-      "change": "-0.72%",
+      "value": "104.42",
+      "change": "-0.29%",
       "up": false
     },
     {
       "symbol": "WTI Crude",
-      "value": "90.95",
-      "change": "-0.59%",
-      "up": false
+      "value": "91.66",
+      "change": "+0.19%",
+      "up": true
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "4,183.08",
-      "change": "+1.20%",
+      "value": "4,194.00",
+      "change": "+0.38%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "82,569.60",
-      "change": "+1.07%",
+      "value": "82,747.84",
+      "change": "+0.38%",
       "up": true
     },
     {
       "symbol": "VIX",
-      "value": "14.87",
-      "change": "-3.50%",
+      "value": "14.84",
+      "change": "-3.70%",
       "up": false
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "5.253%",
-      "change": "+0.38%",
+      "value": "5.244%",
+      "change": "+0.21%",
       "up": true
     },
     {
@@ -57,9 +57,9 @@
     },
     {
       "symbol": "DAX 40",
-      "value": "24,947.91",
-      "change": "-0.62%",
-      "up": false
+      "value": "25,087.27",
+      "change": "+1.13%",
+      "up": true
     },
     {
       "symbol": "EUR/GBP",
@@ -69,26 +69,26 @@
     },
     {
       "symbol": "DXY Dollar Index",
-      "value": "102.317",
-      "change": "+0.18%",
+      "value": "102.23",
+      "change": "+0.09%",
       "up": true
     },
     {
       "symbol": "Natural Gas",
-      "value": "3.132",
-      "change": "-1.20%",
-      "up": false
+      "value": "3.220",
+      "change": "+1.64%",
+      "up": true
     },
     {
       "symbol": "Copper",
-      "value": "6.5875",
-      "change": "-0.93%",
-      "up": false
+      "value": "6.71",
+      "change": "+2.17%",
+      "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.6931",
-      "change": "-0.15%",
+      "value": "6.6927",
+      "change": "-0.16%",
       "up": false
     }
   ],
@@ -400,5 +400,5 @@
       "time": "1h"
     }
   ],
-  "market_updated_at": "2026-10-10T01:20:40.684Z"
+  "market_updated_at": "2026-10-10T11:26:53.655Z"
 }
