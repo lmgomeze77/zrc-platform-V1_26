@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T11:50:18.611Z",
+  "generated_at": "2026-10-11T12:02:08.708Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,272 +96,119 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EURASIA",
+      "region": "MENA",
       "title": {
-        "es": "Trump llega a un acuerdo de diésel con Putin, revirtiendo años de presión sobre Rusia por la guerra en Ucrania",
-        "en": "Trump strikes diesel deal with Putin, reversing years of pressure on Russia over Ukraine war"
+        "es": "El aeropuerto de Riad atacado de nuevo tras días de ataques hutíes",
+        "en": "Saudi Arabia's Riyadh Airport Attacked Again, After Days of Houthi Strikes"
       },
       "summary": {
-        "es": "Trump anunció que Rusia suministrará más de 300.000 toneladas de diésel a los mercados estadounidenses y mundiales antes de las elecciones de mitad de mandato de noviembre, revirtiendo la política de sanciones occidentales. El acuerdo implica una ruptura fundamental con la postura de los aliados de la OTAN y levanta presión económica sobre Moscú. Esto tiene implicaciones directas para los precios del petróleo, el rublo y la cohesión de las sanciones occidentales.",
-        "en": "Trump announced Russia will supply over 300,000 tonnes of diesel to US and global markets ahead of November midterms, reversing Western sanctions policy. The deal represents a fundamental break with NATO allies' posture and relieves economic pressure on Moscow. It has direct implications for oil prices, the ruble, and Western sanctions cohesion."
+        "es": "El ataque del sábado fue el más mortífero en un país árabe del Golfo desde el inicio de la guerra entre EE.UU., Israel e Irán en febrero, y obligó a suspender temporalmente las operaciones del aeropuerto. La escalada hutí amenaza una infraestructura crítica para el transporte aéreo regional y el suministro de petróleo, con Trump evaluando una participación directa de EE.UU. Los inversores deben vigilar el impacto en las primas de riesgo energético y en las aseguradoras de aviación.",
+        "en": "Saturday's strike was the deadliest attack on a Gulf Arab country since the U.S.-Israeli war with Iran began in February, forcing a temporary suspension of airport operations. The Houthi escalation threatens critical infrastructure underpinning regional air travel and energy supply chains, with Trump now openly weighing direct U.S. military involvement. Investors should monitor energy risk premiums, aviation insurers, and Gulf sovereign spreads."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
-          "direction": "down",
+          "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Mayor oferta de diésel ruso reduce presión alcista en crudo",
-            "en": "Increased Russian diesel supply eases upward pressure on crude"
+            "es": "Riesgo de interrupción en infraestructura energética del Golfo",
+            "en": "Gulf energy infrastructure disruption risk elevated"
           }
         },
         {
-          "asset": "Russian ruble",
+          "asset": "Gold",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Ingresos por exportaciones y alivio de sanciones apoyan al rublo",
-            "en": "Export revenues and sanctions relief support ruble"
+            "es": "Demanda de refugio seguro ante escalada regional",
+            "en": "Safe-haven demand on regional escalation"
           }
         },
         {
-          "asset": "European energy equities",
-          "direction": "mixed",
+          "asset": "EM currencies",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Competencia de diésel ruso presiona márgenes de refinería europeos",
-            "en": "Russian diesel competition pressures European refinery margins"
+            "es": "Aversión al riesgo presiona divisas emergentes",
+            "en": "Risk-off sentiment pressures emerging market currencies"
           }
         },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Exposición indirecta al riesgo energético regional",
+            "en": "Indirect exposure to regional energy risk"
+          }
+        }
+      ],
+      "confidence": 90,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/10/world/middleeast/riyadh-airport-attack-energy-congress.html",
+      "published_at": "2026-10-11",
+      "time": "3h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
+      "title": {
+        "es": "Trump dice que Ucrania necesita un nuevo presidente que acepte poner fin a la guerra",
+        "en": "Trump says Ukraine needs new president who will agree to end war"
+      },
+      "summary": {
+        "es": "Trump presionó públicamente a Ucrania para que reemplace a Zelensky, vinculando los ataques ucranianos a refinerías rusas con el alza del precio del diésel antes de las elecciones de mitad de mandato en EE.UU. Esto representa una ruptura sin precedentes con un aliado en guerra activa y genera incertidumbre severa sobre el futuro del apoyo militar y financiero occidental. La señal política podría acelerar la fragmentación de la coalición pro-Ucrania en la OTAN.",
+        "en": "Trump publicly called for Ukraine to replace Zelensky, linking Ukrainian strikes on Russian refineries to elevated U.S. diesel prices ahead of midterm elections. This marks an unprecedented rupture with an active war ally and creates severe uncertainty around Western military and financial support. The political signal may accelerate fragmentation of the pro-Ukraine NATO coalition."
+      },
+      "impact": "high",
+      "market_impact": [
         {
           "asset": "EUR/USD",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Fractura en unidad transatlántica pesa sobre el euro",
-            "en": "Transatlantic unity fracture weighs on euro"
+            "es": "Riesgo político europeo aumenta ante debilitamiento del apoyo de EE.UU.",
+            "en": "European political risk rises on weakening U.S. support"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre sobre seguridad europea pesa sobre mercados",
+            "en": "European security uncertainty weighs on markets"
+          }
+        },
+        {
+          "asset": "Ukrainian sovereign bonds",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo de retirada del apoyo financiero occidental",
+            "en": "Risk of Western financial support withdrawal"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Posible acuerdo de paz reduciría presión sobre oferta rusa",
+            "en": "Potential peace deal could ease pressure on Russian supply"
           }
         }
       ],
       "confidence": 92,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20261009-trump-strikes-diesel-deal-with-putin-reversing-years-of-pressure-on-russia-over-ukraine-war",
-      "published_at": "2026-10-09",
-      "time": "15h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Tres saudíes muertos en el ataque al aeropuerto de Riad reclamado por los huzíes",
-        "en": "Three Saudis killed in Riyadh airport attack claimed by Houthis"
-      },
-      "summary": {
-        "es": "Los huzíes atacaron el aeropuerto de Riad, matando a tres ciudadanos saudíes en el ataque más mortífero contra el reino desde el inicio de la ofensiva militar saudí en Yemen. La escalada representa un salto cualitativo en capacidad y alcance huzí, amenazando la infraestructura civil crítica de Arabia Saudí. Los inversores deben vigilar el impacto en los vuelos, el turismo y la percepción de riesgo saudí.",
-        "en": "Houthis struck Riyadh airport, killing three Saudi nationals in the deadliest attack on the kingdom since Saudi Arabia launched its major military offensive in Yemen. The escalation represents a qualitative leap in Houthi reach and capability, threatening critical Saudi civilian infrastructure. Investors should monitor impacts on flights, tourism, and Saudi risk perception."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de escalada en región productora de petróleo sube precios",
-            "en": "Escalation risk in oil-producing region pushes prices higher"
-          }
-        },
-        {
-          "asset": "Saudi Aramco",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo operacional y de seguridad pesa sobre valoración",
-            "en": "Operational and security risk weighs on valuation"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión regional impulsa demanda de refugio seguro",
-            "en": "Regional tension boosts safe-haven demand"
-          }
-        },
-        {
-          "asset": "EM sovereign bonds (MENA)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Prima de riesgo geopolítico MENA se amplía",
-            "en": "MENA geopolitical risk premium widens"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/09/riyadh-airport-flights-suspended-houthis-claim-attack",
-      "published_at": "2026-10-09",
-      "time": "1d"
+      "source_url": "https://www.france24.com/en/video/20261011-trump-says-ukraine-needs-new-president-who-will-agree-to-end-war",
+      "published_at": "2026-10-11",
+      "time": "1h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
-      "region": "APAC",
-      "title": {
-        "es": "Taiwán aumentará el gasto militar para 'disuadir la guerra' con China",
-        "en": "Taiwan to boost military spending to 'deter war' with China"
-      },
-      "summary": {
-        "es": "El presidente Lai Ching-te anunció en el Día Nacional un aumento del gasto en defensa para disuadir a China, tras la demanda de Trump de que Taiwán pague por la protección estadounidense. El anuncio endurece la postura defensiva de Taipéi y profundiza las tensiones con Pekín, que condenó el discurso. El incremento del presupuesto militar tiene implicaciones para las empresas de defensa y el riesgo del estrecho de Taiwán.",
-        "en": "President Lai Ching-te announced increased defense spending to deter China in a National Day speech, following Trump's demand that Taiwan pay for US protection. The announcement hardens Taipei's defensive posture and deepens tensions with Beijing, which condemned the speech. The defense budget increase has implications for defense contractors and Taiwan Strait risk."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Taiwan dollar",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor gasto en defensa vs. señal de estabilidad estratégica",
-            "en": "Higher defense spending vs. signal of strategic stability"
-          }
-        },
-        {
-          "asset": "TSMC / Taiwan equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tensión geopolítica persistente pesa sobre valoraciones tecnológicas",
-            "en": "Persistent geopolitical tension weighs on tech valuations"
-          }
-        },
-        {
-          "asset": "Global defense equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aumento del gasto de defensa en Asia beneficia a contratistas",
-            "en": "Rising Asian defense spending benefits defense contractors"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada de tensiones en estrecho de Taiwán apoya refugio seguro",
-            "en": "Taiwan Strait tension escalation supports safe haven"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/taiwan-to-boost-military-spending-to-deter-war-with-china/a-79625346?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-10",
-      "time": "2h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "GLOBAL",
-      "title": {
-        "es": "Sanciones contra la CPI: Washington lanza un ultimátum a los Estados miembros",
-        "en": "US sanctions against the ICC: Washington issues ultimatum to member states"
-      },
-      "summary": {
-        "es": "Washington anunció sanciones contra la Corte Penal Internacional que podrían paralizar su funcionamiento, exigiendo la anulación de órdenes de arresto por crímenes contra la humanidad. El ultimátum a los Estados miembros crea una fractura institucional global con implicaciones para el orden multilateral, la relación UE-EEUU y el riesgo soberano en países que cooperen con la CPI. La medida podría afectar al acceso a mercados de capitales y a la postura inversora en jurisdicciones involucradas.",
-        "en": "Washington announced sanctions against the International Criminal Court that could paralyze its operations, demanding cancellation of arrest warrants for crimes against humanity. The ultimatum to member states creates a global institutional fracture with implications for the multilateral order, EU-US relations, and sovereign risk in ICC-cooperating countries. The move could affect capital market access and investor posture in involved jurisdictions."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Fricción transatlántica institucional pesa sobre el euro",
-            "en": "Institutional transatlantic friction weighs on euro"
-          }
-        },
-        {
-          "asset": "EM sovereign bonds",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre jurídica internacional eleva prima de riesgo",
-            "en": "International legal uncertainty raises risk premium"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Erosión del orden multilateral apoya activos refugio",
-            "en": "Multilateral order erosion supports safe-haven assets"
-          }
-        }
-      ],
-      "confidence": 78,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/10/10/sanctions-des-etats-unis-contre-la-cpi-washington-lance-un-ultimatum-aux-etats-membres_6790870_3210.html",
-      "published_at": "2026-10-10",
-      "time": "8h"
-    },
-    {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "AFRICA",
-      "title": {
-        "es": "Etiopía advierte a Eritrea que se defenderá tras el cruce de tropas en la frontera",
-        "en": "Ethiopia warns Eritrea it will defend itself after troops cross border"
-      },
-      "summary": {
-        "es": "Etiopía respondió con ataques de drones tras la entrada de tropas eritreas en su territorio, elevando el riesgo de un nuevo conflicto abierto en el Cuerno de África. Un enfrentamiento entre Etiopía y Eritrea amenazaría las rutas comerciales del Mar Rojo y la estabilidad de la región, ya de por sí tensionada por el conflicto huzí. La escalada podría interrumpir corredores de minerales críticos y elevar la prima de riesgo para la inversión en África oriental.",
-        "en": "Ethiopia responded with drone strikes after Eritrean troops crossed into its territory, raising the risk of renewed open conflict in the Horn of Africa. An Ethiopia-Eritrea confrontation would threaten Red Sea trade routes and regional stability already strained by the Houthi conflict. Escalation could disrupt critical mineral corridors and raise the risk premium for investment in East Africa."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo adicional en corredor Mar Rojo-Cuerno de África",
-            "en": "Additional risk in Red Sea-Horn of Africa corridor"
-          }
-        },
-        {
-          "asset": "African sovereign bonds (East Africa)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada bélica regional eleva primas de riesgo",
-            "en": "Regional military escalation raises risk premiums"
-          }
-        },
-        {
-          "asset": "Critical minerals ETFs",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Potencial interrupción de cadenas de suministro en África oriental",
-            "en": "Potential supply chain disruption in East Africa"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c65ynvw250y1o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-09",
-      "time": "20h"
-    },
-    {
-      "id": 6,
       "tag": "WATCH",
       "region": "AFRICA",
       "title": {
@@ -369,44 +216,179 @@
         "en": "Inside Erik Prince's Mercenary Deal in Congo"
       },
       "summary": {
-        "es": "El fundador de Blackwater, Erik Prince, tiene un contrato mercenario creciente en la República Democrática del Congo, destacado por la muerte de un soldado neozelandés y la herida de un ex boina verde estadounidense. La presencia de contratistas privados vinculados a redes políticas de Washington en una zona rica en minerales críticos tiene implicaciones para la geopolítica de los recursos y la estabilidad regional. Inversores en minerales del Congo deben valorar el incremento del riesgo operacional.",
-        "en": "Blackwater founder Erik Prince has a growing mercenary contract in the Democratic Republic of Congo, highlighted by the death of a New Zealand special forces soldier and injury of a former US Green Beret. The presence of politically connected private contractors in a critical minerals-rich zone has implications for resource geopolitics and regional stability. Congo mineral investors should factor in rising operational risk."
+        "es": "La creciente presencia de contratistas privados vinculados a Prince en el Congo, con bajas documentadas de combatientes internacionales, subraya la mercantilización del conflicto en una región con vastas reservas de minerales críticos. El involucramiento privado en el este del Congo tiene implicaciones directas para el acceso a coltán, cobalto y otros minerales estratégicos esenciales para la cadena de suministro de vehículos eléctricos. Los inversores en minería de minerales de transición deben evaluar el riesgo de seguridad y soberanía en la región.",
+        "en": "The growing presence of Prince-linked private contractors in Congo, with documented international combatant casualties, underscores the commodification of conflict in a region with vast critical mineral reserves. Private involvement in eastern Congo has direct implications for access to coltan, cobalt, and other strategic minerals essential to the EV supply chain. Transition mineral mining investors must assess escalating security and sovereignty risks in the region."
       },
       "impact": "medium",
       "market_impact": [
         {
           "asset": "Cobalt futures",
-          "direction": "mixed",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Inestabilidad en DRC afecta perspectivas de oferta de cobalto",
-            "en": "DRC instability affects cobalt supply outlook"
+            "es": "Riesgo de suministro en región minera clave de África central",
+            "en": "Supply risk in key Central African mining region"
           }
         },
         {
-          "asset": "Critical minerals ETFs",
+          "asset": "EV supply chain equities",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo operacional en zona minera clave del Congo",
-            "en": "Operational risk in key Congo mining zone"
+            "es": "Incertidumbre sobre acceso a minerales críticos del Congo",
+            "en": "Uncertainty over DRC critical mineral access"
           }
         },
         {
-          "asset": "EM equities (Africa)",
-          "direction": "down",
+          "asset": "Gold",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Escalada del conflicto reduce atractivo inversor regional",
-            "en": "Conflict escalation reduces regional investment appeal"
+            "es": "Inestabilidad en Congo impulsa primas de riesgo en minería africana",
+            "en": "Congo instability lifts risk premiums across African mining"
           }
         }
       ],
-      "confidence": 74,
+      "confidence": 75,
       "source": "New York Times",
       "source_url": "https://www.nytimes.com/2026/10/09/world/africa/erik-prince-congo-mercenary-kennedy-vectus-contract.html",
-      "published_at": "2026-10-09",
-      "time": "12h"
+      "published_at": "2026-10-10",
+      "time": "22h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Plan de Operaciones Alemania: cómo entrena la Bundeswehr para la defensa colectiva de la OTAN",
+        "en": "Operations Plan Germany: How the Bundeswehr trains for NATO collective defense"
+      },
+      "summary": {
+        "es": "Alemania está ejecutando ejercicios militares a gran escala bajo el marco del Plan de Operaciones Alemania, diseñados para simular escenarios de defensa colectiva de la OTAN ante una posible agresión rusa. El contexto de la retirada gradual del apoyo estadounidense a Ucrania hace que estos preparativos sean de relevancia inversora creciente para el gasto en defensa europeo. Los presupuestos de defensa alemán y europeo seguirán bajo presión alcista estructural.",
+        "en": "Germany is conducting large-scale military exercises under the Operations Plan Germany framework, simulating NATO collective defense scenarios against potential Russian aggression. Against the backdrop of gradually withdrawing U.S. support for Ukraine, these preparations carry growing investment relevance for European defense spending. German and European defense budgets face structural upward pressure."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor gasto en defensa estructural en Europa beneficia al sector",
+            "en": "Structural European defense spending increase benefits sector"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Rearmamento europeo señaliza mayor autonomía estratégica del bloque",
+            "en": "European rearmament signals greater bloc strategic autonomy"
+          }
+        },
+        {
+          "asset": "German Bunds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor gasto fiscal en defensa presiona rendimientos soberanos",
+            "en": "Higher defense fiscal spending pressures sovereign yields"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/operations-plan-germany-how-the-bundeswehr-trains-for-nato-collective-defense/a-79553793?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-10",
+      "time": "1d"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "En el Salón del Automóvil de París, la industria automotriz hace su show en un clima sombrío y bajo presión china",
+        "en": "At the Paris Motor Show, the auto industry performs in a gloomy climate under Chinese pressure"
+      },
+      "summary": {
+        "es": "Los fabricantes europeos de automóviles se encuentran atrapados entre la guerra comercial de Trump y la avalancha de modelos chinos de bajo coste, en el marco del Salón del Automóvil de París 2026. La presión competitiva de China sobre el segmento eléctrico europeo combina con las incertidumbres arancelarias de EE.UU. para comprimir márgenes y cuestionar la viabilidad industrial del sector. El sector automotriz europeo, relevante para índices como el DAX y el CAC 40, sigue bajo presión estructural.",
+        "en": "European automakers find themselves squeezed between Trump's trade war and a wave of low-cost Chinese models at the 2026 Paris Motor Show. Chinese competitive pressure on the European EV segment, combined with U.S. tariff uncertainty, compresses margins and calls into question the sector's industrial viability. The European auto sector, significant for DAX and CAC 40 indices, remains under structural pressure."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Presión competitiva china y aranceles de EE.UU. comprimen márgenes",
+            "en": "Chinese competition and U.S. tariffs compress auto sector margins"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Deterioro industrial europeo pesa sobre moneda única",
+            "en": "European industrial deterioration weighs on single currency"
+          }
+        },
+        {
+          "asset": "Chinese EV equities",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Ganancias de cuota de mercado en Europa favorecen a fabricantes chinos",
+            "en": "European market share gains favor Chinese manufacturers"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/economie/article/2026/10/11/au-mondial-de-paris-l-industrie-automobile-fait-son-show-dans-un-climat-morose-et-sous-pression-chinoise_6791408_3234.html",
+      "published_at": "2026-10-11",
+      "time": "6h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "Jóvenes viven con miedo de ser secuestrados en las calles y vendidos al ejército de Myanmar",
+        "en": "Young men live in fear of being snatched off the streets and sold to Myanmar's army"
+      },
+      "summary": {
+        "es": "La junta militar de Myanmar recurre a la captación forzada de reclutas ante la presión de las milicias étnicas y la resistencia civil, en lo que se describe como una guerra de desgaste. El deterioro acelerado de la situación de seguridad en Myanmar amenaza la estabilidad regional en el sudeste asiático y tiene implicaciones para las cadenas de suministro que atraviesan la región. El conflicto también atrae la atención sobre los intereses de potencias externas como China y Tailandia.",
+        "en": "Myanmar's junta is resorting to forcible conscription amid pressure from ethnic militias and civilian resistance, described as a war of attrition. The rapidly deteriorating security situation threatens regional stability across Southeast Asia and has implications for supply chains traversing the region. The conflict also draws attention to the interests of external powers including China and Thailand."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "ASEAN equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad en Myanmar genera riesgo de contagio regional limitado",
+            "en": "Myanmar instability creates limited regional contagion risk"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo político en ASEAN pesa sobre divisas de mercados emergentes",
+            "en": "ASEAN political risk weighs on emerging market currencies"
+          }
+        }
+      ],
+      "confidence": 62,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c680zlny0gk4o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-10",
+      "time": "13h"
     }
   ],
   "market_updated_at": "2026-10-11T11:40:25.089Z"
