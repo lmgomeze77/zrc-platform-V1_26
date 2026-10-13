@@ -928,6 +928,62 @@ const LockedOverlay = ({ message, lang }) => {
 
 const MarketTicker = ({ lang }) => {
   const { data, lastUpdate } = useTickerData();
+  const laneRef = useRef(null);
+
+  // Auto-scroll by moving scrollLeft (not a CSS transform) so the bar can
+  // also be swiped/dragged by hand. The list is doubled, so wrapping at half
+  // the scroll width is seamless. Auto-scroll pauses while the user
+  // interacts and resumes shortly after.
+  useEffect(() => {
+    const lane = laneRef.current;
+    if (!lane || data.length === 0) return undefined;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return undefined;
+    let raf, last = performance.now(), pausedUntil = 0, pos = lane.scrollLeft;
+    const SPEED = 40; // px per second
+    const pause = (ms) => { pausedUntil = performance.now() + ms; };
+    const onTouch = () => pause(1e9);
+    const onRelease = () => pause(2500);
+    const onWheel = () => pause(2500);
+    // Hover pause only for a real mouse: touch devices emulate mouseenter on
+    // tap without a matching leave, which would freeze the bar.
+    const onEnter = (e) => { if (e.pointerType === "mouse") pause(1e9); };
+    const onLeave = (e) => { if (e.pointerType === "mouse") pause(800); };
+    const tick = (now) => {
+      const dt = Math.min(now - last, 100); last = now;
+      const half = lane.scrollWidth / 2;
+      if (now >= pausedUntil) {
+        if (Math.abs(lane.scrollLeft - pos) > 2) pos = lane.scrollLeft; // user moved it
+        pos += (SPEED * dt) / 1000;
+        if (half > 0 && pos >= half) pos -= half;
+        lane.scrollLeft = pos;
+      } else {
+        pos = lane.scrollLeft;
+        if (half > 0 && pos >= half) { pos -= half; lane.scrollLeft = pos; }
+        else if (pos <= 0 && half > 0) { pos += half; lane.scrollLeft = pos; }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    lane.addEventListener("pointerdown", onTouch);
+    lane.addEventListener("touchstart", onTouch, { passive: true });
+    lane.addEventListener("pointerenter", onEnter);
+    lane.addEventListener("pointerup", onRelease);
+    lane.addEventListener("pointercancel", onRelease);
+    lane.addEventListener("touchend", onRelease);
+    lane.addEventListener("pointerleave", onLeave);
+    lane.addEventListener("wheel", onWheel, { passive: true });
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      lane.removeEventListener("pointerdown", onTouch);
+      lane.removeEventListener("touchstart", onTouch);
+      lane.removeEventListener("pointerenter", onEnter);
+      lane.removeEventListener("pointerup", onRelease);
+      lane.removeEventListener("pointercancel", onRelease);
+      lane.removeEventListener("touchend", onRelease);
+      lane.removeEventListener("pointerleave", onLeave);
+      lane.removeEventListener("wheel", onWheel);
+    };
+  }, [data.length]);
 
   if (data.length === 0) {
     return (
@@ -943,8 +999,8 @@ const MarketTicker = ({ lang }) => {
     <div className="zrc-ticker" style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflow: "hidden", position: "fixed", top: 0, left: 0, right: 0, height: 44, zIndex: 101, display: "flex" }}>
       {/* Scrolling track in its own clipped lane, faded at both edges, so
           items never slide underneath the "live" badge. */}
-      <div className="zrc-ticker-lane" style={{ position: "relative", flex: 1, minWidth: 0, overflow: "hidden" }}>
-        <div className="zrc-ticker-track" style={{ display: "flex", alignItems: "center", position: "absolute", whiteSpace: "nowrap", animation: "tickerScroll 60s linear infinite" }}>
+      <div ref={laneRef} className="zrc-ticker-lane" style={{ position: "relative", flex: 1, minWidth: 0, overflowX: "auto", overflowY: "hidden", touchAction: "pan-x" }}>
+        <div className="zrc-ticker-track" style={{ display: "flex", alignItems: "center", whiteSpace: "nowrap", width: "max-content" }}>
           {doubled.map((m, i) => (
             <div key={i} className="zrc-ticker-item">
               <span className="zrc-ticker-sym">{m.s}</span>
@@ -1780,6 +1836,8 @@ const ZRCPlatform = () => {
         body { overflow-x: hidden; }
 
         .zrc-ticker-lane { -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%); mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%); }
+        .zrc-ticker-lane { scrollbar-width:none; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain; }
+        .zrc-ticker-lane::-webkit-scrollbar { display:none; }
         .zrc-ticker-item { display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 24px; border-right:1px solid ${C.border}; font-family:${F.mono}; font-variant-numeric:tabular-nums; }
         .zrc-ticker-item > span { line-height:1; }
         .zrc-ticker-sym { font-size:10px; color:${C.textMuted}; letter-spacing:.05em; }
