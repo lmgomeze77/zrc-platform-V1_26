@@ -121,3 +121,9 @@
     --zrc-hero-globe-mask: linear-gradient(90deg, transparent 0, transparent calc(50% + 190px), rgba(0,0,0,.45) calc(50% + 330px), #000 calc(50% + 470px));
   }
 }
+/* Narrower tablets: anchor the globe to the right edge (same look as ~1024px). */
+@media (min-width: 641px) and (max-width: 1000px) {
+  [data-theme="light"] {
+    --zrc-hero-globe-mask: linear-gradient(90deg, transparent 0, transparent calc(100% - 340px), rgba(0,0,0,.45) calc(100% - 210px), #000 calc(100% - 60px));
+  }
+}
