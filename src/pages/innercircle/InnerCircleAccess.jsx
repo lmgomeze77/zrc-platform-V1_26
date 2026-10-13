@@ -143,7 +143,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
         <p style={{ fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(11px,3vw,12px)", letterSpacing:"0.25em", color:"rgba(184,152,42,0.7)" }}>
           luis@zenithrisecapital.com
         </p>
-        {onBack && <button onClick={onBack} style={{ marginTop:36, background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(10px,2.5vw,11px)", letterSpacing:"0.3em", color:"rgba(232,224,204,0.5)", cursor:"pointer" }}>← VOLVER</button>}
+        {onBack && <button onClick={onBack} style={{ marginTop:36, background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(11px,2.8vw,13px)", letterSpacing:"0.3em", color:"rgba(232,224,204,0.85)", cursor:"pointer" }}>← VOLVER</button>}
       </div>
     </div>
   );
@@ -250,7 +250,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
             Solicitar membresía →
           </button>
         </div>
-        {onBack && <button onClick={onBack} style={{ marginTop:28, background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(10px,2.5vw,11px)", letterSpacing:"0.3em", color:"rgba(232,224,204,0.4)", cursor:"pointer" }}>← VOLVER</button>}
+        {onBack && <button onClick={onBack} style={{ marginTop:28, background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(11px,2.8vw,13px)", letterSpacing:"0.3em", color:"rgba(232,224,204,0.85)", cursor:"pointer" }}>← VOLVER</button>}
       </div>
     </div>
   );

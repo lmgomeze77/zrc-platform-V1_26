@@ -1693,8 +1693,8 @@ const ZRCPlatform = () => {
   }, [lang]);
 
   const onNav = (id) => {
-    if (id === "inner-circle") { setIcPage("inner-circle"); return; }
-    if (id === "mapa-geopolitico") { setShowWorldMap(true); return; }
+    if (id === "inner-circle") { openInnerCircle("inner-circle"); return; }
+    if (id === "mapa-geopolitico") { openWorldMap(); return; }
     if (id === "hero") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -1703,14 +1703,45 @@ const ZRCPlatform = () => {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  // Full-screen overlays (Inner Circle, world map) get their own history
+  // entry, so the browser back button / iOS back swipe closes the overlay
+  // and returns to the page instead of leaving the site. Closing from a
+  // button goes through history.back() when we pushed that entry, keeping
+  // the history stack clean.
+  const baseUrl = () => window.location.pathname + window.location.search;
+  const openOverlay = (overlay, hash) => {
+    if (window.history.state?.zrcOverlay) window.history.replaceState({ zrcOverlay: overlay }, "", hash);
+    else window.history.pushState({ zrcOverlay: overlay }, "", hash);
+  };
+  const closeOverlay = (applyClose) => {
+    if (window.history.state?.zrcOverlay) {
+      window.history.back(); // popstate handler below applies the close
+    } else {
+      applyClose();
+      window.history.replaceState(null, "", baseUrl());
+    }
+  };
+  useEffect(() => {
+    const onPop = (e) => {
+      const overlay = e.state?.zrcOverlay || null;
+      setShowWorldMap(overlay === "world-map");
+      setIcPage(overlay === "inner-circle" || overlay === "inner-circle-private" ? overlay : null);
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  const openInnerCircle = (page) => {
+    setIcPage(page);
+    openOverlay(page, "#inner-circle");
+  };
+  const closeInnerCircle = () => closeOverlay(() => setIcPage(null));
+
   const openWorldMap = () => {
     setShowWorldMap(true);
-    window.history.pushState({}, "", "#mapa-geopolitico");
+    openOverlay("world-map", "#mapa-geopolitico");
   };
-  const closeWorldMap = () => {
-    setShowWorldMap(false);
-    window.history.pushState({}, "", window.location.pathname + window.location.search);
-  };
+  const closeWorldMap = () => closeOverlay(() => setShowWorldMap(false));
 
   // Deep links (e.g. shared on LinkedIn as /#georisk-index) load the page
   // fresh — the browser tries to jump to the hash before React has
@@ -1771,6 +1802,8 @@ const ZRCPlatform = () => {
         .zrc-hero-secondary { border:1px solid ${alpha(C.gold, 0.58)}; background:var(--zrc-hero-card-soft); color:${C.text}; }
         .zrc-hero-secondary:hover { border-color:${C.gold}; background:${C.goldDim}; }
         .zrc-hero-content { width:min(100%,1040px); }
+        .zrc-ic-home { position:fixed; top:max(16px, env(safe-area-inset-top)); left:16px; z-index:9001; padding:10px 16px; min-height:44px; background:rgba(9,9,11,.85); color:#D4B050; border:1px solid rgba(212,176,80,.45); border-radius:4px; font-family:${F.mono}; font-size:12px; letter-spacing:.14em; cursor:pointer; backdrop-filter:blur(8px); }
+        .zrc-ic-home:hover { border-color:#D4B050; background:rgba(212,176,80,.12); }
         .zrc-hero-content > p { max-width:700px !important; font-size:clamp(14px,1.45vw,17px) !important; line-height:1.8 !important; }
         .zrc-hero-actions { margin-top:30px; }
         .zrc-hero-paths { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; max-width:860px; margin:38px auto 0; text-align:left; }
@@ -1834,11 +1867,14 @@ const ZRCPlatform = () => {
 
       {icPage === "inner-circle" && (
         <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
+          <button onClick={closeInnerCircle} className="zrc-ic-home" aria-label={lang === "es" ? "Volver al inicio" : "Back to home"}>
+            ← ZRC · {lang === "es" ? "Inicio" : "Home"}
+          </button>
           <InnerCircleAccess
-            onBack={() => setIcPage(null)}
+            onBack={closeInnerCircle}
             onApproved={() => {
               localStorage.setItem("zrc-inner-circle-access", "true");
-              setIcPage("inner-circle-private");
+              openInnerCircle("inner-circle-private");
             }}
           />
         </div>
@@ -1846,8 +1882,8 @@ const ZRCPlatform = () => {
       {icPage === "inner-circle-private" && (
         <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
           <ProtectedInnerCircle
-            onBack={() => setIcPage(null)}
-            onUnauthorized={() => setIcPage("inner-circle")}
+            onBack={closeInnerCircle}
+            onUnauthorized={() => openInnerCircle("inner-circle")}
             useAuth={useAuth}
           />
         </div>
@@ -1927,7 +1963,7 @@ const ZRCPlatform = () => {
       <GoldDivider />
 
 
-      <Community lang={lang} onAccess={() => setIcPage("inner-circle-private")} />
+      <Community lang={lang} onAccess={() => openInnerCircle("inner-circle-private")} />
       <Footer lang={lang} />
       <ZenithAssistant lang={lang} onNav={onNav} hidden={!!icPage} />
 
