@@ -44,10 +44,10 @@
   --zrc-hero-bg: #FFFFFF;
   --zrc-hero-sub: #2B3342;
   --zrc-hero-glow: 0 0 22px rgba(246,248,251,.95), 0 0 6px rgba(246,248,251,.8);
-  --zrc-hero-globe-filter: grayscale(1) sepia(1) hue-rotate(182deg) saturate(.9) brightness(1.9) contrast(1.15);
-  /* Fade the globe out towards the left so the text side stays white */
-  --zrc-hero-globe-mask: linear-gradient(90deg, transparent 0%, transparent 38%, rgba(0,0,0,.55) 58%, #000 80%);
-  --zrc-hero-veil: linear-gradient(180deg, rgba(255,255,255,0) 72%, #FFFFFF 100%), radial-gradient(ellipse 45% 40% at 48% 42%, rgba(255,255,255,.75) 0%, rgba(255,255,255,0) 100%);
+  --zrc-hero-globe-filter: grayscale(1) sepia(1) hue-rotate(182deg) saturate(.9) brightness(2.3) contrast(1.05);
+  /* Fade the globe out towards the left so the centered text column always stays on white */
+  --zrc-hero-globe-mask: linear-gradient(90deg, transparent 0, transparent calc(50% + 140px), rgba(0,0,0,.4) calc(50% + 360px), rgba(0,0,0,.85) calc(50% + 560px), #000 calc(50% + 720px));
+  --zrc-hero-veil: linear-gradient(180deg, rgba(255,255,255,0) 72%, #FFFFFF 100%), radial-gradient(ellipse 560px 420px at 50% 40%, rgba(255,255,255,.9) 0%, rgba(255,255,255,.55) 55%, rgba(255,255,255,0) 100%);
   /* Hero cards: blue-mist wash with a navy side bar */
   --zrc-hero-card: linear-gradient(135deg, #F3F6FA 0%, #FFFFFF 70%);
   --zrc-hero-card-hover: linear-gradient(135deg, #EAF0F7 0%, #FFFFFF 75%);
