@@ -40,12 +40,14 @@
   --zrc-risk-high: #B23A48;
   --zrc-risk-crit: #7A1426;
   --zrc-chart-line: #1F3A5F;
-  /* Hero: the globe photo is toned into a light steel-blue/grey in light mode */
-  --zrc-hero-bg: #DDE3EA;
+  /* Hero (light): white on the left, steel-blue globe with contrast on the right */
+  --zrc-hero-bg: #FFFFFF;
   --zrc-hero-sub: #2B3342;
   --zrc-hero-glow: 0 0 22px rgba(246,248,251,.95), 0 0 6px rgba(246,248,251,.8);
-  --zrc-hero-globe-filter: grayscale(1) sepia(1) hue-rotate(182deg) saturate(1.1) brightness(2.5) contrast(.88);
-  --zrc-hero-veil: linear-gradient(180deg, rgba(244,246,249,.25) 0%, rgba(244,246,249,0) 40%, rgba(244,246,249,.45) 100%), radial-gradient(ellipse 48% 38% at 50% 40%, rgba(246,248,251,.78) 0%, rgba(246,248,251,.35) 60%, rgba(246,248,251,0) 100%);
+  --zrc-hero-globe-filter: grayscale(1) sepia(1) hue-rotate(182deg) saturate(.9) brightness(1.9) contrast(1.15);
+  /* Fade the globe out towards the left so the text side stays white */
+  --zrc-hero-globe-mask: linear-gradient(90deg, transparent 0%, transparent 38%, rgba(0,0,0,.55) 58%, #000 80%);
+  --zrc-hero-veil: radial-gradient(ellipse 45% 40% at 48% 42%, rgba(255,255,255,.75) 0%, rgba(255,255,255,0) 100%);
   /* Hero cards: blue-mist wash with a navy side bar */
   --zrc-hero-card: linear-gradient(135deg, #F3F6FA 0%, #FFFFFF 70%);
   --zrc-hero-card-hover: linear-gradient(135deg, #EAF0F7 0%, #FFFFFF 75%);
@@ -92,6 +94,7 @@
   --zrc-hero-sub: var(--zrc-text-sec);
   --zrc-hero-glow: none;
   --zrc-hero-globe-filter: none;
+  --zrc-hero-globe-mask: none;
   --zrc-hero-veil: linear-gradient(180deg, rgba(4,10,18,.48) 0%, rgba(4,10,18,.22) 38%, rgba(4,10,18,.48) 100%), radial-gradient(ellipse 75% 72% at 50% 48%, rgba(4,10,18,.08) 0%, rgba(4,10,18,.38) 100%);
   --zrc-hero-card: rgba(9,12,18,.82);
   --zrc-hero-card-hover: rgba(17,20,27,.94);
@@ -105,4 +108,16 @@
 
 [data-theme] { color: var(--zrc-text); }
 
-.zrc-hero-globe { filter: var(--zrc-hero-globe-filter); }
+.zrc-hero-globe { filter: var(--zrc-hero-globe-filter); -webkit-mask-image: var(--zrc-hero-globe-mask); mask-image: var(--zrc-hero-globe-mask); }
+
+/* Narrow screens: the text spans the full width, so keep the globe further right. */
+@media (max-width: 640px) {
+  [data-theme="light"] {
+    --zrc-hero-globe-mask: linear-gradient(90deg, transparent 0%, transparent 60%, rgba(0,0,0,.45) 80%, rgba(0,0,0,.85) 100%);
+  }
+}
+@media (min-width: 641px) and (max-width: 1100px) {
+  [data-theme="light"] {
+    --zrc-hero-globe-mask: linear-gradient(90deg, transparent 0%, transparent 60%, rgba(0,0,0,.5) 78%, #000 96%);
+  }
+}
