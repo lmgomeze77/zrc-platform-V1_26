@@ -3,8 +3,8 @@
    on any subtree (e.g. the hero or tool overlays that keep a dark design). */
 :root {
   /* Typography for headings and large figures — change here to restyle the site. */
-  --zrc-font-display: 'Fraunces', Georgia, serif;
-  --zrc-font-figures: 'Fraunces', Georgia, serif;
+  --zrc-font-display: 'Noto Serif Display', Georgia, serif;
+  --zrc-font-figures: 'Noto Serif Display', Georgia, serif;
 }
 
 :root, [data-theme="light"] {
