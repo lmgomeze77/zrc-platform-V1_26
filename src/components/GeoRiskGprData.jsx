@@ -3,7 +3,8 @@ import { C } from "../theme/palette";
 
 const endpoint = "https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-gpr-data";
 const FONT_BODY = "'Outfit','Helvetica Neue',sans-serif";
-const FONT_DISPLAY = "'Cormorant Garamond','Georgia',serif";
+const FONT_DISPLAY = "var(--zrc-font-display)";
+const FONT_FIGURES = "var(--zrc-font-figures)";
 const control = { background: C.surface2, color: C.text, border: `1px solid ${C.border}`, borderRadius: 4, padding: "8px 12px", fontFamily: FONT_BODY };
 const style = { marginTop: 18, padding: 20, color: C.textSec, background: C.surface, border: `1px solid ${C.border}`, fontFamily: FONT_BODY };
 const englishLabels = { GPR: "Global geopolitical risk", GPRT: "Threats", GPRA: "Acts", GPRD: "Daily geopolitical risk", GPRD_THREAT: "Daily threats", GPRD_ACT: "Daily acts" };
@@ -78,7 +79,7 @@ export default function GeoRiskGprData({ lang = "es" }) {
       {data.archive?.status === "unavailable" && <p style={{ color: C.amber, fontSize: 12 }}>{es ? "Los datos de la fuente están disponibles; su copia en el archivo ZRC está temporalmente pendiente." : "Source data is available; the ZRC archive copy is temporarily pending."}</p>}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(175px,1fr))", gap: 10 }}>
         {data.series.filter(item => ["GPR", "GPRT", "GPRA", "GPRD"].includes(item.id)).map(item => <article key={item.id} style={{ ...control, padding: 14 }}>
-          <div style={{ fontSize: 12 }}>{label(item)}</div><strong style={{ fontSize: 25, fontWeight: 500, color: C.text }}>{fmt(item.latest.value)}</strong>
+          <div style={{ fontSize: 12 }}>{label(item)}</div><strong style={{ fontFamily: FONT_FIGURES, fontSize: 28, fontWeight: 500, color: C.text, fontVariantNumeric: "lining-nums tabular-nums" }}>{fmt(item.latest.value)}</strong>
           <div style={{ fontSize: 11 }}>{item.frequency === "monthly" ? (es ? "Mes: " : "Month: ") + item.latest.date.slice(0, 7) : date(item.latest.date)}</div>
         </article>)}
       </div>

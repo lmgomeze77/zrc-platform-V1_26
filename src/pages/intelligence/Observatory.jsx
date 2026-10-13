@@ -7,7 +7,7 @@ import { C, alpha } from "../../theme/palette";
 
 // ── DESIGN TOKENS (mirrors App.jsx) ─────────────────────────
 const F = {
-  display:"'Cormorant Garamond','Georgia',serif",
+  display: "var(--zrc-font-display)", figures: "var(--zrc-font-figures)",
   body:"'Outfit','Helvetica Neue',sans-serif",
   mono:"'IBM Plex Mono','Fira Code',monospace",
 };

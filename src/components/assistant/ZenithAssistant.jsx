@@ -11,7 +11,7 @@ import { C, alpha } from "../../theme/palette";
 
 
 const F = {
-  display: "'Cormorant Garamond', 'Georgia', serif",
+  display: "var(--zrc-font-display)", figures: "var(--zrc-font-figures)",
   body: "'Outfit', 'Helvetica Neue', sans-serif",
   mono: "'IBM Plex Mono', 'Fira Code', monospace",
 };

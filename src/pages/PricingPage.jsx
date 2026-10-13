@@ -2,7 +2,7 @@ import { useState } from "react";
 import { C, alpha } from "../theme/palette";
 
 const F = {
-  display: "'Cormorant Garamond', 'Georgia', serif",
+  display: "var(--zrc-font-display)", figures: "var(--zrc-font-figures)",
   body: "'Outfit', 'Helvetica Neue', sans-serif",
   mono: "'IBM Plex Mono', 'Fira Code', monospace",
 };
@@ -106,7 +106,7 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
             {lang === "es" ? "FOUNDING INTELLIGENCE · PRIMEROS 100 MIEMBROS" : "FOUNDING INTELLIGENCE · FIRST 100 MEMBERS"}
           </div>
           <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
-            <span style={{ fontFamily: F.display, fontSize: 32, color: C.text }}>{billing === "annual" ? FOUNDING.annual.price : FOUNDING.monthly.price}</span>
+            <span style={{ fontFamily: F.figures, fontSize: 32, color: C.text }}>{billing === "annual" ? FOUNDING.annual.price : FOUNDING.monthly.price}</span>
             <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>{billing === "annual" ? FOUNDING.annual.period : FOUNDING.monthly.period}</span>
             <span style={{ fontFamily: F.body, fontSize: 13, color: C.textSec }}>
               {lang === "es" ? "· tarifa bloqueada mientras mantengas la suscripción" : "· rate locked while your subscription remains active"}
@@ -207,7 +207,7 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
                 </div>
 
                 <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 4 }}>
-                  <span style={{ fontFamily: F.display, fontSize: 44, color: C.gold, fontWeight: 300 }}>{billing_.price}</span>
+                  <span style={{ fontFamily: F.figures, fontSize: 44, color: C.gold, fontWeight: 300 }}>{billing_.price}</span>
                   <span style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted }}>{billing_.period}</span>
                 </div>
                 {billing === "annual" && billing_.saving && (

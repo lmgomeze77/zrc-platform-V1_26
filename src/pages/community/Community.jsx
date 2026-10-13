@@ -26,55 +26,55 @@ const PROFILE_CATEGORIES = [
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300;400&display=swap');
 
-.ic-root{position:relative;width:100%;height:100vh;min-height:520px;background:#06080C;color:#E8E0CC;font-family:'Cormorant',serif;overflow:hidden;display:flex;flex-direction:column;}
+.ic-root{position:relative;width:100%;height:100vh;min-height:520px;background:var(--zrc-surface);color:var(--zrc-text);font-family:'Cormorant',serif;overflow:hidden;display:flex;flex-direction:column;}
 .ic-root *,.ic-root *::before,.ic-root *::after{box-sizing:border-box;margin:0;padding:0;}
 .ic-grain{position:absolute;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:0;opacity:.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:ic-grain .8s steps(1) infinite;}
 @keyframes ic-grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-2%,-3%)}20%{transform:translate(3%,1%)}30%{transform:translate(-1%,4%)}40%{transform:translate(4%,-2%)}50%{transform:translate(-3%,2%)}60%{transform:translate(2%,-4%)}70%{transform:translate(-4%,1%)}80%{transform:translate(1%,3%)}90%{transform:translate(3%,-1%)}}
-.ic-vig{position:absolute;inset:0;background:radial-gradient(ellipse 72% 72% at 50% 50%,transparent 0%,rgba(6,8,12,.82) 100%);pointer-events:none;z-index:0;}
-.ic-light{position:absolute;top:-20vh;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(ellipse at center,rgba(184,152,42,.045) 0%,transparent 65%);pointer-events:none;z-index:0;}
-.ic-top{position:relative;z-index:5;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;border-bottom:1px solid rgba(184,152,42,.12);opacity:0;animation:ic-appear 1s ease forwards 3.6s;}
-.ic-tb-brand{font-family:'Cormorant SC',serif;font-size:10px;letter-spacing:.38em;color:rgba(232,224,204,.42);}
-.ic-tb-right{font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.3em;color:rgba(184,152,42,.45);}
+.ic-vig{position:absolute;inset:0;background:radial-gradient(ellipse 72% 72% at 50% 50%,transparent 0%,color-mix(in srgb, var(--zrc-bg) 82%, transparent) 100%);pointer-events:none;z-index:0;}
+.ic-light{position:absolute;top:-20vh;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(ellipse at center,color-mix(in srgb, var(--zrc-gold) 4%, transparent) 0%,transparent 65%);pointer-events:none;z-index:0;}
+.ic-top{position:relative;z-index:5;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;border-bottom:1px solid color-mix(in srgb, var(--zrc-gold) 12%, transparent);opacity:0;animation:ic-appear 1s ease forwards 3.6s;}
+.ic-tb-brand{font-family:'Cormorant SC',serif;font-size:10px;letter-spacing:.38em;color:color-mix(in srgb, var(--zrc-text) 62%, transparent);}
+.ic-tb-right{font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.3em;color:var(--zrc-gold);}
 .ic-middle{position:relative;z-index:5;flex:1;display:flex;align-items:center;justify-content:center;padding:20px 40px;min-height:0;overflow:hidden;}
 .ic-orbit{position:absolute;top:50%;left:50%;width:min(58vh,620px);height:min(58vh,620px);transform:translate(-50%,-50%);pointer-events:none;z-index:0;opacity:0;animation:ic-appear 2.2s ease forwards 2.0s;}
-.ic-orbit-ring{position:absolute;inset:0;border:1px solid rgba(184,152,42,.13);border-radius:50%;animation:ic-orbit-spin 90s linear infinite;}
-.ic-orbit-ring::before{content:"";position:absolute;top:-3px;left:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:rgba(212,176,80,.75);box-shadow:0 0 12px rgba(212,176,80,.5);}
-.ic-orbit-inner{position:absolute;inset:9%;border:1px dashed rgba(184,152,42,.08);border-radius:50%;animation:ic-orbit-spin 140s linear infinite reverse;}
+.ic-orbit-ring{position:absolute;inset:0;border:1px solid color-mix(in srgb, var(--zrc-gold) 13%, transparent);border-radius:50%;animation:ic-orbit-spin 90s linear infinite;}
+.ic-orbit-ring::before{content:"";position:absolute;top:-3px;left:calc(50% - 3px);width:6px;height:6px;border-radius:50%;background:color-mix(in srgb, var(--zrc-gold) 75%, transparent);box-shadow:0 0 12px color-mix(in srgb, var(--zrc-gold) 50%, transparent);}
+.ic-orbit-inner{position:absolute;inset:9%;border:1px dashed color-mix(in srgb, var(--zrc-gold) 8%, transparent);border-radius:50%;animation:ic-orbit-spin 140s linear infinite reverse;}
 @keyframes ic-orbit-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .ic-center{position:relative;z-index:1;text-align:center;width:100%;max-width:640px;}
 .ic-pillars{display:flex;justify-content:center;gap:clamp(20px,4vw,44px);margin-top:20px;opacity:0;animation:ic-appear 1.4s ease forwards 3.0s;}
 .ic-pillar{max-width:150px;}
-.ic-pillar-title{font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.4em;color:rgba(184,152,42,.6);margin-bottom:5px;white-space:nowrap;}
-.ic-pillar-text{font-family:'Cormorant',serif;font-size:12px;font-style:italic;color:rgba(232,224,204,.35);line-height:1.5;}
-.ic-eyebrow{display:block;font-family:'Cormorant SC',serif;font-size:10px;letter-spacing:.55em;color:#B8982A;opacity:0;animation:ic-appear 1.4s ease forwards .5s;margin-bottom:18px;}
-.ic-title{display:block;font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,118px);font-weight:400;font-style:italic;line-height:1;letter-spacing:-.025em;color:#E8E0CC;}
+.ic-pillar-title{font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.4em;color:var(--zrc-gold);margin-bottom:5px;white-space:nowrap;}
+.ic-pillar-text{font-family:'Cormorant',serif;font-size:12px;font-style:italic;color:color-mix(in srgb, var(--zrc-text) 62%, transparent);line-height:1.5;}
+.ic-eyebrow{display:block;font-family:'Cormorant SC',serif;font-size:10px;letter-spacing:.55em;color:var(--zrc-gold);opacity:0;animation:ic-appear 1.4s ease forwards .5s;margin-bottom:18px;}
+.ic-title{display:block;font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,118px);font-weight:400;font-style:italic;line-height:1;letter-spacing:-.025em;color:var(--zrc-text);}
 .ic-tw{display:block;opacity:0;transform:translateY(30px);}
 .ic-tw:nth-child(1){animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.0s;}
 .ic-tw:nth-child(2){animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.3s;}
-.ic-tw:nth-child(3){animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.6s;color:rgba(232,224,204,.55);}
-.ic-rule{width:30px;height:1px;background:#B8982A;margin:18px auto;opacity:0;animation:ic-appear 1s ease forwards 2.4s;}
-.ic-tagline{font-family:'Cormorant',serif;font-size:clamp(14px,1.7vw,17px);font-style:italic;color:rgba(232,224,204,.42);letter-spacing:.04em;line-height:1.65;opacity:0;animation:ic-appear 1.4s ease forwards 2.7s;max-width:400px;margin:0 auto;}
+.ic-tw:nth-child(3){animation:ic-riseIn 1.2s cubic-bezier(.16,1,.3,1) forwards 1.6s;color:color-mix(in srgb, var(--zrc-text) 62%, transparent);}
+.ic-rule{width:30px;height:1px;background:var(--zrc-gold);margin:18px auto;opacity:0;animation:ic-appear 1s ease forwards 2.4s;}
+.ic-tagline{font-family:'Cormorant',serif;font-size:clamp(14px,1.7vw,17px);font-style:italic;color:color-mix(in srgb, var(--zrc-text) 62%, transparent);letter-spacing:.04em;line-height:1.65;opacity:0;animation:ic-appear 1.4s ease forwards 2.7s;max-width:400px;margin:0 auto;}
 .ic-gate{margin-top:22px;opacity:0;animation:ic-appear 1.2s ease forwards 3.1s;}
-.ic-access-label{font-family:'Cormorant SC',serif;font-size:8.5px;letter-spacing:.5em;color:rgba(184,152,42,.45);margin-bottom:10px;}
-.ic-input-row{display:flex;max-width:320px;margin:0 auto;border-bottom:1px solid rgba(184,152,42,.35);padding-bottom:5px;}
-.ic-email-input{flex:1;background:transparent;border:none;outline:none;font-family:'Cormorant',serif;font-size:16px;font-style:italic;color:#E8E0CC;padding:3px 0;min-width:0;}
-.ic-email-input::placeholder{color:rgba(232,224,204,.28);}
-.ic-check-btn{background:none;border:none;cursor:pointer;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.35em;color:#B8982A;padding:3px 0 3px 12px;white-space:nowrap;transition:color .3s;}
-.ic-check-btn:hover{color:#D4B050;}.ic-check-btn:disabled{opacity:.4;cursor:default;}
-.ic-gate-msg{margin-top:10px;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.28em;color:rgba(184,152,42,.55);}
-.ic-apply-link{background:none;border:none;cursor:pointer;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.28em;color:#B8982A;text-decoration:underline;text-underline-offset:3px;padding:0;transition:color .3s;display:block;margin:6px auto 0;}
-.ic-apply-link:hover{color:#D4B050;}
+.ic-access-label{font-family:'Cormorant SC',serif;font-size:8.5px;letter-spacing:.5em;color:var(--zrc-gold);margin-bottom:10px;}
+.ic-input-row{display:flex;max-width:320px;margin:0 auto;border-bottom:1px solid color-mix(in srgb, var(--zrc-gold) 35%, transparent);padding-bottom:5px;}
+.ic-email-input{flex:1;background:transparent;border:none;outline:none;font-family:'Cormorant',serif;font-size:16px;font-style:italic;color:var(--zrc-text);padding:3px 0;min-width:0;}
+.ic-email-input::placeholder{color:color-mix(in srgb, var(--zrc-text) 62%, transparent);}
+.ic-check-btn{background:none;border:none;cursor:pointer;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.35em;color:var(--zrc-gold);padding:3px 0 3px 12px;white-space:nowrap;transition:color .3s;}
+.ic-check-btn:hover{color:var(--zrc-gold-hover);}.ic-check-btn:disabled{opacity:.4;cursor:default;}
+.ic-gate-msg{margin-top:10px;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.28em;color:var(--zrc-gold);}
+.ic-apply-link{background:none;border:none;cursor:pointer;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.28em;color:var(--zrc-gold);text-decoration:underline;text-underline-offset:3px;padding:0;transition:color .3s;display:block;margin:6px auto 0;}
+.ic-apply-link:hover{color:var(--zrc-gold-hover);}
 .ic-welcome{margin-top:22px;opacity:0;animation:ic-appear 1.2s ease forwards 3.1s;}
-.ic-edition-link{display:inline-block;font-family:'Cormorant SC',serif;font-size:10px;letter-spacing:.38em;color:#B8982A;border-bottom:1px solid rgba(184,152,42,.28);padding-bottom:3px;transition:color .4s,border-color .4s;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;}
-.ic-edition-link:hover{color:#D4B050;border-bottom-color:rgba(212,176,80,.55);}
-.ic-bottom{position:relative;z-index:5;flex-shrink:0;display:flex;justify-content:space-between;align-items:flex-end;padding:12px 48px 16px;border-top:1px solid rgba(184,152,42,.1);opacity:0;animation:ic-appear 1.2s ease forwards 4.0s;}
-.ic-bl-left{font-family:'Cormorant',serif;font-size:11px;font-style:italic;color:rgba(232,224,204,.35);line-height:1.5;max-width:55%;}
+.ic-edition-link{display:inline-block;font-family:'Cormorant SC',serif;font-size:10px;letter-spacing:.38em;color:var(--zrc-gold);border-bottom:1px solid color-mix(in srgb, var(--zrc-gold) 28%, transparent);padding-bottom:3px;transition:color .4s,border-color .4s;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;}
+.ic-edition-link:hover{color:var(--zrc-gold-hover);border-bottom-color:var(--zrc-gold);}
+.ic-bottom{position:relative;z-index:5;flex-shrink:0;display:flex;justify-content:space-between;align-items:flex-end;padding:12px 48px 16px;border-top:1px solid color-mix(in srgb, var(--zrc-gold) 10%, transparent);opacity:0;animation:ic-appear 1.2s ease forwards 4.0s;}
+.ic-bl-left{font-family:'Cormorant',serif;font-size:11px;font-style:italic;color:color-mix(in srgb, var(--zrc-text) 62%, transparent);line-height:1.5;max-width:55%;}
 .ic-bl-right{text-align:right;flex-shrink:0;margin-left:12px;}
-.ic-bl-label{font-family:'Cormorant SC',serif;font-size:8px;letter-spacing:.32em;color:rgba(184,152,42,.4);margin-bottom:3px;}
-.ic-bl-email{font-family:'Cormorant',serif;font-size:12px;font-style:italic;color:#B8982A;text-decoration:none;transition:color .35s;}
-.ic-bl-email:hover{color:#D4B050;}
-.ic-back{position:absolute;top:24px;left:48px;z-index:20;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.35em;color:rgba(184,152,42,.5);cursor:pointer;background:none;border:none;transition:color .3s;padding:0;}
-.ic-back:hover{color:rgba(212,176,80,.9);}
+.ic-bl-label{font-family:'Cormorant SC',serif;font-size:8px;letter-spacing:.32em;color:var(--zrc-gold);margin-bottom:3px;}
+.ic-bl-email{font-family:'Cormorant',serif;font-size:12px;font-style:italic;color:var(--zrc-gold);text-decoration:none;transition:color .35s;}
+.ic-bl-email:hover{color:var(--zrc-gold-hover);}
+.ic-back{position:absolute;top:24px;left:48px;z-index:20;font-family:'Cormorant SC',serif;font-size:9px;letter-spacing:.35em;color:var(--zrc-gold);cursor:pointer;background:none;border:none;transition:color .3s;padding:0;}
+.ic-back:hover{color:var(--zrc-gold);}
 @keyframes ic-appear{from{opacity:0}to{opacity:1}}
 @keyframes ic-riseIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @media (max-height:760px){
@@ -113,24 +113,24 @@ const css = `
 
 const modalOverlayStyle = {
   position: "fixed", inset: 0, zIndex: 10000,
-  background: "rgba(6,8,12,0.88)", backdropFilter: "blur(6px)",
+  background: "color-mix(in srgb, var(--zrc-bg) 88%, transparent)", backdropFilter: "blur(6px)",
   display: "flex", alignItems: "center", justifyContent: "center",
   padding: "24px",
 };
 const modalCardStyle = {
-  background: "#0C0F15", border: "1px solid rgba(184,152,42,0.25)",
+  background: "var(--zrc-bg)", border: "1px solid color-mix(in srgb, var(--zrc-gold) 25%, transparent)",
   maxWidth: 480, width: "100%", padding: "40px 36px",
   fontFamily: "'Cormorant',serif",
 };
 const mLabelStyle = {
   display: "block", fontFamily: "'Cormorant SC',serif", fontSize: 8,
   letterSpacing: "0.45em", textTransform: "uppercase",
-  color: "rgba(184,152,42,0.5)", marginBottom: 6,
+  color: "var(--zrc-gold)", marginBottom: 6,
 };
 const mInputStyle = {
   width: "100%", background: "transparent", border: "none",
-  borderBottom: "1px solid rgba(184,152,42,0.25)", outline: "none",
-  fontFamily: "'Cormorant',serif", fontSize: 15, color: "#E8E0CC",
+  borderBottom: "1px solid color-mix(in srgb, var(--zrc-gold) 25%, transparent)", outline: "none",
+  fontFamily: "'Cormorant',serif", fontSize: 15, color: "var(--zrc-text)",
   padding: "6px 0", boxSizing: "border-box",
 };
 
@@ -215,9 +215,9 @@ function ApplyModal({ email, lang, onClose, onSuccess }) {
     <div style={modalOverlayStyle} onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
       <div style={modalCardStyle}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
-          <div style={{ fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.5em", color: "rgba(184,152,42,0.5)", marginBottom: 12 }}>ZRC INNER CIRCLE</div>
-          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, fontStyle: "italic", fontWeight: 400, color: "#E8E0CC", margin: "0 0 10px" }}>{tx.title}</h2>
-          <p style={{ fontFamily: "'Cormorant',serif", fontSize: 14, fontStyle: "italic", color: "rgba(232,224,204,0.38)", lineHeight: 1.6, margin: 0 }}>{tx.sub}</p>
+          <div style={{ fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.5em", color: "var(--zrc-gold)", marginBottom: 12 }}>ZRC INNER CIRCLE</div>
+          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 26, fontStyle: "italic", fontWeight: 400, color: "var(--zrc-text)", margin: "0 0 10px" }}>{tx.title}</h2>
+          <p style={{ fontFamily: "'Cormorant',serif", fontSize: 14, fontStyle: "italic", color: "color-mix(in srgb, var(--zrc-text) 62%, transparent)", lineHeight: 1.6, margin: 0 }}>{tx.sub}</p>
         </div>
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
@@ -228,7 +228,7 @@ function ApplyModal({ email, lang, onClose, onSuccess }) {
 
           <label style={{ display: "block" }}>
             <span style={mLabelStyle}>{tx.emailLabel}</span>
-            <input style={{ ...mInputStyle, color: "rgba(232,224,204,0.4)" }} value={email} readOnly />
+            <input style={{ ...mInputStyle, color: "color-mix(in srgb, var(--zrc-text) 62%, transparent)" }} value={email} readOnly />
           </label>
 
           <label style={{ display: "block" }}>
@@ -253,16 +253,16 @@ function ApplyModal({ email, lang, onClose, onSuccess }) {
           </label>
 
           {error && (
-            <p style={{ fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.25em", color: "rgba(184,152,42,0.7)", textAlign: "center", margin: 0 }}>{error}</p>
+            <p style={{ fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.25em", color: "var(--zrc-gold)", textAlign: "center", margin: 0 }}>{error}</p>
           )}
 
           <div style={{ display: "flex", gap: 12, marginTop: 4 }}>
             <button type="button" onClick={onClose}
-              style={{ flex: 1, background: "none", border: "1px solid rgba(184,152,42,0.2)", color: "rgba(232,224,204,0.35)", fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.4em", padding: "11px 0", cursor: "pointer" }}>
+              style={{ flex: 1, background: "none", border: "1px solid color-mix(in srgb, var(--zrc-gold) 20%, transparent)", color: "color-mix(in srgb, var(--zrc-text) 62%, transparent)", fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.4em", padding: "11px 0", cursor: "pointer" }}>
               {tx.cancel}
             </button>
             <button type="submit" disabled={loading}
-              style={{ flex: 2, background: "#B8982A", border: "none", color: "#000", fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.4em", fontWeight: 700, padding: "11px 0", cursor: loading ? "default" : "pointer", opacity: loading ? 0.6 : 1 }}>
+              style={{ flex: 2, background: "var(--zrc-gold)", border: "none", color: "#000", fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.4em", fontWeight: 700, padding: "11px 0", cursor: loading ? "default" : "pointer", opacity: loading ? 0.6 : 1 }}>
               {loading ? tx.sending : tx.submitBtn}
             </button>
           </div>
@@ -281,13 +281,13 @@ function SuccessModal({ lang, onClose }) {
   return (
     <div style={modalOverlayStyle}>
       <div style={{ ...modalCardStyle, textAlign: "center", maxWidth: 400 }}>
-        <div style={{ width: 44, height: 44, borderRadius: "50%", border: "1px solid rgba(184,152,42,0.4)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", background: "rgba(184,152,42,0.06)" }}>
-          <span style={{ color: "#B8982A", fontSize: 18 }}>✓</span>
+        <div style={{ width: 44, height: 44, borderRadius: "50%", border: "1px solid color-mix(in srgb, var(--zrc-gold) 40%, transparent)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", background: "color-mix(in srgb, var(--zrc-gold) 6%, transparent)" }}>
+          <span style={{ color: "var(--zrc-gold)", fontSize: 18 }}>✓</span>
         </div>
-        <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 24, fontStyle: "italic", fontWeight: 400, color: "#E8E0CC", margin: "0 0 12px" }}>{tx.title}</h2>
-        <p style={{ fontFamily: "'Cormorant',serif", fontSize: 15, fontStyle: "italic", color: "rgba(232,224,204,0.42)", lineHeight: 1.7, margin: "0 0 28px" }}>{tx.body}</p>
+        <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: 24, fontStyle: "italic", fontWeight: 400, color: "var(--zrc-text)", margin: "0 0 12px" }}>{tx.title}</h2>
+        <p style={{ fontFamily: "'Cormorant',serif", fontSize: 15, fontStyle: "italic", color: "color-mix(in srgb, var(--zrc-text) 62%, transparent)", lineHeight: 1.7, margin: "0 0 28px" }}>{tx.body}</p>
         <button onClick={onClose}
-          style={{ background: "none", border: "1px solid rgba(184,152,42,0.3)", color: "rgba(184,152,42,0.7)", fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.4em", padding: "10px 28px", cursor: "pointer" }}>
+          style={{ background: "none", border: "1px solid color-mix(in srgb, var(--zrc-gold) 30%, transparent)", color: "var(--zrc-gold)", fontFamily: "'Cormorant SC',serif", fontSize: 9, letterSpacing: "0.4em", padding: "10px 28px", cursor: "pointer" }}>
           {tx.close}
         </button>
       </div>
@@ -394,7 +394,7 @@ export default function Community({ lang = "es", onAccess }) {
     <>
       <style>{css}</style>
       <div style={{position:"fixed",top:0,left:0,right:0,bottom:0,overflowY:"auto",overflowX:"hidden",zIndex:200,background:"#E8E4DC",WebkitOverflowScrolling:"touch"}}>
-        <button className="ic-back" onClick={() => setView("landing")} style={{position:"fixed",top:20,left:20,zIndex:210,background:"rgba(10,22,40,0.92)",color:"#B8982A",padding:"8px 16px",border:"1px solid rgba(184,152,42,0.4)",borderRadius:2}}>{tx.backLabel}</button>
+        <button className="ic-back" onClick={() => setView("landing")} style={{position:"fixed",top:20,left:20,zIndex:210,background:"rgba(10,22,40,0.92)",color:"var(--zrc-gold)",padding:"8px 16px",border:"1px solid color-mix(in srgb, var(--zrc-gold) 40%, transparent)",borderRadius:2}}>{tx.backLabel}</button>
         <EditionZero />
       </div>
     </>
@@ -416,8 +416,8 @@ export default function Community({ lang = "es", onAccess }) {
       )}
       {hasFinePointer && (
         <>
-          <div ref={cursorRef} style={{position:"fixed",width:5,height:5,background:"#B8982A",borderRadius:"50%",pointerEvents:"none",zIndex:9999,transform:"translate(-50%,-50%)",mixBlendMode:"difference",display:cursorOn?"block":"none"}} />
-          <div ref={ringRef}   style={{position:"fixed",width:28,height:28,border:"1px solid rgba(184,152,42,0.35)",borderRadius:"50%",pointerEvents:"none",zIndex:9998,transform:"translate(-50%,-50%)",opacity:.65,display:cursorOn?"block":"none"}} />
+          <div ref={cursorRef} style={{position:"fixed",width:5,height:5,background:"var(--zrc-gold)",borderRadius:"50%",pointerEvents:"none",zIndex:9999,transform:"translate(-50%,-50%)",mixBlendMode:"difference",display:cursorOn?"block":"none"}} />
+          <div ref={ringRef}   style={{position:"fixed",width:28,height:28,border:"1px solid color-mix(in srgb, var(--zrc-gold) 35%, transparent)",borderRadius:"50%",pointerEvents:"none",zIndex:9998,transform:"translate(-50%,-50%)",opacity:.65,display:cursorOn?"block":"none"}} />
         </>
       )}
       <div className="ic-root" style={{cursor:hasFinePointer?"none":"auto"}}

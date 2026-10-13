@@ -27,7 +27,7 @@ const LEAD_SECTOR_KEYS = [
 ];
 
 const F = {
-  display: "'Cormorant Garamond','Georgia',serif",
+  display: "var(--zrc-font-display)", figures: "var(--zrc-font-figures)",
   body: "'Outfit','Helvetica Neue',sans-serif",
   mono: "'IBM Plex Mono','Fira Code',monospace",
 };
@@ -349,7 +349,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
               <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted }}>· · ·</div>
             ) : displayValue != null ? (
               <>
-                <div style={{ fontFamily: F.display, fontSize: 56, fontWeight: 300, color: riskColor(displayValue), lineHeight: 1 }}>
+                <div style={{ fontFamily: F.figures, fontSize: 56, fontWeight: 400, color: riskColor(displayValue), lineHeight: 1, fontVariantNumeric: "lining-nums tabular-nums" }}>
                   {fmt(displayValue, 1)}
                 </div>
                 <div style={{

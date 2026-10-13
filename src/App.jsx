@@ -23,7 +23,7 @@ import { C, alpha, getTheme, setTheme } from "./theme/palette";
 
 
 const F = {
-  display: "'Cormorant Garamond', 'Georgia', serif",
+  display: "var(--zrc-font-display)", figures: "var(--zrc-font-figures)",
   body: "'Outfit', 'Helvetica Neue', sans-serif",
   mono: "'IBM Plex Mono', 'Fira Code', monospace",
 };
@@ -1066,7 +1066,6 @@ const Hero = ({ lang, onNav }) => {
   return (
     <section
       id="hero"
-      data-theme="dark"
       style={{
         minHeight: "100svh",
         display: "flex",
@@ -1076,15 +1075,16 @@ const Hero = ({ lang, onNav }) => {
         position: "relative",
         overflow: "hidden",
         padding: "152px clamp(18px,4vw,48px) 64px",
-        background: "#050C16",
+        background: "var(--zrc-hero-bg)",
       }}
     >
       <img
+        className="zrc-hero-globe"
         src="/globe-bg.png"
         aria-hidden="true"
         style={{ position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", objectPosition:"center", display:"block", userSelect:"none", pointerEvents:"none" }}
       />
-      <div style={{ position:"absolute", inset:0, background:"linear-gradient(180deg, rgba(4,10,18,.48) 0%, rgba(4,10,18,.22) 38%, rgba(4,10,18,.48) 100%), radial-gradient(ellipse 75% 72% at 50% 48%, rgba(4,10,18,.08) 0%, rgba(4,10,18,.38) 100%)", pointerEvents:"none" }} />
+      <div style={{ position:"absolute", inset:0, background:"var(--zrc-hero-veil)", pointerEvents:"none" }} />
       <div className="zrc-hero-content" style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 920, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(20px)", transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)" }}>
         <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.25em", marginBottom: 28, fontWeight: 400, opacity: 0.96 }}>{t.tag}</div>
         <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px,5.5vw,68px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.08, letterSpacing: "-0.02em" }}>
@@ -1145,7 +1145,7 @@ const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => {
           <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 6 }}>
             {lang === "es" ? "DESDE" : "FROM"}
           </div>
-          <div style={{ fontFamily: F.display, fontSize: 32, color: C.gold, lineHeight: 1 }}>€99<span style={{ fontSize: 14, color: C.textMuted, fontFamily: F.mono }}>/mo</span></div>
+          <div style={{ fontFamily: F.figures, fontSize: 32, color: C.gold, lineHeight: 1 }}>€99<span style={{ fontSize: 14, color: C.textMuted, fontFamily: F.mono }}>/mo</span></div>
           <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, marginTop: 4 }}>Intelligence · {lang === "es" ? "todas las herramientas" : "all tools"}</div>
         </div>
 
@@ -1539,7 +1539,7 @@ const Brokerage = ({ lang }) => {
                     </div>
                   ))}
                 </div>
-                <div style={{ fontFamily: F.display, fontSize: 22, color: C.gold, marginBottom: 16 }}>{op.price}</div>
+                <div style={{ fontFamily: F.figures, fontSize: 22, color: C.gold, marginBottom: 16 }}>{op.price}</div>
               </div>
               <div style={{ padding: "14px 20px", borderTop: `1px solid ${C.border}` }}>
                 <button onClick={() => openTeaser(op)} style={{ width: "100%", fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "9px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer" }}>{t.req}</button>
@@ -1768,17 +1768,17 @@ const ZRCPlatform = () => {
         .zrc-hero-button:hover { transform:translateY(-2px); }
         .zrc-hero-primary { border:1px solid ${C.gold}; background:${C.gold}; color:${C.bg}; }
         .zrc-hero-primary:hover { background:${C.goldHover}; }
-        .zrc-hero-secondary { border:1px solid rgba(212,168,83,.58); background:rgba(9,9,11,.24); color:${C.text}; }
-        .zrc-hero-secondary:hover { border-color:${C.gold}; background:rgba(212,168,83,.1); }
+        .zrc-hero-secondary { border:1px solid ${alpha(C.gold, 0.58)}; background:var(--zrc-hero-card-soft); color:${C.text}; }
+        .zrc-hero-secondary:hover { border-color:${C.gold}; background:${C.goldDim}; }
         .zrc-hero-content { width:min(100%,1040px); }
         .zrc-hero-content > p { max-width:700px !important; font-size:clamp(14px,1.45vw,17px) !important; line-height:1.8 !important; }
         .zrc-hero-actions { margin-top:30px; }
         .zrc-hero-paths { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; max-width:860px; margin:38px auto 0; text-align:left; }
-        .zrc-hero-path { display:flex; min-height:142px; flex-direction:column; align-items:flex-start; padding:20px 22px; border:1px solid rgba(212,168,83,.22); border-radius:7px; background:rgba(9,12,18,.82); color:${C.text}; text-align:left; cursor:pointer; backdrop-filter:blur(12px); transition:transform .2s ease, border-color .2s ease, background .2s ease; }
-        .zrc-hero-path:hover { transform:translateY(-2px); border-color:rgba(212,168,83,.62); background:rgba(17,20,27,.94); }
+        .zrc-hero-path { display:flex; min-height:142px; flex-direction:column; align-items:flex-start; padding:20px 22px; border:1px solid ${alpha(C.gold, 0.22)}; border-radius:7px; background:var(--zrc-hero-card); box-shadow:var(--zrc-hero-card-shadow); color:${C.text}; text-align:left; cursor:pointer; backdrop-filter:blur(12px); transition:transform .2s ease, border-color .2s ease, background .2s ease; }
+        .zrc-hero-path:hover { transform:translateY(-2px); border-color:${alpha(C.gold, 0.62)}; background:var(--zrc-hero-card-hover); }
         .zrc-hero-path-eyebrow { margin-bottom:11px; color:${C.gold}; font-family:${F.mono}; font-size:9px; letter-spacing:.13em; }
         .zrc-hero-path-title { font-family:${F.display}; font-size:clamp(20px,2vw,24px); line-height:1.15; }
-        .zrc-hero-path-text { margin-top:8px; max-width:360px; color:#C4C4CC; font-family:${F.body}; font-size:12px; line-height:1.55; }
+        .zrc-hero-path-text { margin-top:8px; max-width:360px; color:${C.textSec}; font-family:${F.body}; font-size:12px; line-height:1.55; }
 
         @media (max-width: 860px) {
           .nav-hamburger { display: flex !important; }
