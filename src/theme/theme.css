@@ -3,8 +3,8 @@
    on any subtree (e.g. the hero or tool overlays that keep a dark design). */
 :root {
   /* Typography for headings and large figures — change here to restyle the site. */
-  --zrc-font-display: 'Cormorant Garamond', Georgia, serif;
-  --zrc-font-figures: 'Cormorant Garamond', Georgia, serif;
+  --zrc-font-display: 'Fraunces', Georgia, serif;
+  --zrc-font-figures: 'Fraunces', Georgia, serif;
 }
 
 :root, [data-theme="light"] {
@@ -18,10 +18,11 @@
   --zrc-text: #17171A;
   --zrc-text-sec: #4F4F57;
   --zrc-text-muted: #75757E;
-  --zrc-gold: #8E6B22;
-  --zrc-gold-hover: #A27B2B;
-  --zrc-gold-dim: rgba(142,107,34,0.08);
-  --zrc-gold-border: rgba(142,107,34,0.28);
+  /* Accent (named "gold" for historical reasons): deep navy in light mode */
+  --zrc-gold: #1F3A5F;
+  --zrc-gold-hover: #2D5283;
+  --zrc-gold-dim: rgba(31,58,95,0.06);
+  --zrc-gold-border: rgba(31,58,95,0.24);
   --zrc-on-gold: #FFFFFF;
   --zrc-red: #C2312F;
   --zrc-green: #1E7A4C;
