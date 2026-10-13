@@ -1802,9 +1802,10 @@ const ZRCPlatform = () => {
         .zrc-hero-secondary { border:1px solid var(--zrc-hero-secondary-border); background:var(--zrc-hero-card-soft); color:${C.text}; }
         .zrc-hero-secondary:hover { border-color:${C.gold}; background:${C.goldDim}; }
         .zrc-hero-content { width:min(100%,1040px); }
+        .zrc-hero-content h1, .zrc-hero-content > div:first-child { text-shadow:var(--zrc-hero-glow); }
         .zrc-ic-home { position:fixed; top:max(16px, env(safe-area-inset-top)); left:16px; z-index:9001; padding:10px 16px; min-height:44px; background:rgba(9,9,11,.85); color:#D4B050; border:1px solid rgba(212,176,80,.45); border-radius:4px; font-family:${F.mono}; font-size:12px; letter-spacing:.14em; cursor:pointer; backdrop-filter:blur(8px); }
         .zrc-ic-home:hover { border-color:#D4B050; background:rgba(212,176,80,.12); }
-        .zrc-hero-content > p { max-width:700px !important; font-size:clamp(14px,1.45vw,17px) !important; line-height:1.8 !important; }
+        .zrc-hero-content > p { color:var(--zrc-hero-sub) !important; text-shadow:var(--zrc-hero-glow); max-width:700px !important; font-size:clamp(14px,1.45vw,17px) !important; line-height:1.8 !important; }
         .zrc-hero-actions { margin-top:30px; }
         .zrc-hero-paths { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; max-width:860px; margin:38px auto 0; text-align:left; }
         .zrc-hero-path { display:flex; min-height:142px; flex-direction:column; align-items:flex-start; padding:20px 22px; border:1px solid var(--zrc-hero-card-border); border-left:3px solid var(--zrc-hero-card-accent); border-radius:7px; background:var(--zrc-hero-card); box-shadow:var(--zrc-hero-card-shadow); color:${C.text}; text-align:left; cursor:pointer; backdrop-filter:blur(12px); transition:transform .2s ease, border-color .2s ease, background .2s ease; }
