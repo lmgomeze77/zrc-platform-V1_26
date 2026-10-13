@@ -940,22 +940,23 @@ const MarketTicker = ({ lang }) => {
   const doubled = [...data, ...data];
 
   return (
-    <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflow: "hidden", position: "fixed", top: 0, left: 0, right: 0, height: 44, zIndex: 101 }}>
-      <div style={{ display: "flex", alignItems: "center", position: "absolute", whiteSpace: "nowrap", animation: "tickerScroll 60s linear infinite" }}>
-        {doubled.map((m, i) => (
-          <div key={i} style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "0 28px", height: 44 }}>
-            <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.05em" }}>{m.s}</span>
-            <span style={{ fontFamily: F.mono, fontSize: 11, color: C.text, fontWeight: 500 }}>{m.v}</span>
-            <span style={{ fontFamily: F.mono, fontSize: 10, color: m.up ? C.green : C.red, fontWeight: 500 }}>{m.c}</span>
-            <span style={{ width: 1, height: 12, background: C.border }} />
-          </div>
-        ))}
+    <div className="zrc-ticker" style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflow: "hidden", position: "fixed", top: 0, left: 0, right: 0, height: 44, zIndex: 101, display: "flex" }}>
+      {/* Scrolling track in its own clipped lane, faded at both edges, so
+          items never slide underneath the "live" badge. */}
+      <div className="zrc-ticker-lane" style={{ position: "relative", flex: 1, minWidth: 0, overflow: "hidden" }}>
+        <div className="zrc-ticker-track" style={{ display: "flex", alignItems: "center", position: "absolute", whiteSpace: "nowrap", animation: "tickerScroll 60s linear infinite" }}>
+          {doubled.map((m, i) => (
+            <div key={i} className="zrc-ticker-item">
+              <span className="zrc-ticker-sym">{m.s}</span>
+              <span className="zrc-ticker-val">{m.v}</span>
+              <span className="zrc-ticker-chg" style={{ color: m.up ? C.green : C.red }}>{m.c}</span>
+            </div>
+          ))}
+        </div>
       </div>
-      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 100, display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 12, background: `linear-gradient(90deg, transparent, ${C.surface} 40%)`, zIndex: 2 }}>
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
-          <span style={{ width: 5, height: 5, borderRadius: "50%", background: lastUpdate ? C.green : C.amber, animation: "pulse 2s infinite" }} />
-          <span style={{ fontFamily: F.mono, fontSize: 9, color: lastUpdate ? C.green : C.amber, letterSpacing: "0.1em" }}>{T[lang].live}</span>
-        </span>
+      <div className="zrc-ticker-live" style={{ flexShrink: 0, display: "flex", alignItems: "center", gap: 5, padding: "0 14px 0 10px", borderLeft: `1px solid ${C.border}`, background: C.surface }}>
+        <span style={{ width: 6, height: 6, borderRadius: "50%", background: lastUpdate ? C.green : C.amber, animation: "pulse 2s infinite" }} />
+        <span className="zrc-ticker-live-label" style={{ fontFamily: F.mono, fontSize: 9, color: lastUpdate ? C.green : C.amber, letterSpacing: "0.1em" }}>{T[lang].live}</span>
       </div>
     </div>
   );
@@ -1778,6 +1779,21 @@ const ZRCPlatform = () => {
         html { overflow-x: hidden; }
         body { overflow-x: hidden; }
 
+        .zrc-ticker-lane { -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%); mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%); }
+        .zrc-ticker-item { display:inline-flex; align-items:center; gap:10px; height:44px; padding:0 24px; border-right:1px solid ${C.border}; font-family:${F.mono}; font-variant-numeric:tabular-nums; }
+        .zrc-ticker-item > span { line-height:1; }
+        .zrc-ticker-sym { font-size:10px; color:${C.textMuted}; letter-spacing:.05em; }
+        .zrc-ticker-val { font-size:11px; color:${C.text}; font-weight:500; }
+        .zrc-ticker-chg { font-size:10px; font-weight:500; }
+        @media (max-width: 640px) {
+          .zrc-ticker-item { gap:6px; padding:0 14px; }
+          .zrc-ticker-sym { font-size:9.5px; letter-spacing:.02em; }
+          .zrc-ticker-val { font-size:11px; }
+          .zrc-ticker-chg { font-size:10px; }
+          .zrc-ticker-live { padding:0 12px !important; }
+          .zrc-ticker-live-label { display:none; }
+          .zrc-ticker-lane { -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%); mask-image:linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 14px), transparent 100%); }
+        }
         .zrc-brand { display:flex; align-items:center; gap:10px; flex-shrink:0; border:0; padding:8px 4px; background:transparent; cursor:pointer; }
         .zrc-brand:hover { opacity:1; }
         .nav-links { display:flex; align-items:center; gap:clamp(12px,1.6vw,24px); }
