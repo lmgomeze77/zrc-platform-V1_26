@@ -78,10 +78,10 @@ const RISK = {
   high: "var(--zrc-risk-high)", crit: "var(--zrc-risk-crit)",
 };
 const BANDS = [
-  { key: "bajo", label: "BAJO", labelEn: "LOW", range: "0–40", lo: 0, hi: 40, mid: 20, color: RISK.low },
-  { key: "moderado", label: "MODERADO", labelEn: "MODERATE", range: "40–65", lo: 40, hi: 65, mid: 52.5, color: RISK.mod },
-  { key: "elevado", label: "ELEVADO", labelEn: "ELEVATED", range: "65–80", lo: 65, hi: 80, mid: 72.5, color: RISK.high },
-  { key: "critico", label: "CRÍTICO", labelEn: "CRITICAL", range: "80–100", lo: 80, hi: 100, mid: 90, color: RISK.crit },
+  { key: "bajo", fill: 0.10, label: "BAJO", labelEn: "LOW", range: "0–40", lo: 0, hi: 40, mid: 20, color: RISK.low },
+  { key: "moderado", fill: 0.13, label: "MODERADO", labelEn: "MODERATE", range: "40–65", lo: 40, hi: 65, mid: 52.5, color: RISK.mod },
+  { key: "elevado", fill: 0.10, label: "ELEVADO", labelEn: "ELEVATED", range: "65–80", lo: 65, hi: 80, mid: 72.5, color: RISK.high },
+  { key: "critico", fill: 0.22, label: "CRÍTICO", labelEn: "CRITICAL", range: "80–100", lo: 80, hi: 100, mid: 90, color: RISK.crit },
 ];
 
 const bandOf = (v) => BANDS.find((b) => v < b.hi) || BANDS[BANDS.length - 1];
@@ -125,10 +125,19 @@ function IndexChart({ history, color }) {
       {/* Zonas de riesgo visibles dentro del rango del gráfico */}
       {BANDS.filter((b) => b.hi > minV && b.lo < maxV).map((b) => {
         const top = yOf(Math.min(b.hi, maxV)), bottom = yOf(Math.max(b.lo, minV));
+        const showThreshold = b.lo > minV && b.lo < maxV;
         return (
           <g key={b.key}>
-            <rect x={PAD.l} y={top} width={iW} height={bottom - top} fill={b.color} opacity={0.07} />
-            {bottom - top >= 16 && <text x={W - PAD.r - 4} y={bottom - 5} textAnchor="end" fill={b.color} fontSize={8} fontFamily={F.mono} letterSpacing="0.1em" opacity={0.8}>{b.label}</text>}
+            <rect x={PAD.l} y={top} width={iW} height={bottom - top} fill={b.color} opacity={b.fill} />
+            {/* Barra lateral con el color de la banda: identifica la zona aunque el fondo sea suave */}
+            <rect x={PAD.l} y={top} width={4} height={bottom - top} fill={b.color} />
+            {showThreshold && (
+              <>
+                <line x1={PAD.l} y1={bottom} x2={W - PAD.r} y2={bottom} stroke={b.color} strokeWidth={1} strokeDasharray="4 3" />
+                <text x={PAD.l + 8} y={bottom - 4} fill={b.color} fontSize={8} fontWeight={600} fontFamily={F.mono}>{b.lo}</text>
+              </>
+            )}
+            {bottom - top >= 16 && <text x={W - PAD.r - 6} y={bottom - 5} textAnchor="end" fill={b.color} fontSize={9} fontWeight={700} fontFamily={F.mono} letterSpacing="0.1em">{b.label}</text>}
           </g>
         );
       })}
@@ -151,7 +160,7 @@ function IndexChart({ history, color }) {
                 actual) — si se etiquetara cada punto, la serie se volvería
                 ilegible según crezca el histórico semana a semana. */}
             {isEndpoint && (
-              <text x={cx} y={cy - 9} textAnchor={i === 0 ? "start" : "end"} fill={color} fontSize={11} fontWeight={600} fontFamily={F.mono}>
+              <text x={i === 0 ? cx + 8 : cx} y={cy - 9} textAnchor={i === 0 ? "start" : "end"} fill={color} fontSize={11} fontWeight={600} fontFamily={F.mono}>
                 {fmt(p.index_value)}
               </text>
             )}

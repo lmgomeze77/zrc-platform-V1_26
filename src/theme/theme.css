@@ -28,7 +28,11 @@
   --zrc-green: #1E7A4C;
   --zrc-blue: #2563EB;
   --zrc-amber: #A86A0B;
-  --zrc-violet: #6D4FC2;
+  /* "violet" token = ML accent; slate steel in light mode */
+  --zrc-violet: #3F5A78;
+  --zrc-ml-bg: rgba(63,90,120,0.08);
+  --zrc-ml-banner-bg: #F3F5F8;
+  --zrc-ml-border: rgba(63,90,120,0.28);
   --zrc-nav-bg: rgba(255,255,255,0.96);
   --zrc-nav-bg-top: rgba(255,255,255,0.97);
   --zrc-nav-border-top: rgba(23,23,26,0.08);
@@ -80,6 +84,9 @@
   --zrc-blue: #3B82F6;
   --zrc-amber: #F59E0B;
   --zrc-violet: #A78BFA;
+  --zrc-ml-bg: rgba(139,92,246,0.12);
+  --zrc-ml-banner-bg: rgba(139,92,246,0.06);
+  --zrc-ml-border: rgba(139,92,246,0.25);
   --zrc-nav-bg: rgba(9,9,11,0.96);
   --zrc-nav-bg-top: rgba(9,9,11,0.78);
   --zrc-nav-border-top: rgba(255,255,255,0.08);

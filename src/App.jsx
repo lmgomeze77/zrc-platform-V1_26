@@ -741,7 +741,7 @@ const Badge = ({ label, variant }) => {
     advisory:  { bg: "rgba(34,197,94,0.12)",    c: C.green, b: "rgba(34,197,94,0.25)" },
     live:      { bg: "rgba(34,197,94,0.12)",    c: C.green, b: "rgba(34,197,94,0.25)" },
     beta:      { bg: "rgba(245,158,11,0.12)",   c: C.amber, b: "rgba(245,158,11,0.25)" },
-    ml:        { bg: "rgba(139,92,246,0.12)",   c: C.violet, b: "rgba(139,92,246,0.25)" },
+    ml:        { bg: "var(--zrc-ml-bg)",        c: C.violet, b: "var(--zrc-ml-border)" },
     soon:      { bg: "rgba(148,163,184,0.10)",  c: C.textMuted, b: "rgba(148,163,184,0.22)" },
   };
   const s = m[(variant || label || "").toLowerCase()] || m.strategic;
@@ -1252,9 +1252,12 @@ const Intelligence = ({ lang }) => {
       </FadeIn>
 
       <FadeIn delay={0.1}>
-        <div style={{ padding: "20px 24px", background: "rgba(139,92,246,0.06)", border: "1px solid rgba(139,92,246,0.18)", marginBottom: 32, display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
-          <div style={{ width: 32, height: 32, border: "1px solid rgba(139,92,246,0.4)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <span style={{ fontSize: 14 }}>⚡</span>
+        <div style={{ padding: "20px 24px", background: "var(--zrc-ml-banner-bg)", border: "1px solid var(--zrc-ml-border)", borderLeft: `3px solid ${C.violet}`, marginBottom: 32, display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
+          <div style={{ width: 32, height: 32, border: `1px solid ${C.violet}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke={C.violet} strokeWidth="1.2" aria-hidden="true">
+              <circle cx="3" cy="4" r="1.6" /><circle cx="3" cy="12" r="1.6" /><circle cx="13" cy="8" r="1.6" /><circle cx="8" cy="8" r="1.2" />
+              <path d="M4.4 4.8 7 7.4M4.4 11.2 7 8.6M9.2 8h2.2" />
+            </svg>
           </div>
           <div style={{ flex: 1, minWidth: 260 }}>
             <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: C.violet, marginBottom: 6 }}>{t.mlBadge}</div>
