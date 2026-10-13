@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T14:17:51.589Z",
+  "generated_at": "2026-10-13T13:27:31.459Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,71 +96,14 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EURASIA",
-      "title": {
-        "es": "El Kremlin rechaza la oferta de tregua de 60 días y se niega a comentar el 'alto el fuego energético' de Trump",
-        "en": "Kremlin rejects 60-day truce offer and refuses to comment on Trump's 'energy ceasefire'"
-      },
-      "summary": {
-        "es": "El Kremlin ha rechazado formalmente la propuesta de cese al fuego de 60 días presentada por Zelenski, mientras Moscú continúa atacando la red eléctrica ucraniana. La negativa rusa al 'alto el fuego energético' anunciado unilateralmente por Trump eleva la incertidumbre sobre la posición de Washington y el futuro del apoyo occidental a Ucrania, con impacto directo en los mercados de energía y divisas europeas.",
-        "en": "The Kremlin formally rejected Zelenskyy's 60-day ceasefire proposal while continuing strikes on Ukraine's power grid. Russia's dismissal of Trump's unilaterally announced 'energy ceasefire' raises significant uncertainty about Washington's posture and the future of Western support for Ukraine, with direct implications for European energy markets and FX."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Ataques a infraestructura energética elevan prima de riesgo invernal",
-            "en": "Energy infrastructure strikes raise winter risk premium"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Prolongación del conflicto presiona al euro",
-            "en": "Conflict prolongation pressures the euro"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada geopolítica impulsa demanda de refugio seguro",
-            "en": "Geopolitical escalation boosts safe-haven demand"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre energética y de seguridad pesa sobre la renta variable europea",
-            "en": "Energy and security uncertainty weighs on European equities"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/oct/12/ukraine-russia-trump-energy-ceasefire-nato-zelenskyy-nobel-latest-news-updates",
-      "published_at": "2026-10-12",
-      "time": "<1h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Arabia Saudí: Mortales ataques hutíes al aeropuerto de Riad alimentan temores de un conflicto regional más amplio",
-        "en": "Saudi Arabia: Deadly Houthi strikes on Riyadh airport fuel fears of wider Middle East conflict"
+        "es": "Arabia Saudí enfrenta más ataques tras sufrir los golpes hutíes en aeropuertos",
+        "en": "Saudi Arabia Faces More Attacks as It Reels From Airport Strikes"
       },
       "summary": {
-        "es": "Los ataques hutíes sobre el aeropuerto de Riad, los más mortíferos en un país árabe del Golfo desde el inicio de la guerra entre EE UU e Israel con Irán en febrero, han interrumpido el tráfico aéreo y fuerzan a Estados Unidos a considerar acción militar directa. La escalada amenaza la estabilidad de Arabia Saudí como actor energético clave, con implicaciones inmediatas para el precio del crudo y la percepción de riesgo regional.",
-        "en": "Houthi strikes on Riyadh airport — the deadliest attacks on a Gulf Arab country since the US-Israeli war with Iran began in February — have disrupted flights and are pushing the US toward considering direct military action. The escalation threatens Saudi Arabia's stability as a critical energy actor, with immediate implications for crude prices and regional risk perception."
+        "es": "Arabia Saudí sufre una nueva oleada de ataques con drones y misiles hutíes tras un fin de semana de confrontación directa, con vuelos suspendidos en sus principales aeropuertos internacionales. Irán ha ofrecido mediar, señalando su papel central en el conflicto. La perturbación de infraestructuras críticas saudíes representa un riesgo directo para la producción y exportación de petróleo, con implicaciones inmediatas para los mercados energéticos globales.",
+        "en": "Saudi Arabia faces a continued wave of Houthi drone and missile attacks following a weekend of direct confrontation, with flights suspended at major international airports. Iran's offer to mediate underscores its central role in the escalation. Disruption to critical Saudi infrastructure poses direct risk to oil production and export capacity, with immediate implications for global energy markets."
       },
       "impact": "high",
       "market_impact": [
@@ -169,8 +112,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de suministro en el Golfo impulsa el precio del crudo",
-            "en": "Gulf supply risk drives crude prices higher"
+            "es": "Riesgo de interrupción del suministro saudí impulsa precio",
+            "en": "Saudi supply disruption risk drives price higher"
           }
         },
         {
@@ -178,8 +121,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Tensión regional eleva activos refugio",
-            "en": "Regional tension lifts safe-haven assets"
+            "es": "Demanda de refugio seguro ante escalada regional",
+            "en": "Safe-haven demand on regional escalation"
           }
         },
         {
@@ -187,95 +130,248 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Aversión al riesgo presiona divisas emergentes dependientes de energía",
-            "en": "Risk aversion pressures energy-dependent EM currencies"
+            "es": "Aversión al riesgo presiona divisas emergentes importadoras de energía",
+            "en": "Risk-off pressures energy-importing EM currencies"
           }
         },
         {
-          "asset": "Airline stocks (GCC)",
+          "asset": "Airline equities",
           "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "Cierre del aeropuerto e inseguridad aérea golpean al sector",
-            "en": "Airport closure and air insecurity hit the sector"
+            "es": "Suspensión de vuelos y rutas afectadas por conflicto",
+            "en": "Flight suspensions and conflict-affected routes"
           }
         }
       ],
-      "confidence": 92,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/saudi-arabia-deadly-houthi-strikes-on-riyadh-airport-fuel-fears-of-wider-middle-east-conflict/live-79639277?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-12",
-      "time": "3h"
+      "confidence": 90,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/12/world/middleeast/iran-houthis-saudi-arabia.html",
+      "published_at": "2026-10-13",
+      "time": "4h"
     },
     {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "APAC",
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
       "title": {
-        "es": "Corea del Norte lanza misiles tras el test hipersónico de Seúl",
-        "en": "North Korea fires missiles after Seoul's hypersonic test"
+        "es": "Zelensky dice que Rusia 'no atendió' el llamado de Trump al alto el fuego; Ucrania no tuvo advertencia previa de los ataques a Kyiv",
+        "en": "Zelenskyy says Russia 'did not heed' Trump's call for ceasefire and Ukraine had 'no early warning' before strikes on Kyiv"
       },
       "summary": {
-        "es": "Corea del Norte realizó su cuarto lanzamiento de misiles en octubre en respuesta al exitoso test hipersónico surcoreano, en lo que el ejército de Seúl calificó como una demostración de fuerza. El ciclo de acción-reacción en la península coreana intensifica la presión sobre el despliegue militar de EE UU en la región y añade tensión a los ya frágiles vínculos entre Washington, Seúl y Tokio frente a Pekín.",
-        "en": "North Korea conducted its fourth missile launch this October in direct response to South Korea's successful hypersonic missile test, with Seoul's military labeling it a show of force. The action-reaction cycle on the Korean peninsula increases pressure on US forward deployments and adds stress to already fragile Washington-Seoul-Tokyo dynamics vis-à-vis Beijing."
+        "es": "El presidente Zelensky confirmó que Ucrania suspendió temporalmente los ataques a refinerías rusas tras el anuncio de Trump de un alto el fuego energético, pero acusa a Rusia de ignorar la iniciativa y continuar los ataques sobre Kyiv. Mientras tanto, Polonia señala la complejidad de utilizar los activos rusos congelados. La negativa rusa al alto el fuego propuesto por Washington complica la posición diplomática de Trump y eleva la incertidumbre sobre el proceso de paz.",
+        "en": "President Zelenskyy confirmed Ukraine temporarily halted strikes on Russian refineries following Trump's energy ceasefire announcement, but accuses Russia of ignoring the initiative and continuing strikes on Kyiv. Poland flags the legal complexity of deploying frozen Russian assets. Russia's rejection of Washington's proposed ceasefire complicates Trump's diplomatic position and heightens peace-process uncertainty."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Korean Won (KRW)",
+          "asset": "European natural gas (TTF)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Fracaso del alto el fuego energético mantiene presión sobre suministro",
+            "en": "Failed energy ceasefire sustains supply pressure"
+          }
+        },
+        {
+          "asset": "European equities",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada militar regional debilita al won surcoreano",
-            "en": "Regional military escalation weakens the Korean won"
+            "es": "Prolongación del conflicto pesa sobre sentimiento europeo",
+            "en": "Prolonged conflict weighs on European sentiment"
           }
         },
         {
-          "asset": "Japanese Yen (JPY)",
-          "direction": "up",
+          "asset": "EUR/USD",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Tensión regional refuerza flujos hacia el yen como refugio",
-            "en": "Regional tension boosts yen safe-haven flows"
+            "es": "Riesgo geopolítico persistente debilita el euro",
+            "en": "Persistent geopolitical risk weakens the euro"
           }
         },
         {
-          "asset": "Defense equities (US/Asia)",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "Brent crude",
+          "direction": "mixed",
+          "magnitude": "low",
           "note": {
-            "es": "Escalada de misiles impulsa acciones de defensa",
-            "en": "Missile escalation boosts defense equities"
+            "es": "Incertidumbre sobre ataques a infraestructura energética rusa",
+            "en": "Uncertainty over strikes on Russian energy infrastructure"
           }
         }
       ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/north-korea-fires-missiles-after-seoul-s-hypersonic-test/a-79636110?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-12",
-      "time": "10h"
+      "confidence": 88,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/oct/13/ships-hit-sunk-drones-bulgaria-black-sea-ukraine-russia-war-france-spains-sweden-pope-leo-europe-latest-news-updates",
+      "published_at": "2026-10-13",
+      "time": "<1h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "AFRICA",
+      "title": {
+        "es": "El expresidente de la RDC Kabila se une a los rebeldes del M23 en una nueva coalición",
+        "en": "Former DR Congo President Kabila joins M23 rebels in a new coalition"
+      },
+      "summary": {
+        "es": "Joseph Kabila, expresidente de la República Democrática del Congo, se ha unido públicamente a los rebeldes del M23, quienes ya controlan gran parte del este del país, formando una nueva coalición que eleva el riesgo de guerra civil a gran escala. Esta alianza amenaza la estabilidad de una de las regiones mineras más críticas del mundo, con implicaciones directas para el suministro global de cobalto, coltán y otros minerales estratégicos. El gobierno de Tshisekedi enfrenta ahora una oposición armada con capital político y apoyo externo.",
+        "en": "Former DRC President Joseph Kabila has publicly joined M23 rebels, who already control much of eastern DRC, forming a new coalition that significantly raises large-scale civil war risk. This alliance threatens stability in one of the world's most critical mining regions, with direct implications for global cobalt, coltan and strategic mineral supply chains. The Tshisekedi government now faces an armed opposition with political capital and external backing."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Cobalt futures",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo de interrupción de la producción minera en el este del Congo",
+            "en": "Risk of mining disruption in eastern Congo"
+          }
+        },
+        {
+          "asset": "EV battery supply chain equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre sobre suministro de minerales críticos para baterías",
+            "en": "Uncertainty over critical battery mineral supply"
+          }
+        },
+        {
+          "asset": "EM Africa sovereign bonds",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada del conflicto regional eleva primas de riesgo africanas",
+            "en": "Regional conflict escalation raises African risk premiums"
+          }
+        }
+      ],
+      "confidence": 83,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/10/13/former-dr-congo-president-kabila-joins-m23-rebels-in-a-new-coalition?traffic_source=rss",
+      "published_at": "2026-10-13",
+      "time": "4h"
     },
     {
       "id": 4,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "El sexto destructor lanzamisiles de EE UU llegará este jueves a la base naval de Rota",
-        "en": "The sixth US missile destroyer will arrive Thursday at the Rota naval base"
+        "es": "Un ciberataque afecta cientos de supermercados franceses, arruinando millones de euros en alimentos",
+        "en": "Cyberattack hits hundreds of French supermarkets, spoiling millions of euros in food"
       },
       "summary": {
-        "es": "El USS John Basilone reforzará la presencia militar estadounidense en España en un contexto de recortes de tropas en Europa, lo que convierte a la base de Rota en un nodo estratégico creciente para la OTAN. Este despliegue refleja la reconfiguración de la postura de defensa de EE UU en el sur de Europa, con implicaciones para el equilibrio de poder en el Mediterráneo y el Atlántico.",
-        "en": "The USS John Basilone will reinforce US military presence in Spain amid broader troop cuts in Europe, elevating Rota as a growing NATO strategic node. The deployment reflects a reconfiguration of US defense posture in southern Europe, with implications for Mediterranean and Atlantic power balance."
+        "es": "Un ciberataque sin precedentes contra cientos de supermercados franceses —incluyendo Carrefour, Monoprix y E.Leclerc— manipuló remotamente las temperaturas de frigoríficos y congeladores, causando pérdidas millonarias en productos frescos. El ataque representa una nueva categoría de amenaza a infraestructura civil crítica en Europa, con potencial atribución a actores estatales en el contexto de la guerra en Ucrania. Las implicaciones para la ciberseguridad del sector retail y las cadenas de suministro alimentario son significativas.",
+        "en": "An unprecedented cyberattack on hundreds of French supermarkets — including Carrefour, Monoprix and E.Leclerc — remotely manipulated fridge and freezer temperatures, causing millions of euros in food spoilage. The attack represents a new category of threat to civilian critical infrastructure in Europe, with potential state-actor attribution in the context of the Ukraine war. Implications for retail sector cybersecurity and food supply chain resilience are significant."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European cybersecurity equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Ataques a infraestructura civil aceleran demanda de ciberseguridad",
+            "en": "Attacks on civilian infrastructure accelerate cybersecurity demand"
+          }
+        },
+        {
+          "asset": "French retail equities (Carrefour)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Pérdidas directas y reputacionales por el ataque",
+            "en": "Direct and reputational losses from the attack"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Vulnerabilidad de infraestructura civil europea pesa en el sentimiento",
+            "en": "European civilian infrastructure vulnerability weighs on sentiment"
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/cyberattack-hits-hundreds-of-french-supermarkets-spoiling-millions-of-euros-in-food",
+      "published_at": "2026-10-13",
+      "time": "4h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "MENA",
+      "title": {
+        "es": "La escalada en Yemen es un punto de inflexión",
+        "en": "The escalation in Yemen is a turning point"
+      },
+      "summary": {
+        "es": "El análisis advierte que el riesgo de una guerra regional más amplia en el entorno yemení-saudí está aumentando, aunque aún existe margen para una solución negociada si prevalecen las cabezas más frías. La escalada hutí contra infraestructuras saudíes —aeropuertos, instalaciones energéticas— representa el umbral más alto de confrontación desde la guerra del Yemen, con riesgo de arrastre iraní-saudí. Los inversores deben monitorizar de cerca las señales de desescalada o, por el contrario, de ampliación del conflicto.",
+        "en": "Analysis warns that the risk of a broader regional war in the Yemen-Saudi theatre is rising, though space for a negotiated arrangement remains if cooler heads prevail. Houthi escalation against Saudi infrastructure — airports, energy facilities — represents the highest confrontation threshold since the Yemen war began, with risk of Iranian-Saudi drag-in. Investors should closely monitor de-escalation signals versus conflict broadening indicators."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "European defense equities",
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de escalada regional sostiene prima geopolítica del petróleo",
+            "en": "Regional escalation risk sustains oil geopolitical premium"
+          }
+        },
+        {
+          "asset": "Gold",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Presencia militar reforzada impulsa gasto en defensa europeo",
-            "en": "Reinforced military presence supports European defense spending"
+            "es": "Activo refugio ante incertidumbre de conflicto regional",
+            "en": "Safe-haven asset amid regional conflict uncertainty"
+          }
+        }
+      ],
+      "confidence": 75,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/crp3gy0x0dd1o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-12",
+      "time": "23h"
+    },
+    {
+      "id": 6,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "La OTAN detalla su plan para proteger a los aliados europeos de Ucrania frente a Rusia",
+        "en": "NATO Details Plan to Shield Ukraine's European Allies From Russia"
+      },
+      "summary": {
+        "es": "La OTAN ha revelado un plan estratégico para disuadir a Rusia ante la intensificación de ataques de sabotaje, incendios y ciberataques contra naciones europeas que apoyan a Ucrania. La divulgación pública del plan representa una señal de disuasión deliberada. Este movimiento implica un incremento sostenido del gasto en defensa europeo y abre oportunidades en el sector industrial-militar del continente.",
+        "en": "NATO has disclosed a strategic blueprint to deter Russia amid intensifying sabotage, arson and cyberattacks against European nations supporting Ukraine. The deliberate public disclosure functions as a deterrence signal. This implies sustained increases in European defense spending and creates durable opportunities in the continent's defense-industrial sector."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Planes de la OTAN impulsan expectativas de gasto en defensa",
+            "en": "NATO plans boost defense spending expectations"
+          }
+        },
+        {
+          "asset": "EU sovereign bonds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor gasto en defensa presiona las finanzas públicas europeas",
+            "en": "Higher defense spending pressures European public finances"
           }
         },
         {
@@ -283,94 +379,16 @@
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Señal de compromiso de EE UU con Europa, efecto limitado en FX",
-            "en": "US commitment signal to Europe, limited FX effect"
+            "es": "Señal de fortaleza disuasoria contrarrestada por riesgo geopolítico",
+            "en": "Deterrence signal offset by ongoing geopolitical risk"
           }
         }
       ],
-      "confidence": 72,
-      "source": "El País",
-      "source_url": "https://elpais.com/espana/2026-10-12/el-sexto-destructor-lanzamisiles-de-ee-uu-llegara-este-jueves-a-la-base-naval-de-rota.html",
+      "confidence": 85,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/12/world/europe/nato-strategy-russia-europe.html",
       "published_at": "2026-10-12",
-      "time": "10h"
-    },
-    {
-      "id": 5,
-      "tag": "LATAM-WATCH",
-      "region": "LATAM",
-      "title": {
-        "es": "EE UU detiene a hombre acusado en un esquema de lavado de dinero venezolano de varios miles de millones",
-        "en": "US detains man accused in multi-billion Venezuelan money laundering scheme"
-      },
-      "summary": {
-        "es": "La detención de Álvaro Pulido, por quien EE UU ofrecía 10 millones de dólares de recompensa, señala una intensificación de la presión estadounidense sobre las redes financieras del régimen chavista. Este movimiento puede anticipar nuevas sanciones secundarias o medidas de cumplimiento que afecten a bancos y activos vinculados a Venezuela, con repercusiones para flujos financieros en América Latina.",
-        "en": "The arrest of Álvaro Pulido, for whom the US offered a $10 million reward, signals intensifying American pressure on Chavista financial networks. This move may foreshadow new secondary sanctions or compliance measures affecting banks and assets linked to Venezuela, with ripple effects on Latin American financial flows."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Venezuelan sovereign bonds",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor presión legal sobre el régimen eleva riesgo político",
-            "en": "Increased legal pressure on regime raises political risk"
-          }
-        },
-        {
-          "asset": "EM currencies (LATAM)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de contagio de sanciones pesa levemente sobre divisas regionales",
-            "en": "Sanctions contagion risk weighs mildly on regional currencies"
-          }
-        }
-      ],
-      "confidence": 70,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/crp3gy0x0dd1o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-12",
-      "time": "<1h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Ministro de IA advierte que es 'probable' que las ciberdefensas del Reino Unido sean vulneradas",
-        "en": "AI minister warns it is 'likely' UK's cyber defences will be breached"
-      },
-      "summary": {
-        "es": "El ministro de IA del Reino Unido admitió públicamente que una brecha en las ciberdefensas del país es probable, anunciando el uso de inteligencia artificial avanzada para reforzar la resiliencia cibernética. Esta declaración señala una escalada en la conciencia gubernamental sobre amenazas cibernéticas de actores estatales, con implicaciones para el sector de ciberseguridad y el gasto público en defensa digital.",
-        "en": "The UK's AI minister publicly acknowledged a breach of the country's cyber defences is likely, announcing the use of advanced AI to bolster cyber resilience. The statement signals escalating government awareness of state-actor cyber threats, with implications for the cybersecurity sector and public digital defence spending."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Cybersecurity equities (UK/EU)",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Reconocimiento de vulnerabilidades impulsa demanda del sector",
-            "en": "Vulnerability acknowledgment boosts sector demand"
-          }
-        },
-        {
-          "asset": "UK gilts",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor gasto en defensa digital añade presión fiscal marginal",
-            "en": "Higher digital defence spending adds marginal fiscal pressure"
-          }
-        }
-      ],
-      "confidence": 68,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cr78pe09y05xo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-12",
-      "time": "1h"
+      "time": "16h"
     }
   ],
   "market_updated_at": "2026-10-13T02:44:54.755Z"
