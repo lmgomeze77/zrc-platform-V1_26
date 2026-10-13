@@ -12,6 +12,7 @@ import GeoRiskML from "./pages/intelligence/GeoRiskML";
 import GeoRiskIndex from "./pages/intelligence/GeoRiskIndex";
 import GeoRiskWorldMap from "./pages/intelligence/GeoRiskWorldMap";
 import ZenithAssistant from "./components/assistant/ZenithAssistant";
+import { C, alpha, getTheme, setTheme } from "./theme/palette";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZENITH RISE CAPITAL — PLATFORM v3.4
@@ -20,13 +21,6 @@ import ZenithAssistant from "./components/assistant/ZenithAssistant";
 // + Financial Intelligence System (FIS) · + GeoRisk Predictive ML
 // ══════════════════════════════════════════════════════════════════════════
 
-const C = {
-  bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
-  border: "#27272A", borderHover: "#3F3F46",
-  text: "#FAFAFA", textSec: "#A1A1AA", textMuted: "#71717A",
-  gold: "#D4A853", goldDim: "rgba(212,168,83,0.12)", goldBorder: "rgba(212,168,83,0.25)",
-  red: "#EF4444", green: "#22C55E", blue: "#3B82F6", amber: "#F59E0B",
-};
 
 const F = {
   display: "'Cormorant Garamond', 'Georgia', serif",
@@ -747,7 +741,7 @@ const Badge = ({ label, variant }) => {
     advisory:  { bg: "rgba(34,197,94,0.12)",    c: C.green, b: "rgba(34,197,94,0.25)" },
     live:      { bg: "rgba(34,197,94,0.12)",    c: C.green, b: "rgba(34,197,94,0.25)" },
     beta:      { bg: "rgba(245,158,11,0.12)",   c: C.amber, b: "rgba(245,158,11,0.25)" },
-    ml:        { bg: "rgba(139,92,246,0.12)",   c: "#A78BFA", b: "rgba(139,92,246,0.25)" },
+    ml:        { bg: "rgba(139,92,246,0.12)",   c: C.violet, b: "rgba(139,92,246,0.25)" },
     soon:      { bg: "rgba(148,163,184,0.10)",  c: C.textMuted, b: "rgba(148,163,184,0.22)" },
   };
   const s = m[(variant || label || "").toLowerCase()] || m.strategic;
@@ -759,7 +753,7 @@ const Badge = ({ label, variant }) => {
 };
 
 const GoldDivider = () => (
-  <div style={{ height: 1, background: `linear-gradient(90deg, transparent 0%, ${C.goldBorder} 30%, ${C.gold}44 50%, ${C.goldBorder} 70%, transparent 100%)` }} />
+  <div style={{ height: 1, background: `linear-gradient(90deg, transparent 0%, ${C.goldBorder} 30%, ${alpha(C.gold, 0.27)} 50%, ${C.goldBorder} 70%, transparent 100%)` }} />
 );
 
 const Sec = ({ id, children }) => (
@@ -994,6 +988,13 @@ const Nav = ({ lang, setLang, onNav }) => {
     return () => window.removeEventListener("keydown", closeMenus);
   }, [mobileOpen, moreOpen]);
 
+  const [theme, setThemeState] = useState(getTheme);
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    setThemeState(next);
+  };
+
   const go = (id) => { onNav(id); setMobileOpen(false); setMoreOpen(false); };
   const renderNavItem = (index, extraClass = "") => (
     <button key={ids[index]} className={`zrc-nav-link ${extraClass}`.trim()} onClick={() => go(ids[index])}>
@@ -1002,7 +1003,7 @@ const Nav = ({ lang, setLang, onNav }) => {
   );
 
   return (
-    <nav aria-label={lang === "es" ? "Navegación principal" : "Main navigation"} style={{ position: "fixed", top: 44, left: 0, right: 0, zIndex: 100, background: scrolled ? "rgba(9,9,11,0.96)" : "rgba(9,9,11,0.78)", backdropFilter: "blur(20px)", borderBottom: `1px solid ${scrolled ? C.border : "rgba(255,255,255,0.08)"}`, transition: "background 0.25s, border-color 0.25s" }}>
+    <nav aria-label={lang === "es" ? "Navegación principal" : "Main navigation"} style={{ position: "fixed", top: 44, left: 0, right: 0, zIndex: 100, background: scrolled ? "var(--zrc-nav-bg)" : "var(--zrc-nav-bg-top)", backdropFilter: "blur(20px)", borderBottom: `1px solid ${scrolled ? C.border : "var(--zrc-nav-border-top)"}`, transition: "background 0.25s, border-color 0.25s" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", minHeight: 72, padding: "0 clamp(18px,3vw,40px)" }}>
         <button className="zrc-brand" onClick={() => go("hero")} aria-label={lang === "es" ? "ZRC — inicio" : "ZRC — home"}>
           <div style={{ width: 24, height: 24, border: `1.5px solid ${C.gold}`, transform: "rotate(45deg)", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -1034,6 +1035,10 @@ const Nav = ({ lang, setLang, onNav }) => {
           <button className="nav-action nav-language" onClick={() => setLang(lang === "es" ? "en" : "es")} aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}>
             {lang === "es" ? "EN" : "ES"}
           </button>
+          <button className="nav-action nav-language" onClick={toggleTheme}
+            aria-label={theme === "dark" ? (lang === "es" ? "Cambiar a tema claro" : "Switch to light theme") : (lang === "es" ? "Cambiar a tema oscuro" : "Switch to dark theme")}>
+            {theme === "dark" ? "☀" : "☾"}
+          </button>
           {user ? (
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold }}>{user.name}</span>
@@ -1061,6 +1066,7 @@ const Hero = ({ lang, onNav }) => {
   return (
     <section
       id="hero"
+      data-theme="dark"
       style={{
         minHeight: "100svh",
         display: "flex",
@@ -1251,7 +1257,7 @@ const Intelligence = ({ lang }) => {
             <span style={{ fontSize: 14 }}>⚡</span>
           </div>
           <div style={{ flex: 1, minWidth: 260 }}>
-            <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: "#A78BFA", marginBottom: 6 }}>{t.mlBadge}</div>
+            <div style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.15em", color: C.violet, marginBottom: 6 }}>{t.mlBadge}</div>
             <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, margin: 0, fontWeight: 300 }}>{t.mlText}</p>
           </div>
         </div>
@@ -1453,7 +1459,7 @@ const Intelligence = ({ lang }) => {
 
       {/* Tool overlays */}
       {showGeoRisk && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+        <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <button onClick={() => setShowGeoRisk(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
             ✕ CLOSE DASHBOARD
           </button>
@@ -1462,7 +1468,7 @@ const Intelligence = ({ lang }) => {
       )}
 
       {showGeoRiskML && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+        <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <button onClick={() => setShowGeoRiskML(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
             ✕ CLOSE ML DASHBOARD
           </button>
@@ -1484,13 +1490,13 @@ const Intelligence = ({ lang }) => {
       )}
 
       {showFIS && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+        <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <FinancialIntelligenceSystem onClose={() => setShowFIS(false)} />
         </div>
       )}
 
       {showMacroPulse && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+        <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <MacroPulse onClose={() => setShowMacroPulse(false)} />
         </div>
       )}
@@ -1747,7 +1753,7 @@ const ZRCPlatform = () => {
         .nav-more-trigger { display:flex; align-items:center; gap:6px; }
         .nav-chevron { color:${C.gold}; font-size:15px; transition:transform .18s ease; }
         .nav-chevron.is-open { transform:rotate(180deg); }
-        .nav-more-popover { position:absolute; top:calc(100% + 14px); right:-20px; display:grid; min-width:205px; padding:8px; background:rgba(17,17,19,.98); border:1px solid ${C.border}; box-shadow:0 18px 50px rgba(0,0,0,.35); }
+        .nav-more-popover { position:absolute; top:calc(100% + 14px); right:-20px; display:grid; min-width:205px; padding:8px; background:var(--zrc-popover-bg); border:1px solid ${C.border}; box-shadow:var(--zrc-shadow); }
         .nav-popover-link { width:100%; padding:11px 12px; text-align:left; }
         .nav-popover-link:hover { background:${C.surface2}; }
         .nav-mobile-extra { display:none; }
@@ -1756,12 +1762,12 @@ const ZRCPlatform = () => {
         .nav-pricing:hover,.nav-language:hover { background:${C.goldDim}; }
         .nav-language { min-width:42px; background:${C.goldDim}; color:${C.gold}; }
         .nav-login { border-color:${C.gold}; background:${C.gold}; color:${C.bg}; }
-        .nav-login:hover { background:#e0b863; color:${C.bg}; }
+        .nav-login:hover { background:${C.goldHover}; color:${C.bg}; }
         .zrc-hero-actions { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:34px; }
         .zrc-hero-button { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:48px; padding:0 22px; border-radius:4px; cursor:pointer; font-family:${F.body}; font-size:13px; font-weight:600; letter-spacing:.025em; transition:transform .2s ease, background .2s ease, border-color .2s ease; }
         .zrc-hero-button:hover { transform:translateY(-2px); }
         .zrc-hero-primary { border:1px solid ${C.gold}; background:${C.gold}; color:${C.bg}; }
-        .zrc-hero-primary:hover { background:#e0b863; }
+        .zrc-hero-primary:hover { background:${C.goldHover}; }
         .zrc-hero-secondary { border:1px solid rgba(212,168,83,.58); background:rgba(9,9,11,.24); color:${C.text}; }
         .zrc-hero-secondary:hover { border-color:${C.gold}; background:rgba(212,168,83,.1); }
         .zrc-hero-content { width:min(100%,1040px); }
@@ -1790,7 +1796,7 @@ const ZRCPlatform = () => {
             right: 0;
             max-height: calc(100svh - 116px);
             overflow-y: auto;
-            background: rgba(9,9,11,0.985);
+            background: var(--zrc-popover-bg);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid ${C.border};
             padding: 12px 20px max(20px, env(safe-area-inset-bottom));
@@ -1802,7 +1808,7 @@ const ZRCPlatform = () => {
           .nav-mobile-extra { border-top:1px solid ${C.border}; padding-top:6px; }
           .nav-links.nav-links-open .zrc-nav-link { width:100%; min-height:44px; padding:11px 4px; text-align:left; border-bottom:1px solid ${C.border}; font-size:14px; }
           .nav-more-wrap,.nav-more-trigger,.nav-more-popover { display:none; }
-          .nav-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding-top:8px; border-top:1px solid ${C.border}; }
+          .nav-actions { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; padding-top:8px; border-top:1px solid ${C.border}; }
           .nav-actions > div { grid-column:1 / -1; }
           .nav-action { min-height:44px; }
           .nav-login { grid-column:1 / -1; }
@@ -1926,7 +1932,7 @@ const ZRCPlatform = () => {
       <ZenithAssistant lang={lang} onNav={onNav} hidden={!!icPage} />
 
       {showWorldMap && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+        <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <GeoRiskWorldMap onClose={closeWorldMap} onOpenIntelligence={() => { closeWorldMap(); setTimeout(() => onNav("intelligence"), 50); }} />
         </div>
       )}

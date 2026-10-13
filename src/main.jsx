@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./theme/theme.css";
 import App from "./App.jsx";
 import CountryRiskProfilesRouter from "./pages/intelligence/CountryRiskProfiles.jsx";
 import { installVisorAddressSearch } from "./pages/labs/visorAddressSearch.js";

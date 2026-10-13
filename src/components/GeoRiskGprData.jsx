@@ -1,8 +1,11 @@
 import { useEffect, useId, useMemo, useState } from "react";
+import { C } from "../theme/palette";
 
 const endpoint = "https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-gpr-data";
-const control = { background: "#101f30", color: "#E2E8F0", border: "1px solid #475569", borderRadius: 6, padding: "8px 12px" };
-const style = { marginTop: 18, padding: 20, color: "#CBD5E1", background: "#0d1826", border: "1px solid #334155", borderRadius: 12 };
+const FONT_BODY = "'Outfit','Helvetica Neue',sans-serif";
+const FONT_DISPLAY = "'Cormorant Garamond','Georgia',serif";
+const control = { background: C.surface2, color: C.text, border: `1px solid ${C.border}`, borderRadius: 4, padding: "8px 12px", fontFamily: FONT_BODY };
+const style = { marginTop: 18, padding: 20, color: C.textSec, background: C.surface, border: `1px solid ${C.border}`, fontFamily: FONT_BODY };
 const englishLabels = { GPR: "Global geopolitical risk", GPRT: "Threats", GPRA: "Acts", GPRD: "Daily geopolitical risk", GPRD_THREAT: "Daily threats", GPRD_ACT: "Daily acts" };
 const csvCell = value => '"' + String(value ?? "").replaceAll('"', '""') + '"';
 
@@ -61,7 +64,7 @@ export default function GeoRiskGprData({ lang = "es" }) {
     finally { setArchiveBusy(false); }
   }
   return <section style={style} aria-labelledby={chartId + "-heading"}>
-    <h2 id={chartId + "-heading"} style={{ fontSize: 20, margin: "0 0 8px" }}>{es ? "Riesgo geopolítico en la prensa · GPR" : "Geopolitical risk in the press · GPR"}</h2>
+    <h2 id={chartId + "-heading"} style={{ fontFamily: FONT_DISPLAY, fontWeight: 400, fontSize: 24, color: C.text, margin: "0 0 8px" }}>{es ? "Riesgo geopolítico en la prensa · GPR" : "Geopolitical risk in the press · GPR"}</h2>
     <p style={{ fontSize: 13, lineHeight: 1.7 }}>{es
       ? "El GPR de Caldara e Iacoviello cuenta la cobertura de amenazas y acontecimientos geopolíticos en diez periódicos. Nos da una referencia externa para contextualizar los escenarios ZRC y preparar su validación."
       : "The Caldara–Iacoviello GPR tracks press coverage of geopolitical threats and events in ten newspapers. It provides an external reference for ZRC scenarios and future model validation."}</p>
@@ -71,11 +74,11 @@ export default function GeoRiskGprData({ lang = "es" }) {
     {loading && <p role="status">{es ? "Cargando la referencia GPR…" : "Loading GPR…"}</p>}
     {error && <div role="alert"><p>{error}</p><button style={control} onClick={() => setAttempt(x => x + 1)}>{es ? "Reintentar" : "Retry"}</button></div>}
     {data && <>
-      {(data.collection_stale || series?.status === "stale") && <p role="status" style={{ color: "#FBBF24" }}>{es ? "La referencia o su captura tienen retraso. Comprueba la fecha antes de interpretarla como actual." : "The reference or its capture is delayed. Check the date before treating it as current."}</p>}
-      {data.archive?.status === "unavailable" && <p style={{ color: "#FBBF24", fontSize: 12 }}>{es ? "Los datos de la fuente están disponibles; su copia en el archivo ZRC está temporalmente pendiente." : "Source data is available; the ZRC archive copy is temporarily pending."}</p>}
+      {(data.collection_stale || series?.status === "stale") && <p role="status" style={{ color: C.amber }}>{es ? "La referencia o su captura tienen retraso. Comprueba la fecha antes de interpretarla como actual." : "The reference or its capture is delayed. Check the date before treating it as current."}</p>}
+      {data.archive?.status === "unavailable" && <p style={{ color: C.amber, fontSize: 12 }}>{es ? "Los datos de la fuente están disponibles; su copia en el archivo ZRC está temporalmente pendiente." : "Source data is available; the ZRC archive copy is temporarily pending."}</p>}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(175px,1fr))", gap: 10 }}>
         {data.series.filter(item => ["GPR", "GPRT", "GPRA", "GPRD"].includes(item.id)).map(item => <article key={item.id} style={{ ...control, padding: 14 }}>
-          <div style={{ fontSize: 12 }}>{label(item)}</div><strong style={{ fontSize: 25 }}>{fmt(item.latest.value)}</strong>
+          <div style={{ fontSize: 12 }}>{label(item)}</div><strong style={{ fontSize: 25, fontWeight: 500, color: C.text }}>{fmt(item.latest.value)}</strong>
           <div style={{ fontSize: 11 }}>{item.frequency === "monthly" ? (es ? "Mes: " : "Month: ") + item.latest.date.slice(0, 7) : date(item.latest.date)}</div>
         </article>)}
       </div>
@@ -85,24 +88,24 @@ export default function GeoRiskGprData({ lang = "es" }) {
         <button style={control} disabled={!series} onClick={() => download(series.points)}>{es ? "Descargar serie CSV" : "Download CSV series"}</button>
         <button style={control} disabled={archiveBusy || data.archive?.status !== "success"} onClick={downloadArchive}>{archiveBusy ? "…" : (es ? "Descargar archivo ZRC" : "Download ZRC archive")}</button>
       </div>
-      {downloadError && <p role="alert" style={{ color: "#FBBF24" }}>{downloadError}</p>}
+      {downloadError && <p role="alert" style={{ color: C.amber }}>{downloadError}</p>}
       {series && <>
         <p style={{ fontSize: 12 }}>{label(series)} · {unit(series)} · {es ? "último dato: " : "latest observation: "}{series.frequency === "monthly" ? series.latest.date.slice(0, 7) : date(series.latest.date)}</p>
         {points.length > 1 && <figure style={{ margin: 0 }}>
           <svg viewBox="0 0 900 225" role="img" aria-labelledby={chartId + "-title " + chartId + "-desc"} style={{ width: "100%", display: "block" }}>
             <title id={chartId + "-title"}>{label(series)}</title><desc id={chartId + "-desc"}>{unit(series)}. {first} — {last}. {es ? "Tabla alternativa debajo." : "Alternative table below."}</desc>
-            {[0, 0.5, 1].map(fraction => <g key={fraction}><line x1="50" x2="850" y1={185 - fraction * 155} y2={185 - fraction * 155} stroke="#334155" /><text x="44" y={189 - fraction * 155} textAnchor="end" fill="#94A3B8" fontSize="11">{fmt(max * fraction)}</text></g>)}
-            {paths.map((path, index) => <polyline key={index} points={path} fill="none" stroke="#60A5FA" strokeWidth="2" />)}
-            <text x="50" y="215" fill="#94A3B8" fontSize="12">{first}</text><text x="850" y="215" textAnchor="end" fill="#94A3B8" fontSize="12">{last}</text>
+            {[0, 0.5, 1].map(fraction => <g key={fraction}><line x1="50" x2="850" y1={185 - fraction * 155} y2={185 - fraction * 155} stroke={C.border} /><text x="44" y={189 - fraction * 155} textAnchor="end" fill={C.textMuted} fontSize="11">{fmt(max * fraction)}</text></g>)}
+            {paths.map((path, index) => <polyline key={index} points={path} fill="none" stroke="var(--zrc-chart-line)" strokeWidth="2" />)}
+            <text x="50" y="215" fill={C.textMuted} fontSize="12">{first}</text><text x="850" y="215" textAnchor="end" fill={C.textMuted} fontSize="12">{last}</text>
           </svg>
-          <figcaption style={{ fontSize: 11, color: "#94A3B8" }}>{es ? "Observaciones publicadas por los autores; sin datos simulados ni interpolación de huecos." : "Published source observations; no simulated data or gap interpolation."}</figcaption>
+          <figcaption style={{ fontSize: 11, color: C.textMuted }}>{es ? "Observaciones publicadas por los autores; sin datos simulados ni interpolación de huecos." : "Published source observations; no simulated data or gap interpolation."}</figcaption>
         </figure>}
         <details style={{ marginTop: 12 }}><summary>{es ? "Ver las últimas 12 observaciones" : "View the last 12 observations"}</summary><table style={{ width: "100%", marginTop: 10 }}><thead><tr><th scope="col" style={{ textAlign: "left" }}>{es ? "Fecha" : "Date"}</th><th scope="col" style={{ textAlign: "right" }}>{unit(series)}</th></tr></thead><tbody>{series.points.slice(-12).reverse().map(point => <tr key={point.date}><td>{series.frequency === "monthly" ? point.date.slice(0, 7) : date(point.date)}</td><td style={{ textAlign: "right" }}>{fmt(point.value)}</td></tr>)}</tbody></table></details>
       </>}
-      <p style={{ fontSize: 11, color: "#94A3B8", lineHeight: 1.7, marginTop: 16 }}>{es
+      <p style={{ fontSize: 11, color: C.textMuted, lineHeight: 1.7, marginTop: 16 }}>{es
         ? "Frecuencia: datos mensuales y datos diarios publicados normalmente cada lunes; pueden revisarse. La cobertura en prensa tiene sesgos y no mide por sí sola la probabilidad de un conflicto. Las puntuaciones ZRC aún no están calibradas frente al GPR. Amenazas y actos son índices separados y no se suman."
         : "Frequency: monthly data and daily observations normally released on Mondays; revisions are possible. Press coverage has biases and does not directly measure conflict probabilities. ZRC scores are not yet calibrated against GPR. Threats and acts are separate indices and must not be added."}</p>
-      <p style={{ fontSize: 11, color: "#94A3B8" }}>Caldara &amp; Iacoviello (2022), <i>Measuring Geopolitical Risk</i>, AER 112(4):1194–1225. <a href={data.source_url} style={{ color: "#93C5FD" }} target="_blank" rel="noopener noreferrer">{es ? "Fuente y metodología" : "Source and methodology"}</a> · CC BY 4.0 · {es ? "Captura de la fuente: " : "Source captured: "}{new Date(data.source_captured_at).toLocaleString(es ? "es-ES" : "en-GB")}</p>
+      <p style={{ fontSize: 11, color: C.textMuted }}>Caldara &amp; Iacoviello (2022), <i>Measuring Geopolitical Risk</i>, AER 112(4):1194–1225. <a href={data.source_url} style={{ color: C.gold }} target="_blank" rel="noopener noreferrer">{es ? "Fuente y metodología" : "Source and methodology"}</a> · CC BY 4.0 · {es ? "Captura de la fuente: " : "Source captured: "}{new Date(data.source_captured_at).toLocaleString(es ? "es-ES" : "en-GB")}</p>
     </>}
   </section>;
 }

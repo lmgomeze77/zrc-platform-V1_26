@@ -1,11 +1,6 @@
 import { useState } from "react";
+import { C, alpha } from "../theme/palette";
 
-const C = {
-  bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
-  border: "#27272A", borderHover: "#3F3F46",
-  text: "#FAFAFA", textSec: "#A1A1AA", textMuted: "#71717A",
-  gold: "#D4A853", goldDim: "rgba(212,168,83,0.12)", goldBorder: "rgba(212,168,83,0.25)",
-};
 const F = {
   display: "'Cormorant Garamond', 'Georgia', serif",
   body: "'Outfit', 'Helvetica Neue', sans-serif",
@@ -100,7 +95,7 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
       onClick={onClose}
       style={{
         position: "fixed", inset: 0, zIndex: 350,
-        background: "rgba(9,9,11,0.96)", backdropFilter: "blur(20px)",
+        background: "var(--zrc-nav-bg)", backdropFilter: "blur(20px)",
         overflowY: "auto", display: "flex", flexDirection: "column",
         alignItems: "center", padding: "80px clamp(16px,4vw,48px) 60px",
       }}
@@ -189,7 +184,7 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
                 key={plan.id}
                 style={{
                   padding: 36, background: plan.highlight ? C.surface2 : C.surface,
-                  border: `1px solid ${plan.highlight ? C.gold + "55" : C.border}`,
+                  border: `1px solid ${plan.highlight ? alpha(C.gold, 0.33) : C.border}`,
                   position: "relative", display: "flex", flexDirection: "column",
                 }}
               >

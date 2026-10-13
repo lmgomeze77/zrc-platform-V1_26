@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { C, alpha } from "../../theme/palette";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZENITH ASSISTANT — concierge IA para visitantes
@@ -8,12 +9,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 // y nunca promociona The Inner Circle.
 // ══════════════════════════════════════════════════════════════════════════
 
-const C = {
-  bg: "#09090B", surface: "#111113", surface2: "#18181B",
-  border: "#27272A", text: "#FAFAFA", textSec: "#A1A1AA", textMuted: "#71717A",
-  gold: "#D4A853", goldDim: "rgba(212,168,83,0.12)", goldBorder: "rgba(212,168,83,0.25)",
-  green: "#22C55E",
-};
 
 const F = {
   display: "'Cormorant Garamond', 'Georgia', serif",

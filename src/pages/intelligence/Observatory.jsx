@@ -3,15 +3,9 @@
 // Import in App.jsx: import Observatory from "./pages/intelligence/Observatory";
 
 import { useState } from "react";
+import { C, alpha } from "../../theme/palette";
 
 // ── DESIGN TOKENS (mirrors App.jsx) ─────────────────────────
-const C = {
-  bg:"#09090B", surface:"#111113", surface2:"#18181B", surface3:"#1F1F23",
-  border:"#27272A", borderHover:"#3F3F46",
-  text:"#FAFAFA", textSec:"#A1A1AA", textMuted:"#71717A",
-  gold:"#D4A853", goldDim:"rgba(212,168,83,0.12)", goldBorder:"rgba(212,168,83,0.25)",
-  red:"#EF4444", green:"#22C55E", blue:"#3B82F6", amber:"#F59E0B",
-};
 const F = {
   display:"'Cormorant Garamond','Georgia',serif",
   body:"'Outfit','Helvetica Neue',sans-serif",
@@ -189,7 +183,7 @@ function LockedOverlay({ lang, openRegister, openLogin, expired, openPricing }) 
             ? "Tu prueba gratuita de 7 dias ha terminado. Anade un metodo de pago para seguir con acceso al analisis completo."
             : "Your 7-day free trial has ended. Add a payment method to keep access to the full analysis."}
         </p>
-        <button onClick={openPricing} style={{ background:C.gold, border:"none", color:"#000", padding:"10px 24px", fontFamily:F.mono, fontSize:11, letterSpacing:"0.08em", cursor:"pointer", borderRadius:4, fontWeight:600 }}>
+        <button onClick={openPricing} style={{ background:C.gold, border:"none", color:C.onGold, padding:"10px 24px", fontFamily:F.mono, fontSize:11, letterSpacing:"0.08em", cursor:"pointer", borderRadius:4, fontWeight:600 }}>
           {lang==="es" ? "AÑADIR MÉTODO DE PAGO" : "ADD PAYMENT METHOD"}
         </button>
       </div>
@@ -203,7 +197,7 @@ function LockedOverlay({ lang, openRegister, openLogin, expired, openPricing }) 
           : "The complete investment analysis — situation, asset exposure and ZRC signal — is available with a 7-day free trial."}
       </p>
       <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:8 }}>
-        <button onClick={openRegister} style={{ background:C.gold, border:"none", color:"#000", padding:"10px 24px", fontFamily:F.mono, fontSize:11, letterSpacing:"0.08em", cursor:"pointer", borderRadius:4, fontWeight:600 }}>
+        <button onClick={openRegister} style={{ background:C.gold, border:"none", color:C.onGold, padding:"10px 24px", fontFamily:F.mono, fontSize:11, letterSpacing:"0.08em", cursor:"pointer", borderRadius:4, fontWeight:600 }}>
           {lang==="es" ? "EMPEZAR PRUEBA GRATUITA" : "START FREE TRIAL"}
         </button>
         <button onClick={openLogin} style={{ background:"transparent", border:`1px solid ${C.border}`, color:C.textSec, padding:"8px 24px", fontFamily:F.mono, fontSize:11, letterSpacing:"0.08em", cursor:"pointer", borderRadius:4 }}>
@@ -244,27 +238,27 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
 
   // ── FRESHNESS ─────────────────────────────────────────────
   const getFreshness = (d) => {
-    if (!d) return { dot:"#555", lbl:"" };
+    if (!d) return { dot:C.textMuted, lbl:"" };
     const days = Math.floor((Date.now() - new Date(d)) / 86400000);
     if (days <= 1) return { dot:C.green, lbl: lang==="es" ? "Hoy" : "Today" };
     if (days <= 3) return { dot:C.amber, lbl: days+"d" };
-    return { dot:"#555", lbl: days+"d" };
+    return { dot:C.textMuted, lbl: days+"d" };
   };
 
   // ── STATUS CONFIG ─────────────────────────────────────────
   const sCfg = {
     live:       { c:C.green, l:{es:"EN VIVO",     en:"LIVE"       } },
     developing: { c:C.amber, l:{es:"EN CURSO",    en:"DEVELOPING" } },
-    priced_in:  { c:"#777",  l:{es:"DESCONTADO",  en:"PRICED IN"  } },
-    resolved:   { c:"#777",  l:{es:"RESUELTO",    en:"RESOLVED"   } },
+    priced_in:  { c:C.textMuted,  l:{es:"DESCONTADO",  en:"PRICED IN"  } },
+    resolved:   { c:C.textMuted,  l:{es:"RESUELTO",    en:"RESOLVED"   } },
   };
 
   // ── TAG COLORS ────────────────────────────────────────────
   const tagColors = {
-    CRITICAL:{ bg:"rgba(239,68,68,0.12)", c:"#EF4444" },
-    ALERT:   { bg:"rgba(245,158,11,0.12)", c:"#F59E0B" },
-    WATCH:   { bg:"rgba(59,130,246,0.12)", c:"#3B82F6" },
-    DATA:    { bg:"rgba(212,168,83,0.12)", c:"#D4A853" },
+    CRITICAL:{ bg:"rgba(239,68,68,0.12)", c:C.red },
+    ALERT:   { bg:"rgba(245,158,11,0.12)", c:C.amber },
+    WATCH:   { bg:"rgba(59,130,246,0.12)", c:C.blue },
+    DATA:    { bg:"rgba(212,168,83,0.12)", c:C.gold },
   };
 
   // ── MARKET IMPACT HELPERS ─────────────────────────────────
@@ -283,7 +277,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
     <Sec id="observatory">
       <SH label={t.label} title={t.title} sub={t.sub} extra={
         <div style={{ display:"flex", alignItems:"center", gap:12, flexWrap:"wrap" }}>
-          <span style={{ fontFamily:F.mono, fontSize:10, color:"#71717A" }}>
+          <span style={{ fontFamily:F.mono, fontSize:10, color:C.textMuted }}>
             ({feed.length} {lang==="es" ? "señales" : "signals"})
           </span>
           {!hasAccess && directionalCount > 0 && (
@@ -321,7 +315,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
             <button key={r} onClick={() => setFilter(r)} style={{
               fontFamily:F.mono, fontSize:9, letterSpacing:"0.08em", padding:"4px 10px",
               background: filter===r ? C.gold : C.surface2,
-              color: filter===r ? "#000" : "#71717A",
+              color: filter===r ? C.onGold : C.textMuted,
               border:`1px solid ${filter===r ? C.gold : C.border}`,
               borderRadius:3, cursor:"pointer", transition:"all 0.2s"
             }}>{r}</button>
@@ -356,22 +350,22 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                       </span>
 
                       {/* FRESHNESS DOT */}
-                      <span style={{ display:"inline-flex", alignItems:"center", gap:4, fontFamily:F.mono, fontSize:9, color:"#71717A" }}>
+                      <span style={{ display:"inline-flex", alignItems:"center", gap:4, fontFamily:F.mono, fontSize:9, color:C.textMuted }}>
                         <span style={{ width:6, height:6, borderRadius:"50%", background:fr.dot, display:"inline-block", flexShrink:0 }} />
                         {fr.lbl}
                       </span>
 
-                      <span style={{ color:"#3F3F46" }}>·</span>
-                      <span style={{ fontFamily:F.mono, fontSize:9, color:"#71717A" }}>{item.region}</span>
+                      <span style={{ color:C.borderHover }}>·</span>
+                      <span style={{ fontFamily:F.mono, fontSize:9, color:C.textMuted }}>{item.region}</span>
 
                       {item.source && <>
-                        <span style={{ color:"#3F3F46" }}>·</span>
-                        <span style={{ fontFamily:F.mono, fontSize:9, color:"#71717A" }}>{item.source}</span>
+                        <span style={{ color:C.borderHover }}>·</span>
+                        <span style={{ fontFamily:F.mono, fontSize:9, color:C.textMuted }}>{item.source}</span>
                       </>}
 
                       {item.published_at && <>
-                        <span style={{ color:"#3F3F46" }}>·</span>
-                        <span style={{ fontFamily:F.mono, fontSize:9, color:"#71717A" }}>{item.published_at}</span>
+                        <span style={{ color:C.borderHover }}>·</span>
+                        <span style={{ fontFamily:F.mono, fontSize:9, color:C.textMuted }}>{item.published_at}</span>
                       </>}
 
                       {/* STATUS BADGE */}
@@ -383,7 +377,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                     </div>
 
                     {/* TITLE */}
-                    <h3 style={{ fontFamily:F.body, fontSize:14, fontWeight:500, color:"#FAFAFA", lineHeight:1.4, margin:"0 0 4px" }}>
+                    <h3 style={{ fontFamily:F.body, fontSize:14, fontWeight:500, color:C.text, lineHeight:1.4, margin:"0 0 4px" }}>
                       {item.title[lang]}
                     </h3>
 
@@ -422,10 +416,10 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                   {/* IMPACT + EXPAND */}
                   <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:6, flexShrink:0 }}>
                     <span style={{ fontFamily:F.mono, fontSize:8, letterSpacing:"0.06em", padding:"2px 6px", borderRadius:2,
-                      color: item.impact==="high" ? "#EF4444" : item.impact==="medium" ? "#F59E0B" : "#71717A",
+                      color: item.impact==="high" ? C.red : item.impact==="medium" ? C.amber : C.textMuted,
                       background: item.impact==="high" ? "rgba(239,68,68,0.1)" : item.impact==="medium" ? "rgba(245,158,11,0.1)" : "transparent"
                     }}>{item.impact?.toUpperCase()}</span>
-                    <span style={{ fontFamily:F.mono, fontSize:10, color:"#71717A" }}>{isOpen ? "−" : "+"}</span>
+                    <span style={{ fontFamily:F.mono, fontSize:10, color:C.textMuted }}>{isOpen ? "−" : "+"}</span>
                   </div>
                 </div>
 
@@ -439,7 +433,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                         <p style={{ fontFamily:F.mono, fontSize:9, fontWeight:700, letterSpacing:"0.1em", color:C.gold, textTransform:"uppercase", margin:"0 0 4px" }}>
                           {lang==="es" ? "Situación" : "Situation"}
                         </p>
-                        <p style={{ fontFamily:F.body, fontSize:13, color:"#A1A1AA", lineHeight:1.7, margin:"0 0 14px", fontWeight:300 }}>
+                        <p style={{ fontFamily:F.body, fontSize:13, color:C.textSec, lineHeight:1.7, margin:"0 0 14px", fontWeight:300 }}>
                           {(item.situation || item.summary)[lang]}
                         </p>
 
@@ -447,7 +441,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                         <p style={{ fontFamily:F.mono, fontSize:9, fontWeight:700, letterSpacing:"0.1em", color:C.gold, textTransform:"uppercase", margin:"0 0 4px" }}>
                           {lang==="es" ? "Exposición de activos" : "Asset exposure"}
                         </p>
-                        <p style={{ fontFamily:F.body, fontSize:13, color:"#A1A1AA", lineHeight:1.7, margin:"0 0 14px", fontWeight:300 }}>
+                        <p style={{ fontFamily:F.body, fontSize:13, color:C.textSec, lineHeight:1.7, margin:"0 0 14px", fontWeight:300 }}>
                           {item.investment_impact ? item.investment_impact[lang] : ""}
                         </p>
 
@@ -457,7 +451,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                             <p style={{ fontFamily:F.mono, fontSize:9, fontWeight:700, letterSpacing:"0.1em", color:C.gold, margin:"0 0 6px" }}>
                               ZRC SIGNAL
                             </p>
-                            <p style={{ fontFamily:F.body, fontSize:13, color:"#FAFAFA", lineHeight:1.65, margin:0 }}>
+                            <p style={{ fontFamily:F.body, fontSize:13, color:C.text, lineHeight:1.65, margin:0 }}>
                               {item.zrc_signal[lang]}
                             </p>
                           </div>
@@ -475,12 +469,12 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                                 return (
                                   <div key={j} style={{ display:"flex", alignItems:"baseline", gap:8, padding:"6px 10px", background:C.surface2, borderRadius:4 }}>
                                     <span style={{ color:dc.c, fontFamily:F.mono, fontSize:11, flexShrink:0 }}>{dc.arrow}</span>
-                                    <span style={{ fontFamily:F.mono, fontSize:10, color:"#FAFAFA", flexShrink:0, minWidth:110 }}>{txt(mi.asset)}</span>
+                                    <span style={{ fontFamily:F.mono, fontSize:10, color:C.text, flexShrink:0, minWidth:110 }}>{txt(mi.asset)}</span>
                                     {mi.magnitude && (
                                       <span style={{ fontFamily:F.mono, fontSize:8, letterSpacing:"0.06em", color:C.textMuted, flexShrink:0, textTransform:"uppercase" }}>{mi.magnitude}</span>
                                     )}
                                     {mi.note && (
-                                      <span style={{ fontFamily:F.body, fontSize:12, color:"#A1A1AA", fontWeight:300 }}>{txt(mi.note)}</span>
+                                      <span style={{ fontFamily:F.body, fontSize:12, color:C.textSec, fontWeight:300 }}>{txt(mi.note)}</span>
                                     )}
                                   </div>
                                 );
@@ -490,7 +484,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                         ) : (item.signals||[]).length > 0 && (
                           <div style={{ display:"flex", gap:6, flexWrap:"wrap", marginBottom:12 }}>
                             {item.signals.map((s,j) => (
-                              <span key={j} style={{ fontFamily:F.mono, fontSize:9, letterSpacing:"0.04em", padding:"3px 8px", background:C.surface2, color:"#71717A", borderRadius:3 }}>
+                              <span key={j} style={{ fontFamily:F.mono, fontSize:9, letterSpacing:"0.04em", padding:"3px 8px", background:C.surface2, color:C.textMuted, borderRadius:3 }}>
                                 {s}
                               </span>
                             ))}
@@ -503,7 +497,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                             <p style={{ fontFamily:F.mono, fontSize:9, fontWeight:700, letterSpacing:"0.1em", color:C.amber, margin:"0 0 4px" }}>
                               {lang==="es" ? "→ EDICIÓN MENSUAL" : "→ MONTHLY EDITION"}
                             </p>
-                            <p style={{ fontFamily:F.body, fontSize:12, color:"#A1A1AA", lineHeight:1.6, margin:0, fontStyle:"italic" }}>
+                            <p style={{ fontFamily:F.body, fontSize:12, color:C.textSec, lineHeight:1.6, margin:0, fontStyle:"italic" }}>
                               {item.edition_note[lang]}
                             </p>
                           </div>
@@ -511,11 +505,11 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
 
                         {/* CIO NOTE */}
                         {item.cio_note && item.cio_note[lang] && (
-                          <div style={{ padding:"12px 14px", background:"rgba(212,168,83,0.06)", borderLeft:"3px solid #D4A853", borderRadius:"0 4px 4px 0" }}>
+                          <div style={{ padding:"12px 14px", background:"rgba(212,168,83,0.06)", borderLeft:`3px solid ${C.gold}`, borderRadius:"0 4px 4px 0" }}>
                             <p style={{ fontFamily:F.mono, fontSize:9, fontWeight:700, letterSpacing:"0.1em", color:C.gold, margin:"0 0 6px" }}>
                               L. GÓMEZ · CIO
                             </p>
-                            <p style={{ fontFamily:F.body, fontSize:13, color:"#FAFAFA", lineHeight:1.7, margin:0, fontStyle:"italic" }}>
+                            <p style={{ fontFamily:F.body, fontSize:13, color:C.text, lineHeight:1.7, margin:0, fontStyle:"italic" }}>
                               {item.cio_note[lang]}
                             </p>
                           </div>
@@ -570,9 +564,9 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                             </span>
                           )}
                         </div>
-                        <h4 style={{ fontFamily:F.body, fontSize:13, fontWeight:500, color:"#FAFAFA", margin:"0 0 3px" }}>{txt(ev.title)}</h4>
+                        <h4 style={{ fontFamily:F.body, fontSize:13, fontWeight:500, color:C.text, margin:"0 0 3px" }}>{txt(ev.title)}</h4>
                         <p style={{ fontFamily:F.mono, fontSize:9, color:C.textMuted, margin:"0 0 6px" }}>{txt(ev.location)}</p>
-                        <p style={{ fontFamily:F.body, fontSize:12, color:"#A1A1AA", lineHeight:1.6, fontWeight:300, margin:0 }}>{txt(ev.relevance)}</p>
+                        <p style={{ fontFamily:F.body, fontSize:12, color:C.textSec, lineHeight:1.6, fontWeight:300, margin:0 }}>{txt(ev.relevance)}</p>
                       </div>
                     </div>
                   </FadeIn>

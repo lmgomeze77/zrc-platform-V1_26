@@ -1,0 +1,71 @@
+/* ZRC theme tokens. Light is the default; [data-theme="dark"] restores the
+   original dark palette. The attribute can be set on <html> (whole site) or
+   on any subtree (e.g. the hero or tool overlays that keep a dark design). */
+:root, [data-theme="light"] {
+  color-scheme: light;
+  --zrc-bg: #FFFFFF;
+  --zrc-surface: #F8F7F4;
+  --zrc-surface2: #F1EFEA;
+  --zrc-surface3: #E9E6DF;
+  --zrc-border: #E4E1D9;
+  --zrc-border-hover: #C9C5BB;
+  --zrc-text: #17171A;
+  --zrc-text-sec: #4F4F57;
+  --zrc-text-muted: #75757E;
+  --zrc-gold: #8E6B22;
+  --zrc-gold-hover: #A27B2B;
+  --zrc-gold-dim: rgba(142,107,34,0.08);
+  --zrc-gold-border: rgba(142,107,34,0.28);
+  --zrc-on-gold: #FFFFFF;
+  --zrc-red: #C2312F;
+  --zrc-green: #1E7A4C;
+  --zrc-blue: #2563EB;
+  --zrc-amber: #A86A0B;
+  --zrc-violet: #6D4FC2;
+  --zrc-nav-bg: rgba(255,255,255,0.96);
+  --zrc-nav-bg-top: rgba(255,255,255,0.86);
+  --zrc-nav-border-top: rgba(23,23,26,0.08);
+  --zrc-popover-bg: rgba(255,255,255,0.98);
+  --zrc-shadow: 0 18px 50px rgba(23,23,26,.12);
+  /* Risk scale (ZRC-GRI bands): green → ochre → crimson → oxblood */
+  --zrc-risk-low: #2F7D5B;
+  --zrc-risk-mod: #A9811F;
+  --zrc-risk-high: #B23A48;
+  --zrc-risk-crit: #7A1426;
+  --zrc-chart-line: #1F3A5F;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --zrc-bg: #09090B;
+  --zrc-surface: #111113;
+  --zrc-surface2: #18181B;
+  --zrc-surface3: #1F1F23;
+  --zrc-border: #27272A;
+  --zrc-border-hover: #3F3F46;
+  --zrc-text: #FAFAFA;
+  --zrc-text-sec: #A1A1AA;
+  --zrc-text-muted: #71717A;
+  --zrc-gold: #D4A853;
+  --zrc-gold-hover: #E0B863;
+  --zrc-gold-dim: rgba(212,168,83,0.12);
+  --zrc-gold-border: rgba(212,168,83,0.25);
+  --zrc-on-gold: #09090B;
+  --zrc-red: #EF4444;
+  --zrc-green: #22C55E;
+  --zrc-blue: #3B82F6;
+  --zrc-amber: #F59E0B;
+  --zrc-violet: #A78BFA;
+  --zrc-nav-bg: rgba(9,9,11,0.96);
+  --zrc-nav-bg-top: rgba(9,9,11,0.78);
+  --zrc-nav-border-top: rgba(255,255,255,0.08);
+  --zrc-popover-bg: rgba(17,17,19,.98);
+  --zrc-shadow: 0 18px 50px rgba(0,0,0,.35);
+  --zrc-risk-low: #4FB286;
+  --zrc-risk-mod: #D4A853;
+  --zrc-risk-high: #E0697A;
+  --zrc-risk-crit: #FF3D57;
+  --zrc-chart-line: #8FB4E3;
+}
+
+[data-theme] { color: var(--zrc-text); }

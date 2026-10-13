@@ -6,6 +6,7 @@ import GeoRiskGprData from "../../components/GeoRiskGprData";
 
 import { useState, useEffect, useMemo } from "react";
 import { t as tVisor } from "../labs/visorI18n";
+import { C, alpha } from "../../theme/palette";
 
 // A diferencia del modal de leads del Visor (que sigue apuntando a
 // zrc-api.onrender.com, el backend de leads en producción), esta captura
@@ -25,13 +26,6 @@ const LEAD_SECTOR_KEYS = [
   "leadSectorAgencia", "leadSectorInversor", "leadSectorFondo", "leadSectorOtro",
 ];
 
-const C = {
-  bg: "#09090B", surface: "#111113", surface2: "#18181B", surface3: "#1F1F23",
-  border: "#27272A", borderHover: "#3F3F46",
-  text: "#FAFAFA", textSec: "#A1A1AA", textMuted: "#71717A",
-  gold: "#D4A853", goldDim: "rgba(212,168,83,0.12)", goldBorder: "rgba(212,168,83,0.25)",
-  red: "#EF4444", green: "#22C55E", blue: "#3B82F6", amber: "#F59E0B",
-};
 const F = {
   display: "'Cormorant Garamond','Georgia',serif",
   body: "'Outfit','Helvetica Neue',sans-serif",
@@ -56,8 +50,9 @@ const ASSET_SENSITIVITY = {
   "Efectivo / Money Market":   { interest_rates: 3, sovereign_yield: 1 },
 };
 
-// Perfil de shock representativo (forma del escenario "Escalada Arancelaria",
-// el de mayor probabilidad en el mix ZRC por defecto), escalado por la
+// Perfil de shock de referencia fijo (forma del escenario "Escalada
+// Arancelaria", el de mayor probabilidad en el mix ZRC por defecto — no el
+// escenario dominante de la semana, que puede ser otro), escalado por la
 // distancia del índice respecto al punto neutro (50).
 const REFERENCE_SHOCK_VECTOR = {
   interest_rates: 0.35, inflation_cpi: 0.55, fx_eurusd: -0.08,
@@ -76,15 +71,22 @@ function bandImpact(indexLevel) {
   });
 }
 
+// Escala de riesgo propia (verde → ocre → carmín → granate), definida en
+// theme.css para que funcione en tema claro y oscuro.
+const RISK = {
+  low: "var(--zrc-risk-low)", mod: "var(--zrc-risk-mod)",
+  high: "var(--zrc-risk-high)", crit: "var(--zrc-risk-crit)",
+};
 const BANDS = [
-  { key: "bajo", label: "BAJO", range: "0–40", mid: 20, color: C.green },
-  { key: "moderado", label: "MODERADO", range: "40–65", mid: 52.5, color: C.amber },
-  { key: "elevado", label: "ELEVADO", range: "65–80", mid: 72.5, color: "#F97316" },
-  { key: "critico", label: "CRÍTICO", range: "80–100", mid: 90, color: C.red },
+  { key: "bajo", label: "BAJO", labelEn: "LOW", range: "0–40", lo: 0, hi: 40, mid: 20, color: RISK.low },
+  { key: "moderado", label: "MODERADO", labelEn: "MODERATE", range: "40–65", lo: 40, hi: 65, mid: 52.5, color: RISK.mod },
+  { key: "elevado", label: "ELEVADO", labelEn: "ELEVATED", range: "65–80", lo: 65, hi: 80, mid: 72.5, color: RISK.high },
+  { key: "critico", label: "CRÍTICO", labelEn: "CRITICAL", range: "80–100", lo: 80, hi: 100, mid: 90, color: RISK.crit },
 ];
 
-const riskLabel = (v) => (v < 40 ? "BAJO" : v < 65 ? "MODERADO" : v < 80 ? "ELEVADO" : "CRÍTICO");
-const riskColor = (v) => (v < 40 ? C.green : v < 65 ? C.amber : v < 80 ? "#F97316" : C.red);
+const bandOf = (v) => BANDS.find((b) => v < b.hi) || BANDS[BANDS.length - 1];
+const riskLabel = (v) => bandOf(v).label;
+const riskColor = (v) => bandOf(v).color;
 const fmt = (v, d = 1) => Number(v).toFixed(d);
 
 // Genera ~targetCount gridlines "redondas" (múltiplos de 1/2/5/10 según la
@@ -120,6 +122,16 @@ function IndexChart({ history, color }) {
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", height: "auto", display: "block" }}>
+      {/* Zonas de riesgo visibles dentro del rango del gráfico */}
+      {BANDS.filter((b) => b.hi > minV && b.lo < maxV).map((b) => {
+        const top = yOf(Math.min(b.hi, maxV)), bottom = yOf(Math.max(b.lo, minV));
+        return (
+          <g key={b.key}>
+            <rect x={PAD.l} y={top} width={iW} height={bottom - top} fill={b.color} opacity={0.07} />
+            {bottom - top >= 16 && <text x={W - PAD.r - 4} y={bottom - 5} textAnchor="end" fill={b.color} fontSize={8} fontFamily={F.mono} letterSpacing="0.1em" opacity={0.8}>{b.label}</text>}
+          </g>
+        );
+      })}
       {yTicks.map((t) => (
         <g key={t}>
           <line x1={PAD.l} y1={yOf(t)} x2={W - PAD.r} y2={yOf(t)} stroke={C.border} strokeWidth={0.5} />
@@ -306,6 +318,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
   const displayLabel = current ? (current.risk_label || riskLabel(current.index_value)) : (live ? live.riskLabel : null);
   const displayScenario = current ? current.dominant_scenario : live?.dominantScenario;
   const weeklyChange = current && previous ? current.index_value - previous.index_value : null;
+  const currentBand = displayValue != null ? bandOf(displayValue) : null;
   const inputStatus = live?.inputStatus || null;
   const inputDate = live?.inputDate || null;
 
@@ -326,11 +339,11 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
       />
 
       <FadeIn delay={0.1}>
-        <div style={{
-          display: "grid", gridTemplateColumns: "auto 1fr", gap: 32,
-          padding: "28px 32px", background: C.surface, border: `1px solid ${C.border}`, marginBottom: 24,
-          alignItems: "center", flexWrap: "wrap",
-        }}>
+        <style>{`
+          .zrc-gri-head { display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:center; padding:28px 32px; }
+          @media (max-width: 640px) { .zrc-gri-head { grid-template-columns:1fr; gap:20px; padding:22px 18px; } }
+        `}</style>
+        <div className="zrc-gri-head" style={{ background: C.surface, border: `1px solid ${C.border}`, marginBottom: 24 }}>
           <div style={{ textAlign: "center", minWidth: 140 }}>
             {status === "loading" ? (
               <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted }}>· · ·</div>
@@ -339,14 +352,22 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
                 <div style={{ fontFamily: F.display, fontSize: 56, fontWeight: 300, color: riskColor(displayValue), lineHeight: 1 }}>
                   {fmt(displayValue, 1)}
                 </div>
-                <div style={{ fontFamily: F.mono, fontSize: 10, color: riskColor(displayValue), letterSpacing: "0.12em", marginTop: 6 }}>
-                  {displayLabel}
+                <div style={{
+                  display: "inline-block", fontFamily: F.mono, fontSize: 10, fontWeight: 600, color: riskColor(displayValue),
+                  letterSpacing: "0.12em", marginTop: 10, padding: "3px 10px", border: `1px solid ${riskColor(displayValue)}`,
+                }}>
+                  {lang === "es" ? displayLabel : bandOf(displayValue).labelEn}
                 </div>
-                {weeklyChange != null && (
-                  <div style={{ fontFamily: F.mono, fontSize: 11, color: weeklyChange >= 0 ? C.red : C.green, marginTop: 6 }}>
-                    {weeklyChange >= 0 ? "▲" : "▼"} {fmt(Math.abs(weeklyChange), 1)} {lang === "es" ? "pts/semana" : "pts/week"}
-                  </div>
-                )}
+                {weeklyChange != null && (() => {
+                  // Sin cambio (redondeado a 1 decimal) no es una subida: se
+                  // muestra neutro en vez de "▲ 0.0" en rojo.
+                  const flat = Math.abs(weeklyChange) < 0.05;
+                  return (
+                    <div style={{ fontFamily: F.mono, fontSize: 11, color: flat ? C.textMuted : weeklyChange > 0 ? C.red : C.green, marginTop: 8 }}>
+                      {flat ? "=" : weeklyChange > 0 ? "▲" : "▼"} {fmt(Math.abs(weeklyChange), 1)} {lang === "es" ? "pts vs. semana anterior" : "pts vs. prior week"}
+                    </div>
+                  );
+                })()}
               </>
             ) : (
               <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>
@@ -375,7 +396,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
               </div>
             )}
             {status !== "error" && chartHistory.length > 0 && (
-              <IndexChart history={chartHistory} color={C.gold} />
+              <IndexChart history={chartHistory} color="var(--zrc-chart-line)" />
             )}
             {status === "ok" && history.length === 0 && (
               <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginTop: 8 }}>
@@ -392,6 +413,11 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
         <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.15em", marginBottom: 14 }}>
           {lang === "es" ? "NIVELES DE REFERENCIA · IMPACTO ESTIMADO EN ACTIVOS" : "REFERENCE LEVELS · ESTIMATED ASSET IMPACT"}
         </div>
+        <p style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, margin: "-6px 0 14px", lineHeight: 1.6 }}>
+          {lang === "es"
+            ? "Variación estimada de precio por clase de activo en cada banda del índice. Verde: el precio sube; rojo: el precio cae."
+            : "Estimated price change per asset class at each index band. Green: price rises; red: price falls."}
+        </p>
         <div style={{ overflowX: "auto", border: `1px solid ${C.border}`, marginBottom: 20 }}>
           <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 640 }}>
             <thead>
@@ -405,19 +431,29 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
               </tr>
             </thead>
             <tbody>
-              {bands.map((b) => (
-                <tr key={b.key} style={{ borderTop: `1px solid ${C.border}` }}>
-                  <td style={{ padding: "12px 14px" }}>
-                    <span style={{ fontFamily: F.mono, fontSize: 11, fontWeight: 700, color: b.color, letterSpacing: "0.08em" }}>{b.label}</span>
-                    <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginLeft: 8 }}>{b.range}</span>
-                  </td>
-                  {b.impacts.map((imp) => (
-                    <td key={imp.asset} style={{ textAlign: "right", padding: "12px 14px", fontFamily: F.mono, fontSize: 12, fontWeight: 600, color: imp.pct > 0.5 ? C.red : imp.pct < -0.5 ? C.green : C.textMuted }}>
-                      {imp.pct >= 0 ? "+" : ""}{fmt(imp.pct, 1)}%
+              {bands.map((b) => {
+                const isCurrent = currentBand?.key === b.key;
+                return (
+                  <tr key={b.key} style={{ borderTop: `1px solid ${C.border}`, background: isCurrent ? C.goldDim : "transparent", boxShadow: isCurrent ? `inset 3px 0 0 ${b.color}` : "none" }}>
+                    <td style={{ padding: "12px 14px", whiteSpace: "nowrap" }}>
+                      <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: b.color, marginRight: 8, verticalAlign: "middle" }} />
+                      <span style={{ fontFamily: F.mono, fontSize: 11, fontWeight: 700, color: b.color, letterSpacing: "0.08em" }}>{lang === "es" ? b.label : b.labelEn}</span>
+                      <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginLeft: 8 }}>{b.range}</span>
+                      {isCurrent && (
+                        <span style={{ display: "block", fontFamily: F.mono, fontSize: 8, color: C.textSec, letterSpacing: "0.12em", marginTop: 4, marginLeft: 16 }}>
+                          {lang === "es" ? "NIVEL ACTUAL" : "CURRENT LEVEL"}
+                        </span>
+                      )}
                     </td>
-                  ))}
-                </tr>
-              ))}
+                    {/* Variación estimada de precio: verde = sube, rojo = cae. */}
+                    {b.impacts.map((imp) => (
+                      <td key={imp.asset} style={{ textAlign: "right", padding: "12px 14px", fontFamily: F.mono, fontSize: 12, fontWeight: isCurrent ? 700 : 500, color: imp.pct > 0.5 ? C.green : imp.pct < -0.5 ? C.red : C.textMuted }}>
+                        {imp.pct >= 0 ? "+" : ""}{fmt(imp.pct, 1)}%
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -426,8 +462,8 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
       <FadeIn delay={0.3}>
         <div style={{ padding: "16px 20px", background: C.surface, border: `1px dashed ${C.border}`, fontSize: 11, color: C.textMuted, lineHeight: 1.7, fontFamily: F.body }}>
           {lang === "es"
-            ? "Metodología: el ZRC-GRI es el promedio ponderado por probabilidad del riesgo intrínseco de los cuatro escenarios geopolíticos base de ZRC Research (sector Global, multiplicador ×1.00), recalculado cada lunes. Los niveles de referencia de impacto en activos usan un perfil de shock representativo (forma del escenario de mayor probabilidad) escalado por nivel de índice — son ilustrativos, no una proyección de mercado, y no constituyen asesoramiento de inversión. Para el análisis interactivo con escenarios propios, ver GeoRisk Dashboard y GeoRisk Predictive ML."
-            : "Methodology: the ZRC-GRI is the probability-weighted average of the intrinsic risk of ZRC Research's four base geopolitical scenarios (Global sector, ×1.00 multiplier), recalculated every Monday. Asset-impact reference levels use a representative shock profile (shaped by the highest-probability scenario) scaled by index level — illustrative only, not a market projection, and not investment advice. For interactive analysis with your own scenarios, see GeoRisk Dashboard and GeoRisk Predictive ML."}
+            ? "Metodología: el ZRC-GRI es el promedio ponderado por probabilidad del riesgo intrínseco de los cuatro escenarios geopolíticos base de ZRC Research (sector Global, multiplicador ×1.00), recalculado cada lunes. Los niveles de referencia de impacto en activos usan un perfil de shock de referencia fijo (forma del escenario Escalada Arancelaria) escalado por nivel de índice — no cambian con el escenario dominante de cada semana — son ilustrativos, no una proyección de mercado, y no constituyen asesoramiento de inversión. Para el análisis interactivo con escenarios propios, ver GeoRisk Dashboard y GeoRisk Predictive ML."
+            : "Methodology: the ZRC-GRI is the probability-weighted average of the intrinsic risk of ZRC Research's four base geopolitical scenarios (Global sector, ×1.00 multiplier), recalculated every Monday. Asset-impact reference levels use a fixed reference shock profile (shaped by the Tariff Escalation scenario) scaled by index level — they do not change with each week's dominant scenario — illustrative only, not a market projection, and not investment advice. For interactive analysis with your own scenarios, see GeoRisk Dashboard and GeoRisk Predictive ML."}
         </div>
       </FadeIn>
 
