@@ -44,10 +44,15 @@
   --zrc-hero-bg: #F4F2EC;
   --zrc-hero-globe-filter: invert(1) hue-rotate(180deg) sepia(.25) saturate(.7) brightness(1.04);
   --zrc-hero-veil: linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.25) 38%, rgba(255,255,255,.7) 100%), radial-gradient(ellipse 70% 65% at 50% 45%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 100%);
-  --zrc-hero-card: rgba(255,255,255,.82);
-  --zrc-hero-card-hover: rgba(255,255,255,.96);
-  --zrc-hero-card-soft: rgba(255,255,255,.5);
-  --zrc-hero-card-shadow: 0 8px 30px rgba(23,23,26,.06);
+  /* Hero cards: blue-mist wash with a navy side bar */
+  --zrc-hero-card: linear-gradient(135deg, #F3F6FA 0%, #FFFFFF 70%);
+  --zrc-hero-card-hover: linear-gradient(135deg, #EAF0F7 0%, #FFFFFF 75%);
+  --zrc-hero-card-border: #DFE6EF;
+  --zrc-hero-card-border-hover: #C3D0E1;
+  --zrc-hero-card-accent: #1F3A5F;
+  --zrc-hero-card-soft: #F3F6FA;
+  --zrc-hero-secondary-border: #AFC0D6;
+  --zrc-hero-card-shadow: 0 8px 24px rgba(31,58,95,.06);
 }
 
 [data-theme="dark"] {
@@ -86,7 +91,11 @@
   --zrc-hero-veil: linear-gradient(180deg, rgba(4,10,18,.48) 0%, rgba(4,10,18,.22) 38%, rgba(4,10,18,.48) 100%), radial-gradient(ellipse 75% 72% at 50% 48%, rgba(4,10,18,.08) 0%, rgba(4,10,18,.38) 100%);
   --zrc-hero-card: rgba(9,12,18,.82);
   --zrc-hero-card-hover: rgba(17,20,27,.94);
+  --zrc-hero-card-border: rgba(212,168,83,.22);
+  --zrc-hero-card-border-hover: rgba(212,168,83,.62);
+  --zrc-hero-card-accent: rgba(212,168,83,.22);
   --zrc-hero-card-soft: rgba(9,9,11,.24);
+  --zrc-hero-secondary-border: rgba(212,168,83,.58);
   --zrc-hero-card-shadow: none;
 }
 
