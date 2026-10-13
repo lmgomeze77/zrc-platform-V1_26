@@ -31,6 +31,11 @@
   /* "violet" token = ML accent; slate steel in light mode */
   --zrc-violet: #3F5A78;
   --zrc-ml-bg: rgba(63,90,120,0.08);
+  /* CTA banners (Intelligence upsell, briefing sign-up) */
+  --zrc-cta-blue-bg: #E6EDF6;
+  --zrc-cta-blue-border: #C4D2E4;
+  --zrc-cta-sage-bg: #EDF2F0;
+  --zrc-cta-sage-border: #CFDDD7;
   --zrc-ml-banner-bg: #F3F5F8;
   --zrc-ml-border: rgba(63,90,120,0.28);
   --zrc-nav-bg: rgba(255,255,255,0.96);
@@ -85,6 +90,10 @@
   --zrc-amber: #F59E0B;
   --zrc-violet: #A78BFA;
   --zrc-ml-bg: rgba(139,92,246,0.12);
+  --zrc-cta-blue-bg: var(--zrc-gold-dim);
+  --zrc-cta-blue-border: var(--zrc-gold-border);
+  --zrc-cta-sage-bg: var(--zrc-surface);
+  --zrc-cta-sage-border: var(--zrc-border);
   --zrc-ml-banner-bg: rgba(139,92,246,0.06);
   --zrc-ml-border: rgba(139,92,246,0.25);
   --zrc-nav-bg: rgba(9,9,11,0.96);

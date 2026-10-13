@@ -187,8 +187,8 @@ function IntelligenceUpsell({ lang, openPricing }) {
   if (!openPricing) return null;
   return (
     <div style={{
-      padding: "24px 28px", background: C.goldDim, border: `1px solid ${C.goldBorder}`,
-      display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap",
+      padding: "24px 28px", background: "var(--zrc-cta-blue-bg)", border: "1px solid var(--zrc-cta-blue-border)",
+      borderTop: `3px solid ${C.gold}`, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap",
     }}>
       <div style={{ maxWidth: 460 }}>
         <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginBottom: 6 }}>
@@ -249,7 +249,7 @@ function WeeklyDigestCapture({ lang }) {
   }
 
   return (
-    <div style={{ padding: "24px 28px", background: C.surface, border: `1px solid ${C.border}`, borderLeft: `3px solid ${C.gold}` }}>
+    <div style={{ padding: "24px 28px", background: "var(--zrc-cta-sage-bg)", border: "1px solid var(--zrc-cta-sage-border)", borderLeft: `3px solid ${C.gold}` }}>
       <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginBottom: 6 }}>
         {lang === "es" ? "Únete a ZRC Morning Intelligence" : "Join ZRC Morning Intelligence"}
       </div>
@@ -263,14 +263,14 @@ function WeeklyDigestCapture({ lang }) {
           type="email" required placeholder={lang === "es" ? "email@empresa.com" : "email@company.com"}
           value={email} onChange={(e) => setEmail(e.target.value)}
           style={{
-            flex: "1 1 220px", padding: "11px 14px", background: C.surface2, color: C.text,
+            flex: "1 1 220px", padding: "11px 14px", background: C.bg, color: C.text,
             border: `1px solid ${C.border}`, fontSize: 13, fontFamily: F.body, outline: "none",
           }}
         />
         <select
           required value={sector} onChange={(e) => setSector(e.target.value)}
           style={{
-            flex: "1 1 180px", padding: "11px 14px", background: C.surface2, color: C.text,
+            flex: "1 1 180px", padding: "11px 14px", background: C.bg, color: C.text,
             border: `1px solid ${C.border}`, fontSize: 13, fontFamily: F.body, outline: "none", appearance: "none",
           }}
         >
