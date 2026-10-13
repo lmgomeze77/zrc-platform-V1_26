@@ -12,6 +12,7 @@ import GeoRiskML from "./pages/intelligence/GeoRiskML";
 import GeoRiskIndex from "./pages/intelligence/GeoRiskIndex";
 import GeoRiskWorldMap from "./pages/intelligence/GeoRiskWorldMap";
 import ZenithAssistant from "./components/assistant/ZenithAssistant";
+import LockIcon from "./components/LockIcon";
 import { C, alpha, getTheme, setTheme } from "./theme/palette";
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -913,7 +914,7 @@ const LockedOverlay = ({ message, lang }) => {
   const { openRegister, openLogin } = useAuth();
   return (
     <div style={{ padding: "32px 24px", background: `linear-gradient(180deg, transparent, ${C.bg})`, display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-      <div style={{ width: 40, height: 40, border: `1px solid ${C.goldBorder}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>🔒</div>
+      <div style={{ width: 40, height: 40, border: `1px solid ${C.goldBorder}`, display: "flex", alignItems: "center", justifyContent: "center", color: C.gold }}><LockIcon size={18} /></div>
       <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, textAlign: "center" }}>{message}</p>
       <button onClick={openRegister} style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
         {lang === "es" ? "CREAR CUENTA GRATUITA →" : "CREATE FREE ACCOUNT →"}
@@ -1348,7 +1349,7 @@ const Intelligence = ({ lang }) => {
                       onClick={() => setUpgradeTool(tool)}
                       style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", background: C.goldDim, color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}
                     >
-                      🔒 {lang === "es" ? "DESBLOQUEAR →" : "UNLOCK →"}
+                      <LockIcon size={11} style={{ marginRight: 6 }} />{lang === "es" ? "DESBLOQUEAR →" : "UNLOCK →"}
                     </button>
                   ) : (
                     <button
@@ -1363,7 +1364,7 @@ const Intelligence = ({ lang }) => {
                     onClick={() => setShowAuth(true)}
                     style={{ marginTop: 20, padding: "12px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, textAlign: "center", width: "100%", cursor: "pointer" }}
                   >
-                    <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.1em" }}>🔒 {t.locked}</span>
+                    <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.1em" }}><LockIcon size={12} style={{ marginRight: 8 }} />{t.locked}</span>
                   </button>
                 )}
               </div>

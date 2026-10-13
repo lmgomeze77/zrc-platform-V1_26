@@ -10,6 +10,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useSubscription } from "../../hooks/useSubscription";
 import { useVisorLang, t } from "./visorI18n";
+import LockIcon from "../../components/LockIcon";
 // @react-pdf/renderer (~700kb) solo se carga bajo demanda al generar un
 // informe pagado, para no engordar el bundle principal del sitio.
 
@@ -528,7 +529,7 @@ export default function RealEstateVisor({ pendingReport, onReportHandled, useAut
                     }}
                   >
                     {tab.label}
-                    {tab.locked && <span style={{ fontSize: 11 }}>🔒</span>}
+                    {tab.locked && <LockIcon size={11} />}
                     {tab.badge && <RiskPill level={tab.badge} lang={lang} />}
                     {tab.count > 0 && (
                       <span style={{
@@ -877,7 +878,7 @@ const ReportStatusBanner = ({ status, onDismiss, onRetry, lang }) => {
 
 const PaywallCard = ({ title, body, cta, onClick }) => (
   <div style={{ padding: 20, background: C.surface2, border: `1px dashed ${C.goldBorder}`, textAlign: "center" }}>
-    <div style={{ fontSize: 23, marginBottom: 10 }}>🔒</div>
+    <div style={{ marginBottom: 10, color: C.gold }}><LockIcon size={24} /></div>
     <div style={{ fontFamily: F.display, fontSize: 19, color: C.text, marginBottom: 8 }}>{title}</div>
     <p style={{ fontSize: 13, color: C.textSec, lineHeight: 1.6, margin: "0 0 16px" }}>{body}</p>
     <button
