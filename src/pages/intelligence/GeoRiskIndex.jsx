@@ -1,10 +1,11 @@
 import GeoRiskGprData from "../../components/GeoRiskGprData";
+import GeoRiskAssetEvidence from "../../components/GeoRiskAssetEvidence";
 // GeoRiskIndex.jsx — ZRC GeoRisk Index (public weekly benchmark)
 // Self-contained component: fetches weekly history from the Worker,
 // renders the chart + concrete asset-impact reference table.
 // Import in App.jsx: import GeoRiskIndex from "./pages/intelligence/GeoRiskIndex";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { t as tVisor } from "../labs/visorI18n";
 import { C, alpha } from "../../theme/palette";
 
@@ -33,43 +34,6 @@ const F = {
 };
 
 const API_URL = "https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-index";
-
-const ASSETS = [
-  "Deuda soberana core", "Renta fija High Yield", "Real estate prime",
-  "Materias primas", "Equity exportador", "Efectivo / Money Market",
-];
-
-// Sensibilidad estimada de precio (%) por unidad de vector de impacto [-1,1].
-// Mismo modelo ilustrativo usado en GeoRisk Dashboard / GeoRisk ML.
-const ASSET_SENSITIVITY = {
-  "Deuda soberana core":       { interest_rates: -9,  sovereign_yield: -11, capital_flows: 2  },
-  "Renta fija High Yield":     { interest_rates: -6,  sovereign_yield: -7,  capital_flows: 4, inflation_cpi: -2 },
-  "Real estate prime":         { interest_rates: -8,  sovereign_yield: -5,  capital_flows: 7  },
-  "Materias primas":           { commodities: 12, inflation_cpi: 3 },
-  "Equity exportador":         { fx_eurusd: -35, capital_flows: 4 },
-  "Efectivo / Money Market":   { interest_rates: 3, sovereign_yield: 1 },
-};
-
-// Perfil de shock de referencia fijo (forma del escenario "Escalada
-// Arancelaria", el de mayor probabilidad en el mix ZRC por defecto — no el
-// escenario dominante de la semana, que puede ser otro), escalado por la
-// distancia del índice respecto al punto neutro (50).
-const REFERENCE_SHOCK_VECTOR = {
-  interest_rates: 0.35, inflation_cpi: 0.55, fx_eurusd: -0.08,
-  commodities: 0.45, sovereign_yield: 0.40, capital_flows: -0.60,
-};
-
-function bandImpact(indexLevel) {
-  const intensity = (indexLevel - 50) / 50;
-  return ASSETS.map((asset) => {
-    const sens = ASSET_SENSITIVITY[asset] || {};
-    let total = 0;
-    Object.entries(sens).forEach(([vk, coef]) => {
-      total += (REFERENCE_SHOCK_VECTOR[vk] || 0) * intensity * coef;
-    });
-    return { asset, pct: total };
-  });
-}
 
 // Escala de riesgo propia (verde → ocre → carmín → granate), definida en
 // theme.css para que funcione en tema claro y oscuro.
@@ -327,11 +291,9 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
   const displayLabel = current ? (current.risk_label || riskLabel(current.index_value)) : (live ? live.riskLabel : null);
   const displayScenario = current ? current.dominant_scenario : live?.dominantScenario;
   const weeklyChange = current && previous ? current.index_value - previous.index_value : null;
-  const currentBand = displayValue != null ? bandOf(displayValue) : null;
   const inputStatus = live?.inputStatus || null;
   const inputDate = live?.inputDate || null;
 
-  const bands = useMemo(() => BANDS.map((b) => ({ ...b, impacts: bandImpact(b.mid) })), []);
 
   const chartHistory = history.length
     ? history
@@ -419,60 +381,14 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
       </FadeIn>
 
       <FadeIn delay={0.2}>
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.15em", marginBottom: 14 }}>
-          {lang === "es" ? "NIVELES DE REFERENCIA · IMPACTO ESTIMADO EN ACTIVOS" : "REFERENCE LEVELS · ESTIMATED ASSET IMPACT"}
-        </div>
-        <p style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, margin: "-6px 0 14px", lineHeight: 1.6 }}>
-          {lang === "es"
-            ? "Variación estimada de precio por clase de activo en cada banda del índice. Verde: el precio sube; rojo: el precio cae."
-            : "Estimated price change per asset class at each index band. Green: price rises; red: price falls."}
-        </p>
-        <div style={{ overflowX: "auto", border: `1px solid ${C.border}`, marginBottom: 20 }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 640 }}>
-            <thead>
-              <tr style={{ background: C.surface2 }}>
-                <th style={{ textAlign: "left", padding: "10px 14px", fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em" }}>
-                  {lang === "es" ? "NIVEL ÍNDICE" : "INDEX LEVEL"}
-                </th>
-                {ASSETS.map((a) => (
-                  <th key={a} style={{ textAlign: "right", padding: "10px 14px", fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.05em" }}>{a}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {bands.map((b) => {
-                const isCurrent = currentBand?.key === b.key;
-                return (
-                  <tr key={b.key} style={{ borderTop: `1px solid ${C.border}`, background: isCurrent ? C.goldDim : "transparent", boxShadow: isCurrent ? `inset 3px 0 0 ${b.color}` : "none" }}>
-                    <td style={{ padding: "12px 14px", whiteSpace: "nowrap" }}>
-                      <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: b.color, marginRight: 8, verticalAlign: "middle" }} />
-                      <span style={{ fontFamily: F.mono, fontSize: 11, fontWeight: 700, color: b.color, letterSpacing: "0.08em" }}>{lang === "es" ? b.label : b.labelEn}</span>
-                      <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginLeft: 8 }}>{b.range}</span>
-                      {isCurrent && (
-                        <span style={{ display: "block", fontFamily: F.mono, fontSize: 8, color: C.textSec, letterSpacing: "0.12em", marginTop: 4, marginLeft: 16 }}>
-                          {lang === "es" ? "NIVEL ACTUAL" : "CURRENT LEVEL"}
-                        </span>
-                      )}
-                    </td>
-                    {/* Variación estimada de precio: verde = sube, rojo = cae. */}
-                    {b.impacts.map((imp) => (
-                      <td key={imp.asset} style={{ textAlign: "right", padding: "12px 14px", fontFamily: F.mono, fontSize: 12, fontWeight: isCurrent ? 700 : 500, color: imp.pct > 0.5 ? C.green : imp.pct < -0.5 ? C.red : C.textMuted }}>
-                        {imp.pct >= 0 ? "+" : ""}{fmt(imp.pct, 1)}%
-                      </td>
-                    ))}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        <GeoRiskAssetEvidence lang={lang} />
       </FadeIn>
 
       <FadeIn delay={0.3}>
         <div style={{ padding: "16px 20px", background: C.surface, border: `1px dashed ${C.border}`, fontSize: 11, color: C.textMuted, lineHeight: 1.7, fontFamily: F.body }}>
           {lang === "es"
-            ? "Metodología: el ZRC-GRI es el promedio ponderado por probabilidad del riesgo intrínseco de los cuatro escenarios geopolíticos base de ZRC Research (sector Global, multiplicador ×1.00), recalculado cada lunes. Los niveles de referencia de impacto en activos usan un perfil de shock de referencia fijo (forma del escenario Escalada Arancelaria) escalado por nivel de índice — no cambian con el escenario dominante de cada semana — son ilustrativos, no una proyección de mercado, y no constituyen asesoramiento de inversión. Para el análisis interactivo con escenarios propios, ver GeoRisk Dashboard y GeoRisk Predictive ML."
-            : "Methodology: the ZRC-GRI is the probability-weighted average of the intrinsic risk of ZRC Research's four base geopolitical scenarios (Global sector, ×1.00 multiplier), recalculated every Monday. Asset-impact reference levels use a fixed reference shock profile (shaped by the Tariff Escalation scenario) scaled by index level — they do not change with each week's dominant scenario — illustrative only, not a market projection, and not investment advice. For interactive analysis with your own scenarios, see GeoRisk Dashboard and GeoRisk Predictive ML."}
+            ? "Metodología: el ZRC-GRI es el promedio ponderado por probabilidad del riesgo intrínseco de los cuatro escenarios geopolíticos base de ZRC Research (sector Global, multiplicador ×1.00), recalculado cada lunes. La tabla de activos se basa en datos históricos públicos: cada mes desde 1985 se clasifica por el percentil del índice GPR de Caldara e Iacoviello (cortes 40/65/80, los mismos que las bandas del ZRC-GRI) y se mide la variación de cada activo en los 3 meses siguientes frente a la mediana de todo el periodo, con un bootstrap por bloques para separar los efectos sólidos del ruido. Fuentes: GPR (matteoiacoviello.com), FRED (Bund y Treasury a 10 años, Brent, EUR/USD), Shiller/Yale (S&P 500) y Banco Mundial (oro); precios medios mensuales. El ZRC-GRI aún no está calibrado frente al GPR, por eso la tabla usa las bandas del GPR. Es evidencia histórica, no una proyección, y no constituye asesoramiento de inversión. Para el análisis con escenarios propios, ver GeoRisk Dashboard y GeoRisk Predictive ML."
+            : "Methodology: the ZRC-GRI is the probability-weighted average of the intrinsic risk of ZRC Research's four base geopolitical scenarios (Global sector, ×1.00 multiplier), recalculated every Monday. The asset table is based on public historical data: every month since 1985 is classified by its percentile of the Caldara–Iacoviello GPR index (cut points 40/65/80, the same as the ZRC-GRI bands) and each asset's change over the following 3 months is measured against the all-period median, with a block bootstrap to separate robust effects from noise. Sources: GPR (matteoiacoviello.com), FRED (10-year Bund and Treasury, Brent, EUR/USD), Shiller/Yale (S&P 500) and the World Bank (gold); monthly average prices. The ZRC-GRI is not yet calibrated against GPR, so the table uses GPR bands. Historical evidence, not a projection, and not investment advice. For scenario analysis, see GeoRisk Dashboard and GeoRisk Predictive ML."}
         </div>
       </FadeIn>
 

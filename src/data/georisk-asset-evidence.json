@@ -1,0 +1,344 @@
+{
+ "schema_version": 1,
+ "generated_at": "2026-10-13T22:39:08+00:00",
+ "horizon_months": 3,
+ "gpr_sample": [
+  "1985-01",
+  "2026-09"
+ ],
+ "gpr_thresholds": {
+  "moderado": 87.7,
+  "elevado": 104.0,
+  "critico": 122.7
+ },
+ "current": {
+  "month": "2026-09",
+  "gpr": 146.2,
+  "percentile": 89.8,
+  "band": "critico"
+ },
+ "shock_rule": {
+  "jump_vs_3m_avg_pct": 26.1,
+  "n_months": 50
+ },
+ "assets": [
+  {
+   "key": "gold",
+   "label": "Oro",
+   "unit": "pct",
+   "source": "World Bank Pink Sheet",
+   "sample": [
+    "1985-01",
+    "2025-09"
+   ],
+   "cells": {
+    "bajo": {
+     "n": 200,
+     "excess": -1.55,
+     "p25": -3.15,
+     "p75": 4.28,
+     "share_up": 48,
+     "significant": true
+    },
+    "moderado": {
+     "n": 125,
+     "excess": 1.14,
+     "p25": -1.88,
+     "p75": 5.8,
+     "share_up": 63,
+     "significant": false
+    },
+    "elevado": {
+     "n": 73,
+     "excess": 0.04,
+     "p25": -2.45,
+     "p75": 6.41,
+     "share_up": 58,
+     "significant": false
+    },
+    "critico": {
+     "n": 91,
+     "excess": 1.82,
+     "p25": -1.62,
+     "p75": 7.66,
+     "share_up": 65,
+     "significant": false
+    },
+    "shock": {
+     "n": 48,
+     "excess": 0.25,
+     "p25": -1.39,
+     "p75": 2.87,
+     "share_up": 54,
+     "significant": false
+    }
+   }
+  },
+  {
+   "key": "brent",
+   "label": "Brent",
+   "unit": "pct",
+   "source": "FRED MCOILBRENTEU",
+   "sample": [
+    "1987-05",
+    "2026-06"
+   ],
+   "cells": {
+    "bajo": {
+     "n": 199,
+     "excess": 1.78,
+     "p25": -6.86,
+     "p75": 13.35,
+     "share_up": 60,
+     "significant": false
+    },
+    "moderado": {
+     "n": 109,
+     "excess": 0.0,
+     "p25": -7.3,
+     "p75": 10.47,
+     "share_up": 56,
+     "significant": false
+    },
+    "elevado": {
+     "n": 69,
+     "excess": 0.82,
+     "p25": -8.62,
+     "p75": 11.69,
+     "share_up": 54,
+     "significant": false
+    },
+    "critico": {
+     "n": 93,
+     "excess": -2.48,
+     "p25": -9.85,
+     "p75": 7.87,
+     "share_up": 47,
+     "significant": true
+    },
+    "shock": {
+     "n": 47,
+     "excess": 0.33,
+     "p25": -5.14,
+     "p75": 9.88,
+     "share_up": 51,
+     "significant": false
+    }
+   }
+  },
+  {
+   "key": "equity_us",
+   "label": "S&P 500",
+   "unit": "pct",
+   "source": "Shiller (Yale)",
+   "sample": [
+    "1985-01",
+    "2023-06"
+   ],
+   "cells": {
+    "bajo": {
+     "n": 200,
+     "excess": 0.33,
+     "p25": 0.04,
+     "p75": 7.71,
+     "share_up": 75,
+     "significant": false
+    },
+    "moderado": {
+     "n": 122,
+     "excess": -0.04,
+     "p25": -0.8,
+     "p75": 6.45,
+     "share_up": 69,
+     "significant": false
+    },
+    "elevado": {
+     "n": 70,
+     "excess": -0.37,
+     "p25": 0.49,
+     "p75": 4.56,
+     "share_up": 77,
+     "significant": false
+    },
+    "critico": {
+     "n": 70,
+     "excess": -1.36,
+     "p25": -2.53,
+     "p75": 5.69,
+     "share_up": 59,
+     "significant": false
+    },
+    "shock": {
+     "n": 45,
+     "excess": -1.21,
+     "p25": -1.29,
+     "p75": 2.45,
+     "share_up": 49,
+     "significant": true
+    }
+   }
+  },
+  {
+   "key": "bund10",
+   "label": "Bund 10a",
+   "unit": "bp",
+   "source": "FRED IRLTLT01DEM156N",
+   "sample": [
+    "1985-01",
+    "2026-05"
+   ],
+   "cells": {
+    "bajo": {
+     "n": 200,
+     "excess": -0.2,
+     "p25": -26.03,
+     "p75": 18.59,
+     "share_up": 44,
+     "significant": false
+    },
+    "moderado": {
+     "n": 125,
+     "excess": -2.45,
+     "p25": -30.48,
+     "p75": 17.0,
+     "share_up": 41,
+     "significant": false
+    },
+    "elevado": {
+     "n": 75,
+     "excess": 4.97,
+     "p25": -23.12,
+     "p75": 24.2,
+     "share_up": 49,
+     "significant": false
+    },
+    "critico": {
+     "n": 97,
+     "excess": 2.38,
+     "p25": -30.0,
+     "p75": 18.76,
+     "share_up": 46,
+     "significant": false
+    },
+    "shock": {
+     "n": 50,
+     "excess": 0.86,
+     "p25": -12.86,
+     "p75": 10.56,
+     "share_up": 42,
+     "significant": false
+    }
+   }
+  },
+  {
+   "key": "ust10",
+   "label": "Treasury 10a",
+   "unit": "bp",
+   "source": "FRED DGS10",
+   "sample": [
+    "1985-01",
+    "2026-07"
+   ],
+   "cells": {
+    "bajo": {
+     "n": 200,
+     "excess": -1.18,
+     "p25": -30.94,
+     "p75": 28.56,
+     "share_up": 47,
+     "significant": false
+    },
+    "moderado": {
+     "n": 125,
+     "excess": -0.23,
+     "p25": -40.77,
+     "p75": 22.38,
+     "share_up": 49,
+     "significant": false
+    },
+    "elevado": {
+     "n": 75,
+     "excess": 3.08,
+     "p25": -30.75,
+     "p75": 29.67,
+     "share_up": 51,
+     "significant": false
+    },
+    "critico": {
+     "n": 99,
+     "excess": 1.43,
+     "p25": -34.36,
+     "p75": 20.66,
+     "share_up": 51,
+     "significant": false
+    },
+    "shock": {
+     "n": 50,
+     "excess": -2.12,
+     "p25": -14.45,
+     "p75": 16.28,
+     "share_up": 42,
+     "significant": false
+    }
+   }
+  },
+  {
+   "key": "eurusd",
+   "label": "EUR/USD",
+   "unit": "pct",
+   "source": "FRED DEXUSEU",
+   "sample": [
+    "1999-01",
+    "2026-07"
+   ],
+   "cells": {
+    "bajo": {
+     "n": 126,
+     "excess": -0.13,
+     "p25": -3.69,
+     "p75": 2.52,
+     "share_up": 47,
+     "significant": false
+    },
+    "moderado": {
+     "n": 73,
+     "excess": 0.32,
+     "p25": -3.03,
+     "p75": 2.57,
+     "share_up": 53,
+     "significant": false
+    },
+    "elevado": {
+     "n": 48,
+     "excess": 0.58,
+     "p25": -1.87,
+     "p75": 3.3,
+     "share_up": 52,
+     "significant": false
+    },
+    "critico": {
+     "n": 84,
+     "excess": 0.02,
+     "p25": -1.97,
+     "p75": 3.34,
+     "share_up": 50,
+     "significant": false
+    },
+    "shock": {
+     "n": 35,
+     "excess": -0.45,
+     "p25": -1.74,
+     "p75": 0.66,
+     "share_up": 43,
+     "significant": false
+    }
+   }
+  }
+ ],
+ "sources": {
+  "gpr": "https://www.matteoiacoviello.com/gpr_files/data_gpr_export.xls",
+  "shiller": "http://www.econ.yale.edu/~shiller/data/ie_data.xls",
+  "world_bank": "https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx",
+  "fred": "https://fred.stlouisfed.org"
+ }
+}
