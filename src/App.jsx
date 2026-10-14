@@ -766,7 +766,7 @@ const Sec = ({ id, children }) => (
 const SH = ({ label, title, sub, extra }) => (
   <FadeIn style={{ marginBottom: 44 }}>
     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-      <span style={{ fontFamily: F.mono, fontSize: 11, color: C.gold, letterSpacing: "0.18em", fontWeight: 500 }}>{label}</span>
+      <span className="zrc-section-label" style={{ fontFamily: F.mono, fontSize: 11, color: "var(--zrc-label)", letterSpacing: "0.18em", fontWeight: 500 }}>{label}</span>
       {extra}
     </div>
     <h2 style={{ fontFamily: F.display, fontSize: "clamp(28px,4vw,42px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.15 }}>{title}</h2>
@@ -1144,7 +1144,7 @@ const Hero = ({ lang, onNav }) => {
       />
       <div style={{ position:"absolute", inset:0, background:"var(--zrc-hero-veil)", pointerEvents:"none" }} />
       <div className="zrc-hero-content" style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 920, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(20px)", transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)" }}>
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.25em", marginBottom: 28, fontWeight: 400, opacity: 0.96 }}>{t.tag}</div>
+        <div className="zrc-hero-eyebrow" style={{ fontFamily: F.mono, fontSize: 10, color: "var(--zrc-label)", letterSpacing: "0.25em", marginBottom: 28, fontWeight: 400, opacity: 0.96 }}>{t.tag}</div>
         <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px,5.5vw,68px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.08, letterSpacing: "-0.02em" }}>
           {t.h1}<br />{t.h2}<br /><span style={{ color: C.gold, fontStyle: "italic", fontWeight: 400 }}>{t.h3}</span>
         </h1>

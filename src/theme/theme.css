@@ -24,6 +24,7 @@
   --zrc-gold-dim: rgba(31,58,95,0.06);
   --zrc-gold-border: rgba(31,58,95,0.24);
   --zrc-on-gold: #FFFFFF;
+  --zrc-label: var(--zrc-gold);
   --zrc-red: #C2312F;
   --zrc-green: #1E7A4C;
   --zrc-blue: #2563EB;
@@ -84,6 +85,7 @@
   --zrc-gold-dim: rgba(212,168,83,0.12);
   --zrc-gold-border: rgba(212,168,83,0.25);
   --zrc-on-gold: #09090B;
+  --zrc-label: var(--zrc-gold);
   --zrc-red: #EF4444;
   --zrc-green: #22C55E;
   --zrc-blue: #3B82F6;
