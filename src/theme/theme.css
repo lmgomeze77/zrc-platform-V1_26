@@ -24,7 +24,9 @@
   --zrc-gold-dim: rgba(31,58,95,0.06);
   --zrc-gold-border: rgba(31,58,95,0.24);
   --zrc-on-gold: #FFFFFF;
-  --zrc-label: var(--zrc-gold);
+  /* Section labels / eyebrows: antique bronze, distinct from the navy action colour */
+  --zrc-label: #8A6A2F;
+  --zrc-label-rule: #B8955A;
   --zrc-red: #C2312F;
   --zrc-green: #1E7A4C;
   --zrc-blue: #2563EB;
@@ -86,6 +88,7 @@
   --zrc-gold-border: rgba(212,168,83,0.25);
   --zrc-on-gold: #09090B;
   --zrc-label: var(--zrc-gold);
+  --zrc-label-rule: rgba(212,168,83,.7);
   --zrc-red: #EF4444;
   --zrc-green: #22C55E;
   --zrc-blue: #3B82F6;
@@ -144,4 +147,10 @@
   [data-theme="light"] {
     --zrc-hero-globe-mask: linear-gradient(90deg, transparent 0, transparent calc(100% - 340px), rgba(0,0,0,.45) calc(100% - 210px), #000 calc(100% - 60px));
   }
+}
+
+/* Bronze rule before section labels and the hero eyebrow */
+.zrc-section-label::before, .zrc-hero-eyebrow::before {
+  content: ""; display: inline-block; width: 22px; height: 1px;
+  background: var(--zrc-label-rule); vertical-align: middle; margin-right: 12px;
 }
