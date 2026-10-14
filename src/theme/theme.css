@@ -27,6 +27,7 @@
   /* Section labels / eyebrows: antique bronze, distinct from the navy action colour */
   --zrc-label: #8A6A2F;
   --zrc-label-rule: #B8955A;
+  --zrc-label-bg: #F3EEE3;
   --zrc-red: #C2312F;
   --zrc-green: #1E7A4C;
   --zrc-blue: #2563EB;
@@ -89,6 +90,7 @@
   --zrc-on-gold: #09090B;
   --zrc-label: var(--zrc-gold);
   --zrc-label-rule: rgba(212,168,83,.7);
+  --zrc-label-bg: transparent;
   --zrc-red: #EF4444;
   --zrc-green: #22C55E;
   --zrc-blue: #3B82F6;
@@ -149,8 +151,10 @@
   }
 }
 
-/* Bronze rule before section labels and the hero eyebrow */
-.zrc-section-label::before, .zrc-hero-eyebrow::before {
-  content: ""; display: inline-block; width: 22px; height: 1px;
-  background: var(--zrc-label-rule); vertical-align: middle; margin-right: 12px;
+/* Section labels and hero eyebrow: ivory pill with bronze text and bar
+   (light); gold text with a short rule (dark). */
+.zrc-section-label, .zrc-hero-eyebrow {
+  display: inline-block; padding: 6px 12px;
+  background: var(--zrc-label-bg); border-left: 2px solid var(--zrc-label-rule);
 }
+[data-theme="dark"] .zrc-section-label, [data-theme="dark"] .zrc-hero-eyebrow { padding: 0 0 0 12px; }
