@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T10:47:49.934Z",
+  "generated_at": "2026-10-16T10:36:00.903Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,14 +96,14 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "EURASIA",
       "title": {
-        "es": "Dos portacontenedores se hunden cerca del estrecho de Ormuz en medio de una oleada de ataques iraníes",
-        "en": "Two container ships sink near strait of Hormuz amid surge in Iranian attacks"
+        "es": "Trump califica de 'vergüenza' los renovados ataques ucranianos a refinerías rusas",
+        "en": "Trump calls Ukraine's renewed strikes on Russian oil refineries 'a disgrace'"
       },
       "summary": {
-        "es": "Irán habría intensificado los ataques contra el tráfico marítimo en el estrecho de Ormuz, hundiendo dos portacontenedores con misiles, en lo que analistas interpretan como un intento de cerrar el paso antes de las elecciones de mitad de mandato en EE.UU. El estrecho canaliza aproximadamente el 20% del suministro mundial de petróleo, por lo que cualquier interrupción sostenida tendría consecuencias directas e inmediatas sobre los precios energéticos globales y las cadenas de suministro.",
-        "en": "Iran has sharply escalated attacks on shipping in the Strait of Hormuz, sinking two container ships with missiles in what analysts interpret as an attempt to close the waterway ahead of US midterm elections. The strait channels roughly 20% of global oil supply, meaning any sustained disruption carries direct, immediate consequences for global energy prices and supply chains."
+        "es": "El colapso del 'alto el fuego energético' y los nuevos ataques ucranianos sobre infraestructura petrolera rusa han agravado la ruptura entre Washington y Kyiv. Trump declaró que Zelensky es 'más difícil de tratar que Putin', señalizando una potencial reducción del apoyo estadounidense. La incertidumbre sobre el suministro ruso de crudo y la realineación geopolítica en torno a Ucrania generan volatilidad significativa en energía y activos europeos.",
+        "en": "The collapse of the 'energy ceasefire' and renewed Ukrainian strikes on Russian oil infrastructure have sharpened the Washington-Kyiv rift. Trump's characterization of Zelensky as harder to deal with than Putin signals a potential reduction in US backing. Uncertainty over Russian crude supply and the geopolitical realignment around Ukraine create significant volatility in energy and European assets."
       },
       "impact": "high",
       "market_impact": [
@@ -112,17 +112,26 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Amenaza directa al 20% del suministro global de petróleo",
-            "en": "Direct threat to 20% of global oil supply flow"
+            "es": "Ataques a refinerías rusas elevan prima de riesgo energético",
+            "en": "Strikes on Russian refineries raise energy risk premium"
           }
         },
         {
-          "asset": "Shipping freight rates (tanker)",
-          "direction": "up",
-          "magnitude": "high",
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Riesgo de guerra eleva primas de seguro y desvíos de ruta",
-            "en": "War risk premiums and rerouting spike freight costs"
+            "es": "Fractura EEUU-Ucrania debilita posición negociadora europea",
+            "en": "US-Ukraine fracture weakens European negotiating position"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada prolonga incertidumbre sobre costes energéticos europeos",
+            "en": "Escalation prolongs uncertainty over European energy costs"
           }
         },
         {
@@ -130,247 +139,247 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada geopolítica impulsa demanda de refugio seguro",
-            "en": "Geopolitical escalation drives safe-haven demand"
+            "es": "Mayor aversión al riesgo geopolítico impulsa demanda de refugio",
+            "en": "Heightened geopolitical risk aversion boosts safe-haven demand"
+          }
+        }
+      ],
+      "confidence": 90,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/16/trump-calls-ukraines-resumption-of-strikes-on-russian-oil-refineries-a-disgrace",
+      "published_at": "2026-10-16",
+      "time": "<1h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "EEUU considera usar la 'Madre de Todas las Bombas' contra Irán",
+        "en": "US considers hitting Iran with 'Mother of All Bombs'"
+      },
+      "summary": {
+        "es": "Según CNN, Washington evalúa el uso de su mayor bomba no nuclear contra Irán si Trump decide reanudar el conflicto iniciado con ataques estadounidenses e israelíes en febrero. Los esfuerzos diplomáticos han llegado a un punto muerto, elevando el riesgo de una escalada militar directa. Una acción de este tipo tendría consecuencias inmediatas y severas sobre el precio del petróleo, los activos de riesgo globales y la estabilidad del estrecho de Ormuz.",
+        "en": "According to CNN, Washington is evaluating the use of its largest non-nuclear bomb against Iran if Trump decides to resume combat after a deadlock in diplomatic efforts. The conflict originated with US-Israeli strikes on Iran in February. Such an action would have immediate and severe consequences for oil prices, global risk assets, and Strait of Hormuz stability."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Escalada contra Irán amenaza directamente flujos del Golfo Pérsico",
+            "en": "Iran escalation directly threatens Persian Gulf oil flows"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo de guerra mayor dispara refugio en oro",
+            "en": "Major war risk triggers safe-haven gold demand"
           }
         },
         {
           "asset": "EM currencies",
           "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Aversión al riesgo global presiona monedas emergentes",
+            "en": "Global risk-off sentiment pressures emerging market currencies"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Shock energético presiona a economías importadoras emergentes",
-            "en": "Energy shock pressures oil-importing emerging economies"
+            "es": "Huida a calidad impulsa demanda de bonos del Tesoro",
+            "en": "Flight to quality drives Treasury bond demand"
           }
         }
       ],
-      "confidence": 93,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/14/container-ship-sinks-strait-of-hormuz-surge-iranian-attacks-iran-us-midterm-elections",
-      "published_at": "2026-10-14",
-      "time": "17h"
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261016-us-considers-hitting-iran-with-mother-of-all-bombs",
+      "published_at": "2026-10-16",
+      "time": "1h"
     },
     {
-      "id": 2,
-      "tag": "CRITICAL",
+      "id": 3,
+      "tag": "ALERT",
       "region": "EURASIA",
       "title": {
-        "es": "Rusia y Ucrania reanudan ataques energéticos a pesar de las advertencias de Trump",
-        "en": "Russia and Ukraine resume energy strikes despite Trump warnings"
+        "es": "Siete tripulantes desaparecidos tras ataque de dron que incendia un petrolero frente a la costa de Rumanía",
+        "en": "Seven crew missing after drone attack leaves tanker ablaze off Romania's coast"
       },
       "summary": {
-        "es": "El intento unilateral de la Casa Blanca de negociar un alto el fuego energético entre Rusia y Ucrania ha colapsado: Moscú lanzó enjambres de drones contra infraestructura ucraniana mientras Zelensky anunció la reanudación de ataques sobre refinerías rusas. El fracaso diplomático de Trump socava su posición negociadora y añade presión alcista sobre los precios del gas europeo de cara al invierno, agravando el dilema energético del continente.",
-        "en": "The White House's unilateral effort to broker an energy ceasefire between Russia and Ukraine has collapsed, with Moscow launching drone swarms at Ukrainian infrastructure and Zelensky announcing resumed strikes on Russian oil refineries. Trump's diplomatic failure undermines his negotiating leverage and adds upward pressure on European gas prices ahead of winter, deepening the continent's energy dilemma."
+        "es": "Un ataque con dron en el Mar Negro dejó un petrolero en llamas frente a las costas de Rumanía, con siete tripulantes desaparecidos. El incidente representa una escalada del conflicto hacia aguas de la OTAN y amenaza rutas de exportación energética críticas del Mar Negro. El riesgo de primas de seguro marítima y de interrupción del suministro de crudo por esta ruta aumenta considerablemente.",
+        "en": "A drone attack in the Black Sea left a tanker ablaze off Romania's coast with seven crew members missing. The incident marks an escalation of the conflict into NATO-adjacent waters and threatens critical Black Sea energy export routes. Maritime insurance premiums and supply disruption risk on this corridor rise considerably."
       },
       "impact": "high",
       "market_impact": [
-        {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Riesgo de suministro invernal se agrava con escalada de ataques",
-            "en": "Winter supply risk intensifies as energy ceasefire collapses"
-          }
-        },
         {
           "asset": "Brent crude",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Ataques a refinerías rusas reducen capacidad de exportación",
-            "en": "Ukrainian strikes on Russian refineries cut export capacity"
+            "es": "Ataques en Mar Negro elevan riesgo de interrupción de exportaciones",
+            "en": "Black Sea attacks raise export disruption risk"
           }
         },
         {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Costes energéticos más altos comprimen márgenes industriales",
-            "en": "Higher energy costs compress European industrial margins"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo geopolítico europeo pesa sobre el euro",
-            "en": "European geopolitical risk weighs on the euro"
-          }
-        }
-      ],
-      "confidence": 91,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/15/us-effort-to-get-russia-ukraine-energy-ceasefire-collapses",
-      "published_at": "2026-10-15",
-      "time": "<1h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Los líderes de la UE se dirigen a una batalla de alto riesgo por el presupuesto con las elecciones en el horizonte",
-        "en": "EU leaders head into high-stakes budget battle as elections loom"
-      },
-      "summary": {
-        "es": "Los líderes europeos negocian el presupuesto de la UE para 2028-2034, de casi 2 billones de euros, en medio de profundas divisiones sobre el gasto y el temor a que próximas elecciones, especialmente en Francia, refuercen las fuerzas euroescépticas. Un fracaso o un presupuesto profundamente recortado afectaría la capacidad de la UE para financiar su agenda de defensa, transición energética y competitividad en un momento de alta presión geopolítica.",
-        "en": "EU leaders are negotiating the bloc's nearly €2 trillion 2028-2034 budget amid deep divisions over spending, with upcoming elections — particularly in France — threatening to empower eurosceptic forces. A failure or deeply cut budget would impair the EU's capacity to fund its defense, energy transition, and competitiveness agenda at a moment of peak geopolitical pressure."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Fragmentación fiscal europea debilita la cohesión del euro",
-            "en": "EU fiscal fragmentation undermines euro zone cohesion"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre presupuestaria frena inversión pública y confianza",
-            "en": "Budget uncertainty dampens public investment and confidence"
-          }
-        },
-        {
-          "asset": "EU periphery sovereign bonds",
+          "asset": "Shipping/tanker equities",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de spreads si aumenta fragmentación política",
-            "en": "Spread risk rises if political fragmentation deepens"
+            "es": "Primas de seguro suben; fletes pueden compensar riesgo operacional",
+            "en": "Insurance premiums rise; freight rates may offset operational risk"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Escalada en aguas vecinas de la OTAN genera presión sobre activos europeos",
+            "en": "Escalation in NATO-adjacent waters pressures European assets"
           }
         }
       ],
-      "confidence": 82,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20261015-eu-leaders-head-for-showdown-over-bloc-budget",
+      "confidence": 83,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/c60qkgpp592yo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-10-15",
-      "time": "8h"
+      "time": "19h"
     },
     {
       "id": 4,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "APAC",
       "title": {
-        "es": "Se abre el juicio por Nord Stream en Alemania; la defensa pide la desestimación",
-        "en": "Nord Stream trial opens in Germany, defense seeks dismissal"
+        "es": "Corea del Norte y China abren su mayor puente fronterizo",
+        "en": "North Korea and China Open Their Biggest Border Bridge"
       },
       "summary": {
-        "es": "Alemania ha iniciado el juicio contra Serhii Kuznietsov por el sabotaje al gasoducto Nord Stream en 2022, un caso con profundas implicaciones geopolíticas para las relaciones entre la UE, Rusia y Ucrania. La defensa argumenta que el gasoducto era un objetivo militar legítimo, lo que podría convertir el proceso en un foro para debates sobre responsabilidad estatal y el alcance legal de la guerra híbrida.",
-        "en": "Germany has opened the trial of Serhii Kuznietsov for the 2022 Nord Stream sabotage, a case with deep geopolitical implications for EU-Russia-Ukraine relations. The defense's argument that the pipeline was a legitimate military target could transform the trial into a forum for debates on state responsibility and the legal scope of hybrid warfare."
+        "es": "La inauguración del Nuevo Puente del Río Yalu, retrasada doce años, refuerza la conexión comercial sino-norcoreana en un contexto de sanciones internacionales persistentes. Aunque analistas advierten que su impacto comercial será limitado dado que Pyongyang prioriza la seguridad sobre el comercio, el gesto geopolítico señala un mayor alineamiento estratégico entre China y Corea del Norte. Esto complica la presión occidental sobre Pyongyang y tiene implicaciones para la dinámica de seguridad en el Indo-Pacífico.",
+        "en": "The opening of the New Yalu River Bridge, delayed twelve years, strengthens Sino-North Korean trade connectivity despite persistent international sanctions. Analysts warn commercial impact will be limited given Pyongyang's security-first posture, but the geopolitical signal indicates deeper strategic alignment between China and North Korea. This complicates Western pressure on Pyongyang and has implications for Indo-Pacific security dynamics."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "European natural gas (TTF)",
-          "direction": "mixed",
+          "asset": "EM currencies (KRW, JPY)",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Revelaciones del juicio pueden reabrir debate sobre seguridad energética",
-            "en": "Trial revelations may reopen energy security liability debate"
+            "es": "Mayor alineamiento China-Corea del Norte aumenta riesgo regional",
+            "en": "Deeper China-North Korea alignment raises regional risk"
           }
         },
         {
-          "asset": "EUR/USD",
+          "asset": "Chinese equities (CSI 300)",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Tensión diplomática EU-Rusia-Ucrania crea ruido en el euro",
-            "en": "EU-Russia-Ukraine diplomatic tension creates euro noise"
+            "es": "Señal de autonomía estratégica china frente a presión occidental",
+            "en": "Signal of Chinese strategic autonomy against Western pressure"
           }
         }
       ],
       "confidence": 72,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/nord-stream-trial-opens-in-germany-defense-seeks-dismissal/a-79662942?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-14",
-      "time": "16h"
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/15/world/asia/north-korea-china-bridge-yalu.html",
+      "published_at": "2026-10-15",
+      "time": "1d"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "AFRICA",
+      "region": "LATAM",
       "title": {
-        "es": "El cambio climático y los ataques con drones agravan la crisis humanitaria en Sudán",
-        "en": "Climate change and drone attacks exacerbate the humanitarian crisis in war-torn Sudan"
+        "es": "Nicolás Maduro se declara inocente de cargos de tortura",
+        "en": "Venezuela's Nicolás Maduro pleads not guilty to torture charges"
       },
       "summary": {
-        "es": "Los grupos de ayuda advierten de un inminente colapso del sistema sanitario en Sudán mientras los ataques con drones y el cambio climático desplazan a civiles durante la temporada de siembra. La ONU ha extendido el embargo de armas solo a Darfur, lo que limita su alcance y señala las dificultades para estabilizar un país con reservas significativas de minerales críticos en una región de creciente competencia geopolítica.",
-        "en": "Aid groups warn of imminent health system collapse in Sudan as drone attacks and climate change displace civilians during the planting season. The UN extended an arms embargo only to Darfur, limiting its scope and highlighting the difficulty of stabilizing a country with significant critical mineral reserves in a region of growing geopolitical competition."
+        "es": "Maduro y su esposa enfrentan cargos formales por liderar una campaña de represión estatal que incluyó tortura durante su presidencia entre 2013 y 2026. El proceso judicial internacional eleva la presión sobre el régimen venezolano y podría catalizar nuevas sanciones o restricciones a la producción y exportación de crudo venezolano. Inversores en deuda venezolana y activos energéticos de la región deben monitorear el desarrollo del caso.",
+        "en": "Maduro and his wife face formal charges for leading a state-sponsored repression and torture campaign during his presidency from 2013 to 2026. The international judicial process increases pressure on the Venezuelan regime and could catalyze new sanctions or restrictions on Venezuelan crude production and exports. Investors in Venezuelan debt and regional energy assets should monitor case developments."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Critical minerals (gold, chromite)",
-          "direction": "up",
-          "magnitude": "low",
+          "asset": "Venezuelan sovereign bonds",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Inestabilidad sudanesa restringe acceso a minerales estratégicos",
-            "en": "Sudanese instability restricts access to strategic minerals"
+            "es": "Mayor riesgo político eleva probabilidad de nuevas sanciones",
+            "en": "Higher political risk raises probability of further sanctions"
           }
         },
         {
-          "asset": "African frontier bonds",
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Posibles sanciones adicionales reducirían oferta venezolana de crudo",
+            "en": "Potential additional sanctions would reduce Venezuelan crude supply"
+          }
+        },
+        {
+          "asset": "EM currencies (LATAM)",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Contagio de riesgo regional presiona deuda de mercados frontera",
-            "en": "Regional risk contagion pressures frontier market debt"
+            "es": "Inestabilidad política regional presiona monedas latinoamericanas",
+            "en": "Regional political instability pressures Latin American currencies"
           }
         }
       ],
       "confidence": 70,
       "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/climate-change-and-drone-attacks-exacerbate-the-humanitarian-crisis-in-war-torn-sudan/a-79659603?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-14",
-      "time": "20h"
+      "source_url": "https://www.dw.com/en/venezuela-s-nicolas-maduro-pleads-not-guilty-to-torture-charges/a-79673496?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-15",
+      "time": "15h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "APAC",
       "title": {
-        "es": "Presupuesto 2027: la Asamblea Nacional rechaza el límite a la desgravación fiscal de los jubilados",
-        "en": "Budget 2027: French National Assembly rejects cap on pensioners' tax allowance"
+        "es": "El líder golpista de Myanmar, convertido en presidente, recupera el apoyo de sus vecinos pese a la guerra",
+        "en": "Myanmar's coup leader-turned-president wins back neighbours despite war"
       },
       "summary": {
-        "es": "La Asamblea Nacional francesa rechazó por 116 votos contra 30 una medida que habría generado 1.400 millones de euros en ingresos fiscales, pese a la oposición del gobierno. El voto refleja la fragilidad política del ejecutivo francés y su incapacidad para imponer disciplina fiscal, lo que agrava las preocupaciones sobre el déficit de Francia en un contexto de tensión en la negociación del presupuesto europeo.",
-        "en": "The French National Assembly rejected by 116 votes to 30 a measure that would have raised €1.4 billion in tax revenue, despite government opposition. The vote reflects the political fragility of the French executive and its inability to impose fiscal discipline, compounding concerns about France's deficit trajectory as EU budget negotiations intensify."
+        "es": "Los líderes de la ASEAN están rehabilitando a Min Aung Hlaing a pesar de que el ejército birmano continúa bombardeando civiles. Este giro implica que la junta podría consolidar su legitimidad regional, reduciendo la presión diplomática sobre el régimen y alterando las perspectivas de resolución del conflicto. Las implicaciones para los corredores de inversión en el sudeste asiático y la postura de la ASEAN frente a China son relevantes para inversores en la región.",
+        "en": "ASEAN leaders are rehabilitating Min Aung Hlaing despite the military continuing to bomb civilians. This shift implies the junta could consolidate regional legitimacy, reducing diplomatic pressure and altering conflict resolution prospects. The implications for Southeast Asian investment corridors and ASEAN's posture toward China are relevant for regional investors."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "French OAT spreads (vs. Bund)",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "ASEAN equities",
+          "direction": "mixed",
+          "magnitude": "low",
           "note": {
-            "es": "Déficit fiscal más alto eleva prima de riesgo de deuda francesa",
-            "en": "Higher deficit path widens French sovereign risk premium"
+            "es": "Normalización regional reduce riesgo de contagio pero valida autoritarismo",
+            "en": "Regional normalization reduces contagion risk but validates authoritarianism"
           }
         },
         {
-          "asset": "EUR/USD",
-          "direction": "down",
+          "asset": "Myanmar assets",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Inestabilidad fiscal francesa pesa sobre la moneda única",
-            "en": "French fiscal instability weighs on the single currency"
+            "es": "Rehabilitación ASEAN abre marginalmente flujos de inversión regional",
+            "en": "ASEAN rehabilitation marginally reopens regional investment flows"
           }
         }
       ],
-      "confidence": 75,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/politique/article/2026/10/15/budget-2027-l-assemblee-nationale-rejette-le-plafonnement-d-un-abattement-fiscal-des-retraites_6794431_823448.html",
-      "published_at": "2026-10-15",
-      "time": "<1h"
+      "confidence": 65,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/10/16/as-war-rages-myanmars-coup-leader-turned-president-wins-back-neighbours?traffic_source=rss",
+      "published_at": "2026-10-16",
+      "time": "9h"
     }
   ],
   "market_updated_at": "2026-10-16T10:12:46.273Z"
