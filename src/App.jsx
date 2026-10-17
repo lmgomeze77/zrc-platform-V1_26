@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, createContext, useContext, lazy, Suspense } from "react";
+import { useState, useEffect, useRef, useCallback, createContext, useContext, lazy, Suspense, Component } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 import Observatory from "./pages/intelligence/Observatory";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
@@ -10,6 +10,22 @@ import PricingPage from "./pages/PricingPage";
 import MacroPulse from "./pages/intelligence/MacroPulse";
 import GeoRiskML from "./pages/intelligence/GeoRiskML";
 import GeoRiskIndex from "./pages/intelligence/GeoRiskIndex";
+class GeoRiskMapErrorBoundary extends Component {
+  constructor(props) { super(props); this.state = { failed: false }; }
+  static getDerivedStateFromError() { return { failed: true }; }
+  componentDidCatch(error, info) { console.error("GeoRisk World Map failed to render", error, info); }
+  render() {
+    if (this.state.failed) return (
+      <div role="alert" style={{ background: "#F7F9FC", color: "#15233B", minHeight: "100dvh", padding: "28px 20px", fontFamily: "Arial, sans-serif" }}>
+        <h2>{this.props.lang === "en" ? "The map could not load" : "No se ha podido cargar el mapa"}</h2>
+        <p>{this.props.lang === "en" ? "Please retry. If the issue persists, update your browser or try another network." : "Prueba a recargar. Si continúa el problema, actualiza el navegador o cambia de red."}</p>
+        <button type="button" onClick={() => this.setState({ failed: false })} style={{ padding: "12px 18px", marginRight: 12 }}>{this.props.lang === "en" ? "Retry" : "Reintentar"}</button>
+        <button type="button" onClick={this.props.onClose} style={{ padding: "12px 18px" }}>{this.props.lang === "en" ? "Close" : "Cerrar"}</button>
+      </div>
+    );
+    return this.props.children;
+  }
+}
 const loadGeoRiskWorldMap = () => import("./pages/intelligence/GeoRiskWorldMap");
 const GeoRiskWorldMap = lazy(loadGeoRiskWorldMap);
 import ZenithAssistant from "./components/assistant/ZenithAssistant";
@@ -2050,9 +2066,11 @@ const ZRCPlatform = () => {
 
       {showWorldMap && (
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
+          <GeoRiskMapErrorBoundary lang={lang} onClose={closeWorldMap}>
           <Suspense fallback={<div role="status" style={{ padding: "12vh 24px", textAlign: "center", color: "#15233B", background: "#F7F9FC", minHeight: "100vh", fontFamily: "Inter, sans-serif" }}>{lang === "es" ? "Preparando mapa geopolítico…" : "Preparing geopolitical map…"}</div>}>
             <GeoRiskWorldMap lang={lang} onClose={closeWorldMap} onOpenIntelligence={() => { closeWorldMap(); setTimeout(() => onNav("intelligence"), 50); }} />
           </Suspense>
+          </GeoRiskMapErrorBoundary>
         </div>
       )}
     </AuthProvider>
