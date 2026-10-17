@@ -7,7 +7,7 @@
 // GeoRisk Dashboard / Predictive ML para la capa cuantitativa (precios,
 // escenarios, forecast IA).
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, CircleMarker, Tooltip, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Globe2, TrendingUp, TrendingDown, Minus, X, ArrowRight, Info } from "lucide-react";
@@ -740,6 +740,8 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
   const blocDescription = (key) => en ? ({ occidental: "Strong alignment with the US, NATO and EU; limited strategic affinity with Beijing or Moscow.", sino_euroasiatico: "Strong alignment with China and/or Russia, with strategic distance from Washington.", multialineado: "Balances US, China and regional ties without committing to a fixed camp.", no_alineado: "No dominant alignment; positions may shift across international issues." }[key]) : BLOC_META[key].desc;
   const [selectedId, setSelectedId] = useState(null);
   const [comparisonIds, setComparisonIds] = useState([]);
+  const comparisonRef = useRef(null);
+  const viewComparison = () => comparisonRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   const [mapMode, setMapMode] = useState("territories");
   const [boundaries, setBoundaries] = useState(null);
   const [boundariesError, setBoundariesError] = useState(false);
@@ -867,9 +869,10 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
             <option value="">{comparisonIds.length===3 ? tr("Máximo de tres países", "Three-country limit") : tr("Añadir país…", "Add country…")}</option>
             {COUNTRIES.filter(c=>!comparisonIds.includes(c.id)).map(c=><option key={c.id} value={c.id}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</option>)}
           </select>
-          {comparisonCountries.map(c=><button type="button" key={c.id} onClick={()=>toggleComparison(c.id)} style={{padding:"8px 11px",border:`1px solid ${C.borderHover}`,background:C.surface2,borderRadius:999,color:C.text,cursor:"pointer"}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name} ×</button>)}
+          {comparisonCountries.map(c=><span key={c.id} style={{display:"inline-flex",alignItems:"center",gap:8,padding:"8px 11px",border:`1px solid ${C.borderHover}`,background:C.surface2,borderRadius:999,color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}<button type="button" aria-label={tr("Quitar de comparación: ","Remove from comparison: ")+(en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name)} onClick={()=>toggleComparison(c.id)} style={{border:"none",background:"transparent",color:C.textSec,cursor:"pointer",fontSize:17,padding:"0 3px"}}>×</button></span>)}
+          {comparisonCountries.length > 0 && <button type="button" onClick={viewComparison} style={{padding:"10px 16px",borderRadius:10,border:"none",background:"#2E6FB8",color:"#fff",fontWeight:650,cursor:"pointer"}}>{tr("Ver comparación", "View comparison")} ({comparisonCountries.length})</button>}
         </div>
-        {comparisonCountries.length > 0 && <CountryComparison countries={comparisonCountries} lang={lang} onRemove={toggleComparison} onClear={()=>setComparisonIds([])} />}
+        {comparisonCountries.length > 0 && <div ref={comparisonRef} style={{scrollMarginTop:80}}><CountryComparison countries={comparisonCountries} lang={lang} onRemove={toggleComparison} onClear={()=>setComparisonIds([])} /></div>}
         {/* Controls */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 20, marginBottom: 16, alignItems: "flex-start" }}>
           <div>
