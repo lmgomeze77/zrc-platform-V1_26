@@ -789,12 +789,21 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
         .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: ${C.surface}; color: ${C.text}; }
         .leaflet-control-attribution { background: rgba(255,255,255,0.85) !important; color: ${C.textMuted} !important; }
         .leaflet-control-attribution a { color: ${C.textSec} !important; }
-        .grwm-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 18px; }
+        .grwm-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 430px); gap: 16px; align-items: stretch; }
+        .grwm-map { min-width: 0; }
+        .grwm-detail { min-width: 0; }
+        .grwm-detail-placeholder { height: 100%; }
         @media (max-width: 900px) {
           .grwm-layout { grid-template-columns: 1fr; }
           .grwm-panel { max-height: 70vh; }
           .grwm-map { height: min(55dvh, 460px) !important; min-height: 310px; }
           .grwm-panel { max-height: 70dvh; }
+          .grwm-detail { display: none; }
+          .grwm-detail.grwm-detail-open { display: block; position: fixed; inset: auto 0 0 0; z-index: 10000; max-height: 82dvh; overflow-y: auto; background: #F7F9FC; padding: 12px 12px max(16px, env(safe-area-inset-bottom)); border-radius: 22px 22px 0 0; box-shadow: 0 -12px 45px rgba(11,37,69,.28); overscroll-behavior: contain; }
+          .grwm-detail.grwm-detail-open .grwm-panel { max-height: 66dvh; }
+          .grwm-detail-placeholder { display: none !important; }
+          .grwm-mobile-backdrop { display: block !important; }
+          .grwm-map { border-radius: 16px !important; }
         }
       `}</style>
 
@@ -946,12 +955,12 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
 
           {/* Detail panel */}
           {selected ? (
-            <div style={{minWidth:0}}>
+            <div className="grwm-detail grwm-detail-open" role="dialog" aria-modal="true" aria-label={tr("Ficha de país","Country details")}>
               <button type="button" onClick={()=>toggleComparison(selected.id)} disabled={!comparisonIds.includes(selected.id) && comparisonIds.length>=3} style={{width:"100%",marginBottom:10,padding:"12px",border:`1px solid ${C.borderHover}`,borderRadius:10,background:C.surface2,color:C.text,cursor:"pointer",fontWeight:600}}>{comparisonIds.includes(selected.id) ? tr("✓ Quitar de comparación", "✓ Remove from comparison") : tr("+ Añadir a comparación", "+ Add to comparison")}</button>
               <CountryPanel country={selected} onClose={() => setSelectedId(null)} lang={lang} />
             </div>
           ) : (
-            <div style={{ background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 26, padding: 24, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 10, minHeight: 300 }}>
+            <div className="grwm-detail-placeholder" style={{ background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 26, padding: 24, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 10, minHeight: 300 }}>
               <Info size={22} color={C.textMuted} />
               <div style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, maxWidth: 240 }}>
                 {tr("Selecciona un país en el mapa para ver comercio, alineamiento, dependencias y estrategia en detalle.", "Select a country to explore its trade, alignment, dependencies and strategy.")}
