@@ -56,6 +56,6 @@ export const worldBankIndicatorUrl = (iso3, code) =>
 
 export function latestWorldBankObservation(payload) {
   if (!Array.isArray(payload) || !Array.isArray(payload[1])) return null;
-  const item = payload[1].find(row => row && Number.isFinite(row.value) && /^\\d{4}$/.test(String(row.date)));
+  const item = payload[1].find(row => row && Number.isFinite(row.value) && /^[0-9]{4}$/.test(String(row.date)));
   return item ? {value:item.value, year:String(item.date)} : null;
 }
