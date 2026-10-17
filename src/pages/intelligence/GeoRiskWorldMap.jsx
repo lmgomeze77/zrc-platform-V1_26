@@ -650,6 +650,7 @@ function CountryPanel({ country, onClose, lang }) {
 
 function Legend({ colorMode, lang }) {
   const en = lang === "en";
+  const blocLabel = (key) => en ? ({ occidental: "Western Bloc", sino_euroasiatico: "Sino-Eurasian Axis", multialineado: "Pragmatic multi-aligned", no_alineado: "Non-aligned / swing states" }[key] || BLOC_META[key]?.label) : BLOC_META[key]?.label;
   if (colorMode !== "bloc") {
     const gradientStops = colorMode === "riskScore"
       ? [[en ? "Low" : "Bajo", C.green], [en ? "Moderate" : "Moderado", C.amber], [en ? "High" : "Elevado", "#E08A3C"], [en ? "Critical" : "Crítico", C.red]]
