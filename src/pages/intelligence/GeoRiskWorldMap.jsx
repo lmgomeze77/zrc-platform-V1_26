@@ -680,7 +680,8 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
   const tr = (es, english) => en ? english : es;
   const blocLabel = (key) => en ? ({ occidental: "Western Bloc", sino_euroasiatico: "Sino-Eurasian Axis", multialineado: "Pragmatic multi-aligned", no_alineado: "Non-aligned / swing states" }[key]) : BLOC_META[key].label;
   const blocDescription = (key) => en ? ({ occidental: "Strong alignment with the US, NATO and EU; limited strategic affinity with Beijing or Moscow.", sino_euroasiatico: "Strong alignment with China and/or Russia, with strategic distance from Washington.", multialineado: "Balances US, China and regional ties without committing to a fixed camp.", no_alineado: "No dominant alignment; positions may shift across international issues." }[key]) : BLOC_META[key].desc;
-  const [selectedId, setSelectedId] = useState(null);\n  const [search, setSearch] = useState("");
+  const [selectedId, setSelectedId] = useState(null); 
+  const [search, setSearch] = useState("");
   const [colorMode, setColorMode] = useState("bloc");
   const [blocFilter, setBlocFilter] = useState(null);
 
