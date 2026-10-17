@@ -51,6 +51,7 @@ const COUNTRY_NARRATIVES_EN = {"us":{"strategy":"Anchor of the Western order","s
 
 const TOURISM_NAMES_EN = {"Corea del Sur":"South Korea","Rusia":"Russia","Canadá":"Canada","México":"Mexico","Turquía":"Türkiye","China":"China","Países Bajos":"Netherlands","Suiza":"Switzerland","Alemania":"Germany","Reino Unido":"United Kingdom","Francia":"France","Ucrania":"Ukraine","Bélgica":"Belgium","Noruega":"Norway","Polonia":"Poland","Moldavia":"Moldova","Japón":"Japan","Taiwán":"Taiwan","Bangladés":"Bangladesh","Malasia":"Malaysia","Singapur":"Singapore","Indonesia":"Indonesia","Nueva Zelanda":"New Zealand","Emiratos":"UAE","Egipto":"Egypt","India":"India","Arabia Saudí":"Saudi Arabia","Irak":"Iraq","Azerbaiyán":"Azerbaijan","Nigeria":"Nigeria","Zimbabue":"Zimbabwe","Uganda":"Uganda","Tanzania":"Tanzania","Ruanda":"Rwanda","Argentina":"Argentina","Brasil":"Brazil","Chile":"Chile","Venezuela":"Venezuela","Uzbekistán":"Uzbekistan","Suecia":"Sweden","Dinamarca":"Denmark","EE.UU.":"United States"};
 const translateTourism = (value) => value.split(" / ").map(part => TOURISM_NAMES_EN[part] || part).join(" / ");
+const normalizeCountrySearch = (value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase().trim();
 
 const diploLabel = (v) => (v >= 2 ? "Socio estratégico" : v === 1 ? "Cordial" : v === 0 ? "Normal" : v === -1 ? "Tensa" : "Crisis");
 const diploColor = (v) => (v >= 1 ? C.green : v === 0 ? C.textMuted : v === -1 ? C.amber : C.red);
@@ -737,10 +738,15 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
 
   const selected = useMemo(() => COUNTRIES.find((c) => c.id === selectedId) || null, [selectedId]);
 
+  const searchResults = useMemo(() => {
+    const q = normalizeCountrySearch(search);
+    if (!q) return [];
+    return COUNTRIES.filter(c => normalizeCountrySearch(c.name).includes(q) || normalizeCountrySearch(COUNTRY_NAMES_EN[c.id] || "").includes(q));
+  }, [search]);
   const visibleCountries = useMemo(() => {
-    const q = search.trim().toLocaleLowerCase();
-    return COUNTRIES.filter(c => (!blocFilter || computeBloc(c) === blocFilter) && (!q || c.name.toLocaleLowerCase().includes(q) || (COUNTRY_NAMES_EN[c.id] || "").toLocaleLowerCase().includes(q)));
-  }, [blocFilter, search]);
+    if (search.trim()) return searchResults;
+    return blocFilter ? COUNTRIES.filter(c => computeBloc(c) === blocFilter) : COUNTRIES;
+  }, [blocFilter, search, searchResults]);
 
   const blocCounts = useMemo(() => {
     const counts = {};
@@ -823,7 +829,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
             {search && <button onClick={()=>setSearch("")} style={{padding:"11px 13px",borderRadius:12,border:`1px solid ${C.border}`,background:"#FFFFFF",color:C.text,cursor:"pointer"}}>{tr("Limpiar","Clear")}</button>}
           </div>
         </div>
-        {search.trim() && <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:14}}>{visibleCountries.slice(0,10).map(c=><button key={c.id} onClick={()=>setSelectedId(c.id)} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:999,padding:"8px 12px",cursor:"pointer",color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</button>)}{visibleCountries.length===0 && <span style={{color:C.textSec}}>{tr("Sin coincidencias","No matches")}</span>}</div>}
+        {search.trim() && <div role="region" aria-label={tr("Resultados de búsqueda","Search results")} style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:14}}>{searchResults.slice(0,10).map(c=><button type="button" key={c.id} onClick={()=>{setSelectedId(c.id);setBlocFilter(null);setSearch("");}} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:999,padding:"8px 12px",cursor:"pointer",color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</button>)}{searchResults.length===0 && <span style={{color:C.textSec}}>{tr("Sin coincidencias","No matches")}</span>}</div>}
         <div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap",marginBottom:16}}>
           <span style={{fontSize:12,color:C.textSec}}>{tr("Selecciona hasta tres países para comparar sus perfiles:", "Select up to three countries to compare their profiles:")}</span>
           <select aria-label={tr("Añadir país a comparación", "Add country to comparison")} value="" onChange={e=>{if(e.target.value)toggleComparison(e.target.value)}} disabled={comparisonIds.length===3} style={{padding:"10px 12px",borderRadius:10,border:`1px solid ${C.border}`,background:C.surface,color:C.text,maxWidth:"100%"}}>
