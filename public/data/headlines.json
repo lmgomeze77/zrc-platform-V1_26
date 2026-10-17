@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T10:36:00.903Z",
+  "generated_at": "2026-10-17T10:05:24.964Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,33 +96,24 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EURASIA",
+      "region": "EU",
       "title": {
-        "es": "Trump califica de 'vergüenza' los renovados ataques ucranianos a refinerías rusas",
-        "en": "Trump calls Ukraine's renewed strikes on Russian oil refineries 'a disgrace'"
+        "es": "Zelensky habla en la cumbre de la UE en medio de enfrentamiento con Trump",
+        "en": "Zelensky speaks at EU summit amid spat with Donald Trump"
       },
       "summary": {
-        "es": "El colapso del 'alto el fuego energético' y los nuevos ataques ucranianos sobre infraestructura petrolera rusa han agravado la ruptura entre Washington y Kyiv. Trump declaró que Zelensky es 'más difícil de tratar que Putin', señalizando una potencial reducción del apoyo estadounidense. La incertidumbre sobre el suministro ruso de crudo y la realineación geopolítica en torno a Ucrania generan volatilidad significativa en energía y activos europeos.",
-        "en": "The collapse of the 'energy ceasefire' and renewed Ukrainian strikes on Russian oil infrastructure have sharpened the Washington-Kyiv rift. Trump's characterization of Zelensky as harder to deal with than Putin signals a potential reduction in US backing. Uncertainty over Russian crude supply and the geopolitical realignment around Ukraine create significant volatility in energy and European assets."
+        "es": "El presidente ucraniano participó en la cumbre de Bruselas mientras las relaciones con Washington se deterioran por disputas sobre Rusia y Starlink, y un déficit presupuestario amenaza la capacidad de resistencia de Ucrania en invierno. Los líderes europeos reafirmaron su apoyo, pero la divergencia transatlántica eleva el riesgo de fractura en la coalición de apoyo a Kyiv. La combinación de tensión con EE.UU. y ataques a infraestructura energética agrava el panorama para activos de riesgo europeos.",
+        "en": "Zelensky attended the Brussels summit as relations with Washington deteriorate over Russia policy and Starlink disputes, while a significant budget shortfall threatens Ukraine's winter resilience. EU leaders reaffirmed support, but transatlantic divergence raises fracture risk within the Kyiv support coalition. The convergence of US-EU tensions and energy infrastructure attacks weighs on European risk assets."
       },
       "impact": "high",
       "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Ataques a refinerías rusas elevan prima de riesgo energético",
-            "en": "Strikes on Russian refineries raise energy risk premium"
-          }
-        },
         {
           "asset": "EUR/USD",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Fractura EEUU-Ucrania debilita posición negociadora europea",
-            "en": "US-Ukraine fracture weakens European negotiating position"
+            "es": "Riesgo geopolítico europeo elevado por fractura transatlántica",
+            "en": "Elevated European geopolitical risk from transatlantic fracture"
           }
         },
         {
@@ -130,8 +121,17 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada prolonga incertidumbre sobre costes energéticos europeos",
-            "en": "Escalation prolongs uncertainty over European energy costs"
+            "es": "Incertidumbre sobre apoyo a Ucrania presiona sectores de defensa y energía",
+            "en": "Uncertainty over Ukraine support pressures defense and energy sectors"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de suministro energético europeo en invierno",
+            "en": "European energy supply risk heading into winter"
           }
         },
         {
@@ -139,247 +139,229 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor aversión al riesgo geopolítico impulsa demanda de refugio",
-            "en": "Heightened geopolitical risk aversion boosts safe-haven demand"
+            "es": "Mayor aversión al riesgo por tensiones geopolíticas",
+            "en": "Heightened risk aversion from geopolitical tensions"
           }
         }
       ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/16/trump-calls-ukraines-resumption-of-strikes-on-russian-oil-refineries-a-disgrace",
+      "confidence": 85,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ukrainian-president-zelenskyy-speaks-at-eu-summit-amid-spat-with-donald-trump/a-79684340?maca=en-rss-en-all-1573-rdf",
       "published_at": "2026-10-16",
-      "time": "<1h"
+      "time": "14h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "EEUU considera usar la 'Madre de Todas las Bombas' contra Irán",
-        "en": "US considers hitting Iran with 'Mother of All Bombs'"
+        "es": "Los hutíes de Yemen reivindican nuevo ataque con misiles al aeropuerto de Adén",
+        "en": "Yemen's Houthis claim responsibility for fresh missile strike on Aden airport"
       },
       "summary": {
-        "es": "Según CNN, Washington evalúa el uso de su mayor bomba no nuclear contra Irán si Trump decide reanudar el conflicto iniciado con ataques estadounidenses e israelíes en febrero. Los esfuerzos diplomáticos han llegado a un punto muerto, elevando el riesgo de una escalada militar directa. Una acción de este tipo tendría consecuencias inmediatas y severas sobre el precio del petróleo, los activos de riesgo globales y la estabilidad del estrecho de Ormuz.",
-        "en": "According to CNN, Washington is evaluating the use of its largest non-nuclear bomb against Iran if Trump decides to resume combat after a deadlock in diplomatic efforts. The conflict originated with US-Israeli strikes on Iran in February. Such an action would have immediate and severe consequences for oil prices, global risk assets, and Strait of Hormuz stability."
+        "es": "El grupo hutí alineado con Irán lanzó dos misiles contra el aeropuerto internacional de Adén, afirmando haber atacado un depósito de armas y un cuartel de mando militar, mientras un vuelo de Yemenia preparaba su despegue. El ataque amenaza rutas de suministro clave en la costa yemení del Mar Rojo y eleva la presión sobre las fuerzas gubernamentales en su ofensiva. La persistente actividad hutí mantiene el riesgo de interrupción del tráfico marítimo en el estrecho de Bab el-Mandeb.",
+        "en": "The Iran-aligned Houthi group fired two missiles at Aden International Airport, claiming to have targeted a weapons depot and military command headquarters while a Yemenia Airways flight was preparing for departure. The strike threatens key supply routes on Yemen's Red Sea coast and intensifies pressure on government forces. Sustained Houthi activity keeps disruption risk elevated at the Bab el-Mandeb chokepoint."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
           "direction": "up",
-          "magnitude": "high",
+          "magnitude": "medium",
           "note": {
-            "es": "Escalada contra Irán amenaza directamente flujos del Golfo Pérsico",
-            "en": "Iran escalation directly threatens Persian Gulf oil flows"
+            "es": "Riesgo de chokepoint en Bab el-Mandeb presiona precios del crudo",
+            "en": "Bab el-Mandeb chokepoint risk pressures crude prices"
+          }
+        },
+        {
+          "asset": "Global shipping rates",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Amenaza a rutas del Mar Rojo encarece fletes marítimos",
+            "en": "Red Sea route threat drives up shipping freight rates"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "high",
+          "magnitude": "low",
           "note": {
-            "es": "Riesgo de guerra mayor dispara refugio en oro",
-            "en": "Major war risk triggers safe-haven gold demand"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Aversión al riesgo global presiona monedas emergentes",
-            "en": "Global risk-off sentiment pressures emerging market currencies"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Huida a calidad impulsa demanda de bonos del Tesoro",
-            "en": "Flight to quality drives Treasury bond demand"
+            "es": "Tensión regional MENA refuerza demanda de refugio",
+            "en": "MENA regional tension reinforces safe-haven demand"
           }
         }
       ],
-      "confidence": 88,
+      "confidence": 82,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261016-us-considers-hitting-iran-with-mother-of-all-bombs",
-      "published_at": "2026-10-16",
-      "time": "1h"
+      "source_url": "https://www.france24.com/en/middle-east/20261017-yemen-s-houthis-claim-responsibility-for-fresh-missile-strike-on-aden-airport",
+      "published_at": "2026-10-17",
+      "time": "4h"
     },
     {
       "id": 3,
-      "tag": "ALERT",
+      "tag": "WATCH",
       "region": "EURASIA",
       "title": {
-        "es": "Siete tripulantes desaparecidos tras ataque de dron que incendia un petrolero frente a la costa de Rumanía",
-        "en": "Seven crew missing after drone attack leaves tanker ablaze off Romania's coast"
+        "es": "El viaje de Rubio a Uzbekistán subraya la búsqueda de Asia Central de socios diversificados",
+        "en": "Rubio's Uzbekistan trip underlines Central Asia's hunt for diverse partners"
       },
       "summary": {
-        "es": "Un ataque con dron en el Mar Negro dejó un petrolero en llamas frente a las costas de Rumanía, con siete tripulantes desaparecidos. El incidente representa una escalada del conflicto hacia aguas de la OTAN y amenaza rutas de exportación energética críticas del Mar Negro. El riesgo de primas de seguro marítima y de interrupción del suministro de crudo por esta ruta aumenta considerablemente.",
-        "en": "A drone attack in the Black Sea left a tanker ablaze off Romania's coast with seven crew members missing. The incident marks an escalation of the conflict into NATO-adjacent waters and threatens critical Black Sea energy export routes. Maritime insurance premiums and supply disruption risk on this corridor rise considerably."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Ataques en Mar Negro elevan riesgo de interrupción de exportaciones",
-            "en": "Black Sea attacks raise export disruption risk"
-          }
-        },
-        {
-          "asset": "Shipping/tanker equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Primas de seguro suben; fletes pueden compensar riesgo operacional",
-            "en": "Insurance premiums rise; freight rates may offset operational risk"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Escalada en aguas vecinas de la OTAN genera presión sobre activos europeos",
-            "en": "Escalation in NATO-adjacent waters pressures European assets"
-          }
-        }
-      ],
-      "confidence": 83,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/c60qkgpp592yo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-15",
-      "time": "19h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Corea del Norte y China abren su mayor puente fronterizo",
-        "en": "North Korea and China Open Their Biggest Border Bridge"
-      },
-      "summary": {
-        "es": "La inauguración del Nuevo Puente del Río Yalu, retrasada doce años, refuerza la conexión comercial sino-norcoreana en un contexto de sanciones internacionales persistentes. Aunque analistas advierten que su impacto comercial será limitado dado que Pyongyang prioriza la seguridad sobre el comercio, el gesto geopolítico señala un mayor alineamiento estratégico entre China y Corea del Norte. Esto complica la presión occidental sobre Pyongyang y tiene implicaciones para la dinámica de seguridad en el Indo-Pacífico.",
-        "en": "The opening of the New Yalu River Bridge, delayed twelve years, strengthens Sino-North Korean trade connectivity despite persistent international sanctions. Analysts warn commercial impact will be limited given Pyongyang's security-first posture, but the geopolitical signal indicates deeper strategic alignment between China and North Korea. This complicates Western pressure on Pyongyang and has implications for Indo-Pacific security dynamics."
+        "es": "La visita del Secretario de Estado Rubio a Uzbekistán señala un intento estadounidense de reafirmar influencia en Asia Central mediante un enfoque pragmático y transaccional, en un momento en que la región diversifica activamente sus vínculos entre Rusia, China y Occidente. El reposicionamiento geopolítico de las repúblicas de Asia Central tiene implicaciones directas para corredores de materias primas críticas y rutas de tránsito que sortean sanciones rusas. Los inversores deberían monitorear el acceso a recursos energéticos y minerales de la región.",
+        "en": "Secretary of State Rubio's visit to Uzbekistan signals a US attempt to reassert influence in Central Asia through a pragmatic, transactional approach, as the region actively diversifies links between Russia, China, and the West. The geopolitical repositioning of Central Asian republics has direct implications for critical commodity corridors and sanction-bypass transit routes. Investors should monitor access to the region's energy and mineral resources."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "EM currencies (KRW, JPY)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor alineamiento China-Corea del Norte aumenta riesgo regional",
-            "en": "Deeper China-North Korea alignment raises regional risk"
-          }
-        },
-        {
-          "asset": "Chinese equities (CSI 300)",
+          "asset": "EM currencies",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Señal de autonomía estratégica china frente a presión occidental",
-            "en": "Signal of Chinese strategic autonomy against Western pressure"
+            "es": "Reequilibrio geopolítico afecta flujos a activos de mercados emergentes",
+            "en": "Geopolitical rebalancing affects flows to emerging market assets"
+          }
+        },
+        {
+          "asset": "Critical minerals ETFs",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor acceso occidental a minerales críticos de Asia Central",
+            "en": "Increased Western access to Central Asian critical minerals"
           }
         }
       ],
       "confidence": 72,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/15/world/asia/north-korea-china-bridge-yalu.html",
-      "published_at": "2026-10-15",
-      "time": "1d"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news-analysis/2026/10/17/rubios-uzbekistan-trip-underlines-central-asias-hunt-for-diverse-partners?traffic_source=rss",
+      "published_at": "2026-10-17",
+      "time": "1h"
     },
     {
-      "id": 5,
-      "tag": "WATCH",
+      "id": 4,
+      "tag": "ALERT",
       "region": "LATAM",
       "title": {
-        "es": "Nicolás Maduro se declara inocente de cargos de tortura",
-        "en": "Venezuela's Nicolás Maduro pleads not guilty to torture charges"
+        "es": "Caracas sorprendentemente segura tras redadas policiales mortales en Venezuela que mataron a miles",
+        "en": "Caracas Is Eerily Safe After Deadly Police Raids in Venezuela Killed Thousands"
       },
       "summary": {
-        "es": "Maduro y su esposa enfrentan cargos formales por liderar una campaña de represión estatal que incluyó tortura durante su presidencia entre 2013 y 2026. El proceso judicial internacional eleva la presión sobre el régimen venezolano y podría catalizar nuevas sanciones o restricciones a la producción y exportación de crudo venezolano. Inversores en deuda venezolana y activos energéticos de la región deben monitorear el desarrollo del caso.",
-        "en": "Maduro and his wife face formal charges for leading a state-sponsored repression and torture campaign during his presidency from 2013 to 2026. The international judicial process increases pressure on the Venezuelan regime and could catalyze new sanctions or restrictions on Venezuelan crude production and exports. Investors in Venezuelan debt and regional energy assets should monitor case developments."
+        "es": "La delincuencia en Venezuela se desplomó tras operaciones policiales que causaron miles de muertes, pero el régimen de Maduro ahora se retira de la Corte Penal Internacional mientras esta investiga dicha campaña. La retirada de la CPI señala un endurecimiento autoritario con implicaciones para la inversión extranjera y el suministro de petróleo venezolano, justo cuando las sanciones siguen siendo un factor clave en los mercados de crudo. El deterioro del Estado de derecho eleva el riesgo país para cualquier exposición a activos venezolanos.",
+        "en": "Crime in Venezuela collapsed following police raids that killed thousands, but the Maduro regime is now withdrawing from the International Criminal Court as it investigates the campaign. The ICC withdrawal signals authoritarian consolidation with implications for foreign investment and Venezuelan oil supply, as sanctions remain a key crude market variable. Deteriorating rule of law raises country risk for any Venezuelan asset exposure."
       },
       "impact": "medium",
       "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre sobre producción venezolana ante posibles nuevas sanciones",
+            "en": "Uncertainty over Venezuelan output amid potential new sanctions"
+          }
+        },
         {
           "asset": "Venezuelan sovereign bonds",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor riesgo político eleva probabilidad de nuevas sanciones",
-            "en": "Higher political risk raises probability of further sanctions"
+            "es": "Retirada de la CPI y represión elevan riesgo de sanciones",
+            "en": "ICC withdrawal and repression raise sanctions risk"
           }
         },
         {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Posibles sanciones adicionales reducirían oferta venezolana de crudo",
-            "en": "Potential additional sanctions would reduce Venezuelan crude supply"
-          }
-        },
-        {
-          "asset": "EM currencies (LATAM)",
+          "asset": "EM currencies",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Inestabilidad política regional presiona monedas latinoamericanas",
-            "en": "Regional political instability pressures Latin American currencies"
+            "es": "Mayor riesgo político en LATAM pesa en activos regionales",
+            "en": "Heightened LATAM political risk weighs on regional assets"
           }
         }
       ],
-      "confidence": 70,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/venezuela-s-nicolas-maduro-pleads-not-guilty-to-torture-charges/a-79673496?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-15",
-      "time": "15h"
+      "confidence": 78,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/16/world/americas/caracas-venezuela-crime-raids-icc.html",
+      "published_at": "2026-10-16",
+      "time": "14h"
     },
     {
-      "id": 6,
+      "id": 5,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "AFRICA",
       "title": {
-        "es": "El líder golpista de Myanmar, convertido en presidente, recupera el apoyo de sus vecinos pese a la guerra",
-        "en": "Myanmar's coup leader-turned-president wins back neighbours despite war"
+        "es": "Abiy Ahmed nombra un gobierno interino en Tigray",
+        "en": "Ethiopia's Abiy Ahmed appoints interim Tigray government"
       },
       "summary": {
-        "es": "Los líderes de la ASEAN están rehabilitando a Min Aung Hlaing a pesar de que el ejército birmano continúa bombardeando civiles. Este giro implica que la junta podría consolidar su legitimidad regional, reduciendo la presión diplomática sobre el régimen y alterando las perspectivas de resolución del conflicto. Las implicaciones para los corredores de inversión en el sudeste asiático y la postura de la ASEAN frente a China son relevantes para inversores en la región.",
-        "en": "ASEAN leaders are rehabilitating Min Aung Hlaing despite the military continuing to bomb civilians. This shift implies the junta could consolidate regional legitimacy, reducing diplomatic pressure and altering conflict resolution prospects. The implications for Southeast Asian investment corridors and ASEAN's posture toward China are relevant for regional investors."
+        "es": "El primer ministro etíope Abiy Ahmed designó un gobierno interino en Tigray, prometiendo elecciones en seis meses, tras una escalada en los combates entre fuerzas federales y una alianza rebelde. El movimiento refleja intentos de estabilización política en una región estratégica para el Cuerno de África y las rutas del Mar Rojo, pero su sostenibilidad depende de la voluntad de los actores armados locales. La inestabilidad en Etiopía tiene implicaciones para corredores logísticos regionales y exposición soberana en mercados fronterizos africanos.",
+        "en": "Ethiopian PM Abiy Ahmed appointed an interim Tigray government promising elections within six months, following an escalation in fighting between federal forces and a rebel alliance. The move reflects political stabilization attempts in a region strategic to the Horn of Africa and Red Sea corridors, but sustainability depends on armed actors' compliance. Instability in Ethiopia has implications for regional logistics corridors and sovereign exposure in African frontier markets."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "ASEAN equities",
+          "asset": "Ethiopian sovereign bonds",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Normalización regional reduce riesgo de contagio pero valida autoritarismo",
-            "en": "Regional normalization reduces contagion risk but validates authoritarianism"
+            "es": "Estabilización parcial reduce prima de riesgo, pero persiste incertidumbre",
+            "en": "Partial stabilization lowers risk premium, but uncertainty persists"
           }
         },
         {
-          "asset": "Myanmar assets",
-          "direction": "up",
+          "asset": "African frontier market equities",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Rehabilitación ASEAN abre marginalmente flujos de inversión regional",
-            "en": "ASEAN rehabilitation marginally reopens regional investment flows"
+            "es": "Señal de gobernanza mixta en mercado fronterizo clave africano",
+            "en": "Mixed governance signal in key African frontier market"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ethiopia-s-abiy-ahmed-appoints-interim-tigray-government/a-79683519?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-16",
+      "time": "17h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "El ciberataque a los frigoríficos de supermercados, señal de alarma para industriales y recordatorio de la ley europea para Francia",
+        "en": "Supermarket refrigerator cyberattack, an alarm signal for all industrials and a reminder of European law for France"
+      },
+      "summary": {
+        "es": "Un ciberataque afectó a más de 700 tiendas a través de equipos de refrigeración conectados a internet, evidenciando la vulnerabilidad de dispositivos IoT en infraestructura comercial crítica. El incidente también expone el retraso de Francia en transponer dos directivas europeas de ciberseguridad al derecho nacional. Para inversores, el evento refuerza la urgencia regulatoria en ciberseguridad industrial y señala riesgo operacional para cadenas de suministro retail y sectores de infraestructura crítica en la UE.",
+        "en": "A cyberattack struck over 700 stores via internet-connected refrigeration units, exposing the vulnerability of IoT devices in critical commercial infrastructure. The incident also highlights France's delay in transposing two EU cybersecurity directives into national law. For investors, the event reinforces regulatory urgency around industrial cybersecurity and signals operational risk for retail supply chains and critical infrastructure sectors across the EU."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European cybersecurity equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incidente acelera demanda regulatoria de soluciones de ciberseguridad",
+            "en": "Incident accelerates regulatory demand for cybersecurity solutions"
+          }
+        },
+        {
+          "asset": "European retail equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo operacional y reputacional para cadenas minoristas expuestas",
+            "en": "Operational and reputational risk for exposed retail chains"
           }
         }
       ],
       "confidence": 65,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/10/16/as-war-rages-myanmars-coup-leader-turned-president-wins-back-neighbours?traffic_source=rss",
-      "published_at": "2026-10-16",
-      "time": "9h"
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/economie/article/2026/10/17/la-cyberattaque-des-frigos-de-supermarche-un-signal-d-alarme-pour-tous-les-industriels-et-un-rappel-a-la-loi-europeenne-pour-la-france_6795846_3234.html",
+      "published_at": "2026-10-17",
+      "time": "6h"
     }
   ],
   "market_updated_at": "2026-10-17T09:46:38.967Z"
