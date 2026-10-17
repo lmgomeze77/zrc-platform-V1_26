@@ -718,7 +718,8 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
         .grwm-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 18px; }
         @media (max-width: 900px) {
           .grwm-layout { grid-template-columns: 1fr; }
-          .grwm-panel { max-height: 70vh; }\n          .grwm-map { height: 460px !important; }
+          .grwm-panel { max-height: 70vh; }
+          .grwm-map { height: 460px !important; }
         }
       `}</style>
 
