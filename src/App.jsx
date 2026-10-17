@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
+import { useState, useEffect, useRef, useCallback, createContext, useContext, lazy, Suspense } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 import Observatory from "./pages/intelligence/Observatory";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
@@ -10,7 +10,8 @@ import PricingPage from "./pages/PricingPage";
 import MacroPulse from "./pages/intelligence/MacroPulse";
 import GeoRiskML from "./pages/intelligence/GeoRiskML";
 import GeoRiskIndex from "./pages/intelligence/GeoRiskIndex";
-import GeoRiskWorldMap from "./pages/intelligence/GeoRiskWorldMap";
+const loadGeoRiskWorldMap = () => import("./pages/intelligence/GeoRiskWorldMap");
+const GeoRiskWorldMap = lazy(loadGeoRiskWorldMap);
 import ZenithAssistant from "./components/assistant/ZenithAssistant";
 import LockIcon from "./components/LockIcon";
 import { C, alpha, getTheme, setTheme } from "./theme/palette";
@@ -1799,6 +1800,7 @@ const ZRCPlatform = () => {
   const closeInnerCircle = () => closeOverlay(() => setIcPage(null));
 
   const openWorldMap = () => {
+    loadGeoRiskWorldMap();
     setShowWorldMap(true);
     openOverlay("world-map", "#mapa-geopolitico");
   };
@@ -2048,7 +2050,9 @@ const ZRCPlatform = () => {
 
       {showWorldMap && (
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
-          <GeoRiskWorldMap lang={lang} onClose={closeWorldMap} onOpenIntelligence={() => { closeWorldMap(); setTimeout(() => onNav("intelligence"), 50); }} />
+          <Suspense fallback={<div role="status" style={{ padding: "12vh 24px", textAlign: "center", color: "#15233B", background: "#F7F9FC", minHeight: "100vh", fontFamily: "Inter, sans-serif" }}>{lang === "es" ? "Preparando mapa geopolítico…" : "Preparing geopolitical map…"}</div>}>
+            <GeoRiskWorldMap lang={lang} onClose={closeWorldMap} onOpenIntelligence={() => { closeWorldMap(); setTimeout(() => onNav("intelligence"), 50); }} />
+          </Suspense>
         </div>
       )}
     </AuthProvider>
