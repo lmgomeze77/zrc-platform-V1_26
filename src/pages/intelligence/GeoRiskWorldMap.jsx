@@ -8,7 +8,7 @@
 // escenarios, forecast IA).
 
 import { useState, useMemo, useEffect } from "react";
-import { MapContainer, TileLayer, CircleMarker, Tooltip } from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker, Tooltip, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Globe2, TrendingUp, TrendingDown, Minus, X, ArrowRight, Info } from "lucide-react";
 
@@ -717,6 +717,14 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
   const blocDescription = (key) => en ? ({ occidental: "Strong alignment with the US, NATO and EU; limited strategic affinity with Beijing or Moscow.", sino_euroasiatico: "Strong alignment with China and/or Russia, with strategic distance from Washington.", multialineado: "Balances US, China and regional ties without committing to a fixed camp.", no_alineado: "No dominant alignment; positions may shift across international issues." }[key]) : BLOC_META[key].desc;
   const [selectedId, setSelectedId] = useState(null);
   const [comparisonIds, setComparisonIds] = useState([]);
+  const [mapMode, setMapMode] = useState("territories");
+  const [boundaries, setBoundaries] = useState(null);
+  const [boundariesError, setBoundariesError] = useState(false);
+  useEffect(() => {
+    let active = true;
+    fetch("/georisk-world-42.geojson").then(response => { if (!response.ok) throw new Error("GeoRisk boundaries unavailable"); return response.json(); }).then(data => { if (active) setBoundaries(data); }).catch(error => { console.warn("GeoRisk boundaries could not load", error); if (active) setBoundariesError(true); });
+    return () => { active = false; };
+  }, []);
   const toggleComparison = (id) => setComparisonIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : prev.length < 3 ? [...prev,id] : prev);
   const comparisonCountries = useMemo(() => comparisonIds.map(id => COUNTRIES.find(c => c.id === id)).filter(Boolean), [comparisonIds]); 
   const [search, setSearch] = useState("");
@@ -859,13 +867,35 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
           )}
         </div>
 
+        <div role="group" aria-label={tr("Visualización del mapa", "Map visualization")} style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap",marginBottom:12}}>
+          <span style={{fontSize:11,color:C.textSec,fontWeight:600}}>{tr("VISTA", "VIEW")}</span>
+          {[["territories",tr("Territorios", "Territories")],["markers",tr("Marcadores", "Markers")]].map(([mode,label])=><button key={mode} type="button" aria-pressed={mapMode===mode} onClick={()=>setMapMode(mode)} style={{padding:"9px 13px",borderRadius:9,border:`1px solid ${mapMode===mode ? C.gold : C.border}`,background:mapMode===mode?C.surface2:C.surface,color:C.text,cursor:"pointer"}}>{label}</button>)}
+          {mapMode==="territories" && !boundaries && <span role="status" style={{fontSize:11,color:C.textMuted}}>{boundariesError ? tr("Límites no disponibles; se muestran marcadores.", "Boundaries unavailable; showing markers.") : tr("Cargando límites geográficos…", "Loading country boundaries…")}</span>}
+        </div>
         <div className="grwm-layout" style={{ marginBottom: 20 }}>
           {/* Map */}
           <div className="grwm-map" style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 26, overflow: "hidden", height: 640, boxShadow: "0 12px 36px rgba(11,37,69,.08)" }}>
             <MapContainer preferCanvas center={[22, 20]} zoom={2} minZoom={2} maxZoom={7} style={{ width: "100%", height: "100%" }} worldCopyJump>
               <TileLayer attribution="&copy; OpenStreetMap contributors" url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} updateWhenIdle keepBuffer={2} />
               
-              {visibleCountries.map((c) => (
+              {mapMode === "territories" && boundaries && (
+                <GeoJSON
+                  key={colorMode + ":" + (blocFilter || "all") + ":" + search.trim().toLowerCase() + ":" + selectedId}
+                  data={{type:"FeatureCollection",features:boundaries.features.filter(f => visibleCountries.some(c => c.id === f.properties.id))}}
+                  style={feature => {
+                    const c = COUNTRIES.find(country => country.id === feature.properties.id);
+                    const fill = c ? markerColor(colorMode,c) : C.surface3;
+                    return {color:selectedId===c?.id?"#0B2545":"#FFFFFF",weight:selectedId===c?.id?2.5:0.9,fillColor:fill,fillOpacity:selectedId===c?.id?0.9:0.64};
+                  }}
+                  onEachFeature={(feature,layer) => {
+                    const c = COUNTRIES.find(country => country.id === feature.properties.id);
+                    if (!c) return;
+                    layer.bindTooltip(c.flag + " " + (en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name));
+                    layer.on("click", () => setSelectedId(c.id));
+                  }}
+                />
+              )}
+              {(mapMode === "markers" || !boundaries || visibleCountries.some(c=>c.id==="sg")) && visibleCountries.filter(c=>mapMode === "markers" || !boundaries || c.id==="sg").map((c) => (
                 <CircleMarker
                   key={c.id}
                   center={[c.lat, c.lng]}
