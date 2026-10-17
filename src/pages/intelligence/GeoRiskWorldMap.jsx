@@ -566,6 +566,8 @@ function AlignBar({ label, value }) {
 function CountryPanel({ country, onClose, lang }) {
   const en = lang === "en";
   const tr = (es, english) => en ? english : es;
+  const [activeTab, setActiveTab] = useState("overview");
+  const tabs = [["overview", tr("Resumen", "Overview")], ["geopolitics", tr("Geopolítica", "Geopolitics")], ["trade", tr("Comercio y energía", "Trade & energy")], ["investment", tr("Inversión", "Investment")]];
   if (!country) return null;
   const bloc = BLOC_META[computeBloc(country)];
   return (
@@ -596,7 +598,12 @@ function CountryPanel({ country, onClose, lang }) {
             <div style={{fontSize:20,fontWeight:700,color,marginTop:5,fontVariantNumeric:"tabular-nums"}}>{value}</div>
           </div>)}
         </div>
-        <div style={{ marginBottom: 16 }}>
+
+        <div role="tablist" aria-label={tr("Secciones del país", "Country sections")} style={{display:"flex",gap:6,overflowX:"auto",WebkitOverflowScrolling:"touch",padding:"2px 0 12px",marginBottom:12,borderBottom:`1px solid ${C.border}`}}>
+          {tabs.map(([id,label])=><button type="button" key={id} role="tab" id={"grwm-tab-"+id} aria-selected={activeTab===id} aria-controls={"grwm-panel-"+id} onClick={()=>setActiveTab(id)} style={{flexShrink:0,padding:"10px 12px",borderRadius:8,border:`1px solid ${activeTab===id?C.gold:C.border}`,background:activeTab===id?C.surface2:C.surface,color:activeTab===id?C.gold:C.textSec,fontWeight:activeTab===id?700:500,cursor:"pointer",fontSize:12}}>{label}</button>)}
+        </div>
+        <div role="tabpanel" id={"grwm-panel-"+activeTab} aria-labelledby={"grwm-tab-"+activeTab}>
+        <p style={{fontSize:11,color:C.textMuted,lineHeight:1.6,margin:"0 0 12px"}}>{tr("Indicadores editoriales ZRC, no verificados como series oficiales en tiempo real. La cobertura y las fechas deben validarse antes de una decisión de inversión.", "ZRC editorial indicators, not verified as live official series. Coverage and dates require validation before investment decisions.")}</p>{activeTab==="overview" && <>        <div style={{ marginBottom: 16 }}>
           <Pill color={bloc.color}>{en ? ({ occidental: "Western Bloc", sino_euroasiatico: "Sino-Eurasian Axis", multialineado: "Pragmatic multi-aligned", no_alineado: "Non-aligned / swing states" }[computeBloc(country)]) : bloc.label}</Pill>
         </div>
 
@@ -605,26 +612,41 @@ function CountryPanel({ country, onClose, lang }) {
         <AlignBar label="China" value={country.cnAlign} />
         <AlignBar label="Rusia" value={country.ruAlign} />
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 8px" }}>{tr("SALUD DIPLOMÁTICA", "DIPLOMATIC RELATIONS")}</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 8px" }}>{tr("ESTRATEGIA DE PAÍS", "COUNTRY STRATEGY")}</div>
+        <div style={{ fontFamily: F.body, fontSize: 13, color: C.text, fontWeight: 600, marginBottom: 3 }}>{en ? COUNTRY_NARRATIVES_EN[country.id]?.strategy ?? country.strategy : country.strategy}</div>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>{en ? COUNTRY_NARRATIVES_EN[country.id]?.strategyNote ?? country.strategyNote : country.strategyNote}</div>
+
+        <div style={{
+          marginTop: 18, padding: "12px 14px", borderRadius: 8,
+          background: country.riskScore >= 70 ? "rgba(214,84,74,0.10)" : country.riskScore >= 50 ? "rgba(214,162,60,0.10)" : "rgba(63,174,114,0.10)",
+          border: `1px solid ${country.riskScore >= 70 ? C.red : country.riskScore >= 50 ? C.amber : C.green}40`,
+        }}>
+          <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.08em", marginBottom: 4 }}>{tr("RIESGO GEOPOLÍTICO ZRC (0-100)", "ZRC GEOPOLITICAL RISK (0–100)")}</div>
+          <div style={{ fontFamily: F.display, fontSize: 26, fontWeight: 700, color: country.riskScore >= 70 ? C.red : country.riskScore >= 50 ? C.amber : C.green }}>
+            {country.riskScore}
+          </div>
+        </div>
+</>}
+{activeTab==="geopolitics" && <>        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 8px" }}>{tr("SALUD DIPLOMÁTICA", "DIPLOMATIC RELATIONS")}</div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
           <Pill color={diploColor(country.diploUS)}>EE.UU. · {diploLabel(country.diploUS)}</Pill>
           <Pill color={diploColor(country.diploEU)}>UE · {diploLabel(country.diploEU)}</Pill>
           <Pill color={diploColor(country.diploCN)}>China · {diploLabel(country.diploCN)}</Pill>
         </div>
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 8px" }}>{tr("ESTRATEGIA DE PAÍS", "COUNTRY STRATEGY")}</div>
-        <div style={{ fontFamily: F.body, fontSize: 13, color: C.text, fontWeight: 600, marginBottom: 3 }}>{en ? COUNTRY_NARRATIVES_EN[country.id]?.strategy ?? country.strategy : country.strategy}</div>
-        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>{en ? COUNTRY_NARRATIVES_EN[country.id]?.strategyNote ?? country.strategyNote : country.strategyNote}</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("VOTO EN NACIONES UNIDAS", "UNITED NATIONS VOTING")}</div>
+        <StatRow label={tr("Alineamiento con EE.UU. (votos clave)","Alignment with US (key votes)")} value={`${country.unAlignUS}%`} valueColor={country.unAlignUS >= 60 ? C.green : country.unAlignUS <= 25 ? C.red : C.amber} />
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("COMERCIO E INVERSIÓN", "TRADE & INVESTMENT")}</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("SANCIONES", "SANCTIONS")}</div>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6, marginBottom: 4 }}>{en ? COUNTRY_NARRATIVES_EN[country.id]?.sanctions ?? country.sanctions : country.sanctions}</div>
+
+</>}
+{activeTab==="trade" && <>        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("COMERCIO E INVERSIÓN", "TRADE & INVESTMENT")}</div>
         <StatRow label={tr("Bloques / acuerdos","Blocs / agreements")} value={country.blocs.join(" · ")} />
         <StatRow label={tr("Arancel medio aplicado","Average applied tariff")} value={`${country.tariffAvg}%`} />
         <StatRow label={tr("IED entrante (anual)","Annual FDI inflows")} value={`$${country.fdiIn}Bn`} />
         <StatRow label={tr("IED saliente (anual)","Annual FDI outflows")} value={`$${country.fdiOut}Bn`} />
         <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 8, lineHeight: 1.6 }}>{en ? COUNTRY_NARRATIVES_EN[country.id]?.tariffNote ?? country.tariffNote : country.tariffNote}</div>
-
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("VOTO EN NACIONES UNIDAS", "UNITED NATIONS VOTING")}</div>
-        <StatRow label={tr("Alineamiento con EE.UU. (votos clave)","Alignment with US (key votes)")} value={`${country.unAlignUS}%`} valueColor={country.unAlignUS >= 60 ? C.green : country.unAlignUS <= 25 ? C.red : C.amber} />
 
         <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("DEPENDENCIA ENERGÉTICA", "ENERGY DEPENDENCY")}</div>
         <StatRow
@@ -642,19 +664,17 @@ function CountryPanel({ country, onClose, lang }) {
         <StatRow label={tr("Salidas al exterior","Outbound travel")} value={`${country.tourismOutbound}M/año`} />
         <StatRow label={tr("Principal origen/destino","Main origin / destination")} value={en ? translateTourism(country.tourismTopSource) : country.tourismTopSource} />
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("SANCIONES", "SANCTIONS")}</div>
-        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6, marginBottom: 4 }}>{en ? COUNTRY_NARRATIVES_EN[country.id]?.sanctions ?? country.sanctions : country.sanctions}</div>
-
-        <div style={{
-          marginTop: 18, padding: "12px 14px", borderRadius: 8,
-          background: country.riskScore >= 70 ? "rgba(214,84,74,0.10)" : country.riskScore >= 50 ? "rgba(214,162,60,0.10)" : "rgba(63,174,114,0.10)",
-          border: `1px solid ${country.riskScore >= 70 ? C.red : country.riskScore >= 50 ? C.amber : C.green}40`,
-        }}>
-          <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.08em", marginBottom: 4 }}>{tr("RIESGO GEOPOLÍTICO ZRC (0-100)", "ZRC GEOPOLITICAL RISK (0–100)")}</div>
-          <div style={{ fontFamily: F.display, fontSize: 26, fontWeight: 700, color: country.riskScore >= 70 ? C.red : country.riskScore >= 50 ? C.amber : C.green }}>
-            {country.riskScore}
-          </div>
+</>}
+{activeTab==="investment" && <>        <div style={{padding:"13px 14px",background:C.surface2,border:`1px solid ${C.border}`,borderRadius:10,marginBottom:14}}>
+          <div style={{fontSize:11,fontWeight:700,color:C.gold,letterSpacing:".08em"}}>{tr("PERSPECTIVA CORPORATIVA ZRC", "ZRC CORPORATE PERSPECTIVE")}</div>
+          <div style={{fontSize:12,lineHeight:1.65,color:C.textSec,marginTop:8}}>{tr("Puntos de comprobación para una operación: exposición comercial y regulatoria, disponibilidad energética, riesgo cambiario, restricciones a la inversión y concentración de clientes o proveedores. Se requiere due diligence específica.", "Transaction diligence priorities: trade and regulatory exposure, energy availability, FX risk, investment restrictions, and customer or supplier concentration. Transaction-specific due diligence is required.")}</div>
         </div>
+        <StatRow label={tr("IED entrante (miles de millones USD)", "FDI inflows (USD bn)")} value={country.fdiIn} />
+        <StatRow label={tr("IED saliente (miles de millones USD)", "FDI outflows (USD bn)")} value={country.fdiOut} />
+        <StatRow label={tr("Arancel medio aplicado", "Average applied tariff")} value={country.tariffAvg+"%"} />
+        <div style={{fontSize:11,color:C.textMuted,lineHeight:1.6,marginTop:12}}>{tr("Datos macrofinancieros verificables, flujos M&A y calificación soberana: pendientes de integración de fuentes, sin puntuaciones inventadas.", "Verified macrofinancial data, M&A flows and sovereign ratings: pending source integration; no invented scores.")}</div>
+</>}
+</div>
       </div>
     </div>
   );
@@ -960,7 +980,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
           {selected ? (
             <div className="grwm-detail grwm-detail-open" role="dialog" aria-modal="true" aria-label={tr("Ficha de país","Country details")}>
               <button type="button" onClick={()=>toggleComparison(selected.id)} disabled={!comparisonIds.includes(selected.id) && comparisonIds.length>=3} style={{width:"100%",marginBottom:10,padding:"12px",border:`1px solid ${C.borderHover}`,borderRadius:10,background:C.surface2,color:C.text,cursor:"pointer",fontWeight:600}}>{comparisonIds.includes(selected.id) ? tr("✓ Quitar de comparación", "✓ Remove from comparison") : tr("+ Añadir a comparación", "+ Add to comparison")}</button>
-              <CountryPanel country={selected} onClose={() => setSelectedId(null)} lang={lang} />
+              <CountryPanel key={selected.id} country={selected} onClose={() => setSelectedId(null)} lang={lang} />
             </div>
           ) : (
             <div className="grwm-detail-placeholder" style={{ background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 26, padding: 24, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 10, minHeight: 300 }}>
