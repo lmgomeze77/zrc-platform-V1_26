@@ -821,7 +821,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
           {/* Map */}
           <div className="grwm-map" style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 26, overflow: "hidden", height: 640, boxShadow: "0 12px 36px rgba(11,37,69,.08)" }}>
             <MapContainer preferCanvas center={[22, 20]} zoom={2} minZoom={2} maxZoom={7} style={{ width: "100%", height: "100%" }} worldCopyJump>
-              <TileLayer attribution="&copy; OpenStreetMap contributors &copy; CARTO" url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" updateWhenIdle keepBuffer={2} />
+              <TileLayer attribution="&copy; OpenStreetMap contributors" url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} updateWhenIdle keepBuffer={2} />
               
               {visibleCountries.map((c) => (
                 <CircleMarker
