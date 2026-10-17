@@ -585,6 +585,17 @@ function CountryPanel({ country, onClose, lang }) {
       </div>
 
       <div style={{ overflowY: "auto", padding: "16px 20px" }}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:9,marginBottom:18}}>
+          {[
+            [tr("Riesgo ZRC","ZRC risk"),country.riskScore + "/100",country.riskScore >= 70 ? C.red : country.riskScore >= 50 ? C.amber : C.green],
+            [tr("IED entrante","FDI inflows"),"$" + country.fdiIn + "bn",C.gold],
+            [tr("Arancel medio","Avg. tariff"),country.tariffAvg + "%",C.text],
+            [tr("Dependencia energética","Energy exposure"),Math.abs(country.energyImportShare) + "%",country.energyImportShare >= 60 ? C.red : C.text]
+          ].map(([label,value,color])=><div key={label} style={{border:`1px solid ${C.border}`,borderRadius:12,padding:"12px",background:C.surface2,minWidth:0}}>
+            <div style={{fontSize:10,color:C.textSec,lineHeight:1.4}}>{label}</div>
+            <div style={{fontSize:20,fontWeight:700,color,marginTop:5,fontVariantNumeric:"tabular-nums"}}>{value}</div>
+          </div>)}
+        </div>
         <div style={{ marginBottom: 16 }}>
           <Pill color={bloc.color}>{en ? ({ occidental: "Western Bloc", sino_euroasiatico: "Sino-Eurasian Axis", multialineado: "Pragmatic multi-aligned", no_alineado: "Non-aligned / swing states" }[computeBloc(country)]) : bloc.label}</Pill>
         </div>
@@ -696,6 +707,17 @@ function CountryComparison({ countries, lang, onRemove, onClear }) {
       <div style={{display:"flex",justifyContent:"space-between",gap:12,alignItems:"center",flexWrap:"wrap",marginBottom:14}}>
         <div><div style={{fontSize:10,letterSpacing:".12em",color:C.gold,fontWeight:700}}>ZRC · COUNTRY COMPARISON</div><div style={{fontSize:17,fontWeight:650,marginTop:5}}>{tr("Comparativa estratégica", "Strategic comparison")} · {countries.length}/3</div></div>
         <button type="button" onClick={onClear} style={{padding:"9px 12px",border:`1px solid ${C.border}`,borderRadius:9,background:C.surface,color:C.text,cursor:"pointer"}}>{tr("Vaciar comparación", "Clear comparison")}</button>
+      </div>
+      <div style={{display:"grid",gridTemplateColumns:`repeat(${countries.length}, minmax(0,1fr))`,gap:10,marginBottom:16}}>
+        {countries.map(c=><div key={c.id} style={{background:C.surface2,border:`1px solid ${C.border}`,borderRadius:12,padding:12,minWidth:0}}>
+          <div style={{fontSize:11,color:C.textSec,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</div>
+          <div style={{display:"flex",alignItems:"baseline",gap:4,marginTop:8}}>
+            <span style={{fontSize:25,fontWeight:750,color:c.riskScore>=70?C.red:c.riskScore>=50?C.amber:C.green}}>{c.riskScore}</span><span style={{fontSize:11,color:C.textMuted}}>/100</span>
+          </div>
+          <div role="meter" aria-label={tr("Riesgo ZRC", "ZRC risk")} aria-valuemin={0} aria-valuemax={100} aria-valuenow={c.riskScore} style={{height:7,background:C.surface3,borderRadius:9,overflow:"hidden",marginTop:9}}>
+            <div style={{width:`${Math.max(0,Math.min(100,c.riskScore))}%`,height:"100%",background:c.riskScore>=70?C.red:c.riskScore>=50?C.amber:C.green,borderRadius:9}}/>
+          </div>
+        </div>)}
       </div>
       <div style={{overflowX:"auto",WebkitOverflowScrolling:"touch"}}>
         <table style={{borderCollapse:"collapse",width:"100%",minWidth:500,fontSize:12,textAlign:"left"}}>
