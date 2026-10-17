@@ -33,3 +33,13 @@ test("Country risk figures are presented as editorial estimates", () => {
   assert.match(source, /Estimaciones editoriales de ZRC Research/);
   assert.match(source, /not live official data/);
 });
+
+test("Country profiles provide all four bilingual intelligence sections", () => {
+  for (const section of ['"overview"', '"geopolitics"', '"trade"', '"investment"']) {
+    assert.ok(source.includes(section), "Missing section: "+section);
+  }
+  assert.match(source, /role="tablist"/);
+  assert.match(source, /role="tabpanel"/);
+  assert.match(source, /<CountryPanel key=\{selected\.id\}/);
+  assert.match(source, /pendientes de integración de fuentes/);
+});
