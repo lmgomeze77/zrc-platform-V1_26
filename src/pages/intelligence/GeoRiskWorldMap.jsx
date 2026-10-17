@@ -18,16 +18,16 @@ import { Globe2, TrendingUp, TrendingDown, Minus, X, ArrowRight, Info } from "lu
 // aquí buscamos un aire de "atlas de gabinete" — serio, cartográfico,
 // atemporal — coherente con el objetivo de ser el "referente mundial".
 const C = {
-  bg: "#0B0C0E", surface: "#141618", surface2: "#1A1D20", surface3: "#22262A",
-  border: "#2C3136", borderHover: "#454C53",
-  text: "#F2EFE9", textSec: "#A8A69F", textMuted: "#6B6E72",
-  gold: "#B8834A", goldDim: "rgba(184,131,74,0.12)", goldBorder: "rgba(184,131,74,0.32)",
-  red: "#D6544A", green: "#3FAE72", amber: "#D6A23C",
+  bg: "#F7F9FC", surface: "#FFFFFF", surface2: "#EDF3FA", surface3: "#E1E9F3",
+  border: "#D2DCE8", borderHover: "#94B7DB",
+  text: "#15233B", textSec: "#5E6E86", textMuted: "#64748B",
+  gold: "#2E6FB8", goldDim: "rgba(46,111,184,0.10)", goldBorder: "rgba(46,111,184,0.30)",
+  red: "#C74B52", green: "#268B72", amber: "#C77B27",
 };
 const F = {
-  display: "'JetBrains Mono', monospace",
-  body: "'DM Sans', sans-serif",
-  mono: "'JetBrains Mono', monospace",
+  display: "'Inter', -apple-system, 'Segoe UI', sans-serif",
+  body: "'Inter', -apple-system, 'Segoe UI', sans-serif",
+  mono: "'Inter', -apple-system, 'Segoe UI', sans-serif",
 };
 
 // ── Bloques geopolíticos — paleta categórica distinta y separable ────────
@@ -680,7 +680,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
   const tr = (es, english) => en ? english : es;
   const blocLabel = (key) => en ? ({ occidental: "Western Bloc", sino_euroasiatico: "Sino-Eurasian Axis", multialineado: "Pragmatic multi-aligned", no_alineado: "Non-aligned / swing states" }[key]) : BLOC_META[key].label;
   const blocDescription = (key) => en ? ({ occidental: "Strong alignment with the US, NATO and EU; limited strategic affinity with Beijing or Moscow.", sino_euroasiatico: "Strong alignment with China and/or Russia, with strategic distance from Washington.", multialineado: "Balances US, China and regional ties without committing to a fixed camp.", no_alineado: "No dominant alignment; positions may shift across international issues." }[key]) : BLOC_META[key].desc;
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);\n  const [search, setSearch] = useState("");
   const [colorMode, setColorMode] = useState("bloc");
   const [blocFilter, setBlocFilter] = useState(null);
 
@@ -710,23 +710,23 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
         .grwm-bloc-btn:hover { border-color: ${C.borderHover} !important; }
         .grwm-color-btn { transition: all 0.15s ease; cursor: pointer; }
         .grwm-cta:hover { filter: brightness(1.08); }
-        .leaflet-container { background: ${C.bg} !important; font-family: ${F.body} !important; }
+        .leaflet-container { background: #E1E9F3 !important; font-family: ${F.body} !important; }
         .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: ${C.surface}; color: ${C.text}; }
-        .leaflet-control-attribution { background: rgba(11,12,14,0.7) !important; color: ${C.textMuted} !important; }
+        .leaflet-control-attribution { background: rgba(255,255,255,0.85) !important; color: ${C.textMuted} !important; }
         .leaflet-control-attribution a { color: ${C.textSec} !important; }
-        .grwm-layout { display: grid; grid-template-columns: 1fr 360px; gap: 16px; }
+        .grwm-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 18px; }
         @media (max-width: 900px) {
           .grwm-layout { grid-template-columns: 1fr; }
-          .grwm-panel { max-height: 70vh; }
+          .grwm-panel { max-height: 70vh; }\n          .grwm-map { height: 460px !important; }
         }
       `}</style>
 
       {/* Header */}
-      <div style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(11,12,14,0.92)", backdropFilter: "blur(14px)", borderBottom: `1px solid ${C.border}`, padding: "0 clamp(16px,3vw,32px)" }}>
+      <div style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(247,249,252,0.94)", backdropFilter: "blur(14px)", borderBottom: `1px solid ${C.border}`, padding: "0 clamp(16px,3vw,32px)" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10, padding: "14px 0" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 8, background: `linear-gradient(135deg, ${C.surface3}, ${C.gold})`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <Globe2 size={17} color={C.bg} strokeWidth={2.4} />
+            <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg, #0B2545, #2E6FB8)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <Globe2 size={17} color="#FFFFFF" strokeWidth={2.4} />
             </div>
             <div>
               <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.2em" }}>ZRC · GEORISK WORLD MAP</div>
@@ -764,6 +764,17 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
           </div>
         </div>
 
+        <div style={{ display:"flex", gap:12, flexWrap:"wrap", alignItems:"center", justifyContent:"space-between", padding:"18px 22px", background:"#E1E9F3", borderRadius:24, marginBottom:18 }}>
+          <div>
+            <div style={{fontSize:10,letterSpacing:".18em",fontWeight:700,color:C.gold,marginBottom:5}}>ZRC · GEOPOLITICAL INTELLIGENCE</div>
+            <div style={{fontSize:22,fontWeight:300,color:"#0B2545"}}>{tr("Explora el equilibrio geopolítico global","Explore the global geopolitical landscape")}</div>
+          </div>
+          <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap"}}>
+            <input aria-label={tr("Buscar país","Search country")} value={search} onChange={e=>setSearch(e.target.value)} placeholder={tr("Buscar país…","Search country…")} style={{padding:"12px 15px",borderRadius:14,border:`1px solid ${C.border}`,background:"#FFFFFF",color:C.text,minWidth:190,fontFamily:F.body}} />
+            {search && <button onClick={()=>setSearch("")} style={{padding:"11px 13px",borderRadius:12,border:`1px solid ${C.border}`,background:"#FFFFFF",color:C.text,cursor:"pointer"}}>{tr("Limpiar","Clear")}</button>}
+          </div>
+        </div>
+        {search.trim() && <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:14}}>{visibleCountries.slice(0,10).map(c=><button key={c.id} onClick={()=>setSelectedId(c.id)} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:999,padding:"8px 12px",cursor:"pointer",color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</button>)}{visibleCountries.length===0 && <span style={{color:C.textSec}}>{tr("Sin coincidencias","No matches")}</span>}</div>}
         {/* Controls */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 20, marginBottom: 16, alignItems: "flex-start" }}>
           <div>
@@ -800,10 +811,10 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
 
         <div className="grwm-layout" style={{ marginBottom: 20 }}>
           {/* Map */}
-          <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 10, overflow: "hidden", height: 640 }}>
+          <div className="grwm-map" style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 26, overflow: "hidden", height: 640, boxShadow: "0 12px 36px rgba(11,37,69,.08)" }}>
             <MapContainer center={[22, 20]} zoom={2} minZoom={2} maxZoom={7} style={{ width: "100%", height: "100%" }} worldCopyJump>
-              <TileLayer attribution="&copy; Esri" url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}" />
-              <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}" />
+              <TileLayer attribution="&copy; OpenStreetMap contributors &copy; CARTO" url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
+              
               {visibleCountries.map((c) => (
                 <CircleMarker
                   key={c.id}
@@ -829,7 +840,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
           {selected ? (
             <CountryPanel country={selected} onClose={() => setSelectedId(null)} lang={lang} />
           ) : (
-            <div style={{ background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 10, padding: 24, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 10, minHeight: 300 }}>
+            <div style={{ background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 26, padding: 24, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 10, minHeight: 300 }}>
               <Info size={22} color={C.textMuted} />
               <div style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, maxWidth: 240 }}>
                 {tr("Selecciona un país en el mapa para ver comercio, alineamiento, dependencias y estrategia en detalle.", "Select a country to explore its trade, alignment, dependencies and strategy.")}
