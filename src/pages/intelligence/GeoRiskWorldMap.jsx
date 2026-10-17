@@ -18,16 +18,16 @@ import { Globe2, TrendingUp, TrendingDown, Minus, X, ArrowRight, Info } from "lu
 // aquí buscamos un aire de "atlas de gabinete" — serio, cartográfico,
 // atemporal — coherente con el objetivo de ser el "referente mundial".
 const C = {
-  bg: "#0B0C0E", surface: "#141618", surface2: "#1A1D20", surface3: "#22262A",
-  border: "#2C3136", borderHover: "#454C53",
-  text: "#F2EFE9", textSec: "#A8A69F", textMuted: "#6B6E72",
-  gold: "#B8834A", goldDim: "rgba(184,131,74,0.12)", goldBorder: "rgba(184,131,74,0.32)",
-  red: "#D6544A", green: "#3FAE72", amber: "#D6A23C",
+  bg: "#F7F9FC", surface: "#FFFFFF", surface2: "#EDF3FA", surface3: "#E1E9F3",
+  border: "#D2DCE8", borderHover: "#94B7DB",
+  text: "#15233B", textSec: "#5E6E86", textMuted: "#64748B",
+  gold: "#2E6FB8", goldDim: "rgba(46,111,184,0.10)", goldBorder: "rgba(46,111,184,0.30)",
+  red: "#C74B52", green: "#268B72", amber: "#C77B27",
 };
 const F = {
-  display: "'JetBrains Mono', monospace",
-  body: "'DM Sans', sans-serif",
-  mono: "'JetBrains Mono', monospace",
+  display: "'Inter', -apple-system, 'Segoe UI', sans-serif",
+  body: "'Inter', -apple-system, 'Segoe UI', sans-serif",
+  mono: "'Inter', -apple-system, 'Segoe UI', sans-serif",
 };
 
 // ── Bloques geopolíticos — paleta categórica distinta y separable ────────
@@ -55,6 +55,48 @@ const diploColor = (v) => (v >= 1 ? C.green : v === 0 ? C.textMuted : v === -1 ?
 // naturaleza que el resto de la plataforma GeoRisk) — no son series
 // oficiales en vivo de UN Comtrade / UNGA / IMF, sino una lectura editorial
 // cuantificada para hacer comparables los países entre sí. Ver metodología.
+const COUNTRY_NAMES_EN = {
+  "us": "United States",
+  "cn": "China",
+  "ru": "Russia",
+  "de": "Germany",
+  "fr": "France",
+  "gb": "United Kingdom",
+  "it": "Italy",
+  "es": "Spain",
+  "pl": "Poland",
+  "nl": "Netherlands",
+  "se": "Sweden",
+  "ch": "Switzerland",
+  "tr": "Türkiye",
+  "ua": "Ukraine",
+  "jp": "Japan",
+  "kr": "South Korea",
+  "in": "India",
+  "id": "Indonesia",
+  "vn": "Vietnam",
+  "tw": "Taiwan",
+  "au": "Australia",
+  "nz": "New Zealand",
+  "sa": "Saudi Arabia",
+  "ae": "United Arab Emirates",
+  "ir": "Iran",
+  "il": "Israel",
+  "eg": "Egypt",
+  "za": "South Africa",
+  "ng": "Nigeria",
+  "br": "Brazil",
+  "mx": "Mexico",
+  "ar": "Argentina",
+  "cl": "Chile",
+  "co": "Colombia",
+  "ca": "Canada",
+  "kz": "Kazakhstan",
+  "no": "Norway",
+  "ie": "Ireland",
+  "ph": "Philippines"
+};
+
 const COUNTRIES = [
   { id: "us", name: "Estados Unidos", flag: "🇺🇸", lat: 38.9, lng: -77.0, region: "Norteamérica", gdp: 27.0,
     usAlign: 100, cnAlign: -60, ruAlign: -75, blocs: ["USMCA", "OTAN", "QUAD", "AUKUS"],
@@ -516,6 +558,8 @@ function AlignBar({ label, value }) {
 }
 
 function CountryPanel({ country, onClose, lang }) {
+  const en = lang === "en";
+  const tr = (es, english) => en ? english : es;
   if (!country) return null;
   const bloc = BLOC_META[computeBloc(country)];
   return (
@@ -526,8 +570,8 @@ function CountryPanel({ country, onClose, lang }) {
       <div style={{ padding: "18px 20px", borderBottom: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
         <div>
           <div style={{ fontSize: 26, marginBottom: 4 }}>{country.flag}</div>
-          <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, fontWeight: 600 }}>{country.name}</div>
-          <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginTop: 2 }}>{country.region} · PIB ${country.gdp.toFixed(1)}Bn</div>
+          <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, fontWeight: 600 }}>{en ? COUNTRY_NAMES_EN[country.id] || country.name : country.name}</div>
+          <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginTop: 2 }}>{country.region} · {tr("PIB", "GDP")} ${country.gdp.toFixed(1)}Bn</div>
         </div>
         <button onClick={onClose} className="grwm-icon-btn" style={{ background: "none", border: `1px solid ${C.border}`, borderRadius: 6, color: C.textMuted, cursor: "pointer", padding: 6, flexShrink: 0 }}>
           <X size={15} />
@@ -536,60 +580,60 @@ function CountryPanel({ country, onClose, lang }) {
 
       <div style={{ overflowY: "auto", padding: "16px 20px" }}>
         <div style={{ marginBottom: 16 }}>
-          <Pill color={bloc.color}>{bloc.label}</Pill>
+          <Pill color={bloc.color}>{en ? ({ occidental: "Western Bloc", sino_euroasiatico: "Sino-Eurasian Axis", multialineado: "Pragmatic multi-aligned", no_alineado: "Non-aligned / swing states" }[computeBloc(country)]) : bloc.label}</Pill>
         </div>
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", marginBottom: 8 }}>ALINEAMIENTO ESTRATÉGICO</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", marginBottom: 8 }}>{tr("ALINEAMIENTO ESTRATÉGICO", "STRATEGIC ALIGNMENT")}</div>
         <AlignBar label="EE.UU." value={country.usAlign} />
         <AlignBar label="China" value={country.cnAlign} />
         <AlignBar label="Rusia" value={country.ruAlign} />
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 8px" }}>SALUD DIPLOMÁTICA</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 8px" }}>{tr("SALUD DIPLOMÁTICA", "DIPLOMATIC RELATIONS")}</div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
           <Pill color={diploColor(country.diploUS)}>EE.UU. · {diploLabel(country.diploUS)}</Pill>
           <Pill color={diploColor(country.diploEU)}>UE · {diploLabel(country.diploEU)}</Pill>
           <Pill color={diploColor(country.diploCN)}>China · {diploLabel(country.diploCN)}</Pill>
         </div>
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 8px" }}>ESTRATEGIA DE PAÍS</div>
-        <div style={{ fontFamily: F.body, fontSize: 13, color: C.text, fontWeight: 600, marginBottom: 3 }}>{country.strategy}</div>
-        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>{country.strategyNote}</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 8px" }}>{tr("ESTRATEGIA DE PAÍS", "COUNTRY STRATEGY")}</div>
+        <div style={{ fontFamily: F.body, fontSize: 13, color: C.text, fontWeight: 600, marginBottom: 3 }}>{en ? "Country strategy (Spanish source): " + country.strategy : country.strategy}</div>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>{en ? "Editorial assessment (Spanish source): " + country.strategyNote : country.strategyNote}</div>
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>COMERCIO E INVERSIÓN</div>
-        <StatRow label="Bloques / acuerdos" value={country.blocs.join(" · ")} />
-        <StatRow label="Arancel medio aplicado" value={`${country.tariffAvg}%`} />
-        <StatRow label="IED entrante (anual)" value={`$${country.fdiIn}Bn`} />
-        <StatRow label="IED saliente (anual)" value={`$${country.fdiOut}Bn`} />
-        <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 8, lineHeight: 1.6 }}>{country.tariffNote}</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("COMERCIO E INVERSIÓN", "TRADE & INVESTMENT")}</div>
+        <StatRow label={tr("Bloques / acuerdos","Blocs / agreements")} value={country.blocs.join(" · ")} />
+        <StatRow label={tr("Arancel medio aplicado","Average applied tariff")} value={`${country.tariffAvg}%`} />
+        <StatRow label={tr("IED entrante (anual)","Annual FDI inflows")} value={`$${country.fdiIn}Bn`} />
+        <StatRow label={tr("IED saliente (anual)","Annual FDI outflows")} value={`$${country.fdiOut}Bn`} />
+        <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 8, lineHeight: 1.6 }}>{en ? "Editorial tariff assessment (Spanish source): " + country.tariffNote : country.tariffNote}</div>
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>VOTO EN NACIONES UNIDAS</div>
-        <StatRow label="Alineamiento con EE.UU. (votos clave)" value={`${country.unAlignUS}%`} valueColor={country.unAlignUS >= 60 ? C.green : country.unAlignUS <= 25 ? C.red : C.amber} />
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("VOTO EN NACIONES UNIDAS", "UNITED NATIONS VOTING")}</div>
+        <StatRow label={tr("Alineamiento con EE.UU. (votos clave)","Alignment with US (key votes)")} value={`${country.unAlignUS}%`} valueColor={country.unAlignUS >= 60 ? C.green : country.unAlignUS <= 25 ? C.red : C.amber} />
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>DEPENDENCIA ENERGÉTICA</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("DEPENDENCIA ENERGÉTICA", "ENERGY DEPENDENCY")}</div>
         <StatRow
-          label={country.energyImportShare >= 0 ? "Dependencia de importación" : "Exportador neto"}
+          label={country.energyImportShare >= 0 ? tr("Dependencia de importación","Import dependence") : tr("Exportador neto","Net exporter")}
           value={`${Math.abs(country.energyImportShare)}%`}
           valueColor={country.energyImportShare >= 60 ? C.red : country.energyImportShare < 0 ? C.green : C.amber}
         />
-        <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 6, lineHeight: 1.6 }}>{country.energySuppliers}</div>
+        <div style={{ fontFamily: F.body, fontSize: 11, color: C.textMuted, marginTop: 6, lineHeight: 1.6 }}>{en ? "Energy profile (Spanish source): " + country.energySuppliers : country.energySuppliers}</div>
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>DEPENDENCIA TECNOLÓGICA</div>
-        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>{country.techDependency}</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("DEPENDENCIA TECNOLÓGICA", "TECHNOLOGY DEPENDENCY")}</div>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>{en ? "Technology profile (Spanish source): " + country.techDependency : country.techDependency}</div>
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>FLUJOS DE TURISMO</div>
-        <StatRow label="Llegadas internacionales" value={`${country.tourismInbound}M/año`} />
-        <StatRow label="Salidas al exterior" value={`${country.tourismOutbound}M/año`} />
-        <StatRow label="Principal origen/destino" value={country.tourismTopSource} />
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("FLUJOS DE TURISMO", "TOURISM FLOWS")}</div>
+        <StatRow label={tr("Llegadas internacionales","International arrivals")} value={`${country.tourismInbound}M/año`} />
+        <StatRow label={tr("Salidas al exterior","Outbound travel")} value={`${country.tourismOutbound}M/año`} />
+        <StatRow label={tr("Principal origen/destino","Main origin / destination")} value={country.tourismTopSource} />
 
-        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>SANCIONES</div>
-        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6, marginBottom: 4 }}>{country.sanctions}</div>
+        <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", margin: "18px 0 4px" }}>{tr("SANCIONES", "SANCTIONS")}</div>
+        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6, marginBottom: 4 }}>{en ? "Sanctions profile (Spanish source): " + country.sanctions : country.sanctions}</div>
 
         <div style={{
           marginTop: 18, padding: "12px 14px", borderRadius: 8,
           background: country.riskScore >= 70 ? "rgba(214,84,74,0.10)" : country.riskScore >= 50 ? "rgba(214,162,60,0.10)" : "rgba(63,174,114,0.10)",
           border: `1px solid ${country.riskScore >= 70 ? C.red : country.riskScore >= 50 ? C.amber : C.green}40`,
         }}>
-          <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.08em", marginBottom: 4 }}>RIESGO GEOPOLÍTICO ZRC (0-100)</div>
+          <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.08em", marginBottom: 4 }}>{tr("RIESGO GEOPOLÍTICO ZRC (0-100)", "ZRC GEOPOLITICAL RISK (0–100)")}</div>
           <div style={{ fontFamily: F.display, fontSize: 26, fontWeight: 700, color: country.riskScore >= 70 ? C.red : country.riskScore >= 50 ? C.amber : C.green }}>
             {country.riskScore}
           </div>
@@ -599,11 +643,12 @@ function CountryPanel({ country, onClose, lang }) {
   );
 }
 
-function Legend({ colorMode }) {
+function Legend({ colorMode, lang }) {
+  const en = lang === "en";
   if (colorMode !== "bloc") {
     const gradientStops = colorMode === "riskScore"
-      ? [["Bajo", C.green], ["Moderado", C.amber], ["Elevado", "#E08A3C"], ["Crítico", C.red]]
-      : [["Fuerte +", "#4C8FD9"], ["Leve +", "#3FAE72"], ["Neutral", C.amber], ["Leve −", "#E08A3C"], ["Fuerte −", C.red]];
+      ? [[en ? "Low" : "Bajo", C.green], [en ? "Moderate" : "Moderado", C.amber], [en ? "High" : "Elevado", "#E08A3C"], [en ? "Critical" : "Crítico", C.red]]
+      : [[en ? "Strong +" : "Fuerte +", "#4C8FD9"], [en ? "Slight +" : "Leve +", "#3FAE72"], ["Neutral", C.amber], [en ? "Slight −" : "Leve −", "#E08A3C"], [en ? "Strong −" : "Fuerte −", C.red]];
     return (
       <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
         {gradientStops.map(([label, color]) => (
@@ -617,10 +662,10 @@ function Legend({ colorMode }) {
   }
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
-      {Object.values(BLOC_META).map((b) => (
-        <div key={b.label} style={{ display: "flex", alignItems: "center", gap: 6 }} title={b.desc}>
+      {Object.entries(BLOC_META).map(([key,b]) => (
+        <div key={b.label} style={{ display: "flex", alignItems: "center", gap: 6 }} title={en ? ({occidental:"Strong US / NATO / EU alignment",sino_euroasiatico:"Strong China / Russia alignment",multialineado:"Pragmatic balancing",no_alineado:"No dominant strategic alignment"}[key]) : b.desc}>
           <span style={{ width: 10, height: 10, borderRadius: "50%", background: b.color, display: "inline-block" }} />
-          <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textSec }}>{b.label}</span>
+          <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textSec }}>{blocLabel(key)}</span>
         </div>
       ))}
     </div>
@@ -628,14 +673,21 @@ function Legend({ colorMode }) {
 }
 
 // ── Componente principal ──────────────────────────────────────────────────
-export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
-  const [selectedId, setSelectedId] = useState(null);
+export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: parentLang = "es" }) {
+  const [localLang, setLocalLang] = useState(null);
+  const lang = localLang ?? parentLang;
+  const en = lang === "en";
+  const tr = (es, english) => en ? english : es;
+  const blocLabel = (key) => en ? ({ occidental: "Western Bloc", sino_euroasiatico: "Sino-Eurasian Axis", multialineado: "Pragmatic multi-aligned", no_alineado: "Non-aligned / swing states" }[key]) : BLOC_META[key].label;
+  const blocDescription = (key) => en ? ({ occidental: "Strong alignment with the US, NATO and EU; limited strategic affinity with Beijing or Moscow.", sino_euroasiatico: "Strong alignment with China and/or Russia, with strategic distance from Washington.", multialineado: "Balances US, China and regional ties without committing to a fixed camp.", no_alineado: "No dominant alignment; positions may shift across international issues." }[key]) : BLOC_META[key].desc;
+  const [selectedId, setSelectedId] = useState(null); 
+  const [search, setSearch] = useState("");
   const [colorMode, setColorMode] = useState("bloc");
   const [blocFilter, setBlocFilter] = useState(null);
 
   useEffect(() => {
-    document.title = "ZRC GeoRisk World Map — Mapa Geopolítico Interactivo";
-  }, []);
+    document.title = lang === "en" ? "ZRC GeoRisk World Map — Interactive Geopolitical Map" : "ZRC GeoRisk World Map — Mapa Geopolítico Interactivo";
+  }, [lang]);
 
   const selected = useMemo(() => COUNTRIES.find((c) => c.id === selectedId) || null, [selectedId]);
 
@@ -659,30 +711,34 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
         .grwm-bloc-btn:hover { border-color: ${C.borderHover} !important; }
         .grwm-color-btn { transition: all 0.15s ease; cursor: pointer; }
         .grwm-cta:hover { filter: brightness(1.08); }
-        .leaflet-container { background: ${C.bg} !important; font-family: ${F.body} !important; }
+        .leaflet-container { background: #E1E9F3 !important; font-family: ${F.body} !important; }
         .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: ${C.surface}; color: ${C.text}; }
-        .leaflet-control-attribution { background: rgba(11,12,14,0.7) !important; color: ${C.textMuted} !important; }
+        .leaflet-control-attribution { background: rgba(255,255,255,0.85) !important; color: ${C.textMuted} !important; }
         .leaflet-control-attribution a { color: ${C.textSec} !important; }
-        .grwm-layout { display: grid; grid-template-columns: 1fr 360px; gap: 16px; }
+        .grwm-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 18px; }
         @media (max-width: 900px) {
           .grwm-layout { grid-template-columns: 1fr; }
           .grwm-panel { max-height: 70vh; }
+          .grwm-map { height: 460px !important; }
         }
       `}</style>
 
       {/* Header */}
-      <div style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(11,12,14,0.92)", backdropFilter: "blur(14px)", borderBottom: `1px solid ${C.border}`, padding: "0 clamp(16px,3vw,32px)" }}>
+      <div style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(247,249,252,0.94)", backdropFilter: "blur(14px)", borderBottom: `1px solid ${C.border}`, padding: "0 clamp(16px,3vw,32px)" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10, padding: "14px 0" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div style={{ width: 32, height: 32, borderRadius: 8, background: `linear-gradient(135deg, ${C.surface3}, ${C.gold})`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <Globe2 size={17} color={C.bg} strokeWidth={2.4} />
+            <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg, #0B2545, #2E6FB8)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <Globe2 size={17} color="#FFFFFF" strokeWidth={2.4} />
             </div>
             <div>
               <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.2em" }}>ZRC · GEORISK WORLD MAP</div>
-              <div style={{ fontFamily: F.display, fontSize: 18, color: C.text, fontWeight: 600, marginTop: 1 }}>Mapa Geopolítico Interactivo</div>
+              <div style={{ fontFamily: F.display, fontSize: 18, color: C.text, fontWeight: 600, marginTop: 1 }}>{tr("Mapa Geopolítico Interactivo", "Interactive Geopolitical Map")}</div>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div role="group" aria-label={tr("Idioma del mapa", "Map language")} style={{display:"inline-flex",border:`1px solid ${C.borderHover}`,borderRadius:7,overflow:"hidden"}}>
+              {["es","en"].map(code => <button key={code} type="button" onClick={() => setLocalLang(code)} aria-pressed={lang === code} lang={code} style={{padding:"9px 12px",background:lang === code ? C.goldDim : C.surface,color:lang === code ? C.gold : C.textSec,border:"none",fontFamily:F.mono,fontSize:11,fontWeight:700,cursor:"pointer"}}>{code.toUpperCase()}</button>)}
+            </div>
             {onOpenIntelligence && (
               <button onClick={onOpenIntelligence} className="grwm-cta" style={{
                 display: "flex", alignItems: "center", gap: 6, padding: "9px 16px", borderRadius: 7,
@@ -706,32 +762,43 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
         {/* Intro */}
         <div style={{ marginBottom: 18, maxWidth: 820 }}>
           <div style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.7 }}>
-            {COUNTRIES.length} economías clave agrupadas por alineamiento geopolítico real: comercio y aranceles, flujos de inversión, voto en Naciones Unidas, salud diplomática, dependencias energéticas y tecnológicas, turismo y estrategia de país. Elige un país en el mapa para ver el desglose completo.
+            {COUNTRIES.length} {tr("economías clave agrupadas por alineamiento geopolítico estimado: comercio y aranceles, flujos de inversión, voto en Naciones Unidas, salud diplomática, dependencias energéticas y tecnológicas, turismo y estrategia de país. Elige un país en el mapa para ver el desglose completo.", "key economies grouped by estimated geopolitical alignment, covering trade and tariffs, investment flows, UN voting, diplomatic relations, energy and technology dependencies, tourism and country strategy. Select a country on the map to explore its profile.")}
           </div>
         </div>
 
+        <div style={{ display:"flex", gap:12, flexWrap:"wrap", alignItems:"center", justifyContent:"space-between", padding:"18px 22px", background:"#E1E9F3", borderRadius:24, marginBottom:18 }}>
+          <div>
+            <div style={{fontSize:10,letterSpacing:".18em",fontWeight:700,color:C.gold,marginBottom:5}}>ZRC · GEOPOLITICAL INTELLIGENCE</div>
+            <div style={{fontSize:22,fontWeight:300,color:"#0B2545"}}>{tr("Explora el equilibrio geopolítico global","Explore the global geopolitical landscape")}</div>
+          </div>
+          <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap"}}>
+            <input aria-label={tr("Buscar país","Search country")} value={search} onChange={e=>setSearch(e.target.value)} placeholder={tr("Buscar país…","Search country…")} style={{padding:"12px 15px",borderRadius:14,border:`1px solid ${C.border}`,background:"#FFFFFF",color:C.text,minWidth:190,fontFamily:F.body}} />
+            {search && <button onClick={()=>setSearch("")} style={{padding:"11px 13px",borderRadius:12,border:`1px solid ${C.border}`,background:"#FFFFFF",color:C.text,cursor:"pointer"}}>{tr("Limpiar","Clear")}</button>}
+          </div>
+        </div>
+        {search.trim() && <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:14}}>{visibleCountries.slice(0,10).map(c=><button key={c.id} onClick={()=>setSelectedId(c.id)} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:999,padding:"8px 12px",cursor:"pointer",color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</button>)}{visibleCountries.length===0 && <span style={{color:C.textSec}}>{tr("Sin coincidencias","No matches")}</span>}</div>}
         {/* Controls */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 20, marginBottom: 16, alignItems: "flex-start" }}>
           <div>
-            <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>COLOREAR POR</div>
+            <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>{tr("COLOREAR POR", "COLOR BY")}</div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
               {COLOR_MODES.map((m) => (
                 <button key={m.id} onClick={() => setColorMode(m.id)} className="grwm-color-btn" style={{
                   padding: "6px 12px", borderRadius: 6, border: `1px solid ${colorMode === m.id ? C.gold : C.border}`,
                   background: colorMode === m.id ? C.goldDim : "transparent", color: colorMode === m.id ? C.gold : C.textSec,
                   fontFamily: F.mono, fontSize: 11,
-                }}>{m.label}</button>
+                }}>{en ? ({bloc:"Geopolitical bloc",usAlign:"US alignment",cnAlign:"China alignment",riskScore:"ZRC geopolitical risk"}[m.id]) : m.label}</button>
               ))}
             </div>
           </div>
           {colorMode === "bloc" && (
             <div>
-              <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>FILTRAR BLOQUE</div>
+              <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 8 }}>{tr("FILTRAR BLOQUE", "FILTER BLOC")}</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                 <button onClick={() => setBlocFilter(null)} className="grwm-bloc-btn" style={{
                   padding: "6px 12px", borderRadius: 6, border: `1px solid ${!blocFilter ? C.borderHover : C.border}`,
                   background: !blocFilter ? C.surface3 : "transparent", color: !blocFilter ? C.text : C.textSec, fontFamily: F.mono, fontSize: 11,
-                }}>Todos ({COUNTRIES.length})</button>
+                }}>{tr("Todos", "All")} ({COUNTRIES.length})</button>
                 {Object.entries(BLOC_META).map(([key, b]) => (
                   <button key={key} onClick={() => setBlocFilter(blocFilter === key ? null : key)} className="grwm-bloc-btn" style={{
                     padding: "6px 12px", borderRadius: 6, border: `1px solid ${blocFilter === key ? b.color : C.border}`,
@@ -746,10 +813,10 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
 
         <div className="grwm-layout" style={{ marginBottom: 20 }}>
           {/* Map */}
-          <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 10, overflow: "hidden", height: 640 }}>
+          <div className="grwm-map" style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 26, overflow: "hidden", height: 640, boxShadow: "0 12px 36px rgba(11,37,69,.08)" }}>
             <MapContainer center={[22, 20]} zoom={2} minZoom={2} maxZoom={7} style={{ width: "100%", height: "100%" }} worldCopyJump>
-              <TileLayer attribution="&copy; Esri" url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}" />
-              <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}" />
+              <TileLayer attribution="&copy; OpenStreetMap contributors &copy; CARTO" url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
+              
               {visibleCountries.map((c) => (
                 <CircleMarker
                   key={c.id}
@@ -764,7 +831,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
                   eventHandlers={{ click: () => setSelectedId(c.id) }}
                 >
                   <Tooltip direction="top" offset={[0, -4]}>
-                    {c.flag} {c.name} · {BLOC_META[computeBloc(c)].label}
+                    {c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name} · {blocLabel(computeBloc(c))}
                   </Tooltip>
                 </CircleMarker>
               ))}
@@ -773,12 +840,12 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
 
           {/* Detail panel */}
           {selected ? (
-            <CountryPanel country={selected} onClose={() => setSelectedId(null)} />
+            <CountryPanel country={selected} onClose={() => setSelectedId(null)} lang={lang} />
           ) : (
-            <div style={{ background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 10, padding: 24, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 10, minHeight: 300 }}>
+            <div style={{ background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 26, padding: 24, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 10, minHeight: 300 }}>
               <Info size={22} color={C.textMuted} />
               <div style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, maxWidth: 240 }}>
-                Selecciona un país en el mapa para ver comercio, alineamiento, dependencias y estrategia en detalle.
+                {tr("Selecciona un país en el mapa para ver comercio, alineamiento, dependencias y estrategia en detalle.", "Select a country to explore its trade, alignment, dependencies and strategy.")}
               </div>
             </div>
           )}
@@ -786,8 +853,8 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
 
         {/* Legend */}
         <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 10, padding: "14px 18px", marginBottom: 20 }}>
-          <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 10 }}>LEYENDA · TAMAÑO = PIB NOMINAL</div>
-          <Legend colorMode={colorMode} />
+          <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 10 }}>{tr("LEYENDA · TAMAÑO = PIB NOMINAL", "LEGEND · SIZE = NOMINAL GDP")}</div>
+          <Legend colorMode={colorMode} lang={lang} />
         </div>
 
         {/* Bloc breakdown cards */}
@@ -795,10 +862,10 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
           {Object.entries(BLOC_META).map(([key, b]) => (
             <div key={key} style={{ background: C.surface, border: `1px solid ${C.border}`, borderLeft: `3px solid ${b.color}`, borderRadius: 8, padding: "16px 18px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                <span style={{ fontFamily: F.display, fontSize: 15, fontWeight: 600, color: b.color }}>{b.label}</span>
-                <span style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted }}>{blocCounts[key] || 0} países</span>
+                <span style={{ fontFamily: F.display, fontSize: 15, fontWeight: 600, color: b.color }}>{en ? ({occidental:"Western Bloc",sino_euroasiatico:"Sino-Eurasian Axis",multialineado:"Pragmatic multi-aligned",no_alineado:"Non-aligned / swing states"}[key]) : b.label}</span>
+                <span style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted }}>{blocCounts[key] || 0} {tr("países", "countries")}</span>
               </div>
-              <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>{b.desc}</div>
+              <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, lineHeight: 1.6 }}>{blocDescription(key)}</div>
             </div>
           ))}
         </div>
@@ -810,9 +877,9 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
             padding: "22px 26px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap", marginBottom: 20,
           }}>
             <div style={{ maxWidth: 480 }}>
-              <div style={{ fontFamily: F.display, fontSize: 18, color: C.text, marginBottom: 6, fontWeight: 600 }}>Esto es la capa cualitativa. GeoRisk Dashboard añade la cuantitativa.</div>
+              <div style={{ fontFamily: F.display, fontSize: 18, color: C.text, marginBottom: 6, fontWeight: 600 }}>{tr("Esto es la capa cualitativa. GeoRisk Dashboard añade la cuantitativa.", "This is the qualitative layer. GeoRisk Dashboard adds quantitative analysis.")}</div>
               <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, margin: 0 }}>
-                Escenarios propios con sliders en tiempo real, impacto estimado en precios de activos por clase, y GeoRisk Predictive ML añade forecast IA a 12 meses y decision engine institucional.
+                {tr("Escenarios ilustrativos con controles interactivos e impactos estimados por clase de activo. GeoRisk Predictive ML añade perspectivas estadísticas sujetas a disponibilidad y validación de datos.", "Illustrative scenarios with interactive controls and estimated impacts by asset class. GeoRisk Predictive ML adds statistical outlooks subject to data availability and validation.")}
               </p>
             </div>
             <button onClick={onOpenIntelligence} className="grwm-cta" style={{
@@ -820,18 +887,18 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence }) {
               fontFamily: F.mono, fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase",
               cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
             }}>
-              Ver GeoRisk Intelligence →
+              {tr("Ver GeoRisk Intelligence →", "Explore GeoRisk Intelligence →")}
             </button>
           </div>
         )}
 
         {/* Methodology */}
         <div style={{ padding: "16px 20px", background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 8, fontSize: 11, color: C.textMuted, lineHeight: 1.7, fontFamily: F.body }}>
-          Metodología: el GeoRisk World Map presenta estimaciones compuestas de ZRC Research sobre {COUNTRIES.length} economías clave (G20 y bloques estratégicos relevantes), combinando lectura editorial de comercio, membresías en bloques/tratados, inversión, alineamiento diplomático y dependencias estructurales. No son series oficiales en vivo (UN Comtrade, UNGA, IMF, UNWTO) sino una síntesis cuantificada para hacer comparables los países entre sí — es un mapa de lectura geopolítica aplicada, no un feed de datos certificados. Se recalibra periódicamente por el equipo de research de Zenith Rise Capital. No constituye asesoramiento de inversión.
+          {tr(`Metodología: GeoRisk World Map utiliza estimaciones editoriales compuestas de ZRC Research para ${COUNTRIES.length} economías. Los indicadores no son series oficiales en tiempo real y no deben interpretarse como datos certificados ni probabilidades calibradas. Las valoraciones pueden requerir revisión. No constituye asesoramiento de inversión.`, `Methodology: GeoRisk World Map uses composite editorial estimates from ZRC Research for ${COUNTRIES.length} economies. Indicators are not live official data, certified statistics or calibrated probabilities. Assessments may require revision. This is not investment advice.`)}
         </div>
 
         <div style={{ marginTop: 20, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>
-          <span>© 2026 Zenith Rise Capital · Calesius Global SL · Madrid, España</span>
+          <span>© 2026 Zenith Rise Capital · Calesius Global SL · Madrid, Spain</span>
           <span>zenithrisecapital.com/mapa-geopolitico</span>
         </div>
       </div>

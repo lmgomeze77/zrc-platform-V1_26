@@ -2048,7 +2048,7 @@ const ZRCPlatform = () => {
 
       {showWorldMap && (
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
-          <GeoRiskWorldMap onClose={closeWorldMap} onOpenIntelligence={() => { closeWorldMap(); setTimeout(() => onNav("intelligence"), 50); }} />
+          <GeoRiskWorldMap lang={lang} onClose={closeWorldMap} onOpenIntelligence={() => { closeWorldMap(); setTimeout(() => onNav("intelligence"), 50); }} />
         </div>
       )}
     </AuthProvider>
