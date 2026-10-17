@@ -678,6 +678,35 @@ function Legend({ colorMode, lang }) {
   );
 }
 
+// Phase 1: transparent comparison of existing editorial country estimates.
+function CountryComparison({ countries, lang, onRemove, onClear }) {
+  const en = lang === "en";
+  const tr = (es, english) => en ? english : es;
+  const rows = [
+    [tr("Riesgo geopolítico ZRC (0–100)", "ZRC geopolitical risk (0–100)"), c => c.riskScore],
+    [tr("Alineamiento EE.UU. (−100 a +100)", "US alignment (−100 to +100)"), c => c.usAlign],
+    [tr("Alineamiento China (−100 a +100)", "China alignment (−100 to +100)"), c => c.cnAlign],
+    [tr("Alineamiento Rusia (−100 a +100)", "Russia alignment (−100 to +100)"), c => c.ruAlign],
+    [tr("Arancel medio aplicado", "Average applied tariff"), c => c.tariffAvg + "%"],
+    [tr("IED entrante anual (miles de millones USD)", "Annual FDI inflows (USD bn)"), c => c.fdiIn],
+  ];
+  return (
+    <section aria-label={tr("Comparación de países", "Country comparison")} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:18,padding:"18px 20px",marginBottom:18}}>
+      <div style={{display:"flex",justifyContent:"space-between",gap:12,alignItems:"center",flexWrap:"wrap",marginBottom:14}}>
+        <div><div style={{fontSize:10,letterSpacing:".12em",color:C.gold,fontWeight:700}}>ZRC · COUNTRY COMPARISON</div><div style={{fontSize:17,fontWeight:650,marginTop:5}}>{tr("Comparativa estratégica", "Strategic comparison")} · {countries.length}/3</div></div>
+        <button type="button" onClick={onClear} style={{padding:"9px 12px",border:`1px solid ${C.border}`,borderRadius:9,background:C.surface,color:C.text,cursor:"pointer"}}>{tr("Vaciar comparación", "Clear comparison")}</button>
+      </div>
+      <div style={{overflowX:"auto",WebkitOverflowScrolling:"touch"}}>
+        <table style={{borderCollapse:"collapse",width:"100%",minWidth:500,fontSize:12,textAlign:"left"}}>
+          <thead><tr><th scope="col" style={{padding:12,borderBottom:`1px solid ${C.border}`}}>{tr("Indicador", "Indicator")}</th>{countries.map(c=><th scope="col" key={c.id} style={{padding:12,borderBottom:`1px solid ${C.border}`,minWidth:120}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}<button type="button" onClick={()=>onRemove(c.id)} aria-label={tr("Quitar ","Remove ")+(en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name)} style={{marginLeft:8,border:"none",background:"transparent",color:C.textSec,cursor:"pointer"}}>×</button></th>)}</tr></thead>
+          <tbody>{rows.map(([label, value])=><tr key={label}><th scope="row" style={{padding:12,borderBottom:`1px solid ${C.border}`,fontWeight:500,color:C.textSec}}>{label}</th>{countries.map(c=><td key={c.id} style={{padding:12,borderBottom:`1px solid ${C.border}`,fontVariantNumeric:"tabular-nums",fontWeight:650}}>{value(c)}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
+      <p style={{fontSize:11,lineHeight:1.5,color:C.textMuted,margin:"12px 0 0"}}>{tr("Estimaciones editoriales de ZRC Research; no son datos oficiales en tiempo real. Las escalas de alineamiento son indicativas.", "ZRC Research editorial estimates, not live official data. Alignment scales are indicative.")}</p>
+    </section>
+  );
+}
+
 // ── Componente principal ──────────────────────────────────────────────────
 export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: parentLang = "es" }) {
   const [localLang, setLocalLang] = useState(null);
@@ -686,7 +715,10 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
   const tr = (es, english) => en ? english : es;
   const blocLabel = (key) => en ? ({ occidental: "Western Bloc", sino_euroasiatico: "Sino-Eurasian Axis", multialineado: "Pragmatic multi-aligned", no_alineado: "Non-aligned / swing states" }[key]) : BLOC_META[key].label;
   const blocDescription = (key) => en ? ({ occidental: "Strong alignment with the US, NATO and EU; limited strategic affinity with Beijing or Moscow.", sino_euroasiatico: "Strong alignment with China and/or Russia, with strategic distance from Washington.", multialineado: "Balances US, China and regional ties without committing to a fixed camp.", no_alineado: "No dominant alignment; positions may shift across international issues." }[key]) : BLOC_META[key].desc;
-  const [selectedId, setSelectedId] = useState(null); 
+  const [selectedId, setSelectedId] = useState(null);
+  const [comparisonIds, setComparisonIds] = useState([]);
+  const toggleComparison = (id) => setComparisonIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : prev.length < 3 ? [...prev,id] : prev);
+  const comparisonCountries = useMemo(() => comparisonIds.map(id => COUNTRIES.find(c => c.id === id)).filter(Boolean), [comparisonIds]); 
   const [search, setSearch] = useState("");
   const [colorMode, setColorMode] = useState("bloc");
   const [blocFilter, setBlocFilter] = useState(null);
@@ -698,9 +730,9 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
   const selected = useMemo(() => COUNTRIES.find((c) => c.id === selectedId) || null, [selectedId]);
 
   const visibleCountries = useMemo(() => {
-    if (!blocFilter) return COUNTRIES;
-    return COUNTRIES.filter((c) => computeBloc(c) === blocFilter);
-  }, [blocFilter]);
+    const q = search.trim().toLocaleLowerCase();
+    return COUNTRIES.filter(c => (!blocFilter || computeBloc(c) === blocFilter) && (!q || c.name.toLocaleLowerCase().includes(q) || (COUNTRY_NAMES_EN[c.id] || "").toLocaleLowerCase().includes(q)));
+  }, [blocFilter, search]);
 
   const blocCounts = useMemo(() => {
     const counts = {};
@@ -725,7 +757,8 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
         @media (max-width: 900px) {
           .grwm-layout { grid-template-columns: 1fr; }
           .grwm-panel { max-height: 70vh; }
-          .grwm-map { height: 460px !important; }
+          .grwm-map { height: min(55dvh, 460px) !important; min-height: 310px; }
+          .grwm-panel { max-height: 70dvh; }
         }
       `}</style>
 
@@ -783,6 +816,15 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
           </div>
         </div>
         {search.trim() && <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:14}}>{visibleCountries.slice(0,10).map(c=><button key={c.id} onClick={()=>setSelectedId(c.id)} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:999,padding:"8px 12px",cursor:"pointer",color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</button>)}{visibleCountries.length===0 && <span style={{color:C.textSec}}>{tr("Sin coincidencias","No matches")}</span>}</div>}
+        <div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap",marginBottom:16}}>
+          <span style={{fontSize:12,color:C.textSec}}>{tr("Selecciona hasta tres países para comparar sus perfiles:", "Select up to three countries to compare their profiles:")}</span>
+          <select aria-label={tr("Añadir país a comparación", "Add country to comparison")} value="" onChange={e=>{if(e.target.value)toggleComparison(e.target.value)}} disabled={comparisonIds.length===3} style={{padding:"10px 12px",borderRadius:10,border:`1px solid ${C.border}`,background:C.surface,color:C.text,maxWidth:"100%"}}>
+            <option value="">{comparisonIds.length===3 ? tr("Máximo de tres países", "Three-country limit") : tr("Añadir país…", "Add country…")}</option>
+            {COUNTRIES.filter(c=>!comparisonIds.includes(c.id)).map(c=><option key={c.id} value={c.id}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</option>)}
+          </select>
+          {comparisonCountries.map(c=><button type="button" key={c.id} onClick={()=>toggleComparison(c.id)} style={{padding:"8px 11px",border:`1px solid ${C.borderHover}`,background:C.surface2,borderRadius:999,color:C.text,cursor:"pointer"}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name} ×</button>)}
+        </div>
+        {comparisonCountries.length > 0 && <CountryComparison countries={comparisonCountries} lang={lang} onRemove={toggleComparison} onClear={()=>setComparisonIds([])} />}
         {/* Controls */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 20, marginBottom: 16, alignItems: "flex-start" }}>
           <div>
@@ -846,7 +888,10 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
 
           {/* Detail panel */}
           {selected ? (
-            <CountryPanel country={selected} onClose={() => setSelectedId(null)} lang={lang} />
+            <div style={{minWidth:0}}>
+              <button type="button" onClick={()=>toggleComparison(selected.id)} disabled={!comparisonIds.includes(selected.id) && comparisonIds.length>=3} style={{width:"100%",marginBottom:10,padding:"12px",border:`1px solid ${C.borderHover}`,borderRadius:10,background:C.surface2,color:C.text,cursor:"pointer",fontWeight:600}}>{comparisonIds.includes(selected.id) ? tr("✓ Quitar de comparación", "✓ Remove from comparison") : tr("+ Añadir a comparación", "+ Add to comparison")}</button>
+              <CountryPanel country={selected} onClose={() => setSelectedId(null)} lang={lang} />
+            </div>
           ) : (
             <div style={{ background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 26, padding: 24, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 10, minHeight: 300 }}>
               <Info size={22} color={C.textMuted} />
