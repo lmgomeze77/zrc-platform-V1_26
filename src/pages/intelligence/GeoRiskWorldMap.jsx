@@ -10,7 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, CircleMarker, Tooltip, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation, WB_GOVERNANCE_INDICATORS, worldBankGovernanceUrl } from "./worldBankCountryMacro";
+import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation, WB_GOVERNANCE_INDICATORS, worldBankGovernanceUrl, sameYearIndicatorGap } from "./worldBankCountryMacro";
 import { Globe2, TrendingUp, TrendingDown, Minus, X, ArrowRight, Info } from "lucide-react";
 
 // ── Design tokens — grafito oscuro + acento bronce cartográfico ──────────
@@ -866,7 +866,9 @@ function OfficialCountryComparison({ countries, lang }) {
   const en = lang === "en";
   const tr = (es, english) => en ? english : es;
   const [state, setState] = useState({loading:true, values:{}});
+  const [referenceId, setReferenceId] = useState(null);
   const ids = countries.map(c=>c.id).join(",");
+  const referenceCountry = countries.find(c=>c.id===referenceId) || countries[0];
   const indicators = [
     ...WB_INDICATORS.filter(i=>["NY.GDP.MKTP.KD.ZG","FP.CPI.TOTL.ZG"].includes(i.code)).map(i=>({...i, source:"WDI"})),
     ...WB_GOVERNANCE_INDICATORS.filter(i=>["GOV_WGI_GE_EST","GOV_WGI_RL_EST"].includes(i.code)).map(i=>({...i, source:"WGI"}))
@@ -906,6 +908,28 @@ function OfficialCountryComparison({ countries, lang }) {
         <tbody>{indicators.map(i=><tr key={i.code}><th scope="row" style={{padding:11,borderBottom:`1px solid ${C.border}`,fontWeight:500,color:C.textSec}}>{en?i.en:i.es} <span style={{fontSize:10,color:C.textMuted}}>({i.source})</span></th>{countries.map(c=><td key={c.id} style={{padding:11,borderBottom:`1px solid ${C.border}`,fontVariantNumeric:"tabular-nums"}}>{state.loading?tr("Cargando…","Loading…"):format(state.values[c.id]?.[i.code],i)}</td>)}</tr>)}</tbody>
       </table>
     </div>
+    {countries.length>1 && !state.loading && <section aria-label={tr("Diferencias entre países","Country indicator gaps")} style={{marginTop:18,padding:14,borderRadius:14,background:C.surface2,border:`1px solid ${C.border}`}}>
+      <div style={{display:"flex",alignItems:"center",gap:10,justifyContent:"space-between",flexWrap:"wrap"}}>
+        <strong style={{fontSize:13}}>{tr("Brechas frente al país de referencia","Gaps vs reference country")}</strong>
+        <select aria-label={tr("País de referencia","Reference country")} value={referenceCountry.id} onChange={e=>setReferenceId(e.target.value)} style={{border:`1px solid ${C.border}`,borderRadius:9,background:C.surface,color:C.text,padding:"8px 10px",maxWidth:"100%"}}>
+          {countries.map(c=><option key={c.id} value={c.id}>{c.flag} {en?COUNTRY_NAMES_EN[c.id]||c.name:c.name}</option>)}
+        </select>
+      </div>
+      <p style={{fontSize:11,lineHeight:1.6,color:C.textMuted,margin:"8px 0 12px"}}>{tr("Diferencia = país comparado menos país de referencia. Solo se calcula si ambos datos son del mismo año; WDI en puntos porcentuales y WGI en unidades de estimación.","Difference = compared country minus reference country. Only calculated for the same observation year; WDI in percentage points and WGI in estimate units.")}</p>
+      <div style={{overflowX:"auto",WebkitOverflowScrolling:"touch"}}>
+        <table style={{width:"100%",minWidth:460,borderCollapse:"collapse",fontSize:12,textAlign:"left"}}>
+          <thead><tr><th scope="col" style={{padding:9,borderBottom:`1px solid ${C.border}`}}>{tr("Indicador","Indicator")}</th>{countries.filter(c=>c.id!==referenceCountry.id).map(c=><th key={c.id} scope="col" style={{padding:9,borderBottom:`1px solid ${C.border}`}}>{c.flag} {en?COUNTRY_NAMES_EN[c.id]||c.name:c.name}</th>)}</tr></thead>
+          <tbody>{indicators.map(i=><tr key={i.code}><th scope="row" style={{padding:9,borderBottom:`1px solid ${C.border}`,fontWeight:500}}>{en?i.en:i.es}</th>{countries.filter(c=>c.id!==referenceCountry.id).map(c=>{
+            const a=state.values[referenceCountry.id]?.[i.code];
+            const b=state.values[c.id]?.[i.code];
+            const comparison=sameYearIndicatorGap(a,b);
+            return <td key={c.id} style={{padding:9,borderBottom:`1px solid ${C.border}`,fontVariantNumeric:"tabular-nums"}}>
+              {comparison ? <><strong>{comparison.gap>0?"+":""}{new Intl.NumberFormat(en?"en-US":"es-ES",{maximumFractionDigits:2}).format(comparison.gap)} {i.source==="WDI"?"pp":""}</strong> <span style={{color:C.textMuted,fontSize:10}}>({comparison.year})</span></> : <span style={{color:C.textMuted}}>{a&&b&&a.year!==b.year?tr("Años distintos","Different years"):tr("Sin datos comparables","No comparable data")}</span>}
+            </td>;
+          })}</tr>)}</tbody>
+        </table>
+      </div>
+    </section>}
     <p style={{fontSize:10,color:C.textMuted,margin:"9px 0 0"}}><a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer" style={{color:C.gold}}>{tr("Datos del Banco Mundial","World Bank data")} ↗</a> · <a href="https://www.worldbank.org/en/publication/worldwide-governance-indicators" target="_blank" rel="noopener noreferrer" style={{color:C.gold}}>WGI methodology ↗</a></p>
   </section>;
 }
