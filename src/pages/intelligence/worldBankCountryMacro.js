@@ -59,3 +59,15 @@ export function latestWorldBankObservation(payload) {
   const item = payload[1].find(row => row && Number.isFinite(row.value) && /^[0-9]{4}$/.test(String(row.date)));
   return item ? {value:item.value, year:String(item.date)} : null;
 }
+
+// Worldwide Governance Indicators (WGI) standard-normal estimates, NOT
+// geopolitical risk scores. Larger estimates indicate stronger governance;
+// interpret with published uncertainty and methodological revisions.
+export const WB_GOVERNANCE_INDICATORS = [
+  {code:"GE.EST", es:"Efectividad del gobierno", en:"Government effectiveness"},
+  {code:"RL.EST", es:"Estado de derecho", en:"Rule of law"},
+  {code:"PV.EST", es:"Estabilidad política y ausencia de violencia", en:"Political stability and absence of violence"},
+];
+export const worldBankGovernanceUrl = (iso3, code) =>
+  "https://api.worldbank.org/v2/country/" + encodeURIComponent(iso3) +
+  "/indicator/" + encodeURIComponent(code) + "?format=json&source=3&mrnev=1";
