@@ -651,6 +651,13 @@ const OPS = [
   { id: 3, type: "RESIDENTIAL", name: "Edificio Salamanca", loc: "Barrio de Salamanca, Madrid", size: "2,042m² · 12 units", yield: "6.5% net", status: "ADVISORY", price: "€11.6M" },
 ];
 
+const ADVISORY_MANDATES = [
+ {id:"agri",sector:["AGROALIMENTACIÓN","AGRIFOOD"],title:["Empresa hortofrutícola","Fruit and vegetable company"],area:["España · Exportación","Spain · Export business"],service:["M&A · Crecimiento","M&A · Growth"],description:["Operador consolidado con actividad internacional y oportunidades de expansión.","Established international operator with expansion potential."]},
+ {id:"restaurant",sector:["HOSTELERÍA","HOSPITALITY"],title:["Restaurante emblemático en Madrid","Landmark restaurant in Madrid"],area:["Comunidad de Madrid","Madrid region"],service:["Transmisión · Operador estratégico","Transaction · Strategic operator"],description:["Negocio de restauración reconocido y consolidado. Operación bajo confidencialidad.","Established landmark restaurant business. Confidential transaction."]},
+ {id:"asian",sector:["RESTAURACIÓN","RESTAURANTS"],title:["Participación del 30% en restaurante asiático","30% stake in Asian restaurant"],area:["Madrid · Participación minoritaria","Madrid · Minority equity"],service:["Inversión minoritaria","Minority investment"],description:["Participación minoritaria en negocio de restauración con atractivo perfil de rentabilidad, sujeto a verificación.","Minority stake in restaurant business with an attractive return profile, subject to verification."]},
+ {id:"saas",sector:["SAAS · LEGALTECH","SAAS · LEGALTECH"],title:["Startup SaaS de optimización fiscal","Tax optimization SaaS startup"],area:["España · Tecnología B2B","Spain · B2B technology"],service:["Fundraising · Capital crecimiento","Fundraising · Growth capital"],description:["Plataforma de automatización y cumplimiento fiscal para autónomos y pymes en captación de capital.","Tax automation and compliance platform for SMEs and self-employed professionals, raising capital."]}
+];
+
 const TOOLS = [
   {
     name: "GeoRisk Dashboard",
@@ -1601,7 +1608,7 @@ const Brokerage = ({ lang }) => {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
         {OPS.map((op, i) => (
           <FadeIn key={op.id} delay={i * 0.08}>
-            <div style={{ background: C.surface, border: `1px solid ${C.border}`, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+            <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 18, overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ padding: "14px 20px", background: C.surface2, borderBottom: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em" }}>{op.type}</span>
                 <Badge label={op.status} variant={op.status.toLowerCase()} />
@@ -1611,7 +1618,7 @@ const Brokerage = ({ lang }) => {
                 <p style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, margin: "0 0 16px", letterSpacing: "0.05em" }}>{op.loc}</p>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 16 }}>
                   {[["SIZE", op.size], ["YIELD", op.yield]].map(([k, v]) => (
-                    <div key={k} style={{ padding: "10px 14px", background: C.surface2, border: `1px solid ${C.border}` }}>
+                    <div key={k} style={{ padding: "10px 14px", background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 10 }}>
                       <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 4 }}>{k}</div>
                       <div style={{ fontFamily: F.mono, fontSize: 11, color: C.text }}>{v}</div>
                     </div>
@@ -1620,7 +1627,7 @@ const Brokerage = ({ lang }) => {
                 <div style={{ fontFamily: F.figures, fontSize: 22, color: C.gold, marginBottom: 16 }}>{op.price}</div>
               </div>
               <div style={{ padding: "14px 20px", borderTop: `1px solid ${C.border}` }}>
-                <button onClick={() => openTeaser(op)} style={{ width: "100%", fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "9px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer" }}>{t.req}</button>
+                <button onClick={() => openTeaser(op)} style={{ width: "100%", fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "9px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, borderRadius: 10, cursor: "pointer" }}>{t.req}</button>
               </div>
             </div>
           </FadeIn>
@@ -1638,12 +1645,12 @@ const Advisory = ({ lang }) => {
   const [modal, setModal] = useState(false);
 
   return (
-    <Sec id="advisory">
-      <SH label={t.label} title={t.title} sub={t.sub} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1 }}>
+    <Sec id="advisory">\n      <div className="zrc-advisory-intro">
+      <SH label={t.label} title={t.title} sub={t.sub} />\n      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
         {SERVICES.map((s, i) => (
           <FadeIn key={i} delay={i * 0.08}>
-            <div style={{ padding: "28px 24px", background: C.surface, border: `1px solid ${C.border}`, position: "relative" }}>
+            <div style={{ padding: "28px 24px", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 18, position: "relative" }}>
               <div style={{ fontFamily: F.display, fontSize: 28, color: C.gold, opacity: 0.4, marginBottom: 12 }}>{s.metric}</div>
               <h3 style={{ fontFamily: F.display, fontSize: 20, fontWeight: 400, color: C.text, margin: "0 0 10px" }}>{s.title}</h3>
               <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, fontWeight: 300 }}>{s.desc[lang]}</p>
@@ -1651,19 +1658,35 @@ const Advisory = ({ lang }) => {
           </FadeIn>
         ))}
       </div>
+      <FadeIn delay={0.12}>
+        <div className="zrc-advisory-mandates-heading">
+          <div><div style={{fontFamily:F.mono,fontSize:10,color:C.gold,letterSpacing:".14em",fontWeight:700}}>ZRC · {lang==="es"?"OPERACIONES EN CURSO":"CURRENT MANDATES"}</div>
+          <h3 style={{fontFamily:F.display,fontWeight:400,fontSize:"clamp(24px,3vw,34px)",margin:"8px 0"}}>{lang==="es"?"Oportunidades corporativas seleccionadas":"Selected corporate opportunities"}</h3>
+          <p style={{fontSize:13,color:C.textSec,lineHeight:1.6,margin:0}}>{lang==="es"?"Fichas ciegas. Información adicional bajo solicitud y confidencialidad.":"Blind profiles. Further details on request and subject to confidentiality."}</p></div>
+          <span className="zrc-advisory-count">04 {lang==="es"?"OPERACIONES":"MANDATES"}</span>
+        </div>
+        <div className="zrc-advisory-mandates-grid">{ADVISORY_MANDATES.map((op,i)=><article key={op.id} className="zrc-advisory-mandate">
+          <div className="zrc-advisory-mandate-top"><span>{op.sector[lang==="es"?0:1]}</span><span className="zrc-advisory-tag">{lang==="es"?"CONFIDENCIAL":"CONFIDENTIAL"}</span></div>
+          <div className="zrc-advisory-mandate-body"><span className="zrc-advisory-index">0{i+1} / 04</span>
+          <h4>{op.title[lang==="es"?0:1]}</h4><p className="zrc-advisory-location">{op.area[lang==="es"?0:1]}</p>
+          <p className="zrc-advisory-detail">{op.description[lang==="es"?0:1]}</p>
+          <span className="zrc-advisory-service">{op.service[lang==="es"?0:1]}</span></div>
+          <button type="button" className="zrc-advisory-cta" onClick={()=>setModal(op.id)}>{lang==="es"?"SOLICITAR INFORMACIÓN →":"REQUEST DETAILS →"}</button>
+        </article>)}</div>
+      </FadeIn>
       <FadeIn delay={0.2}>
-        <div style={{ marginTop: 32, padding: "24px", background: C.surface, border: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+        <div style={{ marginTop: 32, padding: "24px", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 18, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
           <div>
             <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.1em", marginBottom: 4 }}>MANDATE INQUIRY</div>
             <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, margin: 0 }}>{lang === "es" ? "Consulta de mandato confidencial. Respuesta en 48h." : "Confidential mandate inquiry. Response within 48h."}</p>
           </div>
-          <button onClick={() => setModal(true)} style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", padding: "10px 24px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600, whiteSpace: "nowrap" }}>
+          <button onClick={() => setModal(true)} style={{ fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", padding: "10px 24px", background: C.gold, color: C.bg, border: "none", borderRadius: 10, cursor: "pointer", fontWeight: 600, whiteSpace: "nowrap" }}>
             {lang === "es" ? "CONSULTAR →" : "INQUIRE →"}
           </button>
         </div>
       </FadeIn>
       <Modal open={modal} onClose={() => setModal(false)} title={T[lang].form.contactTitle}>
-        <ContactForm context="Advisory Mandate" onClose={() => setModal(false)} lang={lang} />
+        <ContactForm context={ADVISORY_MANDATES.find(op=>op.id===modal) ? `Advisory · ${ADVISORY_MANDATES.find(op=>op.id===modal).title[lang==="es"?0:1]}` : "Advisory Mandate"} onClose={() => setModal(false)} lang={lang} />
       </Modal>
     </Sec>
   );
@@ -1685,10 +1708,10 @@ const Academia = ({ lang }) => {
   return (
     <Sec id="academia">
       <SH label={t.label} title={t.title} sub={t.sub} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
         {COURSES.map((c, i) => (
           <FadeIn key={c.id} delay={i * 0.06}>
-            <div style={{ padding: "24px", background: C.surface, border: `1px solid ${C.border}`, display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ padding: "24px", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 18, display: "flex", flexDirection: "column", gap: 12 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                 <Badge label={c.status} variant={c.status === "ENROLLING" ? "live" : "monitor"} />
                 <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{c.level}</span>
@@ -1699,7 +1722,7 @@ const Academia = ({ lang }) => {
                 <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{c.hrs}h</span>
               </div>
               {c.status === "ENROLLING" && (
-                <button onClick={() => openEnroll(c)} style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 14px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, cursor: "pointer", alignSelf: "flex-start" }}>
+                <button onClick={() => openEnroll(c)} style={{ fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 14px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, borderRadius: 10, cursor: "pointer", alignSelf: "flex-start" }}>
                   {lang === "es" ? "INSCRIBIRSE →" : "ENROLL →"}
                 </button>
               )}
@@ -1853,6 +1876,23 @@ const ZRCPlatform = () => {
         html { overflow-x: hidden; }
         body { overflow-x: hidden; }
 
+        .zrc-advisory-intro { padding:20px 24px 4px; margin:0 0 24px; background:linear-gradient(110deg,rgba(29,68,112,.08),rgba(176,139,77,.09)); border:1px solid ${C.border}; border-radius:20px; }
+        .zrc-advisory-mandates-heading { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin:36px 0 18px; }
+        .zrc-advisory-count { background:${C.surface2}; border:1px solid ${C.goldBorder}; color:${C.gold}; border-radius:999px; padding:9px 13px; font:600 10px ${F.mono}; letter-spacing:.08em; }
+        .zrc-advisory-mandates-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:18px; }
+        .zrc-advisory-mandate { display:flex; flex-direction:column; overflow:hidden; min-width:0; background:${C.surface}; border:1px solid ${C.goldBorder}; border-radius:20px; box-shadow:0 9px 28px rgba(18,42,74,.08); transition:transform .2s ease,box-shadow .2s ease; }
+        .zrc-advisory-mandate:hover { transform:translateY(-3px); box-shadow:0 14px 32px rgba(18,42,74,.12); }
+        .zrc-advisory-mandate-top { padding:14px 18px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; background:linear-gradient(110deg,rgba(29,68,112,.13),rgba(176,139,77,.09)); border-bottom:1px solid ${C.border}; font:600 10px ${F.mono}; letter-spacing:.08em; color:${C.gold}; }
+        .zrc-advisory-tag { background:${C.surface}; border:1px solid ${C.goldBorder}; border-radius:999px; padding:5px 8px; font-size:8px; }
+        .zrc-advisory-mandate-body { padding:21px 20px; flex:1; }
+        .zrc-advisory-index { color:${C.gold}; font:600 10px ${F.mono}; letter-spacing:.1em; }
+        .zrc-advisory-mandate h4 { color:${C.text}; font:400 23px/1.25 ${F.display}; margin:12px 0 7px; }
+        .zrc-advisory-location { color:${C.textMuted}; font:10px ${F.mono}; margin:0 0 17px; }
+        .zrc-advisory-detail { color:${C.textSec}; font:13px/1.65 ${F.body}; margin:0 0 18px; }
+        .zrc-advisory-service { display:inline-block; padding:7px 10px; border-radius:9px; background:${C.surface2}; color:${C.gold}; font:600 10px ${F.mono}; }
+        .zrc-advisory-cta { display:block; width:calc(100% - 36px); margin:0 18px 18px; padding:13px 10px; background:${C.surface2}; border:1px solid ${C.goldBorder}; border-radius:10px; color:${C.gold}; font:600 10px ${F.mono}; cursor:pointer; }
+        .zrc-advisory-cta:hover { background:${C.gold}; color:${C.bg}; }
+        @media(max-width:640px){.zrc-advisory-intro{padding:18px}.zrc-advisory-mandates-heading{margin-top:26px}.zrc-advisory-mandates-grid{gap:14px}}
         .zrc-ticker-lane { -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%); mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%); }
         .zrc-ticker-lane { scrollbar-width:none; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain; }
         .zrc-ticker-lane::-webkit-scrollbar { display:none; }
