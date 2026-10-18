@@ -505,6 +505,17 @@ export default function GeoRiskML() {
           border: 1px solid #16301f; border-radius: 10px;
           box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset, 0 8px 24px -12px rgba(0,0,0,0.5);
         }
+        .grml-scenario-summary { padding:20px; margin-bottom:18px; border:1px solid #28543a; border-radius:18px; background:linear-gradient(135deg,#10241a,#0b1712); }
+        .grml-scenario-summary-head { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+        .grml-mix-bar { display:flex; height:20px; overflow:hidden; border-radius:999px; background:#14231b; margin:15px 0 8px; }
+        .grml-mix-segment { min-width:0; transition:flex-grow .2s ease; }
+        .grml-scenario-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+        .grml-scenario-card { min-width:0; border-radius:16px; }
+        .grml-scenario-readout { padding:11px 12px; border-radius:10px; background:#0a1713; border:1px solid #234332; margin-top:12px; }
+        .grml-scenario-stats { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:12px; }
+        .grml-scenario-stat { border:1px solid #234332; background:#0a1713; border-radius:10px; padding:10px 12px; }
+        .grml-scenario-direction { display:flex; gap:8px; align-items:center; justify-content:space-between; margin-top:9px; font-size:11px; }
+        @media(max-width:780px) { .grml-scenario-grid { grid-template-columns:1fr; } .grml-scenario-summary { padding:15px; } .grml-scenario-card { padding:14px !important; } }
         .grml-card--interactive { cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
         .grml-card--interactive:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 14px 30px -14px rgba(0,0,0,0.65); }
         .grml-tab { transition: background 0.2s ease, color 0.2s ease; }
@@ -725,11 +736,29 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
               )}
             </div>
 
-            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(310px,1fr))", gap:16 }}>
+            <div className="grml-scenario-summary">
+              <div className="grml-scenario-summary-head">
+                <div>
+                  <div style={{fontSize:10,color:"#86EFAC",fontFamily:"monospace",letterSpacing:1.4}}>LECTURA EJECUTIVA · ESCENARIOS</div>
+                  <h2 style={{fontSize:18,color:"#F1F5F9",fontWeight:700,margin:"8px 0 5px"}}>¿Qué escenario domina el análisis?</h2>
+                  <p style={{color:"#CBD5E1",fontSize:12,lineHeight:1.6,margin:0}}>Mayor peso actual: <strong style={{color:dominantScenario.color}}>{dominantScenario.label}</strong> ({(normalizedWeights[dominantScenario.key]*100).toFixed(0)}%). El resultado agregado es <strong style={{color:riskColor}}>{fmt(compositeRisk,1)}/100</strong> para el sector {SECTORS[sector].label.toLowerCase()}.</p>
+                </div>
+                <div style={{padding:"9px 12px",border:"1px solid #28543a",borderRadius:12,color:"#A7F3D0",fontFamily:"monospace",fontSize:11}}>{isCustomized?"MIX AJUSTADO":"MIX BASE ZRC"}</div>
+              </div>
+              <div role="img" aria-label={"Composición normalizada de escenarios: "+Object.entries(SCENARIOS).map(([k,v])=>v.label+" "+(normalizedWeights[k]*100).toFixed(0)+" por ciento").join(", ")} className="grml-mix-bar">
+                {Object.entries(SCENARIOS).map(([k,v])=><div key={k} className="grml-mix-segment" style={{flexGrow:Math.max(0,normalizedWeights[k]),background:v.color}} title={v.label+" "+(normalizedWeights[k]*100).toFixed(1)+"%"} />)}
+              </div>
+              <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
+                {Object.entries(SCENARIOS).map(([k,v])=><span key={k} style={{display:"inline-flex",alignItems:"center",gap:6,fontSize:11,color:"#CBD5E1"}}><span style={{width:9,height:9,borderRadius:3,background:v.color}} />{v.label}: <strong>{(normalizedWeights[k]*100).toFixed(0)}%</strong></span>)}
+              </div>
+              <p style={{fontSize:11,color:"#94A3B8",lineHeight:1.55,margin:"13px 0 0"}}><strong>Cómo leerlo:</strong> la barra muestra pesos de simulación normalizados, <strong>no probabilidades predictivas</strong>. El índice resume riesgo modelizado; los efectos sobre mercados dependen de la región y del sector y no son una previsión de rentabilidad.</p>
+            </div>
+
+            <div className="grml-scenario-grid">
               {Object.entries(SCENARIOS).map(([sk, sv]) => {
                 const isModified = Math.abs(weights[sk] - DEFAULT_WEIGHTS[sk]) > 0.005;
                 return (
-                <div key={sk} className="grml-card grml-card--interactive" onClick={() => setActiveScenario(sk)} style={{
+                <div key={sk} className="grml-card grml-card--interactive grml-scenario-card" onClick={() => setActiveScenario(sk)} style={{
                   background: activeScenario===sk ? "linear-gradient(180deg, #0f2419 0%, #0a1810 100%)" : undefined,
                   borderColor: activeScenario===sk ? sv.color+"60" : undefined,
                   padding:18, position:"relative", overflow:"hidden"
@@ -742,10 +771,25 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
                     </div>
                     <RiskGauge value={sv.risk} size={56} />
                   </div>
+                  <div className="grml-scenario-stats">
+                    <div className="grml-scenario-stat">
+                      <div style={{fontSize:10,color:"#94A3B8",fontFamily:"monospace"}}>PESO EN EL MIX</div>
+                      <div style={{fontSize:22,fontWeight:750,color:sv.color,marginTop:3}}>{(normalizedWeights[sk]*100).toFixed(1)}%</div>
+                    </div>
+                    <div className="grml-scenario-stat">
+                      <div style={{fontSize:10,color:"#94A3B8",fontFamily:"monospace"}}>RIESGO INTRÍNSECO</div>
+                      <div style={{fontSize:22,fontWeight:750,color:sv.color,marginTop:3}}>{sv.risk}<span style={{fontSize:11,color:"#94A3B8"}}>/100</span></div>
+                    </div>
+                  </div>
+                  <div className="grml-scenario-readout">
+                    <div style={{fontSize:10,letterSpacing:1,color:"#86EFAC",fontFamily:"monospace"}}>INTERPRETACIÓN · {REGIONS[region].label.toUpperCase()}</div>
+                    <p style={{fontSize:12,color:"#CBD5E1",lineHeight:1.6,margin:"7px 0 4px"}}>{sv.desc}. Los impactos mostrados son <strong>sensibilidades simuladas</strong>, no cambios observados ni predicciones de precio.</p>
+                    {Object.entries(sv.impactByRegion[region]).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1])).slice(0,3).map(([vk,value])=><div className="grml-scenario-direction" key={vk}><span style={{color:"#CBD5E1"}}>{ECONOMIC_VARIABLES[vk]?.label}</span><strong style={{color:value>0.1?"#FBBF24":value< -0.1?"#60A5FA":"#94A3B8"}}>{value>0.1?"↑ Alcista":value< -0.1?"↓ Bajista":"→ Neutral"}</strong></div>)}
+                  </div>
                   <div style={{ marginTop:8 }}>
                     <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:6 }}>
                       <div style={{ display:"flex", alignItems:"center", gap:6 }}>
-                        <span style={{ fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>PROBABILIDAD</span>
+                        <span style={{ fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>PESO BASE (SIN NORMALIZAR)</span>
                         <button
                           onClick={e => { e.stopPropagation(); setWeights(prev => ({ ...prev, [sk]: DEFAULT_WEIGHTS[sk] })); }}
                           title={`Dejar en el nivel ZRC (${(DEFAULT_WEIGHTS[sk]*100).toFixed(0)}%) sin arrastrar`}
@@ -770,7 +814,7 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
                       </div>
                     )}
                     <div style={{ fontSize:10, color:"#475569", fontFamily:"monospace", marginBottom:4 }}>
-                      Desliza el círculo, o pulsa ↺ — el círculo en sombra marca el nivel estimado por ZRC
+                      Desliza para cambiar el peso inicial; el círculo en sombra marca la referencia ZRC. El peso final normalizado aparece arriba.
                     </div>
                     <div style={{ position:"relative", height:12, display:"flex", alignItems:"center" }}>
                       <div title={`Nivel ZRC: ${(DEFAULT_WEIGHTS[sk]*100).toFixed(0)}%`} style={{
