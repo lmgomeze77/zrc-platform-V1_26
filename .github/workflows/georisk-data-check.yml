@@ -8,6 +8,7 @@ on:
       - 'wrangler.toml'
       - '.github/workflows/deploy.yml'
       - 'src/pages/intelligence/**'
+      - 'src/App.jsx'
       - 'src/components/GeoRiskMarketData.jsx'
       - 'src/pages/PricingPage.jsx'
       - 'scripts/georisk-forecast.test.js'

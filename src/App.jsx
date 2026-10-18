@@ -1316,19 +1316,19 @@ const Intelligence = ({ lang }) => {
       <SH label={t.label} title={t.title} sub={t.sub} />
 
       <FadeIn delay={0.05}>
-        <div style={{ marginBottom: 24, padding: "22px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+        <div style={{ marginBottom: 24, padding: "22px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 22, overflow: "hidden", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
           <div style={{ flex: 1, minWidth: 260 }}>
             <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.16em", marginBottom: 7 }}>ZRC INTELLIGENCE · TOOLKIT GUIDE</div>
             <div style={{ fontFamily: F.display, fontSize: 23, color: C.text, marginBottom: 5 }}>{lang === "es" ? "De la señal a la decisión" : "From signal to decision"}</div>
             <div style={{ fontFamily: F.body, fontSize: 13, color: C.textSec }}>{lang === "es" ? "Detectar → Enmarcar → Stress-test → Traducir → Decidir → Monitorizar." : "Detect → Frame → Stress-test → Translate → Decide → Monitor."}</div>
           </div>
-          <button onClick={() => setShowToolkitGuide(true)} style={{ fontFamily: F.mono, fontSize: 10, padding: "11px 18px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>{lang === "es" ? "ABRIR GUÍA →" : "OPEN GUIDE →"}</button>
+          <button onClick={() => setShowToolkitGuide(true)} style={{ fontFamily: F.mono, fontSize: 10, padding: "11px 18px", background: C.gold, color: C.bg, border: "none", borderRadius: 12, cursor: "pointer", fontWeight: 600 }}>{lang === "es" ? "ABRIR GUÍA →" : "OPEN GUIDE →"}</button>
         </div>
       </FadeIn>
 
       <FadeIn delay={0.1}>
-        <div style={{ padding: "20px 24px", background: "var(--zrc-ml-banner-bg)", border: "1px solid var(--zrc-ml-border)", borderLeft: `3px solid ${C.violet}`, marginBottom: 32, display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
-          <div style={{ width: 32, height: 32, border: `1px solid ${C.violet}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+        <div style={{ padding: "20px 24px", background: "var(--zrc-ml-banner-bg)", border: "1px solid var(--zrc-ml-border)", borderLeft: `3px solid ${C.violet}`, borderRadius: 22, overflow: "hidden", marginBottom: 32, display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
+          <div style={{ width: 32, height: 32, border: `1px solid ${C.violet}`, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke={C.violet} strokeWidth="1.2" aria-hidden="true">
               <circle cx="3" cy="4" r="1.6" /><circle cx="3" cy="12" r="1.6" /><circle cx="13" cy="8" r="1.6" /><circle cx="8" cy="8" r="1.2" />
               <path d="M4.4 4.8 7 7.4M4.4 11.2 7 8.6M9.2 8h2.2" />
@@ -1348,7 +1348,7 @@ const Intelligence = ({ lang }) => {
             const urgent = daysLeft !== null && daysLeft <= 2;
             return (
               <div style={{
-                marginBottom: 24, padding: "14px 20px",
+                marginBottom: 24, padding: "14px 20px", borderRadius: 18,
                 background: urgent ? "rgba(239,68,68,0.08)" : C.goldDim,
                 border: `1px solid ${urgent ? "rgba(239,68,68,0.3)" : C.goldBorder}`,
                 display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12,
@@ -1373,7 +1373,7 @@ const Intelligence = ({ lang }) => {
       {user && !tierLoading && subStatus === "expired" && (
         <FadeIn delay={0.15}>
           <div style={{
-            marginBottom: 24, padding: "14px 20px", background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.3)",
+            marginBottom: 24, padding: "14px 20px", borderRadius: 18, background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.3)",
             display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12,
           }}>
             <span style={{ fontFamily: F.mono, fontSize: 11, color: C.red, letterSpacing: "0.06em" }}>
@@ -1389,13 +1389,13 @@ const Intelligence = ({ lang }) => {
         </FadeIn>
       )}
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
         {TOOLS.map((tool, i) => {
           const locked = user && !tierLoading && !canAccess(tool);
           const checking = user && tierLoading && !!tool.requiredTier;
           return (
             <FadeIn key={i} delay={i * 0.08}>
-              <div style={{ padding: 28, background: C.surface, border: `1px solid ${locked ? C.goldBorder : C.border}`, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
+              <div style={{ padding: 28, background: C.surface, border: `1px solid ${locked ? C.goldBorder : C.border}`, height: "100%", borderRadius: 20, display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
                 <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: tool.status === "LIVE" ? C.green : tool.status === "BETA" ? C.amber : "transparent" }} />
                 {locked && (
                   <div style={{ position: "absolute", top: 10, right: 10 }}>
@@ -1455,10 +1455,10 @@ const Intelligence = ({ lang }) => {
         <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textMuted, lineHeight: 1.6, fontWeight: 300, margin: "0 0 20px" }}>{t.soonSub}</p>
       </FadeIn>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1, opacity: 0.7 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14, opacity: 0.7 }}>
         {TOOLS_SOON.map((tool, i) => (
           <FadeIn key={tool.name} delay={(TOOLS.length + 2 + i) * 0.08}>
-            <div style={{ padding: 28, background: C.surface, border: `1px dashed ${C.border}`, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
+            <div style={{ padding: 28, background: C.surface, border: `1px dashed ${C.border}`, height: "100%", borderRadius: 20, display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", overflow: "hidden" }}>
               <div>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
                   <span style={{ fontSize: 22, color: C.textMuted, opacity: 0.4 }}>{tool.icon}</span>
@@ -1483,7 +1483,7 @@ const Intelligence = ({ lang }) => {
       {/* Upgrade CTA for legacy free members (no subscription row — pre-trial accounts) */}
       {user && !tierLoading && tier === "free" && subStatus === "none" && (
         <FadeIn delay={0.3}>
-          <div style={{ marginTop: 28, padding: "20px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+          <div style={{ marginTop: 28, padding: "20px 24px", borderRadius: 20, overflow: "hidden", background: C.goldDim, border: `1px solid ${C.goldBorder}`, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
             <div>
               <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.12em", marginBottom: 4 }}>INTELLIGENCE · €99/MO</div>
               <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, margin: 0, fontWeight: 300 }}>
