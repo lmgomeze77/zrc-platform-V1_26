@@ -52,3 +52,12 @@ test("Closing a country profile preserves the selected country and provides reop
   assert.match(source, /Reabrir ficha/);
   assert.doesNotMatch(source, /onClose=\{\(\) => setSelectedId\(null\)\}/);
 });
+
+test("Corporate decision lens is explicit about editorial data, uncalibrated risks, and three diligence domains", () => {
+  assert.match(source,/function CorporateDecisionLens/);
+  assert.match(source,/activeTab==="decisions"/);
+  assert.match(source,/Investment and M&A/);
+  assert.match(source,/Financing and financial risk/);
+  assert.match(source,/Trade and supply chain/);
+  assert.match(source,/Not investment advice or a calibrated rating/);
+});
