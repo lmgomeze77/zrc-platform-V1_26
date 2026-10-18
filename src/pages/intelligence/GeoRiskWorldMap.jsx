@@ -10,7 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, CircleMarker, Tooltip, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation } from "./worldBankCountryMacro";
+import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation, WB_GOVERNANCE_INDICATORS, worldBankGovernanceUrl } from "./worldBankCountryMacro";
 import { Globe2, TrendingUp, TrendingDown, Minus, X, ArrowRight, Info } from "lucide-react";
 
 // ── Design tokens — grafito oscuro + acento bronce cartográfico ──────────
@@ -620,11 +620,61 @@ function CountryMacroPanel({ country, lang }) {
   );
 }
 
+function CountryInstitutionsPanel({ country, lang }) {
+  const en = lang === "en";
+  const tr = (es, english) => en ? english : es;
+  const iso3 = WB_COUNTRY_ISO3[country.id];
+  const [result, setResult] = useState({loading:true, observations:{}, failed:false});
+  useEffect(() => {
+    const controller = new AbortController();
+    setResult({loading:true, observations:{}, failed:false});
+    if (!iso3) { setResult({loading:false,observations:{},failed:true}); return () => controller.abort(); }
+    Promise.all(WB_GOVERNANCE_INDICATORS.map(async indicator => {
+      try {
+        const response = await fetch(worldBankGovernanceUrl(iso3,indicator.code), {signal:controller.signal});
+        if (!response.ok) throw new Error("World Bank " + response.status);
+        const observation = latestWorldBankObservation(await response.json());
+        return [indicator.code,observation];
+      } catch(error) {
+        return [indicator.code,null];
+      }
+    })).then(entries => {
+      if (controller.signal.aborted) return;
+      const observations = Object.fromEntries(entries);
+      setResult({loading:false,observations,failed:!Object.values(observations).some(Boolean)});
+    });
+    return () => controller.abort();
+  },[iso3]);
+  const fmt = value => new Intl.NumberFormat(en?"en-US":"es-ES",{minimumFractionDigits:2,maximumFractionDigits:2,signDisplay:"exceptZero"}).format(value);
+  return (
+    <section aria-label={tr("Calidad institucional", "Institutional quality")}>
+      <div style={{fontSize:11,color:C.gold,fontWeight:750,letterSpacing:".09em"}}>WORLD BANK · WORLDWIDE GOVERNANCE INDICATORS</div>
+      <p style={{fontSize:12,color:C.textSec,lineHeight:1.6}}>{tr("Estimaciones estadísticas comparables de calidad institucional, sujetas a incertidumbre y revisiones. Valores más altos indican mejor gobernanza; no son probabilidades ni el índice ZRC.", "Comparable statistical estimates of institutional quality, subject to uncertainty and revisions. Higher values indicate stronger governance; these are neither probabilities nor the ZRC index.")}</p>
+      {result.loading && <p role="status" style={{fontSize:12,color:C.textSec}}>{tr("Consultando datos institucionales…","Loading institutional data…")}</p>}
+      {result.failed && <p role="status" style={{fontSize:12,color:C.amber}}>{tr("No se han podido recuperar observaciones verificadas. No se sustituyen por estimaciones.", "Verified observations are unavailable. No substitute values are shown.")}</p>}
+      <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:9}}>
+        {WB_GOVERNANCE_INDICATORS.map(indicator => {
+          const observation = result.observations[indicator.code];
+          return <div key={indicator.code} style={{padding:12,borderRadius:12,background:C.surface2,border:`1px solid ${C.border}`,minWidth:0}}>
+            <div style={{fontSize:11,color:C.textSec,lineHeight:1.5}}>{en?indicator.en:indicator.es}</div>
+            <div style={{fontWeight:750,fontSize:21,color:C.text,marginTop:7}}>{result.loading?"—":observation?fmt(observation.value):tr("N/D","N/A")}</div>
+            <div style={{fontSize:10,color:C.textMuted,marginTop:5}}>{observation?tr("Año: ","Year: ")+observation.year:tr("Sin observación","No observation")}</div>
+          </div>;
+        })}
+      </div>
+      <p style={{fontSize:11,lineHeight:1.65,color:C.textMuted,marginTop:14}}>
+        {tr("Fuente: Banco Mundial, Worldwide Governance Indicators. Escala de estimación estandarizada; consultar metodología y márgenes de error antes de comparar países.", "Source: World Bank Worldwide Governance Indicators. Standardized estimate scale; consult methodology and uncertainty intervals before making country comparisons.")}
+        {" "}<a href="https://www.worldbank.org/en/publication/worldwide-governance-indicators" target="_blank" rel="noopener noreferrer" style={{color:C.gold}}>{tr("Fuente y metodología","Source and methodology")} ↗</a>
+      </p>
+    </section>
+  );
+}
+
 function CountryPanel({ country, onClose, lang }) {
   const en = lang === "en";
   const tr = (es, english) => en ? english : es;
   const [activeTab, setActiveTab] = useState("overview");
-  const tabs = [["overview", tr("Resumen", "Overview")], ["geopolitics", tr("Geopolítica", "Geopolitics")], ["trade", tr("Comercio y energía", "Trade & energy")], ["investment", tr("Inversión", "Investment")], ["macro", tr("Macro y finanzas", "Macro & finance")]];
+  const tabs = [["overview", tr("Resumen", "Overview")], ["geopolitics", tr("Geopolítica", "Geopolitics")], ["trade", tr("Comercio y energía", "Trade & energy")], ["investment", tr("Inversión", "Investment")], ["macro", tr("Macro y finanzas", "Macro & finance")], ["institutions", tr("Instituciones", "Institutions")]];
   if (!country) return null;
   const bloc = BLOC_META[computeBloc(country)];
   return (
@@ -723,6 +773,7 @@ function CountryPanel({ country, onClose, lang }) {
 
 </>}
 {activeTab==="macro" && <CountryMacroPanel country={country} lang={lang} />}
+{activeTab==="institutions" && <CountryInstitutionsPanel country={country} lang={lang} />}
 {activeTab==="investment" && <>        <div style={{padding:"13px 14px",background:C.surface2,border:`1px solid ${C.border}`,borderRadius:10,marginBottom:14}}>
           <div style={{fontSize:11,fontWeight:700,color:C.gold,letterSpacing:".08em"}}>{tr("PERSPECTIVA CORPORATIVA ZRC", "ZRC CORPORATE PERSPECTIVE")}</div>
           <div style={{fontSize:12,lineHeight:1.65,color:C.textSec,marginTop:8}}>{tr("Puntos de comprobación para una operación: exposición comercial y regulatoria, disponibilidad energética, riesgo cambiario, restricciones a la inversión y concentración de clientes o proveedores. Se requiere due diligence específica.", "Transaction diligence priorities: trade and regulatory exposure, energy availability, FX risk, investment restrictions, and customer or supplier concentration. Transaction-specific due diligence is required.")}</div>
