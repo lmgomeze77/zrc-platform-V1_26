@@ -1645,8 +1645,10 @@ const Advisory = ({ lang }) => {
   const [modal, setModal] = useState(false);
 
   return (
-    <Sec id="advisory">\n      <div className="zrc-advisory-intro">
-      <SH label={t.label} title={t.title} sub={t.sub} />\n      </div>
+    <Sec id="advisory">
+      <div className="zrc-advisory-intro">
+      <SH label={t.label} title={t.title} sub={t.sub} />
+      </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
         {SERVICES.map((s, i) => (
           <FadeIn key={i} delay={i * 0.08}>
