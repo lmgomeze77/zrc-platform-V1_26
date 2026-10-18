@@ -861,6 +861,55 @@ function Legend({ colorMode, lang }) {
   );
 }
 
+// V2.5: observational comparison; official values never blended with ZRC editorial scores.
+function OfficialCountryComparison({ countries, lang }) {
+  const en = lang === "en";
+  const tr = (es, english) => en ? english : es;
+  const [state, setState] = useState({loading:true, values:{}});
+  const ids = countries.map(c=>c.id).join(",");
+  const indicators = [
+    ...WB_INDICATORS.filter(i=>["NY.GDP.MKTP.KD.ZG","FP.CPI.TOTL.ZG"].includes(i.code)).map(i=>({...i, source:"WDI"})),
+    ...WB_GOVERNANCE_INDICATORS.filter(i=>["GOV_WGI_GE_EST","GOV_WGI_RL_EST"].includes(i.code)).map(i=>({...i, source:"WGI"}))
+  ];
+  useEffect(()=>{
+    const controller = new AbortController();
+    setState({loading:true,values:{}});
+    const selected = ids.split(",").filter(Boolean);
+    Promise.all(selected.flatMap(id=>indicators.map(async indicator=>{
+      const iso3=WB_COUNTRY_ISO3[id];
+      if (!iso3) return [id,indicator.code,null];
+      try {
+        const url=indicator.source==="WGI" ? worldBankGovernanceUrl(iso3,indicator.code) : worldBankIndicatorUrl(iso3,indicator.code);
+        const response=await fetch(url,{signal:controller.signal});
+        if (!response.ok) throw new Error("World Bank response "+response.status);
+        return [id,indicator.code,latestWorldBankObservation(await response.json())];
+      } catch { return [id,indicator.code,null]; }
+    }))).then(entries=>{
+      if (controller.signal.aborted) return;
+      const values={};
+      entries.forEach(([id,code,observation])=>{values[id]??={};values[id][code]=observation;});
+      setState({loading:false,values});
+    });
+    return ()=>controller.abort();
+  },[ids]);
+  const format=(observation,indicator)=>{
+    if (!observation) return tr("Sin dato","No data");
+    const digits=indicator.source==="WGI"?2:1;
+    return new Intl.NumberFormat(en?"en-US":"es-ES",{maximumFractionDigits:digits,minimumFractionDigits:digits}).format(observation.value)+(indicator.source==="WDI"?"%":"")+" · "+observation.year;
+  };
+  return <section aria-label={tr("Comparativa oficial del Banco Mundial","Official World Bank comparison")} style={{marginTop:20,paddingTop:18,borderTop:`1px solid ${C.border}`}}>
+    <div style={{fontWeight:700,fontSize:14,marginBottom:6}}>{tr("Indicadores oficiales comparables","Comparable official indicators")}</div>
+    <p style={{fontSize:11,lineHeight:1.6,color:C.textMuted,margin:"0 0 12px"}}>{tr("Fuente: Banco Mundial (WDI y WGI). Se muestra el último dato disponible y su año, que puede variar entre países. Las estimaciones WGI tienen incertidumbre estadística y no son puntuaciones ZRC.","Source: World Bank (WDI and WGI). Latest available value and year are shown; years may differ across countries. WGI estimates carry statistical uncertainty and are not ZRC scores.")}</p>
+    <div style={{overflowX:"auto",WebkitOverflowScrolling:"touch",border:`1px solid ${C.border}`,borderRadius:14}}>
+      <table style={{borderCollapse:"collapse",width:"100%",minWidth:500,fontSize:12,textAlign:"left"}}>
+        <thead><tr><th scope="col" style={{padding:11,borderBottom:`1px solid ${C.border}`}}>{tr("Indicador","Indicator")}</th>{countries.map(c=><th scope="col" key={c.id} style={{padding:11,borderBottom:`1px solid ${C.border}`,minWidth:120}}>{c.flag} {en?COUNTRY_NAMES_EN[c.id]||c.name:c.name}</th>)}</tr></thead>
+        <tbody>{indicators.map(i=><tr key={i.code}><th scope="row" style={{padding:11,borderBottom:`1px solid ${C.border}`,fontWeight:500,color:C.textSec}}>{en?i.en:i.es} <span style={{fontSize:10,color:C.textMuted}}>({i.source})</span></th>{countries.map(c=><td key={c.id} style={{padding:11,borderBottom:`1px solid ${C.border}`,fontVariantNumeric:"tabular-nums"}}>{state.loading?tr("Cargando…","Loading…"):format(state.values[c.id]?.[i.code],i)}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+    <p style={{fontSize:10,color:C.textMuted,margin:"9px 0 0"}}><a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer" style={{color:C.gold}}>{tr("Datos del Banco Mundial","World Bank data")} ↗</a> · <a href="https://www.worldbank.org/en/publication/worldwide-governance-indicators" target="_blank" rel="noopener noreferrer" style={{color:C.gold}}>WGI methodology ↗</a></p>
+  </section>;
+}
+
 // Phase 1: transparent comparison of existing editorial country estimates.
 function CountryComparison({ countries, lang, onRemove, onClear }) {
   const en = lang === "en";
@@ -897,6 +946,7 @@ function CountryComparison({ countries, lang, onRemove, onClear }) {
         </table>
       </div>
       <p style={{fontSize:11,lineHeight:1.5,color:C.textMuted,margin:"12px 0 0"}}>{tr("Estimaciones editoriales de ZRC Research; no son datos oficiales en tiempo real. Las escalas de alineamiento son indicativas.", "ZRC Research editorial estimates, not live official data. Alignment scales are indicative.")}</p>
+      <OfficialCountryComparison countries={countries} lang={lang} />
     </section>
   );
 }
