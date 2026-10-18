@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation } from "../src/pages/intelligence/worldBankCountryMacro.js";
+import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation, WB_GOVERNANCE_INDICATORS, worldBankGovernanceUrl } from "../src/pages/intelligence/worldBankCountryMacro.js";
 
 test("All 42 world map economies have a World Bank ISO mapping", () => {
   assert.equal(Object.keys(WB_COUNTRY_ISO3).length,42);
@@ -21,4 +21,12 @@ test("Parser handles missing data and only accepts numeric dated observations", 
   assert.equal(latestWorldBankObservation([{page:1},[{date:"2024",value:null}]]),null);
   assert.equal(latestWorldBankObservation({message:"not available"}),null);
   assert.equal(latestWorldBankObservation([{page:1},[{date:"NA",value:2}]]),null);
+});
+
+test("Worldwide Governance Indicators have distinct provenance and do not inherit WDI source", () => {
+  assert.deepEqual(WB_GOVERNANCE_INDICATORS.map(i=>i.code),["GE.EST","RL.EST","PV.EST"]);
+  const url = worldBankGovernanceUrl("ESP","GE.EST");
+  assert.match(url,/\/source=3|source=3/);
+  assert.match(url,/mrnev=1/);
+  assert.match(url,/api\.worldbank\.org\/v2\/country\/ESP\/indicator\/GE\.EST/);
 });
