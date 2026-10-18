@@ -66,13 +66,13 @@ export default function GeoRiskAssetEvidence({ lang = "es" }) {
           ? `Cómo se movió cada activo en los ${h} meses siguientes, por encima o por debajo de lo normal, según la banda del índice de riesgo geopolítico GPR (${startYear}–${endYear}). En color, diferencias estadísticamente sólidas; en gris (≈), sin efecto consistente.`
           : `How each asset moved over the following ${h} months, above or below normal, by band of the GPR geopolitical risk index (${startYear}–${endYear}). In colour, statistically robust differences; in grey (≈), no consistent effect.`}
       </p>
-      <div style={{ display: "inline-flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 14, padding: "8px 12px", background: C.surface, border: `1px solid ${C.border}`, fontFamily: F.mono, fontSize: 10, color: C.textSec }}>
+      <div style={{ display: "inline-flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 14, padding: "8px 12px", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, fontFamily: F.mono, fontSize: 10, color: C.textSec }}>
         <span>{es ? "GPR actual" : "Current GPR"} ({current.month}): <strong style={{ color: C.text }}>{plain(current.gpr, lang, 1)}</strong></span>
         <span>· {es ? "percentil" : "percentile"} {plain(current.percentile, lang)}</span>
         {currentRow && <span>→ <strong style={{ color: currentRow.color, letterSpacing: "0.08em" }}>{es ? currentRow.es : currentRow.en}</strong></span>}
       </div>
 
-      <div style={{ overflowX: "auto", border: `1px solid ${C.border}`, marginBottom: 12 }}>
+      <div style={{ overflowX: "auto", border: `1px solid ${C.border}`, borderRadius: 18, marginBottom: 12 }}>
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 720 }}>
           <thead>
             <tr style={{ background: C.surface2 }}>

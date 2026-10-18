@@ -152,7 +152,7 @@ function IntelligenceUpsell({ lang, openPricing }) {
   return (
     <div style={{
       padding: "24px 28px", background: "var(--zrc-cta-blue-bg)", border: "1px solid var(--zrc-cta-blue-border)",
-      borderTop: `3px solid ${C.gold}`, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap",
+      borderTop: `3px solid ${C.gold}`, borderRadius: 20, overflow: "hidden", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap",
     }}>
       <div style={{ maxWidth: 460 }}>
         <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginBottom: 6 }}>
@@ -204,7 +204,7 @@ function WeeklyDigestCapture({ lang }) {
 
   if (status === "done") {
     return (
-      <div style={{ padding: "20px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, fontFamily: F.body, fontSize: 13, color: C.text }}>
+      <div style={{ padding: "20px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 18, fontFamily: F.body, fontSize: 13, color: C.text }}>
         {lang === "es"
           ? "Listo — ya formas parte de ZRC Morning Intelligence. Recibirás el briefing y el nuevo ZRC-GRI semanal."
           : "Done — you're now part of ZRC Morning Intelligence. You'll receive the briefing and the weekly ZRC-GRI."}
@@ -213,7 +213,7 @@ function WeeklyDigestCapture({ lang }) {
   }
 
   return (
-    <div style={{ padding: "24px 28px", background: "var(--zrc-cta-sage-bg)", border: "1px solid var(--zrc-cta-sage-border)", borderLeft: `3px solid ${C.gold}` }}>
+    <div style={{ padding: "24px 28px", background: "var(--zrc-cta-sage-bg)", border: "1px solid var(--zrc-cta-sage-border)", borderLeft: `3px solid ${C.gold}`, borderRadius: 20, overflow: "hidden" }}>
       <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginBottom: 6 }}>
         {lang === "es" ? "Únete a ZRC Morning Intelligence" : "Join ZRC Morning Intelligence"}
       </div>
@@ -228,7 +228,7 @@ function WeeklyDigestCapture({ lang }) {
           value={email} onChange={(e) => setEmail(e.target.value)}
           style={{
             flex: "1 1 220px", padding: "11px 14px", background: C.bg, color: C.text,
-            border: `1px solid ${C.border}`, fontSize: 13, fontFamily: F.body, outline: "none",
+            border: `1px solid ${C.border}`, borderRadius: 10, fontSize: 13, fontFamily: F.body, outline: "none",
           }}
         />
         <select
@@ -314,7 +314,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
           .zrc-gri-head { display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:center; padding:28px 32px; }
           @media (max-width: 640px) { .zrc-gri-head { grid-template-columns:1fr; gap:20px; padding:22px 18px; } }
         `}</style>
-        <div className="zrc-gri-head" style={{ background: C.surface, border: `1px solid ${C.border}`, marginBottom: 24 }}>
+        <div className="zrc-gri-head" style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 22, overflow: "hidden", marginBottom: 24 }}>
           <div style={{ textAlign: "center", minWidth: 140 }}>
             {status === "loading" ? (
               <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted }}>· · ·</div>
@@ -325,7 +325,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
                 </div>
                 <div style={{
                   display: "inline-block", fontFamily: F.mono, fontSize: 10, fontWeight: 600, color: riskColor(displayValue),
-                  letterSpacing: "0.12em", marginTop: 10, padding: "3px 10px", border: `1px solid ${riskColor(displayValue)}`,
+                  letterSpacing: "0.12em", marginTop: 10, padding: "3px 10px", borderRadius: 8, border: `1px solid ${riskColor(displayValue)}`,
                 }}>
                   {lang === "es" ? displayLabel : bandOf(displayValue).labelEn}
                 </div>
@@ -347,7 +347,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
             )}
           </div>
           <div>
-            {inputStatus === "fallback_static" && <div style={{ marginBottom: 10, padding: "8px 10px", border: `1px solid ${C.amber}`, fontFamily: F.mono, fontSize: 9, color: C.amber }}>{lang === "es" ? `INPUTS SIN REFRESCAR · base: ${inputDate || "—"}` : `INPUTS NOT REFRESHED · basis: ${inputDate || "—"}`}</div>}
+            {inputStatus === "fallback_static" && <div style={{ marginBottom: 10, padding: "8px 10px", border: `1px solid ${C.amber}`, borderRadius: 10, fontFamily: F.mono, fontSize: 9, color: C.amber }}>{lang === "es" ? `INPUTS SIN REFRESCAR · base: ${inputDate || "—"}` : `INPUTS NOT REFRESHED · basis: ${inputDate || "—"}`}</div>}
             {inputStatus === "evidence_driven" && inputDate && <div style={{ marginBottom: 10, fontFamily: F.mono, fontSize: 9, color: C.green }}>{lang === "es" ? `RECALCULADO CON INPUTS: ${inputDate}` : `RECALCULATED WITH INPUTS: ${inputDate}`}</div>}
             <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
               <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em" }}>
@@ -385,7 +385,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
       </FadeIn>
 
       <FadeIn delay={0.3}>
-        <div style={{ padding: "16px 20px", background: C.surface, border: `1px dashed ${C.border}`, fontSize: 11, color: C.textMuted, lineHeight: 1.7, fontFamily: F.body }}>
+        <div style={{ padding: "16px 20px", background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 18, fontSize: 11, color: C.textMuted, lineHeight: 1.7, fontFamily: F.body }}>
           {lang === "es"
             ? "Metodología: el ZRC-GRI es el promedio ponderado por probabilidad del riesgo intrínseco de los cuatro escenarios geopolíticos base de ZRC Research (sector Global, multiplicador ×1.00), recalculado cada lunes. La tabla de activos se basa en datos históricos públicos: cada mes desde 1985 se clasifica por el percentil del índice GPR de Caldara e Iacoviello (cortes 40/65/80, los mismos que las bandas del ZRC-GRI) y se mide la variación de cada activo en los 3 meses siguientes frente a la mediana de todo el periodo, con un bootstrap por bloques para separar los efectos sólidos del ruido. Fuentes: GPR (matteoiacoviello.com), FRED (Bund y Treasury a 10 años, Brent, EUR/USD), Shiller/Yale (S&P 500) y Banco Mundial (oro); precios medios mensuales. El ZRC-GRI aún no está calibrado frente al GPR, por eso la tabla usa las bandas del GPR. Es evidencia histórica, no una proyección, y no constituye asesoramiento de inversión. Para el análisis con escenarios propios, ver GeoRisk Dashboard y GeoRisk Predictive ML."
             : "Methodology: the ZRC-GRI is the probability-weighted average of the intrinsic risk of ZRC Research's four base geopolitical scenarios (Global sector, ×1.00 multiplier), recalculated every Monday. The asset table is based on public historical data: every month since 1985 is classified by its percentile of the Caldara–Iacoviello GPR index (cut points 40/65/80, the same as the ZRC-GRI bands) and each asset's change over the following 3 months is measured against the all-period median, with a block bootstrap to separate robust effects from noise. Sources: GPR (matteoiacoviello.com), FRED (10-year Bund and Treasury, Brent, EUR/USD), Shiller/Yale (S&P 500) and the World Bank (gold); monthly average prices. The ZRC-GRI is not yet calibrated against GPR, so the table uses GPR bands. Historical evidence, not a projection, and not investment advice. For scenario analysis, see GeoRisk Dashboard and GeoRisk Predictive ML."}
