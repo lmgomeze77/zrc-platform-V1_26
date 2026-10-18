@@ -59,3 +59,12 @@ export function latestWorldBankObservation(payload) {
   const item = payload[1].find(row => row && Number.isFinite(row.value) && /^[0-9]{4}$/.test(String(row.date)));
   return item ? {value:item.value, year:String(item.date)} : null;
 }
+
+// World Bank Worldwide Governance Indicators 2026 release: standardized estimates.
+export const WB_GOVERNANCE_INDICATORS = [
+  {code:"GOV_WGI_GE_EST",es:"Efectividad del gobierno",en:"Government effectiveness"},
+  {code:"GOV_WGI_RL_EST",es:"Estado de derecho",en:"Rule of law"},
+  {code:"GOV_WGI_PV_EST",es:"Estabilidad política",en:"Political stability"}
+];
+export const worldBankGovernanceUrl = (iso3, code) =>
+  "https://api.worldbank.org/v2/country/"+encodeURIComponent(iso3)+"/indicator/"+encodeURIComponent(code)+"?format=json&mrnev=1";
