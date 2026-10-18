@@ -10,6 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, CircleMarker, Tooltip, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation } from "./worldBankCountryMacro";
 import { Globe2, TrendingUp, TrendingDown, Minus, X, ArrowRight, Info } from "lucide-react";
 
 // ── Design tokens — grafito oscuro + acento bronce cartográfico ──────────
@@ -563,11 +564,67 @@ function AlignBar({ label, value }) {
   );
 }
 
+function CountryMacroPanel({ country, lang }) {
+  const en = lang === "en";
+  const tr = (es, english) => en ? english : es;
+  const [state, setState] = useState({status:"loading",values:{},error:null});
+  const iso3 = WB_COUNTRY_ISO3[country.id];
+  useEffect(() => {
+    const controller = new AbortController();
+    if (!iso3) { setState({status:"missing",values:{},error:null}); return () => controller.abort(); }
+    setState({status:"loading",values:{},error:null});
+    Promise.all(WB_INDICATORS.map(async indicator => {
+      try {
+        const response = await fetch(worldBankIndicatorUrl(iso3, indicator.code), {signal:controller.signal});
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        const payload = await response.json();
+        return [indicator.code,latestWorldBankObservation(payload)];
+      } catch(error) {
+        if (controller.signal.aborted) return [indicator.code,null];
+        return [indicator.code,null];
+      }
+    })).then(items => {
+      if (controller.signal.aborted) return;
+      const values = Object.fromEntries(items);
+      const available = Object.values(values).some(Boolean);
+      setState({status:available?"ready":"unavailable",values,error:null});
+    });
+    return () => controller.abort();
+  }, [iso3]);
+  const fmt = (observation,unit) => {
+    if (!observation) return tr("Sin dato", "No data");
+    if (unit==="usd") return new Intl.NumberFormat(lang==="en"?"en-US":"es-ES",{maximumFractionDigits:2}).format(observation.value/1e9) + " " + tr("miles de millones USD", "USD bn");
+    return new Intl.NumberFormat(lang==="en"?"en-US":"es-ES",{maximumFractionDigits:2}).format(observation.value)+"%";
+  };
+  return (
+    <section aria-label={tr("Indicadores del Banco Mundial","World Bank indicators")}>
+      <div style={{fontSize:11,fontWeight:700,color:C.gold,letterSpacing:".08em",marginBottom:9}}>WORLD BANK · WDI</div>
+      <p style={{fontSize:11,color:C.textSec,lineHeight:1.6}}>{tr("Últimas observaciones disponibles de World Development Indicators (WDI). Cada indicador puede corresponder a un año diferente.", "Latest available World Development Indicators (WDI) observations. Each indicator may have a different reference year.")}</p>
+      {state.status==="loading" && <p role="status" style={{fontSize:12,color:C.textSec}}>{tr("Consultando fuente oficial…","Fetching official data…")}</p>}
+      {(state.status==="unavailable" || state.status==="missing") && <p role="status" style={{fontSize:12,color:C.amber}}>{tr("No hay datos verificables disponibles en este momento. Las estimaciones ZRC no se utilizan como sustituto.", "Verified data is currently unavailable. ZRC estimates are not substituted.")}</p>}
+      <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:10}}>
+        {WB_INDICATORS.map(indicator => {
+          const observation = state.values[indicator.code];
+          return <div key={indicator.code} style={{border:`1px solid ${C.border}`,borderRadius:12,padding:12,background:C.surface2,minWidth:0}}>
+            <div style={{fontSize:11,color:C.textSec}}>{en?indicator.en:indicator.es}</div>
+            <div style={{fontSize:17,fontWeight:700,color:C.text,marginTop:8,overflowWrap:"anywhere"}}>{state.status==="loading"?"—":fmt(observation,indicator.unit)}</div>
+            <div style={{fontSize:10,color:C.textMuted,marginTop:5}}>{observation ? tr("Año: ","Year: ")+observation.year : tr("Año no disponible","Year unavailable")}</div>
+          </div>;
+        })}
+      </div>
+      <p style={{fontSize:11,color:C.textMuted,lineHeight:1.7,marginTop:16}}>
+        {tr("Fuente: Banco Mundial, WDI. Cifras sujetas a revisiones; no se indican como datos en tiempo real.", "Source: World Bank WDI. Data may be revised and is not presented as real-time.")}
+        {" "}<a href={"https://data.worldbank.org/country/"+iso3.toLowerCase()} target="_blank" rel="noopener noreferrer" style={{color:C.gold}}>{tr("Consultar fuente", "Open source")} ↗</a>
+      </p>
+    </section>
+  );
+}
+
 function CountryPanel({ country, onClose, lang }) {
   const en = lang === "en";
   const tr = (es, english) => en ? english : es;
   const [activeTab, setActiveTab] = useState("overview");
-  const tabs = [["overview", tr("Resumen", "Overview")], ["geopolitics", tr("Geopolítica", "Geopolitics")], ["trade", tr("Comercio y energía", "Trade & energy")], ["investment", tr("Inversión", "Investment")]];
+  const tabs = [["overview", tr("Resumen", "Overview")], ["geopolitics", tr("Geopolítica", "Geopolitics")], ["trade", tr("Comercio y energía", "Trade & energy")], ["investment", tr("Inversión", "Investment")], ["macro", tr("Macro y finanzas", "Macro & finance")]];
   if (!country) return null;
   const bloc = BLOC_META[computeBloc(country)];
   return (
@@ -665,6 +722,7 @@ function CountryPanel({ country, onClose, lang }) {
         <StatRow label={tr("Principal origen/destino","Main origin / destination")} value={en ? translateTourism(country.tourismTopSource) : country.tourismTopSource} />
 
 </>}
+{activeTab==="macro" && <CountryMacroPanel country={country} lang={lang} />}
 {activeTab==="investment" && <>        <div style={{padding:"13px 14px",background:C.surface2,border:`1px solid ${C.border}`,borderRadius:10,marginBottom:14}}>
           <div style={{fontSize:11,fontWeight:700,color:C.gold,letterSpacing:".08em"}}>{tr("PERSPECTIVA CORPORATIVA ZRC", "ZRC CORPORATE PERSPECTIVE")}</div>
           <div style={{fontSize:12,lineHeight:1.65,color:C.textSec,marginTop:8}}>{tr("Puntos de comprobación para una operación: exposición comercial y regulatoria, disponibilidad energética, riesgo cambiario, restricciones a la inversión y concentración de clientes o proveedores. Se requiere due diligence específica.", "Transaction diligence priorities: trade and regulatory exposure, energy availability, FX risk, investment restrictions, and customer or supplier concentration. Transaction-specific due diligence is required.")}</div>
