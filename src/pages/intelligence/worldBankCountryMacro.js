@@ -68,3 +68,11 @@ export const WB_GOVERNANCE_INDICATORS = [
 ];
 export const worldBankGovernanceUrl = (iso3, code) =>
   "https://api.worldbank.org/v2/country/"+encodeURIComponent(iso3)+"/indicator/"+encodeURIComponent(code)+"?format=json&mrnev=1";
+
+// Compare only observations for the SAME reference year. Never infer a gap
+// between incomparable releases, or substitute missing observations.
+export function sameYearIndicatorGap(reference, candidate) {
+  if (!reference || !candidate || reference.year !== candidate.year) return null;
+  if (!Number.isFinite(reference.value) || !Number.isFinite(candidate.value)) return null;
+  return { gap: candidate.value - reference.value, year: reference.year };
+}
