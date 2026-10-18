@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation, WB_GOVERNANCE_INDICATORS, worldBankGovernanceUrl } from "../src/pages/intelligence/worldBankCountryMacro.js";
+import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation, sameYearIndicatorGap, WB_GOVERNANCE_INDICATORS, worldBankGovernanceUrl } from "../src/pages/intelligence/worldBankCountryMacro.js";
 
 test("All 42 world map economies have a World Bank ISO mapping", () => {
   assert.equal(Object.keys(WB_COUNTRY_ISO3).length,42);
@@ -28,4 +28,11 @@ test("Institutional indicators use World Bank current WGI identifiers",()=>{
  const url=worldBankGovernanceUrl("ESP","GOV_WGI_GE_EST");
  assert.ok(url.includes("api.worldbank.org"));
  assert.match(url,/mrnev=1/);
+});
+
+test("V2.6 differences require same-year, finite official observations",()=>{
+ assert.deepEqual(sameYearIndicatorGap({value:3,year:"2024"},{value:5,year:"2024"}),{gap:2,year:"2024"});
+ assert.equal(sameYearIndicatorGap({value:3,year:"2024"},{value:5,year:"2023"}),null);
+ assert.equal(sameYearIndicatorGap(null,{value:5,year:"2024"}),null);
+ assert.equal(sameYearIndicatorGap({value:NaN,year:"2024"},{value:5,year:"2024"}),null);
 });
