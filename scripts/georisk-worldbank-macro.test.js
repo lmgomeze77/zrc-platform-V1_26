@@ -26,6 +26,6 @@ test("Parser handles missing data and only accepts numeric dated observations", 
 test("Institutional indicators use World Bank current WGI identifiers",()=>{
  assert.deepEqual(WB_GOVERNANCE_INDICATORS.map(i=>i.code),["GOV_WGI_GE_EST","GOV_WGI_RL_EST","GOV_WGI_PV_EST"]);
  const url=worldBankGovernanceUrl("ESP","GOV_WGI_GE_EST");
- assert.match(url,/api\\.worldbank\\.org/);
+ assert.ok(url.includes("api.worldbank.org"));
  assert.match(url,/mrnev=1/);
 });
