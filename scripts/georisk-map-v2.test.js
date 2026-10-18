@@ -43,3 +43,12 @@ test("Country profiles provide all four bilingual intelligence sections", () => 
   assert.match(source, /<CountryPanel key=\{selected\.id\}/);
   assert.match(source, /pendientes de integración de fuentes/);
 });
+
+test("Closing a country profile preserves the selected country and provides reopen action", () => {
+  assert.match(source, /const \[countryPanelOpen, setCountryPanelOpen\] = useState\(false\)/);
+  assert.match(source, /const openCountry = \(id\) => \{ setSelectedId\(id\); setCountryPanelOpen\(true\); \}/);
+  assert.match(source, /onClose=\{\(\) => setCountryPanelOpen\(false\)\}/);
+  assert.match(source, /selected && !countryPanelOpen/);
+  assert.match(source, /Reabrir ficha/);
+  assert.doesNotMatch(source, /onClose=\{\(\) => setSelectedId\(null\)\}/);
+});
