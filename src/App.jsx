@@ -1640,7 +1640,7 @@ const Advisory = ({ lang }) => {
   return (
     <Sec id="advisory">
       <SH label={t.label} title={t.title} sub={t.sub} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1 }}>
         {SERVICES.map((s, i) => (
           <FadeIn key={i} delay={i * 0.08}>
             <div style={{ padding: "28px 24px", background: C.surface, border: `1px solid ${C.border}`, position: "relative" }}>
@@ -1685,7 +1685,7 @@ const Academia = ({ lang }) => {
   return (
     <Sec id="academia">
       <SH label={t.label} title={t.title} sub={t.sub} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 1 }}>
         {COURSES.map((c, i) => (
           <FadeIn key={c.id} delay={i * 0.06}>
             <div style={{ padding: "24px", background: C.surface, border: `1px solid ${C.border}`, display: "flex", flexDirection: "column", gap: 12 }}>
