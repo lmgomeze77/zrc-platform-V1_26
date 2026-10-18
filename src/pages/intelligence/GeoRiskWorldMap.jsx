@@ -670,11 +670,52 @@ function CountryInstitutionsPanel({ country, lang }) {
   );
 }
 
+function CorporateDecisionLens({ country, lang }) {
+  const en = lang === "en";
+  const tr = (es, english) => en ? english : es;
+  const conditions = [
+    {
+      id:"investment", icon:"↗", title:tr("Inversión y M&A","Investment and M&A"),
+      observation:tr("Riesgo geopolítico editorial ZRC: ","ZRC editorial geopolitical risk: ")+country.riskScore+"/100",
+      questions:[
+        tr("¿Cómo afecta la exposición regulatoria a la valoración y al horizonte de salida?","How does regulatory exposure affect valuation and exit horizon?"),
+        tr("¿Hay restricciones a la inversión extranjera, autorizaciones o requisitos de screening?","Are there FDI restrictions, clearance requirements or screening obligations?")
+      ]
+    },
+    {
+      id:"financing", icon:"◈", title:tr("Financiación y riesgo financiero","Financing and financial risk"),
+      observation:tr("Alineamiento estratégico con EE.UU.: ","Strategic alignment with the US: ")+(country.usAlign>0?"+":"")+country.usAlign,
+      questions:[
+        tr("¿El servicio de la deuda soporta escenarios adversos de tipos, divisa y liquidez?","Can debt service withstand adverse interest-rate, FX and liquidity scenarios?"),
+        tr("¿Qué garantías, covenants y protección contractual exige la operación?","Which guarantees, covenants and contractual protections does the transaction require?")
+      ]
+    },
+    {
+      id:"supply", icon:"⇄", title:tr("Comercio y cadena de suministro","Trade and supply chain"),
+      observation:tr("Arancel editorial: ","Editorial tariff estimate: ")+country.tariffAvg+"% · "+tr("exposición energética: ","energy exposure: ")+Math.abs(country.energyImportShare)+"%",
+      questions:[
+        tr("¿Qué proveedores, corredores logísticos y clientes concentran la exposición?","Which suppliers, logistics routes and customers concentrate exposure?"),
+        tr("¿Hay riesgos de sanciones, reglas de origen o suministro energético?","Are sanctions, rules of origin or energy availability material risks?")
+      ]
+    }
+  ];
+  return <section aria-label={tr("Análisis corporativo ZRC","ZRC corporate decision lens")}>
+    <p style={{fontSize:11,color:C.textMuted,lineHeight:1.6,margin:"0 0 12px"}}>{tr("Guía de due diligence orientativa basada en los indicadores editoriales existentes. No equivale a una recomendación de inversión ni a una calificación calibrada.", "Indicative due diligence guide based on existing editorial indicators. Not investment advice or a calibrated rating.")}</p>
+    <div style={{display:"grid",gap:10}}>
+      {conditions.map(section=><div key={section.id} style={{padding:14,background:C.surface2,border:`1px solid ${C.border}`,borderRadius:14}}>
+        <div style={{display:"flex",gap:9,alignItems:"center",marginBottom:6}}><span aria-hidden="true" style={{fontSize:19,color:C.gold}}>{section.icon}</span><strong style={{fontSize:13,color:C.text}}>{section.title}</strong></div>
+        <div style={{fontSize:11,color:C.gold,marginBottom:9,fontWeight:650}}>{section.observation}</div>
+        <ul style={{paddingLeft:18,margin:0,color:C.textSec,fontSize:12,lineHeight:1.6}}>{section.questions.map(q=><li key={q} style={{marginBottom:7}}>{q}</li>)}</ul>
+      </div>)}
+    </div>
+  </section>;
+}
+
 function CountryPanel({ country, onClose, lang }) {
   const en = lang === "en";
   const tr = (es, english) => en ? english : es;
   const [activeTab, setActiveTab] = useState("overview");
-  const tabs = [["overview", tr("Resumen", "Overview")], ["geopolitics", tr("Geopolítica", "Geopolitics")], ["trade", tr("Comercio y energía", "Trade & energy")], ["investment", tr("Inversión", "Investment")], ["macro", tr("Macro y finanzas", "Macro & finance")], ["institutions", tr("Instituciones", "Institutions")]];
+  const tabs = [["overview", tr("Resumen", "Overview")], ["geopolitics", tr("Geopolítica", "Geopolitics")], ["trade", tr("Comercio y energía", "Trade & energy")], ["investment", tr("Inversión", "Investment")], ["decisions", tr("Decisiones", "Decisions")], ["macro", tr("Macro y finanzas", "Macro & finance")], ["institutions", tr("Instituciones", "Institutions")]];
   if (!country) return null;
   const bloc = BLOC_META[computeBloc(country)];
   return (
@@ -774,6 +815,7 @@ function CountryPanel({ country, onClose, lang }) {
 </>}
 {activeTab==="macro" && <CountryMacroPanel country={country} lang={lang} />}
 {activeTab==="institutions" && <CountryInstitutionsPanel country={country} lang={lang} />}
+{activeTab==="decisions" && <CorporateDecisionLens country={country} lang={lang} />}
 {activeTab==="investment" && <>        <div style={{padding:"13px 14px",background:C.surface2,border:`1px solid ${C.border}`,borderRadius:10,marginBottom:14}}>
           <div style={{fontSize:11,fontWeight:700,color:C.gold,letterSpacing:".08em"}}>{tr("PERSPECTIVA CORPORATIVA ZRC", "ZRC CORPORATE PERSPECTIVE")}</div>
           <div style={{fontSize:12,lineHeight:1.65,color:C.textSec,marginTop:8}}>{tr("Puntos de comprobación para una operación: exposición comercial y regulatoria, disponibilidad energética, riesgo cambiario, restricciones a la inversión y concentración de clientes o proveedores. Se requiere due diligence específica.", "Transaction diligence priorities: trade and regulatory exposure, energy availability, FX risk, investment restrictions, and customer or supplier concentration. Transaction-specific due diligence is required.")}</div>
