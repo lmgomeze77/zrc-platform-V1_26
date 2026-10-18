@@ -61,3 +61,11 @@ test("Corporate decision lens is explicit about editorial data, uncalibrated ris
   assert.match(source,/Trade and supply chain/);
   assert.match(source,/Not investment advice or a calibrated rating/);
 });
+
+test("V2.5 compares official World Bank observations separately from ZRC editorial scores",()=>{
+  assert.match(source,/function OfficialCountryComparison/);
+  assert.match(source,/OfficialCountryComparison countries=\{countries\}/);
+  assert.match(source,/latestWorldBankObservation/);
+  assert.match(source,/WGI estimates carry statistical uncertainty/);
+  assert.match(source,/No data/);
+});
