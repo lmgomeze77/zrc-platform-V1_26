@@ -817,6 +817,8 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
   const blocLabel = (key) => en ? ({ occidental: "Western Bloc", sino_euroasiatico: "Sino-Eurasian Axis", multialineado: "Pragmatic multi-aligned", no_alineado: "Non-aligned / swing states" }[key]) : BLOC_META[key].label;
   const blocDescription = (key) => en ? ({ occidental: "Strong alignment with the US, NATO and EU; limited strategic affinity with Beijing or Moscow.", sino_euroasiatico: "Strong alignment with China and/or Russia, with strategic distance from Washington.", multialineado: "Balances US, China and regional ties without committing to a fixed camp.", no_alineado: "No dominant alignment; positions may shift across international issues." }[key]) : BLOC_META[key].desc;
   const [selectedId, setSelectedId] = useState(null);
+  const [countryPanelOpen, setCountryPanelOpen] = useState(false);
+  const openCountry = (id) => { setSelectedId(id); setCountryPanelOpen(true); };
   const [comparisonIds, setComparisonIds] = useState([]);
   const comparisonRef = useRef(null);
   const viewComparison = () => comparisonRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -940,7 +942,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
             {search && <button onClick={()=>setSearch("")} style={{padding:"11px 13px",borderRadius:12,border:`1px solid ${C.border}`,background:"#FFFFFF",color:C.text,cursor:"pointer"}}>{tr("Limpiar","Clear")}</button>}
           </div>
         </div>
-        {search.trim() && <div role="region" aria-label={tr("Resultados de búsqueda","Search results")} style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:14}}>{searchResults.slice(0,10).map(c=><button type="button" key={c.id} onClick={()=>{setSelectedId(c.id);setBlocFilter(null);setSearch("");}} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:999,padding:"8px 12px",cursor:"pointer",color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</button>)}{searchResults.length===0 && <span style={{color:C.textSec}}>{tr("Sin coincidencias","No matches")}</span>}</div>}
+        {search.trim() && <div role="region" aria-label={tr("Resultados de búsqueda","Search results")} style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:14}}>{searchResults.slice(0,10).map(c=><button type="button" key={c.id} onClick={()=>{openCountry(c.id);setBlocFilter(null);setSearch("");}} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:999,padding:"8px 12px",cursor:"pointer",color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</button>)}{searchResults.length===0 && <span style={{color:C.textSec}}>{tr("Sin coincidencias","No matches")}</span>}</div>}
         <div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap",marginBottom:16}}>
           <span style={{fontSize:12,color:C.textSec}}>{tr("Selecciona hasta tres países para comparar sus perfiles:", "Select up to three countries to compare their profiles:")}</span>
           <select aria-label={tr("Añadir país a comparación", "Add country to comparison")} value="" onChange={e=>{if(e.target.value)toggleComparison(e.target.value)}} disabled={comparisonIds.length===3} style={{padding:"10px 12px",borderRadius:10,border:`1px solid ${C.border}`,background:C.surface,color:C.text,maxWidth:"100%"}}>
@@ -990,6 +992,12 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
           {[["territories",tr("Territorios", "Territories")],["markers",tr("Marcadores", "Markers")]].map(([mode,label])=><button key={mode} type="button" aria-pressed={mapMode===mode} onClick={()=>setMapMode(mode)} style={{padding:"9px 13px",borderRadius:9,border:`1px solid ${mapMode===mode ? C.gold : C.border}`,background:mapMode===mode?C.surface2:C.surface,color:C.text,cursor:"pointer"}}>{label}</button>)}
           {mapMode==="territories" && !boundaries && <span role="status" style={{fontSize:11,color:C.textMuted}}>{boundariesError ? tr("Límites no disponibles; se muestran marcadores.", "Boundaries unavailable; showing markers.") : tr("Cargando límites geográficos…", "Loading country boundaries…")}</span>}
         </div>
+        {selected && !countryPanelOpen && (
+          <div style={{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap",padding:"10px 12px",border:`1px solid ${C.borderHover}`,borderRadius:12,background:C.surface,marginBottom:12}}>
+            <span style={{fontSize:12,color:C.textSec}}>{tr("Último país consultado:", "Last viewed country:")}</span>
+            <button type="button" onClick={()=>setCountryPanelOpen(true)} style={{padding:"9px 12px",background:C.surface2,border:`1px solid ${C.borderHover}`,borderRadius:9,color:C.text,fontWeight:700,cursor:"pointer"}}>{selected.flag} {en ? COUNTRY_NAMES_EN[selected.id] || selected.name : selected.name} · {tr("Reabrir ficha", "Reopen profile")} →</button>
+          </div>
+        )}
         <div className="grwm-layout" style={{ marginBottom: 20 }}>
           {/* Map */}
           <div className="grwm-map" style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 26, overflow: "hidden", height: 640, boxShadow: "0 12px 36px rgba(11,37,69,.08)" }}>
@@ -1009,7 +1017,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
                     const c = COUNTRIES.find(country => country.id === feature.properties.id);
                     if (!c) return;
                     layer.bindTooltip(c.flag + " " + (en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name));
-                    layer.on("click", () => setSelectedId(c.id));
+                    layer.on("click", () => openCountry(c.id));
                   }}
                 />
               )}
@@ -1024,7 +1032,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
                     fillColor: markerColor(colorMode, c),
                     fillOpacity: 0.72,
                   }}
-                  eventHandlers={{ click: () => setSelectedId(c.id) }}
+                  eventHandlers={{ click: () => openCountry(c.id) }}
                 >
                   <Tooltip direction="top" offset={[0, -4]}>
                     {c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name} · {blocLabel(computeBloc(c))}
@@ -1035,10 +1043,10 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
           </div>
 
           {/* Detail panel */}
-          {selected ? (
+          {selected && countryPanelOpen ? (
             <div className="grwm-detail grwm-detail-open" role="dialog" aria-modal="true" aria-label={tr("Ficha de país","Country details")}>
               <button type="button" onClick={()=>toggleComparison(selected.id)} disabled={!comparisonIds.includes(selected.id) && comparisonIds.length>=3} style={{width:"100%",marginBottom:10,padding:"12px",border:`1px solid ${C.borderHover}`,borderRadius:10,background:C.surface2,color:C.text,cursor:"pointer",fontWeight:600}}>{comparisonIds.includes(selected.id) ? tr("✓ Quitar de comparación", "✓ Remove from comparison") : tr("+ Añadir a comparación", "+ Add to comparison")}</button>
-              <CountryPanel key={selected.id} country={selected} onClose={() => setSelectedId(null)} lang={lang} />
+              <CountryPanel key={selected.id} country={selected} onClose={() => setCountryPanelOpen(false)} lang={lang} />
             </div>
           ) : (
             <div className="grwm-detail-placeholder" style={{ background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 26, padding: 24, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: 10, minHeight: 300 }}>
