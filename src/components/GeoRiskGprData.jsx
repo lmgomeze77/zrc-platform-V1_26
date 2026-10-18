@@ -5,8 +5,8 @@ const endpoint = "https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-
 const FONT_BODY = "'Outfit','Helvetica Neue',sans-serif";
 const FONT_DISPLAY = "var(--zrc-font-display)";
 const FONT_FIGURES = "var(--zrc-font-figures)";
-const control = { background: C.surface2, color: C.text, border: `1px solid ${C.border}`, borderRadius: 4, padding: "8px 12px", fontFamily: FONT_BODY };
-const style = { marginTop: 18, padding: 20, color: C.textSec, background: C.surface, border: `1px solid ${C.border}`, fontFamily: FONT_BODY };
+const control = { background: C.surface2, color: C.text, border: `1px solid ${C.border}`, borderRadius: 10, padding: "8px 12px", fontFamily: FONT_BODY };
+const style = { marginTop: 18, padding: 20, borderRadius: 20, overflow: "hidden", color: C.textSec, background: C.surface, border: `1px solid ${C.border}`, fontFamily: FONT_BODY };
 const englishLabels = { GPR: "Global geopolitical risk", GPRT: "Threats", GPRA: "Acts", GPRD: "Daily geopolitical risk", GPRD_THREAT: "Daily threats", GPRD_ACT: "Daily acts" };
 const csvCell = value => '"' + String(value ?? "").replaceAll('"', '""') + '"';
 
