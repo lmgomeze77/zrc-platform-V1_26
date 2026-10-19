@@ -81,7 +81,6 @@ function PillarCard({ id, value }) {
 }
 
 function CountryCard({ country }) {
-  const canonical = countryIntelligenceByIso3(country.iso);
   const band = riskBand(country.score);
   const trend = trendMeta[country.trend];
   return (
@@ -148,6 +147,7 @@ function IndexPage() {
 
 function DetailPage({ country }) {
   useSeo(country);
+  const canonical = countryIntelligenceByIso3(country.iso);
   const band = riskBand(country.score);
   const trend = trendMeta[country.trend];
   const peers = COUNTRY_PROFILES.filter(item => item.region === country.region && item.iso !== country.iso).slice(0, 3);
