@@ -8,6 +8,9 @@ on:
       - 'wrangler.toml'
       - '.github/workflows/deploy.yml'
       - 'src/pages/intelligence/**'
+      - 'src/data/countryIntelligenceModel.js'
+      - 'src/data/countryRiskProfiles.js'
+      - 'scripts/country-intelligence-model.test.js'
       - 'src/App.jsx'
       - 'src/components/GeoRiskMarketData.jsx'
       - 'src/pages/PricingPage.jsx'
@@ -55,6 +58,7 @@ jobs:
       - run: npx wrangler d1 migrations apply zrc-leads --local
       - run: npm run test:schema
       - run: npm run test:georisk-map
+      - run: node --test scripts/country-profiles.test.js scripts/country-intelligence-model.test.js
       - run: node --test scripts/georisk-worldbank-macro.test.js
       - run: npm run build
       - run: npx wrangler deploy --dry-run
