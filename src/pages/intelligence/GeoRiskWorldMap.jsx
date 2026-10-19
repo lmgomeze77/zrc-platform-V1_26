@@ -1155,6 +1155,13 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
             {search && <button onClick={()=>setSearch("")} style={{padding:"11px 13px",borderRadius:12,border:`1px solid ${C.border}`,background:"#FFFFFF",color:C.text,cursor:"pointer"}}>{tr("Limpiar","Clear")}</button>}
           </div>
         </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,flexWrap:"wrap",background:C.surface,border:"1px solid "+C.border,borderRadius:14,padding:"12px 16px",marginBottom:16}}>
+          <div style={{minWidth:0}}>
+            <strong style={{fontSize:13,color:C.text}}>{tr("Country Intelligence · análisis país en profundidad","Country Intelligence · in-depth country research")}</strong>
+            <div style={{fontSize:11,color:C.textSec,marginTop:3}}>{tr("15 fichas editoriales disponibles, con cinco pilares de riesgo, lectura inversora y puntos de vigilancia.","15 editorial profiles with five risk pillars, investment implications and watchpoints.")}</div>
+          </div>
+          <a href="/inteligencia/paises/" style={{whiteSpace:"nowrap",fontSize:12,fontWeight:750,padding:"11px 14px",color:"#fff",background:"#245a97",borderRadius:10,textDecoration:"none"}}>{tr("Explorar fichas país","Explore country profiles")} →</a>
+        </div>
         {search.trim() && <div role="region" aria-label={tr("Resultados de búsqueda","Search results")} style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:14}}>{searchResults.slice(0,10).map(c=><button type="button" key={c.id} onClick={()=>{openCountry(c.id);setBlocFilter(null);setSearch("");}} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:999,padding:"8px 12px",cursor:"pointer",color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</button>)}{searchResults.length===0 && <span style={{color:C.textSec}}>{tr("Sin coincidencias","No matches")}</span>}</div>}
         <div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap",marginBottom:16}}>
           <span style={{fontSize:12,color:C.textSec}}>{tr("Selecciona hasta tres países para comparar sus perfiles:", "Select up to three countries to compare their profiles:")}</span>
