@@ -1554,8 +1554,8 @@ const Intelligence = ({ lang }) => {
 
       {showGeoRiskML && (
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
-          <button onClick={() => setShowGeoRiskML(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
-            ✕ CLOSE ML DASHBOARD
+          <button aria-label="Cerrar GeoRisk ML" onClick={() => setShowGeoRiskML(false)} style={{ position: "sticky", top: 8, margin: "8px 12px 0 auto", display: "block", borderRadius: 10, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
+            ✕ CERRAR ML
           </button>
           <GeoRiskML />
         </div>

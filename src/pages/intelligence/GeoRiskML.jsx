@@ -91,6 +91,13 @@ const SCENARIOS = {
   },
 };
 
+const SCENARIO_STORIES = {
+  tariff_escalation: { icon: "⇄", channel: "Aranceles → costes de importación → presión sobre márgenes", meaning: "Las barreras comerciales encarecen insumos y dificultan vender en otros mercados.", watch: "Nuevos aranceles, exenciones y acuerdos comerciales.", question: "¿Qué margen queda si suben los costes o cae la demanda exterior?" },
+  mena_instability: { icon: "◈", channel: "Conflicto → energía y transporte → costes empresariales", meaning: "Una disrupción de rutas o suministro puede encarecer energía, seguros y logística.", watch: "Tránsito por Ormuz y el mar Rojo, fletes y suministro energético.", question: "¿Cuánta liquidez exige un retraso de entregas o una factura energética mayor?" },
+  eu_fragmentation: { icon: "⌁", channel: "Tensión soberana → financiación → inversión", meaning: "Una mayor percepción de riesgo puede endurecer el acceso al crédito y retrasar operaciones.", watch: "Diferenciales soberanos, condiciones bancarias y acuerdos fiscales.", question: "¿Resiste la operación una refinanciación más cara o más lenta?" },
+  detente: { icon: "↘", channel: "Acuerdos → menores fricciones → recuperación de confianza", meaning: "La reducción de tensiones puede aliviar costes y favorecer inversión; el efecto depende de cada región.", watch: "Acuerdos efectivos, reapertura de rutas y retirada de restricciones.", question: "¿Qué inversiones podrían reactivarse si mejora la confianza?" },
+};
+
 const SECTORS = {
   global:      { label: "Multisectorial",      mult: 1.00 },
   real_estate: { label: "Real Estate", mult: 0.88 },
@@ -301,7 +308,7 @@ function CorrelationHeatmap({ scenarios, scenarioWeights, economicVariables, reg
         ))}
       </svg>
       <div style={{ display: "flex", gap: 16, marginTop: 8, justifyContent: "center" }}>
-        {[["Impacto positivo (riesgo ↑)", "#EF4444"], ["Neutral", "#16301f"], ["Impacto negativo (riesgo ↓)", "#10B981"]].map(([l, c]) => (
+        {[["↑ Sube la variable", "#EF4444"], ["Neutral", "#16301f"], ["↓ Baja la variable", "#10B981"]].map(([l, c]) => (
           <div key={l} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "#64748B", fontFamily: "monospace" }}>
             <span style={{ width: 10, height: 10, background: c, display: "inline-block", borderRadius: 2 }} />
             {l}
@@ -430,6 +437,8 @@ export default function GeoRiskML() {
   }, [weights]);
 
   const compositeRisk = useMemo(() => clamp(baseCompositeRisk * sectorMult, 0, 100), [baseCompositeRisk, sectorMult]);
+  const referenceRisk = clamp(Object.entries(SCENARIOS).reduce((sum, [key, scenario]) => sum + DEFAULT_WEIGHTS[key] * scenario.risk, 0) * sectorMult, 0, 100);
+  const riskDelta = compositeRisk - referenceRisk;
   const dominantScenario = useMemo(() => {
     const [key] = Object.entries(normalizedWeights).reduce(([bk, bv], [k, v]) => v > bv ? [k, v] : [bk, bv], ["tariff_escalation", -1]);
     return { key, ...SCENARIOS[key], prob: normalizedWeights[key] || 0 };
@@ -509,6 +518,13 @@ export default function GeoRiskML() {
         .grml-scenario-summary-head { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:12px; }
         .grml-mix-bar { display:flex; height:20px; overflow:hidden; border-radius:999px; background:#14231b; margin:15px 0 8px; }
         .grml-mix-segment { min-width:0; transition:flex-grow .2s ease; }
+        .grml-compare { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:16px; }
+        .grml-compare > div { padding:12px; background:#08150f; border:1px solid #28543a; border-radius:12px; }
+        .grml-story { font-size:13px; line-height:1.65; color:#CBD5E1; }
+        .grml button:focus-visible, .grml input:focus-visible { outline:2px solid #93C5FD; outline-offset:4px; }
+        .grml header > div > div { min-width:0; max-width:100%; }
+        .grml header { overflow-wrap:anywhere; }
+        @media(max-width:600px) { .grml-compare { grid-template-columns:1fr; } .grml header h1 { font-size:20px !important; } .grml header > div > div:first-child > div:first-child { flex-wrap:wrap; } }
         .grml-scenario-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
         .grml-scenario-card { min-width:0; border-radius:16px; }
         .grml-scenario-readout { padding:11px 12px; border-radius:10px; background:#0a1713; border:1px solid #234332; margin-top:12px; }
@@ -721,7 +737,7 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
             }}>
               <div style={{ fontSize:13, color:"#94A3B8", lineHeight:1.7, maxWidth:680 }}>
                 <span style={{ color:"#CBD5E1" }}>Los valores iniciales son pesos de escenario de referencia, no probabilidades calibradas. En los cálculos, se normalizan para sumar 100%.</span>
-                {" "}Deslízalo para explorar tu propio escenario, o deja que el NLP Analyzer lo ajuste automáticamente al leer una noticia.
+                {" "}Deslízalo para explorar tu propio escenario, o usa el análisis de noticias para obtener sugerencias que puedes incorporar manualmente.
                 {" "}Queda marcado como "AJUSTADO" con el valor ZRC original visible; usa ↺ para devolver el círculo a su posición.
               </div>
               {isCustomized && (
@@ -745,6 +761,11 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
                 </div>
                 <div style={{padding:"9px 12px",border:"1px solid #28543a",borderRadius:12,color:"#A7F3D0",fontFamily:"monospace",fontSize:11}}>{isCustomized?"MIX AJUSTADO":"MIX BASE ZRC"}</div>
               </div>
+              <div className="grml-compare">
+                <div><div style={{fontSize:12,color:"#94A3B8"}}>Mix inicial · mismo sector</div><strong style={{fontSize:25}}>{referenceRisk.toFixed(1)}<small style={{fontSize:12}}>/100</small></strong></div>
+                <div><div style={{fontSize:12,color:"#94A3B8"}}>Tu simulación · {riskLabel(compositeRisk)}</div><strong style={{fontSize:25,color:riskColor}}>{compositeRisk.toFixed(1)}<small style={{fontSize:12}}>/100</small></strong></div>
+                <div><div style={{fontSize:12,color:"#94A3B8"}}>Cambio frente al mix inicial</div><strong style={{fontSize:25,color:riskDelta>0?"#FBBF24":riskDelta<0?"#6EE7B7":"#CBD5E1"}}>{riskDelta>0?"+":""}{riskDelta.toFixed(1)} puntos</strong></div>
+              </div>
               <div role="img" aria-label={"Composición normalizada de escenarios: "+Object.entries(SCENARIOS).map(([k,v])=>v.label+" "+(normalizedWeights[k]*100).toFixed(0)+" por ciento").join(", ")} className="grml-mix-bar">
                 {Object.entries(SCENARIOS).map(([k,v])=><div key={k} className="grml-mix-segment" style={{flexGrow:Math.max(0,normalizedWeights[k]),background:v.color}} title={v.label+" "+(normalizedWeights[k]*100).toFixed(1)+"%"} />)}
               </div>
@@ -756,9 +777,10 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
 
             <div className="grml-scenario-grid">
               {Object.entries(SCENARIOS).map(([sk, sv]) => {
+                const story = SCENARIO_STORIES[sk];
                 const isModified = Math.abs(weights[sk] - DEFAULT_WEIGHTS[sk]) > 0.005;
                 return (
-                <div key={sk} className="grml-card grml-card--interactive grml-scenario-card" onClick={() => setActiveScenario(sk)} style={{
+                <div key={sk} className="grml-card grml-scenario-card" style={{
                   background: activeScenario===sk ? "linear-gradient(180deg, #0f2419 0%, #0a1810 100%)" : undefined,
                   borderColor: activeScenario===sk ? sv.color+"60" : undefined,
                   padding:18, position:"relative", overflow:"hidden"
@@ -766,11 +788,13 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
                   {activeScenario===sk && <div style={{ position:"absolute", top:0, left:0, right:0, height:2, background:`linear-gradient(90deg,transparent,${sv.color},transparent)` }} />}
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:8 }}>
                     <div>
-                      <div style={{ fontSize:14, fontWeight:600, color:sv.color, marginBottom:2 }}>{sv.label}</div>
+                      <div style={{ fontSize:14, fontWeight:600, color:sv.color, marginBottom:2 }}>{story.icon} {sv.label}</div>
                       <div style={{ fontSize:11, color:"#64748B", fontFamily:"monospace" }}>{sv.desc}</div>
                     </div>
                     <RiskGauge value={sv.risk} size={56} />
                   </div>
+                  <p className="grml-story">{story.meaning}</p>
+                  <div style={{padding:12,borderRadius:10,background:sv.color+"15",color:sv.color,fontSize:13,lineHeight:1.6}}>{story.channel}</div>
                   <div className="grml-scenario-stats">
                     <div className="grml-scenario-stat">
                       <div style={{fontSize:10,color:"#94A3B8",fontFamily:"monospace"}}>PESO EN EL MIX</div>
@@ -783,7 +807,7 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
                   </div>
                   <div className="grml-scenario-readout">
                     <div style={{fontSize:10,letterSpacing:1,color:"#86EFAC",fontFamily:"monospace"}}>INTERPRETACIÓN · {REGIONS[region].label.toUpperCase()}</div>
-                    <p style={{fontSize:12,color:"#CBD5E1",lineHeight:1.6,margin:"7px 0 4px"}}>{sv.desc}. Los impactos mostrados son <strong>sensibilidades simuladas</strong>, no cambios observados ni predicciones de precio.</p>
+                    <p style={{fontSize:12,color:"#CBD5E1",lineHeight:1.6,margin:"7px 0 4px"}}>Las flechas indican si sube o baja cada variable, no si es favorable o perjudicial. Los impactos mostrados son <strong>sensibilidades simuladas</strong>, no cambios observados ni predicciones de precio.</p>
                     {Object.entries(sv.impactByRegion[region]).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1])).slice(0,3).map(([vk,value])=><div className="grml-scenario-direction" key={vk}><span style={{color:"#CBD5E1"}}>{ECONOMIC_VARIABLES[vk]?.label}</span><strong style={{color:value>0.1?"#FBBF24":value< -0.1?"#60A5FA":"#94A3B8"}}>{value>0.1?"↑ Alcista":value< -0.1?"↓ Bajista":"→ Neutral"}</strong></div>)}
                   </div>
                   <div style={{ marginTop:8 }}>
@@ -824,15 +848,17 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
                         background: isModified ? "rgba(148,163,184,0.15)" : `${sv.color}25`,
                         transform:"translate(-50%, -50%)", pointerEvents:"none", zIndex:1,
                       }} />
-                      <input type="range" min={0} max={80} value={weights[sk]*100}
+                      <input aria-label={`Peso base de ${sv.label}`} aria-valuetext={`${(weights[sk]*100).toFixed(0)} por ciento base; ${(normalizedWeights[sk]*100).toFixed(1)} por ciento del mix`} type="range" min={0} max={80} value={weights[sk]*100}
                         onClick={e => e.stopPropagation()}
                         onChange={e => setWeights(prev => ({ ...prev, [sk]:parseInt(e.target.value)/100 }))}
                         style={{ width:"100%", accentColor: isModified ? "#F59E0B" : sv.color, position:"relative", zIndex:2 }}
                       />
                     </div>
                   </div>
+                  <div className="grml-story" style={{marginTop:14}}><strong style={{color:"#F1F5F9"}}>Qué vigilar:</strong> {story.watch}<br /><strong style={{color:"#F1F5F9"}}>Para una empresa:</strong> {story.question}</div>
+                  <button type="button" aria-expanded={activeScenario===sk} aria-controls={`scenario-detail-${sk}`} onClick={() => setActiveScenario(activeScenario===sk ? null : sk)} style={{marginTop:14,padding:"11px 14px",width:"100%",borderRadius:10,border:`1px solid ${sv.color}60`,background:sv.color+"15",color:"#F1F5F9",cursor:"pointer",fontSize:13}}>{activeScenario===sk?"− Ocultar detalle":"+ Ver transmisión y activos"}</button>
                   {activeScenario===sk && (
-                    <div style={{ marginTop:12, paddingTop:10, borderTop:`1px solid ${sv.color}20` }}>
+                    <div id={`scenario-detail-${sk}`} style={{ marginTop:12, paddingTop:10, borderTop:`1px solid ${sv.color}20` }}>
                       <div style={{ fontSize:10, color:"#64748B", fontFamily:"monospace", letterSpacing:1, marginBottom:6 }}>MATRIZ DE TRANSMISIÓN · METODOLOGÍA PROPIETARIA</div>
                       {Object.entries(sv.impactByRegion[region]).map(([vk, vi]) => {
                         const ev = ECONOMIC_VARIABLES[vk];
