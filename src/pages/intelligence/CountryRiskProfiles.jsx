@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, CalendarDays, Database, Eye, ExternalLink, Search, ShieldCheck } from "lucide-react";
 import { COUNTRY_BY_SLUG, COUNTRY_PROFILES, COUNTRY_PROFILE_UPDATED_AT, PILLAR_META, riskBand, trendMeta } from "../../data/countryRiskProfiles.js";
+import { countryIntelligenceByIso3 } from "../../data/countryIntelligenceModel.js";
 import "./countryRiskProfiles.css";
 
 const BASE_URL = "https://www.zenithrisecapital.com/inteligencia/paises";
@@ -146,6 +147,7 @@ function IndexPage() {
 
 function DetailPage({ country }) {
   useSeo(country);
+  const canonical = countryIntelligenceByIso3(country.iso);
   const band = riskBand(country.score);
   const trend = trendMeta[country.trend];
   const peers = COUNTRY_PROFILES.filter(item => item.region === country.region && item.iso !== country.iso).slice(0, 3);
@@ -157,7 +159,7 @@ function DetailPage({ country }) {
         <section className="crp-country-hero">
           <div className="crp-country-identity">
             <span className="crp-flag crp-flag--large">{country.flag}</span>
-            <div><span className="crp-eyebrow">{country.region} · {country.iso} · ACTUALIZADO {formatDate(COUNTRY_PROFILE_UPDATED_AT).toUpperCase()}</span><h1>Riesgo país de {country.name}</h1><p>{country.summary}</p></div>
+            <div><span className="crp-eyebrow">{country.region} · {country.iso} · ACTUALIZADO {formatDate(canonical.provenance.asOf).toUpperCase()}</span><h1>Riesgo país de {country.name}</h1><p>{country.summary}</p></div>
           </div>
           <div className="crp-hero-score"><ScoreDial score={country.score} /><div><span className="crp-kicker">RIESGO COMPUESTO</span><strong style={{ color: band.color }}>{band.label}</strong><span style={{ color: trend.color }}>{trend.symbol} {trend.label} este mes</span></div></div>
         </section>
