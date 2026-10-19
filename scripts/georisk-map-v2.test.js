@@ -69,3 +69,13 @@ test("V2.5 compares official World Bank observations separately from ZRC editori
   assert.match(source,/WGI estimates carry statistical uncertainty/);
   assert.match(source,/No data/);
 });
+
+test("Map links covered economies to their distinct full editorial profiles", () => {
+  assert.match(source,/COUNTRY_PROFILES/);
+  assert.match(source,/extendedCountryProfile\(country\)/);
+  assert.match(source,/\/inteligencia\/paises\//);
+  assert.match(source,/Ver ficha país completa/);
+  assert.match(source,/Distinct from the map's editorial geopolitical score/);
+  assert.match(source,/Explore country profiles/);
+  assert.match(source,/Full editorial profile and narrative are currently published in Spanish/);
+});

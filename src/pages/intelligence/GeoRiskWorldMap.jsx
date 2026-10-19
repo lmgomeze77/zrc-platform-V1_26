@@ -10,6 +10,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, CircleMarker, Tooltip, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { COUNTRY_PROFILES, COUNTRY_PROFILE_UPDATED_AT, riskBand, trendMeta } from "../../data/countryRiskProfiles.js";
 import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation, WB_GOVERNANCE_INDICATORS, worldBankGovernanceUrl, sameYearIndicatorGap } from "./worldBankCountryMacro";
 import { Globe2, TrendingUp, TrendingDown, Minus, X, ArrowRight, Info } from "lucide-react";
 
@@ -711,6 +712,50 @@ function CorporateDecisionLens({ country, lang }) {
   </section>;
 }
 
+// The independent editorial country-risk profile is linked by ISO3.
+// The map's 42-economy geopolitical scores and the profile's five-pillar
+// scores are NOT interchangeable or merged into a synthetic score.
+const EXTENDED_COUNTRY_PROFILES = Object.fromEntries(COUNTRY_PROFILES.map(profile=>[profile.iso,profile]));
+const PROFILE_COUNTRY_ISO3 = { ...WB_COUNTRY_ISO3, pt:"PRT", pe:"PER", uy:"URY", pa:"PAN", ma:"MAR" };
+function extendedCountryProfile(country) {
+  return EXTENDED_COUNTRY_PROFILES[PROFILE_COUNTRY_ISO3[country.id]] || null;
+}
+function CountryEditorialPreview({ country, lang }) {
+  const profile=extendedCountryProfile(country);
+  if (!profile) return null;
+  const en=lang==="en";
+  const tr=(es,english)=>en?english:es;
+  const band=riskBand(profile.score);
+  const trend=trendMeta[profile.trend];
+  const url="/inteligencia/paises/"+profile.slug+"/";
+  return (
+    <section aria-label={tr("Ficha editorial de riesgo país","Editorial country risk profile")} style={{padding:16,borderRadius:16,border:"1px solid "+C.borderHover,background:"linear-gradient(140deg,#edf4fc,#ffffff)",marginBottom:18}}>
+      <div style={{fontSize:10,fontWeight:750,letterSpacing:".1em",color:C.gold,marginBottom:9}}>ZRC · COUNTRY INTELLIGENCE</div>
+      <div style={{display:"flex",gap:14,alignItems:"center",justifyContent:"space-between",flexWrap:"wrap"}}>
+        <div>
+          <div style={{fontSize:11,color:C.textSec,marginBottom:4}}>{tr("Análisis editorial completo","Full editorial research")}</div>
+          <div style={{fontSize:24,fontWeight:800,color:band.color,fontVariantNumeric:"tabular-nums"}}>{profile.score}<span style={{fontSize:12,color:C.textMuted}}>/100 · {en?({Bajo:"Low",Moderado:"Moderate",Elevado:"Elevated",Alto:"High",Crítico:"Critical"}[band.label]||band.label):band.label}</span></div>
+        </div>
+        <div style={{fontSize:12,fontWeight:700,color:trend.color}}>{trend.symbol} {en?({up:"Rising risk",down:"Declining risk",stable:"Stable"}[profile.trend]):trend.label}</div>
+      </div>
+      <p style={{fontSize:12,lineHeight:1.65,color:C.text,margin:"12px 0"}}>{profile.summary}</p>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:10,marginBottom:13}}>
+        <div style={{borderRadius:10,background:C.surface,padding:10,border:"1px solid "+C.border}}>
+          <div style={{fontSize:10,color:C.gold,fontWeight:700,marginBottom:6}}>{tr("QUÉ VIGILAR","WHAT TO WATCH")}</div>
+          <div style={{fontSize:11,lineHeight:1.5,color:C.textSec}}>{profile.watch?.[0]}</div>
+        </div>
+        <div style={{borderRadius:10,background:C.surface,padding:10,border:"1px solid "+C.border}}>
+          <div style={{fontSize:10,color:C.gold,fontWeight:700,marginBottom:6}}>{tr("INVERSIÓN","INVESTMENT")}</div>
+          <div style={{fontSize:11,lineHeight:1.5,color:C.textSec}}>{profile.implications?.[0]}</div>
+        </div>
+      </div>
+      <a href={url} style={{display:"block",textAlign:"center",padding:"12px 10px",background:"#245a97",color:"#fff",fontWeight:750,fontSize:12,borderRadius:10,textDecoration:"none"}}>{tr("Ver ficha país completa","Open full country profile")} →</a>
+      <p style={{fontSize:10,lineHeight:1.55,color:C.textMuted,margin:"10px 0 0"}}>{tr("Perfil ZRC de cinco pilares, actualizado","Five-pillar ZRC profile, updated")} {COUNTRY_PROFILE_UPDATED_AT}. {tr("Puntuación distinta del índice geopolítico editorial del mapa; no compararlas directamente.","Distinct from the map's editorial geopolitical score; do not compare the two directly.")}</p>
+      {en&&<p style={{fontSize:10,lineHeight:1.5,color:C.textMuted,margin:"6px 0 0"}}>Full editorial profile and narrative are currently published in Spanish.</p>}
+    </section>
+  );
+}
+
 function CountryPanel({ country, onClose, lang }) {
   const en = lang === "en";
   const tr = (es, english) => en ? english : es;
@@ -747,6 +792,7 @@ function CountryPanel({ country, onClose, lang }) {
           </div>)}
         </div>
 
+        <CountryEditorialPreview country={country} lang={lang} />
         <div role="tablist" aria-label={tr("Secciones del país", "Country sections")} style={{display:"flex",gap:6,overflowX:"auto",WebkitOverflowScrolling:"touch",padding:"2px 0 12px",marginBottom:12,borderBottom:`1px solid ${C.border}`}}>
           {tabs.map(([id,label])=><button type="button" key={id} role="tab" id={"grwm-tab-"+id} aria-selected={activeTab===id} aria-controls={"grwm-panel-"+id} onClick={()=>setActiveTab(id)} style={{flexShrink:0,padding:"10px 12px",borderRadius:8,border:`1px solid ${activeTab===id?C.gold:C.border}`,background:activeTab===id?C.surface2:C.surface,color:activeTab===id?C.gold:C.textSec,fontWeight:activeTab===id?700:500,cursor:"pointer",fontSize:12}}>{label}</button>)}
         </div>
@@ -1108,6 +1154,13 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
             <input aria-label={tr("Buscar país","Search country")} value={search} onChange={e=>setSearch(e.target.value)} placeholder={tr("Buscar país…","Search country…")} style={{padding:"12px 15px",borderRadius:14,border:`1px solid ${C.border}`,background:"#FFFFFF",color:C.text,minWidth:190,fontFamily:F.body}} />
             {search && <button onClick={()=>setSearch("")} style={{padding:"11px 13px",borderRadius:12,border:`1px solid ${C.border}`,background:"#FFFFFF",color:C.text,cursor:"pointer"}}>{tr("Limpiar","Clear")}</button>}
           </div>
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,flexWrap:"wrap",background:C.surface,border:"1px solid "+C.border,borderRadius:14,padding:"12px 16px",marginBottom:16}}>
+          <div style={{minWidth:0}}>
+            <strong style={{fontSize:13,color:C.text}}>{tr("Country Intelligence · análisis país en profundidad","Country Intelligence · in-depth country research")}</strong>
+            <div style={{fontSize:11,color:C.textSec,marginTop:3}}>{tr("15 fichas editoriales disponibles, con cinco pilares de riesgo, lectura inversora y puntos de vigilancia.","15 editorial profiles with five risk pillars, investment implications and watchpoints.")}</div>
+          </div>
+          <a href="/inteligencia/paises/" style={{whiteSpace:"nowrap",fontSize:12,fontWeight:750,padding:"11px 14px",color:"#fff",background:"#245a97",borderRadius:10,textDecoration:"none"}}>{tr("Explorar fichas país","Explore country profiles")} →</a>
         </div>
         {search.trim() && <div role="region" aria-label={tr("Resultados de búsqueda","Search results")} style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:14}}>{searchResults.slice(0,10).map(c=><button type="button" key={c.id} onClick={()=>{openCountry(c.id);setBlocFilter(null);setSearch("");}} style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:999,padding:"8px 12px",cursor:"pointer",color:C.text}}>{c.flag} {en ? COUNTRY_NAMES_EN[c.id] || c.name : c.name}</button>)}{searchResults.length===0 && <span style={{color:C.textSec}}>{tr("Sin coincidencias","No matches")}</span>}</div>}
         <div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap",marginBottom:16}}>
