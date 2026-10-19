@@ -10,7 +10,8 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, CircleMarker, Tooltip, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { COUNTRY_PROFILES, COUNTRY_PROFILE_UPDATED_AT, riskBand, trendMeta } from "../../data/countryRiskProfiles.js";
+import { riskBand, trendMeta } from "../../data/countryRiskProfiles.js";
+import { resolveMapCountryIntelligence } from "../../data/countryIntelligenceModel.js";
 import { WB_COUNTRY_ISO3, WB_INDICATORS, worldBankIndicatorUrl, latestWorldBankObservation, WB_GOVERNANCE_INDICATORS, worldBankGovernanceUrl, sameYearIndicatorGap } from "./worldBankCountryMacro";
 import { Globe2, TrendingUp, TrendingDown, Minus, X, ArrowRight, Info } from "lucide-react";
 
@@ -712,22 +713,16 @@ function CorporateDecisionLens({ country, lang }) {
   </section>;
 }
 
-// The independent editorial country-risk profile is linked by ISO3.
-// The map's 42-economy geopolitical scores and the profile's five-pillar
-// scores are NOT interchangeable or merged into a synthetic score.
-const EXTENDED_COUNTRY_PROFILES = Object.fromEntries(COUNTRY_PROFILES.map(profile=>[profile.iso,profile]));
-const PROFILE_COUNTRY_ISO3 = { ...WB_COUNTRY_ISO3, pt:"PRT", pe:"PER", uy:"URY", pa:"PAN", ma:"MAR" };
-function extendedCountryProfile(country) {
-  return EXTENDED_COUNTRY_PROFILES[PROFILE_COUNTRY_ISO3[country.id]] || null;
-}
+// Shared country identity and provenance; editorial scores remain independent.
 function CountryEditorialPreview({ country, lang }) {
-  const profile=extendedCountryProfile(country);
+  const resolved=resolveMapCountryIntelligence(country);
+  const profile=resolved?.editorial?.profile;
   if (!profile) return null;
   const en=lang==="en";
   const tr=(es,english)=>en?english:es;
   const band=riskBand(profile.score);
   const trend=trendMeta[profile.trend];
-  const url="/inteligencia/paises/"+profile.slug+"/";
+  const url=resolved.editorial.href;
   return (
     <section aria-label={tr("Ficha editorial de riesgo país","Editorial country risk profile")} style={{padding:16,borderRadius:16,border:"1px solid "+C.borderHover,background:"linear-gradient(140deg,#edf4fc,#ffffff)",marginBottom:18}}>
       <div style={{fontSize:10,fontWeight:750,letterSpacing:".1em",color:C.gold,marginBottom:9}}>ZRC · COUNTRY INTELLIGENCE</div>
@@ -750,7 +745,7 @@ function CountryEditorialPreview({ country, lang }) {
         </div>
       </div>
       <a href={url} style={{display:"block",textAlign:"center",padding:"12px 10px",background:"#245a97",color:"#fff",fontWeight:750,fontSize:12,borderRadius:10,textDecoration:"none"}}>{tr("Ver ficha país completa","Open full country profile")} →</a>
-      <p style={{fontSize:10,lineHeight:1.55,color:C.textMuted,margin:"10px 0 0"}}>{tr("Perfil ZRC de cinco pilares, actualizado","Five-pillar ZRC profile, updated")} {COUNTRY_PROFILE_UPDATED_AT}. {tr("Puntuación distinta del índice geopolítico editorial del mapa; no compararlas directamente.","Distinct from the map's editorial geopolitical score; do not compare the two directly.")}</p>
+      <p style={{fontSize:10,lineHeight:1.55,color:C.textMuted,margin:"10px 0 0"}}>{tr("Perfil ZRC de cinco pilares, actualizado","Five-pillar ZRC profile, updated")} {resolved.editorial.provenance.asOf}. {tr("Puntuación distinta del índice geopolítico editorial del mapa; no compararlas directamente.","Distinct from the map's editorial geopolitical score; do not compare the two directly.")}</p>
       {en&&<p style={{fontSize:10,lineHeight:1.5,color:C.textMuted,margin:"6px 0 0"}}>Full editorial profile and narrative are currently published in Spanish.</p>}
     </section>
   );
