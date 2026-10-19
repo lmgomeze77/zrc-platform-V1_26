@@ -184,7 +184,7 @@ const LEGAL_TEXT = {
 
 const T = {
   es: {
-    nav: ["Observatorio", "Intelligence", "GeoRisk Index", "World Map", "Brokerage", "Advisory", "Academia", "Inner Circle"],
+    nav: ["Observatorio", "Intelligence", "GeoRisk Index", "World Map", "Oportunidades", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "INTELIGENCIA GEOPOLÍTICA · MACRO · MERCADOS",
       h1: "De la señal global",
@@ -283,7 +283,7 @@ const T = {
     live: "EN VIVO",
   },
   en: {
-    nav: ["Observatory", "Intelligence", "GeoRisk Index", "World Map", "Brokerage", "Advisory", "Academia", "Inner Circle"],
+    nav: ["Observatory", "Intelligence", "GeoRisk Index", "World Map", "Opportunities", "Advisory", "Academia", "Inner Circle"],
     hero: {
       tag: "GEOPOLITICAL INTELLIGENCE · MACRO · MARKETS",
       h1: "From global signals",
@@ -1589,11 +1589,55 @@ const Intelligence = ({ lang }) => {
   );
 };
 
+// Native touch scrolling, mouse dragging and keyboard navigation share one rail.
+const CardRail = ({ children, label, lang }) => {
+  const rail = useRef(null);
+  const drag = useRef(null);
+  const moved = useRef(false);
+  const [position, setPosition] = useState({ start: true, end: false });
+  const update = useCallback(() => {
+    const node = rail.current;
+    if (node) setPosition({ start: node.scrollLeft <= 2, end: node.scrollLeft + node.clientWidth >= node.scrollWidth - 2 });
+  }, []);
+  useEffect(() => {
+    const node = rail.current;
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [update, children]);
+  const step = (direction) => {
+    const node = rail.current;
+    const card = node.firstElementChild;
+    node.scrollBy({ left: direction * ((card?.getBoundingClientRect().width || node.clientWidth) + 16), behavior: "smooth" });
+  };
+  const stop = (event) => {
+    drag.current = null;
+    rail.current?.classList.remove("is-dragging");
+    if (rail.current?.hasPointerCapture(event.pointerId)) rail.current.releasePointerCapture(event.pointerId);
+  };
+  return <div className="zrc-card-carousel">
+    <div className="zrc-rail-toolbar"><span>{lang === "es" ? "Desliza o arrastra para explorar" : "Swipe or drag to explore"}</span>
+      <div><button type="button" aria-label={lang === "es" ? "Tarjetas anteriores" : "Previous cards"} disabled={position.start} onClick={() => step(-1)}>←</button><button type="button" aria-label={lang === "es" ? "Tarjetas siguientes" : "Next cards"} disabled={position.end} onClick={() => step(1)}>→</button></div>
+    </div>
+    <div ref={rail} className="zrc-card-rail" role="region" aria-label={label} tabIndex={0} onScroll={update}
+      onKeyDown={event => { if (event.target === event.currentTarget && ["ArrowLeft", "ArrowRight"].includes(event.key)) { event.preventDefault(); step(event.key === "ArrowLeft" ? -1 : 1); } }}
+      onPointerDown={event => { moved.current = false; if (event.pointerType !== "mouse" || event.button !== 0 || event.target.closest("button,a,input")) return; drag.current = { x: event.clientX, scroll: event.currentTarget.scrollLeft }; }}
+      onPointerMove={event => { const start = drag.current; if (!start) return; const distance = event.clientX - start.x; if (!moved.current && Math.abs(distance) < 6) return; moved.current = true; event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.classList.add("is-dragging"); event.currentTarget.scrollLeft = start.scroll - distance; }}
+      onPointerUp={stop} onPointerCancel={stop} onLostPointerCapture={() => { drag.current = null; rail.current?.classList.remove("is-dragging"); }}
+      onPointerLeave={event => { if (!event.currentTarget.hasPointerCapture(event.pointerId)) drag.current = null; }}
+      onClickCapture={event => { if (moved.current) { event.preventDefault(); event.stopPropagation(); moved.current = false; } }}>
+      {children}
+    </div>
+  </div>;
+};
+
 const Brokerage = ({ lang }) => {
   const t = T[lang].brok;
   const { requireAuth } = useAuth();
   const [modal, setModal] = useState(null);
   const [formContext, setFormContext] = useState("");
+  const [category, setCategory] = useState("all");
 
   const openTeaser = (op) => {
     requireAuth(() => {
@@ -1604,9 +1648,12 @@ const Brokerage = ({ lang }) => {
 
   return (
     <Sec id="brokerage">
-      <SH label={t.label} title={t.title} sub={t.sub} />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
-        {OPS.map((op, i) => (
+      <SH label={t.label} title={lang === "es" ? "Oportunidades seleccionadas" : "Selected opportunities"} sub={lang === "es" ? "Inmobiliario, M&A e inversión en un único catálogo. Información adicional bajo solicitud y confidencialidad." : "Real estate, M&A and investment in one catalogue. Further details on request and subject to confidentiality."} />
+      <div className="zrc-opportunity-filters" role="group" aria-label={lang === "es" ? "Tipo de oportunidad" : "Opportunity category"}>
+        {[["all", lang === "es" ? "Todas" : "All"], ["property", lang === "es" ? "Inmobiliario" : "Real estate"], ["corporate", lang === "es" ? "Corporativas" : "Corporate"]].map(([key, label]) => <button key={key} type="button" aria-pressed={category === key} onClick={() => setCategory(key)}>{label} · {key === "all" ? OPS.length + ADVISORY_MANDATES.length : key === "property" ? OPS.length : ADVISORY_MANDATES.length}</button>)}
+      </div>
+      <CardRail key={category} label={lang === "es" ? "Catálogo de oportunidades" : "Opportunity catalogue"} lang={lang}>
+        {category !== "corporate" && OPS.map((op, i) => (
           <FadeIn key={op.id} delay={i * 0.08}>
             <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 18, overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ padding: "14px 20px", background: C.surface2, borderBottom: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -1632,7 +1679,15 @@ const Brokerage = ({ lang }) => {
             </div>
           </FadeIn>
         ))}
-      </div>
+        {category !== "property" && ADVISORY_MANDATES.map((op,i)=><article key={op.id} className="zrc-advisory-mandate">
+          <div className="zrc-advisory-mandate-top"><span>{op.sector[lang==="es"?0:1]}</span><span className="zrc-advisory-tag">{lang==="es"?"CONFIDENCIAL":"CONFIDENTIAL"}</span></div>
+          <div className="zrc-advisory-mandate-body"><span className="zrc-advisory-index">{String(i+1).padStart(2,"0")} / {String(ADVISORY_MANDATES.length).padStart(2,"0")}</span>
+          <h4>{op.title[lang==="es"?0:1]}</h4><p className="zrc-advisory-location">{op.area[lang==="es"?0:1]}</p>
+          <p className="zrc-advisory-detail">{op.description[lang==="es"?0:1]}</p>
+          <span className="zrc-advisory-service">{op.service[lang==="es"?0:1]}</span></div>
+          <button type="button" className="zrc-advisory-cta" onClick={()=>{setFormContext(`Advisory · ${op.title[lang==="es"?0:1]}`);setModal("teaser");}}>{lang==="es"?"SOLICITAR INFORMACIÓN →":"REQUEST DETAILS →"}</button>
+        </article>)}
+      </CardRail>
       <Modal open={modal === "teaser"} onClose={() => setModal(null)} title={T[lang].form.teaserTitle}>
         <ContactForm context={formContext} onClose={() => setModal(null)} lang={lang} />
       </Modal>
@@ -1649,7 +1704,7 @@ const Advisory = ({ lang }) => {
       <div className="zrc-advisory-intro">
       <SH label={t.label} title={t.title} sub={t.sub} />
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
+      <CardRail label={lang === "es" ? "Servicios de advisory" : "Advisory services"} lang={lang}>
         {SERVICES.map((s, i) => (
           <FadeIn key={i} delay={i * 0.08}>
             <div style={{ padding: "28px 24px", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 18, position: "relative" }}>
@@ -1659,23 +1714,8 @@ const Advisory = ({ lang }) => {
             </div>
           </FadeIn>
         ))}
-      </div>
-      <FadeIn delay={0.12}>
-        <div className="zrc-advisory-mandates-heading">
-          <div><div style={{fontFamily:F.mono,fontSize:10,color:C.gold,letterSpacing:".14em",fontWeight:700}}>ZRC · {lang==="es"?"OPERACIONES EN CURSO":"CURRENT MANDATES"}</div>
-          <h3 style={{fontFamily:F.display,fontWeight:400,fontSize:"clamp(24px,3vw,34px)",margin:"8px 0"}}>{lang==="es"?"Oportunidades corporativas seleccionadas":"Selected corporate opportunities"}</h3>
-          <p style={{fontSize:13,color:C.textSec,lineHeight:1.6,margin:0}}>{lang==="es"?"Fichas ciegas. Información adicional bajo solicitud y confidencialidad.":"Blind profiles. Further details on request and subject to confidentiality."}</p></div>
-          <span className="zrc-advisory-count">04 {lang==="es"?"OPERACIONES":"MANDATES"}</span>
-        </div>
-        <div className="zrc-advisory-mandates-grid">{ADVISORY_MANDATES.map((op,i)=><article key={op.id} className="zrc-advisory-mandate">
-          <div className="zrc-advisory-mandate-top"><span>{op.sector[lang==="es"?0:1]}</span><span className="zrc-advisory-tag">{lang==="es"?"CONFIDENCIAL":"CONFIDENTIAL"}</span></div>
-          <div className="zrc-advisory-mandate-body"><span className="zrc-advisory-index">0{i+1} / 04</span>
-          <h4>{op.title[lang==="es"?0:1]}</h4><p className="zrc-advisory-location">{op.area[lang==="es"?0:1]}</p>
-          <p className="zrc-advisory-detail">{op.description[lang==="es"?0:1]}</p>
-          <span className="zrc-advisory-service">{op.service[lang==="es"?0:1]}</span></div>
-          <button type="button" className="zrc-advisory-cta" onClick={()=>setModal(op.id)}>{lang==="es"?"SOLICITAR INFORMACIÓN →":"REQUEST DETAILS →"}</button>
-        </article>)}</div>
-      </FadeIn>
+      </CardRail>
+      <a href="#brokerage" className="zrc-opportunities-link">{lang === "es" ? "Ver todas las oportunidades de inversión →" : "Explore all investment opportunities →"}</a>
       <FadeIn delay={0.2}>
         <div style={{ marginTop: 32, padding: "24px", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 18, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
           <div>
@@ -1688,7 +1728,7 @@ const Advisory = ({ lang }) => {
         </div>
       </FadeIn>
       <Modal open={modal} onClose={() => setModal(false)} title={T[lang].form.contactTitle}>
-        <ContactForm context={ADVISORY_MANDATES.find(op=>op.id===modal) ? `Advisory · ${ADVISORY_MANDATES.find(op=>op.id===modal).title[lang==="es"?0:1]}` : "Advisory Mandate"} onClose={() => setModal(false)} lang={lang} />
+        <ContactForm context="Advisory Mandate" onClose={() => setModal(false)} lang={lang} />
       </Modal>
     </Sec>
   );
@@ -1699,6 +1739,7 @@ const Academia = ({ lang }) => {
   const { requireAuth } = useAuth();
   const [modal, setModal] = useState(null);
   const [formContext, setFormContext] = useState("");
+  const [category, setCategory] = useState("all");
 
   const openEnroll = (course) => {
     requireAuth(() => {
@@ -1878,6 +1919,22 @@ const ZRCPlatform = () => {
         html { overflow-x: hidden; }
         body { overflow-x: hidden; }
 
+        .zrc-card-rail { display:flex; gap:16px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:${C.gold} ${C.surface2}; padding:4px 2px 16px; cursor:grab; }
+        .zrc-card-rail > * { flex:0 0 calc((100% - 32px)/3); min-width:0; scroll-snap-align:start; }
+        .zrc-card-rail > * > div { height:100%; box-sizing:border-box; }
+        .zrc-card-rail.is-dragging { cursor:grabbing; scroll-snap-type:none; user-select:none; }
+        .zrc-card-rail:focus-visible, .zrc-rail-toolbar button:focus-visible, .zrc-opportunity-filters button:focus-visible { outline:2px solid ${C.gold}; outline-offset:3px; }
+        .zrc-rail-toolbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin:0 0 12px; color:${C.textSec}; font:11px ${F.body}; }
+        .zrc-rail-toolbar > div { display:flex; gap:8px; }
+        .zrc-rail-toolbar button { min-width:44px; min-height:44px; border:1px solid ${C.border}; border-radius:50%; background:${C.surface}; color:${C.text}; cursor:pointer; font-size:18px; }
+        .zrc-rail-toolbar button:disabled { opacity:.35; cursor:default; }
+        .zrc-opportunity-filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+        .zrc-opportunity-filters button { min-height:44px; padding:9px 16px; border:1px solid ${C.border}; border-radius:999px; color:${C.textSec}; background:${C.surface}; cursor:pointer; font:11px ${F.body}; }
+        .zrc-opportunity-filters button[aria-pressed="true"] { color:${C.gold}; border-color:${C.gold}; background:${C.surface2}; }
+        .zrc-opportunities-link { display:inline-block; margin-top:16px; color:${C.gold}; font:13px ${F.body}; }
+        @media(max-width:1000px) { .zrc-card-rail > * { flex-basis:calc((100% - 16px)/2.2); } }
+        @media(max-width:640px) { .zrc-card-rail > * { flex-basis:88%; } }
+        @media(prefers-reduced-motion:reduce) { .zrc-card-rail { scroll-behavior:auto; } }
         .zrc-advisory-intro { padding:20px 24px 4px; margin:0 0 24px; background:linear-gradient(110deg,rgba(29,68,112,.08),rgba(176,139,77,.09)); border:1px solid ${C.border}; border-radius:20px; }
         .zrc-advisory-mandates-heading { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin:36px 0 18px; }
         .zrc-advisory-count { background:${C.surface2}; border:1px solid ${C.goldBorder}; color:${C.gold}; border-radius:999px; padding:9px 13px; font:600 10px ${F.mono}; letter-spacing:.08em; }
