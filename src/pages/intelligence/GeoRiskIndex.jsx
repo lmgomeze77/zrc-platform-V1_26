@@ -1,3 +1,4 @@
+import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
 import GeoRiskGprData from "../../components/GeoRiskGprData";
 import GeoRiskAssetEvidence from "../../components/GeoRiskAssetEvidence";
 // GeoRiskIndex.jsx — ZRC GeoRisk Index (public weekly benchmark)
@@ -432,6 +433,8 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
           </div>}
         </div>
       </FadeIn>
+
+      <FadeIn delay={0.18}><GeoRiskTaxonomyBridge origin="index" lang={lang} /></FadeIn>
 
       <FadeIn delay={0.2}>
         <GeoRiskAssetEvidence lang={lang} />
