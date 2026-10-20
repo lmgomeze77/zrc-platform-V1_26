@@ -1,3 +1,4 @@
+import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
 import { GEORISK_SCENARIOS, GEORISK_SCENARIO_VERSION, GEORISK_MODEL_CLASSIFICATION } from "../../data/georiskScenarioContract.js";
 import GeoRiskPredictiveOutlook from '../../components/GeoRiskPredictiveOutlook.jsx';
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
@@ -695,6 +696,8 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
       <div role="note" style={{border:"1px solid #8B6A35",borderRadius:12,padding:"12px 16px",marginBottom:16,fontSize:12,lineHeight:1.6,background:"#251e10",color:"#F3D8A7"}}>
         <strong>Modelo de escenarios ZRC · {GEORISK_SCENARIO_VERSION}</strong>. Los pesos, riesgos intrínsecos, multiplicadores sectoriales y coeficientes de impacto son <strong>supuestos analíticos, no parámetros calibrados</strong>. Las referencias macro de la simulación son fijas e ilustrativas; los datos observados se muestran por separado con fuente y fecha. El índice público ZRC-GRI es otra metodología y sus puntuaciones no son intercambiables con las del simulador.
       </div>
+          <GeoRiskTaxonomyBridge origin="simulator" />
+
           {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
         {tab === "forecast" && <GeoRiskPredictiveOutlook region={region} onRegionChange={setRegion} />}
 
