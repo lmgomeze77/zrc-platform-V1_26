@@ -29,6 +29,10 @@ on:
       - 'public/georisk-world-42.geojson'
       - 'scripts/collect-georisk-fred.py'
       - 'scripts/georisk-fred-python.test.py'
+      - 'scripts/georisk-market-research-python.test.py'
+      - 'scripts/collect-georisk-market-research.py'
+      - 'public/data/georisk-market-research.json'
+      - '.github/workflows/georisk-market-research-refresh.yml'
       - 'public/data/georisk-fred-cpi.json'
       - '.github/workflows/georisk-fred-refresh.yml'
       - 'scripts/collect-georisk-gpr.py'
@@ -55,6 +59,7 @@ jobs:
       - run: pip install xlrd==2.0.1
       - run: python scripts/georisk-gpr-python.test.py
       - run: python scripts/georisk-fred-python.test.py
+      - run: python scripts/georisk-market-research-python.test.py
       - run: node --test scripts/georisk-forecast.test.js scripts/georisk-risk-model.test.js scripts/georisk-market.test.js scripts/georisk-macro.test.js scripts/georisk-wgi.test.js scripts/georisk-gpr.test.js
       - run: npx wrangler d1 migrations apply zrc-leads --local
       - run: npm run test:schema
