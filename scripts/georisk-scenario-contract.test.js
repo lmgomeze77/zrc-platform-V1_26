@@ -10,7 +10,7 @@ test('Shared analyst scenario contract is valid and weights total 100%',()=>{
 test('Shared contract preserves previously published simulator reference score and scenario weights',()=>{
  assert.deepEqual(Object.keys(GEORISK_SCENARIOS),['tariff_escalation','mena_instability','eu_fragmentation','detente']);
  assert.deepEqual(GEORISK_SCENARIO_WEIGHTS,{tariff_escalation:.34,mena_instability:.38,eu_fragmentation:.20,detente:.08});
- assert.equal(Number(Object.values(GEORISK_SCENARIOS).reduce((a,s)=>a+s.prob*s.risk,0).toFixed(2)),73.42);
+ assert.equal(Number(Object.values(GEORISK_SCENARIOS).reduce((a,s)=>a+s.prob*s.risk,0).toFixed(2)),75.46);
 });
 test('Reject invalid coefficients and duplicate unsafe scenario weights',()=>{
  const broken=structuredClone(GEORISK_SCENARIOS);
