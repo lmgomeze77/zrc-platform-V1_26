@@ -72,7 +72,11 @@ export async function handleGeoRiskForecast(request, env, fetchImpl=fetch, now=n
   ]);
   const series=results.flatMap(r=>r.status==='fulfilled'?r.value.series:[]);
   const outlook=buildOutlook(series,region,now);
-  const snapshot=marketResearchSnapshot?.status==='available'?marketResearchSnapshot.series||[]:[];
+  const snapshot=marketResearchSnapshot?.status==='available'?(marketResearchSnapshot.series||[]).filter(s=>{
+    const collected=Date.parse(s.collected_at||'');
+    const last=Date.parse(s.latest?.date||'');
+    return Number.isFinite(collected)&&Number.isFinite(last)&&collected<=now.getTime()&&now.getTime()-collected<=10*DAY&&last<=now.getTime()&&now.getTime()-last<=15*DAY;
+  }):[];
   // Market observations are independent of geopolitical scores. Show real
   // source observations even when the experimental model has no valid signal.
   outlook.market_observed=snapshot.map(s=>({
