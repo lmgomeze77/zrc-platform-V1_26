@@ -1,3 +1,4 @@
+import { GEORISK_SCENARIOS, GEORISK_SCENARIO_VERSION, GEORISK_MODEL_CLASSIFICATION } from "../../data/georiskScenarioContract.js";
 import GeoRiskGprData from "../../components/GeoRiskGprData";
 import GeoRiskMarketData from "../../components/GeoRiskMarketData";
 import GeoRiskMacroData from "../../components/GeoRiskMacroData";
@@ -54,48 +55,8 @@ const ECONOMIC_VARIABLES_BY_REGION = {
 // Convención: en "fx", positivo = el índice/par cotizado SUBE (EUR/USD, DXY o
 // USD/CNY según la región) — ver ASSET_SENSITIVITY_BY_REGION para cómo esto
 // se traduce a "divisa local más débil/fuerte" en cada caso.
-const SCENARIOS = {
-  tariff_escalation: {
-    label: "Escalada Arancelaria",
-    desc: "Tensiones comerciales EE.UU.–China–UE",
-    prob: 0.34, risk: 78, color: "#F59E0B",
-    impactByRegion: {
-      eu:   { interest_rates: 0.35,  inflation_cpi: 0.55, fx: -0.08, commodities: 0.45, sovereign_yield: 0.40,  capital_flows: -0.60 },
-      usa:  { interest_rates: 0.15,  inflation_cpi: 0.65, fx: 0.30,  commodities: 0.45, sovereign_yield: 0.25,  capital_flows: 0.35 },
-      asia: { interest_rates: -0.10, inflation_cpi: 0.20, fx: 0.55,  commodities: 0.45, sovereign_yield: -0.15, capital_flows: -0.75 },
-    }
-  },
-  mena_instability: {
-    label: "Inestabilidad MENA",
-    desc: "Conflicto Oriente Medio · Disrupción energética",
-    prob: 0.38, risk: 85, color: "#EF4444",
-    impactByRegion: {
-      eu:   { interest_rates: 0.20, inflation_cpi: 0.75, fx: -0.12, commodities: 0.90, sovereign_yield: 0.30,  capital_flows: -0.45 },
-      usa:  { interest_rates: 0.10, inflation_cpi: 0.55, fx: 0.25,  commodities: 0.90, sovereign_yield: 0.15,  capital_flows: 0.30 },
-      asia: { interest_rates: 0.05, inflation_cpi: 0.60, fx: 0.30,  commodities: 0.90, sovereign_yield: -0.10, capital_flows: -0.50 },
-    }
-  },
-  eu_fragmentation: {
-    label: "Fragmentación Europea",
-    desc: "Tensiones soberanas · Spreads periféricos",
-    prob: 0.20, risk: 72, color: "#8B5CF6",
-    impactByRegion: {
-      eu:   { interest_rates: 0.45, inflation_cpi: 0.30, fx: -0.20, commodities: 0.15, sovereign_yield: 0.85,  capital_flows: -0.70 },
-      usa:  { interest_rates: 0.05, inflation_cpi: 0.10, fx: 0.35,  commodities: 0.10, sovereign_yield: -0.10, capital_flows: 0.55 },
-      asia: { interest_rates: 0.05, inflation_cpi: 0.05, fx: 0.15,  commodities: 0.05, sovereign_yield: -0.05, capital_flows: -0.20 },
-    }
-  },
-  detente: {
-    label: "Distensión Geopolítica",
-    desc: "Acuerdos diplomáticos · Reducción primas riesgo",
-    prob: 0.08, risk: 28, color: "#10B981",
-    impactByRegion: {
-      eu:   { interest_rates: -0.20, inflation_cpi: -0.30, fx: 0.08,  commodities: -0.35, sovereign_yield: -0.40, capital_flows: 0.50 },
-      usa:  { interest_rates: -0.10, inflation_cpi: -0.20, fx: -0.15, commodities: -0.35, sovereign_yield: -0.15, capital_flows: -0.10 },
-      asia: { interest_rates: -0.05, inflation_cpi: -0.10, fx: -0.30, commodities: -0.35, sovereign_yield: -0.10, capital_flows: 0.65 },
-    }
-  },
-};
+// Shared versioned analyst scenario configuration — identical in GeoRisk and ML.
+const SCENARIOS = GEORISK_SCENARIOS;
 
 const SECTORS = {
   global:      { label: "Multisectorial",      mult: 1.00 },
@@ -651,6 +612,10 @@ export default function GeoRiskDashboard() {
             <div style={{ fontSize: 12, lineHeight: 1.6, marginTop: 6, color: "#CBD5E1" }}><b>Consejo:</b> {sectionGuide.tip}</div>
           </div>
 
+          
+      <div role="note" style={{border:"1px solid #8B6A35",borderRadius:12,padding:"12px 16px",marginBottom:16,fontSize:12,lineHeight:1.6,background:"#251e10",color:"#F3D8A7"}}>
+        <strong>Modelo de escenarios ZRC · {GEORISK_SCENARIO_VERSION}</strong>. Los pesos, riesgos intrínsecos, multiplicadores sectoriales y coeficientes de impacto son <strong>supuestos analíticos, no parámetros calibrados</strong>. Las referencias macro de la simulación son fijas e ilustrativas; los datos observados se muestran por separado con fuente y fecha. El índice público ZRC-GRI es otra metodología y sus puntuaciones no son intercambiables con las del simulador.
+      </div>
           {/* SCENARIOS */}
         {tab === "data" && (<>
           <GeoRiskMarketData region={region} />
