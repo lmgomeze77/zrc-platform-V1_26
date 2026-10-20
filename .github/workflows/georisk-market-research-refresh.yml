@@ -1,0 +1,34 @@
+name: GeoRisk market research data
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 19 * * 1-5'
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate parser without network
+        run: python scripts/georisk-market-research-python.test.py
+      - name: Retrieve and validate observations
+        run: python scripts/collect-georisk-market-research.py
+      - name: Commit verified snapshot only
+        run: |
+          if git diff --quiet -- public/data/georisk-market-research.json; then
+            echo "No data changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/georisk-market-research.json
+          git commit -m "data: refresh verified GeoRisk market research snapshot"
+          git push
+      # A GITHUB_TOKEN push will NOT trigger the normal push-based deploy workflow.
+      # Deployment remains a separate reviewed action; never claim new data is live.
