@@ -4,7 +4,7 @@ import {GEORISK_SCENARIOS,GEORISK_SCENARIO_VERSION,GEORISK_SCENARIO_WEIGHTS,GEOR
 test('Shared analyst scenario contract is valid and weights total 100%',()=>{
  assert.equal(validateScenarioContract(),true);
  assert.ok(GEORISK_SCENARIO_VERSION.includes('2026'));
- assert.equal(Object.values(GEORISK_SCENARIO_WEIGHTS).reduce((a,b)=>a+b,0),1);
+ assert.ok(Math.abs(Object.values(GEORISK_SCENARIO_WEIGHTS).reduce((a,b)=>a+b,0)-1)<1e-12);
  assert.equal(GEORISK_MODEL_CLASSIFICATION.impact_coefficients,'analyst_assumption');
 });
 test('Shared contract preserves previously published simulator reference score and scenario weights',()=>{
