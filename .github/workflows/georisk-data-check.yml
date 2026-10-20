@@ -15,6 +15,7 @@ on:
       - 'src/components/GeoRiskMarketData.jsx'
       - 'src/pages/PricingPage.jsx'
       - 'scripts/georisk-forecast.test.js'
+      - 'scripts/georisk-risk-model.test.js'
       - 'src/components/GeoRiskPredictiveOutlook.jsx'
       - 'scripts/georisk-market.test.js'
       - 'scripts/georisk-macro.test.js'
@@ -54,7 +55,7 @@ jobs:
       - run: pip install xlrd==2.0.1
       - run: python scripts/georisk-gpr-python.test.py
       - run: python scripts/georisk-fred-python.test.py
-      - run: node --test scripts/georisk-forecast.test.js scripts/georisk-market.test.js scripts/georisk-macro.test.js scripts/georisk-wgi.test.js scripts/georisk-gpr.test.js
+      - run: node --test scripts/georisk-forecast.test.js scripts/georisk-risk-model.test.js scripts/georisk-market.test.js scripts/georisk-macro.test.js scripts/georisk-wgi.test.js scripts/georisk-gpr.test.js
       - run: npx wrangler d1 migrations apply zrc-leads --local
       - run: npm run test:schema
       - run: npm run test:georisk-map
