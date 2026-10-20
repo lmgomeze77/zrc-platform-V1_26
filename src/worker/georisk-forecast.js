@@ -1,3 +1,4 @@
+import marketResearchSnapshot from '../../public/data/georisk-market-research.json';
 import { evaluateRiskModel, loadWeeklyRiskHistory } from './georisk-risk-model.js';
 import { fetchGeoRiskMacroSeries } from './georisk-macro.js';
 import { ECB_HISTORY_URL, ECB_SOURCE_URL, parseECBHistory } from './georisk-market.js';
@@ -71,7 +72,17 @@ export async function handleGeoRiskForecast(request, env, fetchImpl=fetch, now=n
   ]);
   const series=results.flatMap(r=>r.status==='fulfilled'?r.value.series:[]);
   const outlook=buildOutlook(series,region,now);
+  const snapshot=marketResearchSnapshot?.status==='available'?marketResearchSnapshot.series||[]:[];
+  // Market observations are independent of geopolitical scores. Show real
+  // source observations even when the experimental model has no valid signal.
+  outlook.market_observed=snapshot.map(s=>({
+    id:s.id,label:s.label,unit:s.unit,provider:s.provider,
+    source_url:s.source_url,latest:s.latest,collected_at:s.collected_at,
+    observations:s.points?.length||0,
+    // This archive is a current re-download, never a point-in-time vintage.
+    history_vintage:'latest_download',status:s.latest?'observed':'unavailable'
+  }));
   const riskHistory=await loadWeeklyRiskHistory(env,fetchImpl);
-  outlook.risk_research={status:'experimental',index_source:'ZRC-GRI weekly snapshots',method:'risk-conditioned ridge vs unchanged-price baseline',series:outlook.series.filter(s=>/^(EUR|USD)/.test(s.id)).map(s=>({id:s.id,horizons:[30,90].map(h=>evaluateRiskModel(series.find(x=>x.id===s.id)||s,riskHistory,h,now))}))};
+  outlook.risk_research={status:'experimental',index_source:'ZRC-GRI weekly snapshots',method:'risk-conditioned ridge vs unchanged-price baseline',series:[...outlook.series.filter(s=>/^(EUR|USD)/.test(s.id)).map(s=>series.find(x=>x.id===s.id)||s),...snapshot.map(s=>({...s,frequency:'daily'}))].map(s=>({id:s.id,horizons:[30,90].map(h=>evaluateRiskModel(s,riskHistory,h,now))}))};
   return new Response(JSON.stringify(outlook),{headers:{'Content-Type':'application/json; charset=utf-8','Access-Control-Allow-Origin':'*','Cache-Control':'public, max-age=1800'}});
 }
