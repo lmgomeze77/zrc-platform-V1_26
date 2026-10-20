@@ -1,7 +1,8 @@
+import { evaluateRiskModel, loadWeeklyRiskHistory } from './georisk-risk-model.js';
 import { fetchGeoRiskMacroSeries } from './georisk-macro.js';
 import { ECB_HISTORY_URL, ECB_SOURCE_URL, parseECBHistory } from './georisk-market.js';
 const DAY = 86400000;
-export const FORECAST_VERSION = 'observed-outlook-1.0';
+export const FORECAST_VERSION = 'risk-research-2.0';
 const quantile = (values, q) => [...values].sort((a,b)=>a-b)[Math.min(values.length-1, Math.ceil(q*values.length)-1)];
 function estimate(points, days, method, monthly) {
   const last = points.at(-1);
@@ -69,5 +70,8 @@ export async function handleGeoRiskForecast(request, env, fetchImpl=fetch, now=n
     (async()=>{const r=await fetchImpl(ECB_HISTORY_URL,{signal:AbortSignal.timeout(20000)});if(!r.ok)throw new Error('ECB unavailable');return {series:parseECBHistory(await r.text(),now).map(s=>({...s,provider:'BCE',source_url:ECB_SOURCE_URL,frequency:'daily'}))};})()
   ]);
   const series=results.flatMap(r=>r.status==='fulfilled'?r.value.series:[]);
-  return new Response(JSON.stringify(buildOutlook(series,region,now)),{headers:{'Content-Type':'application/json; charset=utf-8','Access-Control-Allow-Origin':'*','Cache-Control':'public, max-age=1800'}});
+  const outlook=buildOutlook(series,region,now);
+  const riskHistory=await loadWeeklyRiskHistory(env,fetchImpl);
+  outlook.risk_research={status:'experimental',index_source:'ZRC-GRI weekly snapshots',method:'risk-conditioned ridge vs unchanged-price baseline',series:outlook.series.filter(s=>/^(EUR|USD)/.test(s.id)).map(s=>({id:s.id,horizons:[30,90].map(h=>evaluateRiskModel(series.find(x=>x.id===s.id)||s,riskHistory,h,now))}))};
+  return new Response(JSON.stringify(outlook),{headers:{'Content-Type':'application/json; charset=utf-8','Access-Control-Allow-Origin':'*','Cache-Control':'public, max-age=1800'}});
 }

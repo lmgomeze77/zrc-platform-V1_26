@@ -76,6 +76,17 @@ export default function GeoRiskPredictiveOutlook({region,onRegionChange}){
     </>:<p role="status" style={{color:'#FBBF24',marginTop:16}}>No se puede publicar esta estimación: {chosen?.reason||active.reason||'No hay suficiente histórico validado.'}</p>}
     <p style={{fontSize:12,color:'#94A3B8',marginTop:16}}>Dato observado: {active.frequency==='monthly'?'periodo':'fecha'} {active.latest?.date||'no disponible'}. {active.source_url&&<a href={active.source_url} target="_blank" rel="noopener noreferrer" style={{color:'#93C5FD'}}>Consultar fuente: {active.provider}</a>}</p>
    </article>}
+   {ready.risk_research&&<div className="grml-card" style={{padding:20,marginBottom:16}}>
+    <div style={{fontSize:11,letterSpacing:1,color:'#6EE7B7'}}>LABORATORIO · ZRC-GRI</div>
+    <h3 style={{margin:'6px 0 10px',fontSize:20}}>¿El riesgo geopolítico mejora la previsión?</h3>
+    <p style={{fontSize:14,color:'#CBD5E1'}}>Contrastamos el índice semanal de ZRC con el comportamiento posterior de las divisas. Solo mostramos una señal experimental cuando mejora al modelo de precio sin cambios en pruebas fuera de muestra. Las estimaciones principales no se alteran.</p>
+    {(()=>{const research=ready.risk_research.series?.find(r=>r.id===active?.id)?.horizons.find(h=>h.horizon===horizon);return research?<div style={tone}>
+     <div style={{color:research.status==='research_validated'?'#6EE7B7':'#FBBF24',fontWeight:700,fontSize:14}}>{research.status==='research_validated'?'Señal experimental validada':'Aún sin evidencia predictiva suficiente'}</div>
+     {research.index&&<p style={{fontSize:13}}>Último ZRC-GRI admisible: <b>{number(research.index.value,'')}</b>/100 · cambio semanal {number(research.index.weekly_change,'')} puntos · semana {research.index.week}.</p>}
+     {research.status==='research_validated'?<p style={{fontSize:14}}>Estimación condicionada: <b>{number(research.point,active.id)} {active.unit}</b> · mejora fuera de muestra: {(research.improvement*100).toFixed(1)}% frente a mantener el precio.</p>:<p style={{fontSize:13,color:'#CBD5E1'}}>{research.reason} {Number.isFinite(research.improvement)?`Mejora medida: ${(research.improvement*100).toFixed(1)}%.`:''}</p>}
+    </div>:<p style={{fontSize:13,color:'#94A3B8'}}>Este indicador aún no participa en las pruebas del modelo condicionado por el índice.</p>})()}
+    <p style={{fontSize:12,color:'#94A3B8'}}>Investigación, no señal de inversión. Se excluyen snapshots de respaldo; la evaluación emplea ventanas no solapadas y puntuaciones disponibles antes de cada predicción.</p>
+   </div>}
    <div className="grml-card" style={{padding:18,marginBottom:16}}><h3 style={{margin:'0 0 8px'}}>Indicadores por incorporar</h3><p style={{fontSize:14,color:'#CBD5E1',margin:0}}>{ready.missing?.join(' · ')||'Sin información sobre cobertura pendiente'}. Se mostrarán como series reales cuando estén conectadas y validadas.</p></div>
   </>}
   <div role="note" style={{padding:14,border:'1px solid #7C5A1B',borderRadius:10,color:'#FDE68A',background:'#2A2112',fontSize:12}}>Estas cifras son referencias estadísticas, no predicciones seguras. La continuidad puede ser el modelo escogido cuando obtiene mejores resultados históricos. No se anticipan decisiones de bancos centrales ni shocks geopolíticos. Las pruebas usan el histórico disponible hoy, no reconstruyen la información conocida en cada publicación.</div>
