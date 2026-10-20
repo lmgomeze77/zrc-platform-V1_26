@@ -57,7 +57,7 @@ export function forecastSeries(item, now = new Date()) {
   return {...base,status:'available',horizons};
 }
 export function buildOutlook(series, region, now = new Date()) {
-  const ids = region==='eu'?['ECB_DEPOSIT_RATE','EU_HICP','EURUSD','ECB_10Y_YIELD']:region==='usa'?['US_CPI','EURUSD']:['USDCNY'];
+  const ids = region==='eu'?['ECB_DEPOSIT_RATE','EU_HICP','ECB_10Y_YIELD','EURUSD','EURGBP','EURCNY','EURMXN','EURBRL','EURTRY','EURILS','EURZAR']:region==='usa'?['US_CPI','EURUSD','USDCNY']:['USDCNY','EURCNY'];
   return {version:FORECAST_VERSION,region,generated_at:now.toISOString(),series:ids.map(id=>forecastSeries(series.find(s=>s.id===id)||{id,label:id},now)),
     missing:region==='eu'?['Materias primas','Flujos de inversión extranjera','Diferenciales de crédito']:region==='usa'?['Tipo oficial de la Fed','Rendimiento del Treasury a 10 años','Materias primas','Flujos de inversión extranjera']:['Inflación de China','Tipo oficial de China','Rendimiento soberano','Materias primas','Flujos de inversión extranjera']};
 }

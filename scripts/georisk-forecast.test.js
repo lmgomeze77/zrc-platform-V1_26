@@ -27,7 +27,7 @@ test('missing, stale and short histories never produce invented forecasts',()=>{
 test('region selects real matching series and explicitly identifies missing coverage',()=>{
  const series=[{id:'EU_HICP',frequency:'monthly',points:monthly},{id:'USDCNY',points:daily}];
  const eu=buildOutlook(series,'eu',now),asia=buildOutlook(series,'asia',now);
- assert.equal(eu.series.length,4);assert.equal(asia.series.length,1);assert.equal(asia.series[0].id,'USDCNY');assert.ok(asia.missing.includes('Inflación de China'));
+ assert.equal(eu.series.length,11);assert.equal(asia.series.length,2);assert.equal(asia.series[0].id,'USDCNY');assert.ok(asia.missing.includes('Inflación de China'));
 });
 test('source failure gives unavailable coverage and endpoint rejects unknown region',async()=>{
  const fail=async()=>{throw new Error('offline');};

@@ -1,44 +1,83 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 const API='https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-forecast';
 const number=(value,id)=>new Intl.NumberFormat('es-ES',{maximumFractionDigits:/^(EUR|USD)/.test(id)?4:2}).format(value);
-const labels={eu:'Zona Euro',usa:'Estados Unidos',asia:'Asia · China'};
+const labels={eu:'Zona Euro',usa:'Estados Unidos',asia:'China'};
+const groups={ECB_DEPOSIT_RATE:'Tipos y bonos',ECB_10Y_YIELD:'Tipos y bonos',US_CPI:'Inflación',EU_HICP:'Inflación',EURUSD:'Divisas',EURGBP:'Divisas',EURCNY:'Divisas',USDCNY:'Divisas',EURMXN:'Divisas',EURBRL:'Divisas',EURTRY:'Divisas',EURILS:'Divisas',EURZAR:'Divisas'};
+const descriptions={persistence:'El modelo mantiene el último valor observado. Es una referencia, no una señal direccional.',trend:'El modelo prolonga una tendencia histórica; no tiene en cuenta decisiones inesperadas.'};
+const groupNames=['Todos','Inflación','Tipos y bonos','Divisas'];
+const tone={background:'#102219',border:'1px solid #244433',borderRadius:12,padding:16};
 const watch={ECB_DEPOSIT_RATE:'Próxima decisión del BCE y nueva comunicación de política monetaria.',EU_HICP:'Próxima publicación del IPC armonizado y cambios en energía e inflación subyacente.',US_CPI:'Próxima publicación del IPC de BLS y cambios en energía e inflación subyacente.',EURUSD:'Decisiones del BCE y la Fed; sorpresas de inflación y movimientos del dólar.',USDCNY:'Fijación del renminbi, decisiones del PBoC y cambios en tensiones comerciales.',ECB_10Y_YIELD:'Decisiones del BCE, inflación y cambios en la prima de plazo.'};
 const implications={ECB_DEPOSIT_RATE:'Revisar sensibilidad de financiación y efectivo ante una decisión distinta del escenario de continuidad.',EU_HICP:'Contrastar márgenes, poder de fijación de precios y exposición a costes energéticos.',US_CPI:'Revisar exposición a duración y sensibilidad a cambios en la política monetaria estadounidense.',EURUSD:'Revisar exposición cambiaria de ingresos y costes; contrastar la banda con las coberturas existentes.',USDCNY:'Revisar exposición al renminbi y sensibilidad de costes de importación y exportación.',ECB_10Y_YIELD:'Contrastar duración y coste de financiación. Esta serie no es un diferencial de crédito ni un Bund individual.'};
 export default function GeoRiskPredictiveOutlook({region,onRegionChange}){
  const [data,setData]=useState(null),[loading,setLoading]=useState(true),[error,setError]=useState(''),[attempt,setAttempt]=useState(0);
+ const [horizon,setHorizon]=useState(30),[group,setGroup]=useState('Todos'),[selected,setSelected]=useState(null),[details,setDetails]=useState(false);
  useEffect(()=>{const controller=new AbortController();setData(null);setLoading(true);setError('');
   fetch(`${API}?region=${region}`,{signal:controller.signal}).then(async r=>{const d=await r.json();if(!r.ok)throw new Error(d.error||'No se pudo obtener la previsión.');if(d.region!==region||!Array.isArray(d.series))throw new Error('La respuesta predictiva no corresponde a la región solicitada.');setData(d);}).catch(e=>{if(e.name!=='AbortError')setError(e.message);}).finally(()=>{if(!controller.signal.aborted)setLoading(false);});return()=>controller.abort();
  },[region,attempt]);
  const ready=data?.region===region?data:null;
  const control={background:'#142a20',color:'#E2E8F0',border:'1px solid #475569',borderRadius:7,padding:'9px 12px',cursor:'pointer'};
  const covered=ready?.series.filter(s=>s.horizons?.some(h=>h.status==='available')).length||0;
- return <section aria-label="Perspectiva predictiva" style={{lineHeight:1.65}}>
+ const filtered=useMemo(()=>ready?.series.filter(s=>group==='Todos'||groups[s.id]===group)||[],[ready,group]);
+ const active=filtered.find(s=>s.id===selected)||filtered.find(s=>s.horizons?.some(h=>h.status==='available'))||filtered[0];
+ const chosen=active?.horizons?.find(h=>h.horizon===horizon);
+ const activeGroup=groups[active?.id]||'Indicadores';
+ const summary=h=>h?.direction==='up'?'Tendencia al alza':h?.direction==='down'?'Tendencia a la baja':'Sin cambio previsto';
+ const cards=ready?.series||[];
+ return <section aria-label="Previsión macroeconómica y de mercados" style={{lineHeight:1.5}}>
   <div className="grml-card" style={{padding:20,marginBottom:16}}>
-   <h2 style={{margin:'0 0 8px',fontSize:23}}>Pronóstico de parámetros · 30 y 90 días</h2>
-   <p style={{color:'#CBD5E1',fontSize:14}}>GeoRisk muestra lo observado. Esta perspectiva estima niveles futuros a partir de las mismas series oficiales y contrasta sus errores con resultados históricos. El score de escenarios se consulta en Supuestos; no se convierte en una probabilidad de este pronóstico.</p>
-   <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>{Object.entries(labels).map(([key,label])=><button key={key} aria-pressed={region===key} style={{...control,borderColor:region===key?'#A78BFA':'#475569'}} onClick={()=>onRegionChange(key)}>{label}</button>)}<button style={control} disabled={loading} onClick={()=>setAttempt(n=>n+1)}>Actualizar pronóstico</button></div>
-   {loading&&<p role="status">Consultando referencias y contrastando el histórico…</p>}
-   {error&&<p role="alert" style={{color:'#FBBF24'}}>{error} Reintenta la consulta; no se generan cifras de sustitución.</p>}
-   {ready&&<p style={{fontSize:12,color:'#94A3B8'}}>Emitido: {new Date(ready.generated_at).toLocaleString('es-ES',{timeZone:'Europe/Madrid'})} · {labels[region]} · {covered} parámetros con pronóstico disponible · {ready.version}</p>}
+   <div style={{fontSize:12,color:'#6EE7B7',letterSpacing:1}}>GEORISK · PERSPECTIVAS</div>
+   <h2 style={{margin:'6px 0 8px',fontSize:24}}>Qué puede pasar en los próximos 30 o 90 días</h2>
+   <p style={{color:'#CBD5E1',fontSize:14,marginTop:0}}>Consulta el último dato, la estimación y su margen de error. Selecciona un indicador para ver qué factores pueden cambiar el resultado.</p>
+   <div style={{display:'flex',gap:8,flexWrap:'wrap',margin:'12px 0'}}>{Object.entries(labels).map(([key,label])=><button key={key} aria-pressed={region===key} style={{...control,borderColor:region===key?'#A78BFA':'#475569',background:region===key?'#2A2340':control.background}} onClick={()=>{setSelected(null);setGroup('Todos');onRegionChange(key)}}>{label}</button>)}</div>
+   <div style={{display:'flex',gap:8,flexWrap:'wrap',alignItems:'center',margin:'12px 0'}}>
+    <span style={{color:'#94A3B8',fontSize:13}}>Horizonte:</span>
+    {[30,90].map(n=><button key={n} aria-pressed={horizon===n} style={{...control,padding:'7px 13px',background:horizon===n?'#234A35':control.background,borderColor:horizon===n?'#4ADE80':'#475569'}} onClick={()=>setHorizon(n)}>{n} días</button>)}
+    <button style={{...control,marginLeft:'auto'}} disabled={loading} onClick={()=>setAttempt(n=>n+1)}>↻ Actualizar datos</button>
+   </div>
+   {loading&&<p role="status">Consultando fuentes y calculando estimaciones…</p>}
+   {error&&<p role="alert" style={{color:'#FBBF24'}}>{error} No se muestran cifras inventadas.</p>}
+   {ready&&<p style={{fontSize:12,color:'#94A3B8',marginBottom:0}}>Consultado: {new Date(ready.generated_at).toLocaleString('es-ES',{timeZone:'Europe/Madrid'})} · {covered} de {cards.length} indicadores con previsión disponible · Modelo {ready.version}</p>}
   </div>
-  {ready?.series.map(item=><article key={item.id} className="grml-card" style={{padding:20,marginBottom:16}}>
-   <h3 style={{fontSize:18,margin:'0 0 8px'}}>{item.label}</h3>
-   <p style={{margin:'0 0 12px',color:'#CBD5E1'}}>Referencia observada: <b>{item.latest?`${number(item.latest.value,item.id)} ${item.unit}`:'No disponible'}</b>{item.latest&&<> · {item.frequency==='monthly'?'Periodo':'Fecha'}: <b>{item.frequency==='monthly'?item.latest.date.slice(0,7):item.latest.date}</b></>}. {item.source_url&&<a href={item.source_url} target="_blank" rel="noopener noreferrer" style={{color:'#93C5FD'}}>Fuente: {item.provider}</a>}</p>
-   {item.source_captured_at&&<p style={{fontSize:12,color:'#94A3B8'}}>Captura de la fuente: {new Date(item.source_captured_at).toLocaleString('es-ES',{timeZone:'Europe/Madrid'})}. La fecha de emisión no actualiza el periodo observado.</p>}
-   {item.status==='unavailable'?<p role="status" style={{color:'#FBBF24'}}>Sin pronóstico: {item.reason}</p>:<div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))',gap:12}}>{item.horizons.map(h=><div key={h.horizon} style={{background:'#102219',padding:16,borderRadius:8,border:'1px solid #244433'}}>
-    <div style={{fontSize:12,color:'#A78BFA'}}>A {h.horizon} DÍAS · {item.frequency==='monthly'?`periodo ${h.target_date.slice(0,7)}`:h.target_date}</div>
-    {h.status!=='available'?<p style={{color:'#FBBF24'}}>Sin pronóstico: {h.reason}</p>:<>
-     <strong style={{fontSize:25}}>{number(h.point,item.id)} <span style={{fontSize:13}}>{item.unit}</span></strong>
-     <div style={{color:'#C4B5FD'}}>{h.direction==='up'?'↑ Al alza':h.direction==='down'?'↓ A la baja':'→ Continuidad'} · {h.basis}</div>
-     <p style={{fontSize:13}}>Banda de error histórico: <b>{number(h.lower,item.id)} – {number(h.upper,item.id)}</b> {item.unit}</p>
-     <p style={{fontSize:12,color:'#94A3B8'}}>Validación retrospectiva: {h.validation.samples} pronósticos · error absoluto medio {number(h.validation.mae,item.id)} {item.unit}. Referencia de continuidad: {number(h.validation.baseline_mae,item.id)} {item.unit}. Periodo: {h.validation.start} a {h.validation.end}.</p>
-     {h.validation_warning&&<p style={{fontSize:12,color:'#FBBF24'}}>{h.validation_warning}</p>}
-    </>}
-   </div>)}</div>}
-   <p style={{fontSize:13,marginBottom:4}}><b>Qué vigilar en 30 días:</b> {watch[item.id]}</p>
-   <p style={{fontSize:13,marginTop:4}}><b>Implicación para la inversión:</b> {implications[item.id]}</p>
-  </article>)}
-  {ready&&<div className="grml-card" style={{padding:20,marginBottom:16}}><h3 style={{marginTop:0}}>Cobertura pendiente</h3><p>{ready.missing.join(' · ')}. Estos parámetros requieren series adecuadas antes de publicar un pronóstico.</p></div>}
-  <div role="note" style={{padding:16,border:'1px solid #7C5A1B',borderRadius:8,color:'#FDE68A',background:'#2A2112',fontSize:12}}>Pronóstico estadístico de referencia; no es una probabilidad calibrada ni una predicción de decisiones de bancos centrales. La banda resume el 80% de los errores del periodo histórico evaluado; no garantiza cobertura futura. La inflación se proyecta por periodo mensual. Las revisiones de datos no se reconstruyen por fecha de publicación: la validación utiliza las series actualmente disponibles. Un cambio de régimen, conflicto o decisión monetaria puede invalidar la proyección. Los supuestos de escenarios y el sector no alteran estas cifras automáticamente.</div>
+  {ready&&<>
+   <div className="grml-card" style={{padding:20,marginBottom:16}}>
+    <h3 style={{margin:'0 0 8px',fontSize:19}}>Explora los indicadores</h3>
+    <div style={{display:'flex',gap:8,flexWrap:'wrap',marginBottom:16}}>{groupNames.map(name=><button key={name} onClick={()=>{setGroup(name);setSelected(null)}} aria-pressed={group===name} style={{...control,padding:'7px 11px',background:group===name?'#234A35':control.background,borderColor:group===name?'#4ADE80':'#475569'}}>{name}</button>)}</div>
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(175px,1fr))',gap:10}}>
+     {filtered.map(item=>{const h=item.horizons?.find(h=>h.horizon===horizon);const available=h?.status==='available';return <button type="button" key={item.id} onClick={()=>{setSelected(item.id);setDetails(false)}} aria-pressed={active?.id===item.id} style={{...tone,color:'#E2E8F0',cursor:'pointer',textAlign:'left',borderColor:active?.id===item.id?'#A78BFA':'#244433'}}>
+      <div style={{fontSize:12,color:'#94A3B8'}}>{groups[item.id]||'Indicador'}</div>
+      <div style={{fontWeight:700,margin:'4px 0'}}>{item.label}</div>
+      <div style={{fontSize:18,fontWeight:700}}>{item.latest?number(item.latest.value,item.id):'—'} <span style={{fontSize:11,fontWeight:400}}>{item.unit}</span></div>
+      <div style={{fontSize:12,color:available?'#C4B5FD':'#FBBF24',marginTop:6}}>{available?summary(h):'Previsión no disponible'}</div>
+     </button>})}
+    </div>
+    {!filtered.length&&<p style={{color:'#FBBF24'}}>Todavía no hay indicadores conectados a esta categoría para esta región.</p>}
+   </div>
+   {active&&<article className="grml-card" style={{padding:20,marginBottom:16}}>
+    <div style={{fontSize:12,color:'#6EE7B7'}}>{activeGroup} · {labels[region]}</div>
+    <h3 style={{fontSize:21,margin:'6px 0 12px'}}>{active.label}</h3>
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(155px,1fr))',gap:10}}>
+     <div style={tone}><div style={{color:'#94A3B8',fontSize:12}}>Último dato publicado</div><div style={{fontSize:23,fontWeight:700}}>{active.latest?number(active.latest.value,active.id):'—'}</div><div style={{fontSize:12}}>{active.unit} · {active.latest?.date||'Sin fecha'}</div></div>
+     <div style={tone}><div style={{color:'#94A3B8',fontSize:12}}>Estimación a {horizon} días</div><div style={{fontSize:23,fontWeight:700}}>{chosen?.status==='available'?number(chosen.point,active.id):'—'}</div><div style={{fontSize:12,color:'#C4B5FD'}}>{chosen?.status==='available'?summary(chosen):'Sin estimación validada'}</div></div>
+     <div style={tone}><div style={{color:'#94A3B8',fontSize:12}}>Margen histórico</div><div style={{fontSize:18,fontWeight:700}}>{chosen?.status==='available'?`${number(chosen.lower,active.id)} – ${number(chosen.upper,active.id)}`:'—'}</div><div style={{fontSize:12}}>Rango basado en errores anteriores</div></div>
+    </div>
+    {chosen?.status==='available'?<>
+     <div style={{marginTop:16,padding:16,background:'#122A22',borderLeft:'3px solid #A78BFA',borderRadius:8}}>
+      <strong style={{color:'#D8B4FE'}}>Interpretación sencilla</strong>
+      <p style={{margin:'6px 0',fontSize:14}}>{chosen.basis?.includes('continuidad')?descriptions.persistence:descriptions.trend} Para {chosen.target_date}, el modelo sitúa la referencia en <b>{number(chosen.point,active.id)} {active.unit}</b>. El rango observado en pruebas históricas va de <b>{number(chosen.lower,active.id)} a {number(chosen.upper,active.id)}</b>.</p>
+      {chosen.validation_warning&&<p style={{color:'#FBBF24',fontSize:13}}>{chosen.validation_warning}</p>}
+     </div>
+     <p style={{fontSize:14}}><b>Qué puede moverlo:</b> {watch[active.id]||'Cambios en política económica, mercados o entorno geopolítico.'}</p>
+     <p style={{fontSize:14}}><b>Para empresas e inversores:</b> {implications[active.id]||'Valorar la exposición al indicador, los escenarios alternativos y las coberturas.'}</p>
+     <button style={control} aria-expanded={details} onClick={()=>setDetails(x=>!x)}>{details?'Ocultar detalle técnico':'Ver fiabilidad y metodología'} {details?'−':'+'}</button>
+     {details&&<div style={{fontSize:13,color:'#CBD5E1',marginTop:12}}>
+      <p><b>Modelo:</b> {chosen.basis}. <b>Pruebas retrospectivas:</b> {chosen.validation.samples}; <b>error medio:</b> {number(chosen.validation.mae,active.id)} {active.unit}; <b>error manteniendo el último dato:</b> {number(chosen.validation.baseline_mae,active.id)} {active.unit}.</p>
+      <p>El rango se obtiene de los errores del histórico, no constituye una banda de confianza calibrada ni garantiza cobertura futura. Periodo de evaluación: {chosen.validation.start} a {chosen.validation.end}.</p>
+     </div>}
+    </>:<p role="status" style={{color:'#FBBF24',marginTop:16}}>No se puede publicar esta estimación: {chosen?.reason||active.reason||'No hay suficiente histórico validado.'}</p>}
+    <p style={{fontSize:12,color:'#94A3B8',marginTop:16}}>Dato observado: {active.frequency==='monthly'?'periodo':'fecha'} {active.latest?.date||'no disponible'}. {active.source_url&&<a href={active.source_url} target="_blank" rel="noopener noreferrer" style={{color:'#93C5FD'}}>Consultar fuente: {active.provider}</a>}</p>
+   </article>}
+   <div className="grml-card" style={{padding:18,marginBottom:16}}><h3 style={{margin:'0 0 8px'}}>Indicadores por incorporar</h3><p style={{fontSize:14,color:'#CBD5E1',margin:0}}>{ready.missing?.join(' · ')||'Sin información sobre cobertura pendiente'}. Se mostrarán como series reales cuando estén conectadas y validadas.</p></div>
+  </>}
+  <div role="note" style={{padding:14,border:'1px solid #7C5A1B',borderRadius:10,color:'#FDE68A',background:'#2A2112',fontSize:12}}>Estas cifras son referencias estadísticas, no predicciones seguras. La continuidad puede ser el modelo escogido cuando obtiene mejores resultados históricos. No se anticipan decisiones de bancos centrales ni shocks geopolíticos. Las pruebas usan el histórico disponible hoy, no reconstruyen la información conocida en cada publicación.</div>
  </section>;
 }
