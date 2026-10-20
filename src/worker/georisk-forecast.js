@@ -1,4 +1,4 @@
-import marketResearchSnapshot from '../../public/data/georisk-market-research.json';
+import marketResearchSnapshot from '../../public/data/georisk-market-research.json' with { type: 'json' };
 import { evaluateRiskModel, loadWeeklyRiskHistory } from './georisk-risk-model.js';
 import { fetchGeoRiskMacroSeries } from './georisk-macro.js';
 import { ECB_HISTORY_URL, ECB_SOURCE_URL, parseECBHistory } from './georisk-market.js';
