@@ -76,6 +76,19 @@ export default function GeoRiskPredictiveOutlook({region,onRegionChange}){
     </>:<p role="status" style={{color:'#FBBF24',marginTop:16}}>No se puede publicar esta estimación: {chosen?.reason||active.reason||'No hay suficiente histórico validado.'}</p>}
     <p style={{fontSize:12,color:'#94A3B8',marginTop:16}}>Dato observado: {active.frequency==='monthly'?'periodo':'fecha'} {active.latest?.date||'no disponible'}. {active.source_url&&<a href={active.source_url} target="_blank" rel="noopener noreferrer" style={{color:'#93C5FD'}}>Consultar fuente: {active.provider}</a>}</p>
    </article>}
+   <div className="grml-card" style={{padding:20,marginBottom:16}}>
+    <div style={{fontSize:11,letterSpacing:1,color:'#6EE7B7'}}>MERCADOS · DATOS PUBLICADOS</div>
+    <h3 style={{fontSize:19,margin:'6px 0 8px'}}>Precios e indicadores adicionales</h3>
+    <p style={{fontSize:13,color:'#CBD5E1'}}>Brent, WTI, gas natural Henry Hub y bono estadounidense a diez años. Cotizaciones históricas de referencia, no precios en tiempo real ni predicciones automáticas.</p>
+    {ready.market_observed?.length?<div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(170px,1fr))',gap:10}}>
+      {ready.market_observed.map(m=><div key={m.id} style={tone}>
+        <div style={{color:'#94A3B8',fontSize:12}}>{m.label}</div>
+        <div style={{fontSize:21,fontWeight:700,marginTop:6}}>{number(m.latest.value,m.id)} <span style={{fontSize:11,fontWeight:400}}>{m.unit}</span></div>
+        <div style={{color:'#94A3B8',fontSize:12}}>Dato: {m.latest.date} · {m.observations} observaciones</div>
+        <a target="_blank" rel="noopener noreferrer" href={m.source_url} style={{color:'#93C5FD',fontSize:12}}>Fuente: {m.provider}</a>
+      </div>)}
+    </div>:<p role="status" style={{color:'#FBBF24',fontSize:13}}>La nueva cesta todavía no tiene una captura verificada publicada. No se muestran valores de sustitución.</p>}
+   </div>}
    {ready.risk_research&&<div className="grml-card" style={{padding:20,marginBottom:16}}>
     <div style={{fontSize:11,letterSpacing:1,color:'#6EE7B7'}}>LABORATORIO · ZRC-GRI</div>
     <h3 style={{margin:'6px 0 10px',fontSize:20}}>¿El riesgo geopolítico mejora la previsión?</h3>
