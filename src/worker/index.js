@@ -1,3 +1,4 @@
+import { validateIndexInputs, analyzeIndexHistory, explainIndexInputs, GRI_METHOD_VERSION } from "./georisk-index-v2.js";
 import { handleGeoRiskForecast } from "./georisk-forecast.js";
 import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";
 import { MACRO_SERIES, fetchGeoRiskMacroSeries, handleGeoRiskMacroData, storeGeoRiskMacroSeries } from "./georisk-macro.js";
@@ -888,7 +889,8 @@ async function loadGeoRiskInputs(env) {
     if (!row || !Array.isArray(row.scenarios) || row.scenarios.length !== 4) throw new Error("no valid inputs");
     const scenarios = row.scenarios.map(s => ({ key: s.key, label: s.label, prob: Number(s.prob), risk: Number(s.risk) }));
     const probTotal = scenarios.reduce((n,s) => n + s.prob, 0);
-    if (Math.abs(probTotal - 1) > 0.005 || scenarios.some(s => !Number.isFinite(s.risk) || s.risk < 0 || s.risk > 100)) throw new Error("invalid inputs");
+    const check = validateIndexInputs(scenarios, row.effective_date);
+    if (!check.ok) throw new Error(check.reason);
     return { scenarios, inputDate: row.effective_date, summary: row.summary || null, status: "evidence_driven" };
   } catch (err) {
     console.error("GeoRisk inputs fallback:", err);
@@ -911,6 +913,12 @@ async function computeAndStoreWeeklySnapshot(env, source) {
   }
 
   const inputs = await loadGeoRiskInputs(env);
+  // Never publish an evidence-like historical print based on static fallback.
+  if (inputs.status !== "evidence_driven")
+    return { ok: false, error: "No verified index inputs; static fallback not archived" };
+  const quality=validateIndexInputs(inputs.scenarios,inputs.inputDate);
+  if(!quality.ok||quality.stale)
+    return {ok:false,error:"Inputs no longer fresh enough for a new weekly publication"};
   const { value, dominantScenario, riskLabel } = computeGeoRiskIndexValue(inputs.scenarios);
   const weekStart = isoWeekMonday(new Date());
 
@@ -1008,10 +1016,16 @@ async function computeWeeklyChange(env, currentWeekStart, currentValue) {
 
 async function handleGeoRiskIndexGet(request, env) {
   const liveInputs = await loadGeoRiskInputs(env);
-  const live = { ...computeGeoRiskIndexValue(liveInputs.scenarios), inputDate: liveInputs.inputDate, inputStatus: liveInputs.status, summary: liveInputs.summary || null };
+  const inputQuality=validateIndexInputs(liveInputs.scenarios,liveInputs.inputDate);
+  const live = { ...computeGeoRiskIndexValue(liveInputs.scenarios), inputDate: liveInputs.inputDate, inputStatus: liveInputs.status, summary: liveInputs.summary || null,
+    methodology_version:GRI_METHOD_VERSION,
+    quality: {verified:liveInputs.status==="evidence_driven"&&inputQuality.ok&&!inputQuality.stale, input_age_days:inputQuality.ok?inputQuality.ageDays:null,
+      stale:liveInputs.status!=="evidence_driven"||!inputQuality.ok||inputQuality.stale,
+      reason:inputQuality.ok?(inputQuality.stale?"Entradas sin actualizar desde hace más de 21 días":null):inputQuality.reason},
+    contributors:liveInputs.status==="evidence_driven"&&inputQuality.ok?explainIndexInputs(inputQuality):[] };
 
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
-    return jsonResponse({ history: [], live });
+    return jsonResponse({ history: [], live, diagnostics: analyzeIndexHistory([]) });
 
   try {
     const resp = await fetch(
@@ -1050,10 +1064,10 @@ async function handleGeoRiskIndexGet(request, env) {
       }
     }
 
-    return jsonResponse({ history, live });
+    return jsonResponse({ history, live, diagnostics: analyzeIndexHistory(history) });
   } catch (err) {
     console.error("GeoRisk Index fetch error:", err);
-    return jsonResponse({ history: [], live });
+    return jsonResponse({ history: [], live, diagnostics: analyzeIndexHistory([]) });
   }
 }
 
