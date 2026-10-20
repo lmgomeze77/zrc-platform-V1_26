@@ -30,5 +30,20 @@ jobs:
           git add public/data/georisk-market-research.json
           git commit -m "data: refresh verified GeoRisk market research snapshot"
           git push
-      # A GITHUB_TOKEN push will NOT trigger the normal push-based deploy workflow.
-      # Deployment remains a separate reviewed action; never claim new data is live.
+      # GITHUB_TOKEN pushes do not fire the regular push-triggered deploy.
+      # Therefore build and deploy this verified capture explicitly.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
+      - name: Deploy verified historical snapshot
+        run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
