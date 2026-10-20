@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""Collect public US-government market data distributed through FRED CSV.
+
+The resulting snapshot is a *current download*, not a point-in-time/vintage
+archive. First collection time and SHA256 are explicit. Fail closed on errors.
+"""
+import csv
+import hashlib
+import io
+import json
+import math
+import urllib.request
+from datetime import datetime, timezone
+from pathlib import Path
+
+BASE = "https://fred.stlouisfed.org/graph/fredgraph.csv?id="
+CATALOG = {
+    "DCOILBRENTEU": ("Brent", "USD/barrel", "EIA via FRED"),
+    "DCOILWTICO": ("WTI", "USD/barrel", "EIA via FRED"),
+    "DHHNGSP": ("Henry Hub gas", "USD/MMBtu", "EIA via FRED"),
+    "DGS10": ("US Treasury 10Y", "percent", "US Treasury / Federal Reserve via FRED"),
+}
+DEFAULT = Path(__file__).resolve().parent.parent / "public/data/georisk-market-research.json"
+
+def parse_csv(raw, series_id, today):
+    if len(raw) > 5_000_000:
+        raise ValueError("Oversized feed")
+    text = raw.decode("utf-8-sig")
+    rows = csv.DictReader(io.StringIO(text))
+    if not rows.fieldnames or series_id not in rows.fieldnames:
+        raise ValueError("Unexpected FRED CSV headers")
+    date_key = "observation_date" if "observation_date" in rows.fieldnames else "DATE"
+    if date_key not in rows.fieldnames:
+        raise ValueError("Missing observation date")
+    result = []
+    seen = set()
+    for row in rows:
+        date = row[date_key]
+        if not date or date > today or date in seen:
+            if date in seen:
+                raise ValueError("Duplicate observation date")
+            continue
+        try:
+            date_obj = datetime.strptime(date, "%Y-%m-%d").date()
+        except ValueError as e:
+            raise ValueError("Invalid observation date") from e
+        value_text = row[series_id]
+        if not value_text or value_text == ".":
+            continue
+        try:
+            value = float(value_text)
+        except (ValueError, TypeError) as e:
+            raise ValueError("Invalid numeric observation") from e
+        if not math.isfinite(value) or value <= 0:
+            raise ValueError("Non-positive or non-finite market observation")
+        seen.add(date)
+        result.append({"date": date_obj.isoformat(), "value": value})
+    result.sort(key=lambda x: x["date"])
+    if len(result) < 365:
+        raise ValueError("Insufficient historical observations")
+    return result[-5000:]
+
+def collect(fetch=None, now=None):
+    now = now or datetime.now(timezone.utc)
+    fetch = fetch or (lambda url: urllib.request.urlopen(
+        urllib.request.Request(url, headers={"User-Agent": "ZRC-GeoRisk-Research/1.0"}),
+        timeout=25).read())
+    series = []
+    for series_id, (label, unit, provider) in CATALOG.items():
+        url = BASE + series_id
+        raw = fetch(url)
+        points = parse_csv(raw, series_id, now.date().isoformat())
+        latest = points[-1]["date"]
+        # 10-day lag tolerance because EIA spot series do not publish daily.
+        age = (now.date() - datetime.strptime(latest, "%Y-%m-%d").date()).days
+        if age > 10:
+            raise ValueError(f"{series_id}: source is stale ({age} days)")
+        series.append({
+            "id": series_id, "label": label, "unit": unit,
+            "provider": provider, "frequency": "business_day",
+            "source_url": "https://fred.stlouisfed.org/series/" + series_id,
+            "collected_at": now.isoformat().replace("+00:00", "Z"),
+            "download_sha256": hashlib.sha256(raw).hexdigest(),
+            "latest": points[-1], "points": points,
+        })
+    return {"schema_version": 1, "status": "available",
+            "vintage_warning": "Historical observations reflect the downloaded current series, not original publication vintages.",
+            "series": series}
+
+def main():
+    snapshot = collect()
+    DEFAULT.parent.mkdir(parents=True, exist_ok=True)
+    tmp = DEFAULT.with_suffix(".tmp")
+    tmp.write_text(json.dumps(snapshot, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
+    tmp.replace(DEFAULT)
+    print("Verified", len(snapshot["series"]), "series; latest:", [(s["id"], s["latest"]["date"]) for s in snapshot["series"]])
+
+if __name__ == "__main__":
+    main()
