@@ -266,6 +266,8 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
   const { openPricing } = useAuth();
   const [history, setHistory] = useState([]);
   const [live, setLive] = useState(null);
+  const [diagnostics, setDiagnostics] = useState(null);
+  const [showDrivers, setShowDrivers] = useState(false);
   const [status, setStatus] = useState("loading"); // loading | ok | error
 
   useEffect(() => {
@@ -276,6 +278,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
         if (!mounted) return;
         setHistory(Array.isArray(d.history) ? d.history : []);
         setLive(d.live || null);
+        setDiagnostics(d.diagnostics || null);
         setStatus("ok");
       })
       .catch(() => {
@@ -285,19 +288,20 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
     return () => { mounted = false; };
   }, []);
 
-  const current = history.length ? history[history.length - 1] : null;
-  const previous = history.length > 1 ? history[history.length - 2] : null;
-  const displayValue = current ? current.index_value : live?.value ?? null;
+  const verifiedHistory=history.filter(h=>h.source&&h.source!=="fallback_static"&&h.source!=="unknown");
+  const current = verifiedHistory.length ? verifiedHistory[verifiedHistory.length - 1] : null;
+  const previous = verifiedHistory.length > 1 ? verifiedHistory[verifiedHistory.length - 2] : null;
+  const displayValue = current ? current.index_value : (live?.quality?.verified ? live.value : null);
   const displayLabel = current ? (current.risk_label || riskLabel(current.index_value)) : (live ? live.riskLabel : null);
   const displayScenario = current ? current.dominant_scenario : live?.dominantScenario;
-  const weeklyChange = current && previous ? current.index_value - previous.index_value : null;
+  const weeklyChange = diagnostics?.delta_week ?? null;
   const inputStatus = live?.inputStatus || null;
   const inputDate = live?.inputDate || null;
 
 
-  const chartHistory = history.length
-    ? history
-    : (live ? [{ week_start: "hoy", index_value: live.value, risk_label: live.riskLabel }] : []);
+  const chartHistory = verifiedHistory.length
+    ? verifiedHistory
+    : (live?.quality?.verified ? [{ week_start: "hoy", index_value: live.value, risk_label: live.riskLabel }] : []);
 
   return (
     <Sec id="georisk-index">
@@ -377,6 +381,55 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
               </div>
             )}
           </div>
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={0.16}>
+        <div style={{border:`1px solid ${C.border}`,background:C.surface,borderRadius:18,padding:"18px 20px",marginBottom:20}}>
+          <div style={{display:"flex",flexWrap:"wrap",alignItems:"center",justifyContent:"space-between",gap:12}}>
+            <div>
+              <div style={{fontFamily:F.mono,fontSize:10,letterSpacing:".14em",color:C.gold}}>ZRC-GRI 2.0 · {lang==="es"?"CALIDAD Y EVOLUCIÓN":"QUALITY & CHANGE"}</div>
+              <div style={{fontSize:15,marginTop:8,fontFamily:F.body}}>
+                {diagnostics?.last_verified_week
+                  ? (lang==="es"?"Último índice verificable: ":"Last verified index: ")+diagnostics.last_verified_week
+                  : (lang==="es"?"Histórico verificable aún no disponible":"Verified history not yet available")}
+              </div>
+              <div style={{fontSize:12,color:C.textMuted,marginTop:5}}>
+                {lang==="es"?"Observaciones verificadas: ":"Verified observations: "}{diagnostics?.verified ?? "—"}
+                {" · "}{lang==="es"?"Descartadas por respaldo/no verificadas: ":"Fallback/unverified excluded: "}{diagnostics?.excluded ?? "—"}
+              </div>
+            </div>
+            <span style={{fontSize:11,fontFamily:F.mono,color:live?.quality?.verified&&!diagnostics?.history_stale?C.green:C.amber}}>
+              {live?.quality?.verified&&!diagnostics?.history_stale
+                ? (lang==="es"?"INPUTS RECIENTES":"FRESH INPUTS")
+                : (lang==="es"?"REVISAR VIGENCIA":"VERIFY FRESHNESS")}
+            </span>
+          </div>
+          <p style={{fontSize:12,color:C.textMuted,lineHeight:1.65,margin:"12px 0"}}>
+            {lang==="es"
+              ?"Evolución: "+(diagnostics?.trend==="rising"?"riesgo al alza":diagnostics?.trend==="falling"?"riesgo a la baja":diagnostics?.trend==="stable"?"estable":"todavía no comparable")+". El cambio semanal solo se calcula con impresiones verificadas y fechas consecutivas. Una variación del índice no es todavía una sorpresa predictiva calibrada."
+              :"Trend: "+(diagnostics?.trend==="rising"?"risk rising":diagnostics?.trend==="falling"?"risk falling":diagnostics?.trend==="stable"?"stable":"not yet comparable")+". Weekly change uses verified consecutive prints only. Index movements are not calibrated predictive surprises."}
+          </p>
+          {live?.quality?.stale&&<p style={{fontSize:12,color:C.amber}}>
+            {lang==="es"?"Aviso: los inputs actuales pueden estar desactualizados; no deben presentarse como una nueva impresión semanal.":"Notice: inputs may be stale; do not treat them as a new weekly index print."}
+          </p>}
+          <button type="button" onClick={()=>setShowDrivers(v=>!v)} style={{border:`1px solid ${C.border}`,background:"transparent",color:C.gold,borderRadius:10,padding:"9px 13px",cursor:"pointer",fontFamily:F.mono,fontSize:11}}>
+            {showDrivers?(lang==="es"?"Ocultar contribuciones":"Hide contributors"):(lang==="es"?"Ver contribuciones al índice":"Show index contributors")}
+          </button>
+          {showDrivers&&<div style={{marginTop:14,display:"grid",gap:9}}>
+            {live?.contributors?.length?live.contributors.map(s=><div key={s.key} style={{borderBottom:`1px solid ${C.border}`,paddingBottom:9}}>
+              <div style={{display:"flex",justifyContent:"space-between",gap:8,fontSize:12}}>
+                <span>{s.label}</span><strong style={{fontVariantNumeric:"tabular-nums"}}>{s.contribution.toFixed(1)} {lang==="es"?"puntos":"points"}</strong>
+              </div>
+              <div style={{height:5,background:C.border,borderRadius:5,marginTop:6,overflow:"hidden"}}>
+                <div style={{width:`${Math.max(0,Math.min(100,s.share_pct))}%`,height:"100%",background:C.gold}}/>
+              </div>
+              <div style={{fontSize:10,color:C.textMuted,marginTop:4}}>
+                {lang==="es"?"Probabilidad":"Weight"} {(s.prob*100).toFixed(0)}% · {lang==="es"?"riesgo intrínseco":"intrinsic risk"} {s.risk}/100
+              </div>
+            </div>):<p style={{fontSize:12,color:C.textMuted}}>{lang==="es"?"Los inputs versionados no están disponibles para explicar los componentes.":"Versioned inputs are not available to explain the components."}</p>}
+            <p style={{fontSize:11,color:C.textMuted}}>{lang==="es"?"Las contribuciones reflejan los inputs vigentes, no reconstruyen los históricos anteriores.":"Contributions reflect current inputs and do not reconstruct historical snapshots."}</p>
+          </div>}
         </div>
       </FadeIn>
 
