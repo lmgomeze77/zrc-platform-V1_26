@@ -30,7 +30,7 @@ export function analyzeIndexHistory(history,asOf=new Date()){
  const byDate=new Map(cleaned.map(row=>[row.week_start,row]));
  const all=[...byDate.values()],verified=all.filter(r=>r.source!=='fallback_static'&&r.source!=='unknown'&&!!r.source);
  const last=verified.at(-1),prev=verified.at(-2);
- const change=last&&prev&&ms(last.week_start)-ms(prev.week_start)<=14*86400000?round(last.index_value-prev.index_value):null;
+ const change=last&&prev&&ms(last.week_start)-ms(prev.week_start)<=8*86400000?round(last.index_value-prev.index_value):null;
  const weeks=verified.length?Math.floor((asOf.getTime()-ms(last.week_start))/86400000):null;
  const comparable=change!==null;
  return {total:all.length,verified:verified.length,excluded:all.length-verified.length,
