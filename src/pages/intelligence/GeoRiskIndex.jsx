@@ -268,7 +268,6 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
   const [history, setHistory] = useState([]);
   const [live, setLive] = useState(null);
   const [diagnostics, setDiagnostics] = useState(null);
-  const [showDrivers, setShowDrivers] = useState(false);
   const [status, setStatus] = useState("loading"); // loading | ok | error
 
   useEffect(() => {
@@ -298,6 +297,9 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
   const weeklyChange = diagnostics?.delta_week ?? null;
   const inputStatus = live?.inputStatus || null;
   const inputDate = live?.inputDate || null;
+  const shownWeek = current?.week_start || diagnostics?.last_verified_week || null;
+  const latestTrend = weeklyChange === null ? null : Math.abs(weeklyChange)<0.05 ? "stable" : weeklyChange>0 ? "rising" : "falling";
+  const dataFresh = Boolean(live?.quality?.verified && !live?.quality?.stale && !diagnostics?.history_stale);
 
 
   const chartHistory = verifiedHistory.length
@@ -310,143 +312,133 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
         label={lang === "es" ? "03 — ZRC GEORISK INDEX" : "03 — ZRC GEORISK INDEX"}
         title={lang === "es" ? "El Índice de Riesgo Geopolítico de ZRC" : "The ZRC Geopolitical Risk Index"}
         sub={lang === "es"
-          ? "Score compuesto semanal (0–100) construido con el mismo motor cuantitativo que GeoRisk Dashboard. Publicado como referencia pública del riesgo geopolítico, con niveles concretos de impacto estimado en precios de activos."
-          : "Weekly composite score (0–100) built on the same quantitative engine as GeoRisk Dashboard. Published as a public geopolitical risk benchmark, with concrete estimated asset price-impact levels."}
+          ? "Índice semanal propio de riesgo geopolítico (0–100). Sigue su evolución y explora qué activos observar; las relaciones de mercado se investigan por separado."
+          : "Proprietary weekly geopolitical risk index (0–100). Explore the trend and assets to watch; market relationships are evaluated separately."}
       />
 
       <FadeIn delay={0.1}>
         <style>{`
-          .zrc-gri-head { display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:center; padding:28px 32px; }
-          @media (max-width: 640px) { .zrc-gri-head { grid-template-columns:1fr; gap:20px; padding:22px 18px; } }
+          .zrc-gri-hero { padding:clamp(18px,4vw,30px); }
+          .zrc-gri-kpis { display:grid; grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr); gap:28px; align-items:center; }
+          .zrc-gri-focus { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px; }
+          .zrc-gri-focus > div { border:1px solid var(--zrc-border, #d5d9d6);border-radius:12px;padding:12px;min-width:0; }
+          @media(max-width:640px) {
+            .zrc-gri-kpis { grid-template-columns:1fr;gap:14px; }
+            .zrc-gri-focus { grid-template-columns:1fr;gap:8px; }
+            .zrc-gri-focus > div { padding:10px 12px; }
+          }
         `}</style>
-        <div className="zrc-gri-head" style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 22, overflow: "hidden", marginBottom: 24 }}>
-          <div style={{ textAlign: "center", minWidth: 140 }}>
-            {status === "loading" ? (
-              <div style={{ fontFamily: F.mono, fontSize: 11, color: C.textMuted }}>· · ·</div>
-            ) : displayValue != null ? (
-              <>
-                <div style={{ fontFamily: F.figures, fontSize: 56, fontWeight: 400, color: riskColor(displayValue), lineHeight: 1, fontVariantNumeric: "lining-nums tabular-nums" }}>
-                  {fmt(displayValue, 1)}
-                </div>
-                <div style={{
-                  display: "inline-block", fontFamily: F.mono, fontSize: 10, fontWeight: 600, color: riskColor(displayValue),
-                  letterSpacing: "0.12em", marginTop: 10, padding: "3px 10px", borderRadius: 8, border: `1px solid ${riskColor(displayValue)}`,
-                }}>
-                  {lang === "es" ? displayLabel : bandOf(displayValue).labelEn}
-                </div>
-                {weeklyChange != null && (() => {
-                  // Sin cambio (redondeado a 1 decimal) no es una subida: se
-                  // muestra neutro en vez de "▲ 0.0" en rojo.
-                  const flat = Math.abs(weeklyChange) < 0.05;
-                  return (
-                    <div style={{ fontFamily: F.mono, fontSize: 11, color: flat ? C.textMuted : weeklyChange > 0 ? C.red : C.green, marginTop: 8 }}>
-                      {flat ? "=" : weeklyChange > 0 ? "▲" : "▼"} {fmt(Math.abs(weeklyChange), 1)} {lang === "es" ? "pts vs. semana anterior" : "pts vs. prior week"}
-                    </div>
-                  );
-                })()}
-              </>
-            ) : (
-              <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>
-                {lang === "es" ? "Sin datos" : "No data"}
-              </div>
-            )}
+        <div className="zrc-gri-hero" style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:22,marginBottom:16,overflow:"hidden"}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8,marginBottom:16}}>
+            <div style={{fontFamily:F.mono,fontSize:11,letterSpacing:".12em",color:C.navy||C.text}}>ZRC–GRI <span style={{color:C.textMuted}}>· {lang==="es"?"ÍNDICE GEOPOLÍTICO":"GEOPOLITICAL INDEX"}</span></div>
+            <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{shownWeek ? (lang==="es"?"Semana del ":"Week of ")+shownWeek : (lang==="es"?"Histórico en preparación":"History pending")}</span>
           </div>
-          <div>
-            {inputStatus === "fallback_static" && <div style={{ marginBottom: 10, padding: "8px 10px", border: `1px solid ${C.amber}`, borderRadius: 10, fontFamily: F.mono, fontSize: 9, color: C.amber }}>{lang === "es" ? `INPUTS SIN REFRESCAR · base: ${inputDate || "—"}` : `INPUTS NOT REFRESHED · basis: ${inputDate || "—"}`}</div>}
-            {inputStatus === "evidence_driven" && inputDate && <div style={{ marginBottom: 10, fontFamily: F.mono, fontSize: 9, color: C.green }}>{lang === "es" ? `RECALCULADO CON INPUTS: ${inputDate}` : `RECALCULATED WITH INPUTS: ${inputDate}`}</div>}
-            <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 10 }}>
-              <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, letterSpacing: "0.1em" }}>
-                ZRC-GRI · {lang === "es" ? "HISTÓRICO SEMANAL" : "WEEKLY HISTORY"}
-              </span>
-              {displayScenario && (
-                <span style={{ fontFamily: F.mono, fontSize: 10, color: C.gold }}>
-                  {lang === "es" ? "Escenario dominante:" : "Dominant scenario:"} {displayScenario}
-                </span>
-              )}
-            </div>
-            {status === "error" && (
-              <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, padding: "24px 0" }}>
-                {lang === "es"
-                  ? "No se pudo cargar el histórico en este momento. El índice se publica cada semana — vuelve pronto."
-                  : "Could not load the history right now. The index is published weekly — check back soon."}
-              </div>
-            )}
-            {status !== "error" && chartHistory.length > 0 && (
-              <IndexChart history={chartHistory} color="var(--zrc-chart-line)" />
-            )}
-            {status === "ok" && history.length === 0 && (
-              <div style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, marginTop: 8 }}>
-                {lang === "es"
-                  ? "Serie histórica en construcción — primer dato de esta semana. La serie crecerá cada lunes."
-                  : "Historical series just starting — this week's first print. The series will grow every Monday."}
-              </div>
-            )}
-          </div>
-        </div>
-      </FadeIn>
-
-      <FadeIn delay={0.16}>
-        <div style={{border:`1px solid ${C.border}`,background:C.surface,borderRadius:18,padding:"18px 20px",marginBottom:20}}>
-          <div style={{display:"flex",flexWrap:"wrap",alignItems:"center",justifyContent:"space-between",gap:12}}>
+          <div className="zrc-gri-kpis">
             <div>
-              <div style={{fontFamily:F.mono,fontSize:10,letterSpacing:".14em",color:C.gold}}>ZRC-GRI 2.0 · {lang==="es"?"CALIDAD Y EVOLUCIÓN":"QUALITY & CHANGE"}</div>
-              <div style={{fontSize:15,marginTop:8,fontFamily:F.body}}>
-                {diagnostics?.last_verified_week
-                  ? (lang==="es"?"Último índice verificable: ":"Last verified index: ")+diagnostics.last_verified_week
-                  : (lang==="es"?"Histórico verificable aún no disponible":"Verified history not yet available")}
+              <div style={{display:"flex",alignItems:"baseline",gap:10,flexWrap:"wrap"}}>
+                <div style={{fontFamily:F.figures,fontSize:"clamp(56px,13vw,86px)",color:displayValue===null?C.textMuted:riskColor(displayValue),lineHeight:1,fontVariantNumeric:"tabular-nums"}}>{displayValue!==null?fmt(displayValue):"—"}</div>
+                <div style={{fontFamily:F.mono,fontSize:12,color:C.textMuted}}>/ 100</div>
               </div>
-              <div style={{fontSize:12,color:C.textMuted,marginTop:5}}>
-                {lang==="es"?"Observaciones verificadas: ":"Verified observations: "}{diagnostics?.verified ?? "—"}
-                {" · "}{lang==="es"?"Descartadas por respaldo/no verificadas: ":"Fallback/unverified excluded: "}{diagnostics?.excluded ?? "—"}
+              {displayValue!==null&&<div style={{display:"inline-block",fontFamily:F.mono,fontSize:11,color:riskColor(displayValue),border:`1px solid ${riskColor(displayValue)}`,padding:"5px 12px",borderRadius:99,marginTop:9,fontWeight:700}}>{lang==="es"?displayLabel:bandOf(displayValue).labelEn}</div>}
+              <div style={{marginTop:12,fontFamily:F.body,fontSize:13,color:C.textSec}}>
+                {weeklyChange!==null
+                  ? (latestTrend==="stable" ? (lang==="es"?"↔ Estable respecto a la semana anterior":"↔ Stable week over week")
+                  : (weeklyChange>0?"↑ +":"↓ −")+fmt(Math.abs(weeklyChange))+(lang==="es"?" puntos esta semana":" points this week"))
+                  : (lang==="es"?"Variación semanal no comparable":"Weekly movement unavailable")}
+              </div>
+              {displayScenario&&<div style={{fontFamily:F.body,fontSize:13,color:C.text,marginTop:10}}>
+                <span style={{color:C.textMuted}}>{lang==="es"?"Escenario principal":"Main scenario"}: </span><strong>{displayScenario}</strong>
+              </div>}
+            </div>
+            <div>
+              <div style={{fontFamily:F.mono,fontSize:10,color:C.textMuted,letterSpacing:".1em",marginBottom:9}}>{lang==="es"?"ESCALA DE RIESGO · 0–100":"RISK SCALE · 0–100"}</div>
+              <div style={{position:"relative",margin:"8px 0 11px"}}>
+                <div style={{display:"flex",height:13,overflow:"hidden",borderRadius:99}}>
+                  {BANDS.map(b=><div key={b.key} style={{width:`${b.hi-b.lo}%`,background:b.color}} />)}
+                </div>
+                {displayValue!==null&&<div aria-label={`ZRC-GRI ${fmt(displayValue)} de 100`} style={{position:"absolute",top:-5,left:`${Math.min(99,Math.max(1,displayValue))}%`,transform:"translateX(-50%)",width:3,height:23,background:C.text,border:"2px solid "+C.surface,borderRadius:3}} />}
+              </div>
+              <div style={{display:"flex",justifyContent:"space-between",fontFamily:F.mono,fontSize:9,color:C.textMuted}}>
+                <span>0 · {lang==="es"?"Bajo":"Low"}</span>
+                <span>40</span><span>65</span><span>80</span><span>100</span>
+              </div>
+              <div style={{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center",marginTop:17}}>
+                <span style={{fontSize:11,color:C.textSec}}>{lang==="es"?"Última observación":"Latest observation"}: <strong>{shownWeek||"—"}</strong></span>
+                <span style={{fontSize:10,color:dataFresh?C.green:C.amber,fontWeight:600}}>{dataFresh?(lang==="es"?"● Inputs recientes":"● Fresh inputs"):(lang==="es"?"○ Revisar fecha de inputs":"○ Check input date")}</span>
               </div>
             </div>
-            <span style={{fontSize:11,fontFamily:F.mono,color:live?.quality?.verified&&!diagnostics?.history_stale?C.green:C.amber}}>
-              {live?.quality?.verified&&!diagnostics?.history_stale
-                ? (lang==="es"?"INPUTS RECIENTES":"FRESH INPUTS")
-                : (lang==="es"?"REVISAR VIGENCIA":"VERIFY FRESHNESS")}
-            </span>
           </div>
-          <p style={{fontSize:12,color:C.textMuted,lineHeight:1.65,margin:"12px 0"}}>
-            {lang==="es"
-              ?"Evolución: "+(diagnostics?.trend==="rising"?"riesgo al alza":diagnostics?.trend==="falling"?"riesgo a la baja":diagnostics?.trend==="stable"?"estable":"todavía no comparable")+". El cambio semanal solo se calcula con impresiones verificadas y fechas consecutivas. Una variación del índice no es todavía una sorpresa predictiva calibrada."
-              :"Trend: "+(diagnostics?.trend==="rising"?"risk rising":diagnostics?.trend==="falling"?"risk falling":diagnostics?.trend==="stable"?"stable":"not yet comparable")+". Weekly change uses verified consecutive prints only. Index movements are not calibrated predictive surprises."}
-          </p>
-          {live?.quality?.stale&&<p style={{fontSize:12,color:C.amber}}>
-            {lang==="es"?"Aviso: los inputs actuales pueden estar desactualizados; no deben presentarse como una nueva impresión semanal.":"Notice: inputs may be stale; do not treat them as a new weekly index print."}
-          </p>}
-          <button type="button" onClick={()=>setShowDrivers(v=>!v)} style={{border:`1px solid ${C.border}`,background:"transparent",color:C.gold,borderRadius:10,padding:"9px 13px",cursor:"pointer",fontFamily:F.mono,fontSize:11}}>
-            {showDrivers?(lang==="es"?"Ocultar contribuciones":"Hide contributors"):(lang==="es"?"Ver contribuciones al índice":"Show index contributors")}
-          </button>
-          {showDrivers&&<div style={{marginTop:14,display:"grid",gap:9}}>
-            {live?.contributors?.length?live.contributors.map(s=><div key={s.key} style={{borderBottom:`1px solid ${C.border}`,paddingBottom:9}}>
-              <div style={{display:"flex",justifyContent:"space-between",gap:8,fontSize:12}}>
-                <span>{s.label}</span><strong style={{fontVariantNumeric:"tabular-nums"}}>{s.contribution.toFixed(1)} {lang==="es"?"puntos":"points"}</strong>
-              </div>
-              <div style={{height:5,background:C.border,borderRadius:5,marginTop:6,overflow:"hidden"}}>
-                <div style={{width:`${Math.max(0,Math.min(100,s.share_pct))}%`,height:"100%",background:C.gold}}/>
-              </div>
-              <div style={{fontSize:10,color:C.textMuted,marginTop:4}}>
-                {lang==="es"?"Probabilidad":"Weight"} {(s.prob*100).toFixed(0)}% · {lang==="es"?"riesgo intrínseco":"intrinsic risk"} {s.risk}/100
-              </div>
-            </div>):<p style={{fontSize:12,color:C.textMuted}}>{lang==="es"?"Los inputs versionados no están disponibles para explicar los componentes.":"Versioned inputs are not available to explain the components."}</p>}
-            <p style={{fontSize:11,color:C.textMuted}}>{lang==="es"?"Las contribuciones reflejan los inputs vigentes, no reconstruyen los históricos anteriores.":"Contributions reflect current inputs and do not reconstruct historical snapshots."}</p>
-          </div>}
+          <div style={{borderTop:`1px solid ${C.border}`,marginTop:20,paddingTop:15}}>
+            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:8,flexWrap:"wrap",marginBottom:4}}>
+              <strong style={{fontFamily:F.body,fontSize:14}}>{lang==="es"?"Evolución semanal":"Weekly evolution"}</strong>
+              <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{diagnostics?.verified??"—"} {lang==="es"?"observaciones verificadas":"verified observations"}</span>
+            </div>
+            {status==="error"?<p style={{fontSize:13,color:C.amber}}>{lang==="es"?"Histórico temporalmente no disponible.":"History temporarily unavailable."}</p>
+              :chartHistory.length>0?<IndexChart history={chartHistory} color="var(--zrc-chart-line)"/>
+              :<p style={{fontSize:13,color:C.textMuted}}>{lang==="es"?"Aún no hay observaciones verificables.":"No verified observations yet."}</p>}
+          </div>
         </div>
       </FadeIn>
 
-      <FadeIn delay={0.18}><GeoRiskTaxonomyBridge origin="index" lang={lang} /></FadeIn>
+      <FadeIn delay={0.14}>
+        <div style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:18,padding:"17px 20px",marginBottom:16}}>
+          <div style={{fontFamily:F.mono,fontSize:10,color:C.gold,letterSpacing:".12em",marginBottom:11}}>{lang==="es"?"LECTURA PARA EL INVERSOR":"INVESTOR READOUT"}</div>
+          <div style={{fontSize:15,fontFamily:F.body,fontWeight:650,color:C.text,marginBottom:13}}>
+            {displayValue===null?(lang==="es"?"Pendiente de una lectura verificable":"Awaiting verified reading")
+              :lang==="es"?`Riesgo ${riskLabel(displayValue).toLowerCase()}${latestTrend==="stable"?", sin cambios semanales relevantes":latestTrend==="rising"?", en aumento":latestTrend==="falling"?", en descenso":""}.`
+              :`${bandOf(displayValue).labelEn.toLowerCase()} risk${latestTrend==="stable"?", broadly stable":latestTrend==="rising"?", rising":latestTrend==="falling"?", falling":""}.`}
+          </div>
+          <div className="zrc-gri-focus">
+            <div><strong style={{fontSize:12}}>{lang==="es"?"01 · Qué impulsa el índice":"01 · Main driver"}</strong><p style={{margin:"7px 0 0",fontSize:12,color:C.textSec}}>{displayScenario||"—"}</p></div>
+            <div><strong style={{fontSize:12}}>{lang==="es"?"02 · Qué vigilar":"02 · Watch"}</strong><p style={{margin:"7px 0 0",fontSize:12,color:C.textSec}}>{lang==="es"?"Energía, divisas y rendimientos soberanos":"Energy, FX and sovereign yields"}</p></div>
+            <div><strong style={{fontSize:12}}>{lang==="es"?"03 · Cómo usarlo":"03 · Next step"}</strong><p style={{margin:"7px 0 0",fontSize:12,color:C.textSec}}>{lang==="es"?"Contrastar exposición y evolución histórica de activos":"Review exposure and historical asset behavior"}</p></div>
+          </div>
+          <div style={{fontSize:11,color:C.textMuted,marginTop:11}}>{lang==="es"?"Activos para seguimiento, no recomendaciones ni impactos de precio pronosticados.":"Watchlist, not asset recommendations or price forecasts."}</div>
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={0.17}>
+        <details style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:16,marginBottom:18,padding:"13px 17px"}}>
+          <summary style={{cursor:"pointer",fontSize:13,fontFamily:F.body,fontWeight:650,color:C.text}}>{lang==="es"?"ⓘ Fuentes, calidad y metodología":"ⓘ Sources, quality and methodology"}</summary>
+          <div style={{padding:"14px 0 0",fontFamily:F.body,fontSize:12,lineHeight:1.65,color:C.textSec}}>
+            <div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:8,marginBottom:8}}>
+              <span>{lang==="es"?"Último índice verificable":"Last verified print"}: <strong>{shownWeek||"—"}</strong></span>
+              <span>{lang==="es"?"Observaciones":"Observations"}: <strong>{diagnostics?.verified??"—"}</strong></span>
+              <span>{lang==="es"?"Excluidas":"Excluded"}: <strong>{diagnostics?.excluded??"—"}</strong></span>
+            </div>
+            <div>{lang==="es"?"Últimos inputs":"Latest inputs"}: {inputDate||"—"} · {dataFresh?(lang==="es"?"vigencia comprobada":"freshness verified"):(lang==="es"?"antigüedad o calidad por revisar":"age or quality to review")}</div>
+            <p>{lang==="es"?"El índice es una metodología propia de ZRC basada en cuatro escenarios y ponderaciones de referencia. No es una probabilidad de pérdidas ni una predicción de precios. Las contribuciones describen los inputs vigentes, no reconstruyen escenarios históricos.":"This proprietary ZRC index combines four reference scenarios. It is neither a probability of losses nor a price forecast. Contributors refer to current inputs, not reconstructed historical scenarios."}</p>
+            <details style={{marginBottom:12}}>
+              <summary style={{cursor:"pointer",fontWeight:650}}>{lang==="es"?"Contribución de los escenarios":"Scenario contributions"}</summary>
+              <div style={{display:"grid",gap:9,marginTop:12}}>
+                {live?.contributors?.length?live.contributors.map(item=><div key={item.key} style={{borderBottom:`1px solid ${C.border}`,paddingBottom:8}}>
+                  <div style={{display:"flex",justifyContent:"space-between",gap:8}}><span>{item.label}</span><strong>{fmt(item.contribution)} pts</strong></div>
+                  <div style={{height:5,background:C.border,borderRadius:8,overflow:"hidden",marginTop:7}}><div style={{width:`${Math.min(100,item.share_pct)}%`,height:"100%",background:C.gold}}/></div>
+                  <div style={{fontSize:10,marginTop:4}}>{lang==="es"?"Peso":"Weight"}: {fmt(item.prob*100,0)}% · {lang==="es"?"Riesgo":"Risk"}: {item.risk}/100</div>
+                </div>):<p>{lang==="es"?"Contribuciones no disponibles":"Contributions unavailable"}</p>}
+              </div>
+            </details>
+            <GeoRiskTaxonomyBridge origin="index" lang={lang}/>
+          </div>
+        </details>
+      </FadeIn>
 
       <FadeIn delay={0.2}>
         <GeoRiskAssetEvidence lang={lang} />
       </FadeIn>
 
-      <FadeIn delay={0.3}>
+      <details style={{padding:"12px 16px",marginBottom:16,border:`1px solid ${C.border}`,borderRadius:14,color:C.textSec}}>
+        <summary style={{cursor:"pointer",fontSize:12,fontWeight:650}}>{lang==="es"?"Detalle del estudio histórico de activos":"Asset evidence methodology"}</summary>
+              <FadeIn delay={0.3}>
         <div style={{ padding: "16px 20px", background: C.surface, border: `1px dashed ${C.border}`, borderRadius: 18, fontSize: 11, color: C.textMuted, lineHeight: 1.7, fontFamily: F.body }}>
           {lang === "es"
             ? "Metodología: el ZRC-GRI es el promedio ponderado por probabilidad del riesgo intrínseco de los cuatro escenarios geopolíticos base de ZRC Research (sector Global, multiplicador ×1.00), recalculado cada lunes. La tabla de activos se basa en datos históricos públicos: cada mes desde 1985 se clasifica por el percentil del índice GPR de Caldara e Iacoviello (cortes 40/65/80, los mismos que las bandas del ZRC-GRI) y se mide la variación de cada activo en los 3 meses siguientes frente a la mediana de todo el periodo, con un bootstrap por bloques para separar los efectos sólidos del ruido. Fuentes: GPR (matteoiacoviello.com), FRED (Bund y Treasury a 10 años, Brent, EUR/USD), Shiller/Yale (S&P 500) y Banco Mundial (oro); precios medios mensuales. El ZRC-GRI aún no está calibrado frente al GPR, por eso la tabla usa las bandas del GPR. Es evidencia histórica, no una proyección, y no constituye asesoramiento de inversión. Para el análisis con escenarios propios, ver GeoRisk Dashboard y GeoRisk Predictive ML."
             : "Methodology: the ZRC-GRI is the probability-weighted average of the intrinsic risk of ZRC Research's four base geopolitical scenarios (Global sector, ×1.00 multiplier), recalculated every Monday. The asset table is based on public historical data: every month since 1985 is classified by its percentile of the Caldara–Iacoviello GPR index (cut points 40/65/80, the same as the ZRC-GRI bands) and each asset's change over the following 3 months is measured against the all-period median, with a block bootstrap to separate robust effects from noise. Sources: GPR (matteoiacoviello.com), FRED (10-year Bund and Treasury, Brent, EUR/USD), Shiller/Yale (S&P 500) and the World Bank (gold); monthly average prices. The ZRC-GRI is not yet calibrated against GPR, so the table uses GPR bands. Historical evidence, not a projection, and not investment advice. For scenario analysis, see GeoRisk Dashboard and GeoRisk Predictive ML."}
         </div>
       </FadeIn>
+
+
+      </details>
 
       <GeoRiskGprData lang={lang} />
 
