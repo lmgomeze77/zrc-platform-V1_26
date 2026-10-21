@@ -67,7 +67,7 @@ export default function GeoRiskAssetEvidence({ lang = "es" }) {
           : `How each asset moved over the following ${h} months, above or below normal, by band of the GPR geopolitical risk index (${startYear}–${endYear}). In colour, statistically robust differences; in grey (≈), no consistent effect.`}
       </p>
       <div style={{ display: "inline-flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 14, padding: "8px 12px", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, fontFamily: F.mono, fontSize: 10, color: C.textSec }}>
-        <span>{es ? "GPR actual" : "Current GPR"} ({current.month}): <strong style={{ color: C.text }}>{plain(current.gpr, lang, 1)}</strong></span>
+        <span>{es ? "GPR archivado" : "Archived GPR"} ({current.month}): <strong style={{ color: C.text }}>{plain(current.gpr, lang, 1)}</strong></span>
         <span>· {es ? "percentil" : "percentile"} {plain(current.percentile, lang)}</span>
         {currentRow && <span>→ <strong style={{ color: currentRow.color, letterSpacing: "0.08em" }}>{es ? currentRow.es : currentRow.en}</strong></span>}
       </div>
@@ -94,7 +94,7 @@ export default function GeoRiskAssetEvidence({ lang = "es" }) {
                     <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: r.color, marginRight: 8, verticalAlign: "middle" }} />
                     <span style={{ fontFamily: F.mono, fontSize: 11, fontWeight: 700, color: r.color, letterSpacing: "0.08em" }}>{es ? r.es : r.en}</span>
                     <span style={{ display: "block", fontFamily: F.mono, fontSize: 9, color: C.textMuted, marginTop: 3, marginLeft: 16 }}>
-                      {rangeLabel(r.key, t, lang)}{isCurrent ? (es ? " · ACTUAL" : " · CURRENT") : ""}
+                      {rangeLabel(r.key, t, lang)}{isCurrent ? (es ? " · REFERENCIA ARCHIVADA" : " · ARCHIVED REFERENCE") : ""}
                     </span>
                   </td>
                   {assets.map((a) => <Cell key={a.key} asset={a} cell={a.cells[r.key]} lang={lang} emphasize={isCurrent} />)}
