@@ -89,6 +89,9 @@ export default function GeoRiskPredictiveOutlook({region,onRegionChange}){
       </div>)}
     </div>:<p role="status" style={{color:'#FBBF24',fontSize:13}}>La nueva cesta todavía no tiene una captura verificada publicada. No se muestran valores de sustitución.</p>}
    </div>}
+   <details style={{border:'1px solid #2F5240',background:'#0D2017',borderRadius:12,marginBottom:16,padding:'10px 14px'}}>
+    <summary style={{cursor:'pointer',fontSize:13,color:'#A7F3D0',fontWeight:700,padding:'5px 0'}}>ⓘ Investigación ZRC-GRI · ¿aporta valor predictivo adicional?</summary>
+    <div style={{paddingTop:12}}>
    {ready.risk_research&&<div className="grml-card" style={{padding:20,marginBottom:16}}>
     <div style={{fontSize:11,letterSpacing:1,color:'#6EE7B7'}}>LABORATORIO · ZRC-GRI</div>
     <h3 style={{margin:'6px 0 10px',fontSize:20}}>¿El riesgo geopolítico mejora la previsión?</h3>
@@ -100,8 +103,12 @@ export default function GeoRiskPredictiveOutlook({region,onRegionChange}){
     </div>:<p style={{fontSize:13,color:'#94A3B8'}}>Este indicador aún no participa en las pruebas del modelo condicionado por el índice.</p>})()}
     <p style={{fontSize:12,color:'#94A3B8'}}>Investigación, no señal de inversión. Se excluyen snapshots de respaldo; la evaluación emplea ventanas no solapadas y puntuaciones disponibles antes de cada predicción.</p>
    </div>}
+
    <div className="grml-card" style={{padding:18,marginBottom:16}}><h3 style={{margin:'0 0 8px'}}>Indicadores por incorporar</h3><p style={{fontSize:14,color:'#CBD5E1',margin:0}}>{ready.missing?.join(' · ')||'Sin información sobre cobertura pendiente'}. Se mostrarán como series reales cuando estén conectadas y validadas.</p></div>
+
+    </div>
+   </details>
   </>}
-  <div role="note" style={{padding:14,border:'1px solid #7C5A1B',borderRadius:10,color:'#FDE68A',background:'#2A2112',fontSize:12}}>Estas cifras son referencias estadísticas, no predicciones seguras. La continuidad puede ser el modelo escogido cuando obtiene mejores resultados históricos. No se anticipan decisiones de bancos centrales ni shocks geopolíticos. Las pruebas usan el histórico disponible hoy, no reconstruyen la información conocida en cada publicación.</div>
+  <details style={{padding:14,border:'1px solid #37503F',borderRadius:10,color:'#D3E9D8',background:'#102118',fontSize:12}}><summary style={{cursor:'pointer',fontWeight:700}}>ⓘ Cómo interpretar estos pronósticos</summary><div style={{paddingTop:10}}>Estas cifras son referencias estadísticas, no predicciones seguras. La continuidad puede ser el modelo escogido cuando obtiene mejores resultados históricos. No se anticipan decisiones de bancos centrales ni shocks geopolíticos. Las pruebas usan el histórico disponible hoy, no reconstruyen la información conocida en cada publicación.</div></details>
  </section>;
 }

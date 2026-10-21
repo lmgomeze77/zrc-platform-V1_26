@@ -667,7 +667,18 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
           ))}
         </div>
 
-        <div role="note" aria-live="polite" style={{ padding: "14px 18px", margin: "0 0 18px", border: "1px solid #28543a", borderLeft: "3px solid #4ADE80", borderRadius: 8, background: "#0d1f16", color: "#CBD5E1" }}>
+        <div style={{border:"1px solid #285744",borderRadius:15,padding:"15px 18px",margin:"12px 0 16px",background:"linear-gradient(120deg,#102C22,#0D1C18)",color:"#EDF6EF"}}>
+    <div style={{fontSize:10,color:"#86EFAC",letterSpacing:1.2,fontWeight:700}}>LECTURA RÁPIDA · RIESGO + MERCADOS</div>
+    <div style={{display:"flex",gap:16,justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",marginTop:8}}>
+      <div><span style={{fontSize:27,fontWeight:750,fontVariantNumeric:"tabular-nums"}}>{compositeRisk.toFixed(1)}</span><span style={{fontSize:12,color:"#A6BDAD"}}> / 100 · riesgo simulado</span><div style={{fontSize:12,color:"#D0E2D5",marginTop:5}}>Principal escenario: <strong>{dominantScenario.label}</strong></div></div>
+      <div style={{fontSize:12,color:"#D0E2D5"}}>Zona: <strong>{REGIONS[region].label}</strong><div style={{marginTop:5}}>Datos macro oficiales: <strong>{observationStatus==="loading"?"comprobando":observedCount+" / "+Object.keys(ECONOMIC_VARIABLES).length}</strong></div></div>
+    </div>
+    <p style={{fontSize:12,color:"#A5C8B3",margin:"10px 0 0"}}>Contrasta la exposición del escenario y, en «Pronóstico», comprueba qué indicadores tienen estimaciones históricas verificables. Son análisis distintos.</p>
+  </div>
+  <details style={{margin:"0 0 14px",border:"1px solid #324A40",borderRadius:12,background:"#101E19",color:"#D8E8DD"}}>
+    <summary style={{cursor:"pointer",padding:"12px 16px",fontSize:12,fontWeight:700,listStyle:"inside"}}>ⓘ Fuentes, método y límites del modelo <span style={{fontSize:11,fontWeight:400,opacity:.7}}>· abrir detalles</span></summary>
+    <div style={{padding:"0 16px 16px"}}>
+      <div role="note" aria-live="polite" style={{ padding: "14px 18px", margin: "0 0 18px", border: "1px solid #28543a", borderLeft: "3px solid #4ADE80", borderRadius: 8, background: "#0d1f16", color: "#CBD5E1" }}>
           <div style={{ fontSize: 10, color: "#4ADE80", fontFamily: "monospace", letterSpacing: 1, marginBottom: 4 }}>EN SENCILLO</div>
           <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{sectionGuide.title}</div>
           <div style={{ fontSize: 12, lineHeight: 1.6, color: "#94A3B8" }}>{sectionGuide.body}</div>
@@ -675,6 +686,7 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
         </div>
 
         
+      
       <div role="note" style={{border:"1px solid #8B6A35",borderRadius:12,padding:"12px 16px",marginBottom:16,fontSize:12,lineHeight:1.6,background:"#251e10",color:"#F3D8A7"}}>
         <strong>Modelo de escenarios ZRC · {GEORISK_SCENARIO_VERSION}</strong>. Los pesos, riesgos intrínsecos, multiplicadores sectoriales y coeficientes de impacto son <strong>supuestos analíticos, no parámetros calibrados</strong>. Las referencias macro de la simulación son fijas e ilustrativas; los datos observados se muestran por separado con fuente y fecha. El índice público ZRC-GRI es otra metodología y sus puntuaciones no son intercambiables con las del simulador.
       </div>
@@ -699,6 +711,8 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
    </details>
   </div>
   <GeoRiskTaxonomyBridge origin="simulator" />
+    </div>
+  </details>
 
           {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
         {tab === "forecast" && <GeoRiskPredictiveOutlook region={region} onRegionChange={setRegion} />}
