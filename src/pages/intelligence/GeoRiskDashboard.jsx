@@ -794,7 +794,7 @@ export default function GeoRiskDashboard() {
                               <div key={a} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "3px 0" }}>
                                 <span style={{ fontSize: 12, color: "#94A3B8" }}>{a}</span>
                                 <span style={{ fontSize: 12, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, color: c }}>
-                                  {pct >= 0 ? "+" : ""}{fmt(pct, 1)}%
+                                  {pct >= 0 ? "+" : ""}{fmt(pct, 1)} pts
                                 </span>
                               </div>
                             );
@@ -994,8 +994,8 @@ export default function GeoRiskDashboard() {
                 display: "flex", gap: 10, alignItems: "flex-start",
               }}>
                 <AlertTriangle size={14} color="#F59E0B" style={{ flexShrink: 0, marginTop: 1 }} />
-                <span><span style={{ color: "#F59E0B", fontWeight: 700 }}>DISCLAIMER:</span> Las señales de asignación y los impactos de precio estimados se generan mediante el modelo cuantitativo propietario de Zenith Rise Capital
-                (sensibilidad histórica ilustrativa por clase de activo) y no constituyen asesoramiento de inversión. Los resultados dependen de las probabilidades de escenario asignadas por el
+                <span><span style={{ color: "#F59E0B", fontWeight: 700 }}>DISCLAIMER:</span> Las señales de asignación y las puntuaciones de sensibilidad por activo se obtienen de coeficientes heurísticos de Zenith Rise Capital
+                (supuestos sin calibración histórica, no rendimientos ni variaciones de precio estimadas) y no constituyen asesoramiento de inversión. Los resultados dependen de las probabilidades de escenario asignadas por el
                 analista y del multiplicador sectorial seleccionado. Consulte con un asesor financiero cualificado antes de tomar decisiones de inversión.</span>
               </div>
             </div>
