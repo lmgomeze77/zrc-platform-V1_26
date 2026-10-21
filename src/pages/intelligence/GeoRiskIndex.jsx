@@ -1,3 +1,4 @@
+import GeoRiskMarketWatch from "../../components/GeoRiskMarketWatch.jsx";
 import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
 import GeoRiskGprData from "../../components/GeoRiskGprData";
 import GeoRiskMarketImpact from "../../components/GeoRiskMarketImpact.jsx";
@@ -422,6 +423,8 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
           </div>
         </details>
       </FadeIn>
+
+      <FadeIn delay={0.19}><GeoRiskMarketWatch lang={lang}/></FadeIn>
 
       <FadeIn delay={0.2}>
         <GeoRiskMarketImpact lang={lang} />
