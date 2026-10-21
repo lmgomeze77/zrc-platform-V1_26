@@ -3,7 +3,7 @@
 // become calibrated merely because an observed baseline is used.
 export const OBSERVED_REFERENCE_VERSION='macro-baseline-v1';
 export const REFERENCE_SERIES={
- eu:{interest_rates:'ECB_DEPOSIT_RATE',inflation_cpi:'EU_HICP',fx:'EURUSD',sovereign_yield:'ECB_10Y_YIELD'},
+ eu:{interest_rates:'ECB_DEPOSIT_RATE',inflation_cpi:'EU_HICP',fx:'EURUSD'},
  usa:{inflation_cpi:'US_CPI'},
  asia:{fx:'USDCNY'}
 };
