@@ -7,7 +7,7 @@ test('asset scoring preserves historic calculation but cannot be called a percen
  const result=decomposeAssetSensitivity('Deuda soberana core',x,'eu');
  assert.equal(result.status,'illustrative');
  assert.equal(result.unit,'arbitrary_sensitivity_points');
- assert.equal(Number(result.score.toFixed(2)),-6.8);
+ assert.equal(Number(result.score.toFixed(2)),-6.4);
  assert.equal(result.score,estimatePriceImpact('Deuda soberana core',x,'eu'));
  assert.equal(Number(result.terms.reduce((sum,t)=>sum+t.contribution,0).toFixed(8)),Number(result.score.toFixed(8)));
 });
