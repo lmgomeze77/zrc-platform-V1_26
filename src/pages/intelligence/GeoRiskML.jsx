@@ -1,3 +1,4 @@
+import { useGeoRiskObservedBaselines } from "../../hooks/useGeoRiskObservedBaselines.js";
 import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
 import { GEORISK_SCENARIOS, GEORISK_SCENARIO_VERSION, GEORISK_MODEL_CLASSIFICATION } from "../../data/georiskScenarioContract.js";
 import GeoRiskPredictiveOutlook from '../../components/GeoRiskPredictiveOutlook.jsx';
@@ -375,7 +376,7 @@ export default function GeoRiskML() {
     return () => clearInterval(t);
   }, []);
 
-  const ECONOMIC_VARIABLES = ECONOMIC_VARIABLES_BY_REGION[region];
+  const {variables:ECONOMIC_VARIABLES,observedCount, status:observationStatus}=useGeoRiskObservedBaselines(region,ECONOMIC_VARIABLES_BY_REGION[region]);
   const fxExporterSign = region === "asia" ? 1 : -1;
 
   const sectorMult = SECTORS[sector].mult;
@@ -696,7 +697,18 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
       <div role="note" style={{border:"1px solid #8B6A35",borderRadius:12,padding:"12px 16px",marginBottom:16,fontSize:12,lineHeight:1.6,background:"#251e10",color:"#F3D8A7"}}>
         <strong>Modelo de escenarios ZRC · {GEORISK_SCENARIO_VERSION}</strong>. Los pesos, riesgos intrínsecos, multiplicadores sectoriales y coeficientes de impacto son <strong>supuestos analíticos, no parámetros calibrados</strong>. Las referencias macro de la simulación son fijas e ilustrativas; los datos observados se muestran por separado con fuente y fecha. El índice público ZRC-GRI es otra metodología y sus puntuaciones no son intercambiables con las del simulador.
       </div>
-          <GeoRiskTaxonomyBridge origin="simulator" />
+          <div role="status" style={{border:"1px solid #315642",borderRadius:12,padding:"12px 16px",margin:"10px 0",background:"#102218",fontSize:12,color:"#C7E3D0",lineHeight:1.65}}>
+  <strong>Referencias macroeconómicas · P0.3</strong> · {observationStatus==="loading"?"Consultando fuentes…":`${observedCount} de ${Object.keys(ECONOMIC_VARIABLES).length} variables con dato observado verificable.`}
+  <div>Los restantes niveles base son <strong>supuestos fijos ilustrativos</strong>, no cifras de mercado actualizadas. Las variaciones calculadas son sensibilidades hipotéticas, no pronósticos calibrados.</div>
+  <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(190px,1fr))",gap:8,marginTop:8}}>
+    {Object.entries(ECONOMIC_VARIABLES).map(([key,v])=><div key={key} style={{border:"1px solid #284936",padding:"7px 9px",borderRadius:8}}>
+      <div style={{fontSize:11,fontWeight:600}}>{v.label}</div>
+      <div style={{fontSize:11,color:v.base_status==="observed"?"#86EFAC":"#F8CD88"}}>{v.base_status==="observed"?`Observado · ${v.observed.date}`:"Supuesto ilustrativo"}</div>
+      {v.base_status==="observed"?<a href={v.observed.source_url} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:"#93C5FD"}}>{v.observed.source} · referencia oficial</a>:<div style={{fontSize:10,opacity:.7}}>{v.reference_warning}</div>}
+    </div>)}
+  </div>
+</div>
+<GeoRiskTaxonomyBridge origin="simulator" />
 
           {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
         {tab === "forecast" && <GeoRiskPredictiveOutlook region={region} onRegionChange={setRegion} />}
