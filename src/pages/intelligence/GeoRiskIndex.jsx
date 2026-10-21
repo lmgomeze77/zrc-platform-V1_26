@@ -1,6 +1,6 @@
 import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
 import GeoRiskGprData from "../../components/GeoRiskGprData";
-import GeoRiskAssetEvidence from "../../components/GeoRiskAssetEvidence";
+import GeoRiskMarketImpact from "../../components/GeoRiskMarketImpact.jsx";
 // GeoRiskIndex.jsx — ZRC GeoRisk Index (public weekly benchmark)
 // Self-contained component: fetches weekly history from the Worker,
 // renders the chart + concrete asset-impact reference table.
@@ -424,7 +424,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
       </FadeIn>
 
       <FadeIn delay={0.2}>
-        <GeoRiskAssetEvidence lang={lang} />
+        <GeoRiskMarketImpact lang={lang} />
       </FadeIn>
 
       <details style={{padding:"12px 16px",marginBottom:16,border:`1px solid ${C.border}`,borderRadius:14,color:C.textSec}}>
