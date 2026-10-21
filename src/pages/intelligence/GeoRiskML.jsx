@@ -1,3 +1,4 @@
+import { estimatePriceImpact, decomposeAssetSensitivity, SENSITIVITY_VERSION } from "../../data/georiskSensitivityAudit.js";
 import { useGeoRiskObservedBaselines } from "../../hooks/useGeoRiskObservedBaselines.js";
 import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
 import { GEORISK_SCENARIOS, GEORISK_SCENARIO_VERSION, GEORISK_MODEL_CLASSIFICATION } from "../../data/georiskScenarioContract.js";
@@ -83,26 +84,6 @@ const ASSETS = [
 // "fx" cambia de signo entre regiones porque EUR/USD y DXY suben cuando la
 // divisa local SE FORTALECE, mientras que USD/CNY sube cuando el yuan SE
 // DEBILITA — el coeficiente refleja ese efecto en el exportador local.
-const ASSET_SENSITIVITY_BASE = {
-  "Deuda soberana core":       { interest_rates: -9,  sovereign_yield: -11, capital_flows: 2  },
-  "Renta fija High Yield":     { interest_rates: -6,  sovereign_yield: -7,  capital_flows: 4, inflation_cpi: -2 },
-  "Real estate prime":         { interest_rates: -8,  sovereign_yield: -5,  capital_flows: 7  },
-  "Materias primas":           { commodities: 12, inflation_cpi: 3 },
-  "Efectivo / Money Market":   { interest_rates: 3, sovereign_yield: 1 },
-};
-const ASSET_SENSITIVITY_BY_REGION = {
-  eu:   { ...ASSET_SENSITIVITY_BASE, "Equity exportador": { fx: -35, capital_flows: 4 } },
-  usa:  { ...ASSET_SENSITIVITY_BASE, "Equity exportador": { fx: -35, capital_flows: 4 } },
-  asia: { ...ASSET_SENSITIVITY_BASE, "Equity exportador": { fx: 35,  capital_flows: 4 } },
-};
-
-function estimatePriceImpact(asset, impactVector, region = "eu") {
-  const sens = ASSET_SENSITIVITY_BY_REGION[region]?.[asset] || {};
-  let total = 0;
-  Object.entries(sens).forEach(([vk, coef]) => { total += (impactVector[vk] || 0) * coef; });
-  return total;
-}
-
 // Mezcla de probabilidad de escenario ZRC (sin ajustar por el usuario) — es la
 // misma que usa el Decision Engine por defecto (sector Global, sin overrides).
 export const DEFAULT_WEIGHTS = Object.fromEntries(Object.entries(SCENARIOS).map(([k, v]) => [k, v.prob]));
@@ -215,7 +196,7 @@ function SparkLine({ data, color = "#16A34A", w = 100, h = 28 }) {
   );
 }
 
-// Heatmap correlación escenario × variable
+// Mapa de supuestos de transmisión escenario × variable
 function CorrelationHeatmap({ scenarios, scenarioWeights, economicVariables, region }) {
   const vars = Object.entries(economicVariables);
   const scens = Object.entries(scenarios);
@@ -708,7 +689,16 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
     </div>)}
   </div>
 </div>
-<GeoRiskTaxonomyBridge origin="simulator" />
+<div role="note" style={{padding:"13px 16px",borderRadius:12,marginBottom:14,border:"1px solid #8B6A35",background:"#261F13",color:"#F6D79B",fontSize:12,lineHeight:1.65}}>
+   <strong>Auditoría P0.4 · Sensibilidades ilustrativas</strong> · Las cifras calculadas sobre activos son <strong>puntos heurísticos sin unidad financiera</strong>, no variaciones porcentuales de precio ni rentabilidades esperadas. Los coeficientes no están calibrados y no justifican operaciones automáticas. Modelo: {SENSITIVITY_VERSION}.
+   <details style={{marginTop:7}}><summary style={{cursor:"pointer"}}>Ver contribuciones por activo</summary>
+     {ASSETS.map(asset=>{const d=decomposeAssetSensitivity(asset,Object.fromEntries(Object.keys(ECONOMIC_VARIABLES).map(k=>[k,computeImpact(k)])),region);return <div key={asset} style={{padding:"9px 0",borderBottom:"1px solid #5E4826"}}>
+       <strong>{asset}</strong> · {d.score===null?"Sin cobertura":d.score.toFixed(2)+" puntos ilustrativos"}
+       <div style={{fontSize:11,opacity:.85}}>{d.terms.map(t=>t.contribution===null?`${t.variable}: sin dato`:`${t.variable}: ${t.impact.toFixed(2)} × ${t.coefficient} = ${t.contribution.toFixed(2)}`).join(" · ")}</div>
+     </div>})}
+   </details>
+  </div>
+  <GeoRiskTaxonomyBridge origin="simulator" />
 
           {/* ═══════════════ TAB: PREDICTIVO ML ═══════════════ */}
         {tab === "forecast" && <GeoRiskPredictiveOutlook region={region} onRegionChange={setRegion} />}
@@ -923,10 +913,10 @@ El GeoRisk Dashboard reúne observaciones, fuentes y escenarios. <b>GeoRisk ML a
             <div className="grml-card grml-table-scroll" style={{ marginTop:12 }}>
               <div className="grml-table-inner">
                 <div style={{ padding:"10px 16px", background:"#0d1f16", borderBottom:"1px solid #16301f", fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
-                  RESULTADO DEL MODELO · IMPACTO SIMULADO EN ACTIVOS
+                  RESULTADO ILUSTRATIVO · SENSIBILIDAD POR ACTIVO
                 </div>
                 <div style={{ display:"grid", gridTemplateColumns:"2fr 1.3fr", padding:"10px 16px", background:"#0d1f16", borderBottom:"1px solid #16301f", fontSize:11, color:"#64748B", fontFamily:"monospace", letterSpacing:1 }}>
-                  <span>CLASE DE ACTIVO</span><span style={{textAlign:"right"}}>EXPOSICIÓN SIMULADA</span>
+                  <span>CLASE DE ACTIVO</span><span style={{textAlign:"right"}}>SEÑAL HEURÍSTICA</span>
                 </div>
                 {assetImpacts.map((a, i) => (
                   <div key={a.asset} style={{ display:"grid", gridTemplateColumns:"2fr 1.3fr", padding:"12px 16px", borderBottom:"1px solid #16301f30", alignItems:"center", background:i%2?"#0a1810":"#0c1a12" }}>

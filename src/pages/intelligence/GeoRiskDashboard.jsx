@@ -1,3 +1,4 @@
+import { estimatePriceImpact, decomposeAssetSensitivity, SENSITIVITY_VERSION } from "../../data/georiskSensitivityAudit.js";
 import { useGeoRiskObservedBaselines } from "../../hooks/useGeoRiskObservedBaselines.js";
 import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
 import { GEORISK_SCENARIOS, GEORISK_SCENARIO_VERSION, GEORISK_MODEL_CLASSIFICATION } from "../../data/georiskScenarioContract.js";
@@ -106,26 +107,6 @@ const SECTION_GUIDES = {
 // "fx" cambia de signo entre regiones porque EUR/USD y DXY suben cuando la
 // divisa local SE FORTALECE, mientras que USD/CNY sube cuando el yuan SE
 // DEBILITA — el coeficiente refleja ese efecto en el exportador local.
-const ASSET_SENSITIVITY_BASE = {
-  "Deuda soberana core":       { interest_rates: -9,  sovereign_yield: -11, capital_flows: 2  },
-  "Renta fija High Yield":     { interest_rates: -6,  sovereign_yield: -7,  capital_flows: 4, inflation_cpi: -2 },
-  "Real estate prime":         { interest_rates: -8,  sovereign_yield: -5,  capital_flows: 7  },
-  "Materias primas":           { commodities: 12, inflation_cpi: 3 },
-  "Efectivo / Money Market":   { interest_rates: 3, sovereign_yield: 1 },
-};
-const ASSET_SENSITIVITY_BY_REGION = {
-  eu:   { ...ASSET_SENSITIVITY_BASE, "Equity exportador": { fx: -35, capital_flows: 4 } },
-  usa:  { ...ASSET_SENSITIVITY_BASE, "Equity exportador": { fx: -35, capital_flows: 4 } },
-  asia: { ...ASSET_SENSITIVITY_BASE, "Equity exportador": { fx: 35,  capital_flows: 4 } },
-};
-
-function estimatePriceImpact(asset, impactVector, region = "eu") {
-  const sens = ASSET_SENSITIVITY_BY_REGION[region]?.[asset] || {};
-  let total = 0;
-  Object.entries(sens).forEach(([vk, coef]) => { total += (impactVector[vk] || 0) * coef; });
-  return total;
-}
-
 function riskLabel(v) {
   return v < 40 ? "BAJO" : v < 65 ? "MODERADO" : v < 80 ? "ELEVADO" : "CRÍTICO";
 }
@@ -629,7 +610,16 @@ export default function GeoRiskDashboard() {
     </div>)}
   </div>
 </div>
-<GeoRiskTaxonomyBridge origin="simulator" />
+<div role="note" style={{padding:"13px 16px",borderRadius:12,marginBottom:14,border:"1px solid #8B6A35",background:"#261F13",color:"#F6D79B",fontSize:12,lineHeight:1.65}}>
+   <strong>Auditoría P0.4 · Sensibilidades ilustrativas</strong> · Las cifras calculadas sobre activos son <strong>puntos heurísticos sin unidad financiera</strong>, no variaciones porcentuales de precio ni rentabilidades esperadas. Los coeficientes no están calibrados y no justifican operaciones automáticas. Modelo: {SENSITIVITY_VERSION}.
+   <details style={{marginTop:7}}><summary style={{cursor:"pointer"}}>Ver contribuciones por activo</summary>
+     {ASSETS.map(asset=>{const d=decomposeAssetSensitivity(asset,Object.fromEntries(Object.keys(ECONOMIC_VARIABLES).map(k=>[k,computeImpact(k)])),region);return <div key={asset} style={{padding:"9px 0",borderBottom:"1px solid #5E4826"}}>
+       <strong>{asset}</strong> · {d.score===null?"Sin cobertura":d.score.toFixed(2)+" puntos ilustrativos"}
+       <div style={{fontSize:11,opacity:.85}}>{d.terms.map(t=>t.contribution===null?`${t.variable}: sin dato`:`${t.variable}: ${t.impact.toFixed(2)} × ${t.coefficient} = ${t.contribution.toFixed(2)}`).join(" · ")}</div>
+     </div>})}
+   </details>
+  </div>
+  <GeoRiskTaxonomyBridge origin="simulator" />
 
           {/* SCENARIOS */}
         {tab === "data" && (<>
@@ -804,7 +794,7 @@ export default function GeoRiskDashboard() {
                               <div key={a} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "3px 0" }}>
                                 <span style={{ fontSize: 12, color: "#94A3B8" }}>{a}</span>
                                 <span style={{ fontSize: 12, fontFamily: "'JetBrains Mono', monospace", fontWeight: 600, color: c }}>
-                                  {pct >= 0 ? "+" : ""}{fmt(pct, 1)}%
+                                  {pct >= 0 ? "+" : ""}{fmt(pct, 1)} pts
                                 </span>
                               </div>
                             );
@@ -1004,8 +994,8 @@ export default function GeoRiskDashboard() {
                 display: "flex", gap: 10, alignItems: "flex-start",
               }}>
                 <AlertTriangle size={14} color="#F59E0B" style={{ flexShrink: 0, marginTop: 1 }} />
-                <span><span style={{ color: "#F59E0B", fontWeight: 700 }}>DISCLAIMER:</span> Las señales de asignación y los impactos de precio estimados se generan mediante el modelo cuantitativo propietario de Zenith Rise Capital
-                (sensibilidad histórica ilustrativa por clase de activo) y no constituyen asesoramiento de inversión. Los resultados dependen de las probabilidades de escenario asignadas por el
+                <span><span style={{ color: "#F59E0B", fontWeight: 700 }}>DISCLAIMER:</span> Las señales de asignación y las puntuaciones de sensibilidad por activo se obtienen de coeficientes heurísticos de Zenith Rise Capital
+                (supuestos sin calibración histórica, no rendimientos ni variaciones de precio estimadas) y no constituyen asesoramiento de inversión. Los resultados dependen de las probabilidades de escenario asignadas por el
                 analista y del multiplicador sectorial seleccionado. Consulte con un asesor financiero cualificado antes de tomar decisiones de inversión.</span>
               </div>
             </div>
