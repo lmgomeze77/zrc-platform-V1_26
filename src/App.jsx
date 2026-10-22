@@ -1823,7 +1823,7 @@ const Footer = ({ lang }) => {
   );
 };
 
-const GeoRiskAccessHub = ({lang,onOpenMap,onNav}) => {
+const GeoRiskAccessHub = ({lang,onOpenMap,onNav,countryContext}) => {
   const {user,openPricing,openLogin}=useAuth();
   const {tier,status,loading}=useSubscription(user?.email);
   const eligible=!loading && user && status!=="expired" && (tier==="intelligence" || tier==="institutional");
@@ -1837,6 +1837,7 @@ const GeoRiskAccessHub = ({lang,onOpenMap,onNav}) => {
       <p style={{color:C.textSec,maxWidth:770,lineHeight:1.7,margin:0}}>{tr("Explora el contexto geopolítico y las fichas de país gratuitamente. Intelligence añade herramientas de escenarios y análisis cuantitativo para miembros con acceso vigente.","Explore geopolitical context and country profiles for free. Intelligence adds scenario and quantitative analysis tools for eligible members.")}</p></div>
       <span style={{padding:"8px 12px",borderRadius:12,border:`1px solid ${C.border}`,color:C.textSec,fontSize:12}}>{loading?tr("Comprobando acceso…","Checking access…"):eligible?tr("Intelligence · acceso activo","Intelligence · active access"):tr("Exploración pública","Public exploration")}</span>
     </div>
+    {countryContext && <div role="status" style={{padding:"14px 18px",borderRadius:14,border:`1px solid ${C.goldBorder}`,background:C.goldDim,marginBottom:16,color:C.textSec,lineHeight:1.6}}><strong style={{color:C.gold}}>{tr("País seleccionado: ","Selected country: ")}{countryContext.name}</strong><span style={{display:"block",fontSize:12}}>{tr("Contexto conservado desde el mapa. Los escenarios cuantitativos requieren configurar manualmente la región y exposición; no se ha aplicado ninguna calibración automática por país.","Context preserved from the map. Quantitative scenarios require manual region and exposure settings; no automatic country calibration has been applied.")}</span></div>}
     <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,290px),1fr))",gap:14}}>
       <div style={card}><strong style={{color:C.green,fontSize:12}}>{tr("ACCESO PÚBLICO","PUBLIC ACCESS")}</strong><h3 style={{margin:0,color:C.text}}>{tr("Explorar y comprender","Explore and understand")}</h3><p style={{color:C.textSec,lineHeight:1.65,margin:0}}>{tr("Mapa interactivo, fichas de país, índice semanal ZRC-GRI y evidencia histórica GPR. Cada medida mantiene su metodología y procedencia.","Interactive map, country profiles, weekly ZRC-GRI index and historical GPR evidence. Each measure retains its own methodology and provenance.")}</p>
         <div style={{display:"flex",flexWrap:"wrap",gap:8,marginTop:"auto"}}><button style={action} onClick={onOpenMap}>{tr("Abrir mapa →","Open map →")}</button><a style={action} href="/inteligencia/paises/">{tr("Fichas país →","Country profiles →")}</a><button style={action} onClick={()=>onNav("georisk-index")}>{tr("Índice →","Index →")}</button></div>
@@ -1857,6 +1858,7 @@ const ZRCPlatform = () => {
   // (a diferencia de showGeoRisk/showGeoRiskML, que solo se activan desde
   // botones ya protegidos dentro de Intelligence).
   const [showWorldMap, setShowWorldMap] = useState(false);
+  const [georiskCountryContext,setGeoriskCountryContext] = useState(null);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -2118,7 +2120,7 @@ const ZRCPlatform = () => {
       <GoldDivider />
       <Intelligence lang={lang} />
       <GoldDivider />
-      <GeoRiskAccessHub lang={lang} onOpenMap={openWorldMap} onNav={onNav} />
+      <GeoRiskAccessHub lang={lang} onOpenMap={openWorldMap} onNav={onNav} countryContext={georiskCountryContext} />
       <GeoRiskIndex lang={lang} useAuth={useAuth} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} />
       <GoldDivider />
 
@@ -2194,7 +2196,7 @@ const ZRCPlatform = () => {
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <GeoRiskMapErrorBoundary lang={lang} onClose={closeWorldMap}>
           <Suspense fallback={<div role="status" style={{ padding: "12vh 24px", textAlign: "center", color: "#15233B", background: "#F7F9FC", minHeight: "100vh", fontFamily: "Inter, sans-serif" }}>{lang === "es" ? "Preparando mapa geopolítico…" : "Preparing geopolitical map…"}</div>}>
-            <GeoRiskWorldMap lang={lang} onClose={closeWorldMap} onOpenIntelligence={() => { closeWorldMap(); setTimeout(() => onNav("intelligence"), 50); }} />
+            <GeoRiskWorldMap lang={lang} onClose={closeWorldMap} onOpenIntelligence={(country) => { if(country) setGeoriskCountryContext(country); closeWorldMap(); setTimeout(() => onNav("georisk-suite"), 50); }} />
           </Suspense>
           </GeoRiskMapErrorBoundary>
         </div>

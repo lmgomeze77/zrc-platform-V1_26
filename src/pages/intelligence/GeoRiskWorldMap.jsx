@@ -1114,7 +1114,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
               {["es","en"].map(code => <button key={code} type="button" onClick={() => setLocalLang(code)} aria-pressed={lang === code} lang={code} style={{padding:"9px 12px",background:lang === code ? C.goldDim : C.surface,color:lang === code ? C.gold : C.textSec,border:"none",fontFamily:F.mono,fontSize:11,fontWeight:700,cursor:"pointer"}}>{code.toUpperCase()}</button>)}
             </div>
             {onOpenIntelligence && (
-              <button onClick={onOpenIntelligence} className="grwm-cta" style={{
+              <button onClick={() => onOpenIntelligence(selected ? { id: selected.id, name: en ? COUNTRY_NAMES_EN[selected.id] || selected.name : selected.name } : null)} className="grwm-cta" style={{
                 display: "flex", alignItems: "center", gap: 6, padding: "9px 16px", borderRadius: 7,
                 background: C.gold, color: C.bg, border: "none", fontFamily: F.mono, fontSize: 11,
                 fontWeight: 700, letterSpacing: "0.04em", cursor: "pointer",
@@ -1304,7 +1304,7 @@ export default function GeoRiskWorldMap({ onClose, onOpenIntelligence, lang: par
                 {tr("Escenarios ilustrativos con controles interactivos e impactos estimados por clase de activo. GeoRisk Predictive ML añade perspectivas estadísticas sujetas a disponibilidad y validación de datos.", "Illustrative scenarios with interactive controls and estimated impacts by asset class. GeoRisk Predictive ML adds statistical outlooks subject to data availability and validation.")}
               </p>
             </div>
-            <button onClick={onOpenIntelligence} className="grwm-cta" style={{
+            <button onClick={() => onOpenIntelligence(selected ? { id: selected.id, name: en ? COUNTRY_NAMES_EN[selected.id] || selected.name : selected.name } : null)} className="grwm-cta" style={{
               padding: "12px 26px", background: C.gold, color: C.bg, border: "none", borderRadius: 8,
               fontFamily: F.mono, fontSize: 11, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase",
               cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
