@@ -74,6 +74,8 @@ export async function loadWeeklyRiskHistory(env,fetchImpl=fetch){
   const resp=await fetchImpl(env.SUPABASE_URL+'/rest/v1/georisk_index_weekly?select=week_start,index_value,source&order=week_start.asc&limit=1000',{headers:{apikey:env.SUPABASE_SERVICE_KEY,Authorization:'Bearer '+env.SUPABASE_SERVICE_KEY},signal:AbortSignal.timeout(6000)});
   if(!resp.ok)return [];
   const rows=await resp.json();
+  // No publication timestamp in the current database contract: explicitly
+  // return unverifiable rows. The research model must remain unavailable.
   return Array.isArray(rows)?rows:[];
  }catch{return [];}
 }
