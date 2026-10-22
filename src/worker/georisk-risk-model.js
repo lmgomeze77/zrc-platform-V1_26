@@ -72,7 +72,7 @@ export function evaluateRiskModel(item,indexHistory,horizon,now=new Date()){
 export async function loadWeeklyRiskHistory(env,fetchImpl=fetch){
  if(!env?.SUPABASE_URL||!env?.SUPABASE_SERVICE_KEY)return [];
  try{
-  const resp=await fetchImpl(env.SUPABASE_URL+'/rest/v1/georisk_index_weekly?select=week_start,index_value,source,published_at&order=week_start.asc&limit=1000',{headers:{apikey:env.SUPABASE_SERVICE_KEY,Authorization:'Bearer '+env.SUPABASE_SERVICE_KEY},signal:AbortSignal.timeout(6000)});
+  const resp=await fetchImpl(env.SUPABASE_URL+'/rest/v1/georisk_index_weekly?select=week_start,index_value,source&order=week_start.asc&limit=1000',{headers:{apikey:env.SUPABASE_SERVICE_KEY,Authorization:'Bearer '+env.SUPABASE_SERVICE_KEY},signal:AbortSignal.timeout(6000)});
   if(!resp.ok)return [];
   const rows=await resp.json();
   return Array.isArray(rows)?rows:[];
