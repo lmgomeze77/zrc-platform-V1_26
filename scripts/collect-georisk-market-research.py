@@ -19,6 +19,7 @@ CATALOG = {
     "DCOILWTICO": ("WTI", "USD/barrel", "EIA via FRED"),
     "DHHNGSP": ("Henry Hub gas", "USD/MMBtu", "EIA via FRED"),
     "DGS10": ("US Treasury 10Y", "percent", "US Treasury / Federal Reserve via FRED"),
+    "SP500": ("S&P 500 index", "index points", "S&P Dow Jones Indices via FRED"),
 }
 DEFAULT = Path(__file__).resolve().parent.parent / "public/data/georisk-market-research.json"
 
@@ -61,30 +62,38 @@ def parse_csv(raw, series_id, today):
     return result[-5000:]
 
 def collect(fetch=None, now=None):
+    """Collect independent feeds. Failed sources are explicit, never replaced."""
     now = now or datetime.now(timezone.utc)
     fetch = fetch or (lambda url: urllib.request.urlopen(
         urllib.request.Request(url, headers={"User-Agent": "ZRC-GeoRisk-Research/1.0"}),
         timeout=25).read())
     series = []
+    failures = []
     for series_id, (label, unit, provider) in CATALOG.items():
         url = BASE + series_id
-        raw = fetch(url)
-        points = parse_csv(raw, series_id, now.date().isoformat())
-        latest = points[-1]["date"]
-        # 10-day lag tolerance because EIA spot series do not publish daily.
-        age = (now.date() - datetime.strptime(latest, "%Y-%m-%d").date()).days
-        if age > 10:
-            raise ValueError(f"{series_id}: source is stale ({age} days)")
-        series.append({
-            "id": series_id, "label": label, "unit": unit,
-            "provider": provider, "frequency": "business_day",
-            "source_url": "https://fred.stlouisfed.org/series/" + series_id,
+        try:
+            raw = fetch(url)
+            points = parse_csv(raw, series_id, now.date().isoformat())
+            latest = points[-1]["date"]
+            age = (now.date() - datetime.strptime(latest, "%Y-%m-%d").date()).days
+            if age > 10:
+                raise ValueError(f"source stale ({age} calendar days)")
+            series.append({
+                "id": series_id, "label": label, "unit": unit,
+                "provider": provider, "frequency": "business_day",
+                "source_url": "https://fred.stlouisfed.org/series/" + series_id,
+                "collected_at": now.isoformat().replace("+00:00", "Z"),
+                "download_sha256": hashlib.sha256(raw).hexdigest(),
+                "latest": points[-1], "points": points,
+            })
+        except (ValueError, RuntimeError, OSError, TimeoutError) as error:
+            failures.append({"id": series_id, "reason": str(error)[:180]})
+    status = "available" if len(series) == len(CATALOG) else ("partial" if series else "unavailable")
+    return {"schema_version": 2, "status": status,
             "collected_at": now.isoformat().replace("+00:00", "Z"),
-            "download_sha256": hashlib.sha256(raw).hexdigest(),
-            "latest": points[-1], "points": points,
-        })
-    return {"schema_version": 1, "status": "available",
-            "vintage_warning": "Historical observations reflect the downloaded current series, not original publication vintages.",
+            "expected_series": list(CATALOG),
+            "failures": failures,
+            "vintage_warning": "Downloaded historical data are not point-in-time vintages.",
             "series": series}
 
 def main():
@@ -93,7 +102,9 @@ def main():
     tmp = DEFAULT.with_suffix(".tmp")
     tmp.write_text(json.dumps(snapshot, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
     tmp.replace(DEFAULT)
-    print("Verified", len(snapshot["series"]), "series; latest:", [(s["id"], s["latest"]["date"]) for s in snapshot["series"]])
+    print("Collection status:", snapshot["status"], "Verified", len(snapshot["series"]), "of", len(CATALOG), "series; latest:", [(s["id"], s["latest"]["date"]) for s in snapshot["series"]], "failures:", snapshot["failures"])
+    if not snapshot["series"]:
+        raise SystemExit("No valid market feeds. Snapshot explicitly unavailable.")
 
 if __name__ == "__main__":
     main()

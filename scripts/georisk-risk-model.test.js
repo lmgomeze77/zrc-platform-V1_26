@@ -20,3 +20,16 @@ test('insufficient history never fabricates a risk model forecast',()=>{
 test('missing credentials fail closed without exposing database details',async()=>{
  assert.deepEqual(await loadWeeklyRiskHistory({}),[]);
 });
+
+test('a weekly score with unknown publication vintage cannot be promoted to predictive output',()=>{
+ const points=Array.from({length:450},(_,i)=>({date:new Date(Date.UTC(2025,0,1+i)).toISOString().slice(0,10),value:1.1+Math.sin(i/18)*0.01}));
+ const r=evaluateRiskModel({id:'EURUSD',frequency:'daily',points},weekly,30,new Date('2026-04-01'));
+ assert.equal(r.status,'unavailable');
+ assert.equal(r.validation_gate,'missing_point_in_time_publication');
+ assert.equal(r.point,undefined);
+});
+test('weekly features cannot use a print published after forecast origin',()=>{
+ const dated=[{week_start:'2025-01-06',index_value:55,source:'weekly_evidence',published_at:'2025-01-22T12:00:00Z'}];
+ assert.equal(riskFeature(dated,'2025-01-14'),null);
+ assert.equal(riskFeature(dated,'2025-01-23')?.level,55);
+});
