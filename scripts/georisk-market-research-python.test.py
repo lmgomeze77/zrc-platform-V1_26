@@ -20,7 +20,8 @@ class CollectorTests(unittest.TestCase):
         def fetch(url):
             return fixture(url.split("id=")[-1])
         out=mod.collect(fetch=fetch,now=datetime(2026,2,14,tzinfo=timezone.utc))
-        self.assertEqual(len(out["series"]),5)\n        self.assertEqual(out["status"],"available")
+        self.assertEqual(len(out["series"]),5)
+        self.assertEqual(out["status"],"available")
         self.assertEqual(len(out["series"][0]["download_sha256"]),64)
         self.assertEqual(out["series"][0]["points"][0]["date"],"2025-01-01")
     def test_missing_header_fails(self):
