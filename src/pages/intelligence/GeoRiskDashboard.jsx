@@ -198,21 +198,19 @@ function MiniBar({ value, max = 1, color, width = 80 }) {
 
 function DataTicker({ items, collectedAt }) {
   return (
-    <section className="zrc-ticker-shell" aria-label="Mercados observados con fecha y fuente">
-      <div className="zrc-ticker-heading">
-        <span>MERCADOS OBSERVADOS · DATOS PUBLICADOS</span>
-        <span>{collectedAt ? `Captura: ${collectedAt.slice(0,10)} · FRED` : "Sin captura disponible"}</span>
+    <section className="zrc-ticker-shell" aria-label="Indicadores de mercado observados">
+      <div className="zrc-ticker-heading" style={{flexWrap:"wrap"}}>
+        <span>MERCADOS OBSERVADOS</span>
+        <span>{collectedAt ? `FRED · Captura ${collectedAt.slice(0,10)}` : "Sin captura disponible"}</span>
       </div>
-      <div className="zrc-ticker-window" style={{ WebkitMaskImage:"none",maskImage:"none" }}>
-        <div className="zrc-ticker-group" style={{ flexWrap:"nowrap" }}>
-          {items.length ? items.map(item => (
-            <div key={item.id} className="zrc-ticker-item" style={{ minWidth:215,gridTemplateColumns:"1fr",gridTemplateAreas:"'label' 'value' 'kind'",gap:4 }}>
-              <span className="zrc-ticker-label">{item.label}</span>
-              <strong className="zrc-ticker-value">{item.value} <span style={{fontSize:11,fontWeight:500,color:"#94A3B8"}}>{item.unit}</span></strong>
-              <span className="zrc-ticker-kind">OBSERVADO · {item.date} · FRED</span>
-            </div>
-          )) : <div style={{padding:16,color:"#FBBF24"}}>Datos de mercado no disponibles. No se muestran valores simulados.</div>}
-        </div>
+      <div className="zrc-observed-grid">
+        {items.length ? items.map(item => (
+          <div key={item.id} className="zrc-observed-card">
+            <span className="zrc-observed-label">{item.label}</span>
+            <strong className="zrc-observed-value">{item.value} <span className="zrc-observed-unit">{item.unit}</span></strong>
+            <span className="zrc-observed-date">Observación: {item.date} · FRED</span>
+          </div>
+        )) : <p style={{padding:16,color:"#FBBF24"}}>Datos no disponibles; no se muestran valores simulados.</p>}
       </div>
     </section>
   );
@@ -359,6 +357,13 @@ export default function GeoRiskDashboard() {
         @keyframes zrc-pulse { 0%,100% { opacity:1 } 50% { opacity:0.4 } }
         @keyframes zrc-fadeIn { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:translateY(0) } }
         @keyframes zrc-ticker-scroll { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+        .zrc-observed-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,195px),1fr)); gap:1px; background:#263754; }
+        .zrc-observed-card { background:#0D182B; padding:14px 16px; display:flex; flex-direction:column; gap:7px; min-width:0; }
+        .zrc-observed-label { color:#93C5FD; font:600 12px/1.4 'JetBrains Mono',monospace; overflow-wrap:anywhere; }
+        .zrc-observed-value { color:#F8FAFC; font:700 clamp(17px,2.1vw,22px)/1.3 'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+        .zrc-observed-unit { color:#94A3B8; font:500 11px/1.4 'JetBrains Mono',monospace; }
+        .zrc-observed-date { color:#94A3B8; font:500 10px/1.5 'JetBrains Mono',monospace; }
+        @media(max-width:560px){ .zrc-observed-grid {grid-template-columns:repeat(2,minmax(0,1fr));} .zrc-observed-card {padding:12px 10px;} .zrc-observed-value {font-size:17px;} }
         .zrc-ticker-shell { margin-top: 2px; border: 1px solid #263754; border-radius: 12px; background: #0D182B; overflow: hidden; }
         .zrc-ticker-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 14px; border-bottom: 1px solid #263754; color: #60A5FA; font: 700 10px/1.4 'JetBrains Mono', monospace; letter-spacing: .09em; }
         .zrc-ticker-heading span:last-child { color: #64748B; font-weight: 500; letter-spacing: .02em; text-transform: none; }
@@ -622,10 +627,21 @@ export default function GeoRiskDashboard() {
 
           {/* SCENARIOS */}
         {tab === "data" && (<>
+          <div className="zrc-card" style={{padding:"18px 20px",marginBottom:16,borderLeft:"3px solid #60A5FA",lineHeight:1.7}}>
+            <strong style={{color:"#BFDBFE"}}>Cómo se conectan las piezas de GeoRisk</strong>
+            <p style={{margin:"8px 0",color:"#CBD5E1"}}><b>1. Evidencia observada:</b> precios de mercado, datos macro y el índice GPR de Caldara–Iacoviello basado en prensa. Cada fuente tiene su propia fecha y metodología.</p>
+            <p style={{margin:"8px 0",color:"#CBD5E1"}}><b>2. Exposición:</b> las <a href="/inteligencia/paises" style={{color:"#93C5FD"}}>fichas de país</a> describen factores estructurales y vulnerabilidades. No son una descomposición automática del GPR.</p>
+            <p style={{margin:"8px 0",color:"#CBD5E1"}}><b>3. Escenarios ZRC:</b> ponderaciones y sensibilidades estiman impactos hipotéticos por región y sector. No están calibrados automáticamente con las series observadas.</p>
+            <p style={{margin:"8px 0 0",color:"#CBD5E1"}}><b>4. Interpretación:</b> contrasta escenarios con evidencia histórica antes de extraer implicaciones de inversión. <b>GPR, riesgo país y ZRC-GRI son medidas distintas; sus puntuaciones no son intercambiables.</b></p>
+          </div>
           <GeoRiskMarketData region={region} />
           <GeoRiskMacroData />
           <GeoRiskGovernanceData />
-          <GeoRiskGprData />
+          <details style={{border:"1px solid #263754",borderRadius:12,padding:"14px 18px",marginTop:16,background:"#0D182B"}}>
+            <summary style={{cursor:"pointer",fontWeight:700,color:"#BFDBFE"}}>Indicador de riesgo geopolítico en prensa (GPR) · evidencia externa, no índice ZRC</summary>
+            <p style={{fontSize:12,lineHeight:1.7,color:"#CBD5E1"}}>El GPR mide la frecuencia relativa de noticias relacionadas con tensiones y acontecimientos geopolíticos. Sirve como contexto histórico y contraste externo; no calcula automáticamente el riesgo de un país, la probabilidad de conflicto ni los escenarios de ZRC.</p>
+            <GeoRiskGprData />
+          </details>
         </>)}
 
           {tab === "scenarios" && (
