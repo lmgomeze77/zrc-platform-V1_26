@@ -4,7 +4,7 @@ export const MARKET_WATCH_VERSION='zrc-market-watch-v1';
 export const MARKET_MATCHES=Object.freeze({
  gold:{market_id:null,forecast_id:null},
  brent:{market_id:'DCOILBRENTEU',forecast_id:null},
- equity_us:{market_id:null,forecast_id:null},
+ equity_us:{market_id:'SP500',forecast_id:null},
  bund10:{market_id:null,forecast_id:null},
  ust10:{market_id:'DGS10',forecast_id:null},
  eurusd:{market_id:null,forecast_id:'EURUSD'}
