@@ -1823,6 +1823,32 @@ const Footer = ({ lang }) => {
   );
 };
 
+const GeoRiskAccessHub = ({lang,onOpenMap,onNav}) => {
+  const {user,openPricing,openLogin}=useAuth();
+  const {tier,status,loading}=useSubscription(user?.email);
+  const eligible=!loading && user && status!=="expired" && (tier==="intelligence" || tier==="institutional");
+  const tr=(es,en)=>lang==="es"?es:en;
+  const card={padding:"22px",borderRadius:18,border:`1px solid ${C.border}`,background:C.surface,display:"flex",flexDirection:"column",gap:12};
+  const action={alignSelf:"flex-start",border:`1px solid ${C.goldBorder}`,background:C.goldDim,color:C.gold,padding:"11px 16px",borderRadius:10,fontWeight:700,cursor:"pointer",textDecoration:"none",fontSize:12};
+  return <section id="georisk-suite" style={{maxWidth:1200,margin:"32px auto 38px",padding:"0 clamp(16px,4vw,48px)"}}>
+    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:20,flexWrap:"wrap",marginBottom:18}}>
+      <div><div style={{fontSize:11,letterSpacing:".15em",color:C.gold,fontWeight:700}}>ZRC · GEORISK INTELLIGENCE</div>
+      <h2 style={{fontSize:"clamp(25px,4vw,36px)",margin:"8px 0",color:C.text}}>{tr("Una plataforma. Dos niveles de análisis.","One platform. Two levels of analysis.")}</h2>
+      <p style={{color:C.textSec,maxWidth:770,lineHeight:1.7,margin:0}}>{tr("Explora el contexto geopolítico y las fichas de país gratuitamente. Intelligence añade herramientas de escenarios y análisis cuantitativo para miembros con acceso vigente.","Explore geopolitical context and country profiles for free. Intelligence adds scenario and quantitative analysis tools for eligible members.")}</p></div>
+      <span style={{padding:"8px 12px",borderRadius:12,border:`1px solid ${C.border}`,color:C.textSec,fontSize:12}}>{loading?tr("Comprobando acceso…","Checking access…"):eligible?tr("Intelligence · acceso activo","Intelligence · active access"):tr("Exploración pública","Public exploration")}</span>
+    </div>
+    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,290px),1fr))",gap:14}}>
+      <div style={card}><strong style={{color:C.green,fontSize:12}}>{tr("ACCESO PÚBLICO","PUBLIC ACCESS")}</strong><h3 style={{margin:0,color:C.text}}>{tr("Explorar y comprender","Explore and understand")}</h3><p style={{color:C.textSec,lineHeight:1.65,margin:0}}>{tr("Mapa interactivo, fichas de país, índice semanal ZRC-GRI y evidencia histórica GPR. Cada medida mantiene su metodología y procedencia.","Interactive map, country profiles, weekly ZRC-GRI index and historical GPR evidence. Each measure retains its own methodology and provenance.")}</p>
+        <div style={{display:"flex",flexWrap:"wrap",gap:8,marginTop:"auto"}}><button style={action} onClick={onOpenMap}>{tr("Abrir mapa →","Open map →")}</button><a style={action} href="/inteligencia/paises/">{tr("Fichas país →","Country profiles →")}</a><button style={action} onClick={()=>onNav("georisk-index")}>{tr("Índice →","Index →")}</button></div>
+      </div>
+      <div style={{...card,border:`1px solid ${C.goldBorder}`}}><strong style={{color:C.gold,fontSize:12}}>INTELLIGENCE · {tr("SUSCRIPCIÓN","SUBSCRIPTION")}</strong><h3 style={{margin:0,color:C.text}}>{tr("Analizar y decidir","Analyze and decide")}</h3><p style={{color:C.textSec,lineHeight:1.65,margin:0}}>{tr("Simulador de escenarios, sensibilidad regional y sectorial y GeoRisk ML experimental. Las previsiones solo se habilitan cuando superan las validaciones de datos.","Scenario simulator, regional and sector sensitivity, and experimental GeoRisk ML. Forecasts are only enabled after data validation.")}</p>
+        <div style={{display:"flex",flexWrap:"wrap",gap:8,marginTop:"auto"}}><button style={action} onClick={()=>onNav("intelligence")}>{eligible?tr("Abrir herramientas →","Open tools →"):tr("Ver herramientas y acceso →","View tools and access →")}</button>{!eligible&&!loading&&<button style={action} onClick={()=>user?openPricing():openLogin()}>{user?tr("Ver suscripción →","View subscription →"):tr("Iniciar sesión →","Sign in →")}</button>}</div>
+      </div>
+    </div>
+    <p style={{fontSize:11,color:C.textMuted,lineHeight:1.6,margin:"12px 0 0"}}>{tr("El mapa, el índice, el GPR y las fichas de país no comparten una escala de riesgo calibrada. Los escenarios no son predicciones verificadas.","The map, index, GPR and country profiles do not share a calibrated risk scale. Scenarios are not verified predictions.")}</p>
+  </section>;
+};
+
 const ZRCPlatform = () => {
   const [lang, setLang] = useState("es");
   const [icPage, setIcPage] = useState(null);
@@ -2092,6 +2118,7 @@ const ZRCPlatform = () => {
       <GoldDivider />
       <Intelligence lang={lang} />
       <GoldDivider />
+      <GeoRiskAccessHub lang={lang} onOpenMap={openWorldMap} onNav={onNav} />
       <GeoRiskIndex lang={lang} useAuth={useAuth} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} />
       <GoldDivider />
 
