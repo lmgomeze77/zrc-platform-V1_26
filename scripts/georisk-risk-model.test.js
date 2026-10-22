@@ -33,3 +33,9 @@ test('weekly features cannot use a print published after forecast origin',()=>{
  assert.equal(riskFeature(dated,'2025-01-14'),null);
  assert.equal(riskFeature(dated,'2025-01-23')?.level,55);
 });
+
+test('mixed old and properly dated index rows do not contaminate vintage features',()=>{
+ const history=[{week_start:'2025-01-06',index_value:99,source:'weekly_evidence'},
+ {week_start:'2025-01-13',index_value:45,source:'weekly_evidence',published_at:'2025-01-21T10:00:00Z'}];
+ assert.equal(riskFeature(history.filter(x=>x.published_at),'2025-01-22')?.level,45);
+});
