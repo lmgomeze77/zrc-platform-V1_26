@@ -72,7 +72,7 @@ export async function handleGeoRiskForecast(request, env, fetchImpl=fetch, now=n
   ]);
   const series=results.flatMap(r=>r.status==='fulfilled'?r.value.series:[]);
   const outlook=buildOutlook(series,region,now);
-  const snapshot=marketResearchSnapshot?.status==='available'?(marketResearchSnapshot.series||[]).filter(s=>{
+  const snapshot=['available','partial'].includes(marketResearchSnapshot?.status)?(marketResearchSnapshot.series||[]).filter(s=>{
     const collected=Date.parse(s.collected_at||'');
     const last=Date.parse(s.latest?.date||'');
     return Number.isFinite(collected)&&Number.isFinite(last)&&collected<=now.getTime()&&now.getTime()-collected<=10*DAY&&last<=now.getTime()&&now.getTime()-last<=15*DAY;
@@ -86,6 +86,7 @@ export async function handleGeoRiskForecast(request, env, fetchImpl=fetch, now=n
     // This archive is a current re-download, never a point-in-time vintage.
     history_vintage:'latest_download',status:s.latest?'observed':'unavailable'
   }));
+  outlook.market_coverage={status:marketResearchSnapshot?.status||'unavailable',collected_at:marketResearchSnapshot?.collected_at||null,expected:marketResearchSnapshot?.expected_series?.length||4,available:snapshot.length,failed:marketResearchSnapshot?.failures||[],snapshot_warning:marketResearchSnapshot?.vintage_warning||null};
   const riskHistory=await loadWeeklyRiskHistory(env,fetchImpl);
   outlook.risk_research={status:'experimental',index_source:'ZRC-GRI weekly snapshots',method:'risk-conditioned ridge vs unchanged-price baseline',series:[...outlook.series.filter(s=>/^(EUR|USD)/.test(s.id)).map(s=>series.find(x=>x.id===s.id)||s),...snapshot.map(s=>({...s,frequency:'daily'}))].map(s=>({id:s.id,horizons:[30,90].map(h=>evaluateRiskModel(s,riskHistory,h,now))}))};
   return new Response(JSON.stringify(outlook),{headers:{'Content-Type':'application/json; charset=utf-8','Access-Control-Allow-Origin':'*','Cache-Control':'public, max-age=1800'}});
