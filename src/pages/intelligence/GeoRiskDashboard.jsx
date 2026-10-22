@@ -269,6 +269,7 @@ export default function GeoRiskDashboard() {
   const [nlpResult, setNlpResult] = useState(null);
   const [time, setTime] = useState(new Date());
   const [tab, setTab] = useState("data");
+  const [impactView, setImpactView] = useState("variables");
   const sectionGuide = SECTION_GUIDES[tab];
 
   const {variables:ECONOMIC_VARIABLES,observedCount, status:observationStatus}=useGeoRiskObservedBaselines(region,ECONOMIC_VARIABLES_BY_REGION[region]);
@@ -557,11 +558,9 @@ export default function GeoRiskDashboard() {
 
           <div className="zrc-card zrc-tabbar" style={{ display: "flex", gap: 2, padding: 5, marginBottom: 20 }}>
             {[
-              { id: "data", label: "Datos reales", icon: TrendingUp },
+              { id: "data", label: "Mercados", icon: TrendingUp },
               { id: "scenarios", label: "Escenarios", icon: Radar },
-              { id: "variables", label: "Impacto por variable", icon: Activity },
-              { id: "nlp", label: "Palabras clave", icon: MessageSquare },
-              { id: "allocation", label: "Señales por activo", icon: PieChart },
+              { id: "impact", label: "Análisis de impacto", icon: Activity },
             ].map(t2 => (
               <button key={t2.id} className="zrc-tab" onClick={() => setTab(t2.id)} style={{
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
@@ -577,6 +576,19 @@ export default function GeoRiskDashboard() {
               </button>
             ))}
           </div>
+
+          {tab === "impact" && (
+            <nav aria-label="Herramientas de análisis de impacto" style={{display:"flex",flexWrap:"wrap",gap:8,margin:"-8px 0 18px"}}>
+              {[
+                {id:"variables",label:"Variables",icon:Activity},
+                {id:"allocation",label:"Activos",icon:PieChart},
+                {id:"nlp",label:"Noticias y palabras clave",icon:MessageSquare},
+              ].map(item=><button key={item.id} type="button" aria-pressed={impactView===item.id} onClick={()=>setImpactView(item.id)}
+                style={{display:"inline-flex",alignItems:"center",gap:7,padding:"9px 13px",borderRadius:9,border:impactView===item.id?"1px solid #60A5FA":"1px solid #273D5B",background:impactView===item.id?"#1E3A5F":"#0D182B",color:impactView===item.id?"#F1F5F9":"#94A3B8",fontSize:12,fontWeight:600,cursor:"pointer"}}>
+                <item.icon size={14}/>{item.label}
+              </button>)}
+            </nav>
+          )}
 
           <div style={{border:"1px solid #285744",borderRadius:15,padding:"15px 18px",margin:"12px 0 16px",background:"linear-gradient(120deg,#102C22,#0D1C18)",color:"#EDF6EF"}}>
     <div style={{fontSize:10,color:"#86EFAC",letterSpacing:1.2,fontWeight:700}}>RESULTADO DEL ESCENARIO</div>
@@ -817,7 +829,7 @@ export default function GeoRiskDashboard() {
           )}
 
           {/* VARIABLES */}
-          {tab === "variables" && (
+          {tab === "impact" && impactView === "variables" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
               <div role="note" style={{ marginBottom: 12, padding: "12px 16px", border: "1px solid #7C5A1B", borderRadius: 8, color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>Las series históricas no están conectadas. Esta vista muestra solo referencias estáticas y estimaciones del escenario seleccionado.</div>
               <div className="zrc-card zrc-table-scroll">
@@ -863,7 +875,7 @@ export default function GeoRiskDashboard() {
           )}
 
           {/* NLP */}
-          {tab === "nlp" && (
+          {tab === "impact" && impactView === "nlp" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
               <div className="zrc-card" style={{ padding: 24 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: "#64748B", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginBottom: 12 }}>
@@ -943,7 +955,7 @@ export default function GeoRiskDashboard() {
           )}
 
           {/* ALLOCATION */}
-          {tab === "allocation" && (
+          {tab === "impact" && impactView === "allocation" && (
             <div style={{ animation: "zrc-fadeIn 0.4s ease" }}>
               <div className="zrc-card zrc-table-scroll">
                 <div className="zrc-table-inner">
