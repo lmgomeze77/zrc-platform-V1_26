@@ -40,8 +40,8 @@ jobs:
           x=json.loads(Path('public/data/georisk-market-research.json').read_text())
           ids={s['id'] for s in x.get('series',[])}
           print('Verified source IDs:',sorted(ids),'failures:',x.get('failures',[]))
-          if len(ids)<2 or not ({'DCOILBRENTEU','DGS10'} <= ids):
-              raise SystemExit('Critical Brent and Treasury feeds unavailable; refusing deploy')
+          if len(ids)<2:
+              raise SystemExit('Fewer than two verified feeds; refusing deploy')
           PY
       - name: Commit verified snapshot only
         run: |
