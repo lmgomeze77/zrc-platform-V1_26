@@ -25,6 +25,13 @@ jobs:
         run: python scripts/georisk-market-research-python.test.py
       - name: Retrieve and validate observations
         run: python scripts/collect-georisk-market-research.py
+      - name: Preserve source diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: georisk-feed-diagnostics
+          path: public/data/georisk-market-research.json
+          retention-days: 14
       - name: Verify minimum independently sourced coverage
         run: |
           python - <<'PY'
