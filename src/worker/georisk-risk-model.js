@@ -11,7 +11,7 @@ const horizonPoint=(points,origin,days)=>{
 };
 export function riskFeature(history,date){
  const cutoff=day(date)-7*DAY;
- const past=history.filter(x=>x.source!=='fallback_static'&&Number.isFinite(Number(x.index_value))&&day(x.week_start)<=cutoff&&day(x.week_start)>cutoff-28*DAY).sort((a,b)=>a.week_start.localeCompare(b.week_start));
+ const past=history.filter(x=>x.source!=='fallback_static'&&Number.isFinite(Number(x.index_value))&&day(x.week_start)<=cutoff&&day(x.week_start)>cutoff-28*DAY&&(!x.published_at||(Number.isFinite(Date.parse(x.published_at))&&Date.parse(x.published_at)<=day(date)))).sort((a,b)=>a.week_start.localeCompare(b.week_start));
  if(!past.length)return null;
  const latest=past.at(-1);
  const prior=past.length>1?past.at(-2):null;
@@ -40,6 +40,9 @@ export function evaluateRiskModel(item,indexHistory,horizon,now=new Date()){
  const current=last&&riskFeature(history,last.date);
  const base={status:'unavailable',horizon,index:current?{value:current.level,weekly_change:current.change,week:current.source_date}:null};
  if(!last||!current)return {...base,reason:'No hay suficiente histórico reciente del índice ZRC-GRI.'};
+ // A retrospectively reconstructed weekly value is not evidence that the value
+ // was available to investors on that date. Do not promote without vintages.
+ if(history.some(x=>!x.published_at||!Number.isFinite(Date.parse(x.published_at))))return {...base,reason:'Se requieren fechas de publicación verificables (vintages) para evitar sesgo retrospectivo.',validation_gate:'missing_point_in_time_publication'};
  const origins=[];
  let lastOrigin=-Infinity;
  for(let i=0;i<points.length;i++){
@@ -69,7 +72,7 @@ export function evaluateRiskModel(item,indexHistory,horizon,now=new Date()){
 export async function loadWeeklyRiskHistory(env,fetchImpl=fetch){
  if(!env?.SUPABASE_URL||!env?.SUPABASE_SERVICE_KEY)return [];
  try{
-  const resp=await fetchImpl(env.SUPABASE_URL+'/rest/v1/georisk_index_weekly?select=week_start,index_value,source&order=week_start.asc&limit=1000',{headers:{apikey:env.SUPABASE_SERVICE_KEY,Authorization:'Bearer '+env.SUPABASE_SERVICE_KEY},signal:AbortSignal.timeout(6000)});
+  const resp=await fetchImpl(env.SUPABASE_URL+'/rest/v1/georisk_index_weekly?select=week_start,index_value,source,published_at&order=week_start.asc&limit=1000',{headers:{apikey:env.SUPABASE_SERVICE_KEY,Authorization:'Bearer '+env.SUPABASE_SERVICE_KEY},signal:AbortSignal.timeout(6000)});
   if(!resp.ok)return [];
   const rows=await resp.json();
   return Array.isArray(rows)?rows:[];
