@@ -1,3 +1,4 @@
+import marketSnapshot from "../../../public/data/georisk-market-research.json";
 import { estimatePriceImpact, decomposeAssetSensitivity, SENSITIVITY_VERSION } from "../../data/georiskSensitivityAudit.js";
 import { useGeoRiskObservedBaselines } from "../../hooks/useGeoRiskObservedBaselines.js";
 import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
@@ -195,40 +196,25 @@ function MiniBar({ value, max = 1, color, width = 80 }) {
   );
 }
 
-function DataTicker({ items }) {
-  const renderItems = (duplicate = false) => items.map((item) => (
-    <div
-      key={`${duplicate ? "copy-" : ""}${item.label}`}
-      className="zrc-ticker-item"
-      aria-hidden={duplicate ? "true" : undefined}
-      title={`${item.label}: ${item.value}. Referencia simulada del escenario; no es una cotización en tiempo real.`}
-    >
-      <span className="zrc-ticker-label">{item.label}</span>
-      <strong className="zrc-ticker-value">{item.value}</strong>
-      <span
-        className="zrc-ticker-direction"
-        aria-label={item.delta > 0 ? "Aumento en el escenario" : item.delta < 0 ? "Descenso en el escenario" : "Sin cambio en el escenario"}
-        style={{ color: item.delta > 0 ? "#34D399" : item.delta < 0 ? "#FDA4AF" : "#CBD5E1" }}
-      >
-        {item.delta > 0 ? "▲" : item.delta < 0 ? "▼" : "●"}
-      </span>
-      <span className="zrc-ticker-kind">SIMULACIÓN</span>
-    </div>
-  ));
-
+function DataTicker({ items, collectedAt }) {
   return (
-    <div className="zrc-ticker-shell" role="region" aria-label="Indicadores simulados del escenario">
+    <section className="zrc-ticker-shell" aria-label="Mercados observados con fecha y fuente">
       <div className="zrc-ticker-heading">
-        <span>INDICADORES DEL ESCENARIO</span>
-        <span>Desliza o toca para pausar</span>
+        <span>MERCADOS OBSERVADOS · DATOS PUBLICADOS</span>
+        <span>{collectedAt ? `Captura: ${collectedAt.slice(0,10)} · FRED` : "Sin captura disponible"}</span>
       </div>
-      <div className="zrc-ticker-window" tabIndex={0} aria-label="Cinta desplazable. Todos los valores son referencias simuladas, no cotizaciones en tiempo real.">
-        <div className="zrc-ticker-track">
-          <div className="zrc-ticker-group">{renderItems(false)}</div>
-          <div className="zrc-ticker-group" aria-hidden="true">{renderItems(true)}</div>
+      <div className="zrc-ticker-window" style={{ WebkitMaskImage:"none",maskImage:"none" }}>
+        <div className="zrc-ticker-group" style={{ flexWrap:"nowrap" }}>
+          {items.length ? items.map(item => (
+            <div key={item.id} className="zrc-ticker-item" style={{ minWidth:215,gridTemplateColumns:"1fr",gridTemplateAreas:"'label' 'value' 'kind'",gap:4 }}>
+              <span className="zrc-ticker-label">{item.label}</span>
+              <strong className="zrc-ticker-value">{item.value} <span style={{fontSize:11,fontWeight:500,color:"#94A3B8"}}>{item.unit}</span></strong>
+              <span className="zrc-ticker-kind">OBSERVADO · {item.date} · FRED</span>
+            </div>
+          )) : <div style={{padding:16,color:"#FBBF24"}}>Datos de mercado no disponibles. No se muestran valores simulados.</div>}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -358,11 +344,10 @@ export default function GeoRiskDashboard() {
     setNlpResult(analyzeText(nlpText));
   };
 
-  const tickerItems = Object.entries(ECONOMIC_VARIABLES).map(([k, v]) => {
-    const d = computeImpact(k);
-    const val = v.base + d * v.volatility * 5;
-    return { label: v.label, value: `${fmt(val, v.decimals ?? 2)}${v.unit}`, delta: d };
-  });
+  const tickerItems = (marketSnapshot.status === "available" || marketSnapshot.status === "partial" ? marketSnapshot.series : []).filter(item => item.latest && Number.isFinite(item.latest.value)).map(item => ({
+    id:item.id,label:item.label,value:item.latest.value.toLocaleString("es-ES",{maximumFractionDigits:2}),
+    unit:item.unit,date:item.latest.date
+  }));
 
   return (
     <div style={{
@@ -501,9 +486,9 @@ export default function GeoRiskDashboard() {
             </div>
           </header>
 
-          <DataTicker items={tickerItems} />
+          <DataTicker items={tickerItems} collectedAt={marketSnapshot.collected_at} />
           <div role="note" style={{ margin: "12px 0 0", padding: "12px 16px", border: "1px solid #7C5A1B", borderLeft: "3px solid #F59E0B", borderRadius: 8, background: "#2A2112", color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>
-            MODO DE ESCENARIO: las cifras base y fuentes mostradas son referencias codificadas, no cotizaciones ni series actualizadas. Los impactos son estimaciones ilustrativas del modelo; no se recalibran automáticamente con datos de mercado.
+            DATOS OBSERVADOS ARRIBA: últimas publicaciones archivadas, no cotizaciones en tiempo real. ESCENARIOS ABAJO: supuestos ilustrativos independientes; los impactos no se recalibran con estas cotizaciones.
           </div>
 
           <div className="zrc-card zrc-control-row" style={{
