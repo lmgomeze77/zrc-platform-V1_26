@@ -20,7 +20,7 @@ class CollectorTests(unittest.TestCase):
         def fetch(url):
             return fixture(url.split("id=")[-1])
         out=mod.collect(fetch=fetch,now=datetime(2026,2,14,tzinfo=timezone.utc))
-        self.assertEqual(len(out["series"]),4)
+        self.assertEqual(len(out["series"]),5)\n        self.assertEqual(out["status"],"available")
         self.assertEqual(len(out["series"][0]["download_sha256"]),64)
         self.assertEqual(out["series"][0]["points"][0]["date"],"2025-01-01")
     def test_missing_header_fails(self):
@@ -30,12 +30,15 @@ class CollectorTests(unittest.TestCase):
         raw=fixture("DGS10").replace(b",50.0",b",NaN")
         with self.assertRaises(ValueError):
             mod.parse_csv(raw,"DGS10","2026-02-14")
-    def test_no_silent_fallback_when_one_source_fails(self):
+    def test_partial_collection_reports_source_failure(self):
         def fetch(url):
             if url.endswith("DGS10"): raise RuntimeError("offline")
             return fixture(url.split("id=")[-1])
-        with self.assertRaises(RuntimeError):
-            mod.collect(fetch=fetch,now=datetime(2026,2,14,tzinfo=timezone.utc))
+        out=mod.collect(fetch=fetch,now=datetime(2026,2,14,tzinfo=timezone.utc))
+        self.assertEqual(out["status"],"partial")
+        self.assertEqual(len(out["series"]),4)
+        self.assertEqual(out["failures"][0]["id"],"DGS10")
+        self.assertFalse(any(x["id"]=="DGS10" for x in out["series"]))
 
 if __name__=="__main__":
     unittest.main()
