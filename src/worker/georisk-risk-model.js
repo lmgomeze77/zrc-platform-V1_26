@@ -36,19 +36,18 @@ export function evaluateRiskModel(item,indexHistory,horizon,now=new Date()){
  if(item.frequency==='monthly'||!Array.isArray(item.points)||!Array.isArray(indexHistory))return {status:'unavailable',reason:'Se requieren precios diarios e índice semanal verificable.'};
  const points=item.points.filter(p=>/^\d{4}-\d{2}-\d{2}$/.test(p.date)&&Number.isFinite(p.value)&&p.value>0&&day(p.date)<=now.getTime()).sort((a,b)=>a.date.localeCompare(b.date));
  const history=indexHistory.filter(r=>/^\d{4}-\d{2}-\d{2}$/.test(r.week_start)&&r.source!=='fallback_static'&&Number.isFinite(Number(r.index_value))&&Number(r.index_value)>=0&&Number(r.index_value)<=100&&day(r.week_start)<=now.getTime());
+ const vintagedHistory=history.filter(x=>x.published_at&&Number.isFinite(Date.parse(x.published_at)));
  const last=points.at(-1);
- const current=last&&riskFeature(history,last.date);
+ const current=last&&riskFeature(vintagedHistory,last.date);
  const base={status:'unavailable',horizon,index:current?{value:current.level,weekly_change:current.change,week:current.source_date}:null};
- if(!last||!current)return {...base,reason:'No hay suficiente histórico reciente del índice ZRC-GRI.'};
- // A retrospectively reconstructed weekly value is not evidence that the value
- // was available to investors on that date. Do not promote without vintages.
- if(history.some(x=>!x.published_at||!Number.isFinite(Date.parse(x.published_at))))return {...base,reason:'Se requieren fechas de publicación verificables (vintages) para evitar sesgo retrospectivo.',validation_gate:'missing_point_in_time_publication'};
+ if(!vintagedHistory.length)return {...base,reason:'Sin fechas de publicación verificables del ZRC-GRI.',validation_gate:'missing_point_in_time_publication'};
+ if(!last||!current)return {...base,reason:'Histórico reciente insuficiente con fechas de publicación verificables.'};
  const origins=[];
  let lastOrigin=-Infinity;
  for(let i=0;i<points.length;i++){
   const p=points[i],t=day(p.date);
   if(t-lastOrigin<horizon*DAY)continue; // nonoverlapping evaluation windows
-  const feat=riskFeature(history,p.date);
+  const feat=riskFeature(vintagedHistory,p.date);
   const target=horizonPoint(points,p,horizon);
   if(!feat||!target)continue;
   origins.push({...feat,date:p.date,y:Math.log(target.value/p.value),observed:target.date});
