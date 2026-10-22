@@ -55,8 +55,8 @@ def parse_csv(raw, series_id, today):
             value = float(value_text)
         except (ValueError, TypeError) as e:
             raise ValueError("Invalid numeric observation") from e
-        if not math.isfinite(value) or value <= 0:
-            raise ValueError("Non-positive or non-finite market observation")
+        if not math.isfinite(value) or (value <= 0 and series_id != "DCOILWTICO"):
+            raise ValueError("Invalid non-finite or non-positive market observation")
         seen.add(date)
         result.append({"date": date_obj.isoformat(), "value": value})
     result.sort(key=lambda x: x["date"])
