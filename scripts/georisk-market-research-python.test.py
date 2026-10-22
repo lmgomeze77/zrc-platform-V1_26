@@ -38,6 +38,12 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(out["status"],"available")
         self.assertEqual(len(out["series"][0]["download_sha256"]),64)
         self.assertEqual(out["series"][0]["points"][0]["date"],"2025-01-01")
+    def test_negative_wti_history_is_legitimate(self):
+        raw=fixture('DCOILWTICO').replace(b'2025-01-01,50.0',b'2025-01-01,-37.63')
+        points=mod.parse_csv(raw,'DCOILWTICO','2026-02-14')
+        self.assertEqual(points[0]['value'],-37.63)
+        with self.assertRaises(ValueError):
+            mod.parse_csv(raw.replace(b'DCOILWTICO',b'DGS10'),'DGS10','2026-02-14')
     def test_missing_header_fails(self):
         with self.assertRaises(ValueError):
             mod.parse_csv(b"DATE,OTHER\n2026-01-01,2\n","DGS10","2026-01-02")
