@@ -102,7 +102,9 @@ def main():
     tmp = DEFAULT.with_suffix(".tmp")
     tmp.write_text(json.dumps(snapshot, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
     tmp.replace(DEFAULT)
-    print("Collection status:", snapshot["status"], "Verified", len(snapshot["series"]), "of", len(CATALOG), "series; latest:", [(s["id"], s["latest"]["date"]) for s in snapshot["series"]], "failures:", snapshot["failures"])\n    if not snapshot["series"]:\n        raise SystemExit("No valid market feeds. Snapshot explicitly unavailable.")
+    print("Collection status:", snapshot["status"], "Verified", len(snapshot["series"]), "of", len(CATALOG), "series; latest:", [(s["id"], s["latest"]["date"]) for s in snapshot["series"]], "failures:", snapshot["failures"])
+    if not snapshot["series"]:
+        raise SystemExit("No valid market feeds. Snapshot explicitly unavailable.")
 
 if __name__ == "__main__":
     main()
