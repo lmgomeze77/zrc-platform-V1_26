@@ -24,6 +24,8 @@ jobs:
       - name: Validate parser without network
         run: python scripts/georisk-market-research-python.test.py
       - name: Retrieve and validate observations
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/collect-georisk-market-research.py
       - name: Preserve source diagnostics
         if: always()

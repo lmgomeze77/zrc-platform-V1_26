@@ -9,6 +9,8 @@ import hashlib
 import io
 import json
 import math
+import os
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -21,6 +23,7 @@ CATALOG = {
     "DGS10": ("US Treasury 10Y", "percent", "US Treasury / Federal Reserve via FRED"),
     "SP500": ("S&P 500 index", "index points", "S&P Dow Jones Indices via FRED"),
 }
+API_BASE = 'https://api.stlouisfed.org/fred/series/observations'
 DEFAULT = Path(__file__).resolve().parent.parent / "public/data/georisk-market-research.json"
 
 def parse_csv(raw, series_id, today):
@@ -61,12 +64,26 @@ def parse_csv(raw, series_id, today):
         raise ValueError("Insufficient historical observations")
     return result[-5000:]
 
+def fetch_fred_api(series_id, api_key):
+    params=urllib.parse.urlencode({'series_id':series_id,'api_key':api_key,'file_type':'json','observation_start':'2000-01-01'})
+    request=urllib.request.Request(API_BASE+'?'+params,headers={'User-Agent':'ZRC-GeoRisk-Research/1.0'})
+    with urllib.request.urlopen(request,timeout=20) as response:
+        payload=json.load(response)
+    observations=payload.get('observations')
+    if not isinstance(observations,list):
+        raise ValueError('Invalid FRED API observations')
+    lines=['observation_date,'+series_id]
+    lines.extend(str(x['date'])+','+str(x['value']) for x in observations)
+    return ('\n'.join(lines)+'\n').encode('utf-8')
+
 def collect(fetch=None, now=None):
     """Collect independent feeds. Failed sources are explicit, never replaced."""
     now = now or datetime.now(timezone.utc)
-    fetch = fetch or (lambda url: urllib.request.urlopen(
-        urllib.request.Request(url, headers={"User-Agent": "ZRC-GeoRisk-Research/1.0"}),
-        timeout=25).read())
+    api_key=os.environ.get('FRED_API_KEY','').strip()
+    if fetch is None:
+        if not api_key:
+            raise RuntimeError('FRED_API_KEY secret required for official FRED API ingestion')
+        fetch=lambda url: fetch_fred_api(url.split('id=')[-1],api_key)
     series = []
     failures = []
     for series_id, (label, unit, provider) in CATALOG.items():

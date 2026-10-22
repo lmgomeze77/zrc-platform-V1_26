@@ -1,5 +1,8 @@
 import importlib.util
 import unittest
+from unittest.mock import patch
+import io
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -16,6 +19,17 @@ def fixture(series, n=410):
         for i in range(n))).encode()
 
 class CollectorTests(unittest.TestCase):
+    def test_official_api_observations_converted_to_csv(self):
+        payload={'observations':[{'date':'2026-10-19','value':'4.15'},{'date':'2026-10-20','value':'.'}]}
+        class Response(io.BytesIO):
+            def __enter__(self): return self
+            def __exit__(self,*args): self.close()
+        with patch.object(mod.urllib.request,'urlopen',return_value=Response(json.dumps(payload).encode())) as mocked:
+            raw=mod.fetch_fred_api('DGS10','testkey')
+        self.assertIn(b'2026-10-19,4.15',raw)
+        self.assertIn(b'2026-10-20,.',raw)
+        self.assertIn('api.stlouisfed.org',mocked.call_args.args[0].full_url)
+
     def test_valid_with_dates_and_provenance(self):
         def fetch(url):
             return fixture(url.split("id=")[-1])
