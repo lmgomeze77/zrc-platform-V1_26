@@ -1,4 +1,5 @@
 import marketSnapshot from "../../../public/data/georisk-market-research.json";
+import { downloadGeoRiskInvestmentReport } from "../../data/georiskInvestmentReport.js";
 import { estimatePriceImpact, decomposeAssetSensitivity, SENSITIVITY_VERSION } from "../../data/georiskSensitivityAudit.js";
 import { useGeoRiskObservedBaselines } from "../../hooks/useGeoRiskObservedBaselines.js";
 import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
@@ -665,12 +666,13 @@ export default function GeoRiskDashboard({ countryContext = null }) {
                     <input aria-label="Nombre de la operación" maxLength={90} value={dealName} onChange={e=>setDealName(e.target.value)} placeholder="Nombre de operación / proyecto" style={{flex:"1 1 220px",minWidth:0,background:"#081426",border:"1px solid #355173",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:13}}/>
                     <button type="button" disabled={!dealName.trim()} onClick={saveDecisionBrief} style={{background:dealName.trim()?"#24578C":"#263548",color:"#F8FAFC",border:"none",borderRadius:8,padding:"10px 14px",cursor:dealName.trim()?"pointer":"not-allowed",fontSize:12}}>Guardar escenario</button>
                   </div>
-                  <div style={{fontSize:11,color:"#94A3B8",marginTop:8}}>Se guardan hasta 20 fichas en este navegador, no en tu cuenta. No introduzcas datos confidenciales: otros usuarios de este dispositivo podrían acceder a ellas.</div>
+                  <div style={{fontSize:11,color:"#94A3B8",marginTop:8}}>Se guardan hasta 20 fichas en este navegador, no en tu cuenta. Exporta un informe HTML imprimible desde cada ficha. No introduzcas datos confidenciales: otros usuarios de este dispositivo podrían acceder a ellas.</div>
                   {briefStorageError && <div role="alert" style={{fontSize:11,color:"#FBBF24",marginTop:7}}>{briefStorageError}</div>}
                   {briefs.length>0 && <div style={{marginTop:12,display:"grid",gap:7}}>
                     {briefs.map(b=><div key={b.id} style={{display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8,border:"1px solid #28415F",borderRadius:8,padding:"9px 11px"}}>
                       <div style={{fontSize:12,color:"#CBD5E1"}}><strong>{b.name}</strong> · {b.country || "Sin país"}{b.comparison?" / "+b.comparison:""} · {b.score}/100 <span style={{color:"#94A3B8"}}>({new Date(b.savedAt).toLocaleDateString("es-ES")})</span></div>
                       <div style={{display:"flex",gap:6}}>
+                        <button type="button" aria-label={"Exportar informe "+b.name} onClick={()=>downloadGeoRiskInvestmentReport(b)} style={{border:"1px solid #355173",borderRadius:7,background:"#142743",color:"#93C5FD",padding:"6px 10px",cursor:"pointer",fontSize:11}}>Informe HTML</button>
                         <button type="button" onClick={()=>restoreDecisionBrief(b)} style={{border:"1px solid #355173",borderRadius:7,background:"#142743",color:"#F1F5F9",padding:"6px 10px",cursor:"pointer",fontSize:11}}>Restaurar</button>
                         <button type="button" aria-label={"Eliminar ficha "+b.name} onClick={()=>setBriefs(prev=>prev.filter(x=>x.id!==b.id))} style={{border:"1px solid #6B3740",borderRadius:7,background:"transparent",color:"#FDA4AF",padding:"6px 10px",cursor:"pointer",fontSize:11}}>Eliminar</button>
                       </div>
