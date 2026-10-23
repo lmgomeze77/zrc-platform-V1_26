@@ -8,7 +8,7 @@ export function buildGeoRiskInvestmentReport(brief) {
   const e = escapeHtml;
   const drivers = Array.isArray(b.drivers) ? b.drivers.slice(0,6) : [];
   const rows = drivers.map(d => `<tr><td>${e(d.label)}</td><td>${safeNumber(d.impact)} (simulado)</td></tr>`).join("");
-  const date = /^\\d{4}-\\d{2}-\\d{2}/.test(b.savedAt || "") ? b.savedAt.slice(0,10) : "Sin fecha";
+  const date = /^\d{4}-\d{2}-\d{2}/.test(b.savedAt || "") ? b.savedAt.slice(0,10) : "Sin fecha";
   return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GeoRisk | ${e(b.name)}</title>
   <style>body{font:15px/1.65 system-ui,-apple-system,sans-serif;max-width:850px;margin:45px auto;padding:0 25px;color:#1e293b}h1{color:#0f2745;font-size:29px}h2{font-size:18px;margin-top:32px;border-bottom:1px solid #cbd5e1;padding-bottom:8px}header{border-bottom:4px solid #b58d4a;padding-bottom:16px}.eyebrow{color:#866c3c;font-size:12px;letter-spacing:.14em;font-weight:700}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.box{padding:15px;background:#f1f5f9;border-radius:8px}table{border-collapse:collapse;width:100%}td,th{text-align:left;border-bottom:1px solid #cbd5e1;padding:10px}.caution{border-left:4px solid #b58d4a;padding:12px 16px;background:#fffbeb}footer{margin-top:35px;font-size:12px;color:#64748b}@media print{body{margin:0;max-width:none}.box,.caution{print-color-adjust:exact}}@media(max-width:580px){.grid{grid-template-columns:1fr}}</style></head><body>
   <header><div class="eyebrow">ZENITH RISE CAPITAL · GEORISK INTELLIGENCE</div><h1>Ficha de análisis de inversión</h1><div>${e(b.name || "Operación sin nombre")} · Guardada: ${e(date)}</div></header>
