@@ -1255,7 +1255,7 @@ const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => {
   );
 };
 
-const Intelligence = ({ lang }) => {
+const Intelligence = ({ lang, countryContext }) => {
   const t = T[lang].intel;
   const { user, openPricing, setShowAuth } = useAuth();
   const { tier, status: subStatus, trialEnd, loading: tierLoading } = useSubscription(user?.email);
@@ -1548,7 +1548,7 @@ const Intelligence = ({ lang }) => {
           <button onClick={() => setShowGeoRisk(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
             ✕ CLOSE DASHBOARD
           </button>
-          <GeoRiskDashboard />
+          <GeoRiskDashboard countryContext={countryContext} />
         </div>
       )}
 
@@ -2118,7 +2118,7 @@ const ZRCPlatform = () => {
       <GoldDivider />
       <Observatory lang={lang} useAuth={useAuth} useSubscription={useSubscription} useHeadlines={useHeadlines} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} T={T} />
       <GoldDivider />
-      <Intelligence lang={lang} />
+      <Intelligence lang={lang} countryContext={georiskCountryContext} />
       <GoldDivider />
       <GeoRiskAccessHub lang={lang} onOpenMap={openWorldMap} onNav={onNav} countryContext={georiskCountryContext} />
       <GeoRiskIndex lang={lang} useAuth={useAuth} FadeIn={FadeIn} Sec={Sec} SH={SH} GoldDivider={GoldDivider} />
