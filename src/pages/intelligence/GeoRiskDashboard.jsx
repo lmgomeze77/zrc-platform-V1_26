@@ -492,11 +492,6 @@ export default function GeoRiskDashboard() {
             </div>
           </header>
 
-          <DataTicker items={tickerItems} collectedAt={marketSnapshot.collected_at} />
-          <div role="note" style={{ margin: "12px 0 0", padding: "12px 16px", border: "1px solid #7C5A1B", borderLeft: "3px solid #F59E0B", borderRadius: 8, background: "#2A2112", color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>
-            DATOS OBSERVADOS ARRIBA: últimas publicaciones archivadas, no cotizaciones en tiempo real. ESCENARIOS ABAJO: supuestos ilustrativos independientes; los impactos no se recalibran con estas cotizaciones.
-          </div>
-
           <div className="zrc-card zrc-control-row" style={{
             gap: 24, padding: "20px 24px", margin: "20px 0", alignItems: "center"
           }}>
@@ -590,13 +585,22 @@ export default function GeoRiskDashboard() {
             </nav>
           )}
 
-          <div style={{border:"1px solid #285744",borderRadius:15,padding:"15px 18px",margin:"12px 0 16px",background:"linear-gradient(120deg,#102C22,#0D1C18)",color:"#EDF6EF"}}>
+          {tab === "data" && (
+            <div style={{marginBottom:18}}>
+              <DataTicker items={tickerItems} collectedAt={marketSnapshot.collected_at} />
+          <div role="note" style={{ margin: "12px 0 0", padding: "12px 16px", border: "1px solid #7C5A1B", borderLeft: "3px solid #F59E0B", borderRadius: 8, background: "#2A2112", color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>
+            DATOS OBSERVADOS ARRIBA: últimas publicaciones archivadas, no cotizaciones en tiempo real. ESCENARIOS ABAJO: supuestos ilustrativos independientes; los impactos no se recalibran con estas cotizaciones.
+          </div>
+            </div>
+          )}
+
+          <div role="status" aria-live="polite" style={{border:"1px solid #285744",borderRadius:15,padding:"15px 18px",margin:"12px 0 16px",background:"linear-gradient(120deg,#102C22,#0D1C18)",color:"#EDF6EF"}}>
     <div style={{fontSize:10,color:"#86EFAC",letterSpacing:1.2,fontWeight:700}}>RESULTADO DEL ESCENARIO</div>
     <div style={{display:"flex",gap:16,justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",marginTop:8}}>
       <div><span style={{fontSize:27,fontWeight:750,fontVariantNumeric:"tabular-nums"}}>{compositeRisk.toFixed(1)}</span><span style={{fontSize:12,color:"#A6BDAD"}}> / 100 · riesgo simulado</span><div style={{fontSize:12,color:"#D0E2D5",marginTop:5}}>Principal escenario: <strong>{Object.entries(SCENARIOS).sort((a,b)=>(scenarioWeights[b[0]]*b[1].risk)-(scenarioWeights[a[0]]*a[1].risk))[0][1].label}</strong></div></div>
       <div style={{fontSize:12,color:"#D0E2D5"}}>Zona: <strong>{REGIONS[region].label}</strong></div>
     </div>
-    <p style={{fontSize:12,color:"#A5C8B3",margin:"10px 0 0"}}>Simulación ilustrativa, no predicción. Ajusta los escenarios para explorar sensibilidades.</p>
+    <p style={{fontSize:12,color:"#A5C8B3",margin:"10px 0 0"}}>Modelo ilustrativo, no pronóstico. Los resultados no son cotizaciones ni probabilidades calibradas.</p>
   </div>
   <details style={{margin:"0 0 14px",border:"1px solid #324A40",borderRadius:12,background:"#101E19",color:"#D8E8DD"}}>
     <summary style={{cursor:"pointer",padding:"12px 16px",fontSize:12,fontWeight:700,listStyle:"inside"}}>ⓘ Metodología y fuentes <span style={{fontSize:11,fontWeight:400,opacity:.7}}>· consulta opcional</span></summary>
