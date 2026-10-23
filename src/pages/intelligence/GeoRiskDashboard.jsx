@@ -259,7 +259,7 @@ function analyzeText(text) {
 
 // ── Main Dashboard ──────────────────────────────────
 
-export default function GeoRiskDashboard() {
+export default function GeoRiskDashboard({ countryContext = null }) {
   const [activeScenario, setActiveScenario] = useState("tariff_escalation");
   const [sector, setSector] = useState("global");
   const [region, setRegion] = useState("eu");
@@ -270,6 +270,7 @@ export default function GeoRiskDashboard() {
   const [time, setTime] = useState(new Date());
   const [tab, setTab] = useState("data");
   const [impactView, setImpactView] = useState("variables");
+  const [showDecisionBrief, setShowDecisionBrief] = useState(true);
   const sectionGuide = SECTION_GUIDES[tab];
 
   const {variables:ECONOMIC_VARIABLES,observedCount, status:observationStatus}=useGeoRiskObservedBaselines(region,ECONOMIC_VARIABLES_BY_REGION[region]);
@@ -342,6 +343,12 @@ export default function GeoRiskDashboard() {
     if (!nlpText.trim()) return;
     setNlpResult(analyzeText(nlpText));
   };
+
+  const decisionDrivers = Object.entries(ECONOMIC_VARIABLES).map(([key, item]) => ({
+    key, label: item.label, impact: computeImpact(key)
+  })).filter(item => Number.isFinite(item.impact)).sort((a,b) => Math.abs(b.impact)-Math.abs(a.impact)).slice(0,3);
+  const dominantScenario = Object.entries(SCENARIOS).sort((a,b)=>
+    (scenarioWeights[b[0]]*b[1].risk)-(scenarioWeights[a[0]]*a[1].risk))[0]?.[1]?.label || "No disponible";
 
   const tickerItems = (marketSnapshot.status === "available" || marketSnapshot.status === "partial" ? marketSnapshot.series : []).filter(item => item.latest && Number.isFinite(item.latest.value)).map(item => ({
     id:item.id,label:item.label,value:item.latest.value.toLocaleString("es-ES",{maximumFractionDigits:2}),
@@ -571,6 +578,41 @@ export default function GeoRiskDashboard() {
               </button>
             ))}
           </div>
+
+          {(tab === "scenarios" || tab === "impact") && (
+            <section aria-label="Ficha de decisión para inversores" style={{margin:"0 0 18px",border:"1px solid #355173",borderRadius:15,background:"#0D1B30",padding:"17px 19px"}}>
+              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,flexWrap:"wrap"}}>
+                <div><div style={{fontSize:10,color:"#93C5FD",fontWeight:700,letterSpacing:1.2}}>INTELLIGENCE · DECISION BRIEF</div>
+                  <h3 style={{margin:"6px 0 0",fontSize:18,color:"#F1F5F9"}}>De la exposición a una hipótesis de inversión</h3></div>
+                <button type="button" aria-expanded={showDecisionBrief} onClick={()=>setShowDecisionBrief(v=>!v)} style={{border:"1px solid #355173",background:"#142743",borderRadius:9,color:"#CBD5E1",padding:"9px 12px",cursor:"pointer",fontSize:12}}>{showDecisionBrief?"Ocultar análisis":"Mostrar análisis"}</button>
+              </div>
+              {showDecisionBrief && <>
+                <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,230px),1fr))",gap:10,marginTop:14}}>
+                  <div style={{padding:13,border:"1px solid #28415F",borderRadius:10}}>
+                    <div style={{fontSize:10,color:"#93C5FD",marginBottom:7}}>CONTEXTO Y EXPOSICIÓN</div>
+                    <div style={{fontSize:14,fontWeight:700}}>{countryContext?.name || "Sin país seleccionado"}</div>
+                    <div style={{fontSize:12,color:"#94A3B8",marginTop:5}}>Simulación: {REGIONS[region].label} · {SECTORS[sector].label}</div>
+                    {countryContext && <div style={{fontSize:11,color:"#FBBF24",marginTop:7}}>El país no modifica automáticamente los parámetros regionales.</div>}
+                  </div>
+                  <div style={{padding:13,border:"1px solid #28415F",borderRadius:10}}>
+                    <div style={{fontSize:10,color:"#93C5FD",marginBottom:7}}>HIPÓTESIS DE ESCENARIO</div>
+                    <div style={{fontSize:22,fontWeight:700,fontVariantNumeric:"tabular-nums"}}>{compositeRisk.toFixed(1)} <span style={{fontSize:12,color:"#94A3B8"}}>/100</span></div>
+                    <div style={{fontSize:12,color:"#CBD5E1",marginTop:5}}>{dominantScenario}</div>
+                    <div style={{fontSize:11,color:"#94A3B8",marginTop:5}}>Score ilustrativo; no equivale a probabilidad.</div>
+                  </div>
+                  <div style={{padding:13,border:"1px solid #28415F",borderRadius:10}}>
+                    <div style={{fontSize:10,color:"#93C5FD",marginBottom:7}}>CANALES A CONTRASTAR</div>
+                    {decisionDrivers.map(d=><div key={d.key} style={{fontSize:12,color:"#CBD5E1",marginBottom:6}}>{d.label} <span style={{color:"#94A3B8"}}>· impacto supuesto {d.impact>0?"+":""}{d.impact.toFixed(2)}</span></div>)}
+                    <div style={{fontSize:10,color:"#94A3B8"}}>Ordenados por magnitud del modelo, no por evidencia empírica.</div>
+                  </div>
+                </div>
+                <div style={{marginTop:13,padding:"12px 14px",borderRadius:10,background:"#10283A",fontSize:12,lineHeight:1.65,color:"#CBD5E1"}}>
+                  <strong style={{color:"#93C5FD"}}>Checklist de due diligence:</strong> contrastar exposición de ingresos y costes, divisa funcional y coberturas, coste de financiación, concentración de proveedores y sensibilidad del capital circulante. Validar cada hipótesis con datos de la compañía antes de tomar decisiones.
+                </div>
+                <p style={{fontSize:11,lineHeight:1.6,color:"#94A3B8",margin:"10px 0 0"}}>Fuente de la simulación: supuestos ZRC del modelo de escenarios. No se infieren rendimientos, valoraciones ni recomendaciones de compra/venta. Las cotizaciones observadas se consultan por separado en Mercados.</p>
+              </>}
+            </section>
+          )}
 
           {tab === "impact" && (
             <nav aria-label="Herramientas de análisis de impacto" style={{display:"flex",flexWrap:"wrap",gap:8,margin:"-8px 0 18px"}}>
