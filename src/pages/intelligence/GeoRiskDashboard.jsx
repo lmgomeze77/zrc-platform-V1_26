@@ -1,4 +1,5 @@
 import marketSnapshot from "../../../public/data/georisk-market-research.json";
+import GeoRiskInvestmentEngine from "./GeoRiskInvestmentEngine.jsx";
 import { downloadGeoRiskInvestmentReport } from "../../data/georiskInvestmentReport.js";
 import { estimatePriceImpact, decomposeAssetSensitivity, SENSITIVITY_VERSION } from "../../data/georiskSensitivityAudit.js";
 import { useGeoRiskObservedBaselines } from "../../hooks/useGeoRiskObservedBaselines.js";
@@ -605,6 +606,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
               { id: "data", label: "Mercados", icon: TrendingUp },
               { id: "scenarios", label: "Escenarios", icon: Radar },
               { id: "impact", label: "Análisis de impacto", icon: Activity },
+              { id: "investment", label: "Decisión de inversión", icon: PieChart },
             ].map(t2 => (
               <button key={t2.id} className="zrc-tab" onClick={() => setTab(t2.id)} style={{
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
@@ -620,6 +622,8 @@ export default function GeoRiskDashboard({ countryContext = null }) {
               </button>
             ))}
           </div>
+
+          {tab === "investment" && <GeoRiskInvestmentEngine countryContext={countryContext} />}
 
           {(tab === "scenarios" || tab === "impact") && (
             <section aria-label="Ficha de decisión para inversores" style={{margin:"0 0 18px",border:"1px solid #355173",borderRadius:15,background:"#0D1B30",padding:"17px 19px"}}>
