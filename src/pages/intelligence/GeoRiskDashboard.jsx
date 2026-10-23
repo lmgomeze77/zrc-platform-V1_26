@@ -271,6 +271,20 @@ export default function GeoRiskDashboard({ countryContext = null }) {
   const [tab, setTab] = useState("data");
   const [impactView, setImpactView] = useState("variables");
   const [showDecisionBrief, setShowDecisionBrief] = useState(true);
+  const [compareCountry, setCompareCountry] = useState("");
+  const [dealName, setDealName] = useState("");
+  const [briefs, setBriefs] = useState(() => {
+    try {
+      const parsed = JSON.parse(window.localStorage.getItem("zrc-georisk-briefs-v1") || "[]");
+      return Array.isArray(parsed) ? parsed.filter(x => x && typeof x === "object").slice(0,20) : [];
+    } catch { return []; }
+  });
+  const [briefStorageError, setBriefStorageError] = useState("");
+  useEffect(() => {
+    try { window.localStorage.setItem("zrc-georisk-briefs-v1", JSON.stringify(briefs)); setBriefStorageError(""); }
+    catch { setBriefStorageError("El navegador no permite guardar fichas en este dispositivo."); }
+  }, [briefs]);
+
   const sectionGuide = SECTION_GUIDES[tab];
 
   const {variables:ECONOMIC_VARIABLES,observedCount, status:observationStatus}=useGeoRiskObservedBaselines(region,ECONOMIC_VARIABLES_BY_REGION[region]);
@@ -349,6 +363,33 @@ export default function GeoRiskDashboard({ countryContext = null }) {
   })).filter(item => Number.isFinite(item.impact)).sort((a,b) => Math.abs(b.impact)-Math.abs(a.impact)).slice(0,3);
   const dominantScenario = Object.entries(SCENARIOS).sort((a,b)=>
     (scenarioWeights[b[0]]*b[1].risk)-(scenarioWeights[a[0]]*a[1].risk))[0]?.[1]?.label || "No disponible";
+
+  const saveDecisionBrief = () => {
+    const name = dealName.trim().slice(0,90);
+    if (!name) return;
+    const brief = {
+      id: String(Date.now()), name, country: countryContext?.name || "",
+      comparison: compareCountry.trim().slice(0,90), region, sector,
+      scenarioWeights: {...scenarioWeights}, score: Number(compositeRisk.toFixed(1)),
+      dominantScenario, savedAt: new Date().toISOString(),
+      drivers: decisionDrivers.map(d => ({label:d.label,impact:Number(d.impact.toFixed(3))})),
+      methodology: GEORISK_SCENARIO_VERSION
+    };
+    setBriefs(prev => [brief,...prev].slice(0,20));
+    setDealName("");
+  };
+  const restoreDecisionBrief = (brief) => {
+    if (REGIONS[brief.region]) setRegion(brief.region);
+    if (SECTORS[brief.sector]) setSector(brief.sector);
+    if (brief.scenarioWeights && typeof brief.scenarioWeights === "object") {
+      setScenarioWeights(Object.fromEntries(Object.keys(SCENARIOS).map(key => [
+        key, Number.isFinite(brief.scenarioWeights[key]) ? brief.scenarioWeights[key] : DEFAULT_WEIGHTS[key]
+      ])));
+    }
+    setCompareCountry(brief.comparison || "");
+    setTab("scenarios");
+    setShowDecisionBrief(true);
+  };
 
   const tickerItems = (marketSnapshot.status === "available" || marketSnapshot.status === "partial" ? marketSnapshot.series : []).filter(item => item.latest && Number.isFinite(item.latest.value)).map(item => ({
     id:item.id,label:item.label,value:item.latest.value.toLocaleString("es-ES",{maximumFractionDigits:2}),
@@ -605,6 +646,36 @@ export default function GeoRiskDashboard({ countryContext = null }) {
                     {decisionDrivers.map(d=><div key={d.key} style={{fontSize:12,color:"#CBD5E1",marginBottom:6}}>{d.label} <span style={{color:"#94A3B8"}}>· impacto supuesto {d.impact>0?"+":""}{d.impact.toFixed(2)}</span></div>)}
                     <div style={{fontSize:10,color:"#94A3B8"}}>Ordenados por magnitud del modelo, no por evidencia empírica.</div>
                   </div>
+                </div>
+                <div style={{marginTop:14,padding:"13px 14px",border:"1px solid #28415F",borderRadius:10}}>
+                  <div style={{fontSize:11,color:"#93C5FD",fontWeight:700,marginBottom:8}}>COMPARAR PAÍSES · MATRIZ DE DUE DILIGENCE</div>
+                  <label htmlFor="georisk-compare-country" style={{display:"block",fontSize:12,color:"#CBD5E1",marginBottom:6}}>Segundo país (comparación cualitativa)</label>
+                  <input id="georisk-compare-country" maxLength={90} value={compareCountry} onChange={e=>setCompareCountry(e.target.value)} placeholder="Ej. México" style={{width:"100%",maxWidth:320,boxSizing:"border-box",background:"#081426",border:"1px solid #355173",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:13}}/>
+                  {compareCountry.trim() && <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,220px),1fr))",gap:10,marginTop:12}}>
+                    {[countryContext?.name || "País principal sin seleccionar",compareCountry.trim()].map((name,i)=><div key={i} style={{border:"1px solid #28415F",borderRadius:9,padding:12}}>
+                      <strong style={{color:"#F1F5F9",fontSize:13}}>{name}</strong>
+                      <div style={{fontSize:11,color:"#94A3B8",marginTop:7,lineHeight:1.7}}>Contrastar: riesgo regulatorio, exposición FX, financiación, cadena de suministro, repatriación de capital y contraparte local.</div>
+                      <div style={{fontSize:11,color:"#FBBF24",marginTop:7}}>Sin score de país verificado. No se asignan diferencias numéricas artificiales.</div>
+                    </div>)}
+                  </div>}
+                </div>
+                <div style={{marginTop:14,padding:"13px 14px",border:"1px solid #28415F",borderRadius:10}}>
+                  <div style={{fontSize:11,color:"#93C5FD",fontWeight:700,marginBottom:8}}>GUARDAR FICHA DE OPERACIÓN</div>
+                  <div style={{display:"flex",flexWrap:"wrap",gap:8}}>
+                    <input aria-label="Nombre de la operación" maxLength={90} value={dealName} onChange={e=>setDealName(e.target.value)} placeholder="Nombre de operación / proyecto" style={{flex:"1 1 220px",minWidth:0,background:"#081426",border:"1px solid #355173",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:13}}/>
+                    <button type="button" disabled={!dealName.trim()} onClick={saveDecisionBrief} style={{background:dealName.trim()?"#24578C":"#263548",color:"#F8FAFC",border:"none",borderRadius:8,padding:"10px 14px",cursor:dealName.trim()?"pointer":"not-allowed",fontSize:12}}>Guardar escenario</button>
+                  </div>
+                  <div style={{fontSize:11,color:"#94A3B8",marginTop:8}}>Se guardan hasta 20 fichas en este navegador, no en tu cuenta. No introduzcas datos confidenciales: otros usuarios de este dispositivo podrían acceder a ellas.</div>
+                  {briefStorageError && <div role="alert" style={{fontSize:11,color:"#FBBF24",marginTop:7}}>{briefStorageError}</div>}
+                  {briefs.length>0 && <div style={{marginTop:12,display:"grid",gap:7}}>
+                    {briefs.map(b=><div key={b.id} style={{display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8,border:"1px solid #28415F",borderRadius:8,padding:"9px 11px"}}>
+                      <div style={{fontSize:12,color:"#CBD5E1"}}><strong>{b.name}</strong> · {b.country || "Sin país"}{b.comparison?" / "+b.comparison:""} · {b.score}/100 <span style={{color:"#94A3B8"}}>({new Date(b.savedAt).toLocaleDateString("es-ES")})</span></div>
+                      <div style={{display:"flex",gap:6}}>
+                        <button type="button" onClick={()=>restoreDecisionBrief(b)} style={{border:"1px solid #355173",borderRadius:7,background:"#142743",color:"#F1F5F9",padding:"6px 10px",cursor:"pointer",fontSize:11}}>Restaurar</button>
+                        <button type="button" aria-label={"Eliminar ficha "+b.name} onClick={()=>setBriefs(prev=>prev.filter(x=>x.id!==b.id))} style={{border:"1px solid #6B3740",borderRadius:7,background:"transparent",color:"#FDA4AF",padding:"6px 10px",cursor:"pointer",fontSize:11}}>Eliminar</button>
+                      </div>
+                    </div>)}
+                  </div>}
                 </div>
                 <div style={{marginTop:13,padding:"12px 14px",borderRadius:10,background:"#10283A",fontSize:12,lineHeight:1.65,color:"#CBD5E1"}}>
                   <strong style={{color:"#93C5FD"}}>Checklist de due diligence:</strong> contrastar exposición de ingresos y costes, divisa funcional y coberturas, coste de financiación, concentración de proveedores y sensibilidad del capital circulante. Validar cada hipótesis con datos de la compañía antes de tomar decisiones.
