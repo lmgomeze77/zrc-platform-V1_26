@@ -2,10 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, CalendarDays, Database, Eye, ExternalLink, Search, ShieldCheck } from "lucide-react";
 import { COUNTRY_BY_SLUG, COUNTRY_PROFILES, COUNTRY_PROFILE_UPDATED_AT, PILLAR_META, riskBand, trendMeta } from "../../data/countryRiskProfiles.js";
 import { countryIntelligenceByIso3 } from "../../data/countryIntelligenceModel.js";
+import { COUNTRY_EXPANSION_CANDIDATES } from "../../data/georiskCountryExpansion.js";
 import "./countryRiskProfiles.css";
 
 const BASE_URL = "https://www.zenithrisecapital.com/inteligencia/paises";
-const REGIONS = ["Todos", "Iberia", "LATAM", "MENA"];
+const REGIONS = ["Todos", "Iberia", "LATAM", "MENA", "Europa", "Norteamérica", "África subsahariana", "Asia-Pacífico"];
 
 function formatDate(value) {
   return new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(new Date(value + "T12:00:00Z"));
@@ -100,6 +101,8 @@ function IndexPage() {
   const [query, setQuery] = useState("");
   const countries = useMemo(() => COUNTRY_PROFILES.filter(country =>
     (region === "Todos" || country.region === region) && country.name.toLocaleLowerCase("es").includes(query.trim().toLocaleLowerCase("es"))), [region, query]);
+  const upcoming = COUNTRY_EXPANSION_CANDIDATES.filter(country =>
+    (region === "Todos" || country.region === region) && country.name.toLocaleLowerCase("es").includes(query.trim().toLocaleLowerCase("es")));
   return (
     <div className="crp-page">
       <BrandHeader />
@@ -108,7 +111,7 @@ function IndexPage() {
           <div>
             <span className="crp-eyebrow">INTELIGENCIA PAÍS · PARA INVERSORES</span>
             <h1>Riesgo país, convertido en decisiones.</h1>
-            <p>Una lectura comparable de Iberia, LATAM y MENA: puntuación compuesta, cinco subpilares, señales para los próximos 30 días e implicaciones concretas para la inversión.</p>
+            <p>Fichas analíticas validadas de Iberia, LATAM y MENA, junto a un catálogo ampliado de países en preparación. Los países sin ficha no reciben puntuaciones ficticias.</p>
           </div>
           <aside className="crp-method-note"><ShieldCheck size={22} /><div><strong>Metodología protegida</strong><p>Publicamos resultados, cobertura, fuentes y fechas. Los pesos, transformaciones y reglas internas permanecen en el sistema ZRC.</p></div></aside>
         </section>
@@ -128,6 +131,13 @@ function IndexPage() {
 
         <section className="crp-country-grid" aria-live="polite">
           {countries.map(country => <CountryCard key={country.iso} country={country} />)}
+          {upcoming.map(country => <article className="crp-country-card" key={country.iso} aria-label={country.name+" pendiente de ficha analítica"}>
+            <div className="crp-country-card-head"><span className="crp-flag">{country.flag}</span><span className="crp-kicker">EN PREPARACIÓN</span></div>
+            <span className="crp-kicker">{country.region} · {country.iso}</span>
+            <h2>{country.name}</h2>
+            <p>País incorporado al catálogo de seguimiento. Ficha analítica, fuentes, puntuación y sensibilidades financieras pendientes de validación.</p>
+            <div className="crp-country-card-foot"><span>Sin score publicado</span><span>Datos pendientes</span></div>
+          </article>)}
         </section>
 
         <section className="crp-disclosure">

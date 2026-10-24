@@ -1,5 +1,6 @@
 import {useEffect,useMemo,useState} from "react";
 import {COUNTRY_PROFILES} from "../../data/countryRiskProfiles.js";
+import {COUNTRY_EXPANSION_CANDIDATES} from "../../data/georiskCountryExpansion.js";
 import {applyCountrySensitivity} from "../../data/georiskCountryInvestmentSensitivity.js";
 import {calculateInvestmentDecision,DEFAULT_INVESTMENT_INPUTS} from "../../data/georiskInvestmentEngine.js";
 
@@ -58,7 +59,8 @@ export default function GeoRiskInvestmentEngine({countryContext=null}){
     </div>
     <div style={{...panel,display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,240px),1fr))",gap:12}}>
       <label style={{fontSize:12,color:"#CBD5E1"}}>Nombre del proyecto<input maxLength={90} value={projectName} onChange={e=>setProjectName(e.target.value)} placeholder="Proyecto / inversión" style={{display:"block",marginTop:6,width:"100%",boxSizing:"border-box",background:"#081426",color:"#F1F5F9",border:"1px solid #355173",borderRadius:8,padding:10}}/></label>
-      <label style={{fontSize:12,color:"#CBD5E1"}}>País de exposición<input maxLength={90} value={country} onChange={e=>setCountry(e.target.value)} placeholder="País" style={{display:"block",marginTop:6,width:"100%",boxSizing:"border-box",background:"#081426",color:"#F1F5F9",border:"1px solid #355173",borderRadius:8,padding:10}}/></label>
+      <label style={{fontSize:12,color:"#CBD5E1"}}>País de exposición<input list="georisk-investment-countries" maxLength={90} value={country} onChange={e=>setCountry(e.target.value)} placeholder="Selecciona o escribe un país" style={{display:"block",marginTop:6,width:"100%",boxSizing:"border-box",background:"#081426",color:"#F1F5F9",border:"1px solid #355173",borderRadius:8,padding:10}}/></label>
+      <datalist id="georisk-investment-countries">{[...COUNTRY_PROFILES,...COUNTRY_EXPANSION_CANDIDATES].map(p=><option key={p.iso} value={p.name}/>)}</datalist>
     </div>
     <div style={{...panel,borderColor:"#476184"}}>
       <h3 style={{fontSize:16,margin:"0 0 9px"}}>Contexto de riesgo país · sensibilidad exploratoria</h3>
@@ -73,7 +75,7 @@ export default function GeoRiskInvestmentEngine({countryContext=null}){
             <option value={0.5}>Moderada · 0,5×</option><option value={1}>Base · 1×</option><option value={1.5}>Alta · 1,5×</option><option value={2}>Extrema · 2×</option>
           </select>
         </label>
-        <div style={{...muted,flex:"1 1 250px"}}>Países con perfil disponible: {COUNTRY_PROFILES.map(p=>p.name).join(" · ")}.</div>
+        <div style={{...muted,flex:"1 1 250px"}}>{COUNTRY_PROFILES.length} países con perfil cuantificado; {COUNTRY_EXPANSION_CANDIDATES.length} adicionales incorporados al catálogo, pendientes de revisión editorial.</div>
       </div>
       {adjusted.scenario ? <div style={{marginTop:12,display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,160px),1fr))",gap:10}}>
         {[
