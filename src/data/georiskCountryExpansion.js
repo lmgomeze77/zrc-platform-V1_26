@@ -39,4 +39,4 @@ export const COUNTRY_EXPANSION_CANDIDATES = Object.freeze([
   ["IND","India","Asia-Pacífico","🇮🇳"],["CHN","China","Asia-Pacífico","🇨🇳"],
   ["VNM","Vietnam","Asia-Pacífico","🇻🇳"],["IDN","Indonesia","Asia-Pacífico","🇮🇩"],
   ["SGP","Singapur","Asia-Pacífico","🇸🇬"],["JPN","Japón","Asia-Pacífico","🇯🇵"]
-].map(([iso,name,region,flag])=>Object.freeze({iso,name,region,flag,status:"pending_editorial"})));
+].map(([iso,name,region,flag])=>Object.freeze({iso,name,region,flag,slug:name.toLocaleLowerCase("es").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""),status:"pending_editorial"})));

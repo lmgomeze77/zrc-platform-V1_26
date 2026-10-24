@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, CalendarDays, Database, Eye, ExternalLink, Searc
 import { COUNTRY_BY_SLUG, COUNTRY_PROFILES, COUNTRY_PROFILE_UPDATED_AT, PILLAR_META, riskBand, trendMeta } from "../../data/countryRiskProfiles.js";
 import { countryIntelligenceByIso3 } from "../../data/countryIntelligenceModel.js";
 import { COUNTRY_EXPANSION_CANDIDATES } from "../../data/georiskCountryExpansion.js";
+import ObservedCountryFacts from "./ObservedCountryFacts.jsx";
 import "./countryRiskProfiles.css";
 
 const BASE_URL = "https://www.zenithrisecapital.com/inteligencia/paises";
@@ -23,11 +24,11 @@ function setMeta(name, content, property = false) {
   node.setAttribute("content", content);
 }
 
-function useSeo(country) {
+function useSeo(country, pending = false) {
   useEffect(() => {
-    const title = country ? `Riesgo país de ${country.name}: puntuación y señales | ZRC` : "Riesgo país para inversores: Iberia, LATAM y MENA | ZRC";
+    const title = country ? (pending ? `Indicadores económicos de ${country.name} | ZRC` : `Riesgo país de ${country.name}: puntuación y señales | ZRC`) : "Riesgo país para inversores: Iberia, LATAM y MENA | ZRC";
     const description = country
-      ? `Ficha de riesgo país de ${country.name}: puntuación ZRC 0–100, cinco subpilares, señales a 30 días e implicaciones para la inversión.`
+      ? (pending ? `Datos macroeconómicos observados de ${country.name}, con fuentes y fechas. Análisis editorial de riesgo país pendiente.` : `Ficha de riesgo país de ${country.name}: puntuación ZRC 0–100, cinco subpilares, señales a 30 días e implicaciones para la inversión.`)
       : "Fichas de riesgo país para inversores con puntuación 0–100, cinco subpilares, señales a 30 días y lectura de inversión para Iberia, LATAM y MENA.";
     const canonical = country ? `${BASE_URL}/${country.slug}/` : `${BASE_URL}/`;
     document.documentElement.lang = "es";
@@ -41,7 +42,7 @@ function useSeo(country) {
     let link = document.head.querySelector('link[rel="canonical"]');
     if (!link) { link = document.createElement("link"); link.rel = "canonical"; document.head.appendChild(link); }
     link.href = canonical;
-  }, [country]);
+  }, [country, pending]);
 }
 
 function BrandHeader() {
@@ -101,7 +102,7 @@ function IndexPage() {
   const [query, setQuery] = useState("");
   const [coverage, setCoverage] = useState("all");
   const matches = country => (region === "Todos" || country.region === region) &&
-    [country.name,country.iso].some(value => value.normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLocaleLowerCase("es").includes(query.trim().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLocaleLowerCase("es")));
+    [country.name,country.iso].some(value => value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("es").includes(query.trim().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("es")));
   const countries = coverage === "pending" ? [] : COUNTRY_PROFILES.filter(matches);
   const upcoming = coverage === "published" ? [] : COUNTRY_EXPANSION_CANDIDATES.filter(matches);
   return (
@@ -141,13 +142,13 @@ function IndexPage() {
         <section className="crp-country-grid" aria-live="polite">
           {countries.map(country => <CountryCard key={country.iso} country={country} />)}
           {countries.length===0 && upcoming.length===0 && <p role="status">No hay países que coincidan con estos filtros.</p>}
-          {upcoming.map(country => <article className="crp-country-card" key={country.iso} aria-label={country.name+" pendiente de ficha analítica"}>
+          {upcoming.map(country => <a href={`/inteligencia/paises/${country.slug}/`} className="crp-country-card" key={country.iso} aria-label={country.name+" ficha macro observada, análisis de riesgo pendiente"}>
             <div className="crp-country-card-head"><span className="crp-flag">{country.flag}</span><span className="crp-kicker">EN PREPARACIÓN</span></div>
             <span className="crp-kicker">{country.region} · {country.iso}</span>
             <h2>{country.name}</h2>
-            <p>País incorporado al catálogo de seguimiento. Ficha analítica, fuentes, puntuación y sensibilidades financieras pendientes de validación.</p>
-            <div className="crp-country-card-foot"><span>Sin score publicado</span><span>Datos pendientes</span></div>
-          </article>)}
+            <p>Consulta indicadores macroeconómicos observados del Banco Mundial. Puntuación ZRC y evaluación de riesgos pendientes de validación.</p>
+            <div className="crp-country-card-foot"><span>Sin score publicado</span><span>Ver indicadores macro →</span></div>
+          </a>)}
         </section>
 
         <section className="crp-disclosure">
@@ -184,6 +185,8 @@ function DetailPage({ country }) {
           <div className="crp-hero-score"><ScoreDial score={country.score} /><div><span className="crp-kicker">RIESGO COMPUESTO</span><strong style={{ color: band.color }}>{band.label}</strong><span style={{ color: trend.color }}>{trend.symbol} {trend.label} este mes</span></div></div>
         </section>
 
+        <ObservedCountryFacts iso={country.iso} name={country.name} />
+
         <section className="crp-confidence"><ShieldCheck size={18} /><p><strong>Lectura ZRC.</strong> La puntuación integra cinco capas heterogéneas. Mostramos su resultado, fecha y fuente; no publicamos pesos, coeficientes ni reglas propietarias.</p></section>
 
         <section className="crp-section">
@@ -210,6 +213,17 @@ function DetailPage({ country }) {
   );
 }
 
+function PendingCountryPage({country}){
+  useSeo(country,true);
+  return <div className="crp-page"><BrandHeader/><main>
+    <nav className="crp-breadcrumb" aria-label="Migas de pan"><a href="/inteligencia/paises/">Fichas país</a><span>/</span><span>{country.region}</span><span>/</span><span>{country.name}</span></nav>
+    <section className="crp-country-hero"><div className="crp-country-identity"><span className="crp-flag crp-flag--large">{country.flag}</span><div><span className="crp-eyebrow">{country.region} · {country.iso} · COBERTURA MACRO</span><h1>{country.name}</h1><p>Ficha de indicadores observados. La evaluación editorial de riesgo político, soberano, aseguramiento y el score compuesto ZRC aún no están disponibles para esta jurisdicción.</p></div></div></section>
+    <ObservedCountryFacts iso={country.iso} name={country.name}/>
+    <section className="crp-confidence"><ShieldCheck size={18}/><p><strong>Cobertura parcial.</strong> Las observaciones del Banco Mundial no permiten por sí solas inferir un coste de capital, una prima de seguro político ni una decisión de inversión. Sin score ZRC publicado.</p></section>
+    <a className="crp-back" href="/inteligencia/paises/"><ArrowLeft size={16}/> Ver todas las fichas país</a>
+  </main><Footer/></div>;
+}
+
 function NotFoundPage() {
   useSeo(null);
   return <div className="crp-page"><BrandHeader /><main className="crp-not-found"><span className="crp-eyebrow">404 · FICHA NO DISPONIBLE</span><h1>Este país aún no forma parte de la cobertura.</h1><a className="crp-back" href="/inteligencia/paises/"><ArrowLeft size={16} /> Ver cobertura disponible</a></main><Footer /></div>;
@@ -224,5 +238,7 @@ export default function CountryRiskProfilesRouter() {
   const slug = segments[2];
   if (!slug) return <IndexPage />;
   const country = COUNTRY_BY_SLUG[slug];
-  return country ? <DetailPage country={country} /> : <NotFoundPage />;
+  if(country)return <DetailPage country={country}/>;
+  const pending=COUNTRY_EXPANSION_CANDIDATES.find(item=>item.slug===slug);
+  return pending?<PendingCountryPage country={pending}/>:<NotFoundPage/>;
 }
