@@ -6,7 +6,7 @@ import { COUNTRY_EXPANSION_CANDIDATES } from "../../data/georiskCountryExpansion
 import "./countryRiskProfiles.css";
 
 const BASE_URL = "https://www.zenithrisecapital.com/inteligencia/paises";
-const REGIONS = ["Todos", "Iberia", "LATAM", "MENA", "Europa", "Norteamérica", "África subsahariana", "Asia-Pacífico"];
+const REGIONS = ["Todos", "Iberia", "LATAM", "MENA", "Europa", "Norteamérica", "África subsahariana", "Asia-Pacífico", "Asia Central"];
 
 function formatDate(value) {
   return new Intl.DateTimeFormat("es-ES", { day: "numeric", month: "long", year: "numeric" }).format(new Date(value + "T12:00:00Z"));
@@ -99,10 +99,11 @@ function IndexPage() {
   useSeo(null);
   const [region, setRegion] = useState("Todos");
   const [query, setQuery] = useState("");
-  const countries = useMemo(() => COUNTRY_PROFILES.filter(country =>
-    (region === "Todos" || country.region === region) && country.name.toLocaleLowerCase("es").includes(query.trim().toLocaleLowerCase("es"))), [region, query]);
-  const upcoming = COUNTRY_EXPANSION_CANDIDATES.filter(country =>
-    (region === "Todos" || country.region === region) && country.name.toLocaleLowerCase("es").includes(query.trim().toLocaleLowerCase("es")));
+  const [coverage, setCoverage] = useState("all");
+  const matches = country => (region === "Todos" || country.region === region) &&
+    [country.name,country.iso].some(value => value.normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLocaleLowerCase("es").includes(query.trim().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLocaleLowerCase("es")));
+  const countries = coverage === "pending" ? [] : COUNTRY_PROFILES.filter(matches);
+  const upcoming = coverage === "published" ? [] : COUNTRY_EXPANSION_CANDIDATES.filter(matches);
   return (
     <div className="crp-page">
       <BrandHeader />
@@ -111,7 +112,7 @@ function IndexPage() {
           <div>
             <span className="crp-eyebrow">INTELIGENCIA PAÍS · PARA INVERSORES</span>
             <h1>Riesgo país, convertido en decisiones.</h1>
-            <p>Fichas analíticas validadas de Iberia, LATAM y MENA, junto a un catálogo ampliado de países en preparación. Los países sin ficha no reciben puntuaciones ficticias.</p>
+            <p>Explora la cobertura internacional de ZRC: distingue las fichas analíticas publicadas de las jurisdicciones incorporadas al catálogo para investigación futura. Los países sin ficha no reciben puntuaciones ficticias.</p>
           </div>
           <aside className="crp-method-note"><ShieldCheck size={22} /><div><strong>Metodología protegida</strong><p>Publicamos resultados, cobertura, fuentes y fechas. Los pesos, transformaciones y reglas internas permanecen en el sistema ZRC.</p></div></aside>
         </section>
@@ -122,7 +123,15 @@ function IndexPage() {
           <span><Eye size={16} /> Mayor puntuación = mayor riesgo</span>
         </section>
 
+        <section className="crp-source-strip" aria-label="Cobertura GeoRisk">
+          <span><Database size={16} /> {COUNTRY_PROFILES.length + COUNTRY_EXPANSION_CANDIDATES.length} jurisdicciones en catálogo</span>
+          <span><ShieldCheck size={16} /> {COUNTRY_PROFILES.length} fichas publicadas con score</span>
+          <span><CalendarDays size={16} /> {COUNTRY_EXPANSION_CANDIDATES.length} fichas pendientes de análisis</span>
+        </section>
         <section className="crp-toolbar">
+          <div className="crp-tabs" aria-label="Estado de cobertura">
+            {[[ "all","Todas"],["published","Con ficha"],["pending","En preparación"]].map(([key,label])=><button type="button" key={key} className={coverage===key?"active":""} aria-pressed={coverage===key} onClick={()=>setCoverage(key)}>{label}</button>)}
+          </div>
           <div className="crp-tabs" aria-label="Filtrar por región">
             {REGIONS.map(item => <button key={item} className={region === item ? "active" : ""} onClick={() => setRegion(item)}>{item}</button>)}
           </div>
@@ -131,6 +140,7 @@ function IndexPage() {
 
         <section className="crp-country-grid" aria-live="polite">
           {countries.map(country => <CountryCard key={country.iso} country={country} />)}
+          {countries.length===0 && upcoming.length===0 && <p role="status">No hay países que coincidan con estos filtros.</p>}
           {upcoming.map(country => <article className="crp-country-card" key={country.iso} aria-label={country.name+" pendiente de ficha analítica"}>
             <div className="crp-country-card-head"><span className="crp-flag">{country.flag}</span><span className="crp-kicker">EN PREPARACIÓN</span></div>
             <span className="crp-kicker">{country.region} · {country.iso}</span>
