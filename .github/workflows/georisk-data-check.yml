@@ -20,6 +20,8 @@ on:
       - 'scripts/georisk-investment-engine.test.js'
       - 'scripts/georisk-country-investment-sensitivity.test.js'
       - 'src/data/georiskCountryInvestmentSensitivity.js'
+      - 'src/data/georiskCountryExpansion.js'
+      - 'src/pages/intelligence/CountryRiskProfiles.jsx'
       - 'src/data/georiskInvestmentEngine.js'
       - 'scripts/georisk-sensitivity-audit.test.js'
       - 'src/data/georiskSensitivityAudit.js'
