@@ -1,4 +1,6 @@
-import {useMemo,useState} from "react";
+import {useEffect,useMemo,useState} from "react";
+import {COUNTRY_PROFILES} from "../../data/countryRiskProfiles.js";
+import {applyCountrySensitivity} from "../../data/georiskCountryInvestmentSensitivity.js";
 import {calculateInvestmentDecision,DEFAULT_INVESTMENT_INPUTS} from "../../data/georiskInvestmentEngine.js";
 
 const FIELDS=[
@@ -25,10 +27,15 @@ export default function GeoRiskInvestmentEngine({countryContext=null}){
   const [mode,setMode]=useState("entry");
   const [projectName,setProjectName]=useState("");
   const [country,setCountry]=useState(countryContext?.name||"");
-  const result=useMemo(()=>calculateInvestmentDecision(inputs),[inputs]);
+  const [countryAdjustment,setCountryAdjustment]=useState(true);
+  const [sensitivity,setSensitivity]=useState(1);
+  useEffect(()=>{if(countryContext?.name)setCountry(countryContext.name);},[countryContext?.name]);
+  const adjusted=useMemo(()=>countryAdjustment?applyCountrySensitivity(inputs,country,sensitivity):{inputs,scenario:null},[inputs,country,countryAdjustment,sensitivity]);
+  const result=useMemo(()=>calculateInvestmentDecision(adjusted.inputs),[adjusted.inputs]);
+  const unadjusted=useMemo(()=>calculateInvestmentDecision(inputs),[inputs]);
   const set=(key,value)=>setInputs(prev=>({...prev,[key]:value}));
   const exportCsv=()=>{
-    const rows=[["Concepto","Valor","Unidad"],["Proyecto",projectName,""],["País",country,""],["Versión",result.version,""],
+    const rows=[["Concepto","Valor","Unidad"],["Proyecto",projectName,""],["País",country,""],["Versión",result.version,""],["Ajuste país activado",countryAdjustment?"Sí":"No",""],["Score editorial país",adjusted.scenario?.score??"Sin cobertura","0-100"],["Fecha perfil país",adjusted.scenario?.asOf??"",""],["Incremento hipotético prima residual",adjusted.scenario?.premiumDeltaPp??0,"pp"],["VAN sin ajuste país",unadjusted.baseNPV,"M€"],
       ...FIELDS.map(([key,label,unit])=>[label,inputs[key],unit]),
       ["Tasa mínima exigida",result.hurdleRate,"%"],["Coste anual de protección",result.protectionAnnualCost,"M€/año"],
       ["Pérdida anual retenida",result.retainedAnnualLoss,"M€/año"],
@@ -52,6 +59,31 @@ export default function GeoRiskInvestmentEngine({countryContext=null}){
     <div style={{...panel,display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,240px),1fr))",gap:12}}>
       <label style={{fontSize:12,color:"#CBD5E1"}}>Nombre del proyecto<input maxLength={90} value={projectName} onChange={e=>setProjectName(e.target.value)} placeholder="Proyecto / inversión" style={{display:"block",marginTop:6,width:"100%",boxSizing:"border-box",background:"#081426",color:"#F1F5F9",border:"1px solid #355173",borderRadius:8,padding:10}}/></label>
       <label style={{fontSize:12,color:"#CBD5E1"}}>País de exposición<input maxLength={90} value={country} onChange={e=>setCountry(e.target.value)} placeholder="País" style={{display:"block",marginTop:6,width:"100%",boxSizing:"border-box",background:"#081426",color:"#F1F5F9",border:"1px solid #355173",borderRadius:8,padding:10}}/></label>
+    </div>
+    <div style={{...panel,borderColor:"#476184"}}>
+      <h3 style={{fontSize:16,margin:"0 0 9px"}}>Contexto de riesgo país · sensibilidad exploratoria</h3>
+      <p style={muted}>El nombre del país ahora se cruza con los perfiles editoriales ZRC disponibles. El ajuste financiero es una <strong>hipótesis explícita de sensibilidad</strong>, no una prima observada, ni una tarifa de aseguradora. Referencia metodológica: score 50/100.</p>
+      <label style={{display:"flex",alignItems:"center",gap:9,fontSize:13,color:"#E2E8F0"}}>
+        <input type="checkbox" checked={countryAdjustment} onChange={e=>setCountryAdjustment(e.target.checked)}/>
+        Aplicar escenario de sensibilidad por país
+      </label>
+      <div style={{marginTop:12,display:"flex",alignItems:"center",gap:12,flexWrap:"wrap"}}>
+        <label style={{fontSize:12,color:"#CBD5E1"}}>Intensidad de la hipótesis
+          <select value={sensitivity} onChange={e=>setSensitivity(Number(e.target.value))} style={{display:"block",marginTop:6,background:"#081426",border:"1px solid #355173",color:"#F1F5F9",padding:9,borderRadius:8}}>
+            <option value={0.5}>Moderada · 0,5×</option><option value={1}>Base · 1×</option><option value={1.5}>Alta · 1,5×</option><option value={2}>Extrema · 2×</option>
+          </select>
+        </label>
+        <div style={{...muted,flex:"1 1 250px"}}>Países con perfil disponible: {COUNTRY_PROFILES.map(p=>p.name).join(" · ")}.</div>
+      </div>
+      {adjusted.scenario ? <div style={{marginTop:12,display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,160px),1fr))",gap:10}}>
+        {[
+          ["Riesgo editorial",adjusted.scenario.score+"/100"],
+          ["Variación prima residual", (adjusted.scenario.premiumDeltaPp>=0?"+":"")+fmt(adjusted.scenario.premiumDeltaPp)+" pp"],
+          ["Variación pérdida anual / 10 M€",(adjusted.scenario.annualLossDeltaPer10m>=0?"+":"")+fmt(adjusted.scenario.annualLossDeltaPer10m)+" M€"],
+          ["Variación VAN base", (result.baseNPV-unadjusted.baseNPV>=0?"+":"")+fmt(result.baseNPV-unadjusted.baseNPV)+" M€"]
+        ].map(([label,value])=><div key={label} style={{padding:11,background:"#10283A",borderRadius:9}}><div style={{...muted,fontSize:11}}>{label}</div><strong style={{fontSize:16}}>{value}</strong></div>)}
+        <p style={{...muted,gridColumn:"1/-1",margin:0}}>Perfil ZRC: {adjusted.scenario.asOf}. Ajuste hipotético respecto a score 50. La prima de seguro introducida manualmente <strong>no cambia</strong> al seleccionar país porque no existe cotización vinculada.</p>
+      </div>:<p role="status" style={{...muted,color:"#FBBF24",marginBottom:0}}>{countryAdjustment?(country.trim()?`No hay perfil ZRC validado para «${country}». No se modifica la valoración. Introduce una jurisdicción de la lista o ajusta manualmente las hipótesis.`:"Selecciona un país con perfil disponible para comparar sensibilidades."):"Sensibilidad país desactivada: resultados basados únicamente en tus hipótesis manuales."}</p>}
     </div>
     <div style={{...panel}}>
       <h3 style={{fontSize:16,margin:"0 0 12px"}}>Hipótesis financieras y de protección</h3>
