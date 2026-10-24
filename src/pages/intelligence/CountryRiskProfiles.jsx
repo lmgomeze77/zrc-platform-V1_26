@@ -102,7 +102,7 @@ function IndexPage() {
   const [query, setQuery] = useState("");
   const [coverage, setCoverage] = useState("all");
   const matches = country => (region === "Todos" || country.region === region) &&
-    [country.name,country.iso].some(value => value.normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLocaleLowerCase("es").includes(query.trim().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLocaleLowerCase("es")));
+    [country.name,country.iso].some(value => value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("es").includes(query.trim().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("es")));
   const countries = coverage === "pending" ? [] : COUNTRY_PROFILES.filter(matches);
   const upcoming = coverage === "published" ? [] : COUNTRY_EXPANSION_CANDIDATES.filter(matches);
   return (
