@@ -460,13 +460,22 @@ export default function GeoRiskDashboard({ countryContext = null }) {
         }
         .zrc-pill { transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease; }
         .zrc-pill:hover { transform: translateY(-1px); border-color: #3B82F680 !important; color: #CBD5E1 !important; }
-        .zrc-tab { transition: background 0.2s ease, color 0.2s ease; }
-        .zrc-tab:hover { color: #CBD5E1 !important; background: #ffffff06; }
+        .zrc-tab { transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+        .zrc-tab:hover { background: #213c60 !important; border-color: #5b88bc !important; }
+        .zrc-tab:focus-visible { outline: 3px solid #93C5FD; outline-offset: 3px; }
+        .zrc-tab:active { transform: scale(0.985); }
+        .zrc-tab[aria-selected="true"] { color: #fff !important; }
+        .zrc-tabbar { display: grid !important; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 9px !important; }
+        .zrc-tabbar .zrc-tab { width: 100%; min-width: 0; min-height: 64px; }
+        .zrc-tab-label { line-height: 1.3; overflow-wrap: normal; }
+        .zrc-tab-icon { flex-shrink: 0; }
+        @media (max-width: 900px) {
+          .zrc-tabbar { grid-template-columns: repeat(2,minmax(0,1fr)); }
+        }
         .zrc-row:hover { background: #101d33 !important; }
         .zrc-reset:hover { border-color: #3B82F6 !important; color: #93C5FD !important; }
         .zrc-control-row { display: grid; grid-template-columns: auto 1fr auto; }
-        .zrc-tabbar { flex-wrap: wrap; }
-        .zrc-tabbar .zrc-tab { flex: 1 1 auto; }
+
         .zrc-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
         .zrc-table-inner { min-width: 640px; }
         @media (max-width: 720px) {
@@ -474,7 +483,14 @@ export default function GeoRiskDashboard({ countryContext = null }) {
           .zrc-region-sector { width: 100%; text-align: center; }
           .zrc-region-sector > div { justify-content: center; }
           .zrc-mult-block { text-align: center !important; }
-          .zrc-tabbar .zrc-tab { flex: 1 1 45%; }
+          .zrc-tabbar { gap: 8px !important; padding: 9px !important; }
+          .zrc-tabbar .zrc-tab { min-height: 74px; padding: 11px 8px !important; }
+          .zrc-tab-label { font-size: 13px; letter-spacing: 0; }
+          .zrc-tab-icon { width: 19px; height: 19px; }
+        }
+        @media (max-width: 360px) {
+          .zrc-tabbar { grid-template-columns: 1fr; }
+          .zrc-tabbar .zrc-tab { min-height: 54px; }
         }
       `}</style>
 
@@ -601,27 +617,35 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             </div>
           </div>
 
-          <div className="zrc-card zrc-tabbar" style={{ display: "flex", gap: 2, padding: 5, marginBottom: 20 }}>
+          <nav className="zrc-card zrc-tabbar" aria-label="Secciones de GeoRisk Intelligence" role="tablist" style={{
+            padding: 10, marginBottom: 22, borderRadius: 16, border: "1px solid #344b6a",
+            background: "linear-gradient(180deg,#10223a 0%,#0b192c 100%)",
+            boxShadow: "0 12px 30px -18px #000"
+          }}>
             {[
-              { id: "data", label: "Mercados", icon: TrendingUp },
-              { id: "scenarios", label: "Escenarios", icon: Radar },
-              { id: "impact", label: "Análisis de impacto", icon: Activity },
-              { id: "investment", label: "Decisión de inversión", icon: PieChart },
-            ].map(t2 => (
-              <button key={t2.id} className="zrc-tab" onClick={() => setTab(t2.id)} style={{
-                display: "flex", alignItems: "center", justifyContent: "center", gap: 7,
-                padding: "9px 18px", border: "none", borderRadius: 7,
-                background: tab === t2.id ? "linear-gradient(135deg, #1e3a5f, #24466f)" : "transparent",
-                boxShadow: tab === t2.id ? "0 4px 14px -6px #3B82F660, 0 0 0 1px #3B82F640 inset" : "none",
-                color: tab === t2.id ? "#F1F5F9" : "#64748B",
-                fontSize: 13, fontWeight: 600, cursor: "pointer",
-                fontFamily: "'JetBrains Mono', monospace", letterSpacing: 0.5,
-              }}>
-                <t2.icon size={13} strokeWidth={2.2} />
-                {t2.label}
-              </button>
-            ))}
-          </div>
+              { id: "data", label: "Mercados", icon: TrendingUp, subtitle: "Datos observados" },
+              { id: "scenarios", label: "Escenarios", icon: Radar, subtitle: "Simulaciones" },
+              { id: "impact", label: "Análisis de impacto", icon: Activity, subtitle: "Sensibilidades" },
+              { id: "investment", label: "Decisión de inversión", icon: PieChart, subtitle: "Valoración" },
+            ].map(t2 => {
+              const selected = tab === t2.id;
+              return <button type="button" key={t2.id} role="tab" aria-selected={selected}
+                className="zrc-tab" onClick={() => setTab(t2.id)} style={{
+                  display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 5,
+                  padding: "13px 10px", border: selected ? "1px solid #6aa9f5" : "1px solid #314762",
+                  borderRadius: 11,
+                  background: selected ? "linear-gradient(145deg,#24558a,#1b3c63)" : "#14263e",
+                  boxShadow: selected ? "0 5px 20px #3B82F633, inset 0 1px #ffffff26" : "inset 0 1px #ffffff09",
+                  color: selected ? "#fff" : "#E2E8F0", cursor: "pointer",
+                  fontSize: 14, fontWeight: selected ? 750 : 650,
+                  fontFamily: "'DM Sans',sans-serif", textAlign: "center"
+                }}>
+                <t2.icon className="zrc-tab-icon" size={21} strokeWidth={2} color={selected ? "#BFDBFE" : "#93C5FD"} />
+                <span className="zrc-tab-label">{t2.label}</span>
+                <span style={{fontSize: 10, fontWeight: 500, color: selected ? "#D8E9FF" : "#AFC0D7"}}>{t2.subtitle}</span>
+              </button>;
+            })}
+          </nav>
 
           {tab === "investment" && <GeoRiskInvestmentEngine countryContext={countryContext} />}
 
