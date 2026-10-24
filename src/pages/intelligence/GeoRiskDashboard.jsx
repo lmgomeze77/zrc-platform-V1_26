@@ -408,16 +408,16 @@ export default function GeoRiskDashboard({ countryContext = null }) {
         @keyframes zrc-pulse { 0%,100% { opacity:1 } 50% { opacity:0.4 } }
         @keyframes zrc-fadeIn { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:translateY(0) } }
         @keyframes zrc-ticker-scroll { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
-        .zrc-observed-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,195px),1fr)); gap:1px; background:#263754; }
+        .zrc-observed-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,195px),1fr)); gap:1px; background:#263754; }\n        .zrc-observed-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
         .zrc-observed-card { background:#0D182B; padding:14px 16px; display:flex; flex-direction:column; gap:7px; min-width:0; }
-        .zrc-observed-label { color:#93C5FD; font:600 12px/1.4 'JetBrains Mono',monospace; overflow-wrap:anywhere; }
+        .zrc-observed-label { color:#B8D9FF; font:650 12px/1.4 'JetBrains Mono',monospace; overflow-wrap:anywhere; }
         .zrc-observed-value { color:#F8FAFC; font:700 clamp(17px,2.1vw,22px)/1.3 'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
-        .zrc-observed-unit { color:#94A3B8; font:500 11px/1.4 'JetBrains Mono',monospace; }
-        .zrc-observed-date { color:#94A3B8; font:500 10px/1.5 'JetBrains Mono',monospace; }
-        @media(max-width:560px){ .zrc-observed-grid {grid-template-columns:repeat(2,minmax(0,1fr));} .zrc-observed-card {padding:12px 10px;} .zrc-observed-value {font-size:17px;} }
+        .zrc-observed-unit { color:#B7C6DC; font:500 11px/1.4 'JetBrains Mono',monospace; }
+        .zrc-observed-date { color:#B2C2D9; font:500 10px/1.5 'JetBrains Mono',monospace; }
+        @media(max-width:560px){ .zrc-observed-grid {grid-template-columns:repeat(2,minmax(0,1fr));} .zrc-observed-card {padding:16px 12px;gap:10px;} .zrc-observed-value {font-size:clamp(17px,4.5vw,22px);} .zrc-observed-date {font-size:11px;} .zrc-ticker-heading {align-items:flex-start;flex-direction:column;gap:4px;} }
         .zrc-ticker-shell { margin-top: 2px; border: 1px solid #263754; border-radius: 12px; background: #0D182B; overflow: hidden; }
         .zrc-ticker-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 14px; border-bottom: 1px solid #263754; color: #60A5FA; font: 700 10px/1.4 'JetBrains Mono', monospace; letter-spacing: .09em; }
-        .zrc-ticker-heading span:last-child { color: #64748B; font-weight: 500; letter-spacing: .02em; text-transform: none; }
+        .zrc-ticker-heading span:last-child { color: #AFC0D7; font-weight: 500; letter-spacing: .02em; text-transform: none; }
         .zrc-ticker-window { overflow-x: auto; overflow-y: hidden; outline: none; touch-action: pan-x; scrollbar-width: none; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(90deg, transparent, #000 18px, #000 calc(100% - 18px), transparent); mask-image: linear-gradient(90deg, transparent, #000 18px, #000 calc(100% - 18px), transparent); }
         .zrc-ticker-window::-webkit-scrollbar { display: none; }
         .zrc-ticker-window:focus-visible { box-shadow: 0 0 0 2px #60A5FA inset; }
