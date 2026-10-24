@@ -4,6 +4,7 @@ import { COUNTRY_BY_SLUG, COUNTRY_PROFILES, COUNTRY_PROFILE_UPDATED_AT, PILLAR_M
 import { countryIntelligenceByIso3 } from "../../data/countryIntelligenceModel.js";
 import { COUNTRY_EXPANSION_CANDIDATES } from "../../data/georiskCountryExpansion.js";
 import ObservedCountryFacts from "./ObservedCountryFacts.jsx";
+import GovernanceCountryFacts from "./GovernanceCountryFacts.jsx";
 import "./countryRiskProfiles.css";
 
 const BASE_URL = "https://www.zenithrisecapital.com/inteligencia/paises";
@@ -186,6 +187,7 @@ function DetailPage({ country }) {
         </section>
 
         <ObservedCountryFacts iso={country.iso} name={country.name} />
+        <GovernanceCountryFacts iso={country.iso} />
 
         <section className="crp-confidence"><ShieldCheck size={18} /><p><strong>Lectura ZRC.</strong> La puntuación integra cinco capas heterogéneas. Mostramos su resultado, fecha y fuente; no publicamos pesos, coeficientes ni reglas propietarias.</p></section>
 
@@ -219,6 +221,7 @@ function PendingCountryPage({country}){
     <nav className="crp-breadcrumb" aria-label="Migas de pan"><a href="/inteligencia/paises/">Fichas país</a><span>/</span><span>{country.region}</span><span>/</span><span>{country.name}</span></nav>
     <section className="crp-country-hero"><div className="crp-country-identity"><span className="crp-flag crp-flag--large">{country.flag}</span><div><span className="crp-eyebrow">{country.region} · {country.iso} · COBERTURA MACRO</span><h1>{country.name}</h1><p>Ficha de indicadores observados. La evaluación editorial de riesgo político, soberano, aseguramiento y el score compuesto ZRC aún no están disponibles para esta jurisdicción.</p></div></div></section>
     <ObservedCountryFacts iso={country.iso} name={country.name}/>
+    <GovernanceCountryFacts iso={country.iso}/>
     <section className="crp-confidence"><ShieldCheck size={18}/><p><strong>Cobertura parcial.</strong> Las observaciones del Banco Mundial no permiten por sí solas inferir un coste de capital, una prima de seguro político ni una decisión de inversión. Sin score ZRC publicado.</p></section>
     <a className="crp-back" href="/inteligencia/paises/"><ArrowLeft size={16}/> Ver todas las fichas país</a>
   </main><Footer/></div>;
