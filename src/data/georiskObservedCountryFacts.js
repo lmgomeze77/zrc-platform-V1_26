@@ -9,7 +9,7 @@ export const COUNTRY_FACT_INDICATORS = Object.freeze([
 export const COUNTRY_FACT_SOURCE="Banco Mundial · World Development Indicators";
 export function parseCountryFact(payload){
   if(!Array.isArray(payload)||!Array.isArray(payload[1]))return null;
-  const row=payload[1].find(r=>r&&typeof r.value==="number"&&Number.isFinite(r.value)&&/^\\d{4}$/.test(String(r.date)));
+  const row=payload[1].find(r=>r&&typeof r.value==="number"&&Number.isFinite(r.value)&&/^\d{4}$/.test(String(r.date)));
   return row?{value:row.value,year:Number(row.date)}:null;
 }
 export function countryFactUrl(iso3,indicator){
