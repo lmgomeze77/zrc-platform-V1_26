@@ -4,6 +4,7 @@ import {COUNTRY_EXPANSION_CANDIDATES} from "../../data/georiskCountryExpansion.j
 import {applyCountrySensitivity} from "../../data/georiskCountryInvestmentSensitivity.js";
 import {calculateInvestmentDecision,DEFAULT_INVESTMENT_INPUTS} from "../../data/georiskInvestmentEngine.js";
 import {buildInvestmentEvidence,INVESTMENT_EVIDENCE_VERSION} from "../../data/georiskInvestmentEvidence.js";
+import GeoRiskAnnualModel from "./GeoRiskAnnualModel.jsx";
 
 const FIELDS=[
   ["capital","Capital invertido","M€",0.1,1000,0.5],
@@ -24,7 +25,7 @@ const FIELDS=[
 const fmt=n=>Number.isFinite(n)?n.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2}):"N/D";
 const panel={background:"#0D1B30",border:"1px solid #28415F",borderRadius:14,padding:"18px"};
 const muted={fontSize:12,color:"#94A3B8",lineHeight:1.65};
-export default function GeoRiskInvestmentEngine({countryContext=null,selectedCountry,onCountryChange,selectedProject,onProjectChange,financialInputs,onFinancialInputsChange,financialEditedFields,onFinancialEditedFieldsChange,financialCountryAdjustment,onFinancialCountryAdjustmentChange,financialSensitivity,onFinancialSensitivityChange}){
+export default function GeoRiskInvestmentEngine({countryContext=null,selectedCountry,onCountryChange,selectedProject,onProjectChange,financialInputs,onFinancialInputsChange,financialEditedFields,onFinancialEditedFieldsChange,financialCountryAdjustment,onFinancialCountryAdjustmentChange,financialSensitivity,onFinancialSensitivityChange,annualSettings,onAnnualSettingsChange,annualOverrides,onAnnualOverridesChange}){
   const [localInputs,setLocalInputs]=useState({...DEFAULT_INVESTMENT_INPUTS});
   const inputs=financialInputs===undefined?localInputs:financialInputs;
   const setInputs=updater=>{const next=typeof updater==="function"?updater(inputs):updater;if(financialInputs===undefined)setLocalInputs(next);onFinancialInputsChange?.(next);};
@@ -135,6 +136,7 @@ export default function GeoRiskInvestmentEngine({countryContext=null,selectedCou
         ["Flujo anual de equilibrio",fmt(result.breakEvenCashFlow)+" M€"]
       ].map(([label,value])=><div key={label} style={panel}><div style={{fontSize:11,color:"#94A3B8",marginBottom:8}}>{label}</div><strong style={{fontSize:20,color:"#F8FAFC",fontVariantNumeric:"tabular-nums"}}>{value}</strong></div>)}
     </div>
+    <GeoRiskAnnualModel inputs={inputs} annualSettings={annualSettings} onAnnualSettingsChange={onAnnualSettingsChange} annualOverrides={annualOverrides} onAnnualOverridesChange={onAnnualOverridesChange}/>
     <div style={{...panel,borderColor:"#5D704C"}}>
       <div style={{fontSize:11,color:"#93C5FD",letterSpacing:1,fontWeight:700}}>LECTURA DEL MODELO · NO ES RECOMENDACIÓN</div>
       <div style={{fontSize:19,fontWeight:700,marginTop:7}}>{result.decision}</div>
