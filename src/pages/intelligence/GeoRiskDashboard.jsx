@@ -1,5 +1,7 @@
 import marketSnapshot from "../../../public/data/georisk-market-research.json";
 import GeoRiskInvestmentEngine from "./GeoRiskInvestmentEngine.jsx";
+import {COUNTRY_PROFILES} from "../../data/countryRiskProfiles.js";
+import {COUNTRY_EXPANSION_CANDIDATES} from "../../data/georiskCountryExpansion.js";
 import { downloadGeoRiskInvestmentReport } from "../../data/georiskInvestmentReport.js";
 import { estimatePriceImpact, decomposeAssetSensitivity, SENSITIVITY_VERSION } from "../../data/georiskSensitivityAudit.js";
 import { useGeoRiskObservedBaselines } from "../../hooks/useGeoRiskObservedBaselines.js";
@@ -274,6 +276,8 @@ export default function GeoRiskDashboard({ countryContext = null }) {
   const [impactView, setImpactView] = useState("variables");
   const [showDecisionBrief, setShowDecisionBrief] = useState(true);
   const [compareCountry, setCompareCountry] = useState("");
+  const [primaryCountry, setPrimaryCountry] = useState(countryContext?.name || "");
+  useEffect(() => { setPrimaryCountry(countryContext?.name || ""); }, [countryContext?.name]);
   const [dealName, setDealName] = useState("");
   const [briefs, setBriefs] = useState(() => {
     try {
@@ -370,7 +374,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
     const name = dealName.trim().slice(0,90);
     if (!name) return;
     const brief = {
-      id: String(Date.now()), name, country: countryContext?.name || "",
+      id: String(Date.now()), name, country: primaryCountry.trim().slice(0,90),
       comparison: compareCountry.trim().slice(0,90), region, sector,
       scenarioWeights: {...scenarioWeights}, score: Number(compositeRisk.toFixed(1)),
       dominantScenario, savedAt: new Date().toISOString(),
@@ -389,6 +393,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
       ])));
     }
     setCompareCountry(brief.comparison || "");
+    setPrimaryCountry(brief.country || "");
     setTab("scenarios");
     setShowDecisionBrief(true);
   };
@@ -647,7 +652,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             })}
           </nav>
 
-          {tab === "investment" && <GeoRiskInvestmentEngine countryContext={countryContext} />}
+          {tab === "investment" && <GeoRiskInvestmentEngine countryContext={primaryCountry ? {name: primaryCountry} : null} selectedCountry={primaryCountry} onCountryChange={setPrimaryCountry} />}
 
           {(tab === "scenarios" || tab === "impact") && (
             <section aria-label="Ficha de decisión para inversores" style={{margin:"0 0 18px",border:"1px solid #355173",borderRadius:15,background:"#0D1B30",padding:"17px 19px"}}>
@@ -660,9 +665,9 @@ export default function GeoRiskDashboard({ countryContext = null }) {
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,230px),1fr))",gap:10,marginTop:14}}>
                   <div style={{padding:13,border:"1px solid #28415F",borderRadius:10}}>
                     <div style={{fontSize:10,color:"#93C5FD",marginBottom:7}}>CONTEXTO Y EXPOSICIÓN</div>
-                    <div style={{fontSize:14,fontWeight:700}}>{countryContext?.name || "Sin país seleccionado"}</div>
+                    <div style={{fontSize:14,fontWeight:700}}>{primaryCountry.trim() || "Sin país seleccionado"}</div>
                     <div style={{fontSize:12,color:"#94A3B8",marginTop:5}}>Simulación: {REGIONS[region].label} · {SECTORS[sector].label}</div>
-                    {countryContext && <div style={{fontSize:11,color:"#FBBF24",marginTop:7}}>El país no modifica automáticamente los parámetros regionales.</div>}
+                    {primaryCountry.trim() && <div style={{fontSize:11,color:"#FBBF24",marginTop:7}}>El país no modifica automáticamente los parámetros regionales.</div>}
                   </div>
                   <div style={{padding:13,border:"1px solid #28415F",borderRadius:10}}>
                     <div style={{fontSize:10,color:"#93C5FD",marginBottom:7}}>HIPÓTESIS DE ESCENARIO</div>
@@ -678,10 +683,14 @@ export default function GeoRiskDashboard({ countryContext = null }) {
                 </div>
                 <div style={{marginTop:14,padding:"13px 14px",border:"1px solid #28415F",borderRadius:10}}>
                   <div style={{fontSize:11,color:"#93C5FD",fontWeight:700,marginBottom:8}}>COMPARAR PAÍSES · MATRIZ DE DUE DILIGENCE</div>
+                  <label htmlFor="georisk-primary-country" style={{display:"block",fontSize:12,color:"#CBD5E1",marginBottom:6}}>País principal (inversión / exposición)</label>
+                  <input id="georisk-primary-country" list="georisk-primary-countries" maxLength={90} value={primaryCountry} onChange={e=>setPrimaryCountry(e.target.value)} placeholder="Selecciona un país, p. ej. España" style={{width:"100%",maxWidth:320,boxSizing:"border-box",background:"#081426",border:"1px solid #50749A",borderRadius:8,color:"#F1F5F9",padding:"11px 12px",fontSize:14,marginBottom:12}}/>
+                  <datalist id="georisk-primary-countries">{[...COUNTRY_PROFILES,...COUNTRY_EXPANSION_CANDIDATES].map(p=><option key={p.iso} value={p.name}/>)}</datalist>
+                  <div style={{fontSize:11,color:"#94A3B8",marginBottom:12}}>Selección compartida con «Decisión de inversión». No recalibra automáticamente el escenario regional.</div>
                   <label htmlFor="georisk-compare-country" style={{display:"block",fontSize:12,color:"#CBD5E1",marginBottom:6}}>Segundo país (comparación cualitativa)</label>
                   <input id="georisk-compare-country" maxLength={90} value={compareCountry} onChange={e=>setCompareCountry(e.target.value)} placeholder="Ej. México" style={{width:"100%",maxWidth:320,boxSizing:"border-box",background:"#081426",border:"1px solid #355173",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:13}}/>
                   {compareCountry.trim() && <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,220px),1fr))",gap:10,marginTop:12}}>
-                    {[countryContext?.name || "País principal sin seleccionar",compareCountry.trim()].map((name,i)=><div key={i} style={{border:"1px solid #28415F",borderRadius:9,padding:12}}>
+                    {[primaryCountry.trim() || "País principal sin seleccionar",compareCountry.trim()].map((name,i)=><div key={i} style={{border:"1px solid #28415F",borderRadius:9,padding:12}}>
                       <strong style={{color:"#F1F5F9",fontSize:13}}>{name}</strong>
                       <div style={{fontSize:11,color:"#94A3B8",marginTop:7,lineHeight:1.7}}>Contrastar: riesgo regulatorio, exposición FX, financiación, cadena de suministro, repatriación de capital y contraparte local.</div>
                       <div style={{fontSize:11,color:"#FBBF24",marginTop:7}}>Sin score de país verificado. No se asignan diferencias numéricas artificiales.</div>
