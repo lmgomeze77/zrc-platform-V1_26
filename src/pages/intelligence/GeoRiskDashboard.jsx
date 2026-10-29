@@ -382,7 +382,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
       methodology: GEORISK_SCENARIO_VERSION
     };
     setBriefs(prev => [brief,...prev].slice(0,20));
-    setDealName("");
+    // Keep the current operation active after saving; the saved brief is a scenario snapshot, not the full financial model.
   };
   const restoreDecisionBrief = (brief) => {
     if (REGIONS[brief.region]) setRegion(brief.region);
@@ -393,6 +393,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
       ])));
     }
     setCompareCountry(brief.comparison || "");
+    setDealName(brief.name || "");
     setPrimaryCountry(brief.country || "");
     setTab("scenarios");
     setShowDecisionBrief(true);
@@ -652,7 +653,15 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             })}
           </nav>
 
-          {tab === "investment" && <GeoRiskInvestmentEngine countryContext={primaryCountry ? {name: primaryCountry} : null} selectedCountry={primaryCountry} onCountryChange={setPrimaryCountry} />}
+          <section aria-label="Expediente activo de inversión" style={{background:"#10253B",border:"1px solid #3D6287",borderRadius:14,padding:"15px 18px",margin:"0 0 16px"}}>
+            <div style={{fontSize:10,fontWeight:750,letterSpacing:1.2,color:"#93C5FD"}}>ZRC · INVESTMENT WORKSPACE · VISTA DE TRABAJO</div>
+            <div style={{display:"flex",flexWrap:"wrap",alignItems:"center",justifyContent:"space-between",gap:12,marginTop:8}}>
+              <div><strong style={{fontSize:17,color:"#F1F5F9"}}>{dealName.trim() || "Operación sin nombre"}</strong><div style={{fontSize:12,color:"#CBD5E1",marginTop:4}}>{primaryCountry.trim() || "País pendiente"} · {REGIONS[region].label} · {SECTORS[sector].label}</div></div>
+              <span style={{fontSize:11,color:"#FCD34D",border:"1px solid #8D683A",borderRadius:8,padding:"7px 10px"}}>Simulación de analista · No validada</span>
+            </div>
+            <div style={{fontSize:11,color:"#9BB1C8",marginTop:9}}>País y nombre compartidos entre escenarios e inversión. Las fichas locales guardan un resumen del escenario, no los flujos del motor financiero. No introduzcas información confidencial.</div>
+          </section>
+          {tab === "investment" && <GeoRiskInvestmentEngine countryContext={primaryCountry ? {name: primaryCountry} : null} selectedCountry={primaryCountry} onCountryChange={setPrimaryCountry} selectedProject={dealName} onProjectChange={setDealName} />}
 
           {(tab === "scenarios" || tab === "impact") && (
             <section aria-label="Ficha de decisión para inversores" style={{margin:"0 0 18px",border:"1px solid #355173",borderRadius:15,background:"#0D1B30",padding:"17px 19px"}}>
