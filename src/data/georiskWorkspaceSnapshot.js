@@ -6,6 +6,29 @@ const own=(obj,key)=>Object.prototype.hasOwnProperty.call(obj,key);
 const safeText=(x,max=90)=>typeof x==="string"?x.trim().slice(0,max):"";
 const numericKeys=Object.keys(DEFAULT_INVESTMENT_INPUTS);
 const scenarioKeys=["tariff_escalation","mena_instability","eu_fragmentation","detente"];
+export const DEFAULT_ANNUAL_SETTINGS=Object.freeze({growthRate:0,maintenanceCapex:0,fxExposurePct:0,fxAdverseMovePct:0});
+const annualLimits={growthRate:[-90,100],maintenanceCapex:[0,100000],fxExposurePct:[0,100],fxAdverseMovePct:[0,100]};
+function validateAnnual(settings={},overrides={}){
+ if(!settings||typeof settings!=="object"||Array.isArray(settings)||!overrides||typeof overrides!=="object"||Array.isArray(overrides))throw Error("Escenario anual inválido.");
+ const clean={};
+ for(const [key,defaultValue] of Object.entries(DEFAULT_ANNUAL_SETTINGS)){
+  const value=settings[key]??defaultValue,[min,max]=annualLimits[key];
+  if(typeof value!=="number"||!Number.isFinite(value)||value<min||value>max)throw Error("Supuesto anual inválido: "+key);
+  clean[key]=value;
+ }
+ const cleanOverrides={};
+ if(Object.keys(overrides).length>30)throw Error("Demasiados ejercicios anuales.");
+ for(const [year,values] of Object.entries(overrides)){
+  if(!/^(?:[1-9]|[12][0-9]|30)$/.test(year)||!values||typeof values!=="object"||Array.isArray(values))throw Error("Año no válido.");
+  const row={};
+  for(const [key,value] of Object.entries(values)){
+   if(!["operatingFCF","capex"].includes(key)||typeof value!=="number"||!Number.isFinite(value)||value<(key==="capex"?0:-100000)||value>100000)throw Error("Flujo anual no válido.");
+   row[key]=value;
+  }
+  cleanOverrides[year]=row;
+ }
+ return {annualSettings:clean,annualOverrides:cleanOverrides};
+}
 
 export function createWorkspaceSnapshot(state){
  const financial=Object.fromEntries(numericKeys.map(key=>[key,Number(state.inputs?.[key]??DEFAULT_INVESTMENT_INPUTS[key])]));
@@ -18,6 +41,7 @@ export function createWorkspaceSnapshot(state){
   region:safeText(state.region,30),
   sector:safeText(state.sector,30),
   scenarioWeights:Object.fromEntries(scenarioKeys.map(key=>[key,Number(state.scenarioWeights?.[key]??0)])),
+  ...validateAnnual(state.annualSettings,state.annualOverrides),
   financial:{
    inputs:financial,
    editedFields:state.editedFields?.filter(key=>own(INVESTMENT_FIELD_LABELS,key))??[],
@@ -55,10 +79,11 @@ export function parseWorkspaceSnapshot(data){
  if(!Array.isArray(fields)||fields.some(key=>!own(INVESTMENT_FIELD_LABELS,key)))throw Error("Procedencia financiera inválida.");
  if(typeof financial.countryAdjustment!=="boolean")throw Error("Ajuste país inválido.");
  if(![0.5,1,1.5,2].includes(financial.sensitivity))throw Error("Intensidad no compatible.");
+ const annual=validateAnnual(data.annualSettings,data.annualOverrides);
  return {
   project:safeText(data.project),country:safeText(data.country),
   comparison:safeText(data.comparison),region:data.region,sector:data.sector,
   scenarioWeights:normalized,inputs,editedFields:[...new Set(fields)],
-  countryAdjustment:financial.countryAdjustment,sensitivity:financial.sensitivity
+  countryAdjustment:financial.countryAdjustment,sensitivity:financial.sensitivity,...annual
  };
 }
