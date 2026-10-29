@@ -1,5 +1,7 @@
 import marketSnapshot from "../../../public/data/georisk-market-research.json";
 import GeoRiskInvestmentEngine from "./GeoRiskInvestmentEngine.jsx";
+import {DEFAULT_INVESTMENT_INPUTS} from "../../data/georiskInvestmentEngine.js";
+import {createWorkspaceSnapshot,parseWorkspaceSnapshot} from "../../data/georiskWorkspaceSnapshot.js";
 import {COUNTRY_PROFILES} from "../../data/countryRiskProfiles.js";
 import {COUNTRY_EXPANSION_CANDIDATES} from "../../data/georiskCountryExpansion.js";
 import { downloadGeoRiskInvestmentReport } from "../../data/georiskInvestmentReport.js";
@@ -279,6 +281,11 @@ export default function GeoRiskDashboard({ countryContext = null }) {
   const [primaryCountry, setPrimaryCountry] = useState(countryContext?.name || "");
   useEffect(() => { setPrimaryCountry(countryContext?.name || ""); }, [countryContext?.name]);
   const [dealName, setDealName] = useState("");
+  const [financialInputs,setFinancialInputs] = useState({...DEFAULT_INVESTMENT_INPUTS});
+  const [financialEditedFields,setFinancialEditedFields] = useState([]);
+  const [financialCountryAdjustment,setFinancialCountryAdjustment] = useState(false);
+  const [financialSensitivity,setFinancialSensitivity] = useState(1);
+  const [workspaceMessage,setWorkspaceMessage] = useState("");
   const [briefs, setBriefs] = useState(() => {
     try {
       const parsed = JSON.parse(window.localStorage.getItem("zrc-georisk-briefs-v1") || "[]");
@@ -292,6 +299,26 @@ export default function GeoRiskDashboard({ countryContext = null }) {
   }, [briefs]);
 
   const sectionGuide = SECTION_GUIDES[tab];
+  const exportWorkspace = () => {
+    const snapshot=createWorkspaceSnapshot({project:dealName,country:primaryCountry,comparison:compareCountry,region,sector,scenarioWeights,inputs:financialInputs,editedFields:financialEditedFields,countryAdjustment:financialCountryAdjustment,sensitivity:financialSensitivity});
+    const blob=new Blob([JSON.stringify(snapshot,null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement("a");link.href=url;link.download="ZRC_Investment_Workspace_"+(dealName.trim().normalize("NFKD").replace(/[^a-zA-Z0-9_-]+/g,"_").slice(0,40)||"expediente")+".json";
+    document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+    setWorkspaceMessage("Expediente exportado. Guarda el archivo en una ubicación protegida.");
+  };
+  const importWorkspace = async event => {
+    const file=event.target.files?.[0];event.target.value="";if(!file)return;
+    if(file.size>65536){setWorkspaceMessage("Archivo demasiado grande (máximo 64 KB).");return;}
+    try{
+      const data=parseWorkspaceSnapshot(JSON.parse(await file.text()));
+      setDealName(data.project);setPrimaryCountry(data.country);setCompareCountry(data.comparison);
+      setRegion(data.region);if(SECTORS[data.sector])setSector(data.sector);
+      setScenarioWeights(data.scenarioWeights);setFinancialInputs(data.inputs);
+      setFinancialEditedFields(data.editedFields);setFinancialCountryAdjustment(data.countryAdjustment);setFinancialSensitivity(data.sensitivity);
+      setTab("investment");setWorkspaceMessage("Expediente importado en esta sesión. No se ha enviado a un servidor.");
+    }catch(err){setWorkspaceMessage("No se ha importado: "+err.message);}
+  };
 
   const {variables:ECONOMIC_VARIABLES,observedCount, status:observationStatus}=useGeoRiskObservedBaselines(region,ECONOMIC_VARIABLES_BY_REGION[region]);
   const fxExporterSign = region === "asia" ? 1 : -1;
@@ -661,7 +688,12 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             </div>
             <div style={{fontSize:11,color:"#9BB1C8",marginTop:9}}>País y nombre compartidos entre escenarios e inversión. Las fichas locales guardan un resumen del escenario, no los flujos del motor financiero. No introduzcas información confidencial.</div>
           </section>
-          {tab === "investment" && <GeoRiskInvestmentEngine countryContext={primaryCountry ? {name: primaryCountry} : null} selectedCountry={primaryCountry} onCountryChange={setPrimaryCountry} selectedProject={dealName} onProjectChange={setDealName} />}
+          <div aria-label="Portabilidad del expediente" style={{display:"flex",flexWrap:"wrap",gap:9,alignItems:"center",margin:"0 0 16px"}}>
+            <button type="button" onClick={exportWorkspace} style={{border:"1px solid #537CA6",background:"#20466D",color:"#F8FAFC",borderRadius:8,padding:"10px 13px",fontSize:12,cursor:"pointer"}}>Exportar expediente JSON</button>
+            <label style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid #537CA6",background:"#142C47",color:"#E2E8F0",borderRadius:8,padding:"10px 13px",fontSize:12,cursor:"pointer"}}>Importar expediente JSON <input aria-label="Importar expediente JSON" type="file" accept=".json,application/json" onChange={importWorkspace} style={{width:"155px",maxWidth:"100%",fontSize:11}}/></label>
+            <span role="status" style={{fontSize:11,color:"#CBD5E1"}}>{workspaceMessage || "Los supuestos financieros se mantienen en memoria entre pestañas; no se guardan automáticamente."}</span>
+          </div>
+          {tab === "investment" && <GeoRiskInvestmentEngine countryContext={primaryCountry ? {name: primaryCountry} : null} selectedCountry={primaryCountry} onCountryChange={setPrimaryCountry} selectedProject={dealName} onProjectChange={setDealName} financialInputs={financialInputs} onFinancialInputsChange={setFinancialInputs} financialEditedFields={financialEditedFields} onFinancialEditedFieldsChange={setFinancialEditedFields} financialCountryAdjustment={financialCountryAdjustment} onFinancialCountryAdjustmentChange={setFinancialCountryAdjustment} financialSensitivity={financialSensitivity} onFinancialSensitivityChange={setFinancialSensitivity} />}
 
           {(tab === "scenarios" || tab === "impact") && (
             <section aria-label="Ficha de decisión para inversores" style={{margin:"0 0 18px",border:"1px solid #355173",borderRadius:15,background:"#0D1B30",padding:"17px 19px"}}>
