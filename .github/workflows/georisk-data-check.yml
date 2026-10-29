@@ -34,6 +34,9 @@ on:
       - 'src/data/georiskInvestmentEvidence.js'
       - 'scripts/georisk-investment-evidence.test.js'
       - 'scripts/georisk-workspace-snapshot.test.js'
+      - 'scripts/georisk-annual-cash-flow.test.js'
+      - 'src/data/georiskAnnualCashFlow.js'
+      - 'src/pages/intelligence/GeoRiskAnnualModel.jsx'
       - 'src/data/georiskWorkspaceSnapshot.js'
       - 'scripts/georisk-sensitivity-audit.test.js'
       - 'src/data/georiskSensitivityAudit.js'
@@ -96,7 +99,7 @@ jobs:
       - run: python scripts/georisk-gpr-python.test.py
       - run: python scripts/georisk-fred-python.test.py
       - run: python scripts/georisk-market-research-python.test.py
-      - run: node --test scripts/georisk-forecast.test.js scripts/georisk-risk-model.test.js scripts/georisk-scenario-contract.test.js scripts/georisk-investment-engine.test.js scripts/georisk-country-investment-sensitivity.test.js scripts/georisk-country-coverage.test.js scripts/georisk-observed-country-facts.test.js scripts/georisk-governance-quality.test.js scripts/georisk-investment-evidence.test.js scripts/georisk-workspace-snapshot.test.js scripts/georisk-sensitivity-audit.test.js scripts/georisk-observed-baselines.test.js scripts/georisk-taxonomy.test.js scripts/georisk-index-v2.test.js scripts/georisk-investor-market-impact.test.js scripts/georisk-market-watch.test.js scripts/georisk-market.test.js scripts/georisk-macro.test.js scripts/georisk-wgi.test.js scripts/georisk-gpr.test.js
+      - run: node --test scripts/georisk-forecast.test.js scripts/georisk-risk-model.test.js scripts/georisk-scenario-contract.test.js scripts/georisk-investment-engine.test.js scripts/georisk-country-investment-sensitivity.test.js scripts/georisk-country-coverage.test.js scripts/georisk-observed-country-facts.test.js scripts/georisk-governance-quality.test.js scripts/georisk-investment-evidence.test.js scripts/georisk-workspace-snapshot.test.js scripts/georisk-annual-cash-flow.test.js scripts/georisk-sensitivity-audit.test.js scripts/georisk-observed-baselines.test.js scripts/georisk-taxonomy.test.js scripts/georisk-index-v2.test.js scripts/georisk-investor-market-impact.test.js scripts/georisk-market-watch.test.js scripts/georisk-market.test.js scripts/georisk-macro.test.js scripts/georisk-wgi.test.js scripts/georisk-gpr.test.js
       - run: npx wrangler d1 migrations apply zrc-leads --local
       - run: npm run test:schema
       - run: npm run test:georisk-map
