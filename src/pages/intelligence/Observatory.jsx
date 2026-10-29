@@ -217,6 +217,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
   const hasAccess = user && !trialExpired;
   const [expanded, setExpanded] = useState(null);
   const [filter, setFilter]     = useState("ALL");
+  const [viewMode, setViewMode] = useState("feed");
   const regions = ["ALL","MENA","EU","LATAM","APAC","AFRICA","EURASIA"];
 
   // Live data from daily pipeline. Static FEED only when API has nothing.
@@ -272,6 +273,15 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
 
   // Directional count for public teaser
   const directionalCount = feed.filter(f => f.zrc_signal).length;
+  const glanceImpacts = filtered.flatMap(signal =>
+    Array.isArray(signal.market_impact)
+      ? signal.market_impact.map(mi => ({ ...mi, signal }))
+      : []
+  );
+  const glanceAssets = new Set(glanceImpacts.map(mi => txt(mi.asset).trim()).filter(Boolean));
+  const glanceUp = glanceImpacts.filter(mi => mi.direction === "up").length;
+  const glanceDown = glanceImpacts.filter(mi => mi.direction === "down").length;
+  const exampleSignal = filtered.find(signal => Array.isArray(signal.market_impact) && signal.market_impact.length);
 
   return (
     <Sec id="observatory">
@@ -308,6 +318,27 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
         </FadeIn>
       )}
 
+      {/* OBSERVATORY VIEW TABS */}
+      <FadeIn delay={0.08}>
+        <div role="tablist" aria-label={lang==="es" ? "Vistas del Observatorio" : "Observatory views"}
+          style={{ display:"flex", gap:6, marginBottom:12, borderBottom:`1px solid ${C.border}`, paddingBottom:10 }}>
+          {[
+            { id:"feed", label:lang==="es" ? "SEÑALES" : "SIGNALS" },
+            { id:"glance", label:lang==="es" ? "EN UN VISTAZO" : "AT A GLANCE" },
+          ].map(tab => (
+            <button key={tab.id} role="tab" aria-selected={viewMode===tab.id}
+              onClick={() => setViewMode(tab.id)}
+              style={{ fontFamily:F.mono, fontSize:9, letterSpacing:"0.08em", padding:"7px 12px",
+                background:viewMode===tab.id ? C.gold : C.surface2,
+                color:viewMode===tab.id ? C.onGold : C.textMuted,
+                border:`1px solid ${viewMode===tab.id ? C.gold : C.border}`,
+                borderRadius:3, cursor:"pointer", transition:"all 0.2s" }}>
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </FadeIn>
+
       {/* REGION FILTER */}
       <FadeIn delay={0.1}>
         <div style={{ display:"flex", gap:6, flexWrap:"wrap", marginBottom:24 }}>
@@ -323,6 +354,84 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
         </div>
       </FadeIn>
 
+      {viewMode === "glance" ? (
+        <FadeIn delay={0.05}>
+          <div style={{ background:C.surface, border:`1px solid ${C.border}`, borderRadius:6, padding:18, marginBottom:24 }}>
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:16, flexWrap:"wrap", marginBottom:16 }}>
+              <div>
+                <p style={{ fontFamily:F.mono, fontSize:9, letterSpacing:"0.1em", color:C.gold, margin:"0 0 5px", textTransform:"uppercase" }}>
+                  {lang==="es" ? "DEL TITULAR A LA EXPOSICIÓN" : "FROM HEADLINE TO EXPOSURE"}
+                </p>
+                <h3 style={{ fontFamily:F.display, fontSize:22, fontWeight:400, color:C.text, margin:"0 0 4px" }}>
+                  {lang==="es" ? "¿Qué puede significar para el mercado?" : "What could this mean for markets?"}
+                </h3>
+                <p style={{ fontFamily:F.body, fontSize:12, color:C.textSec, margin:0, lineHeight:1.6 }}>
+                  {lang==="es" ? "Una lectura rápida de las señales y los activos relacionados." : "A quick read of signals and the related assets."}
+                </p>
+              </div>
+              <span style={{ fontFamily:F.mono, fontSize:9, color:C.textMuted, padding:"5px 8px", background:C.surface2, borderRadius:3 }}>
+                {filter==="ALL" ? (lang==="es" ? "TODAS LAS REGIONES" : "ALL REGIONS") : filter}
+              </span>
+            </div>
+
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(145px, 1fr))", gap:8, marginBottom:18 }}>
+              {[
+                { value:filtered.length, label:lang==="es" ? "señales observadas" : "signals tracked" },
+                { value:glanceAssets.size, label:lang==="es" ? "activos / variables vinculados" : "linked assets / variables" },
+                { value:`▲ ${glanceUp}  ▼ ${glanceDown}`, label:lang==="es" ? "sesgo direccional mapeado" : "mapped directional bias" },
+              ].map((metric, i) => (
+                <div key={i} style={{ padding:"11px 12px", background:C.surface2, borderRadius:4, border:`1px solid ${C.border}` }}>
+                  <div style={{ fontFamily:F.mono, fontSize:18, color:C.text, marginBottom:3 }}>{metric.value}</div>
+                  <div style={{ fontFamily:F.body, fontSize:10, color:C.textMuted }}>{metric.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {exampleSignal ? (
+              <div style={{ border:`1px solid ${C.border}`, borderRadius:5, overflow:"hidden" }}>
+                <div style={{ padding:"12px 14px", background:C.surface2 }}>
+                  <div style={{ fontFamily:F.mono, fontSize:8, letterSpacing:"0.08em", color:C.gold, marginBottom:5 }}>
+                    {lang==="es" ? "EJEMPLO VISUAL · SEÑAL" : "VISUAL EXAMPLE · SIGNAL"}
+                  </div>
+                  <div style={{ fontFamily:F.body, fontSize:13, color:C.text, fontWeight:500, lineHeight:1.5 }}>
+                    {txt(exampleSignal.title)}
+                  </div>
+                </div>
+                <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(150px, 1fr))", gap:8, padding:12 }}>
+                  {exampleSignal.market_impact.slice(0,4).map((mi, i) => {
+                    const dc = dirCfg[mi.direction] || dirCfg.mixed;
+                    const strength = mi.magnitude ? (lang==="es"
+                      ? ({ high:"alta", medium:"media", low:"baja" }[mi.magnitude] || mi.magnitude)
+                      : mi.magnitude) : "";
+                    return (
+                      <div key={i} style={{ padding:"10px 11px", border:`1px solid ${C.border}`, borderRadius:4 }}>
+                        <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:5 }}>
+                          <span style={{ color:dc.c, fontFamily:F.mono, fontSize:13 }}>{dc.arrow}</span>
+                          <span style={{ fontFamily:F.mono, fontSize:10, color:C.text, fontWeight:600 }}>{txt(mi.asset)}</span>
+                        </div>
+                        <div style={{ fontFamily:F.body, fontSize:10, color:C.textSec, lineHeight:1.5 }}>{txt(mi.note)}</div>
+                        {strength && <div style={{ fontFamily:F.mono, fontSize:8, color:dc.c, marginTop:6, textTransform:"uppercase" }}>
+                          {lang==="es" ? "magnitud indicativa" : "indicative magnitude"} · {strength}
+                        </div>}
+                      </div>
+                    );
+                  })}
+                </div>
+                <div style={{ borderTop:`1px solid ${C.border}`, padding:"10px 14px", fontFamily:F.body, fontSize:10, color:C.textMuted, lineHeight:1.55 }}>
+                  {lang==="es"
+                    ? "Valor: conectar un acontecimiento con exposiciones que conviene revisar. Las flechas indican dirección potencial, no una previsión de rentabilidad ni un objetivo de precio."
+                    : "Value: connect an event to exposures worth reviewing. Arrows show potential direction, not a return forecast or price target."}
+                </div>
+              </div>
+            ) : (
+              <div style={{ padding:16, background:C.surface2, borderRadius:4, fontFamily:F.body, fontSize:12, color:C.textMuted }}>
+                {lang==="es" ? "No hay impactos de mercado mapeados para esta selección." : "No market impacts are mapped for this selection."}
+              </div>
+            )}
+          </div>
+        </FadeIn>
+      ) : (
+        <>
       {/* SIGNAL CARDS */}
       <div style={{ display:"flex", flexDirection:"column", gap:1 }}>
         {filtered.map((item, i) => {
@@ -528,6 +637,9 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
           );
         })}
       </div>
+
+        </>
+      )}
 
       {/* ── INTERNATIONAL AGENDA ──────────────────────────── */}
       <FadeIn delay={0.15}>
