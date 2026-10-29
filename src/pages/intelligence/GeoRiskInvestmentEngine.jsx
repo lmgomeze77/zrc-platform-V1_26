@@ -3,6 +3,7 @@ import {COUNTRY_PROFILES} from "../../data/countryRiskProfiles.js";
 import {COUNTRY_EXPANSION_CANDIDATES} from "../../data/georiskCountryExpansion.js";
 import {applyCountrySensitivity} from "../../data/georiskCountryInvestmentSensitivity.js";
 import {calculateInvestmentDecision,DEFAULT_INVESTMENT_INPUTS} from "../../data/georiskInvestmentEngine.js";
+import {buildInvestmentEvidence,INVESTMENT_EVIDENCE_VERSION} from "../../data/georiskInvestmentEvidence.js";
 
 const FIELDS=[
   ["capital","Capital invertido","M€",0.1,1000,0.5],
@@ -23,23 +24,28 @@ const FIELDS=[
 const fmt=n=>Number.isFinite(n)?n.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2}):"N/D";
 const panel={background:"#0D1B30",border:"1px solid #28415F",borderRadius:14,padding:"18px"};
 const muted={fontSize:12,color:"#94A3B8",lineHeight:1.65};
-export default function GeoRiskInvestmentEngine({countryContext=null,selectedCountry,onCountryChange}){
+export default function GeoRiskInvestmentEngine({countryContext=null,selectedCountry,onCountryChange,selectedProject,onProjectChange}){
   const [inputs,setInputs]=useState({...DEFAULT_INVESTMENT_INPUTS});
   const [mode,setMode]=useState("entry");
-  const [projectName,setProjectName]=useState("");
+  const [localProject,setLocalProject]=useState("");
+  const projectName=selectedProject===undefined?localProject:selectedProject;
+  const setProjectName=value=>{if(selectedProject===undefined)setLocalProject(value);onProjectChange?.(value);};
+  const [editedFields,setEditedFields]=useState([]);
   const [localCountry,setLocalCountry]=useState(countryContext?.name||"");
   const country=selectedCountry===undefined?localCountry:selectedCountry;
   const setCountry=value=>{if(selectedCountry===undefined)setLocalCountry(value);onCountryChange?.(value);};
-  const [countryAdjustment,setCountryAdjustment]=useState(true);
+  const [countryAdjustment,setCountryAdjustment]=useState(false);
   const [sensitivity,setSensitivity]=useState(1);
   useEffect(()=>{if(selectedCountry===undefined)setLocalCountry(countryContext?.name||"");},[countryContext?.name,selectedCountry]);
   const adjusted=useMemo(()=>countryAdjustment?applyCountrySensitivity(inputs,country,sensitivity):{inputs,scenario:null},[inputs,country,countryAdjustment,sensitivity]);
   const result=useMemo(()=>calculateInvestmentDecision(adjusted.inputs),[adjusted.inputs]);
   const unadjusted=useMemo(()=>calculateInvestmentDecision(inputs),[inputs]);
-  const set=(key,value)=>setInputs(prev=>({...prev,[key]:value}));
+  const set=(key,value)=>{setInputs(prev=>({...prev,[key]:value}));setEditedFields(prev=>prev.includes(key)?prev:[...prev,key]);};
+  const evidence=useMemo(()=>buildInvestmentEvidence(inputs,editedFields),[inputs,editedFields]);
   const exportCsv=()=>{
-    const rows=[["Concepto","Valor","Unidad"],["Proyecto",projectName,""],["País",country,""],["Versión",result.version,""],["Ajuste país activado",countryAdjustment?"Sí":"No",""],["Score editorial país",adjusted.scenario?.score??"Sin cobertura","0-100"],["Fecha perfil país",adjusted.scenario?.asOf??"",""],["Incremento hipotético prima residual",adjusted.scenario?.premiumDeltaPp??0,"pp"],["VAN sin ajuste país",unadjusted.baseNPV,"M€"],
+    const rows=[["Concepto","Valor","Unidad"],["Proyecto",projectName,""],["País",country,""],["Versión",result.version,""],["Versión evidencia",INVESTMENT_EVIDENCE_VERSION,""],["Ajuste país activado",countryAdjustment?"Sí":"No",""],["Score editorial país",adjusted.scenario?.score??"Sin cobertura","0-100"],["Fecha perfil país",adjusted.scenario?.asOf??"",""],["Incremento hipotético prima residual",adjusted.scenario?.premiumDeltaPp??0,"pp"],["VAN sin ajuste país",unadjusted.baseNPV,"M€"],
       ...FIELDS.map(([key,label,unit])=>[label,inputs[key],unit]),
+      ...evidence.map(item=>["Procedencia · "+item.label,item.statusLabel,item.source]),
       ["Tasa mínima exigida",result.hurdleRate,"%"],["Coste anual de protección",result.protectionAnnualCost,"M€/año"],
       ["Pérdida anual retenida",result.retainedAnnualLoss,"M€/año"],
       ["VAN base",result.baseNPV,"M€"],["VAN estrés",result.stressNPV,"M€"],
@@ -64,12 +70,27 @@ export default function GeoRiskInvestmentEngine({countryContext=null,selectedCou
       <label style={{fontSize:12,color:"#CBD5E1"}}>País de exposición<input list="georisk-investment-countries" maxLength={90} value={country} onChange={e=>setCountry(e.target.value)} placeholder="Selecciona o escribe un país" style={{display:"block",marginTop:6,width:"100%",boxSizing:"border-box",background:"#081426",color:"#F1F5F9",border:"1px solid #355173",borderRadius:8,padding:10}}/></label>
       <datalist id="georisk-investment-countries">{[...COUNTRY_PROFILES,...COUNTRY_EXPANSION_CANDIDATES].map(p=><option key={p.iso} value={p.name}/>)}</datalist>
     </div>
+    <div style={{...panel,borderColor:"#4A637B"}}>
+      <div style={{fontSize:10,fontWeight:700,letterSpacing:1.2,color:"#93C5FD"}}>TRAZABILIDAD · {INVESTMENT_EVIDENCE_VERSION}</div>
+      <h3 style={{fontSize:16,margin:"7px 0"}}>Calidad de los supuestos del modelo</h3>
+      <p style={muted}>Los valores iniciales son ejemplos de simulación. Los cambios introducidos manualmente siguen siendo hipótesis del usuario, no cifras verificadas. Ningún valor financiero se considera observado sin una fuente contrastada.</p>
+      <div style={{display:"flex",gap:9,flexWrap:"wrap"}}>
+        <span style={{background:"#1A324B",borderRadius:8,padding:"8px 11px",fontSize:12}}>Hipótesis iniciales: <strong>{evidence.filter(x=>x.status==="example").length}</strong></span>
+        <span style={{background:"#1A324B",borderRadius:8,padding:"8px 11px",fontSize:12}}>Editadas: <strong>{evidence.filter(x=>x.status==="user_assumption").length}</strong></span>
+        <span style={{background:"#1A324B",borderRadius:8,padding:"8px 11px",fontSize:12}}>Datos financieros verificados: <strong>0</strong></span>
+      </div>
+      <details style={{marginTop:12,color:"#CBD5E1",fontSize:12}}><summary style={{cursor:"pointer",color:"#BFDBFE"}}>Ver procedencia de cada parámetro</summary>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,200px),1fr))",gap:8,marginTop:12}}>
+          {evidence.map(item=><div key={item.key} style={{background:"#132A41",borderRadius:8,padding:9}}><strong>{item.label}</strong><div style={{color:item.status==="example"?"#FCD34D":"#93C5FD",marginTop:3}}>{item.statusLabel}</div></div>)}
+        </div>
+      </details>
+    </div>
     <div style={{...panel,borderColor:"#476184"}}>
       <h3 style={{fontSize:16,margin:"0 0 9px"}}>Contexto de riesgo país · sensibilidad exploratoria</h3>
       <p style={muted}>El nombre del país ahora se cruza con los perfiles editoriales ZRC disponibles. El ajuste financiero es una <strong>hipótesis explícita de sensibilidad</strong>, no una prima observada, ni una tarifa de aseguradora. Referencia metodológica: score 50/100.</p>
       <label style={{display:"flex",alignItems:"center",gap:9,fontSize:13,color:"#E2E8F0"}}>
         <input type="checkbox" checked={countryAdjustment} onChange={e=>setCountryAdjustment(e.target.checked)}/>
-        Aplicar escenario de sensibilidad por país
+        Activar ajuste editorial exploratorio por país (desactivado por defecto)
       </label>
       <div style={{marginTop:12,display:"flex",alignItems:"center",gap:12,flexWrap:"wrap"}}>
         <label style={{fontSize:12,color:"#CBD5E1"}}>Intensidad de la hipótesis
@@ -94,7 +115,7 @@ export default function GeoRiskInvestmentEngine({countryContext=null,selectedCou
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,220px),1fr))",gap:14}}>
         {FIELDS.map(([key,label,unit,min,max,step])=><label key={key} style={{fontSize:12,color:"#CBD5E1",display:"grid",gap:6}}>{label}<div style={{display:"flex",alignItems:"center",gap:7}}><input type="number" min={min} max={max} step={step} value={inputs[key]} onChange={e=>set(key,e.target.value===""?0:Number(e.target.value))} style={{width:"100%",minWidth:0,boxSizing:"border-box",padding:"10px",border:"1px solid #355173",borderRadius:8,background:"#081426",color:"#F8FAFC",fontVariantNumeric:"tabular-nums"}}/><span style={{whiteSpace:"nowrap",fontSize:11,color:"#94A3B8"}}>{unit}</span></div></label>)}
       </div>
-      <button type="button" onClick={()=>setInputs({...DEFAULT_INVESTMENT_INPUTS})} style={{marginTop:15,border:"1px solid #355173",borderRadius:8,padding:"9px 12px",background:"transparent",color:"#CBD5E1",cursor:"pointer"}}>Restablecer hipótesis</button>
+      <button type="button" onClick={()=>{setInputs({...DEFAULT_INVESTMENT_INPUTS});setEditedFields([]);}} style={{marginTop:15,border:"1px solid #355173",borderRadius:8,padding:"9px 12px",background:"transparent",color:"#CBD5E1",cursor:"pointer"}}>Restablecer hipótesis</button>
     </div>
     <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,190px),1fr))",gap:12}}>
       {[
