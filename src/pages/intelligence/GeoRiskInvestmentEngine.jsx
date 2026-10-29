@@ -23,14 +23,16 @@ const FIELDS=[
 const fmt=n=>Number.isFinite(n)?n.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2}):"N/D";
 const panel={background:"#0D1B30",border:"1px solid #28415F",borderRadius:14,padding:"18px"};
 const muted={fontSize:12,color:"#94A3B8",lineHeight:1.65};
-export default function GeoRiskInvestmentEngine({countryContext=null}){
+export default function GeoRiskInvestmentEngine({countryContext=null,selectedCountry,onCountryChange}){
   const [inputs,setInputs]=useState({...DEFAULT_INVESTMENT_INPUTS});
   const [mode,setMode]=useState("entry");
   const [projectName,setProjectName]=useState("");
-  const [country,setCountry]=useState(countryContext?.name||"");
+  const [localCountry,setLocalCountry]=useState(countryContext?.name||"");
+  const country=selectedCountry===undefined?localCountry:selectedCountry;
+  const setCountry=value=>{if(selectedCountry===undefined)setLocalCountry(value);onCountryChange?.(value);};
   const [countryAdjustment,setCountryAdjustment]=useState(true);
   const [sensitivity,setSensitivity]=useState(1);
-  useEffect(()=>{if(countryContext?.name)setCountry(countryContext.name);},[countryContext?.name]);
+  useEffect(()=>{if(selectedCountry===undefined)setLocalCountry(countryContext?.name||"");},[countryContext?.name,selectedCountry]);
   const adjusted=useMemo(()=>countryAdjustment?applyCountrySensitivity(inputs,country,sensitivity):{inputs,scenario:null},[inputs,country,countryAdjustment,sensitivity]);
   const result=useMemo(()=>calculateInvestmentDecision(adjusted.inputs),[adjusted.inputs]);
   const unadjusted=useMemo(()=>calculateInvestmentDecision(inputs),[inputs]);
