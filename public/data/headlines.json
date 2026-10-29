@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T10:05:24.964Z",
+  "generated_at": "2026-10-29T12:12:30.557Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,14 +96,71 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "Zelensky habla en la cumbre de la UE en medio de enfrentamiento con Trump",
-        "en": "Zelensky speaks at EU summit amid spat with Donald Trump"
+        "es": "Barco reportado en llamas frente a Omán mientras crecen los temores de escalada iraní",
+        "en": "Ship reported on fire off Oman as Iran escalation fears mount"
       },
       "summary": {
-        "es": "El presidente ucraniano participó en la cumbre de Bruselas mientras las relaciones con Washington se deterioran por disputas sobre Rusia y Starlink, y un déficit presupuestario amenaza la capacidad de resistencia de Ucrania en invierno. Los líderes europeos reafirmaron su apoyo, pero la divergencia transatlántica eleva el riesgo de fractura en la coalición de apoyo a Kyiv. La combinación de tensión con EE.UU. y ataques a infraestructura energética agrava el panorama para activos de riesgo europeos.",
-        "en": "Zelensky attended the Brussels summit as relations with Washington deteriorate over Russia policy and Starlink disputes, while a significant budget shortfall threatens Ukraine's winter resilience. EU leaders reaffirmed support, but transatlantic divergence raises fracture risk within the Kyiv support coalition. The convergence of US-EU tensions and energy infrastructure attacks weighs on European risk assets."
+        "es": "Un buque en el Estrecho de Ormuz está en llamas según una agencia marítima británica, mientras Irán afirma haber derribado otro dron estadounidense. El incidente amenaza el tránsito de aproximadamente el 20% del petróleo global, con implicaciones directas para los precios del crudo y activos de refugio.",
+        "en": "A vessel in the Strait of Hormuz is reported on fire according to a British maritime agency, while Iran claims to have shot down another US drone. The incident threatens transit of approximately 20% of global oil supply, with direct implications for crude prices and safe-haven assets."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Chokepoint crítico amenazado por escalada en Ormuz",
+            "en": "Critical chokepoint threatened by Hormuz escalation"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Demanda de refugio ante riesgo geopolítico elevado",
+            "en": "Safe-haven demand on elevated geopolitical risk"
+          }
+        },
+        {
+          "asset": "Shipping/tanker equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Tarifas al alza pero exposición al riesgo de seguro",
+            "en": "Rates up but insurance risk exposure elevated"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Aversión al riesgo presiona divisas emergentes dependientes de energía",
+            "en": "Risk-off pressures energy-dependent EM currencies"
+          }
+        }
+      ],
+      "confidence": 90,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/ship-reported-on-fire-off-oman-as-iran-escalation-fears-mount/a-79792733?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-29",
+      "time": "2h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EU",
+      "title": {
+        "es": "La presidenta del BCE Christine Lagarde renuncia nueve meses antes de lo previsto",
+        "en": "Europe's central bank chief Christine Lagarde to step down nine months early"
+      },
+      "summary": {
+        "es": "Christine Lagarde abandona la presidencia del BCE anticipadamente mientras la eurozona enfrenta crecimiento débil e inflación persistente, generando incertidumbre sobre la dirección de la política monetaria europea. La sucesión abre un período de transición sensible con implicaciones para el euro y los bonos soberanos periféricos.",
+        "en": "Christine Lagarde exits the ECB presidency early as the eurozone contends with weak growth and lingering inflation, creating uncertainty over the future direction of European monetary policy. The succession opens a sensitive transition period with implications for the euro and peripheral sovereign bonds."
       },
       "impact": "high",
       "market_impact": [
@@ -112,256 +169,235 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo geopolítico europeo elevado por fractura transatlántica",
-            "en": "Elevated European geopolitical risk from transatlantic fracture"
+            "es": "Incertidumbre de política monetaria pesa sobre el euro",
+            "en": "Monetary policy uncertainty weighs on euro"
           }
         },
         {
           "asset": "European equities",
-          "direction": "down",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre sobre apoyo a Ucrania presiona sectores de defensa y energía",
-            "en": "Uncertainty over Ukraine support pressures defense and energy sectors"
+            "es": "Volatilidad ante posible cambio de sesgo del BCE",
+            "en": "Volatility on potential ECB policy stance shift"
           }
         },
         {
-          "asset": "Brent crude",
+          "asset": "Italian BTP spreads",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Spreads periféricos se amplían ante vacío de liderazgo",
+            "en": "Peripheral spreads widen on leadership vacuum"
+          }
+        },
+        {
+          "asset": "German Bunds",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo de suministro energético europeo en invierno",
-            "en": "European energy supply risk heading into winter"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor aversión al riesgo por tensiones geopolíticas",
-            "en": "Heightened risk aversion from geopolitical tensions"
+            "es": "Flujo hacia activos seguros dentro de la eurozona",
+            "en": "Flight to safety within eurozone"
           }
         }
       ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ukrainian-president-zelenskyy-speaks-at-eu-summit-amid-spat-with-donald-trump/a-79684340?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-16",
-      "time": "14h"
+      "confidence": 92,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/29/european-central-bank-chief-christine-lagarde-to-step-down-nine-months-early",
+      "published_at": "2026-10-29",
+      "time": "1h"
     },
     {
-      "id": 2,
-      "tag": "ALERT",
-      "region": "MENA",
+      "id": 3,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
       "title": {
-        "es": "Los hutíes de Yemen reivindican nuevo ataque con misiles al aeropuerto de Adén",
-        "en": "Yemen's Houthis claim responsibility for fresh missile strike on Aden airport"
+        "es": "Funcionarios de Trump discuten alivio de sanciones para fondo ruso, reconoce Rusia",
+        "en": "Trump Officials Discussing Sanctions Relief for Russian Fund, Russia Acknowledges"
       },
       "summary": {
-        "es": "El grupo hutí alineado con Irán lanzó dos misiles contra el aeropuerto internacional de Adén, afirmando haber atacado un depósito de armas y un cuartel de mando militar, mientras un vuelo de Yemenia preparaba su despegue. El ataque amenaza rutas de suministro clave en la costa yemení del Mar Rojo y eleva la presión sobre las fuerzas gubernamentales en su ofensiva. La persistente actividad hutí mantiene el riesgo de interrupción del tráfico marítimo en el estrecho de Bab el-Mandeb.",
-        "en": "The Iran-aligned Houthi group fired two missiles at Aden International Airport, claiming to have targeted a weapons depot and military command headquarters while a Yemenia Airways flight was preparing for departure. The strike threatens key supply routes on Yemen's Red Sea coast and intensifies pressure on government forces. Sustained Houthi activity keeps disruption risk elevated at the Bab el-Mandeb chokepoint."
+        "es": "Un funcionario ruso confirmó que el alivio de sanciones sobre un fondo de inversión estatal forma parte de las negociaciones para poner fin a la guerra en Ucrania, revelando que Moscú busca beneficios económicos concretos del proceso diplomático. Esta concesión potencial marcaría un giro significativo en la arquitectura de sanciones occidentales con amplias implicaciones para activos rusos y mercados de energía.",
+        "en": "A Russian official confirmed that sanctions relief for a state investment fund is part of negotiations to end the Ukraine war, revealing Moscow is extracting concrete economic benefits from the diplomatic process. This potential concession would mark a significant shift in the Western sanctions architecture with broad implications for Russian assets and energy markets."
       },
       "impact": "high",
       "market_impact": [
         {
+          "asset": "Russian ruble",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Perspectiva de alivio de sanciones fortalece el rublo",
+            "en": "Sanctions relief prospect strengthens ruble"
+          }
+        },
+        {
           "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
+          "direction": "down",
+          "magnitude": "low",
           "note": {
-            "es": "Riesgo de chokepoint en Bab el-Mandeb presiona precios del crudo",
-            "en": "Bab el-Mandeb chokepoint risk pressures crude prices"
+            "es": "Mayor oferta rusa potencial presiona precios del crudo",
+            "en": "Potential increased Russian supply pressures crude"
           }
         },
         {
-          "asset": "Global shipping rates",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Amenaza a rutas del Mar Rojo encarece fletes marítimos",
-            "en": "Red Sea route threat drives up shipping freight rates"
-          }
-        },
-        {
-          "asset": "Gold",
+          "asset": "European equities",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Tensión regional MENA refuerza demanda de refugio",
-            "en": "MENA regional tension reinforces safe-haven demand"
+            "es": "Reducción de riesgo geopolítico apoya mercados europeos",
+            "en": "Geopolitical risk reduction supports European markets"
           }
-        }
-      ],
-      "confidence": 82,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/middle-east/20261017-yemen-s-houthis-claim-responsibility-for-fresh-missile-strike-on-aden-airport",
-      "published_at": "2026-10-17",
-      "time": "4h"
-    },
-    {
-      "id": 3,
-      "tag": "WATCH",
-      "region": "EURASIA",
-      "title": {
-        "es": "El viaje de Rubio a Uzbekistán subraya la búsqueda de Asia Central de socios diversificados",
-        "en": "Rubio's Uzbekistan trip underlines Central Asia's hunt for diverse partners"
-      },
-      "summary": {
-        "es": "La visita del Secretario de Estado Rubio a Uzbekistán señala un intento estadounidense de reafirmar influencia en Asia Central mediante un enfoque pragmático y transaccional, en un momento en que la región diversifica activamente sus vínculos entre Rusia, China y Occidente. El reposicionamiento geopolítico de las repúblicas de Asia Central tiene implicaciones directas para corredores de materias primas críticas y rutas de tránsito que sortean sanciones rusas. Los inversores deberían monitorear el acceso a recursos energéticos y minerales de la región.",
-        "en": "Secretary of State Rubio's visit to Uzbekistan signals a US attempt to reassert influence in Central Asia through a pragmatic, transactional approach, as the region actively diversifies links between Russia, China, and the West. The geopolitical repositioning of Central Asian republics has direct implications for critical commodity corridors and sanction-bypass transit routes. Investors should monitor access to the region's energy and mineral resources."
-      },
-      "impact": "medium",
-      "market_impact": [
+        },
         {
-          "asset": "EM currencies",
+          "asset": "Ukrainian sovereign bonds",
           "direction": "mixed",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Reequilibrio geopolítico afecta flujos a activos de mercados emergentes",
-            "en": "Geopolitical rebalancing affects flows to emerging market assets"
-          }
-        },
-        {
-          "asset": "Critical minerals ETFs",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor acceso occidental a minerales críticos de Asia Central",
-            "en": "Increased Western access to Central Asian critical minerals"
+            "es": "Negociaciones generan incertidumbre sobre términos finales",
+            "en": "Negotiations create uncertainty over final settlement terms"
           }
         }
       ],
-      "confidence": 72,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news-analysis/2026/10/17/rubios-uzbekistan-trip-underlines-central-asias-hunt-for-diverse-partners?traffic_source=rss",
-      "published_at": "2026-10-17",
-      "time": "1h"
+      "confidence": 85,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/28/us/politics/russia-sanctions-relief-fund-trump.html",
+      "published_at": "2026-10-28",
+      "time": "12h"
     },
     {
       "id": 4,
       "tag": "ALERT",
-      "region": "LATAM",
+      "region": "APAC",
       "title": {
-        "es": "Caracas sorprendentemente segura tras redadas policiales mortales en Venezuela que mataron a miles",
-        "en": "Caracas Is Eerily Safe After Deadly Police Raids in Venezuela Killed Thousands"
+        "es": "Corea del Norte lanza alrededor de una docena de misiles balísticos en medio de crecientes tensiones con Corea del Sur",
+        "en": "North Korea fires 'around a dozen' ballistic missiles amid rising tensions with South Korea"
       },
       "summary": {
-        "es": "La delincuencia en Venezuela se desplomó tras operaciones policiales que causaron miles de muertes, pero el régimen de Maduro ahora se retira de la Corte Penal Internacional mientras esta investiga dicha campaña. La retirada de la CPI señala un endurecimiento autoritario con implicaciones para la inversión extranjera y el suministro de petróleo venezolano, justo cuando las sanciones siguen siendo un factor clave en los mercados de crudo. El deterioro del Estado de derecho eleva el riesgo país para cualquier exposición a activos venezolanos.",
-        "en": "Crime in Venezuela collapsed following police raids that killed thousands, but the Maduro regime is now withdrawing from the International Criminal Court as it investigates the campaign. The ICC withdrawal signals authoritarian consolidation with implications for foreign investment and Venezuelan oil supply, as sanctions remain a key crude market variable. Deteriorating rule of law raises country risk for any Venezuelan asset exposure."
+        "es": "Corea del Norte lanzó aproximadamente doce misiles balísticos de corto alcance frente a su costa este, escalando las pruebas de armas a pesar de la oferta de diálogo militar de Seúl. La proliferación de lanzamientos aumenta la presión sobre la alianza EE.UU.-Corea del Sur y complica la postura de seguridad regional en un momento de distracción diplomática en otras zonas de conflicto.",
+        "en": "North Korea fired approximately a dozen short-range ballistic missiles off its east coast, escalating weapons tests despite South Korea's offer of military talks. The barrage increases pressure on the US-South Korea alliance and complicates the regional security posture at a moment of diplomatic distraction elsewhere."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre sobre producción venezolana ante posibles nuevas sanciones",
-            "en": "Uncertainty over Venezuelan output amid potential new sanctions"
-          }
-        },
-        {
-          "asset": "Venezuelan sovereign bonds",
+          "asset": "Korean won (KRW)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Retirada de la CPI y represión elevan riesgo de sanciones",
-            "en": "ICC withdrawal and repression raise sanctions risk"
+            "es": "Tensiones peninsulares presionan el won coreano",
+            "en": "Peninsula tensions pressure Korean won"
           }
         },
         {
-          "asset": "EM currencies",
+          "asset": "KOSPI",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Mayor riesgo político en LATAM pesa en activos regionales",
-            "en": "Heightened LATAM political risk weighs on regional assets"
+            "es": "Aversión al riesgo regional golpea renta variable coreana",
+            "en": "Regional risk-off hits Korean equities"
+          }
+        },
+        {
+          "asset": "Defense sector equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada impulsa demanda de gasto en defensa",
+            "en": "Escalation drives defense spending demand"
           }
         }
       ],
-      "confidence": 78,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/16/world/americas/caracas-venezuela-crime-raids-icc.html",
-      "published_at": "2026-10-16",
-      "time": "14h"
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/asia-pacific/20261029-north-korea-launches-around-a-dozen-ballistic-missiles-amid-rising-tensions-with-south-korea",
+      "published_at": "2026-10-29",
+      "time": "7h"
     },
     {
       "id": 5,
-      "tag": "WATCH",
-      "region": "AFRICA",
+      "tag": "ALERT",
+      "region": "APAC",
       "title": {
-        "es": "Abiy Ahmed nombra un gobierno interino en Tigray",
-        "en": "Ethiopia's Abiy Ahmed appoints interim Tigray government"
+        "es": "Xi refuerza la disciplina en el Partido Comunista de China y ratifica la purga de 33 altos cargos",
+        "en": "Xi strengthens discipline in the Chinese Communist Party and ratifies purge of 33 senior officials"
       },
       "summary": {
-        "es": "El primer ministro etíope Abiy Ahmed designó un gobierno interino en Tigray, prometiendo elecciones en seis meses, tras una escalada en los combates entre fuerzas federales y una alianza rebelde. El movimiento refleja intentos de estabilización política en una región estratégica para el Cuerno de África y las rutas del Mar Rojo, pero su sostenibilidad depende de la voluntad de los actores armados locales. La inestabilidad en Etiopía tiene implicaciones para corredores logísticos regionales y exposición soberana en mercados fronterizos africanos.",
-        "en": "Ethiopian PM Abiy Ahmed appointed an interim Tigray government promising elections within six months, following an escalation in fighting between federal forces and a rebel alliance. The move reflects political stabilization attempts in a region strategic to the Horn of Africa and Red Sea corridors, but sustainability depends on armed actors' compliance. Instability in Ethiopia has implications for regional logistics corridors and sovereign exposure in African frontier markets."
+        "es": "El pleno del PCCh eleva al vicepresidente de la Comisión Militar Central al Politburó mientras Xi consolida el control con la ratificación de purgas de 33 altos cargos. La centralización del poder en torno a figuras militares leales tiene implicaciones para la postura estratégica de China respecto a Taiwán y las relaciones comerciales con Occidente.",
+        "en": "The CCP plenum elevates the vice-chair of the Central Military Commission to the Politburo as Xi consolidates control through the ratification of purges of 33 senior officials. The centralization of power around loyal military figures has implications for China's strategic posture toward Taiwan and trade relations with the West."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Ethiopian sovereign bonds",
+          "asset": "Chinese equities (CSI 300)",
           "direction": "mixed",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Estabilización parcial reduce prima de riesgo, pero persiste incertidumbre",
-            "en": "Partial stabilization lowers risk premium, but uncertainty persists"
+            "es": "Purgas generan incertidumbre regulatoria y de gobernanza",
+            "en": "Purges generate regulatory and governance uncertainty"
           }
         },
         {
-          "asset": "African frontier market equities",
-          "direction": "mixed",
+          "asset": "Taiwan dollar (TWD)",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Señal de gobernanza mixta en mercado fronterizo clave africano",
-            "en": "Mixed governance signal in key African frontier market"
+            "es": "Mayor poder militar de Xi eleva riesgo percibido sobre Taiwán",
+            "en": "Xi's enhanced military power raises Taiwan risk perception"
+          }
+        },
+        {
+          "asset": "USD/CNY",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre política presiona yuan frente al dólar",
+            "en": "Policy uncertainty pressures yuan against dollar"
           }
         }
       ],
-      "confidence": 68,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ethiopia-s-abiy-ahmed-appoints-interim-tigray-government/a-79683519?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-16",
-      "time": "17h"
+      "confidence": 80,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-10-29/xi-refuerza-la-disciplina-en-el-partido-comunista-de-china-y-ratifica-la-purga-de-33-altos-cargos.html",
+      "published_at": "2026-10-29",
+      "time": "<1h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "MENA",
       "title": {
-        "es": "El ciberataque a los frigoríficos de supermercados, señal de alarma para industriales y recordatorio de la ley europea para Francia",
-        "en": "Supermarket refrigerator cyberattack, an alarm signal for all industrials and a reminder of European law for France"
+        "es": "Egipto multa a la prominente editora Lina Attalah y cierra el medio independiente Mada Masr",
+        "en": "Egypt fines prominent editor Lina Attalah and shuts independent news outlet Mada Masr"
       },
       "summary": {
-        "es": "Un ciberataque afectó a más de 700 tiendas a través de equipos de refrigeración conectados a internet, evidenciando la vulnerabilidad de dispositivos IoT en infraestructura comercial crítica. El incidente también expone el retraso de Francia en transponer dos directivas europeas de ciberseguridad al derecho nacional. Para inversores, el evento refuerza la urgencia regulatoria en ciberseguridad industrial y señala riesgo operacional para cadenas de suministro retail y sectores de infraestructura crítica en la UE.",
-        "en": "A cyberattack struck over 700 stores via internet-connected refrigeration units, exposing the vulnerability of IoT devices in critical commercial infrastructure. The incident also highlights France's delay in transposing two EU cybersecurity directives into national law. For investors, the event reinforces regulatory urgency around industrial cybersecurity and signals operational risk for retail supply chains and critical infrastructure sectors across the EU."
+        "es": "Las autoridades egipcias condenaron a la editora de Mada Masr por gestionar un sitio web sin licencia y cerraron el medio, en la última represión de una serie de acciones contra la prensa independiente. El endurecimiento del entorno para los medios señala una mayor consolidación autoritaria bajo el gobierno de Al-Sisi, con implicaciones para la percepción del riesgo soberano y el acceso de inversores extranjeros.",
+        "en": "Egyptian authorities convicted Mada Masr's editor for managing an unlicensed website and shut the outlet, the latest in a series of actions against independent media. The tightening press environment signals deeper authoritarian consolidation under al-Sisi, with implications for sovereign risk perception and foreign investor access."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "European cybersecurity equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incidente acelera demanda regulatoria de soluciones de ciberseguridad",
-            "en": "Incident accelerates regulatory demand for cybersecurity solutions"
-          }
-        },
-        {
-          "asset": "European retail equities",
+          "asset": "Egyptian pound (EGP)",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo operacional y reputacional para cadenas minoristas expuestas",
-            "en": "Operational and reputational risk for exposed retail chains"
+            "es": "Deterioro de gobernanza pesa sobre confianza inversora",
+            "en": "Governance deterioration weighs on investor confidence"
+          }
+        },
+        {
+          "asset": "Egyptian sovereign bonds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor riesgo político eleva prima soberana egipcia",
+            "en": "Higher political risk raises Egyptian sovereign premium"
           }
         }
       ],
-      "confidence": 65,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/economie/article/2026/10/17/la-cyberattaque-des-frigos-de-supermarche-un-signal-d-alarme-pour-tous-les-industriels-et-un-rappel-a-la-loi-europeenne-pour-la-france_6795846_3234.html",
-      "published_at": "2026-10-17",
-      "time": "6h"
+      "confidence": 70,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/28/egypt-lina-attalah-mada-masr-press-freedom-clampdown",
+      "published_at": "2026-10-28",
+      "time": "21h"
     }
   ],
   "market_updated_at": "2026-10-29T11:51:19.367Z"
