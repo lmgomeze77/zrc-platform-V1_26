@@ -71,7 +71,7 @@ export default function GeoRiskInvestmentEngine({countryContext=null,selectedCou
       <datalist id="georisk-investment-countries">{[...COUNTRY_PROFILES,...COUNTRY_EXPANSION_CANDIDATES].map(p=><option key={p.iso} value={p.name}/>)}</datalist>
     </div>
     <div style={{...panel,borderColor:"#4A637B"}}>
-      <div style={{fontSize:10,fontWeight:700,letterSpacing:1.2,color:"#93C5FD"}}>TRAZABILIDAD · ${INVESTMENT_EVIDENCE_VERSION}</div>
+      <div style={{fontSize:10,fontWeight:700,letterSpacing:1.2,color:"#93C5FD"}}>TRAZABILIDAD · {INVESTMENT_EVIDENCE_VERSION}</div>
       <h3 style={{fontSize:16,margin:"7px 0"}}>Calidad de los supuestos del modelo</h3>
       <p style={muted}>Los valores iniciales son ejemplos de simulación. Los cambios introducidos manualmente siguen siendo hipótesis del usuario, no cifras verificadas. Ningún valor financiero se considera observado sin una fuente contrastada.</p>
       <div style={{display:"flex",gap:9,flexWrap:"wrap"}}>
