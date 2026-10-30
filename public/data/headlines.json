@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T12:12:30.557Z",
+  "generated_at": "2026-10-30T12:03:14.618Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -95,15 +95,15 @@
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Barco reportado en llamas frente a Omán mientras crecen los temores de escalada iraní",
-        "en": "Ship reported on fire off Oman as Iran escalation fears mount"
+        "es": "Los flujos de petróleo aumentan al calmarse la tensión con Irán. ¿Por qué siguen subiendo los precios?",
+        "en": "Oil flows are up as Iran war turmoil eases. Why do prices keep rising?"
       },
       "summary": {
-        "es": "Un buque en el Estrecho de Ormuz está en llamas según una agencia marítima británica, mientras Irán afirma haber derribado otro dron estadounidense. El incidente amenaza el tránsito de aproximadamente el 20% del petróleo global, con implicaciones directas para los precios del crudo y activos de refugio.",
-        "en": "A vessel in the Strait of Hormuz is reported on fire according to a British maritime agency, while Iran claims to have shot down another US drone. The incident threatens transit of approximately 20% of global oil supply, with direct implications for crude prices and safe-haven assets."
+        "es": "El Brent ha subido más del 60% respecto a los niveles previos al conflicto con Irán, a pesar de una recuperación de la oferta. La persistencia de precios altos pese a la normalización parcial del suministro sugiere presiones estructurales —primas de riesgo geopolítico, daños a infraestructura o reconfiguración de rutas comerciales— con implicaciones directas para la inflación global y los bancos centrales.",
+        "en": "Brent crude has risen more than 60% compared to pre-war levels despite a rebound in supply flows. Persistent high prices despite partial supply normalization suggest structural pressures—elevated geopolitical risk premiums, infrastructure damage, or trade route realignment—with direct implications for global inflation and central bank policy."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +112,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Chokepoint crítico amenazado por escalada en Ormuz",
-            "en": "Critical chokepoint threatened by Hormuz escalation"
+            "es": "Prima de riesgo estructural mantiene precios elevados pese a mayor oferta.",
+            "en": "Structural risk premium keeps prices elevated despite supply rebound."
           }
         },
         {
@@ -121,17 +121,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda de refugio ante riesgo geopolítico elevado",
-            "en": "Safe-haven demand on elevated geopolitical risk"
-          }
-        },
-        {
-          "asset": "Shipping/tanker equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tarifas al alza pero exposición al riesgo de seguro",
-            "en": "Rates up but insurance risk exposure elevated"
+            "es": "Inflación energética persistente impulsa cobertura en activos refugio.",
+            "en": "Persistent energy inflation drives demand for inflation hedges."
           }
         },
         {
@@ -139,265 +130,292 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Aversión al riesgo presiona divisas emergentes dependientes de energía",
-            "en": "Risk-off pressures energy-dependent EM currencies"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/ship-reported-on-fire-off-oman-as-iran-escalation-fears-mount/a-79792733?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-29",
-      "time": "2h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "EU",
-      "title": {
-        "es": "La presidenta del BCE Christine Lagarde renuncia nueve meses antes de lo previsto",
-        "en": "Europe's central bank chief Christine Lagarde to step down nine months early"
-      },
-      "summary": {
-        "es": "Christine Lagarde abandona la presidencia del BCE anticipadamente mientras la eurozona enfrenta crecimiento débil e inflación persistente, generando incertidumbre sobre la dirección de la política monetaria europea. La sucesión abre un período de transición sensible con implicaciones para el euro y los bonos soberanos periféricos.",
-        "en": "Christine Lagarde exits the ECB presidency early as the eurozone contends with weak growth and lingering inflation, creating uncertainty over the future direction of European monetary policy. The succession opens a sensitive transition period with implications for the euro and peripheral sovereign bonds."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre de política monetaria pesa sobre el euro",
-            "en": "Monetary policy uncertainty weighs on euro"
+            "es": "Altos costes energéticos presionan las divisas de importadores netos.",
+            "en": "High energy costs pressure currencies of net oil-importing EMs."
           }
         },
         {
           "asset": "European equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Volatilidad ante posible cambio de sesgo del BCE",
-            "en": "Volatility on potential ECB policy stance shift"
-          }
-        },
-        {
-          "asset": "Italian BTP spreads",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Spreads periféricos se amplían ante vacío de liderazgo",
-            "en": "Peripheral spreads widen on leadership vacuum"
-          }
-        },
-        {
-          "asset": "German Bunds",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Flujo hacia activos seguros dentro de la eurozona",
-            "en": "Flight to safety within eurozone"
-          }
-        }
-      ],
-      "confidence": 92,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/29/european-central-bank-chief-christine-lagarde-to-step-down-nine-months-early",
-      "published_at": "2026-10-29",
-      "time": "1h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "EURASIA",
-      "title": {
-        "es": "Funcionarios de Trump discuten alivio de sanciones para fondo ruso, reconoce Rusia",
-        "en": "Trump Officials Discussing Sanctions Relief for Russian Fund, Russia Acknowledges"
-      },
-      "summary": {
-        "es": "Un funcionario ruso confirmó que el alivio de sanciones sobre un fondo de inversión estatal forma parte de las negociaciones para poner fin a la guerra en Ucrania, revelando que Moscú busca beneficios económicos concretos del proceso diplomático. Esta concesión potencial marcaría un giro significativo en la arquitectura de sanciones occidentales con amplias implicaciones para activos rusos y mercados de energía.",
-        "en": "A Russian official confirmed that sanctions relief for a state investment fund is part of negotiations to end the Ukraine war, revealing Moscow is extracting concrete economic benefits from the diplomatic process. This potential concession would mark a significant shift in the Western sanctions architecture with broad implications for Russian assets and energy markets."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Russian ruble",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Perspectiva de alivio de sanciones fortalece el rublo",
-            "en": "Sanctions relief prospect strengthens ruble"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor oferta rusa potencial presiona precios del crudo",
-            "en": "Potential increased Russian supply pressures crude"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Reducción de riesgo geopolítico apoya mercados europeos",
-            "en": "Geopolitical risk reduction supports European markets"
-          }
-        },
-        {
-          "asset": "Ukrainian sovereign bonds",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Negociaciones generan incertidumbre sobre términos finales",
-            "en": "Negotiations create uncertainty over final settlement terms"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/28/us/politics/russia-sanctions-relief-fund-trump.html",
-      "published_at": "2026-10-28",
-      "time": "12h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "APAC",
-      "title": {
-        "es": "Corea del Norte lanza alrededor de una docena de misiles balísticos en medio de crecientes tensiones con Corea del Sur",
-        "en": "North Korea fires 'around a dozen' ballistic missiles amid rising tensions with South Korea"
-      },
-      "summary": {
-        "es": "Corea del Norte lanzó aproximadamente doce misiles balísticos de corto alcance frente a su costa este, escalando las pruebas de armas a pesar de la oferta de diálogo militar de Seúl. La proliferación de lanzamientos aumenta la presión sobre la alianza EE.UU.-Corea del Sur y complica la postura de seguridad regional en un momento de distracción diplomática en otras zonas de conflicto.",
-        "en": "North Korea fired approximately a dozen short-range ballistic missiles off its east coast, escalating weapons tests despite South Korea's offer of military talks. The barrage increases pressure on the US-South Korea alliance and complicates the regional security posture at a moment of diplomatic distraction elsewhere."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Korean won (KRW)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Tensiones peninsulares presionan el won coreano",
-            "en": "Peninsula tensions pressure Korean won"
-          }
-        },
-        {
-          "asset": "KOSPI",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aversión al riesgo regional golpea renta variable coreana",
-            "en": "Regional risk-off hits Korean equities"
-          }
-        },
-        {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada impulsa demanda de gasto en defensa",
-            "en": "Escalation drives defense spending demand"
+            "es": "Costes energéticos elevados comprimen márgenes industriales europeos.",
+            "en": "Elevated energy costs compress European industrial margins."
           }
         }
       ],
       "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/asia-pacific/20261029-north-korea-launches-around-a-dozen-ballistic-missiles-amid-rising-tensions-with-south-korea",
-      "published_at": "2026-10-29",
-      "time": "7h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/2026/10/30/oil-flows-are-up-as-iran-war-turmoil-eases-why-do-prices-keep-rising?traffic_source=rss",
+      "published_at": "2026-10-30",
+      "time": "3h"
     },
     {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "APAC",
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
       "title": {
-        "es": "Xi refuerza la disciplina en el Partido Comunista de China y ratifica la purga de 33 altos cargos",
-        "en": "Xi strengthens discipline in the Chinese Communist Party and ratifies purge of 33 senior officials"
+        "es": "El movimiento de EE.UU. para levantar sanciones a la flota en la sombra de Rusia podría socavar la presión occidental sobre Moscú",
+        "en": "US moves to lift sanctions on Russia's shadow fleet could undermine Western pressure on Moscow and help fund its war in Ukraine"
       },
       "summary": {
-        "es": "El pleno del PCCh eleva al vicepresidente de la Comisión Militar Central al Politburó mientras Xi consolida el control con la ratificación de purgas de 33 altos cargos. La centralización del poder en torno a figuras militares leales tiene implicaciones para la postura estratégica de China respecto a Taiwán y las relaciones comerciales con Occidente.",
-        "en": "The CCP plenum elevates the vice-chair of the Central Military Commission to the Politburo as Xi consolidates control through the ratification of purges of 33 senior officials. The centralization of power around loyal military figures has implications for China's strategic posture toward Taiwan and trade relations with the West."
+        "es": "Washington estaría estudiando convertir petroleros de la 'flota oscura' rusa en embarcaciones legítimas, lo que les permitiría transportar crudo fuera del régimen de sanciones. Esta iniciativa, de materializarse, fragmentaría el frente aliado de sanciones, proporcionaría ingresos adicionales a Rusia y debilitaría el techo de precio impuesto por el G7, con repercusiones directas sobre los mercados energéticos globales.",
+        "en": "Washington is reportedly exploring converting Russian 'dark tanker' vessels into legitimate carriers, allowing them to transport crude oil outside the existing sanctions regime. If implemented, this would fracture the allied sanctions front, boost Russian energy revenues, and undermine the G7 price cap mechanism, with significant implications for global oil markets and European energy security."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
-          "asset": "Chinese equities (CSI 300)",
-          "direction": "mixed",
+          "asset": "Brent crude",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Purgas generan incertidumbre regulatoria y de gobernanza",
-            "en": "Purges generate regulatory and governance uncertainty"
+            "es": "Mayor oferta rusa legal presionaría los precios a la baja.",
+            "en": "Increased legitimate Russian supply would pressure prices lower."
           }
         },
         {
-          "asset": "Taiwan dollar (TWD)",
+          "asset": "Russian Urals crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Acceso a mercados legítimos elevaría el precio de referencia del Urals.",
+            "en": "Access to legitimate markets would raise Urals benchmark pricing."
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Alivio energético vs. riesgo de debilitamiento de la coalición occidental.",
+            "en": "Energy cost relief offset by risk of weakened Western coalition."
+          }
+        },
+        {
+          "asset": "USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Señal de distensión geopolítica reduciría algo la demanda de refugio.",
+            "en": "Geopolitical de-escalation signal slightly reduces safe-haven demand."
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/us-moves-to-lift-sanctions-on-russia-s-shadow-fleet-could-undermine-western-pressure-on-moscow-and-help-fund-its-war-in-ukraine/a-79787035?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-29",
+      "time": "1d"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "AFRICA",
+      "title": {
+        "es": "EE.UU. sanciona al ministerio de defensa de Ruanda por el conflicto en el este del Congo",
+        "en": "US sanctions Rwanda's defence ministry over DR Congo conflict"
+      },
+      "summary": {
+        "es": "El Tesoro de EE.UU. ha sancionado al ministerio de defensa de Ruanda por apoyar al grupo rebelde M23 en el este del Congo, acusando a Kigali de socavar un acuerdo de paz mediado por Washington. La medida complica el acceso de Ruanda a financiación occidental y amenaza los flujos de minerales críticos —coltán, casiterita— que transitan por la región, con implicaciones para las cadenas de suministro globales de electrónica y baterías.",
+        "en": "The US Treasury has sanctioned Rwanda's defence ministry for backing the M23 rebel group in eastern DRC, accusing Kigali of undermining a US-brokered peace deal. The move complicates Rwanda's access to Western financing and threatens critical mineral flows—coltan, cassiterite—transiting the region, with implications for global electronics and battery supply chains."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Coltan/Tantalum futures",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Sanciones amenazan el suministro de minerales críticos del este del Congo.",
+            "en": "Sanctions threaten critical mineral supply from eastern DRC corridor."
+          }
+        },
+        {
+          "asset": "Rwanda sovereign bonds",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Sanciones al gobierno limitan el acceso a mercados de capital occidentales.",
+            "en": "Government sanctions restrict access to Western capital markets."
+          }
+        },
+        {
+          "asset": "EM currencies",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Mayor poder militar de Xi eleva riesgo percibido sobre Taiwán",
-            "en": "Xi's enhanced military power raises Taiwan risk perception"
+            "es": "Riesgo de contagio regional en monedas de África subsahariana.",
+            "en": "Regional contagion risk for sub-Saharan African currencies."
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cm87zw51qw0jo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-29",
+      "time": "1d"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "GLOBAL",
+      "title": {
+        "es": "El gigante cripto Binance sufre un hackeo de 6.300 millones de dólares, presuntamente el mayor de la historia",
+        "en": "Crypto giant Binance hit by $6.3bn hack suspected to be largest in history"
+      },
+      "summary": {
+        "es": "Dos firmas de análisis han atribuido el hackeo a una unidad norcoreana denominada TraderTraitor, lo que convierte el incidente en un acto de ciberguerra con implicaciones para sanciones y seguridad financiera global. Un robo de esta magnitud ejercerá presión vendedora sobre los mercados de criptomonedas a corto plazo y reavivará la presión regulatoria internacional sobre los exchanges centralizados.",
+        "en": "Two analytics firms have attributed the breach to a North Korean hacking unit called TraderTraitor, framing the incident as an act of state-sponsored financial cyberwarfare with sanctions and global financial security implications. A theft of this scale will exert short-term selling pressure on crypto markets and intensify international regulatory pressure on centralized exchanges."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Bitcoin",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Salida masiva de fondos de Binance genera presión vendedora sistémica.",
+            "en": "Massive Binance fund outflow creates systemic selling pressure."
           }
         },
         {
-          "asset": "USD/CNY",
+          "asset": "BNB (Binance Coin)",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Pérdida de confianza en el emisor destruye el valor del token nativo.",
+            "en": "Loss of confidence in issuer destroys value of native exchange token."
+          }
+        },
+        {
+          "asset": "Crypto exchange equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Contagio regulatorio y de confianza afecta a exchanges cotizados.",
+            "en": "Regulatory and confidence contagion hits listed exchange stocks."
+          }
+        },
+        {
+          "asset": "Gold",
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Incertidumbre política presiona yuan frente al dólar",
-            "en": "Policy uncertainty pressures yuan against dollar"
+            "es": "Fuga hacia activos tangibles ante colapso de confianza cripto.",
+            "en": "Flight to tangible assets as crypto confidence collapses."
           }
         }
       ],
-      "confidence": 80,
-      "source": "El País",
-      "source_url": "https://elpais.com/internacional/2026-10-29/xi-refuerza-la-disciplina-en-el-partido-comunista-de-china-y-ratifica-la-purga-de-33-altos-cargos.html",
-      "published_at": "2026-10-29",
-      "time": "<1h"
+      "confidence": 90,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/cwg7xp8kx4v5o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-30",
+      "time": "2h"
     },
     {
-      "id": 6,
+      "id": 5,
       "tag": "WATCH",
-      "region": "MENA",
+      "region": "APAC",
       "title": {
-        "es": "Egipto multa a la prominente editora Lina Attalah y cierra el medio independiente Mada Masr",
-        "en": "Egypt fines prominent editor Lina Attalah and shuts independent news outlet Mada Masr"
+        "es": "Corea del Norte prueba drones de ataque mientras Kim exige 'superioridad absoluta'",
+        "en": "North Korea tests attack drones as Kim calls for 'absolute superiority'"
       },
       "summary": {
-        "es": "Las autoridades egipcias condenaron a la editora de Mada Masr por gestionar un sitio web sin licencia y cerraron el medio, en la última represión de una serie de acciones contra la prensa independiente. El endurecimiento del entorno para los medios señala una mayor consolidación autoritaria bajo el gobierno de Al-Sisi, con implicaciones para la percepción del riesgo soberano y el acceso de inversores extranjeros.",
-        "en": "Egyptian authorities convicted Mada Masr's editor for managing an unlicensed website and shut the outlet, the latest in a series of actions against independent media. The tightening press environment signals deeper authoritarian consolidation under al-Sisi, with implications for sovereign risk perception and foreign investor access."
+        "es": "Corea del Norte ha llevado a cabo demostraciones de drones de ataque, misiles de crucero y lanzacohetes, con Kim Jong Un reclamando el desarrollo acelerado de tecnología de drones con IA. Las pruebas se producen en un contexto de crecientes tensiones regionales y, combinadas con el despliegue de tropas norcoreanas en Ucrania señalado por Berlín, apuntan a una mayor integración de Pyongyang en las dinámicas de seguridad global con implicaciones para el gasto en defensa de Corea del Sur y Japón.",
+        "en": "North Korea conducted demonstrations of attack drones, cruise missiles, and rocket launchers, with Kim Jong Un demanding accelerated AI-integrated drone development. The tests, combined with the deployment of North Korean troops to Ukraine flagged by Berlin, signal Pyongyang's deepening integration into global security dynamics, with implications for South Korean and Japanese defense spending and regional deterrence postures."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Egyptian pound (EGP)",
-          "direction": "down",
-          "magnitude": "low",
+          "asset": "South Korean defense equities",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Deterioro de gobernanza pesa sobre confianza inversora",
-            "en": "Governance deterioration weighs on investor confidence"
+            "es": "Escalada norcoreana impulsa el gasto en defensa de Seúl.",
+            "en": "North Korean escalation drives Seoul defense procurement spending."
           }
         },
         {
-          "asset": "Egyptian sovereign bonds",
+          "asset": "KRW (Korean Won)",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Mayor riesgo político eleva prima soberana egipcia",
-            "en": "Higher political risk raises Egyptian sovereign premium"
+            "es": "Riesgo geopolítico regional presiona la divisa surcoreana.",
+            "en": "Regional geopolitical risk weighs on the South Korean won."
+          }
+        },
+        {
+          "asset": "Japanese defense equities",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Amenaza norcoreana refuerza la tendencia de rearme japonesa.",
+            "en": "North Korean threat reinforces Japan's ongoing rearmament trend."
           }
         }
       ],
-      "confidence": 70,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/28/egypt-lina-attalah-mada-masr-press-freedom-clampdown",
-      "published_at": "2026-10-28",
-      "time": "21h"
+      "confidence": 78,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/asia-pacific/20261030-north-korea-tests-attack-drones-as-kim-calls-for-absolute-superiority",
+      "published_at": "2026-10-30",
+      "time": "11h"
+    },
+    {
+      "id": 6,
+      "tag": "DATA",
+      "region": "US",
+      "title": {
+        "es": "Las tasas de interés en EE.UU. se mantienen estables y la economía crece: qué significa para usted",
+        "en": "US interest rates held steady and economy grows - what it means for you"
+      },
+      "summary": {
+        "es": "La Reserva Federal ha mantenido los tipos de interés sin cambios mientras la economía estadounidense registra crecimiento, señal de que el comité prioriza la cautela ante la persistente inflación energética vinculada a tensiones geopolíticas. La pausa refuerza la divergencia monetaria con otros bancos centrales y tiene implicaciones directas para el dólar, la deuda soberana emergente y los flujos de capital globales.",
+        "en": "The Federal Reserve held interest rates steady while the US economy continues to grow, signaling that the committee is prioritizing caution amid persistent energy-driven inflation linked to geopolitical tensions. The pause reinforces monetary divergence with other central banks and has direct implications for the dollar, emerging market sovereign debt, and global capital flows."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Pausa confirma tipos altos por más tiempo; curva se mantiene plana.",
+            "en": "Hold confirms higher-for-longer rates; curve remains flat."
+          }
+        },
+        {
+          "asset": "USD",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Divergencia con bancos centrales que recortan refuerza el dólar.",
+            "en": "Divergence with cutting central banks strengthens the dollar."
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Dólar fuerte y tipos altos presionan divisas y deuda emergente.",
+            "en": "Strong dollar and high rates pressure EM currencies and debt."
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tipos altos limitan el alza del oro, pero la inflación lo sostiene.",
+            "en": "High rates cap gold upside, but inflation pressures provide support."
+          }
+        }
+      ],
+      "confidence": 83,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/cr15jxzv4w24o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-29",
+      "time": "18h"
     }
   ],
   "market_updated_at": "2026-10-30T11:44:10.238Z"
