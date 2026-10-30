@@ -29,21 +29,35 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/update-market.js
 
-      # Este job y daily-headlines.yml escriben el mismo fichero y comparten la
-      # franja de las 06:00 UTC: sin rebase, el segundo en llegar es rechazado.
+      # Keep the generated result outside the worktree. The headlines workflow
+      # can advance main while this job is running, so the final step reapplies
+      # only market_ticker/market_updated_at on top of the latest feed.
+      - name: Preserve generated market payload
+        run: cp public/data/headlines.json "$RUNNER_TEMP/generated-market.json"
+
       - name: Commit and push
         run: |
           git config user.name "ZRC Market Bot"
           git config user.email "bot@zenithrisecapital.com"
-          git add public/data/headlines.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
-          git commit -m "📈 Market update — $(date -u +'%H:%M UTC')"
+
           for i in 1 2 3; do
-            git pull --rebase origin main && git push && exit 0
-            echo "Push attempt $i failed, retrying..."
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/merge-generated-feed.js "$RUNNER_TEMP/generated-market.json" market
+            git add public/data/headlines.json
+
+            if git diff --cached --quiet; then
+              echo "No changes to commit"
+              exit 0
+            fi
+
+            git commit -m "📈 Market update — $(date -u +'%H:%M UTC')"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            echo "Push attempt $i lost a race, rebuilding on latest main..."
             sleep 5
           done
+
           exit 1
