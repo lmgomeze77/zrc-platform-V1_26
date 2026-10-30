@@ -1828,25 +1828,42 @@ const GeoRiskAccessHub = ({lang,onOpenMap,onNav,countryContext}) => {
   const {tier,status,loading}=useSubscription(user?.email);
   const eligible=!loading && user && status!=="expired" && (tier==="intelligence" || tier==="institutional");
   const tr=(es,en)=>lang==="es"?es:en;
-  const card={padding:"22px",borderRadius:18,border:`1px solid ${C.border}`,background:C.surface,display:"flex",flexDirection:"column",gap:12};
-  const action={alignSelf:"flex-start",border:`1px solid ${C.goldBorder}`,background:C.goldDim,color:C.gold,padding:"11px 16px",borderRadius:10,fontWeight:700,cursor:"pointer",textDecoration:"none",fontSize:12};
-  return <section id="georisk-suite" style={{maxWidth:1200,margin:"32px auto 38px",padding:"0 clamp(16px,4vw,48px)"}}>
-    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:20,flexWrap:"wrap",marginBottom:18}}>
-      <div><div style={{fontSize:11,letterSpacing:".15em",color:C.gold,fontWeight:700}}>ZRC · GEORISK INTELLIGENCE</div>
-      <h2 style={{fontSize:"clamp(25px,4vw,36px)",margin:"8px 0",color:C.text}}>{tr("Una plataforma. Dos niveles de análisis.","One platform. Two levels of analysis.")}</h2>
-      <p style={{color:C.textSec,maxWidth:770,lineHeight:1.7,margin:0}}>{tr("Explora el contexto geopolítico y las fichas de país gratuitamente. Intelligence añade herramientas de escenarios y análisis cuantitativo para miembros con acceso vigente.","Explore geopolitical context and country profiles for free. Intelligence adds scenario and quantitative analysis tools for eligible members.")}</p></div>
-      <span style={{padding:"8px 12px",borderRadius:12,border:`1px solid ${C.border}`,color:C.textSec,fontSize:12}}>{loading?tr("Comprobando acceso…","Checking access…"):eligible?tr("Intelligence · acceso activo","Intelligence · active access"):tr("Exploración pública","Public exploration")}</span>
-    </div>
-    {countryContext && <div role="status" style={{padding:"14px 18px",borderRadius:14,border:`1px solid ${C.goldBorder}`,background:C.goldDim,marginBottom:16,color:C.textSec,lineHeight:1.6}}><strong style={{color:C.gold}}>{tr("País seleccionado: ","Selected country: ")}{countryContext.name}</strong><span style={{display:"block",fontSize:12}}>{tr("Contexto conservado desde el mapa. Los escenarios cuantitativos requieren configurar manualmente la región y exposición; no se ha aplicado ninguna calibración automática por país.","Context preserved from the map. Quantitative scenarios require manual region and exposure settings; no automatic country calibration has been applied.")}</span></div>}
-    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,290px),1fr))",gap:14}}>
-      <div style={card}><strong style={{color:C.green,fontSize:12}}>{tr("ACCESO PÚBLICO","PUBLIC ACCESS")}</strong><h3 style={{margin:0,color:C.text}}>{tr("Explorar y comprender","Explore and understand")}</h3><p style={{color:C.textSec,lineHeight:1.65,margin:0}}>{tr("Mapa interactivo, fichas de país, índice semanal ZRC-GRI y evidencia histórica GPR. Cada medida mantiene su metodología y procedencia.","Interactive map, country profiles, weekly ZRC-GRI index and historical GPR evidence. Each measure retains its own methodology and provenance.")}</p>
-        <div style={{display:"flex",flexWrap:"wrap",gap:8,marginTop:"auto"}}><button style={action} onClick={onOpenMap}>{tr("Abrir mapa →","Open map →")}</button><a style={action} href="/inteligencia/paises/">{tr("Fichas país →","Country profiles →")}</a><button style={action} onClick={()=>onNav("georisk-index")}>{tr("Índice →","Index →")}</button></div>
+  // Match the site's SH typography and palette instead of inheriting browser serif/button defaults.
+  const card={padding:"clamp(20px,2.5vw,28px)",borderRadius:18,border:`1px solid ${C.border}`,background:C.surface,display:"flex",flexDirection:"column",gap:12,minWidth:0};
+  const action={display:"inline-flex",alignItems:"center",justifyContent:"center",minHeight:42,border:`1px solid ${C.goldBorder}`,background:C.goldDim,color:C.gold,padding:"10px 15px",borderRadius:10,fontFamily:F.mono,fontWeight:600,letterSpacing:"0.025em",cursor:"pointer",textDecoration:"none",fontSize:10,lineHeight:1.35,textAlign:"center"};
+  const eyebrow={fontFamily:F.mono,fontSize:10,letterSpacing:"0.16em",fontWeight:600,color:C.gold};
+  return <section id="georisk-suite" aria-label={tr("Niveles de acceso a GeoRisk Intelligence","GeoRisk Intelligence access levels")} style={{maxWidth:1100,margin:"0 auto",padding:"clamp(48px,6vw,78px) clamp(16px,4vw,48px)"}}>
+    <div style={{marginBottom:28}}>
+      <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:14,flexWrap:"wrap"}}>
+        <span className="zrc-section-label" style={{fontFamily:F.mono,fontSize:11,color:"var(--zrc-label)",letterSpacing:"0.18em",fontWeight:500}}>ZRC · GEORISK INTELLIGENCE</span>
+        <span aria-live="polite" style={{fontFamily:F.mono,fontSize:9,color:C.textMuted,border:`1px solid ${C.border}`,borderRadius:8,padding:"6px 10px",letterSpacing:"0.04em"}}>{loading?tr("Comprobando acceso…","Checking access…"):eligible?tr("Intelligence · acceso activo","Intelligence · active access"):tr("Exploración pública","Public exploration")}</span>
       </div>
-      <div style={{...card,border:`1px solid ${C.goldBorder}`}}><strong style={{color:C.gold,fontSize:12}}>INTELLIGENCE · {tr("SUSCRIPCIÓN","SUBSCRIPTION")}</strong><h3 style={{margin:0,color:C.text}}>{tr("Analizar y decidir","Analyze and decide")}</h3><p style={{color:C.textSec,lineHeight:1.65,margin:0}}>{tr("Simulador de escenarios, sensibilidad regional y sectorial y GeoRisk ML experimental. Las previsiones solo se habilitan cuando superan las validaciones de datos.","Scenario simulator, regional and sector sensitivity, and experimental GeoRisk ML. Forecasts are only enabled after data validation.")}</p>
-        <div style={{display:"flex",flexWrap:"wrap",gap:8,marginTop:"auto"}}><button style={action} onClick={()=>onNav("intelligence")}>{eligible?tr("Abrir herramientas →","Open tools →"):tr("Ver herramientas y acceso →","View tools and access →")}</button>{!eligible&&!loading&&<button style={action} onClick={()=>user?openPricing():openLogin()}>{user?tr("Ver suscripción →","View subscription →"):tr("Iniciar sesión →","Sign in →")}</button>}</div>
-      </div>
+      <h2 style={{fontFamily:F.display,fontSize:"clamp(28px,4vw,42px)",fontWeight:300,lineHeight:1.15,letterSpacing:"-0.015em",margin:0,color:C.text}}>{tr("Una plataforma. Dos niveles de análisis.","One platform. Two levels of analysis.")}</h2>
+      <p style={{fontFamily:F.body,fontSize:15,fontWeight:300,color:C.textSec,lineHeight:1.65,maxWidth:720,margin:"12px 0 0"}}>{tr("Explora el contexto geopolítico y las fichas de país gratuitamente. Intelligence añade herramientas de escenarios y análisis cuantitativo para miembros con acceso vigente.","Explore geopolitical context and country profiles for free. Intelligence adds scenario and quantitative analysis tools for eligible members.")}</p>
     </div>
-    <p style={{fontSize:11,color:C.textMuted,lineHeight:1.6,margin:"12px 0 0"}}>{tr("El mapa, el índice, el GPR y las fichas de país no comparten una escala de riesgo calibrada. Los escenarios no son predicciones verificadas.","The map, index, GPR and country profiles do not share a calibrated risk scale. Scenarios are not verified predictions.")}</p>
+    {countryContext && <div role="status" style={{fontFamily:F.body,fontSize:13,padding:"14px 18px",borderRadius:12,border:`1px solid ${C.goldBorder}`,background:C.goldDim,marginBottom:16,color:C.textSec,lineHeight:1.65}}><strong style={{color:C.gold}}>{tr("País seleccionado: ","Selected country: ")}{countryContext.name}</strong><span style={{display:"block",fontSize:12}}>{tr("Contexto conservado desde el mapa. Los escenarios requieren configurar manualmente la región y exposición; no se ha aplicado calibración automática por país.","Context preserved from the map. Scenarios require manually setting region and exposure; no automatic country calibration has been applied.")}</span></div>}
+    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,300px),1fr))",gap:16,alignItems:"stretch"}}>
+      <article style={card}>
+        <div style={{...eyebrow,color:C.green}}>{tr("01 · ACCESO PÚBLICO","01 · PUBLIC ACCESS")}</div>
+        <h3 style={{fontFamily:F.display,fontSize:23,fontWeight:400,lineHeight:1.2,margin:0,color:C.text}}>{tr("Explorar y comprender","Explore and understand")}</h3>
+        <p style={{fontFamily:F.body,fontSize:14,fontWeight:300,color:C.textSec,lineHeight:1.7,margin:"0 0 10px"}}>{tr("Mapa interactivo, fichas de país, índice semanal ZRC-GRI y evidencia histórica GPR. Cada medida mantiene su metodología y procedencia.","Interactive map, country profiles, weekly ZRC-GRI index and historical GPR evidence. Each measure retains its own methodology and provenance.")}</p>
+        <div style={{display:"flex",flexWrap:"wrap",gap:9,marginTop:"auto"}}>
+          <button type="button" style={action} onClick={onOpenMap}>{tr("Abrir mapa →","Open map →")}</button>
+          <a style={action} href="/inteligencia/paises/">{tr("Fichas país →","Country profiles →")}</a>
+          <button type="button" style={action} onClick={()=>onNav("georisk-index")}>{tr("Índice →","Index →")}</button>
+        </div>
+      </article>
+      <article style={{...card,border:`1px solid ${C.goldBorder}`}}>
+        <div style={eyebrow}>02 · INTELLIGENCE · {tr("SUSCRIPCIÓN","SUBSCRIPTION")}</div>
+        <h3 style={{fontFamily:F.display,fontSize:23,fontWeight:400,lineHeight:1.2,margin:0,color:C.text}}>{tr("Analizar y decidir","Analyze and decide")}</h3>
+        <p style={{fontFamily:F.body,fontSize:14,fontWeight:300,color:C.textSec,lineHeight:1.7,margin:"0 0 10px"}}>{tr("Simulador de escenarios, sensibilidad regional y sectorial y GeoRisk ML experimental. Las previsiones solo se habilitan cuando superan las validaciones de datos.","Scenario simulator, regional and sector sensitivity, and experimental GeoRisk ML. Forecasts are only enabled after data validation.")}</p>
+        <div style={{display:"flex",flexWrap:"wrap",gap:9,marginTop:"auto"}}>
+          <button type="button" style={action} onClick={()=>onNav("intelligence")}>{eligible?tr("Abrir herramientas →","Open tools →"):tr("Ver herramientas y acceso →","View tools and access →")}</button>
+          {!eligible&&!loading&&<button type="button" style={action} onClick={()=>user?openPricing():openLogin()}>{user?tr("Ver suscripción →","View subscription →"):tr("Iniciar sesión →","Sign in →")}</button>}
+        </div>
+      </article>
+    </div>
+    <p style={{fontFamily:F.body,fontSize:11,color:C.textMuted,lineHeight:1.65,margin:"16px 0 0"}}>{tr("El mapa, el índice, el GPR y las fichas de país no comparten una escala de riesgo calibrada. Los escenarios no son predicciones verificadas.","The map, index, GPR and country profiles do not share a calibrated risk scale. Scenarios are not verified predictions.")}</p>
   </section>;
 };
 
