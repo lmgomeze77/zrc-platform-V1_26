@@ -22,8 +22,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      # npm ci instala todo package.json (el script necesita rss-parser además
-      # del SDK) y es reproducible frente al lockfile.
+      # npm ci installs the complete locked dependency set required by the
+      # generator (RSS parser plus the Anthropic SDK).
       - name: Install dependencies
         run: npm ci
 
@@ -32,21 +32,35 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/generate-headlines.js
 
-      # Este job y market-ticker.yml escriben el mismo fichero y comparten la
-      # franja de las 06:00 UTC: sin rebase, el segundo en llegar es rechazado.
+      # Keep the generated result outside the worktree. The market workflow can
+      # advance main while the model is running, so the final step reapplies only
+      # headlines/generated_at on top of the latest feed.
+      - name: Preserve generated headlines
+        run: cp public/data/headlines.json "$RUNNER_TEMP/generated-headlines.json"
+
       - name: Commit and push
         run: |
           git config user.name "ZRC Headlines Bot"
           git config user.email "bot@zenithrisecapital.com"
-          git add public/data/headlines.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
-          git commit -m "Daily headlines update — $(date -u +'%Y-%m-%d %H:%M UTC')"
+
           for i in 1 2 3; do
-            git pull --rebase origin main && git push && exit 0
-            echo "Push attempt $i failed, retrying..."
+            git fetch origin main
+            git reset --hard origin/main
+            node scripts/merge-generated-feed.js "$RUNNER_TEMP/generated-headlines.json" headlines
+            git add public/data/headlines.json
+
+            if git diff --cached --quiet; then
+              echo "No changes to commit"
+              exit 0
+            fi
+
+            git commit -m "Daily headlines update — $(date -u +'%Y-%m-%d %H:%M UTC')"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            echo "Push attempt $i lost a race, rebuilding on latest main..."
             sleep 5
           done
+
           exit 1
