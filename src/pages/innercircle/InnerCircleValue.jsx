@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import EditorialPhoto from './EditorialPhoto';
 import './innerCircle.css';
 
 // Shared public proposition: membership and platform subscriptions remain separate.
@@ -15,6 +16,7 @@ export default function InnerCircleValue({ lang = 'es', compact = false }) {
     ['03', 'A decision framework', 'Diligence questions, execution risks and criteria to assess an opportunity before committing capital.'],
   ];
   return <div className={`ic-value ${compact ? 'ic-value-compact' : ''}`}>
+    {!compact && <EditorialPhoto subject="trade" variant="ic-photo-membership"/>}
     <div className="ic-value-heading"><span className="ic-kicker">{es ? 'QUÉ APORTA LA MEMBRESÍA' : 'THE MEMBERSHIP VALUE'}</span><span className="ic-badge">{es ? 'Gratuita · admisión manual' : 'Free · reviewed admission'}</span></div>
     <div className="ic-value-grid">{benefits.map(([n,title,body]) => <article key={n}><span className="ic-kicker">{n}</span><h3>{title}</h3><p>{body}</p></article>)}</div>
     <button type="button" className="ic-button ic-button-quiet" aria-expanded={sample} aria-controls={`ic-sample-${compact ? 'compact' : 'full'}`} onClick={() => setSample(!sample)}>{sample ? (es ? 'Cerrar muestra −' : 'Close sample −') : (es ? 'Ver una muestra de la lectura →' : 'Preview the analytical approach →')}</button>

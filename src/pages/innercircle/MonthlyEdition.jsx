@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import EditorialPhoto from './EditorialPhoto';
 import edition from '../../data/innercircle/october2026.json';
 
 export default function MonthlyEdition() {
@@ -7,6 +8,7 @@ export default function MonthlyEdition() {
     <span className="ic-kicker">EDICIÓN {edition.edition} / {edition.month}</span>
     <h2>{edition.title}</h2><p className="ic-lead">{edition.subtitle}</p>
     <p className="ic-small">Corte de información: {edition.cutoff}</p>
+    <EditorialPhoto subject="trade" variant="ic-photo-cover"/>
     <div className="ic-tabs" role="tablist" aria-label="Lecturas de la edición">
       {[['editorial','Nota editorial'],['monthly','Comentario mensual'],['sources','Fuentes y método']].map(([id,label])=><button key={id} role="tab" id={`ic-edition-tab-${id}`} aria-selected={view===id} aria-controls={`ic-edition-panel-${id}`} className="ic-button ic-button-quiet" onClick={()=>setView(id)}>{label}</button>)}
     </div>
@@ -16,7 +18,7 @@ export default function MonthlyEdition() {
         {edition.facts.map(f=><div key={f.label} className="ic-edition-fact"><span className="ic-kicker">{f.label}</span><p>{f.text} {f.sources.map(id=><a key={id} href={edition.sources.find(s=>s.id===id).url} target="_blank" rel="noopener noreferrer">[{id}]</a>)}</p></div>)}
         <span className="ic-kicker">LECTURA PROPIA ZRC · IMPLICACIONES Y JUICIO EDITORIAL</span>
         {edition.commentary.map(c=><div key={c.title}><h3>{c.title}</h3>{c.paragraphs.map(p=><p key={p}>{p}</p>)}</div>)}
-        <h3>Escenarios para poner a prueba la inversión</h3><p className="ic-small">Marcos condicionales propios; sin probabilidades ni precios objetivo.</p><div className="ic-table-wrap"><table><thead><tr><th>Escenario</th><th>Condición</th><th>Respuesta de gestión</th></tr></thead><tbody>{edition.scenarios.map(s=><tr key={s.name}><td>{s.name}</td><td>{s.trigger}</td><td>{s.action}</td></tr>)}</tbody></table></div>
+        <EditorialPhoto subject="energy"/><h3>Escenarios para poner a prueba la inversión</h3><p className="ic-small">Marcos condicionales propios; sin probabilidades ni precios objetivo.</p><div className="ic-table-wrap"><table><thead><tr><th>Escenario</th><th>Condición</th><th>Respuesta de gestión</th></tr></thead><tbody>{edition.scenarios.map(s=><tr key={s.name}><td>{s.name}</td><td>{s.trigger}</td><td>{s.action}</td></tr>)}</tbody></table></div>
         <h3>Qué nos haría cambiar de opinión</h3><p>{edition.invalidation}</p><h3>Cuatro preguntas para el comité</h3><ol>{edition.questions.map(q=><li key={q}>{q}</li>)}</ol><h3>Seguimiento</h3><p>{edition.nextReview}</p><p className="ic-edition-signature">{edition.author}</p><button className="ic-button ic-button-quiet" onClick={()=>setView('sources')}>Consultar las cinco fuentes →</button>
       </>}
       {view==='sources' && <><h3>Fuentes primarias y límites</h3><p>Consulta: {edition.cutoff}. Los enlaces respaldan los hechos y previsiones del bloque de evidencia. Las implicaciones empresariales y escenarios son elaboración editorial propia; no conclusiones atribuidas a estos organismos.</p>
