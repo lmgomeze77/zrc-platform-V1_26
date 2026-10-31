@@ -1,12 +1,11 @@
 import { IcText } from './icLocale';
-import MonthlyEdition from "./MonthlyEdition";
 import PublicReports from "./PublicReports";
 import { IcLanguageSwitch, navigateIcSection } from "./icLocale";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import InnerCircleValue from "./InnerCircleValue";
 
-const IC_API = "https://zenith-risecapital.lmgomeze77.workers.dev";
+import {IC_API,IC_SESSION_KEY} from './icSession';
 const IC_EMAIL_KEY = "zrc-ic-email";
 
 const G = "#D4A853";
@@ -74,7 +73,8 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
       });
       const data = await res.json();
 
-      if (data.status === "approved") {
+      if (data.status === "approved" && data.session_token) {
+        localStorage.setItem(IC_SESSION_KEY,data.session_token);
         localStorage.setItem("zrc-inner-circle-access", "true");
         setLoading(false);
         if (onApproved) {onApproved();return;}
@@ -135,28 +135,25 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
     maxWidth: 460, width: "100%", textAlign: "center"
   };
 
-  if (mode === "overview") return <IcText>
-    <main className="ic-desk ic-entry" onClick={navigateIcSection}>
-      <header><div><span className="ic-kicker">ZENITH RISE CAPITAL</span><div style={{ fontSize: 20 }}>The Inner Circle</div></div>{onBack && <button className="ic-button ic-button-quiet" onClick={onBack}>← Volver a ZRC</button>}<IcLanguageSwitch /><nav aria-label="Lecturas y acceso"><a href="#ic-public-readings">Reportajes</a><a href="#ic-edition">Edición del mes</a><a href="#ic-benefits">Membresía</a><a href="#ic-access">Cómo acceder</a></nav></header>
+  if (mode === "overview") return (
+    <IcText><main className="ic-desk ic-entry" onClick={navigateIcSection}>
+      <header><div><span className="ic-kicker">ZENITH RISE CAPITAL</span><div style={{fontSize:20}}>The Inner Circle</div></div>{onBack&&<button className="ic-button ic-button-quiet" onClick={onBack}>← Volver a ZRC</button>}<IcLanguageSwitch/><nav aria-label="Contenidos y membresía"><a href="#ic-preview">Contenidos de la edición</a><a href="#ic-benefits">Qué incluye</a><a href="#ic-access">Cómo acceder</a></nav></header>
       <section>
-        <span className="ic-kicker">DESCUBRE LA MEMBRESÍA · SIN INICIAR SESIÓN</span>
-        <h1>Decisiones internacionales.<br /><span style={{ color: "var(--ic-gold)" }}>Más contexto. Un siguiente paso.</span></h1>
-        <p className="ic-lead">Para empresarios, inversores y asesores que preparan una expansión, adquisición o financiación entre España y América Latina.</p>
-        <div className="ic-actions"><button className="ic-button" onClick={() => {setMode("request");setMessage("");}}>Solicitar membresía gratuita →</button><a className="ic-button ic-button-quiet" href="#ic-edition">Leer el informe del mes →</a><button className="ic-button ic-button-quiet" onClick={() => {setMode("check");setMessage("");}}>Ya soy miembro · Iniciar sesión</button></div>
-        <p className="ic-small">La información, los reportajes y el comentario mensual son públicos. La ficha personal y la biblioteca de trabajo requieren membresía aprobada.</p>
-        <div id="ic-public-readings"><PublicReports /></div>
-      </section>
-      <MonthlyEdition publicView />
-      <section id="ic-benefits">
-        <InnerCircleValue />
-        <div className="ic-panel" style={{ marginTop: 32 }}><span className="ic-kicker">EN LA EDICIÓN DE OCTUBRE DE 2026</span><h2>La resiliencia tiene un coste</h2><p>Un informe sobre caja, energía y financiación, con fichas de México y Colombia, escenarios condicionales y una pauta para comité. Incluye cinco fuentes primarias y conserva el corte de información del 31 de octubre.</p><p className="ic-small">Puedes leer el comentario completo sin iniciar sesión. La membresía añade tu ficha personal, el guardado y la descarga para comité.</p></div>
+        <span className="ic-kicker">CONOCE EL CÍRCULO · ANTES DE SOLICITAR ACCESO</span>
+        <h1>Una edición para entender.<br/><span style={{color:'var(--ic-gold)'}}>Un espacio para decidir.</span></h1>
+        <p className="ic-lead">Análisis internacional para empresarios, inversores y asesores. Descubre los temas de la edición y solicita acceso al espacio de miembros.</p>
+        <div className="ic-actions"><button className="ic-button" onClick={()=>{setMode('request');setMessage('');}}>Solicitar membresía gratuita →</button><button className="ic-button ic-button-quiet" onClick={()=>{setMode('check');setMessage('');}}>Ya soy miembro · Iniciar sesión</button></div>
+        <p className="ic-small">Acceso gratuito durante esta etapa · admisión por aprobación. No hay renovación de pago automática. Cualquier cambio futuro de precio requerirá información previa y tu aceptación.</p>
+        <div id="ic-preview"><PublicReports/></div>
+        <div id="ic-benefits"><InnerCircleValue compact/></div>
         <h2 id="ic-access">Cómo funciona el acceso</h2>
-        <div className="ic-three"><article className="ic-panel"><span className="ic-kicker">01 · SOLICITUD</span><h3>Presenta tu perfil</h3><p>Nombre, email y actividad profesional. Explica qué tipo de decisión te interesa preparar.</p></article><article className="ic-panel"><span className="ic-kicker">02 · REVISIÓN</span><h3>Admisión manual</h3><p>El equipo revisa la solicitud. Enviarla no activa el acceso ni inicia una suscripción de pago.</p></article><article className="ic-panel"><span className="ic-kicker">03 · ACCESO</span><h3>Entra con tus credenciales</h3><p>Tras la aprobación, utiliza el email y la contraseña de Inner Circle. Una cuenta gratuita de la plataforma no implica admisión en el círculo.</p></article></div>
-        <details><summary>¿Qué incluye y qué se contrata aparte?</summary><p>La edición mensual es pública. La membresía añade los dossiers metodológicos y la ficha de decisión personal. Los planes Intelligence e Institutional y los encargos de Advisory tienen condiciones separadas. No se garantiza acceso a operaciones, presentaciones a inversores ni encuentros.</p></details>
+        <p>Presenta tu perfil. Revisamos la solicitud y, una vez aprobada, recibes tus credenciales. Al iniciar sesión, entras directamente a la edición, los dossiers y tu ficha de trabajo.</p>
+        <div className="ic-actions"><button className="ic-button" onClick={()=>{setMode('request');setMessage('');}}>Solicitar acceso →</button></div>
+        <details><summary>¿Qué incluye y qué se contrata aparte?</summary><p>La membresía incluye la nota editorial, el comentario mensual con fuentes, los dossiers metodológicos y tu ficha de decisión personal. Intelligence, Institutional y los encargos de Advisory tienen condiciones separadas. No se garantiza acceso a operaciones ni presentaciones a inversores.</p></details>
         <details><summary>¿Dónde se guarda mi ficha?</summary><p>En el navegador donde trabajas, con opción de descarga. Actualmente no se sincroniza entre dispositivos y la fecha de revisión no genera avisos.</p></details>
       </section>
-    </main></IcText>;
-
+    </main></IcText>
+  );
 
   // ── SUBMITTED STATE ───────────────────────────────────────────
   if (submitted) return <IcText>
@@ -185,7 +182,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
           <p style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: "clamp(10px,2.5vw,11px)", letterSpacing: "0.45em", color: "rgba(184,152,42,0.75)", marginBottom: 20 }}>ZRC INNER CIRCLE</p>
           <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(26px,6.5vw,32px)", fontStyle: "italic", color: "#E8E0CC", marginBottom: 14 }}>Solicitar acceso</h2>
           <p style={{ fontFamily: "'Cormorant',serif", fontSize: "clamp(15px,4vw,16px)", color: "rgba(232,224,204,0.65)", lineHeight: 1.75 }}>
-            La membresía es gratuita y requiere aprobación manual.<br />Enviar el formulario no activa una suscripción de pago.
+            La membresía es gratuita durante esta etapa y requiere aprobación manual.<br />Enviar el formulario no activa una suscripción de pago.
           </p>
         </div>
         <form onSubmit={handleRequest} style={{ display: "flex", flexDirection: "column", gap: 24 }}>

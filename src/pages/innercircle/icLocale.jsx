@@ -1,25 +1,29 @@
 import {createContext,useContext,Children,isValidElement,cloneElement} from 'react';
 import english from '../../data/innercircle/english.json';
+const MemberContent=createContext(null);
+export function IcMemberContentProvider({content,children}){return <MemberContent.Provider value={content}>{children}</MemberContent.Provider>;}
+export const useIcMemberContent=()=>useContext(MemberContent);
 const Locale=createContext({lang:'es',setLang:()=>{}});
 export function IcLocaleProvider({lang='es',onChange,children}){return <Locale.Provider value={{lang,setLang:onChange||(()=>{})}}>{children}</Locale.Provider>;}
 export const useIcLocale=()=>useContext(Locale);
-export function translateIc(text,lang){
+export function translateIc(text,lang,memberTranslations={}){
  if(lang!=='en'||typeof text!=='string')return text;
  const clean=text.replace(/\s+/g,' ').trim();
- if(english[clean])return text.replace(text.trim(),english[clean]);
+ const translated=memberTranslations?.[clean]||english[clean];
+ if(translated)return text.replace(text.trim(),translated);
  const patterns=[[/^Último guardado: /,'Last saved: '],[/^Hay cambios sin guardar\.$/,'There are unsaved changes.'],[/ de /,' of '],[/ puntos revisados$/,' checks reviewed']];
  if(/^Último guardado: |^\d+ de \d+ puntos revisados$/.test(text))return patterns.reduce((s,[a,b])=>s.replace(a,b),text);
  return text;
 }
-function translateNode(node,lang){
- if(typeof node==='string')return translateIc(node,lang);
+function translateNode(node,lang,translations){
+ if(typeof node==='string')return translateIc(node,lang,translations);
  if(!isValidElement(node))return node;
  const props={};
- for(const key of ['placeholder','aria-label','title','alt'])if(typeof node.props[key]==='string')props[key]=translateIc(node.props[key],lang);
- if(node.props.children!==undefined)props.children=Children.map(node.props.children,child=>translateNode(child,lang));
+ for(const key of ['placeholder','aria-label','title','alt'])if(typeof node.props[key]==='string')props[key]=translateIc(node.props[key],lang,translations);
+ if(node.props.children!==undefined)props.children=Children.map(node.props.children,child=>translateNode(child,lang,translations));
  return cloneElement(node,props);
 }
-export function IcText({children}){const {lang}=useIcLocale();const node=translateNode(children,lang);return isValidElement(node)&&typeof node.type==='string'?cloneElement(node,{lang}):node;}
+export function IcText({children}){const {lang}=useIcLocale();const content=useIcMemberContent();const node=translateNode(children,lang,content?.translations);return isValidElement(node)&&typeof node.type==='string'?cloneElement(node,{lang}):node;}
 export function IcLanguageSwitch(){const {lang,setLang}=useIcLocale();return <div className="ic-language-switch" aria-label="Language / Idioma">{['es','en'].map(code=><button type="button" key={code} aria-pressed={lang===code} className="ic-button ic-button-quiet" onClick={()=>setLang(code)}>{code.toUpperCase()}</button>)}</div>;}
 // Keep overlay navigation within its own scroll container; do not change the app route/hash.
 export function navigateIcSection(event){

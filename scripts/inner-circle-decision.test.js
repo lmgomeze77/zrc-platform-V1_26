@@ -21,3 +21,8 @@ test('a saved brief round-trips and exports member edits and dated sources',()=>
  const text=buildDecisionMarkdown(restored,[{title:'Fuente de octubre',url:'https://example.org/source',published:'30 de octubre de 2026'}],'2026-10-31T16:00:00Z');
  assert.match(text,/Adquirir una empresa/);assert.match(text,/Reconciliar deuda y capital circulante/);assert.match(text,/\[x\] Capital circulante/);assert.match(text,/https:\/\/example.org\/source/);assert.match(text,/No se suman ambas cifras/);
 });
+
+test('English brief exports translated guidance while preserving member input',()=>{
+ const text=buildDecisionMarkdown({name:'Operación propia',nextStep:'Mi siguiente paso'},[], '', 'en',s=>s==='Expandir un negocio'?'Expand a business':s);
+ assert.match(text,/# Inner Circle · Decision brief/);assert.match(text,/Transaction: Expand a business/);assert.match(text,/Operación propia/);assert.match(text,/Mi siguiente paso/);assert.match(text,/These figures are not added/);
+});

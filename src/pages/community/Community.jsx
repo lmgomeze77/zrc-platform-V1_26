@@ -1,5 +1,4 @@
 import PublicReports from "../innercircle/PublicReports";
-import InnerCircleValue from '../innercircle/InnerCircleValue';
 
 // The homepage is an invitation to understand the membership, not a second login flow.
 export default function Community({lang='es',onExplore}) {
@@ -8,10 +7,9 @@ export default function Community({lang='es',onExplore}) {
     <div className="ic-community-content">
       <span className="ic-kicker">ZRC · THE INNER CIRCLE</span>
       <h2>{es?'Información para tus decisiones internacionales.':'Insight for your international decisions.'}</h2>
-      <p className="ic-lead">{es?'Lee el comentario mensual y los reportajes sin registro. Solicita la membresía para trabajar con tu ficha personal.':'Read the monthly commentary and reports without registering. Apply for membership to work on your personal decision brief.'}</p>
+      <p className="ic-lead">{es?'Conoce los temas de la edición antes de solicitar acceso. Si ya eres miembro y tienes una sesión activa, entra directamente a tu espacio.':'Preview this edition’s topics before applying. If you are already a member with an active session, enter your workspace directly.'}</p>
       <PublicReports onRead={onExplore}/>
-      <InnerCircleValue lang={lang}/>
-      <div className="ic-actions"><button type="button" className="ic-button" onClick={onExplore}>{es?'Conocer la membresía y solicitar acceso →':'Explore membership and apply →'}</button><span className="ic-small">{es?'Presentación pública · membresía gratuita · aprobación manual':'Public overview · free membership · reviewed admission'}</span></div>
+      <div className="ic-actions"><button type="button" className="ic-button" onClick={onExplore}>{es?'Entrar o solicitar membresía →':'Enter or apply for membership →'}</button><span className="ic-small">{es?'Resumen público · gratuita durante esta etapa · aprobación manual':'Public preview · free during this stage · reviewed admission'}</span></div>
     </div>
   </section>;
 }
