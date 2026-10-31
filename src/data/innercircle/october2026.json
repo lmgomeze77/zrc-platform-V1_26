@@ -386,5 +386,205 @@
       "fragility": "El mercado puede anticipar alivio antes de que una empresa recupere margen o caja. Un proyecto reconocido como estratégico tampoco acredita por sí mismo permisos completos, clientes o capacidad operativa.",
       "test": "Exigir hitos operativos y cobros verificables antes de retirar todos los ajustes al caso de inversión. Separar anuncio, autorización, producción y caja."
     }
-  ]
+  ],
+  "intelligenceBoard": {
+    "updated": "2026-10-31",
+    "status": {
+      "es": "Corte editorial · 31 octubre 2026",
+      "en": "Editorial cutoff · 31 October 2026"
+    },
+    "guidingQuestion": {
+      "es": "¿Quién puede interrumpir tu negocio sin tocar tus activos?",
+      "en": "Who can interrupt your business without touching your assets?"
+    },
+    "judgement": {
+      "es": "La exposición puede estar en un permiso, un procesador, una ruta de datos o una condición de acceso. Cambiar de proveedor o de país no basta si la dependencia decisiva sigue siendo la misma.",
+      "en": "Exposure may sit in a permission, a processor, a data route or a market-access condition. Changing supplier or country is not enough if the decisive dependency stays the same."
+    },
+    "diplomacy": [
+      {
+        "id": "market-access",
+        "title": {
+          "es": "De la barrera comercial al expediente defendible",
+          "en": "From a trade barrier to a defensible case"
+        },
+        "scope": {
+          "es": "Acceso a mercados · España / UE / terceros países",
+          "en": "Market access · Spain / EU / third countries"
+        },
+        "basis": {
+          "es": "Access2Markets reúne condiciones comerciales y un canal para comunicar barreras. ICEX ofrece servicios de información y apoyo a la internacionalización.",
+          "en": "Access2Markets brings together trading conditions and a channel for reporting barriers. ICEX offers information and internationalisation support."
+        },
+        "angle": {
+          "es": "Una reunión institucional vale más cuando existe un problema acotado, evidencia empresarial y una petición que el interlocutor puede tramitar.",
+          "en": "An institutional meeting is more useful when the problem is bounded, business evidence exists and the counterpart can act on the request."
+        },
+        "action": {
+          "es": "Preparar país, producto, norma o práctica, expedientes afectados, impacto documentado y remedio solicitado. Identificar el canal competente antes de pedir una introducción.",
+          "en": "Prepare the country, product, rule or practice, affected cases, documented impact and requested remedy. Identify the competent channel before seeking an introduction."
+        },
+        "resourceIds": [
+          "markets",
+          "icex"
+        ]
+      },
+      {
+        "id": "institutional-map",
+        "title": {
+          "es": "Quién decide, quién ejecuta y quién puede bloquear",
+          "en": "Who decides, who implements and who can block"
+        },
+        "scope": {
+          "es": "Diplomacia económica · inversión y expansión",
+          "en": "Economic diplomacy · investment and expansion"
+        },
+        "basis": {
+          "es": "La red y los servicios públicos de internacionalización permiten contrastar información de mercado y canales de apoyo; el alcance de cada servicio debe comprobarse.",
+          "en": "Public internationalisation networks and services provide routes to check market information and support channels; each service’s scope must be checked."
+        },
+        "angle": {
+          "es": "El patrocinador visible de un proyecto puede no controlar la licencia, la conexión o el trámite que determina su viabilidad.",
+          "en": "A project’s visible sponsor may not control the licence, connection or procedure that determines its viability."
+        },
+        "action": {
+          "es": "Separar promotor, autoridad competente, operador y contraparte contractual. Registrar evidencia de sus atribuciones y preguntas pendientes; una relación no equivale a una autorización.",
+          "en": "Separate the sponsor, competent authority, operator and contractual counterparty. Record evidence of their powers and outstanding questions; a relationship is not an authorisation."
+        },
+        "resourceIds": [
+          "icex"
+        ]
+      }
+    ],
+    "advocacy": [
+      {
+        "id": "policy-window",
+        "title": {
+          "es": "La ventana de influencia se prepara antes de la norma",
+          "en": "Prepare for the influence window before the rule"
+        },
+        "scope": {
+          "es": "Cabildeo · agenda regulatoria europea",
+          "en": "Advocacy · European regulatory agenda"
+        },
+        "basis": {
+          "es": "La Comisión publica vías de consulta y participación sobre sus iniciativas y políticas. La fase y el plazo deben verificarse en cada expediente.",
+          "en": "The Commission publishes consultation and participation routes on its initiatives and policies. Stage and deadline must be checked for each file."
+        },
+        "angle": {
+          "es": "El valor está en traducir un interés empresarial en una propuesta verificable: impacto, alternativa técnica y consecuencias de no modificar el diseño.",
+          "en": "Value comes from translating a business interest into a testable proposal: impact, a technical alternative and the consequences of leaving the design unchanged."
+        },
+        "action": {
+          "es": "Localizar el expediente y su fase, contrastar el plazo, elaborar una nota de posición y mapear asociaciones y aliados potenciales. No presentamos ninguna convocatoria como abierta sin confirmarla.",
+          "en": "Locate the file and stage, verify the deadline, draft a position paper and map associations and potential allies. No consultation is presented as open without confirmation."
+        },
+        "resourceIds": [
+          "consultations"
+        ]
+      },
+      {
+        "id": "interests",
+        "title": {
+          "es": "Mapear intereses, no coleccionar contactos",
+          "en": "Map interests rather than collect contacts"
+        },
+        "scope": {
+          "es": "Cabildeo · actores e intereses declarados",
+          "en": "Advocacy · actors and declared interests"
+        },
+        "basis": {
+          "es": "El Registro de Transparencia de la UE publica información declarada por representantes de intereses. Es un punto de partida para investigar actores y posiciones.",
+          "en": "The EU Transparency Register publishes information declared by interest representatives. It is a starting point for researching actors and positions."
+        },
+        "angle": {
+          "es": "Una coincidencia sectorial no garantiza una coalición. Conviene contrastar objetivos, incentivos y posibles conflictos antes de compartir una posición.",
+          "en": "A shared sector does not guarantee a coalition. Check objectives, incentives and potential conflicts before sharing a position."
+        },
+        "action": {
+          "es": "Preparar un mapa con actor, interés declarado, evidencia y grado de afinidad por contrastar. Comprobar las reglas de transparencia aplicables al canal elegido.",
+          "en": "Prepare a map with each actor, declared interest, evidence and alignment still to be checked. Check the transparency rules applicable to the chosen channel."
+        },
+        "resourceIds": [
+          "register"
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "id": "markets",
+        "name": "Access2Markets",
+        "publisher": {
+          "es": "Comisión Europea",
+          "en": "European Commission"
+        },
+        "url": "https://trade.ec.europa.eu/access-to-markets/en/home",
+        "use": {
+          "es": "Contrastar producto, origen y destino; revisar condiciones comerciales y el canal para barreras.",
+          "en": "Check the product, origin and destination; review trading conditions and the trade-barrier channel."
+        },
+        "prepare": {
+          "es": "Producto / código aduanero, origen, destino y obstáculo concreto.",
+          "en": "Product / customs code, origin, destination and the specific obstacle."
+        }
+      },
+      {
+        "id": "icex",
+        "name": "ICEX",
+        "publisher": {
+          "es": "España · internacionalización",
+          "en": "Spain · internationalisation"
+        },
+        "url": "https://www.icex.es/es/servicios",
+        "use": {
+          "es": "Localizar información de mercado y servicios de apoyo para una decisión de entrada o expansión.",
+          "en": "Locate market information and support services for a market-entry or expansion decision."
+        },
+        "prepare": {
+          "es": "País, sector, fase del proyecto y pregunta que necesita respuesta. Verificar condiciones y coste del servicio.",
+          "en": "Country, sector, project stage and the question requiring an answer. Check service conditions and cost."
+        }
+      },
+      {
+        "id": "consultations",
+        "name": {
+          "es": "Consultas públicas y comentarios",
+          "en": "Public consultations and feedback"
+        },
+        "publisher": {
+          "es": "Comisión Europea",
+          "en": "European Commission"
+        },
+        "url": "https://have-your-say.ec.europa.eu/",
+        "use": {
+          "es": "Identificar iniciativas, documentos y vías de participación; comprobar el estado del expediente.",
+          "en": "Identify initiatives, documents and participation routes; check the status of the file."
+        },
+        "prepare": {
+          "es": "Expediente, fase, plazo verificado y evidencia que sustenta la posición.",
+          "en": "File, stage, verified deadline and evidence supporting the position."
+        }
+      },
+      {
+        "id": "register",
+        "name": {
+          "es": "Registro de Transparencia UE",
+          "en": "EU Transparency Register"
+        },
+        "publisher": {
+          "es": "Unión Europea",
+          "en": "European Union"
+        },
+        "url": "https://transparency-register.europa.eu/index_en",
+        "use": {
+          "es": "Investigar intereses declarados, organizaciones y recursos dedicados a representación.",
+          "en": "Research declared interests, organisations and resources devoted to representation."
+        },
+        "prepare": {
+          "es": "Tema, actores y fecha de consulta. Contrastar las declaraciones con otras fuentes.",
+          "en": "Topic, actors and access date. Cross-check declarations against other sources."
+        }
+      }
+    ]
+  }
 }
