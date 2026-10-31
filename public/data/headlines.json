@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T12:03:14.618Z",
+  "generated_at": "2026-10-31T11:38:18.906Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -95,15 +95,15 @@
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Los flujos de petróleo aumentan al calmarse la tensión con Irán. ¿Por qué siguen subiendo los precios?",
-        "en": "Oil flows are up as Iran war turmoil eases. Why do prices keep rising?"
+        "es": "Los estados del Golfo deben repensar su defensa de un billón de dólares a la luz de la guerra EEUU-Irán, según informe",
+        "en": "Gulf states must rethink trillion-dollar defence in light of US-Iran war, says report"
       },
       "summary": {
-        "es": "El Brent ha subido más del 60% respecto a los niveles previos al conflicto con Irán, a pesar de una recuperación de la oferta. La persistencia de precios altos pese a la normalización parcial del suministro sugiere presiones estructurales —primas de riesgo geopolítico, daños a infraestructura o reconfiguración de rutas comerciales— con implicaciones directas para la inflación global y los bancos centrales.",
-        "en": "Brent crude has risen more than 60% compared to pre-war levels despite a rebound in supply flows. Persistent high prices despite partial supply normalization suggest structural pressures—elevated geopolitical risk premiums, infrastructure damage, or trade route realignment—with direct implications for global inflation and central bank policy."
+        "es": "Un informe del IISS advierte que los estados del Golfo deben reconfigurar sus estrategias de defensa tras el daño económico de la guerra EEUU-Irán y la cuestionada fiabilidad de las bases estadounidenses frente a amenazas iraníes. La sobredependencia en sistemas de alto coste y en el paraguas de seguridad americano se presenta como una vulnerabilidad estructural. Esto tiene implicaciones directas para contratos de armamento, inversión en defensa regional y estabilidad energética del Golfo.",
+        "en": "An IISS report warns that Gulf states must reconfigure their defense strategies following economic damage from the US-Iran war and the questioned reliability of US bases against Iranian threats. Overdependence on expensive high-end systems and American security guarantees is flagged as a structural vulnerability. This has direct implications for arms procurement, regional defense investment, and Gulf energy stability."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +112,26 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Prima de riesgo estructural mantiene precios elevados pese a mayor oferta.",
-            "en": "Structural risk premium keeps prices elevated despite supply rebound."
+            "es": "Incertidumbre sobre seguridad energética del Golfo eleva prima de riesgo",
+            "en": "Gulf energy security uncertainty raises risk premium"
+          }
+        },
+        {
+          "asset": "Defense sector equities (EU/US)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Rearme del Golfo impulsa demanda de sistemas de defensa",
+            "en": "Gulf rearmament drives demand for defense systems"
+          }
+        },
+        {
+          "asset": "EM currencies (Gulf pegs)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Presión fiscal por aumento del gasto militar en la región",
+            "en": "Fiscal pressure from rising regional military spending"
           }
         },
         {
@@ -121,151 +139,124 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Inflación energética persistente impulsa cobertura en activos refugio.",
-            "en": "Persistent energy inflation drives demand for inflation hedges."
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Altos costes energéticos presionan las divisas de importadores netos.",
-            "en": "High energy costs pressure currencies of net oil-importing EMs."
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Costes energéticos elevados comprimen márgenes industriales europeos.",
-            "en": "Elevated energy costs compress European industrial margins."
+            "es": "Escalada de riesgo geopolítico en MENA favorece activos refugio",
+            "en": "Rising MENA geopolitical risk supports safe-haven demand"
           }
         }
       ],
       "confidence": 88,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/10/30/oil-flows-are-up-as-iran-war-turmoil-eases-why-do-prices-keep-rising?traffic_source=rss",
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/30/gulf-states-rethink-trillion-dollar-defence-us-iran-war-iiss-report",
       "published_at": "2026-10-30",
-      "time": "3h"
+      "time": "22h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "EURASIA",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "El movimiento de EE.UU. para levantar sanciones a la flota en la sombra de Rusia podría socavar la presión occidental sobre Moscú",
-        "en": "US moves to lift sanctions on Russia's shadow fleet could undermine Western pressure on Moscow and help fund its war in Ukraine"
+        "es": "Canadá y la UE anuncian nueva alianza abierta a países afines",
+        "en": "Canada and EU announce new alliance open to like-minded countries"
       },
       "summary": {
-        "es": "Washington estaría estudiando convertir petroleros de la 'flota oscura' rusa en embarcaciones legítimas, lo que les permitiría transportar crudo fuera del régimen de sanciones. Esta iniciativa, de materializarse, fragmentaría el frente aliado de sanciones, proporcionaría ingresos adicionales a Rusia y debilitaría el techo de precio impuesto por el G7, con repercusiones directas sobre los mercados energéticos globales.",
-        "en": "Washington is reportedly exploring converting Russian 'dark tanker' vessels into legitimate carriers, allowing them to transport crude oil outside the existing sanctions regime. If implemented, this would fracture the allied sanctions front, boost Russian energy revenues, and undermine the G7 price cap mechanism, with significant implications for global oil markets and European energy security."
+        "es": "Canadá y la Unión Europea han lanzado la 'Alianza para el Futuro' en la cumbre de Montreal, abierta a otros países democráticos y concebida como contrapeso geopolítico en un mundo 'sacudido por nuevas tormentas'. La iniciativa representa una reconfiguración significativa de la arquitectura de seguridad occidental, potencialmente en respuesta a la postura de EEUU bajo Trump y la presión rusa. Tiene implicaciones para los flujos de comercio transatlántico, inversión en defensa europea y el papel del dólar.",
+        "en": "Canada and the European Union have launched the 'Alliance for the Future' at the Montreal summit, open to other like-minded democracies and conceived as a geopolitical counterweight in a world 'shaken by new storms.' The initiative represents a significant reconfiguration of Western security architecture, potentially in response to US posture under Trump and Russian pressure. It has implications for transatlantic trade flows, European defense investment, and the role of the dollar."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor oferta rusa legal presionaría los precios a la baja.",
-            "en": "Increased legitimate Russian supply would pressure prices lower."
-          }
-        },
-        {
-          "asset": "Russian Urals crude",
+          "asset": "EUR/USD",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Acceso a mercados legítimos elevaría el precio de referencia del Urals.",
-            "en": "Access to legitimate markets would raise Urals benchmark pricing."
+            "es": "Autonomía estratégica europea refuerza confianza en el euro",
+            "en": "European strategic autonomy boosts euro confidence"
           }
         },
         {
-          "asset": "European equities",
-          "direction": "mixed",
-          "magnitude": "low",
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Alivio energético vs. riesgo de debilitamiento de la coalición occidental.",
-            "en": "Energy cost relief offset by risk of weakened Western coalition."
+            "es": "Nueva alianza acelera gasto en defensa europeo",
+            "en": "New alliance accelerates European defense spending"
           }
         },
         {
-          "asset": "USD",
-          "direction": "mixed",
+          "asset": "CAD/USD",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Señal de distensión geopolítica reduciría algo la demanda de refugio.",
-            "en": "Geopolitical de-escalation signal slightly reduces safe-haven demand."
+            "es": "Perfil geopolítico de Canadá elevado por liderazgo de alianza",
+            "en": "Canada's geopolitical profile raised by alliance leadership"
           }
         }
       ],
-      "confidence": 85,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/us-moves-to-lift-sanctions-on-russia-s-shadow-fleet-could-undermine-western-pressure-on-moscow-and-help-fund-its-war-in-ukraine/a-79787035?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-29",
-      "time": "1d"
+      "confidence": 82,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/oct/30/canada-european-union-alliance",
+      "published_at": "2026-10-30",
+      "time": "15h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "AFRICA",
+      "region": "GLOBAL",
       "title": {
-        "es": "EE.UU. sanciona al ministerio de defensa de Ruanda por el conflicto en el este del Congo",
-        "en": "US sanctions Rwanda's defence ministry over DR Congo conflict"
+        "es": "La presencia de Rusia divide a los ministros del G20",
+        "en": "Russia's presence divides G20 ministers"
       },
       "summary": {
-        "es": "El Tesoro de EE.UU. ha sancionado al ministerio de defensa de Ruanda por apoyar al grupo rebelde M23 en el este del Congo, acusando a Kigali de socavar un acuerdo de paz mediado por Washington. La medida complica el acceso de Ruanda a financiación occidental y amenaza los flujos de minerales críticos —coltán, casiterita— que transitan por la región, con implicaciones para las cadenas de suministro globales de electrónica y baterías.",
-        "en": "The US Treasury has sanctioned Rwanda's defence ministry for backing the M23 rebel group in eastern DRC, accusing Kigali of undermining a US-brokered peace deal. The move complicates Rwanda's access to Western financing and threatens critical mineral flows—coltan, cassiterite—transiting the region, with implications for global electronics and battery supply chains."
+        "es": "La reunión de cancilleres del G20 en EEUU concluye sin acuerdo en temas clave de seguridad global, mientras la presencia rusa genera fisuras entre bloques. Paralelamente, el Secretario de Estado Rubio firmó un acuerdo de cooperación ártica con Japón y Corea del Sur, señalando una reorientación estratégica de Washington. La fragmentación diplomática en el G20 reduce la capacidad de coordinación global en crisis y refuerza dinámicas de bloques.",
+        "en": "The G20 foreign ministers' meeting in the US concludes without agreement on key global security issues, while Russia's presence creates divisions between blocs. On the sidelines, Secretary of State Rubio signed an Arctic cooperation deal with Japan and South Korea, signaling a US strategic reorientation. G20 diplomatic fragmentation reduces global crisis coordination capacity and reinforces bloc dynamics."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Coltan/Tantalum futures",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "US 10Y Treasury",
+          "direction": "mixed",
+          "magnitude": "low",
           "note": {
-            "es": "Sanciones amenazan el suministro de minerales críticos del este del Congo.",
-            "en": "Sanctions threaten critical mineral supply from eastern DRC corridor."
-          }
-        },
-        {
-          "asset": "Rwanda sovereign bonds",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Sanciones al gobierno limitan el acceso a mercados de capital occidentales.",
-            "en": "Government sanctions restrict access to Western capital markets."
+            "es": "Incertidumbre diplomática global mantiene demanda de refugio",
+            "en": "Global diplomatic uncertainty sustains safe-haven demand"
           }
         },
         {
           "asset": "EM currencies",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Riesgo de contagio regional en monedas de África subsahariana.",
-            "en": "Regional contagion risk for sub-Saharan African currencies."
+            "es": "Fragmentación G20 presiona activos de mercados emergentes",
+            "en": "G20 fragmentation pressures emerging market assets"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Bloqueo diplomático refuerza demanda de activos refugio",
+            "en": "Diplomatic deadlock reinforces safe-haven asset demand"
           }
         }
       ],
-      "confidence": 82,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cm87zw51qw0jo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-29",
-      "time": "1d"
+      "confidence": 80,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/russia-s-presence-divides-g20-ministers",
+      "published_at": "2026-10-31",
+      "time": "2h"
     },
     {
       "id": 4,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "GLOBAL",
       "title": {
-        "es": "El gigante cripto Binance sufre un hackeo de 6.300 millones de dólares, presuntamente el mayor de la historia",
-        "en": "Crypto giant Binance hit by $6.3bn hack suspected to be largest in history"
+        "es": "Por qué los hackers 'élite' de Corea del Norte son el principal sospechoso del gran hackeo a Binance",
+        "en": "Why North Korea's 'elite' hackers are the prime suspect in major Binance hack"
       },
       "summary": {
-        "es": "Dos firmas de análisis han atribuido el hackeo a una unidad norcoreana denominada TraderTraitor, lo que convierte el incidente en un acto de ciberguerra con implicaciones para sanciones y seguridad financiera global. Un robo de esta magnitud ejercerá presión vendedora sobre los mercados de criptomonedas a corto plazo y reavivará la presión regulatoria internacional sobre los exchanges centralizados.",
-        "en": "Two analytics firms have attributed the breach to a North Korean hacking unit called TraderTraitor, framing the incident as an act of state-sponsored financial cyberwarfare with sanctions and global financial security implications. A theft of this scale will exert short-term selling pressure on crypto markets and intensify international regulatory pressure on centralized exchanges."
+        "es": "El hackeo de 6.300 millones de dólares a Binance, el mayor de la historia cripto, apunta al grupo norcoreano TraderTraitor según firmas de análisis. El robo representa una fuente masiva de financiación para el programa de armas de Pyongyang y eleva el riesgo sistémico para los mercados de activos digitales. Las implicaciones regulatorias son inmediatas: se espera presión para reforzar la supervisión de exchanges centralizados a nivel global.",
+        "en": "The $6.3 billion Binance hack, the largest in crypto history, is attributed to North Korea's TraderTraitor group by analytics firms. The theft represents a massive funding source for Pyongyang's weapons program and raises systemic risk for digital asset markets. Regulatory implications are immediate, with pressure expected to intensify for global oversight of centralized exchanges."
       },
       "impact": "high",
       "market_impact": [
@@ -274,26 +265,26 @@
           "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "Salida masiva de fondos de Binance genera presión vendedora sistémica.",
-            "en": "Massive Binance fund outflow creates systemic selling pressure."
+            "es": "Pérdida de confianza en exchanges centralizado hunde precio BTC",
+            "en": "Loss of trust in centralized exchanges depresses BTC price"
           }
         },
         {
-          "asset": "BNB (Binance Coin)",
+          "asset": "Crypto sector equities",
           "direction": "down",
           "magnitude": "high",
           "note": {
-            "es": "Pérdida de confianza en el emisor destruye el valor del token nativo.",
-            "en": "Loss of confidence in issuer destroys value of native exchange token."
+            "es": "Riesgo regulatorio y reputacional golpea al sector",
+            "en": "Regulatory and reputational risk hits the sector"
           }
         },
         {
-          "asset": "Crypto exchange equities",
-          "direction": "down",
-          "magnitude": "medium",
+          "asset": "USD/KRW",
+          "direction": "mixed",
+          "magnitude": "low",
           "note": {
-            "es": "Contagio regulatorio y de confianza afecta a exchanges cotizados.",
-            "en": "Regulatory and confidence contagion hits listed exchange stocks."
+            "es": "Tensión geopolítica norcoreana añade presión sobre el won",
+            "en": "North Korean geopolitical tension adds pressure on won"
           }
         },
         {
@@ -301,121 +292,94 @@
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Fuga hacia activos tangibles ante colapso de confianza cripto.",
-            "en": "Flight to tangible assets as crypto confidence collapses."
+            "es": "Fuga hacia activos tradicionales ante colapso de confianza cripto",
+            "en": "Flight to traditional assets as crypto confidence collapses"
           }
         }
       ],
-      "confidence": 90,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cwg7xp8kx4v5o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-30",
-      "time": "2h"
+      "confidence": 87,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/ck9dz3v7z7v3o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-10-31",
+      "time": "9h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "LATAM",
       "title": {
-        "es": "Corea del Norte prueba drones de ataque mientras Kim exige 'superioridad absoluta'",
-        "en": "North Korea tests attack drones as Kim calls for 'absolute superiority'"
+        "es": "¿Podría el Bukele de El Salvador ser el salvador de Haití?",
+        "en": "Could El Salvador's Bukele be Haiti's savior?"
       },
       "summary": {
-        "es": "Corea del Norte ha llevado a cabo demostraciones de drones de ataque, misiles de crucero y lanzacohetes, con Kim Jong Un reclamando el desarrollo acelerado de tecnología de drones con IA. Las pruebas se producen en un contexto de crecientes tensiones regionales y, combinadas con el despliegue de tropas norcoreanas en Ucrania señalado por Berlín, apuntan a una mayor integración de Pyongyang en las dinámicas de seguridad global con implicaciones para el gasto en defensa de Corea del Sur y Japón.",
-        "en": "North Korea conducted demonstrations of attack drones, cruise missiles, and rocket launchers, with Kim Jong Un demanding accelerated AI-integrated drone development. The tests, combined with the deployment of North Korean troops to Ukraine flagged by Berlin, signal Pyongyang's deepening integration into global security dynamics, with implications for South Korean and Japanese defense spending and regional deterrence postures."
+        "es": "El gobierno de El Salvador despachó más de 2.000 soldados a Haití esta semana en un despliegue extraordinario en suelo extranjero, sin precedente para San Salvador. La iniciativa de Bukele marca una nueva dinámica de seguridad en el hemisferio occidental, con implicaciones para el rol de EEUU, el futuro de la misión de la ONU en Haití y la política exterior latinoamericana. El éxito o fracaso del despliegue podría reconfigurar percepciones sobre la gobernanza de seguridad regional.",
+        "en": "El Salvador's government dispatched more than 2,000 troops to Haiti this week in an extraordinary deployment on foreign soil, unprecedented for San Salvador. Bukele's initiative marks a new security dynamic in the Western Hemisphere, with implications for the US role, the future of the UN mission in Haiti, and Latin American foreign policy. The deployment's success or failure could reshape perceptions of regional security governance."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "South Korean defense equities",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "Caribbean/LATAM sovereign bonds",
+          "direction": "mixed",
+          "magnitude": "low",
           "note": {
-            "es": "Escalada norcoreana impulsa el gasto en defensa de Seúl.",
-            "en": "North Korean escalation drives Seoul defense procurement spending."
+            "es": "Estabilización de Haití reduciría riesgo regional a largo plazo",
+            "en": "Haiti stabilization would reduce regional risk long-term"
           }
         },
         {
-          "asset": "KRW (Korean Won)",
-          "direction": "down",
+          "asset": "USD/USD remittance flows",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo geopolítico regional presiona la divisa surcoreana.",
-            "en": "Regional geopolitical risk weighs on the South Korean won."
-          }
-        },
-        {
-          "asset": "Japanese defense equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Amenaza norcoreana refuerza la tendencia de rearme japonesa.",
-            "en": "North Korean threat reinforces Japan's ongoing rearmament trend."
+            "es": "Seguridad mejorada podría impulsar flujos de remesas a Haití",
+            "en": "Improved security could boost remittance flows to Haiti"
           }
         }
       ],
-      "confidence": 78,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/asia-pacific/20261030-north-korea-tests-attack-drones-as-kim-calls-for-absolute-superiority",
-      "published_at": "2026-10-30",
-      "time": "11h"
+      "confidence": 72,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/30/world/americas/el-salvador-haiti-soldiers-bukele.html",
+      "published_at": "2026-10-31",
+      "time": "10h"
     },
     {
       "id": 6,
-      "tag": "DATA",
-      "region": "US",
+      "tag": "WATCH",
+      "region": "APAC",
       "title": {
-        "es": "Las tasas de interés en EE.UU. se mantienen estables y la economía crece: qué significa para usted",
-        "en": "US interest rates held steady and economy grows - what it means for you"
+        "es": "Merz espera reunificación coreana en la DMZ; Steinmeier se reúne con Xi en Pekín",
+        "en": "Germany news: Merz hopes for Korean reunification at DMZ; Steinmeier meets Xi in Beijing"
       },
       "summary": {
-        "es": "La Reserva Federal ha mantenido los tipos de interés sin cambios mientras la economía estadounidense registra crecimiento, señal de que el comité prioriza la cautela ante la persistente inflación energética vinculada a tensiones geopolíticas. La pausa refuerza la divergencia monetaria con otros bancos centrales y tiene implicaciones directas para el dólar, la deuda soberana emergente y los flujos de capital globales.",
-        "en": "The Federal Reserve held interest rates steady while the US economy continues to grow, signaling that the committee is prioritizing caution amid persistent energy-driven inflation linked to geopolitical tensions. The pause reinforces monetary divergence with other central banks and has direct implications for the dollar, emerging market sovereign debt, and global capital flows."
+        "es": "El canciller alemán Merz visitó la zona desmilitarizada coreana expresando apoyo a la reunificación, mientras el presidente Steinmeier mantuvo conversaciones con Xi Jinping en Pekín, señalando la diplomacia paralela de Berlín hacia los dos grandes polos de tensión en Asia. Los contactos Alemania-China son relevantes para las negociaciones comerciales UE-China y la postura europea frente a Taiwán. Ambos episodios reflejan el intento europeo de mantener canales diplomáticos abiertos en Asia.",
+        "en": "German Chancellor Merz visited the Korean DMZ expressing support for reunification, while President Steinmeier held talks with Xi Jinping in Beijing, signaling Berlin's parallel diplomacy toward Asia's two major tension poles. Germany-China contacts are relevant for EU-China trade negotiations and European posture on Taiwan. Both episodes reflect Europe's attempt to keep diplomatic channels open across Asia."
       },
-      "impact": "high",
+      "impact": "medium",
       "market_impact": [
         {
-          "asset": "US 10Y Treasury",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Pausa confirma tipos altos por más tiempo; curva se mantiene plana.",
-            "en": "Hold confirms higher-for-longer rates; curve remains flat."
-          }
-        },
-        {
-          "asset": "USD",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Divergencia con bancos centrales que recortan refuerza el dólar.",
-            "en": "Divergence with cutting central banks strengthens the dollar."
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Dólar fuerte y tipos altos presionan divisas y deuda emergente.",
-            "en": "Strong dollar and high rates pressure EM currencies and debt."
-          }
-        },
-        {
-          "asset": "Gold",
+          "asset": "EUR/CNY",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Tipos altos limitan el alza del oro, pero la inflación lo sostiene.",
-            "en": "High rates cap gold upside, but inflation pressures provide support."
+            "es": "Diálogo Berlín-Pekín puede suavizar tensiones comerciales UE-China",
+            "en": "Berlin-Beijing dialogue may ease EU-China trade tensions"
+          }
+        },
+        {
+          "asset": "German DAX",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Mejora diplomática con China positiva para exportadores alemanes",
+            "en": "Diplomatic improvement with China positive for German exporters"
           }
         }
       ],
-      "confidence": 83,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cr15jxzv4w24o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-29",
-      "time": "18h"
+      "confidence": 70,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/germany-news-merz-hopes-for-korean-reunification-at-dmz/live-79803462?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-10-30",
+      "time": "20h"
     }
   ],
   "market_updated_at": "2026-10-31T11:17:38.854Z"
