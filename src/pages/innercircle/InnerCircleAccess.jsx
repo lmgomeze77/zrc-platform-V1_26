@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import InnerCircleValue from "./InnerCircleValue";
 
 const IC_API = "https://zenith-risecapital.lmgomeze77.workers.dev";
 const IC_EMAIL_KEY = "zrc-ic-email";
@@ -86,7 +87,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
   // ── REQUEST: submit membership application ──────────────────────
   async function handleRequest(e) {
     e.preventDefault();
-    if (!email || !name || !profile) return;
+    if (!email.trim() || !name.trim() || !profile) return;
     setLoading(true);
 
     const cleanEmail = email.trim().toLowerCase();
@@ -123,7 +124,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
 
   const containerStyle = {
     minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center",
-    background:"#06080C", padding:"48px 28px",
+    background:"radial-gradient(ellipse at 70% 0%,#182b43,#0a1220 60%)", padding:"48px 28px", colorScheme:"dark",
   };
   const cardStyle = {
     maxWidth:460, width:"100%", textAlign:"center",
@@ -156,7 +157,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
           <p style={{ fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(10px,2.5vw,11px)", letterSpacing:"0.45em", color:"rgba(184,152,42,0.75)", marginBottom:20 }}>ZRC INNER CIRCLE</p>
           <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:"clamp(26px,6.5vw,32px)", fontStyle:"italic", color:"#E8E0CC", marginBottom:14 }}>Solicitar acceso</h2>
           <p style={{ fontFamily:"'Cormorant',serif", fontSize:"clamp(15px,4vw,16px)", color:"rgba(232,224,204,0.65)", lineHeight:1.75 }}>
-            El acceso es por invitación y aprobación manual.<br/>Completa tu perfil para que podamos evaluar tu solicitud.
+            La membresía es gratuita y requiere aprobación manual.<br/>Completa tu perfil para que podamos evaluar tu solicitud.
           </p>
         </div>
         <form onSubmit={handleRequest} style={{ display:"flex", flexDirection:"column", gap:24 }}>
@@ -166,7 +167,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
           </label>
           <label style={{ display:"block" }}>
             <span style={labelStyle}>Email</span>
-            <input style={{ ...inputStyle, color:"rgba(232,224,204,0.6)" }} value={email} readOnly />
+            <input type="email" required style={inputStyle} value={email} onChange={e=>setEmail(e.target.value)} autoComplete="email" />
           </label>
           <label style={{ display:"block" }}>
             <span style={labelStyle}>Organización / Empresa</span>
@@ -209,18 +210,18 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
         <p style={{ fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(10px,2.8vw,11px)", letterSpacing:"0.45em", color:"rgba(184,152,42,0.8)", marginBottom:32 }}>ZRC CONFIDENCIAL</p>
         <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:"clamp(32px,9vw,42px)", fontStyle:"italic", color:"#E8E0CC", marginBottom:12, fontWeight:400 }}>The Inner Circle</h2>
         <p style={{ fontFamily:"'Cormorant',serif", fontSize:"clamp(16px,4.5vw,18px)", fontStyle:"italic", color:"rgba(232,224,204,0.65)", marginBottom:52, lineHeight:1.75 }}>
-          Inteligencia privada. Acceso por invitación.
+          Geopolítica, empresa y capital. Membresía gratuita con admisión manual.
         </p>
         <form onSubmit={handleCheck} style={{ display:"flex", flexDirection:"column", gap:20 }}>
           <input type="email" required value={email} onChange={e=>setEmail(e.target.value)}
-            placeholder="Su email..."
+            aria-label="Email" autoComplete="email" placeholder="Su email..."
             style={{ ...inputStyle, textAlign:"center", fontSize:"clamp(16px,4.5vw,18px)", borderBottom:`1px solid rgba(184,152,42,0.55)` }} />
           <div style={{ position:"relative", display:"flex", alignItems:"center" }}>
             <input type={showPw ? "text" : "password"} required value={password} onChange={e=>setPassword(e.target.value)}
-              placeholder="Contraseña..."
+              aria-label="Contraseña" autoComplete="current-password" placeholder="Contraseña..."
               style={{ ...inputStyle, textAlign:"center", fontSize:"clamp(16px,4.5vw,18px)", borderBottom:`1px solid rgba(184,152,42,0.55)`, paddingRight:36 }} />
             <button type="button" onClick={() => setShowPw(v => !v)}
-              style={{ position:"absolute", right:0, background:"none", border:"none", cursor:"pointer", padding:"6px", color:"rgba(184,152,42,0.7)", display:"flex", alignItems:"center" }}>
+              aria-label={showPw ? "Ocultar contraseña" : "Mostrar contraseña"} style={{ position:"absolute", right:0, background:"none", border:"none", cursor:"pointer", padding:"6px", color:"rgba(184,152,42,0.7)", display:"flex", alignItems:"center" }}>
               {showPw ? <EyeOff size={17} /> : <Eye size={17} />}
             </button>
           </div>
@@ -250,6 +251,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
             Solicitar membresía →
           </button>
         </div>
+        <div style={{marginTop:36,textAlign:"left"}}><InnerCircleValue compact/></div>
         {onBack && <button onClick={onBack} style={{ marginTop:28, background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(11px,2.8vw,13px)", letterSpacing:"0.3em", color:"rgba(232,224,204,0.85)", cursor:"pointer" }}>← VOLVER</button>}
       </div>
     </div>

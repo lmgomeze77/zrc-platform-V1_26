@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import EditionZero from "./EditionZero";
-import { supabase } from "../../lib/supabase";
+import InnerCircleValue from "../innercircle/InnerCircleValue";
 
 const IC_API = "https://zenith-risecapital.lmgomeze77.workers.dev";
 
@@ -111,6 +111,20 @@ const css = `
 }
 `
 
+const valueCss = `
+.ic-root{background:radial-gradient(ellipse at 70% 0%,#182b43 0%,#0a1220 55%);min-height:0}
+.ic-root .ic-top,.ic-root .ic-eyebrow,.ic-root .ic-tw,.ic-root .ic-tagline,.ic-root .ic-rule,.ic-root .ic-pillars,.ic-root .ic-gate,.ic-root .ic-bottom{opacity:1;transform:none;animation:none}
+.ic-root .ic-title{font-family:var(--zrc-font-display,Georgia,serif);font-style:normal;font-size:clamp(44px,6vw,78px)}
+.ic-root .ic-tw{display:inline}.ic-root .ic-tw+.ic-tw:before{content:' '}
+.ic-root .ic-middle{padding:64px 24px 20px}.ic-root .ic-center{max-width:900px}
+.ic-root .ic-tagline{font-family:Outfit,sans-serif;font-size:18px;font-style:normal;max-width:650px}
+.ic-root .ic-pillars,.ic-root .ic-orbit,.ic-root .ic-grain{display:none}
+.ic-root .ic-gate{max-width:430px;margin:28px auto 0;border:1px solid #303b4b;border-radius:14px;padding:22px;background:#101a29}
+.ic-root .ic-email-input{font-family:Outfit,sans-serif;font-size:16px;font-style:normal}
+.ic-root .ic-apply-link{min-height:44px;margin-top:16px;font-family:Outfit,sans-serif;letter-spacing:.03em;font-size:14px}
+.ic-root :focus-visible{outline:2px solid #dbbd7d;outline-offset:4px}
+`;
+
 const modalOverlayStyle = {
   position: "fixed", inset: 0, zIndex: 10000,
   background: "rgba(6,8,12,0.88)", backdropFilter: "blur(6px)",
@@ -119,7 +133,7 @@ const modalOverlayStyle = {
 };
 const modalCardStyle = {
   background: "#0C0F15", border: "1px solid rgba(184,152,42,0.25)",
-  maxWidth: 480, width: "100%", padding: "40px 36px",
+  maxWidth: 480, width: "100%", padding: "32px 24px", maxHeight:"90vh", overflowY:"auto", colorScheme:"dark",
   fontFamily: "'Cormorant',serif",
 };
 const mLabelStyle = {
@@ -135,6 +149,7 @@ const mInputStyle = {
 };
 
 function ApplyModal({ email, lang, onClose, onSuccess }) {
+  const [applicationEmail, setApplicationEmail] = useState(email);
   const [name, setName]       = useState("");
   const [org, setOrg]         = useState("");
   const [profile, setProfile] = useState("");
@@ -182,7 +197,7 @@ function ApplyModal({ email, lang, onClose, onSuccess }) {
     e.preventDefault();
     if (!name.trim() || !profile) { setError(tx.errRequired); return; }
     setLoading(true); setError("");
-    const cleanEmail = email.toLowerCase().trim();
+    const cleanEmail = applicationEmail.toLowerCase().trim();
     try {
       const res = await fetch(`${IC_API}/api/inner-circle/apply`, {
         method: "POST",
@@ -228,7 +243,7 @@ function ApplyModal({ email, lang, onClose, onSuccess }) {
 
           <label style={{ display: "block" }}>
             <span style={mLabelStyle}>{tx.emailLabel}</span>
-            <input style={{ ...mInputStyle, color: "rgba(232,224,204,0.4)" }} value={email} readOnly />
+            <input type="email" required autoComplete="email" style={mInputStyle} value={applicationEmail} onChange={e=>setApplicationEmail(e.target.value)} />
           </label>
 
           <label style={{ display: "block" }}>
@@ -301,75 +316,47 @@ export default function Community({ lang = "es", onAccess }) {
   const [password, setPassword] = useState("");
   const [checking, setChecking] = useState(false);
   const [gateMsg, setGateMsg]   = useState("");
-  const [notFound, setNotFound] = useState(false);
   const [showApply, setShowApply]   = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [cursorOn, setCursorOn] = useState(false);
-  const hasFinePointer = typeof window !== "undefined" && window.matchMedia?.("(pointer: fine)").matches;
-  const cursorRef = useRef(null);
-  const ringRef   = useRef(null);
-  const rxRef = useRef(0), ryRef = useRef(0);
-  const mxRef = useRef(0), myRef = useRef(0);
-  const rafRef = useRef(null);
-
   const t = {
     es:{
       eyebrow:"ZRC Confidencial",the:"The",inner:"Inner",circle:"Circle",
-      tagline:"Una nota de inteligencia privada para quienes han ganado una lectura más cercana.",
+      tagline:"Geopolítica, empresa y capital. Una lectura en profundidad para quienes toman decisiones.",
       pillars:[
         { title:"La Nota", text:"Inteligencia mensual, escrita para decidir." },
         { title:"El Círculo", text:"Inversores, operadores y estrategas seleccionados." },
-        { title:"El Acceso", text:"Solo por invitación. Admisión manual." },
+        { title:"El Acceso", text:"Membresía gratuita. Admisión manual." },
       ],
       gateLabel:"Acceso exclusivo",gatePlaceholder:"Su email...",passwordPlaceholder:"Contraseña...",gateBtn:"Acceder",
       pendingMsg:"Su solicitud está pendiente de aprobación.",
       noneMsg:"Credenciales incorrectas.",
       applyLink:"Solicitar membresía →",
       welcomeLabel:"Bienvenido de nuevo",readEdition:"Leer Edition Zero ->",
-      bottomLeft:"Distribuida el primer martes de cada mes.",
+      bottomLeft:"Nota mensual · Iberia, América Latina y MENA.",
       directLabel:"Directo",brand:"Zenith Rise Capital",location:"Madrid - Est. 2024",backLabel:"<- Volver",
     },
     en:{
       eyebrow:"ZRC Confidential",the:"The",inner:"Inner",circle:"Circle",
-      tagline:"A private intelligence brief for those who have earned a closer read.",
+      tagline:"Geopolitics, business and capital. A deeper read for people making decisions.",
       pillars:[
         { title:"The Note", text:"Monthly intelligence, written to decide." },
         { title:"The Circle", text:"Selected investors, operators and strategists." },
-        { title:"The Access", text:"Invitation-only. Manual admissions." },
+        { title:"The Access", text:"Free membership. Reviewed admission." },
       ],
       gateLabel:"Exclusive access",gatePlaceholder:"Your email...",passwordPlaceholder:"Password...",gateBtn:"Enter",
       pendingMsg:"Your application is pending approval.",
       noneMsg:"Incorrect credentials.",
       applyLink:"Request membership →",
       welcomeLabel:"Welcome back",readEdition:"Read Edition Zero ->",
-      bottomLeft:"Distributed on the first Tuesday of each month.",
+      bottomLeft:"Monthly note · Iberia, Latin America and MENA.",
       directLabel:"Direct",brand:"Zenith Rise Capital",location:"Madrid - Est. 2024",backLabel:"<- Back",
     },
   };
   const tx = t[lang] || t.es;
 
-  useEffect(() => {
-    if (typeof window === "undefined" || !hasFinePointer) return;
-    mxRef.current = window.innerWidth/2; myRef.current = window.innerHeight/2;
-    rxRef.current = window.innerWidth/2; ryRef.current = window.innerHeight/2;
-    const onMove = (e) => {
-      mxRef.current = e.clientX; myRef.current = e.clientY;
-      if (cursorRef.current) { cursorRef.current.style.left = e.clientX+"px"; cursorRef.current.style.top = e.clientY+"px"; }
-    };
-    document.addEventListener("mousemove", onMove);
-    const loop = () => {
-      rxRef.current += (mxRef.current - rxRef.current) * 0.11;
-      ryRef.current += (myRef.current - ryRef.current) * 0.11;
-      if (ringRef.current) { ringRef.current.style.left = rxRef.current+"px"; ringRef.current.style.top = ryRef.current+"px"; }
-      rafRef.current = requestAnimationFrame(loop);
-    };
-    loop();
-    return () => { document.removeEventListener("mousemove", onMove); if (rafRef.current) cancelAnimationFrame(rafRef.current); };
-  }, []);
-
   const checkAccess = async () => {
     if (!email.includes("@") || !password) return;
-    setChecking(true); setGateMsg(""); setNotFound(false);
+    setChecking(true); setGateMsg("");
     const cleanEmail = email.toLowerCase().trim();
     try {
       const res = await fetch(`${IC_API}/api/inner-circle/login`, {
@@ -384,7 +371,6 @@ export default function Community({ lang = "es", onAccess }) {
         if (onAccess) { onAccess(); } else { setView("landing"); }
       } else {
         setGateMsg(tx.noneMsg);
-        setNotFound(true);
       }
     } catch { setGateMsg("Error. Intentelo de nuevo."); }
     finally { setChecking(false); }
@@ -392,7 +378,7 @@ export default function Community({ lang = "es", onAccess }) {
 
   if (view === "edition-zero") return (
     <>
-      <style>{css}</style>
+      <style>{css}{valueCss}</style>
       <div style={{position:"fixed",top:0,left:0,right:0,bottom:0,overflowY:"auto",overflowX:"hidden",zIndex:200,background:"#E8E4DC",WebkitOverflowScrolling:"touch"}}>
         <button className="ic-back" onClick={() => setView("landing")} style={{position:"fixed",top:20,left:20,zIndex:210,background:"rgba(10,22,40,0.92)",color:"#B8982A",padding:"8px 16px",border:"1px solid rgba(184,152,42,0.4)",borderRadius:2}}>{tx.backLabel}</button>
         <EditionZero />
@@ -402,7 +388,7 @@ export default function Community({ lang = "es", onAccess }) {
 
   return (
     <>
-      <style>{css}</style>
+      <style>{css}{valueCss}</style>
       {showApply && !showSuccess && (
         <ApplyModal
           email={email}
@@ -414,14 +400,7 @@ export default function Community({ lang = "es", onAccess }) {
       {showSuccess && (
         <SuccessModal lang={lang} onClose={() => setShowSuccess(false)} />
       )}
-      {hasFinePointer && (
-        <>
-          <div ref={cursorRef} style={{position:"fixed",width:5,height:5,background:"#B8982A",borderRadius:"50%",pointerEvents:"none",zIndex:9999,transform:"translate(-50%,-50%)",mixBlendMode:"difference",display:cursorOn?"block":"none"}} />
-          <div ref={ringRef}   style={{position:"fixed",width:28,height:28,border:"1px solid rgba(184,152,42,0.35)",borderRadius:"50%",pointerEvents:"none",zIndex:9998,transform:"translate(-50%,-50%)",opacity:.65,display:cursorOn?"block":"none"}} />
-        </>
-      )}
-      <div className="ic-root" style={{cursor:hasFinePointer?"none":"auto"}}
-        onMouseEnter={() => setCursorOn(true)} onMouseLeave={() => setCursorOn(false)}>
+      <div className="ic-root">
         <div className="ic-grain"/><div className="ic-vig"/><div className="ic-light"/>
         <div className="ic-top">
           <div className="ic-tb-brand">{tx.brand}</div>
@@ -449,28 +428,27 @@ export default function Community({ lang = "es", onAccess }) {
                 </div>
               ))}
             </div>
+            <div className="ic-public-upgrade"><InnerCircleValue lang={lang}/></div>
             {view === "gate" && (
               <div className="ic-gate">
                 <div className="ic-access-label">{tx.gateLabel}</div>
                 <div className="ic-input-row">
-                  <input className="ic-email-input" type="email" placeholder={tx.gatePlaceholder}
-                    value={email} onChange={e => { setEmail(e.target.value); setGateMsg(""); setNotFound(false); }}
+                  <input className="ic-email-input" aria-label={lang === "es" ? "Email de miembro" : "Member email"} type="email" placeholder={tx.gatePlaceholder}
+                    value={email} onChange={e => { setEmail(e.target.value); setGateMsg(""); }}
                     onKeyDown={e => e.key==="Enter" && checkAccess()} autoComplete="email"/>
                 </div>
                 <div className="ic-input-row" style={{marginTop:"10px"}}>
-                  <input className="ic-email-input" type="password" placeholder={tx.passwordPlaceholder}
-                    value={password} onChange={e => { setPassword(e.target.value); setGateMsg(""); setNotFound(false); }}
+                  <input className="ic-email-input" aria-label={lang === "es" ? "Contraseña" : "Password"} type="password" placeholder={tx.passwordPlaceholder}
+                    value={password} onChange={e => { setPassword(e.target.value); setGateMsg(""); }}
                     onKeyDown={e => e.key==="Enter" && checkAccess()} autoComplete="current-password"/>
                   <button className="ic-check-btn" onClick={checkAccess} disabled={checking}>
                     {checking ? "..." : tx.gateBtn}
                   </button>
                 </div>
                 {gateMsg && <div className="ic-gate-msg">{gateMsg}</div>}
-                {notFound && (
-                  <button className="ic-apply-link" onClick={() => setShowApply(true)}>
+                {<button className="ic-apply-link" onClick={() => setShowApply(true)}>
                     {tx.applyLink}
-                  </button>
-                )}
+                  </button>}
               </div>
             )}
             {view === "landing" && (
