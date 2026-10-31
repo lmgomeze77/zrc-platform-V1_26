@@ -6,7 +6,7 @@ export default function MonthlyEdition() {
   return <section id="ic-edition" className="ic-divider">
     <span className="ic-kicker">EDICIÓN {edition.edition} / {edition.month}</span>
     <h2>{edition.title}</h2><p className="ic-lead">{edition.subtitle}</p>
-    <p className="ic-small">Corte de información: {edition.cutoff} · {edition.status}</p>
+    <p className="ic-small">Corte de información: {edition.cutoff}</p>
     <div className="ic-tabs" role="tablist" aria-label="Lecturas de la edición">
       {[['editorial','Nota editorial'],['monthly','Comentario mensual'],['sources','Fuentes y método']].map(([id,label])=><button key={id} role="tab" id={`ic-edition-tab-${id}`} aria-selected={view===id} aria-controls={`ic-edition-panel-${id}`} className="ic-button ic-button-quiet" onClick={()=>setView(id)}>{label}</button>)}
     </div>
@@ -21,7 +21,7 @@ export default function MonthlyEdition() {
       </>}
       {view==='sources' && <><h3>Fuentes primarias y límites</h3><p>Consulta: {edition.cutoff}. Los enlaces respaldan los hechos y previsiones del bloque de evidencia. Las implicaciones empresariales y escenarios son elaboración editorial propia; no conclusiones atribuidas a estos organismos.</p>
         {edition.sources.map(s=><div className="ic-edition-fact" key={s.id}><span className="ic-kicker">{s.id} · {s.publisher}</span><p><a href={s.url} target="_blank" rel="noopener noreferrer">{s.title} ↗</a></p><p className="ic-small">Publicado: {s.published}. {s.observation}.</p></div>)}
-        <p>No se han estimado probabilidades de escenario, retornos de activos ni puntuaciones de riesgo país. No se han equiparado tipos oficiales con costes de financiación empresarial. La nota no evalúa cambios legales concretos ni sustituye la diligencia jurídica, fiscal o técnica de una operación.</p><p>Edición preparada para revisión antes de difusión. No se ha programado ni enviado por correo. Las ediciones se conservan con su fecha de corte y no se actualizan silenciosamente con datos posteriores.</p>
+        <p>No se han estimado probabilidades de escenario, retornos de activos ni puntuaciones de riesgo país. No se han equiparado tipos oficiales con costes de financiación empresarial. La nota no evalúa cambios legales concretos ni sustituye la diligencia jurídica, fiscal o técnica de una operación.</p><p>Las ediciones se conservan con su fecha de corte para permitir el seguimiento de la tesis y la comparación con publicaciones posteriores.</p>
       </>}
     </article>
   </section>;

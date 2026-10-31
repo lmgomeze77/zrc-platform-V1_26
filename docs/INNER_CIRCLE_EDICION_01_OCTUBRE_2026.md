@@ -1,10 +1,10 @@
 # ZRC Inner Circle · Edición 01
 
-**Octubre de 2026 · Preparada para revisión editorial**
+**Octubre de 2026**
 
 Corte de información y consulta de fuentes: 31 de octubre de 2026.
 
-Autoría propuesta: Luis Miguel Gómez Elvira · Founder & Managing Partner, Zenith Rise Capital
+Autor: Luis Miguel Gómez Elvira · Founder & Managing Partner, Zenith Rise Capital
 
 ## Nota editorial
 
@@ -107,7 +107,7 @@ Reduciríamos la cautela de esta tesis si observáramos una mejora sostenida y c
 
 ### Seguimiento
 
-Revisión propuesta para el cierre de noviembre de 2026; no es un envío programado. Contrastar nuevas publicaciones oficiales, ofertas reales de financiación y evidencia operativa de cada proyecto. Esta primera edición establece una línea de base; todavía no existe una comparación con una edición anterior.
+En la próxima revisión contrastaremos nuevas publicaciones oficiales, ofertas reales de financiación y evidencia operativa de cada proyecto. Esta primera edición establece una línea de base; todavía no existe una comparación con una edición anterior.
 
 ## Fuentes primarias y método
 
@@ -133,6 +133,6 @@ Todas las fuentes se consultaron el 31 de octubre de 2026. Las previsiones conse
 
 [La Junta Directiva decidió mantener la tasa de interés de política en 12,25 %](https://www.banrep.gov.co/es/noticias/junta-directiva/junta-directiva-octubre-2026). Publicado: 30 de octubre de 2026. Alcance: Decisión de octubre e inflación observada en septiembre de 2026.
 
-## Límites y estado editorial
+## Límites del análisis
 
-Preparada para revisión antes de difusión. No enviada ni programada. No incluye previsiones propias de rentabilidad, puntuaciones de riesgo país ni evaluación jurídica de cambios normativos. Los escenarios son condicionales y no tienen probabilidades asignadas. Contenido informativo; no constituye oferta de inversión ni asesoramiento personalizado.
+No incluye previsiones propias de rentabilidad, puntuaciones de riesgo país ni evaluación jurídica de cambios normativos. Los escenarios son condicionales y no tienen probabilidades asignadas. Contenido informativo; no constituye oferta de inversión ni asesoramiento personalizado.
