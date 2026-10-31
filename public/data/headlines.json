@@ -9,8 +9,8 @@
     },
     {
       "symbol": "IBEX 35",
-      "value": "18,738.95",
-      "change": "-0.63%",
+      "value": "18,652.90",
+      "change": "-1.09%",
       "up": false
     },
     {
@@ -28,14 +28,14 @@
     {
       "symbol": "GOLD (XAU/USD)",
       "value": "3,875.42",
-      "change": "-3.62%",
+      "change": "-3.29%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "77,374.45",
-      "change": "+0.30%",
-      "up": true
+      "value": "77,177.03",
+      "change": "-0.90%",
+      "up": false
     },
     {
       "symbol": "VIX",
@@ -45,7 +45,7 @@
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "4.933%",
+      "value": "4.93%",
       "change": "-0.56%",
       "up": false
     },
@@ -63,26 +63,26 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8344",
+      "value": "0.8332",
       "change": "-0.30%",
       "up": false
     },
     {
       "symbol": "DXY Dollar Index",
-      "value": "101.964",
+      "value": "101.96",
       "change": "-0.07%",
       "up": false
     },
     {
       "symbol": "Natural Gas",
-      "value": "2.898",
-      "change": "-1.83%",
+      "value": "2.883",
+      "change": "-2.34%",
       "up": false
     },
     {
       "symbol": "Copper",
-      "value": "6.4820",
-      "change": "-1.83%",
+      "value": "6.4585",
+      "change": "-1.86%",
       "up": false
     },
     {
@@ -382,5 +382,5 @@
       "time": "20h"
     }
   ],
-  "market_updated_at": "2026-10-31T18:00:00.453Z"
+  "market_updated_at": "2026-10-31T21:00:21.765Z"
 }
