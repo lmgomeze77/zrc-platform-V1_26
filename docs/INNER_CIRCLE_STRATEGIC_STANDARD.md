@@ -14,7 +14,13 @@ Cada análisis identifica:
 
 No convertir capacidad en intención, intención en decisión ni decisión anunciada en ejecución consumada. No asignar probabilidades, fechas de ruptura, precios objetivo ni puntuaciones calibradas sin evidencia y método suficientes. Los horizontes de 30–90 días organizan la observación y no predicen fechas de conflicto. No describir como adoptada una medida simplemente contemplada en un escenario.
 
-La edición de octubre de 2026 incorpora una revisión estratégica de Ormuz/rutas alternativas, revisión del T-MEC, sanciones y choque simultáneo de suministro/caja/crédito. Se apoya en los cinco documentos originales y cuatro fuentes primarias adicionales: IEA OMR 14 octubre, comentario IEA 21 octubre, USTR/Federal Register 5 octubre y Consejo de la UE 8 junio. Las cifras de inventarios son de septiembre publicadas en octubre, y no mediciones al 31 de octubre. El proceso de revisión anual del T-MEC no se presenta como terminación en 2027.
+La edición de octubre de 2026 concentra el cuerpo central en cuatro fricciones globales: insumos críticos y dependencia industrial China–UE; autorizaciones tecnológicas y usuario final; cables y continuidad digital entre Báltico, Atlántico y Mediterráneo; y acceso europeo condicionado por datos y CBAM. Ormuz y T-MEC quedan como referencias secundarias de contraste, no como eje del reportaje.
+
+Cada fricción incorpora una prueba hipotética de comité. Tres escenarios propios cruzan dependencias: insumo compartido más autorización; pérdida digital más documentación/cobro; y desescalada política con recuperación operativa lenta. Se diferencian de eventos observados y de recomendaciones sobre una operación identificada.
+
+Las fuentes nuevas incluyen documentos primarios de la Comisión Europea, BIS y HaDEA. Una actualización adoptada no se presenta automáticamente como norma ya vigente; se distingue la fecha del anuncio del trámite de entrada en vigor. Los documentos CBAM diferencian el régimen de 2026 de la declaración anual desde 2027. Se identifica el ámbito por producto y no se generalizan obligaciones a todos los sectores. No se proyecta al presente una antigua fecha de suspensión de controles de exportación ni se atribuye sabotaje a un Estado a partir de una interrupción no atribuida.
+
+La selección editorial busca dependencias compartidas, efectos de segundo orden y tiempo de recuperación. Añadir países o resumir más titulares no sustituye esa reconstrucción. La pregunta final es qué evidencia puede cambiar una decisión de inversión.
 
 La agenda utiliza las mismas dependencias y fuentes del reportaje. Las oportunidades seleccionadas se contrastan contra ellas; la pertenencia al círculo no acredita exclusividad, vigencia ni idoneidad de una operación.
 

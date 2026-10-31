@@ -1,62 +1,82 @@
 [
   {
-    "id": "hormuz",
-    "sourceId": "S7",
+    "id": "materials",
+    "sourceId": "S10",
     "topic": {
-      "es": "Ormuz · coerción y rutas alternativas",
-      "en": "Hormuz · coercion and alternative routes"
+      "es": "China–UE · origen industrial compartido",
+      "en": "China–EU · shared industrial origin"
     },
     "question": {
-      "es": "¿La alternativa sigue dependiendo del mismo punto vulnerable?",
-      "en": "Does the alternative still depend on the same vulnerable point?"
+      "es": "¿Los proveedores alternativos dependen del mismo insumo o procesador?",
+      "en": "Do alternative suppliers depend on the same input or processor?"
     },
     "focus": {
-      "es": "Tránsito efectivo, infraestructura de desvío, cobertura y capacidad de contratar transporte.",
-      "en": "Completed transit, bypass infrastructure, cover and the ability to book transport."
+      "es": "Origen de componentes críticos, homologación y entrega verificable.",
+      "en": "Critical component origin, qualification and verifiable delivery."
     },
     "next": {
-      "es": "Contrastar entregas y condiciones de seguro; elevar la preocupación si se deterioran simultáneamente ruta principal y desvíos.",
-      "en": "Check deliveries and insurance terms; raise concern if the main route and bypasses deteriorate together."
+      "es": "Solicitar un mapa de dependencias más allá del proveedor directo y comparar sustitución con autonomía operativa.",
+      "en": "Request a dependency map beyond the direct supplier and compare substitution with operating endurance."
     }
   },
   {
-    "id": "mexico",
-    "sourceId": "S8",
+    "id": "technology",
+    "sourceId": "S13",
     "topic": {
-      "es": "T-MEC · acceso comercial y presión política",
-      "en": "USMCA · trade access and political pressure"
+      "es": "Tecnología · autorización y usuario final",
+      "en": "Technology · authorisation and end user"
     },
     "question": {
-      "es": "¿Qué parte del retorno depende de una preferencia que no controla la empresa?",
-      "en": "How much return depends on a preference outside the company’s control?"
+      "es": "¿Qué parte de las ventas exige una condición todavía no resuelta?",
+      "en": "Which sales require a condition not yet resolved?"
     },
     "focus": {
-      "es": "Revisión anual de 2027, medidas publicadas aplicables al producto, reglas de origen y contratos.",
-      "en": "The 2027 annual review, published product-applicable measures, origin rules and contracts."
+      "es": "Clasificación, destino, permisos, repuestos y soporte.",
+      "en": "Classification, destination, permissions, spare parts and support."
     },
     "next": {
-      "es": "Separar productividad de ventaja regulatoria y definir el cambio que obligaría a renegociar o detener el desembolso.",
-      "en": "Separate productivity from regulatory advantage and define the change requiring renegotiation or a halt to disbursement."
+      "es": "Contrastar norma vigente y responsabilidades antes de equiparar contrato firmado con ingreso ejecutable.",
+      "en": "Check the current rule and responsibilities before equating a signed contract with executable revenue."
     }
   },
   {
-    "id": "liquidity",
-    "sourceId": "S2",
+    "id": "digital",
+    "sourceId": "S15",
     "topic": {
-      "es": "Contagio · energía, cobros y financiación",
-      "en": "Spillovers · energy, collections and financing"
+      "es": "Europa · continuidad digital y reparación",
+      "en": "Europe · digital continuity and repair"
     },
     "question": {
-      "es": "¿Cuánta autonomía queda si el shock exige caja mientras el crédito se estrecha?",
-      "en": "How much endurance remains if the shock demands cash while credit tightens?"
+      "es": "¿El respaldo es independiente o comparte el mismo punto de fallo?",
+      "en": "Is backup independent or does it share the same failure point?"
     },
     "focus": {
-      "es": "Anticipos, plazos de cobro, suministro y líneas comprometidas realmente utilizables.",
-      "en": "Advance payments, collection periods, supply and genuinely usable committed facilities."
+      "es": "Rutas físicas, servicios críticos y recuperación probada.",
+      "en": "Physical routes, critical services and tested recovery."
     },
     "next": {
-      "es": "Estresar conjuntamente coste y calendario, identificar la semana de menor caja y contrastar quién financia el colchón.",
-      "en": "Stress costs and timing together, identify the lowest-cash week and verify who funds the buffer."
+      "es": "Ensayar pedido–entrega–factura–cobro con pérdida de la infraestructura principal, sin atribuir de antemano la causa.",
+      "en": "Rehearse order–delivery–invoice–collection with the main infrastructure lost, without prejudging the cause."
+    }
+  },
+  {
+    "id": "carbon",
+    "sourceId": "S16",
+    "topic": {
+      "es": "Acceso europeo · dato y carbono",
+      "en": "European access · data and carbon"
+    },
+    "question": {
+      "es": "¿El coste competitivo incluye el cumplimiento aplicable y datos utilizables?",
+      "en": "Does competitive cost include applicable compliance and usable data?"
+    },
+    "focus": {
+      "es": "Producto cubierto, responsabilidad del importador y calendario 2026–2027.",
+      "en": "In-scope product, importer responsibility and the 2026–2027 timetable."
+    },
+    "next": {
+      "es": "Comprobar alcance y condiciones del caso con especialistas y distinguir coste, declaración y adaptación.",
+      "en": "Check case-specific scope and conditions with specialists and distinguish cost, declaration and adaptation."
     }
   }
 ]
