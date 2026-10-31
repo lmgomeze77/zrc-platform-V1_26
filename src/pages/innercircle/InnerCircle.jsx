@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import InnerCircleValue from './InnerCircleValue';
+import MonthlyEdition from './MonthlyEdition';
 import './innerCircle.css';
 
 // Evergreen analytical cases. These are not live deals, verified market signals,
@@ -49,14 +50,15 @@ export default function InnerCircle({ onBack, useAuth }) {
   const toggle = i => setChecked(prev => prev.includes(i) ? prev.filter(x => x !== i) : [...prev, i]);
   return <main className="ic-desk">
     <header><div><span className="ic-kicker">ZENITH RISE CAPITAL</span><div style={{fontSize:20}}>The Inner Circle</div></div>
-      <nav aria-label="Secciones Inner Circle"><a href="#ic-dossiers">Dossiers</a><a href="#ic-case">Caso de decisión</a><a href="#ic-review">Mi revisión</a><a href="#ic-membership">Membresía</a></nav>
+      <nav aria-label="Secciones Inner Circle"><a href="#ic-edition">Edición del mes</a><a href="#ic-dossiers">Dossiers</a><a href="#ic-case">Caso de decisión</a><a href="#ic-review">Mi revisión</a><a href="#ic-membership">Membresía</a></nav>
       {onBack && <button className="ic-button ic-button-quiet" onClick={onBack}>← Volver a ZRC</button>}
     </header>
     <section><span className="ic-kicker">EL ESPACIO DE LOS MIEMBROS · CRITERIO COMPARTIDO</span>
       <h1>Una lectura más profunda.<br/><span style={{color:'var(--ic-gold)'}}>Una decisión mejor fundada.</span></h1>
-      <div className="ic-two"><div><p className="ic-lead">Geopolítica, empresa y capital, conectados a través de tesis que se pueden contrastar. Un espacio para preparar preguntas mejores y conversar con criterio.</p><div className="ic-actions"><a className="ic-button" href="#ic-dossiers">Explorar los dossiers →</a><a className="ic-button ic-button-quiet" href="#ic-review">Preparar mi revisión</a></div></div>
-      <aside className="ic-panel"><span className="ic-kicker">EN ESTA BIBLIOTECA</span><h3>De la hipótesis a la decisión</h3><p>Tres dossiers de trabajo, un caso numérico y una pauta de diligencia reutilizable.</p><p className="ic-small">Material metodológico ilustrativo. No representa una edición mensual reciente, operaciones disponibles ni señales verificadas en tiempo real.</p></aside></div>
+      <div className="ic-two"><div><p className="ic-lead">Geopolítica, empresa y capital, conectados a través de tesis que se pueden contrastar. Un espacio para preparar preguntas mejores y conversar con criterio.</p><div className="ic-actions"><a className="ic-button" href="#ic-edition">Leer la edición del mes →</a><a className="ic-button ic-button-quiet" href="#ic-review">Preparar mi revisión</a></div></div>
+      <aside className="ic-panel"><span className="ic-kicker">EN ESTA BIBLIOTECA</span><h3>De la hipótesis a la decisión</h3><p>Una nota editorial, un comentario de octubre con cinco fuentes primarias y una biblioteca de marcos de decisión.</p><p className="ic-small">Edición de octubre preparada para revisión. Los dossiers de la biblioteca siguen siendo material metodológico ilustrativo; no son operaciones disponibles.</p></aside></div>
     </section>
+    <MonthlyEdition/>
     <section id="ic-dossiers" className="ic-divider"><span className="ic-kicker">01 / DOSSIERS DE TRABAJO</span><h2>La tesis también debe poder fallar.</h2><p>Cada dossier expone el mecanismo económico, la evidencia necesaria y las condiciones que cambiarían la conclusión.</p>
       <div className="ic-tabs" role="tablist" aria-label="Dossiers de análisis">{dossiers.map((d,i) => <button key={d.id} id={`ic-tab-${d.id}`} role="tab" aria-selected={selected === d.id} aria-controls={`ic-dossier-${d.id}`} className="ic-button ic-button-quiet" onClick={()=>setSelected(d.id)}>{String(i+1).padStart(2,'0')} · {d.title}</button>)}</div>
       <article role="tabpanel" id={`ic-dossier-${dossier.id}`} aria-labelledby={`ic-tab-${dossier.id}`} tabIndex={0} className="ic-panel" key={dossier.id}>

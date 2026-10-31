@@ -33,4 +33,8 @@ Antes de reemplazar un marco ilustrativo por una nota actual, verificar las fuen
 
 ## Validación de esta entrega
 
-Build de producción ejecutado. La previsualización del entorno devuelve un bloqueo de host de Vite para terminal.local: la inspección visual y las pruebas de interacción en móvil/iPad quedan pendientes. No se modificó la configuración de acceso ni la autenticación existente. La publicación de una nueva nota real y el envío mensual no forman parte de esta implementación.
+Build de producción ejecutado. La previsualización del entorno devuelve un bloqueo de host de Vite para terminal.local: la inspección visual y las pruebas de interacción en móvil/iPad quedan pendientes. No se modificó la configuración de acceso ni la autenticación existente. La edición 01 de octubre se ha incorporado como preparada para revisión, con nota editorial, comentario mensual y cinco fuentes primarias. El envío mensual no está programado.
+
+## Edición 01 · Octubre de 2026
+
+Fuente de contenido: src/data/innercircle/october2026.json. Vista: MonthlyEdition.jsx. Copia de lectura: docs/INNER_CIRCLE_EDICION_01_OCTUBRE_2026.md. Corte de consulta: 31 de octubre de 2026. Se distinguen decisiones y datos publicados, previsiones de organismos y juicio editorial ZRC. El estado de revisión debe cambiarse únicamente después de la aprobación editorial; no hay envío ni actualización automática.

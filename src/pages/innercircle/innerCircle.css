@@ -28,3 +28,5 @@
 @media print{.ic-desk header,.ic-desk nav,.ic-desk .ic-actions{display:none}.ic-desk{background:white;color:#111}.ic-desk p,.ic-desk td{color:#333}.ic-desk section{break-inside:avoid}.ic-desk .ic-panel{background:white}}
 
 .ic-value-compact .ic-value-grid{grid-template-columns:1fr}.ic-value-compact .ic-value-grid article{padding:18px}.ic-value-compact h3{font-size:21px}
+
+.ic-desk .ic-edition-reading{max-width:900px}.ic-desk .ic-edition-reading p{line-height:1.9;max-width:760px;margin:18px 0}.ic-desk .ic-edition-reading h3{margin-top:36px}.ic-desk .ic-edition-reading a{color:var(--ic-gold);text-underline-offset:3px}.ic-desk .ic-edition-fact{padding:20px 0;border-bottom:1px solid var(--ic-line);margin-bottom:20px}.ic-desk .ic-edition-signature{border-top:1px solid var(--ic-line);padding-top:22px;color:var(--ic-ink);font-size:13px}.ic-desk .ic-edition-reading li{color:var(--ic-muted);margin:12px 0;line-height:1.7}
