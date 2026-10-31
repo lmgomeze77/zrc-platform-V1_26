@@ -39,7 +39,7 @@ const labelStyle = {
 };
 
 export default function InnerCircleAccess({ onBack, onApproved }) {
-  const [mode, setMode]         = useState("check");
+  const [mode, setMode]         = useState("overview");
   const [email, setEmail]       = useState(() => localStorage.getItem(IC_EMAIL_KEY) || "");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw]     = useState(false);
@@ -88,7 +88,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
   async function handleRequest(e) {
     e.preventDefault();
     if (!email.trim() || !name.trim() || !profile) return;
-    setLoading(true);
+    setLoading(true); setMessage("");
 
     const cleanEmail = email.trim().toLowerCase();
 
@@ -130,6 +130,25 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
     maxWidth:460, width:"100%", textAlign:"center",
   };
 
+  if (mode === "overview") return (
+    <main className="ic-desk ic-entry">
+      <header><div><span className="ic-kicker">ZENITH RISE CAPITAL</span><div style={{fontSize:20}}>The Inner Circle</div></div>{onBack && <button className="ic-button ic-button-quiet" onClick={onBack}>← Volver a ZRC</button>}</header>
+      <section>
+        <span className="ic-kicker">DESCUBRE LA MEMBRESÍA · SIN INICIAR SESIÓN</span>
+        <h1>Decisiones internacionales.<br/><span style={{color:"var(--ic-gold)"}}>Más contexto. Un siguiente paso.</span></h1>
+        <p className="ic-lead">Para empresarios, inversores y asesores que preparan una expansión, adquisición o financiación entre España y América Latina.</p>
+        <div className="ic-actions"><button className="ic-button" onClick={()=>{setMode("request");setMessage("");}}>Solicitar membresía gratuita →</button><button className="ic-button ic-button-quiet" onClick={()=>{setMode("check");setMessage("");}}>Ya soy miembro · Iniciar sesión</button></div>
+        <p className="ic-small">La presentación y la muestra son públicas. El área completa requiere una solicitud aprobada y las credenciales de acceso de Inner Circle.</p>
+        <InnerCircleValue/>
+        <div className="ic-panel" style={{marginTop:32}}><span className="ic-kicker">EN LA EDICIÓN DE OCTUBRE DE 2026</span><h2>La resiliencia tiene un coste</h2><p>Un informe sobre caja, energía y financiación, con fichas de México y Colombia, escenarios condicionales y una pauta para comité. Incluye cinco fuentes primarias y conserva el corte de información del 31 de octubre.</p><p className="ic-small">Aquí puedes valorar el enfoque; el comentario completo y la ficha personal están en el área de miembros.</p></div>
+        <h2>Cómo funciona el acceso</h2>
+        <div className="ic-three"><article className="ic-panel"><span className="ic-kicker">01 · SOLICITUD</span><h3>Presenta tu perfil</h3><p>Nombre, email y actividad profesional. Explica qué tipo de decisión te interesa preparar.</p></article><article className="ic-panel"><span className="ic-kicker">02 · REVISIÓN</span><h3>Admisión manual</h3><p>El equipo revisa la solicitud. Enviarla no activa el acceso ni inicia una suscripción de pago.</p></article><article className="ic-panel"><span className="ic-kicker">03 · ACCESO</span><h3>Entra con tus credenciales</h3><p>Tras la aprobación, utiliza el email y la contraseña de Inner Circle. Una cuenta gratuita de la plataforma no implica admisión en el círculo.</p></article></div>
+        <details><summary>¿Qué incluye y qué se contrata aparte?</summary><p>La membresía incluye la edición mensual, los dossiers metodológicos y la ficha de decisión personal. Los planes Intelligence e Institutional y los encargos de Advisory tienen condiciones separadas. No se garantiza acceso a operaciones, presentaciones a inversores ni encuentros.</p></details>
+        <details><summary>¿Dónde se guarda mi ficha?</summary><p>En el navegador donde trabajas, con opción de descarga. Actualmente no se sincroniza entre dispositivos y la fecha de revisión no genera avisos.</p></details>
+      </section>
+    </main>
+  );
+
   // ── SUBMITTED STATE ───────────────────────────────────────────
   if (submitted) return (
     <div style={containerStyle}>
@@ -157,7 +176,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
           <p style={{ fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(10px,2.5vw,11px)", letterSpacing:"0.45em", color:"rgba(184,152,42,0.75)", marginBottom:20 }}>ZRC INNER CIRCLE</p>
           <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:"clamp(26px,6.5vw,32px)", fontStyle:"italic", color:"#E8E0CC", marginBottom:14 }}>Solicitar acceso</h2>
           <p style={{ fontFamily:"'Cormorant',serif", fontSize:"clamp(15px,4vw,16px)", color:"rgba(232,224,204,0.65)", lineHeight:1.75 }}>
-            La membresía es gratuita y requiere aprobación manual.<br/>Completa tu perfil para que podamos evaluar tu solicitud.
+            La membresía es gratuita y requiere aprobación manual.<br/>Enviar el formulario no activa una suscripción de pago.
           </p>
         </div>
         <form onSubmit={handleRequest} style={{ display:"flex", flexDirection:"column", gap:24 }}>
@@ -197,7 +216,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
           </p>
         </form>
         <div style={{ textAlign:"center", marginTop:24 }}>
-          <button onClick={() => { setMode("check"); setMessage(""); }} style={{ background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(10px,2.5vw,11px)", letterSpacing:"0.3em", color:"rgba(232,224,204,0.5)", cursor:"pointer" }}>← VOLVER</button>
+          <button onClick={() => { setMode("overview"); setMessage(""); }} style={{ background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(10px,2.5vw,11px)", letterSpacing:"0.3em", color:"rgba(232,224,204,0.5)", cursor:"pointer" }}>← VOLVER</button>
         </div>
       </div>
     </div>
@@ -209,8 +228,8 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
       <div style={cardStyle}>
         <p style={{ fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(10px,2.8vw,11px)", letterSpacing:"0.45em", color:"rgba(184,152,42,0.8)", marginBottom:32 }}>ZRC CONFIDENCIAL</p>
         <h2 style={{ fontFamily:"'Playfair Display',serif", fontSize:"clamp(32px,9vw,42px)", fontStyle:"italic", color:"#E8E0CC", marginBottom:12, fontWeight:400 }}>The Inner Circle</h2>
-        <p style={{ fontFamily:"'Cormorant',serif", fontSize:"clamp(16px,4.5vw,18px)", fontStyle:"italic", color:"rgba(232,224,204,0.65)", marginBottom:52, lineHeight:1.75 }}>
-          Geopolítica, empresa y capital. Membresía gratuita con admisión manual.
+        <p style={{ fontFamily:"Outfit,sans-serif", fontSize:16, color:"rgba(232,224,204,0.75)", marginBottom:32, lineHeight:1.75 }}>
+          Acceso para miembros aprobados. Utiliza tus credenciales de Inner Circle.
         </p>
         <form onSubmit={handleCheck} style={{ display:"flex", flexDirection:"column", gap:20 }}>
           <input type="email" required value={email} onChange={e=>setEmail(e.target.value)}
@@ -251,7 +270,8 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
             Solicitar membresía →
           </button>
         </div>
-        <div style={{marginTop:36,textAlign:"left"}}><InnerCircleValue compact/></div>
+        <p style={{fontFamily:"Outfit,sans-serif",fontSize:13,marginTop:24}}><a style={{color:G}} href="mailto:luis@zenithrisecapital.com?subject=Inner%20Circle%20-%20Ayuda%20de%20acceso">¿Necesitas ayuda con tus credenciales?</a></p>
+        <button type="button" onClick={()=>{setMode("overview");setMessage("");}} style={{marginTop:28,color:G,background:"transparent",border:"none",cursor:"pointer",fontFamily:"Outfit,sans-serif",fontSize:14}}>← Ver qué incluye la membresía</button>
         {onBack && <button onClick={onBack} style={{ marginTop:28, background:"none", border:"none", fontFamily:"'IBM Plex Mono',monospace", fontSize:"clamp(11px,2.8vw,13px)", letterSpacing:"0.3em", color:"rgba(232,224,204,0.85)", cursor:"pointer" }}>← VOLVER</button>}
       </div>
     </div>

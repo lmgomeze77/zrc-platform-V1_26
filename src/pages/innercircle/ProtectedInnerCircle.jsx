@@ -25,20 +25,22 @@ export default function ProtectedInnerCircle({ onBack, onUnauthorized, useAuth }
         }
       })
       .catch(() => {
-        // On network error fall back to cached token rather than locking out
-        const cached = localStorage.getItem("zrc-inner-circle-access") === "true";
-        setAllowed(cached);
+        // A browser flag cannot establish membership when verification fails.
+        localStorage.removeItem("zrc-inner-circle-access");
+        setAllowed(false);
       });
   }, []);
 
-  if (allowed === null) return null;
-
-  if (!allowed) {
+  useEffect(() => {
+    if (allowed !== false) return;
     localStorage.removeItem("zrc-inner-circle-access");
     const redirect = onUnauthorized || onBack;
     if (redirect) redirect();
-    return null;
-  }
+  }, [allowed, onUnauthorized, onBack]);
+
+  if (allowed === null) return <p role="status" style={{padding:32,color:"#E8E0CC"}}>Comprobando acceso…</p>;
+
+  if (!allowed) return null;
 
   return <InnerCircle onBack={onBack} useAuth={useAuth} />;
 }

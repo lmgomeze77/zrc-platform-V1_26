@@ -1925,6 +1925,9 @@ const ZRCPlatform = () => {
     openOverlay(page, "#inner-circle");
   };
   const closeInnerCircle = () => closeOverlay(() => setIcPage(null));
+  useEffect(() => {
+    if (icPage) document.querySelector("[data-ic-overlay]")?.focus();
+  }, [icPage]);
 
   const openWorldMap = () => {
     loadGeoRiskWorldMap();
@@ -2107,10 +2110,7 @@ const ZRCPlatform = () => {
       `}</style>
 
       {icPage === "inner-circle" && (
-        <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
-          <button onClick={closeInnerCircle} className="zrc-ic-home" aria-label={lang === "es" ? "Volver al inicio" : "Back to home"}>
-            ← ZRC · {lang === "es" ? "Inicio" : "Home"}
-          </button>
+        <div data-ic-overlay role="dialog" aria-modal="true" aria-label="Inner Circle" tabIndex={-1} onKeyDown={e=>{if(e.key==="Escape") closeInnerCircle();}} style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
           <InnerCircleAccess
             onBack={closeInnerCircle}
             onApproved={() => {
@@ -2121,7 +2121,7 @@ const ZRCPlatform = () => {
         </div>
       )}
       {icPage === "inner-circle-private" && (
-        <div style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
+        <div data-ic-overlay role="dialog" aria-modal="true" aria-label="Inner Circle" tabIndex={-1} onKeyDown={e=>{if(e.key==="Escape") closeInnerCircle();}} style={{ position:"fixed", inset:0, zIndex:9000, overflow:"auto", background:"#09090B" }}>
           <ProtectedInnerCircle
             onBack={closeInnerCircle}
             onUnauthorized={() => openInnerCircle("inner-circle")}
@@ -2129,6 +2129,7 @@ const ZRCPlatform = () => {
           />
         </div>
       )}
+      <div inert={icPage ? "" : undefined} aria-hidden={icPage ? true : undefined}>
       <Nav lang={lang} setLang={setLang} onNav={onNav} />
       <MarketTicker lang={lang} />
       <Hero lang={lang} onNav={onNav} />
@@ -2205,9 +2206,10 @@ const ZRCPlatform = () => {
       <GoldDivider />
 
 
-      <Community lang={lang} onAccess={() => openInnerCircle("inner-circle-private")} />
+      <Community lang={lang} onExplore={() => openInnerCircle("inner-circle")} />
       <Footer lang={lang} />
       <ZenithAssistant lang={lang} onNav={onNav} hidden={!!icPage} />
+      </div>
 
       {showWorldMap && (
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>

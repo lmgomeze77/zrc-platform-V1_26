@@ -42,3 +42,7 @@
 
 
 .ic-desk .ic-field{display:block;width:100%;min-height:44px;margin-top:8px;padding:11px 12px;background:#0a1220;border:1px solid var(--ic-line);border-radius:8px;color:var(--ic-ink);font:16px/1.5 Outfit,sans-serif}.ic-desk textarea.ic-field{resize:vertical}.ic-desk .ic-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.ic-desk .ic-cash-results{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--ic-line);border-bottom:1px solid var(--ic-line)}.ic-desk .ic-cash-results h3{font-family:Outfit,sans-serif;font-variant-numeric:tabular-nums;font-size:28px;color:var(--ic-gold);margin:8px 0}.ic-desk #ic-decision a{color:var(--ic-gold)}@media(max-width:600px){.ic-desk .ic-form-grid,.ic-desk .ic-cash-results{grid-template-columns:1fr}}
+
+.ic-community-intro .ic-community-content{max-width:1100px;margin:auto;padding:64px 28px}.ic-entry section{padding-top:44px}.ic-entry .ic-value{margin-top:36px}@media(max-width:600px){.ic-community-intro .ic-community-content{padding:40px 20px}}
+
+.ic-entry h1{font-size:clamp(32px,4vw,50px);max-width:1000px}.ic-entry header{padding-left:clamp(20px,4vw,56px)}

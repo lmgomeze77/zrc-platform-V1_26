@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import EditorialPhoto from './EditorialPhoto';
 import './innerCircle.css';
 
 // Shared public proposition: membership and platform subscriptions remain separate.
 export default function InnerCircleValue({ lang = 'es', compact = false }) {
+  const sampleId = useId();
   const [sample, setSample] = useState(false);
   const es = lang === 'es';
   const benefits = es ? [
@@ -19,8 +20,8 @@ export default function InnerCircleValue({ lang = 'es', compact = false }) {
     {!compact && <EditorialPhoto subject="trade" variant="ic-photo-membership"/>}
     <div className="ic-value-heading"><span className="ic-kicker">{es ? 'QUÉ APORTA LA MEMBRESÍA' : 'THE MEMBERSHIP VALUE'}</span><span className="ic-badge">{es ? 'Gratuita · admisión manual' : 'Free · reviewed admission'}</span></div>
     <div className="ic-value-grid">{benefits.map(([n,title,body]) => <article key={n}><span className="ic-kicker">{n}</span><h3>{title}</h3><p>{body}</p></article>)}</div>
-    <button type="button" className="ic-button ic-button-quiet" aria-expanded={sample} aria-controls={`ic-sample-${compact ? 'compact' : 'full'}`} onClick={() => setSample(!sample)}>{sample ? (es ? 'Cerrar muestra −' : 'Close sample −') : (es ? 'Ver un ejemplo de lo que te llevas →' : 'See an example of your output →')}</button>
-    <div id={`ic-sample-${compact ? 'compact' : 'full'}`} hidden={!sample} className="ic-sample">
+    <button type="button" className="ic-button ic-button-quiet" aria-expanded={sample} aria-controls={`ic-sample-${sampleId}`} onClick={() => setSample(!sample)}>{sample ? (es ? 'Cerrar muestra −' : 'Close sample −') : (es ? 'Ver un ejemplo de lo que te llevas →' : 'See an example of your output →')}</button>
+    <div id={`ic-sample-${sampleId}`} hidden={!sample} className="ic-sample">
       <span className="ic-kicker">{es ? 'MUESTRA ILUSTRATIVA · NO ES UNA SEÑAL ACTUAL' : 'ILLUSTRATIVE SAMPLE · NOT A CURRENT SIGNAL'}</span>
       <h3>{es ? 'Ejemplo: preparar la financiación de una filial en Colombia' : 'Example: preparing finance for a subsidiary in Colombia'}</h3>
       <p>{es ? 'Resultado: una ficha con la pregunta «¿La moneda y el vencimiento de la deuda encajan con los cobros?», tres evidencias por reunir y una acción para la siguiente reunión.' : 'Output: a brief asking whether debt currency and maturity match collections, three evidence checks and an action for your next meeting.'}</p>
