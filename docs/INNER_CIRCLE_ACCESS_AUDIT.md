@@ -19,3 +19,12 @@ Private responses use no-store. Previously public editions cannot be made secret
 Tests cover anonymous/email-only denial, correct password verification, signed cookie and bearer access, permitted CORS preflight, forged and expired sessions, membership revocation and sign out, along with Spanish/English rendering, public bundle exclusion and decision-brief export/calculations. Full sign-in using a real approved member remains an operational validation requiring that member’s credentials.
 
 Decision briefs save only in the current browser and can be exported; there is no account sync or reminder service.
+
+
+## Editorial navigation and opportunity requests
+
+The member home leads with the monthly feature and one cover image. The complete feature opens on request; the editorial letter and source notes are secondary tabs. The agenda, opportunities and tools are separate views, with a persistent navigation bar (native section selector on small screens). Worksheets and illustrative dossiers no longer precede editorial reading. The shared membership proposition no longer renders photography.
+
+The editorial agenda is a dated monitoring list tied to the edition’s primary sources, not a calendar of invented events. Four anonymised opportunity profiles are taken from the already published ADVISORY_MANDATES catalogue in src/App.jsx. Current availability and mandate exclusivity remain unconfirmed. No unverified prices, returns or confidential identities are added.
+
+POST /api/inner-circle/opportunity-interest requires a signed approved member session. It takes the identity from the server-verified session, validates the profile and opportunity ID, and records a traceable request in the existing leads store. An internal notification is attempted when Resend is configured; successful recording is independent of email delivery. No teaser, NDA or reservation is issued automatically. The interface explicitly distinguishes these profiles from illustrative library cases. Production request storage/notifications still require an authorised real-member submission; automated tests use mock storage and do not send emails.

@@ -3,17 +3,16 @@ import { useState } from 'react';
 import EditorialPhoto from './EditorialPhoto';
 import {useIcMemberContent} from './icLocale';
 
-export default function MonthlyEdition() {
+export default function MonthlyEdition({onDecision}) {
  const {edition}=useIcMemberContent();
-  const [view, setView] = useState('editorial');
+  const [view, setView] = useState('monthly');
   return <IcText><section id="ic-edition" className="ic-divider">
     <span className="ic-kicker">EDICIÓN {edition.edition} / {edition.month}</span>
-    <h2>{edition.title}</h2><p className="ic-lead">{edition.subtitle}</p>
-    {<div className="ic-actions"><a className="ic-button ic-button-quiet" href="#ic-decision">Contrastar esta lectura con mi decisión →</a></div>}
+    <h1 className="ic-report-title">{edition.title}</h1><p className="ic-lead">{edition.subtitle}</p>
+    {onDecision&&<div className="ic-actions"><button className="ic-button ic-button-quiet" onClick={onDecision}>Trabajar esta lectura en mi ficha →</button></div>}
     <p className="ic-small">Corte de información: {edition.cutoff}</p>
-    <EditorialPhoto subject="trade" variant="ic-photo-cover" />
     <div className="ic-tabs" role="tablist" aria-label="Lecturas de la edición">
-      {[['editorial', 'Nota editorial'], ['monthly', 'Comentario mensual'], ['sources', 'Fuentes y método']].map(([id, label]) => <button key={id} role="tab" id={`ic-edition-tab-${id}`} aria-selected={view === id} aria-controls={`ic-edition-panel-${id}`} className="ic-button ic-button-quiet" onClick={() => setView(id)}>{label}</button>)}
+      {[['editorial', 'Nota editorial'], ['monthly', 'Reportaje mensual'], ['sources', 'Fuentes y método']].map(([id, label]) => <button key={id} role="tab" id={`ic-edition-tab-${id}`} aria-selected={view === id} aria-controls={`ic-edition-panel-${id}`} className="ic-button ic-button-quiet" onClick={() => setView(id)}>{label}</button>)}
     </div>
     <article className="ic-panel ic-edition-reading" role="tabpanel" id={`ic-edition-panel-${view}`} aria-labelledby={`ic-edition-tab-${view}`} tabIndex={0}>
       {view === 'editorial' && <><span className="ic-kicker">CARTA DE APERTURA · CRITERIO EDITORIAL</span><h3>{edition.editorial.title}</h3>{edition.editorial.paragraphs.map((p) => <p key={p}>{p}</p>)}<p className="ic-edition-signature">{edition.author}</p><button className="ic-button" onClick={() => setView('monthly')}>Leer el comentario del mes →</button></>}

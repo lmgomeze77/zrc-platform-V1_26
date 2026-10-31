@@ -1,0 +1,106 @@
+[
+  {
+    "id": "agri",
+    "title": {
+      "es": "Empresa hortofrutícola",
+      "en": "Fruit and vegetable company"
+    },
+    "sector": {
+      "es": "Agroalimentación",
+      "en": "Agrifood"
+    },
+    "area": {
+      "es": "España · actividad exportadora",
+      "en": "Spain · export business"
+    },
+    "type": {
+      "es": "M&A y crecimiento",
+      "en": "M&A and growth"
+    },
+    "summary": {
+      "es": "Operador con actividad internacional. Perfil publicado por ZRC para explorar una operación corporativa o un encaje estratégico.",
+      "en": "Operator with international activity. Profile published by ZRC to explore a corporate transaction or strategic fit."
+    },
+    "source": "src/App.jsx · ADVISORY_MANDATES",
+    "availability": "confirmation_required",
+    "exclusivity": "unconfirmed"
+  },
+  {
+    "id": "restaurant",
+    "title": {
+      "es": "Restaurante emblemático en Madrid",
+      "en": "Landmark restaurant in Madrid"
+    },
+    "sector": {
+      "es": "Hostelería",
+      "en": "Hospitality"
+    },
+    "area": {
+      "es": "Comunidad de Madrid",
+      "en": "Madrid region"
+    },
+    "type": {
+      "es": "Transmisión y operador estratégico",
+      "en": "Business transfer and strategic operator"
+    },
+    "summary": {
+      "es": "Negocio de restauración consolidado. Información adicional sujeta a disponibilidad y condiciones de confidencialidad.",
+      "en": "Established restaurant business. Further information is subject to availability and confidentiality terms."
+    },
+    "source": "src/App.jsx · ADVISORY_MANDATES",
+    "availability": "confirmation_required",
+    "exclusivity": "unconfirmed"
+  },
+  {
+    "id": "asian",
+    "title": {
+      "es": "Participación minoritaria en restauración",
+      "en": "Minority stake in a restaurant business"
+    },
+    "sector": {
+      "es": "Restauración",
+      "en": "Restaurants"
+    },
+    "area": {
+      "es": "Madrid",
+      "en": "Madrid"
+    },
+    "type": {
+      "es": "Inversión minoritaria",
+      "en": "Minority investment"
+    },
+    "summary": {
+      "es": "Perfil de participación del 30% recogido en el catálogo ZRC. Estructura, condiciones y documentación a confirmar antes de valorar el encaje.",
+      "en": "A 30% stake profile listed in the ZRC catalogue. Structure, terms and documentation must be confirmed before assessing fit."
+    },
+    "source": "src/App.jsx · ADVISORY_MANDATES",
+    "availability": "confirmation_required",
+    "exclusivity": "unconfirmed"
+  },
+  {
+    "id": "saas",
+    "title": {
+      "es": "SaaS de optimización fiscal",
+      "en": "Tax optimisation SaaS"
+    },
+    "sector": {
+      "es": "Tecnología B2B · Legaltech",
+      "en": "B2B technology · Legaltech"
+    },
+    "area": {
+      "es": "España",
+      "en": "Spain"
+    },
+    "type": {
+      "es": "Captación de capital",
+      "en": "Capital raising"
+    },
+    "summary": {
+      "es": "Plataforma de automatización y cumplimiento fiscal para pymes y autónomos. Solicita contexto de la ronda y documentación disponible a ZRC.",
+      "en": "Tax automation and compliance platform for SMEs and self-employed professionals. Request round context and available documentation from ZRC."
+    },
+    "source": "src/App.jsx · ADVISORY_MANDATES",
+    "availability": "confirmation_required",
+    "exclusivity": "unconfirmed"
+  }
+]

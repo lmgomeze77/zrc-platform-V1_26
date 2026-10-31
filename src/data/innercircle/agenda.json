@@ -1,0 +1,62 @@
+[
+  {
+    "id": "mexico",
+    "sourceId": "S4",
+    "topic": {
+      "es": "México · expansión y capacidad local",
+      "en": "Mexico · expansion and local capacity"
+    },
+    "question": {
+      "es": "¿Qué debe estar acreditado antes de ampliar la inversión?",
+      "en": "What must be verified before increasing investment?"
+    },
+    "focus": {
+      "es": "Demanda contratada, permisos, suministros y capacidad del emplazamiento.",
+      "en": "Contracted demand, permits, utilities and site capacity."
+    },
+    "next": {
+      "es": "Contrastar los hitos del proyecto con evidencia local y condicionar el siguiente desembolso a su cumplimiento.",
+      "en": "Check project milestones against local evidence and make the next disbursement conditional on delivery."
+    }
+  },
+  {
+    "id": "colombia",
+    "sourceId": "S5",
+    "topic": {
+      "es": "Colombia · financiación y divisa",
+      "en": "Colombia · financing and currency"
+    },
+    "question": {
+      "es": "¿La financiación encaja con la moneda y el calendario de cobros?",
+      "en": "Does financing match collection currency and timing?"
+    },
+    "focus": {
+      "es": "Ofertas reales de deuda, coberturas, plazos de cobro y caja distribuible.",
+      "en": "Actual debt offers, hedges, collection periods and distributable cash."
+    },
+    "next": {
+      "es": "Comparar financiación en flujos equivalentes y revisar conjuntamente FX, circulante y servicio de deuda.",
+      "en": "Compare financing on equivalent cash flows and review FX, working capital and debt service together."
+    }
+  },
+  {
+    "id": "energy",
+    "sourceId": "S2",
+    "topic": {
+      "es": "Energía y logística · presión sobre caja",
+      "en": "Energy and logistics · cash pressure"
+    },
+    "question": {
+      "es": "¿Qué margen y qué caja sobreviven a costes más exigentes?",
+      "en": "Which margins and cash flows survive higher costs?"
+    },
+    "focus": {
+      "es": "Facturas, contratos, capacidad de repercutir costes y necesidad de inventario.",
+      "en": "Invoices, contracts, cost pass-through and inventory requirements."
+    },
+    "next": {
+      "es": "Actualizar el presupuesto del proyecto con costes efectivos y distinguir ahorro recurrente de liberación puntual de circulante.",
+      "en": "Update the project budget with actual costs and separate recurring savings from one-off working capital release."
+    }
+  }
+]

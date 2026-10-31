@@ -93,6 +93,9 @@ async function handleRequest(request, env, ctx) {
     if (url.pathname === "/api/inner-circle/check" && request.method === "GET")
       return handleInnerCircleCheck(request, env);
 
+    if (url.pathname === "/api/inner-circle/opportunity-interest" && request.method === "POST")
+      return handleInnerCircleOpportunityInterest(request,env);
+
     if (url.pathname === "/api/inner-circle/content" && request.method === "GET") {
       const email=await approvedInnerCircleSession(request,env);
       return email?icPrivateJson({status:"approved",content:innerCircleContent}):icPrivateJson({status:"denied"},401);
@@ -1267,6 +1270,28 @@ async function approvedInnerCircleSession(request,env) {
     const members=await response.json();return members?.[0]?.status==='approved'?email:null;
   }catch{return null;}
 }
+async function handleInnerCircleOpportunityInterest(request,env) {
+  if(!icSameOrigin(request))return icPrivateJson({error:"origin_not_allowed"},403);
+  const email=await approvedInnerCircleSession(request,env);
+  if(!email)return icPrivateJson({status:"denied"},401);
+  let payload;try{payload=await request.json();}catch{return icPrivateJson({error:"invalid_json"},400);}
+  const opportunity=innerCircleContent.opportunities.find(op=>op.id===payload.opportunityId);
+  if(!opportunity)return icPrivateJson({error:"unknown_opportunity"},404);
+  if(typeof payload.name!=="string"||!payload.name.trim()||payload.name.length>120||!['investor','operator','advisor'].includes(payload.profile)||typeof(payload.note??'')!=="string"||(payload.note||'').length>1200)
+    return icPrivateJson({error:"invalid_profile"},400);
+  const reference='IC-'+crypto.randomUUID().slice(0,8).toUpperCase();
+  const detail={reference,opportunityId:opportunity.id,name:payload.name.trim(),profile:payload.profile,note:(payload.note||'').trim()};
+  if(!env.DB)return icPrivateJson({error:"storage_unavailable"},503);
+  try{
+    await env.DB.prepare('INSERT INTO leads (email, sector, source, rc, parcela_json, country, user_agent, referer, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)')
+      .bind(email,opportunity.title.es,'inner-circle-opportunity',null,JSON.stringify(detail),request.cf?.country||'',(request.headers.get('User-Agent')||'').slice(0,500),(request.headers.get('Referer')||'').slice(0,500),new Date().toISOString()).run();
+  }catch{return icPrivateJson({error:"storage_failed"},500);}
+  if(env.RESEND_API_KEY){try{
+    await sendResendEmail(env,{from:'Zenith Rise Capital <noreply@zenithrisecapital.com>',to:env.NOTIFY_EMAIL||'luis@zenithrisecapital.com',subject:`Inner Circle · Solicitud ${reference} · ${opportunity.title.es}`,html:`<h2>Solicitud de teaser · Inner Circle</h2><p>${escapeHTML(reference)} · ${escapeHTML(opportunity.title.es)}</p><p>${escapeHTML(detail.name)} · ${escapeHTML(email)} · ${escapeHTML(detail.profile)}</p><p>${escapeHTML(detail.note)}</p><p>Confirmar vigencia, documentación y condiciones de confidencialidad antes de compartir información.</p>`});
+  }catch{console.error('Inner Circle request recorded; notification unavailable');}}
+  return icPrivateJson({ok:true,reference},201);
+}
+
 async function handleInnerCircleCheck(request,env) {
   const email=await approvedInnerCircleSession(request,env);
   return icPrivateJson({status:email?'approved':'denied'},email?200:401);
