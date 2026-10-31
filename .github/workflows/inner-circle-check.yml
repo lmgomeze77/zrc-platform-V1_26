@@ -1,0 +1,22 @@
+name: Inner Circle build and checks
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/inner-circle-*.test.js'
+      - '.github/workflows/inner-circle-check.yml'
+      - 'package*.json'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test scripts/inner-circle-*.test.js
+      - run: npm run build

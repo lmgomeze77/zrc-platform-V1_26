@@ -1,3 +1,4 @@
+import { IcLocaleProvider } from "./pages/innercircle/icLocale";
 import { useState, useEffect, useRef, useCallback, createContext, useContext, lazy, Suspense, Component } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
 import Observatory from "./pages/intelligence/Observatory";
@@ -1950,6 +1951,7 @@ const ZRCPlatform = () => {
 
   return (
     <AuthProvider lang={lang}>
+    <IcLocaleProvider lang={lang} onChange={setLang}>
       <style>{`
         * { box-sizing: border-box; }
         body { margin: 0; background: ${C.bg}; color: ${C.text}; }
@@ -2220,6 +2222,7 @@ const ZRCPlatform = () => {
           </GeoRiskMapErrorBoundary>
         </div>
       )}
+    </IcLocaleProvider>
     </AuthProvider>
   );
 };

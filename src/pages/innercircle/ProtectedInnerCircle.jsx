@@ -1,3 +1,4 @@
+import {IcText} from './icLocale';
 import { useEffect, useState } from "react";
 import InnerCircle from "./InnerCircle";
 
@@ -38,7 +39,7 @@ export default function ProtectedInnerCircle({ onBack, onUnauthorized, useAuth }
     if (redirect) redirect();
   }, [allowed, onUnauthorized, onBack]);
 
-  if (allowed === null) return <p role="status" style={{padding:32,color:"#E8E0CC"}}>Comprobando acceso…</p>;
+  if (allowed === null) return <IcText><p role="status" style={{padding:32,color:"#E8E0CC"}}>Comprobando acceso…</p></IcText>;
 
   if (!allowed) return null;
 
