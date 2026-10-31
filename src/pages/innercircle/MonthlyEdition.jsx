@@ -1,14 +1,15 @@
 import { IcText } from './icLocale';
 import { useState } from 'react';
 import EditorialPhoto from './EditorialPhoto';
-import edition from '../../data/innercircle/october2026.json';
+import {useIcMemberContent} from './icLocale';
 
-export default function MonthlyEdition({ publicView = false }) {
-  const [view, setView] = useState(publicView ? 'monthly' : 'editorial');
+export default function MonthlyEdition() {
+ const {edition}=useIcMemberContent();
+  const [view, setView] = useState('editorial');
   return <IcText><section id="ic-edition" className="ic-divider">
     <span className="ic-kicker">EDICIÓN {edition.edition} / {edition.month}</span>
     <h2>{edition.title}</h2><p className="ic-lead">{edition.subtitle}</p>
-    {!publicView && <div className="ic-actions"><a className="ic-button ic-button-quiet" href="#ic-decision">Contrastar esta lectura con mi decisión →</a></div>}
+    {<div className="ic-actions"><a className="ic-button ic-button-quiet" href="#ic-decision">Contrastar esta lectura con mi decisión →</a></div>}
     <p className="ic-small">Corte de información: {edition.cutoff}</p>
     <EditorialPhoto subject="trade" variant="ic-photo-cover" />
     <div className="ic-tabs" role="tablist" aria-label="Lecturas de la edición">

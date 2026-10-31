@@ -1,32 +1,21 @@
-# Inner Circle access and value audit · 31 October 2026
+# Inner Circle: public preview and approved-member workspace
 
-## Observed live
+The public page shows a concise contents preview, a sample decision brief and the application/sign-in actions. It does not contain the full monthly edition or dossiers. Membership is free during the introductory stage, with manual approval. There is no automatic conversion to payment or invented expiry date; any future price change requires prior notice and acceptance. Paid platform plans and Advisory remain separate.
 
-The public URL /#inner-circle opens a credential form before the benefits, sample or editorial proposition. The form offers application, but a visitor is first presented with a member sign-in task. The homepage also contains a separate sign-in implementation. The new editorial and decision-workspace experience is in PR 147, not the deployed public site at the time of inspection.
+Opening Inner Circle first checks for an active signed session. With a valid session and current approved status, the member enters the workspace directly. Visitors and expired sessions see the public preview; they can apply or sign in. The member workspace identifies approved access and provides Sign out, without an application sales pitch.
 
-## Refined journey
+## Authorization and delivery
 
-- Public: audience, tangible outputs, free/manual membership conditions, illustrative sample, edition outline and application process. No credentials required to understand the offer.
-- Applicant: direct application with editable email, professional profile and optional purpose. Submission does not activate a paid plan or grant access.
-- Approved member: explicit sign-in, full edition, dossiers and personal decision workspace. The member area stops selling membership to someone already admitted.
-- Paid subscriptions and Advisory remain separate and do not imply Inner Circle approval.
+Password verification still uses the existing Supabase RPC. Success issues a signed session valid for 24 hours, using an HMAC key derived from the existing server-only service credential. A stored email or approval flag is not authentication. The content endpoint verifies the signature and expiry and rechecks current membership approval before returning content. Rejected, expired and revoked sessions cannot retrieve it. The complete edition, dossiers and their English translations are no longer imported into browser assets.
 
-Removed the second homepage login implementation. Both routes use the same access component and API path. The overview has separate application and member-login actions, a return path and credential support link. Each sample uses a unique identifier. Overlay content is marked as a dialog; the underlying homepage is inert and hidden from assistive technology while it is open. Removed the duplicate fixed home button that overlapped the Inner Circle brand.
+The public custom domain does not serve the API. The browser therefore uses the existing Workers API origin and an Authorization bearer token, stored in the application origin’s local storage, to avoid depending on third-party cookies in Safari. CORS permits only the existing production origins and Authorization preflight. Browser-side script compromise would expose this token; no personal project material is sent in it. Cookies are additionally HttpOnly, Secure and SameSite=Lax when the API is accessed directly.
 
-## Access weaknesses verified in code
+Sign out clears the local token and API cookie. Signed tokens cannot be individually revoked before expiry; revoking membership denies subsequent content requests. Signing-key rotation invalidates all sessions. Existing members using the old browser flag must sign in once after this upgrade.
 
-1. The server previously accepted an approved membership row without a password hash. This revision denies that login; accounts lacking a configured password will require credential setup before sign-in. Valid password verification is preserved.
-2. The client previously admitted a cached boolean on verification/network error. This revision clears that flag and denies access on error. Redirect moved out of rendering into an effect.
-3. IMPORTANT REMAINING: the membership check still identifies a member by email rather than a server-authenticated session. Browser state is not proof of identity. This revision does not establish a secure session architecture.
-4. IMPORTANT REMAINING: editorial text and member components are shipped in the frontend bundle. A presentation gate does not make that content confidential. Sensitive files, mandates or member data require authenticated server delivery and authorization on each protected request before being placed here.
-5. The complete PDF was created as a separate deliverable; this PR has not introduced a protected PDF download endpoint.
-
-These findings were established by source inspection. No real member identity, password or bypass was used against production. No applications were submitted during QA.
+Private responses use no-store. Previously public editions cannot be made secret retroactively. The editorial material is informational; the workspace does not promise confidential transaction delivery. The separate PDF still has no member download endpoint.
 
 ## Validation
 
-Seven tests pass: public overview before credentials; refusal of passwordless approved account; successful/unsuccessful password RPC verification; four existing decision calculation and export tests. Production build passes. The built static site was served through managed preview, avoiding the Vite host limitation without changing application development-host permissions. Browser inspection verified public overview, sample expansion and application-form navigation. Full authenticated sign-in was not tested with a real account. Final narrow-device inspection remains pending if no responsive viewport control is available.
+Tests cover anonymous/email-only denial, correct password verification, signed cookie and bearer access, permitted CORS preflight, forged and expired sessions, membership revocation and sign out, along with Spanish/English rendering, public bundle exclusion and decision-brief export/calculations. Full sign-in using a real approved member remains an operational validation requiring that member’s credentials.
 
-## Publication
-
-Changes remain in PR 147. Do not represent the current membership gate as adequate protection for confidential data. Next technical milestone: authenticated server sessions, revocation, uniform protected endpoints and server delivery for restricted content.
+Decision briefs save only in the current browser and can be exported; there is no account sync or reminder service.

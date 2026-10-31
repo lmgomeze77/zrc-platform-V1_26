@@ -20,3 +20,4 @@ jobs:
       - run: npm ci
       - run: node --test scripts/inner-circle-*.test.js
       - run: npm run build
+      - run: npx wrangler deploy --dry-run --outdir /tmp/inner-circle-worker

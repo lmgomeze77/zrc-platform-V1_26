@@ -2,12 +2,13 @@ import {useIcLocale, translateIc} from './icLocale';
 import { IcText } from './icLocale';
 import { useState } from 'react';
 import { decisionTypes, countryQuestions, defaultDecision, normalizeDecision, cashSensitivity, buildDecisionMarkdown } from '../../data/innercircle/decisionDesk';
-import edition from '../../data/innercircle/october2026.json';
+import {useIcMemberContent} from './icLocale';
 const KEY = 'zrc-inner-circle-decision-v1';
 const money = (n) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
 function readSaved() {try {const value = JSON.parse(localStorage.getItem(KEY));return value?.version === 1 ? { decision: normalizeDecision(value.decision), savedAt: typeof value.savedAt === 'string' ? value.savedAt : '' } : null;} catch {return null;}}
 export default function DecisionDesk() {
  const {lang}=useIcLocale();
+ const {edition,translations}=useIcMemberContent();
   const [saved, setSaved] = useState(readSaved);
   const [decision, setDecision] = useState(() => saved?.decision || { ...defaultDecision });
   const [message, setMessage] = useState('');
@@ -17,10 +18,10 @@ export default function DecisionDesk() {
   const references = edition.sources.filter((s) => ['S1', 'S2', decision.country === 'MX' ? 'S4' : decision.country === 'CO' ? 'S5' : 'S3'].includes(s.id));
   const fact = edition.facts.find((f) => f.sources.includes(decision.country === 'MX' ? 'S4' : decision.country === 'CO' ? 'S5' : 'S2'));
   const save = () => {const entry = { version: 1, decision: normalizeDecision(decision), savedAt: new Date().toISOString() };try {localStorage.setItem(KEY, JSON.stringify(entry));setSaved(entry);setDirty(false);setMessage('Ficha guardada en este navegador.');} catch {setMessage('No se pudo guardar. Puedes descargar la ficha para conservarla.');}};
-  const download = () => {const text = buildDecisionMarkdown(decision, references, dirty ? '' : saved?.savedAt, lang, text=>translateIc(text,lang));const url = URL.createObjectURL(new Blob([text], { type: 'text/markdown;charset=utf-8' }));const link = document.createElement('a');link.href = url;link.download = 'ZRC_Inner_Circle_Mi_Decision.md';link.click();URL.revokeObjectURL(url);};
+  const download = () => {const text = buildDecisionMarkdown(decision, references, dirty ? '' : saved?.savedAt, lang, text=>translateIc(text,lang,translations));const url = URL.createObjectURL(new Blob([text], { type: 'text/markdown;charset=utf-8' }));const link = document.createElement('a');link.href = url;link.download = 'ZRC_Inner_Circle_Mi_Decision.md';link.click();URL.revokeObjectURL(url);};
   return <IcText><section id="ic-decision" className="ic-divider"><span className="ic-kicker">TU PRIMER RESULTADO / UNA FICHA PARA TU DECISIÓN</span><h2>¿Qué estás decidiendo?</h2><p>Selecciona la operación y el país. Obtendrás una pregunta prioritaria, evidencias que reunir y una ficha que puedes guardar y llevar a tu próxima reunión.</p>
     <div className="ic-two"><div className="ic-panel">
-      <label>Nombre de referencia<input className="ic-field" value={decision.name} maxLength={100} onChange={(e) => update('name', e.target.value)} placeholder="Ej. Entrada comercial en México" /></label>
+      <label>Nombre de referencia<input className="ic-field" value={decision.name===defaultDecision.name&&lang==='en'?'My decision':decision.name} maxLength={100} onChange={(e) => update('name', e.target.value)} placeholder="Ej. Entrada comercial en México" /></label>
       <div className="ic-form-grid"><label>Operación<select className="ic-field" value={decision.type} onChange={(e) => {setDecision((prev) => ({ ...prev, type: e.target.value, checked: [], nextStep: '' }));setDirty(true);setMessage('');}}>{Object.entries(decisionTypes).map(([id, p]) => <option key={id} value={id}>{p.title}</option>)}</select></label><label>País<select className="ic-field" value={decision.country} onChange={(e) => update('country', e.target.value)}><option value="MX">México</option><option value="CO">Colombia</option><option value="ES">España</option><option value="OTHER">Otra geografía</option></select></label></div>
       <label>Fecha de revisión<input className="ic-field" type="date" value={decision.reviewDate} onChange={(e) => update('reviewDate', e.target.value)} /></label>
       <h3>¿Cuánta caja está expuesta?</h3><p className="ic-small">Opcional. Introduce tus supuestos para dimensionar dos efectos distintos. Cero significa sin importe modelizado.</p>

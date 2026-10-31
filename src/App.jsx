@@ -1883,7 +1883,7 @@ const ZRCPlatform = () => {
   }, [lang]);
 
   const onNav = (id) => {
-    if (id === "inner-circle") { openInnerCircle("inner-circle"); return; }
+    if (id === "inner-circle") { openInnerCircle("inner-circle-private"); return; }
     if (id === "mapa-geopolitico") { openWorldMap(); return; }
     if (id === "hero") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -2208,7 +2208,7 @@ const ZRCPlatform = () => {
       <GoldDivider />
 
 
-      <Community lang={lang} onExplore={() => openInnerCircle("inner-circle")} />
+      <Community lang={lang} onExplore={() => onNav("inner-circle")} />
       <Footer lang={lang} />
       <ZenithAssistant lang={lang} onNav={onNav} hidden={!!icPage} />
       </div>

@@ -1,3 +1,5 @@
+import {icPrivateJson,icSameOrigin,startIcSession,readIcSession,endIcSession,icCorsResponse} from './inner-circle-session.js';
+import innerCircleContent from './inner-circle-content.js';
 import { validateIndexInputs, analyzeIndexHistory, explainIndexInputs, GRI_METHOD_VERSION } from "./georisk-index-v2.js";
 import { handleGeoRiskForecast } from "./georisk-forecast.js";
 import { collectECBMarketHistory, getECBArchiveHistory, handleGeoRiskMarket } from "./georisk-market.js";
@@ -30,7 +32,8 @@ const PRICE_TIERS = {
 export default {
   async fetch(request, env, ctx) {
     try {
-      return await handleRequest(request, env, ctx);
+      const response=await handleRequest(request, env, ctx);
+      return new URL(request.url).pathname.startsWith("/api/inner-circle/")?icCorsResponse(response,request):response;
     } catch (err) {
       return jsonResponse({ error: `Worker error: ${err.message}`, stack: err.stack?.slice(0, 300) }, 500);
     }
@@ -89,6 +92,13 @@ async function handleRequest(request, env, ctx) {
 
     if (url.pathname === "/api/inner-circle/check" && request.method === "GET")
       return handleInnerCircleCheck(request, env);
+
+    if (url.pathname === "/api/inner-circle/content" && request.method === "GET") {
+      const email=await approvedInnerCircleSession(request,env);
+      return email?icPrivateJson({status:"approved",content:innerCircleContent}):icPrivateJson({status:"denied"},401);
+    }
+    if (url.pathname === "/api/inner-circle/logout" && request.method === "POST")
+      return endIcSession(request);
 
     if (url.pathname === "/api/inner-circle/login" && request.method === "POST")
       return handleInnerCircleLogin(request, env);
@@ -1102,7 +1112,7 @@ function jsonResponse(body, status = 200) {
 }
 
 function corsResponse() {
-  return new Response("", {
+  return new Response(null, {
     status: 204,
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -1248,39 +1258,25 @@ function weeklyDigestEmailHTML({ weekStart, value, riskLabel, dominantScenario, 
 // ============================================================
 // /api/inner-circle/check?email=
 // ============================================================
-async function handleInnerCircleCheck(request, env) {
-  const url = new URL(request.url);
-  const email = url.searchParams.get("email");
-
-  if (!email || !isValidEmail(email))
-    return jsonResponse({ status: "not_found" });
-
-  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
-    return jsonResponse({ status: "not_found" });
-
-  try {
-    const resp = await fetch(
-      `${env.SUPABASE_URL}/rest/v1/inner_circle_members?email=eq.${encodeURIComponent(email.trim().toLowerCase())}&select=status&limit=1`,
-      {
-        headers: {
-          apikey: env.SUPABASE_SERVICE_KEY,
-          Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}`,
-        },
-      }
-    );
-    if (!resp.ok) return jsonResponse({ status: "not_found" });
-    const data = await resp.json();
-    return jsonResponse({ status: data?.[0]?.status || "not_found" });
-  } catch (err) {
-    console.error("IC check error:", err);
-    return jsonResponse({ status: "not_found" });
-  }
+async function approvedInnerCircleSession(request,env) {
+  const email=await readIcSession(request,env);
+  if(!email||!isValidEmail(email)||!env.SUPABASE_URL)return null;
+  try{
+    const response=await fetch(`${env.SUPABASE_URL}/rest/v1/inner_circle_members?email=eq.${encodeURIComponent(email)}&select=status&limit=1`,{headers:{apikey:env.SUPABASE_SERVICE_KEY,Authorization:`Bearer ${env.SUPABASE_SERVICE_KEY}`}});
+    if(!response.ok)return null;
+    const members=await response.json();return members?.[0]?.status==='approved'?email:null;
+  }catch{return null;}
+}
+async function handleInnerCircleCheck(request,env) {
+  const email=await approvedInnerCircleSession(request,env);
+  return icPrivateJson({status:email?'approved':'denied'},email?200:401);
 }
 
 // ============================================================
 // /api/inner-circle/login  (POST)  — email + password verification
 // ============================================================
 async function handleInnerCircleLogin(request, env) {
+  if(!icSameOrigin(request))return icPrivateJson({status:"denied"},403);
   let payload;
   try { payload = await request.json(); } catch {
     return jsonResponse({ error: "Invalid JSON" }, 400);
@@ -1334,7 +1330,7 @@ async function handleInnerCircleLogin(request, env) {
 
     // Supabase REST wraps scalar returns in an array: [true] or [false]
     const isValid = valid === true || (Array.isArray(valid) && valid[0] === true);
-    return jsonResponse({ status: isValid ? "approved" : "denied" });
+    return isValid?await startIcSession(cleanEmail,env):icPrivateJson({status:"denied"},401);
   } catch (err) {
     console.error("IC login error:", err);
     return jsonResponse({ status: "denied" });

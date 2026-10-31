@@ -19,7 +19,7 @@ export default function InnerCircleValue({ lang = 'es', compact = false }) {
 
   return <IcText><div className={`ic-value ${compact ? 'ic-value-compact' : ''}`}>
     {!compact && <EditorialPhoto subject="trade" variant="ic-photo-membership" />}
-    <div className="ic-value-heading"><span className="ic-kicker">{es ? 'QUÉ APORTA LA MEMBRESÍA' : 'THE MEMBERSHIP VALUE'}</span><span className="ic-badge">{es ? 'Gratuita · admisión manual' : 'Free · reviewed admission'}</span></div>
+    <div className="ic-value-heading"><span className="ic-kicker">{es ? 'QUÉ APORTA LA MEMBRESÍA' : 'THE MEMBERSHIP VALUE'}</span><span className="ic-badge">{es ? 'Gratuita en esta etapa · aprobación manual' : 'Free during this stage · reviewed admission'}</span></div>
     <div className="ic-value-grid">{benefits.map(([n, title, body]) => <article key={n}><span className="ic-kicker">{n}</span><h3>{title}</h3><p>{body}</p></article>)}</div>
     <button type="button" className="ic-button ic-button-quiet" aria-expanded={sample} aria-controls={`ic-sample-${sampleId}`} onClick={() => setSample(!sample)}>{sample ? es ? 'Cerrar muestra −' : 'Close sample −' : es ? 'Ver un ejemplo de lo que te llevas →' : 'See an example of your output →'}</button>
     <div id={`ic-sample-${sampleId}`} hidden={!sample} className="ic-sample">
@@ -29,6 +29,6 @@ export default function InnerCircleValue({ lang = 'es', compact = false }) {
       <p><strong>{es ? 'Ejemplo hipotético: ' : 'Hypothetical example: '}</strong>{es ? '730.000 € de ventas anuales a crédito y 15 días adicionales de cobro inmovilizan 30.000 € más de caja. Pagos anuales en divisa con un coste actual de 100.000 € y un encarecimiento supuesto del 10 % añaden 10.000 € de coste anual.' : '€730,000 annual credit sales and 15 extra collection days tie up €30,000 more cash. Annual FX payments currently costing €100,000 and an assumed 10% increase add €10,000 in annual cost.'}</p>
       <p>{es ? 'La ficha mantiene separados el circulante y el gasto anual. Puedes guardar los supuestos y descargarla para revisarlos con tu equipo. No asigna una recomendación de inversión.' : 'The brief keeps working capital and annual cost separate. Save assumptions and download them to review with your team. It does not provide an investment recommendation.'}</p>
     </div>
-    <p className="ic-small">{es ? 'El comentario mensual es público. La membresía añade la biblioteca de trabajo y tu ficha personal. Admisión manual. Las herramientas de Intelligence y los encargos de Advisory se contratan por separado. Los encuentros se anuncian únicamente cuando están confirmados.' : 'The monthly commentary is public. Membership adds the working library and your personal decision brief. Admission is reviewed. Intelligence tools and Advisory engagements are contracted separately. Gatherings are announced only when confirmed.'}</p>
+    <p className="ic-small">{es ? 'La edición completa, la biblioteca de trabajo y tu ficha personal forman parte del espacio de miembros. La membresía es gratuita durante esta etapa y requiere aprobación. Intelligence y Advisory se contratan por separado.' : 'The complete edition, working library and personal brief are part of the member workspace. Membership is free during this stage and requires approval. Intelligence and Advisory are contracted separately.'}</p>
   </div></IcText>;
 }

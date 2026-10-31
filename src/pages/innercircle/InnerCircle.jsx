@@ -1,57 +1,19 @@
 import { IcText } from './icLocale';
-import { IcLanguageSwitch, navigateIcSection } from "./icLocale";
+import { IcLanguageSwitch, navigateIcSection, useIcMemberContent } from "./icLocale";
 import { useState } from 'react';
 import MonthlyEdition from './MonthlyEdition';
 import DecisionDesk from './DecisionDesk';
 import './innerCircle.css';
 
-// Evergreen analytical cases. These are not live deals, verified market signals,
-// investment recommendations or scheduled events.
-const dossiers = [
-{
-  id: 'supply', region: 'IBERIA · AMÉRICA LATINA', title: 'Acercar producción sin destruir margen',
-  question: '¿Cuándo compensa sustituir una cadena global por un proveedor regional?',
-  thesis: 'La proximidad puede reducir inventario, incertidumbre y necesidad de caja. Sin embargo, el coste industrial más alto y la inversión de transición pueden absorber todo el ahorro. La decisión requiere comparar el coste total puesto en destino y la caja liberada, no solo la distancia.',
-  transmission: 'Flete y plazo → inventario en tránsito → capital circulante → flujo de caja libre. Separar el ahorro recurrente de costes del cobro único que resulta de reducir existencias.',
-  evidence: 'Solicitar doce meses de facturas logísticas, plazos reales por ruta, tasa de incidencias, inventario medio, pedidos y capacidad del nuevo proveedor. Contrastar origen aduanero, certificaciones y dependencia de un único cliente o suministrador.',
-  scenarios: [['Continuidad', 'Menor plazo, coste unitario algo mayor.', 'Medir ahorro neto anual y liberación inicial de caja.'], ['Estrés', 'El proveedor regional falla o el ahorro de flete se normaliza.', 'Modelizar inventario de seguridad, doble proveedor y costes de parada.'], ['Mejora', 'Escala local y entregas fiables reducen el coste total.', 'Exigir evidencia operativa antes de ampliar capacidad.']],
-  invalidation: 'Rechazar una tesis que solo funciona con fletes de crisis, subvenciones no concedidas o ausencia de fallos de transición. El ahorro de inventario no puede contabilizarse como ingreso anual recurrente.',
-  diligence: '¿Quién asume el transporte y el riesgo bajo el Incoterm? ¿Qué parte del inventario es realmente reducible? ¿Existe capacidad contratada? ¿Cuánto cuesta mantener dos cadenas durante la transición?',
-  decision: 'Pilotar una familia de productos. Comparar coste total y nivel de servicio contra la cadena actual durante un periodo representativo. Escalar solo si el ahorro sobrevive al escenario de estrés.'
-},
-{
-  id: 'energy', region: 'IBERIA · MENA', title: 'Energía contratada, riesgo que permanece',
-  question: '¿Un contrato a largo plazo convierte un proyecto energético en un flujo estable?',
-  thesis: 'Un PPA puede reducir exposición al precio spot, pero deja riesgos de volumen, perfil horario, contraparte, red y ejecución. La calidad del ingreso depende del contrato completo y del activo que lo respalda.',
-  transmission: 'Disponibilidad y generación → ingresos efectivamente cobrados → servicio de deuda → caja distribuible. Un precio atractivo no compensa necesariamente restricciones de vertido, costes de balance o retrasos de conexión.',
-  evidence: 'Revisar contrato ejecutado y solvencia del comprador, derechos de conexión, permisos, recurso energético, producción horaria, garantías del EPC y modelo de deuda. Distinguir autorizaciones obtenidas de trámites pendientes.',
-  scenarios: [['Continuidad', 'Producción y disponibilidad según modelo técnico.', 'Conciliar volumen contratado, perfil de entrega y costes de balance.'], ['Estrés', 'Menor producción, retraso y sobrecoste de inversión.', 'Calcular caja mínima, cobertura de deuda y necesidad de equity adicional.'], ['Mejora', 'Mayor disponibilidad o ingresos complementarios.', 'Excluir ingresos no contratados del caso que soporta la deuda.']],
-  invalidation: 'La tesis pierde fuerza si el retorno depende de ingresos accesorios no contratados, fechas de conexión no acreditadas o garantías sin capacidad económica detrás.',
-  diligence: '¿Quién soporta el desvío entre generación y entrega? ¿Hay cláusula de precios negativos? ¿Qué ocurre si el comprador incumple? ¿Las indemnizaciones cubren la caja perdida o solo parte del daño?',
-  decision: 'Condicionar el compromiso a revisión técnica, legal y crediticia independiente. Comparar el valor del contrato con su coste de cobertura y el riesgo de reemplazar a la contraparte.'
-},
-{
-  id: 'capital', region: 'EMPRESA · INVERSIÓN INTERNACIONAL', title: 'Crecer en otra moneda sin perder caja',
-  question: '¿La expansión internacional mejora el negocio o añade una exposición financiera oculta?',
-  thesis: 'El crecimiento de ventas en moneda local puede convivir con caída de margen y tensión de caja si compras, deuda o dividendos están denominados en otra moneda. Analizar por separado exposición transaccional, de conversión y de repatriación.',
-  transmission: 'Tipo de cambio → margen operativo → necesidades de circulante → capacidad de servicio de deuda. La conversión contable de una filial no equivale al efectivo que puede distribuir a la matriz.',
-  evidence: 'Inventariar cobros y pagos por divisa y vencimiento, contratos de deuda, política de precios, impuestos y costes de cobertura. Verificar reglas de distribución y transferencia con asesores locales antes de asumir caja disponible en la matriz.',
-  scenarios: [['Continuidad', 'Ventas y costes evolucionan según presupuesto.', 'Reconciliar moneda funcional, caja operativa y caja de la matriz.'], ['Estrés', 'Depreciación local y retrasos de cobro.', 'Combinar shock FX con días de circulante y servicio de deuda.'], ['Mejora', 'Reprecio comercial y costes locales amortiguan el FX.', 'Comprobar que las coberturas naturales son estables por importe y plazo.']],
-  invalidation: 'Un proyecto no supera la revisión si solo es rentable al tipo de cambio inicial, ignora costes de cobertura o trata beneficios retenidos como caja libremente transferible.',
-  diligence: '¿Puede repercutirse el FX al cliente? ¿En qué plazo? ¿Qué vencimientos quedan descubiertos? ¿Hay restricciones contractuales o regulatorias que afecten a la distribución?',
-  decision: 'Fijar límites de exposición por moneda y vencimiento. Aprobar inversión y financiación conjuntamente, con un colchón de liquidez y condiciones explícitas para detener nuevas aportaciones.'
-}];
-
-
-
-export default function InnerCircle({ onBack, useAuth }) {
+export default function InnerCircle({ onBack, onLogout, useAuth }) {
+  const {dossiers}=useIcMemberContent();
   const { openPricing } = useAuth();
   const [selected, setSelected] = useState(dossiers[0].id);
   const dossier = dossiers.find((d) => d.id === selected);
   return <IcText><main className="ic-desk" onClick={navigateIcSection}>
     <header><div><span className="ic-kicker">ZENITH RISE CAPITAL</span><div style={{ fontSize: 20 }}>The Inner Circle</div></div>
-      <IcLanguageSwitch /><nav aria-label="Secciones Inner Circle"><a href="#ic-edition">Edición del mes</a><a href="#ic-dossiers">Dossiers</a><a href="#ic-case">Caso de decisión</a><a href="#ic-decision">Mi decisión</a><a href="#ic-membership">Membresía</a></nav>
-      {onBack && <button className="ic-button ic-button-quiet" onClick={onBack}>← Volver a ZRC</button>}
+      <span className="ic-badge">MIEMBRO · ACCESO APROBADO</span><IcLanguageSwitch /><nav aria-label="Secciones Inner Circle"><a href="#ic-edition">Edición del mes</a><a href="#ic-dossiers">Dossiers</a><a href="#ic-case">Caso de decisión</a><a href="#ic-decision">Mi decisión</a><a href="#ic-membership">Membresía</a></nav>
+      {onLogout && <button className="ic-button ic-button-quiet" onClick={onLogout}>Cerrar sesión</button>}{onBack && <button className="ic-button ic-button-quiet" onClick={onBack}>← Volver a ZRC</button>}
     </header>
     <section><span className="ic-kicker">EL ESPACIO DE LOS MIEMBROS · CRITERIO COMPARTIDO</span>
       <h1>Prepara tu próxima decisión.<br /><span style={{ color: 'var(--ic-gold)' }}>Sal con una ficha de trabajo.</span></h1>
