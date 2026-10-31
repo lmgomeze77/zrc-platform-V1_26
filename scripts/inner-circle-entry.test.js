@@ -17,9 +17,9 @@ test('visitor sees the proposition, sample and application route before credenti
   const html=renderToStaticMarkup(React.createElement(Access));
   assert.match(html,/Solicitar membresía gratuita/);assert.match(html,/Ya soy miembro/);assert.match(html,/Ver qué encontrarás dentro/);assert.match(html,/Cómo funciona el acceso/);assert.match(html,/AVANCE DE CONTENIDOS/);assert.match(html,/No hay renovación de pago automática/);assert.doesNotMatch(html,/type="password"/);assert.doesNotMatch(html,/PREGUNTA PRIORITARIA/);
   assert.doesNotMatch(html,/La evidencia de octubre|1. La continuidad de la actividad|type="password"/);
-  assert.doesNotMatch(result.outputFiles[0].text,/At October’s close, our reading|Al cierre de octubre, nuestra lectura/);
+  assert.doesNotMatch(result.outputFiles[0].text,/At October’s close, our reading|Al cierre de octubre, nuestra lectura|The decisive dependency may sit|La dependencia decisiva puede estar/);
   const en=renderToStaticMarkup(React.createElement(IcLocaleProvider,{lang:'en'},React.createElement(Access)));
-  assert.match(en,/CONTENTS PREVIEW/);assert.match(en,/No automatic paid renewal/);assert.doesNotMatch(en,/October’s evidence|1. Continued activity/);assert.match(en,/Resilience has a limit/);assert.doesNotMatch(en,/La resiliencia|Membresía|Corte de información|730\.000/);
+  assert.match(en,/CONTENTS PREVIEW/);assert.match(en,/No automatic paid renewal/);assert.doesNotMatch(en,/October’s evidence|1. Continued activity/);assert.match(en,/The power to interrupt/);assert.doesNotMatch(en,/La resiliencia|Membresía|Corte de información|730\.000/);
   const member=renderToStaticMarkup(React.createElement(IcLocaleProvider,{lang:'en'},React.createElement(IcMemberContentProvider,{content},React.createElement(Member,{useAuth:()=>({})}))));
   assert.match(member,/MEMBER · APPROVED ACCESS/);assert.doesNotMatch(member,/Apply for free membership/);assert.match(member,/Read the feature/);assert.match(member,/View the agenda/);assert.match(member,/Explore ZRC opportunities/);assert.doesNotMatch(member,/What are you deciding|Annual credit sales|Prepara tu próxima/);
   const images=[...member.matchAll(/<img[^>]+src="([^"]+)"/g)].map(match=>match[1]);assert.equal(images.length,1);assert.equal(new Set(images).size,images.length);
@@ -99,7 +99,7 @@ test('opportunity interest is member-only and records the verified identity and 
 });
 
 test('agenda sources resolve and published opportunity profiles do not imply verified exclusivity',()=>{
- assert.equal(content.agenda.length,3);for(const topic of content.agenda){assert.ok(content.edition.sources.find(source=>source.id===topic.sourceId));assert.ok(topic.question.es&&topic.question.en);}
+ assert.equal(content.agenda.length,4);for(const topic of content.agenda){assert.ok(content.edition.sources.find(source=>source.id===topic.sourceId));assert.ok(topic.question.es&&topic.question.en);}
  assert.equal(content.opportunities.length,4);for(const opportunity of content.opportunities){assert.equal(opportunity.exclusivity,'unconfirmed');assert.equal(opportunity.availability,'confirmation_required');assert.ok(opportunity.title.es&&opportunity.title.en);}
 });
 
@@ -108,8 +108,16 @@ test('strategic risk cases distinguish evidence, triggers, counterevidence and d
  const review=content.edition.strategicReview;assert.equal(review.risks.length,4);
  for(const risk of review.risks){
   for(const id of risk.sources)assert.ok(content.edition.sources.some(source=>source.id===id));
-  for(const text of [risk.title,risk.horizon,risk.confirmed,risk.judgement,risk.decision,risk.limit,...risk.escalation,...risk.deescalation])assert.ok(content.translations[text],`Missing English: ${text}`);
+  for(const text of [risk.title,risk.horizon,risk.confirmed,risk.judgement,risk.decision,risk.limit,risk.example,...risk.escalation,...risk.deescalation])assert.ok(content.translations[text],`Missing English: ${text}`);
   assert.ok(risk.escalation.length&&risk.deescalation.length);
  }
  assert.ok(content.edition.sources.some(source=>source.id==='S8'&&source.url.includes('govinfo.gov')));
+});
+
+
+test('global friction analysis moves Hormuz into references and tests combined dependencies',()=>{
+ const review=content.edition.strategicReview;assert.deepEqual(review.risks.map(r=>r.id),['materials','technology','digital','carbon']);assert.ok(review.referenceCases.some(c=>c.id==='hormuz'));assert.equal(content.edition.coupledScenarios.length,3);
+ for(const scenario of content.edition.coupledScenarios)for(const text of [scenario.title,scenario.combination,scenario.fragility,scenario.test])assert.ok(content.translations[text]);
+ for(const reference of review.referenceCases)for(const id of reference.sources)assert.ok(content.edition.sources.some(source=>source.id===id));
+ for(const code of ['S2','S4','S5'])assert.ok(content.edition.facts.some(f=>f.sources.includes(code)));
 });

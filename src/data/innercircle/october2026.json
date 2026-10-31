@@ -2,46 +2,50 @@
   "edition": "01",
   "month": "Octubre de 2026",
   "cutoff": "31 de octubre de 2026",
-  "title": "La resiliencia tiene un límite",
-  "subtitle": "Ormuz, presión comercial y el peligro de confundir adaptación con control.",
+  "title": "El poder de interrumpir",
+  "subtitle": "Minerales, tecnología, cables y reglas de acceso: cuatro fricciones globales con impacto empresarial.",
   "author": "Luis Miguel Gómez Elvira · Founder & Managing Partner, Zenith Rise Capital",
   "editorial": {
-    "title": "La geopolítica empieza donde termina nuestra capacidad de elegir",
+    "title": "La ventaja está en reconstruir las dependencias",
     "paragraphs": [
-      "El error estratégico no consiste en ignorar que hay una guerra. Consiste en creer que, porque la empresa ha seguido entregando, conserva el control de su operación. Una ruta alternativa, un seguro renovable o una preferencia comercial pueden sostener el negocio y seguir dependiendo de decisiones ajenas. Esa dependencia debe entrar en la discusión de inversión antes de que entre en la cuenta de resultados.",
-      "Nuestro análisis debe identificar quién puede interrumpir una operación, qué instrumento tiene para hacerlo y por qué el coste de resistir puede resultar asumible para ese actor. También debe reconocer los límites de su poder: reparación de infraestructuras, rutas sustitutivas, intereses industriales y capacidad de negociación. Describir únicamente el peligro es incompleto; describir únicamente la adaptación es complaciente.",
-      "Esta edición concentra la atención en cuatro puntos de ruptura: transporte físico, acceso comercial, ejecución bajo sanciones y financiación de la continuidad. Son prioridades de análisis para empresas conectadas con Iberia, América Latina y MENA; no una clasificación exhaustiva de amenazas globales ni una predicción de conflicto.",
-      "Ser más crudos exige ser más precisos. Separaremos lo ocurrido de lo posible, y una señal de escalada de una impresión. Una tesis útil debe explicar qué la haría más peligrosa, qué la debilitaría y qué decisión merece prepararse mientras aún existe capacidad de elegir."
+      "El análisis debe empezar por una pregunta incómoda: ¿quién puede dejar fuera a una empresa que sigue teniendo clientes, activos y un producto competitivo? La respuesta puede estar en una licencia de un proveedor lejano, una infraestructura compartida o un requisito documental que el modelo de inversión trató como un trámite.",
+      "Esta edición amplía el foco a cuatro fricciones: la concentración de insumos vinculados a China, el acceso condicionado a tecnología, la continuidad de infraestructuras digitales europeas y la frontera regulatoria del carbono. Sus mecanismos son diferentes. Algunas decisiones responden a objetivos legítimos de seguridad o clima; otras pueden utilizarse como presión. La consecuencia empresarial debe analizarse sin atribuir a todas ellas una intención hostil.",
+      "Nuestro aporte es seguir cada dependencia hasta la operación concreta: proveedor del proveedor, cliente final, ruta física del dato, obligación del importador y tiempo necesario para sustituir o acreditar una alternativa. Un nombre nuevo en la lista de suministradores aporta poco si conserva el mismo punto de fallo.",
+      "Ormuz y el T-MEC permanecen como casos secundarios de contraste. El cuerpo central dedica espacio a escenarios combinados y pruebas que un comité puede pedir hoy. Las fuentes documentan el punto de partida; los escenarios y preguntas son elaboración propia, sin probabilidades inventadas ni predicciones de guerra."
     ]
   },
-  "thesis": "Nuestra lectura al 31 de octubre: el riesgo relevante ya no es solo pagar más por operar, sino perder la capacidad de operar en condiciones elegidas. Ormuz pone a prueba la redundancia logística; la revisión del T-MEC, la permanencia del acceso comercial; las sanciones, la ejecutabilidad de contratos y pagos. La vulnerabilidad aumenta cuando varias de esas dependencias recaen en la misma ruta, contraparte o fuente de financiación. Esta es una interpretación estratégica de ZRC, no una previsión oficial.",
+  "thesis": "La exposición geopolítica está también en quién concede permisos, controla un insumo difícil de sustituir, sostiene la conectividad o define el acceso al mercado. El riesgo suele quedar oculto cuando se analiza solo al proveedor directo o el país donde está el activo. Nuestra prioridad es localizar la dependencia común y el tiempo de recuperación: una empresa puede conservar demanda y solvencia contable y perder temporalmente la capacidad de entregar, actualizar, documentar o cobrar.",
   "facts": [
     {
-      "label": "EVIDENCIA OPERATIVA · ENERGÍA",
-      "text": "La IEA documenta recuperación parcial de los flujos del Golfo junto con nuevas perturbaciones y tensión en diésel. En septiembre, los inventarios mundiales observados estaban 509 millones de barriles por debajo del cierre de febrero. Son estimaciones publicadas el 14 de octubre, no una medición al cierre del mes.",
+      "label": "MATERIAS PRIMAS · DIÁLOGO Y CAPACIDAD",
+      "text": "La Comisión identifica el diálogo sobre controles y materias primas con China el 29 de junio y una nueva lista de proyectos estratégicos de la UE el 9 de octubre. Son hechos institucionales distintos de una entrega o una planta ya operativa.",
       "sources": [
-        "S6"
+        "S10",
+        "S11"
       ]
     },
     {
-      "label": "HECHO DOCUMENTADO · RUTA ALTERNATIVA",
-      "text": "El análisis de la IEA del 21 de octubre recoge ataques del 11 de septiembre al oleoducto saudí East-West y su reapertura en pocos días. La existencia del desvío no evitó su interrupción temporal.",
+      "label": "TECNOLOGÍA · POLÍTICAS SELECTIVAS",
+      "text": "El anuncio de BIS de enero describe revisión caso por caso para determinados chips. La actualización europea adoptada en septiembre incluye categorías de equipos y tecnología; su comunicado especifica un trámite posterior para entrada en vigor. No se presume su aplicabilidad a cualquier operación.",
       "sources": [
-        "S7"
+        "S12",
+        "S13"
       ]
     },
     {
-      "label": "AVISO OFICIAL · T-MEC",
-      "text": "USTR señala que Estados Unidos no acordó extender el T-MEC en la revisión del 1 de julio de 2026 y anuncia el proceso para la revisión anual de 2027. El propio aviso sitúa el fin del plazo vigente en julio de 2036 salvo extensión; revisión anual no equivale a terminación inmediata.",
+      "label": "CONECTIVIDAD · RESILIENCIA Y REPARACIÓN",
+      "text": "La herramienta europea de seguridad de cables fue publicada en febrero. La convocatoria de HaDEA de junio amplía cobertura de reparación al Mediterráneo y Atlántico e incluye la preocupación por actos hostiles, diferenciándola de daños accidentales más comunes. No identifica una autoría para cada incidente.",
       "sources": [
-        "S8"
+        "S14",
+        "S15"
       ]
     },
     {
-      "label": "PREVISIÓN · FMI",
-      "text": "El WEO de octubre proyecta crecimiento mundial del 3,1 % en 2026 y del 3,4 % en 2027, con inflación global del 4,7 % y del 4,1 %, respectivamente. Son previsiones basadas en información disponible hasta el 1 de octubre; no resultados observados.",
+      "label": "ACCESO EUROPEO · CBAM",
+      "text": "La Comisión sitúa el régimen definitivo de CBAM desde el 1 de enero de 2026 y la declaración anual desde 2027 sobre importaciones del año anterior. Afecta a bienes seleccionados: alcance, obligaciones y excepciones deben contrastarse con la norma y el caso concreto.",
       "sources": [
-        "S1"
+        "S16",
+        "S17"
       ]
     },
     {
@@ -49,13 +53,6 @@
       "text": "El 29 de octubre, el BCE mantuvo sus tipos: facilidad de depósito del 2,50 %, operaciones principales del 2,65 % y facilidad marginal del 2,90 %. Advirtió de riesgos al alza para la inflación y a la baja para el crecimiento por la energía, además de un endurecimiento de las condiciones financieras.",
       "sources": [
         "S2"
-      ]
-    },
-    {
-      "label": "PREVISIÓN · OMC",
-      "text": "El 8 de octubre, la OMC elevó su previsión de crecimiento del volumen del comercio de mercancías de 2026 al 3,9 %, frente al 1,9 % de marzo; redujo la de servicios al 3,3 %, desde el 4,8 %. La mejora es desigual y recibe un impulso relevante de los bienes vinculados a la IA.",
-      "sources": [
-        "S3"
       ]
     },
     {
@@ -75,56 +72,56 @@
   ],
   "commentary": [
     {
-      "title": "1. La presión más eficaz puede ser selectiva, no total",
+      "title": "1. La unidad de análisis es la dependencia común",
       "paragraphs": [
-        "Un análisis centrado exclusivamente en el cierre total de Ormuz puede llegar tarde a los costes de una coerción parcial. La selección de buques, las interrupciones intermitentes o la amenaza creíble sobre un desvío pueden alterar quién consigue transportar, a qué coste y con qué intermediarios. Nuestro juicio es que la exposición debe medirse por la capacidad de completar una operación, además de por el precio de la energía. No atribuimos a ningún actor un calendario secreto de escalada.",
-        "La contención también tiene mecanismos reales. Reparar, liberar existencias, sustituir rutas y reducir demanda puede limitar el daño. La cuestión estratégica es cuánto tiempo compran esas respuestas y qué dependencias permanecen. El escenario adverso gana fuerza cuando se deterioran a la vez las rutas y la capacidad de financiar el desvío; pierde fuerza con entregas repetidas, cobertura disponible y autonomía de caja acreditada."
+        "Países y sectores sirven para ordenar un mapa; la operación se decide en una cadena concreta. Una empresa puede tener clientes diversificados y depender de un único procesador, clasificación técnica o circuito de datos. Nuestro juicio es que el primer trabajo del analista debe ser identificar ese punto común y el plazo para sustituirlo. La concentración merece una prueba específica, no una penalización automática a todo lo que proceda de una geografía.",
+        "La consecuencia para una valoración es concreta: comparar el margen esperado con la capacidad de cumplir, mantener y cobrar durante un cambio de condiciones. Una alternativa nominal aporta menos que una alternativa ensayada. Una póliza, contrato o promesa de soporte debe contrastarse con el proceso que realmente sostiene el ingreso."
       ]
     },
     {
-      "title": "2. Nearshoring: trasladar una fábrica también traslada la dependencia política",
+      "title": "2. La frontera puede estar en el usuario final o en el dato",
       "paragraphs": [
-        "México puede conservar ventajas operativas sin ofrecer certeza política sobre todas las condiciones comerciales futuras. Estados Unidos dispone de capacidad negociadora por el tamaño de su mercado; su integración industrial con México también le impone costes si endurece el acceso. El resultado exige analizar producto, origen y cliente. Una declaración hostil no modifica por sí misma el arancel aplicable, y la revisión anual no termina el acuerdo en 2027.",
-        "La diligencia debe revelar qué parte del retorno procede de productividad y qué parte de una condición regulatoria. El primer desembolso debería dejar explícito qué cambio exige renegociar, rediseñar o detener nuevas aportaciones. Un piloto reversible puede tener más valor estratégico que una planta de mayor escala cuyo retorno solo existe bajo una regla tratada como permanente. Esta preferencia es criterio editorial, no una recomendación sobre un proyecto identificado."
+        "Las restricciones de tecnología y los requisitos de importación demuestran formas distintas de condicionar acceso. No deben equipararse sus finalidades: seguridad, no proliferación y clima tienen marcos propios. Para la empresa importa reconstruir qué producto, usuario, responsabilidad o evidencia activa la condición. Presentar todo como un enfrentamiento entre bloques borra diferencias que cambian la decisión.",
+        "La dependencia documental puede ser tan relevante como una dependencia física cuando condiciona una venta. Conviene averiguar quién produce el dato, quién puede verificarlo y qué ocurre si falta. La prudencia consiste en comprobar el alcance aplicable, las responsabilidades contractuales y los costes de adaptación, sin convertir una regla sectorial en una amenaza universal."
       ]
     },
     {
-      "title": "3. La oportunidad debe sobrevivir a la misma amenaza que abarata el activo",
+      "title": "3. Dónde buscar una ventaja defendible para ZRC",
       "paragraphs": [
-        "Un descuento puede remunerar incertidumbre o reflejar que el negocio ha perdido una condición esencial para funcionar. Antes de llamar oportunidad a una venta urgente, conviene separar necesidad de liquidez del vendedor, viabilidad del activo y obligaciones que necesitarán financiación tras la compra. Un múltiplo bajo no resuelve un proveedor insustituible, un pago bloqueado o una inversión adicional sin financiador.",
-        "El valor defendible está en demostrar una capacidad concreta que otros no tienen: suministro alternativo utilizable, cobros resistentes, financiación comprometida o una estructura contractual que distribuya el riesgo. Las oportunidades de ZRC deben evaluarse con ese mismo criterio. El acceso al círculo no convierte una ficha en una operación verificada, exclusiva o apta para cualquier inversor."
+        "El valor puede estar en una capacidad que reduzca una dependencia comprobada: un proveedor homologado con origen distinto, una ruta digital realmente independiente o un sistema fiable de trazabilidad. Ninguna etiqueta —estratégico, tecnológico o verde— acredita por sí misma rentabilidad, demanda ni ejecución.",
+        "Antes de valorar una oportunidad, el comité debería pedir qué fallo resuelve, qué cliente pagará por resolverlo, qué permisos faltan y cuánto capital necesita hasta generar caja. Esas preguntas permiten contrastar el catálogo de ZRC con evidencia operativa, sin presentar programas públicos, proyectos anunciados o hipótesis como operaciones exclusivas disponibles."
       ]
     }
   ],
   "scenarios": [
     {
-      "name": "Coerción persistente, adaptación todavía viable",
-      "trigger": "Persisten interrupciones y costes altos, pero existen entregas y financiación utilizables.",
-      "action": "Medir semanalmente autonomía de suministro y caja del proyecto; preservar compromisos reversibles y comprobar el coste completo de la continuidad."
+      "name": "Fricción selectiva de permisos",
+      "trigger": "La entrega depende de una autorización o clasificación no resuelta y la alternativa no está lista.",
+      "action": "Medir autonomía de proceso y caja; condicionar nuevos compromisos a la evidencia necesaria para ejecutar."
     },
     {
-      "name": "Escalada física o restricción comercial efectiva",
-      "trigger": "Se verifica pérdida de capacidad de transporte alternativa o una medida comercial aplicable al producto.",
-      "action": "Activar el punto de revisión contractual previsto, reestimar volumen realizable y detener desembolsos que dependan de una condición ya no acreditada."
+      "name": "Interrupción digital correlacionada",
+      "trigger": "Falla un servicio y el respaldo comparte infraestructura o dependencia crítica.",
+      "action": "Activar procedimientos probados de continuidad comercial y verificar independencia del reemplazo."
     },
     {
-      "name": "Choque combinado de continuidad y liquidez",
-      "trigger": "Coinciden retrasos de suministro, anticipos, cobros tardíos y menor financiación disponible.",
-      "action": "Priorizar la viabilidad de caja; identificar obligaciones ineludibles y fuentes comprometidas antes de ampliar exposición."
+      "name": "Adaptación regulatoria con tensión de caja",
+      "trigger": "Un requisito efectivamente aplicable exige datos, contratos o inversión que no estaban incorporados al caso.",
+      "action": "Actualizar coste completo y calendario con especialistas; identificar quién financia la adaptación y qué condición detiene la expansión."
     },
     {
-      "name": "Desescalada verificable",
-      "trigger": "Se sostienen entregas, seguros y financiación; las condiciones comerciales aplicables se aclaran de forma efectiva.",
-      "action": "Retirar gradualmente las penalizaciones que hayan perdido fundamento y ampliar inversión donde el margen operativo y la ejecución lo acrediten."
+      "name": "Mejora política con recuperación operativa acreditada",
+      "trigger": "Reglas claras, alternativas homologadas, pruebas de continuidad y cobros confirman recuperación real.",
+      "action": "Revisar los ajustes al caso de inversión según la evidencia recuperada, preservando los riesgos que sigan abiertos."
     }
   ],
-  "invalidation": "La tesis se debilita con normalización operativa comprobada, alternativas que funcionen y financiación utilizable; requiere evidencias repetidas, no una sola sesión de mercado. La incertidumbre comercial debe revisarse con medidas y acuerdos aplicables al producto. Cada punto de ruptura tiene sus propias señales de desescalada: no agregamos todos los riesgos en un único semáforo ni tratamos un repunte del petróleo como prueba suficiente de escalada militar.",
-  "nextReview": "Revisar primero los hechos que cambian capacidad de entrega, legalidad de ejecución y crédito disponible. Después contrastar las nuevas publicaciones oficiales y los datos propios de la operación. Los horizontes de 30–90 días ordenan la vigilancia editorial; no anuncian que una ruptura vaya a producirse dentro de ese plazo.",
+  "invalidation": "La preocupación se reduce con cadenas alternativas independientes y homologadas, autorizaciones resueltas, recuperación digital ensayada y cumplimiento aplicable incorporado a precios y contratos. Un acuerdo político o una inversión anunciada aportan información, pero la conclusión sobre cada empresa requiere comprobar entrega, soporte, documentación y caja.",
+  "nextReview": "La revisión debe contrastar cambios normativos efectivamente publicados, tiempos reales de sustitución y pruebas de continuidad de las operaciones analizadas. La antigüedad de un documento se identifica en fuentes: no se proyectan automáticamente sus fechas de suspensión ni se presentan adopciones como normas ya en vigor.",
   "questions": [
-    "¿Quién puede impedir la entrega, el cobro o el acceso al cliente, aunque el activo siga funcionando?",
-    "¿Qué alternativas comparten el mismo cuello de botella o la misma autorización?",
-    "¿Cuánta autonomía de suministro y caja queda si coinciden los dos riesgos más relevantes de la operación?",
-    "¿Qué señal verificable obliga a cambiar el precio, renegociar o detener el siguiente desembolso?"
+    "¿Qué dependencia comparten el proveedor principal y el de respaldo más allá de la razón social?",
+    "¿Qué ingreso depende de una licencia, clasificación o dato todavía no acreditado?",
+    "¿Se ha probado el circuito pedido–entrega–documentación–cobro con pérdida de la infraestructura principal?",
+    "¿Qué capacidad concreta reduce la dependencia y qué evidencia permitiría valorarla?"
   ],
   "sources": [
     {
@@ -198,88 +195,196 @@
       "published": "8 de junio de 2026",
       "observation": "Decisión oficial sobre designaciones; su aplicación a una operación concreta requiere revisión jurídica",
       "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/06/08/freedom-of-navigation-in-the-strait-of-hormuz-eu-lists-two-individuals-and-one-entity/"
+    },
+    {
+      "id": "S10",
+      "publisher": "Comisión Europea · Comercio y Seguridad Económica",
+      "title": "Press briefing on EU-China relations",
+      "published": "29 de junio de 2026",
+      "observation": "Diálogo UE–China sobre controles de exportación y materias primas; no fecha de reactivación automática de restricciones",
+      "url": "https://audiovisual.ec.europa.eu/en/media/video/I-292099"
+    },
+    {
+      "id": "S11",
+      "publisher": "Comisión Europea · Mercado Interior",
+      "title": "Proyectos estratégicos seleccionados bajo el Reglamento de Materias Primas Fundamentales",
+      "published": "9 de octubre de 2026 · nueva lista indicada en la página institucional",
+      "observation": "Reconocimiento de proyectos; no prueba de capacidad productiva ya operativa ni de rentabilidad",
+      "url": "https://single-market-economy.ec.europa.eu/sectors/raw-materials/areas-specific-interest/critical-raw-materials/strategic-projects-under-crma/selected-projects_en"
+    },
+    {
+      "id": "S12",
+      "publisher": "Bureau of Industry and Security · US Department of Commerce",
+      "title": "Department of Commerce Revises License Review Policy for Semiconductors Exported to China",
+      "published": "13 de enero de 2026",
+      "observation": "Anuncio de revisión caso por caso para determinados chips y clientes; comprobar la norma aplicable a cada operación",
+      "url": "https://media.bis.gov/sites/default/files/documents/DoC%20Revises%20License%20Review%20Policy%20for%20Semiconductors%20Exports.pdf"
+    },
+    {
+      "id": "S13",
+      "publisher": "Comisión Europea · Comercio y Seguridad Económica",
+      "title": "2026 Update of the EU Control List of Dual-Use Items",
+      "published": "14 de septiembre de 2026",
+      "observation": "Adopción de actualización; entrada en vigor sujeta a publicación tras escrutinio, según el comunicado",
+      "url": "https://policy.trade.ec.europa.eu/news/2026-update-eu-control-list-dual-use-items-2026-09-14_en"
+    },
+    {
+      "id": "S14",
+      "publisher": "Comisión Europea · DG CONNECT",
+      "title": "Submarine Cable Security Toolbox and Cable Projects of European Interest",
+      "published": "5 de febrero de 2026 · versión del informe corregida el 16 de marzo",
+      "observation": "Evaluación de dependencias y resiliencia; no atribución de un incidente concreto a un Estado",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/submarine-cable-security-toolbox-and-cable-projects-european-interest"
+    },
+    {
+      "id": "S15",
+      "publisher": "HaDEA · European Commission",
+      "title": "CEF-Digital second call for proposals to increase Europe’s submarine cable repair capacities",
+      "published": "18 de junio de 2026",
+      "observation": "Ampliación de cobertura al Mediterráneo y Atlántico; convocatoria de reparación, no garantía de recuperación inmediata",
+      "url": "https://hadea.ec.europa.eu/news/cef-digital-second-call-proposals-increase-europes-submarine-cable-repair-capacities-launched-year-2026-06-18_en"
+    },
+    {
+      "id": "S16",
+      "publisher": "Comisión Europea · Fiscalidad y Unión Aduanera",
+      "title": "CBAM definitive regime",
+      "published": "Página institucional consultada el 31 de octubre de 2026",
+      "observation": "Régimen definitivo desde enero de 2026 para determinados bienes; alcance y excepciones requieren comprobación por producto",
+      "url": "https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism/cbam-definitive-regime_en"
+    },
+    {
+      "id": "S17",
+      "publisher": "Comisión Europea · Fiscalidad y Unión Aduanera",
+      "title": "Carbon border adjustment mechanism: How CBAM certificates work",
+      "published": "30 de septiembre de 2026",
+      "observation": "Declaración anual desde 2027 sobre importaciones del año anterior; no equivalencia entre fecha del coste y fecha de declaración",
+      "url": "https://op.europa.eu/en/publication-detail/-/publication/a602249e-be08-11f1-9aae-01aa75ed71a1/language-en"
     }
   ],
   "strategicReview": {
-    "title": "Cuatro puntos de ruptura. Ninguno exige imaginar el peor caso.",
-    "scope": "Horizontes de observación de 30–90 días, salvo la revisión comercial, que requiere mirar también a 2027. Las señales siguientes son condiciones a vigilar; no hechos que demos por ocurridos ni probabilidades calibradas.",
+    "title": "Cuatro fricciones globales que merecen una prueba empresarial.",
+    "scope": "Horizontes de observación de 30–90 días y adaptación regulatoria 2026–2027. Priorización editorial por dependencia y tiempo de sustitución, sin asignar probabilidades ni anticipar una guerra.",
     "risks": [
       {
-        "id": "routes",
-        "title": "1. Ormuz: una salida alternativa puede compartir el mismo riesgo",
-        "horizon": "TRANSPORTE FÍSICO · 30–90 DÍAS",
-        "confirmed": "La IEA documenta perturbaciones y el ataque al desvío saudí. En junio, el Consejo de la UE atribuyó a la Marina de la Guardia Revolucionaria iraní un control selectivo del paso por Ormuz. Es una atribución oficial identificada, no verificación independiente de ZRC.",
+        "id": "materials",
+        "title": "1. China–UE: el proveedor alternativo puede comprar en el mismo sitio",
+        "horizon": "INSUMOS Y PODER INDUSTRIAL · 30–90 DÍAS",
+        "confirmed": "La Comisión identifica las materias primas y los controles de exportación como asuntos del diálogo con China en junio. En octubre reconoce nuevos proyectos estratégicos de materias primas en la UE. El reconocimiento no demuestra que exista ya una alternativa industrial disponible.",
         "sources": [
-          "S6",
-          "S7",
-          "S9"
+          "S10",
+          "S11"
         ],
-        "judgement": "La capacidad de coerción no exige cerrar toda una ruta durante meses. Interrupciones selectivas pueden encarecer o volver incierto un circuito operativo. Para la empresa, dos proveedores no son diversificación si dependen del mismo cuello de botella.",
+        "judgement": "La dependencia decisiva puede estar dos o tres niveles por debajo del proveedor contratado: procesado, componente, equipo o autorización. Cambiar la factura de país deja intacto el riesgo si el sustituto comparte ese origen crítico. El poder de negociación procede de controlar un eslabón difícil de reemplazar, no solo de vender mucho volumen.",
         "escalation": [
-          "Ataques verificados que afecten simultáneamente a tránsito y capacidad de desvío.",
-          "Retirada de coberturas o viajes confirmados, junto con plazos de entrega que ya no puedan asegurarse."
+          "Retrasos de autorizaciones o entregas acreditados para el insumo concreto, junto con una alternativa todavía sin homologar.",
+          "Concentración compartida de los proveedores principales y de respaldo en el mismo procesador o tecnología."
         ],
         "deescalation": [
-          "Disponibilidad sostenida de transporte y seguros, con entregas efectivas y no solo anuncios de reapertura."
+          "Entrega sostenida desde una cadena alternativa identificada, homologada y utilizable comercialmente."
         ],
-        "decision": "Mapear rutas, puertos y dependencias compartidas de los proveedores críticos; someter la continuidad a un escenario de interrupción de duración definida por la empresa. El límite de inversión debe depender de la autonomía operativa y de caja, no de acertar el siguiente movimiento del crudo.",
-        "limit": "La reparación rápida del oleoducto es una capacidad de respuesta real. Un incidente aislado no demuestra un bloqueo duradero ni permite dar por fallidas todas las alternativas."
+        "decision": "Reconstruir el origen del insumo crítico y el tiempo de homologación del sustituto. Separar contrato de compra, licencia aplicable, capacidad disponible y posibilidad real de entrega. La prioridad es la continuidad verificable del proceso propio.",
+        "example": "Prueba de comité: una pyme cambia a un proveedor mexicano o europeo. Pedir evidencia de quién procesa y fabrica el componente crítico de ambas cadenas antes de contabilizar la operación como diversificación. Es un ejemplo hipotético, no un caso ZRC identificado.",
+        "limit": "La concentración no prueba una interrupción inminente. La capacidad de sustitución varía por material y producto. No inferimos una fecha de reactivación de controles a partir de una suspensión anunciada en un documento antiguo."
       },
       {
-        "id": "trade",
-        "title": "2. México: estar cerca del cliente no garantiza acceso estable",
-        "horizon": "PODER COMERCIAL · 90 DÍAS Y REVISIÓN 2027",
-        "confirmed": "El aviso de USTR confirma falta de acuerdo estadounidense sobre la extensión en julio y un proceso de revisión anual. No confirma una salida inmediata ni nuevos aranceles generales.",
+        "id": "technology",
+        "title": "2. Bloques tecnológicos: tener demanda no garantiza permiso para servirla",
+        "horizon": "TECNOLOGÍA Y USUARIO FINAL · 30–90 DÍAS",
+        "confirmed": "BIS anunció en enero revisión caso por caso para ciertos chips destinados a China, con condiciones. La Comisión adoptó en septiembre una actualización de su lista de doble uso; el comunicado vincula su entrada en vigor a publicación tras escrutinio. Son instrumentos específicos, no una prohibición tecnológica universal.",
+        "sources": [
+          "S12",
+          "S13"
+        ],
+        "judgement": "Una venta puede depender de la clasificación del equipo, su destino o el usuario final, además del precio y la capacidad productiva. Una cartera comercial deja de ser equivalente a ingresos ejecutables cuando no se ha comprobado esa condición. La fragmentación tecnológica puede encarecer mantenimiento, sustitución y rediseño sin necesidad de un choque militar.",
+        "escalation": [
+          "Cambio normativo publicado y aplicable al equipo o cliente; licencia no obtenida, denegada o condicionada de forma que afecte al contrato."
+        ],
+        "deescalation": [
+          "Clasificación y autorización verificadas, junto con alternativas técnicas que el cliente pueda aceptar."
+        ],
+        "decision": "Separar ventas contratadas, entregas autorizadas y soporte que puede mantenerse durante la vida del activo. Identificar a quién corresponde obtener permisos y qué condición activa una renegociación. Comprobar el texto vigente antes de tratar una propuesta o una adopción como regla aplicable.",
+        "example": "Prueba de comité: el cliente acepta la oferta, pero la pieza de recambio o actualización necesita una autorización adicional. ¿Qué parte del servicio y del ingreso sigue siendo entregable y quién soporta el retraso?",
+        "limit": "El alcance cambia por producto, destino y uso. Una noticia sobre semiconductores no permite concluir que todo software, maquinaria o servicio esté restringido. La nota no determina la elegibilidad de una exportación concreta."
+      },
+      {
+        "id": "digital",
+        "title": "3. Báltico, Atlántico y Mediterráneo: la redundancia digital puede ser aparente",
+        "horizon": "CONECTIVIDAD Y ZONA GRIS · 30–90 DÍAS",
+        "confirmed": "La Comisión publicó en febrero una herramienta de seguridad para cables submarinos. HaDEA amplió en junio el ámbito de reparación al Mediterráneo y Atlántico, tras la prioridad inicial del Báltico. Su comunicación distingue los daños accidentales más habituales de la preocupación por actos hostiles.",
+        "sources": [
+          "S14",
+          "S15"
+        ],
+        "judgement": "El daño empresarial depende de rutas físicas y capacidad de recuperación, aunque la atribución política tarde en aclararse. Dos marcas de telecomunicaciones pueden compartir infraestructura; dos aplicaciones críticas pueden depender del mismo acceso. El escenario a probar es la pérdida simultánea de funciones, con independencia de que la causa final sea accidental o deliberada.",
+        "escalation": [
+          "Incidentes verificados en varias rutas, degradación del respaldo o plazos de reparación incompatibles con la continuidad propia."
+        ],
+        "deescalation": [
+          "Conmutación real probada hacia una infraestructura independiente y recuperación dentro del plazo tolerable para el proceso."
+        ],
+        "decision": "Pedir evidencia de independencia de rutas y de pruebas de recuperación. Identificar qué funciones permiten seguir facturando, cobrando y documentando entregas con conectividad degradada. Priorizar capacidad de recuperación sobre una simple duplicación de proveedores.",
+        "example": "Prueba de comité: se pierde una conexión y el respaldo utiliza el mismo punto de llegada o un mismo servicio crítico. Ensayar cómo continuar el circuito pedido–entrega–factura–cobro. Es un escenario de continuidad, no una atribución de sabotaje.",
+        "limit": "No todo corte es sabotaje ni un incidente local interrumpe automáticamente internet europeo. No atribuimos un ataque a Rusia, China ni otro actor sin evidencia identificada."
+      },
+      {
+        "id": "carbon",
+        "title": "4. Europa–terceros países: los datos también condicionan el acceso al mercado",
+        "horizon": "FRONTERA REGULATORIA Y CARBONO · 2026–2027",
+        "confirmed": "CBAM opera en régimen definitivo desde enero de 2026 para determinados bienes. La información institucional de septiembre sitúa desde 2027 la declaración anual sobre importaciones del año anterior. El ámbito y las excepciones deben comprobarse por producto y operador.",
+        "sources": [
+          "S16",
+          "S17"
+        ],
+        "judgement": "Una ventaja de coste industrial puede quedar comprometida si el proveedor no acredita los datos necesarios para sostener las condiciones de importación. Esto puede alterar selección de suministradores, reparto de costes y necesidades de adaptación. La regla europea cambia incentivos fuera de la UE sin que exista un conflicto militar ni una intención hostil hacia cada exportador.",
+        "escalation": [
+          "Bien efectivamente incluido, datos insuficientes, obligaciones sin asignación contractual y un coste que el cliente no acepta repercutir."
+        ],
+        "deescalation": [
+          "Alcance jurídico resuelto, datos admitidos y costes incorporados de forma verificable al precio y al calendario de la operación."
+        ],
+        "decision": "Comprobar clasificación del producto, responsabilidades del importador y calidad del dato antes de valorar una cadena como competitiva. Separar el periodo al que se asocia el coste de las fechas de declaración y cumplimiento. Dimensionar con especialistas el efecto aplicable a la operación concreta.",
+        "example": "Prueba de comité: un proveedor de un bien cubierto ofrece menor precio, pero no entrega datos de emisiones utilizables. Comparar su coste completo y capacidad de cumplimiento con una alternativa acreditada; no aplicar un porcentaje genérico a todas las importaciones.",
+        "limit": "CBAM no afecta de la misma forma a todos los sectores ni a toda exportación latinoamericana. Un calendario posterior de declaración no constituye por sí mismo una exención sobre el periodo anterior."
+      }
+    ],
+    "referenceCases": [
+      {
+        "id": "hormuz",
+        "title": "Ormuz · caso de contraste, no eje central",
+        "text": "El caso ya tratado muestra que un desvío puede compartir vulnerabilidad con la ruta principal. Se conserva como contraste para auditar dependencias comunes, sin repetir aquí la crónica del conflicto.",
+        "sources": [
+          "S6",
+          "S7"
+        ]
+      },
+      {
+        "id": "usmca",
+        "title": "T-MEC · contraste sobre permanencia del acceso",
+        "text": "La revisión anual documentada por USTR recuerda que localización y condiciones de acceso son dimensiones distintas. El aviso de 2026 no establece terminación inmediata en 2027; el caso queda como referencia de diligencia comercial.",
         "sources": [
           "S8"
-        ],
-        "judgement": "El acceso a un gran mercado es una fuente de poder negociador. Una expansión que descuenta una preferencia comercial como si fuera una ventaja industrial propia está confundiendo política con productividad. La exposición se concentra en proyectos con demanda, origen y margen difíciles de redirigir.",
-        "escalation": [
-          "Medidas publicadas y aplicables al producto: cambios de origen, aranceles, requisitos o restricciones de acceso; no únicamente declaraciones políticas."
-        ],
-        "deescalation": [
-          "Acuerdos efectivos y reglas aplicables verificadas para el producto, acompañados de contratos que preserven el margen."
-        ],
-        "decision": "Separar la rentabilidad industrial de la ventaja comercial regulatoria. Contrastar origen e insumos con asesores competentes y simular la pérdida o el encarecimiento del beneficio bajo supuestos explícitos. No valorar como perpetua una condición que no controla la empresa.",
-        "limit": "Las cadenas productivas integradas también limitan el margen político para romper el intercambio sin costes propios. La revisión no permite inferir qué medida se adoptará ni cuándo."
-      },
-      {
-        "id": "execution",
-        "title": "3. Sanciones: tener contrato no garantiza poder ejecutarlo",
-        "horizon": "CONTRAPARTE Y PAGOS · 30–90 DÍAS",
-        "confirmed": "El Consejo de la UE incorporó en junio dos personas y una entidad a sus sanciones relacionadas con la navegación en Ormuz. La designación es un hecho; su efecto sobre cada contrato debe determinarse caso por caso.",
-        "sources": [
-          "S9"
-        ],
-        "judgement": "El punto débil puede estar fuera del activo: banco, transportista, aseguradora o beneficiario efectivo. Si la ejecución depende de una contraparte irremplazable, una operación aparentemente rentable puede dejar de ser practicable sin que cambie la demanda.",
-        "escalation": [
-          "Nuevas designaciones aplicables, negativas documentadas de los intermediarios o imposibilidad de completar pagos y transporte por vías conformes."
-        ],
-        "deescalation": [
-          "Revisión jurídica de la estructura concreta y confirmación escrita de ejecución por intermediarios admisibles."
-        ],
-        "decision": "Identificar intermediarios y beneficiarios efectivos antes de comprometer fondos. Acordar condiciones suspensivas y alternativas lícitas verificadas. La búsqueda de continuidad no justifica eludir controles ni asumir que otra jurisdicción elimina la exposición.",
-        "limit": "No toda conexión regional implica prohibición. La nota no determina la licitud de una operación ni sustituye asesoramiento jurídico especializado."
-      },
-      {
-        "id": "liquidity",
-        "title": "4. El contagio peligroso: suministro, caja y crédito a la vez",
-        "horizon": "CONTINUIDAD FINANCIERA · 30–90 DÍAS",
-        "confirmed": "La IEA describe tensión en diésel y el BCE señala endurecimiento financiero. Eso no prueba que cada empresa vaya a perder financiación; identifica un contexto donde conviene contrastar dependencias simultáneas.",
-        "sources": [
-          "S6",
-          "S2"
-        ],
-        "judgement": "Una empresa puede absorber un coste más alto y, sin embargo, no poder financiar compras anticipadas, inventario adicional y cobros tardíos al mismo tiempo. El detonante de una venta forzada puede ser la falta de liquidez disponible, antes que una pérdida contable extraordinaria. Es un escenario de transmisión, no un diagnóstico sobre una empresa concreta.",
-        "escalation": [
-          "Anticipos exigidos por proveedores, retrasos de cobro y menor crédito comprometido que coincidan en el calendario real de caja."
-        ],
-        "deescalation": [
-          "Líneas comprometidas utilizables, suministro acreditado y conversión de ventas en cobros dentro de los plazos previstos."
-        ],
-        "decision": "Estresar conjuntamente precio, plazo, moneda y disponibilidad de financiación; identificar la semana de menor caja y quién aporta el colchón. En Colombia, el tipo oficial no sustituye una oferta real de deuda ni resuelve la exposición peso/euro.",
-        "limit": "No equivale a prever una crisis bancaria ni justifica penalizar dos veces el mismo riesgo en flujos y tasa de descuento."
+        ]
       }
     ]
-  }
+  },
+  "coupledScenarios": [
+    {
+      "title": "A. Dos proveedores, un permiso y una pieza insustituible",
+      "combination": "El respaldo cambia de país, pero conserva un insumo crítico común y una autorización pendiente para el equipo o su destino.",
+      "fragility": "El inventario compra tiempo, mientras la homologación técnica y la licencia pueden avanzar a ritmos distintos. La ampliación de capacidad pierde valor si no puede entregar el producto autorizado que necesita el cliente.",
+      "test": "Pedir dos mapas separados: independencia material de la cadena y condiciones jurídicas de entrega. Medir el tiempo de sustitución contra la autonomía de caja. La hipótesis no implica que una licencia vaya a denegarse."
+    },
+    {
+      "title": "B. El activo funciona, pero falla el circuito de documentación y cobro",
+      "combination": "Una degradación de conectividad coincide con un proceso que depende de información crítica para documentar entregas o acreditar condiciones de importación.",
+      "fragility": "El riesgo no está solo en producción parada: puede estar en no poder completar el circuito comercial dentro del plazo necesario. El efecto depende de si existen procedimientos y datos alternativos utilizables.",
+      "test": "Ensayar pedido–entrega–documentación–factura–cobro con pérdida del servicio principal. Verificar el respaldo real y la documentación que exige el caso concreto; no suponer que una caída de conexión genera automáticamente una infracción."
+    },
+    {
+      "title": "C. Desescalada política con recuperación operativa lenta",
+      "combination": "Mejora el diálogo o se aclara una regla, pero persisten plazos de homologación, contratos de suministro y necesidades de adaptación financiadas.",
+      "fragility": "El mercado puede anticipar alivio antes de que una empresa recupere margen o caja. Un proyecto reconocido como estratégico tampoco acredita por sí mismo permisos completos, clientes o capacidad operativa.",
+      "test": "Exigir hitos operativos y cobros verificables antes de retirar todos los ajustes al caso de inversión. Separar anuncio, autorización, producción y caja."
+    }
+  ]
 }
