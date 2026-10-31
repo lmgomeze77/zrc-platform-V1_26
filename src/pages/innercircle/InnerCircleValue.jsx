@@ -1,34 +1,13 @@
-import { IcText } from './icLocale';
-import { useId, useState } from 'react';
-import EditorialPhoto from './EditorialPhoto';
+import {useState} from 'react';
+import {IcText} from './icLocale';
 import './innerCircle.css';
-
-// Shared public proposition: membership and platform subscriptions remain separate.
-export default function InnerCircleValue({ lang = 'es', compact = false }) {
-  const sampleId = useId();
-  const [sample, setSample] = useState(false);
-  const es = lang === 'es';
-  const benefits = es ? [
-  ['01', 'Prepara tu próxima decisión', 'Crea una ficha de expansión, adquisición o financiación: pregunta prioritaria, evidencias pendientes y siguiente paso.'],
-  ['02', 'Pon números a la exposición', 'Calcula la caja que exigirían más días de cobro y el sobrecoste de tus pagos en divisa bajo tus propios supuestos.'],
-  ['03', 'Lleva una ficha al comité', 'Guarda tu trabajo en este navegador, descarga la ficha y contrasta sus supuestos con la nota mensual y las fuentes.']] :
-  [
-  ['01', 'Prepare your next decision', 'Build an expansion, acquisition or financing brief: a priority question, evidence to gather and a next step.'],
-  ['02', 'Quantify your exposure', 'Estimate additional cash tied up by slower collections and the cost of FX payments under your own assumptions.'],
-  ['03', 'Take a brief to your committee', 'Save your work in this browser, download the brief and challenge its assumptions against the monthly note and sources.']];
-
-  return <IcText><div className={`ic-value ${compact ? 'ic-value-compact' : ''}`}>
-    {!compact && <EditorialPhoto subject="trade" variant="ic-photo-membership" />}
-    <div className="ic-value-heading"><span className="ic-kicker">{es ? 'QUÉ APORTA LA MEMBRESÍA' : 'THE MEMBERSHIP VALUE'}</span><span className="ic-badge">{es ? 'Gratuita en esta etapa · aprobación manual' : 'Free during this stage · reviewed admission'}</span></div>
-    <div className="ic-value-grid">{benefits.map(([n, title, body]) => <article key={n}><span className="ic-kicker">{n}</span><h3>{title}</h3><p>{body}</p></article>)}</div>
-    <button type="button" className="ic-button ic-button-quiet" aria-expanded={sample} aria-controls={`ic-sample-${sampleId}`} onClick={() => setSample(!sample)}>{sample ? es ? 'Cerrar muestra −' : 'Close sample −' : es ? 'Ver un ejemplo de lo que te llevas →' : 'See an example of your output →'}</button>
-    <div id={`ic-sample-${sampleId}`} hidden={!sample} className="ic-sample">
-      <span className="ic-kicker">{es ? 'MUESTRA ILUSTRATIVA · NO ES UNA SEÑAL ACTUAL' : 'ILLUSTRATIVE SAMPLE · NOT A CURRENT SIGNAL'}</span>
-      <h3>{es ? 'Ejemplo: preparar la financiación de una filial en Colombia' : 'Example: preparing finance for a subsidiary in Colombia'}</h3>
-      <p>{es ? 'Resultado: una ficha con la pregunta «¿La moneda y el vencimiento de la deuda encajan con los cobros?», tres evidencias por reunir y una acción para la siguiente reunión.' : 'Output: a brief asking whether debt currency and maturity match collections, three evidence checks and an action for your next meeting.'}</p>
-      <p><strong>{es ? 'Ejemplo hipotético: ' : 'Hypothetical example: '}</strong>{es ? '730.000 € de ventas anuales a crédito y 15 días adicionales de cobro inmovilizan 30.000 € más de caja. Pagos anuales en divisa con un coste actual de 100.000 € y un encarecimiento supuesto del 10 % añaden 10.000 € de coste anual.' : '€730,000 annual credit sales and 15 extra collection days tie up €30,000 more cash. Annual FX payments currently costing €100,000 and an assumed 10% increase add €10,000 in annual cost.'}</p>
-      <p>{es ? 'La ficha mantiene separados el circulante y el gasto anual. Puedes guardar los supuestos y descargarla para revisarlos con tu equipo. No asigna una recomendación de inversión.' : 'The brief keeps working capital and annual cost separate. Save assumptions and download them to review with your team. It does not provide an investment recommendation.'}</p>
-    </div>
-    <p className="ic-small">{es ? 'La edición completa, la biblioteca de trabajo y tu ficha personal forman parte del espacio de miembros. La membresía es gratuita durante esta etapa y requiere aprobación. Intelligence y Advisory se contratan por separado.' : 'The complete edition, working library and personal brief are part of the member workspace. Membership is free during this stage and requires approval. Intelligence and Advisory are contracted separately.'}</p>
-  </div></IcText>;
+export default function InnerCircleValue({compact=false}){
+ const [expanded,setExpanded]=useState(false);
+ return <IcText><div className={`ic-value ${compact?'ic-value-compact':''}`}>
+ <div className="ic-value-heading"><span className="ic-kicker">QUÉ APORTA LA MEMBRESÍA</span><span className="ic-badge">Gratuita en esta etapa · aprobación manual</span></div>
+ <div className="ic-value-grid"><article><span className="ic-kicker">01 / COMPRENDER</span><h3>El reportaje mensual</h3><p>Una lectura central con criterio ZRC, fuentes primarias y preguntas que conectan el contexto internacional con decisiones empresariales.</p></article><article><span className="ic-kicker">02 / SEGUIR</span><h3>Una agenda relevante</h3><p>Los temas que merecen seguimiento, por qué importan y qué evidencia conviene revisar después.</p></article><article><span className="ic-kicker">03 / ACCEDER</span><h3>Oportunidades ZRC</h3><p>Perfiles seleccionados y un canal directo para solicitar teasers, contrastar encaje y conocer las condiciones de acceso a información adicional.</p></article></div>
+ <button className="ic-button ic-button-quiet" type="button" aria-expanded={expanded} onClick={()=>setExpanded(!expanded)}>{expanded?'Cerrar detalle −':'Ver qué encontrarás dentro →'}</button>
+ {expanded&&<div className="ic-sample"><p>Portada de la edición → reportaje mensual y fuentes → agenda de seguimiento → oportunidades seleccionadas. La ficha personal y los dossiers metodológicos se encuentran en Herramientas.</p></div>}
+ <p className="ic-small">La edición completa, la agenda y el espacio de oportunidades están dentro del acceso de miembros. La disponibilidad y la exclusividad de cada operación se confirman con ZRC. Intelligence y Advisory se contratan por separado.</p>
+ </div></IcText>;
 }

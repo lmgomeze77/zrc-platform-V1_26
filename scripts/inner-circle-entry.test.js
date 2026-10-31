@@ -15,13 +15,14 @@ test('visitor sees the proposition, sample and application route before credenti
  try{
   const {default:Access,Member,IcLocaleProvider,IcMemberContentProvider}=await import(path.href+'?qa=1');
   const html=renderToStaticMarkup(React.createElement(Access));
-  assert.match(html,/Solicitar membresía gratuita/);assert.match(html,/Ya soy miembro/);assert.match(html,/Ver un ejemplo/);assert.match(html,/Cómo funciona el acceso/);assert.match(html,/AVANCE DE CONTENIDOS/);assert.match(html,/No hay renovación de pago automática/);assert.doesNotMatch(html,/type="password"/);assert.doesNotMatch(html,/PREGUNTA PRIORITARIA/);
+  assert.match(html,/Solicitar membresía gratuita/);assert.match(html,/Ya soy miembro/);assert.match(html,/Ver qué encontrarás dentro/);assert.match(html,/Cómo funciona el acceso/);assert.match(html,/AVANCE DE CONTENIDOS/);assert.match(html,/No hay renovación de pago automática/);assert.doesNotMatch(html,/type="password"/);assert.doesNotMatch(html,/PREGUNTA PRIORITARIA/);
   assert.doesNotMatch(html,/La evidencia de octubre|1. La continuidad de la actividad|type="password"/);
   assert.doesNotMatch(result.outputFiles[0].text,/At October’s close, our reading|Al cierre de octubre, nuestra lectura/);
   const en=renderToStaticMarkup(React.createElement(IcLocaleProvider,{lang:'en'},React.createElement(Access)));
   assert.match(en,/CONTENTS PREVIEW/);assert.match(en,/No automatic paid renewal/);assert.doesNotMatch(en,/October’s evidence|1. Continued activity/);assert.match(en,/Resilience comes at a cost/);assert.doesNotMatch(en,/La resiliencia|Membresía|Corte de información|730\.000/);
   const member=renderToStaticMarkup(React.createElement(IcLocaleProvider,{lang:'en'},React.createElement(IcMemberContentProvider,{content},React.createElement(Member,{useAuth:()=>({})}))));
-  assert.match(member,/MEMBER · APPROVED ACCESS/);assert.doesNotMatch(member,/Apply for free membership/);assert.match(member,/What are you deciding/);assert.match(member,/Expand a business/);assert.match(member,/bringing production closer/i);assert.doesNotMatch(member,/Prepara tu próxima|Ventas a crédito|¿Qué debe/);
+  assert.match(member,/MEMBER · APPROVED ACCESS/);assert.doesNotMatch(member,/Apply for free membership/);assert.match(member,/Read the feature/);assert.match(member,/View the agenda/);assert.match(member,/Explore ZRC opportunities/);assert.doesNotMatch(member,/What are you deciding|Annual credit sales|Prepara tu próxima/);
+  const images=[...member.matchAll(/<img[^>]+src="([^"]+)"/g)].map(match=>match[1]);assert.equal(images.length,1);assert.equal(new Set(images).size,images.length);
  }finally{delete globalThis.localStorage;await unlink(path);}
 });
 
@@ -77,4 +78,27 @@ test('full content requires a signed session and current membership approval',as
 test('a cross-origin login cannot create a member session',async()=>{
  const response=await worker.fetch(new Request('https://example.test/api/inner-circle/login',{method:'POST',headers:{origin:'https://unrelated.example','content-type':'application/json'},body:'{}'}),{},{});
  assert.equal(response.status,403);assert.equal(response.headers.get('set-cookie'),null);
+});
+
+
+test('opportunity interest is member-only and records the verified identity and selected profile',async()=>{
+ const {startIcSession}=await import('../src/worker/inner-circle-session.js');
+ const original=globalThis.fetch;const rows=[];const env={SUPABASE_URL:'https://database.example.test',SUPABASE_SERVICE_KEY:'test-session-secret-only',DB:{prepare:()=>({bind:(...args)=>({run:async()=>{rows.push(args);return {success:true};}})})}};
+ globalThis.fetch=async()=>Response.json([{status:'approved'}]);
+ try{
+  const session=await (await startIcSession('verified@example.test',env)).json();
+  const post=(body,token=session.session_token)=>worker.fetch(new Request('https://example.test/api/inner-circle/opportunity-interest',{method:'POST',headers:{'content-type':'application/json',Origin:'https://www.zenithrisecapital.com',...(token?{Authorization:`Bearer ${token}`}:{})},body:JSON.stringify(body)}),env,{});
+  const body={opportunityId:'agri',name:'Test member',profile:'investor',note:'Requesting a teaser.',email:'unverified@example.test'};
+  assert.equal((await post(body,'')).status,401);assert.equal(rows.length,0);
+  assert.equal((await post({...body,opportunityId:'not-listed'})).status,404);assert.equal(rows.length,0);
+  assert.equal((await post({...body,profile:'unrecognised'})).status,400);assert.equal(rows.length,0);
+  const response=await post(body);assert.equal(response.status,201);const receipt=await response.json();assert.match(receipt.reference,/^IC-[A-Z0-9]{8}$/);assert.equal(receipt.ok,true);
+  assert.equal(rows[0][0],'verified@example.test');assert.equal(rows[0][2],'inner-circle-opportunity');const detail=JSON.parse(rows[0][4]);assert.equal(detail.opportunityId,'agri');assert.equal(detail.reference,receipt.reference);assert.equal(detail.note,body.note);
+  env.DB={prepare:()=>{throw new Error('storage failure');}};assert.equal((await post(body)).status,500);
+ }finally{globalThis.fetch=original;}
+});
+
+test('agenda sources resolve and published opportunity profiles do not imply verified exclusivity',()=>{
+ assert.equal(content.agenda.length,3);for(const topic of content.agenda){assert.ok(content.edition.sources.find(source=>source.id===topic.sourceId));assert.ok(topic.question.es&&topic.question.en);}
+ assert.equal(content.opportunities.length,4);for(const opportunity of content.opportunities){assert.equal(opportunity.exclusivity,'unconfirmed');assert.equal(opportunity.availability,'confirmation_required');assert.ok(opportunity.title.es&&opportunity.title.en);}
 });
