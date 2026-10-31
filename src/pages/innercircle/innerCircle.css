@@ -39,3 +39,6 @@
 .ic-editorial-photo .ic-photo-context{display:block;flex-basis:100%;font-size:10px;color:var(--ic-muted)}
 .ic-value .ic-photo-membership{margin-top:0}.ic-photo-membership .ic-editorial-photo-frame{aspect-ratio:2.8/1}
 @media(max-width:640px){.ic-editorial-photo-frame,.ic-photo-membership .ic-editorial-photo-frame{aspect-ratio:1.6/1}.ic-editorial-photo figcaption{display:block}.ic-photo-credit{display:block;margin-top:4px}}
+
+
+.ic-desk .ic-field{display:block;width:100%;min-height:44px;margin-top:8px;padding:11px 12px;background:#0a1220;border:1px solid var(--ic-line);border-radius:8px;color:var(--ic-ink);font:16px/1.5 Outfit,sans-serif}.ic-desk textarea.ic-field{resize:vertical}.ic-desk .ic-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.ic-desk .ic-cash-results{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--ic-line);border-bottom:1px solid var(--ic-line)}.ic-desk .ic-cash-results h3{font-family:Outfit,sans-serif;font-variant-numeric:tabular-nums;font-size:28px;color:var(--ic-gold);margin:8px 0}.ic-desk #ic-decision a{color:var(--ic-gold)}@media(max-width:600px){.ic-desk .ic-form-grid,.ic-desk .ic-cash-results{grid-template-columns:1fr}}

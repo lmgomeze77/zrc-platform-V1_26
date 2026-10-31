@@ -7,6 +7,7 @@ export default function MonthlyEdition() {
   return <section id="ic-edition" className="ic-divider">
     <span className="ic-kicker">EDICIÓN {edition.edition} / {edition.month}</span>
     <h2>{edition.title}</h2><p className="ic-lead">{edition.subtitle}</p>
+    <div className="ic-actions"><a className="ic-button ic-button-quiet" href="#ic-decision">Contrastar esta lectura con mi decisión →</a></div>
     <p className="ic-small">Corte de información: {edition.cutoff}</p>
     <EditorialPhoto subject="trade" variant="ic-photo-cover"/>
     <div className="ic-tabs" role="tablist" aria-label="Lecturas de la edición">
@@ -28,3 +29,4 @@ export default function MonthlyEdition() {
     </article>
   </section>;
 }
+

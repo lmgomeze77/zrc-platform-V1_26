@@ -321,7 +321,7 @@ export default function Community({ lang = "es", onAccess }) {
   const t = {
     es:{
       eyebrow:"ZRC Confidencial",the:"The",inner:"Inner",circle:"Circle",
-      tagline:"Geopolítica, empresa y capital. Una lectura en profundidad para quienes toman decisiones.",
+      tagline:"Prepara una decisión de expansión, adquisición o financiación. Identifica qué comprobar y llévate una ficha para tu próxima reunión.",
       pillars:[
         { title:"La Nota", text:"Inteligencia mensual, escrita para decidir." },
         { title:"El Círculo", text:"Inversores, operadores y estrategas seleccionados." },
@@ -337,7 +337,7 @@ export default function Community({ lang = "es", onAccess }) {
     },
     en:{
       eyebrow:"ZRC Confidential",the:"The",inner:"Inner",circle:"Circle",
-      tagline:"Geopolitics, business and capital. A deeper read for people making decisions.",
+      tagline:"Prepare an expansion, acquisition or financing decision. Identify what to verify and take a brief to your next meeting.",
       pillars:[
         { title:"The Note", text:"Monthly intelligence, written to decide." },
         { title:"The Circle", text:"Selected investors, operators and strategists." },
