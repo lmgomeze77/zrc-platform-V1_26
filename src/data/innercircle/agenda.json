@@ -1,62 +1,62 @@
 [
   {
+    "id": "hormuz",
+    "sourceId": "S7",
+    "topic": {
+      "es": "Ormuz · coerción y rutas alternativas",
+      "en": "Hormuz · coercion and alternative routes"
+    },
+    "question": {
+      "es": "¿La alternativa sigue dependiendo del mismo punto vulnerable?",
+      "en": "Does the alternative still depend on the same vulnerable point?"
+    },
+    "focus": {
+      "es": "Tránsito efectivo, infraestructura de desvío, cobertura y capacidad de contratar transporte.",
+      "en": "Completed transit, bypass infrastructure, cover and the ability to book transport."
+    },
+    "next": {
+      "es": "Contrastar entregas y condiciones de seguro; elevar la preocupación si se deterioran simultáneamente ruta principal y desvíos.",
+      "en": "Check deliveries and insurance terms; raise concern if the main route and bypasses deteriorate together."
+    }
+  },
+  {
     "id": "mexico",
-    "sourceId": "S4",
+    "sourceId": "S8",
     "topic": {
-      "es": "México · expansión y capacidad local",
-      "en": "Mexico · expansion and local capacity"
+      "es": "T-MEC · acceso comercial y presión política",
+      "en": "USMCA · trade access and political pressure"
     },
     "question": {
-      "es": "¿Qué debe estar acreditado antes de ampliar la inversión?",
-      "en": "What must be verified before increasing investment?"
+      "es": "¿Qué parte del retorno depende de una preferencia que no controla la empresa?",
+      "en": "How much return depends on a preference outside the company’s control?"
     },
     "focus": {
-      "es": "Demanda contratada, permisos, suministros y capacidad del emplazamiento.",
-      "en": "Contracted demand, permits, utilities and site capacity."
+      "es": "Revisión anual de 2027, medidas publicadas aplicables al producto, reglas de origen y contratos.",
+      "en": "The 2027 annual review, published product-applicable measures, origin rules and contracts."
     },
     "next": {
-      "es": "Contrastar los hitos del proyecto con evidencia local y condicionar el siguiente desembolso a su cumplimiento.",
-      "en": "Check project milestones against local evidence and make the next disbursement conditional on delivery."
+      "es": "Separar productividad de ventaja regulatoria y definir el cambio que obligaría a renegociar o detener el desembolso.",
+      "en": "Separate productivity from regulatory advantage and define the change requiring renegotiation or a halt to disbursement."
     }
   },
   {
-    "id": "colombia",
-    "sourceId": "S5",
-    "topic": {
-      "es": "Colombia · financiación y divisa",
-      "en": "Colombia · financing and currency"
-    },
-    "question": {
-      "es": "¿La financiación encaja con la moneda y el calendario de cobros?",
-      "en": "Does financing match collection currency and timing?"
-    },
-    "focus": {
-      "es": "Ofertas reales de deuda, coberturas, plazos de cobro y caja distribuible.",
-      "en": "Actual debt offers, hedges, collection periods and distributable cash."
-    },
-    "next": {
-      "es": "Comparar financiación en flujos equivalentes y revisar conjuntamente FX, circulante y servicio de deuda.",
-      "en": "Compare financing on equivalent cash flows and review FX, working capital and debt service together."
-    }
-  },
-  {
-    "id": "energy",
+    "id": "liquidity",
     "sourceId": "S2",
     "topic": {
-      "es": "Energía y logística · presión sobre caja",
-      "en": "Energy and logistics · cash pressure"
+      "es": "Contagio · energía, cobros y financiación",
+      "en": "Spillovers · energy, collections and financing"
     },
     "question": {
-      "es": "¿Qué margen y qué caja sobreviven a costes más exigentes?",
-      "en": "Which margins and cash flows survive higher costs?"
+      "es": "¿Cuánta autonomía queda si el shock exige caja mientras el crédito se estrecha?",
+      "en": "How much endurance remains if the shock demands cash while credit tightens?"
     },
     "focus": {
-      "es": "Facturas, contratos, capacidad de repercutir costes y necesidad de inventario.",
-      "en": "Invoices, contracts, cost pass-through and inventory requirements."
+      "es": "Anticipos, plazos de cobro, suministro y líneas comprometidas realmente utilizables.",
+      "en": "Advance payments, collection periods, supply and genuinely usable committed facilities."
     },
     "next": {
-      "es": "Actualizar el presupuesto del proyecto con costes efectivos y distinguir ahorro recurrente de liberación puntual de circulante.",
-      "en": "Update the project budget with actual costs and separate recurring savings from one-off working capital release."
+      "es": "Estresar conjuntamente coste y calendario, identificar la semana de menor caja y contrastar quién financia el colchón.",
+      "en": "Stress costs and timing together, identify the lowest-cash week and verify who funds the buffer."
     }
   }
 ]

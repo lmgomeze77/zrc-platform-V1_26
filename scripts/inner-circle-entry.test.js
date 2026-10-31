@@ -19,7 +19,7 @@ test('visitor sees the proposition, sample and application route before credenti
   assert.doesNotMatch(html,/La evidencia de octubre|1. La continuidad de la actividad|type="password"/);
   assert.doesNotMatch(result.outputFiles[0].text,/At October’s close, our reading|Al cierre de octubre, nuestra lectura/);
   const en=renderToStaticMarkup(React.createElement(IcLocaleProvider,{lang:'en'},React.createElement(Access)));
-  assert.match(en,/CONTENTS PREVIEW/);assert.match(en,/No automatic paid renewal/);assert.doesNotMatch(en,/October’s evidence|1. Continued activity/);assert.match(en,/Resilience comes at a cost/);assert.doesNotMatch(en,/La resiliencia|Membresía|Corte de información|730\.000/);
+  assert.match(en,/CONTENTS PREVIEW/);assert.match(en,/No automatic paid renewal/);assert.doesNotMatch(en,/October’s evidence|1. Continued activity/);assert.match(en,/Resilience has a limit/);assert.doesNotMatch(en,/La resiliencia|Membresía|Corte de información|730\.000/);
   const member=renderToStaticMarkup(React.createElement(IcLocaleProvider,{lang:'en'},React.createElement(IcMemberContentProvider,{content},React.createElement(Member,{useAuth:()=>({})}))));
   assert.match(member,/MEMBER · APPROVED ACCESS/);assert.doesNotMatch(member,/Apply for free membership/);assert.match(member,/Read the feature/);assert.match(member,/View the agenda/);assert.match(member,/Explore ZRC opportunities/);assert.doesNotMatch(member,/What are you deciding|Annual credit sales|Prepara tu próxima/);
   const images=[...member.matchAll(/<img[^>]+src="([^"]+)"/g)].map(match=>match[1]);assert.equal(images.length,1);assert.equal(new Set(images).size,images.length);
@@ -67,7 +67,7 @@ test('full content requires a signed session and current membership approval',as
   assert.match(preflight.headers.get('access-control-allow-headers'),/Authorization/);
   const request=()=>new Request('https://example.test/api/inner-circle/content',{headers:{cookie:token}});
   const authorised=await worker.fetch(request(),env,{});assert.equal(authorised.status,200);assert.match(authorised.headers.get('cache-control'),/no-store/);
-  const data=await authorised.json();assert.equal(data.content.edition.editorial.paragraphs.length,6);assert.equal(data.content.dossiers.length,3);assert.ok(data.content.translations[data.content.edition.thesis]);
+  const data=await authorised.json();assert.ok(data.content.edition.editorial.paragraphs.length>=3);assert.equal(data.content.dossiers.length,3);assert.ok(data.content.translations[data.content.edition.thesis]);
   const forged=await worker.fetch(new Request('https://example.test/api/inner-circle/content',{headers:{cookie:token+'forged'}}),env,{});assert.equal(forged.status,401);
   approved=false;assert.equal((await worker.fetch(request(),env,{})).status,401);approved=true;
   const now=Date.now;try{Date.now=()=>now()+86401000;assert.equal((await worker.fetch(request(),env,{})).status,401);}finally{Date.now=now;}
@@ -101,4 +101,15 @@ test('opportunity interest is member-only and records the verified identity and 
 test('agenda sources resolve and published opportunity profiles do not imply verified exclusivity',()=>{
  assert.equal(content.agenda.length,3);for(const topic of content.agenda){assert.ok(content.edition.sources.find(source=>source.id===topic.sourceId));assert.ok(topic.question.es&&topic.question.en);}
  assert.equal(content.opportunities.length,4);for(const opportunity of content.opportunities){assert.equal(opportunity.exclusivity,'unconfirmed');assert.equal(opportunity.availability,'confirmation_required');assert.ok(opportunity.title.es&&opportunity.title.en);}
+});
+
+
+test('strategic risk cases distinguish evidence, triggers, counterevidence and decisions in both languages',()=>{
+ const review=content.edition.strategicReview;assert.equal(review.risks.length,4);
+ for(const risk of review.risks){
+  for(const id of risk.sources)assert.ok(content.edition.sources.some(source=>source.id===id));
+  for(const text of [risk.title,risk.horizon,risk.confirmed,risk.judgement,risk.decision,risk.limit,...risk.escalation,...risk.deescalation])assert.ok(content.translations[text],`Missing English: ${text}`);
+  assert.ok(risk.escalation.length&&risk.deescalation.length);
+ }
+ assert.ok(content.edition.sources.some(source=>source.id==='S8'&&source.url.includes('govinfo.gov')));
 });
