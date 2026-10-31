@@ -1314,9 +1314,9 @@ async function handleInnerCircleLogin(request, env) {
     if (!member || member.status !== "approved")
       return jsonResponse({ status: "denied" });
 
-    // Step 2a: no password set yet → allow (admin needs to run SQL to set passwords)
+    // Approved membership is not proof of identity. Require a configured password.
     if (!member.password_hash)
-      return jsonResponse({ status: "approved" });
+      return jsonResponse({ status: "denied" });
 
     // Step 2b: password hash exists → verify via Supabase pgcrypto RPC
     const rpcResp = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/ic_verify_password`, {
