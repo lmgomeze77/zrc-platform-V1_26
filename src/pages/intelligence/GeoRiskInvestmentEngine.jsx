@@ -136,7 +136,7 @@ export default function GeoRiskInvestmentEngine({countryContext=null,selectedCou
         ["Flujo anual de equilibrio",fmt(result.breakEvenCashFlow)+" M€"]
       ].map(([label,value])=><div key={label} style={panel}><div style={{fontSize:11,color:"#94A3B8",marginBottom:8}}>{label}</div><strong style={{fontSize:20,color:"#F8FAFC",fontVariantNumeric:"tabular-nums"}}>{value}</strong></div>)}
     </div>
-    <GeoRiskAnnualModel inputs={inputs} annualSettings={annualSettings} onAnnualSettingsChange={onAnnualSettingsChange} annualOverrides={annualOverrides} onAnnualOverridesChange={onAnnualOverridesChange}/>
+    <GeoRiskAnnualModel project={projectName} country={country} editedFields={editedFields} countryAdjustment={countryAdjustment} inputs={inputs} annualSettings={annualSettings} onAnnualSettingsChange={onAnnualSettingsChange} annualOverrides={annualOverrides} onAnnualOverridesChange={onAnnualOverridesChange}/>
     <div style={{...panel,borderColor:"#5D704C"}}>
       <div style={{fontSize:11,color:"#93C5FD",letterSpacing:1,fontWeight:700}}>LECTURA DEL MODELO · NO ES RECOMENDACIÓN</div>
       <div style={{fontSize:19,fontWeight:700,marginTop:7}}>{result.decision}</div>

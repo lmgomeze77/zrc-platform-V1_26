@@ -1,6 +1,7 @@
 import {useMemo,useState} from "react";
 import {projectCashFlows,ANNUAL_MODEL_VERSION} from "../../data/georiskAnnualCashFlow.js";
 import {DEFAULT_ANNUAL_SETTINGS} from "../../data/georiskWorkspaceSnapshot.js";
+import {downloadInvestmentCommitteeBrief} from "../../data/georiskInvestmentCommitteeBrief.js";
 
 const card={background:"#0D1B30",border:"1px solid #355173",borderRadius:14,padding:16};
 const fmt=x=>Number.isFinite(x)?x.toLocaleString("es-ES",{maximumFractionDigits:2,minimumFractionDigits:2}):"N/D";
@@ -10,7 +11,7 @@ const fields=[
  ["fxExposurePct","FCF positivo expuesto a FX","%",0,100,5],
  ["fxAdverseMovePct","Shock adverso FX supuesto","%",0,100,5]
 ];
-export default function GeoRiskAnnualModel({inputs,annualSettings,onAnnualSettingsChange,annualOverrides,onAnnualOverridesChange}){
+export default function GeoRiskAnnualModel({inputs,annualSettings,onAnnualSettingsChange,annualOverrides,onAnnualOverridesChange,project,country,editedFields,countryAdjustment}){
  const [expanded,setExpanded]=useState(true);
  const settings=annualSettings??DEFAULT_ANNUAL_SETTINGS;
  const overrides=annualOverrides??{};
@@ -31,6 +32,7 @@ export default function GeoRiskAnnualModel({inputs,annualSettings,onAnnualSettin
   {outcome.error?<p role="alert" style={{color:"#FCA5A5"}}>{outcome.error}</p>:result&&<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,170px),1fr))",gap:9}}>
     {[["VAN base",fmt(result.baseNPV)+" M€"],["VAN estrés",fmt(result.stressNPV)+" M€"],["TIR",result.irr===null?"N/D":fmt(result.irr)+" %"],["Tasa exigida",fmt(result.hurdleRate)+" %"]].map(([label,value])=><div key={label} style={{background:"#132B42",borderRadius:9,padding:12}}><div style={{fontSize:11,color:"#AFC3D8"}}>{label}</div><strong style={{fontSize:19,color:"#F1F5F9",fontVariantNumeric:"tabular-nums"}}>{value}</strong></div>)}
    </div>}
+  {result&&<div style={{display:"flex",gap:10,flexWrap:"wrap",alignItems:"center"}}><button type="button" onClick={()=>downloadInvestmentCommitteeBrief({project,country,inputs,annualSettings:settings,annualOverrides:overrides,editedFields,countryAdjustment})} style={{background:"#24578C",color:"#FFFFFF",border:"1px solid #4E82B7",borderRadius:9,padding:"11px 15px",fontSize:12,fontWeight:700,cursor:"pointer"}}>Exportar Investment Committee Brief</button><span style={{fontSize:11,color:"#AFC3D8"}}>HTML imprimible a PDF · borrador sin datos financieros verificados</span></div>}
   {expanded&&<>
    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,190px),1fr))",gap:12}}>
     {fields.map(([key,label,unit,min,max,step])=><label key={key} style={{display:"grid",gap:5,fontSize:12,color:"#CBD5E1"}}>{label}
