@@ -3,39 +3,39 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1168",
-      "change": "-0.12%",
-      "up": false
+      "value": "1.1173",
+      "change": "+0.01%",
+      "up": true
     },
     {
       "symbol": "IBEX 35",
-      "value": "18,652.90",
-      "change": "-1.09%",
+      "value": "18,787.10",
+      "change": "-0.51%",
       "up": false
     },
     {
       "symbol": "BRENT Crude",
-      "value": "113.43",
-      "change": "+2.37%",
-      "up": true
+      "value": "112.28",
+      "change": "-3.90%",
+      "up": false
     },
     {
       "symbol": "WTI Crude",
-      "value": "104.12",
-      "change": "+2.08%",
-      "up": true
+      "value": "102.89",
+      "change": "-0.54%",
+      "up": false
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "3,875.42",
+      "value": "3,875.19",
       "change": "-3.29%",
       "up": false
     },
     {
       "symbol": "BTC/USD",
-      "value": "77,177.03",
-      "change": "-0.90%",
-      "up": false
+      "value": "77,484.10",
+      "change": "+0.73%",
+      "up": true
     },
     {
       "symbol": "VIX",
@@ -45,8 +45,8 @@
     },
     {
       "symbol": "US 10Y Yield",
-      "value": "4.93%",
-      "change": "-0.56%",
+      "value": "4.933%",
+      "change": "-1.12%",
       "up": false
     },
     {
@@ -63,14 +63,14 @@
     },
     {
       "symbol": "EUR/GBP",
-      "value": "0.8332",
-      "change": "-0.30%",
+      "value": "0.8359",
+      "change": "-0.00%",
       "up": false
     },
     {
       "symbol": "DXY Dollar Index",
-      "value": "101.96",
-      "change": "-0.07%",
+      "value": "101.88",
+      "change": "-0.16%",
       "up": false
     },
     {
@@ -81,13 +81,13 @@
     },
     {
       "symbol": "Copper",
-      "value": "6.4585",
-      "change": "-1.86%",
-      "up": false
+      "value": "6.4905",
+      "change": "+0.34%",
+      "up": true
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.6611",
+      "value": "6.6523",
       "change": "-0.07%",
       "up": false
     }
@@ -382,5 +382,5 @@
       "time": "20h"
     }
   ],
-  "market_updated_at": "2026-10-31T21:00:21.765Z"
+  "market_updated_at": "2026-11-01T00:30:35.811Z"
 }
