@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T11:38:18.906Z",
+  "generated_at": "2026-11-02T14:39:03.151Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -95,15 +95,120 @@
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
-      "region": "MENA",
+      "tag": "ALERT",
+      "region": "EURASIA",
       "title": {
-        "es": "Los estados del Golfo deben repensar su defensa de un billón de dólares a la luz de la guerra EEUU-Irán, según informe",
-        "en": "Gulf states must rethink trillion-dollar defence in light of US-Iran war, says report"
+        "es": "El gigantesco nuevo radar de Rusia en Kaliningrado genera alarma en la OTAN",
+        "en": "Russia's giant new radar in Kaliningrad raises alarm in NATO"
       },
       "summary": {
-        "es": "Un informe del IISS advierte que los estados del Golfo deben reconfigurar sus estrategias de defensa tras el daño económico de la guerra EEUU-Irán y la cuestionada fiabilidad de las bases estadounidenses frente a amenazas iraníes. La sobredependencia en sistemas de alto coste y en el paraguas de seguridad americano se presenta como una vulnerabilidad estructural. Esto tiene implicaciones directas para contratos de armamento, inversión en defensa regional y estabilidad energética del Golfo.",
-        "en": "An IISS report warns that Gulf states must reconfigure their defense strategies following economic damage from the US-Iran war and the questioned reliability of US bases against Iranian threats. Overdependence on expensive high-end systems and American security guarantees is flagged as a structural vulnerability. This has direct implications for arms procurement, regional defense investment, and Gulf energy stability."
+        "es": "Rusia está completando un complejo de radar de gran tamaño en Kaliningrado, capaz de monitorear gran parte de Europa, lo que intensifica la confrontación militar entre Moscú y la OTAN. La instalación representa un escalamiento estratégico en el flanco báltico, con implicaciones directas para el posicionamiento defensivo de la alianza y los presupuestos de defensa europeos. El aumento de la tensión en esta región podría impulsar mayor gasto en defensa entre los miembros europeos de la OTAN.",
+        "en": "Russia is nearing completion of a massive radar complex in Kaliningrad capable of monitoring much of Europe, escalating military tensions with NATO along the Baltic flank. The installation marks a strategic escalation with direct implications for alliance defense posturing and European defense budgets. Heightened tensions in this corridor could accelerate defense spending commitments among NATO's European members."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Mayor gasto en defensa de la OTAN impulsa sector aeroespacial europeo",
+            "en": "NATO defense spending increase drives European aerospace sector"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensiones geopolíticas en Europa presionan al euro",
+            "en": "Geopolitical tensions in Europe weigh on the euro"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada militar eleva demanda de activos refugio",
+            "en": "Military escalation lifts safe-haven demand"
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/russia-s-giant-new-radar-in-kaliningrad-raises-alarm-in-nato/a-79797815?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-01",
+      "time": "18h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "APAC",
+      "title": {
+        "es": "El mensaje de China a sus rivales: necesitan lo que fabricamos",
+        "en": "China's Message to Its Rivals: You Need What We Make"
+      },
+      "summary": {
+        "es": "China está intensificando la dependencia tecnológica global más allá de las tierras raras, dificultando que otros países reduzcan su exposición a su manufactura de paneles solares, drones y productos farmacéuticos. Esta estrategia de dependencia estructural representa una palanca geopolítica clave ante posibles nuevas rondas de tensión comercial con EE.UU. y sus aliados. Los inversores deben monitorear las cadenas de suministro en sectores de energía limpia, defensa y farmacéutico.",
+        "en": "China is deepening global technological dependencies beyond rare earths, making it harder for countries to decouple from its solar, drone, and pharmaceutical manufacturing. This structural dependency strategy functions as a key geopolitical lever ahead of potential new rounds of trade tension with the US and its allies. Investors should monitor supply chain vulnerabilities in clean energy, defense, and pharma sectors."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Solar energy equities (ex-China)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Dependencia de componentes chinos comprime márgenes de productores occidentales",
+            "en": "Chinese component dependency compresses margins for Western producers"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Países exportadores a China pueden beneficiarse; competidores, presionados",
+            "en": "China-export-linked EMs may benefit; competitors face pressure"
+          }
+        },
+        {
+          "asset": "US technology equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de suministro en semiconductores y drones pesa sobre sector tech",
+            "en": "Supply risk in semiconductors and drones weighs on tech sector"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre tecnológica y comercial apoya activos refugio",
+            "en": "Tech and trade uncertainty supports safe-haven assets"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/02/world/asia/china-us-exports-ai-solar.html",
+      "published_at": "2026-11-02",
+      "time": "9h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Siria evalúa unirse al pacto de defensa mutua saudí mientras continúa la guerra en Yemen",
+        "en": "Syria Weighs Joining Saudi Mutual Defense Pact as Yemen War Rages"
+      },
+      "summary": {
+        "es": "Siria considera unirse al acuerdo de defensa mutua de Arabia Saudita con Turquía y Pakistán, lo que podría ampliar el conflicto impulsado por la escalada saudí con los hutíes respaldados por Irán. Una incorporación siria formalizaría un eje regional antiiraní con implicaciones para la estabilidad energética del Golfo y las rutas marítimas del Mar Rojo. Los mercados de petróleo y los activos de defensa deberán seguir de cerca la dinámica de adhesión.",
+        "en": "Syria is considering joining Saudi Arabia's mutual defense pact with Turkey and Pakistan, potentially widening the conflict driven by the escalating Saudi confrontation with Iran-backed Houthis. Syrian membership would formalize a broader anti-Iran regional axis with direct implications for Gulf energy stability and Red Sea shipping lanes. Oil markets and defense assets warrant close monitoring as membership dynamics evolve."
       },
       "impact": "high",
       "market_impact": [
@@ -112,26 +217,17 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Incertidumbre sobre seguridad energética del Golfo eleva prima de riesgo",
-            "en": "Gulf energy security uncertainty raises risk premium"
+            "es": "Escalada regional en el Golfo amenaza suministro de petróleo",
+            "en": "Gulf regional escalation threatens oil supply"
           }
         },
         {
-          "asset": "Defense sector equities (EU/US)",
+          "asset": "Shipping/tanker equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Rearme del Golfo impulsa demanda de sistemas de defensa",
-            "en": "Gulf rearmament drives demand for defense systems"
-          }
-        },
-        {
-          "asset": "EM currencies (Gulf pegs)",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Presión fiscal por aumento del gasto militar en la región",
-            "en": "Fiscal pressure from rising regional military spending"
+            "es": "Riesgo en el Mar Rojo eleva tarifas de fletes y primas de seguro",
+            "en": "Red Sea risk lifts freight rates and insurance premiums"
           }
         },
         {
@@ -139,86 +235,86 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada de riesgo geopolítico en MENA favorece activos refugio",
-            "en": "Rising MENA geopolitical risk supports safe-haven demand"
+            "es": "Mayor tensión MENA impulsa activos refugio",
+            "en": "Rising MENA tension boosts safe-haven assets"
           }
         }
       ],
-      "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/30/gulf-states-rethink-trillion-dollar-defence-us-iran-war-iiss-report",
-      "published_at": "2026-10-30",
-      "time": "22h"
+      "confidence": 80,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/10/31/world/middleeast/syria-saudi-defense-pact.html",
+      "published_at": "2026-11-01",
+      "time": "18h"
     },
     {
-      "id": 2,
+      "id": 4,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Canadá y la UE anuncian nueva alianza abierta a países afines",
-        "en": "Canada and EU announce new alliance open to like-minded countries"
+        "es": "Nueva ola de ciberataques a refrigeradores sacude supermercados europeos",
+        "en": "Fresh wave of fridge cyberattacks hits European supermarkets"
       },
       "summary": {
-        "es": "Canadá y la Unión Europea han lanzado la 'Alianza para el Futuro' en la cumbre de Montreal, abierta a otros países democráticos y concebida como contrapeso geopolítico en un mundo 'sacudido por nuevas tormentas'. La iniciativa representa una reconfiguración significativa de la arquitectura de seguridad occidental, potencialmente en respuesta a la postura de EEUU bajo Trump y la presión rusa. Tiene implicaciones para los flujos de comercio transatlántico, inversión en defensa europea y el papel del dólar.",
-        "en": "Canada and the European Union have launched the 'Alliance for the Future' at the Montreal summit, open to other like-minded democracies and conceived as a geopolitical counterweight in a world 'shaken by new storms.' The initiative represents a significant reconfiguration of Western security architecture, potentially in response to US posture under Trump and Russian pressure. It has implications for transatlantic trade flows, European defense investment, and the role of the dollar."
+        "es": "Supermercados en Bélgica, Luxemburgo, Suecia, Irlanda y Estonia sufrieron ciberataques coordinados que manipularon sistemas de control de temperatura en neveras y congeladores, siguiendo un patrón similar al ataque de octubre en Francia. La campaña sugiere una operación sofisticada y posiblemente estatal contra infraestructura crítica civil europea, con implicaciones para la seguridad alimentaria y la ciberseguridad de cadenas de suministro. El incidente refuerza la presión sobre los gobiernos europeos para endurecer la regulación de ciberseguridad en infraestructura crítica.",
+        "en": "Supermarkets across Belgium, Luxembourg, Sweden, Ireland, and Estonia experienced coordinated cyberattacks manipulating refrigeration temperature controls, following a similar attack on French retailers in October. The campaign suggests a sophisticated, potentially state-sponsored operation targeting civilian critical infrastructure across Europe, with food security and supply chain cybersecurity implications. The incidents intensify pressure on European governments to tighten critical infrastructure cybersecurity regulation."
       },
       "impact": "high",
       "market_impact": [
         {
+          "asset": "European cybersecurity equities",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Ataques coordinados impulsan demanda de soluciones de ciberseguridad",
+            "en": "Coordinated attacks drive demand for cybersecurity solutions"
+          }
+        },
+        {
+          "asset": "European retail equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Pérdidas por deterioro de productos y costos operativos pesan en el sector",
+            "en": "Spoilage losses and operational costs weigh on retail sector"
+          }
+        },
+        {
           "asset": "EUR/USD",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Autonomía estratégica europea refuerza confianza en el euro",
-            "en": "European strategic autonomy boosts euro confidence"
-          }
-        },
-        {
-          "asset": "European defense equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Nueva alianza acelera gasto en defensa europeo",
-            "en": "New alliance accelerates European defense spending"
-          }
-        },
-        {
-          "asset": "CAD/USD",
-          "direction": "up",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Perfil geopolítico de Canadá elevado por liderazgo de alianza",
-            "en": "Canada's geopolitical profile raised by alliance leadership"
+            "es": "Vulnerabilidad de infraestructura crítica erosiona confianza en la eurozona",
+            "en": "Critical infrastructure vulnerability erodes eurozone confidence"
           }
         }
       ],
-      "confidence": 82,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/oct/30/canada-european-union-alliance",
-      "published_at": "2026-10-30",
-      "time": "15h"
+      "confidence": 78,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20261102-fresh-wave-of-fridge-cyberattacks-hits-european-supermarkets",
+      "published_at": "2026-11-02",
+      "time": "<1h"
     },
     {
-      "id": 3,
-      "tag": "ALERT",
+      "id": 5,
+      "tag": "WATCH",
       "region": "GLOBAL",
       "title": {
-        "es": "La presencia de Rusia divide a los ministros del G20",
-        "en": "Russia's presence divides G20 ministers"
+        "es": "La guerra comercial EE.UU.-China parece haberse calmado, pero la sensación de calma es engañosa",
+        "en": "The US-China trade war seems to have subsided – but the sense of calm is misleading"
       },
       "summary": {
-        "es": "La reunión de cancilleres del G20 en EEUU concluye sin acuerdo en temas clave de seguridad global, mientras la presencia rusa genera fisuras entre bloques. Paralelamente, el Secretario de Estado Rubio firmó un acuerdo de cooperación ártica con Japón y Corea del Sur, señalando una reorientación estratégica de Washington. La fragmentación diplomática en el G20 reduce la capacidad de coordinación global en crisis y refuerza dinámicas de bloques.",
-        "en": "The G20 foreign ministers' meeting in the US concludes without agreement on key global security issues, while Russia's presence creates divisions between blocs. On the sidelines, Secretary of State Rubio signed an Arctic cooperation deal with Japan and South Korea, signaling a US strategic reorientation. G20 diplomatic fragmentation reduces global crisis coordination capacity and reinforces bloc dynamics."
+        "es": "Una tregua comercial entre EE.UU. y China ha reducido la tensión superficial, pero ninguna de las dos partes ha tomado medidas estructurales para prevenir nuevas hostilidades, dejando los mercados expuestos a rápidas reescaladas. La complacencia del mercado ante este riesgo latente puede subestimar la probabilidad de nuevas rondas de aranceles o restricciones tecnológicas. Esta incertidumbre estructural es un factor clave de riesgo de cola para carteras con exposición a Asia.",
+        "en": "A trade truce between the US and China has reduced surface tension, but neither side has taken structural steps to prevent new hostilities, leaving markets exposed to rapid re-escalation. Market complacency toward this latent risk may underestimate the probability of new tariff rounds or technology restrictions. This structural uncertainty remains a key tail-risk factor for portfolios with Asia exposure."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "US 10Y Treasury",
+          "asset": "US technology equities",
           "direction": "mixed",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre diplomática global mantiene demanda de refugio",
-            "en": "Global diplomatic uncertainty sustains safe-haven demand"
+            "es": "Riesgo de reescalada arancelaria pesa sobre valuaciones tech",
+            "en": "Re-escalation risk weighs on tech valuations"
           }
         },
         {
@@ -226,160 +322,64 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Fragmentación G20 presiona activos de mercados emergentes",
-            "en": "G20 fragmentation pressures emerging market assets"
+            "es": "Incertidumbre comercial presiona divisas de mercados emergentes asiáticos",
+            "en": "Trade uncertainty pressures Asian emerging market currencies"
           }
         },
         {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Bloqueo diplomático refuerza demanda de activos refugio",
-            "en": "Diplomatic deadlock reinforces safe-haven asset demand"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/russia-s-presence-divides-g20-ministers",
-      "published_at": "2026-10-31",
-      "time": "2h"
-    },
-    {
-      "id": 4,
-      "tag": "CRITICAL",
-      "region": "GLOBAL",
-      "title": {
-        "es": "Por qué los hackers 'élite' de Corea del Norte son el principal sospechoso del gran hackeo a Binance",
-        "en": "Why North Korea's 'elite' hackers are the prime suspect in major Binance hack"
-      },
-      "summary": {
-        "es": "El hackeo de 6.300 millones de dólares a Binance, el mayor de la historia cripto, apunta al grupo norcoreano TraderTraitor según firmas de análisis. El robo representa una fuente masiva de financiación para el programa de armas de Pyongyang y eleva el riesgo sistémico para los mercados de activos digitales. Las implicaciones regulatorias son inmediatas: se espera presión para reforzar la supervisión de exchanges centralizados a nivel global.",
-        "en": "The $6.3 billion Binance hack, the largest in crypto history, is attributed to North Korea's TraderTraitor group by analytics firms. The theft represents a massive funding source for Pyongyang's weapons program and raises systemic risk for digital asset markets. Regulatory implications are immediate, with pressure expected to intensify for global oversight of centralized exchanges."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Bitcoin",
+          "asset": "US 10Y Treasury",
           "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Pérdida de confianza en exchanges centralizado hunde precio BTC",
-            "en": "Loss of trust in centralized exchanges depresses BTC price"
-          }
-        },
-        {
-          "asset": "Crypto sector equities",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Riesgo regulatorio y reputacional golpea al sector",
-            "en": "Regulatory and reputational risk hits the sector"
-          }
-        },
-        {
-          "asset": "USD/KRW",
-          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Tensión geopolítica norcoreana añade presión sobre el won",
-            "en": "North Korean geopolitical tension adds pressure on won"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Fuga hacia activos tradicionales ante colapso de confianza cripto",
-            "en": "Flight to traditional assets as crypto confidence collapses"
+            "es": "Tensión comercial latente apoya bonos del Tesoro como refugio",
+            "en": "Latent trade tension supports Treasuries as safe haven"
           }
         }
       ],
-      "confidence": 87,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/ck9dz3v7z7v3o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-10-31",
-      "time": "9h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "LATAM",
-      "title": {
-        "es": "¿Podría el Bukele de El Salvador ser el salvador de Haití?",
-        "en": "Could El Salvador's Bukele be Haiti's savior?"
-      },
-      "summary": {
-        "es": "El gobierno de El Salvador despachó más de 2.000 soldados a Haití esta semana en un despliegue extraordinario en suelo extranjero, sin precedente para San Salvador. La iniciativa de Bukele marca una nueva dinámica de seguridad en el hemisferio occidental, con implicaciones para el rol de EEUU, el futuro de la misión de la ONU en Haití y la política exterior latinoamericana. El éxito o fracaso del despliegue podría reconfigurar percepciones sobre la gobernanza de seguridad regional.",
-        "en": "El Salvador's government dispatched more than 2,000 troops to Haiti this week in an extraordinary deployment on foreign soil, unprecedented for San Salvador. Bukele's initiative marks a new security dynamic in the Western Hemisphere, with implications for the US role, the future of the UN mission in Haiti, and Latin American foreign policy. The deployment's success or failure could reshape perceptions of regional security governance."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Caribbean/LATAM sovereign bonds",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Estabilización de Haití reduciría riesgo regional a largo plazo",
-            "en": "Haiti stabilization would reduce regional risk long-term"
-          }
-        },
-        {
-          "asset": "USD/USD remittance flows",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Seguridad mejorada podría impulsar flujos de remesas a Haití",
-            "en": "Improved security could boost remittance flows to Haiti"
-          }
-        }
-      ],
-      "confidence": 72,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/30/world/americas/el-salvador-haiti-soldiers-bukele.html",
-      "published_at": "2026-10-31",
-      "time": "10h"
+      "confidence": 75,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/nov/01/us-china-trade-war-trump-xi",
+      "published_at": "2026-11-01",
+      "time": "1d"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "APAC",
+      "region": "AFRICA",
       "title": {
-        "es": "Merz espera reunificación coreana en la DMZ; Steinmeier se reúne con Xi en Pekín",
-        "en": "Germany news: Merz hopes for Korean reunification at DMZ; Steinmeier meets Xi in Beijing"
+        "es": "Sudán presenta quejas contra Etiopía ante la ONU por mortíferos ataques de drones",
+        "en": "Sudan files complaints against Ethiopia with UN over deadly drone spree"
       },
       "summary": {
-        "es": "El canciller alemán Merz visitó la zona desmilitarizada coreana expresando apoyo a la reunificación, mientras el presidente Steinmeier mantuvo conversaciones con Xi Jinping en Pekín, señalando la diplomacia paralela de Berlín hacia los dos grandes polos de tensión en Asia. Los contactos Alemania-China son relevantes para las negociaciones comerciales UE-China y la postura europea frente a Taiwán. Ambos episodios reflejan el intento europeo de mantener canales diplomáticos abiertos en Asia.",
-        "en": "German Chancellor Merz visited the Korean DMZ expressing support for reunification, while President Steinmeier held talks with Xi Jinping in Beijing, signaling Berlin's parallel diplomacy toward Asia's two major tension poles. Germany-China contacts are relevant for EU-China trade negotiations and European posture on Taiwan. Both episodes reflect Europe's attempt to keep diplomatic channels open across Asia."
+        "es": "Sudán presentó quejas formales ante la ONU acusando a Etiopía de lanzar ataques de drones unidireccionales que han matado o herido a 484 civiles desde febrero, escalando una disputa territorial que se superpone con la crisis humanitaria interna de Sudán. La confrontación Sudán-Etiopía añade una nueva dimensión de inestabilidad a la región del Cuerno de África, con implicaciones para las rutas comerciales, las operaciones mineras y los corredores de ayuda humanitaria. Los inversores en activos africanos deberían monitorear el riesgo de spillover regional.",
+        "en": "Sudan formally filed UN complaints against Ethiopia over unidirectional drone strikes that have killed or wounded 484 civilians since February, escalating a territorial dispute compounded by Sudan's internal humanitarian crisis. The Sudan-Ethiopia confrontation adds a new instability dimension to the Horn of Africa, with implications for trade routes, mining operations, and humanitarian aid corridors. Investors in African assets should monitor regional spillover risk."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "EUR/CNY",
-          "direction": "mixed",
-          "magnitude": "low",
+          "asset": "African sovereign bonds",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Diálogo Berlín-Pekín puede suavizar tensiones comerciales UE-China",
-            "en": "Berlin-Beijing dialogue may ease EU-China trade tensions"
+            "es": "Escalada regional en el Cuerno de África eleva primas de riesgo",
+            "en": "Horn of Africa regional escalation raises risk premiums"
           }
         },
         {
-          "asset": "German DAX",
-          "direction": "up",
+          "asset": "Critical minerals equities (Africa-exposed)",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Mejora diplomática con China positiva para exportadores alemanes",
-            "en": "Diplomatic improvement with China positive for German exporters"
+            "es": "Inestabilidad regional amenaza operaciones mineras en la zona",
+            "en": "Regional instability threatens mining operations in the area"
           }
         }
       ],
       "confidence": 70,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/germany-news-merz-hopes-for-korean-reunification-at-dmz/live-79803462?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-10-30",
-      "time": "20h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/11/2/sudan-files-complaints-against-ethiopia-with-un-over-deadly-drone-spree?traffic_source=rss",
+      "published_at": "2026-11-02",
+      "time": "4h"
     }
   ],
   "market_updated_at": "2026-11-02T13:56:17.695Z"
