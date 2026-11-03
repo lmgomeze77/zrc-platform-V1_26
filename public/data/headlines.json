@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T14:39:03.151Z",
+  "generated_at": "2026-11-03T13:32:30.678Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -95,120 +95,15 @@
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
-      "region": "EURASIA",
-      "title": {
-        "es": "El gigantesco nuevo radar de Rusia en Kaliningrado genera alarma en la OTAN",
-        "en": "Russia's giant new radar in Kaliningrad raises alarm in NATO"
-      },
-      "summary": {
-        "es": "Rusia está completando un complejo de radar de gran tamaño en Kaliningrado, capaz de monitorear gran parte de Europa, lo que intensifica la confrontación militar entre Moscú y la OTAN. La instalación representa un escalamiento estratégico en el flanco báltico, con implicaciones directas para el posicionamiento defensivo de la alianza y los presupuestos de defensa europeos. El aumento de la tensión en esta región podría impulsar mayor gasto en defensa entre los miembros europeos de la OTAN.",
-        "en": "Russia is nearing completion of a massive radar complex in Kaliningrad capable of monitoring much of Europe, escalating military tensions with NATO along the Baltic flank. The installation marks a strategic escalation with direct implications for alliance defense posturing and European defense budgets. Heightened tensions in this corridor could accelerate defense spending commitments among NATO's European members."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European defense equities",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Mayor gasto en defensa de la OTAN impulsa sector aeroespacial europeo",
-            "en": "NATO defense spending increase drives European aerospace sector"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensiones geopolíticas en Europa presionan al euro",
-            "en": "Geopolitical tensions in Europe weigh on the euro"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada militar eleva demanda de activos refugio",
-            "en": "Military escalation lifts safe-haven demand"
-          }
-        }
-      ],
-      "confidence": 82,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/russia-s-giant-new-radar-in-kaliningrad-raises-alarm-in-nato/a-79797815?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-11-01",
-      "time": "18h"
-    },
-    {
-      "id": 2,
       "tag": "CRITICAL",
-      "region": "APAC",
-      "title": {
-        "es": "El mensaje de China a sus rivales: necesitan lo que fabricamos",
-        "en": "China's Message to Its Rivals: You Need What We Make"
-      },
-      "summary": {
-        "es": "China está intensificando la dependencia tecnológica global más allá de las tierras raras, dificultando que otros países reduzcan su exposición a su manufactura de paneles solares, drones y productos farmacéuticos. Esta estrategia de dependencia estructural representa una palanca geopolítica clave ante posibles nuevas rondas de tensión comercial con EE.UU. y sus aliados. Los inversores deben monitorear las cadenas de suministro en sectores de energía limpia, defensa y farmacéutico.",
-        "en": "China is deepening global technological dependencies beyond rare earths, making it harder for countries to decouple from its solar, drone, and pharmaceutical manufacturing. This structural dependency strategy functions as a key geopolitical lever ahead of potential new rounds of trade tension with the US and its allies. Investors should monitor supply chain vulnerabilities in clean energy, defense, and pharma sectors."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Solar energy equities (ex-China)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Dependencia de componentes chinos comprime márgenes de productores occidentales",
-            "en": "Chinese component dependency compresses margins for Western producers"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Países exportadores a China pueden beneficiarse; competidores, presionados",
-            "en": "China-export-linked EMs may benefit; competitors face pressure"
-          }
-        },
-        {
-          "asset": "US technology equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de suministro en semiconductores y drones pesa sobre sector tech",
-            "en": "Supply risk in semiconductors and drones weighs on tech sector"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre tecnológica y comercial apoya activos refugio",
-            "en": "Tech and trade uncertainty supports safe-haven assets"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/11/02/world/asia/china-us-exports-ai-solar.html",
-      "published_at": "2026-11-02",
-      "time": "9h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Siria evalúa unirse al pacto de defensa mutua saudí mientras continúa la guerra en Yemen",
-        "en": "Syria Weighs Joining Saudi Mutual Defense Pact as Yemen War Rages"
+        "es": "EEUU ataca la isla iraní de Qeshm mientras Vance expresa optimismo sobre un acuerdo",
+        "en": "US strikes Iran's Qeshm Island as Vance voices optimism about a deal"
       },
       "summary": {
-        "es": "Siria considera unirse al acuerdo de defensa mutua de Arabia Saudita con Turquía y Pakistán, lo que podría ampliar el conflicto impulsado por la escalada saudí con los hutíes respaldados por Irán. Una incorporación siria formalizaría un eje regional antiiraní con implicaciones para la estabilidad energética del Golfo y las rutas marítimas del Mar Rojo. Los mercados de petróleo y los activos de defensa deberán seguir de cerca la dinámica de adhesión.",
-        "en": "Syria is considering joining Saudi Arabia's mutual defense pact with Turkey and Pakistan, potentially widening the conflict driven by the escalating Saudi confrontation with Iran-backed Houthis. Syrian membership would formalize a broader anti-Iran regional axis with direct implications for Gulf energy stability and Red Sea shipping lanes. Oil markets and defense assets warrant close monitoring as membership dynamics evolve."
+        "es": "Washington lanzó ataques limitados contra la isla iraní de Qeshm en vísperas de las elecciones de mitad de mandato, apuntando a misiles superficie-aire utilizados contra activos estadounidenses. La acción simultánea con señales diplomáticas del vicepresidente Vance refleja una postura de presión dual que añade incertidumbre sobre la escalada del conflicto con Irán. Los mercados de energía y activos de refugio seguirán siendo altamente sensibles a cualquier respuesta iraní.",
+        "en": "Washington launched limited strikes on Iran's Qeshm Island on the eve of US midterm elections, targeting surface-to-air missiles being used against US assets. The simultaneous action alongside diplomatic signals from Vice President Vance reflects a dual-pressure posture, adding uncertainty over conflict escalation with Iran. Energy markets and safe-haven assets remain highly sensitive to any Iranian response."
       },
       "impact": "high",
       "market_impact": [
@@ -217,17 +112,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Escalada regional en el Golfo amenaza suministro de petróleo",
-            "en": "Gulf regional escalation threatens oil supply"
-          }
-        },
-        {
-          "asset": "Shipping/tanker equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo en el Mar Rojo eleva tarifas de fletes y primas de seguro",
-            "en": "Red Sea risk lifts freight rates and insurance premiums"
+            "es": "Riesgo de escalada en el Golfo presiona precios al alza",
+            "en": "Gulf escalation risk pushes prices higher"
           }
         },
         {
@@ -235,86 +121,17 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor tensión MENA impulsa activos refugio",
-            "en": "Rising MENA tension boosts safe-haven assets"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/10/31/world/middleeast/syria-saudi-defense-pact.html",
-      "published_at": "2026-11-01",
-      "time": "18h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Nueva ola de ciberataques a refrigeradores sacude supermercados europeos",
-        "en": "Fresh wave of fridge cyberattacks hits European supermarkets"
-      },
-      "summary": {
-        "es": "Supermercados en Bélgica, Luxemburgo, Suecia, Irlanda y Estonia sufrieron ciberataques coordinados que manipularon sistemas de control de temperatura en neveras y congeladores, siguiendo un patrón similar al ataque de octubre en Francia. La campaña sugiere una operación sofisticada y posiblemente estatal contra infraestructura crítica civil europea, con implicaciones para la seguridad alimentaria y la ciberseguridad de cadenas de suministro. El incidente refuerza la presión sobre los gobiernos europeos para endurecer la regulación de ciberseguridad en infraestructura crítica.",
-        "en": "Supermarkets across Belgium, Luxembourg, Sweden, Ireland, and Estonia experienced coordinated cyberattacks manipulating refrigeration temperature controls, following a similar attack on French retailers in October. The campaign suggests a sophisticated, potentially state-sponsored operation targeting civilian critical infrastructure across Europe, with food security and supply chain cybersecurity implications. The incidents intensify pressure on European governments to tighten critical infrastructure cybersecurity regulation."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European cybersecurity equities",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Ataques coordinados impulsan demanda de soluciones de ciberseguridad",
-            "en": "Coordinated attacks drive demand for cybersecurity solutions"
+            "es": "Demanda de refugio ante tensiones geopolíticas elevadas",
+            "en": "Safe-haven demand on elevated geopolitical tensions"
           }
         },
         {
-          "asset": "European retail equities",
+          "asset": "US 10Y Treasury",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Pérdidas por deterioro de productos y costos operativos pesan en el sector",
-            "en": "Spoilage losses and operational costs weigh on retail sector"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Vulnerabilidad de infraestructura crítica erosiona confianza en la eurozona",
-            "en": "Critical infrastructure vulnerability erodes eurozone confidence"
-          }
-        }
-      ],
-      "confidence": 78,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20261102-fresh-wave-of-fridge-cyberattacks-hits-european-supermarkets",
-      "published_at": "2026-11-02",
-      "time": "<1h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "GLOBAL",
-      "title": {
-        "es": "La guerra comercial EE.UU.-China parece haberse calmado, pero la sensación de calma es engañosa",
-        "en": "The US-China trade war seems to have subsided – but the sense of calm is misleading"
-      },
-      "summary": {
-        "es": "Una tregua comercial entre EE.UU. y China ha reducido la tensión superficial, pero ninguna de las dos partes ha tomado medidas estructurales para prevenir nuevas hostilidades, dejando los mercados expuestos a rápidas reescaladas. La complacencia del mercado ante este riesgo latente puede subestimar la probabilidad de nuevas rondas de aranceles o restricciones tecnológicas. Esta incertidumbre estructural es un factor clave de riesgo de cola para carteras con exposición a Asia.",
-        "en": "A trade truce between the US and China has reduced surface tension, but neither side has taken structural steps to prevent new hostilities, leaving markets exposed to rapid re-escalation. Market complacency toward this latent risk may underestimate the probability of new tariff rounds or technology restrictions. This structural uncertainty remains a key tail-risk factor for portfolios with Asia exposure."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "US technology equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de reescalada arancelaria pesa sobre valuaciones tech",
-            "en": "Re-escalation risk weighs on tech valuations"
+            "es": "Flujo hacia bonos por aversión al riesgo",
+            "en": "Risk-off flow boosts Treasury demand"
           }
         },
         {
@@ -322,47 +139,86 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre comercial presiona divisas de mercados emergentes asiáticos",
-            "en": "Trade uncertainty pressures Asian emerging market currencies"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión comercial latente apoya bonos del Tesoro como refugio",
-            "en": "Latent trade tension supports Treasuries as safe haven"
+            "es": "Dólar se fortalece en episodios de tensión en Oriente Medio",
+            "en": "Dollar strengthens amid Middle East tension episodes"
           }
         }
       ],
-      "confidence": 75,
+      "confidence": 92,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/nov/01/us-china-trade-war-trump-xi",
-      "published_at": "2026-11-01",
-      "time": "1d"
+      "source_url": "https://www.theguardian.com/world/2026/nov/03/us-strikes-irans-qeshm-island",
+      "published_at": "2026-11-03",
+      "time": "5h"
     },
     {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "AFRICA",
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EU",
       "title": {
-        "es": "Sudán presenta quejas contra Etiopía ante la ONU por mortíferos ataques de drones",
-        "en": "Sudan files complaints against Ethiopia with UN over deadly drone spree"
+        "es": "Rusia bombardea un centro humanitario en Ucrania, matando al menos a 31 personas",
+        "en": "Russia bombs humanitarian hub in Ukraine, killing at least 31 people"
       },
       "summary": {
-        "es": "Sudán presentó quejas formales ante la ONU acusando a Etiopía de lanzar ataques de drones unidireccionales que han matado o herido a 484 civiles desde febrero, escalando una disputa territorial que se superpone con la crisis humanitaria interna de Sudán. La confrontación Sudán-Etiopía añade una nueva dimensión de inestabilidad a la región del Cuerno de África, con implicaciones para las rutas comerciales, las operaciones mineras y los corredores de ayuda humanitaria. Los inversores en activos africanos deberían monitorear el riesgo de spillover regional.",
-        "en": "Sudan formally filed UN complaints against Ethiopia over unidirectional drone strikes that have killed or wounded 484 civilians since February, escalating a territorial dispute compounded by Sudan's internal humanitarian crisis. The Sudan-Ethiopia confrontation adds a new instability dimension to the Horn of Africa, with implications for trade routes, mining operations, and humanitarian aid corridors. Investors in African assets should monitor regional spillover risk."
+        "es": "Rusia ejecutó una serie de ataques nocturnos contra Ucrania, incluyendo el bombardeo de un centro humanitario en el sur del país que dejó al menos 31 muertos, además de golpes a plantas eléctricas y hospitales. La escalada intensifica la presión sobre los aliados occidentales para mantener el apoyo militar y de defensa civil, y complica las perspectivas de las conversaciones de paz europeas. La infraestructura energética ucraniana dañada podría afectar el suministro de gas de tránsito y elevar la volatilidad en los mercados energéticos europeos.",
+        "en": "Russia carried out a wave of overnight strikes across Ukraine, including the bombing of a humanitarian hub in the south killing at least 31 people, as well as attacks on power plants and hospitals. The escalation intensifies pressure on Western allies to sustain military and civil defense support, and complicates prospects for European-led peace talks. Damaged Ukrainian energy infrastructure could affect transit gas supplies and elevate volatility in European energy markets."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European natural gas (TTF)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Daño a infraestructura de tránsito energético ucraniana eleva riesgo de suministro",
+            "en": "Damage to Ukrainian energy transit infrastructure raises supply risk"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada bélica aumenta la prima de riesgo para activos europeos",
+            "en": "Military escalation raises risk premium on European assets"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión en el flanco este europeo pesa sobre el euro",
+            "en": "Eastern European flank tension weighs on the euro"
+          }
+        }
+      ],
+      "confidence": 90,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/nov/03/russia-bombs-ukrainian-aid-centre-komyshuvakha",
+      "published_at": "2026-11-03",
+      "time": "1h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "AFRICA",
+      "title": {
+        "es": "Los mortíferos ataques de drones de las RSF revelan profundas divisiones entre Sudán y Etiopía",
+        "en": "Deadly RSF drone attacks reveal deep divisions between Sudan and Ethiopia"
+      },
+      "summary": {
+        "es": "Los ataques de drones de las Fuerzas de Apoyo Rápido en Sudán han expuesto una crisis regional compleja que enfrenta a Jartum y Addis Abeba, con Sudán exigiendo rendición de cuentas ante la ONU. El conflicto, que ya convirtió a los drones en el principal asesino de civiles según Naciones Unidas, amenaza la estabilidad del Cuerno de África y las rutas de suministro de minerales críticos de la región. Las implicaciones para inversores incluyen riesgo operativo en proyectos de infraestructura y minerales en el corredor sudanés-etíope.",
+        "en": "RSF drone attacks in Sudan have exposed a complex regional crisis pitting Khartoum against Addis Ababa, with Sudan demanding UN accountability. The conflict, which has made drones the top killer of civilians according to the UN, threatens stability in the Horn of Africa and the region's critical mineral supply corridors. Portfolio implications include operational risk for infrastructure and minerals projects in the Sudan-Ethiopia corridor."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "African sovereign bonds",
+          "asset": "African frontier market bonds",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada regional en el Cuerno de África eleva primas de riesgo",
-            "en": "Horn of Africa regional escalation raises risk premiums"
+            "es": "Inestabilidad regional eleva primas de riesgo en el Cuerno de África",
+            "en": "Regional instability raises risk premiums in the Horn of Africa"
           }
         },
         {
@@ -370,16 +226,151 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Inestabilidad regional amenaza operaciones mineras en la zona",
-            "en": "Regional instability threatens mining operations in the area"
+            "es": "Riesgo operativo en corredor mineral sudanés-etíope",
+            "en": "Operational risk in Sudan-Ethiopia mineral corridor"
           }
         }
       ],
-      "confidence": 70,
+      "confidence": 78,
       "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/11/2/sudan-files-complaints-against-ethiopia-with-un-over-deadly-drone-spree?traffic_source=rss",
+      "source_url": "https://www.aljazeera.com/news/2026/11/3/deadly-rsf-drone-strikes-reveal-deep-divisions-between-sudan-and-ethiopia?traffic_source=rss",
+      "published_at": "2026-11-03",
+      "time": "3h"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Un ciberataque interrumpe supermercados en toda Europa",
+        "en": "Cyberattack disrupts supermarkets across Europe"
+      },
+      "summary": {
+        "es": "Una serie de ciberataques ha afectado a supermercados en múltiples países europeos, con investigaciones en curso de autoridades civiles y militares de EEUU, según informes previos. El incidente pone de relieve la vulnerabilidad de las cadenas de suministro alimentario ante ataques cibernéticos, con potencial atribución a actores estatales. Las implicaciones de seguridad nacional y regulatoria para el sector retail europeo y los operadores de infraestructura crítica son significativas.",
+        "en": "A wave of cyberattacks has disrupted supermarkets across multiple European countries, with investigations ongoing by European and US military officials. The incident highlights supply chain vulnerability to cyberattacks, with potential attribution to state actors. National security and regulatory implications for the European retail sector and critical infrastructure operators are significant."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European retail equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Disrupciones operativas y riesgo reputacional pesan sobre el sector",
+            "en": "Operational disruptions and reputational risk weigh on sector"
+          }
+        },
+        {
+          "asset": "Cybersecurity equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor demanda de soluciones de ciberseguridad ante ataques a infraestructura",
+            "en": "Higher demand for cybersecurity solutions after infrastructure attacks"
+          }
+        }
+      ],
+      "confidence": 80,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/video/newsfeed/2026/11/3/cyberattack-disrupts-supermarkets-across-europe?traffic_source=rss",
+      "published_at": "2026-11-03",
+      "time": "<1h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Reino Unido y la UE acuerdan un borrador de acuerdo para eliminar las trabas burocráticas del Brexit en exportaciones alimentarias",
+        "en": "UK and EU agree draft deal to scrap Brexit red tape over food exports"
+      },
+      "summary": {
+        "es": "Londres y Bruselas alcanzaron un acuerdo preliminar sobre exportaciones alimentarias que representa el avance más significativo del llamado 'reset del Brexit' hasta la fecha, de cara a la cumbre bilateral de este mes. El acuerdo podría reducir fricciones comerciales, mejorar los márgenes del sector agroalimentario británico y fortalecer la libra esterlina frente al euro. Constituye un paso relevante hacia una reconfiguración de las relaciones económicas post-Brexit con implicaciones para la renta variable del sector alimentario y el tipo de cambio GBP/EUR.",
+        "en": "London and Brussels reached a preliminary agreement on food exports, representing the most significant advance of the so-called Brexit reset to date, ahead of this month's bilateral summit. The deal could reduce trade frictions, improve margins for the British agri-food sector and strengthen sterling against the euro. It represents a meaningful step toward reconfiguring post-Brexit economic relations with implications for food sector equities and the GBP/EUR exchange rate."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "GBP/EUR",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Reducción de fricciones comerciales post-Brexit apoya a la libra",
+            "en": "Reduced post-Brexit trade frictions support sterling"
+          }
+        },
+        {
+          "asset": "UK food & retail equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Menor burocracia en exportaciones alimentarias mejora márgenes",
+            "en": "Less food export red tape improves sector margins"
+          }
+        },
+        {
+          "asset": "UK gilts",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Mejora comercial leve reduce presión fiscal pero impacto es modesto",
+            "en": "Trade improvement slightly reduces fiscal pressure but impact is modest"
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/cmp3grwre9xdo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-11-03",
+      "time": "1h"
+    },
+    {
+      "id": 6,
+      "tag": "ALERT",
+      "region": "GLOBAL",
+      "title": {
+        "es": "Los usuarios de Binance retiran 3.600 millones de dólares tras el mayor hackeo de criptomonedas de la historia",
+        "en": "Binance users withdraw $3.6bn after largest-ever crypto hack"
+      },
+      "summary": {
+        "es": "El mayor hackeo registrado en la historia de las criptomonedas afectó a Binance, provocando retiradas masivas de 3.600 millones de dólares y la congelación de transacciones por parte del exchange. El incidente ha sido vinculado a un grupo norcoreano, lo que añade una dimensión de financiación estatal a la amenaza cibernética sobre la infraestructura de activos digitales. La magnitud del evento genera riesgo sistémico de contagio en el mercado cripto y podría acelerar la presión regulatoria global sobre los exchanges.",
+        "en": "The largest crypto hack on record hit Binance, triggering $3.6 billion in user withdrawals and a transaction freeze by the exchange. The incident has been linked to a North Korean group, adding a state-sponsored dimension to the cyber threat against digital asset infrastructure. The scale of the event creates systemic contagion risk in crypto markets and could accelerate global regulatory pressure on exchanges."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Bitcoin",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Pérdida de confianza en el mayor exchange global presiona el precio",
+            "en": "Loss of confidence in largest global exchange pressures price"
+          }
+        },
+        {
+          "asset": "Crypto exchange equities (Coinbase etc.)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Competidores pueden beneficiarse del éxodo de Binance a corto plazo",
+            "en": "Competitors may benefit short-term from Binance exodus"
+          }
+        },
+        {
+          "asset": "Cybersecurity equities",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Demanda de soluciones de seguridad para exchanges cripto aumenta",
+            "en": "Demand for crypto exchange security solutions increases"
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/cwj34gdmnly4o?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-11-02",
-      "time": "4h"
+      "time": "1d"
     }
   ],
   "market_updated_at": "2026-11-03T13:04:19.190Z"
