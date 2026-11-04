@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T13:32:30.678Z",
+  "generated_at": "2026-11-04T13:43:42.737Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,12 +98,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "EEUU ataca la isla iraní de Qeshm mientras Vance expresa optimismo sobre un acuerdo",
+        "es": "EE.UU. ataca la isla iraní de Qeshm mientras Vance expresa optimismo sobre un acuerdo",
         "en": "US strikes Iran's Qeshm Island as Vance voices optimism about a deal"
       },
       "summary": {
-        "es": "Washington lanzó ataques limitados contra la isla iraní de Qeshm en vísperas de las elecciones de mitad de mandato, apuntando a misiles superficie-aire utilizados contra activos estadounidenses. La acción simultánea con señales diplomáticas del vicepresidente Vance refleja una postura de presión dual que añade incertidumbre sobre la escalada del conflicto con Irán. Los mercados de energía y activos de refugio seguirán siendo altamente sensibles a cualquier respuesta iraní.",
-        "en": "Washington launched limited strikes on Iran's Qeshm Island on the eve of US midterm elections, targeting surface-to-air missiles being used against US assets. The simultaneous action alongside diplomatic signals from Vice President Vance reflects a dual-pressure posture, adding uncertainty over conflict escalation with Iran. Energy markets and safe-haven assets remain highly sensitive to any Iranian response."
+        "es": "EE.UU. lanzó ataques limitados contra la isla de Qeshm, en Irán, dirigidos contra misiles superficie-aire empleados contra activos estadounidenses, en la víspera de las elecciones de mitad de mandato. La acción simultánea con señales diplomáticas del vicepresidente Vance sugiere una estrategia de presión-negociación que mantiene alta la prima de riesgo en los mercados de energía. La derrota republicana posterior complica la coherencia de la política exterior a corto plazo.",
+        "en": "The US launched limited strikes on Iran's Qeshm Island targeting surface-to-air missiles used against US assets, on the eve of the midterm elections. The simultaneous military action and diplomatic signals from VP Vance suggest a pressure-negotiation strategy that keeps energy risk premiums elevated. The subsequent Republican defeat complicates near-term foreign policy coherence."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +112,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de escalada en el Golfo presiona precios al alza",
-            "en": "Gulf escalation risk pushes prices higher"
+            "es": "Riesgo de escalada en el Golfo Pérsico impulsa prima de riesgo",
+            "en": "Persian Gulf escalation risk lifts geopolitical risk premium"
           }
         },
         {
@@ -121,8 +121,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda de refugio ante tensiones geopolíticas elevadas",
-            "en": "Safe-haven demand on elevated geopolitical tensions"
+            "es": "Demanda de refugio ante tensión militar EE.UU.-Irán",
+            "en": "Safe-haven demand on US-Iran military tension"
           }
         },
         {
@@ -130,8 +130,8 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Flujo hacia bonos por aversión al riesgo",
-            "en": "Risk-off flow boosts Treasury demand"
+            "es": "Flujos hacia activos seguros presionan los rendimientos a la baja",
+            "en": "Flight-to-safety flows compress yields"
           }
         },
         {
@@ -139,28 +139,28 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Dólar se fortalece en episodios de tensión en Oriente Medio",
-            "en": "Dollar strengthens amid Middle East tension episodes"
+            "es": "Aversión al riesgo global perjudica divisas emergentes",
+            "en": "Global risk-off hurts emerging market currencies"
           }
         }
       ],
-      "confidence": 92,
+      "confidence": 90,
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/world/2026/nov/03/us-strikes-irans-qeshm-island",
       "published_at": "2026-11-03",
-      "time": "5h"
+      "time": "23h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
-      "region": "EU",
+      "region": "EURASIA",
       "title": {
-        "es": "Rusia bombardea un centro humanitario en Ucrania, matando al menos a 31 personas",
-        "en": "Russia bombs humanitarian hub in Ukraine, killing at least 31 people"
+        "es": "Ataque a un centro humanitario en Ucrania podría ser uno de los más mortíferos de la guerra",
+        "en": "Strike on Ukraine Humanitarian Hub Is Feared to Be Among War's Deadliest"
       },
       "summary": {
-        "es": "Rusia ejecutó una serie de ataques nocturnos contra Ucrania, incluyendo el bombardeo de un centro humanitario en el sur del país que dejó al menos 31 muertos, además de golpes a plantas eléctricas y hospitales. La escalada intensifica la presión sobre los aliados occidentales para mantener el apoyo militar y de defensa civil, y complica las perspectivas de las conversaciones de paz europeas. La infraestructura energética ucraniana dañada podría afectar el suministro de gas de tránsito y elevar la volatilidad en los mercados energéticos europeos.",
-        "en": "Russia carried out a wave of overnight strikes across Ukraine, including the bombing of a humanitarian hub in the south killing at least 31 people, as well as attacks on power plants and hospitals. The escalation intensifies pressure on Western allies to sustain military and civil defense support, and complicates prospects for European-led peace talks. Damaged Ukrainian energy infrastructure could affect transit gas supplies and elevate volatility in European energy markets."
+        "es": "Un ataque ruso contra un centro humanitario en Zaporizhzhia mató al menos a 31 personas y dejó decenas de desaparecidos, en uno de los incidentes más letales de la guerra. Horas después, EE.UU. anunció la reanudación de conversaciones de paz con ambas partes tras nueve meses de parálisis. La combinación de escalada militar y apertura diplomática mantiene alta la incertidumbre para los activos europeos y el mercado energético.",
+        "en": "A Russian strike on a humanitarian hub in Zaporizhzhia killed at least 31 and left dozens missing, in one of the war's deadliest incidents. Hours later, the US announced resumption of peace talks with both parties after nine months of paralysis. The combination of military escalation and diplomatic opening sustains high uncertainty for European assets and energy markets."
       },
       "impact": "high",
       "market_impact": [
@@ -169,8 +169,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Daño a infraestructura de tránsito energético ucraniana eleva riesgo de suministro",
-            "en": "Damage to Ukrainian energy transit infrastructure raises supply risk"
+            "es": "Escalada ucraniana reaviva preocupaciones sobre suministro energético",
+            "en": "Ukraine escalation reignites energy supply concerns"
           }
         },
         {
@@ -178,8 +178,17 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada bélica aumenta la prima de riesgo para activos europeos",
-            "en": "Military escalation raises risk premium on European assets"
+            "es": "El ataque masivo eleva la aversión al riesgo en los mercados europeos",
+            "en": "Mass attack raises risk aversion in European markets"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada bélica impulsa demanda de activos refugio",
+            "en": "War escalation drives safe-haven asset demand"
           }
         },
         {
@@ -187,54 +196,63 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Tensión en el flanco este europeo pesa sobre el euro",
-            "en": "Eastern European flank tension weighs on the euro"
+            "es": "Riesgo geopolítico europeo pesa sobre el euro",
+            "en": "European geopolitical risk weighs on the euro"
           }
         }
       ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/nov/03/russia-bombs-ukrainian-aid-centre-komyshuvakha",
+      "confidence": 87,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/03/world/europe/komyshuvakha-zaporizhzhia-attack-ukraine.html",
       "published_at": "2026-11-03",
-      "time": "1h"
+      "time": "21h"
     },
     {
       "id": 3,
       "tag": "ALERT",
       "region": "AFRICA",
       "title": {
-        "es": "Los mortíferos ataques de drones de las RSF revelan profundas divisiones entre Sudán y Etiopía",
-        "en": "Deadly RSF drone attacks reveal deep divisions between Sudan and Ethiopia"
+        "es": "Washington excluye a Sudáfrica y Ruanda del acuerdo de libre comercio con EE.UU.",
+        "en": "Washington excludes South Africa and Rwanda from US duty-free trade deal"
       },
       "summary": {
-        "es": "Los ataques de drones de las Fuerzas de Apoyo Rápido en Sudán han expuesto una crisis regional compleja que enfrenta a Jartum y Addis Abeba, con Sudán exigiendo rendición de cuentas ante la ONU. El conflicto, que ya convirtió a los drones en el principal asesino de civiles según Naciones Unidas, amenaza la estabilidad del Cuerno de África y las rutas de suministro de minerales críticos de la región. Las implicaciones para inversores incluyen riesgo operativo en proyectos de infraestructura y minerales en el corredor sudanés-etíope.",
-        "en": "RSF drone attacks in Sudan have exposed a complex regional crisis pitting Khartoum against Addis Ababa, with Sudan demanding UN accountability. The conflict, which has made drones the top killer of civilians according to the UN, threatens stability in the Horn of Africa and the region's critical mineral supply corridors. Portfolio implications include operational risk for infrastructure and minerals projects in the Sudan-Ethiopia corridor."
+        "es": "EE.UU. ha excluido a Sudáfrica y Ruanda del programa AGOA, eliminando su acceso libre de aranceles al mercado estadounidense. Los economistas advierten sobre pérdidas de empleo y márgenes comprimidos para los exportadores de ambos países. La decisión, combinada con las sanciones militares contra Ruanda, apunta a una reconfiguración de las relaciones económicas de EE.UU. con África subsahariana con implicaciones para las cadenas de suministro de materias primas.",
+        "en": "The US has excluded South Africa and Rwanda from the AGOA program, ending duty-free access to the American market. Economists warn of job losses and squeezed margins for exporters in both countries. The decision, combined with military sanctions on Rwanda, signals a reconfiguration of US economic relations with sub-Saharan Africa with supply chain implications for commodities."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "African frontier market bonds",
+          "asset": "South African rand (ZAR)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Inestabilidad regional eleva primas de riesgo en el Cuerno de África",
-            "en": "Regional instability raises risk premiums in the Horn of Africa"
+            "es": "Pérdida del acceso AGOA pesa sobre perspectivas de exportación sudafricanas",
+            "en": "Loss of AGOA access weighs on South African export outlook"
           }
         },
         {
-          "asset": "Critical minerals equities (Africa-exposed)",
+          "asset": "South African equities (JSE)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Sectores exportadores afectados por eliminación de preferencias arancelarias",
+            "en": "Export sectors hit by removal of tariff preferences"
+          }
+        },
+        {
+          "asset": "EM currencies",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo operativo en corredor mineral sudanés-etíope",
-            "en": "Operational risk in Sudan-Ethiopia mineral corridor"
+            "es": "Señal negativa para acceso comercial de mercados emergentes africanos",
+            "en": "Negative signal for African EM trade access broadly"
           }
         }
       ],
-      "confidence": 78,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/11/3/deadly-rsf-drone-strikes-reveal-deep-divisions-between-sudan-and-ethiopia?traffic_source=rss",
-      "published_at": "2026-11-03",
+      "confidence": 80,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261104-washington-excludes-south-africa-and-rwanda-from-us-duty-free-trade-deal",
+      "published_at": "2026-11-04",
       "time": "3h"
     },
     {
@@ -242,61 +260,31 @@
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Un ciberataque interrumpe supermercados en toda Europa",
-        "en": "Cyberattack disrupts supermarkets across Europe"
-      },
-      "summary": {
-        "es": "Una serie de ciberataques ha afectado a supermercados en múltiples países europeos, con investigaciones en curso de autoridades civiles y militares de EEUU, según informes previos. El incidente pone de relieve la vulnerabilidad de las cadenas de suministro alimentario ante ataques cibernéticos, con potencial atribución a actores estatales. Las implicaciones de seguridad nacional y regulatoria para el sector retail europeo y los operadores de infraestructura crítica son significativas.",
-        "en": "A wave of cyberattacks has disrupted supermarkets across multiple European countries, with investigations ongoing by European and US military officials. The incident highlights supply chain vulnerability to cyberattacks, with potential attribution to state actors. National security and regulatory implications for the European retail sector and critical infrastructure operators are significant."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "European retail equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Disrupciones operativas y riesgo reputacional pesan sobre el sector",
-            "en": "Operational disruptions and reputational risk weigh on sector"
-          }
-        },
-        {
-          "asset": "Cybersecurity equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor demanda de soluciones de ciberseguridad ante ataques a infraestructura",
-            "en": "Higher demand for cybersecurity solutions after infrastructure attacks"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/video/newsfeed/2026/11/3/cyberattack-disrupts-supermarkets-across-europe?traffic_source=rss",
-      "published_at": "2026-11-03",
-      "time": "<1h"
-    },
-    {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Reino Unido y la UE acuerdan un borrador de acuerdo para eliminar las trabas burocráticas del Brexit en exportaciones alimentarias",
+        "es": "Reino Unido y UE acuerdan borrador de acuerdo para eliminar trabas del Brexit a las exportaciones de alimentos",
         "en": "UK and EU agree draft deal to scrap Brexit red tape over food exports"
       },
       "summary": {
-        "es": "Londres y Bruselas alcanzaron un acuerdo preliminar sobre exportaciones alimentarias que representa el avance más significativo del llamado 'reset del Brexit' hasta la fecha, de cara a la cumbre bilateral de este mes. El acuerdo podría reducir fricciones comerciales, mejorar los márgenes del sector agroalimentario británico y fortalecer la libra esterlina frente al euro. Constituye un paso relevante hacia una reconfiguración de las relaciones económicas post-Brexit con implicaciones para la renta variable del sector alimentario y el tipo de cambio GBP/EUR.",
-        "en": "London and Brussels reached a preliminary agreement on food exports, representing the most significant advance of the so-called Brexit reset to date, ahead of this month's bilateral summit. The deal could reduce trade frictions, improve margins for the British agri-food sector and strengthen sterling against the euro. It represents a meaningful step toward reconfiguring post-Brexit economic relations with implications for food sector equities and the GBP/EUR exchange rate."
+        "es": "Reino Unido y la UE han acordado un borrador de acuerdo para eliminar la burocracia del Brexit en las exportaciones de alimentos, el avance más significativo del llamado 'reinicio' de las relaciones bilaterales previo a la cumbre de finales de noviembre. El acuerdo podría reducir costes operativos para el sector agroalimentario británico y aliviar presiones inflacionarias residuales. La normalización comercial UK-UE tiene implicaciones para la libra esterlina y el diferencial de rendimientos gilt-bund.",
+        "en": "The UK and EU have agreed a draft deal to eliminate Brexit red tape on food exports, the most significant development of the bilateral 'reset' ahead of a late-November summit. The agreement could reduce operational costs for the British agri-food sector and ease residual inflationary pressures. UK-EU trade normalization has implications for sterling and the gilt-bund yield spread."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "GBP/EUR",
+          "asset": "GBP/USD",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Reducción de fricciones comerciales post-Brexit apoya a la libra",
-            "en": "Reduced post-Brexit trade frictions support sterling"
+            "es": "Acercamiento UK-UE reduce prima de riesgo Brexit sobre la libra",
+            "en": "UK-EU rapprochement reduces Brexit risk premium on sterling"
+          }
+        },
+        {
+          "asset": "UK gilts",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Mejora comercial reduce presiones inflacionarias residuales del Brexit",
+            "en": "Trade improvement reduces residual Brexit inflationary pressures"
           }
         },
         {
@@ -304,73 +292,121 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Menor burocracia en exportaciones alimentarias mejora márgenes",
-            "en": "Less food export red tape improves sector margins"
-          }
-        },
-        {
-          "asset": "UK gilts",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Mejora comercial leve reduce presión fiscal pero impacto es modesto",
-            "en": "Trade improvement slightly reduces fiscal pressure but impact is modest"
+            "es": "Eliminación de aranceles y burocracia mejora márgenes del sector",
+            "en": "Removal of tariffs and red tape improves sector margins"
           }
         }
       ],
-      "confidence": 82,
+      "confidence": 78,
       "source": "BBC Business",
       "source_url": "https://www.bbc.co.uk/news/articles/cmp3grwre9xdo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-11-03",
-      "time": "1h"
+      "time": "16h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Etiopía amplía sus ambiciones hidroeléctricas",
+        "en": "Ethiopia expands hydropower ambitions"
+      },
+      "summary": {
+        "es": "Etiopía avanza en la construcción de un nuevo proyecto hidroeléctrico masivo en el río Omo, sumado al GERD, con el objetivo de convertirse en líder africano en energía limpia y exportar electricidad a países vecinos. El país albergará la COP32 el próximo año, lo que amplifica su peso geopolítico en la agenda climática global. La expansión energética de Etiopía tiene implicaciones para la estabilidad hídrica del Nilo y las relaciones con Egipto y Sudán.",
+        "en": "Ethiopia is advancing construction of a major new hydropower project on the Omo River, in addition to the GERD, aiming to become Africa's clean energy leader and export electricity to neighboring countries. The country will host COP32 next year, amplifying its geopolitical weight on the global climate agenda. Ethiopia's energy expansion has implications for Nile water stability and relations with Egypt and Sudan."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "African infrastructure bonds",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Proyectos de energía renovable atraen financiación de desarrollo",
+            "en": "Renewable energy projects attract development financing"
+          }
+        },
+        {
+          "asset": "Egyptian pound (EGP)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor control etíope del Nilo presiona perspectivas hídricas egipcias",
+            "en": "Greater Ethiopian Nile control pressures Egypt's water outlook"
+          }
+        },
+        {
+          "asset": "EM sovereign bonds (East Africa)",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensiones hídicas regionales generan incertidumbre soberana",
+            "en": "Regional water tensions create sovereign uncertainty"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261104-ethiopia-expands-hydropower-ambitions",
+      "published_at": "2026-11-04",
+      "time": "2h"
     },
     {
       "id": 6,
-      "tag": "ALERT",
-      "region": "GLOBAL",
+      "tag": "CRITICAL",
+      "region": "US",
       "title": {
-        "es": "Los usuarios de Binance retiran 3.600 millones de dólares tras el mayor hackeo de criptomonedas de la historia",
-        "en": "Binance users withdraw $3.6bn after largest-ever crypto hack"
+        "es": "Qué significan las elecciones de mitad de mandato para Ucrania, Irán y otros conflictos",
+        "en": "What US midterm elections mean for Ukraine, Iran and elsewhere"
       },
       "summary": {
-        "es": "El mayor hackeo registrado en la historia de las criptomonedas afectó a Binance, provocando retiradas masivas de 3.600 millones de dólares y la congelación de transacciones por parte del exchange. El incidente ha sido vinculado a un grupo norcoreano, lo que añade una dimensión de financiación estatal a la amenaza cibernética sobre la infraestructura de activos digitales. La magnitud del evento genera riesgo sistémico de contagio en el mercado cripto y podría acelerar la presión regulatoria global sobre los exchanges.",
-        "en": "The largest crypto hack on record hit Binance, triggering $3.6 billion in user withdrawals and a transaction freeze by the exchange. The incident has been linked to a North Korean group, adding a state-sponsored dimension to the cyber threat against digital asset infrastructure. The scale of the event creates systemic contagion risk in crypto markets and could accelerate global regulatory pressure on exchanges."
+        "es": "Los demócratas recuperaron ambas cámaras del Congreso en las elecciones de mitad de mandato, poniendo fin al control republicano. Este cambio tiene implicaciones directas para la financiación de Ucrania, la política hacia Irán y el posicionamiento de EE.UU. en múltiples conflictos activos. Los mercados deberán recalibrar las expectativas sobre la continuidad de la política exterior trumpiana y los flujos de ayuda militar.",
+        "en": "Democrats flipped both chambers of Congress in the midterm elections, ending Republican control. This shift has direct implications for Ukraine funding, Iran policy, and US positioning across multiple active conflicts. Markets must recalibrate expectations on the continuity of Trump's foreign policy and military aid flows."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Bitcoin",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Pérdida de confianza en el mayor exchange global presiona el precio",
-            "en": "Loss of confidence in largest global exchange pressures price"
-          }
-        },
-        {
-          "asset": "Crypto exchange equities (Coinbase etc.)",
+          "asset": "European equities",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Competidores pueden beneficiarse del éxodo de Binance a corto plazo",
-            "en": "Competitors may benefit short-term from Binance exodus"
+            "es": "Mayor apoyo a Ucrania puede reducir riesgo de conflicto spillover",
+            "en": "Stronger Ukraine support may reduce conflict spillover risk"
           }
         },
         {
-          "asset": "Cybersecurity equities",
-          "direction": "up",
+          "asset": "USD Index",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Parálisis legislativa y cambio de política debilitan el dólar",
+            "en": "Legislative gridlock and policy shift weaken the dollar"
+          }
+        },
+        {
+          "asset": "Defense sector equities",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Cambio en control del Congreso reorienta prioridades de gasto militar",
+            "en": "Congressional flip reshapes military spending priorities"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Demanda de soluciones de seguridad para exchanges cripto aumenta",
-            "en": "Demand for crypto exchange security solutions increases"
+            "es": "Mayor probabilidad de acuerdo nuclear con Irán reduce prima",
+            "en": "Higher probability of Iran nuclear deal reduces risk premium"
           }
         }
       ],
-      "confidence": 85,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cwj34gdmnly4o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-02",
-      "time": "1d"
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/what-us-midterm-elections-mean-for-ukraine-iran-and-elsewhere/a-79836423?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-04",
+      "time": "4h"
     }
   ],
   "market_updated_at": "2026-11-04T13:20:42.526Z"
