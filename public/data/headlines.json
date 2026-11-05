@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T13:43:42.737Z",
+  "generated_at": "2026-11-05T13:56:11.006Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,71 +96,14 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "EE.UU. ataca la isla iraní de Qeshm mientras Vance expresa optimismo sobre un acuerdo",
-        "en": "US strikes Iran's Qeshm Island as Vance voices optimism about a deal"
-      },
-      "summary": {
-        "es": "EE.UU. lanzó ataques limitados contra la isla de Qeshm, en Irán, dirigidos contra misiles superficie-aire empleados contra activos estadounidenses, en la víspera de las elecciones de mitad de mandato. La acción simultánea con señales diplomáticas del vicepresidente Vance sugiere una estrategia de presión-negociación que mantiene alta la prima de riesgo en los mercados de energía. La derrota republicana posterior complica la coherencia de la política exterior a corto plazo.",
-        "en": "The US launched limited strikes on Iran's Qeshm Island targeting surface-to-air missiles used against US assets, on the eve of the midterm elections. The simultaneous military action and diplomatic signals from VP Vance suggest a pressure-negotiation strategy that keeps energy risk premiums elevated. The subsequent Republican defeat complicates near-term foreign policy coherence."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Riesgo de escalada en el Golfo Pérsico impulsa prima de riesgo",
-            "en": "Persian Gulf escalation risk lifts geopolitical risk premium"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Demanda de refugio ante tensión militar EE.UU.-Irán",
-            "en": "Safe-haven demand on US-Iran military tension"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Flujos hacia activos seguros presionan los rendimientos a la baja",
-            "en": "Flight-to-safety flows compress yields"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aversión al riesgo global perjudica divisas emergentes",
-            "en": "Global risk-off hurts emerging market currencies"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/nov/03/us-strikes-irans-qeshm-island",
-      "published_at": "2026-11-03",
-      "time": "23h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
       "region": "EURASIA",
       "title": {
-        "es": "Ataque a un centro humanitario en Ucrania podría ser uno de los más mortíferos de la guerra",
-        "en": "Strike on Ukraine Humanitarian Hub Is Feared to Be Among War's Deadliest"
+        "es": "Decenas de muertos y desaparecidos tras ataque ruso a centro de ayuda humanitaria en Ucrania",
+        "en": "Dozens dead and missing after Russian strike on Ukrainian aid centre"
       },
       "summary": {
-        "es": "Un ataque ruso contra un centro humanitario en Zaporizhzhia mató al menos a 31 personas y dejó decenas de desaparecidos, en uno de los incidentes más letales de la guerra. Horas después, EE.UU. anunció la reanudación de conversaciones de paz con ambas partes tras nueve meses de parálisis. La combinación de escalada militar y apertura diplomática mantiene alta la incertidumbre para los activos europeos y el mercado energético.",
-        "en": "A Russian strike on a humanitarian hub in Zaporizhzhia killed at least 31 and left dozens missing, in one of the war's deadliest incidents. Hours later, the US announced resumption of peace talks with both parties after nine months of paralysis. The combination of military escalation and diplomatic opening sustains high uncertainty for European assets and energy markets."
+        "es": "Un bombardeo ruso sobre un punto de distribución de ayuda en Zaporizhzhia dejó 42 muertos y decenas de desaparecidos, convirtiéndose en uno de los ataques más letales contra civiles del año. El ataque ocurrió un día después de un breve alto al fuego local mediado por EE.UU., lo que tensiona cualquier perspectiva de negociación. Este tipo de escalada limita el margen político para un acuerdo y mantiene presión alcista sobre el gas europeo y los activos refugio.",
+        "en": "A Russian bombing of an aid distribution point in Zaporizhzhia killed 42 and left dozens missing, making it one of the deadliest civilian strikes of the year. The attack followed a brief US-brokered local ceasefire, undermining nascent peace dynamics. This escalation constrains diplomatic space and sustains upward pressure on European gas and safe-haven assets."
       },
       "impact": "high",
       "market_impact": [
@@ -169,17 +112,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada ucraniana reaviva preocupaciones sobre suministro energético",
-            "en": "Ukraine escalation reignites energy supply concerns"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "El ataque masivo eleva la aversión al riesgo en los mercados europeos",
-            "en": "Mass attack raises risk aversion in European markets"
+            "es": "Escalada reabre riesgo de interrupción de suministro energético",
+            "en": "Escalation revives energy supply disruption risk"
           }
         },
         {
@@ -187,8 +121,8 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada bélica impulsa demanda de activos refugio",
-            "en": "War escalation drives safe-haven asset demand"
+            "es": "Demanda refugio aumenta ante mayor incertidumbre geopolítica",
+            "en": "Safe-haven demand rises on heightened geopolitical uncertainty"
           }
         },
         {
@@ -196,217 +130,283 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo geopolítico europeo pesa sobre el euro",
-            "en": "European geopolitical risk weighs on the euro"
-          }
-        }
-      ],
-      "confidence": 87,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/11/03/world/europe/komyshuvakha-zaporizhzhia-attack-ukraine.html",
-      "published_at": "2026-11-03",
-      "time": "21h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "AFRICA",
-      "title": {
-        "es": "Washington excluye a Sudáfrica y Ruanda del acuerdo de libre comercio con EE.UU.",
-        "en": "Washington excludes South Africa and Rwanda from US duty-free trade deal"
-      },
-      "summary": {
-        "es": "EE.UU. ha excluido a Sudáfrica y Ruanda del programa AGOA, eliminando su acceso libre de aranceles al mercado estadounidense. Los economistas advierten sobre pérdidas de empleo y márgenes comprimidos para los exportadores de ambos países. La decisión, combinada con las sanciones militares contra Ruanda, apunta a una reconfiguración de las relaciones económicas de EE.UU. con África subsahariana con implicaciones para las cadenas de suministro de materias primas.",
-        "en": "The US has excluded South Africa and Rwanda from the AGOA program, ending duty-free access to the American market. Economists warn of job losses and squeezed margins for exporters in both countries. The decision, combined with military sanctions on Rwanda, signals a reconfiguration of US economic relations with sub-Saharan Africa with supply chain implications for commodities."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "South African rand (ZAR)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Pérdida del acceso AGOA pesa sobre perspectivas de exportación sudafricanas",
-            "en": "Loss of AGOA access weighs on South African export outlook"
+            "es": "Riesgo de conflicto prolongado pesa sobre el euro",
+            "en": "Prolonged conflict risk weighs on the euro"
           }
         },
-        {
-          "asset": "South African equities (JSE)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Sectores exportadores afectados por eliminación de preferencias arancelarias",
-            "en": "Export sectors hit by removal of tariff preferences"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Señal negativa para acceso comercial de mercados emergentes africanos",
-            "en": "Negative signal for African EM trade access broadly"
-          }
-        }
-      ],
-      "confidence": 80,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261104-washington-excludes-south-africa-and-rwanda-from-us-duty-free-trade-deal",
-      "published_at": "2026-11-04",
-      "time": "3h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Reino Unido y UE acuerdan borrador de acuerdo para eliminar trabas del Brexit a las exportaciones de alimentos",
-        "en": "UK and EU agree draft deal to scrap Brexit red tape over food exports"
-      },
-      "summary": {
-        "es": "Reino Unido y la UE han acordado un borrador de acuerdo para eliminar la burocracia del Brexit en las exportaciones de alimentos, el avance más significativo del llamado 'reinicio' de las relaciones bilaterales previo a la cumbre de finales de noviembre. El acuerdo podría reducir costes operativos para el sector agroalimentario británico y aliviar presiones inflacionarias residuales. La normalización comercial UK-UE tiene implicaciones para la libra esterlina y el diferencial de rendimientos gilt-bund.",
-        "en": "The UK and EU have agreed a draft deal to eliminate Brexit red tape on food exports, the most significant development of the bilateral 'reset' ahead of a late-November summit. The agreement could reduce operational costs for the British agri-food sector and ease residual inflationary pressures. UK-EU trade normalization has implications for sterling and the gilt-bund yield spread."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "GBP/USD",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Acercamiento UK-UE reduce prima de riesgo Brexit sobre la libra",
-            "en": "UK-EU rapprochement reduces Brexit risk premium on sterling"
-          }
-        },
-        {
-          "asset": "UK gilts",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Mejora comercial reduce presiones inflacionarias residuales del Brexit",
-            "en": "Trade improvement reduces residual Brexit inflationary pressures"
-          }
-        },
-        {
-          "asset": "UK food & retail equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Eliminación de aranceles y burocracia mejora márgenes del sector",
-            "en": "Removal of tariffs and red tape improves sector margins"
-          }
-        }
-      ],
-      "confidence": 78,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cmp3grwre9xdo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-03",
-      "time": "16h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "Etiopía amplía sus ambiciones hidroeléctricas",
-        "en": "Ethiopia expands hydropower ambitions"
-      },
-      "summary": {
-        "es": "Etiopía avanza en la construcción de un nuevo proyecto hidroeléctrico masivo en el río Omo, sumado al GERD, con el objetivo de convertirse en líder africano en energía limpia y exportar electricidad a países vecinos. El país albergará la COP32 el próximo año, lo que amplifica su peso geopolítico en la agenda climática global. La expansión energética de Etiopía tiene implicaciones para la estabilidad hídrica del Nilo y las relaciones con Egipto y Sudán.",
-        "en": "Ethiopia is advancing construction of a major new hydropower project on the Omo River, in addition to the GERD, aiming to become Africa's clean energy leader and export electricity to neighboring countries. The country will host COP32 next year, amplifying its geopolitical weight on the global climate agenda. Ethiopia's energy expansion has implications for Nile water stability and relations with Egypt and Sudan."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "African infrastructure bonds",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Proyectos de energía renovable atraen financiación de desarrollo",
-            "en": "Renewable energy projects attract development financing"
-          }
-        },
-        {
-          "asset": "Egyptian pound (EGP)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor control etíope del Nilo presiona perspectivas hídricas egipcias",
-            "en": "Greater Ethiopian Nile control pressures Egypt's water outlook"
-          }
-        },
-        {
-          "asset": "EM sovereign bonds (East Africa)",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensiones hídicas regionales generan incertidumbre soberana",
-            "en": "Regional water tensions create sovereign uncertainty"
-          }
-        }
-      ],
-      "confidence": 68,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261104-ethiopia-expands-hydropower-ambitions",
-      "published_at": "2026-11-04",
-      "time": "2h"
-    },
-    {
-      "id": 6,
-      "tag": "CRITICAL",
-      "region": "US",
-      "title": {
-        "es": "Qué significan las elecciones de mitad de mandato para Ucrania, Irán y otros conflictos",
-        "en": "What US midterm elections mean for Ukraine, Iran and elsewhere"
-      },
-      "summary": {
-        "es": "Los demócratas recuperaron ambas cámaras del Congreso en las elecciones de mitad de mandato, poniendo fin al control republicano. Este cambio tiene implicaciones directas para la financiación de Ucrania, la política hacia Irán y el posicionamiento de EE.UU. en múltiples conflictos activos. Los mercados deberán recalibrar las expectativas sobre la continuidad de la política exterior trumpiana y los flujos de ayuda militar.",
-        "en": "Democrats flipped both chambers of Congress in the midterm elections, ending Republican control. This shift has direct implications for Ukraine funding, Iran policy, and US positioning across multiple active conflicts. Markets must recalibrate expectations on the continuity of Trump's foreign policy and military aid flows."
-      },
-      "impact": "high",
-      "market_impact": [
         {
           "asset": "European equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor apoyo a Ucrania puede reducir riesgo de conflicto spillover",
-            "en": "Stronger Ukraine support may reduce conflict spillover risk"
-          }
-        },
-        {
-          "asset": "USD Index",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Parálisis legislativa y cambio de política debilitan el dólar",
-            "en": "Legislative gridlock and policy shift weaken the dollar"
-          }
-        },
-        {
-          "asset": "Defense sector equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Cambio en control del Congreso reorienta prioridades de gasto militar",
-            "en": "Congressional flip reshapes military spending priorities"
-          }
-        },
-        {
-          "asset": "Brent crude",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Mayor probabilidad de acuerdo nuclear con Irán reduce prima",
-            "en": "Higher probability of Iran nuclear deal reduces risk premium"
+            "es": "Sentimiento negativo por riesgo de escalada",
+            "en": "Negative sentiment from escalation risk"
           }
         }
       ],
       "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/what-us-midterm-elections-mean-for-ukraine-iran-and-elsewhere/a-79836423?maca=en-rss-en-all-1573-rdf",
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261105-dozens-dead-and-missing-after-russian-strike-on-ukrainian-aid-centre",
+      "published_at": "2026-11-05",
+      "time": "3h"
+    },
+    {
+      "id": 2,
+      "tag": "ALERT",
+      "region": "MENA",
+      "title": {
+        "es": "Lo que la derrota de Trump en las elecciones de medio término significa para Irán y los precios del petróleo",
+        "en": "What Trump's Midterm Defeat Means for Iran and Oil Prices"
+      },
+      "summary": {
+        "es": "La derrota electoral de Trump en las elecciones de medio término abre interrogantes sobre la continuidad de la política de máxima presión sobre Irán y la sostenibilidad del conflicto bélico en curso. Los mercados internacionales están evaluando el impacto en los precios del crudo y en la estrategia exterior estadounidense. Un giro en la política de Washington hacia Irán podría relajar la prima de riesgo sobre el petróleo.",
+        "en": "Trump's midterm electoral defeat raises questions about the continuity of maximum-pressure policy on Iran and the sustainability of the ongoing military conflict. Global markets are assessing the implications for crude prices and US foreign policy trajectory. A potential Washington pivot on Iran could ease the geopolitical risk premium embedded in oil."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Posible distensión con Irán reduciría prima de riesgo",
+            "en": "Potential Iran détente would reduce risk premium"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre política eleva volatilidad en deuda soberana",
+            "en": "Policy uncertainty raises sovereign debt volatility"
+          }
+        },
+        {
+          "asset": "Defense sector equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Menor probabilidad de escalada reduce demanda de defensa",
+            "en": "Lower escalation probability reduces defense demand"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre política compensa posible distensión geopolítica",
+            "en": "Political uncertainty offsets potential geopolitical de-escalation"
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/04/world/asia/midterms-trump-foreign-policy-world.html",
       "published_at": "2026-11-04",
-      "time": "4h"
+      "time": "14h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Se constata que el Reino Unido depende 'peligrosamente' de China en minerales críticos para defensa e IA",
+        "en": "UK found to be 'dangerously' reliant on China for critical minerals needed for defence and AI"
+      },
+      "summary": {
+        "es": "Una investigación parlamentaria británica concluyó que el Reino Unido tiene una dependencia peligrosa de China en materiales críticos esenciales para el sector militar, infraestructuras de energía renovable e inteligencia artificial. Los parlamentarios piden una política centralizada y financiación para la diversificación minera. Esta vulnerabilidad estratégica acelera la presión política para diversificar cadenas de suministro y abre oportunidades de inversión en minería crítica fuera de China.",
+        "en": "A UK parliamentary inquiry concluded the country has a dangerous dependency on China for raw materials critical to defence, renewable infrastructure, and AI. MPs are calling for centralized policy and investment in mining diversification. This strategic vulnerability accelerates political pressure to decouple supply chains and creates investment opportunities in non-Chinese critical minerals."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Critical minerals ETFs",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor demanda política por diversificación impulsa sector",
+            "en": "Political push for diversification boosts sector"
+          }
+        },
+        {
+          "asset": "GBP/USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de dependencia estratégica pesa sobre libra",
+            "en": "Strategic dependency risk weighs on sterling"
+          }
+        },
+        {
+          "asset": "UK defence equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Aumento de gasto en resiliencia de cadena de suministro",
+            "en": "Increased supply chain resilience spending expected"
+          }
+        },
+        {
+          "asset": "Chinese rare earth equities",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Diversificación occidental puede erosionar cuota china a largo plazo",
+            "en": "Western diversification may erode Chinese market share long-term"
+          }
+        }
+      ],
+      "confidence": 83,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/nov/05/uk-dangerously-reliant-on-china-critical-minerals-military-ai-renewable-energy",
+      "published_at": "2026-11-05",
+      "time": "8h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Sudán acusa a Etiopía de permitir lanzamientos de drones de las RSF desde su territorio",
+        "en": "Sudan accuses Ethiopia of allowing RSF drone launches from its territory"
+      },
+      "summary": {
+        "es": "Sudán acusó a Etiopía de permitir que las Fuerzas de Apoyo Rápido (RSF) lancen drones desde su territorio, lo que implica una posible internacionalización del conflicto sudanés y revela capacidades militares crecientes de las RSF con potencial respaldo extranjero. Esta dinámica amenaza la estabilidad regional en el Cuerno de África y puede afectar corredores logísticos y de materias primas críticas en la región. La acusación complica las relaciones diplomáticas entre Sudán y Etiopía.",
+        "en": "Sudan accused Ethiopia of permitting the RSF paramilitary to launch drones from its territory, suggesting a potential internationalization of the Sudanese conflict and revealing growing RSF military capabilities with possible foreign backing. This dynamic threatens regional stability in the Horn of Africa and may affect critical commodity and logistics corridors. The allegation complicates Sudan-Ethiopia diplomatic relations."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "EM currencies (African frontier)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad regional eleva prima de riesgo en mercados frontera",
+            "en": "Regional instability raises risk premium in frontier markets"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Sudán es productor de oro; conflicto amenaza suministro",
+            "en": "Sudan is a gold producer; conflict threatens supply"
+          }
+        },
+        {
+          "asset": "Agricultural commodities",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Desestabilización del Cuerno de África presiona precios agrícolas",
+            "en": "Horn of Africa destabilization pressures agricultural prices"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261105-sudan-accuses-ethiopia-of-allowing-rsf-drone-launches-from-its-territory",
+      "published_at": "2026-11-05",
+      "time": "3h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Varios vuelos europeos reciben amenazas de bomba; algunos son desviados",
+        "en": "Several European flights receive bomb threats, some divert"
+      },
+      "summary": {
+        "es": "Al menos una docena de vuelos europeos fueron desviados o aterrizaron con escolta militar tras recibir amenazas de bomba o seguridad, en un incidente que se repite días después de un episodio similar. La coordinación de las amenazas y su recurrencia sugieren una campaña organizada, posiblemente de origen híbrido. Este tipo de perturbación tiene implicaciones directas para el sector de aviación europeo y la prima de riesgo de seguridad en la región.",
+        "en": "At least a dozen European flights were diverted or landed under military escort following bomb or security threats, repeating a similar incident from days prior. The coordinated and recurring nature of the threats suggests an organized campaign, potentially of hybrid origin. This type of disruption has direct implications for European aviation and regional security risk premiums."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "European airline equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Amenazas recurrentes elevan costes operativos y dañan confianza",
+            "en": "Recurring threats raise operational costs and damage confidence"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de seguridad híbrida pesa sobre el sentimiento",
+            "en": "Hybrid security risk weighs on sentiment"
+          }
+        },
+        {
+          "asset": "Cybersecurity/security sector equities",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor demanda de soluciones de seguridad ante amenazas coordinadas",
+            "en": "Increased demand for security solutions amid coordinated threats"
+          }
+        }
+      ],
+      "confidence": 70,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/several-european-flights-receive-bomb-threats-some-divert/a-79861216?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-05",
+      "time": "3h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "Francia registra nuevas huelgas y protestas: sindicatos exigen respuestas inmediatas",
+        "en": "France holds new strikes and protests as unions demand immediate answers"
+      },
+      "summary": {
+        "es": "Cinco sindicatos franceses se suman a una jornada nacional de huelgas y protestas, incrementando la presión sobre el gobierno en un contexto de fragilidad política. Las huelgas generalizadas en Francia tienen impacto directo sobre la productividad, el consumo interno y la percepción de riesgo político en la eurozona. La persistencia de la conflictividad social puede complicar la consolidación fiscal y pesar sobre los activos franceses.",
+        "en": "Five French unions joined a national day of strikes and protests, escalating pressure on the government amid ongoing political fragility. Widespread strikes in France have direct impact on productivity, domestic consumption, and eurozone political risk perception. Persistent social unrest could complicate fiscal consolidation and weigh on French assets."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "French OAT spreads (vs Bund)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo político interno amplía diferenciales de deuda francesa",
+            "en": "Domestic political risk widens French debt spreads"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad política en Francia pesa sobre el euro",
+            "en": "French political instability weighs on the euro"
+          }
+        },
+        {
+          "asset": "CAC 40",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Huelgas afectan sectores clave del índice francés",
+            "en": "Strikes affect key sectors of the French index"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/ckx2qzv835pgo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-11-05",
+      "time": "<1h"
     }
   ],
   "market_updated_at": "2026-11-05T13:33:45.725Z"
