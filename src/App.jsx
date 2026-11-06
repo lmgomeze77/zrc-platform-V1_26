@@ -1261,6 +1261,7 @@ const Intelligence = ({ lang, countryContext }) => {
   const { user, openPricing, setShowAuth } = useAuth();
   const { tier, status: subStatus, trialEnd, loading: tierLoading } = useSubscription(user?.email);
   const [showGeoRisk, setShowGeoRisk] = useState(false);
+  const [geoRiskContext, setGeoRiskContext] = useState(null);
   const [showGeoRiskML, setShowGeoRiskML] = useState(false);
   const [showVisor, setShowVisor] = useState(false);
   const [showFIS, setShowFIS] = useState(false);
@@ -1297,9 +1298,12 @@ const Intelligence = ({ lang, countryContext }) => {
     return tier === tool.requiredTier;
   };
 
-  const handleLaunch = (tool) => {
+  const handleLaunch = (tool, context = null) => {
     if (!canAccess(tool)) { setUpgradeTool(tool); return; }
-    if (tool.name === "GeoRisk Dashboard") setShowGeoRisk(true);
+    if (tool.name === "GeoRisk Dashboard") {
+      setGeoRiskContext(context);
+      setShowGeoRisk(true);
+    }
     if (tool.name === "GeoRisk Predictive ML") setShowGeoRiskML(true);
     if (tool.name === "Real Estate Visor") setShowVisor(true);
     if (tool.name === "Financial Intelligence System") setShowFIS(true);
@@ -1313,7 +1317,7 @@ const Intelligence = ({ lang, countryContext }) => {
       const tool = TOOLS.find((tl) => tl.name === e.detail?.tool);
       if (!tool) return;
       if (!user) { setShowAuth(true); return; }
-      handleLaunch(tool);
+      handleLaunch(tool, e.detail?.context === "eu-critical-materials" ? "eu-critical-materials" : null);
     };
     window.addEventListener("zrc-open-tool", onAssistantOpenTool);
     return () => window.removeEventListener("zrc-open-tool", onAssistantOpenTool);
@@ -1549,7 +1553,12 @@ const Intelligence = ({ lang, countryContext }) => {
           <button onClick={() => setShowGeoRisk(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
             ✕ CLOSE DASHBOARD
           </button>
-          <GeoRiskDashboard countryContext={countryContext} />
+          {geoRiskContext === "eu-critical-materials" && (
+            <p role="status" style={{ margin: 0, padding: "58px 24px 12px", color: C.textSec }}>
+              {lang === "es" ? "Contexto del Observatorio · Unión Europea. Los indicadores son regionales y el simulador no estima precios de materias primas específicas." : "Observatory context · European Union. Indicators are regional and the simulator does not estimate prices for individual raw materials."}
+            </p>
+          )}
+          <GeoRiskDashboard countryContext={geoRiskContext ? null : countryContext} />
         </div>
       )}
 
