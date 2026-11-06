@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T13:56:11.006Z",
+  "generated_at": "2026-11-06T13:41:21.828Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,24 +96,33 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EURASIA",
+      "region": "GLOBAL",
       "title": {
-        "es": "Decenas de muertos y desaparecidos tras ataque ruso a centro de ayuda humanitaria en Ucrania",
-        "en": "Dozens dead and missing after Russian strike on Ukrainian aid centre"
+        "es": "Las bolsas globales se desploman por temores a una desaceleración de la IA en EE.UU. que se extienden a Asia y Europa",
+        "en": "Global stocks plunge as fears over US AI slowdown spread to Asia and Europe"
       },
       "summary": {
-        "es": "Un bombardeo ruso sobre un punto de distribución de ayuda en Zaporizhzhia dejó 42 muertos y decenas de desaparecidos, convirtiéndose en uno de los ataques más letales contra civiles del año. El ataque ocurrió un día después de un breve alto al fuego local mediado por EE.UU., lo que tensiona cualquier perspectiva de negociación. Este tipo de escalada limita el margen político para un acuerdo y mantiene presión alcista sobre el gas europeo y los activos refugio.",
-        "en": "A Russian bombing of an aid distribution point in Zaporizhzhia killed 42 and left dozens missing, making it one of the deadliest civilian strikes of the year. The attack followed a brief US-brokered local ceasefire, undermining nascent peace dynamics. This escalation constrains diplomatic space and sustains upward pressure on European gas and safe-haven assets."
+        "es": "Los mercados globales registran fuertes caídas tras la victoria demócrata en las elecciones de mitad de mandato en EE.UU., que genera expectativas de mayor regulación del sector tecnológico y de la IA. Los inversores temen una ralentización en la construcción de centros de datos y un endurecimiento del escrutinio regulatorio sobre las grandes tecnológicas. El impacto se extiende a Asia y Europa, con implicaciones directas para carteras de renta variable con exposición tecnológica.",
+        "en": "Global equity markets are experiencing sharp declines following the Democratic Party's midterm victory in the US, raising expectations of tighter AI and tech sector regulation. Investors fear a slowdown in data center construction and intensified regulatory scrutiny on major tech firms. The selloff has spread to Asian and European markets, with direct implications for tech-heavy equity portfolios."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "European natural gas (TTF)",
-          "direction": "up",
+          "asset": "US Tech equities (Nasdaq)",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Mayor regulación esperada frena el optimismo en IA",
+            "en": "Expected tighter regulation dampens AI sector optimism"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada reabre riesgo de interrupción de suministro energético",
-            "en": "Escalation revives energy supply disruption risk"
+            "es": "Contagio de caídas tecnológicas desde EE.UU.",
+            "en": "Contagion from US tech selloff hits European markets"
           }
         },
         {
@@ -121,266 +130,143 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda refugio aumenta ante mayor incertidumbre geopolítica",
-            "en": "Safe-haven demand rises on heightened geopolitical uncertainty"
+            "es": "Búsqueda de refugio ante volatilidad de renta variable",
+            "en": "Safe-haven demand rises amid equity volatility"
           }
         },
         {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
+          "asset": "EM currencies",
+          "direction": "mixed",
+          "magnitude": "medium",
           "note": {
-            "es": "Riesgo de conflicto prolongado pesa sobre el euro",
-            "en": "Prolonged conflict risk weighs on the euro"
+            "es": "Presión diferenciada según exposición tecnológica de cada economía",
+            "en": "Pressure varies by economy's tech export exposure"
+          }
+        }
+      ],
+      "confidence": 90,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/cmn04705rd8jo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-11-06",
+      "time": "<1h"
+    },
+    {
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "US",
+      "title": {
+        "es": "Las grandes tecnológicas pierden 1 billón de dólares en un día tras la victoria demócrata en las elecciones de mitad de mandato",
+        "en": "Tech giants lose $1 trillion in one day after Democrats victory in midterms"
+      },
+      "summary": {
+        "es": "La victoria demócrata en las elecciones de mitad de mandato de EE.UU. desencadenó una liquidación masiva en el sector tecnológico, borrando un billón de dólares en capitalización bursátil en un solo día. Los inversores anticipan mayor regulación de la IA y restricciones a la construcción de centros de datos, impactando a empresas de EE.UU., Europa y Asia. El evento marca un punto de inflexión político con implicaciones estructurales para la economía digital global.",
+        "en": "The Democratic midterm victory triggered a massive selloff in the technology sector, wiping $1 trillion in market capitalization in a single day. Investors are pricing in tighter AI regulation and constraints on data center expansion, affecting firms across the US, Europe and Asia. The event marks a political inflection point with structural implications for the global digital economy."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "US Tech equities (Nasdaq)",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Pérdida directa de capitalización ante riesgo regulatorio",
+            "en": "Direct market cap loss on AI regulation risk"
           }
         },
         {
-          "asset": "European equities",
+          "asset": "Semiconductor equities",
           "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Menor demanda de chips si frena la expansión de IA",
+            "en": "Chip demand threatened by AI slowdown fears"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Sentimiento negativo por riesgo de escalada",
-            "en": "Negative sentiment from escalation risk"
+            "es": "Flujo refugio moderado desde renta variable",
+            "en": "Moderate safe-haven flow from equity selloff"
           }
         }
       ],
       "confidence": 88,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261105-dozens-dead-and-missing-after-russian-strike-on-ukrainian-aid-centre",
-      "published_at": "2026-11-05",
-      "time": "3h"
+      "source_url": "https://www.france24.com/en/video/20261106-tech-giants-lose-1-trillion-in-one-day-after-democrats-victory-in-midterms",
+      "published_at": "2026-11-06",
+      "time": "<1h"
     },
     {
-      "id": 2,
-      "tag": "ALERT",
+      "id": 3,
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Lo que la derrota de Trump en las elecciones de medio término significa para Irán y los precios del petróleo",
-        "en": "What Trump's Midterm Defeat Means for Iran and Oil Prices"
+        "es": "Un acuerdo de lanzadores de cohetes ilustra la profundización de las relaciones Rusia-Irán",
+        "en": "Rocket launcher deal illustrates deepening Russia-Iran relations"
       },
       "summary": {
-        "es": "La derrota electoral de Trump en las elecciones de medio término abre interrogantes sobre la continuidad de la política de máxima presión sobre Irán y la sostenibilidad del conflicto bélico en curso. Los mercados internacionales están evaluando el impacto en los precios del crudo y en la estrategia exterior estadounidense. Un giro en la política de Washington hacia Irán podría relajar la prima de riesgo sobre el petróleo.",
-        "en": "Trump's midterm electoral defeat raises questions about the continuity of maximum-pressure policy on Iran and the sustainability of the ongoing military conflict. Global markets are assessing the implications for crude prices and US foreign policy trajectory. A potential Washington pivot on Iran could ease the geopolitical risk premium embedded in oil."
+        "es": "Un nuevo acuerdo de transferencia de armamento entre Rusia e Irán, reportado en el contexto de visitas diplomáticas de alto nivel, señala una consolidación creciente del eje Moscú-Teherán con implicaciones para los conflictos en Ucrania y Medio Oriente. El desarrollo de un tratado de cooperación entre ambas potencias incrementa el riesgo de expansión de capacidades militares iraníes y complica las dinámicas de sanciones occidentales. Para los inversores, esto eleva la prima de riesgo en activos de energía y seguridad regional.",
+        "en": "A new arms transfer agreement between Russia and Iran, reported alongside high-level diplomatic meetings, signals a consolidating Moscow-Tehran axis with implications for the Ukraine and Middle East conflicts. The development of a cooperation treaty between the two powers raises the risk of expanding Iranian military capabilities and complicates Western sanctions dynamics. For investors, this increases risk premiums on energy and regional security assets."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
-          "direction": "down",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Posible distensión con Irán reduciría prima de riesgo",
-            "en": "Potential Iran détente would reduce risk premium"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre política eleva volatilidad en deuda soberana",
-            "en": "Policy uncertainty raises sovereign debt volatility"
-          }
-        },
-        {
-          "asset": "Defense sector equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Menor probabilidad de escalada reduce demanda de defensa",
-            "en": "Lower escalation probability reduces defense demand"
+            "es": "Mayor tensión en Medio Oriente presiona precios del crudo",
+            "en": "Heightened Middle East tension pressures crude prices"
           }
         },
         {
           "asset": "Gold",
-          "direction": "mixed",
-          "magnitude": "low",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre política compensa posible distensión geopolítica",
-            "en": "Political uncertainty offsets potential geopolitical de-escalation"
+            "es": "Escalada geopolítica impulsa activos refugio",
+            "en": "Geopolitical escalation boosts safe-haven demand"
+          }
+        },
+        {
+          "asset": "Defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor gasto en defensa esperado por aliados occidentales",
+            "en": "Western allies expected to increase defense spending"
           }
         }
       ],
       "confidence": 85,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/11/04/world/asia/midterms-trump-foreign-policy-world.html",
-      "published_at": "2026-11-04",
-      "time": "14h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Se constata que el Reino Unido depende 'peligrosamente' de China en minerales críticos para defensa e IA",
-        "en": "UK found to be 'dangerously' reliant on China for critical minerals needed for defence and AI"
-      },
-      "summary": {
-        "es": "Una investigación parlamentaria británica concluyó que el Reino Unido tiene una dependencia peligrosa de China en materiales críticos esenciales para el sector militar, infraestructuras de energía renovable e inteligencia artificial. Los parlamentarios piden una política centralizada y financiación para la diversificación minera. Esta vulnerabilidad estratégica acelera la presión política para diversificar cadenas de suministro y abre oportunidades de inversión en minería crítica fuera de China.",
-        "en": "A UK parliamentary inquiry concluded the country has a dangerous dependency on China for raw materials critical to defence, renewable infrastructure, and AI. MPs are calling for centralized policy and investment in mining diversification. This strategic vulnerability accelerates political pressure to decouple supply chains and creates investment opportunities in non-Chinese critical minerals."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Critical minerals ETFs",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor demanda política por diversificación impulsa sector",
-            "en": "Political push for diversification boosts sector"
-          }
-        },
-        {
-          "asset": "GBP/USD",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de dependencia estratégica pesa sobre libra",
-            "en": "Strategic dependency risk weighs on sterling"
-          }
-        },
-        {
-          "asset": "UK defence equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Aumento de gasto en resiliencia de cadena de suministro",
-            "en": "Increased supply chain resilience spending expected"
-          }
-        },
-        {
-          "asset": "Chinese rare earth equities",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Diversificación occidental puede erosionar cuota china a largo plazo",
-            "en": "Western diversification may erode Chinese market share long-term"
-          }
-        }
-      ],
-      "confidence": 83,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/nov/05/uk-dangerously-reliant-on-china-critical-minerals-military-ai-renewable-energy",
-      "published_at": "2026-11-05",
-      "time": "8h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/11/6/rocket-launcher-deal-illustrates-deepening-russia-iran-relations?traffic_source=rss",
+      "published_at": "2026-11-06",
+      "time": "2h"
     },
     {
       "id": 4,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "Sudán acusa a Etiopía de permitir lanzamientos de drones de las RSF desde su territorio",
-        "en": "Sudan accuses Ethiopia of allowing RSF drone launches from its territory"
-      },
-      "summary": {
-        "es": "Sudán acusó a Etiopía de permitir que las Fuerzas de Apoyo Rápido (RSF) lancen drones desde su territorio, lo que implica una posible internacionalización del conflicto sudanés y revela capacidades militares crecientes de las RSF con potencial respaldo extranjero. Esta dinámica amenaza la estabilidad regional en el Cuerno de África y puede afectar corredores logísticos y de materias primas críticas en la región. La acusación complica las relaciones diplomáticas entre Sudán y Etiopía.",
-        "en": "Sudan accused Ethiopia of permitting the RSF paramilitary to launch drones from its territory, suggesting a potential internationalization of the Sudanese conflict and revealing growing RSF military capabilities with possible foreign backing. This dynamic threatens regional stability in the Horn of Africa and may affect critical commodity and logistics corridors. The allegation complicates Sudan-Ethiopia diplomatic relations."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "EM currencies (African frontier)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad regional eleva prima de riesgo en mercados frontera",
-            "en": "Regional instability raises risk premium in frontier markets"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Sudán es productor de oro; conflicto amenaza suministro",
-            "en": "Sudan is a gold producer; conflict threatens supply"
-          }
-        },
-        {
-          "asset": "Agricultural commodities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Desestabilización del Cuerno de África presiona precios agrícolas",
-            "en": "Horn of Africa destabilization pressures agricultural prices"
-          }
-        }
-      ],
-      "confidence": 72,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261105-sudan-accuses-ethiopia-of-allowing-rsf-drone-launches-from-its-territory",
-      "published_at": "2026-11-05",
-      "time": "3h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
+      "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "Varios vuelos europeos reciben amenazas de bomba; algunos son desviados",
-        "en": "Several European flights receive bomb threats, some divert"
+        "es": "Las protestas en Francia disparan su número al sumarse los sindicatos a las huelgas por el alto coste de vida",
+        "en": "French protests see numbers surge as unions join strikes over high cost of living"
       },
       "summary": {
-        "es": "Al menos una docena de vuelos europeos fueron desviados o aterrizaron con escolta militar tras recibir amenazas de bomba o seguridad, en un incidente que se repite días después de un episodio similar. La coordinación de las amenazas y su recurrencia sugieren una campaña organizada, posiblemente de origen híbrido. Este tipo de perturbación tiene implicaciones directas para el sector de aviación europeo y la prima de riesgo de seguridad en la región.",
-        "en": "At least a dozen European flights were diverted or landed under military escort following bomb or security threats, repeating a similar incident from days prior. The coordinated and recurring nature of the threats suggests an organized campaign, potentially of hybrid origin. This type of disruption has direct implications for European aviation and regional security risk premiums."
+        "es": "Más de 600.000 personas salieron a las calles en Francia según el gobierno, con los principales sindicatos sumándose a las huelgas por el elevado coste de vida. La intensificación de la presión social sobre el ejecutivo francés aumenta el riesgo político doméstico en la segunda economía de la eurozona, con potencial impacto en la prima de riesgo de bonos franceses y en la estabilidad del gobierno. Este desarrollo, en paralelo a la crisis presupuestaria belga, indica un patrón de fragilidad fiscal y política en el núcleo de la Unión Europea.",
+        "en": "More than 600,000 people took to French streets according to the government, with major unions joining strikes over the high cost of living. The intensification of social pressure on the French executive raises domestic political risk in the eurozone's second-largest economy, with potential impact on French bond risk premiums and government stability. This development, alongside Belgium's budget crisis, signals a pattern of fiscal and political fragility at the EU's core."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "European airline equities",
+          "asset": "French OAT (10Y bond)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Amenazas recurrentes elevan costes operativos y dañan confianza",
-            "en": "Recurring threats raise operational costs and damage confidence"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de seguridad híbrida pesa sobre el sentimiento",
-            "en": "Hybrid security risk weighs on sentiment"
-          }
-        },
-        {
-          "asset": "Cybersecurity/security sector equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor demanda de soluciones de seguridad ante amenazas coordinadas",
-            "en": "Increased demand for security solutions amid coordinated threats"
-          }
-        }
-      ],
-      "confidence": 70,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/several-european-flights-receive-bomb-threats-some-divert/a-79861216?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-11-05",
-      "time": "3h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Francia registra nuevas huelgas y protestas: sindicatos exigen respuestas inmediatas",
-        "en": "France holds new strikes and protests as unions demand immediate answers"
-      },
-      "summary": {
-        "es": "Cinco sindicatos franceses se suman a una jornada nacional de huelgas y protestas, incrementando la presión sobre el gobierno en un contexto de fragilidad política. Las huelgas generalizadas en Francia tienen impacto directo sobre la productividad, el consumo interno y la percepción de riesgo político en la eurozona. La persistencia de la conflictividad social puede complicar la consolidación fiscal y pesar sobre los activos franceses.",
-        "en": "Five French unions joined a national day of strikes and protests, escalating pressure on the government amid ongoing political fragility. Widespread strikes in France have direct impact on productivity, domestic consumption, and eurozone political risk perception. Persistent social unrest could complicate fiscal consolidation and weigh on French assets."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "French OAT spreads (vs Bund)",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo político interno amplía diferenciales de deuda francesa",
-            "en": "Domestic political risk widens French debt spreads"
+            "es": "Mayor riesgo político eleva prima de riesgo soberano francés",
+            "en": "Rising political risk lifts French sovereign risk premium"
           }
         },
         {
@@ -389,24 +275,111 @@
           "magnitude": "low",
           "note": {
             "es": "Inestabilidad política en Francia pesa sobre el euro",
-            "en": "French political instability weighs on the euro"
+            "en": "French political instability weighs on euro"
           }
         },
         {
-          "asset": "CAC 40",
+          "asset": "European equities",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Huelgas afectan sectores clave del índice francés",
-            "en": "Strikes affect key sectors of the French index"
+            "es": "Presión sindical y huelgas limitan actividad económica",
+            "en": "Union pressure and strikes constrain economic activity"
           }
         }
       ],
-      "confidence": 68,
+      "confidence": 80,
       "source": "BBC News",
       "source_url": "https://www.bbc.co.uk/news/articles/ckx2qzv835pgo?at_medium=RSS&at_campaign=rss",
       "published_at": "2026-11-05",
-      "time": "<1h"
+      "time": "19h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Bélgica: el rey rechaza la dimisión del primer ministro De Wever en medio de un bloqueo presupuestario en el Parlamento",
+        "en": "Belgium: King refuses PM De Wever's resignation amid parliamentary budget deadlock"
+      },
+      "summary": {
+        "es": "El rey belga rechazó la dimisión del primer ministro Bart De Wever, presentada tras un bloqueo parlamentario en torno a un ajuste fiscal de 10.000 millones de euros para 2029 al que se opone un socio de coalición. La crisis política en Bélgica, sede de las instituciones de la UE y la OTAN, añade incertidumbre a la ya frágil cohesión europea en un momento de múltiples presiones geopolíticas. La incapacidad de acordar consolidación fiscal podría impactar en la calificación soberana belga y en los diferenciales de bonos europeos periféricos.",
+        "en": "Belgium's king refused Prime Minister Bart De Wever's resignation, submitted after a parliamentary deadlock over a €10 billion fiscal adjustment plan for 2029 opposed by a coalition partner. The political crisis in Belgium, home to key EU and NATO institutions, adds uncertainty to already fragile European cohesion amid multiple geopolitical pressures. The failure to agree on fiscal consolidation could affect Belgium's sovereign rating and European peripheral bond spreads."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Belgian OLO (sovereign bonds)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Bloqueo fiscal eleva riesgo de rebaja de calificación soberana",
+            "en": "Fiscal deadlock raises sovereign downgrade risk"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Crisis política en el corazón de la UE debilita al euro",
+            "en": "Political crisis at EU core weighs on the euro"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre institucional europea frena el apetito de riesgo",
+            "en": "EU institutional uncertainty dampens risk appetite"
+          }
+        }
+      ],
+      "confidence": 76,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/11/06/belgique-le-roi-refuse-la-demission-du-premier-ministre-bart-de-wever-presentee-sur-fond-de-blocage-budgetaire-au-parlement_6807784_3210.html",
+      "published_at": "2026-11-06",
+      "time": "1h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "En Italia, un 'impuesto de salida' para las grandes fortunas",
+        "en": "In Italy, an 'exit tax' for high-net-worth individuals"
+      },
+      "summary": {
+        "es": "El gobierno Meloni ha incluido en el proyecto de presupuesto para 2027 una 'exit tax' dirigida a grandes fortunas que decidan trasladar su residencia fiscal fuera de Italia, revirtiendo parcialmente la política de atracción de ultrarricos vigente desde 2017. La medida señala un cambio de dirección en la política fiscal italiana con implicaciones para los flujos de capital y la competitividad fiscal del país. Inversores con exposición a activos italianos o que estructuran patrimonio en Italia deberán monitorear la evolución legislativa de esta propuesta.",
+        "en": "Italy's Meloni government has included an 'exit tax' on high-net-worth individuals who decide to relocate their tax residence abroad in its 2027 budget bill, partially reversing the ultra-wealthy attraction policy in place since 2017. The measure signals a shift in Italian fiscal policy with implications for capital flows and the country's fiscal competitiveness. Investors with Italian asset exposure or wealth structured in Italy should monitor the legislative progress of this proposal."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Italian BTP (10Y bond)",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Mayor recaudación potencial pero riesgo de fuga de capitales",
+            "en": "Potential revenue gain offset by capital flight risk"
+          }
+        },
+        {
+          "asset": "Italian luxury/real estate equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Salida de grandes fortunas reduce demanda de activos premium",
+            "en": "Wealth relocation may reduce premium asset demand"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/economie/article/2026/11/06/en-italie-une-taxe-de-sortie-pour-les-grandes-fortunes_6807773_3234.html",
+      "published_at": "2026-11-06",
+      "time": "2h"
     }
   ],
   "market_updated_at": "2026-11-06T13:18:03.090Z"
