@@ -1317,11 +1317,12 @@ const Intelligence = ({ lang, countryContext }) => {
       const tool = TOOLS.find((tl) => tl.name === e.detail?.tool);
       if (!tool) return;
       if (!user) { setShowAuth(true); return; }
+      if (tierLoading && tool.requiredTier) return;
       handleLaunch(tool, e.detail?.context === "eu-critical-materials" ? "eu-critical-materials" : null);
     };
     window.addEventListener("zrc-open-tool", onAssistantOpenTool);
     return () => window.removeEventListener("zrc-open-tool", onAssistantOpenTool);
-  }, [user, tier, tierLoading]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [user, tier, subStatus, tierLoading]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Sec id="intelligence">
