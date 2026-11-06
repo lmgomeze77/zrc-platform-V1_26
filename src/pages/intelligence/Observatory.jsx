@@ -300,6 +300,22 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
         </div>
       } />
 
+      <section aria-labelledby="critical-materials-title" style={{ padding: "clamp(16px, 4vw, 30px)", marginBottom: 24, background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 12, color: C.textSec }}>
+        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · CASO HISTÓRICO" : "ZRC THESIS · HISTORICAL CASE"}</p>
+        <h3 id="critical-materials-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Materias primas críticas: ¿puede Europa diversificar su suministro?" : "Critical raw materials: can Europe diversify its supply?"}</h3>
+        <p>{lang === "es" ? "La UE incorporó proyectos fuera de su territorio a su estrategia. La designación abre una vía de diversificación, pero la exposición industrial depende de que los proyectos lleguen a producir y suministrar a escala." : "The EU added projects outside its borders to its strategy. Designation opens a route to diversification, but industrial exposure depends on projects reaching commercial production and supplying at scale."}</p>
+        <p><strong>{lang === "es" ? "Tesis condicional" : "Conditional thesis"}</strong> · {lang === "es" ? "Si avanzan los permisos, la financiación y los contratos de suministro, los fabricantes europeos podrían depender menos de sus proveedores actuales. Si se retrasan los proyectos o el procesado sigue concentrado, la exposición puede persistir. Sectores a seguir: baterías e imanes permanentes." : "If permits, funding and supply contracts progress, European manufacturers could rely less on their current suppliers. If projects stall or processing stays concentrated, exposure may persist. Sectors to watch: batteries and permanent magnets."}</p>
+        <details>
+          <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Historial y fuentes oficiales" : "Timeline and official sources"}</summary>
+          <ul>
+            <li><time dateTime="2025-03-25">25 Mar 2025</time> · {lang === "es" ? "La Comisión aprobó la primera lista de proyectos estratégicos dentro de la UE." : "The Commission approved the first list of strategic projects within the EU."}</li>
+            <li><time dateTime="2025-06-04">4 Jun 2025</time> · {lang === "es" ? "La primera lista exterior amplió la estrategia a proyectos fuera de la UE." : "The first external list extended the strategy to projects outside the EU."}</li>
+          </ul>
+          <a style={{ color: C.gold }} href="https://single-market-economy.ec.europa.eu/sectors/raw-materials/areas-specific-interest/critical-raw-materials/strategic-projects-under-crma/selected-projects_en">{lang === "es" ? "Listas oficiales · Comisión Europea" : "Official lists · European Commission"}</a>
+        </details>
+        <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("zrc-open-tool", { detail: { tool: "GeoRisk Dashboard", context: "eu-critical-materials" } }))} style={{ marginTop: 16, padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Abrir contexto de la UE en GeoRisk" : "Open EU context in GeoRisk"}</button>
+      </section>
+
       {/* STALE FEED NOTICE — pipeline diario sin refrescar */}
       {isStale && (
         <FadeIn delay={0.05}>
