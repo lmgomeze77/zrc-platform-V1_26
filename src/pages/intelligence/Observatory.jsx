@@ -212,7 +212,7 @@ function LockedOverlay({ lang, openRegister, openLogin, expired, openPricing }) 
 export default function Observatory({ lang, useAuth, useSubscription, useHeadlines, FadeIn, Sec, SH, GoldDivider, T }) {
   const t = T[lang].obs;
   const { user, openRegister, openLogin, openPricing } = useAuth();
-  const { status: subStatus } = useSubscription(user?.email);
+  const { status: subStatus, loading: subscriptionLoading } = useSubscription(user?.email);
   const trialExpired = subStatus === "expired";
   const hasAccess = user && !trialExpired;
   const [expanded, setExpanded] = useState(null);
@@ -319,8 +319,21 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
           </ul>
           <a style={{ color: C.gold }} href="https://www.eeas.europa.eu/eeas/eu-latin-america-and-caribbean-digital-alliance_en">{lang === "es" ? "Alianza Digital UE–América Latina y el Caribe · SEAE" : "EU–Latin America and Caribbean Digital Alliance · EEAS"}</a>
         </details>
-        {!user && (
-          <button type="button" onClick={openRegister} style={{ marginTop: 16, padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Crear cuenta en ZRC" : "Create a ZRC account"}</button>
+        {(!user || (!subscriptionLoading && subStatus !== "active")) && (
+          <div style={{ marginTop: 20, paddingTop: 16, borderTop: `1px solid ${C.border}` }}>
+            <p style={{ margin: "0 0 10px" }}>
+              <strong style={{ color: C.text }}>{lang === "es" ? "Lleva la tesis a tu análisis con Founding Intelligence." : "Put the thesis to work with Founding Intelligence."}</strong>
+              {" "}{lang === "es" ? "Contrasta escenarios en GeoRisk y explora la exposición regional antes de decidir qué señales seguir." : "Compare scenarios in GeoRisk and explore regional exposure before deciding which signals to track."}
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+              <button type="button" onClick={() => openPricing("observatory")} style={{ padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: C.gold, color: C.bg, cursor: "pointer", fontWeight: 600 }}>
+                {lang === "es" ? "Ver oferta fundadora" : "View founding offer"}
+              </button>
+              {!user && <button type="button" onClick={openRegister} style={{ padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>
+                {lang === "es" ? "Crear cuenta en ZRC" : "Create a ZRC account"}
+              </button>}
+            </div>
+          </div>
         )}
       </section>
 
