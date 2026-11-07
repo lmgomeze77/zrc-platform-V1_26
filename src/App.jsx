@@ -50,6 +50,21 @@ const F = {
 // API base — always hits the Cloudflare Worker regardless of frontend host
 const API_BASE = "https://zenith-risecapital.lmgomeze77.workers.dev";
 
+const getRegistrationLeadSource = () => {
+  if (typeof window === "undefined") return "website-registration";
+  const params = new URLSearchParams(window.location.search);
+  const campaign = params.get("utm_campaign");
+  const segment = params.get("utm_content");
+  if (!campaign) return "website-registration";
+  return ["observatory", campaign, segment]
+    .filter(Boolean)
+    .join("-")
+    .toLowerCase()
+    .replace(/[^a-z0-9-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 50);
+};
+
 const AuthContext = createContext(null);
 const useAuth = () => useContext(AuthContext);
 
@@ -906,6 +921,15 @@ const AuthModal = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: form.name, email: form.email, company: form.company, role: form.role, interest: form.interest }),
       }).catch((err) => console.error("Reg error:", err));
+      fetch(`${API_BASE}/api/lead`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: form.email,
+          sector: form.role || form.interest || "unspecified",
+          source: getRegistrationLeadSource(),
+        }),
+      }).catch((err) => console.error("Campaign attribution error:", err));
     }
     login({ name: form.name || form.email.split("@")[0], email: form.email, tier: "member" });
   };
