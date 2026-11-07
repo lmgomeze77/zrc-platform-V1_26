@@ -12,7 +12,7 @@ export function buildInvestmentCommitteeBrief({project,country,inputs,annualSett
  if(!inputs||!annualSettings)throw Error("Faltan los parámetros del expediente.");
  const calc=projectCashFlows({...inputs,...annualSettings},annualOverrides||{});
  const evidence=buildInvestmentEvidence(inputs,editedFields);
- const date=typeof createdAt==="string"&&/^\\d{4}-\\d{2}-\\d{2}$/.test(createdAt)?createdAt:new Date().toISOString().slice(0,10);
+ const date=typeof createdAt==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(createdAt)?createdAt:new Date().toISOString().slice(0,10);
  const npvSignal=calc.baseNPV>=0?"VAN base no negativo bajo los supuestos":"VAN base negativo bajo los supuestos";
  const notes=[
   "Modelo de flujos de caja libres operativos, antes de financiación. Impuestos y capital circulante solo si están incluidos en las cifras introducidas.",
