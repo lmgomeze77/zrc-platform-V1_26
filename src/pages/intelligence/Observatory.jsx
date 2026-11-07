@@ -300,6 +300,46 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
         </div>
       } />
 
+      <section id="ai-europa-iberoamerica" aria-labelledby="ai-europa-iberoamerica-title" style={{ padding: "clamp(16px, 4vw, 30px)", marginBottom: 24, background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 12, color: C.textSec }}>
+        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · TECNOLOGÍA Y POLÍTICA INDUSTRIAL" : "ZRC THESIS · TECHNOLOGY AND INDUSTRIAL POLICY"}</p>
+        <h3 id="ai-europa-iberoamerica-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Después de Madrid, ¿puede España impulsar proyectos de IA entre Europa e Iberoamérica?" : "After Madrid, can Spain bring Europe and Ibero-America together on AI projects?"}</h3>
+        <p><strong>{lang === "es" ? "Qué pasó" : "What happened"}</strong> · {lang === "es" ? "El 3 de noviembre de 2026, los responsables iberoamericanos acordaron impulsar una alianza de IA en torno a datos, modelos adaptados a las lenguas de la región y capacidad de cómputo." : "On 3 November 2026, Ibero-American ministers agreed to advance an AI alliance focused on data, models adapted to the region’s languages, and computing capacity."}</p>
+        <p><strong>{lang === "es" ? "Tesis ZRC" : "ZRC thesis"}</strong> · {lang === "es" ? "La Alianza Digital UE–América Latina y el Caribe ofrece un cauce de cooperación. Un piloto multilingüe permitiría comprobar si esa cooperación genera capacidad local para desarrollar y evaluar modelos." : "The EU–Latin America and Caribbean Digital Alliance offers a framework for cooperation. A multilingual pilot would test whether that cooperation builds local capacity to develop and evaluate models."}</p>
+        <p><strong>{lang === "es" ? "Qué seguir" : "What to watch"}</strong></p>
+        <ul>
+          <li>{lang === "es" ? "Financiación: una convocatoria o un presupuesto asociado a un proyecto identificable." : "Funding: a call for proposals or budget tied to an identifiable project."}</li>
+          <li>{lang === "es" ? "Responsables: instituciones en ambas regiones y reglas para acceder a los datos y al cómputo." : "Ownership: institutions in both regions and rules for access to data and computing capacity."}</li>
+          <li>{lang === "es" ? "Ejecución: un calendario de pruebas y resultados de evaluación por lengua." : "Delivery: a testing schedule and evaluation results broken down by language."}</li>
+        </ul>
+        <details>
+          <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Hitos y fuentes oficiales" : "Milestones and official sources"}</summary>
+          <ul>
+            <li><time dateTime="2026-11-03">3 Nov 2026</time> · <a style={{ color: C.gold }} href="https://segib.org/es/publicacion/declaracion-de-madrid-sobre-transformacion-digital-e-inteligencia-artificial/">{lang === "es" ? "Declaración ministerial de Madrid · SEGIB" : "Madrid ministerial declaration · SEGIB"}</a></li>
+            <li><time dateTime="2026-11-05">4–5 Nov 2026</time> · <a style={{ color: C.gold }} href="https://segib.org/es/publicacion/declaracion-de-la-xxx-cumbre-iberoamericana/">{lang === "es" ? "Declaración de la Cumbre · SEGIB" : "Summit declaration · SEGIB"}</a></li>
+          </ul>
+          <a style={{ color: C.gold }} href="https://www.eeas.europa.eu/eeas/eu-latin-america-and-caribbean-digital-alliance_en">{lang === "es" ? "Alianza Digital UE–América Latina y el Caribe · SEAE" : "EU–Latin America and Caribbean Digital Alliance · EEAS"}</a>
+        </details>
+        {!user && (
+          <button type="button" onClick={openRegister} style={{ marginTop: 16, padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Crear cuenta en ZRC" : "Create a ZRC account"}</button>
+        )}
+      </section>
+
+      <section aria-labelledby="critical-materials-title" style={{ padding: "clamp(16px, 4vw, 30px)", marginBottom: 24, background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 12, color: C.textSec }}>
+        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · CASO HISTÓRICO" : "ZRC THESIS · HISTORICAL CASE"}</p>
+        <h3 id="critical-materials-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Materias primas críticas: ¿puede Europa diversificar su suministro?" : "Critical raw materials: can Europe diversify its supply?"}</h3>
+        <p>{lang === "es" ? "La UE incorporó proyectos fuera de su territorio a su estrategia. La designación abre una vía de diversificación, pero la exposición industrial depende de que los proyectos lleguen a producir y suministrar a escala." : "The EU added projects outside its borders to its strategy. Designation opens a route to diversification, but industrial exposure depends on projects reaching commercial production and supplying at scale."}</p>
+        <p><strong>{lang === "es" ? "Tesis condicional" : "Conditional thesis"}</strong> · {lang === "es" ? "Si avanzan los permisos, la financiación y los contratos de suministro, los fabricantes europeos podrían depender menos de sus proveedores actuales. Si se retrasan los proyectos o el procesado sigue concentrado, la exposición puede persistir. Sectores a seguir: baterías e imanes permanentes." : "If permits, funding and supply contracts progress, European manufacturers could rely less on their current suppliers. If projects stall or processing stays concentrated, exposure may persist. Sectors to watch: batteries and permanent magnets."}</p>
+        <details>
+          <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Historial y fuentes oficiales" : "Timeline and official sources"}</summary>
+          <ul>
+            <li><time dateTime="2025-03-25">25 Mar 2025</time> · {lang === "es" ? "La Comisión aprobó la primera lista de proyectos estratégicos dentro de la UE." : "The Commission approved the first list of strategic projects within the EU."}</li>
+            <li><time dateTime="2025-06-04">4 Jun 2025</time> · {lang === "es" ? "La primera lista exterior amplió la estrategia a proyectos fuera de la UE." : "The first external list extended the strategy to projects outside the EU."}</li>
+          </ul>
+          <a style={{ color: C.gold }} href="https://single-market-economy.ec.europa.eu/sectors/raw-materials/areas-specific-interest/critical-raw-materials/strategic-projects-under-crma/selected-projects_en">{lang === "es" ? "Listas oficiales · Comisión Europea" : "Official lists · European Commission"}</a>
+        </details>
+        <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("zrc-open-tool", { detail: { tool: "GeoRisk Dashboard", context: "eu-critical-materials" } }))} style={{ marginTop: 16, padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Abrir contexto de la UE en GeoRisk" : "Open EU context in GeoRisk"}</button>
+      </section>
+
       {/* STALE FEED NOTICE — pipeline diario sin refrescar */}
       {isStale && (
         <FadeIn delay={0.05}>
