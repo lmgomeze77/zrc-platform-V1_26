@@ -73,6 +73,7 @@ const AuthProvider = ({ children, lang }) => {
   const [showAuth, setShowAuth] = useState(false);
   const [authMode, setAuthMode] = useState("login");
   const [authCallback, setAuthCallback] = useState(null);
+  const [pricingReference, setPricingReference] = useState(null);
   const [showPricing, setShowPricing] = useState(() => {
     if (typeof window === "undefined") return false;
     const params = new URLSearchParams(window.location.search);
@@ -123,12 +124,24 @@ const AuthProvider = ({ children, lang }) => {
         setShowAuth,
         authMode,
         setAuthMode,
-        openPricing: () => setShowPricing(true),
+        openPricing: (entry) => {
+          let reference = null;
+          if (entry === "observatory") {
+            const params = new URLSearchParams(window.location.search);
+            const segment = params.get("utm_content");
+            const campaignSegments = ["advisor", "advisor_en", "investor", "investor_en", "educator", "linkedin_post"];
+            reference = params.get("utm_campaign") === "observatorio_nov2026" && campaignSegments.includes(segment)
+              ? `observatory-observatorio_nov2026-${segment}`
+              : "observatory-public-brief";
+          }
+          setPricingReference(reference);
+          setShowPricing(true);
+        },
       }}
     >
       {children}
       {showAuth && <AuthModal />}
-      {showPricing && <PricingPage onClose={() => setShowPricing(false)} lang={lang} onRegister={openRegister} />}
+      {showPricing && <PricingPage onClose={() => setShowPricing(false)} lang={lang} onRegister={openRegister} checkoutReference={pricingReference} />}
     </AuthContext.Provider>
   );
 };

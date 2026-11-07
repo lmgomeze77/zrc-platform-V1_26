@@ -87,8 +87,11 @@ const FOUNDING = {
   },
 };
 
-export default function PricingPage({ onClose, lang = "es", onRegister }) {
+export default function PricingPage({ onClose, lang = "es", onRegister, checkoutReference }) {
   const [billing, setBilling] = useState("annual");
+  const foundingPlan = FOUNDING[billing];
+  const foundingCheckout = new URL(foundingPlan.url);
+  if (checkoutReference) foundingCheckout.searchParams.set("client_reference_id", checkoutReference);
 
   return (
     <div
@@ -105,9 +108,32 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
           <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.16em", marginBottom: 7 }}>
             {lang === "es" ? "FOUNDING INTELLIGENCE · PRIMEROS 100 MIEMBROS" : "FOUNDING INTELLIGENCE · FIRST 100 MEMBERS"}
           </div>
+          {/* Billing toggle */}
+          <div style={{ display: "flex", margin: "0 0 14px", gap: 0 }}>
+            {["monthly", "annual"].map((b) => (
+              <button
+                key={b}
+                type="button"
+                aria-pressed={billing === b}
+                onClick={() => setBilling(b)}
+                style={{
+                  fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em",
+                  padding: "8px 24px", cursor: "pointer", border: `1px solid ${C.border}`,
+                  background: billing === b ? C.gold : "transparent",
+                  color: billing === b ? C.bg : C.textSec,
+                  fontWeight: billing === b ? 600 : 400,
+                  transition: "all 0.2s",
+                }}
+              >
+                {b === "monthly"
+                  ? (lang === "es" ? "MENSUAL" : "MONTHLY")
+                  : (lang === "es" ? "ANUAL" : "ANNUAL")}
+              </button>
+            ))}
+          </div>
           <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
-            <span style={{ fontFamily: F.figures, fontSize: 32, color: C.text }}>{billing === "annual" ? FOUNDING.annual.price : FOUNDING.monthly.price}</span>
-            <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>{billing === "annual" ? FOUNDING.annual.period : FOUNDING.monthly.period}</span>
+            <span style={{ fontFamily: F.figures, fontSize: 32, color: C.text }}>{foundingPlan.price}</span>
+            <span style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted }}>{lang === "es" ? (billing === "annual" ? "/año" : "/mes") : foundingPlan.period}</span>
             <span style={{ fontFamily: F.body, fontSize: 13, color: C.textSec }}>
               {lang === "es" ? "· tarifa bloqueada mientras mantengas la suscripción" : "· rate locked while your subscription remains active"}
             </span>
@@ -118,7 +144,7 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
               : "Founding offer limited to the first 100 members. Full ZRC Intelligence access at a preferential rate locked while your subscription remains active."}
           </p>
           <a
-            href={billing === "annual" ? FOUNDING.annual.url : FOUNDING.monthly.url}
+            href={foundingCheckout.href}
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: "inline-block", fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", fontWeight: 600, padding: "11px 18px", cursor: "pointer", background: C.gold, color: C.bg, border: `1px solid ${C.gold}`, textDecoration: "none" }}
@@ -147,28 +173,6 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
           >
             ✕
           </button>
-        </div>
-
-        {/* Billing toggle */}
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 40, gap: 0 }}>
-          {["monthly", "annual"].map((b) => (
-            <button
-              key={b}
-              onClick={() => setBilling(b)}
-              style={{
-                fontFamily: F.mono, fontSize: 10, letterSpacing: "0.12em",
-                padding: "8px 24px", cursor: "pointer", border: `1px solid ${C.border}`,
-                background: billing === b ? C.gold : "transparent",
-                color: billing === b ? C.bg : C.textSec,
-                fontWeight: billing === b ? 600 : 400,
-                transition: "all 0.2s",
-              }}
-            >
-              {b === "monthly"
-                ? (lang === "es" ? "MENSUAL" : "MONTHLY")
-                : (lang === "es" ? "ANUAL · -20%" : "ANNUAL · -20%")}
-            </button>
-          ))}
         </div>
 
         {/* Plan cards */}
