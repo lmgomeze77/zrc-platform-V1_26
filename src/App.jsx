@@ -1647,7 +1647,7 @@ const Intelligence = ({ lang, countryContext }) => {
 
       {showFIS && (
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
-          <FinancialIntelligenceSystem onClose={() => setShowFIS(false)} />
+          <FinancialIntelligenceSystem lang={lang} onClose={() => setShowFIS(false)} />
         </div>
       )}
 
