@@ -2,22 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 // ══════════════════════════════════════════════════════════════════════════
 // ZRC FINANCIAL INTELLIGENCE SYSTEM — v2.0
-// Engine: fully days-based AR/AP timing. No "week of month" heuristics.
-//
-// CASH IN logic:
-//   Cash sales       → collected same week as the invoice
-//   Credit sales     → collected collectionDelayDays after invoice date
-//   Opening AR       → drains evenly over the collection lag window
-//
-// CASH OUT logic:
-//   Variable costs   → paid to suppliers supplierPaymentDays after incurred
-//   Opening AP       → drains evenly over the supplier payment lag window
-//   Payroll/Fixed/VAT/Capex/Debt → fire once per month on their contract day-of-month
-//
-// Week mapping (91-day horizon):
-//   Week w covers days (w-1)×7+1 … w×7.
-//   A "day-of-month" outflow fires in week w when that calendar day falls in w.
-// ══════════════════════════════════════════════════════════════════════════
+// 91-day cash forecast, aggregated into 13 weeks. Opening invoices use an estimated runoff.
 
 const C = {
   bg: "#0a121c", surface: "#101a26", surface2: "#15212f", surface3: "#1b2938",
@@ -45,7 +30,8 @@ const DEFAULT_INPUTS = {
 
   // Revenue collection timing
   cashSalesPct: 0.25,
-  collectionDelayDays: 60,      // e.g. 60d → credit collections arrive week 9
+  collectionDelayDays: 60,
+  inventoryDays: 30,
 
   // Variable cost payment timing
   variableCostPct: 0.30,
@@ -58,12 +44,12 @@ const DEFAULT_INPUTS = {
   capex: 25000,
   debtService: 18000,
 
-  // Payment day-of-month for fixed outflows (1–28)
-  payrollDayOfMonth: 28,        // last working day → week 4
-  fixedDayOfMonth: 1,           // 1st of month → week 1
-  vatDayOfMonth: 20,            // mid-late month → week 3
-  capexDayOfMonth: 10,          // 2nd week
-  debtDayOfMonth: 15,           // mid-month → week 3
+  // Payment day-of-month for fixed outflows (1–31)
+  payrollDayOfMonth: 28,        // 28th calendar day
+  fixedDayOfMonth: 1,           // 1st calendar day
+  vatDayOfMonth: 20,            // 20th calendar day
+  capexDayOfMonth: 10,          // 10th calendar day
+  debtDayOfMonth: 15,           // 15th calendar day
 
   // Risk threshold
   minimumCashBuffer: 150000,
@@ -76,96 +62,94 @@ const DEFAULT_INPUTS = {
 
 // ── Financial Engine ─────────────────────────────────────────────────────
 function computeModel(inp) {
+  const start = new Date(`${inp.forecastDate}T00:00:00Z`);
+  const atDay = offset => new Date(start.getTime() + offset * 86400000);
+  const arDays = Math.trunc(inp.collectionDelayDays);
+  const apDays = Math.trunc(inp.supplierPaymentDays);
   const annualRev = inp.monthlyRevenue * 12;
-
-  // Revenue for week w, with monthly growth applied at month boundaries
-  const weeklyRevenue = (w) => {
-    if (w < 1) return inp.monthlyRevenue / 4.33;
-    const monthIdx = Math.floor((w - 1) / 4);
-    return (inp.monthlyRevenue / 4.33) * Math.pow(1 + inp.monthlyGrowthRate, monthIdx);
-  };
-
-  // Convert days to lag weeks (minimum 1)
-  const arLagWeeks = Math.max(1, Math.round(inp.collectionDelayDays / 7));
-  const apLagWeeks = Math.max(1, Math.round(inp.supplierPaymentDays / 7));
-  const creditPct  = 1 - inp.cashSalesPct;
-
-  // Opening AR/AP drain evenly over their respective lag windows
-  const arWeeklyRelease = inp.openingAR / arLagWeeks;
-  const apWeeklyPayment  = inp.openingAP / apLagWeeks;
-
-  // Map day-of-month (1–28) → week-of-month (1–4)
-  const dayToWeekOfMonth = (d) => Math.min(4, Math.ceil(Math.max(1, d) / 7));
-
-  // Does week w fire the monthly outflow scheduled on dayOfMonth?
-  const firesThisWeek = (w, dayOfMonth) => {
-    const weekOfMonth = ((w - 1) % 4) + 1;
-    return weekOfMonth === dayToWeekOfMonth(dayOfMonth);
-  };
-
   const cashFlow = [];
+  let ar = inp.openingAR;
+  let ap = inp.openingAP;
+  let cash = inp.startingCash;
+
+  const dailyRevenue = offset => {
+    const date = atDay(offset);
+    const months = (date.getUTCFullYear() - start.getUTCFullYear()) * 12 + date.getUTCMonth() - start.getUTCMonth();
+    const daysInMonth = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0)).getUTCDate();
+    return inp.monthlyRevenue * (1 + inp.monthlyGrowthRate) ** months / daysInMonth;
+  };
+  const recurring = [
+    ["payroll", "payrollDayOfMonth", inp.payroll],
+    ["fixed", "fixedDayOfMonth", inp.fixedCosts],
+    ["vat", "vatDayOfMonth", inp.vatTaxPayments],
+    ["capex", "capexDayOfMonth", inp.capex],
+    ["debt", "debtDayOfMonth", inp.debtService],
+  ];
 
   for (let w = 1; w <= 13; w++) {
-    const rev = weeklyRevenue(w);
+    const first = (w - 1) * 7;
+    const row = {
+      week: w, startDate: atDay(first), endDate: atDay(first + 6),
+      revenue: 0, cashSales: 0, creditCollections: 0, variablePayment: 0,
+      payroll: 0, fixed: 0, vat: 0, capex: 0, debt: 0, minDailyCash: cash,
+    };
 
-    // ── CASH IN ─────────────────────────────────────────────────────────
-    const cashSales = rev * inp.cashSalesPct;
+    for (let day = first; day < first + 7; day++) {
+      const revenue = dailyRevenue(day);
+      const cashSales = revenue * inp.cashSalesPct;
+      const purchases = revenue * inp.variableCostPct;
+      const collections = (day < Math.max(1, arDays) ? inp.openingAR / Math.max(1, arDays) : 0)
+        + (day >= arDays ? dailyRevenue(day - arDays) * (1 - inp.cashSalesPct) : 0);
+      const supplierPayments = (day < Math.max(1, apDays) ? inp.openingAP / Math.max(1, apDays) : 0)
+        + (day >= apDays ? dailyRevenue(day - apDays) * inp.variableCostPct : 0);
+      const calendarDate = atDay(day);
+      const monthEnd = new Date(Date.UTC(calendarDate.getUTCFullYear(), calendarDate.getUTCMonth() + 1, 0)).getUTCDate();
+      let fixedOut = 0;
+      for (const [key, dateKey, amount] of recurring) {
+        if (calendarDate.getUTCDate() === Math.min(monthEnd, inp[dateKey])) {
+          row[key] += amount;
+          fixedOut += amount;
+        }
+      }
+      row.revenue += revenue;
+      row.cashSales += cashSales;
+      row.creditCollections += collections;
+      row.variablePayment += supplierPayments;
+      ar += revenue - cashSales - collections;
+      ap += purchases - supplierPayments;
+      cash += cashSales + collections - supplierPayments - fixedOut;
+      row.minDailyCash = Math.min(row.minDailyCash, cash);
+    }
 
-    // Credit collections: drain opening AR first, then lagged new sales
-    const creditCollections = w <= arLagWeeks
-      ? arWeeklyRelease
-      : weeklyRevenue(w - arLagWeeks) * creditPct;
-
-    const totalCashIn = cashSales + creditCollections;
-
-    // ── CASH OUT ─────────────────────────────────────────────────────────
-    // Variable costs: drain opening AP first, then lagged new variable costs
-    const variablePayment = w <= apLagWeeks
-      ? apWeeklyPayment
-      : weeklyRevenue(w - apLagWeeks) * inp.variableCostPct;
-
-    // Fixed outflows fire on their contract day-of-month
-    const payrollOut = firesThisWeek(w, inp.payrollDayOfMonth) ? inp.payroll        : 0;
-    const fixedOut   = firesThisWeek(w, inp.fixedDayOfMonth)   ? inp.fixedCosts     : 0;
-    const vatOut     = firesThisWeek(w, inp.vatDayOfMonth)     ? inp.vatTaxPayments : 0;
-    const capexOut   = firesThisWeek(w, inp.capexDayOfMonth)   ? inp.capex          : 0;
-    const debtOut    = firesThisWeek(w, inp.debtDayOfMonth)    ? inp.debtService    : 0;
-
-    const totalCashOut = variablePayment + payrollOut + fixedOut + vatOut + capexOut + debtOut;
-
-    const prev = w === 1 ? inp.startingCash : cashFlow[w - 2].closingCash;
-    const closingCash = prev + totalCashIn - totalCashOut;
-
-    cashFlow.push({
-      week: w,
-      monthIdx:    Math.floor((w - 1) / 4) + 1,
-      weekOfMonth: ((w - 1) % 4) + 1,
-      revenue: rev, cashSales, creditCollections, totalCashIn,
-      variablePayment, payroll: payrollOut, fixed: fixedOut,
-      vat: vatOut, capex: capexOut, debt: debtOut, totalCashOut,
-      closingCash,
-      belowBuffer: closingCash < inp.minimumCashBuffer,
-    });
+    row.totalCashIn = row.cashSales + row.creditCollections;
+    row.totalCashOut = row.variablePayment + row.payroll + row.fixed + row.vat + row.capex + row.debt;
+    row.closingCash = cash;
+    row.belowBuffer = row.minDailyCash < inp.minimumCashBuffer;
+    row.receivables = Math.max(0, ar);
+    row.payables = Math.max(0, ap);
+    row.stock = inp.annualCOGS / 365 * inp.inventoryDays;
+    row.workingCapital = row.receivables + row.stock - row.payables;
+    row.ccc = inp.inventoryDays + arDays - apDays;
+    cashFlow.push(row);
   }
 
-  // ── Working Capital ──────────────────────────────────────────────────────
-  const dso = (inp.openingAR / annualRev) * 365;
-  const dpo = (inp.openingAP / inp.annualCOGS) * 365;
-  const ccc = dso - dpo;
-  const liquidityDSO10 = (annualRev / 365) * 10;
-  const liquidityDSO20 = (annualRev / 365) * 20;
-
-  // ── Summary ──────────────────────────────────────────────────────────────
-  const week13Cash      = cashFlow[12].closingCash;
-  const minCashAny      = Math.min(...cashFlow.map(r => r.closingCash));
-  const fundingGap      = Math.min(0, minCashAny - inp.minimumCashBuffer);
-  const avgWeeklyOut    = cashFlow.reduce((s, r) => s + r.totalCashOut, 0) / 13;
-  const runwayWeeks     = avgWeeklyOut > 0 ? Math.max(0, week13Cash - inp.minimumCashBuffer) / avgWeeklyOut : 99;
-  const belowBufferWeeks = cashFlow.filter(r => r.belowBuffer).length;
+  const dso = arDays;
+  const dpo = apDays;
+  const ccc = inp.inventoryDays + dso - dpo;
+  const creditSalesPerDay = annualRev * (1 - inp.cashSalesPct) / 365;
+  const liquidityDSO10 = creditSalesPerDay * Math.min(10, dso);
+  const liquidityDSO20 = creditSalesPerDay * Math.min(20, dso);
+  const week13Cash = cashFlow[12].closingCash;
+  const minCashAny = Math.min(...cashFlow.map(row => row.minDailyCash));
+  const fundingGap = Math.min(0, minCashAny - inp.minimumCashBuffer);
+  const avgWeeklyOut = cashFlow.reduce((sum, row) => sum + row.totalCashOut, 0) / 13;
+  const firstBreach = cashFlow.find(row => row.belowBuffer);
+  const runwayWeeks = firstBreach ? firstBreach.week - 1 : 13;
+  const belowBufferWeeks = cashFlow.filter(row => row.belowBuffer).length;
 
   // ── Risk Rules ────────────────────────────────────────────────────────────
   const rules = [
-    { name: "Cash runway",        value: runwayWeeks,       threshold: 6,                    pass: runwayWeeks >= 6,                   score: runwayWeeks < 6 ? 2 : 0 },
+    { name: "Weeks before buffer breach",        value: runwayWeeks,       threshold: 6,                    pass: runwayWeeks >= 6,                   score: runwayWeeks < 6 ? 2 : 0 },
     { name: "Min cash breach",    value: minCashAny,        threshold: inp.minimumCashBuffer, pass: minCashAny >= inp.minimumCashBuffer, score: minCashAny < inp.minimumCashBuffer ? 2 : 0 },
     { name: "DSO efficiency",     value: dso,               threshold: 75,                   pass: dso <= 75,                          score: dso > 75 ? 2 : dso > 60 ? 1 : 0 },
     { name: "CCC pressure",       value: ccc,               threshold: 60,                   pass: ccc <= 60,                          score: ccc > 60 ? 2 : ccc > 45 ? 1 : 0 },
@@ -180,7 +164,7 @@ function computeModel(inp) {
     runwayWeeks, fundingGap, week13Cash, minCashAny,
     rules, totalScore, riskLevel, riskColor,
     annualRevenue: annualRev, avgWeeklyOut, belowBufferWeeks,
-    arLagWeeks, apLagWeeks,
+    arLagWeeks: 1 + Math.floor(arDays / 7), apLagWeeks: 1 + Math.floor(apDays / 7),
   };
 }
 
@@ -212,20 +196,30 @@ const SectionHeader = ({ title, subtitle }) => (
   </div>
 );
 
-const InputField = ({ label, value, onChange, type = "number", unit, hint }) => (
+const InputField = ({ label, value, onChange, type = "number", unit, hint, min, max, step }) => (
   <div style={{ marginBottom: 14 }}>
     <label style={{ display: "block", fontFamily: F.body, fontSize: 13, color: C.textSec, marginBottom: 5, letterSpacing: "0.04em" }}>
       {label}{unit && <span style={{ color: C.textMuted }}> ({unit})</span>}
-    </label>
     <input
       type={type}
       value={value}
-      onChange={e => onChange(type === "number" ? parseFloat(e.target.value) || 0 : e.target.value)}
+      min={min}
+      max={max}
+      step={step}
+      onChange={e => {
+        if (type !== "number") {
+          if (type !== "date" || e.target.value) onChange(e.target.value);
+          return;
+        }
+        const number = Number(e.target.value);
+        if (Number.isFinite(number)) onChange(Math.min(max ?? Infinity, Math.max(min ?? -Infinity, step === 1 ? Math.trunc(number) : number)));
+      }}
       style={{ width: "100%", boxSizing: "border-box", background: C.surface3, border: `1px solid ${C.border}`, borderRadius: 4, padding: "8px 12px", fontFamily: F.mono, fontSize: 14, color: C.text, outline: "none", transition: "border-color 0.2s" }}
       onFocus={e => e.target.style.borderColor = C.gold}
       onBlur={e => e.target.style.borderColor = C.border}
     />
-    {hint && <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginTop: 3 }}>{hint}</div>}
+      </label>
+    {hint && <div style={{ fontFamily: F.body, fontSize: 12, color: C.textSec, marginTop: 3 }}>{hint}</div>}
   </div>
 );
 
@@ -244,8 +238,8 @@ const TABS = [
 // ══════════════════════════════════════════════════════════════════════════
 function InputsPanel({ inputs, setInputs }) {
   const set = (k) => (v) => setInputs(prev => ({ ...prev, [k]: v }));
-  const arLag = Math.max(1, Math.round(inputs.collectionDelayDays / 7));
-  const apLag = Math.max(1, Math.round(inputs.supplierPaymentDays / 7));
+  const arLag = 1 + Math.floor(inputs.collectionDelayDays / 7);
+  const apLag = 1 + Math.floor(inputs.supplierPaymentDays / 7);
 
   return (
     <div>
@@ -278,24 +272,25 @@ function InputsPanel({ inputs, setInputs }) {
         {/* LEFT */}
         <div>
           <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>1 — Company & Revenue</div>
+          <InputField label="Forecast start date" value={inputs.forecastDate} onChange={set("forecastDate")} type="date" />
           <InputField label="Company name"      value={inputs.companyName}       onChange={set("companyName")}       type="text" />
           <InputField label="Starting cash"     value={inputs.startingCash}      onChange={set("startingCash")}      unit="EUR"     hint="Bank balance on day 1 of the projection" />
-          <InputField label="Monthly revenue"   value={inputs.monthlyRevenue}    onChange={set("monthlyRevenue")}    unit="EUR/month" />
-          <InputField label="Monthly growth"    value={inputs.monthlyGrowthRate} onChange={set("monthlyGrowthRate")} unit="decimal" hint="e.g. 0.025 = 2.5% per month" />
+          <InputField label="Monthly revenue"   value={inputs.monthlyRevenue}    onChange={set("monthlyRevenue")} min={0}    unit="EUR/month" />
+          <InputField label="Monthly growth"    value={inputs.monthlyGrowthRate} onChange={set("monthlyGrowthRate")} min={-1} step="any" unit="decimal" hint="e.g. 0.025 = 2.5% per month" />
 
           <Divider />
           <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>2 — Collection Timing (Cash IN)</div>
           <InputField
             label="Cash sales %"
             value={inputs.cashSalesPct}
-            onChange={set("cashSalesPct")}
+            onChange={set("cashSalesPct")} min={0} max={1} step="any"
             unit="decimal"
             hint="Share of revenue collected the same week as the sale (no credit terms)"
           />
           <InputField
             label="Collection delay"
             value={inputs.collectionDelayDays}
-            onChange={set("collectionDelayDays")}
+            onChange={set("collectionDelayDays")} min={0} max={365} step={1}
             unit="days from invoice"
             hint={`DSO proxy. At ${inputs.collectionDelayDays}d, credit sales issued in W1 are collected in W${arLag}`}
           />
@@ -305,29 +300,29 @@ function InputsPanel({ inputs, setInputs }) {
           <InputField
             label="Variable cost %"
             value={inputs.variableCostPct}
-            onChange={set("variableCostPct")}
-            unit="% of revenue"
-            hint="COGS + variable OPEX as a share of weekly revenue"
+            onChange={set("variableCostPct")} min={0} step="any"
+            unit="decimal"
+            hint="Supplier costs as a share of sales. Use 0.30 for 30%."
           />
           <InputField
             label="Supplier payment terms"
             value={inputs.supplierPaymentDays}
-            onChange={set("supplierPaymentDays")}
+            onChange={set("supplierPaymentDays")} min={0} max={365} step={1}
             unit="days from invoice"
             hint={`At ${inputs.supplierPaymentDays}d, costs incurred in W1 leave the bank in W${apLag}`}
           />
 
           <Divider />
           <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>4 — Fixed Monthly Outflows</div>
-          <InputField label="Payroll"        value={inputs.payroll}         onChange={set("payroll")}         unit="EUR/month" hint="Incl. social charges" />
-          <InputField label="Fixed costs"    value={inputs.fixedCosts}      onChange={set("fixedCosts")}      unit="EUR/month" hint="Rent, utilities, admin" />
-          <InputField label="VAT / tax"      value={inputs.vatTaxPayments}  onChange={set("vatTaxPayments")}  unit="EUR/month equiv." hint="Monthly equivalent of periodic tax obligations" />
-          <InputField label="Capex"          value={inputs.capex}           onChange={set("capex")}           unit="EUR/month" />
-          <InputField label="Debt service"   value={inputs.debtService}     onChange={set("debtService")}     unit="EUR/month" hint="Principal + interest per loan schedule" />
+          <InputField label="Payroll"        value={inputs.payroll}         onChange={set("payroll")} min={0}         unit="EUR/month" hint="Incl. social charges" />
+          <InputField label="Fixed costs"    value={inputs.fixedCosts}      onChange={set("fixedCosts")} min={0}      unit="EUR/month" hint="Rent, utilities, admin" />
+          <InputField label="VAT / tax"      value={inputs.vatTaxPayments}  onChange={set("vatTaxPayments")} min={0}  unit="EUR/month equiv." hint="Monthly equivalent of periodic tax obligations" />
+          <InputField label="Capex"          value={inputs.capex}           onChange={set("capex")} min={0}           unit="EUR/month" />
+          <InputField label="Debt service"   value={inputs.debtService}     onChange={set("debtService")} min={0}     unit="EUR/month" hint="Principal + interest per loan schedule" />
 
           <Divider />
           <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>5 — Risk Threshold</div>
-          <InputField label="Minimum cash buffer" value={inputs.minimumCashBuffer} onChange={set("minimumCashBuffer")} unit="EUR" hint="Breach triggers risk flag in the engine" />
+          <InputField label="Minimum cash buffer" value={inputs.minimumCashBuffer} onChange={set("minimumCashBuffer")} min={0} unit="EUR" hint="Breach triggers risk flag in the engine" />
         </div>
 
         {/* RIGHT */}
@@ -335,13 +330,13 @@ function InputsPanel({ inputs, setInputs }) {
           <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>6 — Payment Day of Month</div>
           <div style={{ padding: "16px 18px", background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, marginBottom: 20 }}>
             <div style={{ fontFamily: F.body, fontSize: 13, color: C.textMuted, marginBottom: 16, lineHeight: 1.6 }}>
-              Enter the day of the month (1–28) when each fixed outflow hits the bank account. The model converts this to the correct week in the 91-day horizon automatically.
+              Enter the day of the month (1–31) when each fixed outflow hits the bank account. The model converts this to the correct week in the 91-day horizon automatically.
             </div>
-            <InputField label="Payroll — day of month"     value={inputs.payrollDayOfMonth} onChange={set("payrollDayOfMonth")} hint="Typical: day 28 (last working day)" />
-            <InputField label="Fixed costs / rent — day"   value={inputs.fixedDayOfMonth}   onChange={set("fixedDayOfMonth")}   hint="Typical: day 1 (lease start)" />
-            <InputField label="VAT / tax — day"            value={inputs.vatDayOfMonth}     onChange={set("vatDayOfMonth")}     hint="Spain: day 20 (Agencia Tributaria)" />
-            <InputField label="Capex — day"                value={inputs.capexDayOfMonth}   onChange={set("capexDayOfMonth")}   hint="Per supplier contract" />
-            <InputField label="Debt service — day"         value={inputs.debtDayOfMonth}    onChange={set("debtDayOfMonth")}    hint="Per loan agreement (e.g. day 15)" />
+            <InputField label="Payroll — day of month"     value={inputs.payrollDayOfMonth} onChange={set("payrollDayOfMonth")} min={1} max={31} step={1} hint="Typical: day 28 (last working day)" />
+            <InputField label="Fixed costs / rent — day"   value={inputs.fixedDayOfMonth}   onChange={set("fixedDayOfMonth")} min={1} max={31} step={1}   hint="Typical: day 1 (lease start)" />
+            <InputField label="VAT / tax — day"            value={inputs.vatDayOfMonth}     onChange={set("vatDayOfMonth")} min={1} max={31} step={1}     hint="Spain: day 20 (Agencia Tributaria)" />
+            <InputField label="Capex — day"                value={inputs.capexDayOfMonth}   onChange={set("capexDayOfMonth")} min={1} max={31} step={1}   hint="Per supplier contract" />
+            <InputField label="Debt service — day"         value={inputs.debtDayOfMonth}    onChange={set("debtDayOfMonth")} min={1} max={31} step={1}    hint="Per loan agreement (e.g. day 15)" />
           </div>
 
           {/* Live timing summary */}
@@ -367,9 +362,9 @@ function InputsPanel({ inputs, setInputs }) {
 
           <Divider />
           <div style={{ fontFamily: F.body, fontSize: 12, color: C.gold, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12, fontWeight: 700 }}>7 — Working Capital Anchors</div>
-          <InputField label="Opening accounts receivable" value={inputs.openingAR}    onChange={set("openingAR")}    unit="EUR" hint={`Current AR balance — drains over ${arLag} weeks as collections clear`} />
-          <InputField label="Opening accounts payable"    value={inputs.openingAP}    onChange={set("openingAP")}    unit="EUR" hint={`Current AP balance — drains over ${apLag} weeks as payments clear`} />
-          <InputField label="Annual COGS"                 value={inputs.annualCOGS}   onChange={set("annualCOGS")}   unit="EUR/year" hint="Used for DPO ratio calculation only" />
+          <InputField label="Opening accounts receivable" value={inputs.openingAR}    onChange={set("openingAR")} min={0}    unit="EUR" hint={`Current AR balance — drains over ${arLag} weeks as collections clear`} />
+          <InputField label="Opening accounts payable"    value={inputs.openingAP}    onChange={set("openingAP")} min={0}    unit="EUR" hint={`Current AP balance — drains over ${apLag} weeks as payments clear`} />
+          <InputField label="Annual COGS"                 value={inputs.annualCOGS}   onChange={set("annualCOGS")} min={0}   unit="EUR/year" hint="Used for DPO ratio calculation only" />
 
           <div style={{ marginTop: 20, padding: "14px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 6 }}>
             <div style={{ fontFamily: F.body, fontSize: 13, color: C.gold, fontWeight: 700, marginBottom: 6 }}>ZRC Guardrails Active</div>
@@ -458,8 +453,8 @@ function CashFlowPanel({ model, inputs }) {
         <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 13, minWidth: 720 }}>
           <thead>
             <tr>
-              {["Wk", "Mo·W", "Cash In", "Var.Cost", "Payroll", "Fixed", "VAT", "Cap+Debt", "Total Out", "Closing", ""].map(h => (
-                <th key={h} style={{ padding: "8px 9px", textAlign: ["Wk","Mo·W",""].includes(h) ? "center" : "right", background: C.surface2, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>{h}</th>
+              {["Wk", "Week starts", "Cash In", "Var.Cost", "Payroll", "Fixed", "VAT", "Cap+Debt", "Total Out", "Closing", ""].map(h => (
+                <th key={h} style={{ padding: "8px 9px", textAlign: ["Wk","Week starts",""].includes(h) ? "center" : "right", background: C.surface2, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.04em", whiteSpace: "nowrap" }}>{h}</th>
               ))}
             </tr>
           </thead>
@@ -467,7 +462,7 @@ function CashFlowPanel({ model, inputs }) {
             {cashFlow.map((row) => (
               <tr key={row.week} style={{ background: row.belowBuffer ? C.redDim : "transparent", borderBottom: `1px solid ${C.border}` }}>
                 <td style={{ padding: "7px 9px", textAlign: "center", fontFamily: F.mono, color: C.textMuted, fontSize: 12 }}>{row.week}</td>
-                <td style={{ padding: "7px 9px", textAlign: "center", fontFamily: F.mono, color: C.textMuted, fontSize: 11 }}>M{row.monthIdx}·W{row.weekOfMonth}</td>
+                <td style={{ padding: "7px 9px", textAlign: "center", fontFamily: F.mono, color: C.textMuted, fontSize: 11 }}>{row.startDate.toISOString().slice(0, 10)}</td>
                 <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: C.green,  fontSize: 12 }}>€{fmt(row.totalCashIn)}</td>
                 <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.variablePayment > 0 ? C.red : C.textMuted, fontSize: 12 }}>{row.variablePayment > 0 ? `€${fmt(row.variablePayment)}` : "—"}</td>
                 <td style={{ padding: "7px 9px", textAlign: "right", fontFamily: F.mono, color: row.payroll > 0 ? C.amber : C.textMuted, fontSize: 12 }}>{row.payroll > 0 ? `€${fmt(row.payroll)}` : "—"}</td>
@@ -489,68 +484,97 @@ function CashFlowPanel({ model, inputs }) {
 // ══════════════════════════════════════════════════════════════════════════
 // PANEL: WORKING CAPITAL
 // ══════════════════════════════════════════════════════════════════════════
-function WorkingCapitalPanel({ model }) {
-  const { dso, dpo, ccc, liquidityDSO10, liquidityDSO20, annualRevenue } = model;
-  const metrics = [
-    { label: "DSO", value: dso, benchmark: 60, formula: "A/R ÷ Revenue × 365", action: "Accelerate collections, A/R governance",          priority: dso > 75 ? "High" : "Medium" },
-    { label: "DPO", value: dpo, benchmark: 60, formula: "A/P ÷ COGS × 365",   action: "Negotiate longer supplier payment terms",           priority: "Medium" },
-    { label: "CCC", value: ccc, benchmark: 45, formula: "DSO − DPO",           action: "Reduce cash trapped in the operating cycle",        priority: ccc > 60 ? "High" : "Medium" },
+function WorkingCapitalPanel({ model, inputs, setInputs, lang }) {
+  const es = lang === "es";
+  const t = (spanish, english) => es ? spanish : english;
+  const date = new Intl.DateTimeFormat(es ? "es-ES" : "en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+  const euro = new Intl.NumberFormat(es ? "es-ES" : "en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+  const rows = model.cashFlow;
+  const peak = rows.reduce((max, row) => row.workingCapital > max.workingCapital ? row : max);
+  const firstBreach = rows.find(row => row.belowBuffer);
+  const set = key => value => setInputs(current => ({ ...current, [key]: value }));
+  const labels = [
+    t("Semana", "Week"), t("Cierre", "End date"), "DSO", "DPO", "DIO", "CCC",
+    t("Clientes", "Receivables"), t("Stock estimado", "Estimated inventory"),
+    t("Proveedores", "Payables"), t("NOF", "Operating WC"), t("Caja al cierre", "Closing cash"),
   ];
-  const simulations = [
-    { label: "DSO −5 days",  released: (annualRevenue / 365) * 5 },
-    { label: "DSO −10 days", released: liquidityDSO10 },
-    { label: "DSO −20 days", released: liquidityDSO20 },
-  ];
+  const range = row => `${date.format(row.startDate)} – ${date.format(row.endDate)}`;
+  const exportForecast = () => {
+    const records = rows.map(row => [
+      row.week, row.endDate.toISOString().slice(0, 10), model.dso, model.dpo,
+      inputs.inventoryDays, row.ccc, row.receivables, row.stock, row.payables,
+      row.workingCapital, row.closingCash,
+    ].map(value => typeof value === "number" ? (Math.round(value * 100) / 100).toString().replace(".", es ? "," : ".") : value));
+    const csv = [labels, ...records].map(row => row.join(es ? ";" : ",")).join("\r\n");
+    const url = URL.createObjectURL(new Blob(["\uFEFF", csv], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `ZRC-tesoreria-${inputs.forecastDate}.csv`;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
 
   return (
     <div>
-      <SectionHeader title="Working Capital Optimizer" subtitle="DSO-DPO model consistent with days-based inputs. CCC = DSO − DPO (no inventory term — add opening inventory to enable DIO)." />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, marginBottom: 28 }}>
-        {metrics.map(m => {
-          const gap = m.value - m.benchmark;
-          return <KPICard key={m.label} label={m.label} value={`${fmt(m.value, 1)} d`} sub={`Benchmark: ${m.benchmark}d · Gap: ${gap > 0 ? "+" : ""}${fmt(gap, 1)}d`} color={m.value > m.benchmark ? C.amber : C.green} warn={m.value > m.benchmark * 1.2} />;
-        })}
-      </div>
-      <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 6, overflow: "hidden", marginBottom: 28 }}>
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: F.body, fontSize: 13, minWidth: 560 }}>
-            <thead>
-              <tr>{["Metric","Formula","Current","Benchmark","Gap","Suggested Action","Priority"].map(h => <th key={h} style={{ padding: "10px 14px", textAlign: "left", background: C.surface3, color: C.textMuted, borderBottom: `1px solid ${C.border}`, fontWeight: 600, fontSize: 12, letterSpacing: "0.04em", textTransform: "uppercase" }}>{h}</th>)}</tr>
-            </thead>
-            <tbody>
-              {metrics.map((m, i) => {
-                const gap = m.value - m.benchmark;
-                return (
-                  <tr key={m.label} style={{ borderBottom: i < metrics.length - 1 ? `1px solid ${C.border}` : "none" }}>
-                    <td style={{ padding: "10px 14px", fontFamily: F.mono, fontWeight: 700, color: C.gold }}>{m.label}</td>
-                    <td style={{ padding: "10px 14px", color: C.textMuted, fontFamily: F.mono, fontSize: 12 }}>{m.formula}</td>
-                    <td style={{ padding: "10px 14px", fontFamily: F.mono, fontWeight: 700, color: C.text }}>{fmt(m.value, 1)} d</td>
-                    <td style={{ padding: "10px 14px", fontFamily: F.mono, color: C.textSec }}>{m.benchmark} d</td>
-                    <td style={{ padding: "10px 14px", fontFamily: F.mono, color: gap > 0 ? C.amber : C.green, fontWeight: 700 }}>{gap > 0 ? "+" : ""}{fmt(gap, 1)} d</td>
-                    <td style={{ padding: "10px 14px", color: C.textSec, fontSize: 12 }}>{m.action}</td>
-                    <td style={{ padding: "10px 14px" }}><Badge color={m.priority === "High" ? C.amber : C.blue}>{m.priority}</Badge></td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+      <SectionHeader
+        title={t("Tesorería y circulante · 13 semanas", "Treasury and working capital · 13 weeks")}
+        subtitle={t("Introduce tus plazos en días y comprueba cuánto efectivo queda comprometido en la operación.", "Enter your terms in days to see how much cash is tied up in operations.")}
+      />
+      <div style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 8, padding: 18, marginBottom: 18 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 14 }}>
+          <strong>{t("Supuestos de trabajo", "Working assumptions")}</strong>
+          <button type="button" onClick={() => setInputs({ ...DEFAULT_INPUTS, forecastDate: inputs.forecastDate })} style={{ background: C.surface3, color: C.text, border: `1px solid ${C.border}`, padding: "6px 10px", cursor: "pointer" }}>
+            {t("Restaurar ejemplo", "Reset example")}
+          </button>
+        </div>
+        <p style={{ color: C.textSec, fontSize: 13, margin: "0 0 14px" }}>{t("El módulo arranca con cifras de ejemplo. Ajusta ventas, costes y saldos de apertura en Datos de empresa.", "The module starts with sample figures. Adjust sales, costs and opening balances in Company inputs.")}</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12 }}>
+          <InputField label={t("Fecha inicial", "Start date")} type="date" value={inputs.forecastDate} onChange={set("forecastDate")} />
+          <InputField label={t("Cobro · DSO", "Collections · DSO")} unit={t("días", "days")} value={inputs.collectionDelayDays} onChange={set("collectionDelayDays")} min={0} max={365} step={1} hint={t("Plazo medio de ventas a crédito", "Average term for credit sales")} />
+          <InputField label={t("Pago · DPO", "Payments · DPO")} unit={t("días", "days")} value={inputs.supplierPaymentDays} onChange={set("supplierPaymentDays")} min={0} max={365} step={1} hint={t("Plazo medio de proveedores", "Average supplier payment term")} />
+          <InputField label={t("Stock · DIO", "Inventory · DIO")} unit={t("días", "days")} value={inputs.inventoryDays} onChange={set("inventoryDays")} min={0} max={365} step={1} hint={t("Introduce 0 si no tienes existencias", "Enter 0 if you carry no inventory")} />
         </div>
       </div>
-      <div style={{ background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 6, padding: "20px 24px" }}>
-        <div style={{ fontFamily: F.body, fontSize: 13, color: C.gold, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>Liquidity Release — DSO Reduction</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
-          {simulations.map(s => (
-            <div key={s.label} style={{ background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 4, padding: "14px 18px" }}>
-              <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginBottom: 6 }}>{s.label}</div>
-              <div style={{ fontFamily: F.display, fontSize: 23, color: C.gold }}>€{fmt(s.released)}</div>
-              <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginTop: 4 }}>cash unlocked</div>
-            </div>
-          ))}
-        </div>
-        <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginTop: 14 }}>
-          Formula: Annual revenue ÷ 365 × days reduced · Based on €{fmt(annualRevenue)} annual revenue
-        </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(175px, 1fr))", gap: 12, marginBottom: 18 }}>
+        <KPICard label={t("Ciclo de efectivo", "Cash conversion cycle")} value={`${model.ccc} d`} sub="DIO + DSO − DPO" />
+        <KPICard label={t("NOF · semana 13", "Operating WC · week 13")} value={euro.format(rows.at(-1).workingCapital)} sub={t("Clientes + stock − proveedores", "Receivables + inventory − payables")} />
+        <KPICard label={t("Mayor NOF semanal", "Peak weekly operating WC")} value={euro.format(peak.workingCapital)} sub={range(peak)} />
+        <KPICard label={t("Colchón de caja", "Cash buffer")} value={firstBreach ? euro.format(-model.fundingGap) : t("Cubierto", "Covered")} warn={!!firstBreach}
+          sub={firstBreach ? t(`Brecha máxima · primera semana ${firstBreach.week}`, `Peak shortfall · first in week ${firstBreach.week}`) : t("Sin ruptura en 13 semanas", "No breach over 13 weeks")} />
       </div>
+
+      <details style={{ background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 8, padding: "12px 16px", marginBottom: 20 }}>
+        <summary style={{ color: C.text, cursor: "pointer", fontWeight: 700 }}>{t("Mini guía · de los plazos a la decisión", "Quick guide · from payment terms to decisions")}</summary>
+        <ol style={{ color: C.textSec, lineHeight: 1.6, paddingLeft: 20 }}>
+          <li>{t("Elige la fecha inicial y completa los saldos de clientes, proveedores y caja en Datos de empresa. Usa saldos a la misma fecha.", "Choose a start date and enter receivables, payables and cash in Company inputs. Use balances as of the same date.")}</li>
+          <li>{t("Introduce DSO, DPO y DIO en días enteros. Con cobro 45, pago 30 y stock 20, el ciclo estimado es 35 días.", "Enter DSO, DPO and DIO in whole days. With collection of 45, payment of 30 and inventory of 20, the estimated cycle is 35 days.")}</li>
+          <li>{t("Compara la NOF semanal con la caja. Una NOF positiva indica recursos invertidos en la operación. La brecha de caja mide cuánto falta para alcanzar el colchón de liquidez.", "Compare weekly operating working capital with cash. A positive requirement represents resources tied up in operations. The cash gap measures how far liquidity falls below the buffer.")}</li>
+          <li>{t("Exporta la tabla antes de cerrar y vuelve a cargar los saldos al preparar la siguiente previsión.", "Export the table before closing and update balances when preparing the next forecast.")}</li>
+        </ol>
+        <p style={{ color: C.textSec, fontSize: 13 }}>{t("Los plazos son supuestos constantes. El modelo estima el stock con coste anual de ventas ÷ 365 × DIO y distribuye los saldos iniciales durante sus plazos medios. Cambiar DIO modifica la NOF estimada. El efecto en caja requiere introducir compras o pagos reales en un modelo por vencimientos.", "Terms are constant assumptions. Inventory is estimated as annual cost of sales ÷ 365 × DIO, and opening balances run off over average terms. DIO changes estimated working capital. Its cash impact requires actual purchases or payments in a due-date model.")}</p>
+      </details>
+
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 12, marginBottom: 10 }}>
+        <h4 style={{ margin: 0 }}>{t("Previsión semanal", "Weekly forecast")}</h4>
+        <button type="button" onClick={exportForecast} style={{ padding: "8px 14px", background: C.surface3, border: `1px solid ${C.border}`, color: C.text, cursor: "pointer" }}>
+          {t("Exportar CSV", "Export CSV")}
+        </button>
+      </div>
+      <div tabIndex={0} role="region" aria-label={t("Tabla semanal de circulante", "Weekly working capital table")} style={{ overflowX: "auto", border: `1px solid ${C.border}`, borderRadius: 8 }}>
+        <table style={{ width: "100%", minWidth: 830, borderCollapse: "collapse", textAlign: "right", fontSize: 13 }}>
+          <thead><tr>{labels.map(label => <th scope="col" key={label} style={{ padding: "12px 10px", background: C.surface3, whiteSpace: "nowrap" }}>{label}</th>)}</tr></thead>
+          <tbody>{rows.map(row => (
+            <tr key={row.week} style={{ background: row.belowBuffer ? C.redDim : row.week % 2 ? C.surface2 : C.surface, borderTop: `1px solid ${C.border}` }}>
+              <th scope="row" style={{ padding: "11px 10px" }}>{row.week}</th>
+              {[date.format(row.endDate), model.dso, model.dpo, inputs.inventoryDays, row.ccc,
+                ...[row.receivables, row.stock, row.payables, row.workingCapital, row.closingCash].map(value => euro.format(value)),
+              ].map((value, column) => <td key={column} style={{ padding: "11px 10px", whiteSpace: "nowrap", fontVariantNumeric: "tabular-nums", fontWeight: column === 8 ? 700 : 400 }}>{value}</td>)}
+            </tr>
+          ))}</tbody>
+        </table>
+      </div>
+      <p style={{ fontSize: 12, color: C.textSec }}>{t("Las filas resaltadas indican que la caja cayó por debajo del colchón algún día de esa semana.", "Highlighted rows indicate a cash buffer breach on at least one day of that week.")}</p>
     </div>
   );
 }
@@ -559,6 +583,8 @@ function WorkingCapitalPanel({ model }) {
 // PANEL: RISK ENGINE
 // ══════════════════════════════════════════════════════════════════════════
 function RiskPanel({ model, inputs }) {
+  const growth = computeModel({ ...inputs, monthlyRevenue: inputs.monthlyRevenue * 1.2, collectionDelayDays: inputs.collectionDelayDays + 10 });
+  const stress = computeModel({ ...inputs, monthlyRevenue: inputs.monthlyRevenue * 0.85, collectionDelayDays: inputs.collectionDelayDays + 20, variableCostPct: inputs.variableCostPct * 1.05 });
   const { rules, totalScore, riskLevel, riskColor, runwayWeeks } = model;
   return (
     <div>
@@ -608,9 +634,9 @@ function RiskPanel({ model, inputs }) {
         <div style={{ fontFamily: F.body, fontSize: 13, color: C.textMuted, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 14, fontWeight: 600 }}>Scenario Stress Table</div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
           {[
-            { label: "Base",   color: C.green, desc: "Management case",                   cash: model.week13Cash },
-            { label: "Growth", color: C.amber, desc: "+20% rev, +10d collection lag",      cash: model.week13Cash * 0.88 },
-            { label: "Stress", color: C.red,   desc: "−15% rev, +20d lag, +5% var costs", cash: model.week13Cash * 0.62 },
+            { label: "Base",   color: C.green, desc: "Management case",                   cash: model.week13Cash, minimum: model.minCashAny, gap: model.fundingGap },
+            { label: "Growth", color: C.amber, desc: "+20% rev, +10d collection lag",      cash: growth.week13Cash, minimum: growth.minCashAny, gap: growth.fundingGap },
+            { label: "Stress", color: C.red,   desc: "−15% rev, +20d lag, +5% relative variable cost rate", cash: stress.week13Cash, minimum: stress.minCashAny, gap: stress.fundingGap },
           ].map(s => (
             <div key={s.label} style={{ background: C.surface3, border: `1px solid ${s.color}30`, borderRadius: 4, padding: "14px 16px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
@@ -619,7 +645,8 @@ function RiskPanel({ model, inputs }) {
               </div>
               <div style={{ fontFamily: F.display, fontSize: 21, color: s.cash < inputs.minimumCashBuffer ? C.red : C.gold }}>€{fmt(s.cash)}</div>
               <div style={{ fontFamily: F.body, fontSize: 12, color: C.textMuted, marginTop: 2 }}>W13 cash</div>
-              {s.cash < inputs.minimumCashBuffer && <div style={{ fontFamily: F.mono, fontSize: 12, color: C.red, marginTop: 6 }}>Gap: €{fmt(Math.abs(s.cash - inputs.minimumCashBuffer))}</div>}
+              <div style={{ fontSize: 12 }}>Minimum: €{fmt(s.minimum)}</div>
+              {s.gap < 0 && <div style={{ fontFamily: F.mono, fontSize: 12, color: C.red, marginTop: 6 }}>Gap: €{fmt(-s.gap)}</div>}
             </div>
           ))}
         </div>
@@ -639,7 +666,7 @@ function ReportPanel({ model, inputs }) {
   const generateReport = async () => {
     setLoading(true); setError(null); setReport(null);
     const payload = {
-      client_name: inputs.companyName,
+      client_name: "Company",
       report_date: new Date().toLocaleDateString("en-GB"),
       currency: "EUR",
       model_version: "v2.0 — days-based AR/AP timing",
@@ -680,7 +707,7 @@ Return ONLY valid JSON, no markdown fences, no preamble:
 <style>body{font-family:Georgia,serif;margin:0;background:#f5f5f3;color:#111827}.page{max-width:920px;margin:32px auto;background:#fff;padding:42px 54px;border:1px solid #e5e7eb}.brand{color:#D4A853;font-family:Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px}h1{font-size:34px;margin:10px 0 6px;color:#09090B}.subtitle{font-family:Arial,sans-serif;color:#6B7280;font-size:13px;margin-bottom:28px}.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}.kpi{border:1px solid #D4A853;padding:16px;background:#0B1220;color:#fff}.kpi .label{font-family:Arial,sans-serif;font-size:11px;color:#CBD5E1}.kpi .value{font-size:26px;color:#D4A853;margin-top:6px}h2{font-size:20px;margin-top:28px;border-bottom:2px solid #D4A853;padding-bottom:6px}p,li{font-family:Arial,sans-serif;font-size:14px;line-height:1.55}table{width:100%;border-collapse:collapse;margin-top:12px}th{background:#0B1220;color:#fff;text-align:left;padding:9px;font-family:Arial,sans-serif;font-size:13px}td{border:1px solid #e5e7eb;padding:9px;font-family:Arial,sans-serif;font-size:13px}.footer{margin-top:36px;font-family:Arial,sans-serif;font-size:11px;color:#9CA3AF;text-align:center}</style></head>
 <body><div class="page"><div class="brand">ZENITH RISE CAPITAL</div><h1>ZRC Financial Intelligence Report</h1>
 <div class="subtitle">Client: ${inputs.companyName} · ${new Date().toLocaleDateString("en-GB")} · EUR · Model v2.0 (days-based)</div>
-<div class="kpis"><div class="kpi"><div class="label">Cash runway</div><div class="value">${fmt(model.runwayWeeks, 1)} wks</div></div><div class="kpi"><div class="label">Risk level</div><div class="value">${model.riskLevel}</div></div><div class="kpi"><div class="label">Funding gap</div><div class="value">${model.fundingGap < 0 ? `€${fmt(Math.abs(model.fundingGap))}` : "None"}</div></div><div class="kpi"><div class="label">DSO</div><div class="value">${fmt(model.dso, 1)} d</div></div><div class="kpi"><div class="label">CCC</div><div class="value">${fmt(model.ccc, 1)} d</div></div><div class="kpi"><div class="label">DSO −10d release</div><div class="value">€${fmt(model.liquidityDSO10)}</div></div></div>
+<div class="kpis"><div class="kpi"><div class="label">Weeks before buffer breach</div><div class="value">${fmt(model.runwayWeeks, 1)} wks</div></div><div class="kpi"><div class="label">Risk level</div><div class="value">${model.riskLevel}</div></div><div class="kpi"><div class="label">Funding gap</div><div class="value">${model.fundingGap < 0 ? `€${fmt(Math.abs(model.fundingGap))}` : "None"}</div></div><div class="kpi"><div class="label">DSO</div><div class="value">${fmt(model.dso, 1)} d</div></div><div class="kpi"><div class="label">CCC</div><div class="value">${fmt(model.ccc, 1)} d</div></div><div class="kpi"><div class="label">DSO −10d release</div><div class="value">€${fmt(model.liquidityDSO10)}</div></div></div>
 <h2>1. Executive Summary</h2><p>${report.executive_summary}</p>
 <h2>2. Key Risks</h2><ul>${report.key_risks.map(r => `<li>${r}</li>`).join("")}</ul>
 <h2>3. Recommended Actions</h2><table><thead><tr><th>Priority</th><th>Action</th><th>Impact</th><th>Timing</th><th>Owner</th></tr></thead><tbody>${report.recommended_actions.map(a => `<tr><td>${a.priority}</td><td>${a.action}</td><td>${a.impact}</td><td>${a.timing}</td><td>${a.owner}</td></tr>`).join("")}</tbody></table>
@@ -702,7 +729,7 @@ Return ONLY valid JSON, no markdown fences, no preamble:
           {[
             ["Client",            inputs.companyName],
             ["Risk level",        model.riskLevel],
-            ["Cash runway",       `${fmt(model.runwayWeeks, 1)} weeks`],
+            ["Weeks before buffer breach",       `${fmt(model.runwayWeeks, 1)} weeks`],
             ["Worst week cash",   `€${fmt(model.minCashAny)}`],
             ["Funding gap",       model.fundingGap < 0 ? `€${fmt(Math.abs(model.fundingGap))}` : "None"],
             ["DSO",               `${fmt(model.dso, 1)} days`],
@@ -720,7 +747,7 @@ Return ONLY valid JSON, no markdown fences, no preamble:
           ))}
         </div>
         <div style={{ marginTop: 12, padding: "10px 14px", background: C.goldDim, borderRadius: 4, fontFamily: F.body, fontSize: 12, color: C.textSec }}>
-          ✓ Guardrail: raw client files never sent. Only structured KPIs reach the model.
+          The AI report sends financial KPIs and timing assumptions to the report service. Your company name and source files stay out of the request.
         </div>
       </div>
       <button onClick={generateReport} disabled={loading} style={{ padding: "12px 28px", background: loading ? C.surface3 : C.gold, color: C.bg, border: "none", borderRadius: 4, fontFamily: F.body, fontWeight: 700, fontSize: 15, cursor: loading ? "not-allowed" : "pointer", opacity: loading ? 0.6 : 1, marginBottom: 24 }}>
@@ -737,7 +764,7 @@ Return ONLY valid JSON, no markdown fences, no preamble:
             </div>
             <div style={{ padding: "24px 28px" }}>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: 10, marginBottom: 24 }}>
-                {[["Cash runway",`${fmt(model.runwayWeeks,1)} wks`],["Risk",model.riskLevel],["Gap",model.fundingGap<0?`€${fmt(Math.abs(model.fundingGap))}`:"None"],["DSO",`${fmt(model.dso,1)} d`],["CCC",`${fmt(model.ccc,1)} d`],["DSO −10d",`€${fmt(model.liquidityDSO10)}`]].map(([l,v])=>(
+                {[["Weeks before buffer breach",`${fmt(model.runwayWeeks,1)} wks`],["Risk",model.riskLevel],["Gap",model.fundingGap<0?`€${fmt(Math.abs(model.fundingGap))}`:"None"],["DSO",`${fmt(model.dso,1)} d`],["CCC",`${fmt(model.ccc,1)} d`],["DSO −10d",`€${fmt(model.liquidityDSO10)}`]].map(([l,v])=>(
                   <div key={l} style={{ background:"#0B1220",border:`1px solid ${C.gold}`,padding:"12px 14px" }}>
                     <div style={{ fontFamily:F.body,fontSize:10,color:"#CBD5E1",textTransform:"uppercase" }}>{l}</div>
                     <div style={{ fontFamily:F.display,fontSize:21,color:C.gold,marginTop:4 }}>{v}</div>
@@ -775,9 +802,13 @@ Return ONLY valid JSON, no markdown fences, no preamble:
 // ══════════════════════════════════════════════════════════════════════════
 // MAIN COMPONENT
 // ══════════════════════════════════════════════════════════════════════════
-export default function FinancialIntelligenceSystem({ onClose }) {
-  const [activeTab, setActiveTab] = useState("inputs");
-  const [inputs, setInputs]       = useState(DEFAULT_INPUTS);
+export default function FinancialIntelligenceSystem({ onClose, lang = "es" }) {
+  const [activeTab, setActiveTab] = useState("wc");
+  const [inputs, setInputs] = useState(() => {
+    const now = new Date();
+    const forecastDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    return { ...DEFAULT_INPUTS, forecastDate };
+  });
   const model = computeModel(inputs);
 
   return (
@@ -801,7 +832,7 @@ export default function FinancialIntelligenceSystem({ onClose }) {
         <div style={{ display: "flex", gap: 0, marginTop: 8, overflowX: "auto", WebkitOverflowScrolling: "touch", scrollbarWidth: "none", msOverflowStyle: "none" }}>
           {TABS.map(tab => (
             <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{ padding: "10px clamp(10px,2.5vw,20px)", background: "none", border: "none", borderBottom: activeTab === tab.id ? `2px solid ${C.gold}` : "2px solid transparent", color: activeTab === tab.id ? C.gold : C.textMuted, fontFamily: F.body, fontSize: "clamp(12px,2vw,14px)", cursor: "pointer", fontWeight: activeTab === tab.id ? 700 : 400, transition: "all 0.2s", whiteSpace: "nowrap", flexShrink: 0 }}>
-              {tab.icon} {tab.label}
+              {tab.icon} {lang === "es" ? ({ inputs: "Datos de empresa", cashflow: "Caja a 13 semanas", wc: "Circulante", risk: "Escenarios y riesgos", report: "Informe IA" })[tab.id] : tab.label}
             </button>
           ))}
         </div>
@@ -811,12 +842,12 @@ export default function FinancialIntelligenceSystem({ onClose }) {
       <div style={{ background: "#0B1220", borderBottom: `1px solid ${C.border}`, padding: "12px clamp(16px,4vw,32px)" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px 8px" }}>
           {[
-            ["Cash Runway",     `${fmt(model.runwayWeeks, 1)} wks`,                                                           model.runwayWeeks < 6 ? C.red : C.green],
-            ["Risk Level",      model.riskLevel,                                                                               model.riskColor],
-            ["Funding Gap",     model.fundingGap < 0 ? `€${fmt(Math.abs(model.fundingGap))}` : "None",                        model.fundingGap < 0 ? C.red : C.green],
+            [lang === "es" ? "Semanas antes de ruptura" : "Weeks before buffer breach",     `${fmt(model.runwayWeeks, 0)} ${lang === "es" ? "sem." : "wks"}`,                                                           model.runwayWeeks < 6 ? C.red : C.green],
+            [lang === "es" ? "Nivel de riesgo" : "Risk Level",      model.riskLevel,                                                                               model.riskColor],
+            [lang === "es" ? "Brecha de caja" : "Funding Gap",     model.fundingGap < 0 ? `€${fmt(Math.abs(model.fundingGap))}` : "None",                        model.fundingGap < 0 ? C.red : C.green],
             ["DSO",             `${fmt(model.dso, 1)} d`,                                                                     model.dso > 75 ? C.amber : C.green],
             ["CCC",             `${fmt(model.ccc, 1)} d`,                                                                     model.ccc > 60 ? C.red : model.ccc > 45 ? C.amber : C.green],
-            ["DSO −10d Release", `€${fmt(model.liquidityDSO10)}`,                                                             C.gold],
+            [lang === "es" ? "DSO −10 d · caja" : "DSO −10d Release", `€${fmt(model.liquidityDSO10)}`,                                                             C.gold],
           ].map(([label, value, color]) => (
             <div key={label} style={{ textAlign: "center" }}>
               <div style={{ fontFamily: F.body, fontSize: 10, color: C.textMuted, letterSpacing: "0.05em", textTransform: "uppercase", marginBottom: 3, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</div>
@@ -830,7 +861,7 @@ export default function FinancialIntelligenceSystem({ onClose }) {
       <div style={{ padding: "clamp(16px,4vw,32px)", maxWidth: 1100, margin: "0 auto" }}>
         {activeTab === "inputs"   && <InputsPanel   inputs={inputs} setInputs={setInputs} />}
         {activeTab === "cashflow" && <CashFlowPanel model={model} inputs={inputs} />}
-        {activeTab === "wc"       && <WorkingCapitalPanel model={model} />}
+        {activeTab === "wc"       && <WorkingCapitalPanel model={model} inputs={inputs} setInputs={setInputs} lang={lang} />}
         {activeTab === "risk"     && <RiskPanel     model={model} inputs={inputs} />}
         {activeTab === "report"   && <ReportPanel   model={model} inputs={inputs} />}
       </div>
