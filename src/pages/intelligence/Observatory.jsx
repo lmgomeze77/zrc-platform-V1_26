@@ -341,7 +341,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
         <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("zrc-open-tool", { detail: { tool: "GeoRisk Dashboard", context: "eu-critical-materials" } }))} style={{ marginTop: 16, padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Abrir contexto de la UE en GeoRisk" : "Open EU context in GeoRisk"}</button>
       </section>
 
-      <ObservatoryImpactLab lang={lang} />
+      <ObservatoryImpactLab lang={lang} onRegister={user ? undefined : openRegister} />
 
       {/* STALE FEED NOTICE — pipeline diario sin refrescar */}
       {(!isLive || !Number.isFinite(staleDays) || isStale) && (
