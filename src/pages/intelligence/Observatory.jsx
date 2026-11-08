@@ -352,8 +352,12 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
             </ul>
           </details>
         ) : (
-          <button type="button" onClick={openRegister} style={{ padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Crear cuenta para ver la lista de comprobación" : "Create an account to view the checklist"}</button>
+          <button type="button" onClick={() => {
+            window.history.replaceState(window.history.state, "", "#ciberriesgo-continuidad");
+            openRegister();
+          }} style={{ padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Crear cuenta para ver la lista de comprobación" : "Create an account to view the checklist"}</button>
         )}
+        <p><a style={{ color: C.gold }} href="mailto:luis@zenithrisecapital.com?subject=ZRC%20-%20Piloto%20de%20continuidad">{lang === "es" ? "Consultar disponibilidad para el piloto" : "Enquire about pilot availability"}</a></p>
       </section>
 
       <section aria-labelledby="critical-materials-title" style={{ padding: "clamp(16px, 4vw, 30px)", marginBottom: 24, background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 12, color: C.textSec }}>
