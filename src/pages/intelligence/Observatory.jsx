@@ -324,6 +324,42 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
         )}
       </section>
 
+      <section id="ciberriesgo-continuidad" aria-labelledby="ciberriesgo-continuidad-title" style={{ padding: "clamp(16px, 4vw, 30px)", marginBottom: 24, background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 12, color: C.textSec }}>
+        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · CIBERRIESGO Y CONTINUIDAD" : "ZRC THESIS · CYBER RISK AND CONTINUITY"}</p>
+        <h3 id="ciberriesgo-continuidad-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Tu fábrica sigue produciendo. ¿Cuántos días puede pasar sin facturar?" : "Your factory is still producing. How long can it go without invoicing?"}</h3>
+        <p>{lang === "es" ? "Una actualización defectuosa de CrowdStrike afectó en julio de 2024 a unos 8,5 millones de dispositivos Windows, según Microsoft. El fallo mostró cómo una dependencia tecnológica compartida puede interrumpir servicios en varios sectores a la vez." : "Microsoft estimated that a faulty CrowdStrike update affected 8.5 million Windows devices in July 2024. The outage showed how a shared technology dependency can disrupt services across sectors at the same time."}</p>
+        <p><strong>{lang === "es" ? "Escenario ilustrativo" : "Illustrative scenario"}</strong> · {lang === "es" ? "Una fábrica mantiene la producción, pero durante tres días no puede validar albaranes ni emitir 150.000 € diarios en facturas. Al tercer día hay 450.000 € pendientes de facturar. El efecto sobre caja depende de cuándo se emitan las facturas, de los plazos de cobro y de los pagos que venzan mientras tanto." : "A factory keeps producing but cannot validate delivery notes or issue €150,000 in daily invoices for three days. By day three, €450,000 remains unbilled. The cash impact depends on when invoices are issued, when customers pay and which payments fall due in the meantime."}</p>
+        <p><a style={{ color: C.gold }} href="https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/">Microsoft · 20 Jul 2024</a>{" · "}<a style={{ color: C.gold }} href="https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026">ENISA · 22 Sep 2026</a></p>
+        {user ? (
+          <details>
+            <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Lista de comprobación para las primeras 72 horas" : "First 72 hours checklist"}</summary>
+            <ul>
+              {(lang === "es" ? [
+                "Identifica qué procesos dependen del ERP, el correo o el operador logístico.",
+                "Designa un responsable y un suplente para activar el procedimiento alternativo.",
+                "Ensaya una entrega y valida su albarán con un pedido simulado.",
+                "Mide cuántas facturas puedes emitir por la vía alternativa y cómo evitarás duplicados.",
+                "Desplaza los cobros previstos y compara el saldo mínimo de caja con los pagos que vencen.",
+                "Pide al proveedor evidencia de la última prueba de recuperación y del tiempo observado.",
+              ] : [
+                "Map the processes that depend on your ERP, email or logistics provider.",
+                "Assign a lead and a deputy to activate the fallback process.",
+                "Rehearse a delivery and validate the delivery note using a test order.",
+                "Measure fallback invoicing capacity and plan how to prevent duplicate invoices.",
+                "Shift expected collections and compare the minimum cash balance against upcoming payments.",
+                "Ask the provider for evidence and timings from its most recent recovery exercise.",
+              ]).map(item => <li key={item}>{item}</li>)}
+            </ul>
+          </details>
+        ) : (
+          <button type="button" onClick={() => {
+            window.history.replaceState(window.history.state, "", "#ciberriesgo-continuidad");
+            openRegister();
+          }} style={{ padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Crear cuenta para ver la lista de comprobación" : "Create an account to view the checklist"}</button>
+        )}
+        <p><a style={{ color: C.gold }} href="mailto:luis@zenithrisecapital.com?subject=ZRC%20-%20Piloto%20de%20continuidad">{lang === "es" ? "Consultar disponibilidad para el piloto" : "Enquire about pilot availability"}</a></p>
+      </section>
+
       <section aria-labelledby="critical-materials-title" style={{ padding: "clamp(16px, 4vw, 30px)", marginBottom: 24, background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 12, color: C.textSec }}>
         <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · CASO HISTÓRICO" : "ZRC THESIS · HISTORICAL CASE"}</p>
         <h3 id="critical-materials-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Materias primas críticas: ¿puede Europa diversificar su suministro?" : "Critical raw materials: can Europe diversify its supply?"}</h3>
