@@ -73,19 +73,32 @@ const AuthProvider = ({ children, lang }) => {
   const [showAuth, setShowAuth] = useState(false);
   const [authMode, setAuthMode] = useState("login");
   const [authCallback, setAuthCallback] = useState(null);
+  const [registrationComplete, setRegistrationComplete] = useState(false);
   const [showPricing, setShowPricing] = useState(() => {
     if (typeof window === "undefined") return false;
     const params = new URLSearchParams(window.location.search);
     return params.get("offer") === "founder" || window.location.hash === "#founder";
   });
 
-  const login = (userData) => {
-    setUser(userData);
+  useEffect(() => {
+    if (!registrationComplete) return;
+    const observatory = document.getElementById("observatory");
+    const linkedSection = document.getElementById(window.location.hash.slice(1));
+    const target = observatory?.contains(linkedSection) ? linkedSection : observatory;
+    target?.scrollIntoView({ block: "start" });
+    setRegistrationComplete(false);
+  }, [registrationComplete]);
+
+  const closeAuth = () => {
     setShowAuth(false);
-    if (authCallback) {
-      authCallback();
-      setAuthCallback(null);
-    }
+    setAuthCallback(null);
+  };
+
+  const login = (userData, registered) => {
+    setUser(userData);
+    closeAuth();
+    if (authCallback) authCallback();
+    else if (registered) setRegistrationComplete(true);
   };
 
   const logout = () => setUser(null);
@@ -101,11 +114,13 @@ const AuthProvider = ({ children, lang }) => {
   };
 
   const openLogin = () => {
+    setAuthCallback(null);
     setAuthMode("login");
     setShowAuth(true);
   };
 
   const openRegister = () => {
+    setAuthCallback(null);
     setAuthMode("register");
     setShowAuth(true);
   };
@@ -120,14 +135,14 @@ const AuthProvider = ({ children, lang }) => {
         openLogin,
         openRegister,
         showAuth,
-        setShowAuth,
+        closeAuth,
         authMode,
         setAuthMode,
         openPricing: () => setShowPricing(true),
       }}
     >
       {children}
-      {showAuth && <AuthModal />}
+      {showAuth && <AuthModal lang={lang} />}
       {showPricing && <PricingPage onClose={() => setShowPricing(false)} lang={lang} onRegister={openRegister} />}
     </AuthContext.Provider>
   );
@@ -821,7 +836,7 @@ const Modal = ({ open, onClose, title, children }) => {
       <div onClick={(e) => e.stopPropagation()} style={{ background: C.surface, border: `1px solid ${C.border}`, maxWidth: 520, width: "100%", maxHeight: "90vh", overflow: "auto", position: "relative" }}>
         <div style={{ padding: "24px 28px", borderBottom: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <h3 style={{ fontFamily: F.display, fontSize: 22, fontWeight: 400, color: C.text, margin: 0 }}>{title}</h3>
-          <button onClick={onClose} style={{ background: "none", border: "none", color: C.textMuted, fontSize: 20, cursor: "pointer", padding: 4 }}>✕</button>
+          <button onClick={onClose} disabled={!onClose} style={{ background: "none", border: "none", color: C.textMuted, fontSize: 20, cursor: "pointer", padding: 4 }}>✕</button>
         </div>
         <div style={{ padding: "24px 28px" }}>{children}</div>
       </div>
@@ -896,46 +911,58 @@ const ContactForm = ({ context, onClose, lang }) => {
   );
 };
 
-const AuthModal = () => {
-  const { authMode, setAuthMode, login, setShowAuth } = useAuth();
-  const [lang] = useState("es");
+const AuthModal = ({ lang }) => {
+  const { authMode, setAuthMode, login, closeAuth } = useAuth();
+  const [submitting, setSubmitting] = useState(false);
+  const [registrationError, setRegistrationError] = useState(false);
   const t = T[lang].auth;
   const [form, setForm] = useState({ name: "", email: "", password: "", company: "", role: "", interest: "" });
   const set = (k) => (e) => setForm((p) => ({ ...p, [k]: e.target.value }));
 
   const handleSubmit = async () => {
-    if (!form.email || !form.password) return;
-    if (authMode === "register") {
+    const email = form.email.trim();
+    if (submitting || !email || !form.password) return;
+    const registered = authMode === "register";
+    if (registered) {
+      setSubmitting(true);
+      setRegistrationError(false);
       // Start the trial before flipping `user` on, so the first
       // useSubscription fetch (triggered the instant login() sets user)
       // already sees the trialing row instead of racing it.
       try {
-        await fetch(`${API_BASE}/api/trial/start`, {
+        const response = await fetch(`${API_BASE}/api/trial/start`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: form.email }),
+          body: JSON.stringify({ email }),
+          signal: AbortSignal.timeout(15000),
         });
-      } catch (err) { console.error("Trial start error:", err); }
+        if (!response.ok) throw new Error(`Trial start failed: ${response.status}`);
+      } catch (error) {
+        console.error("Trial start error:", error);
+        setRegistrationError(true);
+        setSubmitting(false);
+        return;
+      }
       fetch("https://zrc-api.onrender.com/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, company: form.company, role: form.role, interest: form.interest }),
+        body: JSON.stringify({ name: form.name, email, company: form.company, role: form.role, interest: form.interest }),
       }).catch((err) => console.error("Reg error:", err));
       fetch(`${API_BASE}/api/lead`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: form.email,
+          email,
           sector: form.role || form.interest || "unspecified",
           source: getRegistrationLeadSource(),
         }),
       }).catch((err) => console.error("Campaign attribution error:", err));
     }
-    login({ name: form.name || form.email.split("@")[0], email: form.email, tier: "member" });
+    login({ name: form.name || email.split("@")[0], email, tier: "member" }, registered);
   };
 
   return (
-    <Modal open={true} onClose={() => setShowAuth(false)} title={authMode === "login" ? t.login : t.register}>
+    <Modal open={true} onClose={submitting ? undefined : closeAuth} title={authMode === "login" ? t.login : t.register}>
       {authMode === "register" && <FormInput label={t.name} value={form.name} onChange={set("name")} />}
       <FormInput label={t.email} type="email" value={form.email} onChange={set("email")} />
       <FormInput label={t.pass} type="password" value={form.password} onChange={set("password")} />
@@ -946,12 +973,17 @@ const AuthModal = () => {
           <FormInput label={t.interest} type="select" value={form.interest} onChange={set("interest")} required={false} />
         </>
       )}
-      <button onClick={handleSubmit} style={{ width: "100%", fontFamily: F.mono, fontSize: 11, letterSpacing: "0.12em", padding: "13px 24px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600, marginTop: 8 }}>
-        {authMode === "login" ? t.submit : t.registerBtn}
+      {registrationError && (
+        <p role="alert" style={{ color: C.text }}>
+          {lang === "es" ? "No se pudo completar el alta. Revisa tu correo e inténtalo de nuevo." : "Registration could not be completed. Check your email address and try again."}
+        </p>
+      )}
+      <button onClick={handleSubmit} disabled={submitting} style={{ width: "100%", fontFamily: F.mono, fontSize: 11, letterSpacing: "0.12em", padding: "13px 24px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600, marginTop: 8 }}>
+        {submitting ? (lang === "es" ? "Procesando…" : "Processing…") : authMode === "login" ? t.submit : t.registerBtn}
       </button>
       <div style={{ textAlign: "center", marginTop: 16 }}>
         <span style={{ fontFamily: F.body, fontSize: 13, color: C.textMuted }}>{authMode === "login" ? t.noAccount : t.hasAccount} </span>
-        <button onClick={() => setAuthMode(authMode === "login" ? "register" : "login")} style={{ background: "none", border: "none", color: C.gold, fontFamily: F.body, fontSize: 13, cursor: "pointer", textDecoration: "underline" }}>
+        <button disabled={submitting} onClick={() => { setRegistrationError(false); setAuthMode(authMode === "login" ? "register" : "login"); }} style={{ background: "none", border: "none", color: C.gold, fontFamily: F.body, fontSize: 13, cursor: "pointer", textDecoration: "underline" }}>
           {authMode === "login" ? t.create : t.loginLink}
         </button>
       </div>
@@ -1282,7 +1314,7 @@ const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => {
 
 const Intelligence = ({ lang, countryContext }) => {
   const t = T[lang].intel;
-  const { user, openPricing, setShowAuth } = useAuth();
+  const { user, openPricing, openLogin, showAuth } = useAuth();
   const { tier, status: subStatus, trialEnd, loading: tierLoading } = useSubscription(user?.email);
   const [showGeoRisk, setShowGeoRisk] = useState(false);
   const [geoRiskContext, setGeoRiskContext] = useState(null);
@@ -1334,19 +1366,23 @@ const Intelligence = ({ lang, countryContext }) => {
     if (tool.name === "Macro Pulse") setShowMacroPulse(true);
   };
 
+  useEffect(() => {
+    if (showAuth) setShowGeoRisk(false);
+  }, [showAuth]);
+
   // Peticiones del asistente IA para abrir una herramienta.
   // Aplica el mismo gating que los botones del grid: registro y tier.
   useEffect(() => {
     const onAssistantOpenTool = (e) => {
       const tool = TOOLS.find((tl) => tl.name === e.detail?.tool);
-      if (!tool) return;
-      if (!user) { setShowAuth(true); return; }
+      if (!tool || showAuth) return;
+      if (!user) { openLogin(); return; }
       if (tierLoading && tool.requiredTier) return;
       handleLaunch(tool, e.detail?.context === "eu-critical-materials" ? "eu-critical-materials" : null);
     };
     window.addEventListener("zrc-open-tool", onAssistantOpenTool);
     return () => window.removeEventListener("zrc-open-tool", onAssistantOpenTool);
-  }, [user, tier, subStatus, tierLoading]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [user, tier, subStatus, tierLoading, showAuth]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Sec id="intelligence">
@@ -1472,7 +1508,7 @@ const Intelligence = ({ lang, countryContext }) => {
                   )
                 ) : (
                   <button
-                    onClick={() => setShowAuth(true)}
+                    onClick={openLogin}
                     style={{ marginTop: 20, padding: "12px 16px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, textAlign: "center", width: "100%", cursor: "pointer" }}
                   >
                     <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.1em" }}><LockIcon size={12} style={{ marginRight: 8 }} />{t.locked}</span>
@@ -1563,7 +1599,7 @@ const Intelligence = ({ lang, countryContext }) => {
                 ["06 · CORPORATE","Financial Intelligence System",lang === "es" ? "Lleva el escenario a ingresos, márgenes, circulante, financiación y caja." : "Carry the scenario into revenue, margins, working capital, financing and cash flow.","Financial Intelligence System"],
               ].map(([step,name,desc,toolName]) => <div key={step} style={{ padding: 22, background: C.surface, border: `1px solid ${C.border}` }}>
                 <div style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, letterSpacing: "0.14em", marginBottom: 8 }}>{step}</div><div style={{ fontFamily: F.display, fontSize: 20, color: C.text }}>{name}</div><p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, minHeight: 60 }}>{desc}</p>
-                {toolName && <button onClick={() => { const tool=TOOLS.find(tl=>tl.name===toolName); if(!user){setShowToolkitGuide(false);setShowAuth(true);} else if(tool){setShowToolkitGuide(false);handleLaunch(tool);} }} style={{ fontFamily:F.mono,fontSize:9,color:C.gold,background:"transparent",border:`1px solid ${C.goldBorder}`,padding:"7px 12px",cursor:"pointer" }}>{lang==="es"?"ABRIR HERRAMIENTA →":"OPEN TOOL →"}</button>}
+                {toolName && <button onClick={() => { const tool=TOOLS.find(tl=>tl.name===toolName); if(!user){setShowToolkitGuide(false);openLogin();} else if(tool){setShowToolkitGuide(false);handleLaunch(tool);} }} style={{ fontFamily:F.mono,fontSize:9,color:C.gold,background:"transparent",border:`1px solid ${C.goldBorder}`,padding:"7px 12px",cursor:"pointer" }}>{lang==="es"?"ABRIR HERRAMIENTA →":"OPEN TOOL →"}</button>}
               </div>)}
             </div>
             <div style={{ padding: 24, background: C.surface2, border: `1px solid ${C.border}`, marginBottom: 20 }}><div style={{ fontFamily:F.mono,fontSize:9,color:C.gold,letterSpacing:"0.14em",marginBottom:10 }}>10-MINUTE INTELLIGENCE ROUTINE</div><div style={{fontFamily:F.body,fontSize:13,color:C.textSec,lineHeight:1.8}}>0–2 Observatory · 2–3 GeoRisk Index · 3–6 GeoRisk Dashboard · 6–8 GeoRisk ML / Macro Pulse · 8–10 Decision note.</div></div>
@@ -1573,10 +1609,10 @@ const Intelligence = ({ lang, countryContext }) => {
       )}
 
       {/* Tool overlays */}
-      {showGeoRisk && (
+      {showGeoRisk && !showAuth && (
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <button onClick={() => setShowGeoRisk(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 301, fontFamily: F.mono, fontSize: 11, letterSpacing: "0.1em", padding: "8px 20px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>
-            ✕ CLOSE DASHBOARD
+            {lang === "es" ? "✕ CERRAR PANEL" : "✕ CLOSE DASHBOARD"}
           </button>
           {geoRiskContext === "eu-critical-materials" && (
             <p role="status" style={{ margin: 0, padding: "58px 24px 12px", color: C.textSec }}>
