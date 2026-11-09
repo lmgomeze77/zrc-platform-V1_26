@@ -276,7 +276,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
   const [time, setTime] = useState(new Date());
   const [tab, setTab] = useState("data");
   const [impactView, setImpactView] = useState("variables");
-  const [showDecisionBrief, setShowDecisionBrief] = useState(true);
+  const [showDecisionBrief, setShowDecisionBrief] = useState(false);
   const [compareCountry, setCompareCountry] = useState("");
   const [primaryCountry, setPrimaryCountry] = useState(countryContext?.name || "");
   useEffect(() => { setPrimaryCountry(countryContext?.name || ""); }, [countryContext?.name]);
@@ -683,27 +683,32 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             })}
           </nav>
 
-          <section aria-label="Expediente activo de inversión" style={{background:"#10253B",border:"1px solid #3D6287",borderRadius:14,padding:"15px 18px",margin:"0 0 16px"}}>
-            <div style={{fontSize:10,fontWeight:750,letterSpacing:1.2,color:"#93C5FD"}}>ZRC · INVESTMENT WORKSPACE · VISTA DE TRABAJO</div>
-            <div style={{display:"flex",flexWrap:"wrap",alignItems:"center",justifyContent:"space-between",gap:12,marginTop:8}}>
-              <div><strong style={{fontSize:17,color:"#F1F5F9"}}>{dealName.trim() || "Operación sin nombre"}</strong><div style={{fontSize:12,color:"#CBD5E1",marginTop:4}}>{primaryCountry.trim() || "País pendiente"} · {REGIONS[region].label} · {SECTORS[sector].label}</div></div>
-              <span style={{fontSize:11,color:"#FCD34D",border:"1px solid #8D683A",borderRadius:8,padding:"7px 10px"}}>Simulación de analista · No validada</span>
-            </div>
-            <div style={{fontSize:11,color:"#9BB1C8",marginTop:9}}>País y nombre compartidos entre escenarios e inversión. Las fichas locales guardan un resumen del escenario, no los flujos del motor financiero. No introduzcas información confidencial.</div>
+          <section aria-label="Contexto de la vista activa" aria-live="polite" style={{background:"#10253B",border:"1px solid #3D6287",borderRadius:14,padding:"15px 18px",margin:"0 0 16px"}}>
+            <div style={{fontSize:11,fontWeight:750,letterSpacing:1.1,color:"#93C5FD"}}>{tab === "scenarios" ? "ESCENARIOS · QUÉ PODRÍA PASAR" : tab === "impact" ? "ANÁLISIS DE IMPACTO · CÓMO AFECTARÍA" : tab === "investment" ? "DECISIÓN DE INVERSIÓN · TU OPERACIÓN" : "MERCADOS · DATOS OBSERVADOS"}</div>
+            <h2 style={{fontSize:20,margin:"7px 0",color:"#F1F5F9"}}>{tab === "scenarios" ? "Explora hipótesis y cambia sus pesos" : tab === "impact" ? "Examina las variables y activos sensibles" : tab === "investment" ? "Estima el efecto sobre tu inversión" : "Consulta las series y su fecha de publicación"}</h2>
+            <p style={{fontSize:12,color:"#CBD5E1",margin:"0 0 14px"}}>{tab === "scenarios" ? "El score resume supuestos del modelo; no es una probabilidad validada." : tab === "impact" ? "Los impactos son sensibilidades simuladas para la región y el sector elegidos." : tab === "investment" ? "Introduce tus supuestos financieros para comparar resultados de la operación." : "Las observaciones llevan fuente y fecha; se muestran separadas de la simulación."}</p>
+            {(tab === "scenarios" || tab === "impact" || tab === "investment") && <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,210px),1fr))",gap:10}}>
+              <label style={{fontSize:12,color:"#D8E9FF"}}>Operación o proyecto
+                <input aria-label="Operación o proyecto" maxLength={90} value={dealName} onChange={e=>setDealName(e.target.value)} placeholder="Ej. Planta solar" style={{display:"block",width:"100%",boxSizing:"border-box",marginTop:6,background:"#081426",border:"1px solid #50749A",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:14}}/>
+              </label>
+              <label style={{fontSize:12,color:"#D8E9FF"}}>País principal
+                <input id="georisk-primary-country" list="georisk-primary-countries" maxLength={90} value={primaryCountry} onChange={e=>setPrimaryCountry(e.target.value)} placeholder="Ej. España" style={{display:"block",width:"100%",boxSizing:"border-box",marginTop:6,background:"#081426",border:"1px solid #50749A",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:14}}/>
+              </label>
+              <datalist id="georisk-primary-countries">{[...COUNTRY_PROFILES,...COUNTRY_EXPANSION_CANDIDATES].map(p=><option key={p.iso} value={p.name}/>)}</datalist>
+              <label style={{fontSize:12,color:"#D8E9FF"}}>País para comparar
+                <input id="georisk-compare-country" list="georisk-primary-countries" maxLength={90} value={compareCountry} onChange={e=>setCompareCountry(e.target.value)} placeholder="Ej. Marruecos" style={{display:"block",width:"100%",boxSizing:"border-box",marginTop:6,background:"#081426",border:"1px solid #50749A",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:14}}/>
+              </label>
+            </div>}
+            {(tab === "scenarios" || tab === "impact") && <p style={{fontSize:11,color:"#9BB1C8",margin:"11px 0 0"}}>País y operación se comparten entre vistas. El país no altera automáticamente el score regional. Las fichas guardadas son locales: evita datos confidenciales.</p>}
           </section>
-          <div aria-label="Portabilidad del expediente" style={{display:"flex",flexWrap:"wrap",gap:9,alignItems:"center",margin:"0 0 16px"}}>
-            <button type="button" onClick={exportWorkspace} style={{border:"1px solid #537CA6",background:"#20466D",color:"#F8FAFC",borderRadius:8,padding:"10px 13px",fontSize:12,cursor:"pointer"}}>Exportar expediente JSON</button>
-            <label style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid #537CA6",background:"#142C47",color:"#E2E8F0",borderRadius:8,padding:"10px 13px",fontSize:12,cursor:"pointer"}}>Importar expediente JSON <input aria-label="Importar expediente JSON" type="file" accept=".json,application/json" onChange={importWorkspace} style={{width:"155px",maxWidth:"100%",fontSize:11}}/></label>
-            <span role="status" style={{fontSize:11,color:"#CBD5E1"}}>{workspaceMessage || "Los supuestos financieros se mantienen en memoria entre pestañas; no se guardan automáticamente."}</span>
-          </div>
           {tab === "investment" && <GeoRiskInvestmentEngine countryContext={primaryCountry ? {name: primaryCountry} : null} selectedCountry={primaryCountry} onCountryChange={setPrimaryCountry} selectedProject={dealName} onProjectChange={setDealName} financialInputs={financialInputs} onFinancialInputsChange={setFinancialInputs} financialEditedFields={financialEditedFields} onFinancialEditedFieldsChange={setFinancialEditedFields} financialCountryAdjustment={financialCountryAdjustment} onFinancialCountryAdjustmentChange={setFinancialCountryAdjustment} financialSensitivity={financialSensitivity} onFinancialSensitivityChange={setFinancialSensitivity} annualSettings={annualSettings} onAnnualSettingsChange={setAnnualSettings} annualOverrides={annualOverrides} onAnnualOverridesChange={setAnnualOverrides} />}
 
           {(tab === "scenarios" || tab === "impact") && (
             <section aria-label="Ficha de decisión para inversores" style={{margin:"0 0 18px",border:"1px solid #355173",borderRadius:15,background:"#0D1B30",padding:"17px 19px"}}>
               <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,flexWrap:"wrap"}}>
                 <div><div style={{fontSize:10,color:"#93C5FD",fontWeight:700,letterSpacing:1.2}}>INTELLIGENCE · DECISION BRIEF</div>
-                  <h3 style={{margin:"6px 0 0",fontSize:18,color:"#F1F5F9"}}>De la exposición a una hipótesis de inversión</h3></div>
-                <button type="button" aria-expanded={showDecisionBrief} onClick={()=>setShowDecisionBrief(v=>!v)} style={{border:"1px solid #355173",background:"#142743",borderRadius:9,color:"#CBD5E1",padding:"9px 12px",cursor:"pointer",fontSize:12}}>{showDecisionBrief?"Ocultar análisis":"Mostrar análisis"}</button>
+                  <h3 style={{margin:"6px 0 0",fontSize:18,color:"#F1F5F9"}}>Comparar países y guardar la ficha</h3></div>
+                <button type="button" aria-expanded={showDecisionBrief} onClick={()=>setShowDecisionBrief(v=>!v)} style={{border:"1px solid #355173",background:"#142743",borderRadius:9,color:"#CBD5E1",padding:"9px 12px",cursor:"pointer",fontSize:12}}>{showDecisionBrief?"Ocultar ficha":"Abrir comparación y ficha"}</button>
               </div>
               {showDecisionBrief && <>
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,230px),1fr))",gap:10,marginTop:14}}>
@@ -727,24 +732,25 @@ export default function GeoRiskDashboard({ countryContext = null }) {
                 </div>
                 <div style={{marginTop:14,padding:"13px 14px",border:"1px solid #28415F",borderRadius:10}}>
                   <div style={{fontSize:11,color:"#93C5FD",fontWeight:700,marginBottom:8}}>COMPARAR PAÍSES · MATRIZ DE DUE DILIGENCE</div>
-                  <label htmlFor="georisk-primary-country" style={{display:"block",fontSize:12,color:"#CBD5E1",marginBottom:6}}>País principal (inversión / exposición)</label>
-                  <input id="georisk-primary-country" list="georisk-primary-countries" maxLength={90} value={primaryCountry} onChange={e=>setPrimaryCountry(e.target.value)} placeholder="Selecciona un país, p. ej. España" style={{width:"100%",maxWidth:320,boxSizing:"border-box",background:"#081426",border:"1px solid #50749A",borderRadius:8,color:"#F1F5F9",padding:"11px 12px",fontSize:14,marginBottom:12}}/>
-                  <datalist id="georisk-primary-countries">{[...COUNTRY_PROFILES,...COUNTRY_EXPANSION_CANDIDATES].map(p=><option key={p.iso} value={p.name}/>)}</datalist>
-                  <div style={{fontSize:11,color:"#94A3B8",marginBottom:12}}>Selección compartida con «Decisión de inversión». No recalibra automáticamente el escenario regional.</div>
-                  <label htmlFor="georisk-compare-country" style={{display:"block",fontSize:12,color:"#CBD5E1",marginBottom:6}}>Segundo país (comparación cualitativa)</label>
-                  <input id="georisk-compare-country" maxLength={90} value={compareCountry} onChange={e=>setCompareCountry(e.target.value)} placeholder="Ej. México" style={{width:"100%",maxWidth:320,boxSizing:"border-box",background:"#081426",border:"1px solid #355173",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:13}}/>
                   {compareCountry.trim() && <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,220px),1fr))",gap:10,marginTop:12}}>
-                    {[primaryCountry.trim() || "País principal sin seleccionar",compareCountry.trim()].map((name,i)=><div key={i} style={{border:"1px solid #28415F",borderRadius:9,padding:12}}>
-                      <strong style={{color:"#F1F5F9",fontSize:13}}>{name}</strong>
-                      <div style={{fontSize:11,color:"#94A3B8",marginTop:7,lineHeight:1.7}}>Contrastar: riesgo regulatorio, exposición FX, financiación, cadena de suministro, repatriación de capital y contraparte local.</div>
-                      <div style={{fontSize:11,color:"#FBBF24",marginTop:7}}>Sin score de país verificado. No se asignan diferencias numéricas artificiales.</div>
-                    </div>)}
+                    {[primaryCountry.trim(),compareCountry.trim()].map((name,i)=>{
+                      const profile = COUNTRY_PROFILES.find(p=>p.name.toLocaleLowerCase("es")===name.toLocaleLowerCase("es"));
+                      return <div key={i} style={{border:"1px solid #28415F",borderRadius:9,padding:12}}>
+                        <strong style={{color:"#F1F5F9",fontSize:13}}>{name || "Selecciona un país principal"}</strong>
+                        {profile ? <>
+                          <div style={{fontSize:11,color:"#FBBF24",marginTop:7}}>Riesgo editorial ZRC: {profile.score}/100 · {profile.region} · ficha {profile.source?.label}</div>
+                          <p style={{fontSize:11,color:"#CBD5E1",lineHeight:1.5}}>{profile.summary}</p>
+                          <div style={{fontSize:11,color:"#93C5FD"}}>Vigilar: {profile.watch?.[0]}</div>
+                        </> : <p style={{fontSize:11,color:"#FBBF24"}}>Sin ficha de país revisada. Comprueba regulación, financiación, divisas y proveedores antes de comparar.</p>}
+                      </div>;
+                    })}
                   </div>}
+                  {compareCountry.trim() && COUNTRY_PROFILES.some(p=>p.name.toLocaleLowerCase("es")===primaryCountry.trim().toLocaleLowerCase("es")) && COUNTRY_PROFILES.some(p=>p.name.toLocaleLowerCase("es")===compareCountry.trim().toLocaleLowerCase("es")) && <p style={{fontSize:11,color:"#CBD5E1"}}>Diferencias descriptivas de las fichas ZRC; sus puntuaciones editoriales no recalibran el escenario ni equivalen a una medición verificada de la operación.</p>}
                 </div>
                 <div style={{marginTop:14,padding:"13px 14px",border:"1px solid #28415F",borderRadius:10}}>
                   <div style={{fontSize:11,color:"#93C5FD",fontWeight:700,marginBottom:8}}>GUARDAR FICHA DE OPERACIÓN</div>
                   <div style={{display:"flex",flexWrap:"wrap",gap:8}}>
-                    <input aria-label="Nombre de la operación" maxLength={90} value={dealName} onChange={e=>setDealName(e.target.value)} placeholder="Nombre de operación / proyecto" style={{flex:"1 1 220px",minWidth:0,background:"#081426",border:"1px solid #355173",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:13}}/>
+                    <span style={{fontSize:12,color:"#CBD5E1",alignSelf:"center"}}>{dealName.trim() || "Escribe el nombre de la operación arriba"}</span>
                     <button type="button" disabled={!dealName.trim()} onClick={saveDecisionBrief} style={{background:dealName.trim()?"#24578C":"#263548",color:"#F8FAFC",border:"none",borderRadius:8,padding:"10px 14px",cursor:dealName.trim()?"pointer":"not-allowed",fontSize:12}}>Guardar escenario</button>
                   </div>
                   <div style={{fontSize:11,color:"#94A3B8",marginTop:8}}>Se guardan hasta 20 fichas en este navegador, no en tu cuenta. Exporta un informe HTML imprimible desde cada ficha. No introduzcas datos confidenciales: otros usuarios de este dispositivo podrían acceder a ellas.</div>
@@ -768,6 +774,11 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             </section>
           )}
 
+          <details style={{margin:"10px 0 18px",color:"#CBD5E1",fontSize:12}}><summary style={{cursor:"pointer"}}>Importar o exportar expediente JSON</summary><div aria-label="Portabilidad del expediente" style={{display:"flex",flexWrap:"wrap",gap:9,alignItems:"center",margin:"0 0 16px"}}>
+            <button type="button" onClick={exportWorkspace} style={{border:"1px solid #537CA6",background:"#20466D",color:"#F8FAFC",borderRadius:8,padding:"10px 13px",fontSize:12,cursor:"pointer"}}>Exportar expediente JSON</button>
+            <label style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid #537CA6",background:"#142C47",color:"#E2E8F0",borderRadius:8,padding:"10px 13px",fontSize:12,cursor:"pointer"}}>Importar expediente JSON <input aria-label="Importar expediente JSON" type="file" accept=".json,application/json" onChange={importWorkspace} style={{width:"155px",maxWidth:"100%",fontSize:11}}/></label>
+            <span role="status" style={{fontSize:11,color:"#CBD5E1"}}>{workspaceMessage || "Los supuestos financieros se mantienen en memoria entre pestañas; no se guardan automáticamente."}</span>
+          </div></details>
           {tab === "impact" && (
             <nav aria-label="Herramientas de análisis de impacto" style={{display:"flex",flexWrap:"wrap",gap:8,margin:"-8px 0 18px"}}>
               {[
