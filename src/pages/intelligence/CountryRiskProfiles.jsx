@@ -29,8 +29,8 @@ function useSeo(country, pending = false) {
   useEffect(() => {
     const title = country ? (pending ? `Indicadores económicos de ${country.name} | ZRC` : `Riesgo país de ${country.name}: puntuación y señales | ZRC`) : "Riesgo país para inversores: Iberia, LATAM y MENA | ZRC";
     const description = country
-      ? (pending ? `Datos macroeconómicos observados de ${country.name}, con fuentes y fechas. Análisis editorial de riesgo país pendiente.` : `Ficha de riesgo país de ${country.name}: puntuación ZRC 0–100, cinco subpilares, señales a 30 días e implicaciones para la inversión.`)
-      : "Fichas de riesgo país para inversores con puntuación 0–100, cinco subpilares, señales a 30 días y lectura de inversión para Iberia, LATAM y MENA.";
+      ? (pending ? `Datos macroeconómicos observados de ${country.name}, con fuentes y fechas. Análisis editorial de riesgo país pendiente.` : `Ficha de riesgo país de ${country.name}: termómetro e índice ZRC 0–100, cinco subpilares, señales a 30 días e implicaciones para la inversión.`)
+      : "Fichas de riesgo país para inversores con termómetro e índice ZRC 0–100, cinco subpilares, señales a 30 días y lectura de inversión para Iberia, LATAM y MENA.";
     const canonical = country ? `${BASE_URL}/${country.slug}/` : `${BASE_URL}/`;
     document.documentElement.lang = "es";
     document.title = title;
@@ -58,11 +58,18 @@ function BrandHeader() {
   );
 }
 
-function ScoreDial({ score, compact = false }) {
-  const band = riskBand(score);
+function RiskThermometer({ country, compact = false }) {
+  const band = riskBand(country.score);
+  const trend = trendMeta[country.trend];
   return (
-    <div className={`crp-score ${compact ? "crp-score--compact" : ""}`} style={{ "--score": score, "--risk-color": band.color }} aria-label={`Riesgo ${score} sobre 100, ${band.label}`}>
-      <div className="crp-score-inner"><strong>{score}</strong><span>/100</span></div>
+    <div className={`crp-thermometer ${compact ? "crp-thermometer--compact" : ""}`} role="img" aria-label={`Índice de riesgo país ZRC: ${country.score} de 100, nivel ${band.label}; tendencia ${trend.label}. Revisión editorial ${COUNTRY_PROFILE_UPDATED_AT}.`}>
+      <div className="crp-thermometer-head"><span>Índice de riesgo país ZRC</span><strong style={{color:band.color}}>{country.score}<small>/100</small></strong></div>
+      <div className="crp-thermometer-track" aria-hidden="true">
+        <span className="crp-thermometer-marker" style={{left:`${country.score}%`}} />
+      </div>
+      <div className="crp-thermometer-scale"><span>0 · menor riesgo</span><span>100 · mayor riesgo</span></div>
+      <p><strong style={{color:band.color}}>{band.label}</strong> · <span style={{color:trend.color}}>{trend.symbol} {trend.label}</span> · revisión {formatDate(COUNTRY_PROFILE_UPDATED_AT)}</p>
+      {!compact && <small className="crp-thermometer-note">Síntesis editorial de cinco pilares. No es una probabilidad, una calificación crediticia ni una señal en tiempo real. Los indicadores tienen fechas de origen distintas.</small>}
     </div>
   );
 }
@@ -88,10 +95,11 @@ function CountryCard({ country }) {
   const trend = trendMeta[country.trend];
   return (
     <a className="crp-country-card" href={`/inteligencia/paises/${country.slug}/`}>
-      <div className="crp-country-card-head"><span className="crp-flag">{country.flag}</span><ScoreDial score={country.score} compact /></div>
+      <div className="crp-country-card-head"><span className="crp-flag">{country.flag}</span><span className="crp-kicker">FICHA ZRC</span></div>
       <span className="crp-kicker">{country.region} · {country.iso}</span>
       <h2>{country.name}</h2>
       <p>{country.summary}</p>
+      <RiskThermometer country={country} compact />
       <div className="crp-country-card-foot"><span style={{ color: band.color }}>{band.label}</span><span style={{ color: trend.color }}>{trend.symbol} {trend.label}</span></div>
     </a>
   );
@@ -170,7 +178,6 @@ function IndexPage() {
 function DetailPage({ country }) {
   useSeo(country);
   const canonical = countryIntelligenceByIso3(country.iso);
-  const band = riskBand(country.score);
   const trend = trendMeta[country.trend];
   const peers = COUNTRY_PROFILES.filter(item => item.region === country.region && item.iso !== country.iso).slice(0, 3);
   return (
@@ -183,7 +190,7 @@ function DetailPage({ country }) {
             <span className="crp-flag crp-flag--large">{country.flag}</span>
             <div><span className="crp-eyebrow">{country.region} · {country.iso} · ACTUALIZADO {formatDate(canonical.provenance.asOf).toUpperCase()}</span><h1>Riesgo país de {country.name}</h1><p>{country.summary}</p></div>
           </div>
-          <div className="crp-hero-score"><ScoreDial score={country.score} /><div><span className="crp-kicker">RIESGO COMPUESTO</span><strong style={{ color: band.color }}>{band.label}</strong><span style={{ color: trend.color }}>{trend.symbol} {trend.label} este mes</span></div></div>
+          <div className="crp-hero-score"><RiskThermometer country={country} /></div>
         </section>
 
         <ObservedCountryFacts iso={country.iso} name={country.name} />
