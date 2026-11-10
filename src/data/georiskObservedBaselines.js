@@ -4,7 +4,7 @@
 export const OBSERVED_REFERENCE_VERSION='macro-baseline-v1';
 export const REFERENCE_SERIES={
  eu:{interest_rates:'ECB_DEPOSIT_RATE',inflation_cpi:'EU_HICP',fx:'EURUSD'},
- usa:{inflation_cpi:'US_CPI'},
+ usa:{inflation_cpi:'US_CPI',sovereign_yield:'DGS10'},
  asia:{fx:'USDCNY'}
 };
 const MONTHLY=new Set(['EU_HICP','US_CPI']);
@@ -16,11 +16,14 @@ export function referenceAgeDays(date,now=new Date()){
 export function selectObservedReference(series,region,variable,now=new Date()){
  const id=REFERENCE_SERIES[region]?.[variable];
  if(!id)return {status:'unavailable',reason:'Sin serie oficial equivalente y comparable conectada.'};
+ return readObservedSeries(series,id,now);
+}
+export function readObservedSeries(series,id,now=new Date()){
  const item=(Array.isArray(series)?series:[]).find(x=>x.id===id);
  if(!item)return {status:'unavailable',id,reason:'El proveedor no ha entregado una observación.'};
  const value=item.latest?.value,date=item.latest?.date,age=referenceAgeDays(date,now);
  const maxAge=MONTHLY.has(id)?75:10;
- if(!Number.isFinite(value)||age===null||age<0||age>maxAge||item.status==='unavailable'&&/desactualizada|stale/i.test(item.reason||''))
+ if(!Number.isFinite(value)||age===null||age<0||age>maxAge||item.status==='unavailable')
   return {status:'unavailable',id,reason:'Observación ausente, futura o desactualizada.'};
  if(!item.provider||!/^https:\/\//.test(item.source_url||''))
   return {status:'unavailable',id,reason:'Proveedor o URL de fuente no verificable.'};
