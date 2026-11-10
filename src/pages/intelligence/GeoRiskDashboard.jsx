@@ -207,7 +207,7 @@ function DataTicker({ items, collectedAt }) {
     <section className="zrc-ticker-shell" aria-label="Indicadores de mercado observados">
       <div className="zrc-ticker-heading" style={{flexWrap:"wrap"}}>
         <span>MERCADOS OBSERVADOS</span>
-        <span>{collectedAt ? `FRED · Captura ${collectedAt.slice(0,10)}` : "Sin captura disponible"}</span>
+        <span>{collectedAt ? `FRED · Descarga ${collectedAt.slice(0,10)}` : "Sin captura disponible"}</span>
       </div>
       <div className="zrc-observed-grid">
         {items.length ? items.map(item => (
@@ -431,7 +431,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
 
   const tickerItems = (marketSnapshot.status === "available" || marketSnapshot.status === "partial" ? marketSnapshot.series : []).filter(item => item.latest && Number.isFinite(item.latest.value)).map(item => ({
     id:item.id,label:item.label,value:item.latest.value.toLocaleString("es-ES",{maximumFractionDigits:2}),
-    unit:item.unit,date:item.latest.date
+    unit:({"USD/barrel":"USD/barril",percent:"%","index points":"puntos"})[item.unit] || item.unit,date:item.latest.date
   }));
 
   return (
@@ -796,39 +796,44 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             <div style={{marginBottom:18}}>
               <DataTicker items={tickerItems} collectedAt={marketSnapshot.collected_at} />
           <div role="note" style={{ margin: "12px 0 0", padding: "12px 16px", border: "1px solid #7C5A1B", borderLeft: "3px solid #F59E0B", borderRadius: 8, background: "#2A2112", color: "#FDE68A", fontSize: 12, lineHeight: 1.6 }}>
-            DATOS OBSERVADOS ARRIBA: últimas publicaciones archivadas, no cotizaciones en tiempo real. ESCENARIOS ABAJO: supuestos ilustrativos independientes; los impactos no se recalibran con estas cotizaciones.
+            Últimas observaciones archivadas. La fecha de cada dato puede ser anterior a la fecha de descarga.
           </div>
             </div>
           )}
 
+          {(tab === "scenarios" || tab === "impact") && <>
           <div role="status" aria-live="polite" style={{border:"1px solid #285744",borderRadius:15,padding:"15px 18px",margin:"12px 0 16px",background:"linear-gradient(120deg,#102C22,#0D1C18)",color:"#EDF6EF"}}>
-    <div style={{fontSize:10,color:"#86EFAC",letterSpacing:1.2,fontWeight:700}}>RESULTADO DEL ESCENARIO</div>
+    <div style={{fontSize:10,color:"#86EFAC",letterSpacing:1.2,fontWeight:700}}>RIESGO SIMULADO</div>
     <div style={{display:"flex",gap:16,justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",marginTop:8}}>
-      <div><span style={{fontSize:27,fontWeight:750,fontVariantNumeric:"tabular-nums"}}>{compositeRisk.toFixed(1)}</span><span style={{fontSize:12,color:"#A6BDAD"}}> / 100 · riesgo simulado</span><div style={{fontSize:12,color:"#D0E2D5",marginTop:5}}>Principal escenario: <strong>{Object.entries(SCENARIOS).sort((a,b)=>(scenarioWeights[b[0]]*b[1].risk)-(scenarioWeights[a[0]]*a[1].risk))[0][1].label}</strong></div></div>
+      <div><span style={{fontSize:27,fontWeight:750,fontVariantNumeric:"tabular-nums"}}>{compositeRisk.toFixed(1)}</span><span style={{fontSize:12,color:"#A6BDAD"}}> / 100</span><div style={{fontSize:12,color:"#D0E2D5",marginTop:5}}>Principal escenario: <strong>{Object.entries(SCENARIOS).sort((a,b)=>(scenarioWeights[b[0]]*b[1].risk)-(scenarioWeights[a[0]]*a[1].risk))[0][1].label}</strong></div></div>
       <div style={{fontSize:12,color:"#D0E2D5"}}>Zona: <strong>{REGIONS[region].label}</strong></div>
     </div>
     <p style={{fontSize:12,color:"#A5C8B3",margin:"10px 0 0"}}>Modelo ilustrativo, no pronóstico. Los resultados no son cotizaciones ni probabilidades calibradas.</p>
   </div>
+      <section aria-label="Datos de partida" style={{margin:"12px 0"}}>
+        <h3 style={{margin:"0 0 4px"}}>¿De qué datos parte el escenario?</h3>
+        <p role="status" style={{margin:"0 0 12px",fontSize:12,color:"#CBD5E1"}}>{observationStatus==="loading"?"Consultando fuentes…":`${observedCount} de ${Object.keys(ECONOMIC_VARIABLES).length} indicadores parten de un dato publicado.`}</p>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,210px),1fr))",gap:8}}>
+          {Object.entries(ECONOMIC_VARIABLES).map(([key,v])=>{
+            const published=v.base_status==="observed";
+            const context=macroContext[key];
+            return <article key={key} style={{background:"#12231E",border:"1px solid #315642",borderRadius:10,padding:12}}>
+              <h4 style={{margin:"0 0 6px",fontSize:13}}>{v.label}</h4>
+              <div style={{fontSize:11,color:published?"#86EFAC":"#F8CD88"}}>{published?"Dato publicado":"Supuesto del escenario"}</div>
+              {published ? <><strong style={{display:"block",fontSize:20,margin:"4px 0"}}>{v.observed.value.toLocaleString("es-ES",{maximumFractionDigits:v.decimals})} {v.unit}</strong><div style={{fontSize:11}}>Dato del {v.observed.date} · <a href={v.observed.source_url} target="_blank" rel="noopener noreferrer" style={{color:"#93C5FD"}}>{v.observed.source}</a></div></> : <p style={{margin:"6px 0 0",fontSize:11,color:"#CBD5E1"}}>{v.reference_warning}</p>}
+              {context?.status==="observed" && <div style={{marginTop:9,paddingTop:8,borderTop:"1px solid #315642",fontSize:11}}><strong>Solo contexto</strong><br/><a href={context.source_url} target="_blank" rel="noopener noreferrer" style={{color:"#93C5FD"}}>{context.label}: {context.value.toLocaleString("es-ES")} {context.unit}</a><br/>{context.date} · {context.source}</div>}
+            </article>;
+          })}
+        </div>
+      </section>
   <details style={{margin:"0 0 14px",border:"1px solid #324A40",borderRadius:12,background:"#101E19",color:"#D8E8DD"}}>
     <summary style={{cursor:"pointer",padding:"12px 16px",fontSize:12,fontWeight:700,listStyle:"inside"}}>ⓘ Metodología y fuentes <span style={{fontSize:11,fontWeight:400,opacity:.7}}>· consulta opcional</span></summary>
     <div style={{padding:"0 16px 16px"}}>
       <div role="note" style={{border:"1px solid #8B6A35",borderRadius:12,padding:"12px 16px",marginBottom:16,fontSize:12,lineHeight:1.6,background:"#251e10",color:"#F3D8A7"}}>
-        <strong>Modelo de escenarios ZRC · {GEORISK_SCENARIO_VERSION}</strong>. Los pesos, riesgos intrínsecos, multiplicadores sectoriales y coeficientes de impacto son <strong>supuestos analíticos, no parámetros calibrados</strong>. Las referencias macro de la simulación son fijas e ilustrativas; los datos observados se muestran por separado con fuente y fecha. El índice público ZRC-GRI es otra metodología y sus puntuaciones no son intercambiables con las del simulador.
+        <strong>Modelo de escenarios ZRC · {GEORISK_SCENARIO_VERSION}</strong>. Los pesos, riesgos intrínsecos, multiplicadores sectoriales y coeficientes de impacto son <strong>supuestos analíticos, no parámetros calibrados</strong>. Los niveles de partida usan datos observados cuando la serie coincide y está vigente. En los demás casos son supuestos ilustrativos. El índice público ZRC-GRI es otra metodología y sus puntuaciones no son intercambiables con las del simulador.
       </div>
-          <div role="status" style={{border:"1px solid #315642",borderRadius:12,padding:"12px 16px",margin:"10px 0",background:"#102218",fontSize:12,color:"#C7E3D0",lineHeight:1.65}}>
-  <strong>Referencias macroeconómicas</strong> · {observationStatus==="loading"?"Consultando fuentes…":`${observedCount} de ${Object.keys(ECONOMIC_VARIABLES).length} variables con dato observado verificable.`}
-  <div>Los restantes niveles base son <strong>supuestos fijos ilustrativos</strong>, no cifras de mercado actualizadas. Las variaciones calculadas son sensibilidades hipotéticas, no pronósticos calibrados.</div>
-  <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(190px,1fr))",gap:8,marginTop:8}}>
-    {Object.entries(ECONOMIC_VARIABLES).map(([key,v])=><div key={key} style={{border:"1px solid #284936",padding:"7px 9px",borderRadius:8}}>
-      <div style={{fontSize:11,fontWeight:600}}>{v.label}</div>
-      <div style={{fontSize:11,color:v.base_status==="observed"?"#86EFAC":"#F8CD88"}}>{v.base_status==="observed"?`${v.observed.value.toLocaleString("es-ES",{maximumFractionDigits:v.decimals})} ${v.unit} · Observado: ${v.observed.date}`:"Supuesto ilustrativo"}</div>
-      {v.base_status==="observed"?<a href={v.observed.source_url} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:"#93C5FD"}}>{v.observed.source} · referencia oficial</a>:<div style={{fontSize:10,opacity:.7}}>{v.reference_warning}</div>}
-      {macroContext[key]?.status==='observed' && <div style={{fontSize:11,marginTop:5}}><a href={macroContext[key].source_url} target="_blank" rel="noopener noreferrer" style={{color:'#93C5FD'}}>{macroContext[key].label}: {macroContext[key].value.toLocaleString('es-ES')} {macroContext[key].unit}</a> · {macroContext[key].date} · {macroContext[key].source}. Solo contexto; no sustituye la referencia del escenario.</div>}
-    </div>)}
-  </div>
-</div>
 <div role="note" style={{padding:"13px 16px",borderRadius:12,marginBottom:14,border:"1px solid #8B6A35",background:"#261F13",color:"#F6D79B",fontSize:12,lineHeight:1.65}}>
-   <strong>Auditoría P0.4 · Sensibilidades ilustrativas</strong> · Las cifras calculadas sobre activos son <strong>puntos heurísticos sin unidad financiera</strong>, no variaciones porcentuales de precio ni rentabilidades esperadas. Los coeficientes no están calibrados y no justifican operaciones automáticas. Modelo: {SENSITIVITY_VERSION}.
+   <strong>Cómo leer los impactos simulados</strong> · Las cifras calculadas sobre activos son <strong>puntos heurísticos sin unidad financiera</strong>, no variaciones porcentuales de precio ni rentabilidades esperadas. Los coeficientes no están calibrados y no justifican operaciones automáticas. Modelo: {SENSITIVITY_VERSION}.
    <details style={{marginTop:7}}><summary style={{cursor:"pointer"}}>Ver contribuciones por activo</summary>
      {ASSETS.map(asset=>{const d=decomposeAssetSensitivity(asset,Object.fromEntries(Object.keys(ECONOMIC_VARIABLES).map(k=>[k,computeImpact(k)])),region);return <div key={asset} style={{padding:"9px 0",borderBottom:"1px solid #5E4826"}}>
        <strong>{asset}</strong> · {d.score===null?"Sin cobertura":d.score.toFixed(2)+" puntos ilustrativos"}
@@ -840,6 +845,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
     </div>
   </details>
 
+          </>}
           {/* SCENARIOS */}
         {tab === "data" && (<>
           <div className="zrc-card" style={{padding:"18px 20px",marginBottom:16,borderLeft:"3px solid #60A5FA",lineHeight:1.7}}>
