@@ -13,16 +13,18 @@ import GeoRiskGprData from "../../components/GeoRiskGprData";
 import GeoRiskMarketData from "../../components/GeoRiskMarketData";
 import GeoRiskMacroData from "../../components/GeoRiskMacroData";
 import GeoRiskGovernanceData from "../../components/GeoRiskGovernanceData";
-import { useState, useEffect, useCallback, useMemo, useId } from "react";
+import { useState, useEffect, useCallback, useMemo, useId, lazy, Suspense } from "react";
 import {
   Radar, Activity, MessageSquare, PieChart, RotateCcw,
-  TrendingUp, TrendingDown, Minus, AlertTriangle, Radio,
+  TrendingUp, TrendingDown, Minus, AlertTriangle, Radio, Globe2,
 } from "lucide-react";
 
 // ═══════════════════════════════════════════════════════
 // GEORISK INTELLIGENCE SYSTEM — Zenith Rise Capital
 // Ruta sugerida: /research/georisk
 // ═══════════════════════════════════════════════════════
+
+const GeoRiskTariffAtlas = lazy(() => import("./GeoRiskTariffAtlas.jsx"));
 
 const REGIONS = {
   eu:   { key: "eu",   label: "Zona Euro" },
@@ -511,7 +513,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
         .zrc-tab:focus-visible { outline: 3px solid #93C5FD; outline-offset: 3px; }
         .zrc-tab:active { transform: scale(0.985); }
         .zrc-tab[aria-selected="true"] { color: #fff !important; }
-        .zrc-tabbar { display: grid !important; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 9px !important; }
+        .zrc-tabbar { display: grid !important; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 9px !important; }
         .zrc-tabbar .zrc-tab { width: 100%; min-width: 0; min-height: 64px; }
         .zrc-tab-label { line-height: 1.3; overflow-wrap: normal; }
         .zrc-tab-icon { flex-shrink: 0; }
@@ -670,6 +672,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
           }}>
             {[
               { id: "data", label: "Mercados", icon: TrendingUp, subtitle: "Datos observados" },
+              { id: "tariffs", label: "Mapa arancelario", icon: Globe2, subtitle: "Comparar orígenes" },
               { id: "scenarios", label: "Escenarios", icon: Radar, subtitle: "Simulaciones" },
               { id: "impact", label: "Análisis de impacto", icon: Activity, subtitle: "Sensibilidades" },
               { id: "investment", label: "Decisión de inversión", icon: PieChart, subtitle: "Valoración" },
@@ -693,6 +696,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             })}
           </nav>
 
+          {tab === "tariffs" ? <Suspense fallback={<p role="status">Cargando mapa arancelario…</p>}><GeoRiskTariffAtlas /></Suspense> : <>
           <section className="zrc-view-intro" aria-label="Contexto de la vista activa" aria-live="polite" style={{background:"#10253B",border:"1px solid #3D6287",borderRadius:14,padding:"15px 18px",margin:"0 0 16px"}}>
             <div style={{fontSize:11,fontWeight:750,letterSpacing:1.1,color:"#93C5FD"}}>{tab === "scenarios" ? "ESCENARIOS · QUÉ PODRÍA PASAR" : tab === "impact" ? "ANÁLISIS DE IMPACTO · CÓMO AFECTARÍA" : tab === "investment" ? "DECISIÓN DE INVERSIÓN · TU OPERACIÓN" : "MERCADOS · DATOS OBSERVADOS"}</div>
             <h2 style={{margin:"7px 0",color:"#F1F5F9"}}>{tab === "scenarios" ? "Explora hipótesis y cambia sus pesos" : tab === "impact" ? "Examina las variables y activos sensibles" : tab === "investment" ? "Estima el efecto sobre tu inversión" : "Series de mercado y fechas"}</h2>
@@ -789,6 +793,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             <label style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid #537CA6",background:"#142C47",color:"#E2E8F0",borderRadius:8,padding:"10px 13px",fontSize:12,cursor:"pointer"}}>Importar expediente JSON <input aria-label="Importar expediente JSON" type="file" accept=".json,application/json" onChange={importWorkspace} style={{width:"155px",maxWidth:"100%",fontSize:11}}/></label>
             <span role="status" style={{fontSize:11,color:"#CBD5E1"}}>{workspaceMessage || "Los supuestos financieros se mantienen en memoria entre pestañas; no se guardan automáticamente."}</span>
           </div></details>
+          </>}
           {tab === "impact" && (
             <nav aria-label="Herramientas de análisis de impacto" style={{display:"flex",flexWrap:"wrap",gap:8,margin:"-8px 0 18px"}}>
               {[
