@@ -1,5 +1,5 @@
 import {useEffect,useState} from "react";
-import {MapContainer,TileLayer,GeoJSON} from "react-leaflet";
+import {MapContainer,TileLayer,GeoJSON,CircleMarker,Tooltip} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const products={
@@ -38,6 +38,7 @@ export default function GeoRiskTariffAtlas(){
    <MapContainer center={[25,10]} zoom={2} minZoom={1} scrollWheelZoom={false} style={{height:"clamp(260px,42vw,410px)",background:"#EAF1F9"}}>
     <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
     {boundaries&&<GeoJSON data={boundaries} style={feature=>{const id=feature.properties.id;return {color:selected.includes(id)?"#16385C":"#60748C",weight:selected.includes(id)?2.5:0.8,fillColor:shade(rate(id)),fillOpacity:rate(id)==null?.37:.8}}} onEachFeature={(feature,layer)=>{const id=feature.properties.id;if(origins[id]){layer.bindTooltip(origins[id]);layer.on("click",()=>toggle(id));}}}/>}
+    {[[ "tn",[34,9.5]],["ma",[31.8,-6.3]]].map(([id,center])=><CircleMarker key={id} center={center} radius={selected.includes(id)?9:6} pathOptions={{color:"#16385C",fillColor:shade(rate(id)),fillOpacity:1}} eventHandlers={{click:()=>toggle(id)}}><Tooltip>{origins[id]}</Tooltip></CircleMarker>)}
    </MapContainer>
   </div>
   {failed&&<p role="status" style={{fontSize:13}}>No se cargaron los contornos. Puedes comparar con los selectores de abajo.</p>}
