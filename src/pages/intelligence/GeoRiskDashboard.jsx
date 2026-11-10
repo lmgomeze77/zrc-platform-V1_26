@@ -441,6 +441,16 @@ export default function GeoRiskDashboard({ countryContext = null }) {
       position: "relative", overflow: "hidden"
     }}>
       <style>{`
+        .zrc-georisk { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+        .zrc-view-intro h2 { font-size:18px; line-height:1.3; }
+        .zrc-view-intro > p, .zrc-market-guide p { font-size:14px; line-height:1.5; }
+        .zrc-market-guide > strong { display:block; font-size:16px; line-height:1.35; }
+        .zrc-workspace-details > summary { font-size:13px; line-height:1.4; padding:10px 0; }
+        @media(max-width:560px) {
+          .zrc-view-intro h2 { font-size:16px; }
+          .zrc-view-intro > p, .zrc-market-guide p { font-size:13px; }
+          .zrc-market-guide > strong { font-size:15px; }
+        }
         @keyframes zrc-pulse { 0%,100% { opacity:1 } 50% { opacity:0.4 } }
         @keyframes zrc-fadeIn { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:translateY(0) } }
         @keyframes zrc-ticker-scroll { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
@@ -683,10 +693,10 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             })}
           </nav>
 
-          <section aria-label="Contexto de la vista activa" aria-live="polite" style={{background:"#10253B",border:"1px solid #3D6287",borderRadius:14,padding:"15px 18px",margin:"0 0 16px"}}>
+          <section className="zrc-view-intro" aria-label="Contexto de la vista activa" aria-live="polite" style={{background:"#10253B",border:"1px solid #3D6287",borderRadius:14,padding:"15px 18px",margin:"0 0 16px"}}>
             <div style={{fontSize:11,fontWeight:750,letterSpacing:1.1,color:"#93C5FD"}}>{tab === "scenarios" ? "ESCENARIOS · QUÉ PODRÍA PASAR" : tab === "impact" ? "ANÁLISIS DE IMPACTO · CÓMO AFECTARÍA" : tab === "investment" ? "DECISIÓN DE INVERSIÓN · TU OPERACIÓN" : "MERCADOS · DATOS OBSERVADOS"}</div>
-            <h2 style={{fontSize:20,margin:"7px 0",color:"#F1F5F9"}}>{tab === "scenarios" ? "Explora hipótesis y cambia sus pesos" : tab === "impact" ? "Examina las variables y activos sensibles" : tab === "investment" ? "Estima el efecto sobre tu inversión" : "Consulta las series y su fecha de publicación"}</h2>
-            <p style={{fontSize:12,color:"#CBD5E1",margin:"0 0 14px"}}>{tab === "scenarios" ? "El score resume supuestos del modelo; no es una probabilidad validada." : tab === "impact" ? "Los impactos son sensibilidades simuladas para la región y el sector elegidos." : tab === "investment" ? "Introduce tus supuestos financieros para comparar resultados de la operación." : "Las observaciones llevan fuente y fecha; se muestran separadas de la simulación."}</p>
+            <h2 style={{margin:"7px 0",color:"#F1F5F9"}}>{tab === "scenarios" ? "Explora hipótesis y cambia sus pesos" : tab === "impact" ? "Examina las variables y activos sensibles" : tab === "investment" ? "Estima el efecto sobre tu inversión" : "Series de mercado y fechas"}</h2>
+            <p style={{color:"#CBD5E1",margin:"0 0 8px"}}>{tab === "scenarios" ? "El score resume supuestos del modelo; no es una probabilidad validada." : tab === "impact" ? "Los impactos son sensibilidades simuladas para la región y el sector elegidos." : tab === "investment" ? "Introduce tus supuestos financieros para comparar resultados de la operación." : "Las observaciones llevan fuente y fecha; se muestran separadas de la simulación."}</p>
             {(tab === "scenarios" || tab === "impact" || tab === "investment") && <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,210px),1fr))",gap:10}}>
               <label style={{fontSize:12,color:"#D8E9FF"}}>Operación o proyecto
                 <input aria-label="Operación o proyecto" maxLength={90} value={dealName} onChange={e=>setDealName(e.target.value)} placeholder="Ej. Planta solar" style={{display:"block",width:"100%",boxSizing:"border-box",marginTop:6,background:"#081426",border:"1px solid #50749A",borderRadius:8,color:"#F1F5F9",padding:"10px 12px",fontSize:14}}/>
@@ -774,7 +784,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             </section>
           )}
 
-          <details style={{margin:"10px 0 18px",color:"#CBD5E1",fontSize:12}}><summary style={{cursor:"pointer"}}>Importar o exportar expediente JSON</summary><div aria-label="Portabilidad del expediente" style={{display:"flex",flexWrap:"wrap",gap:9,alignItems:"center",margin:"0 0 16px"}}>
+          <details className="zrc-workspace-details" style={{margin:"6px 0 12px",color:"#CBD5E1",fontSize:12}}><summary style={{cursor:"pointer"}}>Importar o exportar expediente</summary><div aria-label="Portabilidad del expediente" style={{display:"flex",flexWrap:"wrap",gap:9,alignItems:"center",margin:"0 0 16px"}}>
             <button type="button" onClick={exportWorkspace} style={{border:"1px solid #537CA6",background:"#20466D",color:"#F8FAFC",borderRadius:8,padding:"10px 13px",fontSize:12,cursor:"pointer"}}>Exportar expediente JSON</button>
             <label style={{display:"inline-flex",alignItems:"center",gap:8,border:"1px solid #537CA6",background:"#142C47",color:"#E2E8F0",borderRadius:8,padding:"10px 13px",fontSize:12,cursor:"pointer"}}>Importar expediente JSON <input aria-label="Importar expediente JSON" type="file" accept=".json,application/json" onChange={importWorkspace} style={{width:"155px",maxWidth:"100%",fontSize:11}}/></label>
             <span role="status" style={{fontSize:11,color:"#CBD5E1"}}>{workspaceMessage || "Los supuestos financieros se mantienen en memoria entre pestañas; no se guardan automáticamente."}</span>
@@ -848,7 +858,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
           </>}
           {/* SCENARIOS */}
         {tab === "data" && (<>
-          <div className="zrc-card" style={{padding:"18px 20px",marginBottom:16,borderLeft:"3px solid #60A5FA",lineHeight:1.7}}>
+          <div className="zrc-card zrc-market-guide" style={{padding:"14px 16px",marginBottom:16,borderLeft:"3px solid #60A5FA"}}>
             <strong style={{color:"#BFDBFE"}}>Cómo se conectan las piezas de GeoRisk</strong>
             <p style={{margin:"8px 0",color:"#CBD5E1"}}><b>1. Evidencia observada:</b> precios de mercado, datos macro y el índice GPR de Caldara–Iacoviello basado en prensa. Cada fuente tiene su propia fecha y metodología.</p>
             <p style={{margin:"8px 0",color:"#CBD5E1"}}><b>2. Exposición:</b> las <a href="/inteligencia/paises" style={{color:"#93C5FD"}}>fichas de país</a> describen factores estructurales y vulnerabilidades. No son una descomposición automática del GPR.</p>
