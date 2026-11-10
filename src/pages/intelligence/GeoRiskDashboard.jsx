@@ -323,7 +323,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
     }catch(err){setWorkspaceMessage("No se ha importado: "+err.message);}
   };
 
-  const {variables:ECONOMIC_VARIABLES,observedCount, status:observationStatus}=useGeoRiskObservedBaselines(region,ECONOMIC_VARIABLES_BY_REGION[region]);
+  const {variables:ECONOMIC_VARIABLES,observedCount, context:macroContext, status:observationStatus}=useGeoRiskObservedBaselines(region,ECONOMIC_VARIABLES_BY_REGION[region]);
   const fxExporterSign = region === "asia" ? 1 : -1;
 
   const isCustomized = useMemo(() =>
@@ -816,13 +816,14 @@ export default function GeoRiskDashboard({ countryContext = null }) {
         <strong>Modelo de escenarios ZRC · {GEORISK_SCENARIO_VERSION}</strong>. Los pesos, riesgos intrínsecos, multiplicadores sectoriales y coeficientes de impacto son <strong>supuestos analíticos, no parámetros calibrados</strong>. Las referencias macro de la simulación son fijas e ilustrativas; los datos observados se muestran por separado con fuente y fecha. El índice público ZRC-GRI es otra metodología y sus puntuaciones no son intercambiables con las del simulador.
       </div>
           <div role="status" style={{border:"1px solid #315642",borderRadius:12,padding:"12px 16px",margin:"10px 0",background:"#102218",fontSize:12,color:"#C7E3D0",lineHeight:1.65}}>
-  <strong>Referencias macroeconómicas · P0.3</strong> · {observationStatus==="loading"?"Consultando fuentes…":`${observedCount} de ${Object.keys(ECONOMIC_VARIABLES).length} variables con dato observado verificable.`}
+  <strong>Referencias macroeconómicas</strong> · {observationStatus==="loading"?"Consultando fuentes…":`${observedCount} de ${Object.keys(ECONOMIC_VARIABLES).length} variables con dato observado verificable.`}
   <div>Los restantes niveles base son <strong>supuestos fijos ilustrativos</strong>, no cifras de mercado actualizadas. Las variaciones calculadas son sensibilidades hipotéticas, no pronósticos calibrados.</div>
   <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(190px,1fr))",gap:8,marginTop:8}}>
     {Object.entries(ECONOMIC_VARIABLES).map(([key,v])=><div key={key} style={{border:"1px solid #284936",padding:"7px 9px",borderRadius:8}}>
       <div style={{fontSize:11,fontWeight:600}}>{v.label}</div>
-      <div style={{fontSize:11,color:v.base_status==="observed"?"#86EFAC":"#F8CD88"}}>{v.base_status==="observed"?`Observado · ${v.observed.date}`:"Supuesto ilustrativo"}</div>
+      <div style={{fontSize:11,color:v.base_status==="observed"?"#86EFAC":"#F8CD88"}}>{v.base_status==="observed"?`${v.observed.value.toLocaleString("es-ES",{maximumFractionDigits:v.decimals})} ${v.unit} · Observado: ${v.observed.date}`:"Supuesto ilustrativo"}</div>
       {v.base_status==="observed"?<a href={v.observed.source_url} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:"#93C5FD"}}>{v.observed.source} · referencia oficial</a>:<div style={{fontSize:10,opacity:.7}}>{v.reference_warning}</div>}
+      {macroContext[key]?.status==='observed' && <div style={{fontSize:11,marginTop:5}}><a href={macroContext[key].source_url} target="_blank" rel="noopener noreferrer" style={{color:'#93C5FD'}}>{macroContext[key].label}: {macroContext[key].value.toLocaleString('es-ES')} {macroContext[key].unit}</a> · {macroContext[key].date} · {macroContext[key].source}. Solo contexto; no sustituye la referencia del escenario.</div>}
     </div>)}
   </div>
 </div>
