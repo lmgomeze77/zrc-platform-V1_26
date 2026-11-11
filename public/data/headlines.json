@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T13:41:21.828Z",
+  "generated_at": "2026-11-11T13:29:22.567Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -95,130 +95,73 @@
   "headlines": [
     {
       "id": 1,
-      "tag": "CRITICAL",
-      "region": "GLOBAL",
+      "tag": "ALERT",
+      "region": "EU",
       "title": {
-        "es": "Las bolsas globales se desploman por temores a una desaceleración de la IA en EE.UU. que se extienden a Asia y Europa",
-        "en": "Global stocks plunge as fears over US AI slowdown spread to Asia and Europe"
+        "es": "¿Cuál es el nuevo plan de drones y buques de guerra del norte de Europa para contrarrestar a Rusia?",
+        "en": "What is northern Europe's new drone and warship plan to counter Russia?"
       },
       "summary": {
-        "es": "Los mercados globales registran fuertes caídas tras la victoria demócrata en las elecciones de mitad de mandato en EE.UU., que genera expectativas de mayor regulación del sector tecnológico y de la IA. Los inversores temen una ralentización en la construcción de centros de datos y un endurecimiento del escrutinio regulatorio sobre las grandes tecnológicas. El impacto se extiende a Asia y Europa, con implicaciones directas para carteras de renta variable con exposición tecnológica.",
-        "en": "Global equity markets are experiencing sharp declines following the Democratic Party's midterm victory in the US, raising expectations of tighter AI and tech sector regulation. Investors fear a slowdown in data center construction and intensified regulatory scrutiny on major tech firms. The selloff has spread to Asian and European markets, with direct implications for tech-heavy equity portfolios."
+        "es": "Una coalición de 10 naciones del norte de Europa liderada por el Reino Unido ha anunciado un marco conjunto de defensa en respuesta a las crecientes amenazas rusas. El acuerdo implica coordinación en capacidades de drones y armamento naval, señalando una profundización de la integración de defensa europea al margen de la OTAN. Para los inversores, esto acelera el gasto en defensa en la región y refuerza a los contratistas europeos de armamento.",
+        "en": "A UK-led coalition of 10 Northern European nations has announced a joint defence framework in response to escalating Russian threats. The agreement involves coordination on drone and naval warship capabilities, signaling deepening European defence integration outside NATO structures. For investors, this accelerates regional defence spending and strengthens European defence contractors."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "US Tech equities (Nasdaq)",
-          "direction": "down",
+          "asset": "European defence equities (Rheinmetall, BAE Systems, Saab)",
+          "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Mayor regulación esperada frena el optimismo en IA",
-            "en": "Expected tighter regulation dampens AI sector optimism"
+            "es": "Mayor gasto en defensa impulsa ingresos de contratistas",
+            "en": "Increased defence spending boosts contractor revenues"
           }
         },
         {
-          "asset": "European equities",
+          "asset": "EUR/GBP",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Señal positiva de cohesión europea pero complejidad bilateral UK-EU",
+            "en": "Positive European cohesion signal but UK-EU bilateral complexity"
+          }
+        },
+        {
+          "asset": "European sovereign bonds (Nordic)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Contagio de caídas tecnológicas desde EE.UU.",
-            "en": "Contagion from US tech selloff hits European markets"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Búsqueda de refugio ante volatilidad de renta variable",
-            "en": "Safe-haven demand rises amid equity volatility"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Presión diferenciada según exposición tecnológica de cada economía",
-            "en": "Pressure varies by economy's tech export exposure"
+            "es": "Mayor gasto fiscal en defensa presiona rendimientos nórdicos",
+            "en": "Higher fiscal defence outlays pressure Nordic yields"
           }
         }
       ],
-      "confidence": 90,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cmn04705rd8jo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-06",
-      "time": "<1h"
+      "confidence": 82,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/11/11/whats-northern-europes-new-drones-and-warships-plan-to-counter-russia?traffic_source=rss",
+      "published_at": "2026-11-11",
+      "time": "1h"
     },
     {
       "id": 2,
-      "tag": "CRITICAL",
-      "region": "US",
-      "title": {
-        "es": "Las grandes tecnológicas pierden 1 billón de dólares en un día tras la victoria demócrata en las elecciones de mitad de mandato",
-        "en": "Tech giants lose $1 trillion in one day after Democrats victory in midterms"
-      },
-      "summary": {
-        "es": "La victoria demócrata en las elecciones de mitad de mandato de EE.UU. desencadenó una liquidación masiva en el sector tecnológico, borrando un billón de dólares en capitalización bursátil en un solo día. Los inversores anticipan mayor regulación de la IA y restricciones a la construcción de centros de datos, impactando a empresas de EE.UU., Europa y Asia. El evento marca un punto de inflexión político con implicaciones estructurales para la economía digital global.",
-        "en": "The Democratic midterm victory triggered a massive selloff in the technology sector, wiping $1 trillion in market capitalization in a single day. Investors are pricing in tighter AI regulation and constraints on data center expansion, affecting firms across the US, Europe and Asia. The event marks a political inflection point with structural implications for the global digital economy."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "US Tech equities (Nasdaq)",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Pérdida directa de capitalización ante riesgo regulatorio",
-            "en": "Direct market cap loss on AI regulation risk"
-          }
-        },
-        {
-          "asset": "Semiconductor equities",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Menor demanda de chips si frena la expansión de IA",
-            "en": "Chip demand threatened by AI slowdown fears"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Flujo refugio moderado desde renta variable",
-            "en": "Moderate safe-haven flow from equity selloff"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261106-tech-giants-lose-1-trillion-in-one-day-after-democrats-victory-in-midterms",
-      "published_at": "2026-11-06",
-      "time": "<1h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
+      "tag": "ALERT",
       "region": "MENA",
       "title": {
-        "es": "Un acuerdo de lanzadores de cohetes ilustra la profundización de las relaciones Rusia-Irán",
-        "en": "Rocket launcher deal illustrates deepening Russia-Iran relations"
+        "es": "Siria estudia enviar tropas para ayudar a Arabia Saudita en la guerra contra los hutíes",
+        "en": "Syria Weighs Sending Troops to Aid Saudi War With Houthis"
       },
       "summary": {
-        "es": "Un nuevo acuerdo de transferencia de armamento entre Rusia e Irán, reportado en el contexto de visitas diplomáticas de alto nivel, señala una consolidación creciente del eje Moscú-Teherán con implicaciones para los conflictos en Ucrania y Medio Oriente. El desarrollo de un tratado de cooperación entre ambas potencias incrementa el riesgo de expansión de capacidades militares iraníes y complica las dinámicas de sanciones occidentales. Para los inversores, esto eleva la prima de riesgo en activos de energía y seguridad regional.",
-        "en": "A new arms transfer agreement between Russia and Iran, reported alongside high-level diplomatic meetings, signals a consolidating Moscow-Tehran axis with implications for the Ukraine and Middle East conflicts. The development of a cooperation treaty between the two powers raises the risk of expanding Iranian military capabilities and complicates Western sanctions dynamics. For investors, this increases risk premiums on energy and regional security assets."
+        "es": "Equipos de reconocimiento sirios han visitado Arabia Saudita y Yemen ante un posible despliegue militar, aunque no se ha tomado una decisión final. Si se confirma, representaría una reconfiguración significativa de las alianzas regionales en el contexto del conflicto del Mar Rojo y la confrontación Israel-Irán. El riesgo de escalada en el Mar Rojo amenaza directamente las rutas de suministro de energía y el comercio global.",
+        "en": "Syrian reconnaissance teams have visited Saudi Arabia and Yemen ahead of a potential military deployment, though no final decision has been made. If confirmed, this would represent a significant realignment of regional alliances in the context of the Red Sea conflict and the broader Iran-Israel confrontation. Escalation risk in the Red Sea directly threatens energy supply routes and global trade flows."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Mayor tensión en Medio Oriente presiona precios del crudo",
-            "en": "Heightened Middle East tension pressures crude prices"
+            "es": "Escalada en Yemen amplifica riesgo sobre rutas energéticas del Mar Rojo",
+            "en": "Yemen escalation amplifies energy route risk in Red Sea"
           }
         },
         {
@@ -226,95 +169,104 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada geopolítica impulsa activos refugio",
-            "en": "Geopolitical escalation boosts safe-haven demand"
+            "es": "Mayor incertidumbre geopolítica regional eleva demanda de refugio",
+            "en": "Rising regional geopolitical uncertainty boosts safe-haven demand"
           }
         },
         {
-          "asset": "Defense equities",
+          "asset": "Shipping/freight derivatives (Baltic Exchange)",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor gasto en defensa esperado por aliados occidentales",
-            "en": "Western allies expected to increase defense spending"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/11/6/rocket-launcher-deal-illustrates-deepening-russia-iran-relations?traffic_source=rss",
-      "published_at": "2026-11-06",
-      "time": "2h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Las protestas en Francia disparan su número al sumarse los sindicatos a las huelgas por el alto coste de vida",
-        "en": "French protests see numbers surge as unions join strikes over high cost of living"
-      },
-      "summary": {
-        "es": "Más de 600.000 personas salieron a las calles en Francia según el gobierno, con los principales sindicatos sumándose a las huelgas por el elevado coste de vida. La intensificación de la presión social sobre el ejecutivo francés aumenta el riesgo político doméstico en la segunda economía de la eurozona, con potencial impacto en la prima de riesgo de bonos franceses y en la estabilidad del gobierno. Este desarrollo, en paralelo a la crisis presupuestaria belga, indica un patrón de fragilidad fiscal y política en el núcleo de la Unión Europea.",
-        "en": "More than 600,000 people took to French streets according to the government, with major unions joining strikes over the high cost of living. The intensification of social pressure on the French executive raises domestic political risk in the eurozone's second-largest economy, with potential impact on French bond risk premiums and government stability. This development, alongside Belgium's budget crisis, signals a pattern of fiscal and political fragility at the EU's core."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "French OAT (10Y bond)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor riesgo político eleva prima de riesgo soberano francés",
-            "en": "Rising political risk lifts French sovereign risk premium"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad política en Francia pesa sobre el euro",
-            "en": "French political instability weighs on euro"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Presión sindical y huelgas limitan actividad económica",
-            "en": "Union pressure and strikes constrain economic activity"
+            "es": "Riesgo de disrupciones en rutas del Mar Rojo eleva fletes",
+            "en": "Red Sea route disruption risk pushes freight rates higher"
           }
         }
       ],
       "confidence": 80,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/ckx2qzv835pgo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-05",
-      "time": "19h"
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/10/world/middleeast/syria-weighs-sending-troops-to-aid-saudi-war-with-houthis.html",
+      "published_at": "2026-11-10",
+      "time": "20h"
     },
     {
-      "id": 5,
-      "tag": "ALERT",
-      "region": "EU",
+      "id": 3,
+      "tag": "CRITICAL",
+      "region": "US",
       "title": {
-        "es": "Bélgica: el rey rechaza la dimisión del primer ministro De Wever en medio de un bloqueo presupuestario en el Parlamento",
-        "en": "Belgium: King refuses PM De Wever's resignation amid parliamentary budget deadlock"
+        "es": "Nvidia contrata un importante bufete de abogados de EE.UU. para investigar el presunto espionaje chino",
+        "en": "Nvidia hires major US law firm to investigate alleged Chinese spy affair"
       },
       "summary": {
-        "es": "El rey belga rechazó la dimisión del primer ministro Bart De Wever, presentada tras un bloqueo parlamentario en torno a un ajuste fiscal de 10.000 millones de euros para 2029 al que se opone un socio de coalición. La crisis política en Bélgica, sede de las instituciones de la UE y la OTAN, añade incertidumbre a la ya frágil cohesión europea en un momento de múltiples presiones geopolíticas. La incapacidad de acordar consolidación fiscal podría impactar en la calificación soberana belga y en los diferenciales de bonos europeos periféricos.",
-        "en": "Belgium's king refused Prime Minister Bart De Wever's resignation, submitted after a parliamentary deadlock over a €10 billion fiscal adjustment plan for 2029 opposed by a coalition partner. The political crisis in Belgium, home to key EU and NATO institutions, adds uncertainty to already fragile European cohesion amid multiple geopolitical pressures. The failure to agree on fiscal consolidation could affect Belgium's sovereign rating and European peripheral bond spreads."
+        "es": "Nvidia ha contratado un bufete de abogados estadounidense de primer nivel tras revelarse que Jensen Huang habría tenido una relación con una mujer presuntamente vinculada a los servicios de inteligencia chinos. El caso plantea graves riesgos de gobernanza corporativa, exposición regulatoria y tensiones en el ámbito de la soberanía tecnológica entre EE.UU. y China. Los inversores deben vigilar posibles restricciones adicionales a las exportaciones de chips y un escrutinio regulatorio reforzado sobre Nvidia.",
+        "en": "Nvidia has retained a major US law firm after it emerged that CEO Jensen Huang had an affair with a woman believed to be a Chinese intelligence asset. The case raises serious corporate governance risks, regulatory exposure, and technology sovereignty tensions between the US and China. Investors should monitor potential tightening of chip export controls and heightened regulatory scrutiny on Nvidia."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Nvidia (NVDA)",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo de gobernanza y escrutinio regulatorio presionan la acción",
+            "en": "Governance risk and regulatory scrutiny weigh on the stock"
+          }
+        },
+        {
+          "asset": "Philadelphia Semiconductor Index (SOX)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Contagio de sentimiento negativo al sector de semiconductores",
+            "en": "Negative sentiment contagion across the semiconductor sector"
+          }
+        },
+        {
+          "asset": "US-China tech ADRs",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Aumenta desconfianza en vínculos tecnológicos entre EE.UU. y China",
+            "en": "Heightened distrust in US-China tech linkages"
+          }
+        }
+      ],
+      "confidence": 85,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/ck1wvwwl3x0go?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-11-10",
+      "time": "14h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "España: La crisis de la vivienda provoca una huelga general",
+        "en": "Spain: Housing crisis prompts general strike"
+      },
+      "summary": {
+        "es": "Trabajadores de casi todos los sectores han secundado una huelga general en España mientras los alquileres se disparan y la crisis habitacional se agrava, convirtiéndose en el principal debate político antes de las elecciones del 29 de noviembre. La inestabilidad social preelectoral en la cuarta economía de la eurozona eleva la incertidumbre sobre la gobernanza fiscal y la cohesión política. Los mercados de deuda española y los activos domésticos son los más expuestos.",
+        "en": "Workers across nearly all industries have joined a general strike in Spain as rents soar and the housing crunch worsens, making it the central political issue ahead of November 29 elections. Pre-election social instability in the eurozone's fourth-largest economy raises uncertainty over fiscal governance and political cohesion. Spanish debt markets and domestic assets are most exposed."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Belgian OLO (sovereign bonds)",
+          "asset": "Spanish IBEX 35",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Bloqueo fiscal eleva riesgo de rebaja de calificación soberana",
-            "en": "Fiscal deadlock raises sovereign downgrade risk"
+            "es": "Riesgo político preelectoral pesa sobre renta variable española",
+            "en": "Pre-election political risk weighs on Spanish equities"
+          }
+        },
+        {
+          "asset": "Spanish sovereign bonds (Bonos)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre fiscal y política eleva spread sobre Bund",
+            "en": "Fiscal and political uncertainty widens spread over Bund"
           }
         },
         {
@@ -322,64 +274,94 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Crisis política en el corazón de la UE debilita al euro",
-            "en": "Political crisis at EU core weighs on the euro"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre institucional europea frena el apetito de riesgo",
-            "en": "EU institutional uncertainty dampens risk appetite"
+            "es": "Presión periférica eurozona debilita marginalmente al euro",
+            "en": "Eurozone peripheral stress marginally weakens the euro"
           }
         }
       ],
-      "confidence": 76,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/11/06/belgique-le-roi-refuse-la-demission-du-premier-ministre-bart-de-wever-presentee-sur-fond-de-blocage-budgetaire-au-parlement_6807784_3210.html",
-      "published_at": "2026-11-06",
+      "confidence": 73,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/spain-housing-crisis-prompts-general-strike/a-79915208?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-11",
+      "time": "4h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Organismo africano de derechos alerta sobre el trato a los árabes Mahamid de Níger",
+        "en": "African rights body raises alarm over treatment of Niger's Mahamid Arabs"
+      },
+      "summary": {
+        "es": "La Comisión Africana de Derechos Humanos ha hecho un llamado al presidente de Níger ante los presuntos abusos contra la minoría árabe Mahamid. En el contexto de la junta militar de Níger y su creciente alineación con Rusia y China, esta alerta añade presión sobre la gobernanza del Sahel y la estabilidad de una región clave para los corredores de minerales críticos. La marginalización de comunidades fronterizas puede alimentar dinámicas de reclutamiento por parte de grupos armados.",
+        "en": "The African Commission on Human and Peoples' Rights has appealed to Niger's president over alleged abuses against the Mahamid Arab minority. In the context of Niger's military junta and its deepening alignment with Russia and China, this alert adds pressure on Sahel governance and stability in a region critical for minerals corridors. Marginalization of border communities may fuel recruitment dynamics for armed groups."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Critical minerals equities (uranium, Sahel exposure)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Inestabilidad en Níger amenaza producción de uranio y acceso minero",
+            "en": "Niger instability threatens uranium output and mining access"
+          }
+        },
+        {
+          "asset": "French nuclear utility equities (EDF)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Francia depende del uranio nigerino; riesgo de suministro aumenta",
+            "en": "France relies on Niger uranium; supply risk increases"
+          }
+        }
+      ],
+      "confidence": 65,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/11/11/african-rights-body-raises-alarm-over-treatment-of-nigers-mahamid-arabs?traffic_source=rss",
+      "published_at": "2026-11-11",
       "time": "1h"
     },
     {
       "id": 6,
       "tag": "WATCH",
-      "region": "EU",
+      "region": "LATAM",
       "title": {
-        "es": "En Italia, un 'impuesto de salida' para las grandes fortunas",
-        "en": "In Italy, an 'exit tax' for high-net-worth individuals"
+        "es": "El primer ministro de Haití elogia a El Salvador tras un ataque conjunto contra el presunto hogar de un líder de pandillas",
+        "en": "Haitian PM praises El Salvador after joint strike on alleged home of gang leader"
       },
       "summary": {
-        "es": "El gobierno Meloni ha incluido en el proyecto de presupuesto para 2027 una 'exit tax' dirigida a grandes fortunas que decidan trasladar su residencia fiscal fuera de Italia, revirtiendo parcialmente la política de atracción de ultrarricos vigente desde 2017. La medida señala un cambio de dirección en la política fiscal italiana con implicaciones para los flujos de capital y la competitividad fiscal del país. Inversores con exposición a activos italianos o que estructuran patrimonio en Italia deberán monitorear la evolución legislativa de esta propuesta.",
-        "en": "Italy's Meloni government has included an 'exit tax' on high-net-worth individuals who decide to relocate their tax residence abroad in its 2027 budget bill, partially reversing the ultra-wealthy attraction policy in place since 2017. The measure signals a shift in Italian fiscal policy with implications for capital flows and the country's fiscal competitiveness. Investors with Italian asset exposure or wealth structured in Italy should monitor the legislative progress of this proposal."
+        "es": "El Salvador ha desplegado miles de soldados en Haití y ha participado en una operación conjunta contra la pandilla 400 Mawozo, con elogios del primer ministro haitiano. Este despliegue regional marca un precedente significativo en la securitización de América Latina y el enfoque del modelo Bukele de exportar seguridad. Los inversores con exposición a Haití y el Caribe deben monitorear la sostenibilidad política y operativa de esta intervención.",
+        "en": "El Salvador has deployed thousands of troops to Haiti and participated in a joint strike against the 400 Mawozo gang, drawing praise from the Haitian prime minister. This regional deployment sets a significant precedent for Latin American security cooperation and the exportation of the Bukele security model. Investors with Caribbean and Haitian exposure should monitor the political and operational sustainability of this intervention."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Italian BTP (10Y bond)",
-          "direction": "mixed",
+          "asset": "Salvadoran sovereign bonds",
+          "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Mayor recaudación potencial pero riesgo de fuga de capitales",
-            "en": "Potential revenue gain offset by capital flight risk"
+            "es": "Proyección de poder refuerza imagen de Bukele ante mercados",
+            "en": "Power projection reinforces Bukele's market credibility"
           }
         },
         {
-          "asset": "Italian luxury/real estate equities",
-          "direction": "down",
+          "asset": "Caribbean EM risk assets",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Salida de grandes fortunas reduce demanda de activos premium",
-            "en": "Wealth relocation may reduce premium asset demand"
+            "es": "Estabilización parcial en Haití, pero riesgo de escalada persiste",
+            "en": "Partial stabilization in Haiti but escalation risk persists"
           }
         }
       ],
-      "confidence": 72,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/economie/article/2026/11/06/en-italie-une-taxe-de-sortie-pour-les-grandes-fortunes_6807773_3234.html",
-      "published_at": "2026-11-06",
-      "time": "2h"
+      "confidence": 63,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cmvg2xdwnwezo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-11-11",
+      "time": "1h"
     }
   ],
   "market_updated_at": "2026-11-11T13:01:23.909Z"
