@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T13:29:22.567Z",
+  "generated_at": "2026-11-12T14:32:53.929Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -95,63 +95,15 @@
   "headlines": [
     {
       "id": 1,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "¿Cuál es el nuevo plan de drones y buques de guerra del norte de Europa para contrarrestar a Rusia?",
-        "en": "What is northern Europe's new drone and warship plan to counter Russia?"
-      },
-      "summary": {
-        "es": "Una coalición de 10 naciones del norte de Europa liderada por el Reino Unido ha anunciado un marco conjunto de defensa en respuesta a las crecientes amenazas rusas. El acuerdo implica coordinación en capacidades de drones y armamento naval, señalando una profundización de la integración de defensa europea al margen de la OTAN. Para los inversores, esto acelera el gasto en defensa en la región y refuerza a los contratistas europeos de armamento.",
-        "en": "A UK-led coalition of 10 Northern European nations has announced a joint defence framework in response to escalating Russian threats. The agreement involves coordination on drone and naval warship capabilities, signaling deepening European defence integration outside NATO structures. For investors, this accelerates regional defence spending and strengthens European defence contractors."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European defence equities (Rheinmetall, BAE Systems, Saab)",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Mayor gasto en defensa impulsa ingresos de contratistas",
-            "en": "Increased defence spending boosts contractor revenues"
-          }
-        },
-        {
-          "asset": "EUR/GBP",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Señal positiva de cohesión europea pero complejidad bilateral UK-EU",
-            "en": "Positive European cohesion signal but UK-EU bilateral complexity"
-          }
-        },
-        {
-          "asset": "European sovereign bonds (Nordic)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor gasto fiscal en defensa presiona rendimientos nórdicos",
-            "en": "Higher fiscal defence outlays pressure Nordic yields"
-          }
-        }
-      ],
-      "confidence": 82,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/11/11/whats-northern-europes-new-drones-and-warships-plan-to-counter-russia?traffic_source=rss",
-      "published_at": "2026-11-11",
-      "time": "1h"
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
+      "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Siria estudia enviar tropas para ayudar a Arabia Saudita en la guerra contra los hutíes",
-        "en": "Syria Weighs Sending Troops to Aid Saudi War With Houthis"
+        "es": "Manchas de petróleo visibles desde el espacio: el devastador impacto de los ataques a buques en el estrecho de Ormuz",
+        "en": "Oil slicks seen from space: the devastating impact of boat strikes on fragile Gulf ecosystems"
       },
       "summary": {
-        "es": "Equipos de reconocimiento sirios han visitado Arabia Saudita y Yemen ante un posible despliegue militar, aunque no se ha tomado una decisión final. Si se confirma, representaría una reconfiguración significativa de las alianzas regionales en el contexto del conflicto del Mar Rojo y la confrontación Israel-Irán. El riesgo de escalada en el Mar Rojo amenaza directamente las rutas de suministro de energía y el comercio global.",
-        "en": "Syrian reconnaissance teams have visited Saudi Arabia and Yemen ahead of a potential military deployment, though no final decision has been made. If confirmed, this would represent a significant realignment of regional alliances in the context of the Red Sea conflict and the broader Iran-Israel confrontation. Escalation risk in the Red Sea directly threatens energy supply routes and global trade flows."
+        "es": "Desde el inicio de la guerra entre EE.UU. e Irán en febrero, se han producido cientos de derrames de petróleo en el estrecho de Ormuz tras ataques con misiles y minas contra petroleros. El estrecho, arteria energética global, enfrenta una amenaza 'generacional' para su ecosistema y una interrupción persistente del tráfico de crudo. Las implicaciones para los mercados de energía y las rutas de suministro globales son de primer orden.",
+        "en": "Since the US-Iran war began in February, hundreds of oil spills have occurred in the Strait of Hormuz following missile and sea mine strikes on tankers. The strait, a critical global energy chokepoint, faces a 'generational' ecological threat and persistent disruption to crude transit. The implications for energy markets and global supply chains are of the highest order."
       },
       "impact": "high",
       "market_impact": [
@@ -160,8 +112,17 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Escalada en Yemen amplifica riesgo sobre rutas energéticas del Mar Rojo",
-            "en": "Yemen escalation amplifies energy route risk in Red Sea"
+            "es": "Interrupción sostenida del flujo de crudo por Ormuz",
+            "en": "Sustained disruption to crude flow through Hormuz"
+          }
+        },
+        {
+          "asset": "Shipping/tanker equities",
+          "direction": "mixed",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo de guerra eleva primas de seguros marítimos",
+            "en": "War risk premiums surge on tanker insurance"
           }
         },
         {
@@ -169,199 +130,265 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor incertidumbre geopolítica regional eleva demanda de refugio",
-            "en": "Rising regional geopolitical uncertainty boosts safe-haven demand"
+            "es": "Refugio ante escalada geopolítica prolongada",
+            "en": "Safe haven demand amid prolonged geopolitical escalation"
           }
         },
         {
-          "asset": "Shipping/freight derivatives (Baltic Exchange)",
-          "direction": "up",
+          "asset": "EM currencies (oil importers)",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de disrupciones en rutas del Mar Rojo eleva fletes",
-            "en": "Red Sea route disruption risk pushes freight rates higher"
+            "es": "Presión sobre divisas de economías importadoras de crudo",
+            "en": "Pressure on currencies of crude-importing economies"
           }
         }
       ],
-      "confidence": 80,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/11/10/world/middleeast/syria-weighs-sending-troops-to-aid-saudi-war-with-houthis.html",
-      "published_at": "2026-11-10",
-      "time": "20h"
+      "confidence": 92,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/nov/12/oil-slicks-seen-from-space-the-devastating-impact-of-boat-strikes-on-fragile-gulf-ecosystems",
+      "published_at": "2026-11-12",
+      "time": "11h"
     },
     {
-      "id": 3,
+      "id": 2,
       "tag": "CRITICAL",
-      "region": "US",
+      "region": "EURASIA",
       "title": {
-        "es": "Nvidia contrata un importante bufete de abogados de EE.UU. para investigar el presunto espionaje chino",
-        "en": "Nvidia hires major US law firm to investigate alleged Chinese spy affair"
+        "es": "Enviados de EE.UU. se reúnen con Putin mientras Zelenski denuncia nueva interrupción de Starlink para el ejército ucraniano",
+        "en": "US envoys meet Putin as Zelenskyy says Starlink disrupted for Ukraine's military again"
       },
       "summary": {
-        "es": "Nvidia ha contratado un bufete de abogados estadounidense de primer nivel tras revelarse que Jensen Huang habría tenido una relación con una mujer presuntamente vinculada a los servicios de inteligencia chinos. El caso plantea graves riesgos de gobernanza corporativa, exposición regulatoria y tensiones en el ámbito de la soberanía tecnológica entre EE.UU. y China. Los inversores deben vigilar posibles restricciones adicionales a las exportaciones de chips y un escrutinio regulatorio reforzado sobre Nvidia.",
-        "en": "Nvidia has retained a major US law firm after it emerged that CEO Jensen Huang had an affair with a woman believed to be a Chinese intelligence asset. The case raises serious corporate governance risks, regulatory exposure, and technology sovereignty tensions between the US and China. Investors should monitor potential tightening of chip export controls and heightened regulatory scrutiny on Nvidia."
+        "es": "Enviados estadounidenses mantienen conversaciones directas con Putin en el marco de un esfuerzo tripartito en Abu Dabi para revivir negociaciones de alto el fuego, mientras Ucrania reporta nuevas restricciones al servicio Starshield que afectan su capacidad de interceptar drones rusos. La combinación de diplomacia activa y vulnerabilidades tecnológicas en el campo de batalla define el estado actual del conflicto. Los mercados europeos de energía y defensa seguirán atentos a señales de avance o ruptura.",
+        "en": "US envoys held direct talks with Putin in a trilateral Abu Dhabi framework aimed at reviving ceasefire negotiations, while Ukraine reports fresh Starshield restrictions hampering drone interception. The convergence of active diplomacy and battlefield tech vulnerabilities defines the current conflict inflection point. European energy and defense markets will closely track any breakthrough or breakdown signals."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Nvidia (NVDA)",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Riesgo de gobernanza y escrutinio regulatorio presionan la acción",
-            "en": "Governance risk and regulatory scrutiny weigh on the stock"
-          }
-        },
-        {
-          "asset": "Philadelphia Semiconductor Index (SOX)",
+          "asset": "European natural gas (TTF)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Contagio de sentimiento negativo al sector de semiconductores",
-            "en": "Negative sentiment contagion across the semiconductor sector"
+            "es": "Señales de negociación reducen prima de riesgo energético",
+            "en": "Negotiation signals reduce European energy risk premium"
           }
         },
         {
-          "asset": "US-China tech ADRs",
-          "direction": "down",
+          "asset": "European defense equities",
+          "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Aumenta desconfianza en vínculos tecnológicos entre EE.UU. y China",
-            "en": "Heightened distrust in US-China tech linkages"
+            "es": "Perspectiva de cese el fuego pesa sobre contratistas de defensa",
+            "en": "Ceasefire prospect weighs on defense contractors"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Reducción del riesgo geopolítico apoya al euro",
+            "en": "Reduced geopolitical risk marginally supports euro"
+          }
+        },
+        {
+          "asset": "Ukrainian sovereign bonds",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Señales de paz elevan cotización de deuda ucraniana",
+            "en": "Peace signals lift Ukrainian sovereign debt pricing"
           }
         }
       ],
-      "confidence": 85,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/ck1wvwwl3x0go?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-10",
-      "time": "14h"
+      "confidence": 90,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/live/2026/nov/12/us-envoys-in-moscow-meeting-putin-abu-dhabi-trilateral-ukraine-ceasefire-talks-latest-news-updates",
+      "published_at": "2026-11-12",
+      "time": "<1h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "APAC",
+      "title": {
+        "es": "Xi Jinping renueva el llamado a la 'reunificación' con Taiwán",
+        "en": "China's Xi Jinping renews calls for 'reunification' with Taiwan"
+      },
+      "summary": {
+        "es": "Xi Jinping declaró que la reunificación con Taiwán es inevitable, aunque sin mencionar explícitamente el uso de la fuerza militar, mientras Taiwán rechazó de inmediato las demandas de Pekín. Las declaraciones reafirman la presión estratégica sostenida sobre el estrecho de Taiwán, con implicaciones directas para las cadenas de suministro de semiconductores y la estabilidad regional. Los mercados de tecnología y los activos asiáticos seguirán sensibles a cualquier escalada en el tono o las acciones.",
+        "en": "Xi Jinping declared Taiwan reunification inevitable while stopping short of explicit military threats; Taiwan swiftly rejected Beijing's demands. The statements reaffirm sustained strategic pressure on the Taiwan Strait, with direct implications for semiconductor supply chains and regional stability. Tech markets and Asian assets remain sensitive to any escalation in tone or action."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Taiwan semiconductor equities (TSMC)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Tensión en el estrecho pesa sobre valoraciones de chips",
+            "en": "Strait tensions weigh on semiconductor valuations"
+          }
+        },
+        {
+          "asset": "USD/TWD",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Dólar se fortalece frente al dólar taiwanés por riesgo",
+            "en": "Dollar strengthens versus TWD on risk aversion"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Demanda de refugio ante tensión geopolítica en APAC",
+            "en": "Safe haven demand on APAC geopolitical tension"
+          }
+        },
+        {
+          "asset": "Chinese equities (CSI 300)",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Retórica nacionalista sin acción concreta limita impacto",
+            "en": "Nationalist rhetoric without concrete action limits impact"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/china-s-xi-jinping-renews-calls-for-reunification-with-taiwan/a-79929738?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-12",
+      "time": "1h"
     },
     {
       "id": 4,
       "tag": "WATCH",
       "region": "EU",
       "title": {
-        "es": "España: La crisis de la vivienda provoca una huelga general",
-        "en": "Spain: Housing crisis prompts general strike"
+        "es": "Miles de escuelas evacuadas en Italia mientras amenazas de bomba se extienden por Europa",
+        "en": "Thousands of schools evacuated in Italy as bomb threats spread across Europe"
       },
       "summary": {
-        "es": "Trabajadores de casi todos los sectores han secundado una huelga general en España mientras los alquileres se disparan y la crisis habitacional se agrava, convirtiéndose en el principal debate político antes de las elecciones del 29 de noviembre. La inestabilidad social preelectoral en la cuarta economía de la eurozona eleva la incertidumbre sobre la gobernanza fiscal y la cohesión política. Los mercados de deuda española y los activos domésticos son los más expuestos.",
-        "en": "Workers across nearly all industries have joined a general strike in Spain as rents soar and the housing crunch worsens, making it the central political issue ahead of November 29 elections. Pre-election social instability in the eurozone's fourth-largest economy raises uncertainty over fiscal governance and political cohesion. Spanish debt markets and domestic assets are most exposed."
+        "es": "Una serie de amenazas de bomba falsas obligó a evacuar miles de escuelas en Italia, en el marco de una pauta más amplia de alertas falsas coordinadas que se repite en varios países europeos en semanas recientes. Las autoridades estudian la posible dimensión de campaña de desestabilización o guerra híbrida detrás de los incidentes. Este patrón tiene implicaciones para la percepción de riesgo de seguridad interna europea y para los mercados de seguros y ciberseguridad.",
+        "en": "A series of hoax bomb threats forced the evacuation of thousands of schools across Italy, part of a broader pattern of coordinated false alerts seen across multiple European countries in recent weeks. Authorities are examining whether the incidents reflect a destabilization or hybrid warfare campaign. The pattern has implications for European internal security risk perception and insurance/cybersecurity markets."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Spanish IBEX 35",
-          "direction": "down",
-          "magnitude": "medium",
+          "asset": "European cybersecurity equities",
+          "direction": "up",
+          "magnitude": "low",
           "note": {
-            "es": "Riesgo político preelectoral pesa sobre renta variable española",
-            "en": "Pre-election political risk weighs on Spanish equities"
+            "es": "Amenazas híbridas impulsan demanda de soluciones de seguridad",
+            "en": "Hybrid threats drive demand for security solutions"
           }
         },
         {
-          "asset": "Spanish sovereign bonds (Bonos)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre fiscal y política eleva spread sobre Bund",
-            "en": "Fiscal and political uncertainty widens spread over Bund"
-          }
-        },
-        {
-          "asset": "EUR/USD",
+          "asset": "European equities",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Presión periférica eurozona debilita marginalmente al euro",
-            "en": "Eurozone peripheral stress marginally weakens the euro"
+            "es": "Riesgo de desestabilización interna pesa en el sentimiento",
+            "en": "Internal destabilization risk weighs on sentiment"
           }
         }
       ],
-      "confidence": 73,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/spain-housing-crisis-prompts-general-strike/a-79915208?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-11-11",
-      "time": "4h"
+      "confidence": 70,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261112-thousands-of-schools-evacuated-in-italy-as-bomb-threats-spread-across-europe",
+      "published_at": "2026-11-12",
+      "time": "3h"
     },
     {
       "id": 5,
       "tag": "WATCH",
-      "region": "AFRICA",
+      "region": "EURASIA",
       "title": {
-        "es": "Organismo africano de derechos alerta sobre el trato a los árabes Mahamid de Níger",
-        "en": "African rights body raises alarm over treatment of Niger's Mahamid Arabs"
+        "es": "En el mar de Aral en proceso de desecación, el 'milagro' efímero del camarón artemia, recurso codiciado de la acuicultura mundial",
+        "en": "In the drying Aral Sea, the fleeting 'miracle' of the artemia shrimp, a prized resource for global aquaculture"
       },
       "summary": {
-        "es": "La Comisión Africana de Derechos Humanos ha hecho un llamado al presidente de Níger ante los presuntos abusos contra la minoría árabe Mahamid. En el contexto de la junta militar de Níger y su creciente alineación con Rusia y China, esta alerta añade presión sobre la gobernanza del Sahel y la estabilidad de una región clave para los corredores de minerales críticos. La marginalización de comunidades fronterizas puede alimentar dinámicas de reclutamiento por parte de grupos armados.",
-        "en": "The African Commission on Human and Peoples' Rights has appealed to Niger's president over alleged abuses against the Mahamid Arab minority. In the context of Niger's military junta and its deepening alignment with Russia and China, this alert adds pressure on Sahel governance and stability in a region critical for minerals corridors. Marginalization of border communities may fuel recruitment dynamics for armed groups."
+        "es": "El mar de Aral, compartido entre Uzbekistán y Kazajistán, continúa su proceso de desecación por el cultivo industrial del algodón y las remodelaciones hidrológicas soviéticas, aunque sus aguas hipersalinas han generado una economía emergente en torno al camarón artemia, insumo clave para la acuicultura global. Este recurso representa una fuente de ingresos crítica para las comunidades locales y una señal de las tensiones geopolíticas sobre el agua y los recursos naturales en Asia Central. El corredor de recursos del Mar de Aral merece seguimiento como indicador de estabilidad en la región.",
+        "en": "The Aral Sea, shared between Uzbekistan and Kazakhstan, continues its desertification driven by Soviet-era cotton agriculture and hydrological engineering, yet its hypersaline waters have spawned an emerging artemia shrimp economy critical to global aquaculture supply chains. This resource represents a vital income source for local communities and a signal of broader geopolitical tensions over water and natural resources in Central Asia. The Aral resource corridor warrants monitoring as a regional stability indicator."
       },
-      "impact": "medium",
+      "impact": "low",
       "market_impact": [
         {
-          "asset": "Critical minerals equities (uranium, Sahel exposure)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Inestabilidad en Níger amenaza producción de uranio y acceso minero",
-            "en": "Niger instability threatens uranium output and mining access"
-          }
-        },
-        {
-          "asset": "French nuclear utility equities (EDF)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Francia depende del uranio nigerino; riesgo de suministro aumenta",
-            "en": "France relies on Niger uranium; supply risk increases"
-          }
-        }
-      ],
-      "confidence": 65,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/11/11/african-rights-body-raises-alarm-over-treatment-of-nigers-mahamid-arabs?traffic_source=rss",
-      "published_at": "2026-11-11",
-      "time": "1h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "LATAM",
-      "title": {
-        "es": "El primer ministro de Haití elogia a El Salvador tras un ataque conjunto contra el presunto hogar de un líder de pandillas",
-        "en": "Haitian PM praises El Salvador after joint strike on alleged home of gang leader"
-      },
-      "summary": {
-        "es": "El Salvador ha desplegado miles de soldados en Haití y ha participado en una operación conjunta contra la pandilla 400 Mawozo, con elogios del primer ministro haitiano. Este despliegue regional marca un precedente significativo en la securitización de América Latina y el enfoque del modelo Bukele de exportar seguridad. Los inversores con exposición a Haití y el Caribe deben monitorear la sostenibilidad política y operativa de esta intervención.",
-        "en": "El Salvador has deployed thousands of troops to Haiti and participated in a joint strike against the 400 Mawozo gang, drawing praise from the Haitian prime minister. This regional deployment sets a significant precedent for Latin American security cooperation and the exportation of the Bukele security model. Investors with Caribbean and Haitian exposure should monitor the political and operational sustainability of this intervention."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Salvadoran sovereign bonds",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Proyección de poder refuerza imagen de Bukele ante mercados",
-            "en": "Power projection reinforces Bukele's market credibility"
-          }
-        },
-        {
-          "asset": "Caribbean EM risk assets",
+          "asset": "Central Asian sovereign debt (KZT-denominated)",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Estabilización parcial en Haití, pero riesgo de escalada persiste",
-            "en": "Partial stabilization in Haiti but escalation risk persists"
+            "es": "Dependencia de recursos naturales afecta perspectivas fiscales",
+            "en": "Natural resource dependence affects fiscal outlook"
+          }
+        },
+        {
+          "asset": "Global aquaculture equities",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Suministro de artemia afecta cadenas de acuicultura globales",
+            "en": "Artemia supply affects global aquaculture chains"
           }
         }
       ],
-      "confidence": 63,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cmvg2xdwnwezo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-11",
-      "time": "1h"
+      "confidence": 62,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/planete/article/2026/11/12/dans-la-mer-d-aral-en-voie-d-assechement-le-miracle-ephemere-de-la-crevette-artemia-ressource-prisee-de-l-aquaculture-mondiale_6809056_3244.html",
+      "published_at": "2026-11-12",
+      "time": "9h"
+    },
+    {
+      "id": 6,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "Líderes europeos se reúnen en Dublín para debatir la seguridad de Ucrania y la propia de Europa",
+        "en": "European leaders gather in Dublin to discuss Ukraine's security, and their own"
+      },
+      "summary": {
+        "es": "Más de 40 líderes europeos se reunieron en la Comunidad Política Europea en Dublín para abordar la seguridad continental en el contexto de los nuevos esfuerzos diplomáticos respaldados por EE.UU. para poner fin a la guerra en Ucrania. La cumbre señala una coordinación europea activa sobre gasto en defensa, arquitectura de seguridad post-conflicto y relaciones transatlánticas. Los resultados influirán en las perspectivas de inversión en defensa europea y en la estabilidad del euro.",
+        "en": "More than 40 European leaders convened at the European Political Community summit in Dublin to address continental security amid US-backed diplomatic efforts to end the Ukraine war. The summit signals active European coordination on defense spending, post-conflict security architecture, and transatlantic relations. Outcomes will shape the investment outlook for European defense and euro stability."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Compromisos de gasto en defensa respaldan al sector",
+            "en": "Defense spending commitments support the sector"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Unidad europea apoya al euro frente a incertidumbre",
+            "en": "European unity marginally supports euro amid uncertainty"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Perspectiva de estabilización geopolítica mejora sentimiento",
+            "en": "Geopolitical stabilization outlook improves sentiment"
+          }
+        }
+      ],
+      "confidence": 82,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261112-european-leaders-gather-in-dublin-to-discuss-ukraine-s-security-and-their-own",
+      "published_at": "2026-11-12",
+      "time": "3h"
     }
   ],
   "market_updated_at": "2026-11-12T14:03:26.476Z"
