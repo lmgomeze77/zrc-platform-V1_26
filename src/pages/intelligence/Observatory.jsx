@@ -3,6 +3,7 @@
 // Import in App.jsx: import Observatory from "./pages/intelligence/Observatory";
 
 import { useState } from "react";
+import ObservatoryImpactLab from "./ObservatoryImpactLab";
 import { C, alpha } from "../../theme/palette";
 
 // ── DESIGN TOKENS (mirrors App.jsx) ─────────────────────────
@@ -376,8 +377,10 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
         <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("zrc-open-tool", { detail: { tool: "GeoRisk Dashboard", context: "eu-critical-materials" } }))} style={{ marginTop: 16, padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Abrir contexto de la UE en GeoRisk" : "Open EU context in GeoRisk"}</button>
       </section>
 
+      <ObservatoryImpactLab lang={lang} onRegister={user ? undefined : openRegister} />
+
       {/* STALE FEED NOTICE — pipeline diario sin refrescar */}
-      {isStale && (
+      {(!isLive || !Number.isFinite(staleDays) || isStale) && (
         <FadeIn delay={0.05}>
           <div style={{
             display:"flex", alignItems:"flex-start", gap:10, marginBottom:20,
@@ -386,7 +389,11 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
           }}>
             <span style={{ color:C.amber, fontFamily:F.mono, fontSize:11, lineHeight:1.5, flexShrink:0 }}>⚠</span>
             <p style={{ fontFamily:F.body, fontSize:12, color:C.textSec, lineHeight:1.6, margin:0, fontWeight:300 }}>
-              {lang==="es"
+              {!isLive
+                ? (lang === "es" ? "Feed sin datos disponibles. Se muestran ejemplos históricos, con la fecha de cada ficha." : "Feed unavailable. Historical examples are shown with their original dates.")
+                : !Number.isFinite(staleDays)
+                ? (lang === "es" ? "El feed no indica un corte verificable." : "The feed has no verifiable update timestamp.")
+                : lang==="es"
                 ? `Última actualización del feed hace ${staleDays} días. Las señales mostradas no reflejan la actualidad de hoy.`
                 : `Feed last updated ${staleDays} days ago. The signals below do not reflect today's developments.`}
             </p>
