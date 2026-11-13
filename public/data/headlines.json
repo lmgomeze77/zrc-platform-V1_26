@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T14:32:53.929Z",
+  "generated_at": "2026-11-13T13:51:52.700Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,12 +98,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Manchas de petróleo visibles desde el espacio: el devastador impacto de los ataques a buques en el estrecho de Ormuz",
-        "en": "Oil slicks seen from space: the devastating impact of boat strikes on fragile Gulf ecosystems"
+        "es": "Irán dice haber destruido radar militar de EE.UU. en Baréin en ataque de represalia",
+        "en": "Iran says it destroyed US military radar in Bahrain in retaliatory strike"
       },
       "summary": {
-        "es": "Desde el inicio de la guerra entre EE.UU. e Irán en febrero, se han producido cientos de derrames de petróleo en el estrecho de Ormuz tras ataques con misiles y minas contra petroleros. El estrecho, arteria energética global, enfrenta una amenaza 'generacional' para su ecosistema y una interrupción persistente del tráfico de crudo. Las implicaciones para los mercados de energía y las rutas de suministro globales son de primer orden.",
-        "en": "Since the US-Iran war began in February, hundreds of oil spills have occurred in the Strait of Hormuz following missile and sea mine strikes on tankers. The strait, a critical global energy chokepoint, faces a 'generational' ecological threat and persistent disruption to crude transit. The implications for energy markets and global supply chains are of the highest order."
+        "es": "Las CGRI iraníes afirman haber destruido un radar de alerta temprana estadounidense en Baréin en represalia por un ataque aéreo de EE.UU. contra una torre de comunicaciones en Sirik, que domina el estrecho de Ormuz. Este es el primer ataque directo contra instalaciones militares estadounidenses en meses y marca una escalada significativa en las tensiones entre Washington y Teherán. La proximidad al estrecho de Ormuz introduce un riesgo directo para el tránsito de petróleo del Golfo Pérsico.",
+        "en": "Iran's IRGC claims to have destroyed a US early-warning radar in Bahrain in retaliation for a US airstrike on a communications tower in Sirik overlooking the Strait of Hormuz. This marks the first direct attack on US military installations in months, representing a significant escalation in US-Iran tensions. The proximity to the Strait of Hormuz introduces direct risk to Gulf oil transit flows."
       },
       "impact": "high",
       "market_impact": [
@@ -112,283 +112,265 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Interrupción sostenida del flujo de crudo por Ormuz",
-            "en": "Sustained disruption to crude flow through Hormuz"
-          }
-        },
-        {
-          "asset": "Shipping/tanker equities",
-          "direction": "mixed",
-          "magnitude": "high",
-          "note": {
-            "es": "Riesgo de guerra eleva primas de seguros marítimos",
-            "en": "War risk premiums surge on tanker insurance"
+            "es": "Riesgo de cierre del estrecho de Ormuz eleva prima geopolítica",
+            "en": "Hormuz closure risk raises geopolitical premium sharply"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Refugio ante escalada geopolítica prolongada",
-            "en": "Safe haven demand amid prolonged geopolitical escalation"
+            "es": "Escalada US-Irán impulsa demanda de refugio seguro",
+            "en": "US-Iran escalation drives safe-haven demand"
           }
         },
         {
-          "asset": "EM currencies (oil importers)",
+          "asset": "US 10Y Treasury",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Presión sobre divisas de economías importadoras de crudo",
-            "en": "Pressure on currencies of crude-importing economies"
+            "es": "Vuelo hacia calidad ante riesgo de conflicto ampliado",
+            "en": "Flight to quality on expanded conflict risk"
+          }
+        },
+        {
+          "asset": "Gulf region equities",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Exposición directa a conflicto militar regional",
+            "en": "Direct exposure to regional military conflict"
           }
         }
       ],
       "confidence": 92,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/nov/12/oil-slicks-seen-from-space-the-devastating-impact-of-boat-strikes-on-fragile-gulf-ecosystems",
-      "published_at": "2026-11-12",
-      "time": "11h"
+      "source_url": "https://www.theguardian.com/world/2026/nov/13/iran-us-radar-bahrain-sirik-hormuz",
+      "published_at": "2026-11-13",
+      "time": "1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "EURASIA",
       "title": {
-        "es": "Enviados de EE.UU. se reúnen con Putin mientras Zelenski denuncia nueva interrupción de Starlink para el ejército ucraniano",
-        "en": "US envoys meet Putin as Zelenskyy says Starlink disrupted for Ukraine's military again"
+        "es": "Putin adopta postura dura en conversaciones con EE.UU. mientras Ucrania reporta nueva interrupción de Starlink",
+        "en": "Putin takes hard line in US talks as Ukraine says Starlink disrupted again"
       },
       "summary": {
-        "es": "Enviados estadounidenses mantienen conversaciones directas con Putin en el marco de un esfuerzo tripartito en Abu Dabi para revivir negociaciones de alto el fuego, mientras Ucrania reporta nuevas restricciones al servicio Starshield que afectan su capacidad de interceptar drones rusos. La combinación de diplomacia activa y vulnerabilidades tecnológicas en el campo de batalla define el estado actual del conflicto. Los mercados europeos de energía y defensa seguirán atentos a señales de avance o ruptura.",
-        "en": "US envoys held direct talks with Putin in a trilateral Abu Dhabi framework aimed at reviving ceasefire negotiations, while Ukraine reports fresh Starshield restrictions hampering drone interception. The convergence of active diplomacy and battlefield tech vulnerabilities defines the current conflict inflection point. European energy and defense markets will closely track any breakthrough or breakdown signals."
+        "es": "Putin advirtió a los negociadores estadounidenses que Rusia atacaría cualquier tropa extranjera desplegada en Ucrania y se negó a suavizar sus demandas territoriales, bloqueando perspectivas de acuerdo. Simultáneamente, el ejército ucraniano reportó nuevas interrupciones de Starlink, afectando la coordinación operacional en el campo de batalla. Las posturas irreconciliables sugieren que el conflicto se prolongará, manteniendo presión sobre los mercados energéticos europeos y el gasto de defensa del continente.",
+        "en": "Putin warned US negotiators that Russia would target any foreign troops deployed to Ukraine and refused to soften territorial demands, blocking settlement prospects. Simultaneously, the Ukrainian military reported renewed Starlink disruptions, affecting battlefield operational coordination. The irreconcilable positions suggest a prolonged conflict, sustaining pressure on European energy markets and continental defense spending."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "European natural gas (TTF)",
-          "direction": "down",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Señales de negociación reducen prima de riesgo energético",
-            "en": "Negotiation signals reduce European energy risk premium"
-          }
-        },
-        {
-          "asset": "European defense equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Perspectiva de cese el fuego pesa sobre contratistas de defensa",
-            "en": "Ceasefire prospect weighs on defense contractors"
+            "es": "Prolongación del conflicto mantiene prima de riesgo energético",
+            "en": "Conflict prolongation sustains energy risk premium"
           }
         },
         {
           "asset": "EUR/USD",
-          "direction": "up",
-          "magnitude": "low",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Reducción del riesgo geopolítico apoya al euro",
-            "en": "Reduced geopolitical risk marginally supports euro"
+            "es": "Riesgo geopolítico europeo pesa sobre el euro",
+            "en": "European geopolitical risk weighs on the euro"
           }
         },
         {
-          "asset": "Ukrainian sovereign bonds",
+          "asset": "European defense equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Señales de paz elevan cotización de deuda ucraniana",
-            "en": "Peace signals lift Ukrainian sovereign debt pricing"
+            "es": "Perspectiva de conflicto largo impulsa gasto en defensa",
+            "en": "Extended conflict outlook drives defense spending expectations"
           }
         }
       ],
       "confidence": 90,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/live/2026/nov/12/us-envoys-in-moscow-meeting-putin-abu-dhabi-trilateral-ukraine-ceasefire-talks-latest-news-updates",
+      "source_url": "https://www.theguardian.com/world/2026/nov/12/vladimir-putin-russia-target-foreign-troops-ukraine-elon-musk-starlink",
       "published_at": "2026-11-12",
-      "time": "<1h"
+      "time": "15h"
     },
     {
       "id": 3,
       "tag": "ALERT",
       "region": "APAC",
       "title": {
-        "es": "Xi Jinping renueva el llamado a la 'reunificación' con Taiwán",
-        "en": "China's Xi Jinping renews calls for 'reunification' with Taiwan"
+        "es": "Tras las purgas de Xi a los generales chinos, surge un inquisidor militar",
+        "en": "After Xi Purges China's Generals, a Military Inquisitor Rises"
       },
       "summary": {
-        "es": "Xi Jinping declaró que la reunificación con Taiwán es inevitable, aunque sin mencionar explícitamente el uso de la fuerza militar, mientras Taiwán rechazó de inmediato las demandas de Pekín. Las declaraciones reafirman la presión estratégica sostenida sobre el estrecho de Taiwán, con implicaciones directas para las cadenas de suministro de semiconductores y la estabilidad regional. Los mercados de tecnología y los activos asiáticos seguirán sensibles a cualquier escalada en el tono o las acciones.",
-        "en": "Xi Jinping declared Taiwan reunification inevitable while stopping short of explicit military threats; Taiwan swiftly rejected Beijing's demands. The statements reaffirm sustained strategic pressure on the Taiwan Strait, with direct implications for semiconductor supply chains and regional stability. Tech markets and Asian assets remain sensitive to any escalation in tone or action."
+        "es": "El ascenso de Zhang Shengmin indica que las investigaciones anticorrupción dentro del alto mando del Ejército Popular de Liberación continúan, sugiriendo que la cúpula militar china sigue en estado de turbulencia interna. Esto podría complicar la preparación operacional de China para cualquier acción sobre Taiwán y señala incertidumbre sobre la cadena de mando. Para los inversores, las purgas prolongadas reducen la cohesión del EPL a corto plazo pero refuerzan el control político de Xi, con implicaciones mixtas para la estabilidad del estrecho.",
+        "en": "The rise of Zhang Shengmin signals that anti-corruption investigations within China's PLA top brass are ongoing, suggesting continued internal turbulence in the military command. This may complicate China's operational readiness for any action over Taiwan and raises uncertainty about the chain of command. For investors, prolonged purges reduce short-term PLA cohesion but reinforce Xi's political control, with mixed implications for strait stability."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Taiwan semiconductor equities (TSMC)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tensión en el estrecho pesa sobre valoraciones de chips",
-            "en": "Strait tensions weigh on semiconductor valuations"
-          }
-        },
-        {
-          "asset": "USD/TWD",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Dólar se fortalece frente al dólar taiwanés por riesgo",
-            "en": "Dollar strengthens versus TWD on risk aversion"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Demanda de refugio ante tensión geopolítica en APAC",
-            "en": "Safe haven demand on APAC geopolitical tension"
-          }
-        },
-        {
-          "asset": "Chinese equities (CSI 300)",
           "direction": "mixed",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Retórica nacionalista sin acción concreta limita impacto",
-            "en": "Nationalist rhetoric without concrete action limits impact"
-          }
-        }
-      ],
-      "confidence": 88,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/china-s-xi-jinping-renews-calls-for-reunification-with-taiwan/a-79929738?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-11-12",
-      "time": "1h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "Miles de escuelas evacuadas en Italia mientras amenazas de bomba se extienden por Europa",
-        "en": "Thousands of schools evacuated in Italy as bomb threats spread across Europe"
-      },
-      "summary": {
-        "es": "Una serie de amenazas de bomba falsas obligó a evacuar miles de escuelas en Italia, en el marco de una pauta más amplia de alertas falsas coordinadas que se repite en varios países europeos en semanas recientes. Las autoridades estudian la posible dimensión de campaña de desestabilización o guerra híbrida detrás de los incidentes. Este patrón tiene implicaciones para la percepción de riesgo de seguridad interna europea y para los mercados de seguros y ciberseguridad.",
-        "en": "A series of hoax bomb threats forced the evacuation of thousands of schools across Italy, part of a broader pattern of coordinated false alerts seen across multiple European countries in recent weeks. Authorities are examining whether the incidents reflect a destabilization or hybrid warfare campaign. The pattern has implications for European internal security risk perception and insurance/cybersecurity markets."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "European cybersecurity equities",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Amenazas híbridas impulsan demanda de soluciones de seguridad",
-            "en": "Hybrid threats drive demand for security solutions"
+            "es": "Incertidumbre sobre capacidad militar china reduce riesgo inmediato",
+            "en": "PLA command uncertainty temporarily reduces near-term invasion risk"
           }
         },
         {
-          "asset": "European equities",
+          "asset": "Chinese defense equities",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo de desestabilización interna pesa en el sentimiento",
-            "en": "Internal destabilization risk weighs on sentiment"
-          }
-        }
-      ],
-      "confidence": 70,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261112-thousands-of-schools-evacuated-in-italy-as-bomb-threats-spread-across-europe",
-      "published_at": "2026-11-12",
-      "time": "3h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "EURASIA",
-      "title": {
-        "es": "En el mar de Aral en proceso de desecación, el 'milagro' efímero del camarón artemia, recurso codiciado de la acuicultura mundial",
-        "en": "In the drying Aral Sea, the fleeting 'miracle' of the artemia shrimp, a prized resource for global aquaculture"
-      },
-      "summary": {
-        "es": "El mar de Aral, compartido entre Uzbekistán y Kazajistán, continúa su proceso de desecación por el cultivo industrial del algodón y las remodelaciones hidrológicas soviéticas, aunque sus aguas hipersalinas han generado una economía emergente en torno al camarón artemia, insumo clave para la acuicultura global. Este recurso representa una fuente de ingresos crítica para las comunidades locales y una señal de las tensiones geopolíticas sobre el agua y los recursos naturales en Asia Central. El corredor de recursos del Mar de Aral merece seguimiento como indicador de estabilidad en la región.",
-        "en": "The Aral Sea, shared between Uzbekistan and Kazakhstan, continues its desertification driven by Soviet-era cotton agriculture and hydrological engineering, yet its hypersaline waters have spawned an emerging artemia shrimp economy critical to global aquaculture supply chains. This resource represents a vital income source for local communities and a signal of broader geopolitical tensions over water and natural resources in Central Asia. The Aral resource corridor warrants monitoring as a regional stability indicator."
-      },
-      "impact": "low",
-      "market_impact": [
-        {
-          "asset": "Central Asian sovereign debt (KZT-denominated)",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Dependencia de recursos naturales afecta perspectivas fiscales",
-            "en": "Natural resource dependence affects fiscal outlook"
+            "es": "Purgas internas crean incertidumbre en contratistas de defensa",
+            "en": "Internal purges create uncertainty for defense contractors"
           }
         },
         {
-          "asset": "Global aquaculture equities",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Suministro de artemia afecta cadenas de acuicultura globales",
-            "en": "Artemia supply affects global aquaculture chains"
-          }
-        }
-      ],
-      "confidence": 62,
-      "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/planete/article/2026/11/12/dans-la-mer-d-aral-en-voie-d-assechement-le-miracle-ephemere-de-la-crevette-artemia-ressource-prisee-de-l-aquaculture-mondiale_6809056_3244.html",
-      "published_at": "2026-11-12",
-      "time": "9h"
-    },
-    {
-      "id": 6,
-      "tag": "ALERT",
-      "region": "EU",
-      "title": {
-        "es": "Líderes europeos se reúnen en Dublín para debatir la seguridad de Ucrania y la propia de Europa",
-        "en": "European leaders gather in Dublin to discuss Ukraine's security, and their own"
-      },
-      "summary": {
-        "es": "Más de 40 líderes europeos se reunieron en la Comunidad Política Europea en Dublín para abordar la seguridad continental en el contexto de los nuevos esfuerzos diplomáticos respaldados por EE.UU. para poner fin a la guerra en Ucrania. La cumbre señala una coordinación europea activa sobre gasto en defensa, arquitectura de seguridad post-conflicto y relaciones transatlánticas. Los resultados influirán en las perspectivas de inversión en defensa europea y en la estabilidad del euro.",
-        "en": "More than 40 European leaders convened at the European Political Community summit in Dublin to address continental security amid US-backed diplomatic efforts to end the Ukraine war. The summit signals active European coordination on defense spending, post-conflict security architecture, and transatlantic relations. Outcomes will shape the investment outlook for European defense and euro stability."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European defense equities",
+          "asset": "USD/CNY",
           "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Compromisos de gasto en defensa respaldan al sector",
-            "en": "Defense spending commitments support the sector"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Unidad europea apoya al euro frente a incertidumbre",
-            "en": "European unity marginally supports euro amid uncertainty"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Perspectiva de estabilización geopolítica mejora sentimiento",
-            "en": "Geopolitical stabilization outlook improves sentiment"
+            "es": "Tensiones políticas internas generan presión sobre el yuan",
+            "en": "Internal political tension adds marginal yuan pressure"
           }
         }
       ],
       "confidence": 82,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261112-european-leaders-gather-in-dublin-to-discuss-ukraine-s-security-and-their-own",
-      "published_at": "2026-11-12",
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/13/world/asia/china-military-purge-zhang-shengmin-taiwan.html",
+      "published_at": "2026-11-13",
       "time": "3h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Ni guerra ni paz en Tigray: ¿ha terminado realmente el último conflicto de Etiopía?",
+        "en": "Neither war nor peace in Tigray - is Ethiopia's latest conflict really over?"
+      },
+      "summary": {
+        "es": "El ejército etíope ha tomado control de la mayoría de las ciudades principales de Tigray, pero la capacidad del TPLF para contraatacar permanece incierta. Una reanudación del conflicto amenazaría la estabilidad del Cuerno de África, con implicaciones para los corredores logísticos del Mar Rojo y las operaciones humanitarias en la región. Los inversores en infraestructura y materias primas con exposición a África Oriental deben monitorizar el desarrollo.",
+        "en": "The Ethiopian army has seized most of Tigray's main towns, but whether the TPLF retains capacity to fight back remains uncertain. A resumption of conflict would threaten Horn of Africa stability, with implications for Red Sea logistics corridors and humanitarian operations in the region. Investors with East Africa infrastructure and commodity exposure should monitor developments closely."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "East Africa sovereign bonds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Inestabilidad regional eleva primas de riesgo soberano",
+            "en": "Regional instability raises sovereign risk premiums"
+          }
+        },
+        {
+          "asset": "Shipping/freight rates (Red Sea)",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensiones del Cuerno de África añaden riesgo al corredor marítimo",
+            "en": "Horn of Africa tensions add risk to maritime corridor"
+          }
+        }
+      ],
+      "confidence": 70,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cm3egjgvp794o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-11-13",
+      "time": "13h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Atrapados entre asesinos: el ébola por un lado, el Estado Islámico por el otro",
+        "en": "Caught Between Killers: Ebola on One Side, Islamic State on the Other"
+      },
+      "summary": {
+        "es": "El nuevo epicentro del brote de ébola en el Congo se encuentra en una región asolada por la violencia de grupos rebeldes afiliados al Estado Islámico, dificultando gravemente la respuesta sanitaria. La combinación de insurgencia activa y epidemia infecciosa en la RDC representa un riesgo sistémico para la estabilidad regional y las operaciones mineras en una de las zonas de mayor concentración de minerales críticos del mundo. Los inversores en cobre, cobalto y tierras raras deben vigilar el deterioro de las condiciones operacionales.",
+        "en": "The new epicenter of Congo's Ebola outbreak is located in a region scarred by Islamic State-affiliated rebel violence, severely hampering the health response. The combination of active insurgency and infectious epidemic in the DRC represents a systemic risk to regional stability and mining operations in one of the world's highest concentrations of critical minerals. Investors in copper, cobalt, and rare earths should monitor deteriorating operational conditions."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Cobalt futures",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo operacional en el mayor productor mundial de cobalto",
+            "en": "Operational risk in world's largest cobalt producer"
+          }
+        },
+        {
+          "asset": "Copper futures",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Distorsión de suministro en zona minera crítica congoleña",
+            "en": "Supply disruption risk in key DRC mining zone"
+          }
+        },
+        {
+          "asset": "DRC-exposed mining equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Deterioro de condiciones de seguridad eleva prima de riesgo",
+            "en": "Worsening security conditions raise operational risk premium"
+          }
+        }
+      ],
+      "confidence": 75,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/13/world/africa/ebola-congo-isis.html",
+      "published_at": "2026-11-13",
+      "time": "3h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EURASIA",
+      "title": {
+        "es": "El ejército pakistaní reporta haber matado a 74 'terroristas' durante redadas",
+        "en": "Pakistan military reports it killed 74 'terrorists' during raids"
+      },
+      "summary": {
+        "es": "Las fuerzas militares paquistaníes llevaron a cabo operaciones letales contra grupos armados en la frontera con Afganistán, en un contexto de creciente tensión bilateral entre Islamabad y Kabul. El aumento de los ataques transfronterizos pone en riesgo la estabilidad en el corredor sur de Asia Central, con implicaciones para las rutas de suministro regionales y la cohesión del Estado paquistaní. La dinámica agudiza también el dilema estratégico entre China, que tiene intereses en el Corredor Económico China-Pakistán (CPEC), y los actores talibanes.",
+        "en": "Pakistani military forces conducted lethal operations against armed groups on the Afghan border amid growing bilateral tensions between Islamabad and Kabul. Rising cross-border attacks threaten stability in the South-Central Asian corridor, with implications for regional supply routes and Pakistani state cohesion. The dynamic also sharpens China's strategic dilemma given its major interests in the China-Pakistan Economic Corridor (CPEC)."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Pakistani rupee",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión fronteriza agrava vulnerabilidades macroeconómicas",
+            "en": "Border tension compounds existing macro vulnerabilities"
+          }
+        },
+        {
+          "asset": "Pakistan sovereign bonds",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de seguridad pesa sobre calificación soberana",
+            "en": "Security risk weighs on sovereign credit outlook"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/11/13/pakistan-military-reports-it-killed-74-terrorists-during-raids?traffic_source=rss",
+      "published_at": "2026-11-13",
+      "time": "1h"
     }
   ],
   "market_updated_at": "2026-11-13T13:29:26.372Z"
