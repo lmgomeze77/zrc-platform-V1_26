@@ -73,14 +73,14 @@ function usePrisma() {
   return state;
 }
 
-function CoverageBar({ counts, dim, height = 12 }) {
+function CoverageBar({ counts, dim, lang = "es", height = 12 }) {
   const d = DIMS[dim];
   const total = d.keys.reduce((a, k) => a + (counts?.[k] || 0), 0) || 1;
   return (
-    <div role="img" aria-label={d.keys.filter((k) => counts?.[k]).map((k) => `${d.names[k].es} ${counts[k]}`).join(", ")}
+    <div role="img" aria-label={d.keys.filter((k) => counts?.[k]).map((k) => `${d.names[k][lang]} ${counts[k]}`).join(", ")}
       style={{ display: "flex", height, borderRadius: height / 2, overflow: "hidden", background: C.surface3 }}>
       {d.keys.filter((k) => counts?.[k] > 0).map((k) => (
-        <span key={k} title={`${d.names[k].es}: ${counts[k]}`} style={{ width: `${(counts[k] / total) * 100}%`, background: d.colors[k] }} />
+        <span key={k} title={`${d.names[k][lang]}: ${counts[k]}`} style={{ width: `${(counts[k] / total) * 100}%`, background: d.colors[k] }} />
       ))}
     </div>
   );
@@ -192,7 +192,7 @@ export default function Prisma({ lang = "es", user, tier, status, openRegister, 
         </div>
         <div style={{ display: "grid", gap: 6, marginTop: 4 }}>
           <span style={{ fontFamily: F.body, fontSize: 14, fontWeight: 600, color: C.text }}>{lang === "es" ? "Balance de esta edición" : "Balance of this edition"}</span>
-          <CoverageBar counts={doc.balance?.[lens]} dim={lens} height={14} />
+          <CoverageBar counts={doc.balance?.[lens]} dim={lens} lang={lang} height={14} />
           <span style={{ fontFamily: F.body, fontSize: 13, color: C.textMuted }}>{topShares(doc.balance?.[lens], lens, lang)}</span>
         </div>
       </div>
@@ -213,7 +213,7 @@ export default function Prisma({ lang = "es", user, tier, status, openRegister, 
             </div>
             <h3 style={{ fontFamily: F.display, fontSize: 22, lineHeight: 1.25, fontWeight: 600, color: C.text, margin: 0, ...NUM }}>{L(s.title)}</h3>
             {!locked && <p style={{ fontFamily: F.body, fontSize: 16, color: C.textSec, margin: 0, lineHeight: 1.55 }}>{L(s.dek)}</p>}
-            <CoverageBar counts={s.coverage[lens]} dim={lens} />
+            <CoverageBar counts={s.coverage[lens]} dim={lens} lang={lang} />
             <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8, fontFamily: F.body, fontSize: 13, color: C.textMuted }}>
               <span>{s.coverage.outlets} {lang === "es" ? "medios" : "outlets"} · {s.coverage.regions} {lang === "es" ? "regiones" : "regions"}</span>
               <span>{topShares(s.coverage[lens], lens, lang)}</span>
@@ -282,7 +282,7 @@ function StoryCard({ s, lang, L, fullAccess, user, openRegister, openPricing }) 
             {Object.keys(DIMS).map((k) => (
               <div key={k} style={{ display: "grid", gap: 4 }}>
                 <span style={{ fontFamily: F.body, fontSize: 13, fontWeight: 600, color: C.text }}>{L(DIMS[k].label)}: <span style={{ fontWeight: 400, color: C.textMuted }}>{topShares(s.coverage[k], k, lang)}</span></span>
-                <CoverageBar counts={s.coverage[k]} dim={k} />
+                <CoverageBar counts={s.coverage[k]} dim={k} lang={lang} />
               </div>
             ))}
           </div>
