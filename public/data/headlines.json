@@ -3,8 +3,8 @@
   "market_ticker": [
     {
       "symbol": "EUR/USD",
-      "value": "1.1024",
-      "change": "-0.33%",
+      "value": "1.1022",
+      "change": "-0.12%",
       "up": false
     },
     {
@@ -27,14 +27,14 @@
     },
     {
       "symbol": "GOLD (XAU/USD)",
-      "value": "3,886.30",
+      "value": "3,874.43",
       "change": "+0.03%",
       "up": true
     },
     {
       "symbol": "BTC/USD",
-      "value": "67,016.88",
-      "change": "-2.32%",
+      "value": "65,879.51",
+      "change": "-4.00%",
       "up": false
     },
     {
@@ -46,7 +46,7 @@
     {
       "symbol": "US 10Y Yield",
       "value": "5.139%",
-      "change": "+1.00%",
+      "change": "+0.70%",
       "up": true
     },
     {
@@ -64,7 +64,7 @@
     {
       "symbol": "EUR/GBP",
       "value": "0.8343",
-      "change": "-0.11%",
+      "change": "-0.02%",
       "up": false
     },
     {
@@ -82,12 +82,12 @@
     {
       "symbol": "Copper",
       "value": "6.0635",
-      "change": "-2.14%",
+      "change": "-2.80%",
       "up": false
     },
     {
       "symbol": "USD/CNY",
-      "value": "6.6718",
+      "value": "6.6747",
       "change": "+0.02%",
       "up": true
     }
@@ -382,5 +382,5 @@
       "time": "<1h"
     }
   ],
-  "market_updated_at": "2026-11-14T12:34:57.786Z"
+  "market_updated_at": "2026-11-14T18:53:03.813Z"
 }
