@@ -4,6 +4,7 @@
 
 import { useState } from "react";
 import { C, alpha } from "../../theme/palette";
+import Prisma from "./Prisma";
 
 // ── DESIGN TOKENS (mirrors App.jsx) ─────────────────────────
 const F = {
@@ -212,7 +213,7 @@ function LockedOverlay({ lang, openRegister, openLogin, expired, openPricing }) 
 export default function Observatory({ lang, useAuth, useSubscription, useHeadlines, FadeIn, Sec, SH, GoldDivider, T }) {
   const t = T[lang].obs;
   const { user, openRegister, openLogin, openPricing } = useAuth();
-  const { status: subStatus } = useSubscription(user?.email);
+  const { tier, status: subStatus } = useSubscription(user?.email);
   const trialExpired = subStatus === "expired";
   const hasAccess = user && !trialExpired;
   const [expanded, setExpanded] = useState(null);
@@ -401,6 +402,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
           {[
             { id:"feed", label:lang==="es" ? "SEÑALES" : "SIGNALS" },
             { id:"glance", label:lang==="es" ? "EN UN VISTAZO" : "AT A GLANCE" },
+            { id:"prisma", label:lang==="es" ? "PRISMA · COBERTURA" : "PRISMA · COVERAGE" },
           ].map(tab => (
             <button key={tab.id} role="tab" aria-selected={viewMode===tab.id}
               onClick={() => setViewMode(tab.id)}
@@ -416,6 +418,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
       </FadeIn>
 
       {/* REGION FILTER */}
+      {viewMode !== "prisma" && (
       <FadeIn delay={0.1}>
         <div style={{ display:"flex", gap:6, flexWrap:"wrap", marginBottom:24 }}>
           {regions.map(r => (
@@ -429,8 +432,11 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
           ))}
         </div>
       </FadeIn>
+      )}
 
-      {viewMode === "glance" ? (
+      {viewMode === "prisma" ? (
+        <Prisma lang={lang} user={user} tier={tier} status={subStatus} openRegister={openRegister} openPricing={openPricing} />
+      ) : viewMode === "glance" ? (
         <FadeIn delay={0.05}>
           <div style={{ background:C.surface, border:`1px solid ${C.border}`, borderRadius:6, padding:18, marginBottom:24 }}>
             <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:16, flexWrap:"wrap", marginBottom:16 }}>
