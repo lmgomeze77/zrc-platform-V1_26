@@ -133,6 +133,9 @@ async function handleRequest(request, env, ctx) {
     if (url.pathname === "/api/georisk-market-data" && request.method === "GET")
       return handleGeoRiskMarket(request, env, ctx);
 
+    if (url.pathname === "/api/georisk-tariffs" && request.method === "GET")
+      return handleGeoRiskTariffs(request, env);
+
     if (url.pathname === "/api/georisk-index" && request.method === "GET")
       return handleGeoRiskIndexGet(request, env);
 
@@ -152,6 +155,20 @@ async function handleRequest(request, env, ctx) {
       return jsonResponse({ error: "Not found" }, 404);
 
     return env.ASSETS.fetch(request);
+}
+
+async function handleGeoRiskTariffs(request, env) {
+  const url = new URL(request.url);
+  const code = url.searchParams.get("code") || "";
+  if (!/^\d{10}$/.test(code)) return jsonResponse({ error: "Se requiere código TARIC de 10 dígitos" }, 400);
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    const result = await env.DB.prepare("SELECT destination,origin,commodity_code,rate_percent,treatment,valid_from,valid_until,source_url,source_name,verified_at FROM georisk_tariff_rates WHERE destination='ES' AND commodity_code=? AND valid_from<=? AND (valid_until IS NULL OR valid_until>=?) ORDER BY origin,treatment").bind(code,today,today).all();
+    return new Response(JSON.stringify({ as_of: today, rates: result.results || [] }), { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=3600", "Access-Control-Allow-Origin": "*" } });
+  } catch (error) {
+    console.error("Tariff rates unavailable", error);
+    return jsonResponse({ error: "Fuente arancelaria no disponible" }, 503);
+  }
 }
 
 // ============================================================
