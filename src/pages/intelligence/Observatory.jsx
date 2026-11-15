@@ -209,6 +209,103 @@ function LockedOverlay({ lang, openRegister, openLogin, expired, openPricing }) 
 }
 
 // ── MAIN COMPONENT ───────────────────────────────────────────
+export const OBSERVATORY_PUBLICATIONS=[{"id":"ai-europa-iberoamerica","copy":["Tecnología y política industrial","Technology and industrial policy","España y la IA iberoamericana","Spain and Ibero-American AI","Qué tendría que ocurrir para que la cooperación se traduzca en proyectos.","What it would take to turn cooperation into projects."]},{"id":"ciberriesgo-continuidad","copy":["Ciberriesgo y continuidad","Cyber risk and continuity","Producir sin poder facturar","Producing without being able to invoice","Cómo un fallo tecnológico puede convertirse en un problema de caja.","How a technology failure can turn into a cash flow problem."]},{"id":"materias-primas-criticas","copy":["Materias primas críticas","Critical raw materials","El suministro europeo, a prueba","Testing Europe’s supply resilience","Qué mirar para saber si los proyectos reducen la dependencia europea.","What to watch to see whether projects reduce European dependence."]}];
+export function ObservatoryReader({id,lang,setLang,useAuth}) {
+ const {user,openRegister}=useAuth();
+ return <main lang={lang} style={{maxWidth:760,margin:"0 auto",padding:"24px 20px 64px",fontFamily:F.body,color:C.textSec,fontSize:16,lineHeight:1.7,textSizeAdjust:"100%",WebkitTextSizeAdjust:"100%"}}>
+ <header style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,flexWrap:"wrap",borderBottom:`1px solid ${C.border}`,paddingBottom:16}}>
+ <a href="/#observatory" style={{color:C.gold}}>{lang==="es"?"← Volver al Observatorio":"← Back to Observatory"}</a>
+ <button type="button" onClick={()=>setLang(lang==="es"?"en":"es")} lang={lang==="es"?"en":"es"} style={{padding:"8px 12px",minHeight:44,background:C.surface2,color:C.text,border:`1px solid ${C.border}`,borderRadius:8,cursor:"pointer"}}>{lang==="es"?"Read in English":"Leer en español"}</button>
+ </header>
+ <style>{`main section > h1 {font-size:clamp(27px,5vw,44px);line-height:1.12;} main section > p:first-child {margin-top:28px;} main section li {margin-bottom:8px;}`}</style>
+ {id==="ai-europa-iberoamerica" && (<section aria-labelledby="ai-europa-iberoamerica-title">
+        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · TECNOLOGÍA Y POLÍTICA INDUSTRIAL" : "ZRC THESIS · TECHNOLOGY AND INDUSTRIAL POLICY"}</p>
+        <h1 id="ai-europa-iberoamerica-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Después de Madrid, ¿puede España impulsar proyectos de IA entre Europa e Iberoamérica?" : "After Madrid, can Spain bring Europe and Ibero-America together on AI projects?"}</h1>
+        <p><strong>{lang === "es" ? "Qué pasó" : "What happened"}</strong> · {lang === "es" ? "El 3 de noviembre de 2026, los responsables iberoamericanos acordaron impulsar una alianza de IA en torno a datos, modelos adaptados a las lenguas de la región y capacidad de cómputo." : "On 3 November 2026, Ibero-American ministers agreed to advance an AI alliance focused on data, models adapted to the region’s languages, and computing capacity."}</p>
+        <p><strong>{lang === "es" ? "Tesis ZRC" : "ZRC thesis"}</strong> · {lang === "es" ? "La Alianza Digital UE–América Latina y el Caribe ofrece un cauce de cooperación. Un piloto multilingüe permitiría comprobar si esa cooperación genera capacidad local para desarrollar y evaluar modelos." : "The EU–Latin America and Caribbean Digital Alliance offers a framework for cooperation. A multilingual pilot would test whether that cooperation builds local capacity to develop and evaluate models."}</p>
+        <p><strong>{lang === "es" ? "Qué seguir" : "What to watch"}</strong></p>
+        <ul>
+          <li>{lang === "es" ? "Financiación: una convocatoria o un presupuesto asociado a un proyecto identificable." : "Funding: a call for proposals or budget tied to an identifiable project."}</li>
+          <li>{lang === "es" ? "Responsables: instituciones en ambas regiones y reglas para acceder a los datos y al cómputo." : "Ownership: institutions in both regions and rules for access to data and computing capacity."}</li>
+          <li>{lang === "es" ? "Ejecución: un calendario de pruebas y resultados de evaluación por lengua." : "Delivery: a testing schedule and evaluation results broken down by language."}</li>
+        </ul>
+        <details>
+          <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Hitos y fuentes oficiales" : "Milestones and official sources"}</summary>
+          <ul>
+            <li><time dateTime="2026-11-03">3 Nov 2026</time> · <a style={{ color: C.gold }} href="https://segib.org/es/publicacion/declaracion-de-madrid-sobre-transformacion-digital-e-inteligencia-artificial/">{lang === "es" ? "Declaración ministerial de Madrid · SEGIB" : "Madrid ministerial declaration · SEGIB"}</a></li>
+            <li><time dateTime="2026-11-05">4–5 Nov 2026</time> · <a style={{ color: C.gold }} href="https://segib.org/es/publicacion/declaracion-de-la-xxx-cumbre-iberoamericana/">{lang === "es" ? "Declaración de la Cumbre · SEGIB" : "Summit declaration · SEGIB"}</a></li>
+          </ul>
+          <a style={{ color: C.gold }} href="https://www.eeas.europa.eu/eeas/eu-latin-america-and-caribbean-digital-alliance_en">{lang === "es" ? "Alianza Digital UE–América Latina y el Caribe · SEAE" : "EU–Latin America and Caribbean Digital Alliance · EEAS"}</a>
+        </details>
+        {!user && (
+          <button type="button" onClick={openRegister} style={{ marginTop: 16, padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Crear cuenta en ZRC" : "Create a ZRC account"}</button>
+        )}
+      </section>)}
+{id==="ciberriesgo-continuidad" && (<section aria-labelledby="ciberriesgo-continuidad-title">
+        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · CIBERRIESGO Y CONTINUIDAD" : "ZRC THESIS · CYBER RISK AND CONTINUITY"}</p>
+        <h1 id="ciberriesgo-continuidad-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Tu fábrica sigue produciendo. ¿Cuántos días puede pasar sin facturar?" : "Your factory is still producing. How long can it go without invoicing?"}</h1>
+        <p>{lang === "es" ? "Una actualización defectuosa de CrowdStrike afectó en julio de 2024 a unos 8,5 millones de dispositivos Windows, según Microsoft. El fallo mostró cómo una dependencia tecnológica compartida puede interrumpir servicios en varios sectores a la vez." : "Microsoft estimated that a faulty CrowdStrike update affected 8.5 million Windows devices in July 2024. The outage showed how a shared technology dependency can disrupt services across sectors at the same time."}</p>
+        <p><strong>{lang === "es" ? "Escenario ilustrativo" : "Illustrative scenario"}</strong> · {lang === "es" ? "Una fábrica mantiene la producción, pero durante tres días no puede validar albaranes ni emitir 150.000 € diarios en facturas. Al tercer día hay 450.000 € pendientes de facturar. El efecto sobre caja depende de cuándo se emitan las facturas, de los plazos de cobro y de los pagos que venzan mientras tanto." : "A factory keeps producing but cannot validate delivery notes or issue €150,000 in daily invoices for three days. By day three, €450,000 remains unbilled. The cash impact depends on when invoices are issued, when customers pay and which payments fall due in the meantime."}</p>
+        <p><a style={{ color: C.gold }} href="https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/">Microsoft · 20 Jul 2024</a>{" · "}<a style={{ color: C.gold }} href="https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026">ENISA · 22 Sep 2026</a></p>
+        {user ? (
+          <details>
+            <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Lista de comprobación para las primeras 72 horas" : "First 72 hours checklist"}</summary>
+            <ul>
+              {(lang === "es" ? [
+                "Identifica qué procesos dependen del ERP, el correo o el operador logístico.",
+                "Designa un responsable y un suplente para activar el procedimiento alternativo.",
+                "Ensaya una entrega y valida su albarán con un pedido simulado.",
+                "Mide cuántas facturas puedes emitir por la vía alternativa y cómo evitarás duplicados.",
+                "Desplaza los cobros previstos y compara el saldo mínimo de caja con los pagos que vencen.",
+                "Pide al proveedor evidencia de la última prueba de recuperación y del tiempo observado.",
+              ] : [
+                "Map the processes that depend on your ERP, email or logistics provider.",
+                "Assign a lead and a deputy to activate the fallback process.",
+                "Rehearse a delivery and validate the delivery note using a test order.",
+                "Measure fallback invoicing capacity and plan how to prevent duplicate invoices.",
+                "Shift expected collections and compare the minimum cash balance against upcoming payments.",
+                "Ask the provider for evidence and timings from its most recent recovery exercise.",
+              ]).map(item => <li key={item}>{item}</li>)}
+            </ul>
+          </details>
+        ) : (
+          <button type="button" onClick={() => {
+            window.history.replaceState(window.history.state, "", "#ciberriesgo-continuidad");
+            openRegister();
+          }} style={{ padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Crear cuenta para ver la lista de comprobación" : "Create an account to view the checklist"}</button>
+        )}
+        <p><a style={{ color: C.gold }} href="mailto:luis@zenithrisecapital.com?subject=ZRC%20-%20Piloto%20de%20continuidad">{lang === "es" ? "Consultar disponibilidad para el piloto" : "Enquire about pilot availability"}</a></p>
+      </section>)}
+{id==="materias-primas-criticas" && (<section aria-labelledby="critical-materials-title">
+        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · CASO HISTÓRICO" : "ZRC THESIS · HISTORICAL CASE"}</p>
+        <h1 id="critical-materials-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Materias primas críticas: ¿puede Europa diversificar su suministro?" : "Critical raw materials: can Europe diversify its supply?"}</h1>
+        <p>{lang === "es" ? "La UE incorporó proyectos fuera de su territorio a su estrategia. La designación abre una vía de diversificación, pero la exposición industrial depende de que los proyectos lleguen a producir y suministrar a escala." : "The EU added projects outside its borders to its strategy. Designation opens a route to diversification, but industrial exposure depends on projects reaching commercial production and supplying at scale."}</p>
+        <p><strong>{lang === "es" ? "Tesis condicional" : "Conditional thesis"}</strong> · {lang === "es" ? "Si avanzan los permisos, la financiación y los contratos de suministro, los fabricantes europeos podrían depender menos de sus proveedores actuales. Si se retrasan los proyectos o el procesado sigue concentrado, la exposición puede persistir. Sectores a seguir: baterías e imanes permanentes." : "If permits, funding and supply contracts progress, European manufacturers could rely less on their current suppliers. If projects stall or processing stays concentrated, exposure may persist. Sectors to watch: batteries and permanent magnets."}</p>
+        <details>
+          <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Historial y fuentes oficiales" : "Timeline and official sources"}</summary>
+          <ul>
+            <li><time dateTime="2025-03-25">25 Mar 2025</time> · {lang === "es" ? "La Comisión aprobó la primera lista de proyectos estratégicos dentro de la UE." : "The Commission approved the first list of strategic projects within the EU."}</li>
+            <li><time dateTime="2025-06-04">4 Jun 2025</time> · {lang === "es" ? "La primera lista exterior amplió la estrategia a proyectos fuera de la UE." : "The first external list extended the strategy to projects outside the EU."}</li>
+          </ul>
+          <a style={{ color: C.gold }} href="https://single-market-economy.ec.europa.eu/sectors/raw-materials/areas-specific-interest/critical-raw-materials/strategic-projects-under-crma/selected-projects_en">{lang === "es" ? "Listas oficiales · Comisión Europea" : "Official lists · European Commission"}</a>
+        </details>
+        <a href="/#intelligence">{lang === "es" ? "Explorar las herramientas de Intelligence →" : "Explore the Intelligence tools →"}</a>
+      </section>)}
+ </main>;
+}
+
+function PublicationsCarousel({lang}) {
+ const [track,setTrack]=useState(null);
+ const step=direction=>{const card=track?.firstElementChild;if(card)track.scrollBy({left:direction*(card.getBoundingClientRect().width+14)});};
+ const en=lang==="en";
+ return <section aria-label={en?"ZRC publications":"Publicaciones ZRC"} style={{marginBottom:28}}>
+ <header style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:10,marginBottom:12}}><h3 style={{margin:0,fontSize:19}}>{en?"ZRC publications":"Publicaciones ZRC"}</h3><div style={{display:"flex",gap:6}}>{[-1,1].map(n=><button key={n} type="button" aria-label={en?(n<0?"Previous publication":"Next publication"):(n<0?"Publicación anterior":"Publicación siguiente")} onClick={()=>step(n)} style={{minWidth:44,minHeight:44,border:`1px solid ${C.border}`,borderRadius:8,background:C.surface2,color:C.text,cursor:"pointer"}}>{n<0?"←":"→"}</button>)}</div></header>
+ <ul ref={setTrack} style={{display:"flex",gap:14,overflowX:"auto",scrollSnapType:"x mandatory",listStyle:"none",margin:0,padding:"4px 4px 12px"}}>
+ {OBSERVATORY_PUBLICATIONS.map(({id,copy})=><li key={id} style={{flex:"0 0 min(85%, 340px)",scrollSnapAlign:"start",display:"flex"}}><a href={`#${id}`} style={{width:"100%",background:"linear-gradient(145deg,#223C5B,#111F32)",border:"1px solid #344F70",borderRadius:14,padding:20,color:"#F4F7FC",textDecoration:"none",display:"flex",flexDirection:"column",gap:10}}>
+ <span style={{fontSize:11,color:"#B8D5F4",fontFamily:F.mono}}>{copy[en?1:0]}</span><strong style={{fontSize:22,lineHeight:1.2,fontFamily:F.display}}>{copy[en?3:2]}</strong><span style={{fontSize:14,lineHeight:1.45,color:"#DFE7F2",marginBottom:5}}>{copy[en?5:4]}</span><span style={{marginTop:"auto",fontSize:13,color:"#C5DFFF"}}>{en?"Read analysis →":"Leer análisis →"}</span></a></li>)}
+ </ul></section>;
+}
+
 export default function Observatory({ lang, useAuth, useSubscription, useHeadlines, FadeIn, Sec, SH, GoldDivider, T }) {
   const t = T[lang].obs;
   const { user, openRegister, openLogin, openPricing } = useAuth();
@@ -300,81 +397,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
         </div>
       } />
 
-      <section id="ai-europa-iberoamerica" aria-labelledby="ai-europa-iberoamerica-title" style={{ padding: "clamp(16px, 4vw, 30px)", marginBottom: 24, background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 12, color: C.textSec }}>
-        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · TECNOLOGÍA Y POLÍTICA INDUSTRIAL" : "ZRC THESIS · TECHNOLOGY AND INDUSTRIAL POLICY"}</p>
-        <h3 id="ai-europa-iberoamerica-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Después de Madrid, ¿puede España impulsar proyectos de IA entre Europa e Iberoamérica?" : "After Madrid, can Spain bring Europe and Ibero-America together on AI projects?"}</h3>
-        <p><strong>{lang === "es" ? "Qué pasó" : "What happened"}</strong> · {lang === "es" ? "El 3 de noviembre de 2026, los responsables iberoamericanos acordaron impulsar una alianza de IA en torno a datos, modelos adaptados a las lenguas de la región y capacidad de cómputo." : "On 3 November 2026, Ibero-American ministers agreed to advance an AI alliance focused on data, models adapted to the region’s languages, and computing capacity."}</p>
-        <p><strong>{lang === "es" ? "Tesis ZRC" : "ZRC thesis"}</strong> · {lang === "es" ? "La Alianza Digital UE–América Latina y el Caribe ofrece un cauce de cooperación. Un piloto multilingüe permitiría comprobar si esa cooperación genera capacidad local para desarrollar y evaluar modelos." : "The EU–Latin America and Caribbean Digital Alliance offers a framework for cooperation. A multilingual pilot would test whether that cooperation builds local capacity to develop and evaluate models."}</p>
-        <p><strong>{lang === "es" ? "Qué seguir" : "What to watch"}</strong></p>
-        <ul>
-          <li>{lang === "es" ? "Financiación: una convocatoria o un presupuesto asociado a un proyecto identificable." : "Funding: a call for proposals or budget tied to an identifiable project."}</li>
-          <li>{lang === "es" ? "Responsables: instituciones en ambas regiones y reglas para acceder a los datos y al cómputo." : "Ownership: institutions in both regions and rules for access to data and computing capacity."}</li>
-          <li>{lang === "es" ? "Ejecución: un calendario de pruebas y resultados de evaluación por lengua." : "Delivery: a testing schedule and evaluation results broken down by language."}</li>
-        </ul>
-        <details>
-          <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Hitos y fuentes oficiales" : "Milestones and official sources"}</summary>
-          <ul>
-            <li><time dateTime="2026-11-03">3 Nov 2026</time> · <a style={{ color: C.gold }} href="https://segib.org/es/publicacion/declaracion-de-madrid-sobre-transformacion-digital-e-inteligencia-artificial/">{lang === "es" ? "Declaración ministerial de Madrid · SEGIB" : "Madrid ministerial declaration · SEGIB"}</a></li>
-            <li><time dateTime="2026-11-05">4–5 Nov 2026</time> · <a style={{ color: C.gold }} href="https://segib.org/es/publicacion/declaracion-de-la-xxx-cumbre-iberoamericana/">{lang === "es" ? "Declaración de la Cumbre · SEGIB" : "Summit declaration · SEGIB"}</a></li>
-          </ul>
-          <a style={{ color: C.gold }} href="https://www.eeas.europa.eu/eeas/eu-latin-america-and-caribbean-digital-alliance_en">{lang === "es" ? "Alianza Digital UE–América Latina y el Caribe · SEAE" : "EU–Latin America and Caribbean Digital Alliance · EEAS"}</a>
-        </details>
-        {!user && (
-          <button type="button" onClick={openRegister} style={{ marginTop: 16, padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Crear cuenta en ZRC" : "Create a ZRC account"}</button>
-        )}
-      </section>
-
-      <section id="ciberriesgo-continuidad" aria-labelledby="ciberriesgo-continuidad-title" style={{ padding: "clamp(16px, 4vw, 30px)", marginBottom: 24, background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 12, color: C.textSec }}>
-        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · CIBERRIESGO Y CONTINUIDAD" : "ZRC THESIS · CYBER RISK AND CONTINUITY"}</p>
-        <h3 id="ciberriesgo-continuidad-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Tu fábrica sigue produciendo. ¿Cuántos días puede pasar sin facturar?" : "Your factory is still producing. How long can it go without invoicing?"}</h3>
-        <p>{lang === "es" ? "Una actualización defectuosa de CrowdStrike afectó en julio de 2024 a unos 8,5 millones de dispositivos Windows, según Microsoft. El fallo mostró cómo una dependencia tecnológica compartida puede interrumpir servicios en varios sectores a la vez." : "Microsoft estimated that a faulty CrowdStrike update affected 8.5 million Windows devices in July 2024. The outage showed how a shared technology dependency can disrupt services across sectors at the same time."}</p>
-        <p><strong>{lang === "es" ? "Escenario ilustrativo" : "Illustrative scenario"}</strong> · {lang === "es" ? "Una fábrica mantiene la producción, pero durante tres días no puede validar albaranes ni emitir 150.000 € diarios en facturas. Al tercer día hay 450.000 € pendientes de facturar. El efecto sobre caja depende de cuándo se emitan las facturas, de los plazos de cobro y de los pagos que venzan mientras tanto." : "A factory keeps producing but cannot validate delivery notes or issue €150,000 in daily invoices for three days. By day three, €450,000 remains unbilled. The cash impact depends on when invoices are issued, when customers pay and which payments fall due in the meantime."}</p>
-        <p><a style={{ color: C.gold }} href="https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/">Microsoft · 20 Jul 2024</a>{" · "}<a style={{ color: C.gold }} href="https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026">ENISA · 22 Sep 2026</a></p>
-        {user ? (
-          <details>
-            <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Lista de comprobación para las primeras 72 horas" : "First 72 hours checklist"}</summary>
-            <ul>
-              {(lang === "es" ? [
-                "Identifica qué procesos dependen del ERP, el correo o el operador logístico.",
-                "Designa un responsable y un suplente para activar el procedimiento alternativo.",
-                "Ensaya una entrega y valida su albarán con un pedido simulado.",
-                "Mide cuántas facturas puedes emitir por la vía alternativa y cómo evitarás duplicados.",
-                "Desplaza los cobros previstos y compara el saldo mínimo de caja con los pagos que vencen.",
-                "Pide al proveedor evidencia de la última prueba de recuperación y del tiempo observado.",
-              ] : [
-                "Map the processes that depend on your ERP, email or logistics provider.",
-                "Assign a lead and a deputy to activate the fallback process.",
-                "Rehearse a delivery and validate the delivery note using a test order.",
-                "Measure fallback invoicing capacity and plan how to prevent duplicate invoices.",
-                "Shift expected collections and compare the minimum cash balance against upcoming payments.",
-                "Ask the provider for evidence and timings from its most recent recovery exercise.",
-              ]).map(item => <li key={item}>{item}</li>)}
-            </ul>
-          </details>
-        ) : (
-          <button type="button" onClick={() => {
-            window.history.replaceState(window.history.state, "", "#ciberriesgo-continuidad");
-            openRegister();
-          }} style={{ padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Crear cuenta para ver la lista de comprobación" : "Create an account to view the checklist"}</button>
-        )}
-        <p><a style={{ color: C.gold }} href="mailto:luis@zenithrisecapital.com?subject=ZRC%20-%20Piloto%20de%20continuidad">{lang === "es" ? "Consultar disponibilidad para el piloto" : "Enquire about pilot availability"}</a></p>
-      </section>
-
-      <section aria-labelledby="critical-materials-title" style={{ padding: "clamp(16px, 4vw, 30px)", marginBottom: 24, background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 12, color: C.textSec }}>
-        <p style={{ color: C.gold, fontFamily: F.mono, fontSize: 11 }}>{lang === "es" ? "TESIS ZRC · CASO HISTÓRICO" : "ZRC THESIS · HISTORICAL CASE"}</p>
-        <h3 id="critical-materials-title" style={{ color: C.text, margin: "8px 0" }}>{lang === "es" ? "Materias primas críticas: ¿puede Europa diversificar su suministro?" : "Critical raw materials: can Europe diversify its supply?"}</h3>
-        <p>{lang === "es" ? "La UE incorporó proyectos fuera de su territorio a su estrategia. La designación abre una vía de diversificación, pero la exposición industrial depende de que los proyectos lleguen a producir y suministrar a escala." : "The EU added projects outside its borders to its strategy. Designation opens a route to diversification, but industrial exposure depends on projects reaching commercial production and supplying at scale."}</p>
-        <p><strong>{lang === "es" ? "Tesis condicional" : "Conditional thesis"}</strong> · {lang === "es" ? "Si avanzan los permisos, la financiación y los contratos de suministro, los fabricantes europeos podrían depender menos de sus proveedores actuales. Si se retrasan los proyectos o el procesado sigue concentrado, la exposición puede persistir. Sectores a seguir: baterías e imanes permanentes." : "If permits, funding and supply contracts progress, European manufacturers could rely less on their current suppliers. If projects stall or processing stays concentrated, exposure may persist. Sectors to watch: batteries and permanent magnets."}</p>
-        <details>
-          <summary style={{ cursor: "pointer", color: C.gold }}>{lang === "es" ? "Historial y fuentes oficiales" : "Timeline and official sources"}</summary>
-          <ul>
-            <li><time dateTime="2025-03-25">25 Mar 2025</time> · {lang === "es" ? "La Comisión aprobó la primera lista de proyectos estratégicos dentro de la UE." : "The Commission approved the first list of strategic projects within the EU."}</li>
-            <li><time dateTime="2025-06-04">4 Jun 2025</time> · {lang === "es" ? "La primera lista exterior amplió la estrategia a proyectos fuera de la UE." : "The first external list extended the strategy to projects outside the EU."}</li>
-          </ul>
-          <a style={{ color: C.gold }} href="https://single-market-economy.ec.europa.eu/sectors/raw-materials/areas-specific-interest/critical-raw-materials/strategic-projects-under-crma/selected-projects_en">{lang === "es" ? "Listas oficiales · Comisión Europea" : "Official lists · European Commission"}</a>
-        </details>
-        <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("zrc-open-tool", { detail: { tool: "GeoRisk Dashboard", context: "eu-critical-materials" } }))} style={{ marginTop: 16, padding: "10px 14px", border: `1px solid ${C.gold}`, borderRadius: 6, background: "transparent", color: C.gold, cursor: "pointer" }}>{lang === "es" ? "Abrir contexto de la UE en GeoRisk" : "Open EU context in GeoRisk"}</button>
-      </section>
+      <PublicationsCarousel lang={lang} />
 
       {/* STALE FEED NOTICE — pipeline diario sin refrescar */}
       {isStale && (
