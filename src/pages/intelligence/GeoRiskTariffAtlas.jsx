@@ -21,24 +21,30 @@ const routeNotes={
  pumps:{us:"Validar clasificación y posibles medidas adicionales.",gb:"Comprobar reglas de origen del acuerdo UE–Reino Unido.",cn:"Contrastar derechos y medidas comerciales en TARIC."}
 };
 export default function GeoRiskTariffAtlas(){
- const [product,setProduct]=useState("olive"),[demo,setDemo]=useState(true);
+ const [product,setProduct]=useState("olive"),[mode,setMode]=useState("verified"),[taricCode,setTaricCode]=useState(""),[verified,setVerified]=useState([]),[verifiedStatus,setVerifiedStatus]=useState("");
  const [manual,setManual]=useState({}),[selected,setSelected]=useState(["tn","ma","tr"]);
  const [customs,setCustoms]=useState("10000"),[shock,setShock]=useState("0");
  const [boundaries,setBoundaries]=useState(null),[failed,setFailed]=useState(false);
  useEffect(()=>{const c=new AbortController();fetch("/georisk-world-42.geojson",{signal:c.signal}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(setBoundaries).catch(()=>{if(!c.signal.aborted)setFailed(true)});return()=>c.abort()},[]);
+ useEffect(()=>{setVerified([]);setVerifiedStatus("");if(mode!=="verified"||!/^\d{10}$/.test(taricCode)||!taricCode.startsWith(products[product].hs.replace(".","")))return;
+  const c=new AbortController();setVerifiedStatus("Consultando registros revisados…");
+  fetch(`https://zenithrisecapital.com/api/georisk-tariffs?code=${taricCode}`,{signal:c.signal}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{setVerified(d.rates||[]);setVerifiedStatus((d.rates||[]).length?"Registros revisados disponibles":"Sin tipo verificado para esta clasificación y fecha.")}).catch(()=>{if(!c.signal.aborted)setVerifiedStatus("No se pudo consultar la fuente; no se muestra una tarifa.")});return()=>c.abort();
+ },[mode,taricCode,product]);
  const p=products[product], amount=num(customs,1e12), extra=num(shock,100);
- const rate=id=>demo?p.rates[id]??null:num(manual[product]?.[id],1000);
+ const record=id=>{const matches=verified.filter(v=>v.origin===id.toUpperCase()&&v.destination==="ES"&&v.commodity_code===taricCode);return matches.length===1?matches[0]:null};
+ const rate=id=>mode==="verified"?(record(id)?.rate_percent??null):mode==="demo"?(p.rates[id]??null):num(manual[product]?.[id],1000);
  const toggle=id=>setSelected(prev=>prev.includes(id)?prev.filter(x=>x!==id):prev.length<3?[...prev,id]:prev);
- const change=key=>{setProduct(key);setSelected(Object.keys(products[key].rates));setShock("0")};
+ const change=key=>{setProduct(key);setSelected(Object.keys(products[key].rates));setTaricCode("");setShock("0")};
  return <section aria-label="Mapa arancelario" style={{background:"#F7F9FC",color:"#15233B",padding:"clamp(14px,3vw,28px)",borderRadius:18,colorScheme:"light"}}>
   <div style={{fontSize:11,letterSpacing:1.5,fontWeight:800,color:"#2E6FB8"}}>GEORISK · COMERCIO INTERNACIONAL</div>
   <h2 style={{fontSize:"clamp(22px,4vw,30px)",margin:"6px 0"}}>Mapa arancelario</h2>
   <p style={{fontSize:14,margin:"0 0 16px"}}>Compara hasta tres orígenes para un mismo producto. Destino piloto: España (territorio aduanero de la UE).</p>
   <div style={grid}>
    <label>Producto<select style={field} value={product} onChange={e=>change(e.target.value)}>{Object.entries(products).map(([id,item])=><option key={id} value={id}>{item.name} · HS {item.hs}</option>)}</select></label>
-   <label>Modo<select style={field} value={demo?"demo":"manual"} onChange={e=>{setDemo(e.target.value==="demo");setShock("0")}}><option value="demo">Ejemplo con datos ficticios</option><option value="manual">Introducir tipos manualmente</option></select></label>
+   <label>Modo<select style={field} value={mode} onChange={e=>{setMode(e.target.value);setShock("0")}}><option value="verified">Registros oficiales revisados</option><option value="manual">Introducir tipos manualmente</option><option value="demo">Ejemplo con datos ficticios</option></select></label>
   </div>
-  <p role="status" style={{fontSize:13,padding:10,background:demo?"#FFF2DD":"#EAF1F9",borderRadius:8}}>{demo?"Ejemplo ficticio: los colores y cifras no representan aranceles vigentes ni preferencias comerciales.":"Tipos aportados por ti, sin verificación automática. Consulta en TARIC el código completo, el origen y las medidas vigentes antes de introducirlos."} <a style={{color:"#175487"}} href={official} target="_blank" rel="noreferrer">Consultar TARIC</a></p>
+  {mode==="verified"&&<label style={{display:"block",maxWidth:350,marginTop:12}}>Código TARIC completo (10 dígitos)<input style={field} inputMode="numeric" maxLength={10} placeholder={`${p.hs.replace(".","")}…`} value={taricCode} onChange={e=>setTaricCode(e.target.value.replace(/\D/g,"").slice(0,10))}/></label>}
+  <p role="status" style={{fontSize:13,padding:10,background:mode==="demo"?"#FFF2DD":"#EAF1F9",borderRadius:8}}>{mode==="verified"?(/^\d{10}$/.test(taricCode)?verifiedStatus:"Introduce los 10 dígitos de la clasificación; un HS de seis dígitos no determina el arancel aplicable."):mode==="demo"?"Ejemplo ficticio: los colores y cifras no representan aranceles vigentes ni preferencias comerciales.":"Tipos aportados por ti, sin verificación automática. Consulta en TARIC el código completo, el origen y las medidas vigentes antes de introducirlos."} <a style={{color:"#175487"}} href={official} target="_blank" rel="noreferrer">Consultar TARIC</a></p>
   <div style={{overflow:"hidden",border:"1px solid #C7D6E6",borderRadius:14,position:"relative",isolation:"isolate"}}>
    <MapContainer center={[25,10]} zoom={2} minZoom={1} scrollWheelZoom={false} style={{height:"clamp(260px,42vw,410px)",background:"#EAF1F9"}}>
     <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
@@ -63,7 +69,8 @@ export default function GeoRiskTariffAtlas(){
   {selected.length===0&&<p>Selecciona al menos un origen.</p>}
   <div style={grid}>{selected.map(id=>{const r=rate(id),cost=r==null||amount==null?null:amount*r/100;return <article key={id} style={{background:"#FFF",border:"1px solid #C7D6E6",borderRadius:12,padding:14}}>
    <h4 style={{margin:"0 0 8px",fontSize:16}}>{origins[id]}</h4>
-   {demo?<div>{r==null?"Sin dato de ejemplo":pct.format(r)+" % · ejemplo"}</div>:<label>Tipo aportado (%)<input style={field} type="number" min="0" max="1000" step="any" value={manual[product]?.[id]??""} onChange={e=>setManual(prev=>({...prev,[product]:{...prev[product],[id]:e.target.value}}))}/></label>}
+   {mode==="manual"?<label>Tipo aportado (%)<input style={field} type="number" min="0" max="1000" step="any" value={manual[product]?.[id]??""} onChange={e=>setManual(prev=>({...prev,[product]:{...prev[product],[id]:e.target.value}}))}/></label>:<div>{r==null?"Sin tipo disponible":pct.format(r)+" % · "+(mode==="demo"?"ejemplo":record(id).treatment)}</div>}
+   {mode==="verified"&&record(id)&&<p style={{fontSize:12}}>{record(id).source_name} · vigente desde {record(id).valid_from} · revisado {record(id).verified_at.slice(0,10)} · <a href={record(id).source_url} target="_blank" rel="noreferrer">Fuente ↗</a></p>}
    <p style={{fontSize:22,fontWeight:750,margin:"8px 0"}}>{cost==null?"—":money.format(cost)}</p>
    {cost!=null&&extra>0&&<p style={{fontSize:13,margin:0}}>Con la subida: <strong>{money.format(cost+amount*extra/100)}</strong> (+{money.format(amount*extra/100)})</p>}
   </article>})}</div>
@@ -78,7 +85,7 @@ export default function GeoRiskTariffAtlas(){
      <h4 style={{fontSize:17,margin:"6px 0 4px"}}>{origins[id]} → España</h4>
      <p style={{fontSize:13,color:"#C9D8E6",margin:"0 0 12px"}}>{p.name} · HS {p.hs}</p>
      <div style={{fontSize:20,fontWeight:750}}>{cost==null?"Tipo pendiente":money.format(cost)}</div>
-     <div style={{fontSize:12,color:demo?"#F5D190":"#A8DCCB",marginTop:2}}>{demo?"Simulación ficticia":r==null?"Introduce y verifica el tipo":"Cálculo con tipo introducido, sin verificar"}</div>
+     <div style={{fontSize:12,color:mode==="demo"?"#F5D190":"#A8DCCB",marginTop:2}}>{mode==="demo"?"Simulación ficticia":mode==="verified"?(r==null?"Sin registro verificado":"Tipo revisado · "+record(id).source_name):r==null?"Introduce y verifica el tipo":"Cálculo con tipo introducido, sin verificar"}</div>
      <p style={{fontSize:13,lineHeight:1.5,color:"#D8E3EE",minHeight:42}}>{routeNotes[product]?.[id]??"Verificar el tipo aplicable, el origen y los requisitos de entrada."}</p>
      <a href={official} target="_blank" rel="noreferrer" style={{color:"#A7D7FF",fontSize:13}}>Comprobar en TARIC ↗</a>
     </article>})}
