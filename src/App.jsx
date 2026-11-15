@@ -1,7 +1,7 @@
 import { IcLocaleProvider } from "./pages/innercircle/icLocale";
 import { useState, useEffect, useRef, useCallback, createContext, useContext, lazy, Suspense, Component } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
-import Observatory from "./pages/intelligence/Observatory";
+import Observatory, { ObservatoryReader, OBSERVATORY_PUBLICATIONS } from "./pages/intelligence/Observatory";
 import RealEstateVisor from "./pages/labs/RealEstateVisor";
 import FinancialIntelligenceSystem from "./pages/labs/FinancialIntelligenceSystem";
 import Community from "./pages/community/Community";
@@ -1940,6 +1940,17 @@ const GeoRiskAccessHub = ({lang,onOpenMap,onNav,countryContext}) => {
 
 const ZRCPlatform = () => {
   const [lang, setLang] = useState("es");
+  const readPublication = () => OBSERVATORY_PUBLICATIONS.find(item => `#${item.id}` === window.location.hash)?.id ?? null;
+  const [publication, setPublication] = useState(() => typeof window === "undefined" ? null : readPublication());
+  useEffect(() => {
+    const sync = () => setPublication(readPublication());
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, []);
+  useEffect(() => {
+    if (publication) window.scrollTo({top:0,behavior:"instant"});
+    else if (window.location.hash === "#observatory" || window.location.hash === "#intelligence") document.getElementById(window.location.hash.slice(1))?.scrollIntoView({block:"start"});
+  }, [publication]);
   const [icPage, setIcPage] = useState(null);
   // Público, sin login — el mapa es el imán de tráfico/SEO de la familia
   // GeoRisk, así que su apertura no pasa por ningún gate de auth/tier
@@ -2201,7 +2212,7 @@ const ZRCPlatform = () => {
           />
         </div>
       )}
-      <div inert={icPage ? "" : undefined} aria-hidden={icPage ? true : undefined}>
+      {publication ? <ObservatoryReader key={publication} id={publication} lang={lang} setLang={setLang} useAuth={useAuth} /> : <div inert={icPage ? "" : undefined} aria-hidden={icPage ? true : undefined}>
       <Nav lang={lang} setLang={setLang} onNav={onNav} />
       <MarketTicker lang={lang} />
       <Hero lang={lang} onNav={onNav} />
@@ -2281,7 +2292,7 @@ const ZRCPlatform = () => {
       <Community lang={lang} onExplore={() => onNav("inner-circle")} />
       <Footer lang={lang} />
       <ZenithAssistant lang={lang} onNav={onNav} hidden={!!icPage} />
-      </div>
+      </div> }
 
       {showWorldMap && (
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
