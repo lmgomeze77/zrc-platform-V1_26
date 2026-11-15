@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T12:55:10.051Z",
+  "generated_at": "2026-11-15T13:23:13.251Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,290 +96,308 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "GLOBAL",
+      "region": "MENA",
       "title": {
-        "es": "China acogerá la primera reunión trilateral entre Trump, Xi y Putin la próxima semana",
-        "en": "China to host first-ever trilateral meeting between Trump, Xi and Putin next week"
+        "es": "Irán ataca radar militar de EE.UU. en Baréin con drones en represalia",
+        "en": "Iran targets US military radar in Bahrain in 'retaliatory' drone strikes"
       },
       "summary": {
-        "es": "La cumbre APEC en Shenzhen albergará el primer encuentro simultáneo entre los líderes de EE.UU., China y Rusia, con el armamento nuclear y la guerra en Irán como temas centrales. La exclusión de Ucrania de la agenda señala un posible reordenamiento geopolítico de primer orden. Los mercados globales responderán a cualquier señal sobre acuerdos de control de armamentos o distensión en el conflicto iraní.",
-        "en": "The APEC summit in Shenzhen will host the first-ever simultaneous meeting of US, Chinese and Russian leaders, with nuclear weapons and the war in Iran as central agenda items. Ukraine's exclusion from the agenda signals a potentially major geopolitical realignment. Global markets will react sharply to any signals on arms control deals or de-escalation in the Iran conflict."
+        "es": "Las CGRI iraníes lanzaron seis drones contra una instalación de radar estadounidense en una base aérea en Baréin, en lo que calificaron como un ataque de represalia. La acción representa una escalada directa contra infraestructura militar estadounidense en el Golfo Pérsico, con riesgo inmediato para las rutas energéticas regionales y la estabilidad del Estrecho de Ormuz. Los mercados de energía y activos de refugio reaccionarán con presión alcista significativa.",
+        "en": "Iran's IRGC launched six drones against a US radar installation at an air base in Bahrain, describing it as a retaliatory strike. The action marks a direct escalation against US military infrastructure in the Persian Gulf, posing immediate risk to regional energy routes and Strait of Hormuz stability. Energy markets and safe-haven assets face significant upward pressure."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Gold",
-          "direction": "mixed",
+          "asset": "Brent crude",
+          "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Alta incertidumbre geopolítica impulsa demanda de refugio",
-            "en": "High geopolitical uncertainty drives safe-haven demand"
+            "es": "Riesgo de cierre del Estrecho de Ormuz eleva prima geopolítica",
+            "en": "Strait of Hormuz closure risk raises geopolitical premium"
           }
         },
         {
-          "asset": "Brent crude",
-          "direction": "down",
-          "magnitude": "medium",
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "high",
           "note": {
-            "es": "Señales de distensión en Irán reducirían prima de riesgo",
-            "en": "Iran de-escalation signals would reduce risk premium"
+            "es": "Escalada militar directa impulsa refugio seguro",
+            "en": "Direct military escalation drives safe-haven demand"
           }
         },
         {
           "asset": "US 10Y Treasury",
-          "direction": "mixed",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Vuelo a la calidad dependiente del tono de la cumbre",
-            "en": "Flight to quality dependent on summit tone and outcomes"
+            "es": "Fuga hacia bonos ante aumento del riesgo bélico regional",
+            "en": "Flight to bonds amid rising regional war risk"
           }
         },
         {
-          "asset": "EM currencies",
-          "direction": "up",
-          "magnitude": "medium",
+          "asset": "GCC equities",
+          "direction": "down",
+          "magnitude": "high",
           "note": {
-            "es": "Distensión trilateral favorece activos de riesgo emergentes",
-            "en": "Trilateral détente supports emerging market risk assets"
+            "es": "Proximidad geográfica del ataque presiona bolsas del Golfo",
+            "en": "Geographic proximity of strike pressures Gulf equity markets"
           }
         }
       ],
-      "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/asia-pacific/20261114-china-to-host-first-ever-trilateral-meeting-between-trump-xi-and-putin-next-week-us-says",
-      "published_at": "2026-11-14",
-      "time": "7h"
+      "confidence": 92,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/video/newsfeed/2026/11/15/iran-targets-us-military-radar-in-bahrain-in-retaliatory-drone-strikes?traffic_source=rss",
+      "published_at": "2026-11-15",
+      "time": "1h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
-      "region": "MENA",
+      "region": "GLOBAL",
       "title": {
-        "es": "Irán dice haber atacado radar militar de EE.UU. en Baréin en ataque de represalia",
-        "en": "Iran says it targeted US military radar in Bahrain in retaliatory strike"
+        "es": "Albanese respalda la cumbre Trump-Xi-Putin mientras los líderes europeos expresan reservas",
+        "en": "Anthony Albanese welcomes Trump-Xi-Putin summit – even as European leaders express reservations"
       },
       "summary": {
-        "es": "Las CGRI iraníes afirman haber destruido un radar de alerta temprana estadounidense en Baréin como represalia por un ataque aéreo de EE.UU. sobre una torre de comunicaciones en Sirik. El ataque directo sobre instalaciones militares estadounidenses representa una escalada significativa en la guerra EE.UU.-Irán, poniendo en riesgo el Estrecho de Ormuz. La prima de riesgo energético global se dispara ante la posibilidad de interrupciones en el tránsito de crudo.",
-        "en": "Iran's IRGC claims to have destroyed a US early-warning radar in Bahrain in retaliation for a US airstrike on a communications tower in Sirik overlooking the Strait of Hormuz. A direct strike on US military installations marks a significant escalation in the US-Iran war, threatening the strategic chokepoint. Global energy risk premiums surge on potential crude transit disruption."
+        "es": "Australia ha respaldado la histórica cumbre trilateral entre Trump, Xi y Putin celebrada en China, mientras que líderes europeos advierten que Washington podría negociar la paz en Ucrania sin consultar a sus aliados. La división transatlántica se profundiza, con implicaciones directas para la arquitectura de seguridad europea y la cohesión de la OTAN. El euro y los activos europeos de defensa reflejarán la incertidumbre sobre el futuro del compromiso estadounidense.",
+        "en": "Australia has endorsed the historic trilateral summit between Trump, Xi and Putin held in China, while European leaders warn Washington may negotiate Ukraine's peace without consulting allies. The transatlantic divide deepens, with direct implications for Europe's security architecture and NATO cohesion. The euro and European defense assets will reflect uncertainty over US commitment."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "high",
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "medium",
           "note": {
-            "es": "Amenaza directa al Estrecho de Ormuz eleva prima de riesgo",
-            "en": "Direct threat to Strait of Hormuz sharply elevates risk premium"
+            "es": "Fractura transatlántica debilita posición negociadora europea",
+            "en": "Transatlantic fracture weakens Europe's negotiating position"
+          }
+        },
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Europa refuerza gasto en defensa ante retirada de garantías de EE.UU.",
+            "en": "Europe boosts defense spending amid US security guarantee doubts"
           }
         },
         {
           "asset": "Gold",
           "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Incertidumbre geopolítica global sostiene demanda de refugio",
+            "en": "Global geopolitical uncertainty sustains safe-haven demand"
+          }
+        },
+        {
+          "asset": "Ukrainian sovereign bonds",
+          "direction": "mixed",
           "magnitude": "high",
           "note": {
-            "es": "Escalada militar impulsa demanda de activos refugio",
-            "en": "Military escalation drives safe-haven demand"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Vuelo a la calidad ante escalada en Golfo Pérsico",
-            "en": "Flight to quality on Persian Gulf escalation"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo energético pesa sobre mercados europeos dependientes del crudo",
-            "en": "Energy risk weighs on oil-dependent European markets"
+            "es": "Concesiones territoriales posibles generan incertidumbre de crédito",
+            "en": "Possible territorial concessions create sovereign credit uncertainty"
           }
         }
       ],
-      "confidence": 93,
+      "confidence": 90,
       "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/nov/13/iran-us-radar-bahrain-sirik-hormuz",
-      "published_at": "2026-11-13",
-      "time": "23h"
+      "source_url": "https://www.theguardian.com/australia-news/2026/nov/15/anthony-albanese-welcomes-trump-xi-putin-summit-even-as-european-leaders-express-reservations",
+      "published_at": "2026-11-15",
+      "time": "7h"
     },
     {
       "id": 3,
       "tag": "ALERT",
-      "region": "APAC",
+      "region": "EU",
       "title": {
-        "es": "Tras la purga de generales de Xi, un inquisidor militar asciende al poder",
-        "en": "After Xi Purges China's Generals, a Military Inquisitor Rises"
+        "es": "Ciberataques contra electrodomésticos y falsas bombas: la amenaza híbrida en Europa escala en plena tormenta política",
+        "en": "Cyberattacks on appliances and fake bombs: hybrid threat fronts in Europe escalate amid political storm"
       },
       "summary": {
-        "es": "El ascenso de Zhang Shengmin sugiere que las investigaciones anticorrupción en el Ejército Popular de Liberación continúan, generando incertidumbre sobre la cohesión del mando militar chino. Analistas advierten que las purgas podrían complicar los preparativos militares respecto a Taiwán. La debilidad institucional en el EPL es un factor de riesgo relevante para cualquier cálculo sobre contingencias en el Estrecho de Taiwán.",
-        "en": "The rise of Zhang Shengmin indicates that anti-corruption investigations within the PLA remain active, casting doubt on command cohesion at the top of China's military. Analysts warn that ongoing purges could complicate military readiness regarding Taiwan. PLA institutional fragility is a key variable for investors pricing Taiwan Strait contingency risk."
+        "es": "Actores estatales como Rusia e Irán, junto a agentes no estatales, están explotando vulnerabilidades europeas con ciberataques a infraestructuras cotidianas y operaciones de desinformación, en un momento de alta turbulencia política interna en Europa. La escalada de la amenaza híbrida plantea riesgos para la continuidad operativa de infraestructuras críticas y aumenta el costo de ciberseguridad para gobiernos y empresas. Los inversores en deuda soberana europea y en el sector tecnológico de defensa deben vigilar el incremento del gasto en resiliencia.",
+        "en": "State actors including Russia and Iran, alongside non-state agents, are exploiting European vulnerabilities through cyberattacks on everyday infrastructure and disinformation campaigns, amid heightened internal political turbulence across Europe. The escalating hybrid threat poses risks to critical infrastructure operational continuity and raises cybersecurity costs for governments and corporations. Investors in European sovereign debt and defense-tech should monitor rising resilience spending."
       },
-      "impact": "high",
+      "impact": "medium",
       "market_impact": [
         {
-          "asset": "Taiwan equities (TAIEX)",
-          "direction": "mixed",
+          "asset": "European cybersecurity equities",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre sobre capacidad ofensiva china reduce riesgo inmediato",
-            "en": "Uncertainty over PLA offensive readiness reduces near-term risk"
+            "es": "Escalada de amenaza híbrida impulsa gasto en ciberseguridad",
+            "en": "Hybrid threat escalation drives cybersecurity spending"
           }
         },
         {
-          "asset": "Semiconductor sector ETFs",
+          "asset": "European sovereign bonds",
           "direction": "mixed",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Tensión latente en Taiwán mantiene prima de riesgo sectorial",
-            "en": "Latent Taiwan tension sustains sector risk premium"
+            "es": "Mayor gasto en seguridad tensiona presupuestos fiscales europeos",
+            "en": "Higher security spending strains European fiscal budgets"
           }
         },
         {
-          "asset": "Chinese equities (CSI 300)",
+          "asset": "EUR/USD",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Purgas militares generan incertidumbre política interna",
-            "en": "Military purges generate domestic political uncertainty"
+            "es": "Inestabilidad política e híbrida reduce atractivo del euro",
+            "en": "Political and hybrid instability reduces euro appeal"
+          }
+        }
+      ],
+      "confidence": 78,
+      "source": "El País",
+      "source_url": "https://elpais.com/internacional/2026-11-15/ciberataques-contra-refrigeradores-y-falsas-bombas-los-frentes-de-la-amenaza-hibrida-en-europa-escalan-en-plena-tormenta-politica.html",
+      "published_at": "2026-11-15",
+      "time": "8h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Cumbre de la Francofonía: Macron pide unidad ante las tensiones entre RDC y Ruanda",
+        "en": "Francophonie summit: Macron calls for unity amid DRC-Rwanda tensions"
+      },
+      "summary": {
+        "es": "Macron intentó mediar en la cumbre de la Francofonía en Phnom Penh entre la República Democrática del Congo y Ruanda, cuyas tensiones sobre el grupo rebelde M23 en el este del Congo amenazan con desintegrar la organización. Kinshasa se opone a la reelección de la ruandesa Louise Mushikiwabo al frente de la OIF, vinculando la gobernanza multilateral a un conflicto territorial con alto potencial de escalada. El este del Congo alberga reservas estratégicas de minerales críticos relevantes para cadenas de suministro de baterías y tecnología.",
+        "en": "Macron attempted to mediate at the Francophonie summit in Phnom Penh between the DRC and Rwanda, whose tensions over the M23 rebel group in eastern Congo threaten to split the organization. Kinshasa opposes the reappointment of Rwanda's Louise Mushikiwabo as OIF head, linking multilateral governance to a territorial conflict with high escalation potential. Eastern Congo hosts strategic reserves of critical minerals relevant to battery and technology supply chains."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Critical minerals (cobalt/coltan)",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Inestabilidad en el este del Congo amenaza suministro de minerales críticos",
+            "en": "Eastern Congo instability threatens critical mineral supply"
+          }
+        },
+        {
+          "asset": "African sovereign bonds (DRC)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Tensión regional y crisis de gobernanza presionan riesgo soberano",
+            "en": "Regional tension and governance crisis pressures sovereign risk"
+          }
+        },
+        {
+          "asset": "Battery/EV supply chain equities",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de suministro de cobalto afecta cadenas de valor de baterías",
+            "en": "Cobalt supply risk affects battery value chains"
+          }
+        }
+      ],
+      "confidence": 75,
+      "source": "Le Monde",
+      "source_url": "https://www.lemonde.fr/international/article/2026/11/15/somment-de-la-francophonie-emmanuel-macron-appelle-a-l-unite-et-au-consensus-face-aux-tensions-entre-la-rdc-et-le-rwanda_6810995_3210.html",
+      "published_at": "2026-11-15",
+      "time": "5h"
+    },
+    {
+      "id": 5,
+      "tag": "ALERT",
+      "region": "APAC",
+      "title": {
+        "es": "Pekín enfrenta su dilema con Rusia en medio de la cumbre Xi-Trump-Putin",
+        "en": "Beijing faces its Russia dilemma amid talk of Xi-Trump-Putin summit"
+      },
+      "summary": {
+        "es": "China debe equilibrar su relación con Rusia frente a su imagen global al ser sede de una cumbre trilateral con connotaciones favorables a Moscú. El riesgo reputacional para Pekín con socios comerciales occidentales y del Sur Global podría traducirse en presión adicional sobre exportaciones chinas y relaciones diplomáticas en mercados emergentes. Los inversores en activos chinos monitorizarán posibles reacciones regulatorias o arancelarias de EE.UU. y la UE.",
+        "en": "China must balance its relationship with Russia against its global image by hosting a trilateral summit with optics favorable to Moscow. Reputational risk for Beijing with Western and Global South trade partners could translate into additional pressure on Chinese exports and diplomatic relations in emerging markets. Investors in Chinese assets will monitor potential regulatory or tariff reactions from the US and EU."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Chinese equities (CSI 300)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo reputacional de China puede desencadenar presiones arancelarias",
+            "en": "China reputational risk may trigger tariff pressure"
+          }
+        },
+        {
+          "asset": "CNY/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Percepción de alineación con Rusia debilita atractivo del yuan",
+            "en": "Perceived Russia alignment weakens yuan appeal"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Reconfiguración de alianzas genera volatilidad en mercados emergentes",
+            "en": "Alliance reconfiguration generates EM market volatility"
           }
         }
       ],
       "confidence": 80,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/11/13/world/asia/china-military-purge-zhang-shengmin-taiwan.html",
-      "published_at": "2026-11-13",
-      "time": "1d"
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/beijing-faces-its-russia-dilemma-amid-talk-of-xi-trump-putin-summit/a-79942427?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-15",
+      "time": "6h"
     },
     {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "EU",
+      "id": 6,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
       "title": {
-        "es": "Ciberataques y guerra híbrida: Alemania otorga amplios poderes a policía y servicios de inteligencia",
-        "en": "Cyber attacks and hybrid warfare: Germany gives sweeping powers to its police and intelligence services"
+        "es": "Las restricciones a Starshield persisten e impiden a Kiev protegerse de los ataques rusos, dice Zelensky",
+        "en": "Starshield access restrictions persist and prevent Kyiv from protecting itself from Russian attacks, says Zelensky"
       },
       "summary": {
-        "es": "Alemania ha aprobado nuevas competencias para sus fuerzas de seguridad e inteligencia en respuesta al aumento de avistamientos de drones y ciberataques atribuidos a actores estatales extranjeros. La medida refleja la creciente militarización del espacio digital en Europa y el reconocimiento de la guerra híbrida como amenaza sistémica. Para inversores, señala mayor gasto en defensa y ciberseguridad en la UE y posibles implicaciones regulatorias para empresas tecnológicas.",
-        "en": "Germany has enacted sweeping new powers for its security and intelligence services in response to rising drone incidents and cyberattacks attributed to foreign state actors. The move reflects the growing militarization of digital space in Europe and institutional recognition of hybrid warfare as a systemic threat. For investors, it signals further EU defense and cybersecurity spending, with potential regulatory implications for tech firms."
+        "es": "Zelensky denuncia que las limitaciones de velocidad de los terminales Starshield impiden la defensa ucraniana mientras Rusia intensifica su campaña aérea con más de 2.300 drones, 1.590 bombas y 15 misiles en una sola semana. La dependencia tecnológica de Ucrania frente a decisiones corporativo-políticas de EE.UU. expone una vulnerabilidad estratégica crítica en el contexto de las negociaciones de paz. Esto presiona a Europa a acelerar suministros alternativos de defensa y comunicaciones.",
+        "en": "Zelensky denounces that speed limitations on Starshield terminals are hampering Ukrainian defenses as Russia intensifies its aerial campaign with over 2,300 drones, 1,590 bombs and 15 missiles in a single week. Ukraine's technological dependence on US corporate-political decisions exposes a critical strategic vulnerability amid ongoing peace negotiations. This pressures Europe to accelerate alternative defense and communications supplies."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
         {
           "asset": "European defense equities",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor inversión en seguridad impulsa empresas de defensa europeas",
-            "en": "Increased security investment boosts European defense firms"
+            "es": "Dependencia tecnológica de EE.UU. acelera inversión en defensa europea",
+            "en": "US tech dependency accelerates European defense investment"
           }
         },
         {
-          "asset": "Cybersecurity sector ETFs",
+          "asset": "SpaceX/satellite tech sector",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Restricciones de Starshield generan debate sobre control de activos duales",
+            "en": "Starshield restrictions spark debate on dual-use asset control"
+          }
+        },
+        {
+          "asset": "Natural gas (TTF)",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Expansión de mandato de inteligencia incrementa demanda de ciberseguridad",
-            "en": "Expanded intelligence mandate increases cybersecurity demand"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Mayor gasto en defensa puede presionar finanzas públicas alemanas",
-            "en": "Higher defense spending may pressure German public finances"
+            "es": "Rechazo ruso a tregua energética mantiene presión sobre suministros",
+            "en": "Russian rejection of energy truce sustains supply pressure"
           }
         }
       ],
-      "confidence": 75,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/cyber-attacks-and-hybrid-warfare-germany-gives-sweeping-powers-to-its-police-and-intelligence-services/a-79941507?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-11-13",
-      "time": "21h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "Una cumbre de la Francofonía en Camboya, para 'reinvertir en la paz', atrapada por la guerra en los Grandes Lagos",
-        "en": "Francophonie Summit in Cambodia overshadowed by the war in the Great Lakes region"
-      },
-      "summary": {
-        "es": "La XX Cumbre de la Francofonía en Phnom Penh queda eclipsada por la batalla por poderes entre Ruanda y la RDC sobre la elección del secretario general de la OIF. El conflicto en los Grandes Lagos sigue desestabilizando una región rica en minerales críticos. Para inversores en cadenas de suministro de coltan, coltán y tierras raras, la tensión Ruanda-RDC constituye un riesgo de disrupcción de producción.",
-        "en": "The 20th Francophonie Summit in Phnom Penh is overshadowed by a proxy battle between Rwanda and the DRC over the election of the OIF secretary general. The Great Lakes conflict continues to destabilize a region rich in critical minerals. For investors exposed to coltan, cobalt and rare earth supply chains, the Rwanda-DRC tension represents a production disruption risk."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Cobalt futures",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Inestabilidad en RDC amenaza suministro global de cobalto",
-            "en": "DRC instability threatens global cobalt supply"
-          }
-        },
-        {
-          "asset": "Critical minerals ETFs",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de cadena de suministro en región minera clave",
-            "en": "Supply chain risk in key mining region"
-          }
-        }
-      ],
-      "confidence": 70,
+      "confidence": 88,
       "source": "Le Monde",
-      "source_url": "https://www.lemonde.fr/international/article/2026/11/14/reunie-au-cambodge-pour-reinvestir-dans-la-paix-la-francophonie-rattrapee-par-la-guerre-dans-les-grands-lacs_6809691_3210.html",
-      "published_at": "2026-11-14",
-      "time": "7h"
-    },
-    {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "Etiopía en guerra: Acceso inédito a un hospital que trata a víctimas de los nuevos combates",
-        "en": "Inside Ethiopia's war: Rare access to a hospital treating victims of renewed fighting"
-      },
-      "summary": {
-        "es": "El conflicto renovado en la región de Amhara de Etiopía está incrementando el número de bajas civiles, con organizaciones humanitarias alertando de una crisis en aumento. La inestabilidad etíope, en un país que controla acceso estratégico al Mar Rojo y rutas del Cuerno de África, tiene implicaciones para la logística regional. Inversores con exposición a infraestructuras y materias primas en el Cuerno de África deben monitorizar la situación.",
-        "en": "Renewed conflict in Ethiopia's Amhara region is increasing civilian casualties, with humanitarian organizations reporting a worsening crisis. Ethiopian instability, in a country controlling strategic access to the Red Sea and Horn of Africa routes, carries regional logistics implications. Investors with exposure to Horn of Africa infrastructure and commodities should monitor developments."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "African frontier market bonds",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Inestabilidad regional eleva primas de riesgo en África oriental",
-            "en": "Regional instability raises risk premiums across East Africa"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión en el Cuerno de África añade incertidumbre a rutas marítimas",
-            "en": "Horn of Africa tension adds uncertainty to maritime routes"
-          }
-        }
-      ],
-      "confidence": 65,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/inside-ethiopia-s-war-rare-access-to-a-hospital-treating-victims-of-renewed-fighting",
-      "published_at": "2026-11-14",
-      "time": "<1h"
+      "source_url": "https://www.lemonde.fr/international/live/2026/11/15/en-direct-guerre-en-ukraine-l-emissaire-americain-jared-kushner-regrette-la-diffusion-de-positions-maximalistes-apres-les-negociations-avec-l-ukraine-et-la-russie_6810982_3210.html",
+      "published_at": "2026-11-15",
+      "time": "3h"
     }
   ],
   "market_updated_at": "2026-11-15T13:01:30.402Z"
