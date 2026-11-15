@@ -15,6 +15,11 @@ const grid={display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,
 const num=(x,max)=>x!==""&&x!=null&&Number.isFinite(Number(x))&&Number(x)>=0&&Number(x)<=max?Number(x):null;
 const shade=v=>v==null?"#CAD5E2":v===0?"#27867A":v<10?"#518BC6":"#BA642B";
 const official="https://ec.europa.eu/taxation_customs/dds2/taric/taric_consultation.jsp?Lang=es";
+const routeNotes={
+ olive:{tn:"Contrastar origen preferencial, contingentes y documentación de la partida.",ma:"Revisar prueba de origen y requisitos sanitarios aplicables.",tr:"Verificar la cobertura del acuerdo y las medidas específicas del producto."},
+ solar:{cn:"Comprobar medidas comerciales adicionales y la clasificación exacta.",jp:"Contrastar origen y condiciones preferenciales antes de presupuestar.",kr:"Revisar reglas de origen y medidas vigentes."},
+ pumps:{us:"Validar clasificación y posibles medidas adicionales.",gb:"Comprobar reglas de origen del acuerdo UE–Reino Unido.",cn:"Contrastar derechos y medidas comerciales en TARIC."}
+};
 export default function GeoRiskTariffAtlas(){
  const [product,setProduct]=useState("olive"),[demo,setDemo]=useState(true);
  const [manual,setManual]=useState({}),[selected,setSelected]=useState(["tn","ma","tr"]);
@@ -63,5 +68,27 @@ export default function GeoRiskTariffAtlas(){
    {cost!=null&&extra>0&&<p style={{fontSize:13,margin:0}}>Con la subida: <strong>{money.format(cost+amount*extra/100)}</strong> (+{money.format(amount*extra/100)})</p>}
   </article>})}</div>
   <p style={{fontSize:12,marginBottom:0}}>Cálculo parcial: valor en aduana × tipo porcentual. No incluye IVA, derechos por peso, antidumping ni otros gastos. No determina si procede una preferencia o un contingente.</p>
+  <section aria-labelledby="exchange-title" style={{marginTop:24,padding:"clamp(16px,3vw,24px)",background:"#102741",color:"#EAF2FA",borderRadius:16}}>
+   <div style={{color:"#93C8ED",fontSize:11,fontWeight:800,letterSpacing:1.5}}>ZRC · TRADE & RISK EXCHANGE</div>
+   <h3 id="exchange-title" style={{fontSize:"clamp(19px,3vw,25px)",margin:"8px 0"}}>De una ruta comercial a una decisión</h3>
+   <p style={{fontSize:14,lineHeight:1.6,maxWidth:740,margin:"0 0 18px",color:"#C9D8E6"}}>Selecciona producto y países en el mapa. Estas fichas muestran qué habría que comprobar antes de importar a España. La comparación de costes utiliza únicamente los tipos visibles arriba.</p>
+   <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,220px),1fr))",gap:10}}>
+    {selected.map(id=>{const r=rate(id),cost=r==null||amount==null?null:amount*r/100;return <article key={id} style={{border:"1px solid #416080",borderRadius:12,padding:15,background:"#183653"}}>
+     <div style={{fontSize:11,letterSpacing:1,color:"#9DCBEB"}}>ORIGEN → ESPAÑA</div>
+     <h4 style={{fontSize:17,margin:"6px 0 4px"}}>{origins[id]} → España</h4>
+     <p style={{fontSize:13,color:"#C9D8E6",margin:"0 0 12px"}}>{p.name} · HS {p.hs}</p>
+     <div style={{fontSize:20,fontWeight:750}}>{cost==null?"Tipo pendiente":money.format(cost)}</div>
+     <div style={{fontSize:12,color:demo?"#F5D190":"#A8DCCB",marginTop:2}}>{demo?"Simulación ficticia":r==null?"Introduce y verifica el tipo":"Cálculo con tipo introducido, sin verificar"}</div>
+     <p style={{fontSize:13,lineHeight:1.5,color:"#D8E3EE",minHeight:42}}>{routeNotes[product]?.[id]??"Verificar el tipo aplicable, el origen y los requisitos de entrada."}</p>
+     <a href={official} target="_blank" rel="noreferrer" style={{color:"#A7D7FF",fontSize:13}}>Comprobar en TARIC ↗</a>
+    </article>})}
+   </div>
+   {selected.length===0&&<p style={{fontSize:14}}>Elige un país de origen en el mapa para abrir su ruta.</p>}
+   <div style={{display:"flex",flexWrap:"wrap",gap:10,alignItems:"center",marginTop:18}}>
+    <a href={`mailto:luis@zenithrisecapital.com?subject=${encodeURIComponent("ZRC · Seguimiento de ruta comercial")}&body=${encodeURIComponent(`Hola Luis, me interesa seguir la ruta ${selected.map(id=>origins[id]).join(", ")||"[origen por definir]"} → España para ${p.name} (HS ${p.hs}). Quisiera conocer las opciones de seguimiento y alertas.`)}`} style={{display:"inline-block",background:"#D8AD57",color:"#14263B",borderRadius:8,padding:"11px 15px",fontWeight:700,fontSize:14,textDecoration:"none"}}>Solicitar seguimiento de ruta</a>
+    <a href={`mailto:luis@zenithrisecapital.com?subject=${encodeURIComponent("ZRC · Diagnóstico de coste y riesgo")}&body=${encodeURIComponent(`Hola Luis, solicito información sobre un diagnóstico para importar ${p.name} (HS ${p.hs}) desde ${selected.map(id=>origins[id]).join(", ")||"[origen por definir]"} a España. Valor en aduana indicado: ${customs||"sin indicar"} EUR. Confirmaré la clasificación y los datos de mi operación antes del análisis.`)}`} style={{display:"inline-block",border:"1px solid #9FC3DF",color:"#EAF2FA",borderRadius:8,padding:"10px 15px",fontWeight:700,fontSize:14,textDecoration:"none"}}>Solicitar diagnóstico</a>
+   </div>
+   <p style={{fontSize:12,color:"#ADBFCE",lineHeight:1.5,margin:"14px 0 0"}}>Un analista confirmará alcance y precio antes de cualquier encargo. Esta vista no constituye una cotización aduanera ni una oferta de servicios de terceros.</p>
+  </section>
  </section>;
 }
