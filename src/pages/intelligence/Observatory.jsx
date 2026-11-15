@@ -155,21 +155,21 @@ const AGENDA = [
     relevance:{es:"Define el control del Congreso y la trayectoria fiscal y arancelaria de la segunda mitad del mandato.",en:"Determines control of Congress and the fiscal/tariff trajectory for the remainder of the term."},
   },
   {
-    id:"AG-6", date:"2026-11-15", type:{es:"Cumbre",en:"Summit"}, status:"tentative",
-    title:{es:"Cumbre BRICS",en:"BRICS Summit"},
-    location:{es:"India (presidencia rotatoria; sede y fecha por confirmar)",en:"India (rotating presidency; venue and date TBC)"},
+    id:"AG-6", date:"2026-09-12", endDate:"2026-09-13", type:{es:"Cumbre",en:"Summit"}, status:"confirmed",
+    title:{es:"Cumbre BRICS",en:"BRICS Summit"}, location:{es:"Nueva Delhi, India",en:"New Delhi, India"},
+    source:"https://www.pmindia.gov.in/en/news_updates/brics-new-delhi-declaration-building-for-resilience-innovation-cooperation-and-sustainability-september-12-2026/",
     relevance:{es:"Mecanismos de pago alternativos y desdolarizacion — vigilar anuncios sobre moneda comun o liquidacion bilateral.",en:"Alternative payment mechanisms and de-dollarization — watch for common-currency or bilateral-settlement announcements."},
   },
   {
-    id:"AG-7", date:"2026-11-18", type:{es:"Cumbre",en:"Summit"}, status:"tentative",
-    title:{es:"Cumbre de Lideres del G20",en:"G20 Leaders' Summit"},
-    location:{es:"Miami, EEUU (fecha exacta por confirmar)",en:"Miami, USA (exact date TBC)"},
+    id:"AG-7", date:"2026-12-14", endDate:"2026-12-15", type:{es:"Cumbre",en:"Summit"}, status:"confirmed",
+    title:{es:"Cumbre de Líderes del G20",en:"G20 Leaders’ Summit"}, location:{es:"Miami, EE. UU.",en:"Miami, United States"},
+    source:"https://www.publicnow.com/view/16DC9D03B3E9506ACFFE80268DBD08FD59F9D142",
     relevance:{es:"Coordinacion fiscal global y postura arancelaria de EEUU frente al resto del G20.",en:"Global fiscal coordination and US tariff posture toward the rest of the G20."},
   },
   {
-    id:"AG-8", date:"2026-11-25", type:{es:"Cumbre Climatica",en:"Climate Summit"}, status:"tentative",
-    title:{es:"COP31",en:"COP31"},
-    location:{es:"Sede en negociacion entre Turquia y Australia",en:"Venue under negotiation between Türkiye and Australia"},
+    id:"AG-8", date:"2026-11-09", endDate:"2026-11-20", type:{es:"Cumbre climática",en:"Climate Summit"}, status:"confirmed",
+    title:{es:"COP31",en:"COP31"}, location:{es:"Antalya, Turquía",en:"Antalya, Türkiye"},
+    source:"https://unfccc.int/cop31",
     relevance:{es:"Financiacion climatica y transicion energetica — relevante para materias primas criticas y renovables.",en:"Climate finance and energy transition — relevant for critical minerals and renewables."},
   },
 ];
@@ -765,11 +765,12 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
           </div>
           <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
             {AGENDA
-              .filter(ev => new Date(ev.date).getTime() >= Date.now() - 86400000)
+              .filter(ev => (ev.endDate || ev.date) >= new Date().toISOString().slice(0,10))
               .sort((a,b) => new Date(a.date) - new Date(b.date))
               .map((ev, i) => {
                 const d = new Date(ev.date);
-                const dateLabel = d.toLocaleDateString(lang==="es" ? "es-ES" : "en-US", { day:"2-digit", month:"short", year:"numeric" });
+                const formatter = new Intl.DateTimeFormat(lang==="es" ? "es-ES" : "en-US", { day:"2-digit", month:"short", year:"numeric", timeZone:"UTC" });
+                const dateLabel = ev.endDate ? formatter.formatRange(d,new Date(ev.endDate)) : formatter.format(d);
                 return (
                   <FadeIn key={ev.id} delay={i*0.03}>
                     <div style={{ display:"flex", gap:16, alignItems:"flex-start", padding:"12px 16px", background:C.surface, border:`1px solid ${C.border}`, borderRadius:6 }}>
@@ -788,6 +789,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                         <h4 style={{ fontFamily:F.body, fontSize:13, fontWeight:500, color:C.text, margin:"0 0 3px" }}>{txt(ev.title)}</h4>
                         <p style={{ fontFamily:F.mono, fontSize:9, color:C.textMuted, margin:"0 0 6px" }}>{txt(ev.location)}</p>
                         <p style={{ fontFamily:F.body, fontSize:12, color:C.textSec, lineHeight:1.6, fontWeight:300, margin:0 }}>{txt(ev.relevance)}</p>
+                        {ev.source && <a href={ev.source} style={{color:C.gold,fontSize:12}}>{lang==="es"?"Fuente oficial":"Official source"}</a>}
                       </div>
                     </div>
                   </FadeIn>
