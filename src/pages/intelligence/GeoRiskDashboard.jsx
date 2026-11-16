@@ -11,6 +11,7 @@ import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
 import { GEORISK_SCENARIOS, GEORISK_SCENARIO_VERSION, GEORISK_MODEL_CLASSIFICATION } from "../../data/georiskScenarioContract.js";
 import GeoRiskGprData from "../../components/GeoRiskGprData";
 import GeoRiskMarketData from "../../components/GeoRiskMarketData";
+import GeoRiskWeeklyBrief from "./GeoRiskWeeklyBrief.jsx";
 import GeoRiskMacroData from "../../components/GeoRiskMacroData";
 import GeoRiskGovernanceData from "../../components/GeoRiskGovernanceData";
 import { useState, useEffect, useCallback, useMemo, useId, lazy, Suspense } from "react";
@@ -276,7 +277,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
   const [nlpText, setNlpText] = useState("");
   const [nlpResult, setNlpResult] = useState(null);
   const [time, setTime] = useState(new Date());
-  const [tab, setTab] = useState("data");
+  const [tab, setTab] = useState("weekly");
   const [impactView, setImpactView] = useState("variables");
   const [showDecisionBrief, setShowDecisionBrief] = useState(false);
   const [compareCountry, setCompareCountry] = useState("");
@@ -606,7 +607,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             </div>
           </header>
 
-          <div className="zrc-card zrc-control-row" style={{
+          {["scenarios", "impact", "investment"].includes(tab) && <div className="zrc-card zrc-control-row" style={{
             gap: 24, padding: "20px 24px", margin: "20px 0", alignItems: "center"
           }}>
             <div style={{ textAlign: "center" }}>
@@ -663,7 +664,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
                 {" "}También ajusta el impacto estimado en variables. Es un supuesto fijo, no se obtiene de cotizaciones históricas.
               </div>
             </div>
-          </div>
+          </div>}
 
           <nav className="zrc-card zrc-tabbar" aria-label="Secciones de GeoRisk Intelligence" role="tablist" style={{
             padding: 10, marginBottom: 22, borderRadius: 16, border: "1px solid #344b6a",
@@ -671,8 +672,9 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             boxShadow: "0 12px 30px -18px #000"
           }}>
             {[
+              { id: "weekly", label: "Esta semana", icon: Radio, subtitle: "Señales y decisiones" },
               { id: "data", label: "Mercados", icon: TrendingUp, subtitle: "Datos observados" },
-              { id: "tariffs", label: "Mapa arancelario", icon: Globe2, subtitle: "Comparar orígenes" },
+              { id: "tariffs", label: "Coste de importación", icon: Globe2, subtitle: "Herramienta por producto" },
               { id: "scenarios", label: "Escenarios", icon: Radar, subtitle: "Simulaciones" },
               { id: "impact", label: "Análisis de impacto", icon: Activity, subtitle: "Sensibilidades" },
               { id: "investment", label: "Decisión de inversión", icon: PieChart, subtitle: "Valoración" },
@@ -696,7 +698,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
             })}
           </nav>
 
-          {tab === "tariffs" ? <Suspense fallback={<p role="status">Cargando mapa arancelario…</p>}><GeoRiskTariffAtlas /></Suspense> : <>
+          {tab === "weekly" ? <GeoRiskWeeklyBrief onOpenTariffs={() => setTab("tariffs")} /> : tab === "tariffs" ? <Suspense fallback={<p role="status">Cargando mapa arancelario…</p>}><GeoRiskTariffAtlas /></Suspense> : <>
           <section className="zrc-view-intro" aria-label="Contexto de la vista activa" aria-live="polite" style={{background:"#10253B",border:"1px solid #3D6287",borderRadius:14,padding:"15px 18px",margin:"0 0 16px"}}>
             <div style={{fontSize:11,fontWeight:750,letterSpacing:1.1,color:"#93C5FD"}}>{tab === "scenarios" ? "ESCENARIOS · QUÉ PODRÍA PASAR" : tab === "impact" ? "ANÁLISIS DE IMPACTO · CÓMO AFECTARÍA" : tab === "investment" ? "DECISIÓN DE INVERSIÓN · TU OPERACIÓN" : "MERCADOS · DATOS OBSERVADOS"}</div>
             <h2 style={{margin:"7px 0",color:"#F1F5F9"}}>{tab === "scenarios" ? "Explora hipótesis y cambia sus pesos" : tab === "impact" ? "Examina las variables y activos sensibles" : tab === "investment" ? "Estima el efecto sobre tu inversión" : "Series de mercado y fechas"}</h2>

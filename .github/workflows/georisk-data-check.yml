@@ -73,6 +73,8 @@ on:
       - 'scripts/georisk-market-research-python.test.py'
       - 'scripts/collect-georisk-market-research.py'
       - 'public/data/georisk-market-research.json'
+      - 'public/data/georisk-weekly-brief.json'
+      - 'scripts/check-georisk-weekly-brief.mjs'
       - '.github/workflows/georisk-market-research-refresh.yml'
       - 'public/data/georisk-fred-cpi.json'
       - '.github/workflows/georisk-fred-refresh.yml'
@@ -107,6 +109,7 @@ jobs:
       - run: npm run test:georisk-map
       - run: node --test scripts/country-profiles.test.js scripts/country-intelligence-model.test.js
       - run: node --test scripts/georisk-worldbank-macro.test.js
+      - run: node scripts/check-georisk-weekly-brief.mjs
       - run: npm run build
       - run: npx wrangler deploy --dry-run
 
