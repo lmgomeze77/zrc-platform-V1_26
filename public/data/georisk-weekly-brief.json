@@ -1,0 +1,66 @@
+{
+  "version": "2026-11-16-v1",
+  "published_at": "2026-11-16",
+  "valid_until": "2026-11-23",
+  "headline": "Más crudo disponible; la seguridad de las rutas sigue bajo presión",
+  "summary": "La recuperación de la oferta del Golfo alivia el petróleo, mientras los incidentes marítimos y la situación en Bab el-Mandeb impiden asumir una normalización logística.",
+  "signals": [
+    {
+      "id": "hormuz",
+      "label": "Hormuz y petróleo",
+      "direction": "Mixto",
+      "tone": "amber",
+      "fact": "La AIE estima 105,4 mb/d de oferta mundial en octubre y señala que los ataques a buques siguen amenazando la recuperación.",
+      "date": "2026-11-13",
+      "source": "AIE · Oil Market Report",
+      "url": "https://www.iea.org/reports/oil-market-report-november-2026",
+      "implication": "Separar disponibilidad de barriles y seguridad del tránsito al revisar costes y márgenes."
+    },
+    {
+      "id": "shipping",
+      "label": "Mar Rojo y Suez",
+      "direction": "Vigilancia",
+      "tone": "red",
+      "fact": "UKMTO indica que los tránsitos por Bab el-Mandeb siguen alrededor de un 24 % por debajo del nivel anterior al bloqueo.",
+      "date": "2026-11-13",
+      "source": "UKMTO · Weekly overview",
+      "url": "https://www.ukmto.org/-/media/ukmto/products/20261113-ukmto_vra_overview_u.pdf",
+      "implication": "Mantener una sensibilidad con ruta larga e inventario adicional; no presupuestar aún el ahorro de Suez."
+    },
+    {
+      "id": "freight",
+      "label": "Contenedores",
+      "direction": "↓ 2 %",
+      "tone": "blue",
+      "fact": "El World Container Index bajó a 4.305 USD por contenedor de 40 pies el 12 de noviembre.",
+      "date": "2026-11-12",
+      "source": "Drewry · World Container Index",
+      "url": "https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices/world-container-index-assessed-by-drewry",
+      "implication": "El alivio semanal no equivale por sí solo a una reducción inmediata del coste contratado."
+    },
+    {
+      "id": "inflation",
+      "label": "Inflación eurozona",
+      "direction": "4,0 %",
+      "tone": "amber",
+      "fact": "Eurostat estimó una inflación anual del 4,0 % en octubre; la cifra completa está prevista para el 18 de noviembre.",
+      "date": "2026-11-04",
+      "source": "Eurostat · Estimación preliminar",
+      "url": "https://ec.europa.eu/eurostat/en/web/products-euro-indicators/w/2-04112026-ap",
+      "implication": "Revisar sensibilidad de financiación, energía y caja sin tratar la estimación como dato final."
+    }
+  ],
+  "watch": [
+    "Nuevos incidentes y avisos de UKMTO en Hormuz y Bab el-Mandeb",
+    "Actualización de fletes de Drewry y rutas por Suez",
+    "Inflación definitiva de octubre en Eurostat",
+    "Publicación verificable del siguiente ZRC-GRI"
+  ],
+  "proposed_index": {
+    "value": 75.29,
+    "previous": 73.51,
+    "previous_date": "2026-10-19",
+    "status": "Propuesta editorial sin publicar",
+    "note": "Los pesos 45/27/16/12 y severidades 88/75/50/62 proceden del brief aportado; requieren validación del analista y no sustituyen el índice publicado."
+  }
+}
