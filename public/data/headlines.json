@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T14:38:00.242Z",
+  "generated_at": "2026-11-17T15:27:02.773Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,71 +96,71 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "GLOBAL",
+      "region": "EURASIA",
       "title": {
-        "es": "Xi, Trump y Putin discutirán la 'paz mundial' en la cumbre de Shenzhen, según China",
-        "en": "Xi, Trump and Putin to discuss 'world peace' at Shenzhen summit, China says"
+        "es": "Ucrania daña gravemente el puente de Kerch que une Crimea ocupada con Rusia",
+        "en": "Ukraine critically damages Kerch bridge linking occupied Crimea with Russia"
       },
       "summary": {
-        "es": "El primer encuentro trilateral entre Xi, Trump y Putin en Shenzhen representa un momento de reconfiguración geopolítica de primer orden, con implicaciones directas para el conflicto en Ucrania, las tensiones en el Indo-Pacífico y el orden de seguridad global. Un posible acuerdo de alto el fuego o declaración conjunta podría redefinir las expectativas del mercado sobre sanciones, flujos energéticos y gasto en defensa. Los inversores deben monitorizar señales sobre el futuro de las sanciones a Rusia y cualquier concesión sobre Taiwán o el Mar del Sur de China.",
-        "en": "The first trilateral meeting between Xi, Trump, and Putin in Shenzhen represents a major geopolitical realignment moment, with direct implications for the Ukraine conflict, Indo-Pacific tensions, and the global security order. A potential ceasefire agreement or joint declaration could reshape market expectations on sanctions, energy flows, and defense spending. Investors should monitor signals regarding the future of Russia sanctions and any concessions on Taiwan or the South China Sea."
+        "es": "Ucrania ejecutó un ataque de misiles y drones que causó daños críticos al puente de Kerch, el principal enlace logístico entre Rusia y Crimea. Zelensky calificó el ataque de 'sin precedentes', mientras el Kremlin minimizó el impacto prometiendo restauración. La pérdida o degradación sostenida del puente alteraría significativamente la cadena de suministro militar rusa en el sur de Ucrania y elevaría la presión sobre Moscú para escalar.",
+        "en": "Ukraine executed a missile and drone attack causing critical damage to the Kerch bridge, Russia's primary logistical link to Crimea. Zelensky hailed the strike as 'unprecedented' while the Kremlin downplayed the damage. Sustained degradation of the bridge would significantly disrupt Russian military supply lines in southern Ukraine and increase pressure on Moscow to escalate."
       },
       "impact": "high",
       "market_impact": [
         {
           "asset": "Brent crude",
-          "direction": "down",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Perspectivas de paz reducirían prima de riesgo geopolítico",
-            "en": "Peace prospects reduce geopolitical risk premium"
+            "es": "Escalada en guerra eleva prima de riesgo geopolítico",
+            "en": "Escalation in war raises geopolitical risk premium"
           }
         },
         {
           "asset": "Gold",
-          "direction": "down",
+          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Menor tensión global reduce demanda de refugio seguro",
-            "en": "Lower global tension reduces safe-haven demand"
+            "es": "Demanda de refugio seguro ante escalada militar",
+            "en": "Safe-haven demand on military escalation"
           }
         },
         {
           "asset": "European equities",
-          "direction": "up",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Posible fin del conflicto beneficia a mercados europeos expuestos",
-            "en": "Potential conflict resolution benefits exposed European markets"
+            "es": "Riesgo de escalada pesa sobre mercados europeos",
+            "en": "Escalation risk weighs on European markets"
           }
         },
         {
-          "asset": "Russian Ruble",
-          "direction": "up",
-          "magnitude": "high",
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
           "note": {
-            "es": "Perspectivas de levantamiento de sanciones impulsan el rublo",
-            "en": "Sanctions relief prospects boost the ruble"
+            "es": "Tensión bélica presiona al euro frente al dólar",
+            "en": "War tension pressures euro vs dollar"
           }
         }
       ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/asia-pacific/20261116-xi-trump-putin-discuss-world-peace-shenzhen-summit-china-says",
-      "published_at": "2026-11-16",
-      "time": "5h"
+      "confidence": 90,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/world/2026/nov/17/ukraine-strikes-critical-damage-russia-kerch-bridge-crimea",
+      "published_at": "2026-11-17",
+      "time": "2h"
     },
     {
       "id": 2,
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Irán bloquea visitas de inspectores nucleares de la ONU hasta que termine la guerra",
-        "en": "Iran blocks UN nuclear site visits until war ends"
+        "es": "Tercer portaaviones de EE.UU. llega a Oriente Medio mientras Irán ataca Baréin",
+        "en": "Third US aircraft carrier arrives in the Middle East as Iran targets Bahrain"
       },
       "summary": {
-        "es": "Irán ha condicionado el acceso del OIEA a sus instalaciones nucleares dañadas a la finalización permanente del conflicto en curso, escalando significativamente las tensiones sobre proliferación nuclear. Este movimiento eleva el riesgo de un vacío de información sobre las capacidades nucleares iraníes y complica cualquier negociación diplomática en el marco del Shenzhen summit. Los mercados energéticos y de riesgo en Oriente Medio podrían reaccionar ante la incertidumbre sobre el programa nuclear iraní.",
-        "en": "Iran has conditioned IAEA access to its damaged nuclear facilities on a permanent end to the ongoing conflict, significantly escalating nonproliferation tensions. This move creates an information vacuum on Iranian nuclear capabilities and complicates diplomatic negotiations in the context of the Shenzhen summit. Middle East energy and risk markets may react to uncertainty around Iran's nuclear program."
+        "es": "EE.UU. desplegó un tercer portaaviones en Oriente Medio en una demostración de fuerza mientras Trump mantiene abiertas las opciones militares contra Irán. Teherán respondió con ataques reportados contra Baréin, sede de la Quinta Flota estadounidense, elevando el riesgo de confrontación directa. El conflicto muestra señales de estancamiento estratégico pero con escalada táctica que presiona los mercados energéticos.",
+        "en": "The US deployed a third aircraft carrier to the Middle East in a show of force as Trump keeps military options against Iran open. Tehran responded with reported strikes on Bahrain, home to the US Fifth Fleet, raising the risk of direct confrontation. The conflict shows signs of strategic stalemate but with tactical escalation that pressures energy markets."
       },
       "impact": "high",
       "market_impact": [
@@ -169,8 +169,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de escalada nuclear en MENA presiona precios del crudo",
-            "en": "MENA nuclear escalation risk pressures crude prices"
+            "es": "Riesgo de interrupción del estrecho de Ormuz",
+            "en": "Risk of Strait of Hormuz disruption"
           }
         },
         {
@@ -178,217 +178,208 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Incertidumbre nuclear iraní aumenta demanda de activos refugio",
-            "en": "Iranian nuclear uncertainty boosts safe-haven demand"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tensión regional eleva aversión al riesgo en emergentes",
-            "en": "Regional tension raises risk aversion in emerging markets"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/asia-pacific/20261116-iran-blocks-un-nuclear-site-visits-until-war-ends",
-      "published_at": "2026-11-16",
-      "time": "<1h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "APAC",
-      "title": {
-        "es": "Presunto espía chino vinculado al exjefe de Nvidia salió de Megaspeed en 2025",
-        "en": "Suspected China spy linked to Nvidia's ex-boss left in 2025, Megaspeed says"
-      },
-      "summary": {
-        "es": "El escándalo de espionaje vinculado a ex directivos de Nvidia reaviva las preocupaciones sobre la filtración de chips avanzados de IA hacia China a pesar de los controles de exportación de EE.UU. Este caso refuerza la narrativa de soberanía tecnológica y podría intensificar las restricciones regulatorias sobre exportaciones de semiconductores y la supervisión de empresas tecnológicas con vínculos chinos. Las implicaciones para la cadena de suministro de semiconductores y las relaciones EE.UU.-China son significativas.",
-        "en": "The espionage scandal linked to former Nvidia executives reignites concerns about advanced AI chips reaching China despite US export controls. This case strengthens the tech sovereignty narrative and could intensify regulatory restrictions on semiconductor exports and scrutiny of tech firms with Chinese ties. Implications for the semiconductor supply chain and US-China relations are significant."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Nvidia (NVDA)",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Escándalo de espionaje genera riesgo regulatorio y reputacional",
-            "en": "Espionage scandal creates regulatory and reputational risk"
-          }
-        },
-        {
-          "asset": "Semiconductor sector ETFs",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayores controles de exportación amenazan ingresos del sector",
-            "en": "Tighter export controls threaten sector revenues"
-          }
-        },
-        {
-          "asset": "US-listed Chinese tech ADRs",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor escrutinio regulatorio pesa sobre ADRs chinos",
-            "en": "Heightened regulatory scrutiny weighs on Chinese ADRs"
-          }
-        }
-      ],
-      "confidence": 87,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/cmdx1vpprk9vo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-16",
-      "time": "12h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "APAC",
-      "title": {
-        "es": "Fábricas de ropa cierran en Bangladesh por huelga de trabajadores en demanda de aumentos salariales",
-        "en": "Clothing factories shut in Bangladesh as workers strike over pay"
-      },
-      "summary": {
-        "es": "Una huelga generalizada en el sector textil de Bangladesh, el segundo mayor exportador de prendas del mundo, amenaza con interrumpir las cadenas de suministro globales de ropa en un momento crítico previo a la temporada navideña. Los trabajadores exigen un salario mínimo de 30.000 takas mensuales, lo que presionaría los márgenes de los grandes minoristas globales. Este tipo de disrupciones laborales en economías manufactureras clave son un indicador adelantado de presiones inflacionarias en bienes de consumo.",
-        "en": "A broad strike in Bangladesh's garment sector — the world's second-largest apparel exporter — threatens to disrupt global clothing supply chains at a critical pre-holiday season juncture. Workers demand a minimum wage of 30,000 taka per month, which would pressure margins for major global retailers. Such labor disruptions in key manufacturing economies are a leading indicator of consumer goods inflationary pressures."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Global retail sector equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Interrupción de suministro textil presiona márgenes minoristas globales",
-            "en": "Textile supply disruption pressures global retail margins"
-          }
-        },
-        {
-          "asset": "Bangladesh Taka (BDT)",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Huelga prolongada dañaría ingresos de exportación del país",
-            "en": "Prolonged strike would damage country's export revenues"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo de contagio laboral a otros exportadores textiles emergentes",
-            "en": "Labor contagion risk to other EM textile exporters"
-          }
-        }
-      ],
-      "confidence": 72,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cx5y1pzr9604o?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-16",
-      "time": "13h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "GLOBAL",
-      "title": {
-        "es": "El borrador de acuerdo de la COP31 llama a una transición 'inmediata' de los combustibles fósiles",
-        "en": "COP31 draft deal calls for 'immediate' shift away from fossil fuels"
-      },
-      "summary": {
-        "es": "El borrador preliminar de la COP31 celebrada en Turquía incluye un lenguaje de reducción 'inmediata' de combustibles fósiles y un paquete de financiación climática de al menos 120.000 millones de dólares, lo que señala una posible aceleración de la presión regulatoria sobre el sector energético. Si se adopta, el acuerdo reforzaría la inversión en energías renovables y presionaría las valoraciones de activos de hidrocarburos a largo plazo. La participación de Turquía como anfitrión y el contexto geopolítico actual añaden complejidad a las negociaciones.",
-        "en": "The COP31 preliminary draft held in Turkey includes 'immediate' fossil fuel phase-down language and a climate finance package of at least $120 billion, signaling potential acceleration of regulatory pressure on the energy sector. If adopted, the agreement would reinforce renewable energy investment and pressure long-term hydrocarbon asset valuations. Turkey's role as host and the current geopolitical context add complexity to negotiations."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Señales de transición energética ejercen presión bajista a largo plazo",
-            "en": "Energy transition signals exert long-term downward pressure"
-          }
-        },
-        {
-          "asset": "Renewable energy equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Compromisos climáticos aceleran inversión en renovables",
-            "en": "Climate commitments accelerate renewable energy investment"
-          }
-        },
-        {
-          "asset": "Green bonds",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Paquete financiero climático impulsa demanda de bonos verdes",
-            "en": "Climate finance package boosts green bond demand"
-          }
-        }
-      ],
-      "confidence": 70,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/cop31-draft-deal-calls-for-immediate-shift-away-from-fossil-fuels/a-79960705?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-11-16",
-      "time": "<1h"
-    },
-    {
-      "id": 6,
-      "tag": "ALERT",
-      "region": "GLOBAL",
-      "title": {
-        "es": "Trump emprende viaje a Asia en aparente impulso de política exterior antes del fin de su mandato",
-        "en": "Trump to embark on Asia trip in apparent foreign policy push before end of term"
-      },
-      "summary": {
-        "es": "Tras la derrota republicana en las elecciones de medio término, Trump reorienta su atención hacia la política exterior con un viaje a Asia que incluye la cumbre trilateral de Shenzhen y la reunión Quad en Filipinas. Este pivot podría traducirse en acuerdos sobre Ucrania, mayor coordinación en el Indo-Pacífico y presión comercial sobre China. La debilidad doméstica de Trump puede incentivar concesiones o acuerdos de alto perfil con consecuencias macroeconómicas significativas.",
-        "en": "Following Republican midterm losses, Trump is pivoting to foreign policy with an Asia trip that includes the Shenzhen trilateral summit and the Quad meeting in the Philippines. This pivot could yield Ukraine-related agreements, enhanced Indo-Pacific coordination, and trade pressure on China. Trump's domestic weakness may incentivize high-profile deals with significant macroeconomic consequences."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "US Dollar Index (DXY)",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre sobre resultados diplomáticos genera volatilidad en dólar",
-            "en": "Diplomatic outcome uncertainty creates dollar volatility"
-          }
-        },
-        {
-          "asset": "Asian equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Señales de distensión comercial benefician bolsas asiáticas",
-            "en": "Trade détente signals benefit Asian equity markets"
+            "es": "Escalada militar impulsa activos refugio",
+            "en": "Military escalation drives safe-haven assets"
           }
         },
         {
           "asset": "Defense sector equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Despliegue masivo favorece a contratistas de defensa",
+            "en": "Massive deployment favors defense contractors"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Aversión al riesgo golpea monedas de mercados emergentes",
+            "en": "Risk aversion hits emerging market currencies"
+          }
+        }
+      ],
+      "confidence": 92,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261117-third-us-aircraft-carrier-arrives-in-the-middle-east-as-iran-targets-bahrain",
+      "published_at": "2026-11-17",
+      "time": "4h"
+    },
+    {
+      "id": 3,
+      "tag": "ALERT",
+      "region": "GLOBAL",
+      "title": {
+        "es": "Bessent vs. Lutnick: ¿Quién está ganando el debate sobre chips chinos?",
+        "en": "Bessent vs Lutnick: Who is winning the China chip debate?"
+      },
+      "summary": {
+        "es": "Una fractura interna en el gabinete de Trump ha emergido entre el Secretario del Tesoro Bessent y el Secretario de Comercio Lutnick sobre el alcance de los controles de exportación de chips de IA hacia China. El resultado de este debate determinará si EE.UU. endurece o modera la desconexión tecnológica con Beijing, con implicaciones directas para el sector semiconductores global. La incertidumbre regulatoria afecta inversiones en cadenas de suministro de chips y posicionamiento de empresas como Nvidia.",
+        "en": "An internal rift has emerged in Trump's cabinet between Treasury Secretary Bessent and Commerce Secretary Lutnick over the scope of AI chip export controls to China. The outcome of this debate will determine whether the US tightens or moderates technological decoupling from Beijing, with direct implications for the global semiconductor sector. Regulatory uncertainty affects chip supply chain investments and positioning of companies like Nvidia."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Semiconductor equities (SOX)",
+          "direction": "mixed",
+          "magnitude": "high",
+          "note": {
+            "es": "Incertidumbre regulatoria sobre exportaciones a China",
+            "en": "Regulatory uncertainty on China export controls"
+          }
+        },
+        {
+          "asset": "USD/CNY",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Acuerdos de paz versus compromisos de defensa Quad generan señales mixtas",
-            "en": "Peace deals vs. Quad defense commitments generate mixed signals"
+            "es": "Resultado del debate impacta tensiones comerciales bilaterales",
+            "en": "Debate outcome impacts bilateral trade tensions"
+          }
+        },
+        {
+          "asset": "Chinese tech equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor restricción potencial al acceso de chips avanzados",
+            "en": "Potential tighter restriction on advanced chip access"
           }
         }
       ],
       "confidence": 85,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/us-news/2026/nov/16/trump-asia-foreign-domestic-policy",
-      "published_at": "2026-11-16",
-      "time": "3h"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/economy/2026/11/17/bessent-vs-lutnick-who-is-winning-the-china-chip-debate?traffic_source=rss",
+      "published_at": "2026-11-17",
+      "time": "<1h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "¿Podría el litigio del préstamo de €3.000 millones de Airbus reavivar una disputa comercial UE-EE.UU.?",
+        "en": "Could the Airbus €3 billion loan row reignite a US-EU trade dispute?"
+      },
+      "summary": {
+        "es": "EE.UU. ha cuestionado un paquete de financiación récord de €3.000 millones para Airbus, argumentando que podría violar la tregua de subsidios aeronáuticos transatlántica. La UE insiste en que el préstamo cumple con reglas de mercado, pero el diferendo reaviva tensiones comerciales que anteriormente derivaron en aranceles bilaterales multimillonarios. En un contexto de mayor belicosidad comercial bajo la administración Trump, el riesgo de escalada hacia represalias arancelarias sobre productos europeos es significativo.",
+        "en": "The US has challenged a record €3 billion financing package for Airbus, arguing it may violate the transatlantic aircraft-subsidy truce. The EU insists the loan complies with market-based rules, but the dispute revives trade tensions that previously led to multi-billion dollar bilateral tariffs. In a context of heightened trade aggressiveness under the Trump administration, the risk of escalation toward tariff retaliation on European goods is significant."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Airbus (AIR.PA)",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de sanciones comerciales sobre modelo de financiación",
+            "en": "Risk of trade sanctions on financing model"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de nueva disputa comercial UE-EE.UU. pesa en euro",
+            "en": "New EU-US trade dispute risk weighs on euro"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Amenaza arancelaria afecta exportadores europeos",
+            "en": "Tariff threat affects European exporters"
+          }
+        }
+      ],
+      "confidence": 74,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/could-the-airbus-€3-billion-loan-row-reignite-a-us-eu-trade-dispute/a-79943075?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-17",
+      "time": "4h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Guinea encarcela a 200 personas en represalia contra la minería ilegal de oro",
+        "en": "Guinea jails 200 in wildcat gold mining crackdown"
+      },
+      "summary": {
+        "es": "Un tribunal de Conakry condenó a 22 ex funcionarios locales y 200 personas por minería ilegal en la región aurífera de Siguiri, desplazando a miles hacia Mali. La represión del gobierno de la junta señala un intento de consolidar el control estatal sobre recursos minerales estratégicos en un contexto de mayor competencia por activos críticos en África Occidental. Los inversores en minería aurífera con operaciones en Guinea deben monitorear el riesgo regulatorio y de estabilidad operacional.",
+        "en": "A Conakry court convicted 22 former local officials and 200 individuals for illegal mining in the gold-rich Siguiri region, displacing thousands into Mali. The junta government's crackdown signals an attempt to consolidate state control over strategic mineral resources amid heightened competition for critical assets in West Africa. Mining investors with Guinea operations should monitor regulatory and operational stability risk."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Gold mining equities (West Africa)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Mayor control estatal puede restringir producción informal",
+            "en": "Greater state control may restrict informal production"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Restricción de oferta artesanal en región productora",
+            "en": "Supply restriction in artisanal producing region"
+          }
+        }
+      ],
+      "confidence": 68,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/guinea-jails-200-in-wildcat-gold-mining-crackdown/a-79968808?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-17",
+      "time": "2h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "LATAM",
+      "title": {
+        "es": "Pescadores ecuatorianos que sobrevivieron a ataques de embarcaciones de EE.UU. demandan a la administración Trump",
+        "en": "Ecuadorean Fishermen Who Survived U.S. Boat Strike Sue Trump Administration"
+      },
+      "summary": {
+        "es": "Sobrevivientes ecuatorianos presentaron la primera demanda contra la administración Trump por una campaña militar secreta que ha matado a más de 240 personas en embarcaciones. El caso expone legalmente una operación encubierta de EE.UU. en aguas del Pacífico latinoamericano con implicaciones diplomáticas para las relaciones Washington-Quito. Si el litigio prospera, podría forzar divulgación de operaciones militares que afectan a socios regionales y complica la narrativa de seguridad del Hemisferio Occidental de Trump.",
+        "en": "Ecuadorian survivors filed the first lawsuit against the Trump administration over a secretive US military campaign that has killed more than 240 people on vessels. The case legally exposes a covert US operation in Latin American Pacific waters with diplomatic implications for Washington-Quito relations. If the litigation proceeds, it could force disclosure of military operations affecting regional partners and complicates Trump's Western Hemisphere security narrative."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Ecuadorian sovereign bonds",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión diplomática con EE.UU. añade incertidumbre soberana",
+            "en": "Diplomatic tension with US adds sovereign uncertainty"
+          }
+        },
+        {
+          "asset": "EM currencies (Andean)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo político regional en zona de influencia EE.UU.",
+            "en": "Regional political risk in US sphere of influence"
+          }
+        }
+      ],
+      "confidence": 65,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/17/world/americas/trump-us-boat-strikes-lawsuit-ecuador-fishermen.html",
+      "published_at": "2026-11-17",
+      "time": "<1h"
     }
   ],
   "market_updated_at": "2026-11-17T14:59:08.274Z"
