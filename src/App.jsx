@@ -679,7 +679,6 @@ const FEED = [
 const OPS = [
   { id: 1, type: "REAL ESTATE", name: "Automotive Platform Madrid", loc: "Chamberí, Madrid", size: "320m² · Active License", yield: "5.2%", status: "EXCLUSIVE", price: "€8.2M" },
   { id: 2, type: "AGRI-LAND", name: "Finca Cabrerizas", loc: "Vilches, Jaén", size: "337 hectares", yield: "Agri + Dev", status: "EXCLUSIVE", price: "€2.8M" },
-  { id: 3, type: "RESIDENTIAL", name: "Edificio Salamanca", loc: "Barrio de Salamanca, Madrid", size: "2,042m² · 12 units", yield: "6.5% net", status: "ADVISORY", price: "€11.6M" },
 ];
 
 const ADVISORY_MANDATES = [
@@ -1726,28 +1725,16 @@ const Brokerage = ({ lang }) => {
       <CardRail key={category} label={lang === "es" ? "Catálogo de oportunidades" : "Opportunity catalogue"} lang={lang}>
         {category !== "corporate" && OPS.map((op, i) => (
           <FadeIn key={op.id} delay={i * 0.08}>
-            <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 18, overflow: "hidden", display: "flex", flexDirection: "column" }}>
-              <div style={{ padding: "14px 20px", background: C.surface2, borderBottom: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em" }}>{op.type}</span>
-                <Badge label={op.status} variant={op.status.toLowerCase()} />
+            <article className="zrc-advisory-mandate">
+              <div className="zrc-advisory-mandate-top"><span>{op.type}</span><span className="zrc-advisory-tag">{lang === "es" ? "CONFIDENCIAL" : "CONFIDENTIAL"}</span></div>
+              <div className="zrc-advisory-mandate-body">
+                <span className="zrc-advisory-index">{String(i+1).padStart(2,"0")} / {String(OPS.length).padStart(2,"0")}</span>
+                <h4>{op.name}</h4><p className="zrc-advisory-location">{op.loc}</p>
+                <p className="zrc-advisory-detail">{op.size} · {op.yield}</p>
+                <span className="zrc-advisory-service">{op.price}</span>
               </div>
-              <div style={{ padding: "20px", flex: 1 }}>
-                <h3 style={{ fontFamily: F.display, fontSize: 20, fontWeight: 400, color: C.text, margin: "0 0 6px" }}>{op.name}</h3>
-                <p style={{ fontFamily: F.mono, fontSize: 10, color: C.textMuted, margin: "0 0 16px", letterSpacing: "0.05em" }}>{op.loc}</p>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 16 }}>
-                  {[["SIZE", op.size], ["YIELD", op.yield]].map(([k, v]) => (
-                    <div key={k} style={{ padding: "10px 14px", background: C.surface2, border: `1px solid ${C.border}`, borderRadius: 10 }}>
-                      <div style={{ fontFamily: F.mono, fontSize: 8, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 4 }}>{k}</div>
-                      <div style={{ fontFamily: F.mono, fontSize: 11, color: C.text }}>{v}</div>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ fontFamily: F.figures, fontSize: 22, color: C.gold, marginBottom: 16 }}>{op.price}</div>
-              </div>
-              <div style={{ padding: "14px 20px", borderTop: `1px solid ${C.border}` }}>
-                <button onClick={() => openTeaser(op)} style={{ width: "100%", fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "9px 16px", background: "transparent", color: C.gold, border: `1px solid ${C.goldBorder}`, borderRadius: 10, cursor: "pointer" }}>{t.req}</button>
-              </div>
-            </div>
+              <button type="button" className="zrc-advisory-cta" onClick={() => openTeaser(op)}>{lang === "es" ? "SOLICITAR INFORMACIÓN" : "REQUEST DETAILS"}</button>
+            </article>
           </FadeIn>
         ))}
         {category !== "property" && ADVISORY_MANDATES.map((op,i)=><article key={op.id} className="zrc-advisory-mandate">
@@ -1756,7 +1743,7 @@ const Brokerage = ({ lang }) => {
           <h4>{op.title[lang==="es"?0:1]}</h4><p className="zrc-advisory-location">{op.area[lang==="es"?0:1]}</p>
           <p className="zrc-advisory-detail">{op.description[lang==="es"?0:1]}</p>
           <span className="zrc-advisory-service">{op.service[lang==="es"?0:1]}</span></div>
-          <button type="button" className="zrc-advisory-cta" onClick={()=>{setFormContext(`Advisory · ${op.title[lang==="es"?0:1]}`);setModal("teaser");}}>{lang==="es"?"SOLICITAR INFORMACIÓN →":"REQUEST DETAILS →"}</button>
+          <button type="button" className="zrc-advisory-cta" onClick={()=>requireAuth(()=>{setFormContext(`Advisory · ${op.title[lang==="es"?0:1]}`);setModal("teaser");})}>{lang==="es"?"SOLICITAR INFORMACIÓN":"REQUEST DETAILS"}</button>
         </article>)}
       </CardRail>
       <Modal open={modal === "teaser"} onClose={() => setModal(null)} title={T[lang].form.teaserTitle}>
@@ -2074,12 +2061,12 @@ const ZRCPlatform = () => {
         .zrc-advisory-mandate:hover { transform:translateY(-3px); box-shadow:0 14px 32px rgba(18,42,74,.12); }
         .zrc-advisory-mandate-top { padding:14px 18px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; background:linear-gradient(110deg,rgba(29,68,112,.13),rgba(176,139,77,.09)); border-bottom:1px solid ${C.border}; font:600 10px ${F.mono}; letter-spacing:.08em; color:${C.gold}; }
         .zrc-advisory-tag { background:${C.surface}; border:1px solid ${C.goldBorder}; border-radius:999px; padding:5px 8px; font-size:8px; }
-        .zrc-advisory-mandate-body { padding:21px 20px; flex:1; }
+        .zrc-advisory-mandate-body { padding:21px 20px; flex:1; display:flex; flex-direction:column; }
         .zrc-advisory-index { color:${C.gold}; font:600 10px ${F.mono}; letter-spacing:.1em; }
         .zrc-advisory-mandate h4 { color:${C.text}; font:400 23px/1.25 ${F.display}; margin:12px 0 7px; }
         .zrc-advisory-location { color:${C.textMuted}; font:10px ${F.mono}; margin:0 0 17px; }
         .zrc-advisory-detail { color:${C.textSec}; font:13px/1.65 ${F.body}; margin:0 0 18px; }
-        .zrc-advisory-service { display:inline-block; padding:7px 10px; border-radius:9px; background:${C.surface2}; color:${C.gold}; font:600 10px ${F.mono}; }
+        .zrc-advisory-service { display:inline-block; align-self:flex-start; margin-top:auto; padding:7px 10px; border-radius:9px; background:${C.surface2}; color:${C.gold}; font:600 10px ${F.mono}; }
         .zrc-advisory-cta { display:block; width:calc(100% - 36px); margin:0 18px 18px; padding:13px 10px; background:${C.surface2}; border:1px solid ${C.goldBorder}; border-radius:10px; color:${C.gold}; font:600 10px ${F.mono}; cursor:pointer; }
         .zrc-advisory-cta:hover { background:${C.gold}; color:${C.bg}; }
         @media(max-width:640px){.zrc-advisory-intro{padding:18px}.zrc-advisory-mandates-heading{margin-top:26px}.zrc-advisory-mandates-grid{gap:14px}}
