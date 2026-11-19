@@ -2058,6 +2058,9 @@ const ZRCPlatform = () => {
         .zrc-advisory-count { background:${C.surface2}; border:1px solid ${C.goldBorder}; color:${C.gold}; border-radius:999px; padding:9px 13px; font:600 10px ${F.mono}; letter-spacing:.08em; }
         .zrc-advisory-mandates-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:18px; }
         .zrc-advisory-mandate { display:flex; flex-direction:column; overflow:hidden; min-width:0; background:${C.surface}; border:1px solid ${C.goldBorder}; border-radius:20px; box-shadow:0 9px 28px rgba(18,42,74,.08); transition:transform .2s ease,box-shadow .2s ease; }
+        .zrc-opportunity-rail { align-items: stretch; }
+        .zrc-opportunity-rail > * { align-self: stretch; }
+        .zrc-opportunity-rail > * > .zrc-advisory-mandate { height: 100%; box-sizing: border-box; }
         .zrc-advisory-mandate:hover { transform:translateY(-3px); box-shadow:0 14px 32px rgba(18,42,74,.12); }
         .zrc-advisory-mandate-top { padding:14px 18px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; background:linear-gradient(110deg,rgba(29,68,112,.13),rgba(176,139,77,.09)); border-bottom:1px solid ${C.border}; font:600 10px ${F.mono}; letter-spacing:.08em; color:${C.gold}; }
         .zrc-advisory-tag { background:${C.surface}; border:1px solid ${C.goldBorder}; border-radius:999px; padding:5px 8px; font-size:8px; }
