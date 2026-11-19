@@ -1660,7 +1660,7 @@ const Intelligence = ({ lang, countryContext }) => {
 };
 
 // Native touch scrolling, mouse dragging and keyboard navigation share one rail.
-const CardRail = ({ children, label, lang }) => {
+const CardRail = ({ children, label, lang, className = '' }) => {
   const rail = useRef(null);
   const drag = useRef(null);
   const moved = useRef(false);
@@ -1690,7 +1690,7 @@ const CardRail = ({ children, label, lang }) => {
     <div className="zrc-rail-toolbar"><span>{lang === "es" ? "Desliza o arrastra para explorar" : "Swipe or drag to explore"}</span>
       <div><button type="button" aria-label={lang === "es" ? "Tarjetas anteriores" : "Previous cards"} disabled={position.start} onClick={() => step(-1)}>←</button><button type="button" aria-label={lang === "es" ? "Tarjetas siguientes" : "Next cards"} disabled={position.end} onClick={() => step(1)}>→</button></div>
     </div>
-    <div ref={rail} className="zrc-card-rail" role="region" aria-label={label} tabIndex={0} onScroll={update}
+    <div ref={rail} className={["zrc-card-rail", className].filter(Boolean).join(" ")} role="region" aria-label={label} tabIndex={0} onScroll={update}
       onKeyDown={event => { if (event.target === event.currentTarget && ["ArrowLeft", "ArrowRight"].includes(event.key)) { event.preventDefault(); step(event.key === "ArrowLeft" ? -1 : 1); } }}
       onPointerDown={event => { moved.current = false; if (event.pointerType !== "mouse" || event.button !== 0 || event.target.closest("button,a,input")) return; drag.current = { x: event.clientX, scroll: event.currentTarget.scrollLeft }; }}
       onPointerMove={event => { const start = drag.current; if (!start) return; const distance = event.clientX - start.x; if (!moved.current && Math.abs(distance) < 6) return; moved.current = true; event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.classList.add("is-dragging"); event.currentTarget.scrollLeft = start.scroll - distance; }}
@@ -1722,7 +1722,7 @@ const Brokerage = ({ lang }) => {
       <div className="zrc-opportunity-filters" role="group" aria-label={lang === "es" ? "Tipo de oportunidad" : "Opportunity category"}>
         {[["all", lang === "es" ? "Todas" : "All"], ["property", lang === "es" ? "Inmobiliario" : "Real estate"], ["corporate", lang === "es" ? "Corporativas" : "Corporate"]].map(([key, label]) => <button key={key} type="button" aria-pressed={category === key} onClick={() => setCategory(key)}>{label} · {key === "all" ? OPS.length + ADVISORY_MANDATES.length : key === "property" ? OPS.length : ADVISORY_MANDATES.length}</button>)}
       </div>
-      <CardRail key={category} label={lang === "es" ? "Catálogo de oportunidades" : "Opportunity catalogue"} lang={lang}>
+      <CardRail key={category} className="zrc-opportunity-rail" label={lang === "es" ? "Catálogo de oportunidades" : "Opportunity catalogue"} lang={lang}>
         {category !== "corporate" && OPS.map((op, i) => (
           <FadeIn key={op.id} delay={i * 0.08}>
             <article className="zrc-advisory-mandate">
@@ -2068,6 +2068,17 @@ const ZRCPlatform = () => {
         .zrc-advisory-detail { color:${C.textSec}; font:13px/1.65 ${F.body}; margin:0 0 18px; }
         .zrc-advisory-service { display:inline-block; align-self:flex-start; margin-top:auto; padding:7px 10px; border-radius:9px; background:${C.surface2}; color:${C.gold}; font:600 10px ${F.mono}; }
         .zrc-advisory-cta { display:block; width:calc(100% - 36px); margin:0 18px 18px; padding:13px 10px; background:${C.surface2}; border:1px solid ${C.goldBorder}; border-radius:10px; color:${C.gold}; font:600 10px ${F.mono}; cursor:pointer; }
+        @media (max-width: 640px) {
+          .zrc-opportunity-rail > * { flex-basis: 100%; }
+          .zrc-opportunity-rail .zrc-advisory-mandate-top { padding: 16px 20px; font-size: .8125rem; }
+          .zrc-opportunity-rail .zrc-advisory-tag { font-size: .6875rem; }
+          .zrc-opportunity-rail .zrc-advisory-mandate-body { padding: 20px; }
+          .zrc-opportunity-rail .zrc-advisory-mandate h4 { font-size: 1.875rem; line-height: 1.15; }
+          .zrc-opportunity-rail .zrc-advisory-location { font-size: .875rem; line-height: 1.45; }
+          .zrc-opportunity-rail .zrc-advisory-detail { font-size: 1rem; line-height: 1.5; }
+          .zrc-opportunity-rail .zrc-advisory-service { font-size: .875rem; line-height: 1.4; }
+          .zrc-opportunity-rail .zrc-advisory-cta { min-height: 48px; font-size: .8125rem; }
+        }
         .zrc-advisory-cta:hover { background:${C.gold}; color:${C.bg}; }
         @media(max-width:640px){.zrc-advisory-intro{padding:18px}.zrc-advisory-mandates-heading{margin-top:26px}.zrc-advisory-mandates-grid{gap:14px}}
         .zrc-ticker-lane { -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%); mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%); }
