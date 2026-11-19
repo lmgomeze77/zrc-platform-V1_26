@@ -1,3 +1,4 @@
+import Pipeline from "./pages/Pipeline";
 import { IcLocaleProvider } from "./pages/innercircle/icLocale";
 import { useState, useEffect, useRef, useCallback, createContext, useContext, lazy, Suspense, Component } from "react";
 import GeoRiskDashboard from "./pages/intelligence/GeoRiskDashboard";
@@ -2281,7 +2282,7 @@ const ZRCPlatform = () => {
         </FadeIn>
       </Sec>
       <GoldDivider />
-      <Brokerage lang={lang} />
+      <div id="brokerage"><Pipeline lang={lang} /></div>
       <GoldDivider />
       <Advisory lang={lang} />
       <GoldDivider />
