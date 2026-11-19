@@ -2039,7 +2039,7 @@ const ZRCPlatform = () => {
 
         .zrc-card-rail { display:flex; gap:16px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:${C.gold} ${C.surface2}; padding:4px 2px 16px; cursor:grab; }
         .zrc-card-rail > * { flex:0 0 calc((100% - 32px)/3); min-width:0; scroll-snap-align:start; }
-        .zrc-card-rail > * > div { height:100%; box-sizing:border-box; }
+        .zrc-card-rail > *:not(.zrc-advisory-mandate) > div { height:100%; box-sizing:border-box; }
         .zrc-card-rail.is-dragging { cursor:grabbing; scroll-snap-type:none; user-select:none; }
         .zrc-card-rail:focus-visible, .zrc-rail-toolbar button:focus-visible, .zrc-opportunity-filters button:focus-visible { outline:2px solid ${C.gold}; outline-offset:3px; }
         .zrc-rail-toolbar { display:flex; justify-content:space-between; align-items:center; gap:12px; margin:0 0 12px; color:${C.textSec}; font:11px ${F.body}; }
@@ -2058,6 +2058,8 @@ const ZRCPlatform = () => {
         .zrc-advisory-count { background:${C.surface2}; border:1px solid ${C.goldBorder}; color:${C.gold}; border-radius:999px; padding:9px 13px; font:600 10px ${F.mono}; letter-spacing:.08em; }
         .zrc-advisory-mandates-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:18px; }
         .zrc-advisory-mandate { display:flex; flex-direction:column; overflow:hidden; min-width:0; background:${C.surface}; border:1px solid ${C.goldBorder}; border-radius:20px; box-shadow:0 9px 28px rgba(18,42,74,.08); transition:transform .2s ease,box-shadow .2s ease; }
+        .zrc-opportunity-rail .zrc-advisory-mandate-top { height: 64px; min-height: 64px; box-sizing: border-box; }
+        .zrc-opportunity-rail > .zrc-advisory-mandate > .zrc-advisory-mandate-body { height: auto; }
         .zrc-opportunity-rail { align-items: stretch; }
         .zrc-opportunity-rail > * { align-self: stretch; }
         .zrc-opportunity-rail > * > .zrc-advisory-mandate { height: 100%; box-sizing: border-box; }
