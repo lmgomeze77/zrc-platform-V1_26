@@ -1,3 +1,4 @@
+import { handlePipeline } from './pipeline.js';
 import {icPrivateJson,icSameOrigin,startIcSession,readIcSession,endIcSession,icCorsResponse} from './inner-circle-session.js';
 import innerCircleContent from './inner-circle-content.js';
 import { validateIndexInputs, analyzeIndexHistory, explainIndexInputs, GRI_METHOD_VERSION } from "./georisk-index-v2.js";
@@ -58,6 +59,9 @@ async function handleRequest(request, env, ctx) {
     const url = new URL(request.url);
 
     if (request.method === "OPTIONS") return corsResponse();
+
+    if (url.pathname === "/api/pipeline" && request.method === "GET")
+      return handlePipeline(request, env);
 
     if (url.pathname === "/api/lead" && request.method === "POST")
       return handleLead(request, env);
