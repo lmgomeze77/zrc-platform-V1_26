@@ -1,0 +1,103 @@
+name: Prisma Feed (fase A)
+
+# Tres ediciones al día (06:15, 12:15 y 18:15 UTC). La Lectura ZRC con
+# Sonnet solo se genera en la primera (PRISMA_ZRC=auto), así el coste de IA
+# de la fase A se queda en torno a 5-6 $ al mes.
+on:
+  schedule:
+    - cron: '15 6,12,18 * * *'
+  workflow_dispatch:
+    inputs:
+      zrc:
+        description: 'Lectura ZRC: auto | always | never'
+        required: false
+        default: 'auto'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: prisma-feed
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+      commit_sha: ${{ steps.commit.outputs.commit_sha }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Tests de Prisma
+        run: node --test scripts/prisma-core.test.js scripts/prisma-schema.test.js
+
+      - name: Generate Prisma feed
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PRISMA_ZRC: ${{ github.event.inputs.zrc || 'auto' }}
+          PRISMA_MAX_STORIES: '10'
+          PRISMA_PUBLIC_STORIES: '3'
+        run: node scripts/generate-prisma.js
+
+      # Igual que daily-headlines: se guarda el resultado fuera del árbol y se
+      # reaplica sobre el último main, porque otros workflows empujan a main
+      # mientras corre el modelo.
+      - name: Preserve output
+        run: |
+          cp public/data/prisma.json "$RUNNER_TEMP/prisma.json"
+          cp ops/prisma-run.json "$RUNNER_TEMP/prisma-run.json"
+
+      - name: Commit and push
+        id: commit
+        run: |
+          git config user.name "ZRC Prisma Bot"
+          git config user.email "bot@zenithrisecapital.com"
+
+          for i in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p ops
+            cp "$RUNNER_TEMP/prisma.json" public/data/prisma.json
+            cp "$RUNNER_TEMP/prisma-run.json" ops/prisma-run.json
+            git add public/data/prisma.json ops/prisma-run.json
+
+            if git diff --cached --quiet; then
+              echo "No changes to commit"
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            git commit -m "Prisma feed — $(date -u +'%Y-%m-%d %H:%M UTC')"
+            if git push origin HEAD:main; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            echo "Push attempt $i lost a race, rebuilding on latest main..."
+            sleep 5
+          done
+
+          exit 1
+
+  # Un push hecho con GITHUB_TOKEN no dispara deploy.yml por sí solo: se
+  # despliega explícitamente, como en georisk-gpr-refresh.yml.
+  deploy:
+    needs: generate
+    if: needs.generate.outputs.changed == 'true'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      commit_sha: ${{ needs.generate.outputs.commit_sha }}
+    secrets: inherit
