@@ -1,0 +1,35 @@
+name: GeoRisk weekly publication
+on:
+  schedule:
+    - cron: '30 9 * * 1,2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Verify current weekly observation in production
+        run: |
+          curl --fail --silent --show-error --max-time 15 --retry 2 \
+            'https://zenithrisecapital.com/api/georisk-index' -o "$RUNNER_TEMP/georisk-index.json"
+          node --input-type=module <<'JS'
+          import { readFileSync } from 'node:fs';
+          const payload = JSON.parse(readFileSync(process.env.RUNNER_TEMP + '/georisk-index.json', 'utf8'));
+          const monday = new Date();
+          monday.setUTCDate(monday.getUTCDate() - ((monday.getUTCDay() + 6) % 7));
+          const week = monday.toISOString().slice(0, 10);
+          const verifiedSources = new Set(['zrc_weekly_cron', 'auto_catchup', 'manual_snapshot', 'weekly_evidence']);
+          const reading = payload.history?.find(row =>
+            row.week_start === week && verifiedSources.has(row.source)
+            && typeof row.index_value === 'number' && row.index_value >= 0 && row.index_value <= 100);
+          if (!reading || payload.live?.quality?.verified !== true) {
+            console.error(`::error::ZRC-GRI ${week}: weekly observation or valid inputs missing. Check georisk_index_inputs, Worker bindings and cron logs.`);
+            process.exitCode = 1;
+          } else {
+            console.log(`ZRC-GRI ${week}: ${reading.index_value}/100, inputs dated ${payload.live.inputDate}`);
+          }
+          JS
