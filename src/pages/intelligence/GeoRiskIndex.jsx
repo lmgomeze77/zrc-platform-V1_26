@@ -2,6 +2,7 @@ import GeoRiskMarketWatch from "../../components/GeoRiskMarketWatch.jsx";
 import GeoRiskTaxonomyBridge from "../../components/GeoRiskTaxonomyBridge.jsx";
 import GeoRiskGprData from "../../components/GeoRiskGprData";
 import GeoRiskMarketImpact from "../../components/GeoRiskMarketImpact.jsx";
+import MorningRiskCompanion from "../../components/MorningRiskCompanion.jsx";
 // GeoRiskIndex.jsx — ZRC GeoRisk Index (public weekly benchmark)
 // Self-contained component: fetches weekly history from the Worker,
 // renders the chart + concrete asset-impact reference table.
@@ -79,9 +80,12 @@ function IndexChart({ history, color }) {
   const minV = Math.max(0, Math.min(...vals) - 8);
   const maxV = Math.min(100, Math.max(...vals) + 8);
   const range = maxV - minV || 1;
-  const xOf = (i) => (history.length <= 1 ? PAD.l + iW / 2 : PAD.l + (i / (history.length - 1)) * iW);
+  const dates = history.map(p => Date.parse(p.week_start));
+  const span = Math.max(1, dates.at(-1) - dates[0]);
+  const xOf = (i) => history.length <= 1 ? PAD.l + iW / 2 : PAD.l + (dates[i] - dates[0]) / span * iW;
   const yOf = (v) => PAD.t + iH - ((v - minV) / range) * iH;
-  const linePath = history.map((p, i) => `${i === 0 ? "M" : "L"}${xOf(i)},${yOf(p.index_value)}`).join(" ");
+  // A missed weekly publication is a visible break, not a continuous observation.
+  const linePath = history.map((p, i) => `${i === 0 || dates[i]-dates[i-1] > 8*86400000 ? "M" : "L"}${xOf(i)},${yOf(p.index_value)}`).join(" ");
   const yTicks = niceTicks(minV, maxV, 4);
   const firstLabel = history[0]?.week_start;
   const lastLabel = history[history.length - 1]?.week_start;
@@ -301,6 +305,8 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
   const shownWeek = current?.week_start || diagnostics?.last_verified_week || null;
   const latestTrend = weeklyChange === null ? null : Math.abs(weeklyChange)<0.05 ? "stable" : weeklyChange>0 ? "rising" : "falling";
   const dataFresh = Boolean(live?.quality?.verified && !live?.quality?.stale && !diagnostics?.history_stale);
+  const historyAgeDays = shownWeek ? Math.floor((Date.now() - Date.parse(shownWeek + "T00:00:00Z")) / 86400000) : null;
+  const publicationOverdue = historyAgeDays !== null && historyAgeDays > 10;
 
 
   const chartHistory = verifiedHistory.length
@@ -319,7 +325,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
 
       <FadeIn delay={0.1}>
         <style>{`
-          .zrc-gri-hero { padding:clamp(18px,4vw,30px); }
+          .zrc-gri-hero { padding:clamp(20px,4vw,36px); }
           .zrc-gri-kpis { display:grid; grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr); gap:28px; align-items:center; }
           .zrc-gri-focus { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px; }
           .zrc-gri-focus > div { border:1px solid var(--zrc-border, #d5d9d6);border-radius:12px;padding:12px;min-width:0; }
@@ -329,7 +335,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
             .zrc-gri-focus > div { padding:10px 12px; }
           }
         `}</style>
-        <div className="zrc-gri-hero" style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:22,marginBottom:16,overflow:"hidden"}}>
+        <div className="zrc-gri-hero" style={{background:C.surface,border:`1px solid ${C.border}`,borderTop:"4px solid #7A1426",borderRadius:12,marginBottom:16,overflow:"hidden"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8,marginBottom:16}}>
             <div style={{fontFamily:F.mono,fontSize:11,letterSpacing:".12em",color:C.navy||C.text}}>ZRC–GRI <span style={{color:C.textMuted}}>· {lang==="es"?"ÍNDICE GEOPOLÍTICO":"GEOPOLITICAL INDEX"}</span></div>
             <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{shownWeek ? (lang==="es"?"Semana del ":"Week of ")+shownWeek : (lang==="es"?"Histórico en preparación":"History pending")}</span>
@@ -341,12 +347,9 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
                 <div style={{fontFamily:F.mono,fontSize:12,color:C.textMuted}}>/ 100</div>
               </div>
               {displayValue!==null&&<div style={{display:"inline-block",fontFamily:F.mono,fontSize:11,color:riskColor(displayValue),border:`1px solid ${riskColor(displayValue)}`,padding:"5px 12px",borderRadius:99,marginTop:9,fontWeight:700}}>{lang==="es"?displayLabel:bandOf(displayValue).labelEn}</div>}
-              <div style={{marginTop:12,fontFamily:F.body,fontSize:13,color:C.textSec}}>
-                {weeklyChange!==null
-                  ? (latestTrend==="stable" ? (lang==="es"?"↔ Estable respecto a la semana anterior":"↔ Stable week over week")
-                  : (weeklyChange>0?"↑ +":"↓ −")+fmt(Math.abs(weeklyChange))+(lang==="es"?" puntos esta semana":" points this week"))
-                  : (lang==="es"?"Variación semanal no comparable":"Weekly movement unavailable")}
-              </div>
+               <div style={{marginTop:12,fontFamily:F.body,fontSize:13,color:C.textSec}}>
+                 {publicationOverdue ? (lang==="es"?"Sin lectura reciente; última variación verificada":"No recent reading; last verified movement") : (lang==="es"?"Variación verificada":"Verified movement")}: {weeklyChange!==null ? (latestTrend==="stable" ? (lang==="es"?"sin cambio medible":"no measurable change") : `${weeklyChange>0?"+":"−"}${fmt(Math.abs(weeklyChange))} ${lang==="es"?"puntos":"points"}`) : (lang==="es"?"no comparable":"not comparable")}
+               </div>
               {displayScenario&&<div style={{fontFamily:F.body,fontSize:13,color:C.text,marginTop:10}}>
                 <span style={{color:C.textMuted}}>{lang==="es"?"Escenario principal":"Main scenario"}: </span><strong>{displayScenario}</strong>
               </div>}
@@ -365,14 +368,15 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
               </div>
               <div style={{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center",marginTop:17}}>
                 <span style={{fontSize:11,color:C.textSec}}>{lang==="es"?"Última observación":"Latest observation"}: <strong>{shownWeek||"—"}</strong></span>
-                <span style={{fontSize:10,color:dataFresh?C.green:C.amber,fontWeight:600}}>{dataFresh?(lang==="es"?"● Inputs recientes":"● Fresh inputs"):(lang==="es"?"○ Revisar fecha de inputs":"○ Check input date")}</span>
+                 <span style={{fontSize:10,color:dataFresh?C.green:C.amber,fontWeight:600}}>{dataFresh?(lang==="es"?"Inputs recientes":"Fresh inputs"):(lang==="es"?"Inputs sin actualizar":"Inputs out of date")}</span>
               </div>
             </div>
           </div>
-          <div style={{borderTop:`1px solid ${C.border}`,marginTop:20,paddingTop:15}}>
+           {publicationOverdue && <p role="status" style={{margin:"20px 0 0",padding:"11px 14px",background:C.surface2,borderLeft:"3px solid #7A1426",fontFamily:F.body,fontSize:12,lineHeight:1.55,color:C.textSec}}>{lang==="es"?`Última observación verificada: ${shownWeek}. El índice no se ha recalculado con inputs aprobados recientes. La línea termina en esa fecha y no representa el riesgo actual.`:`Last verified observation: ${shownWeek}. No recent approved inputs have refreshed this index. The line ends on that date and is not a current risk reading.`}</p>}
+           <div style={{borderTop:`1px solid ${C.border}`,marginTop:20,paddingTop:15}}>
             <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:8,flexWrap:"wrap",marginBottom:4}}>
               <strong style={{fontFamily:F.body,fontSize:14}}>{lang==="es"?"Evolución semanal":"Weekly evolution"}</strong>
-              <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{diagnostics?.verified??"—"} {lang==="es"?"observaciones verificadas":"verified observations"}</span>
+               <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{diagnostics?.verified??"—"} {lang==="es"?"observaciones verificadas · huecos sin unir":"verified observations · gaps shown"}</span>
             </div>
             {status==="error"?<p style={{fontSize:13,color:C.amber}}>{lang==="es"?"Histórico temporalmente no disponible.":"History temporarily unavailable."}</p>
               :chartHistory.length>0?<IndexChart history={chartHistory} color="var(--zrc-chart-line)"/>
@@ -381,11 +385,14 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
         </div>
       </FadeIn>
 
+      <FadeIn delay={0.12}><MorningRiskCompanion lang={lang}/></FadeIn>
+
       <FadeIn delay={0.14}>
         <div style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:18,padding:"17px 20px",marginBottom:16}}>
           <div style={{fontFamily:F.mono,fontSize:10,color:C.gold,letterSpacing:".12em",marginBottom:11}}>{lang==="es"?"LECTURA PARA EL INVERSOR":"INVESTOR READOUT"}</div>
           <div style={{fontSize:15,fontFamily:F.body,fontWeight:650,color:C.text,marginBottom:13}}>
-            {displayValue===null?(lang==="es"?"Pendiente de una lectura verificable":"Awaiting verified reading")
+             {publicationOverdue?(lang==="es"?"Lectura histórica; pendiente de actualización editorial":"Historical reading; editorial refresh pending")
+               :displayValue===null?(lang==="es"?"Pendiente de una lectura verificable":"Awaiting verified reading")
               :lang==="es"?`Riesgo ${riskLabel(displayValue).toLowerCase()}${latestTrend==="stable"?", sin cambios semanales relevantes":latestTrend==="rising"?", en aumento":latestTrend==="falling"?", en descenso":""}.`
               :`${bandOf(displayValue).labelEn.toLowerCase()} risk${latestTrend==="stable"?", broadly stable":latestTrend==="rising"?", rising":latestTrend==="falling"?", falling":""}.`}
           </div>
@@ -400,7 +407,7 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
 
       <FadeIn delay={0.17}>
         <details style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:16,marginBottom:18,padding:"13px 17px"}}>
-          <summary style={{cursor:"pointer",fontSize:13,fontFamily:F.body,fontWeight:650,color:C.text}}>{lang==="es"?"ⓘ Fuentes, calidad y metodología":"ⓘ Sources, quality and methodology"}</summary>
+           <summary style={{cursor:"pointer",fontSize:13,fontFamily:F.body,fontWeight:650,color:C.text}}>{lang==="es"?"Fuentes, calidad y metodología":"Sources, quality and methodology"}</summary>
           <div style={{padding:"14px 0 0",fontFamily:F.body,fontSize:12,lineHeight:1.65,color:C.textSec}}>
             <div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:8,marginBottom:8}}>
               <span>{lang==="es"?"Último índice verificable":"Last verified print"}: <strong>{shownWeek||"—"}</strong></span>
