@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T15:27:02.773Z",
+  "generated_at": "2026-11-26T16:18:08.310Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,99 +96,33 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "EURASIA",
+      "region": "GLOBAL",
       "title": {
-        "es": "Ucrania daña gravemente el puente de Kerch que une Crimea ocupada con Rusia",
-        "en": "Ukraine critically damages Kerch bridge linking occupied Crimea with Russia"
+        "es": "EE.UU. anuncia nuevos aranceles a un grupo de países incluyendo China",
+        "en": "US announces new tariffs on host of countries including China"
       },
       "summary": {
-        "es": "Ucrania ejecutó un ataque de misiles y drones que causó daños críticos al puente de Kerch, el principal enlace logístico entre Rusia y Crimea. Zelensky calificó el ataque de 'sin precedentes', mientras el Kremlin minimizó el impacto prometiendo restauración. La pérdida o degradación sostenida del puente alteraría significativamente la cadena de suministro militar rusa en el sur de Ucrania y elevaría la presión sobre Moscú para escalar.",
-        "en": "Ukraine executed a missile and drone attack causing critical damage to the Kerch bridge, Russia's primary logistical link to Crimea. Zelensky hailed the strike as 'unprecedented' while the Kremlin downplayed the damage. Sustained degradation of the bridge would significantly disrupt Russian military supply lines in southern Ukraine and increase pressure on Moscow to escalate."
+        "es": "La administración Trump propone nuevos aranceles que afectarían a socios comerciales clave, incluyendo China y la UE, desencadenando respuestas de represalia de Pekín y Brasilia. La medida eleva significativamente el riesgo de una guerra comercial global en un momento de fragilidad económica internacional. Las implicaciones para cadenas de suministro, inflación importada y flujos de capital emergentes son sustanciales.",
+        "en": "The Trump administration has proposed new tariffs targeting key trading partners including China and the EU, triggering retaliatory rhetoric from Beijing and Brasilia. The move substantially raises the risk of a global trade war at a moment of international economic fragility. Implications for supply chains, imported inflation and EM capital flows are significant."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Escalada en guerra eleva prima de riesgo geopolítico",
-            "en": "Escalation in war raises geopolitical risk premium"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Demanda de refugio seguro ante escalada militar",
-            "en": "Safe-haven demand on military escalation"
-          }
-        },
-        {
-          "asset": "European equities",
+          "asset": "Chinese yuan (CNY/USD)",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "high",
           "note": {
-            "es": "Riesgo de escalada pesa sobre mercados europeos",
-            "en": "Escalation risk weighs on European markets"
+            "es": "Presión depreciatoria por riesgo arancelario sobre exportaciones chinas",
+            "en": "Depreciation pressure from tariff risk on Chinese exports"
           }
         },
         {
           "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Tensión bélica presiona al euro frente al dólar",
-            "en": "War tension pressures euro vs dollar"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/world/2026/nov/17/ukraine-strikes-critical-damage-russia-kerch-bridge-crimea",
-      "published_at": "2026-11-17",
-      "time": "2h"
-    },
-    {
-      "id": 2,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Tercer portaaviones de EE.UU. llega a Oriente Medio mientras Irán ataca Baréin",
-        "en": "Third US aircraft carrier arrives in the Middle East as Iran targets Bahrain"
-      },
-      "summary": {
-        "es": "EE.UU. desplegó un tercer portaaviones en Oriente Medio en una demostración de fuerza mientras Trump mantiene abiertas las opciones militares contra Irán. Teherán respondió con ataques reportados contra Baréin, sede de la Quinta Flota estadounidense, elevando el riesgo de confrontación directa. El conflicto muestra señales de estancamiento estratégico pero con escalada táctica que presiona los mercados energéticos.",
-        "en": "The US deployed a third aircraft carrier to the Middle East in a show of force as Trump keeps military options against Iran open. Tehran responded with reported strikes on Bahrain, home to the US Fifth Fleet, raising the risk of direct confrontation. The conflict shows signs of strategic stalemate but with tactical escalation that pressures energy markets."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "high",
-          "note": {
-            "es": "Riesgo de interrupción del estrecho de Ormuz",
-            "en": "Risk of Strait of Hormuz disruption"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Escalada militar impulsa activos refugio",
-            "en": "Military escalation drives safe-haven assets"
-          }
-        },
-        {
-          "asset": "Defense sector equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Despliegue masivo favorece a contratistas de defensa",
-            "en": "Massive deployment favors defense contractors"
+            "es": "Aranceles amenazan exportaciones europeas y actividad económica",
+            "en": "Tariffs threaten European exports and economic activity"
           }
         },
         {
@@ -196,134 +130,104 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Aversión al riesgo golpea monedas de mercados emergentes",
-            "en": "Risk aversion hits emerging market currencies"
+            "es": "Fuga hacia activos refugio perjudica divisas emergentes",
+            "en": "Flight to safety hurts emerging market currencies"
+          }
+        },
+        {
+          "asset": "US equities (S&P 500)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Sectores exportadores afectados; defensivos y domésticos se benefician",
+            "en": "Export-exposed sectors hurt; domestic defensives benefit"
           }
         }
       ],
-      "confidence": 92,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261117-third-us-aircraft-carrier-arrives-in-the-middle-east-as-iran-targets-bahrain",
-      "published_at": "2026-11-17",
-      "time": "4h"
+      "confidence": 90,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/c893r9ke5p97o?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-11-26",
+      "time": "12h"
     },
     {
-      "id": 3,
+      "id": 2,
       "tag": "ALERT",
-      "region": "GLOBAL",
+      "region": "EU",
       "title": {
-        "es": "Bessent vs. Lutnick: ¿Quién está ganando el debate sobre chips chinos?",
-        "en": "Bessent vs Lutnick: Who is winning the China chip debate?"
+        "es": "El economista español De Cos sucederá a Lagarde como presidente del BCE",
+        "en": "Spanish economist de Cos to succeed Lagarde as head of ECB"
       },
       "summary": {
-        "es": "Una fractura interna en el gabinete de Trump ha emergido entre el Secretario del Tesoro Bessent y el Secretario de Comercio Lutnick sobre el alcance de los controles de exportación de chips de IA hacia China. El resultado de este debate determinará si EE.UU. endurece o modera la desconexión tecnológica con Beijing, con implicaciones directas para el sector semiconductores global. La incertidumbre regulatoria afecta inversiones en cadenas de suministro de chips y posicionamiento de empresas como Nvidia.",
-        "en": "An internal rift has emerged in Trump's cabinet between Treasury Secretary Bessent and Commerce Secretary Lutnick over the scope of AI chip export controls to China. The outcome of this debate will determine whether the US tightens or moderates technological decoupling from Beijing, with direct implications for the global semiconductor sector. Regulatory uncertainty affects chip supply chain investments and positioning of companies like Nvidia."
+        "es": "Pablo Hernández de Cos, exgobernador del Banco de España, ha sido designado para presidir el BCE en un contexto de rebrote inflacionario vinculado al conflicto con Irán y creciente tensión en los mercados de deuda soberana europeos, especialmente francesa. Su perfil ortodoxo pero pragmático plantea interrogantes sobre el ritmo de ajuste monetario futuro. El cambio de liderazgo llega en un momento de máxima presión externa sobre la política monetaria europea.",
+        "en": "Pablo Hernández de Cos, former governor of the Bank of Spain, has been designated to lead the ECB amid an Iran war-driven inflation resurgence and rising pressure on European sovereign debt markets, particularly French bonds. His orthodox yet pragmatic profile raises questions about the future pace of monetary adjustment. The leadership transition comes at peak external pressure on European monetary policy."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Semiconductor equities (SOX)",
-          "direction": "mixed",
-          "magnitude": "high",
-          "note": {
-            "es": "Incertidumbre regulatoria sobre exportaciones a China",
-            "en": "Regulatory uncertainty on China export controls"
-          }
-        },
-        {
-          "asset": "USD/CNY",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Resultado del debate impacta tensiones comerciales bilaterales",
-            "en": "Debate outcome impacts bilateral trade tensions"
-          }
-        },
-        {
-          "asset": "Chinese tech equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Mayor restricción potencial al acceso de chips avanzados",
-            "en": "Potential tighter restriction on advanced chip access"
-          }
-        }
-      ],
-      "confidence": 85,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/economy/2026/11/17/bessent-vs-lutnick-who-is-winning-the-china-chip-debate?traffic_source=rss",
-      "published_at": "2026-11-17",
-      "time": "<1h"
-    },
-    {
-      "id": 4,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "¿Podría el litigio del préstamo de €3.000 millones de Airbus reavivar una disputa comercial UE-EE.UU.?",
-        "en": "Could the Airbus €3 billion loan row reignite a US-EU trade dispute?"
-      },
-      "summary": {
-        "es": "EE.UU. ha cuestionado un paquete de financiación récord de €3.000 millones para Airbus, argumentando que podría violar la tregua de subsidios aeronáuticos transatlántica. La UE insiste en que el préstamo cumple con reglas de mercado, pero el diferendo reaviva tensiones comerciales que anteriormente derivaron en aranceles bilaterales multimillonarios. En un contexto de mayor belicosidad comercial bajo la administración Trump, el riesgo de escalada hacia represalias arancelarias sobre productos europeos es significativo.",
-        "en": "The US has challenged a record €3 billion financing package for Airbus, arguing it may violate the transatlantic aircraft-subsidy truce. The EU insists the loan complies with market-based rules, but the dispute revives trade tensions that previously led to multi-billion dollar bilateral tariffs. In a context of heightened trade aggressiveness under the Trump administration, the risk of escalation toward tariff retaliation on European goods is significant."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Airbus (AIR.PA)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de sanciones comerciales sobre modelo de financiación",
-            "en": "Risk of trade sanctions on financing model"
-          }
-        },
-        {
           "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
+          "direction": "mixed",
+          "magnitude": "medium",
           "note": {
-            "es": "Riesgo de nueva disputa comercial UE-EE.UU. pesa en euro",
-            "en": "New EU-US trade dispute risk weighs on euro"
+            "es": "Incertidumbre sobre orientación monetaria bajo nuevo liderazgo",
+            "en": "Uncertainty over monetary stance under new leadership"
           }
         },
         {
           "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Amenaza arancelaria afecta exportadores europeos",
-            "en": "Tariff threat affects European exporters"
-          }
-        }
-      ],
-      "confidence": 74,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/could-the-airbus-€3-billion-loan-row-reignite-a-us-eu-trade-dispute/a-79943075?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-11-17",
-      "time": "4h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "AFRICA",
-      "title": {
-        "es": "Guinea encarcela a 200 personas en represalia contra la minería ilegal de oro",
-        "en": "Guinea jails 200 in wildcat gold mining crackdown"
-      },
-      "summary": {
-        "es": "Un tribunal de Conakry condenó a 22 ex funcionarios locales y 200 personas por minería ilegal en la región aurífera de Siguiri, desplazando a miles hacia Mali. La represión del gobierno de la junta señala un intento de consolidar el control estatal sobre recursos minerales estratégicos en un contexto de mayor competencia por activos críticos en África Occidental. Los inversores en minería aurífera con operaciones en Guinea deben monitorear el riesgo regulatorio y de estabilidad operacional.",
-        "en": "A Conakry court convicted 22 former local officials and 200 individuals for illegal mining in the gold-rich Siguiri region, displacing thousands into Mali. The junta government's crackdown signals an attempt to consolidate state control over strategic mineral resources amid heightened competition for critical assets in West Africa. Mining investors with Guinea operations should monitor regulatory and operational stability risk."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Gold mining equities (West Africa)",
           "direction": "mixed",
           "magnitude": "medium",
           "note": {
-            "es": "Mayor control estatal puede restringir producción informal",
-            "en": "Greater state control may restrict informal production"
+            "es": "Perfil del nuevo presidente afecta expectativas de tipos",
+            "en": "New president's profile affects rate expectations"
+          }
+        },
+        {
+          "asset": "French OAT / Bund spread",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de fragmentación si BCE adopta postura más hawkish",
+            "en": "Fragmentation risk if ECB adopts tighter stance"
+          }
+        },
+        {
+          "asset": "EU peripheral sovereign bonds",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Sensibilidad a señales de política del nuevo presidente",
+            "en": "Sensitive to new president's early policy signals"
+          }
+        }
+      ],
+      "confidence": 88,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/europe/20261126-spanish-economist-de-cos-succeed-lagarde-head-ecb",
+      "published_at": "2026-11-26",
+      "time": "<1h"
+    },
+    {
+      "id": 3,
+      "tag": "CRITICAL",
+      "region": "MENA",
+      "title": {
+        "es": "Fuerzas libias amenazan con represalias tras el ataque de Ucrania a buques rusos",
+        "en": "Libyan Forces Threaten Retaliation Over Ukraine's Attack on Russian Ships"
+      },
+      "summary": {
+        "es": "Un ataque de drones ucraniano frente a la costa de Libia mató a dos oficiales navales libios, según las fuerzas que controlan el este del país, alineadas con el mariscal Haftar y vinculadas a Rusia. El incidente abre un frente geopolítico nuevo al entrelazar el conflicto ucraniano con la inestabilidad de Libia y sus vínculos con infraestructura energética mediterránea. Una escalada podría afectar las rutas de exportación de energía del norte de África.",
+        "en": "A Ukrainian drone strike off Libya's coast killed two Libyan naval officers according to eastern-Libya forces aligned with Haftar and linked to Russia. The incident opens a new geopolitical front by intertwining the Ukraine conflict with Libyan instability and its ties to Mediterranean energy infrastructure. Escalation could affect North African energy export routes."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de interrupción de suministro libio en el Mediterráneo",
+            "en": "Risk of Libyan supply disruption in the Mediterranean"
           }
         },
         {
@@ -331,55 +235,160 @@
           "direction": "up",
           "magnitude": "low",
           "note": {
-            "es": "Restricción de oferta artesanal en región productora",
-            "en": "Supply restriction in artisanal producing region"
+            "es": "Nueva escalada geopolítica impulsa activos refugio",
+            "en": "New geopolitical escalation boosts safe-haven assets"
+          }
+        },
+        {
+          "asset": "Italian sovereign bonds (BTP)",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Italia depende del gas libio; inestabilidad eleva prima de riesgo",
+            "en": "Italy depends on Libyan gas; instability raises risk premium"
           }
         }
       ],
-      "confidence": 68,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/guinea-jails-200-in-wildcat-gold-mining-crackdown/a-79968808?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-11-17",
-      "time": "2h"
+      "confidence": 82,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/25/world/middleeast/libya-ukraine-russia-haftar.html",
+      "published_at": "2026-11-25",
+      "time": "21h"
     },
     {
-      "id": 6,
-      "tag": "WATCH",
-      "region": "LATAM",
+      "id": 4,
+      "tag": "ALERT",
+      "region": "MENA",
       "title": {
-        "es": "Pescadores ecuatorianos que sobrevivieron a ataques de embarcaciones de EE.UU. demandan a la administración Trump",
-        "en": "Ecuadorean Fishermen Who Survived U.S. Boat Strike Sue Trump Administration"
+        "es": "'Simbólico': ¿Por qué el Reino Unido sancionó a los hutíes de Yemen en medio de los ataques a Arabia Saudí?",
+        "en": "'Symbolic': Why did UK sanction Yemen's Houthis amid attacks on Saudi?"
       },
       "summary": {
-        "es": "Sobrevivientes ecuatorianos presentaron la primera demanda contra la administración Trump por una campaña militar secreta que ha matado a más de 240 personas en embarcaciones. El caso expone legalmente una operación encubierta de EE.UU. en aguas del Pacífico latinoamericano con implicaciones diplomáticas para las relaciones Washington-Quito. Si el litigio prospera, podría forzar divulgación de operaciones militares que afectan a socios regionales y complica la narrativa de seguridad del Hemisferio Occidental de Trump.",
-        "en": "Ecuadorian survivors filed the first lawsuit against the Trump administration over a secretive US military campaign that has killed more than 240 people on vessels. The case legally exposes a covert US operation in Latin American Pacific waters with diplomatic implications for Washington-Quito relations. If the litigation proceeds, it could force disclosure of military operations affecting regional partners and complicates Trump's Western Hemisphere security narrative."
+        "es": "El Reino Unido impuso sanciones al grupo hutí respaldado por Irán y a sus líderes, acusándolos de desestabilizar Oriente Medio, en un contexto en que la guerra con Irán ha reavivado la guerra civil yemení y los hutíes avanzan hacia Adén. Analistas califican la medida de simbólica dada la limitada capacidad coercitiva del Reino Unido sobre actores no estatales en la región. La evolución del conflicto yemení tiene implicaciones directas para el tráfico en el Mar Rojo y los costos de flete global.",
+        "en": "The UK has sanctioned the Iran-backed Houthi group and its leaders, accusing them of undermining Middle East stability, as the Iran war reignites Yemen's civil war and Houthis advance on Aden. Analysts describe the measure as largely symbolic given the UK's limited coercive leverage over non-state actors in the region. The evolution of the Yemen conflict has direct implications for Red Sea shipping and global freight costs."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Ecuadorian sovereign bonds",
-          "direction": "mixed",
-          "magnitude": "low",
+          "asset": "Brent crude",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Tensión diplomática con EE.UU. añade incertidumbre soberana",
-            "en": "Diplomatic tension with US adds sovereign uncertainty"
+            "es": "Riesgo de cierre del Mar Rojo eleva prima de riesgo energético",
+            "en": "Red Sea closure risk raises energy risk premium"
           }
         },
         {
-          "asset": "EM currencies (Andean)",
-          "direction": "down",
+          "asset": "Shipping/freight indices",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Desvíos de rutas por amenaza hutí encarecen el flete",
+            "en": "Houthi threat forces rerouting, raising freight costs"
+          }
+        },
+        {
+          "asset": "GBP/USD",
+          "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo político regional en zona de influencia EE.UU.",
-            "en": "Regional political risk in US sphere of influence"
+            "es": "Señal política del Reino Unido sin impacto cambiario directo",
+            "en": "UK political signal with limited direct FX impact"
           }
         }
       ],
-      "confidence": 65,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/11/17/world/americas/trump-us-boat-strikes-lawsuit-ecuador-fishermen.html",
-      "published_at": "2026-11-17",
-      "time": "<1h"
+      "confidence": 78,
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/11/26/symbolic-why-did-uk-sanction-yemens-houthis-amid-attacks-on-saudi?traffic_source=rss",
+      "published_at": "2026-11-26",
+      "time": "4h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "La jefa de la UE insta a los líderes a 'comprometerse' para cerrar un acuerdo presupuestario antes de fin de año",
+        "en": "EU chief urges leaders to 'compromise' for budget deal by year-end"
+      },
+      "summary": {
+        "es": "El presidente del Consejo Europeo, Antonio Costa, presionó a los líderes para alcanzar un acuerdo sobre el presupuesto a largo plazo de la UE antes de las elecciones francesas de 2027, donde Marine Le Pen lidera en las encuestas. Un fracaso en sellar el marco presupuestario podría debilitar la capacidad de respuesta fiscal europea en un entorno de múltiples shocks externos. La incertidumbre presupuestaria se suma a la presión sobre los diferenciales soberanos europeos.",
+        "en": "European Council President Antonio Costa pressed leaders to reach a deal on the EU's long-term budget before France's 2027 election, where Marine Le Pen leads in polls. Failure to seal the fiscal framework could weaken Europe's fiscal response capacity amid multiple external shocks. Budgetary uncertainty adds to pressure on European sovereign spreads."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre fiscal europea debilita al euro",
+            "en": "European fiscal uncertainty weakens the euro"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo político y presupuestario pesa sobre perspectivas europeas",
+            "en": "Political and budget risk weighs on European outlook"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/video/20261126-eu-chief-urges-leaders-to-compromise-for-budget-deal-by-year-end",
+      "published_at": "2026-11-26",
+      "time": "4h"
+    },
+    {
+      "id": 6,
+      "tag": "ALERT",
+      "region": "GLOBAL",
+      "title": {
+        "es": "China se reserva el derecho a tomar 'medidas necesarias' ante las nuevas propuestas arancelarias de Trump",
+        "en": "China reserves right to take 'necessary measures' after Trump's new tariff proposals"
+      },
+      "summary": {
+        "es": "Pekín califica los nuevos aranceles propuestos de 'manipulación política' y advierte represalias, mientras Brasil también rechaza las amenazas comerciales. La respuesta coordinada de economías emergentes y potencias medianas sugiere una coalición de resistencia al unilateralismo comercial estadounidense. El riesgo de escalada en el comercio global aumenta antes de fin de año.",
+        "en": "Beijing has labelled Trump's proposed tariffs as 'political manipulation' and warned of necessary countermeasures, while Brazil similarly rejected the threats. The coordinated pushback from emerging economies and mid-tier powers suggests a nascent coalition resisting US trade unilateralism. Escalation risk for global trade rises ahead of year-end."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Tensión comercial global eleva demanda de activos refugio",
+            "en": "Global trade tension drives safe-haven demand"
+          }
+        },
+        {
+          "asset": "Asian equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de represalias perjudica mercados exportadores asiáticos",
+            "en": "Retaliation risk hurts Asian export-driven markets"
+          }
+        },
+        {
+          "asset": "Brent crude",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Perspectivas de menor demanda global por desaceleración comercial",
+            "en": "Weaker global demand outlook from trade slowdown"
+          }
+        }
+      ],
+      "confidence": 87,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/us-news/2026/nov/26/brazil-china-react-to-new-trump-tariffs-threat",
+      "published_at": "2026-11-26",
+      "time": "4h"
     }
   ],
   "market_updated_at": "2026-11-26T15:52:50.788Z"
