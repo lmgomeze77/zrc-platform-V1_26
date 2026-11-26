@@ -312,6 +312,8 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
   const chartHistory = verifiedHistory.length
     ? verifiedHistory
     : (live?.quality?.verified ? [{ week_start: "hoy", index_value: live.value, risk_label: live.riskLabel }] : []);
+  const chartValues = chartHistory.map(item => item.index_value);
+  const chartRange = chartValues.length ? Math.max(...chartValues) - Math.min(...chartValues) : null;
 
   return (
     <Sec id="georisk-index">
@@ -325,36 +327,37 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
 
       <FadeIn delay={0.1}>
         <style>{`
-          .zrc-gri-hero { padding:clamp(20px,4vw,36px); }
-          .zrc-gri-kpis { display:grid; grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr); gap:28px; align-items:center; }
+          .zrc-gri-hero { padding:clamp(16px,3vw,28px); }
+          .zrc-gri-kpis { display:grid; grid-template-columns:minmax(0,0.88fr) minmax(0,1.12fr); gap:16px; align-items:stretch; }
+          .zrc-gri-score { background:#14263C;color:#fff;border-radius:10px;padding:clamp(20px,3vw,32px); }
+          .zrc-gri-context { background:var(--zrc-surface-2, #F2F1EE);border:1px solid var(--zrc-border, #ddd);border-radius:10px;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;justify-content:center; }
           .zrc-gri-focus { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px; }
           .zrc-gri-focus > div { border:1px solid var(--zrc-border, #d5d9d6);border-radius:12px;padding:12px;min-width:0; }
           @media(max-width:640px) {
-            .zrc-gri-kpis { grid-template-columns:1fr;gap:14px; }
+             .zrc-gri-kpis { grid-template-columns:1fr;gap:10px; }
             .zrc-gri-focus { grid-template-columns:1fr;gap:8px; }
             .zrc-gri-focus > div { padding:10px 12px; }
           }
         `}</style>
-        <div className="zrc-gri-hero" style={{background:C.surface,border:`1px solid ${C.border}`,borderTop:"4px solid #7A1426",borderRadius:12,marginBottom:16,overflow:"hidden"}}>
+        <div className="zrc-gri-hero" style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:12,marginBottom:16,overflow:"hidden"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8,marginBottom:16}}>
-            <div style={{fontFamily:F.mono,fontSize:11,letterSpacing:".12em",color:C.navy||C.text}}>ZRC–GRI <span style={{color:C.textMuted}}>· {lang==="es"?"ÍNDICE GEOPOLÍTICO":"GEOPOLITICAL INDEX"}</span></div>
-            <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{shownWeek ? (lang==="es"?"Semana del ":"Week of ")+shownWeek : (lang==="es"?"Histórico en preparación":"History pending")}</span>
+            <div style={{fontFamily:F.mono,fontSize:11,letterSpacing:".12em",color:C.navy||C.text}}>ZRC–GRI <span style={{color:C.textMuted}}>· {lang==="es"?"ESCENARIOS GEOPOLÍTICOS":"GEOPOLITICAL SCENARIOS"}</span></div>
+            <span style={{fontFamily:F.body,fontSize:11,color:publicationOverdue?"#8B213B":C.green,fontWeight:650}}>{publicationOverdue?(lang==="es"?"Lectura histórica · actualización pendiente":"Historical reading · update pending"):(lang==="es"?"Lectura verificada":"Verified reading")}</span>
           </div>
           <div className="zrc-gri-kpis">
-            <div>
+            <div className="zrc-gri-score">
+              <div style={{fontFamily:F.mono,fontSize:10,letterSpacing:1.4,color:"#C9D3DF"}}>{lang==="es"?"ÚLTIMA LECTURA VERIFICADA":"LAST VERIFIED READING"} · {shownWeek||"—"}</div>
               <div style={{display:"flex",alignItems:"baseline",gap:10,flexWrap:"wrap"}}>
-                <div style={{fontFamily:F.figures,fontSize:"clamp(56px,13vw,86px)",color:displayValue===null?C.textMuted:riskColor(displayValue),lineHeight:1,fontVariantNumeric:"tabular-nums"}}>{displayValue!==null?fmt(displayValue):"—"}</div>
-                <div style={{fontFamily:F.mono,fontSize:12,color:C.textMuted}}>/ 100</div>
+                 <div style={{fontFamily:F.figures,fontSize:"clamp(54px,11vw,82px)",color:"#fff",lineHeight:1.15,fontVariantNumeric:"tabular-nums"}}>{displayValue!==null?fmt(displayValue):"—"}</div>
+                 <div style={{fontFamily:F.mono,fontSize:12,color:"#C9D3DF"}}>/ 100</div>
               </div>
-              {displayValue!==null&&<div style={{display:"inline-block",fontFamily:F.mono,fontSize:11,color:riskColor(displayValue),border:`1px solid ${riskColor(displayValue)}`,padding:"5px 12px",borderRadius:99,marginTop:9,fontWeight:700}}>{lang==="es"?displayLabel:bandOf(displayValue).labelEn}</div>}
-               <div style={{marginTop:12,fontFamily:F.body,fontSize:13,color:C.textSec}}>
-                 {publicationOverdue ? (lang==="es"?"Sin lectura reciente; última variación verificada":"No recent reading; last verified movement") : (lang==="es"?"Variación verificada":"Verified movement")}: {weeklyChange!==null ? (latestTrend==="stable" ? (lang==="es"?"sin cambio medible":"no measurable change") : `${weeklyChange>0?"+":"−"}${fmt(Math.abs(weeklyChange))} ${lang==="es"?"puntos":"points"}`) : (lang==="es"?"no comparable":"not comparable")}
-               </div>
-              {displayScenario&&<div style={{fontFamily:F.body,fontSize:13,color:C.text,marginTop:10}}>
-                <span style={{color:C.textMuted}}>{lang==="es"?"Escenario principal":"Main scenario"}: </span><strong>{displayScenario}</strong>
+               {displayValue!==null&&<div style={{display:"inline-block",fontFamily:F.body,fontSize:11,color:"#fff",border:"1px solid #AAB8C9",padding:"5px 12px",borderRadius:4,marginTop:9,fontWeight:700}}>{lang==="es"?displayLabel:bandOf(displayValue).labelEn}</div>}
+               <div style={{marginTop:17,fontFamily:F.body,fontSize:12,color:"#D9E1E8",lineHeight:1.6}}>{lang==="es"?"Variación en la última semana comparable":"Change in last comparable week"}: <strong style={{color:"#fff"}}>{weeklyChange!==null ? (latestTrend==="stable" ? (lang==="es"?"sin cambio medible":"no measurable change") : `${weeklyChange>0?"+":"−"}${fmt(Math.abs(weeklyChange))} ${lang==="es"?"puntos":"points"}`) : (lang==="es"?"no disponible":"unavailable")}</strong></div>
+               {displayScenario&&<div style={{fontFamily:F.body,fontSize:12,color:"#D9E1E8",marginTop:7,lineHeight:1.5}}>
+                 {lang==="es"?"Escenario dominante":"Dominant scenario"}: <strong style={{color:"#fff"}}>{displayScenario}</strong>
               </div>}
             </div>
-            <div>
+            <div className="zrc-gri-context">
               <div style={{fontFamily:F.mono,fontSize:10,color:C.textMuted,letterSpacing:".1em",marginBottom:9}}>{lang==="es"?"ESCALA DE RIESGO · 0–100":"RISK SCALE · 0–100"}</div>
               <div style={{position:"relative",margin:"8px 0 11px"}}>
                 <div style={{display:"flex",height:13,overflow:"hidden",borderRadius:99}}>
@@ -366,18 +369,19 @@ export default function GeoRiskIndex({ lang = "es", useAuth, FadeIn, Sec, SH, Go
                 <span>0 · {lang==="es"?"Bajo":"Low"}</span>
                 <span>40</span><span>65</span><span>80</span><span>100</span>
               </div>
-              <div style={{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center",marginTop:17}}>
-                <span style={{fontSize:11,color:C.textSec}}>{lang==="es"?"Última observación":"Latest observation"}: <strong>{shownWeek||"—"}</strong></span>
-                 <span style={{fontSize:10,color:dataFresh?C.green:C.amber,fontWeight:600}}>{dataFresh?(lang==="es"?"Inputs recientes":"Fresh inputs"):(lang==="es"?"Inputs sin actualizar":"Inputs out of date")}</span>
+               <div style={{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center",marginTop:20}}>
+                 <span style={{fontSize:11,color:C.textSec}}>{lang==="es"?"Fecha de los inputs":"Input date"}: <strong>{inputDate||"—"}</strong></span>
+                 <span style={{fontSize:10,color:dataFresh?C.green:"#8B213B",fontWeight:650}}>{dataFresh?(lang==="es"?"Vigentes":"Current"):(lang==="es"?"Revisión pendiente":"Review pending")}</span>
               </div>
             </div>
           </div>
-           {publicationOverdue && <p role="status" style={{margin:"20px 0 0",padding:"11px 14px",background:C.surface2,borderLeft:"3px solid #7A1426",fontFamily:F.body,fontSize:12,lineHeight:1.55,color:C.textSec}}>{lang==="es"?`Última observación verificada: ${shownWeek}. El índice no se ha recalculado con inputs aprobados recientes. La línea termina en esa fecha y no representa el riesgo actual.`:`Last verified observation: ${shownWeek}. No recent approved inputs have refreshed this index. The line ends on that date and is not a current risk reading.`}</p>}
+           {publicationOverdue && <p role="status" style={{margin:"17px 0 0",padding:"10px 14px",background:C.surface2,borderLeft:"3px solid #7A1426",fontFamily:F.body,fontSize:12,lineHeight:1.55,color:C.textSec}}>{lang==="es"?"Pendiente de nuevos inputs aprobados. Este valor no representa el riesgo de hoy; consulta debajo la señal diaria de Morning Intelligence.":"Awaiting newly approved inputs. This value does not represent today's risk; see the separate daily Morning Intelligence signal below."}</p>}
            <div style={{borderTop:`1px solid ${C.border}`,marginTop:20,paddingTop:15}}>
             <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:8,flexWrap:"wrap",marginBottom:4}}>
               <strong style={{fontFamily:F.body,fontSize:14}}>{lang==="es"?"Evolución semanal":"Weekly evolution"}</strong>
                <span style={{fontFamily:F.mono,fontSize:10,color:C.textMuted}}>{diagnostics?.verified??"—"} {lang==="es"?"observaciones verificadas · huecos sin unir":"verified observations · gaps shown"}</span>
             </div>
+             {chartRange!==null&&<div style={{fontFamily:F.body,fontSize:11,color:C.textMuted,marginBottom:8}}>{lang==="es"?"Rango histórico visible":"Visible historical range"}: {fmt(Math.min(...chartValues))}–{fmt(Math.max(...chartValues))} / 100 · {lang==="es"?"variación total":"total change"} {fmt(chartValues.at(-1)-chartValues[0])} {lang==="es"?"puntos":"points"}</div>}
             {status==="error"?<p style={{fontSize:13,color:C.amber}}>{lang==="es"?"Histórico temporalmente no disponible.":"History temporarily unavailable."}</p>
               :chartHistory.length>0?<IndexChart history={chartHistory} color="var(--zrc-chart-line)"/>
               :<p style={{fontSize:13,color:C.textMuted}}>{lang==="es"?"Aún no hay observaciones verificables.":"No verified observations yet."}</p>}
