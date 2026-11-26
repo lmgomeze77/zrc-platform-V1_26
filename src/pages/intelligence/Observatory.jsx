@@ -410,6 +410,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
 
       <PublicationsCarousel lang={lang} />
       <LatamCountryStrategy lang={lang} />
+      <a href="#georisk-index" style={{display:"inline-flex",alignItems:"center",minHeight:46,padding:"0 22px",margin:"0 0 26px",borderRadius:6,background:"#7A1426",color:"#fff",fontFamily:"var(--zrc-font-body, 'Outfit', sans-serif)",fontWeight:650,fontSize:13,textDecoration:"none"}}>{lang==="es"?"Explorar el índice de riesgo ZRC":"Explore the ZRC risk index"}</a>
 
       {/* STALE FEED NOTICE — pipeline diario sin refrescar */}
       {isStale && (

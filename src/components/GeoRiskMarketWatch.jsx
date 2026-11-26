@@ -1,54 +1,51 @@
-import { useEffect,useState } from 'react';
-import evidence from '../data/georisk-asset-evidence.json';
-import {marketWatchRow,validateMarketWatchMatches} from '../data/georiskMarketWatch.js';
-import { C } from '../theme/palette';
-const API='https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-forecast?region=eu';
-const enNames={Oro:'Gold',Brent:'Brent','S&P 500':'S&P 500','Bund 10a':'Bund 10y','Treasury 10a':'Treasury 10y','EUR/USD':'EUR/USD'};
-const f=(v,es,d=2)=>new Intl.NumberFormat(es?'es-ES':'en-GB',{maximumFractionDigits:d,minimumFractionDigits:d,signDisplay:'exceptZero'}).format(v);
-export default function GeoRiskMarketWatch({lang='es'}){
- const es=lang==='es';
- const [band,setBand]=useState('critico'),[horizon,setHorizon]=useState(30),[data,setData]=useState(null),[state,setState]=useState('loading'),[retry,setRetry]=useState(0);
- useEffect(()=>{let active=true;const abort=new AbortController();setState('loading');
- fetch(API,{signal:abort.signal}).then(async r=>{if(!r.ok)throw Error('API');return r.json()}).then(d=>{if(active){setData(d?.region==='eu'?d:null);setState(d?.region==='eu'?'ready':'error')}}).catch(()=>{if(active){setData(null);setState('error')}});
- return ()=>{active=false;abort.abort()};},[retry]);
- const rows=evidence.assets.map(a=>marketWatchRow(a,band,state==='ready'?data:null,horizon)).filter(Boolean);
- const statusColor=row=>row.significant?C.gold:C.textMuted;
- return <section style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:20,padding:'20px clamp(16px,4vw,27px)',marginBottom:20,fontFamily:"'Outfit','Helvetica Neue',sans-serif"}}>
-  <div style={{fontFamily:"'IBM Plex Mono',monospace",letterSpacing:1.2,fontSize:10,color:C.gold,fontWeight:700}}>ZRC MARKET WATCH</div>
-  <h3 style={{fontFamily:'var(--zrc-font-display)',fontSize:'clamp(22px,5vw,29px)',color:C.text,margin:'8px 0'}}>{es?'Compara seis activos en una sola vista':'Compare six assets at a glance'}</h3>
-  <p style={{fontSize:13,color:C.textSec,margin:'0 0 15px',lineHeight:1.6}}>{es?'Evidencia histórica por régimen GPR, última referencia de mercado disponible y perspectiva estadística a 30/90 días cuando exista una serie comparable.':'Historical evidence by GPR regime, latest available market observations and 30/90-day statistical outlooks when comparable.'}</p>
-  <div style={{display:'flex',flexWrap:'wrap',gap:8,alignItems:'center',marginBottom:15}}>
-    <span style={{fontSize:11,color:C.textMuted}}>{es?'Riesgo GPR histórico':'Historical GPR regime'}</span>
-    {['bajo','moderado','elevado','critico'].map(x=><button key={x} type='button' onClick={()=>setBand(x)} aria-pressed={band===x} style={{border:`1px solid ${band===x?C.gold:C.border}`,color:C.text,background:band===x?C.goldDim:C.surface2,padding:'8px 10px',borderRadius:10,fontSize:11,cursor:'pointer',fontWeight:band===x?700:400}}>{({bajo:es?'Bajo':'Low',moderado:es?'Moderado':'Moderate',elevado:es?'Elevado':'Elevated',critico:es?'Crítico':'Critical'})[x]}</button>)}
-    <span style={{fontSize:11,color:C.textMuted,marginLeft:'auto'}}>{es?'Referencia':'Horizon'}</span>
-    {[30,90].map(d=><button type='button' aria-pressed={horizon===d} key={d} onClick={()=>setHorizon(d)} style={{border:`1px solid ${horizon===d?C.gold:C.border}`,color:C.text,background:horizon===d?C.goldDim:C.surface2,padding:'8px 10px',borderRadius:10,fontSize:11,cursor:'pointer'}}>{d} {es?'días':'days'}</button>)}
-  </div>
-  {state==='loading'&&<p role='status' style={{fontSize:12,color:C.textMuted}}>{es?'Consultando últimas observaciones…':'Loading latest observations…'}</p>}
-  {state==='error'&&<div role='status' style={{fontSize:12,color:C.textSec,marginBottom:12}}>{es?'Datos recientes no disponibles: se conserva la evidencia histórica, sin precios sustitutos.':'Recent observations unavailable; historical evidence remains, without placeholder prices.'} <button type='button' onClick={()=>setRetry(n=>n+1)} style={{marginLeft:8,border:`1px solid ${C.border}`,background:C.surface2,color:C.text,borderRadius:8,padding:'6px 9px',cursor:'pointer'}}>{es?'Reintentar':'Retry'}</button></div>}
-  <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,280px),1fr))',gap:10}}>
-  {rows.map(r=><article key={r.key} style={{background:C.surface2,border:`1px solid ${C.border}`,borderRadius:13,padding:'13px 15px',minWidth:0}}>
-    <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:10}}>
-      <strong style={{fontSize:14,color:C.text}}>{es?r.label:enNames[r.label]||r.label}</strong>
-      <span style={{fontSize:10,color:statusColor(r)}}>{r.significant?(es?'Diferencia detectada':'Difference detected'):(es?'Sin señal robusta':'No robust signal')}</span>
+import { useEffect, useState } from "react";
+import evidence from "../data/georisk-asset-evidence.json";
+import { marketWatchRow } from "../data/georiskMarketWatch.js";
+import { C } from "../theme/palette";
+
+const API = "https://zenith-risecapital.lmgomeze77.workers.dev/api/georisk-forecast?region=eu";
+const names = { Oro:"Gold", Brent:"Brent", "S&P 500":"S&P 500", "Bund 10a":"Bund 10y", "Treasury 10a":"Treasury 10y", "EUR/USD":"EUR/USD" };
+const fmt = (v, es, d=2) => new Intl.NumberFormat(es?"es-ES":"en-GB", { minimumFractionDigits:d, maximumFractionDigits:d, signDisplay:"exceptZero" }).format(v);
+const BODY = "var(--zrc-font-body, 'Outfit', sans-serif)";
+
+export default function GeoRiskMarketWatch({ lang="es" }) {
+  const es = lang === "es";
+  const [band,setBand] = useState("critico"), [horizon,setHorizon] = useState(30);
+  const [data,setData] = useState(null), [state,setState] = useState("loading"), [retry,setRetry] = useState(0);
+  useEffect(() => {
+    const abort = new AbortController();
+    setState("loading");
+    fetch(API,{signal:abort.signal}).then(r=>{if(!r.ok)throw new Error("market feed");return r.json()})
+      .then(d=>{setData(d?.region === "eu" ? d : null);setState(d?.region === "eu" ? "ready" : "error")})
+      .catch(e=>{if(e.name!=="AbortError"){setData(null);setState("error")}});
+    return ()=>abort.abort();
+  },[retry]);
+  const rows = evidence.assets.map(a=>marketWatchRow(a,band,state==="ready"?data:null,horizon)).filter(Boolean);
+  const choose = (active) => ({border:`1px solid ${active?"#7A1426":C.border}`,background:active?"#7A1426":C.surface2,color:active?"#fff":C.textSec,borderRadius:6,padding:"9px 13px",fontFamily:BODY,fontSize:12,fontWeight:active?650:450,cursor:"pointer",minHeight:42});
+  return <section style={{background:C.surface,border:`1px solid ${C.border}`,borderRadius:12,padding:"clamp(18px,3vw,32px)",marginBottom:20,fontFamily:BODY}}>
+    <p style={{fontSize:10,letterSpacing:2,color:"#9C3047",fontWeight:700,margin:"0 0 10px"}}>ZRC MARKET WATCH · 06</p>
+    <h3 style={{fontFamily:"var(--zrc-font-display)",fontSize:"clamp(25px,3.3vw,38px)",color:C.text,margin:"0 0 8px",lineHeight:1.15}}>{es?"Seis activos, una lectura clara":"Six assets, one clear view"}</h3>
+    <p style={{fontSize:13,color:C.textSec,lineHeight:1.65,maxWidth:870,margin:"0 0 22px"}}>{es?"Compara evidencia histórica del GPR externo, precios observados y perspectivas estadísticas independientes. Los datos llevan su fecha y cobertura.":"Compare external GPR history, observed prices and independent statistical outlooks. Each figure shows its date and coverage."}</p>
+    <div style={{display:"flex",justifyContent:"space-between",gap:18,flexWrap:"wrap",padding:"16px 0",borderTop:`1px solid ${C.border}`,borderBottom:`1px solid ${C.border}`,marginBottom:18}}>
+      <div><span style={{display:"block",color:C.textMuted,fontSize:11,marginBottom:8}}>{es?"Régimen GPR histórico":"Historical GPR regime"}</span><div style={{display:"flex",gap:6,flexWrap:"wrap"}}>{["bajo","moderado","elevado","critico"].map(k=><button key={k} type="button" aria-pressed={band===k} onClick={()=>setBand(k)} style={choose(band===k)}>{({bajo:es?"Bajo":"Low",moderado:es?"Moderado":"Moderate",elevado:es?"Elevado":"Elevated",critico:es?"Crítico":"Critical"})[k]}</button>)}</div></div>
+      <div><span style={{display:"block",color:C.textMuted,fontSize:11,marginBottom:8}}>{es?"Horizonte estadístico":"Statistical horizon"}</span><div style={{display:"flex",gap:6}}>{[30,90].map(d=><button key={d} type="button" aria-pressed={horizon===d} onClick={()=>setHorizon(d)} style={choose(horizon===d)}>{d} {es?"días":"days"}</button>)}</div></div>
     </div>
-    <div style={{marginTop:11,display:'flex',alignItems:'baseline',gap:8,flexWrap:'wrap'}}>
-      <span style={{fontSize:25,fontFamily:'var(--zrc-font-figures)',color:C.text}}>{r.significant?'':'≈ '}{f(r.excess,es,r.unit==='bp'?0:1)}</span>
-      <span style={{fontSize:12,color:C.textMuted}}>{r.unit==='bp'?'pb':'pp'} · {es?'vs. mediana histórica':'vs. historical median'}</span>
+    {state==="loading"&&<p role="status" style={{fontSize:12,color:C.textMuted}}>{es?"Cargando observaciones…":"Loading observations…"}</p>}
+    {state==="error"&&<p role="status" style={{fontSize:12,color:C.textSec}}>{es?"No hay datos recientes; se conserva el histórico sin sustituir precios.":"Recent observations unavailable; historical evidence is kept without placeholder prices."} <button type="button" onClick={()=>setRetry(n=>n+1)} style={choose(false)}>{es?"Reintentar":"Retry"}</button></p>}
+    <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,330px),1fr))",gap:12}}>
+      {rows.map(r=>{const unit=r.unit==="bp"?(es?"pb":"bp"):(es?"pp":"pp");const obs=r.observed;const forecast=r.forecast;const difference=fmt(r.excess,es,r.unit==="bp"?0:1);
+        return <article key={r.key} style={{border:`1px solid ${C.border}`,borderRadius:9,background:C.surface2,padding:"20px",minWidth:0,display:"flex",flexDirection:"column"}}>
+          <div style={{display:"flex",justifyContent:"space-between",gap:10,alignItems:"baseline",flexWrap:"wrap"}}><h4 style={{color:C.text,fontSize:18,margin:0}}>{es?r.label:names[r.label]||r.label}</h4><span style={{color:r.significant?"#9C3047":C.textMuted,fontSize:11}}>{r.significant?(es?"Diferencia detectada":"Difference detected"):(es?"Sin señal robusta":"No robust signal")}</span></div>
+          <div style={{margin:"20px 0 6px",display:"flex",alignItems:"baseline",gap:9,flexWrap:"wrap"}}><strong style={{fontFamily:"var(--zrc-font-figures)",fontWeight:450,fontSize:"clamp(29px,4vw,42px)",color:C.text,lineHeight:1}}>{r.significant?"":"≈ "}{difference}</strong><span style={{fontSize:12,color:C.textMuted}}>{unit} {es?"frente a mediana histórica":"versus historical median"}</span></div>
+          <div aria-label={`${es?"Frecuencia histórica de subidas":"Historical frequency of increases"}: ${r.share_up}%`} style={{height:4,background:C.border,borderRadius:5,margin:"14px 0 10px",position:"relative"}}><div style={{position:"absolute",left:"50%",width:1,height:10,top:-3,background:C.textMuted}}/><div style={{width:`${r.share_up}%`,height:4,background:r.significant?"#7A1426":C.textMuted,borderRadius:4}}/></div>
+          <p style={{color:C.textMuted,fontSize:11,margin:"0 0 17px"}}>{es?"Muestra":"Sample"} n={r.n} · {es?"subidas":"increases"} {r.share_up}%{r.unit==="bp"?" (yield)":""}</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(125px,1fr))",gap:14,borderTop:`1px solid ${C.border}`,paddingTop:15,marginTop:"auto"}}>
+            <div><span style={{display:"block",fontSize:10,color:C.textMuted,marginBottom:6}}>{es?"Último nivel":"Last observed"}</span><strong style={{fontSize:16,color:C.text,fontWeight:650}}>{obs?`${fmt(obs.value,es,r.key==="eurusd"?4:2)} ${obs.unit||""}`:"—"}</strong><span style={{display:"block",fontSize:10,color:C.textMuted,marginTop:5,lineHeight:1.45}}>{obs?`${obs.date} · ${obs.provider}`:(es?"Serie no conectada":"No connected series")}</span></div>
+            <div><span style={{display:"block",fontSize:10,color:C.textMuted,marginBottom:6}}>{es?"Perspectiva":"Outlook"} · {horizon}d</span><strong style={{fontSize:16,color:C.text,fontWeight:650}}>{forecast?`${fmt(forecast.value,es,r.key==="eurusd"?4:2)} ${obs?.unit||""}`:"—"}</strong><span style={{display:"block",fontSize:10,color:C.textMuted,marginTop:5,lineHeight:1.45}}>{forecast?(es?"Modelo independiente; no objetivo":"Independent model; not a target"):(es?"No validada":"Not validated")}</span></div>
+          </div>
+          {obs?.source_url&&<a href={obs.source_url} target="_blank" rel="noopener noreferrer" style={{fontSize:11,color:"#9C3047",fontWeight:650,marginTop:15}}>{es?"Consultar fuente":"View source"}</a>}
+        </article>})}
     </div>
-    <div style={{fontSize:11,color:C.textMuted,marginTop:7}}>{es?'Muestra':'Sample'} n={r.n} · {es?'subidas':'increases'} {r.share_up}%{r.unit==='bp'?' (yield)':''}</div>
-    <div style={{borderTop:`1px solid ${C.border}`,marginTop:12,paddingTop:10}}>
-      <div style={{fontSize:10,color:C.textMuted}}>{es?'Último nivel observado':'Latest observed level'}</div>
-      <div style={{fontSize:15,fontWeight:650,color:C.text,marginTop:3}}>{r.observed?f(r.observed.value,es,r.key==='eurusd'?4:2)+' '+(r.observed.unit||''):'—'}</div>
-      <div style={{fontSize:10,color:C.textMuted}}>{r.observed?r.observed.date+' · '+r.observed.provider:(es?'Sin serie equivalente conectada':'No matching series connected')}</div>
-    </div>
-    <div style={{borderTop:`1px solid ${C.border}`,marginTop:12,paddingTop:10}}>
-      <div style={{fontSize:10,color:C.textMuted}}>{es?'Perspectiva estadística':'Statistical outlook'} · {horizon} {es?'días':'days'}</div>
-      <div style={{fontSize:15,fontWeight:650,color:C.text,marginTop:3}}>{r.forecast?f(r.forecast.value,es,4)+' '+(r.observed?.unit||''):'—'}</div>
-      <div style={{fontSize:10,color:C.textMuted}}>{r.forecast?(es?'Modelo sin condicionamiento GRI · no es precio objetivo':'Not GRI-conditioned · not a target price'):(es?'Sin previsión comparable validada':'No comparable validated outlook')}</div>
-    </div>
-    {r.observed?.source_url&&<a href={r.observed.source_url} target='_blank' rel='noopener noreferrer' style={{fontSize:10,color:C.gold,display:'inline-block',marginTop:10}}>{es?'Ver fuente':'Source'} ↗</a>}
-  </article>)}
-  </div>
-  <div style={{marginTop:14,fontSize:11,color:C.textMuted,lineHeight:1.6}}>{es?'Importante: las columnas no constituyen una predicción conjunta. El histórico compara regímenes del GPR externo; los precios son observaciones fechadas, y los pronósticos disponibles son modelos estadísticos independientes. No se infiere causalidad, rentabilidad futura ni equivalencia con ZRC-GRI.':'Important: these figures are not a combined forecast. Historical regimes use external GPR, market levels are dated observations, and any outlook is an independent statistical model. No causality, future return or ZRC-GRI equivalence is implied.'}</div>
- </section>;
+    <p style={{margin:"18px 0 0",color:C.textMuted,fontSize:11,lineHeight:1.65}}>{es?"El GPR histórico, los precios observados y las perspectivas independientes no constituyen una predicción conjunta ni una calibración del ZRC-GRI. La diferencia histórica no implica causalidad o rentabilidad futura.":"Historical GPR, observed prices and independent outlooks are not a combined forecast or a calibration of ZRC-GRI. Historical differences do not imply causality or future returns."}</p>
+  </section>;
 }

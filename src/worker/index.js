@@ -135,6 +135,8 @@ async function handleRequest(request, env, ctx) {
 
     if (url.pathname === "/api/georisk-index" && request.method === "GET")
       return handleGeoRiskIndexGet(request, env);
+    if (url.pathname === "/api/georisk-morning-risk" && request.method === "GET")
+      return handleMorningRiskGet();
 
     if (url.pathname === "/api/georisk-index/snapshot" && (request.method === "POST" || request.method === "GET"))
       return handleGeoRiskIndexSnapshot(request, env);
@@ -853,6 +855,39 @@ async function upsertSubscriptionByCustomer(env, { stripeCustomerId, tier, statu
 }
 
 // ============================================================
+// A separate daily market-risk reading from the Morning Intelligence publication.
+// Never substitute it for the weekly geopolitical scenario index.
+async function handleMorningRiskGet() {
+  const base = "https://raw.githubusercontent.com/lmgomeze77/zrc-intelligence/main/";
+  try {
+    const [archiveResponse, latestResponse] = await Promise.all([
+      fetch(base + "risk-index-history.json", { cf: { cacheTtl: 1800, cacheEverything: true } }),
+      fetch(base + "data.json", { cf: { cacheTtl: 1800, cacheEverything: true } }),
+    ]);
+    if (!archiveResponse.ok || !latestResponse.ok) throw new Error("Morning Intelligence unavailable");
+    const [archive, briefing] = await Promise.all([archiveResponse.json(), latestResponse.json()]);
+    const today = new Date().toISOString().slice(0, 10);
+    const points = (Array.isArray(archive.series) ? archive.series : [])
+      .filter(p => p.source === "published" && /^\d{4}-\d{2}-\d{2}$/.test(p.date)
+        && p.date <= today && Number.isFinite(p.riskIndex) && p.riskIndex >= 0 && p.riskIndex <= 100)
+      .map(p => ({ date: p.date, value: p.riskIndex }));
+    const date = typeof briefing.generated === "string" ? briefing.generated.slice(0, 10) : "";
+    if (!briefing.degraded && date <= today && /^\d{4}-\d{2}-\d{2}$/.test(date)
+      && Number.isFinite(briefing.riskIndex) && briefing.riskIndex >= 0 && briefing.riskIndex <= 100)
+      points.push({ date, value: briefing.riskIndex });
+    const history = [...new Map(points.map(p => [p.date, p])).values()].sort((a, b) => a.date.localeCompare(b.date));
+    const latest = history.at(-1) || null;
+    return new Response(JSON.stringify({ history: history.slice(-90), latest,
+      stale: !latest || Date.now() - Date.parse(latest.date + "T00:00:00Z") > 3 * 86400000,
+      source: "ZRC Morning Intelligence", measure: "aggregate_capital_markets_risk" }), {
+      headers: { "Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*", "Cache-Control": "public, max-age=1800" },
+    });
+  } catch (error) {
+    console.error("Morning risk feed:", error);
+    return jsonResponse({ history: [], latest: null, stale: true, error: "source_unavailable" }, 503);
+  }
+}
+
 // GEORISK INDEX — /api/georisk-index (GET) · /api/georisk-index/snapshot (POST)
 // ============================================================
 // Mirrors the default ZRC scenario mix used by GeoRisk Dashboard / GeoRisk ML
