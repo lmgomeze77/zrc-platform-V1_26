@@ -4,6 +4,7 @@
 
 import { useState } from "react";
 import { C, alpha } from "../../theme/palette";
+import LatamCountryStrategy from "./LatamCountryStrategy";
 
 // ── DESIGN TOKENS (mirrors App.jsx) ─────────────────────────
 const F = {
@@ -408,6 +409,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
       } />
 
       <PublicationsCarousel lang={lang} />
+      <LatamCountryStrategy lang={lang} />
 
       {/* STALE FEED NOTICE — pipeline diario sin refrescar */}
       {isStale && (
