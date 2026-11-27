@@ -28,9 +28,9 @@ const C = {
   red: "#C0362C", green: "#15803D", amber: "#B45309",
 };
 const F = {
-  display: "'JetBrains Mono', monospace",
-  body: "'DM Sans', sans-serif",
-  mono: "'JetBrains Mono', monospace",
+  display: "var(--zrc-font-body)",
+  body: "var(--zrc-font-body)",
+  mono: "var(--zrc-font-body)",
 };
 
 // Fix iconos Leaflet
