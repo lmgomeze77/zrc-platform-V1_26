@@ -1,6 +1,6 @@
 import { IcText } from './icLocale';
 import PublicReports from "./PublicReports";
-import { IcLanguageSwitch, navigateIcSection } from "./icLocale";
+import { IcLanguageSwitch, navigateIcSection, useIcLocale } from "./icLocale";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
@@ -42,6 +42,7 @@ const labelStyle = {
 };
 
 export default function InnerCircleAccess({ onBack, onApproved }) {
+  const { lang } = useIcLocale();
   const [mode, setMode] = useState("overview");
   const [email, setEmail] = useState(() => localStorage.getItem(IC_EMAIL_KEY) || "");
   const [password, setPassword] = useState("");
@@ -143,7 +144,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
         <p className="ic-lead">Análisis internacional para empresarios, inversores y asesores. Descubre los temas de la edición y solicita acceso al espacio de miembros.</p>
         <div className="ic-actions"><button className="ic-button" onClick={()=>{setMode('request');setMessage('');}}>Solicitar membresía gratuita →</button><button className="ic-button ic-button-quiet" onClick={()=>{setMode('check');setMessage('');}}>Ya soy miembro · Iniciar sesión</button></div>
         <p className="ic-small">Acceso gratuito durante esta etapa · admisión por aprobación. No hay renovación de pago automática. Cualquier cambio futuro de precio requerirá información previa y tu aceptación.</p>
-        <div id="ic-preview"><PublicReports/></div>
+        <div id="ic-preview"><PublicReports lang={lang}/></div>
         <p id="ic-benefits" className="ic-small">Dentro: análisis editorial, seguimiento de señales y herramientas de decisión.</p>
         <h2 id="ic-access">Cómo funciona el acceso</h2>
         <p>Presenta tu perfil. Revisamos la solicitud y, una vez aprobada, recibes tus credenciales. Al iniciar sesión, entras directamente a la edición, los dossiers y tu ficha de trabajo.</p>
