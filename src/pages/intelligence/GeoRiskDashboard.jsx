@@ -440,7 +440,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
   return (
     <div style={{
       minHeight: "100vh", background: "#070c17",
-      color: "#E2E8F0", fontFamily: "'DM Sans', sans-serif",
+      color: "#E2E8F0", fontFamily: "var(--zrc-font-body)",
       position: "relative", overflow: "hidden"
     }}>
       <style>{`
@@ -689,7 +689,7 @@ export default function GeoRiskDashboard({ countryContext = null }) {
                   boxShadow: selected ? "0 5px 20px #3B82F633, inset 0 1px #ffffff26" : "inset 0 1px #ffffff09",
                   color: selected ? "#fff" : "#E2E8F0", cursor: "pointer",
                   fontSize: 14, fontWeight: selected ? 750 : 650,
-                  fontFamily: "'DM Sans',sans-serif", textAlign: "center"
+                  fontFamily: "var(--zrc-font-body)", textAlign: "center"
                 }}>
                 <t2.icon className="zrc-tab-icon" size={21} strokeWidth={2} color={selected ? "#BFDBFE" : "#93C5FD"} />
                 <span className="zrc-tab-label">{t2.label}</span>
