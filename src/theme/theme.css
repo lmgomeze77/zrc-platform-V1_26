@@ -55,6 +55,15 @@ body, button, input, textarea, select { font-family: var(--zrc-font-body); }
   --zrc-risk-mod: #A9811F;
   --zrc-risk-high: #B23A48;
   --zrc-risk-crit: #7A1426;
+  --zrc-market-card: #E9EDF1;
+  --zrc-market-border: #D4D8DD;
+  --zrc-market-edge: #A7B7C9;
+  --zrc-market-detail: #5F616B;
+  --zrc-market-signal: #9C3047;
+  --zrc-market-signal-fill: #7A1426;
+  --zrc-market-track: #C6CED7;
+  --zrc-market-selected: #7A1426;
+  --zrc-market-on-selected: #FFFFFF;
   --zrc-chart-line: #1F3A5F;
   /* Hero (light): white on the left, steel-blue globe with contrast on the right */
   --zrc-hero-bg: #FFFFFF;
@@ -116,6 +125,15 @@ body, button, input, textarea, select { font-family: var(--zrc-font-body); }
   --zrc-risk-mod: #D4A853;
   --zrc-risk-high: #E0697A;
   --zrc-risk-crit: #FF3D57;
+  --zrc-market-card: #1A222D;
+  --zrc-market-border: #394556;
+  --zrc-market-edge: #6B839D;
+  --zrc-market-detail: #B3BECC;
+  --zrc-market-signal: #FF9BAD;
+  --zrc-market-signal-fill: #F57C95;
+  --zrc-market-track: #465266;
+  --zrc-market-selected: #FFABB9;
+  --zrc-market-on-selected: #26141A;
   --zrc-chart-line: #8FB4E3;
   --zrc-hero-bg: #050C16;
   --zrc-hero-sub: var(--zrc-text-sec);
