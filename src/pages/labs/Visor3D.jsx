@@ -24,7 +24,7 @@ const C = {
   red: "#EF4444", green: "#22C55E", amber: "#F59E0B",
 };
 const F = {
-  display: "var(--zrc-font-display)",
+  display: "var(--zrc-font-body)",
   body: "'Outfit', 'Helvetica Neue', sans-serif",
   mono: "'IBM Plex Mono', 'Fira Code', monospace",
 };
