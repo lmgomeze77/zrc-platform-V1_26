@@ -110,6 +110,8 @@ async function handleRequest(request, env, ctx) {
       return handleInnerCircleApply(request, env);
 
     if (url.pathname === "/api/inner-circle/approve" && request.method === "GET")
+      return handleInnerCircleApprovalReview(request, env);
+    if (url.pathname === "/api/inner-circle/approve" && request.method === "POST")
       return handleInnerCircleApprove(request, env);
 
     if (url.pathname === "/api/georisk-wgi-data" && request.method === "GET")
@@ -1426,7 +1428,8 @@ async function handleInnerCircleApply(request, env) {
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY)
     return jsonResponse({ error: "Service unavailable" }, 503);
 
-  // Check if already exists
+  // Check if already exists. Pending applications may retry the email notice.
+  let alreadyPending = false;
   try {
     const checkResp = await fetch(
       `${env.SUPABASE_URL}/rest/v1/inner_circle_members?email=eq.${encodeURIComponent(cleanEmail)}&select=status&limit=1`,
@@ -1437,13 +1440,13 @@ async function handleInnerCircleApply(request, env) {
       if (existing?.[0]) {
         if (existing[0].status === "approved")
           return jsonResponse({ ok: false, error: "already_approved" });
-        return jsonResponse({ ok: false, error: "already_pending" });
+        alreadyPending = true;
       }
     }
   } catch { /* proceed to insert */ }
 
   // Insert application
-  try {
+  if (!alreadyPending) try {
     const insertResp = await fetch(
       `${env.SUPABASE_URL}/rest/v1/inner_circle_members`,
       {
@@ -1474,19 +1477,22 @@ async function handleInnerCircleApply(request, env) {
     return jsonResponse({ error: "Error al guardar la solicitud" }, 500);
   }
 
-  // Send admin notification email with one-click approve button
-  if (env.RESEND_API_KEY) {
+  // Notify the reviewer. A GET from the email only opens a review screen.
+  if (!env.RESEND_API_KEY || !env.INNER_CIRCLE_ADMIN_TOKEN)
+    return jsonResponse({ error: "No se pudo notificar al equipo. Vuelve a intentarlo." }, 503);
+  {
     try {
-      const adminToken = env.INNER_CIRCLE_ADMIN_TOKEN || "";
+      const adminToken = env.INNER_CIRCLE_ADMIN_TOKEN;
       const approveUrl = `https://zenith-risecapital.lmgomeze77.workers.dev/api/inner-circle/approve?token=${encodeURIComponent(adminToken)}&email=${encodeURIComponent(cleanEmail)}`;
       await sendResendEmail(env, {
         from: "ZRC Inner Circle <noreply@zenithrisecapital.com>",
         to: env.NOTIFY_EMAIL || "luis@zenithrisecapital.com",
-        subject: `⭕ Nueva solicitud Inner Circle — ${name.trim()}`,
+        subject: `Nueva solicitud Inner Circle — ${name.trim()}`,
         html: icAdminEmailHTML({ name: name.trim(), email: cleanEmail, organization: organization?.trim(), profile_category, reason: reason?.trim(), approveUrl }),
       });
     } catch (err) {
       console.error("IC admin email error:", err);
+      return jsonResponse({ error: "La solicitud se guardó, pero el aviso no llegó. Vuelve a intentarlo." }, 503);
     }
   }
 
@@ -1888,12 +1894,25 @@ function adminDashboardHTML(subs, searches, leads, token) {
 }
 
 // ============================================================
-// /api/inner-circle/approve?token=&email=
+// /api/inner-circle/approve?token=&email= opens a review screen; POST approves.
 // ============================================================
-async function handleInnerCircleApprove(request, env) {
+async function handleInnerCircleApprovalReview(request, env) {
   const url = new URL(request.url);
   const token = url.searchParams.get("token");
   const email = url.searchParams.get("email");
+  if (!env.INNER_CIRCLE_ADMIN_TOKEN || token !== env.INNER_CIRCLE_ADMIN_TOKEN)
+    return new Response("Unauthorized", { status: 403 });
+  if (!email || !isValidEmail(email))
+    return new Response("Invalid email", { status: 400 });
+  const safeEmail = escapeHTML(email.trim().toLowerCase());
+  const safeToken = escapeHTML(token);
+  return htmlResponse(`<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="referrer" content="no-referrer"><meta name="robots" content="noindex"><title>Revisar solicitud · ZRC</title></head><body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#070b12;color:#f5f2ea;font-family:Arial,sans-serif;padding:24px;box-sizing:border-box"><main style="max-width:450px;width:100%;padding:32px;background:#101927;border:1px solid #354253;border-radius:16px"><p style="color:#dbbd7d;font-size:12px;letter-spacing:.12em">ZRC · INNER CIRCLE</p><h1 style="font:600 28px Montserrat,Arial,sans-serif">Revisar solicitud</h1><p>Solicitud de <strong>${safeEmail}</strong>. Confirma solo si has comprobado el perfil y deseas conceder acceso.</p><form method="post" action="/api/inner-circle/approve"><input type="hidden" name="token" value="${safeToken}"><input type="hidden" name="email" value="${safeEmail}"><button type="submit" style="margin-top:20px;width:100%;min-height:48px;border:0;border-radius:8px;background:#dbbd7d;color:#0b1421;font-weight:700;cursor:pointer">Confirmar aprobación</button></form></main></body></html>`);
+}
+
+async function handleInnerCircleApprove(request, env) {
+  const form = await request.formData();
+  const token = form.get("token");
+  const email = form.get("email");
 
   const adminToken = env.INNER_CIRCLE_ADMIN_TOKEN;
   if (!adminToken || token !== adminToken)
@@ -2010,18 +2029,12 @@ function icAdminEmailHTML({ name, email, organization, profile_category, reason,
       ${profile_category ? `<tr><td style="padding:8px 0;color:#71717A;vertical-align:top;">Perfil</td><td style="padding:8px 0;color:#FAFAFA;">${escapeHTML(profile_category)}</td></tr>` : ""}
       ${reason ? `<tr><td style="padding:8px 0;color:#71717A;vertical-align:top;">Motivo</td><td style="padding:8px 0;color:#FAFAFA;line-height:1.6;">${escapeHTML(reason)}</td></tr>` : ""}
     </table>
-    <a href="${approveUrl}" style="display:block;text-align:center;padding:16px 28px;background:#D4A853;color:#000;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.35em;text-transform:uppercase;font-weight:700;margin-bottom:16px;">
-      ✓ APROBAR ACCESO
+    <a href="${approveUrl}" style="display:block;text-align:center;padding:16px 28px;background:#D4A853;color:#000;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;margin-bottom:16px;">
+      REVISAR SOLICITUD
     </a>
     <p style="font-size:11px;color:#52525B;text-align:center;line-height:1.6;margin:0 0 20px;">
-      Un clic aprueba al miembro y le envía el email de bienvenida automáticamente.
+      Abre la solicitud, comprueba el perfil y confirma la aprobación en la página.
     </p>
-    <div style="padding:16px;background:#0A0A0C;border:1px solid #27272A;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#52525B;line-height:1.8;">
-      Alternativa SQL:<br>
-      UPDATE inner_circle_members<br>
-      SET status = 'approved', approved_at = now()<br>
-      WHERE email = '${escapeHTML(email)}';
-    </div>
     <div style="margin-top:24px;padding-top:16px;border-top:1px solid #27272A;font-size:11px;color:#52525B;">
       Zenith Rise Capital · Inner Circle
     </div>
@@ -2087,7 +2100,7 @@ function icApproveResultHTML({ success, name, email, message, alreadyApproved })
 
 function htmlResponse(body) {
   return new Response(body, {
-    headers: { "Content-Type": "text/html; charset=utf-8" },
+    headers: { "Content-Type": "text/html; charset=utf-8", "Referrer-Policy": "no-referrer", "Cache-Control": "no-store" },
   });
 }
 
