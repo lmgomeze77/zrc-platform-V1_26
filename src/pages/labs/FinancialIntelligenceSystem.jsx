@@ -16,9 +16,9 @@ const C = {
 };
 
 const F = {
-  display: "'JetBrains Mono', monospace",
-  body: "'DM Sans', sans-serif",
-  mono: "'JetBrains Mono', monospace",
+  display: "var(--zrc-font-body)",
+  body: "var(--zrc-font-body)",
+  mono: "var(--zrc-font-body)",
 };
 
 // ── Default inputs ────────────────────────────────────────────────────────
