@@ -132,7 +132,7 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
             <div style={{ fontFamily: F.mono, fontSize: 10, color: C.gold, letterSpacing: "0.2em", marginBottom: 12 }}>
               ZRC · INVESTOR INTELLIGENCE
             </div>
-            <h1 style={{ fontFamily: F.display, fontSize: "clamp(32px,5vw,52px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.1 }}>
+            <h1 style={{ fontFamily: F.display, fontSize: "clamp(32px,5vw,52px)", fontWeight: 500, color: C.text, margin: 0, lineHeight: 1.2 }}>
               {lang === "es" ? "Acceso a Inteligencia Institucional" : "Institutional Intelligence Access"}
             </h1>
             <p style={{ fontFamily: F.body, fontSize: 15, color: C.textSec, marginTop: 12, maxWidth: 560, lineHeight: 1.65, fontWeight: 300 }}>
@@ -201,7 +201,7 @@ export default function PricingPage({ onClose, lang = "es", onRegister }) {
                   </div>
                 )}
 
-                <div style={{ fontFamily: F.display, fontSize: 24, color: C.text, marginBottom: 4 }}>{plan.name}</div>
+                <div style={{ fontFamily: F.body, fontSize: 24, color: C.text, marginBottom: 4 }}>{plan.name}</div>
                 <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 28 }}>
                   {plan.tagline[lang].toUpperCase()}
                 </div>
