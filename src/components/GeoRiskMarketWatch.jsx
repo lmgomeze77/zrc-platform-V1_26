@@ -18,6 +18,7 @@ const market = {
   onSelected: "var(--zrc-market-on-selected)",
 };
 
+const fmtLevel = (v, es, d=2) => new Intl.NumberFormat(es?"es-ES":"en-GB", { minimumFractionDigits:d, maximumFractionDigits:d }).format(v);
 const BODY = "var(--zrc-font-body, 'Outfit', sans-serif)";
 
 export default function GeoRiskMarketWatch({ lang="es" }) {
@@ -52,8 +53,8 @@ export default function GeoRiskMarketWatch({ lang="es" }) {
           <div aria-label={`${es?"Frecuencia histórica de subidas":"Historical frequency of increases"}: ${r.share_up}%`} style={{height:4,background:market.track,borderRadius:5,margin:"14px 0 10px",position:"relative"}}><div style={{position:"absolute",left:"50%",width:1,height:10,top:-3,background:market.detail}}/><div style={{width:`${r.share_up}%`,height:4,background:r.significant?market.signalFill:market.detail,borderRadius:4}}/></div>
           <p style={{color:market.detail,fontSize:11,margin:"0 0 17px"}}>{es?"Muestra":"Sample"} n={r.n} · {es?"subidas":"increases"} {r.share_up}%{r.unit==="bp"?" (yield)":""}</p>
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(125px,1fr))",gap:14,borderTop:`1px solid ${market.border}`,paddingTop:15,marginTop:"auto"}}>
-            <div><span style={{display:"block",fontSize:10,color:market.detail,marginBottom:6}}>{es?"Último nivel":"Last observed"}</span><strong style={{fontSize:16,color:C.text,fontWeight:650}}>{obs?`${fmt(obs.value,es,r.key==="eurusd"?4:2)} ${obs.unit||""}`:"—"}</strong><span style={{display:"block",fontSize:10,color:market.detail,marginTop:5,lineHeight:1.45}}>{obs?`${obs.date} · ${obs.provider}`:(es?"Serie no conectada":"No connected series")}</span></div>
-            <div><span style={{display:"block",fontSize:10,color:market.detail,marginBottom:6}}>{es?"Perspectiva · 30 días":"Outlook · 30 days"}</span><strong style={{fontSize:16,color:C.text,fontWeight:650}}>{forecast?`${fmt(forecast.value,es,r.key==="eurusd"?4:2)} ${obs?.unit||""}`:"—"}</strong><span style={{display:"block",fontSize:10,color:market.detail,marginTop:5,lineHeight:1.45}}>{forecast?(es?"Modelo independiente; no objetivo":"Independent model; not a target"):(es?"No validada":"Not validated")}</span></div>
+            <div><span style={{display:"block",fontSize:10,color:market.detail,marginBottom:6}}>{es?"Último nivel":"Last observed"}</span><strong style={{fontSize:16,color:C.text,fontWeight:650}}>{obs?`${fmtLevel(obs.value,es,r.key==="eurusd"?4:2)} ${obs.unit||""}`:"—"}</strong><span style={{display:"block",fontSize:10,color:market.detail,marginTop:5,lineHeight:1.45}}>{obs?`${obs.date} · ${obs.provider}`:(es?"Serie no conectada":"No connected series")}</span></div>
+            <div><span style={{display:"block",fontSize:10,color:market.detail,marginBottom:6}}>{es?"Perspectiva · 30 días":"Outlook · 30 days"}</span><strong style={{fontSize:16,color:C.text,fontWeight:650}}>{forecast?`${fmtLevel(forecast.value,es,r.key==="eurusd"?4:2)} ${obs?.unit||""}`:"—"}</strong><span style={{display:"block",fontSize:10,color:market.detail,marginTop:5,lineHeight:1.45}}>{forecast?(es?"Modelo independiente; no objetivo":"Independent model; not a target"):(es?"No validada":"Not validated")}</span></div>
           </div>
           {obs?.source_url&&<a href={obs.source_url} target="_blank" rel="noopener noreferrer" style={{fontSize:11,color:market.signal,fontWeight:650,marginTop:15}}>{es?"Consultar fuente":"View source"}</a>}
         </article>})}
