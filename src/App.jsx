@@ -823,7 +823,7 @@ const SH = ({ label, title, sub, extra }) => (
       <span className="zrc-section-label" style={{ fontFamily: F.mono, fontSize: 11, color: "var(--zrc-label)", letterSpacing: "0.18em", fontWeight: 500 }}>{label}</span>
       {extra}
     </div>
-    <h2 style={{ fontFamily: F.display, fontSize: "clamp(28px,4vw,42px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.15 }}>{title}</h2>
+    <h2 style={{ fontFamily: F.display, fontSize: "clamp(28px,4vw,42px)", fontWeight: 500, color: C.text, margin: 0, lineHeight: 1.2 }}>{title}</h2>
     {sub && <p style={{ fontFamily: F.body, fontSize: 15, color: C.textSec, marginTop: 12, maxWidth: 640, lineHeight: 1.65, fontWeight: 300 }}>{sub}</p>}
   </FadeIn>
 );
@@ -834,7 +834,7 @@ const Modal = ({ open, onClose, title, children }) => {
     <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
       <div onClick={(e) => e.stopPropagation()} style={{ background: C.surface, border: `1px solid ${C.border}`, maxWidth: 520, width: "100%", maxHeight: "90vh", overflow: "auto", position: "relative" }}>
         <div style={{ padding: "24px 28px", borderBottom: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h3 style={{ fontFamily: F.display, fontSize: 22, fontWeight: 400, color: C.text, margin: 0 }}>{title}</h3>
+          <h3 style={{ fontFamily: F.body, fontSize: 22, fontWeight: 600, color: C.text, margin: 0 }}>{title}</h3>
           <button onClick={onClose} disabled={!onClose} style={{ background: "none", border: "none", color: C.textMuted, fontSize: 20, cursor: "pointer", padding: 4 }}>✕</button>
         </div>
         <div style={{ padding: "24px 28px" }}>{children}</div>
@@ -890,7 +890,7 @@ const ContactForm = ({ context, onClose, lang }) => {
     return (
       <div style={{ textAlign: "center", padding: "40px 0" }}>
         <div style={{ fontSize: 36, marginBottom: 16 }}>✓</div>
-        <h3 style={{ fontFamily: F.display, fontSize: 22, color: C.gold, marginBottom: 8 }}>{t.sent}</h3>
+        <h3 style={{ fontFamily: F.body, fontSize: 22, color: C.gold, marginBottom: 8 }}>{t.sent}</h3>
         <p style={{ fontFamily: F.body, fontSize: 14, color: C.textSec }}>{lang === "es" ? "Nuestro equipo se pondrá en contacto en las próximas 24h." : "Our team will reach out within 24h."}</p>
         <button onClick={onClose} style={{ marginTop: 24, fontFamily: F.mono, fontSize: 10, letterSpacing: "0.1em", padding: "10px 24px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>OK</button>
       </div>
@@ -1147,7 +1147,7 @@ const Nav = ({ lang, setLang, onNav }) => {
           <div style={{ width: 24, height: 24, border: `1.5px solid ${C.gold}`, transform: "rotate(45deg)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{ width: 6, height: 6, background: C.gold, transform: "rotate(-45deg)" }} />
           </div>
-          <span style={{ fontFamily: F.display, fontSize: 15, color: C.text, fontWeight: 400, letterSpacing: "0.12em" }}>ZRC</span>
+          <span style={{ fontFamily: F.body, fontSize: 15, color: C.text, fontWeight: 500, letterSpacing: "0.12em" }}>ZRC</span>
         </button>
 
         <button className="nav-hamburger" onClick={() => setMobileOpen((o) => !o)} aria-label={lang === "es" ? "Abrir menú" : "Open menu"} aria-expanded={mobileOpen} aria-controls="zrc-main-menu"
@@ -1225,7 +1225,7 @@ const Hero = ({ lang, onNav }) => {
       <div style={{ position:"absolute", inset:0, background:"var(--zrc-hero-veil)", pointerEvents:"none" }} />
       <div className="zrc-hero-content" style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 920, opacity: loaded ? 1 : 0, transform: loaded ? "none" : "translateY(20px)", transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1)" }}>
         <div className="zrc-hero-eyebrow" style={{ fontFamily: F.mono, fontSize: 10, color: "var(--zrc-label)", letterSpacing: "0.25em", marginBottom: 28, fontWeight: 400, opacity: 0.96 }}>{t.tag}</div>
-        <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px,5.5vw,68px)", fontWeight: 300, color: C.text, margin: 0, lineHeight: 1.08, letterSpacing: "-0.02em" }}>
+        <h1 style={{ fontFamily: F.display, fontSize: "clamp(36px,5.5vw,68px)", fontWeight: 500, color: C.text, margin: 0, lineHeight: 1.16, letterSpacing: "-0.02em" }}>
           {t.h1}<br />{t.h2}<br /><span style={{ color: C.gold, fontStyle: "italic", fontWeight: 400 }}>{t.h3}</span>
         </h1>
         <p style={{ fontFamily: F.body, fontSize: 16, color: C.textSec, maxWidth: 620, margin: "26px auto 0", lineHeight: 1.75, fontWeight: 300 }}>{t.sub}</p>
@@ -1277,7 +1277,7 @@ const UpgradeModal = ({ tool, lang, onClose, onOpenPricing }) => {
           <span style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.15em" }}>INTELLIGENCE · {lang === "es" ? "ACCESO PREMIUM" : "PREMIUM ACCESS"}</span>
           <button onClick={onClose} style={{ background: "none", border: "none", color: C.textMuted, fontSize: 18, cursor: "pointer", padding: 0 }}>✕</button>
         </div>
-        <h3 style={{ fontFamily: F.display, fontSize: 26, fontWeight: 400, color: C.text, margin: "0 0 10px" }}>{tool.name}</h3>
+        <h3 style={{ fontFamily: F.body, fontSize: 26, fontWeight: 600, color: C.text, margin: "0 0 10px" }}>{tool.name}</h3>
         <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.65, fontWeight: 300, margin: "0 0 24px" }}>{tool.desc[lang]}</p>
         <div style={{ padding: "16px 20px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, marginBottom: 20 }}>
           <div style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted, letterSpacing: "0.1em", marginBottom: 6 }}>
@@ -1391,7 +1391,7 @@ const Intelligence = ({ lang, countryContext }) => {
         <div style={{ marginBottom: 24, padding: "22px 24px", background: C.goldDim, border: `1px solid ${C.goldBorder}`, borderRadius: 22, overflow: "hidden", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
           <div style={{ flex: 1, minWidth: 260 }}>
             <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.16em", marginBottom: 7 }}>ZRC INTELLIGENCE · TOOLKIT GUIDE</div>
-            <div style={{ fontFamily: F.display, fontSize: 23, color: C.text, marginBottom: 5 }}>{lang === "es" ? "De la señal a la decisión" : "From signal to decision"}</div>
+            <div style={{ fontFamily: F.body, fontSize: 23, fontWeight:600, color: C.text, marginBottom: 5 }}>{lang === "es" ? "De la señal a la decisión" : "From signal to decision"}</div>
             <div style={{ fontFamily: F.body, fontSize: 13, color: C.textSec }}>{lang === "es" ? "Detectar → Enmarcar → Stress-test → Traducir → Decidir → Monitorizar." : "Detect → Frame → Stress-test → Translate → Decide → Monitor."}</div>
           </div>
           <button onClick={() => setShowToolkitGuide(true)} style={{ fontFamily: F.mono, fontSize: 10, padding: "11px 18px", background: C.gold, color: C.bg, border: "none", borderRadius: 12, cursor: "pointer", fontWeight: 600 }}>{lang === "es" ? "ABRIR GUÍA →" : "OPEN GUIDE →"}</button>
@@ -1482,7 +1482,7 @@ const Intelligence = ({ lang, countryContext }) => {
                       <Badge label={tool.status} variant={tool.status.toLowerCase()} />
                     </div>
                   </div>
-                  <h3 style={{ fontFamily: F.display, fontSize: 19, fontWeight: 400, color: locked ? C.textSec : C.text, margin: "0 0 10px" }}>{tool.name}</h3>
+                  <h3 style={{ fontFamily: F.body, fontSize: 19, fontWeight: 600, color: locked ? C.textSec : C.text, margin: "0 0 10px" }}>{tool.name}</h3>
                   <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, fontWeight: 300 }}>{tool.desc[lang]}</p>
                 </div>
                 {user ? (
@@ -1539,7 +1539,7 @@ const Intelligence = ({ lang, countryContext }) => {
                     <Badge label={t.soonLabel} variant="soon" />
                   </div>
                 </div>
-                <h3 style={{ fontFamily: F.display, fontSize: 19, fontWeight: 400, color: C.textSec, margin: "0 0 10px" }}>{tool.name}</h3>
+                <h3 style={{ fontFamily: F.body, fontSize: 19, fontWeight: 600, color: C.textSec, margin: "0 0 10px" }}>{tool.name}</h3>
                 <p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textMuted, lineHeight: 1.6, fontWeight: 300 }}>{tool.desc[lang]}</p>
               </div>
               <div style={{ marginTop: 20, fontFamily: F.mono, fontSize: 9, letterSpacing: "0.1em", padding: "7px 16px", color: C.textMuted, border: `1px solid ${C.border}`, alignSelf: "flex-start" }}>
@@ -1586,7 +1586,7 @@ const Intelligence = ({ lang, countryContext }) => {
           <button onClick={() => setShowToolkitGuide(false)} style={{ position: "fixed", top: 16, right: 24, zIndex: 306, fontFamily: F.mono, fontSize: 10, padding: "8px 18px", background: C.gold, color: C.bg, border: "none", cursor: "pointer", fontWeight: 600 }}>✕ CLOSE GUIDE</button>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
             <div style={{ fontFamily: F.mono, fontSize: 9, color: C.gold, letterSpacing: "0.18em", marginBottom: 10 }}>ZRC INTELLIGENCE · OPERATING GUIDE</div>
-            <h2 style={{ fontFamily: F.display, fontSize: "clamp(34px,5vw,54px)", fontWeight: 300, color: C.text, margin: "0 0 12px" }}>{lang === "es" ? "De la señal a una hipótesis de decisión" : "From signal to a decision hypothesis"}</h2>
+            <h2 style={{ fontFamily: F.display, fontSize: "clamp(34px,5vw,54px)", fontWeight: 500, color: C.text, margin: "0 0 12px" }}>{lang === "es" ? "De la señal a una hipótesis de decisión" : "From signal to a decision hypothesis"}</h2>
             <p style={{ fontFamily: F.body, fontSize: 15, color: C.textSec, lineHeight: 1.7 }}>{lang === "es" ? "Usa las herramientas como un flujo analítico. Separa hechos, supuestos, outputs de modelo y juicio." : "Use the tools as an analytical workflow. Separate facts, assumptions, model outputs and judgement."}</p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 1, margin: "34px 0" }}>
               {[
@@ -1597,7 +1597,7 @@ const Intelligence = ({ lang, countryContext }) => {
                 ["05 · TRANSLATE","Macro Pulse",lang === "es" ? "Traduce el shock a inflación, tipos, liquidez, FX y bancos centrales." : "Translate the shock into inflation, rates, liquidity, FX and central banks.","Macro Pulse"],
                 ["06 · CORPORATE","Financial Intelligence System",lang === "es" ? "Lleva el escenario a ingresos, márgenes, circulante, financiación y caja." : "Carry the scenario into revenue, margins, working capital, financing and cash flow.","Financial Intelligence System"],
               ].map(([step,name,desc,toolName]) => <div key={step} style={{ padding: 22, background: C.surface, border: `1px solid ${C.border}` }}>
-                <div style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, letterSpacing: "0.14em", marginBottom: 8 }}>{step}</div><div style={{ fontFamily: F.display, fontSize: 20, color: C.text }}>{name}</div><p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, minHeight: 60 }}>{desc}</p>
+                <div style={{ fontFamily: F.mono, fontSize: 8, color: C.gold, letterSpacing: "0.14em", marginBottom: 8 }}>{step}</div><div style={{ fontFamily: F.body, fontSize: 20, fontWeight:600, color: C.text }}>{name}</div><p style={{ fontFamily: F.body, fontSize: 12.5, color: C.textSec, lineHeight: 1.6, minHeight: 60 }}>{desc}</p>
                 {toolName && <button onClick={() => { const tool=TOOLS.find(tl=>tl.name===toolName); if(!user){setShowToolkitGuide(false);openLogin();} else if(tool){setShowToolkitGuide(false);handleLaunch(tool);} }} style={{ fontFamily:F.mono,fontSize:9,color:C.gold,background:"transparent",border:`1px solid ${C.goldBorder}`,padding:"7px 12px",cursor:"pointer" }}>{lang==="es"?"ABRIR HERRAMIENTA →":"OPEN TOOL →"}</button>}
               </div>)}
             </div>
@@ -1766,8 +1766,8 @@ const Advisory = ({ lang }) => {
         {SERVICES.map((s, i) => (
           <FadeIn key={i} delay={i * 0.08}>
             <div style={{ padding: "28px 24px", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 18, position: "relative" }}>
-              <div style={{ fontFamily: F.display, fontSize: 28, color: C.gold, opacity: 0.4, marginBottom: 12 }}>{s.metric}</div>
-              <h3 style={{ fontFamily: F.display, fontSize: 20, fontWeight: 400, color: C.text, margin: "0 0 10px" }}>{s.title}</h3>
+              <div style={{ fontFamily: F.body, fontSize: 28, color: C.gold, opacity: 0.4, marginBottom: 12 }}>{s.metric}</div>
+              <h3 style={{ fontFamily: F.body, fontSize: 20, fontWeight: 600, color: C.text, margin: "0 0 10px" }}>{s.title}</h3>
               <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, fontWeight: 300 }}>{s.desc[lang]}</p>
             </div>
           </FadeIn>
@@ -1817,7 +1817,7 @@ const Academia = ({ lang }) => {
                 <Badge label={c.status} variant={c.status === "ENROLLING" ? "live" : "monitor"} />
                 <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{c.level}</span>
               </div>
-              <h3 style={{ fontFamily: F.display, fontSize: 18, fontWeight: 400, color: C.text, margin: 0, lineHeight: 1.3 }}>{c.title[lang]}</h3>
+              <h3 style={{ fontFamily: F.body, fontSize: 18, fontWeight: 600, color: C.text, margin: 0, lineHeight: 1.3 }}>{c.title[lang]}</h3>
               <div style={{ display: "flex", gap: 16 }}>
                 <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{c.mod} {lang === "es" ? "módulos" : "modules"}</span>
                 <span style={{ fontFamily: F.mono, fontSize: 9, color: C.textMuted }}>{c.hrs}h</span>
@@ -1896,14 +1896,14 @@ const GeoRiskAccessHub = ({lang,onOpenMap,onNav,countryContext}) => {
         <span className="zrc-section-label" style={{fontFamily:F.mono,fontSize:11,color:"var(--zrc-label)",letterSpacing:"0.18em",fontWeight:500}}>ZRC · GEORISK INTELLIGENCE</span>
         <span aria-live="polite" style={{fontFamily:F.mono,fontSize:9,color:C.textMuted,border:`1px solid ${C.border}`,borderRadius:8,padding:"6px 10px",letterSpacing:"0.04em"}}>{loading?tr("Comprobando acceso…","Checking access…"):eligible?tr("Intelligence · acceso activo","Intelligence · active access"):tr("Exploración pública","Public exploration")}</span>
       </div>
-      <h2 style={{fontFamily:F.display,fontSize:"clamp(28px,4vw,42px)",fontWeight:300,lineHeight:1.15,letterSpacing:"-0.015em",margin:0,color:C.text}}>{tr("Una plataforma. Dos niveles de análisis.","One platform. Two levels of analysis.")}</h2>
+      <h2 style={{fontFamily:F.display,fontSize:"clamp(28px,4vw,42px)",fontWeight:500,lineHeight:1.2,letterSpacing:"-0.015em",margin:0,color:C.text}}>{tr("Una plataforma. Dos niveles de análisis.","One platform. Two levels of analysis.")}</h2>
       <p style={{fontFamily:F.body,fontSize:15,fontWeight:300,color:C.textSec,lineHeight:1.65,maxWidth:720,margin:"12px 0 0"}}>{tr("Explora el contexto geopolítico y las fichas de país gratuitamente. Intelligence añade herramientas de escenarios y análisis cuantitativo para miembros con acceso vigente.","Explore geopolitical context and country profiles for free. Intelligence adds scenario and quantitative analysis tools for eligible members.")}</p>
     </div>
     {countryContext && <div role="status" style={{fontFamily:F.body,fontSize:13,padding:"14px 18px",borderRadius:12,border:`1px solid ${C.goldBorder}`,background:C.goldDim,marginBottom:16,color:C.textSec,lineHeight:1.65}}><strong style={{color:C.gold}}>{tr("País seleccionado: ","Selected country: ")}{countryContext.name}</strong><span style={{display:"block",fontSize:12}}>{tr("Contexto conservado desde el mapa. Los escenarios requieren configurar manualmente la región y exposición; no se ha aplicado calibración automática por país.","Context preserved from the map. Scenarios require manually setting region and exposure; no automatic country calibration has been applied.")}</span></div>}
     <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,300px),1fr))",gap:16,alignItems:"stretch"}}>
       <article style={card}>
         <div style={{...eyebrow,color:C.green}}>{tr("01 · ACCESO PÚBLICO","01 · PUBLIC ACCESS")}</div>
-        <h3 style={{fontFamily:F.display,fontSize:23,fontWeight:400,lineHeight:1.2,margin:0,color:C.text}}>{tr("Explorar y comprender","Explore and understand")}</h3>
+        <h3 style={{fontFamily:F.body,fontSize:23,fontWeight:600,lineHeight:1.2,margin:0,color:C.text}}>{tr("Explorar y comprender","Explore and understand")}</h3>
         <p style={{fontFamily:F.body,fontSize:14,fontWeight:300,color:C.textSec,lineHeight:1.7,margin:"0 0 10px"}}>{tr("Mapa interactivo, fichas de país, índice semanal ZRC-GRI y evidencia histórica GPR. Cada medida mantiene su metodología y procedencia.","Interactive map, country profiles, weekly ZRC-GRI index and historical GPR evidence. Each measure retains its own methodology and provenance.")}</p>
         <div style={{display:"flex",flexWrap:"wrap",gap:9,marginTop:"auto"}}>
           <button type="button" style={action} onClick={onOpenMap}>{tr("Abrir mapa →","Open map →")}</button>
@@ -1913,7 +1913,7 @@ const GeoRiskAccessHub = ({lang,onOpenMap,onNav,countryContext}) => {
       </article>
       <article style={{...card,border:`1px solid ${C.goldBorder}`}}>
         <div style={eyebrow}>02 · INTELLIGENCE · {tr("SUSCRIPCIÓN","SUBSCRIPTION")}</div>
-        <h3 style={{fontFamily:F.display,fontSize:23,fontWeight:400,lineHeight:1.2,margin:0,color:C.text}}>{tr("Analizar y decidir","Analyze and decide")}</h3>
+        <h3 style={{fontFamily:F.body,fontSize:23,fontWeight:600,lineHeight:1.2,margin:0,color:C.text}}>{tr("Analizar y decidir","Analyze and decide")}</h3>
         <p style={{fontFamily:F.body,fontSize:14,fontWeight:300,color:C.textSec,lineHeight:1.7,margin:"0 0 10px"}}>{tr("Simulador de escenarios, sensibilidad regional y sectorial y GeoRisk ML experimental. Las previsiones solo se habilitan cuando superan las validaciones de datos.","Scenario simulator, regional and sector sensitivity, and experimental GeoRisk ML. Forecasts are only enabled after data validation.")}</p>
         <div style={{display:"flex",flexWrap:"wrap",gap:9,marginTop:"auto"}}>
           <button type="button" style={action} onClick={()=>onNav("intelligence")}>{eligible?tr("Abrir herramientas →","Open tools →"):tr("Ver herramientas y acceso →","View tools and access →")}</button>
@@ -2300,7 +2300,7 @@ const ZRCPlatform = () => {
       {showWorldMap && (
         <div data-theme="dark" style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, overflow: "auto" }}>
           <GeoRiskMapErrorBoundary lang={lang} onClose={closeWorldMap}>
-          <Suspense fallback={<div role="status" style={{ padding: "12vh 24px", textAlign: "center", color: "#15233B", background: "#F7F9FC", minHeight: "100vh", fontFamily: "Inter, sans-serif" }}>{lang === "es" ? "Preparando mapa geopolítico…" : "Preparing geopolitical map…"}</div>}>
+          <Suspense fallback={<div role="status" style={{ padding: "12vh 24px", textAlign: "center", color: "#15233B", background: "#F7F9FC", minHeight: "100vh", fontFamily: F.body }}>{lang === "es" ? "Preparando mapa geopolítico…" : "Preparing geopolitical map…"}</div>}>
             <GeoRiskWorldMap lang={lang} onClose={closeWorldMap} onOpenIntelligence={(country) => { if(country) setGeoriskCountryContext(country); closeWorldMap(); setTimeout(() => onNav("georisk-suite"), 50); }} />
           </Suspense>
           </GeoRiskMapErrorBoundary>
