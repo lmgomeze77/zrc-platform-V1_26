@@ -19,8 +19,8 @@ class GeoRiskMapErrorBoundary extends Component {
     if (this.state.failed) return (
       <div role="alert" style={{ background: "#F7F9FC", color: "#15233B", minHeight: "100dvh", padding: "28px 20px", fontFamily: "Arial, sans-serif" }}>
         <h2>{this.props.lang === "en" ? "The map could not load" : "No se ha podido cargar el mapa"}</h2>
-        <p>{this.props.lang === "en" ? "Please retry. If the issue persists, update your browser or try another network." : "Prueba a recargar. Si continúa el problema, actualiza el navegador o cambia de red."}</p>
-        <button type="button" onClick={() => this.setState({ failed: false })} style={{ padding: "12px 18px", marginRight: 12 }}>{this.props.lang === "en" ? "Retry" : "Reintentar"}</button>
+        <p>{this.props.lang === "en" ? "The map resource did not finish loading. Reload to request the current version." : "El recurso del mapa no terminó de cargar. Recarga para solicitar la versión actual."}</p>
+        <button type="button" onClick={() => window.location.reload()} style={{ padding: "12px 18px", marginRight: 12 }}>{this.props.lang === "en" ? "Reload map" : "Recargar mapa"}</button>
         <button type="button" onClick={this.props.onClose} style={{ padding: "12px 18px" }}>{this.props.lang === "en" ? "Close" : "Cerrar"}</button>
       </div>
     );
@@ -1999,7 +1999,9 @@ const ZRCPlatform = () => {
   }, [icPage]);
 
   const openWorldMap = () => {
-    loadGeoRiskWorldMap();
+    // An eager import rejection would otherwise surface as an unhandled error
+    // alongside React.lazy's own error boundary (notably after a deployment).
+    loadGeoRiskWorldMap().catch(() => {});
     setShowWorldMap(true);
     openOverlay("world-map", "#mapa-geopolitico");
   };
