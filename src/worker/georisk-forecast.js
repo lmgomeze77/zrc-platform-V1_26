@@ -3,6 +3,36 @@ import { evaluateRiskModel, loadWeeklyRiskHistory } from './georisk-risk-model.j
 import { fetchGeoRiskMacroSeries } from './georisk-macro.js';
 import { ECB_HISTORY_URL, ECB_SOURCE_URL, parseECBHistory } from './georisk-market.js';
 const DAY = 86400000;
+
+const BUND10_URL='https://api.statistiken.bundesbank.de/rest/data/BBSSY/D.REN.EUR.A630.000000WT1010.A?format=csv&lang=en&startPeriod=2026-01-01';
+async function optionalMarketLevels(fetchImpl,now){
+  const collected_at=now.toISOString();
+  const checks=await Promise.allSettled([
+    (async()=>{
+      const response=await fetchImpl('https://api.gold-api.com/price/XAU',{signal:AbortSignal.timeout(9000)});
+      if(!response.ok)throw new Error('Gold API unavailable');
+      const data=await response.json(),stamp=Date.parse(data.updatedAt);
+      if(data.symbol!=='XAU'||data.currency!=='USD'||!Number.isFinite(data.price)||data.price<=0||!Number.isFinite(stamp)||stamp>now.getTime()+60000||now.getTime()-stamp>3*DAY)throw new Error('Gold observation invalid or stale');
+      return {id:'XAUUSD_SPOT',label:'Oro spot',unit:'USD/oz troy',provider:'Gold API · spot indicativo',source_url:'https://gold-api.com/assets/gold',latest:{date:new Date(stamp).toISOString().slice(0,10),value:data.price},collected_at,status:'observed'};
+    })(),
+    (async()=>{
+      const response=await fetchImpl(BUND10_URL,{headers:{Accept:'text/csv'},signal:AbortSignal.timeout(9000)});
+      if(!response.ok)throw new Error('Bundesbank unavailable');
+      const lines=(await response.text()).replace(/^\\uFEFF/,'').split(/\\r?\\n/);
+      const separator=lines.find(line=>line.includes('TIME_PERIOD')&&line.includes('OBS_VALUE'))?.includes(';')?';':',';
+      const headerIndex=lines.findIndex(line=>line.includes('TIME_PERIOD')&&line.includes('OBS_VALUE'));
+      if(headerIndex<0)throw new Error('Bundesbank CSV header unavailable');
+      const headers=lines[headerIndex].split(separator).map(s=>s.replaceAll('"','').trim());
+      const dateIndex=headers.indexOf('TIME_PERIOD'),valueIndex=headers.indexOf('OBS_VALUE');
+      const points=lines.slice(headerIndex+1).map(line=>line.split(separator)).filter(parts=>/^\\d{4}-\\d{2}-\\d{2}$/.test(parts[dateIndex]||'')).map(parts=>({date:parts[dateIndex],value:Number((parts[valueIndex]||'').replaceAll('"',''))})).filter(p=>Number.isFinite(p.value)&&p.value>-5&&p.value<30&&Date.parse(p.date)<=now.getTime()).sort((a,b)=>a.date.localeCompare(b.date));
+      const latest=points.at(-1);
+      if(!latest||now.getTime()-Date.parse(latest.date)>7*DAY)throw new Error('Bund observation stale');
+      return {id:'BBSSY_D_BUND10',label:'Bund 10 años',unit:'% anual',provider:'Deutsche Bundesbank',source_url:'https://www.bundesbank.de/en/statistics/money-and-capital-markets/interest-rates-and-yields/daily-yields-of-current-federal-securities-772220',latest,collected_at,status:'observed'};
+    })()
+  ]);
+  return checks.filter(x=>x.status==='fulfilled').map(x=>x.value);
+}
+
 export const FORECAST_VERSION = 'risk-research-2.0';
 const quantile = (values, q) => [...values].sort((a,b)=>a-b)[Math.min(values.length-1, Math.ceil(q*values.length)-1)];
 function estimate(points, days, method, monthly) {
@@ -79,13 +109,14 @@ export async function handleGeoRiskForecast(request, env, fetchImpl=fetch, now=n
   }):[];
   // Market observations are independent of geopolitical scores. Show real
   // source observations even when the experimental model has no valid signal.
-  outlook.market_observed=snapshot.map(s=>({
+  const additionalLevels=await optionalMarketLevels(fetchImpl,now);
+  outlook.market_observed=[...snapshot.map(s=>({
     id:s.id,label:s.label,unit:s.unit,provider:s.provider,
     source_url:s.source_url,latest:s.latest,collected_at:s.collected_at,
     observations:s.points?.length||0,
     // This archive is a current re-download, never a point-in-time vintage.
     history_vintage:'latest_download',status:s.latest?'observed':'unavailable'
-  }));
+  })),...additionalLevels];
   outlook.market_coverage={status:marketResearchSnapshot?.status||'unavailable',collected_at:marketResearchSnapshot?.collected_at||null,expected:marketResearchSnapshot?.expected_series?.length||4,available:snapshot.length,failed:marketResearchSnapshot?.failures||[],snapshot_warning:marketResearchSnapshot?.vintage_warning||null};
   const riskHistory=await loadWeeklyRiskHistory(env,fetchImpl);
   outlook.risk_research={status:'experimental',index_source:'ZRC-GRI weekly snapshots',method:'risk-conditioned ridge vs unchanged-price baseline',series:[...outlook.series.filter(s=>/^(EUR|USD)/.test(s.id)).map(s=>series.find(x=>x.id===s.id)||s),...snapshot.map(s=>({...s,frequency:'daily'}))].map(s=>({id:s.id,horizons:[30,90].map(h=>evaluateRiskModel(s,riskHistory,h,now))}))};
