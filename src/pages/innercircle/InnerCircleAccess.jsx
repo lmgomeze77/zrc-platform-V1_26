@@ -3,7 +3,6 @@ import PublicReports from "./PublicReports";
 import { IcLanguageSwitch, navigateIcSection } from "./icLocale";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import InnerCircleValue from "./InnerCircleValue";
 
 import {IC_API,IC_SESSION_KEY} from './icSession';
 const IC_EMAIL_KEY = "zrc-ic-email";
@@ -129,7 +128,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
 
   const containerStyle = {
     minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center",
-    background: "radial-gradient(ellipse at 70% 0%,#182b43,#0a1220 60%)", padding: "48px 28px", colorScheme: "dark"
+    background: "#070b12", padding: "48px 28px", colorScheme: "dark"
   };
   const cardStyle = {
     maxWidth: 460, width: "100%", textAlign: "center"
@@ -145,7 +144,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
         <div className="ic-actions"><button className="ic-button" onClick={()=>{setMode('request');setMessage('');}}>Solicitar membresía gratuita →</button><button className="ic-button ic-button-quiet" onClick={()=>{setMode('check');setMessage('');}}>Ya soy miembro · Iniciar sesión</button></div>
         <p className="ic-small">Acceso gratuito durante esta etapa · admisión por aprobación. No hay renovación de pago automática. Cualquier cambio futuro de precio requerirá información previa y tu aceptación.</p>
         <div id="ic-preview"><PublicReports/></div>
-        <div id="ic-benefits"><InnerCircleValue compact/></div>
+        <p id="ic-benefits" className="ic-small">Dentro: análisis editorial, seguimiento de señales y herramientas de decisión.</p>
         <h2 id="ic-access">Cómo funciona el acceso</h2>
         <p>Presenta tu perfil. Revisamos la solicitud y, una vez aprobada, recibes tus credenciales. Al iniciar sesión, entras directamente a la edición, los dossiers y tu ficha de trabajo.</p>
         <div className="ic-actions"><button className="ic-button" onClick={()=>{setMode('request');setMessage('');}}>Solicitar acceso →</button></div>
@@ -162,8 +161,8 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
         <div style={{ width: 56, height: 56, borderRadius: "50%", border: `1px solid ${G}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px", background: "rgba(184,152,42,0.1)" }}>
           <span style={{ color: G, fontSize: 24 }}>✓</span>
         </div>
-        <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(24px,6vw,30px)", fontStyle: "italic", color: "#E8E0CC", marginBottom: 16 }}>Solicitud recibida</h2>
-        <p style={{ fontFamily: "'Cormorant',serif", fontSize: "clamp(15px,4vw,17px)", color: "rgba(232,224,204,0.7)", lineHeight: 1.75, marginBottom: 36 }}>
+        <h2 style={{ fontFamily: "var(--zrc-font-display)", fontSize: "clamp(24px,6vw,30px)", color: "#E8E0CC", marginBottom: 16 }}>Solicitud recibida</h2>
+        <p style={{ fontFamily: "'Outfit',sans-serif", fontSize: "clamp(15px,4vw,17px)", color: "rgba(232,224,204,0.7)", lineHeight: 1.75, marginBottom: 36 }}>
           Revisaremos tu perfil y te contactaremos en los próximos días.<br />Las admisiones son manuales y selectivas.
         </p>
         <p style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: "clamp(11px,3vw,12px)", letterSpacing: "0.25em", color: "rgba(184,152,42,0.7)" }}>
@@ -180,8 +179,8 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
       <div style={{ ...cardStyle, maxWidth: 520, textAlign: "left" }}><IcLanguageSwitch />
         <div style={{ textAlign: "center", marginBottom: 44 }}>
           <p style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: "clamp(10px,2.5vw,11px)", letterSpacing: "0.45em", color: "rgba(184,152,42,0.75)", marginBottom: 20 }}>ZRC INNER CIRCLE</p>
-          <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(26px,6.5vw,32px)", fontStyle: "italic", color: "#E8E0CC", marginBottom: 14 }}>Solicitar acceso</h2>
-          <p style={{ fontFamily: "'Cormorant',serif", fontSize: "clamp(15px,4vw,16px)", color: "rgba(232,224,204,0.65)", lineHeight: 1.75 }}>
+          <h2 style={{ fontFamily: "var(--zrc-font-display)", fontSize: "clamp(26px,6.5vw,32px)", color: "#E8E0CC", marginBottom: 14 }}>Solicitar acceso</h2>
+          <p style={{ fontFamily: "'Outfit',sans-serif", fontSize: "clamp(15px,4vw,16px)", color: "rgba(232,224,204,0.65)", lineHeight: 1.75 }}>
             La membresía es gratuita durante esta etapa y requiere aprobación manual.<br />Enviar el formulario no activa una suscripción de pago.
           </p>
         </div>
@@ -233,7 +232,7 @@ export default function InnerCircleAccess({ onBack, onApproved }) {
     <div style={containerStyle}>
       <div style={cardStyle}><IcLanguageSwitch />
         <p style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: "clamp(10px,2.8vw,11px)", letterSpacing: "0.45em", color: "rgba(184,152,42,0.8)", marginBottom: 32 }}>ZRC · ACCESO DE MIEMBROS</p>
-        <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(32px,9vw,42px)", fontStyle: "italic", color: "#E8E0CC", marginBottom: 12, fontWeight: 400 }}>The Inner Circle</h2>
+        <h2 style={{ fontFamily: "var(--zrc-font-display)", fontSize: "clamp(32px,9vw,42px)", color: "#E8E0CC", marginBottom: 12, fontWeight: 600 }}>The Inner Circle</h2>
         <p style={{ fontFamily: "Outfit,sans-serif", fontSize: 16, color: "rgba(232,224,204,0.75)", marginBottom: 32, lineHeight: 1.75 }}>
           Acceso para miembros aprobados. Utiliza tus credenciales de Inner Circle.
         </p>
