@@ -59,6 +59,7 @@ body, button, input, textarea, select { font-family: var(--zrc-font-body); }
   /* Hero (light): white on the left, steel-blue globe with contrast on the right */
   --zrc-hero-bg: #FFFFFF;
   --zrc-hero-sub: #2B3342;
+  --zrc-hero-emphasis: #315E90;
   --zrc-hero-glow: 0 0 22px rgba(246,248,251,.95), 0 0 6px rgba(246,248,251,.8);
   --zrc-hero-globe-filter: grayscale(1) sepia(1) hue-rotate(182deg) saturate(.9) brightness(2.3) contrast(1.05);
   /* Fade the globe out towards the left so the centered text column always stays on white */
@@ -118,6 +119,7 @@ body, button, input, textarea, select { font-family: var(--zrc-font-body); }
   --zrc-chart-line: #8FB4E3;
   --zrc-hero-bg: #050C16;
   --zrc-hero-sub: var(--zrc-text-sec);
+  --zrc-hero-emphasis: #A9C9EC;
   --zrc-hero-glow: none;
   --zrc-hero-globe-filter: none;
   --zrc-hero-globe-mask: none;
