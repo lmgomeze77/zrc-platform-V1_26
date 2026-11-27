@@ -442,7 +442,7 @@ export default function GeoRiskML() {
   ];
 
   return (
-    <div style={{ minHeight: "100vh", background: "#070f0a", color: "#E2E8F0", fontFamily: "'DM Sans', sans-serif", position: "relative", overflow: "hidden" }}>
+    <div style={{ minHeight: "100vh", background: "#070f0a", color: "#E2E8F0", fontFamily: "var(--zrc-font-body)", position: "relative", overflow: "hidden" }}>
       <style>{`
         @keyframes grml-pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
         @keyframes grml-fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }

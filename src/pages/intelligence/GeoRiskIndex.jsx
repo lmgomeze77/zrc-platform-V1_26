@@ -161,7 +161,7 @@ function IntelligenceUpsell({ lang, openPricing }) {
       borderTop: `3px solid ${C.gold}`, borderRadius: 20, overflow: "hidden", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap",
     }}>
       <div style={{ maxWidth: 460 }}>
-        <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginBottom: 6 }}>
+        <div style={{ fontFamily: F.body, fontSize: 20, color: C.text, marginBottom: 6 }}>
           {lang === "es" ? "Este es solo el número público" : "This is just the public number"}
         </div>
         <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, margin: 0 }}>
@@ -220,7 +220,7 @@ function WeeklyDigestCapture({ lang }) {
 
   return (
     <div style={{ padding: "24px 28px", background: "var(--zrc-cta-sage-bg)", border: "1px solid var(--zrc-cta-sage-border)", borderLeft: `3px solid ${C.gold}`, borderRadius: 20, overflow: "hidden" }}>
-      <div style={{ fontFamily: F.display, fontSize: 20, color: C.text, marginBottom: 6 }}>
+      <div style={{ fontFamily: F.body, fontSize: 20, color: C.text, marginBottom: 6 }}>
         {lang === "es" ? "Únete a ZRC Morning Intelligence" : "Join ZRC Morning Intelligence"}
       </div>
       <p style={{ fontFamily: F.body, fontSize: 13, color: C.textSec, lineHeight: 1.6, margin: "0 0 18px", maxWidth: 480 }}>

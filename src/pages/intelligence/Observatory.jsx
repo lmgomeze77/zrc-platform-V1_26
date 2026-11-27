@@ -310,10 +310,10 @@ function PublicationsCarousel({lang}) {
  const step=direction=>{const card=track?.firstElementChild;if(card)track.scrollBy({left:direction*(card.getBoundingClientRect().width+14)});};
  const en=lang==="en";
  return <section aria-label={en?"ZRC publications":"Publicaciones ZRC"} style={{marginBottom:28}}>
- <header style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:10,marginBottom:12}}><h3 style={{margin:0,fontSize:19}}>{en?"ZRC publications":"Publicaciones ZRC"}</h3><div style={{display:"flex",gap:6}}>{[-1,1].map(n=><button key={n} type="button" aria-label={en?(n<0?"Previous publication":"Next publication"):(n<0?"Publicación anterior":"Publicación siguiente")} onClick={()=>step(n)} style={{minWidth:44,minHeight:44,border:`1px solid ${C.border}`,borderRadius:8,background:C.surface2,color:C.text,cursor:"pointer"}}>{n<0?"←":"→"}</button>)}</div></header>
+ <header style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:10,marginBottom:12}}><h3 style={{margin:0,fontSize:19,fontFamily:F.body,fontWeight:600}}>{en?"ZRC publications":"Publicaciones ZRC"}</h3><div style={{display:"flex",gap:6}}>{[-1,1].map(n=><button key={n} type="button" aria-label={en?(n<0?"Previous publication":"Next publication"):(n<0?"Publicación anterior":"Publicación siguiente")} onClick={()=>step(n)} style={{minWidth:44,minHeight:44,border:`1px solid ${C.border}`,borderRadius:8,background:C.surface2,color:C.text,cursor:"pointer"}}>{n<0?"←":"→"}</button>)}</div></header>
  <ul ref={setTrack} style={{display:"flex",gap:14,overflowX:"auto",scrollSnapType:"x mandatory",listStyle:"none",margin:0,padding:"4px 4px 12px"}}>
  {OBSERVATORY_PUBLICATIONS.map(({id,copy})=><li key={id} style={{flex:"0 0 min(85%, 340px)",scrollSnapAlign:"start",display:"flex"}}><a href={`#${id}`} style={{width:"100%",background:"linear-gradient(145deg,#223C5B,#111F32)",border:"1px solid #344F70",borderRadius:14,padding:20,color:"#F4F7FC",textDecoration:"none",display:"flex",flexDirection:"column",gap:10}}>
- <span style={{fontSize:11,color:"#B8D5F4",fontFamily:F.mono}}>{copy[en?1:0]}</span><strong style={{fontSize:22,lineHeight:1.2,fontFamily:F.display}}>{copy[en?3:2]}</strong><span style={{fontSize:14,lineHeight:1.45,color:"#DFE7F2",marginBottom:5}}>{copy[en?5:4]}</span><span style={{marginTop:"auto",fontSize:13,color:"#C5DFFF"}}>{en?"Read analysis →":"Leer análisis →"}</span></a></li>)}
+ <span style={{fontSize:11,color:"#B8D5F4",fontFamily:F.body,letterSpacing:".08em"}}>{copy[en?1:0]}</span><strong style={{fontSize:22,lineHeight:1.2,fontFamily:F.body,fontWeight:600}}>{copy[en?3:2]}</strong><span style={{fontSize:14,lineHeight:1.45,color:"#DFE7F2",marginBottom:5}}>{copy[en?5:4]}</span><span style={{marginTop:"auto",fontSize:13,color:"#C5DFFF"}}>{en?"Read analysis →":"Leer análisis →"}</span></a></li>)}
  </ul></section>;
 }
 
@@ -474,7 +474,7 @@ export default function Observatory({ lang, useAuth, useSubscription, useHeadlin
                 <p style={{ fontFamily:F.mono, fontSize:9, letterSpacing:"0.1em", color:C.gold, margin:"0 0 5px", textTransform:"uppercase" }}>
                   {lang==="es" ? "DEL TITULAR A LA EXPOSICIÓN" : "FROM HEADLINE TO EXPOSURE"}
                 </p>
-                <h3 style={{ fontFamily:F.display, fontSize:22, fontWeight:400, color:C.text, margin:"0 0 4px" }}>
+                <h3 style={{ fontFamily:F.body, fontSize:22, fontWeight:600, color:C.text, margin:"0 0 4px" }}>
                   {lang==="es" ? "¿Qué puede significar para el mercado?" : "What could this mean for markets?"}
                 </h3>
                 <p style={{ fontFamily:F.body, fontSize:12, color:C.textSec, margin:0, lineHeight:1.6 }}>

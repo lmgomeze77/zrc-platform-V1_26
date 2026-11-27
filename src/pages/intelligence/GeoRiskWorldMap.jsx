@@ -28,9 +28,9 @@ const C = {
   red: "#C74B52", green: "#268B72", amber: "#C77B27",
 };
 const F = {
-  display: "'Inter', -apple-system, 'Segoe UI', sans-serif",
-  body: "'Inter', -apple-system, 'Segoe UI', sans-serif",
-  mono: "'Inter', -apple-system, 'Segoe UI', sans-serif",
+  display: "var(--zrc-font-body)",
+  body: "var(--zrc-font-body)",
+  mono: "var(--zrc-font-body)",
 };
 
 // ── Bloques geopolíticos — paleta categórica distinta y separable ────────

@@ -24,10 +24,10 @@ export default function LatamCountryStrategy({ lang }) {
   const [selected, setSelected] = useState("México");
   const filtered = COUNTRIES.filter(row => (row[0] + " " + row[1] + " " + row[2]).toLocaleLowerCase().includes(query.toLocaleLowerCase()));
   const country = COUNTRIES.find(row => row[0] === selected) || COUNTRIES[0];
-  const field = (label, value) => <div style={{ borderTop:`1px solid ${C.border}`, padding:"12px 0" }}><div style={{ fontSize:10, color:C.gold, fontFamily:"monospace", letterSpacing:".07em", textTransform:"uppercase", marginBottom:5 }}>{label}</div><div style={{ fontSize:14, lineHeight:1.6, color:C.textSec }}>{value}</div></div>;
-  return <section aria-labelledby="latam-country-strategy" style={{ margin:"30px 0 38px", border:`1px solid ${C.border}`, borderRadius:12, background:C.surface, padding:"clamp(16px, 3vw, 28px)" }}>
-    <p style={{ color:C.gold, fontSize:10, letterSpacing:".12em", fontFamily:"monospace", margin:"0 0 7px" }}>{en ? "COUNTRY INTELLIGENCE · LATAM" : "INTELIGENCIA PAÍS · LATAM"}</p>
-    <h2 id="latam-country-strategy" style={{ color:C.text, fontSize:"clamp(23px, 3vw, 34px)", margin:"0 0 7px" }}>{en ? "Latin America · country strategy map" : "América Latina · mapa de estrategia país"}</h2>
+  const field = (label, value) => <div style={{ borderTop:`1px solid ${C.border}`, padding:"12px 0" }}><div style={{ fontSize:10, color:C.gold, fontFamily:"var(--zrc-font-body)", fontWeight:600, letterSpacing:".07em", textTransform:"uppercase", marginBottom:5 }}>{label}</div><div style={{ fontSize:14, lineHeight:1.6, color:C.textSec }}>{value}</div></div>;
+  return <section aria-labelledby="latam-country-strategy" style={{ margin:"30px 0 38px", border:`1px solid ${C.border}`, borderRadius:12, background:C.surface, padding:"clamp(16px, 3vw, 28px)", fontFamily:"var(--zrc-font-body)" }}>
+    <p style={{ color:C.gold, fontSize:10, letterSpacing:".12em", fontFamily:"var(--zrc-font-body)", fontWeight:600, margin:"0 0 7px" }}>{en ? "COUNTRY INTELLIGENCE · LATAM" : "INTELIGENCIA PAÍS · LATAM"}</p>
+    <h2 id="latam-country-strategy" style={{ color:C.text, fontFamily:"var(--zrc-font-display)", fontWeight:500, fontSize:"clamp(23px, 3vw, 34px)", margin:"0 0 7px" }}>{en ? "Latin America · country strategy map" : "América Latina · mapa de estrategia país"}</h2>
     <p style={{ color:C.textSec, lineHeight:1.6, fontSize:14, margin:"0 0 12px" }}>{en ? "Leadership, geopolitical positioning, trade access and the checks that turn a country thesis into an investment decision." : "Liderazgo, posición geopolítica, acceso comercial y comprobaciones para convertir una tesis país en una decisión de inversión."}</p>
     <p style={{ color:C.textMuted, fontSize:11, margin:"0 0 22px" }}>{en ? "Editorial snapshot" : "Corte editorial"} · <time dateTime={AS_OF}>{AS_OF}</time> · {en ? "20 sovereign Spanish, Portuguese and French-speaking countries; Belize, Guyana and Suriname excluded by scope." : "20 Estados soberanos de habla española, portuguesa y francesa; Belice, Guyana y Surinam quedan fuera de este alcance."}</p>
     <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(min(100%, 270px), 1fr))", gap:20 }}>
@@ -40,7 +40,7 @@ export default function LatamCountryStrategy({ lang }) {
         </div>
       </div>
       <article aria-live="polite">
-        <h3 style={{ color:C.text, fontSize:23, margin:"0 0 5px" }}>{country[en?1:0]}</h3>
+        <h3 style={{ color:C.text, fontFamily:"var(--zrc-font-body)", fontWeight:600, fontSize:23, margin:"0 0 5px" }}>{country[en?1:0]}</h3>
         <p style={{ color:C.textSec, margin:"0 0 12px", fontSize:14 }}><strong>{country[2]}</strong> · {country[en?5:4]} · {country[3]}</p>
         {field(en?"Geopolitical position":"Posición geopolítica",country[en?7:6])}
         {field(en?"Trade arrangements in place":"Acuerdos comerciales vigentes",country[en?9:8])}
