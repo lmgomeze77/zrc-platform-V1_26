@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T16:18:08.310Z",
+  "generated_at": "2026-11-27T16:02:25.229Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -96,33 +96,42 @@
     {
       "id": 1,
       "tag": "CRITICAL",
-      "region": "GLOBAL",
+      "region": "MENA",
       "title": {
-        "es": "EE.UU. anuncia nuevos aranceles a un grupo de países incluyendo China",
-        "en": "US announces new tariffs on host of countries including China"
+        "es": "Dos italianos muertos en ataque de dron iraní sobre Kuwait, según funcionarios",
+        "en": "Two Italians Killed in Iranian Drone Attack on Kuwait, Officials Say"
       },
       "summary": {
-        "es": "La administración Trump propone nuevos aranceles que afectarían a socios comerciales clave, incluyendo China y la UE, desencadenando respuestas de represalia de Pekín y Brasilia. La medida eleva significativamente el riesgo de una guerra comercial global en un momento de fragilidad económica internacional. Las implicaciones para cadenas de suministro, inflación importada y flujos de capital emergentes son sustanciales.",
-        "en": "The Trump administration has proposed new tariffs targeting key trading partners including China and the EU, triggering retaliatory rhetoric from Beijing and Brasilia. The move substantially raises the risk of a global trade war at a moment of international economic fragility. Implications for supply chains, imported inflation and EM capital flows are significant."
+        "es": "Un ataque de dron atribuido a Irán mató a dos ciudadanos italianos en Kuwait, en el contexto de una serie de ataques sobre estados del Golfo que albergan instalaciones militares estadounidenses. El incidente eleva el riesgo de escalada al involucrar una víctima de un miembro de la OTAN, complicando las conversaciones de paz. La negación iraní añade incertidumbre estratégica significativa.",
+        "en": "A drone strike attributed to Iran killed two Italian nationals in Kuwait, part of a series of attacks on Gulf Arab states hosting U.S. military facilities. The incident raises escalation risk by drawing in a NATO member's casualties, complicating ongoing peace negotiations. Iran's denial adds significant strategic ambiguity."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Chinese yuan (CNY/USD)",
-          "direction": "down",
+          "asset": "Brent crude",
+          "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Presión depreciatoria por riesgo arancelario sobre exportaciones chinas",
-            "en": "Depreciation pressure from tariff risk on Chinese exports"
+            "es": "Riesgo de escalada en el Golfo presiona precios al alza",
+            "en": "Gulf escalation risk pushes prices higher"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Demanda de refugio seguro ante tensión geopolítica",
+            "en": "Safe-haven demand on geopolitical tension"
           }
         },
         {
           "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "medium",
+          "magnitude": "low",
           "note": {
-            "es": "Aranceles amenazan exportaciones europeas y actividad económica",
-            "en": "Tariffs threaten European exports and economic activity"
+            "es": "Riesgo de implicación europea pesa sobre el euro",
+            "en": "European involvement risk weighs on euro"
           }
         },
         {
@@ -130,220 +139,76 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Fuga hacia activos refugio perjudica divisas emergentes",
-            "en": "Flight to safety hurts emerging market currencies"
-          }
-        },
-        {
-          "asset": "US equities (S&P 500)",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Sectores exportadores afectados; defensivos y domésticos se benefician",
-            "en": "Export-exposed sectors hurt; domestic defensives benefit"
+            "es": "Aversión al riesgo global afecta divisas emergentes",
+            "en": "Global risk-off pressures emerging market currencies"
           }
         }
       ],
       "confidence": 90,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/c893r9ke5p97o?at_medium=RSS&at_campaign=rss",
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/26/world/middleeast/italians-killed-iran-drone-attack-kuwait.html",
       "published_at": "2026-11-26",
-      "time": "12h"
+      "time": "20h"
     },
     {
       "id": 2,
       "tag": "ALERT",
-      "region": "EU",
+      "region": "EURASIA",
       "title": {
-        "es": "El economista español De Cos sucederá a Lagarde como presidente del BCE",
-        "en": "Spanish economist de Cos to succeed Lagarde as head of ECB"
+        "es": "Trump pide a Putin poner fin a toda 'agresión militar' contra Europa",
+        "en": "Trump calls on Putin to end all 'military aggression' against Europe"
       },
       "summary": {
-        "es": "Pablo Hernández de Cos, exgobernador del Banco de España, ha sido designado para presidir el BCE en un contexto de rebrote inflacionario vinculado al conflicto con Irán y creciente tensión en los mercados de deuda soberana europeos, especialmente francesa. Su perfil ortodoxo pero pragmático plantea interrogantes sobre el ritmo de ajuste monetario futuro. El cambio de liderazgo llega en un momento de máxima presión externa sobre la política monetaria europea.",
-        "en": "Pablo Hernández de Cos, former governor of the Bank of Spain, has been designated to lead the ECB amid an Iran war-driven inflation resurgence and rising pressure on European sovereign debt markets, particularly French bonds. His orthodox yet pragmatic profile raises questions about the future pace of monetary adjustment. The leadership transition comes at peak external pressure on European monetary policy."
+        "es": "El presidente Trump declaró haber instado a Putin a retirar toda agresión militar contra territorios europeos, señalando un posible cambio de postura estadounidense hacia Rusia. La falta de detalles concretos deja abiertas las expectativas sobre un acuerdo de paz en Ucrania. Los mercados europeos reaccionarán ante cualquier señal de avance diplomático real.",
+        "en": "President Trump stated he urged Putin to end all military aggression against European territories, signaling a potential shift in U.S. posture toward Russia. The absence of concrete details leaves peace deal expectations open-ended. European markets will be sensitive to any signs of genuine diplomatic progress."
       },
       "impact": "high",
       "market_impact": [
-        {
-          "asset": "EUR/USD",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Incertidumbre sobre orientación monetaria bajo nuevo liderazgo",
-            "en": "Uncertainty over monetary stance under new leadership"
-          }
-        },
         {
           "asset": "European equities",
-          "direction": "mixed",
-          "magnitude": "medium",
-          "note": {
-            "es": "Perfil del nuevo presidente afecta expectativas de tipos",
-            "en": "New president's profile affects rate expectations"
-          }
-        },
-        {
-          "asset": "French OAT / Bund spread",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de fragmentación si BCE adopta postura más hawkish",
-            "en": "Fragmentation risk if ECB adopts tighter stance"
+            "es": "Señales de paz elevan apetito por activos europeos",
+            "en": "Peace signals lift appetite for European assets"
           }
         },
         {
-          "asset": "EU peripheral sovereign bonds",
-          "direction": "mixed",
+          "asset": "Natural gas (TTF)",
+          "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Sensibilidad a señales de política del nuevo presidente",
-            "en": "Sensitive to new president's early policy signals"
+            "es": "Perspectiva de desescalada reduce prima de riesgo energético",
+            "en": "De-escalation outlook reduces energy risk premium"
           }
-        }
-      ],
-      "confidence": 88,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20261126-spanish-economist-de-cos-succeed-lagarde-head-ecb",
-      "published_at": "2026-11-26",
-      "time": "<1h"
-    },
-    {
-      "id": 3,
-      "tag": "CRITICAL",
-      "region": "MENA",
-      "title": {
-        "es": "Fuerzas libias amenazan con represalias tras el ataque de Ucrania a buques rusos",
-        "en": "Libyan Forces Threaten Retaliation Over Ukraine's Attack on Russian Ships"
-      },
-      "summary": {
-        "es": "Un ataque de drones ucraniano frente a la costa de Libia mató a dos oficiales navales libios, según las fuerzas que controlan el este del país, alineadas con el mariscal Haftar y vinculadas a Rusia. El incidente abre un frente geopolítico nuevo al entrelazar el conflicto ucraniano con la inestabilidad de Libia y sus vínculos con infraestructura energética mediterránea. Una escalada podría afectar las rutas de exportación de energía del norte de África.",
-        "en": "A Ukrainian drone strike off Libya's coast killed two Libyan naval officers according to eastern-Libya forces aligned with Haftar and linked to Russia. The incident opens a new geopolitical front by intertwining the Ukraine conflict with Libyan instability and its ties to Mediterranean energy infrastructure. Escalation could affect North African energy export routes."
-      },
-      "impact": "high",
-      "market_impact": [
+        },
         {
-          "asset": "Brent crude",
+          "asset": "EUR/USD",
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de interrupción de suministro libio en el Mediterráneo",
-            "en": "Risk of Libyan supply disruption in the Mediterranean"
+            "es": "Reducción de incertidumbre bélica apoya al euro",
+            "en": "Reduced war uncertainty supports the euro"
           }
         },
         {
           "asset": "Gold",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Nueva escalada geopolítica impulsa activos refugio",
-            "en": "New geopolitical escalation boosts safe-haven assets"
-          }
-        },
-        {
-          "asset": "Italian sovereign bonds (BTP)",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Italia depende del gas libio; inestabilidad eleva prima de riesgo",
-            "en": "Italy depends on Libyan gas; instability raises risk premium"
+            "es": "Menor aversión al riesgo modera demanda de refugio",
+            "en": "Lower risk aversion moderates safe-haven demand"
           }
         }
       ],
       "confidence": 82,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/11/25/world/middleeast/libya-ukraine-russia-haftar.html",
-      "published_at": "2026-11-25",
-      "time": "21h"
-    },
-    {
-      "id": 4,
-      "tag": "ALERT",
-      "region": "MENA",
-      "title": {
-        "es": "'Simbólico': ¿Por qué el Reino Unido sancionó a los hutíes de Yemen en medio de los ataques a Arabia Saudí?",
-        "en": "'Symbolic': Why did UK sanction Yemen's Houthis amid attacks on Saudi?"
-      },
-      "summary": {
-        "es": "El Reino Unido impuso sanciones al grupo hutí respaldado por Irán y a sus líderes, acusándolos de desestabilizar Oriente Medio, en un contexto en que la guerra con Irán ha reavivado la guerra civil yemení y los hutíes avanzan hacia Adén. Analistas califican la medida de simbólica dada la limitada capacidad coercitiva del Reino Unido sobre actores no estatales en la región. La evolución del conflicto yemení tiene implicaciones directas para el tráfico en el Mar Rojo y los costos de flete global.",
-        "en": "The UK has sanctioned the Iran-backed Houthi group and its leaders, accusing them of undermining Middle East stability, as the Iran war reignites Yemen's civil war and Houthis advance on Aden. Analysts describe the measure as largely symbolic given the UK's limited coercive leverage over non-state actors in the region. The evolution of the Yemen conflict has direct implications for Red Sea shipping and global freight costs."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "Brent crude",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de cierre del Mar Rojo eleva prima de riesgo energético",
-            "en": "Red Sea closure risk raises energy risk premium"
-          }
-        },
-        {
-          "asset": "Shipping/freight indices",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Desvíos de rutas por amenaza hutí encarecen el flete",
-            "en": "Houthi threat forces rerouting, raising freight costs"
-          }
-        },
-        {
-          "asset": "GBP/USD",
-          "direction": "mixed",
-          "magnitude": "low",
-          "note": {
-            "es": "Señal política del Reino Unido sin impacto cambiario directo",
-            "en": "UK political signal with limited direct FX impact"
-          }
-        }
-      ],
-      "confidence": 78,
-      "source": "Al Jazeera",
-      "source_url": "https://www.aljazeera.com/news/2026/11/26/symbolic-why-did-uk-sanction-yemens-houthis-amid-attacks-on-saudi?traffic_source=rss",
-      "published_at": "2026-11-26",
-      "time": "4h"
-    },
-    {
-      "id": 5,
-      "tag": "WATCH",
-      "region": "EU",
-      "title": {
-        "es": "La jefa de la UE insta a los líderes a 'comprometerse' para cerrar un acuerdo presupuestario antes de fin de año",
-        "en": "EU chief urges leaders to 'compromise' for budget deal by year-end"
-      },
-      "summary": {
-        "es": "El presidente del Consejo Europeo, Antonio Costa, presionó a los líderes para alcanzar un acuerdo sobre el presupuesto a largo plazo de la UE antes de las elecciones francesas de 2027, donde Marine Le Pen lidera en las encuestas. Un fracaso en sellar el marco presupuestario podría debilitar la capacidad de respuesta fiscal europea en un entorno de múltiples shocks externos. La incertidumbre presupuestaria se suma a la presión sobre los diferenciales soberanos europeos.",
-        "en": "European Council President Antonio Costa pressed leaders to reach a deal on the EU's long-term budget before France's 2027 election, where Marine Le Pen leads in polls. Failure to seal the fiscal framework could weaken Europe's fiscal response capacity amid multiple external shocks. Budgetary uncertainty adds to pressure on European sovereign spreads."
-      },
-      "impact": "medium",
-      "market_impact": [
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Incertidumbre fiscal europea debilita al euro",
-            "en": "European fiscal uncertainty weakens the euro"
-          }
-        },
-        {
-          "asset": "European equities",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Riesgo político y presupuestario pesa sobre perspectivas europeas",
-            "en": "Political and budget risk weighs on European outlook"
-          }
-        }
-      ],
-      "confidence": 72,
       "source": "France 24",
-      "source_url": "https://www.france24.com/en/video/20261126-eu-chief-urges-leaders-to-compromise-for-budget-deal-by-year-end",
-      "published_at": "2026-11-26",
-      "time": "4h"
+      "source_url": "https://www.france24.com/en/europe/20261127-live-trump-calls-on-putin-to-end-all-military-aggression-against-europe",
+      "published_at": "2026-11-27",
+      "time": "5h"
     },
     {
-      "id": 6,
+      "id": 3,
       "tag": "ALERT",
       "region": "GLOBAL",
       "title": {
@@ -351,44 +216,179 @@
         "en": "China reserves right to take 'necessary measures' after Trump's new tariff proposals"
       },
       "summary": {
-        "es": "Pekín califica los nuevos aranceles propuestos de 'manipulación política' y advierte represalias, mientras Brasil también rechaza las amenazas comerciales. La respuesta coordinada de economías emergentes y potencias medianas sugiere una coalición de resistencia al unilateralismo comercial estadounidense. El riesgo de escalada en el comercio global aumenta antes de fin de año.",
-        "en": "Beijing has labelled Trump's proposed tariffs as 'political manipulation' and warned of necessary countermeasures, while Brazil similarly rejected the threats. The coordinated pushback from emerging economies and mid-tier powers suggests a nascent coalition resisting US trade unilateralism. Escalation risk for global trade rises ahead of year-end."
+        "es": "Beijing calificó los nuevos aranceles propuestos por Trump sobre 14 socios comerciales, incluidos China y la UE, como 'manipulación política' y advirtió con represalias. Brasil también rechazó las amenazas, señalando una posible coalición de resistencia. La escalada comercial múltiple amenaza las cadenas de suministro globales y presiona a los bancos centrales.",
+        "en": "Beijing labeled Trump's proposed new tariffs on 14 trading partners, including China and the EU, as 'political manipulation' and warned of countermeasures. Brazil's simultaneous rejection signals a potential resistance coalition. Multi-front trade escalation threatens global supply chains and complicates central bank policy paths."
       },
       "impact": "high",
       "market_impact": [
         {
-          "asset": "Gold",
+          "asset": "Chinese equities (CSI 300)",
+          "direction": "down",
+          "magnitude": "high",
+          "note": {
+            "es": "Aranceles adicionales afectan exportaciones y confianza",
+            "en": "Additional tariffs hit exports and sentiment"
+          }
+        },
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "UE incluida en lista arancelaria pesa sobre el euro",
+            "en": "EU included in tariff list weighs on euro"
+          }
+        },
+        {
+          "asset": "US 10Y Treasury",
           "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Tensión comercial global eleva demanda de activos refugio",
-            "en": "Global trade tension drives safe-haven demand"
-          }
-        },
-        {
-          "asset": "Asian equities",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Riesgo de represalias perjudica mercados exportadores asiáticos",
-            "en": "Retaliation risk hurts Asian export-driven markets"
-          }
-        },
-        {
-          "asset": "Brent crude",
-          "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Perspectivas de menor demanda global por desaceleración comercial",
-            "en": "Weaker global demand outlook from trade slowdown"
+            "es": "Vuelo a seguridad ante incertidumbre comercial global",
+            "en": "Flight to safety on global trade uncertainty"
+          }
+        },
+        {
+          "asset": "EM currencies",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Amenaza de guerra comercial amplia presiona divisas emergentes",
+            "en": "Broad trade war threat pressures EM currencies"
           }
         }
       ],
-      "confidence": 87,
+      "confidence": 88,
       "source": "The Guardian",
       "source_url": "https://www.theguardian.com/us-news/2026/nov/26/brazil-china-react-to-new-trump-tariffs-threat",
       "published_at": "2026-11-26",
-      "time": "4h"
+      "time": "1d"
+    },
+    {
+      "id": 4,
+      "tag": "ALERT",
+      "region": "EU",
+      "title": {
+        "es": "En desacuerdo sobre el presupuesto de la UE, los líderes europeos acortan la cumbre",
+        "en": "At odds over the EU budget, European leaders cut summit short"
+      },
+      "summary": {
+        "es": "Los líderes europeos no lograron consenso sobre el presupuesto plurianual de la UE y adelantaron el fin de la cumbre, aplazando las negociaciones a diciembre. La disputa refleja divisiones profundas sobre prioridades de gasto en defensa, transición verde y cohesión. La incertidumbre presupuestaria debilita la capacidad de la UE para responder coordinadamente a desafíos externos.",
+        "en": "European leaders failed to reach consensus on the EU's multi-year budget and cut their summit short, deferring negotiations to December. The dispute reflects deep divisions over spending priorities in defense, green transition, and cohesion. Budget uncertainty weakens the EU's capacity for coordinated responses to external challenges."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "EUR/USD",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Fragmentación política europea pesa sobre el euro",
+            "en": "European political fragmentation weighs on euro"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Incertidumbre fiscal reduce confianza inversora en Europa",
+            "en": "Fiscal uncertainty reduces investor confidence in Europe"
+          }
+        },
+        {
+          "asset": "EU peripheral sovereign bonds",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Riesgo de transferencias reducidas presiona bonos periféricos",
+            "en": "Risk of reduced transfers pressures peripheral bonds"
+          }
+        }
+      ],
+      "confidence": 78,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/at-odds-over-the-eu-budget-european-leaders-cut-summit-short/live-80056415?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-26",
+      "time": "18h"
+    },
+    {
+      "id": 5,
+      "tag": "WATCH",
+      "region": "AFRICA",
+      "title": {
+        "es": "Uganda retirará tropas de ciudad del Congo en medio de disputa diplomática",
+        "en": "Uganda to withdraw troops from DR Congo town amid diplomatic row"
+      },
+      "summary": {
+        "es": "Uganda anunció la retirada de sus tropas de una localidad del este del Congo en medio de tensiones diplomáticas, complicando la lucha conjunta contra grupos islamistas armados en la región. El este del Congo es rico en minerales críticos como coltán y cobalto, y la inestabilidad amenaza las cadenas de suministro globales. La disputa refleja la fragilidad de las alianzas de seguridad regionales en el contexto de la competencia por recursos.",
+        "en": "Uganda announced it will withdraw troops from a town in eastern DR Congo amid a diplomatic dispute, complicating joint operations against Islamist armed groups in the region. Eastern Congo is rich in critical minerals including coltan and cobalt, and instability threatens global supply chains. The row reflects the fragility of regional security alliances amid resource competition."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Cobalt futures",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Inestabilidad en el Congo eleva prima de riesgo del cobalto",
+            "en": "DRC instability raises cobalt supply risk premium"
+          }
+        },
+        {
+          "asset": "Battery/EV sector equities",
+          "direction": "down",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo de suministro de minerales críticos pesa en el sector",
+            "en": "Critical mineral supply risk weighs on sector"
+          }
+        }
+      ],
+      "confidence": 72,
+      "source": "BBC News",
+      "source_url": "https://www.bbc.co.uk/news/articles/cq4gnj2ldkyzo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-11-27",
+      "time": "5h"
+    },
+    {
+      "id": 6,
+      "tag": "WATCH",
+      "region": "EU",
+      "title": {
+        "es": "El nuevo tratado UK-UE tiene cláusula de terminación a 10 años",
+        "en": "New UK-EU treaty has 10-year termination clause"
+      },
+      "summary": {
+        "es": "El texto del nuevo tratado entre el Reino Unido y la UE incluye una cláusula de terminación a 10 años, lo que introduce riesgo de reversibilidad en el acuerdo de reinserción parcial post-Brexit. El tratado también contempla una contribución financiera del Reino Unido a los costes de funcionamiento de la UE. La cláusula añade incertidumbre a largo plazo para inversores con exposición a flujos comerciales y regulatorios transatlánticos.",
+        "en": "The text of the new UK-EU treaty includes a 10-year termination clause, introducing reversibility risk into the partial post-Brexit reintegration agreement. The treaty also involves a UK financial contribution to EU running costs. The clause adds long-term uncertainty for investors with exposure to cross-channel trade and regulatory flows."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "GBP/EUR",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Cláusula de salida modera el alza de la libra por el acuerdo",
+            "en": "Exit clause moderates sterling gains from the deal"
+          }
+        },
+        {
+          "asset": "UK equities (FTSE 100)",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Acuerdo positivo pero reversibilidad limita el impulso",
+            "en": "Deal positive but reversibility caps the upside"
+          }
+        }
+      ],
+      "confidence": 70,
+      "source": "BBC Business",
+      "source_url": "https://www.bbc.co.uk/news/articles/c98r7p65edvgo?at_medium=RSS&at_campaign=rss",
+      "published_at": "2026-11-26",
+      "time": "1d"
     }
   ],
   "market_updated_at": "2026-11-27T15:41:19.131Z"
