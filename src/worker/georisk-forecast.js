@@ -18,13 +18,13 @@ async function optionalMarketLevels(fetchImpl,now){
     (async()=>{
       const response=await fetchImpl(BUND10_URL,{headers:{Accept:'text/csv'},signal:AbortSignal.timeout(9000)});
       if(!response.ok)throw new Error('Bundesbank unavailable');
-      const lines=(await response.text()).replace(/^\\uFEFF/,'').split(/\\r?\\n/);
+      const lines=(await response.text()).replace(/^\uFEFF/,'').split(/\r?\n/);
       const separator=lines.find(line=>line.includes('TIME_PERIOD')&&line.includes('OBS_VALUE'))?.includes(';')?';':',';
       const headerIndex=lines.findIndex(line=>line.includes('TIME_PERIOD')&&line.includes('OBS_VALUE'));
       if(headerIndex<0)throw new Error('Bundesbank CSV header unavailable');
       const headers=lines[headerIndex].split(separator).map(s=>s.replaceAll('"','').trim());
       const dateIndex=headers.indexOf('TIME_PERIOD'),valueIndex=headers.indexOf('OBS_VALUE');
-      const points=lines.slice(headerIndex+1).map(line=>line.split(separator)).filter(parts=>/^\\d{4}-\\d{2}-\\d{2}$/.test(parts[dateIndex]||'')).map(parts=>({date:parts[dateIndex],value:Number((parts[valueIndex]||'').replaceAll('"',''))})).filter(p=>Number.isFinite(p.value)&&p.value>-5&&p.value<30&&Date.parse(p.date)<=now.getTime()).sort((a,b)=>a.date.localeCompare(b.date));
+      const points=lines.slice(headerIndex+1).map(line=>line.split(separator)).filter(parts=>/^\d{4}-\d{2}-\d{2}$/.test(parts[dateIndex]||'')).map(parts=>({date:parts[dateIndex],value:Number((parts[valueIndex]||'').replaceAll('"',''))})).filter(p=>Number.isFinite(p.value)&&p.value>-5&&p.value<30&&Date.parse(p.date)<=now.getTime()).sort((a,b)=>a.date.localeCompare(b.date));
       const latest=points.at(-1);
       if(!latest||now.getTime()-Date.parse(latest.date)>7*DAY)throw new Error('Bund observation stale');
       return {id:'BBSSY_D_BUND10',label:'Bund 10 años',unit:'% anual',provider:'Deutsche Bundesbank',source_url:'https://www.bundesbank.de/en/statistics/money-and-capital-markets/interest-rates-and-yields/daily-yields-of-current-federal-securities-772220',latest,collected_at,status:'observed'};
