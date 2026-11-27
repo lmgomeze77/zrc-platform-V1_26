@@ -22,11 +22,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300..800;1,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300..700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300..800;1,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300..700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300..800;1,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300..700&display=swap" rel="stylesheet" /></noscript>
   </head>
   <body>
     <script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("zrc-theme")==="dark"?"dark":"light")}catch(e){document.documentElement.setAttribute("data-theme","light")}</script>
-    <div id="root"></div>
+    <div id="root"><div style="min-height:100vh;display:grid;place-content:center;text-align:center;gap:12px;padding:24px;background:#f7f9fc;color:#15233b;font:16px/1.5 system-ui,sans-serif"><strong style="font-size:20px">ZRC · Inteligencia geopolítica</strong><span>Cargando la plataforma y el mapa…</span><a href="/" style="color:#851429">Volver a cargar</a></div></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
   </html>
