@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T16:02:25.229Z",
+  "generated_at": "2026-11-28T14:59:07.873Z",
   "market_ticker": [
     {
       "symbol": "EUR/USD",
@@ -98,12 +98,12 @@
       "tag": "CRITICAL",
       "region": "MENA",
       "title": {
-        "es": "Dos italianos muertos en ataque de dron iraní sobre Kuwait, según funcionarios",
-        "en": "Two Italians Killed in Iranian Drone Attack on Kuwait, Officials Say"
+        "es": "Irán señala el papel de Europa en la guerra tras la muerte de italianos en ataque de Kuwait",
+        "en": "Iran points to Europe's war role after Italians killed in Kuwait strike"
       },
       "summary": {
-        "es": "Un ataque de dron atribuido a Irán mató a dos ciudadanos italianos en Kuwait, en el contexto de una serie de ataques sobre estados del Golfo que albergan instalaciones militares estadounidenses. El incidente eleva el riesgo de escalada al involucrar una víctima de un miembro de la OTAN, complicando las conversaciones de paz. La negación iraní añade incertidumbre estratégica significativa.",
-        "en": "A drone strike attributed to Iran killed two Italian nationals in Kuwait, part of a series of attacks on Gulf Arab states hosting U.S. military facilities. The incident raises escalation risk by drawing in a NATO member's casualties, complicating ongoing peace negotiations. Iran's denial adds significant strategic ambiguity."
+        "es": "Un dron iraní presuntamente atacó objetivos en Kuwait, matando a ciudadanos italianos, en una escalada que amplía geográficamente el conflicto regional. Irán contraargumenta que EE.UU. e Israel buscan una escalada deliberada, mientras Italia y Kuwait atribuyen el ataque a Teherán. El incidente tensiona las relaciones Europa-Irán y eleva el riesgo de disrupciones en el Golfo Pérsico.",
+        "en": "An Iranian drone allegedly struck targets in Kuwait killing Italian nationals, geographically widening the regional conflict. Iran counters that the US and Israel may be engineering escalation, while Italy and Kuwait attribute the attack to Tehran. The incident strains Europe-Iran relations and raises disruption risk across the Persian Gulf."
       },
       "impact": "high",
       "market_impact": [
@@ -112,8 +112,8 @@
           "direction": "up",
           "magnitude": "high",
           "note": {
-            "es": "Riesgo de escalada en el Golfo presiona precios al alza",
-            "en": "Gulf escalation risk pushes prices higher"
+            "es": "Escalada en el Golfo eleva prima de riesgo geopolítico",
+            "en": "Gulf escalation raises geopolitical risk premium"
           }
         },
         {
@@ -121,17 +121,17 @@
           "direction": "up",
           "magnitude": "medium",
           "note": {
-            "es": "Demanda de refugio seguro ante tensión geopolítica",
-            "en": "Safe-haven demand on geopolitical tension"
+            "es": "Demanda de refugio seguro por tensión regional",
+            "en": "Safe-haven demand on regional tension"
           }
         },
         {
           "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Riesgo de implicación europea pesa sobre el euro",
-            "en": "European involvement risk weighs on euro"
+            "es": "Riesgo energético europeo pesa sobre el euro",
+            "en": "European energy risk weighs on euro"
           }
         },
         {
@@ -139,152 +139,95 @@
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Aversión al riesgo global afecta divisas emergentes",
-            "en": "Global risk-off pressures emerging market currencies"
-          }
-        }
-      ],
-      "confidence": 90,
-      "source": "New York Times",
-      "source_url": "https://www.nytimes.com/2026/11/26/world/middleeast/italians-killed-iran-drone-attack-kuwait.html",
-      "published_at": "2026-11-26",
-      "time": "20h"
-    },
-    {
-      "id": 2,
-      "tag": "ALERT",
-      "region": "EURASIA",
-      "title": {
-        "es": "Trump pide a Putin poner fin a toda 'agresión militar' contra Europa",
-        "en": "Trump calls on Putin to end all 'military aggression' against Europe"
-      },
-      "summary": {
-        "es": "El presidente Trump declaró haber instado a Putin a retirar toda agresión militar contra territorios europeos, señalando un posible cambio de postura estadounidense hacia Rusia. La falta de detalles concretos deja abiertas las expectativas sobre un acuerdo de paz en Ucrania. Los mercados europeos reaccionarán ante cualquier señal de avance diplomático real.",
-        "en": "President Trump stated he urged Putin to end all military aggression against European territories, signaling a potential shift in U.S. posture toward Russia. The absence of concrete details leaves peace deal expectations open-ended. European markets will be sensitive to any signs of genuine diplomatic progress."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "European equities",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Señales de paz elevan apetito por activos europeos",
-            "en": "Peace signals lift appetite for European assets"
-          }
-        },
-        {
-          "asset": "Natural gas (TTF)",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Perspectiva de desescalada reduce prima de riesgo energético",
-            "en": "De-escalation outlook reduces energy risk premium"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Reducción de incertidumbre bélica apoya al euro",
-            "en": "Reduced war uncertainty supports the euro"
-          }
-        },
-        {
-          "asset": "Gold",
-          "direction": "down",
-          "magnitude": "low",
-          "note": {
-            "es": "Menor aversión al riesgo modera demanda de refugio",
-            "en": "Lower risk aversion moderates safe-haven demand"
-          }
-        }
-      ],
-      "confidence": 82,
-      "source": "France 24",
-      "source_url": "https://www.france24.com/en/europe/20261127-live-trump-calls-on-putin-to-end-all-military-aggression-against-europe",
-      "published_at": "2026-11-27",
-      "time": "5h"
-    },
-    {
-      "id": 3,
-      "tag": "ALERT",
-      "region": "GLOBAL",
-      "title": {
-        "es": "China se reserva el derecho a tomar 'medidas necesarias' ante las nuevas propuestas arancelarias de Trump",
-        "en": "China reserves right to take 'necessary measures' after Trump's new tariff proposals"
-      },
-      "summary": {
-        "es": "Beijing calificó los nuevos aranceles propuestos por Trump sobre 14 socios comerciales, incluidos China y la UE, como 'manipulación política' y advirtió con represalias. Brasil también rechazó las amenazas, señalando una posible coalición de resistencia. La escalada comercial múltiple amenaza las cadenas de suministro globales y presiona a los bancos centrales.",
-        "en": "Beijing labeled Trump's proposed new tariffs on 14 trading partners, including China and the EU, as 'political manipulation' and warned of countermeasures. Brazil's simultaneous rejection signals a potential resistance coalition. Multi-front trade escalation threatens global supply chains and complicates central bank policy paths."
-      },
-      "impact": "high",
-      "market_impact": [
-        {
-          "asset": "Chinese equities (CSI 300)",
-          "direction": "down",
-          "magnitude": "high",
-          "note": {
-            "es": "Aranceles adicionales afectan exportaciones y confianza",
-            "en": "Additional tariffs hit exports and sentiment"
-          }
-        },
-        {
-          "asset": "EUR/USD",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "UE incluida en lista arancelaria pesa sobre el euro",
-            "en": "EU included in tariff list weighs on euro"
-          }
-        },
-        {
-          "asset": "US 10Y Treasury",
-          "direction": "up",
-          "magnitude": "low",
-          "note": {
-            "es": "Vuelo a seguridad ante incertidumbre comercial global",
-            "en": "Flight to safety on global trade uncertainty"
-          }
-        },
-        {
-          "asset": "EM currencies",
-          "direction": "down",
-          "magnitude": "medium",
-          "note": {
-            "es": "Amenaza de guerra comercial amplia presiona divisas emergentes",
-            "en": "Broad trade war threat pressures EM currencies"
+            "es": "Aversión al riesgo golpea divisas emergentes del Golfo",
+            "en": "Risk-off hits Gulf-adjacent EM currencies"
           }
         }
       ],
       "confidence": 88,
-      "source": "The Guardian",
-      "source_url": "https://www.theguardian.com/us-news/2026/nov/26/brazil-china-react-to-new-trump-tariffs-threat",
-      "published_at": "2026-11-26",
-      "time": "1d"
+      "source": "Al Jazeera",
+      "source_url": "https://www.aljazeera.com/news/2026/11/28/iran-points-to-europes-war-role-after-italians-killed-in-kuwait-strike?traffic_source=rss",
+      "published_at": "2026-11-28",
+      "time": "1h"
     },
     {
-      "id": 4,
+      "id": 2,
+      "tag": "CRITICAL",
+      "region": "EURASIA",
+      "title": {
+        "es": "Los ataques profundos de Ucrania crecen en escala y alcance dentro de Rusia y más allá",
+        "en": "Ukraine's Deep Strikes Grow in Scale and Scope Across Russia and Beyond"
+      },
+      "summary": {
+        "es": "Ucrania ha intensificado significativamente su campaña de ataques de largo alcance contra infraestructura energética y logística rusa, apuntando a privar a Moscú de combustible, armas y financiamiento. La administración Trump ha criticado públicamente esta escalada, generando fricciones con Kiev en un momento clave de las negociaciones de paz. El riesgo de represalia rusa sobre infraestructura crítica europea sigue siendo elevado.",
+        "en": "Ukraine has significantly intensified its long-range strike campaign against Russian energy and logistics infrastructure, aiming to deprive Moscow of fuel, weapons, and revenue. The Trump administration has publicly criticized the escalation, generating friction with Kyiv at a pivotal moment in peace negotiations. The risk of Russian retaliation against European critical infrastructure remains elevated."
+      },
+      "impact": "high",
+      "market_impact": [
+        {
+          "asset": "European natural gas (TTF)",
+          "direction": "up",
+          "magnitude": "high",
+          "note": {
+            "es": "Riesgo de interrupción de infraestructura energética",
+            "en": "Energy infrastructure disruption risk elevated"
+          }
+        },
+        {
+          "asset": "European equities",
+          "direction": "down",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada bélica pesa sobre activos de riesgo europeos",
+            "en": "War escalation weighs on European risk assets"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Escalada geopolítica impulsa demanda de refugio",
+            "en": "Geopolitical escalation drives safe-haven demand"
+          }
+        }
+      ],
+      "confidence": 87,
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/28/world/europe/ukraine-russia-long-range-strikes.html",
+      "published_at": "2026-11-28",
+      "time": "1h"
+    },
+    {
+      "id": 3,
       "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "En desacuerdo sobre el presupuesto de la UE, los líderes europeos acortan la cumbre",
-        "en": "At odds over the EU budget, European leaders cut summit short"
+        "es": "S&P podría rebajar la calificación crediticia de Francia",
+        "en": "Credit rating agency S&P may downgrade France's credit rating"
       },
       "summary": {
-        "es": "Los líderes europeos no lograron consenso sobre el presupuesto plurianual de la UE y adelantaron el fin de la cumbre, aplazando las negociaciones a diciembre. La disputa refleja divisiones profundas sobre prioridades de gasto en defensa, transición verde y cohesión. La incertidumbre presupuestaria debilita la capacidad de la UE para responder coordinadamente a desafíos externos.",
-        "en": "European leaders failed to reach consensus on the EU's multi-year budget and cut their summit short, deferring negotiations to December. The dispute reflects deep divisions over spending priorities in defense, green transition, and cohesion. Budget uncertainty weakens the EU's capacity for coordinated responses to external challenges."
+        "es": "S&P mantuvo la calificación A+ de Francia pero cambió la perspectiva a negativa, señalando el persistente déficit presupuestario como el principal riesgo. Una eventual rebaja colocaría a Francia bajo mayor presión en los mercados de deuda soberana en un contexto de tasas elevadas en Europa. El movimiento refuerza las preocupaciones sobre la sostenibilidad fiscal en la eurozona y podría ampliar los diferenciales OAT-Bund.",
+        "en": "S&P maintained France's A+ rating but shifted the outlook to negative, citing the persistent budget deficit as the primary risk. A potential downgrade would place France under heightened sovereign debt market pressure in a still-elevated European rate environment. The move reinforces eurozone fiscal sustainability concerns and could widen OAT-Bund spreads."
       },
-      "impact": "medium",
+      "impact": "high",
       "market_impact": [
+        {
+          "asset": "French OAT 10Y",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Perspectiva negativa amplía diferenciales de deuda francesa",
+            "en": "Negative outlook widens French sovereign spreads"
+          }
+        },
         {
           "asset": "EUR/USD",
           "direction": "down",
-          "magnitude": "low",
+          "magnitude": "medium",
           "note": {
-            "es": "Fragmentación política europea pesa sobre el euro",
-            "en": "European political fragmentation weighs on euro"
+            "es": "Riesgo fiscal francés debilita al euro",
+            "en": "French fiscal risk weakens the euro"
           }
         },
         {
@@ -292,103 +235,160 @@
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Incertidumbre fiscal reduce confianza inversora en Europa",
-            "en": "Fiscal uncertainty reduces investor confidence in Europe"
+            "es": "Incertidumbre fiscal francesa pesa en bolsas europeas",
+            "en": "French fiscal uncertainty weighs on European equities"
+          }
+        }
+      ],
+      "confidence": 90,
+      "source": "France 24",
+      "source_url": "https://www.france24.com/en/credit-rating-agency-s-p-may-downgrade-france-s-credit-rating",
+      "published_at": "2026-11-28",
+      "time": "2h"
+    },
+    {
+      "id": 4,
+      "tag": "WATCH",
+      "region": "APAC",
+      "title": {
+        "es": "Puma Shen, crítico de China, podría ser el próximo alcalde de Taipei",
+        "en": "Puma Shen, Critic of China, Could be the Next Mayor of Taipei"
+      },
+      "summary": {
+        "es": "Puma Shen, sancionado por Beijing por sus esfuerzos para preparar a la población civil ante una posible invasión, emerge como favorito en las elecciones municipales de Taipei. Su eventual victoria representaría una señal política clara de endurecimiento de la postura taiwanesa hacia China. El resultado podría tensar aún más las relaciones en el Estrecho y afectar a empresas con exposición significativa a Taiwán.",
+        "en": "Puma Shen, sanctioned by Beijing for his civilian invasion-preparation efforts, emerges as a frontrunner in Taipei's mayoral elections. His potential victory would signal a clear political hardening of Taiwan's posture toward China. The outcome could further strain cross-strait relations and affect companies with significant Taiwan exposure."
+      },
+      "impact": "medium",
+      "market_impact": [
+        {
+          "asset": "Taiwan dollar (TWD)",
+          "direction": "mixed",
+          "magnitude": "medium",
+          "note": {
+            "es": "Tensión en el Estrecho genera volatilidad en TWD",
+            "en": "Strait tension generates TWD volatility"
           }
         },
         {
-          "asset": "EU peripheral sovereign bonds",
+          "asset": "Semiconductor equities (TSMC)",
           "direction": "down",
           "magnitude": "medium",
           "note": {
-            "es": "Riesgo de transferencias reducidas presiona bonos periféricos",
-            "en": "Risk of reduced transfers pressures peripheral bonds"
+            "es": "Mayor tensión geopolítica pesa en valoraciones de chips",
+            "en": "Heightened geopolitical tension weighs on chip valuations"
+          }
+        },
+        {
+          "asset": "Gold",
+          "direction": "up",
+          "magnitude": "low",
+          "note": {
+            "es": "Riesgo Taiwan impulsa demanda de activos seguros",
+            "en": "Taiwan risk lifts safe-haven asset demand"
           }
         }
       ],
       "confidence": 78,
-      "source": "Deutsche Welle",
-      "source_url": "https://www.dw.com/en/at-odds-over-the-eu-budget-european-leaders-cut-summit-short/live-80056415?maca=en-rss-en-all-1573-rdf",
-      "published_at": "2026-11-26",
-      "time": "18h"
+      "source": "New York Times",
+      "source_url": "https://www.nytimes.com/2026/11/27/world/asia/puma-shen-taiwan-election-china.html",
+      "published_at": "2026-11-27",
+      "time": "1d"
     },
     {
       "id": 5,
-      "tag": "WATCH",
-      "region": "AFRICA",
+      "tag": "ALERT",
+      "region": "LATAM",
       "title": {
-        "es": "Uganda retirará tropas de ciudad del Congo en medio de disputa diplomática",
-        "en": "Uganda to withdraw troops from DR Congo town amid diplomatic row"
+        "es": "Argentina no logra bloquear la extracción de petróleo frente a las Islas Malvinas",
+        "en": "Argentina fails to block oil drilling off Falkland Islands"
       },
       "summary": {
-        "es": "Uganda anunció la retirada de sus tropas de una localidad del este del Congo en medio de tensiones diplomáticas, complicando la lucha conjunta contra grupos islamistas armados en la región. El este del Congo es rico en minerales críticos como coltán y cobalto, y la inestabilidad amenaza las cadenas de suministro globales. La disputa refleja la fragilidad de las alianzas de seguridad regionales en el contexto de la competencia por recursos.",
-        "en": "Uganda announced it will withdraw troops from a town in eastern DR Congo amid a diplomatic dispute, complicating joint operations against Islamist armed groups in the region. Eastern Congo is rich in critical minerals including coltan and cobalt, and instability threatens global supply chains. The row reflects the fragility of regional security alliances amid resource competition."
+        "es": "Un tribunal internacional rechazó el intento de Argentina de cancelar un proyecto de perforación offshore cerca de las Malvinas, que el Reino Unido considera vital para el futuro de las islas. Londres ha pedido a Buenos Aires que cese su 'guerra económica' contra el archipiélago, en una disputa que combina soberanía, energía y relaciones bilaterales. El fallo abre la puerta a mayor inversión en exploración energética en el Atlántico Sur.",
+        "en": "An international tribunal rejected Argentina's attempt to terminate an offshore oil project near the Falkland Islands, which the UK considers vital to the islands' future. London has called on Buenos Aires to end its 'economic warfare' against the archipelago, in a dispute combining sovereignty, energy, and bilateral relations. The ruling opens the door to increased energy exploration investment in the South Atlantic."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "Cobalt futures",
-          "direction": "up",
-          "magnitude": "medium",
-          "note": {
-            "es": "Inestabilidad en el Congo eleva prima de riesgo del cobalto",
-            "en": "DRC instability raises cobalt supply risk premium"
-          }
-        },
-        {
-          "asset": "Battery/EV sector equities",
+          "asset": "Argentine sovereign bonds",
           "direction": "down",
           "magnitude": "low",
           "note": {
-            "es": "Riesgo de suministro de minerales críticos pesa en el sector",
-            "en": "Critical mineral supply risk weighs on sector"
+            "es": "Derrota legal aumenta presión política interna",
+            "en": "Legal defeat raises domestic political pressure"
+          }
+        },
+        {
+          "asset": "Falkland Islands energy equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Fallo permite avanzar proyectos de exploración offshore",
+            "en": "Ruling allows offshore exploration projects to proceed"
+          }
+        },
+        {
+          "asset": "GBP/ARS",
+          "direction": "mixed",
+          "magnitude": "low",
+          "note": {
+            "es": "Tensión bilateral puede afectar flujos comerciales",
+            "en": "Bilateral tension may affect trade flows"
           }
         }
       ],
-      "confidence": 72,
-      "source": "BBC News",
-      "source_url": "https://www.bbc.co.uk/news/articles/cq4gnj2ldkyzo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-27",
-      "time": "5h"
+      "confidence": 76,
+      "source": "The Guardian",
+      "source_url": "https://www.theguardian.com/uk-news/2026/nov/28/argentina-oil-drilling-falkland-islands-international-tribunal",
+      "published_at": "2026-11-28",
+      "time": "1h"
     },
     {
       "id": 6,
-      "tag": "WATCH",
+      "tag": "ALERT",
       "region": "EU",
       "title": {
-        "es": "El nuevo tratado UK-UE tiene cláusula de terminación a 10 años",
-        "en": "New UK-EU treaty has 10-year termination clause"
+        "es": "Alemania: el Parlamento aprueba el presupuesto de 2027 cargado de deuda",
+        "en": "Germany: Lawmakers approve debt-laden 2027 budget"
       },
       "summary": {
-        "es": "El texto del nuevo tratado entre el Reino Unido y la UE incluye una cláusula de terminación a 10 años, lo que introduce riesgo de reversibilidad en el acuerdo de reinserción parcial post-Brexit. El tratado también contempla una contribución financiera del Reino Unido a los costes de funcionamiento de la UE. La cláusula añade incertidumbre a largo plazo para inversores con exposición a flujos comerciales y regulatorios transatlánticos.",
-        "en": "The text of the new UK-EU treaty includes a 10-year termination clause, introducing reversibility risk into the partial post-Brexit reintegration agreement. The treaty also involves a UK financial contribution to EU running costs. The clause adds long-term uncertainty for investors with exposure to cross-channel trade and regulatory flows."
+        "es": "El Bundestag aprobó un presupuesto federal de 556.000 millones de euros para 2027, marcando un giro significativo en la disciplina fiscal alemana históricamente asociada al 'freno de deuda'. La aprobación refleja la creciente presión sobre Berlín para aumentar el gasto en defensa y transición energética. Esta divergencia fiscal respecto a la ortodoxia anterior tiene implicaciones para la dinámica de los bonos alemanes y para la coordinación fiscal de la eurozona.",
+        "en": "The Bundestag approved a €556 billion federal budget for 2027, marking a significant shift from Germany's historically strict debt-brake fiscal discipline. The approval reflects growing pressure on Berlin to increase defense and energy transition spending. This fiscal divergence from prior orthodoxy has implications for German bond dynamics and eurozone fiscal coordination."
       },
       "impact": "medium",
       "market_impact": [
         {
-          "asset": "GBP/EUR",
-          "direction": "mixed",
-          "magnitude": "low",
+          "asset": "German Bund 10Y",
+          "direction": "up",
+          "magnitude": "medium",
           "note": {
-            "es": "Cláusula de salida modera el alza de la libra por el acuerdo",
-            "en": "Exit clause moderates sterling gains from the deal"
+            "es": "Mayor emisión de deuda presiona rendimientos al alza",
+            "en": "Increased debt issuance pressures yields higher"
           }
         },
         {
-          "asset": "UK equities (FTSE 100)",
+          "asset": "EUR/USD",
           "direction": "mixed",
           "magnitude": "low",
           "note": {
-            "es": "Acuerdo positivo pero reversibilidad limita el impulso",
-            "en": "Deal positive but reversibility caps the upside"
+            "es": "Estímulo fiscal puede apoyar crecimiento alemán",
+            "en": "Fiscal stimulus may support German growth outlook"
+          }
+        },
+        {
+          "asset": "European defense equities",
+          "direction": "up",
+          "magnitude": "medium",
+          "note": {
+            "es": "Gasto en defensa impulsa sector industrial europeo",
+            "en": "Defense spending boost lifts European industrial sector"
           }
         }
       ],
-      "confidence": 70,
-      "source": "BBC Business",
-      "source_url": "https://www.bbc.co.uk/news/articles/c98r7p65edvgo?at_medium=RSS&at_campaign=rss",
-      "published_at": "2026-11-26",
-      "time": "1d"
+      "confidence": 82,
+      "source": "Deutsche Welle",
+      "source_url": "https://www.dw.com/en/germany-news-lawmakers-approve-debt-laden-2027-budget/live-80071074?maca=en-rss-en-all-1573-rdf",
+      "published_at": "2026-11-27",
+      "time": "19h"
     }
   ],
   "market_updated_at": "2026-11-28T14:37:19.901Z"
